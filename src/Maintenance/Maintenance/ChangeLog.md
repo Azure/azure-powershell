@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.4.3
+* Fixed bug where AzMaintenanceConfiguration returned a List object. [#25781]
+
 ## Version 1.4.2
 * Fixed bug where rebootSettings property wasn't updating.
 
@@ -31,7 +34,7 @@
 
 ## Version 1.3.1
 * Fixed breaking change information
-  
+
 ## Version 1.3.0
 * Added support for Resource Group and Subscription configuration assignment.
 

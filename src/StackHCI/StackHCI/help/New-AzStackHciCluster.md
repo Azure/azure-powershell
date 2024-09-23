@@ -19,8 +19,7 @@ New-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-DesiredPropertyDiagnosticLevel <DiagnosticLevel>]
  [-DesiredPropertyWindowsServerSubscription <WindowsServerSubscription>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-SoftwareAssurancePropertySoftwareAssuranceIntent <SoftwareAssuranceIntent>]
- [-SoftwareAssurancePropertySoftwareAssuranceStatus <SoftwareAssuranceStatus>] [-Tag <Hashtable>]
+ [-SoftwareAssurancePropertySoftwareAssuranceIntent <SoftwareAssuranceIntent>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +30,7 @@ Create an HCI cluster.
 
 ### Example 1:
 ```powershell
-New-AzStackHciCluster -Name "myCluster" -ResourceGroupName "test-rg" -AadTenantId "c76bd4d1-bea3-45ea-be1b-4a745a675d07" -AadClientId "24a6e53d-04e5-44d2-b7cc-1b732a847dfc" -Location "eastus"
+New-AzStackHciCluster -Name "myCluster" -ResourceGroupName "test-rg" -AadTenantId "00001111-aaaa-2222-bbbb-3333cccc4444" -AadClientId "24a6e53d-04e5-44d2-b7cc-1b732a847dfc" -Location "eastus"
 ```
 
 ```output
@@ -44,7 +43,7 @@ This command creates a Stack HCI cluster
 
 ### Example 2:
 ```powershell
-New-AzStackHciCluster -Name "myCluster2" -ResourceGroupName "test-rg" -AadTenantId "c76bd4d1-bea3-45ea-be1b-4a745a675d07" -AadClientId "24a6e53d-04e5-44d2-b7cc-1b732a847dfc" -Location "westeurope" -DesiredPropertyDiagnosticLevel "Off" -DesiredPropertyWindowsServerSubscription "Enabled"
+New-AzStackHciCluster -Name "myCluster2" -ResourceGroupName "test-rg" -AadTenantId "00001111-aaaa-2222-bbbb-3333cccc4444" -AadClientId "24a6e53d-04e5-44d2-b7cc-1b732a847dfc" -Location "westeurope" -DesiredPropertyDiagnosticLevel "Off" -DesiredPropertyWindowsServerSubscription "Enabled"
 ```
 
 ```output
@@ -272,23 +271,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SoftwareAssurancePropertySoftwareAssuranceStatus
-Status of the Software Assurance for the cluster.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.SoftwareAssuranceStatus
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -355,7 +340,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster
 
 ## NOTES
 

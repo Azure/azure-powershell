@@ -66,11 +66,12 @@ CLUSTERPOOL <IClusterPool>: Cluster pool.
   Location <String>: The geo-location where the resource lives
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [ComputeProfileAvailabilityZone <List<String>>]: The list of Availability zones to use for AKS VMSS nodes.
   [ComputeProfileVMSize <String>]: The virtual machine SKU.
   [LogAnalyticProfileEnabled <Boolean?>]: True if log analytics is enabled for cluster pool, otherwise false.
   [LogAnalyticProfileWorkspaceId <String>]: Log analytics workspace to associate with the OMS agent.
   [ManagedResourceGroupName <String>]: A resource group created by RP, to hold the resources created by RP on-behalf of customers. It will also be used to generate aksManagedResourceGroupName by pattern: MC_{managedResourceGroupName}_{clusterPoolName}_{region}. Please make sure it meets resource group name restriction.
-  [NetworkProfileApiServerAuthorizedIPRange <List<String>>]: IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+  [NetworkProfileApiServerAuthorizedIPRange <List<String>>]: IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.
   [NetworkProfileEnablePrivateApiServer <Boolean?>]: ClusterPool is based on AKS cluster. AKS cluster exposes the API server to public internet by default. If you set this property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public internet.
   [NetworkProfileOutboundType <String>]: This can only be set at cluster pool creation time and cannot be changed later. 
   [NetworkProfileSubnetId <String>]: Cluster pool subnet resource id.
@@ -151,6 +152,14 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # The list of Availability zones to use for AKS VMSS nodes.
+    ${ComputeProfileAvailabilityZone},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # True if log analytics is enabled for cluster pool, otherwise false.
@@ -181,6 +190,7 @@ param(
     # 137.117.106.88/29.
     # This feature is not compatible with private AKS clusters.
     # So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+    # Currently, this property is not supported and please don't use it.
     ${NetworkProfileApiServerAuthorizedIPRange},
 
     [Parameter(ParameterSetName='CreateExpanded')]

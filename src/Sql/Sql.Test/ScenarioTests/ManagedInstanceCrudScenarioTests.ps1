@@ -38,6 +38,8 @@ function Test-CreateManagedInstance
 	$timezoneId = "Central Europe Standard Time"
 	$proxyOverride = "Proxy"
 	$backupStorageRedundancy = "Local"
+	$authenticationMetadata = "Paired"
+	$defaultAuthenticationMetadata = "AzureAD"
 
  	try
  	{
@@ -45,7 +47,7 @@ function Test-CreateManagedInstance
  		$job = New-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstanceName `
  			-Location $rg.Location -AdministratorCredential $credentials -SubnetId $defaultParams.subnet `
   			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName -Collation $collation `
-			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -BackupStorageRedundancy $backupStorageRedundancy -AsJob
+			-TimezoneId $timezoneId -PublicDataEndpointEnabled -ProxyOverride $proxyOverride -BackupStorageRedundancy $backupStorageRedundancy -AuthenticationMetadata $authenticationMetadata  -AsJob
  		$job | Wait-Job
  		$managedInstance1 = $job.Output
 
@@ -66,7 +68,8 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.CurrentBackupStorageRedundancy $backupStorageRedundancy
 		Assert-AreEqual $managedInstance1.BackupStorageRedundancy $backupStorageRedundancy
  		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
-        Assert-NotNull $managedInstance1.DnsZone
+		Assert-NotNull $managedInstance1.DnsZone
+		Assert-AreEqual $managedInstance1.AuthenticationMetadata $authenticationMetadata
 
 		$edition = "GeneralPurpose"
 		$computeGeneration = "Gen5"
@@ -90,8 +93,8 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.LicenseType $licenseType
 		Assert-AreEqual $managedInstance1.VCores $vCore
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $storageSizeInGB
- 		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
-        Assert-AreEqual $managedInstance1.DnsZone $originalDnsZone
+		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
+		Assert-AreEqual $managedInstance1.DnsZone $originalDnsZone
 
 		## Get-AzSqlInstance test ##
 		############################
@@ -106,6 +109,7 @@ function Test-CreateManagedInstance
 		Assert-AreEqual $managedInstance1.VCores $resp1.VCores
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $resp1.StorageSizeInGB
 		Assert-AreEqual $false $managedInstance1.ZoneRedundant
+		Assert-AreEqual $managedInstance1.AuthenticationMetadata $defaultAuthenticationMetadata
 
 		$all = Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name *
 		Assert-AreEqual 2 $all.Count
@@ -281,16 +285,18 @@ function Test-SetManagedInstance
 		$targetSubnetResourceId = "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Network/virtualNetworks/vnet-mi-tooling/subnets/ManagedInstance2"
 		$generalPurpose = "GeneralPurpose"
 		$businessCritical = "BusinessCritical"
+		$authenticationMetadata = "Windows"
 
 		$managedInstance1 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
-			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Force
+			-AdministratorPassword $credentials.Password -LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Force -AuthenticationMetadata $authenticationMetadata
 
 		Assert-AreEqual $managedInstance1.ManagedInstanceName $managedInstance.ManagedInstanceName
 		Assert-AreEqual $managedInstance1.AdministratorLogin $managedInstance.AdministratorLogin
 		Assert-AreEqual $managedInstance1.LicenseType $licenseType
 		Assert-AreEqual $managedInstance1.VCores $managedInstance.VCores
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $storageSizeInGB
-		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
+		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName]
+		Assert-AreEqual $managedInstance1.AuthenticationMetadata $authenticationMetadata
 
 		# Test using piping
 		$credentials = Get-ServerCredential

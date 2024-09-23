@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Added breaking change messages:
+  * `New-AzDataCollectionEndpoint`
+  * `New-AzDataCollectionRule`
+  * `Update-AzDataCollectionEndpoint`
+  * `Update-AzDataCollectionRule`
+* Updated documentation for `New-AzActionGroupLogicAppReceiverObject`
 
 ## Version 5.2.1
 * Removed breaking change warning messages for Metric Management Plane

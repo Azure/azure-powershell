@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecustommodeljoboutputobject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceCustomModelJobOutputObject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for CustomModelJobOutput.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceCustomModelJobOutputObject -Type <JobOutputType> [-Description <String>]
- [-Mode <OutputDeliveryMode>] [-Uri <String>] [<CommonParameters>]
+New-AzMLWorkspaceCustomModelJobOutputObject -Type <JobOutputType> [-Mode <OutputDeliveryMode>] [-Uri <String>]
+ [-Description <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,11 +98,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CustomModelJobOutput
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CustomModelJobOutput
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

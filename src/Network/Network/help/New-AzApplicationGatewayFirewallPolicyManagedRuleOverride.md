@@ -14,7 +14,7 @@ Creates a managedRuleOverride entry for RuleGroupOverrideGroup entry.
 
 ```
 New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId <String> [-State <String>] [-Action <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Sensitivity <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,22 +91,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -State
-Specify the RuleId in override rule entry.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: Disabled, Enabled
-
-Required: False
-Position: Named
-Default value: Disabled
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Sensitivity
 Describes the override sensitivity to be applied when rule matches.
 
@@ -119,6 +103,22 @@ Accepted values: None, Low, Medium, High
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -State
+Specify the RuleId in override rule entry.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Disabled, Enabled
+
+Required: False
+Position: Named
+Default value: Disabled
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

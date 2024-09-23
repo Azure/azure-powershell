@@ -38,6 +38,402 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Git'", "Git", global::System.Management.Automation.CompletionResultType.ParameterValue, "Git");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "S3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'S3'", "S3", global::System.Management.Automation.CompletionResultType.ParameterValue, "S3");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Snowflake".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Snowflake'", "Snowflake", global::System.Management.Automation.CompletionResultType.ParameterValue, "Snowflake");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureSqlDb".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzureSqlDb'", "AzureSqlDb", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureSqlDb");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureSynapseAnalytics".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzureSynapseAnalytics'", "AzureSynapseAnalytics", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureSynapseAnalytics");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureMySqlDb".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzureMySqlDb'", "AzureMySqlDb", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureMySqlDb");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzurePostgresDb".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzurePostgresDb'", "AzurePostgresDb", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzurePostgresDb");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ADLSGen2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ADLSGen2'", "ADLSGen2", global::System.Management.Automation.CompletionResultType.ParameterValue, "ADLSGen2");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Redis".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Redis'", "Redis", global::System.Management.Automation.CompletionResultType.ParameterValue, "Redis");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ApiKey".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ApiKey'", "ApiKey", global::System.Management.Automation.CompletionResultType.ParameterValue, "ApiKey");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureOpenAI".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzureOpenAI'", "AzureOpenAI", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureOpenAI");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CognitiveSearch".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'CognitiveSearch'", "CognitiveSearch", global::System.Management.Automation.CompletionResultType.ParameterValue, "CognitiveSearch");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CognitiveService".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'CognitiveService'", "CognitiveService", global::System.Management.Automation.CompletionResultType.ParameterValue, "CognitiveService");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CustomKeys".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'CustomKeys'", "CustomKeys", global::System.Management.Automation.CompletionResultType.ParameterValue, "CustomKeys");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureBlob".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzureBlob'", "AzureBlob", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureBlob");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureOneLake".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzureOneLake'", "AzureOneLake", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureOneLake");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CosmosDb".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'CosmosDb'", "CosmosDb", global::System.Management.Automation.CompletionResultType.ParameterValue, "CosmosDb");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CosmosDbMongoDbApi".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'CosmosDbMongoDbApi'", "CosmosDbMongoDbApi", global::System.Management.Automation.CompletionResultType.ParameterValue, "CosmosDbMongoDbApi");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureDataExplorer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzureDataExplorer'", "AzureDataExplorer", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureDataExplorer");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureMariaDb".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzureMariaDb'", "AzureMariaDb", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureMariaDb");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureDatabricksDeltaLake".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzureDatabricksDeltaLake'", "AzureDatabricksDeltaLake", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureDatabricksDeltaLake");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureSqlMi".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzureSqlMi'", "AzureSqlMi", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureSqlMi");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AzureTableStorage".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AzureTableStorage'", "AzureTableStorage", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureTableStorage");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AmazonRdsForOracle".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AmazonRdsForOracle'", "AmazonRdsForOracle", global::System.Management.Automation.CompletionResultType.ParameterValue, "AmazonRdsForOracle");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AmazonRdsForSqlServer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AmazonRdsForSqlServer'", "AmazonRdsForSqlServer", global::System.Management.Automation.CompletionResultType.ParameterValue, "AmazonRdsForSqlServer");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AmazonRedshift".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AmazonRedshift'", "AmazonRedshift", global::System.Management.Automation.CompletionResultType.ParameterValue, "AmazonRedshift");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Db2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Db2'", "Db2", global::System.Management.Automation.CompletionResultType.ParameterValue, "Db2");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Drill".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Drill'", "Drill", global::System.Management.Automation.CompletionResultType.ParameterValue, "Drill");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "GoogleBigQuery".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'GoogleBigQuery'", "GoogleBigQuery", global::System.Management.Automation.CompletionResultType.ParameterValue, "GoogleBigQuery");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Greenplum".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Greenplum'", "Greenplum", global::System.Management.Automation.CompletionResultType.ParameterValue, "Greenplum");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Hbase".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Hbase'", "Hbase", global::System.Management.Automation.CompletionResultType.ParameterValue, "Hbase");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Hive".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Hive'", "Hive", global::System.Management.Automation.CompletionResultType.ParameterValue, "Hive");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Impala".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Impala'", "Impala", global::System.Management.Automation.CompletionResultType.ParameterValue, "Impala");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Informix".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Informix'", "Informix", global::System.Management.Automation.CompletionResultType.ParameterValue, "Informix");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MariaDb".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MariaDb'", "MariaDb", global::System.Management.Automation.CompletionResultType.ParameterValue, "MariaDb");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MicrosoftAccess".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MicrosoftAccess'", "MicrosoftAccess", global::System.Management.Automation.CompletionResultType.ParameterValue, "MicrosoftAccess");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MySql".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MySql'", "MySql", global::System.Management.Automation.CompletionResultType.ParameterValue, "MySql");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Netezza".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Netezza'", "Netezza", global::System.Management.Automation.CompletionResultType.ParameterValue, "Netezza");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Oracle".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Oracle'", "Oracle", global::System.Management.Automation.CompletionResultType.ParameterValue, "Oracle");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Phoenix".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Phoenix'", "Phoenix", global::System.Management.Automation.CompletionResultType.ParameterValue, "Phoenix");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "PostgreSql".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'PostgreSql'", "PostgreSql", global::System.Management.Automation.CompletionResultType.ParameterValue, "PostgreSql");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Presto".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Presto'", "Presto", global::System.Management.Automation.CompletionResultType.ParameterValue, "Presto");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SapOpenHub".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SapOpenHub'", "SapOpenHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "SapOpenHub");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SapBw".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SapBw'", "SapBw", global::System.Management.Automation.CompletionResultType.ParameterValue, "SapBw");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SapHana".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SapHana'", "SapHana", global::System.Management.Automation.CompletionResultType.ParameterValue, "SapHana");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SapTable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SapTable'", "SapTable", global::System.Management.Automation.CompletionResultType.ParameterValue, "SapTable");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Spark".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Spark'", "Spark", global::System.Management.Automation.CompletionResultType.ParameterValue, "Spark");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SqlServer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SqlServer'", "SqlServer", global::System.Management.Automation.CompletionResultType.ParameterValue, "SqlServer");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Sybase".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Sybase'", "Sybase", global::System.Management.Automation.CompletionResultType.ParameterValue, "Sybase");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Teradata".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Teradata'", "Teradata", global::System.Management.Automation.CompletionResultType.ParameterValue, "Teradata");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Vertica".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Vertica'", "Vertica", global::System.Management.Automation.CompletionResultType.ParameterValue, "Vertica");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Cassandra".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Cassandra'", "Cassandra", global::System.Management.Automation.CompletionResultType.ParameterValue, "Cassandra");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Couchbase".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Couchbase'", "Couchbase", global::System.Management.Automation.CompletionResultType.ParameterValue, "Couchbase");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MongoDbV2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MongoDbV2'", "MongoDbV2", global::System.Management.Automation.CompletionResultType.ParameterValue, "MongoDbV2");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MongoDbAtlas".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MongoDbAtlas'", "MongoDbAtlas", global::System.Management.Automation.CompletionResultType.ParameterValue, "MongoDbAtlas");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AmazonS3Compatible".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AmazonS3Compatible'", "AmazonS3Compatible", global::System.Management.Automation.CompletionResultType.ParameterValue, "AmazonS3Compatible");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "FileServer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'FileServer'", "FileServer", global::System.Management.Automation.CompletionResultType.ParameterValue, "FileServer");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "FtpServer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'FtpServer'", "FtpServer", global::System.Management.Automation.CompletionResultType.ParameterValue, "FtpServer");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "GoogleCloudStorage".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'GoogleCloudStorage'", "GoogleCloudStorage", global::System.Management.Automation.CompletionResultType.ParameterValue, "GoogleCloudStorage");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Hdfs".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Hdfs'", "Hdfs", global::System.Management.Automation.CompletionResultType.ParameterValue, "Hdfs");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "OracleCloudStorage".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'OracleCloudStorage'", "OracleCloudStorage", global::System.Management.Automation.CompletionResultType.ParameterValue, "OracleCloudStorage");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Sftp".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Sftp'", "Sftp", global::System.Management.Automation.CompletionResultType.ParameterValue, "Sftp");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "GenericHttp".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'GenericHttp'", "GenericHttp", global::System.Management.Automation.CompletionResultType.ParameterValue, "GenericHttp");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ODataRest".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ODataRest'", "ODataRest", global::System.Management.Automation.CompletionResultType.ParameterValue, "ODataRest");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Odbc".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Odbc'", "Odbc", global::System.Management.Automation.CompletionResultType.ParameterValue, "Odbc");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "GenericRest".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'GenericRest'", "GenericRest", global::System.Management.Automation.CompletionResultType.ParameterValue, "GenericRest");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AmazonMws".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AmazonMws'", "AmazonMws", global::System.Management.Automation.CompletionResultType.ParameterValue, "AmazonMws");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Concur".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Concur'", "Concur", global::System.Management.Automation.CompletionResultType.ParameterValue, "Concur");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Dynamics".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Dynamics'", "Dynamics", global::System.Management.Automation.CompletionResultType.ParameterValue, "Dynamics");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DynamicsAx".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DynamicsAx'", "DynamicsAx", global::System.Management.Automation.CompletionResultType.ParameterValue, "DynamicsAx");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DynamicsCrm".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DynamicsCrm'", "DynamicsCrm", global::System.Management.Automation.CompletionResultType.ParameterValue, "DynamicsCrm");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "GoogleAdWords".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'GoogleAdWords'", "GoogleAdWords", global::System.Management.Automation.CompletionResultType.ParameterValue, "GoogleAdWords");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Hubspot".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Hubspot'", "Hubspot", global::System.Management.Automation.CompletionResultType.ParameterValue, "Hubspot");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Jira".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Jira'", "Jira", global::System.Management.Automation.CompletionResultType.ParameterValue, "Jira");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Magento".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Magento'", "Magento", global::System.Management.Automation.CompletionResultType.ParameterValue, "Magento");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Marketo".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Marketo'", "Marketo", global::System.Management.Automation.CompletionResultType.ParameterValue, "Marketo");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Office365".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Office365'", "Office365", global::System.Management.Automation.CompletionResultType.ParameterValue, "Office365");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Eloqua".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Eloqua'", "Eloqua", global::System.Management.Automation.CompletionResultType.ParameterValue, "Eloqua");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Responsys".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Responsys'", "Responsys", global::System.Management.Automation.CompletionResultType.ParameterValue, "Responsys");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "OracleServiceCloud".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'OracleServiceCloud'", "OracleServiceCloud", global::System.Management.Automation.CompletionResultType.ParameterValue, "OracleServiceCloud");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "PayPal".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'PayPal'", "PayPal", global::System.Management.Automation.CompletionResultType.ParameterValue, "PayPal");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "QuickBooks".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'QuickBooks'", "QuickBooks", global::System.Management.Automation.CompletionResultType.ParameterValue, "QuickBooks");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Salesforce".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Salesforce'", "Salesforce", global::System.Management.Automation.CompletionResultType.ParameterValue, "Salesforce");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SalesforceServiceCloud".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SalesforceServiceCloud'", "SalesforceServiceCloud", global::System.Management.Automation.CompletionResultType.ParameterValue, "SalesforceServiceCloud");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SalesforceMarketingCloud".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SalesforceMarketingCloud'", "SalesforceMarketingCloud", global::System.Management.Automation.CompletionResultType.ParameterValue, "SalesforceMarketingCloud");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SapCloudForCustomer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SapCloudForCustomer'", "SapCloudForCustomer", global::System.Management.Automation.CompletionResultType.ParameterValue, "SapCloudForCustomer");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SapEcc".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SapEcc'", "SapEcc", global::System.Management.Automation.CompletionResultType.ParameterValue, "SapEcc");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ServiceNow".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ServiceNow'", "ServiceNow", global::System.Management.Automation.CompletionResultType.ParameterValue, "ServiceNow");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SharePointOnlineList".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SharePointOnlineList'", "SharePointOnlineList", global::System.Management.Automation.CompletionResultType.ParameterValue, "SharePointOnlineList");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Shopify".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Shopify'", "Shopify", global::System.Management.Automation.CompletionResultType.ParameterValue, "Shopify");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Square".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Square'", "Square", global::System.Management.Automation.CompletionResultType.ParameterValue, "Square");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "WebTable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'WebTable'", "WebTable", global::System.Management.Automation.CompletionResultType.ParameterValue, "WebTable");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Xero".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Xero'", "Xero", global::System.Management.Automation.CompletionResultType.ParameterValue, "Xero");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Zoho".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Zoho'", "Zoho", global::System.Management.Automation.CompletionResultType.ParameterValue, "Zoho");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "GenericContainerRegistry".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'GenericContainerRegistry'", "GenericContainerRegistry", global::System.Management.Automation.CompletionResultType.ParameterValue, "GenericContainerRegistry");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "OpenAI".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'OpenAI'", "OpenAI", global::System.Management.Automation.CompletionResultType.ParameterValue, "OpenAI");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Serp".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Serp'", "Serp", global::System.Management.Automation.CompletionResultType.ParameterValue, "Serp");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "BingLLMSearch".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'BingLLMSearch'", "BingLLMSearch", global::System.Management.Automation.CompletionResultType.ParameterValue, "BingLLMSearch");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Serverless".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Serverless'", "Serverless", global::System.Management.Automation.CompletionResultType.ParameterValue, "Serverless");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "AIServices".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'AIServices'", "AIServices", global::System.Management.Automation.CompletionResultType.ParameterValue, "AIServices");
+            }
         }
     }
 }

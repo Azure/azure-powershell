@@ -54,7 +54,6 @@ In this directory, run AutoRest:
 commit: 812f964651d5f1f7148b54ed2cc35cb97be12523
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-repo: azure-rest-api-specs
 
 input-file:
   - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2024-01-01/common.json
@@ -71,6 +70,8 @@ module-version: 0.1.0
 title: StackHCIVM
 service-name: StackHCIVM
 subject-prefix: $(service-name)
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 inlining-threshold: 50
 resourcegroup-append: true

@@ -38,7 +38,7 @@ Get-AzLogicAppRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03"
 ```
 
 ```output
-CorrelationId    : 55830326-9042-404d-a4c3-fab198106a57
+CorrelationId    : 00001111-aaaa-2222-bbbb-3333cccc4444
 EndTime          : 1/13/2016 2:46:55 PM
 Error            : {code, message}
 Name             : 08587489104702792076
@@ -49,7 +49,7 @@ TriggerName      :
 LogicAppName     : LogicApp03
 LogicAppVersion  : 08587489107859952540
 
-CorrelationId    : d3ddc917-9aaa-47b3-8814-c621c2ae530b
+CorrelationId    : 00001111-aaaa-2222-bbbb-3333cccc4444
 EndTime          : 1/13/2016 2:42:56 PM
 Error            : {code, message}
 Name             : 08587489107100664541
@@ -70,7 +70,7 @@ Get-AzLogicAppRunHistory -ResourceGroupName "Resourcegroup11" -Name "LogicApp03"
 ```
 
 ```output
-CorrelationId    : 55830326-9042-404d-a4c3-fab198106a57
+CorrelationId    : 00001111-aaaa-2222-bbbb-3333cccc4444
 EndTime          : 1/13/2016 2:46:55 PM
 Error            : {code, message}
 Name             : 08587489104702792076

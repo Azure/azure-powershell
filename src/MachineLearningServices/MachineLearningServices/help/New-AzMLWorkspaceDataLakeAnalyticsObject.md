@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatalakeanalyticsobject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceDataLakeAnalyticsObject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,9 @@ Create an in-memory object for DataLakeAnalytics.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceDataLakeAnalyticsObject [-DataLakeStoreAccountName <String>] [-Description <String>]
- [-DisableLocalAuth <Boolean>] [-ResourceId <String>] [<CommonParameters>]
+New-AzMLWorkspaceDataLakeAnalyticsObject [-Description <String>] [-DisableLocalAuth <Boolean>]
+ [-ResourceId <String>] [-DataLakeStoreAccountName <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,11 +99,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.DataLakeAnalytics
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.DataLakeAnalytics
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

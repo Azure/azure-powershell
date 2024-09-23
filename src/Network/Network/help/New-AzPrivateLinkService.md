@@ -14,10 +14,11 @@ Creates a private link service
 
 ```
 New-AzPrivateLinkService -Name <String> -ResourceGroupName <String> -Location <String>
- -IpConfiguration <PSPrivateLinkServiceIpConfiguration[]> [-Visibility <String[]>] [-AutoApproval <String[]>] 
- [-DestinationIPAddress <String>] [-EnableProxyProtocol] [-EdgeZone <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-LoadBalancerFrontendIpConfiguration <PSFrontendIPConfiguration[]>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -IpConfiguration <PSPrivateLinkServiceIpConfiguration[]>
+ [-LoadBalancerFrontendIpConfiguration <PSFrontendIPConfiguration[]>] [-Visibility <String[]>]
+ [-AutoApproval <String[]>] [-EnableProxyProtocol] [-EdgeZone <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DestinationIPAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
