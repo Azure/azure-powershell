@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported `EnforceDataIntegrityCheckForIscsi` for creating and updating volume groups
 
 ## Version 1.0.3
 * Added warnings for upcoming breaking changes to align the MI best practices.

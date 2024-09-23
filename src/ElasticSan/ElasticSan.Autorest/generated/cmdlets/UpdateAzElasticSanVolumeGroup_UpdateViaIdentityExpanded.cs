@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroup))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"Update an VolumeGroup.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}", ApiVersion = "2023-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}", ApiVersion = "2024-05-01")]
     public partial class UpdateAzElasticSanVolumeGroup_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IContext
@@ -103,6 +103,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
         SerializedName = @"userAssignedIdentity",
         PossibleTypes = new [] { typeof(string) })]
         public string EncryptionUserAssignedIdentity { get => _parametersBody.EncryptionIdentityEncryptionUserAssignedIdentity ?? null; set => _parametersBody.EncryptionIdentityEncryptionUserAssignedIdentity = value; }
+
+        /// <summary>A boolean indicating whether or not Data Integrity Check is enabled</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A boolean indicating whether or not Data Integrity Check is enabled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A boolean indicating whether or not Data Integrity Check is enabled",
+        SerializedName = @"enforceDataIntegrityCheckForIscsi",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter EnforceDataIntegrityCheckForIscsi { get => _parametersBody.EnforceDataIntegrityCheckForIscsi ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EnforceDataIntegrityCheckForIscsi = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }

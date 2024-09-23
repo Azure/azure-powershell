@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new Cmdlets:
+  - Get-AzStandbyContainerGroupPoolStatus
+  - Get-AzStandbyVMPoolStatus
+* Updated existing Cmdlets
+  - New-AzStandbyVMPool by add new parameter -MinReadyCapacity to support new added properties in put call.
+* Deprecated Cmdlets
+  - Get-StandbyVMPoolVM
 
 ## Version 0.1.1
 * Fixed the placeholder in psd1 file.

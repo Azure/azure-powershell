@@ -107,6 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                     container.Add("privateEndpointConnections",__w);
                 }
             }
+            AddIf( null != this._enforceDataIntegrityCheckForIscsi ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonBoolean((bool)this._enforceDataIntegrityCheckForIscsi) : null, "enforceDataIntegrityCheckForIscsi" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
@@ -129,6 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {_protocolType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("protocolType"), out var __jsonProtocolType) ? (string)__jsonProtocolType : (string)_protocolType;}
             {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("encryption"), out var __jsonEncryption) ? (string)__jsonEncryption : (string)_encryption;}
             {_privateEndpointConnection = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray>("privateEndpointConnections"), out var __jsonPrivateEndpointConnections) ? If( __jsonPrivateEndpointConnections as Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPrivateEndpointConnection>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPrivateEndpointConnection) (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.PrivateEndpointConnection.FromJson(__u) )) ))() : null : _privateEndpointConnection;}
+            {_enforceDataIntegrityCheckForIscsi = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonBoolean>("enforceDataIntegrityCheckForIscsi"), out var __jsonEnforceDataIntegrityCheckForIscsi) ? (bool?)__jsonEnforceDataIntegrityCheckForIscsi : _enforceDataIntegrityCheckForIscsi;}
             AfterFromJson(json);
         }
     }

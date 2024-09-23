@@ -1308,8 +1308,8 @@ function Test-SqlRoleCmdlets
   $DataActionReplace = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/replace"
   $DataActionInvalid = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/invalid-action"
 
-  $PrincipalId = "ed4c2395-a18c-4018-afb3-6e521e7534d2"
-  $PrincipalId2 = "d60019b0-c5a8-4e38-beb9-fb80daa3ce90"
+  $PrincipalId = "d006e945-a621-4973-8113-b0a705061e33"
+  $PrincipalId2 = "5af9fd41-fffc-4c7a-9fd8-bed87ae38ac3"
 
   $Scope = "/"
   $FullyQualifiedScope = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName"

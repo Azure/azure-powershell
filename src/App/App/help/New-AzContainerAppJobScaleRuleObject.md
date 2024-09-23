@@ -14,7 +14,7 @@ Create an in-memory object for JobScaleRule.
 
 ```
 New-AzContainerAppJobScaleRuleObject [-Auth <IScaleRuleAuth[]>] [-Metadata <IAny>] [-Name <String>]
- [-Type <String>] [<CommonParameters>]
+ [-Type <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,6 @@ Create an in-memory object for JobScaleRule.
 
 ### -Auth
 Authentication secrets for the scale rule.
-To construct, see NOTES section for AUTH properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]
@@ -76,6 +75,21 @@ Scale Rule Name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

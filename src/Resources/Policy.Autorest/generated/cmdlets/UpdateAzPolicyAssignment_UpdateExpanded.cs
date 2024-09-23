@@ -239,7 +239,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         Description = @"The policy property value override.",
         SerializedName = @"overrides",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExport]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[] Override { get => _parametersBody.Override?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.Override = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride>(value) : null); }
 
         /// <summary>
@@ -300,7 +299,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         Description = @"The resource selector list to filter policies by resource properties.",
         SerializedName = @"resourceSelectors",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExport]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[] ResourceSelector { get => _parametersBody.ResourceSelector?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ResourceSelector = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector>(value) : null); }
 
         /// <summary>
@@ -570,14 +568,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                 if (true == this.MyInvocation?.BoundParameters?.ContainsKey("NonComplianceMessageTable"))
                 {
                     NonComplianceMessageTable = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.INonComplianceMessage[])this.MyInvocation.BoundParameters["NonComplianceMessageTable"];
-                }
-                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("ResourceSelector"))
-                {
-                    ResourceSelector = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[])this.MyInvocation.BoundParameters["ResourceSelector"];
-                }
-                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("Override"))
-                {
-                    Override = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[])this.MyInvocation.BoundParameters["Override"];
                 }
                 try
                 {
