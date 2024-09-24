@@ -299,6 +299,9 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 ### [New-AzFrontDoorCdnSecretManagedCertificateParametersObject](New-AzFrontDoorCdnSecretManagedCertificateParametersObject.md)
 Create an in-memory object for ManagedCertificateParameters.
 
+### [New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject](New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject.md)
+Create an in-memory object for UrlSigningKeyParameters.
+
 ### [New-AzFrontDoorCdnSecurityPolicy](New-AzFrontDoorCdnSecurityPolicy.md)
 Create a new security policy within the specified profile.
 

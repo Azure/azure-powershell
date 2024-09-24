@@ -144,6 +144,9 @@ directive:
     - model-name: ManagedCertificateParameters
       cmdlet-name: New-AzFrontDoorCdnSecretManagedCertificateParametersObject
 
+    - model-name: UrlSigningKeyParameters
+      cmdlet-name: New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
+
     # OriginGroup Parameters
     - model-name: HealthProbeParameters
       cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
