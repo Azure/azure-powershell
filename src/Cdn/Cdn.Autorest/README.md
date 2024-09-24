@@ -122,6 +122,9 @@ directive:
     - model-name:  DeliveryRuleClientPortCondition
       cmdlet-name: New-AzFrontDoorCdnRuleClientPortConditionObject
 
+    - model-name: AfdDomainHttpsParameters
+      cmdlet-name: New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
+
     # OriginGroup Parameters
     - model-name: HealthProbeParameters
       cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject

@@ -212,6 +212,9 @@ Create an in-memory object for UserManagedHttpsParameters.
 ### [New-AzFrontDoorCdnCustomDomain](New-AzFrontDoorCdnCustomDomain.md)
 Create a new domain within the specified profile.
 
+### [New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject](New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject.md)
+Create an in-memory object for AfdDomainHttpsParameters.
+
 ### [New-AzFrontDoorCdnEndpoint](New-AzFrontDoorCdnEndpoint.md)
 Create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
