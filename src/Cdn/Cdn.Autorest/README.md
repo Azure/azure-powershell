@@ -125,6 +125,9 @@ directive:
     - model-name: AfdDomainHttpsParameters
       cmdlet-name: New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
 
+    - model-name: AfdPurgeParameters
+      cmdlet-name: New-AzFrontDoorCdnPurgeParametersObject
+
     # OriginGroup Parameters
     - model-name: HealthProbeParameters
       cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject

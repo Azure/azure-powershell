@@ -248,6 +248,9 @@ Create an in-memory object for ProfileScrubbingRules.
 ### [New-AzFrontDoorCdnProfileUpgradeParametersObject](New-AzFrontDoorCdnProfileUpgradeParametersObject.md)
 Create an in-memory object for ProfileUpgradeParameters.
 
+### [New-AzFrontDoorCdnPurgeParametersObject](New-AzFrontDoorCdnPurgeParametersObject.md)
+Create an in-memory object for AfdPurgeParameters.
+
 ### [New-AzFrontDoorCdnRoute](New-AzFrontDoorCdnRoute.md)
 Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 
