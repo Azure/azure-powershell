@@ -263,6 +263,9 @@ Create a new delivery rule within the specified rule set.
 ### [New-AzFrontDoorCdnRuleClientPortConditionObject](New-AzFrontDoorCdnRuleClientPortConditionObject.md)
 Create an in-memory object for DeliveryRuleClientPortCondition.
 
+### [New-AzFrontDoorCdnRuleHostNameConditionObject](New-AzFrontDoorCdnRuleHostNameConditionObject.md)
+Create an in-memory object for DeliveryRuleHostNameCondition.
+
 ### [New-AzFrontDoorCdnRuleServerPortConditionObject](New-AzFrontDoorCdnRuleServerPortConditionObject.md)
 Create an in-memory object for DeliveryRuleServerPortCondition.
 

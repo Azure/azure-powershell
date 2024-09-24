@@ -123,6 +123,8 @@ directive:
       cmdlet-name: New-AzFrontDoorCdnRuleServerPortConditionObject
     - model-name:  DeliveryRuleClientPortCondition
       cmdlet-name: New-AzFrontDoorCdnRuleClientPortConditionObject
+    - model-name: DeliveryRuleHostNameCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleHostNameConditionObject
 
     - model-name: AfdDomainHttpsParameters
       cmdlet-name: New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
