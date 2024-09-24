@@ -212,9 +212,6 @@ Create an in-memory object for UserManagedHttpsParameters.
 ### [New-AzFrontDoorCdnCustomDomain](New-AzFrontDoorCdnCustomDomain.md)
 Create a new domain within the specified profile.
 
-### [New-AzFrontDoorCdnDeliveryRuleClientPortConditionObject](New-AzFrontDoorCdnDeliveryRuleClientPortConditionObject.md)
-Create an in-memory object for DeliveryRuleClientPortCondition.
-
 ### [New-AzFrontDoorCdnEndpoint](New-AzFrontDoorCdnEndpoint.md)
 Create a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
@@ -229,6 +226,12 @@ Create a new origin within the specified origin group.
 
 ### [New-AzFrontDoorCdnOriginGroup](New-AzFrontDoorCdnOriginGroup.md)
 Create a new origin group within the specified profile.
+
+### [New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject](New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject.md)
+Create an in-memory object for HealthProbeParameters.
+
+### [New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject](New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject.md)
+Create an in-memory object for LoadBalancingSettingsParameters.
 
 ### [New-AzFrontDoorCdnProfileChangeSkuWafMappingObject](New-AzFrontDoorCdnProfileChangeSkuWafMappingObject.md)
 Create an in-memory object for ProfileChangeSkuWafMapping.
@@ -247,6 +250,9 @@ Create a new route with the specified route name under the specified subscriptio
 
 ### [New-AzFrontDoorCdnRule](New-AzFrontDoorCdnRule.md)
 Create a new delivery rule within the specified rule set.
+
+### [New-AzFrontDoorCdnRuleClientPortConditionObject](New-AzFrontDoorCdnRuleClientPortConditionObject.md)
+Create an in-memory object for DeliveryRuleClientPortCondition.
 
 ### [New-AzFrontDoorCdnRuleServerPortConditionObject](New-AzFrontDoorCdnRuleServerPortConditionObject.md)
 Create an in-memory object for DeliveryRuleServerPortCondition.

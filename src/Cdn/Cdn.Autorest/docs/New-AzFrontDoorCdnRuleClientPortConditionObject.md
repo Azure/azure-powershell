@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdndeliveryruleclientportconditionobject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnruleclientportconditionobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorCdnDeliveryRuleClientPortConditionObject
+# New-AzFrontDoorCdnRuleClientPortConditionObject
 
 ## SYNOPSIS
 Create an in-memory object for DeliveryRuleClientPortCondition.
@@ -13,9 +13,9 @@ Create an in-memory object for DeliveryRuleClientPortCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnDeliveryRuleClientPortConditionObject -ParameterOperator <String>
- -ParameterTypeName <String> [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>]
- [-ParameterTransform <String[]>] [<CommonParameters>]
+New-AzFrontDoorCdnRuleClientPortConditionObject -ParameterOperator <String> -ParameterTypeName <String>
+ [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,27 +23,18 @@ Create an in-memory object for DeliveryRuleClientPortCondition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for DeliveryRuleClientPortCondition
 ```powershell
-{{ Add code here }}
+New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name
+----
+ClientPort
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for DeliveryRuleClientPortCondition
 
 ## PARAMETERS
 

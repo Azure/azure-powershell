@@ -120,12 +120,12 @@ directive:
     - model-name:  DeliveryRuleServerPortCondition
       cmdlet-name: New-AzFrontDoorCdnRuleServerPortConditionObject
     - model-name:  DeliveryRuleClientPortCondition
-      cmdlet-name: New-AzFrontDoorCdnDeliveryRuleClientPortConditionObject
+      cmdlet-name: New-AzFrontDoorCdnRuleClientPortConditionObject
 
     # OriginGroup Parameters
-    - model-name: HealthProbeSetting
+    - model-name: HealthProbeParameters
       cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
-    - model-name: LoadBalancingSetting
+    - model-name: LoadBalancingSettingsParameters
       cmdlet-name: New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject
 
     # CDN action

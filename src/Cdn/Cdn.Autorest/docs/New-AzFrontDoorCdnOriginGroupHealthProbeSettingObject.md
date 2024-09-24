@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnhealthprobeparametersobject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnorigingrouphealthprobesettingobject
 schema: 2.0.0
 ---
 
-# New-AzCdnHealthProbeParametersObject
+# New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
 
 ## SYNOPSIS
 Create an in-memory object for HealthProbeParameters.
@@ -13,7 +13,7 @@ Create an in-memory object for HealthProbeParameters.
 ## SYNTAX
 
 ```
-New-AzCdnHealthProbeParametersObject [-ProbeIntervalInSecond <Int32>] [-ProbePath <String>]
+New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject [-ProbeIntervalInSecond <Int32>] [-ProbePath <String>]
  [-ProbeProtocol <String>] [-ProbeRequestType <String>] [<CommonParameters>]
 ```
 
@@ -22,18 +22,18 @@ Create an in-memory object for HealthProbeParameters.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for AzureCDN HealthProbeParameters
+### Example 1: Create an in-memory object for AzureFrontDoor origin group `HealthProbeSetting` object
 ```powershell
-New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
+New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
 ```
 
 ```output
-ProbeIntervalInSecond ProbePath          ProbeProtocol ProbeRequestType
---------------------- ---------          ------------- ----------------
-120                   /check-health.aspx Http          HEAD
+ProbeIntervalInSecond ProbePath ProbeProtocol ProbeRequestType
+--------------------- --------- ------------- ----------------
+1                     /         Https         GET
 ```
 
-Create an in-memory object for AzureCDN HealthProbeParameters
+Create an in-memory object for AzureFrontDoor origin group `HealthProbeSetting` object
 
 ## PARAMETERS
 
