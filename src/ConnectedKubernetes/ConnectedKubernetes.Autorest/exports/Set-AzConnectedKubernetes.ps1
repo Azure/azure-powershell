@@ -22,7 +22,7 @@ API to set properties of the connected cluster resource
 .Example
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -DisableGateway
 .Example
-Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -EnableGateway -GatewayResourceId gatewayResourceId
+Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -GatewayResourceId gatewayResourceId
 
 
 .Outputs
@@ -82,7 +82,6 @@ function Set-AzConnectedKubernetes {
 param(
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
     [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
-    [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
     [Alias('Name')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
     [System.String]
@@ -91,7 +90,6 @@ param(
 
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
     [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
-    [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -143,7 +141,6 @@ param(
 
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
     [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
-    [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
@@ -258,7 +255,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.String]
-    # Arc Gateway resource Id
+    # Arc Gateway resource Id, providing this will enable the gateway
     ${GatewayResourceId},
 
     [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
@@ -267,14 +264,7 @@ param(
     [System.Management.Automation.SwitchParameter]
     ${DisableGateway},
 
-    [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
-    [Parameter(ParameterSetName='SetEnableGateway', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    ${EnableGateway},
-
     [Parameter(ParameterSetName='SetDisableGateway', Mandatory)]
-    [Parameter(ParameterSetName='SetEnableGateway', Mandatory)]
     [Parameter(ParameterSetName='Set', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
@@ -369,12 +359,10 @@ begin {
         $mapping = @{
             SetExpanded = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
             SetExpandedDisableGateway = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
-            SetExpandedEnableGateway = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
             SetDisableGateway = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
-            SetEnableGateway = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
             Set = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
         }
-        if (('SetExpanded', 'SetExpandedDisableGateway', 'SetExpandedEnableGateway', 'SetDisableGateway', 'SetEnableGateway', 'Set') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('SetExpanded', 'SetExpandedDisableGateway', 'SetDisableGateway', 'Set') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
