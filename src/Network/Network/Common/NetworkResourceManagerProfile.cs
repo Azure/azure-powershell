@@ -2313,6 +2313,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<ANM.PSPoolAssociation, MNM.PoolAssociation>();
                 cfg.CreateMap<ANM.PSPoolUsage, MNM.PoolUsage>();
                 cfg.CreateMap<ANM.PSResourceBasics, MNM.ResourceBasics>();
+                cfg.CreateMap<ANM.PSStaticCidr, MNM.StaticCidr>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkManager, ANM.PSNetworkManager>();
@@ -2359,6 +2360,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.PoolAssociation, ANM.PSPoolAssociation>();
                 cfg.CreateMap<MNM.PoolUsage, ANM.PSPoolUsage>();
                 cfg.CreateMap<MNM.ResourceBasics, ANM.PSResourceBasics>();
+                cfg.CreateMap<MNM.StaticCidr, ANM.PSStaticCidr>();
             });
             _mapper = config.CreateMapper();
         }

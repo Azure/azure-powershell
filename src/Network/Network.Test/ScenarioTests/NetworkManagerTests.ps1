@@ -767,3 +767,52 @@ function Test-NetworkManagerIpamPoolCRUD
         Clean-ResourceGroup $rgName
 	}
 }
+
+function Test-NetworkManagerIpamPoolStaticCidrCRUD 
+{
+    # Setup
+    # Need to update subscriptionId before runing in live mode
+    $rgName = Get-ResourceGroupName
+    $networkManagerName = Get-ResourceName
+    $ipamPoolName = Get-ResourceName
+    $staticCidrName = Get-ResourceName
+    $rglocation = "centraluseuap"
+    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+    $addressPrefixes  = @("10.0.0.0/8")
+
+    try{
+        #Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation -Tags @{ testtag = "testval" } 
+
+        # Create Scope
+        $subscriptions  = @($subscriptionId)
+        $scope = New-AzNetworkManagerScope -Subscription $subscriptions
+
+        # Define access
+        $access  = @("Connectivity")
+
+        # Create network manager
+        New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
+
+        # Create ipam pool
+        New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefixes $addressPrefixes
+
+        # Create static cidr
+        New-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName -AddressPrefixes $addressPrefixes
+
+        # Get static cidr
+        $staticCidr = Get-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName
+        Assert-NotNull $staticCidr;
+        Assert-AreEqual $staticCidrName $staticCidr.Name;
+        Assert-AreEqual $staticCidr.Properties.AddressPrefixes[0] $addressPrefixes[0];
+
+        # Remove static cidr
+        $job = Remove-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+    }
+    finally{
+        # Cleanup
+        Clean-ResourceGroup $rgName
+    }
+}
