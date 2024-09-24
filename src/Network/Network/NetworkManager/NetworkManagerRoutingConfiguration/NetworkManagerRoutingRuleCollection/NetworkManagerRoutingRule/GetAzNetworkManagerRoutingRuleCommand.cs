@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.Network
         private const string ByNameParameterSet = "ByName";
         private const string ByResourceIdParameterSet = "ByResourceId";
         private const string ByInputObjectParameterSet = "ByInputObject";
-        private const string ByResourceGroupAndNameParameterSet = "ByResourceGroupAndName";
 
         [Alias("ResourceName")]
         [Parameter(
@@ -46,11 +45,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
             ParameterSetName = ByNameParameterSet)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.",
-            ParameterSetName = ByResourceGroupAndNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations/ruleCollections/rules", "ResourceGroupName", "NetworkManagerName", "RoutingConfigurationName", "RuleCollectionName")]
         [SupportsWildcards]
         public string Name { get; set; }
@@ -111,11 +105,6 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = ByListParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ByResourceGroupAndNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -158,10 +147,6 @@ namespace Microsoft.Azure.Commands.Network
                 else if (this.ParameterSetName == ByListParameterSet)
                 {
                     ProcessByName(expand: false);
-                }
-                else if (this.ParameterSetName == ByResourceGroupAndNameParameterSet)
-                {
-                    ProcessByResourceGroupAndNameAsync();
                 }
             }
             catch (Exception ex)
@@ -251,44 +236,6 @@ namespace Microsoft.Azure.Commands.Network
             var routingRule = GetNetworkManagerRoutingRule(resourceGroupName, networkManagerName, routingConfigurationName, ruleCollectionName, name);
 
             WriteObject(routingRule);
-        }
-
-        private void ProcessByResourceGroupAndNameAsync()
-        {
-            // List all network managers in the resource group
-            var networkManagers = this.NetworkClient.NetworkManagementClient.NetworkManagers.List(this.ResourceGroupName);
-
-            foreach (var networkManager in networkManagers)
-            {
-                // List all routing configurations in the network manager
-                var routingConfigurations = this.NetworkClient.NetworkManagementClient.NetworkManagerRoutingConfigurations.List(this.ResourceGroupName, networkManager.Name);
-
-                foreach (var routingConfiguration in routingConfigurations)
-                {
-                    // List all rule collections in the routing configuration
-                    var ruleCollections = this.NetworkClient.NetworkManagementClient.RoutingRuleCollections.List(this.ResourceGroupName, networkManager.Name, routingConfiguration.Name);
-
-                    foreach (var ruleCollection in ruleCollections)
-                    {
-                        // Try to get the routing rule by name
-                        try
-                        {
-                            var routingRule = this.GetNetworkManagerRoutingRule(this.ResourceGroupName, networkManager.Name, routingConfiguration.Name, ruleCollection.Name, this.Name);
-                            if (routingRule != null)
-                            {
-                                WriteObject(routingRule);
-                                return;
-                            }
-                        }
-                        catch
-                        {
-                            // Ignore exceptions and continue searching
-                        }
-                    }
-                }
-            }
-
-            throw new PSArgumentException($"Routing rule '{this.Name}' not found in resource group '{this.ResourceGroupName}'.");
         }
     }
 }

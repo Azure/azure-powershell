@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Network
         private const string ByNameParameterSet = "ByName";
         private const string ByResourceIdParameterSet = "ByResourceId";
         private const string ByInputObjectParameterSet = "ByInputObject";
-        private const string ByResourceGroupAndNameParameterSet = "ByResourceGroupAndName";
 
         [Alias("ResourceName")]
         [Parameter(
@@ -38,11 +37,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
             ParameterSetName = ByNameParameterSet)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.",
-            ParameterSetName = ByResourceGroupAndNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
         public virtual string Name { get; set; }
@@ -70,11 +64,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ParameterSetName = ByListParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ByResourceGroupAndNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -142,40 +131,9 @@ namespace Microsoft.Azure.Commands.Network
 
                     WriteObject(TopLevelWildcardFilter(ResourceGroupName, Name, psNmRoutingConfigList), true);
                     break;
-
-                case ByResourceGroupAndNameParameterSet:
-                    ProcessByResourceGroupAndNameAsync();
-                    break;
-
                 default:
                     break;
             }
-        }
-
-        private void ProcessByResourceGroupAndNameAsync()
-        {
-            // List all network managers in the resource group
-            var networkManagers = this.NetworkClient.NetworkManagementClient.NetworkManagers.List(this.ResourceGroupName);
-
-            foreach (var networkManager in networkManagers)
-            {
-                // List all routing configurations in the network manager
-                var routingConfigurations = this.NetworkClient.NetworkManagementClient.NetworkManagerRoutingConfigurations.List(this.ResourceGroupName, networkManager.Name);
-
-                foreach (var routingConfiguration in routingConfigurations)
-                {
-                    if (routingConfiguration.Name.Equals(this.Name, System.StringComparison.OrdinalIgnoreCase))
-                    {
-                        var psRoutingConfiguration = this.ToPsNetworkManagerRoutingConfiguration(routingConfiguration);
-                        psRoutingConfiguration.ResourceGroupName = this.ResourceGroupName;
-                        psRoutingConfiguration.NetworkManagerName = networkManager.Name;
-                        WriteObject(psRoutingConfiguration);
-                        return;
-                    }
-                }
-            }
-
-            throw new PSArgumentException($"Routing rule '{this.Name}' not found in resource group '{this.ResourceGroupName}'.");
         }
     }
 }
