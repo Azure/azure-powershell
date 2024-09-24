@@ -18,7 +18,7 @@ Describe 'Update-AzWvdSessionHostManagement' {
     It 'UpdateExpanded'  {
         $management = Update-AzWvdSessionHostManagement -SubscriptionId $env.SubscriptionId `
             -ResourceGroupName $env.ResourceGroupPersistent `
-            -HostPoolName $env.SHMHostPoolPersistent `
+            -HostPoolName $env.AutomatedHostpoolPersistent `
             -UpdateLogoffMessage "Updating HostpoolUpdate is great!"
 
         $management.UpdateLogoffMessage | Should -Be "Updating HostpoolUpdate is great!"
