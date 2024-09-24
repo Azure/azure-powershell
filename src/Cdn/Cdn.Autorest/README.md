@@ -197,14 +197,26 @@ directive:
       cmdlet-name: New-AzFrontDoorCdnRuleUrlRedirectActionObject
     - model-name:  UrlRewriteAction
       cmdlet-name: New-AzFrontDoorCdnRuleUrlRewriteActionObject
-    - model-name:  UrlAction
-      cmdlet-name: New-AzFrontDoorCdnRuleUrlActionObject
+    # - model-name:  UrlAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleUrlActionObject
+    - model-name: UrlSigningAction
+      cmdlet-name: New-AzFrontDoorCdnRuleUrlSigningActionObject
     - model-name:  DeliveryRuleRequestHeaderAction
       cmdlet-name: New-AzCdnDeliveryRuleRequestHeaderActionObject
     - model-name:  DeliveryRuleResponseHeaderAction
-      cmdlet-name: New-AzCdnDeliveryRuleResponseHeaderActionObject
+      cmdlet-name: New-AzCdnDeliveryRuleResponseHeaderActionObject  
+
+    - model-name:  UrlRedirectAction
+      cmdlet-name: New-AzCdnUrlRedirectActionObject
+    - model-name:  UrlRewriteAction
+      cmdlet-name: New-AzCdnUrlRewriteActionObject
     - model-name: UrlSigningAction
-      cmdlet-name: New-AzFrontDoorCdnRuleUrlSigningActionObject
+      cmdlet-name: New-AzCdnUrlSigningActionObject
+    - model-name:  DeliveryRuleRequestHeaderAction
+      cmdlet-name: New-AzFrontDoorCdnRuleRequestHeaderActionObject
+    - model-name:  DeliveryRuleResponseHeaderAction
+      cmdlet-name: New-AzFrontDoorCdnRuleResponseHeaderActionObject  
+
     # CDN content
     - model-name: PurgeParameters
       cmdlet-name: New-AzCdnPurgeParametersObject

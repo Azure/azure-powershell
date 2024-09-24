@@ -206,6 +206,15 @@ Create an in-memory object for ResourceReference.
 ### [New-AzCdnResponseBasedOriginErrorDetectionParametersObject](New-AzCdnResponseBasedOriginErrorDetectionParametersObject.md)
 Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 
+### [New-AzCdnUrlRedirectActionObject](New-AzCdnUrlRedirectActionObject.md)
+Create an in-memory object for UrlRedirectAction.
+
+### [New-AzCdnUrlRewriteActionObject](New-AzCdnUrlRewriteActionObject.md)
+Create an in-memory object for UrlRewriteAction.
+
+### [New-AzCdnUrlSigningActionObject](New-AzCdnUrlSigningActionObject.md)
+Create an in-memory object for UrlSigningAction.
+
 ### [New-AzCdnUserManagedHttpsParametersObject](New-AzCdnUserManagedHttpsParametersObject.md)
 Create an in-memory object for UserManagedHttpsParameters.
 
@@ -287,6 +296,9 @@ Create an in-memory object for DeliveryRuleRemoteAddressCondition.
 ### [New-AzFrontDoorCdnRuleRequestBodyConditionObject](New-AzFrontDoorCdnRuleRequestBodyConditionObject.md)
 Create an in-memory object for DeliveryRuleRequestBodyCondition.
 
+### [New-AzFrontDoorCdnRuleRequestHeaderActionObject](New-AzFrontDoorCdnRuleRequestHeaderActionObject.md)
+Create an in-memory object for DeliveryRuleRequestHeaderAction.
+
 ### [New-AzFrontDoorCdnRuleRequestHeaderConditionObject](New-AzFrontDoorCdnRuleRequestHeaderConditionObject.md)
 Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 
@@ -298,6 +310,9 @@ Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 
 ### [New-AzFrontDoorCdnRuleRequestUriConditionObject](New-AzFrontDoorCdnRuleRequestUriConditionObject.md)
 Create an in-memory object for DeliveryRuleRequestUriCondition.
+
+### [New-AzFrontDoorCdnRuleResponseHeaderActionObject](New-AzFrontDoorCdnRuleResponseHeaderActionObject.md)
+Create an in-memory object for DeliveryRuleResponseHeaderAction.
 
 ### [New-AzFrontDoorCdnRuleServerPortConditionObject](New-AzFrontDoorCdnRuleServerPortConditionObject.md)
 Create an in-memory object for DeliveryRuleServerPortCondition.
