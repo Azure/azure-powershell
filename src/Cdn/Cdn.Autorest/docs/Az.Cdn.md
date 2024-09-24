@@ -380,6 +380,10 @@ Deletes an existing origin within an endpoint.
 ### [Remove-AzCdnOriginGroup](Remove-AzCdnOriginGroup.md)
 Deletes an existing origin group within an endpoint.
 
+### [Remove-AzCdnProfile](Remove-AzCdnProfile.md)
+Deletes an existing CDN profile with the specified profile name under the specified subscription.
+Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
+
 ### [Remove-AzFrontDoorCdnCustomDomain](Remove-AzFrontDoorCdnCustomDomain.md)
 Deletes an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
 
@@ -391,6 +395,10 @@ Deletes an existing origin within an origin group.
 
 ### [Remove-AzFrontDoorCdnOriginGroup](Remove-AzFrontDoorCdnOriginGroup.md)
 Deletes an existing origin group within a profile.
+
+### [Remove-AzFrontDoorCdnProfile](Remove-AzFrontDoorCdnProfile.md)
+Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
+Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 
 ### [Remove-AzFrontDoorCdnRoute](Remove-AzFrontDoorCdnRoute.md)
 Deletes an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
@@ -412,6 +420,11 @@ Starts an existing CDN endpoint that is on a stopped state.
 
 ### [Stop-AzCdnEndpoint](Stop-AzCdnEndpoint.md)
 Stops an existing running CDN endpoint.
+
+### [Stop-AzFrontDoorCdnProfileMigration](Stop-AzFrontDoorCdnProfileMigration.md)
+Abort classic cdn migrate to AFDx.
+Your new Front Door Profile will be deleted and your existing profile will remain active.
+WAF policies will not be deleted.
 
 ### [Test-AzCdnEndpointCustomDomain](Test-AzCdnEndpointCustomDomain.md)
 Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
@@ -438,6 +451,9 @@ This is needed for resources where name is globally unique, such as a afdx endpo
 ### [Test-AzFrontDoorCdnProfileHostNameAvailability](Test-AzFrontDoorCdnProfileHostNameAvailability.md)
 Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
 
+### [Test-AzFrontDoorCdnProfileMigration](Test-AzFrontDoorCdnProfileMigration.md)
+Check if a classic AFD instance can be migrated to Azure Front Door(Standard/Premium) profile.
+
 ### [Update-AzCdnEndpoint](Update-AzCdnEndpoint.md)
 Update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
@@ -450,6 +466,9 @@ Update an existing origin within an endpoint.
 
 ### [Update-AzCdnOriginGroup](Update-AzCdnOriginGroup.md)
 Update an existing origin group within an endpoint.
+
+### [Update-AzCdnProfile](Update-AzCdnProfile.md)
+Updates an existing CDN profile with the specified profile name under the specified subscription and resource group.
 
 ### [Update-AzFrontDoorCdnCustomDomain](Update-AzFrontDoorCdnCustomDomain.md)
 Update an existing domain within a profile.
@@ -469,6 +488,9 @@ Update an existing origin within an origin group.
 
 ### [Update-AzFrontDoorCdnOriginGroup](Update-AzFrontDoorCdnOriginGroup.md)
 Update an existing origin group within a profile.
+
+### [Update-AzFrontDoorCdnProfileSku](Update-AzFrontDoorCdnProfileSku.md)
+Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 
 ### [Update-AzFrontDoorCdnRoute](Update-AzFrontDoorCdnRoute.md)
 Update an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
