@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzConnectedMachineExtension
 
 ## SYNOPSIS
-The operation to Createthe extension.
+The operation to create the extension.
 
 ## SYNTAX
 
@@ -81,7 +81,7 @@ New-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-The operation to Createthe extension.
+The operation to create the extension.
 
 ## EXAMPLES
 
