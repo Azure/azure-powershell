@@ -147,6 +147,11 @@ directive:
     - model-name: UrlSigningKeyParameters
       cmdlet-name: New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject
 
+    - model-name: SecurityPolicyWebApplicationFirewallAssociation
+      cmdlet-name: New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
+    - model-name: SecurityPolicyWebApplicationFirewallParameters
+      cmdlet-name: New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject
+
     # OriginGroup Parameters
     - model-name: HealthProbeParameters
       cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
