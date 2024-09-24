@@ -31,20 +31,20 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRule", DefaultParameterSetName = ByListParameterSet), OutputType(typeof(PSNetworkManagerRoutingRule))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRule", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSNetworkManagerRoutingRule))]
     public class GetAzNetworkManagerRoutingRuleCommand : NetworkManagerRoutingRuleBaseCmdlet
     {
-        private const string ByListParameterSet = "ByList";
-        private const string ByNameParameterSet = "ByName";
-        private const string ByResourceIdParameterSet = "ByResourceId";
-        private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ListParameterSet = "ByList";
+        private const string GetByNameParameterSet = "ByName";
+        private const string GetByResourceIdParameterSet = "ByResourceId";
+        private const string GetByInputObjectParameterSet = "ByInputObject";
 
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = ByNameParameterSet)]
+            ParameterSetName = GetByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations/ruleCollections/rules", "ResourceGroupName", "NetworkManagerName", "RoutingConfigurationName", "RuleCollectionName")]
         [SupportsWildcards]
         public string Name { get; set; }
@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager routing rule collection name.",
-           ParameterSetName = ByListParameterSet)]
+           ParameterSetName = ListParameterSet)]
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager routing rule collection name.",
-           ParameterSetName = ByNameParameterSet)]
+           ParameterSetName = GetByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "RoutingConfigurationName")]
         [SupportsWildcards]
@@ -67,12 +67,12 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ConfigName")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByNameParameterSet,
+            ParameterSetName = GetByNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager routing configuration name.")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByListParameterSet,
+            ParameterSetName = ListParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager routing configuration name.")]
         [ValidateNotNullOrEmpty]
@@ -82,12 +82,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByNameParameterSet,
+            ParameterSetName = GetByNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager name.")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByListParameterSet,
+            ParameterSetName = ListParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager name.")]
         [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
@@ -97,12 +97,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByNameParameterSet,
+            ParameterSetName = GetByNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByListParameterSet,
+            ParameterSetName = ListParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByResourceIdParameterSet,
+            ParameterSetName = GetByResourceIdParameterSet,
             HelpMessage = "NetworkManager RoutingRule Id",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The input object containing the necessary properties.",
-            ParameterSetName = ByInputObjectParameterSet)]
+            ParameterSetName = GetByInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSNetworkManagerRoutingRule InputObject { get; set; }
 
@@ -132,19 +132,19 @@ namespace Microsoft.Azure.Commands.Network
 
             try
             {
-                if (this.ParameterSetName == ByResourceIdParameterSet)
+                if (this.ParameterSetName == GetByResourceIdParameterSet)
                 {
                     ProcessByResourceId();
                 }
-                else if (this.ParameterSetName == ByInputObjectParameterSet)
+                else if (this.ParameterSetName == GetByInputObjectParameterSet)
                 {
                     ProcessByInputObject();
                 }
-                else if (this.ParameterSetName == ByNameParameterSet)
+                else if (this.ParameterSetName == GetByNameParameterSet)
                 {
                     ProcessByName(expand: true);
                 }
-                else if (this.ParameterSetName == ByListParameterSet)
+                else if (this.ParameterSetName == ListParameterSet)
                 {
                     ProcessByName(expand: false);
                 }

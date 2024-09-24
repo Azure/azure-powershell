@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         private const string ByResourceId = "ByResourceId";
         private const string ByInputObject = "ByInputObject";
+        private const string ByName = "ByNameParameters";
 
         [Alias("ResourceName")]
         [Parameter(
@@ -43,6 +44,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            ParameterSetName = ByResourceId,
            Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [Parameter(
+           ParameterSetName = ByName,
+           Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -58,13 +64,41 @@ namespace Microsoft.Azure.Commands.Network
         public PSNetworkManagerSecurityUserRule InputObject { get; set; }
 
         [Parameter(
-            ParameterSetName = "ByResourceId",
+            ParameterSetName = ByResourceId,
             Mandatory = true,
             HelpMessage = "NetworkManager SecurityUserRule Id",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [Alias("SecurityUserRuleId")]
         public string ResourceId { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByName,
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByName,
+            Mandatory = true,
+            HelpMessage = "The network manager name.")]
+        [ValidateNotNullOrEmpty]
+        public string NetworkManagerName { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByName,
+            Mandatory = true,
+            HelpMessage = "The security user configuration name.")]
+        [ValidateNotNullOrEmpty]
+        public string SecurityUserConfigurationName { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByName,
+            Mandatory = true,
+            HelpMessage = "The rule collection name.")]
+        [ValidateNotNullOrEmpty]
+        public string RuleCollectionName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -96,7 +130,7 @@ namespace Microsoft.Azure.Commands.Network
         }
 
         /// <summary>
-        /// Extracts resource details from either ResourceId or InputObject.
+        /// Extracts resource details from either ResourceId, InputObject, or individual name parameters.
         /// </summary>
         /// <returns>Tuple containing resource details.</returns>
         private (string resourceGroupName, string networkManagerName, string securityUserConfigurationName, string ruleCollectionName, string ruleName) ExtractResourceDetails()
@@ -111,7 +145,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.Name ?? NetworkBaseCmdlet.GetResourceName(this.ResourceId, "rules")
                 );
             }
-            else
+            else if (this.InputObject != null)
             {
                 return (
                     this.InputObject.ResourceGroupName,
@@ -119,6 +153,16 @@ namespace Microsoft.Azure.Commands.Network
                     this.InputObject.SecurityUserConfigurationName,
                     this.InputObject.RuleCollectionName,
                     this.InputObject.Name
+                );
+            }
+            else
+            {
+                return (
+                    this.ResourceGroupName,
+                    this.NetworkManagerName,
+                    this.SecurityUserConfigurationName,
+                    this.RuleCollectionName,
+                    this.Name
                 );
             }
         }

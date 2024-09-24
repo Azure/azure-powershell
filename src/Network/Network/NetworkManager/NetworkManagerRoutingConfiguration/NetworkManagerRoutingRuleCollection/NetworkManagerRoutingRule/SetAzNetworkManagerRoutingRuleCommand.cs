@@ -28,21 +28,27 @@ namespace Microsoft.Azure.Commands.Network
     /// <summary>
     /// Cmdlet to set a Network Manager Routing Rule.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRule", SupportsShouldProcess = true, DefaultParameterSetName = ByInputObject), OutputType(typeof(PSNetworkManagerRoutingRule))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRule", SupportsShouldProcess = true, DefaultParameterSetName = SetByInputObject), OutputType(typeof(PSNetworkManagerRoutingRule))]
     public class SetAzNetworkManagerRoutingRuleCommand : NetworkManagerRoutingRuleBaseCmdlet
     {
-        private const string ByResourceId = "ByResourceId";
-        private const string ByInputObject = "ByInputObject";
+        private const string SetByResourceId = "ByResourceId";
+        private const string SetByInputObject = "ByInputObject";
+        private const string SetByName = "ByNameParameters";
 
         [Alias("ResourceName")]
         [Parameter(
-           ParameterSetName = ByInputObject,
+           ParameterSetName = SetByInputObject,
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.")]
         [Parameter(
-           ParameterSetName = ByResourceId,
+           ParameterSetName = SetByResourceId,
            Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [Parameter(
+           ParameterSetName = SetByName,
+           Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -51,14 +57,14 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = ByInputObject,
+            ParameterSetName = SetByInputObject,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Network Manager Routing Rule")]
         public PSNetworkManagerRoutingRule InputObject { get; set; }
 
         [Parameter(
-            ParameterSetName = "ByResourceId",
+            ParameterSetName = SetByResourceId,
             Mandatory = true,
             HelpMessage = "NetworkManager RoutingRule Id",
             ValueFromPipelineByPropertyName = true)]
@@ -66,12 +72,110 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("RoutingRuleId")]
         public string ResourceId { get; set; }
 
+        [Parameter(
+            ParameterSetName = SetByName,
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            ParameterSetName = SetByResourceId,
+            Mandatory = true,
+            HelpMessage = "The resource group name.",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            ParameterSetName = SetByName,
+            Mandatory = true,
+            HelpMessage = "The network manager name.")]
+        [Parameter(
+            ParameterSetName = SetByResourceId,
+            Mandatory = true,
+            HelpMessage = "The network manager name.")]
+        [ValidateNotNullOrEmpty]
+        public string NetworkManagerName { get; set; }
+
+        [Parameter(
+            ParameterSetName = SetByName,
+            Mandatory = true,
+            HelpMessage = "The routing configuration name.")]
+        [Parameter(
+            ParameterSetName = SetByResourceId,
+            Mandatory = true,
+            HelpMessage = "The routing configuration name.")]
+        [ValidateNotNullOrEmpty]
+        public string RoutingConfigurationName { get; set; }
+
+        [Parameter(
+            ParameterSetName = SetByName,
+            Mandatory = true,
+            HelpMessage = "The rule collection name.")]
+        [Parameter(
+            ParameterSetName = SetByResourceId,
+            Mandatory = true,
+            HelpMessage = "The rule collection name.")]
+        [ValidateNotNullOrEmpty]
+        public string RuleCollectionName { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = SetByName)]
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = SetByResourceId)]
+        public virtual string Description { get; set; }
+
+        [Parameter(
+            ParameterSetName = SetByName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The destination address.")]
+        [Parameter(
+            ParameterSetName = SetByResourceId,
+            Mandatory = false,
+            HelpMessage = "The destination address.")]
+        public string DestinationAddress { get; set; }
+
+        [Parameter(
+            ParameterSetName = SetByName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The destination type.")]
+        [Parameter(
+            ParameterSetName = SetByResourceId,
+            Mandatory = false,
+            HelpMessage = "The destination type.")]
+        public string DestinationType { get; set; }
+
+        [Parameter(
+            ParameterSetName = SetByName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The next hop address.")]
+        [Parameter(
+            ParameterSetName = SetByResourceId,
+            Mandatory = false,
+            HelpMessage = "The next hop address.")]
+        public string NextHopAddress { get; set; }
+
+        [Parameter(
+            ParameterSetName = SetByName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The next hop type.")]
+        [Parameter(
+            ParameterSetName = SetByResourceId,
+            Mandatory = false,
+            HelpMessage = "The next hop type.")]
+        public string NextHopType { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        /// <summary>
-        /// Executes the cmdlet.
-        /// </summary>
         public override void Execute()
         {
             if (this.ShouldProcess(this.InputObject?.Name ?? this.Name, VerbsLifecycle.Restart))
@@ -95,10 +199,6 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        /// <summary>
-        /// Extracts resource details from either ResourceId or InputObject.
-        /// </summary>
-        /// <returns>Tuple containing resource details.</returns>
         private (string resourceGroupName, string networkManagerName, string routingConfigurationName, string ruleCollectionName, string ruleName) ExtractResourceDetails()
         {
             if (!string.IsNullOrEmpty(this.ResourceId))
@@ -111,7 +211,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.Name ?? NetworkBaseCmdlet.GetResourceName(this.ResourceId, "rules")
                 );
             }
-            else
+            else if (this.InputObject != null)
             {
                 return (
                     this.InputObject.ResourceGroupName,
@@ -121,21 +221,41 @@ namespace Microsoft.Azure.Commands.Network
                     this.InputObject.Name
                 );
             }
+            else
+            {
+                return (
+                    this.ResourceGroupName,
+                    this.NetworkManagerName,
+                    this.RoutingConfigurationName,
+                    this.RuleCollectionName,
+                    this.Name
+                );
+            }
         }
 
-        /// <summary>
-        /// Maps the InputObject to the SDK's RoutingRule object.
-        /// </summary>
-        /// <returns>Mapped RoutingRule object.</returns>
         private RoutingRule MapToSdkObject()
         {
-            if (this.InputObject.GetType().Name == "PSNetworkManagerRoutingRule")
+            if (this.InputObject != null)
             {
                 return NetworkResourceManagerProfile.Mapper.Map<RoutingRule>(InputObject);
             }
             else
             {
-                throw new ErrorException("Unknown Routing Rule Type");
+                var routingRule = new RoutingRule
+                {
+                    Destination = new RoutingRuleRouteDestination
+                    {
+                        DestinationAddress = this.DestinationAddress,
+                        Type = this.DestinationType
+                    },
+                    NextHop = new RoutingRuleNextHop
+                    {
+                        NextHopAddress = this.NextHopAddress,
+                        NextHopType = this.NextHopType
+                    }
+                };
+
+                return routingRule;
             }
         }
     }

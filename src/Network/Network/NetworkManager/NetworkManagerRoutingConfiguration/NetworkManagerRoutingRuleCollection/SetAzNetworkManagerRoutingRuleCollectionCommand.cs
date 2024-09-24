@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         private const string ByResourceId = "ByResourceId";
         private const string ByInputObject = "ByInputObject";
+        private const string ByName = "ByNameParameters";
 
         [Alias("ResourceName")]
         [Parameter(
@@ -39,6 +40,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            ParameterSetName = ByResourceId,
            Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.")]
+        [Parameter(
+           ParameterSetName = ByName,
+           Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -54,13 +60,34 @@ namespace Microsoft.Azure.Commands.Network
         public PSNetworkManagerRoutingRuleCollection InputObject { get; set; }
 
         [Parameter(
-            ParameterSetName = "ByResourceId",
+            ParameterSetName = ByResourceId,
             Mandatory = true,
             HelpMessage = "NetworkManager RoutingCollection Id",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [Alias("RoutingCollectionId")]
         public string ResourceId { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByName,
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByName,
+            Mandatory = true,
+            HelpMessage = "The network manager name.")]
+        [ValidateNotNullOrEmpty]
+        public string NetworkManagerName { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByName,
+            Mandatory = true,
+            HelpMessage = "The routing configuration name.")]
+        [ValidateNotNullOrEmpty]
+        public string RoutingConfigurationName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -107,6 +134,14 @@ namespace Microsoft.Azure.Commands.Network
                         NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
                         NetworkBaseCmdlet.GetResourceName(this.ResourceId, "routingConfigurations"),
                         NetworkBaseCmdlet.GetResourceName(this.ResourceId, "ruleCollections")
+                    );
+
+                case ByName:
+                    return (
+                        this.ResourceGroupName,
+                        this.NetworkManagerName,
+                        this.RoutingConfigurationName,
+                        this.Name
                     );
 
                 default:
