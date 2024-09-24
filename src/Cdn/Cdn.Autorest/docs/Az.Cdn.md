@@ -272,6 +272,9 @@ Create an in-memory object for DeliveryRuleServerPortCondition.
 ### [New-AzFrontDoorCdnRuleSet](New-AzFrontDoorCdnRuleSet.md)
 Create a new rule set within the specified profile.
 
+### [New-AzFrontDoorCdnRuleSocketAddrConditionObject](New-AzFrontDoorCdnRuleSocketAddrConditionObject.md)
+Create an in-memory object for DeliveryRuleSocketAddrCondition.
+
 ### [New-AzFrontDoorCdnRuleUrlRedirectActionObject](New-AzFrontDoorCdnRuleUrlRedirectActionObject.md)
 Create an in-memory object for UrlRedirectAction.
 

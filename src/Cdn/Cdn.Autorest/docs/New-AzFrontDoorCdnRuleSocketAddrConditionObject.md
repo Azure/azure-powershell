@@ -1,40 +1,49 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnrulehostnameconditionobject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnrulesocketaddrconditionobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorCdnRuleHostNameConditionObject
+# New-AzFrontDoorCdnRuleSocketAddrConditionObject
 
 ## SYNOPSIS
-Create an in-memory object for DeliveryRuleHostNameCondition.
+Create an in-memory object for DeliveryRuleSocketAddrCondition.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleHostNameConditionObject -ParameterOperator <String> -ParameterTypeName <String>
+New-AzFrontDoorCdnRuleSocketAddrConditionObject -ParameterOperator <String> -ParameterTypeName <String>
  [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for DeliveryRuleHostNameCondition.
+Create an in-memory object for DeliveryRuleSocketAddrCondition.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for DeliveryRuleHostNameCondition
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorCdnRuleHostNameConditionObject -Name HostName -ParameterOperator Equal -ParameterMatchValue azure.com
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-HostName
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for DeliveryRuleHostNameCondition
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -120,7 +129,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleHostNameCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleSocketAddrCondition
 
 ## NOTES
 

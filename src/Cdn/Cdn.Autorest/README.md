@@ -121,10 +121,13 @@ directive:
       cmdlet-name: New-AzCdnDeliveryRuleIsDeviceConditionObject
     - model-name:  DeliveryRuleServerPortCondition
       cmdlet-name: New-AzFrontDoorCdnRuleServerPortConditionObject
+
     - model-name:  DeliveryRuleClientPortCondition
       cmdlet-name: New-AzFrontDoorCdnRuleClientPortConditionObject
     - model-name: DeliveryRuleHostNameCondition
       cmdlet-name: New-AzFrontDoorCdnRuleHostNameConditionObject
+    - model-name: DeliveryRuleSocketAddrCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleSocketAddrConditionObject
 
     - model-name: AfdDomainHttpsParameters
       cmdlet-name: New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject
