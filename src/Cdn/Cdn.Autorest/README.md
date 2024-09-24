@@ -119,9 +119,37 @@ directive:
       cmdlet-name: New-AzCdnDeliveryRuleCookiesConditionObject
     - model-name:  DeliveryRuleIsDeviceCondition
       cmdlet-name: New-AzCdnDeliveryRuleIsDeviceConditionObject
+
+    - model-name: DeliveryRuleRequestBodyCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleRequestBodyConditionObject
+    - model-name:  DeliveryRuleCookiesCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleCookiesConditionObject
+    - model-name:  DeliveryRuleHttpVersionCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleHttpVersionConditionObject
+    - model-name:  DeliveryRuleIsDeviceCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleIsDeviceConditionObject
+    - model-name: DeliveryRulePostArgsCondition
+      cmdlet-name: New-AzFrontDoorCdnRulePostArgsConditionObject
+    - model-name: DeliveryRuleQueryStringCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleQueryStringConditionObject
+    - model-name: DeliveryRuleRemoteAddressCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleRemoteAddressConditionObject
+    - model-name: DeliveryRuleRequestHeaderCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleRequestHeaderConditionObject
+    - model-name: DeliveryRuleRequestMethodCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleRequestMethodConditionObject
+    - model-name: DeliveryRuleRequestSchemeCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleRequestSchemeConditionObject
+    - model-name: DeliveryRuleRequestUriCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleRequestUriConditionObject
+    - model-name: DeliveryRuleUrlFileExtensionCondition 
+      cmdlet-name: New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject
+    - model-name:  DeliveryRuleUrlFileNameCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleUrlFileNameConditionObject
+    - model-name: DeliveryRuleUrlPathCondition 
+      cmdlet-name: New-AzFrontDoorCdnRuleUrlPathConditionObject
     - model-name:  DeliveryRuleServerPortCondition
       cmdlet-name: New-AzFrontDoorCdnRuleServerPortConditionObject
-
     - model-name:  DeliveryRuleClientPortCondition
       cmdlet-name: New-AzFrontDoorCdnRuleClientPortConditionObject
     - model-name: DeliveryRuleHostNameCondition

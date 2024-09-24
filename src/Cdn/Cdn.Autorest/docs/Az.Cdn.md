@@ -263,8 +263,41 @@ Create a new delivery rule within the specified rule set.
 ### [New-AzFrontDoorCdnRuleClientPortConditionObject](New-AzFrontDoorCdnRuleClientPortConditionObject.md)
 Create an in-memory object for DeliveryRuleClientPortCondition.
 
+### [New-AzFrontDoorCdnRuleCookiesConditionObject](New-AzFrontDoorCdnRuleCookiesConditionObject.md)
+Create an in-memory object for DeliveryRuleCookiesCondition.
+
 ### [New-AzFrontDoorCdnRuleHostNameConditionObject](New-AzFrontDoorCdnRuleHostNameConditionObject.md)
 Create an in-memory object for DeliveryRuleHostNameCondition.
+
+### [New-AzFrontDoorCdnRuleHttpVersionConditionObject](New-AzFrontDoorCdnRuleHttpVersionConditionObject.md)
+Create an in-memory object for DeliveryRuleHttpVersionCondition.
+
+### [New-AzFrontDoorCdnRuleIsDeviceConditionObject](New-AzFrontDoorCdnRuleIsDeviceConditionObject.md)
+Create an in-memory object for DeliveryRuleIsDeviceCondition.
+
+### [New-AzFrontDoorCdnRulePostArgsConditionObject](New-AzFrontDoorCdnRulePostArgsConditionObject.md)
+Create an in-memory object for DeliveryRulePostArgsCondition.
+
+### [New-AzFrontDoorCdnRuleQueryStringConditionObject](New-AzFrontDoorCdnRuleQueryStringConditionObject.md)
+Create an in-memory object for DeliveryRuleQueryStringCondition.
+
+### [New-AzFrontDoorCdnRuleRemoteAddressConditionObject](New-AzFrontDoorCdnRuleRemoteAddressConditionObject.md)
+Create an in-memory object for DeliveryRuleRemoteAddressCondition.
+
+### [New-AzFrontDoorCdnRuleRequestBodyConditionObject](New-AzFrontDoorCdnRuleRequestBodyConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestBodyCondition.
+
+### [New-AzFrontDoorCdnRuleRequestHeaderConditionObject](New-AzFrontDoorCdnRuleRequestHeaderConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestHeaderCondition.
+
+### [New-AzFrontDoorCdnRuleRequestMethodConditionObject](New-AzFrontDoorCdnRuleRequestMethodConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestMethodCondition.
+
+### [New-AzFrontDoorCdnRuleRequestSchemeConditionObject](New-AzFrontDoorCdnRuleRequestSchemeConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestSchemeCondition.
+
+### [New-AzFrontDoorCdnRuleRequestUriConditionObject](New-AzFrontDoorCdnRuleRequestUriConditionObject.md)
+Create an in-memory object for DeliveryRuleRequestUriCondition.
 
 ### [New-AzFrontDoorCdnRuleServerPortConditionObject](New-AzFrontDoorCdnRuleServerPortConditionObject.md)
 Create an in-memory object for DeliveryRuleServerPortCondition.
@@ -277,6 +310,15 @@ Create an in-memory object for DeliveryRuleSocketAddrCondition.
 
 ### [New-AzFrontDoorCdnRuleSslProtocolConditionObject](New-AzFrontDoorCdnRuleSslProtocolConditionObject.md)
 Create an in-memory object for DeliveryRuleSslProtocolCondition.
+
+### [New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject](New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject.md)
+Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
+
+### [New-AzFrontDoorCdnRuleUrlFileNameConditionObject](New-AzFrontDoorCdnRuleUrlFileNameConditionObject.md)
+Create an in-memory object for DeliveryRuleUrlFileNameCondition.
+
+### [New-AzFrontDoorCdnRuleUrlPathConditionObject](New-AzFrontDoorCdnRuleUrlPathConditionObject.md)
+Create an in-memory object for DeliveryRuleUrlPathCondition.
 
 ### [New-AzFrontDoorCdnRuleUrlRedirectActionObject](New-AzFrontDoorCdnRuleUrlRedirectActionObject.md)
 Create an in-memory object for UrlRedirectAction.
