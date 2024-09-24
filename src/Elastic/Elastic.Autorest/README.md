@@ -28,7 +28,7 @@ For information on how to develop for `Az.Elastic`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-commit: eee9cbba738edde2ea48ea0c826f84619e2561df
+commit: 399cbac2de1bc0acbed4c9a0a864a9c84da3692e
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
