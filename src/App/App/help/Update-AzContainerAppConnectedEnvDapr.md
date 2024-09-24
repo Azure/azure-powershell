@@ -18,7 +18,7 @@ Update-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -Name <
  -ResourceGroupName <String> [-SubscriptionId <String>] [-ComponentType <String>] [-IgnoreError]
  [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>] [-Scope <String[]>] [-Secret <ISecret[]>]
  [-SecretStoreComponent <String>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityConnectedEnvironmentExpanded
@@ -26,7 +26,7 @@ Update-AzContainerAppConnectedEnvDapr -ConnectedEnvironmentName <String> -Name <
 Update-AzContainerAppConnectedEnvDapr -Name <String> -ConnectedEnvironmentInputObject <IAppIdentity>
  [-ComponentType <String>] [-IgnoreError] [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>]
  [-Scope <String[]>] [-Secret <ISecret[]>] [-SecretStoreComponent <String>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -34,7 +34,7 @@ Update-AzContainerAppConnectedEnvDapr -Name <String> -ConnectedEnvironmentInputO
 Update-AzContainerAppConnectedEnvDapr -InputObject <IAppIdentity> [-ComponentType <String>] [-IgnoreError]
  [-InitTimeout <String>] [-Metadata <IDaprMetadata[]>] [-Scope <String[]>] [-Secret <ISecret[]>]
  [-SecretStoreComponent <String>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -224,21 +224,6 @@ Parameter Sets: UpdateExpanded, UpdateViaIdentityConnectedEnvironmentExpanded
 Aliases: DaprName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
