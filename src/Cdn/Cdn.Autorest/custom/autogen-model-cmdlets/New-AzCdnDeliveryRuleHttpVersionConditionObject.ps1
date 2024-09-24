@@ -21,12 +21,12 @@ Create an in-memory object for DeliveryRuleHttpVersionCondition.
 Create an in-memory object for DeliveryRuleHttpVersionCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleHttpVersionCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleHttpVersionCondition
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleHttpVersionConditionObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulehttpversionconditionobject
 #>
 function New-AzCdnDeliveryRuleHttpVersionConditionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleHttpVersionCondition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleHttpVersionCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,21 +37,17 @@ function New-AzCdnDeliveryRuleHttpVersionConditionObject {
         [bool]
         $ParameterNegateCondition,
         [Parameter(HelpMessage="List of transforms.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]
+        [string[]]
         $ParameterTransform,
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleConditionParametersType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleConditionParametersType]
-        $ParameterTypeName,
-        [Parameter(Mandatory, HelpMessage="The name of the condition for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable]
-        $Name
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleRemoteAddressConditionParameters", "DeliveryRuleRequestMethodConditionParameters", "DeliveryRuleQueryStringConditionParameters", "DeliveryRulePostArgsConditionParameters", "DeliveryRuleRequestUriConditionParameters", "DeliveryRuleRequestHeaderConditionParameters", "DeliveryRuleRequestBodyConditionParameters", "DeliveryRuleRequestSchemeConditionParameters", "DeliveryRuleUrlPathMatchConditionParameters", "DeliveryRuleUrlFileExtensionMatchConditionParameters", "DeliveryRuleUrlFilenameConditionParameters", "DeliveryRuleHttpVersionConditionParameters", "DeliveryRuleCookiesConditionParameters", "DeliveryRuleIsDeviceConditionParameters", "DeliveryRuleSocketAddrConditionParameters", "DeliveryRuleClientPortConditionParameters", "DeliveryRuleServerPortConditionParameters", "DeliveryRuleHostNameConditionParameters", "DeliveryRuleSslProtocolConditionParameters")]
+        [string]
+        $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleHttpVersionCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleHttpVersionCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue
@@ -64,9 +60,6 @@ function New-AzCdnDeliveryRuleHttpVersionConditionObject {
         }
         if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
             $Object.ParameterTypeName = $ParameterTypeName
-        }
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Object.Name = $Name
         }
         return $Object
     }

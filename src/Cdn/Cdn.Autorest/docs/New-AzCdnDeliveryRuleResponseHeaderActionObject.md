@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleResponseHeaderActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryruleresponseheaderactionobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,8 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleResponseHeaderActionObject -Name <DeliveryRuleActionName>
- -ParameterHeaderAction <HeaderAction> -ParameterHeaderName <String>
- -ParameterTypeName <DeliveryRuleActionParametersType> [-ParameterValue <String>] [<CommonParameters>]
+New-AzCdnDeliveryRuleResponseHeaderActionObject -ParameterHeaderAction <String> -ParameterHeaderName <String>
+ -ParameterTypeName <String> [-ParameterValue <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,41 +22,35 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for AzureCDN DeliveryRuleResponseHeaderAction
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnDeliveryRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-ModifyResponseHeader
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleResponseHeaderAction
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -Name
-The name of the action for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionName
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ParameterHeaderAction
 Action to perform.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HeaderAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +80,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionParametersType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleResponseHeaderAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleResponseHeaderAction
 
 ## NOTES
 

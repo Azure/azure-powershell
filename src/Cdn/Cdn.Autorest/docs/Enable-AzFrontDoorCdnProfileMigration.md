@@ -23,19 +23,27 @@ Commit the migrated Azure Front Door(Standard/Premium) profile..
 
 ## EXAMPLES
 
-### Example 1: Commit the migrated Azure Front Door(Standard/Premium) profile.
+### Example 1: {{ Add title here }}
 ```powershell
-Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
+{{ Add code here }}
 ```
 
-Commit the migrated Azure Front Door(Standard/Premium) profile.
-
-### Example 2: Commit the migrated Azure Front Door(Standard/Premium) profile., when the subscription of the profile is different from the local subscrition
-```powershell
-Enable-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName -SubscriptionId testSubId01
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Commit the migrated Azure Front Door(Standard/Premium) profile., when the subscription of the profile is different from the local subscrition
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

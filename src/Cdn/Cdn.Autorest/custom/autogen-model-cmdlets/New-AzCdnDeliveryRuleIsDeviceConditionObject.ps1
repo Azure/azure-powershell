@@ -21,38 +21,34 @@ Create an in-memory object for DeliveryRuleIsDeviceCondition.
 Create an in-memory object for DeliveryRuleIsDeviceCondition.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleIsDeviceCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleIsDeviceCondition
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleIsDeviceConditionObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryruleisdeviceconditionobject
 #>
 function New-AzCdnDeliveryRuleIsDeviceConditionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleIsDeviceCondition')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleIsDeviceCondition')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The match value for the condition of the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.IsDeviceMatchValue])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.IsDeviceMatchValue[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Mobile", "Desktop")]
+        [string[]]
         $ParameterMatchValue,
         [Parameter(HelpMessage="Describes if this is negate condition or not.")]
         [bool]
         $ParameterNegateCondition,
         [Parameter(HelpMessage="List of transforms.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]
+        [string[]]
         $ParameterTransform,
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleConditionParametersType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleConditionParametersType]
-        $ParameterTypeName,
-        [Parameter(Mandatory, HelpMessage="The name of the condition for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable]
-        $Name
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleRemoteAddressConditionParameters", "DeliveryRuleRequestMethodConditionParameters", "DeliveryRuleQueryStringConditionParameters", "DeliveryRulePostArgsConditionParameters", "DeliveryRuleRequestUriConditionParameters", "DeliveryRuleRequestHeaderConditionParameters", "DeliveryRuleRequestBodyConditionParameters", "DeliveryRuleRequestSchemeConditionParameters", "DeliveryRuleUrlPathMatchConditionParameters", "DeliveryRuleUrlFileExtensionMatchConditionParameters", "DeliveryRuleUrlFilenameConditionParameters", "DeliveryRuleHttpVersionConditionParameters", "DeliveryRuleCookiesConditionParameters", "DeliveryRuleIsDeviceConditionParameters", "DeliveryRuleSocketAddrConditionParameters", "DeliveryRuleClientPortConditionParameters", "DeliveryRuleServerPortConditionParameters", "DeliveryRuleHostNameConditionParameters", "DeliveryRuleSslProtocolConditionParameters")]
+        [string]
+        $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleIsDeviceCondition]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleIsDeviceCondition]::New()
 
         if ($PSBoundParameters.ContainsKey('ParameterMatchValue')) {
             $Object.ParameterMatchValue = $ParameterMatchValue
@@ -65,9 +61,6 @@ function New-AzCdnDeliveryRuleIsDeviceConditionObject {
         }
         if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
             $Object.ParameterTypeName = $ParameterTypeName
-        }
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Object.Name = $Name
         }
         return $Object
     }

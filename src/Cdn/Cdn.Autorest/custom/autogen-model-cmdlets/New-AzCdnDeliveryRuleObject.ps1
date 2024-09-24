@@ -21,20 +21,20 @@ Create an in-memory object for DeliveryRule.
 Create an in-memory object for DeliveryRule.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRule
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRule
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryruleobject
 #>
 function New-AzCdnDeliveryRuleObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRule')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="A list of actions that are executed when all the conditions of a rule are satisfied.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.IDeliveryRuleAction[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction[]]
         $Action,
         [Parameter(HelpMessage="A list of conditions that must be matched for the actions to be executed.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.IDeliveryRuleCondition[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition[]]
         $Condition,
         [Parameter(HelpMessage="Name of the rule.")]
         [string]
@@ -45,7 +45,7 @@ function New-AzCdnDeliveryRuleObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRule]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRule]::New()
 
         if ($PSBoundParameters.ContainsKey('Action')) {
             $Object.Action = $Action

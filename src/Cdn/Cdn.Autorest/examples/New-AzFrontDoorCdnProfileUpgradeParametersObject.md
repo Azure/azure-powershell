@@ -1,35 +1,22 @@
-### Example 1: Create an in-memory object for ProfileUpgradeParameters.
+### Example 1: {{ Add title here }}
 ```powershell
-$waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
-New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
+{{ Add code here }}
 ```
 
 ```output
-WafMappingList
---------------
-{{…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for ProfileUpgradeParameters.
+{{ Add description here }}
 
-### Example 2: Create an in-memory object for ProfileUpgradeParameters, show the details of the object.
+### Example 2: {{ Add title here }}
 ```powershell
-$waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
-$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
-$upgrade.ToString()
+{{ Add code here }}
 ```
 
 ```output
-{
-  "wafMappingList": [
-    {
-      "changeToWafPolicy": {
-        "id": "toWafPolicyId"
-      },
-      "securityPolicyName": "policyName"
-    }
-  ]
-}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for ProfileUpgradeParameters, show the details of the object.
+{{ Add description here }}
+

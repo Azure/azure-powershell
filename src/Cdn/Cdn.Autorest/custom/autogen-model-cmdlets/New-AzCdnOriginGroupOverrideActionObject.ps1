@@ -21,12 +21,12 @@ Create an in-memory object for OriginGroupOverrideAction.
 Create an in-memory object for OriginGroupOverrideAction.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.OriginGroupOverrideAction
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginGroupOverrideAction
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnOriginGroupOverrideActionObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnorigingroupoverrideactionobject
 #>
 function New-AzCdnOriginGroupOverrideActionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.OriginGroupOverrideAction')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginGroupOverrideAction')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -34,26 +34,19 @@ function New-AzCdnOriginGroupOverrideActionObject {
         [string]
         $OriginGroupId,
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionParametersType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionParametersType]
-        $ParameterTypeName,
-        [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionName])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionName]
-        $Name
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleUrlRedirectActionParameters", "DeliveryRuleUrlSigningActionParameters", "DeliveryRuleOriginGroupOverrideActionParameters", "DeliveryRuleUrlRewriteActionParameters", "DeliveryRuleHeaderActionParameters", "DeliveryRuleCacheExpirationActionParameters", "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters", "DeliveryRuleRouteConfigurationOverrideActionParameters")]
+        [string]
+        $ParameterTypeName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.OriginGroupOverrideAction]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginGroupOverrideAction]::New()
 
         if ($PSBoundParameters.ContainsKey('OriginGroupId')) {
             $Object.OriginGroupId = $OriginGroupId
         }
         if ($PSBoundParameters.ContainsKey('ParameterTypeName')) {
             $Object.ParameterTypeName = $ParameterTypeName
-        }
-        if ($PSBoundParameters.ContainsKey('Name')) {
-            $Object.Name = $Name
         }
         return $Object
     }

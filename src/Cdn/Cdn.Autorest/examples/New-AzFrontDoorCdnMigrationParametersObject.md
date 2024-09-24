@@ -1,12 +1,22 @@
-### Example 1: Create an in-memory object for MigrationParameters
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorCdnMigrationParametersObject -ProfileName test
+{{ Add code here }}
 ```
 
 ```output
-ProfileName
------------
-test
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for MigrationParameters
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

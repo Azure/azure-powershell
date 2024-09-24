@@ -1,12 +1,22 @@
-### Example 1: Create an in-memory object for AzureCDN DeliveryRuleCacheKeyQueryStringAction
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject -Name CacheKeyQueryString -ParameterQueryStringBehavior IncludeAll
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-CacheKeyQueryString
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleCacheKeyQueryStringAction
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

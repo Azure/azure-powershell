@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileChangeSkuWafMappingObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnprofilechangeskuwafmappingobject
 schema: 2.0.0
 ---
 
@@ -22,18 +22,27 @@ Create an in-memory object for ProfileChangeSkuWafMapping.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for ProfileChangeSkuWafMapping.
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
+{{ Add code here }}
 ```
 
 ```output
-SecurityPolicyName
-------------------
-policyName
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for ProfileChangeSkuWafMapping
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -74,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.ProfileChangeSkuWafMapping
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileChangeSkuWafMapping
 
 ## NOTES
 

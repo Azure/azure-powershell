@@ -117,6 +117,17 @@ directive:
       cmdlet-name: New-AzCdnDeliveryRuleCookiesConditionObject
     - model-name:  DeliveryRuleIsDeviceCondition
       cmdlet-name: New-AzCdnDeliveryRuleIsDeviceConditionObject
+    - model-name:  DeliveryRuleServerPortCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleServerPortConditionObject
+    - model-name:  DeliveryRuleClientPortCondition
+      cmdlet-name: New-AzFrontDoorCdnDeliveryRuleClientPortConditionObject
+
+    # OriginGroup Parameters
+    - model-name: HealthProbeSetting
+      cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
+    - model-name: LoadBalancingSetting
+      cmdlet-name: New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject
+
     # CDN action
     - model-name:  DeliveryRuleCacheExpirationAction
       cmdlet-name: New-AzCdnDeliveryRuleCacheExpirationActionObject
@@ -141,20 +152,26 @@ directive:
       cmdlet-name: New-AzCdnPurgeParametersObject
     - model-name: LoadParameters
       cmdlet-name: New-AzCdnLoadParametersObject
-    - model-name: LoadParameters
-      cmdlet-name: New-AzCdnLoadParametersObject
     - model-name: MigrationEndpointMapping
       cmdlet-name: New-AzCdnMigrationEndpointMappingObject
-
     # AFDX profile LogScrubbing, need to rename the memory ojects, not sure how to rename a memory object currently.
-    # - ProfileLogScrubbing
-    # - ProfileScrubbingRules
+    - model-name: ProfileLogScrubbing
+      cmdlet-name: New-AzFrontDoorCdnProfileLogScrubbingObject
+    - model-name: ProfileScrubbingRules
+      cmdlet-name: New-AzFrontDoorCdnProfileScrubbingRulesObject
     # Migration to AFDx
-    # - MigrationParameters
-    # - MigrationWebApplicationFirewallMapping
+    - model-name: MigrationParameters
+      cmdlet-name: New-AzFrontDoorCdnMigrationParametersObject
+    - model-name: MigrationWebApplicationFirewallMapping
+      cmdlet-name: New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject
     # Upgrade sku
-    # - ProfileUpgradeParameters
-    # - ProfileChangeSkuWafMapping
+    - model-name: ProfileUpgradeParameters
+      cmdlet-name: New-AzFrontDoorCdnProfileUpgradeParametersObject
+    - model-name: ProfileChangeSkuWafMapping
+      cmdlet-name: New-AzFrontDoorCdnProfileChangeSkuWafMappingObject
+
+    - model-name: OriginGroupHealthProbeSetting
+      cmdlet-name: New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
 
   # rename CdnProfiles_CdnMigrateToAfd to avoid conflict with Profiles_Migrate
   - from: swagger-document

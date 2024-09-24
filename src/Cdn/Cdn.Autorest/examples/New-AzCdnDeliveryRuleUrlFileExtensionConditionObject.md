@@ -1,13 +1,22 @@
-### Example 1: Create an in-memory object for AzureCDN DeliveryRuleUrlFileExtensionCondition
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnDeliveryRuleUrlFileExtensionConditionObject -Name UrlFileExtension -ParameterOperator Equal -ParameterMatchValue txt -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-UrlFileExtension
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleUrlFileExtensionCondition
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 

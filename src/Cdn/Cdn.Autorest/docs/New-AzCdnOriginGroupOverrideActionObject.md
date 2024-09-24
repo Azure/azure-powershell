@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnOriginGroupOverrideActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnorigingroupoverrideactionobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for OriginGroupOverrideAction.
 ## SYNTAX
 
 ```
-New-AzCdnOriginGroupOverrideActionObject -Name <DeliveryRuleActionName>
- -ParameterTypeName <DeliveryRuleActionParametersType> [-OriginGroupId <String>] [<CommonParameters>]
+New-AzCdnOriginGroupOverrideActionObject -ParameterTypeName <String> [-OriginGroupId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,35 +22,29 @@ Create an in-memory object for OriginGroupOverrideAction.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for AzureCDN OriginGroupOverrideAction
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnOriginGroupOverrideActionObject -Name OriginGroupOverride -OriginGroupId 001
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-OriginGroupOverride
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for AzureCDN OriginGroupOverrideAction
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -Name
-The name of the action for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionName
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -OriginGroupId
 Resource ID.
@@ -71,7 +65,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionParametersType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.OriginGroupOverrideAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.OriginGroupOverrideAction
 
 ## NOTES
 

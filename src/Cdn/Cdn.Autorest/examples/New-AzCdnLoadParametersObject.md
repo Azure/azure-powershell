@@ -1,13 +1,22 @@
-### Example 1: Create an in-memory object for LoadParameters
+### Example 1: {{ Add title here }}
 ```powershell
-$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
-New-AzCdnLoadParametersObject -ContentPath $contentPath
+{{ Add code here }}
 ```
 
 ```output
-ContentPath
------------
-{/movies/amazing.mp4, /pictures/pic1.jpg}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for LoadParameters
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

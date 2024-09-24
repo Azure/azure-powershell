@@ -1,15 +1,22 @@
-### Example 1: Create an in-memory object for AzureCDN DeliveryRulePostArgsCondition
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnDeliveryRulePostArgsConditionObject -Name PostArgs -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterSelector test -ParameterTransform Lowercase
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-PostArgs
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for AzureCDN DeliveryRulePostArgsCondition
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
 
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 

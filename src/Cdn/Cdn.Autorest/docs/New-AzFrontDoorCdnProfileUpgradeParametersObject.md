@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileUpgradeParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnprofileupgradeparametersobject
 schema: 2.0.0
 ---
 
@@ -22,50 +22,35 @@ Create an in-memory object for ProfileUpgradeParameters.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for ProfileUpgradeParameters.
+### Example 1: {{ Add title here }}
 ```powershell
-$waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
-New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
+{{ Add code here }}
 ```
 
 ```output
-WafMappingList
---------------
-{{…
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for ProfileUpgradeParameters.
+{{ Add description here }}
 
-### Example 2: Create an in-memory object for ProfileUpgradeParameters, show the details of the object.
+### Example 2: {{ Add title here }}
 ```powershell
-$waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
-$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
-$upgrade.ToString()
+{{ Add code here }}
 ```
 
 ```output
-{
-  "wafMappingList": [
-    {
-      "changeToWafPolicy": {
-        "id": "toWafPolicyId"
-      },
-      "securityPolicyName": "policyName"
-    }
-  ]
-}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for ProfileUpgradeParameters, show the details of the object.
+{{ Add description here }}
 
 ## PARAMETERS
 
 ### -WafMappingList
 Web Application Firewall (WAF) and security policy mapping for the profile upgrade.
-To construct, see NOTES section for WAFMAPPINGLIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.IProfileChangeSkuWafMapping[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileChangeSkuWafMapping[]
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +68,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.ProfileUpgradeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileUpgradeParameters
 
 ## NOTES
 

@@ -21,48 +21,41 @@ Create an in-memory object for CdnManagedHttpsParameters.
 Create an in-memory object for CdnManagedHttpsParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.CdnManagedHttpsParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnManagedHttpsParameters
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnManagedHttpsParametersObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnmanagedhttpsparametersobject
 #>
 function New-AzCdnManagedHttpsParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.CdnManagedHttpsParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnManagedHttpsParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="Type of certificate used.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Shared", "Dedicated")]
+        [string]
         $CertificateSourceParameterCertificateType,
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSourceParametersType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSourceParametersType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("CdnCertificateSourceParameters", "KeyVaultCertificateSourceParameters")]
+        [string]
         $CertificateSourceParameterTypeName,
-        [Parameter(Mandatory, HelpMessage="Defines the source of the SSL certificate.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSource])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSource]
-        $CertificateSource,
         [Parameter(HelpMessage="TLS protocol version that will be used for Https.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MinimumTlsVersion])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MinimumTlsVersion]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("None", "TLS10", "TLS12")]
+        [string]
         $MinimumTlsVersion,
         [Parameter(Mandatory, HelpMessage="Defines the TLS extension protocol that is used for secure delivery.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProtocolType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProtocolType]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("ServerNameIndication", "IPBased")]
+        [string]
         $ProtocolType
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.CdnManagedHttpsParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.CdnManagedHttpsParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('CertificateSourceParameterCertificateType')) {
             $Object.CertificateSourceParameterCertificateType = $CertificateSourceParameterCertificateType
         }
         if ($PSBoundParameters.ContainsKey('CertificateSourceParameterTypeName')) {
             $Object.CertificateSourceParameterTypeName = $CertificateSourceParameterTypeName
-        }
-        if ($PSBoundParameters.ContainsKey('CertificateSource')) {
-            $Object.CertificateSource = $CertificateSource
         }
         if ($PSBoundParameters.ContainsKey('MinimumTlsVersion')) {
             $Object.MinimumTlsVersion = $MinimumTlsVersion

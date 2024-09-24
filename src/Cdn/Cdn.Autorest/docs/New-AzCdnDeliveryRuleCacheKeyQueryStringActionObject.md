@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleCacheKeyQueryStringActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulecachekeyquerystringactionobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,8 @@ Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject -Name <DeliveryRuleActionName>
- -ParameterQueryStringBehavior <QueryStringBehavior> -ParameterTypeName <DeliveryRuleActionParametersType>
- [-ParameterQueryParameter <String>] [<CommonParameters>]
+New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject -ParameterQueryStringBehavior <String>
+ -ParameterTypeName <String> [-ParameterQueryParameter <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,35 +22,29 @@ Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for AzureCDN DeliveryRuleCacheKeyQueryStringAction
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject -Name CacheKeyQueryString -ParameterQueryStringBehavior IncludeAll
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-CacheKeyQueryString
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleCacheKeyQueryStringAction
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -Name
-The name of the action for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionName
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ParameterQueryParameter
 query parameters to include or exclude (comma separated).
@@ -72,7 +65,7 @@ Accept wildcard characters: False
 Caching behavior for the requests.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.QueryStringBehavior
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +80,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleActionParametersType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRuleCacheKeyQueryStringAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleCacheKeyQueryStringAction
 
 ## NOTES
 

@@ -39,60 +39,27 @@ Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile wit
 
 ## EXAMPLES
 
-### Example 1: List AzureFrontDoor profiles under the subscription
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzFrontDoorCdnProfile
+{{ Add code here }}
 ```
 
 ```output
-Location Name       Kind      ResourceGroupName
--------- ----       ----      -----------------
-Global   fdp-v542q6 frontdoor testps-rg-da16jm
-Global   fdp-a345e9 frontdoor testps-rg-da16jm
-Global   fdp-t0jfb9 frontdoor testps-rg-zvt8sy
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List AzureFrontDoor profiles under the subscription
+{{ Add description here }}
 
-### Example 2: List AzureFrontDoor profiles under the resource group
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm
+{{ Add code here }}
 ```
 
 ```output
-Location Name       Kind      ResourceGroupName
--------- ----       ----      -----------------
-Global   fdp-v542q6 frontdoor testps-rg-da16jm
-Global   fdp-a345e9 frontdoor testps-rg-da16jm
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-List AzureFrontDoor profiles under the resource group
-
-### Example 3: Get an AzureFrontDoor profile under the resource group
-```powershell
-Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6
-```
-
-```output
-Location Name       Kind      ResourceGroupName
--------- ----       ----      -----------------
-Global   fdp-v542q6 frontdoor testps-rg-da16jm
-```
-
-Get an AzureFrontDoor profile under the resource group
-
-### Example 4: Get an AzureFrontDoor profile under the resource group via identity
-```powershell
-New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q7 -SkuName Standard_AzureFrontDoor -Location Global | Get-AzFrontDoorCdnProfile
-```
-
-```output
-Location Name       Kind      ResourceGroupName
--------- ----       ----      -----------------
-Global   fdp-v542q7 frontdoor testps-rg-da16jm
-```
-
-Get an AzureFrontDoor profile under the resource group via identity
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -181,7 +148,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.IProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfile
 
 ## NOTES
 

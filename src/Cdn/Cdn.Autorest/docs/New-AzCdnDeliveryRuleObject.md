@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryruleobject
 schema: 2.0.0
 ---
 
@@ -22,34 +22,35 @@ Create an in-memory object for DeliveryRule.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for AzureCDN DeliveryRule
+### Example 1: {{ Add title here }}
 ```powershell
-$cond1 = New-AzCdnDeliveryRuleCookiesConditionObject -Name Cookies -ParameterOperator Equal -ParameterSelector test -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
-$action1 = New-AzCdnDeliveryRuleResponseHeaderActionObject -Name ModifyResponseHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
-$action2 = New-AzCdnDeliveryRuleRequestHeaderActionObject -Name ModifyRequestHeader -ParameterHeaderAction Append -ParameterHeaderName a1 -ParameterValue a1
-
-
-$conditions = @($cond1)
-$actions = @($action1, $action2)
-New-AzCdnDeliveryRuleObject -Name "Rule1" -Condition $conditions -Action $actions -Order 1
+{{ Add code here }}
 ```
 
 ```output
-Name  Order
-----  -----
-Rule1 1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for AzureCDN DeliveryRule
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
 ### -Action
 A list of actions that are executed when all the conditions of a rule are satisfied.
-To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.IDeliveryRuleAction[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleAction[]
 Parameter Sets: (All)
 Aliases:
 
@@ -62,10 +63,9 @@ Accept wildcard characters: False
 
 ### -Condition
 A list of conditions that must be matched for the actions to be executed.
-To construct, see NOTES section for CONDITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.IDeliveryRuleCondition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IDeliveryRuleCondition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +117,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.DeliveryRule
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRule
 
 ## NOTES
 

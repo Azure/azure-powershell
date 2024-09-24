@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileLogScrubbingObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnprofilelogscrubbingobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for ProfileLogScrubbing.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnProfileLogScrubbingObject [-ScrubbingRule <IProfileScrubbingRules[]>]
- [-State <ProfileScrubbingState>] [<CommonParameters>]
+New-AzFrontDoorCdnProfileLogScrubbingObject [-ScrubbingRule <IProfileScrubbingRules[]>] [-State <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,29 +22,35 @@ Create an in-memory object for ProfileLogScrubbing.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for ProfileUpgradeParameters, for two LogScrubbingRules
+### Example 1: {{ Add title here }}
 ```powershell
-$scrubbingRule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
-$scrubbingRule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestUri -State Enabled
-New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($scrubbingRule1, $scrubbingRule2) -State Enabled
+{{ Add code here }}
 ```
 
 ```output
-State
------
-Enabled
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for ProfileUpgradeParameters, for two LogScrubbingRules
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
 ### -ScrubbingRule
 List of log scrubbing rules applied to the Azure Front Door profile logs.
-To construct, see NOTES section for SCRUBBINGRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.IProfileScrubbingRules[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IProfileScrubbingRules[]
 Parameter Sets: (All)
 Aliases:
 
@@ -60,7 +66,7 @@ State of the log scrubbing config.
 Default value is Enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileScrubbingState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +84,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.ProfileLogScrubbing
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ProfileLogScrubbing
 
 ## NOTES
 

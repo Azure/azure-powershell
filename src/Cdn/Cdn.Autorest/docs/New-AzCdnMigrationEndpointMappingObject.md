@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnMigrationEndpointMappingObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnmigrationendpointmappingobject
 schema: 2.0.0
 ---
 
@@ -21,12 +21,27 @@ Create an in-memory object for MigrationEndpointMapping.
 
 ## EXAMPLES
 
-### Example 1: Create a Cdn Migration Endpoint Mapping Object
+### Example 1: {{ Add title here }}
 ```powershell
-$map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
+{{ Add code here }}
 ```
 
-Generate a map for endpoint to be migrated
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -68,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.MigrationEndpointMapping
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.MigrationEndpointMapping
 
 ## NOTES
 

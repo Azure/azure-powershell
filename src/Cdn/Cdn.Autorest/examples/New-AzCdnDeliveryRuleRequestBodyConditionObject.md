@@ -1,15 +1,22 @@
-### Example 1: Create an in-memory object for AzureCDN DeliveryRuleRequestBodyCondition
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnDeliveryRuleRequestBodyConditionObject -Name RequestBody -ParameterOperator Equal -ParameterMatchValue test -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-RequestBody
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleRequestBodyCondition
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
 
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 

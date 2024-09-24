@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnPurgeParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnpurgeparametersobject
 schema: 2.0.0
 ---
 
@@ -21,19 +21,27 @@ Create an in-memory object for PurgeParameters.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for PurgeParameters
+### Example 1: {{ Add title here }}
 ```powershell
-$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
-New-AzCdnPurgeParametersObject -ContentPath $contentPath
+{{ Add code here }}
 ```
 
 ```output
-ContentPath
------------
-{/movies/amazing.mp4, /pictures/pic1.jpg}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for PurgeParameters
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -60,7 +68,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.PurgeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.PurgeParameters
 
 ## NOTES
 

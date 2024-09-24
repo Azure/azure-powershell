@@ -136,7 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.OptimizationType
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ISupportedOptimizationTypesListResult
 
 ## NOTES
 

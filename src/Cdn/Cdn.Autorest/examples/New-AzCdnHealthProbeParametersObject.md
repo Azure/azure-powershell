@@ -1,13 +1,22 @@
-### Example 1: Create an in-memory object for AzureCDN HealthProbeParameters
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 120 -ProbePath "/check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
+{{ Add code here }}
 ```
 
 ```output
-ProbeIntervalInSecond ProbePath          ProbeProtocol ProbeRequestType
---------------------- ---------          ------------- ----------------
-120                   /check-health.aspx Http          HEAD
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for AzureCDN HealthProbeParameters
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 

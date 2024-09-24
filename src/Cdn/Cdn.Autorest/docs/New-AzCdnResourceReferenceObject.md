@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnResourceReferenceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnresourcereferenceobject
 schema: 2.0.0
 ---
 
@@ -21,18 +21,27 @@ Create an in-memory object for ResourceReference.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for ResourceReference
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnResourceReferenceObject -Id Idtest
+{{ Add code here }}
 ```
 
 ```output
-Id
---
-Idtest
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for ResourceReference
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -58,7 +67,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.ResourceReference
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResourceReference
 
 ## NOTES
 

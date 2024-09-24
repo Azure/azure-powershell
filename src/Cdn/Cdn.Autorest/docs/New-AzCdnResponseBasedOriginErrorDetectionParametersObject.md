@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnresponsebasedoriginerrordetectionparametersobject
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 
 ```
 New-AzCdnResponseBasedOriginErrorDetectionParametersObject [-HttpErrorRange <IHttpErrorRangeParameters[]>]
- [-ResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
- [-ResponseBasedFailoverThresholdPercentage <Int32>] [<CommonParameters>]
+ [-ResponseBasedDetectedErrorType <String>] [-ResponseBasedFailoverThresholdPercentage <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,27 +23,35 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for ResponseBasedOriginErrorDetectionParameters
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnResponseBasedOriginErrorDetectionParametersObject -ResponseBasedDetectedErrorType testDetctedError -ResponseBasedFailoverThresholdPercentage 6 
+{{ Add code here }}
 ```
 
 ```output
-ResponseBasedDetectedErrorType ResponseBasedFailoverThresholdPercentage
------------------------------- ----------------------------------------
-testDetctedError               6
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for ResponseBasedOriginErrorDetectionParameters
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
 ### -HttpErrorRange
 The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
-To construct, see NOTES section for HTTPERRORRANGE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.IHttpErrorRangeParameters[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IHttpErrorRangeParameters[]
 Parameter Sets: (All)
 Aliases:
 
@@ -58,7 +66,7 @@ Accept wildcard characters: False
 Type of response errors for real user requests for which origin will be deemed unhealthy.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResponseBasedDetectedErrorTypes
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,7 +99,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240901.ResponseBasedOriginErrorDetectionParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ResponseBasedOriginErrorDetectionParameters
 
 ## NOTES
 
