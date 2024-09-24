@@ -141,6 +141,8 @@ directive:
       cmdlet-name: New-AzFrontDoorCdnSecretCustomerCertificateParametersObject
     - model-name: AzureFirstPartyManagedCertificateParameters
       cmdlet-name: New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
+    - model-name: ManagedCertificateParameters
+      cmdlet-name: New-AzFrontDoorCdnSecretManagedCertificateParametersObject
 
     # OriginGroup Parameters
     - model-name: HealthProbeParameters
