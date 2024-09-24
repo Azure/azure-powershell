@@ -719,11 +719,8 @@ function Test-NetworkManagerIpamPoolCRUD
         $subscriptions  = @($subscriptionId)
         $scope = New-AzNetworkManagerScope -Subscription $subscriptions
 
-        # Define access
-        $access  = @("Connectivity")
-
         # Create network manager
-        New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
+        New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -Location $rglocation
 
         # Create ipam pool
         New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefixes $addressPrefixes
