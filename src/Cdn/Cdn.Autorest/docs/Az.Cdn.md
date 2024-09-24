@@ -290,6 +290,9 @@ Create an in-memory object for UrlSigningAction.
 ### [New-AzFrontDoorCdnSecret](New-AzFrontDoorCdnSecret.md)
 Create a new Secret within the specified profile.
 
+### [New-AzFrontDoorCdnSecretCustomerCertificateParametersObject](New-AzFrontDoorCdnSecretCustomerCertificateParametersObject.md)
+Create an in-memory object for CustomerCertificateParameters.
+
 ### [New-AzFrontDoorCdnSecurityPolicy](New-AzFrontDoorCdnSecurityPolicy.md)
 Create a new security policy within the specified profile.
 

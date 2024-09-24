@@ -136,6 +136,9 @@ directive:
 
     - model-name: AfdPurgeParameters
       cmdlet-name: New-AzFrontDoorCdnPurgeParametersObject
+    
+    - model-name: CustomerCertificateParameters
+      cmdlet-name: New-AzFrontDoorCdnSecretCustomerCertificateParametersObject
 
     # OriginGroup Parameters
     - model-name: HealthProbeParameters
