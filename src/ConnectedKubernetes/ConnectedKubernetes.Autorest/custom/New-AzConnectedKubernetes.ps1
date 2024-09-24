@@ -439,8 +439,9 @@ function New-AzConnectedKubernetes {
         $options = ""
 
         if ($DisableAutoUpgrade) {
-            $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
+            # $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
+            $PSBoundParameters.Add('ArcAgentProfileAgentAutoUpgrade', 'Disabled')
         }
         if (-not ([string]::IsNullOrEmpty($ContainerLogPath))) {
             $options += " --set systemDefaultValues.fluent-bit.containerLogPath=$ContainerLogPath"
@@ -599,8 +600,13 @@ function New-AzConnectedKubernetes {
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
 
-        Write-Verbose "Creating 'Kubernetes - Azure Arc' object in Azure"
+        Write-Output "Creating 'Kubernetes - Azure Arc' object in Azure"
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
+
+        if ((-not $WhatIfPreference) -and (-not $Response)) {
+            Write-Error "Failed to create the 'Kubernetes - Azure Arc' resource."
+            return
+        }
 
         $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
 
@@ -676,6 +682,7 @@ function New-AzConnectedKubernetes {
             $options += " --debug"
         }
         if ($PSCmdlet.ShouldProcess($ClusterName, "Update Kubernetes cluster with Azure Arc")) {
+            Write-Output "Executing helm upgrade command, this can take a few minutes...."
             try {
                 helm upgrade `
                     --install azure-arc `
@@ -705,7 +712,7 @@ function New-AzConnectedKubernetes {
             if ($PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled') -or $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled') ) {
                 $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
     
-                Write-Host "Cluster configuration is in progress..."
+                Write-Output "Cluster configuration is in progress..."
                 $timeout = [datetime]::Now.AddMinutes(60)
     
                 while (($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Succeeded") -and ($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Failed") -and ([datetime]::Now -lt $timeout)) {
@@ -714,7 +721,7 @@ function New-AzConnectedKubernetes {
                 }
     
                 if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
-                    Write-Host "Cluster configuration succeeded."
+                    Write-Output "Cluster configuration succeeded."
                 } elseif ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Failed") {
                     Write-Error "Cluster configuration failed."
                 } else {
