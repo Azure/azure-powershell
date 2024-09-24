@@ -21,27 +21,19 @@ Create an in-memory object for AfdPurgeParameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AfdPurgeParameters
 ```powershell
-{{ Add code here }}
+$contentPath = "/a"
+$content = New-AzFrontDoorCdnPurgeParametersObject -ContentPath $contentPath
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ContentPath
+-----------
+{/a}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create an in-memory object for AfdPurgeParameters
 
 ## PARAMETERS
 

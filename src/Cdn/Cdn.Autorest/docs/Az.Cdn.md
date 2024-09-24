@@ -251,6 +251,9 @@ Create an in-memory object for ProfileUpgradeParameters.
 ### [New-AzFrontDoorCdnPurgeParametersObject](New-AzFrontDoorCdnPurgeParametersObject.md)
 Create an in-memory object for AfdPurgeParameters.
 
+### [New-AzFrontDoorCdnResourceReferenceObject](New-AzFrontDoorCdnResourceReferenceObject.md)
+Create an in-memory object for ResourceReference.
+
 ### [New-AzFrontDoorCdnRoute](New-AzFrontDoorCdnRoute.md)
 Create a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 

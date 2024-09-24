@@ -76,6 +76,8 @@ directive:
   - model-cmdlet:
     - model-name: ResourceReference
       cmdlet-name: New-AzCdnResourceReferenceObject
+    - model-name: ResourceReference
+      cmdlet-name: New-AzFrontDoorCdnResourceReferenceObject
     # origin group parameters
     - model-name: HealthProbeParameters
       cmdlet-name: New-AzCdnHealthProbeParametersObject
