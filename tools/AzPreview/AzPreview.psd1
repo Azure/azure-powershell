@@ -214,7 +214,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.4'; },
             @{ModuleName = 'Az.StackHCI'; RequiredVersion = '2.4.0'; }, 
             @{ModuleName = 'Az.StackHCIVM'; RequiredVersion = '1.0.4'; }, 
             @{ModuleName = 'Az.StandbyPool'; RequiredVersion = '0.1.1'; }, 
-            @{ModuleName = 'Az.Storage'; RequiredVersion = '7.3.0'; }, 
+            @{ModuleName = 'Az.Storage'; RequiredVersion = '7.3.1'; }, 
             @{ModuleName = 'Az.StorageAction'; RequiredVersion = '0.1.0'; }, 
             @{ModuleName = 'Az.StorageCache'; RequiredVersion = '0.1.1'; }, 
             @{ModuleName = 'Az.StorageMover'; RequiredVersion = '1.4.0'; }, 
@@ -229,7 +229,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.4'; },
             @{ModuleName = 'Az.VoiceServices'; RequiredVersion = '0.1.2'; }, 
             @{ModuleName = 'Az.Websites'; RequiredVersion = '3.2.1'; }, 
             @{ModuleName = 'Az.WindowsIotServices'; RequiredVersion = '0.1.1'; }, 
-            @{ModuleName = 'Az.Workloads'; RequiredVersion = '0.2.1'; })
+            @{ModuleName = 'Az.Workloads'; RequiredVersion = '0.3.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
