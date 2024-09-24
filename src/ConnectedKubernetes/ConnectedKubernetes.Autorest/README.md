@@ -44,11 +44,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 0ce2859b2f018adcea3d14346951ff4270dcff3d
+commit: b67274cc1916170502f17ffabac0b46c4620918e
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2024-07-01-preview/connectedClusters.json
+  - $(repo)/specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/preview/2024-07-15-preview/connectedClusters.json
 
 title: ConnectedKubernetes
 module-version: 0.1.0
@@ -82,8 +82,7 @@ directive:
       parameter-name: Property
     hide: true
   - where:
-      verb: New|Update|Remove
+      verb: New|Update|Remove|Set
       subject-prefix: ConnectedKubernetes
     hide: true
-
 ```
