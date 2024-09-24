@@ -8,8 +8,8 @@ schema: 2.0.0
 # Update-AzConnectedPrivateLinkScopeTag
 
 ## SYNOPSIS
-Update an existing PrivateLinkScope's tags.
-To update other fields use the CreateOrUpdate method.
+Updatean existing PrivateLinkScope's tags.
+To Updateother fields use the CreateOrUpdatemethod.
 
 ## SYNTAX
 
@@ -52,8 +52,8 @@ Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName <String> -ScopeName <St
 ```
 
 ## DESCRIPTION
-Update an existing PrivateLinkScope's tags.
-To update other fields use the CreateOrUpdate method.
+Updatean existing PrivateLinkScope's tags.
+To Updateother fields use the CreateOrUpdatemethod.
 
 ## EXAMPLES
 

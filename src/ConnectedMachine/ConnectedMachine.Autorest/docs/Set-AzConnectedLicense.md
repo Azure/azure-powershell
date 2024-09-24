@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzConnectedLicense
 
 ## SYNOPSIS
-The operation to create or update a license.
+The operation to Createa license.
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Set-AzConnectedLicense -Name <String> -ResourceGroupName <String> -JsonString <S
 ```
 
 ## DESCRIPTION
-The operation to create or update a license.
+The operation to Createa license.
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedMachineExtension
 
 ## SYNOPSIS
-The operation to update the extension.
+The operation to Updatethe extension.
 
 ## SYNTAX
 
@@ -74,7 +74,7 @@ Update-AzConnectedMachineExtension -MachineName <String> -Name <String> -Resourc
 ```
 
 ## DESCRIPTION
-The operation to update the extension.
+The operation to Updatethe extension.
 
 ## EXAMPLES
 
