@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Cmdlets;
     using System;
 
-    /// <summary>The operation to create or update a run command.</summary>
+    /// <summary>The operation to update a run command.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzConnectedMachineRunCommand_UpdateViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"The operation to create or update a run command.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"The operation to update a run command.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
     public partial class UpdateAzConnectedMachineRunCommand_UpdateViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener,

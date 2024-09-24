@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to create or update the extension.
+The operation to update the extension.
 .Description
-The operation to create or update the extension.
+The operation to update the extension.
 .Example
 $splat = @{
     ResourceGroupName = "connectedMachines"
