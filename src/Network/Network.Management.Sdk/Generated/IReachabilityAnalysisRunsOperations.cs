@@ -154,41 +154,6 @@ namespace Microsoft.Azure.Management.Network
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReachabilityAnalysisRunsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Creates Reachability Analysis Runs.
-        /// </summary>
-        /// <remarks>
-        /// Creates Reachability Analysis Runs.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// Workspace name.
-        /// </param>
-        /// <param name='reachabilityAnalysisRunName'>
-        /// Reachability Analysis Run name.
-        /// </param>
-        /// <param name='body'>
-        /// Analysis Run resource object to create/update.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReachabilityAnalysisRun>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName, ReachabilityAnalysisRun body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Deletes Reachability Analysis Run.
         /// </summary>
         /// <remarks>

@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool>> CreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, IpamPool body = default(IpamPool), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool,IpamPoolsCreateHeaders>> CreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, IpamPool body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updates the specific Pool resource.
@@ -230,6 +230,38 @@ namespace Microsoft.Azure.Management.Network
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<PoolAssociation>>> ListAssociatedResourcesWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Creates/Updates the Pool resource.
+        /// </summary>
+        /// <remarks>
+        /// Creates/Updates the Pool resource.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='poolName'>
+        /// IP Address Manager Pool resource name.
+        /// </param>
+        /// <param name='body'>
+        /// Pool resource object to create/update.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<IpamPool,IpamPoolsCreateHeaders>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string poolName, IpamPool body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete the Pool resource.

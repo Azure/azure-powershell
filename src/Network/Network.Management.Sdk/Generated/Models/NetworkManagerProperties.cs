@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public NetworkManagerProperties(NetworkManagerPropertiesNetworkManagerScopes networkManagerScopes, System.Collections.Generic.IList<string> networkManagerScopeAccesses, string description = default(string), string provisioningState = default(string), string resourceGuid = default(string))
+        public NetworkManagerProperties(NetworkManagerPropertiesNetworkManagerScopes networkManagerScopes, string description = default(string), System.Collections.Generic.IList<string> networkManagerScopeAccesses = default(System.Collections.Generic.IList<string>), string provisioningState = default(string), string resourceGuid = default(string))
 
         {
             this.Description = description;
@@ -96,10 +96,6 @@ namespace Microsoft.Azure.Management.Network.Models
             if (this.NetworkManagerScopes == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "NetworkManagerScopes");
-            }
-            if (this.NetworkManagerScopeAccesses == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "NetworkManagerScopeAccesses");
             }
 
 

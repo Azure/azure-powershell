@@ -241,57 +241,6 @@ namespace Microsoft.Azure.Management.Network
             }
         }
         /// <summary>
-        /// Creates Reachability Analysis Runs.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// Workspace name.
-        /// </param>
-        /// <param name='reachabilityAnalysisRunName'>
-        /// Reachability Analysis Run name.
-        /// </param>
-        public static ReachabilityAnalysisRun BeginCreate(this IReachabilityAnalysisRunsOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName, ReachabilityAnalysisRun body)
-        {
-                return ((IReachabilityAnalysisRunsOperations)operations).BeginCreateAsync(resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName, body).GetAwaiter().GetResult();
-        }
-
-        /// <summary>
-        /// Creates Reachability Analysis Runs.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// Workspace name.
-        /// </param>
-        /// <param name='reachabilityAnalysisRunName'>
-        /// Reachability Analysis Run name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<ReachabilityAnalysisRun> BeginCreateAsync(this IReachabilityAnalysisRunsOperations operations, string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName, ReachabilityAnalysisRun body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName, body, null, cancellationToken).ConfigureAwait(false))
-            {
-                return _result.Body;
-            }
-        }
-        /// <summary>
         /// Deletes Reachability Analysis Run.
         /// </summary>
         /// <param name='operations'>

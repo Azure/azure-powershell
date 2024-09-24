@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="properties">Properties of IpamPool resource properties which are specific to the Pool
         /// resource.
         /// </param>
-        public IpamPool(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), IpamPoolProperties properties = default(IpamPoolProperties))
+        public IpamPool(string location, IpamPoolProperties properties, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
 
         : base(location, id, name, type, systemData, tags)
         {
@@ -77,6 +77,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public override void Validate()
         {
             base.Validate();
+            if (this.Properties == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Properties");
+            }
             if (this.Properties != null)
             {
                 this.Properties.Validate();

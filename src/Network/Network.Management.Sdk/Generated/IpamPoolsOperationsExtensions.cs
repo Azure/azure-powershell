@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='poolName'>
         /// IP Address Manager Pool resource name.
         /// </param>
-        public static IpamPool Create(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body = default(IpamPool))
+        public static IpamPool Create(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body)
         {
                 return ((IIpamPoolsOperations)operations).CreateAsync(resourceGroupName, networkManagerName, poolName, body).GetAwaiter().GetResult();
         }
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<IpamPool> CreateAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body = default(IpamPool), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<IpamPool> CreateAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, body, null, cancellationToken).ConfigureAwait(false))
             {
@@ -347,6 +347,51 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<PoolAssociation>> ListAssociatedResourcesAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.ListAssociatedResourcesWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Creates/Updates the Pool resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='poolName'>
+        /// IP Address Manager Pool resource name.
+        /// </param>
+        public static IpamPool BeginCreate(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body)
+        {
+                return ((IIpamPoolsOperations)operations).BeginCreateAsync(resourceGroupName, networkManagerName, poolName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Creates/Updates the Pool resource.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='poolName'>
+        /// IP Address Manager Pool resource name.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<IpamPool> BeginCreateAsync(this IIpamPoolsOperations operations, string resourceGroupName, string networkManagerName, string poolName, IpamPool body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateWithHttpMessagesAsync(resourceGroupName, networkManagerName, poolName, body, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

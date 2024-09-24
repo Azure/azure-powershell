@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network
 
 
 
-            string apiVersion = "2024-03-01";
+            string apiVersion = "2024-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "reachabilityAnalysisRunName", "^[a-zA-Z0-9_.-]*$");
                 }
             }
-            string apiVersion = "2024-03-01";
+            string apiVersion = "2024-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -577,65 +577,6 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReachabilityAnalysisRun>> CreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName, ReachabilityAnalysisRun body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-                // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<ReachabilityAnalysisRun> _response = await BeginCreateWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName, body, customHeaders, cancellationToken).ConfigureAwait(false);
-                return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Deletes Reachability Analysis Run.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// Workspace name.
-        /// </param>
-        /// <param name='reachabilityAnalysisRunName'>
-        /// Reachability Analysis Run name.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReachabilityAnalysisRunsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-                // Send Request
-                Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReachabilityAnalysisRunsDeleteHeaders> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName, customHeaders, cancellationToken).ConfigureAwait(false);
-                return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Creates Reachability Analysis Runs.
-        /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
-        /// <param name='networkManagerName'>
-        /// The name of the network manager.
-        /// </param>
-        /// <param name='workspaceName'>
-        /// Workspace name.
-        /// </param>
-        /// <param name='reachabilityAnalysisRunName'>
-        /// Reachability Analysis Run name.
-        /// </param>
-        /// <param name='body'>
-        /// Analysis Run resource object to create/update.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// Headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
@@ -651,7 +592,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReachabilityAnalysisRun>> BeginCreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName, ReachabilityAnalysisRun body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ReachabilityAnalysisRun>> CreateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName, ReachabilityAnalysisRun body, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -708,7 +649,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "reachabilityAnalysisRunName", "^[a-zA-Z0-9_.-]*$");
                 }
             }
-            string apiVersion = "2024-03-01";
+            string apiVersion = "2024-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -725,7 +666,7 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("body", body);
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "BeginCreate", tracingParameters);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "Create", tracingParameters);
             }
             // Construct URL
 
@@ -912,6 +853,34 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReachabilityAnalysisRunsDeleteHeaders>> DeleteWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string workspaceName, string reachabilityAnalysisRunName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+                // Send Request
+                Microsoft.Rest.Azure.AzureOperationHeaderResponse<ReachabilityAnalysisRunsDeleteHeaders> _response = await BeginDeleteWithHttpMessagesAsync(resourceGroupName, networkManagerName, workspaceName, reachabilityAnalysisRunName, customHeaders, cancellationToken).ConfigureAwait(false);
+                return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Deletes Reachability Analysis Run.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='networkManagerName'>
+        /// The name of the network manager.
+        /// </param>
+        /// <param name='workspaceName'>
+        /// Workspace name.
+        /// </param>
+        /// <param name='reachabilityAnalysisRunName'>
+        /// Reachability Analysis Run name.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
@@ -973,7 +942,7 @@ namespace Microsoft.Azure.Management.Network
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "reachabilityAnalysisRunName", "^[a-zA-Z0-9_.-]*$");
                 }
             }
-            string apiVersion = "2024-03-01";
+            string apiVersion = "2024-05-01";
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
