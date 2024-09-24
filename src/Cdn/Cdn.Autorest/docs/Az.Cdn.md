@@ -293,6 +293,9 @@ Create a new Secret within the specified profile.
 ### [New-AzFrontDoorCdnSecretCustomerCertificateParametersObject](New-AzFrontDoorCdnSecretCustomerCertificateParametersObject.md)
 Create an in-memory object for CustomerCertificateParameters.
 
+### [New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject](New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject.md)
+Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
+
 ### [New-AzFrontDoorCdnSecurityPolicy](New-AzFrontDoorCdnSecurityPolicy.md)
 Create a new security policy within the specified profile.
 
