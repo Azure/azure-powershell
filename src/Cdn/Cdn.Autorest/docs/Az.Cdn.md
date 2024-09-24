@@ -275,6 +275,9 @@ Create a new rule set within the specified profile.
 ### [New-AzFrontDoorCdnRuleSocketAddrConditionObject](New-AzFrontDoorCdnRuleSocketAddrConditionObject.md)
 Create an in-memory object for DeliveryRuleSocketAddrCondition.
 
+### [New-AzFrontDoorCdnRuleSslProtocolConditionObject](New-AzFrontDoorCdnRuleSslProtocolConditionObject.md)
+Create an in-memory object for DeliveryRuleSslProtocolCondition.
+
 ### [New-AzFrontDoorCdnRuleUrlRedirectActionObject](New-AzFrontDoorCdnRuleUrlRedirectActionObject.md)
 Create an in-memory object for UrlRedirectAction.
 

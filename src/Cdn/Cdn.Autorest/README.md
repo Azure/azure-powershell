@@ -128,6 +128,8 @@ directive:
       cmdlet-name: New-AzFrontDoorCdnRuleHostNameConditionObject
     - model-name: DeliveryRuleSocketAddrCondition
       cmdlet-name: New-AzFrontDoorCdnRuleSocketAddrConditionObject
+    - model-name: DeliveryRuleSslProtocolCondition
+      cmdlet-name: New-AzFrontDoorCdnRuleSslProtocolConditionObject
 
     - model-name: AfdDomainHttpsParameters
       cmdlet-name: New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject

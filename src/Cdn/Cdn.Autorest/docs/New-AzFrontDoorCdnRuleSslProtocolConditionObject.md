@@ -1,40 +1,48 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnrulesocketaddrconditionobject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azfrontdoorcdnrulesslprotocolconditionobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorCdnRuleSocketAddrConditionObject
+# New-AzFrontDoorCdnRuleSslProtocolConditionObject
 
 ## SYNOPSIS
-Create an in-memory object for DeliveryRuleSocketAddrCondition.
+Create an in-memory object for DeliveryRuleSslProtocolCondition.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleSocketAddrConditionObject -ParameterOperator <String> -ParameterTypeName <String>
- [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>]
- [<CommonParameters>]
+New-AzFrontDoorCdnRuleSslProtocolConditionObject -ParameterTypeName <String> [-ParameterMatchValue <String[]>]
+ [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for DeliveryRuleSocketAddrCondition.
+Create an in-memory object for DeliveryRuleSslProtocolCondition.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for DeliveryRuleSocketAddrCondition
+### Example 1: {{ Add title here }}
 ```powershell
- New-AzFrontDoorCdnRuleSocketAddrConditionObject -Name SocketAddr -ParameterOperator IPMatch -ParameterMatchValue 222.10.0.1
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-SocketAddr
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Create an in-memory object for DeliveryRuleSocketAddrCondition
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -62,21 +70,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParameterOperator
-Describes operator to be matched.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -120,7 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleSocketAddrCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleSslProtocolCondition
 
 ## NOTES
 
