@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed Microsoft.Azure.Management.IotCentral 4.0.0 dependencies
+* Added Microsoft.Azure.PowerShell.IotCentral.Management.Sdk
 
 ## Version 0.10.1
 * Removed the outdated deps.json file.
