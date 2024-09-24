@@ -18,19 +18,21 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.TestFx.Recorder;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
 {
     public class UrlDecodingRecordMatcher : PermissiveRecordMatcherWithApiExclusion
     {
-        public UrlDecodingRecordMatcher(bool ignoreResourcesClient, Dictionary<string, string> providers) 
+        public UrlDecodingRecordMatcher(bool ignoreResourcesClient, Dictionary<string, string> providers)
             : base(ignoreResourcesClient, providers)
         {
         }
 
-        public UrlDecodingRecordMatcher(bool ignoreResourcesClient, Dictionary<string, string> providers, 
+        public UrlDecodingRecordMatcher(bool ignoreResourcesClient, Dictionary<string, string> providers,
             Dictionary<string, string> userAgents) : base(ignoreResourcesClient, providers, userAgents)
         {
         }
@@ -38,17 +40,11 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
         public override string GetMatchingKey(HttpRequestMessage request)
         {
             var path = request.RequestUri.PathAndQuery;
-            Debugger.Break();
             if (path.Contains("?&"))
             {
                 path = path.Replace("?&", "?");
             }
-
-            if (path.Contains("%3A"))
-            {
-                path = path.Replace("%3A", ":");
-            }
-
+            path = RemoveOrReplaceLeaseIdOrFilessesionID(path);
             string version;
             if (ContainsIgnoredProvider(path, out version))
             {
@@ -72,6 +68,12 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
 
             var encodedPath = Convert.ToBase64String(Encoding.UTF8.GetBytes(path));
             return string.Format("{0} {1}", request.Method, encodedPath);
+        }
+
+        protected string RemoveOrReplaceLeaseIdOrFilessesionID(string requestUri)
+        {
+            var removedLeaseid = Regex.Replace(requestUri, @"([\?&])leaseid=[^&]+", string.Format("$1leaseid={0}", "const"));
+            return Regex.Replace(removedLeaseid, @"([\?&])filesessionid=[^&]+", string.Format("$1filesessionid={0}", "const"));
         }
     }
 }

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.DataLake.Test.ScenarioTests;
 using Microsoft.Azure.Commands.TestFx;
 using Xunit.Abstractions;
 
@@ -48,6 +49,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null}
                     }
+                )
+                .WithRecordMatcher(
+                    (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => new UrlDecodingRecordMatcher
+                    (ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
                 )
                 .Build();
         }
