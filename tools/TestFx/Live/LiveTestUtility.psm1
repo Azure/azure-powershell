@@ -172,6 +172,44 @@ function New-LiveTestStorageAccountName {
     $saFullName
 }
 
+function New-LiveTestPassword {
+    [CmdletBinding()]
+    [OutputType([string])]
+    param (
+        [Parameter()]
+        [ValidateRange(12, 123)]
+        [int] $MaxLength = 16
+    )
+
+    $lowercase = 'abcdefghijklmnopqrstuvwxyz'
+    $uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    $numbers = '0123456789'
+    $special = '!@#$%^&*()-_=+[]{}|;:,.<>?'
+    $allCharacters = $lowercase + $uppercase + $numbers + $special
+
+    # Ensure at least three of the required character types
+    $password = @()
+    $characterTypes = @($lowercase, $uppercase, $numbers, $special)
+    $selectedTypes = Get-Random -InputObject $characterTypes -Count 3
+
+    foreach ($type in $selectedTypes) {
+        $password += $type[(Get-Random -Minimum 0 -Maximum $type.Length)]
+    }
+
+    # Ensure the first character is not a special character
+    $nonSpecialCharacters = $lowercase + $uppercase + $numbers
+    $firstChar = $nonSpecialCharacters[(Get-Random -Minimum 0 -Maximum $nonSpecialCharacters.Length)]
+    $password = @($firstChar) + $password
+
+    # Fill the rest of the password length with random characters from all sets
+    $remainingLength = $MaxLength - $password.Length
+    $password += (1..$remainingLength | ForEach-Object { $allCharacters[(Get-Random -Minimum 0 -Maximum $allCharacters.Length)] })
+
+    # Shuffle the password to ensure randomness, excluding the first character
+    $password = $password[0] + ( -join ($password[1..($password.Length - 1)] | Get-Random -Count ($password.Length - 1)))
+    return -join $password
+}
+
 function Invoke-LiveTestCommand {
     [CmdletBinding()]
     param (
