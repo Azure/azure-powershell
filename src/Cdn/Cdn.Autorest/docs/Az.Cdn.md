@@ -197,6 +197,9 @@ Create a new origin group within the specified endpoint.
 ### [New-AzCdnOriginGroupOverrideActionObject](New-AzCdnOriginGroupOverrideActionObject.md)
 Create an in-memory object for OriginGroupOverrideAction.
 
+### [New-AzCdnProfile](New-AzCdnProfile.md)
+Creates an CDN profile with the specified profile name under the specified subscription and resource group.
+
 ### [New-AzCdnPurgeParametersObject](New-AzCdnPurgeParametersObject.md)
 Create an in-memory object for PurgeParameters.
 
