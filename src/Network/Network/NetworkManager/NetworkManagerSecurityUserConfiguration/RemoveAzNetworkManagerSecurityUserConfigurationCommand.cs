@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System.Management.Automation;
@@ -119,11 +120,21 @@ namespace Microsoft.Azure.Commands.Network
             switch (this.ParameterSetName)
             {
                 case DeleteByResourceIdParameterSet:
-                    var resourceId = this.ResourceId;
+                    var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+                    var segments = parsedResourceId.ParentResource.Split('/');
+                    if (segments.Length < 2)
+                    {
+                        throw new PSArgumentException("Invalid ResourceId format. Ensure the ResourceId is in the correct format.");
+                    }
+
+                    var resourceGroupName = parsedResourceId.ResourceGroupName;
+                    var networkManagerName = segments[1]; // NetworkManagerName
+                    var routingConfigurationName = parsedResourceId.ResourceName; // SecurityUserConfigurationName
+
                     return (
-                        NetworkBaseCmdlet.GetResourceGroup(resourceId),
-                        NetworkBaseCmdlet.GetResourceName(resourceId, "networkManagers"),
-                        NetworkBaseCmdlet.GetResourceName(resourceId, "securityUserConfigurations")
+                        resourceGroupName,
+                        networkManagerName,
+                        routingConfigurationName
                     );
 
                 case DeleteByInputObjectParameterSet:

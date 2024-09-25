@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -91,11 +92,20 @@ namespace Microsoft.Azure.Commands.Network
                     break;
 
                 case GetByResourceIdParameterSet:
-                    var resourceId = this.ResourceId;
-                    var resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(resourceId);
-                    var networkManagerName = NetworkBaseCmdlet.GetResourceName(resourceId, "networkManagers");
-                    var securityUserConfigurationName = NetworkBaseCmdlet.GetResourceName(resourceId, "securityUserConfigurations");
-                    var nmSecurityUserConfigurationByResourceId = this.GetNetworkManagerSecurityUserConfiguration(resourceGroupName, networkManagerName, securityUserConfigurationName);
+                    var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+
+                    // Validate the format of the ResourceId
+                    var segments = parsedResourceId.ParentResource.Split('/');
+                    if (segments.Length < 2)
+                    {
+                        throw new PSArgumentException("Invalid ResourceId format. Ensure the ResourceId is in the correct format.");
+                    }
+
+                    this.Name = parsedResourceId.ResourceName;
+                    this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                    this.NetworkManagerName = segments[1];
+
+                    var nmSecurityUserConfigurationByResourceId = this.GetNetworkManagerSecurityUserConfiguration(this.ResourceGroupName, this.NetworkManagerName, this.Name);
                     WriteObject(nmSecurityUserConfigurationByResourceId);
                     break;
 

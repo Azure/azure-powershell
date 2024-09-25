@@ -19,6 +19,7 @@ using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -105,14 +106,20 @@ namespace Microsoft.Azure.Commands.Network
                     break;
 
                 case GetByResourceIdParameterSet:
-                    var resourceId = this.ResourceId;
-                    var resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(resourceId);
-                    var networkManagerName = NetworkBaseCmdlet.GetResourceName(resourceId, "networkManagers");
-                    var routingConfigurationName = NetworkBaseCmdlet.GetResourceName(resourceId, "routingConfigurations");
-                    var ruleCollectionName = NetworkBaseCmdlet.GetResourceName(resourceId, "ruleCollections");
+                    var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+                    var segments = parsedResourceId.ParentResource.Split('/');
+                    if (segments.Length < 4)
+                    {
+                        throw new PSArgumentException("Invalid ResourceId format. Ensure the ResourceId is in the correct format.");
+                    }
 
-                    var ruleCollectionByResourceId = this.GetNetworkManagerRoutingRuleCollection(resourceGroupName, networkManagerName, routingConfigurationName, ruleCollectionName);
-                    WriteObject(ruleCollectionByResourceId);
+                    var resourceGroupName = parsedResourceId.ResourceGroupName;
+                    var networkManagerName = segments[1]; // NetworkManagerName
+                    var routingConfigurationName = segments[3]; // RoutingConfigurationName
+                    var ruleCollectionName = parsedResourceId.ResourceName; // RuleCollectionName
+
+                    var ruleCollectionById = this.GetNetworkManagerRoutingRuleCollection(resourceGroupName, networkManagerName, routingConfigurationName, ruleCollectionName);
+                    WriteObject(ruleCollectionById);
                     break;
 
                 case ListParameterSet:

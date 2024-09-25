@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using System;
 using System.Management.Automation;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = SetByInputObjectParameterSet), OutputType(typeof(PSNetworkManagerRoutingRuleCollection))]
     public class SetAzNetworkManagerRoutingRuleCollection : NetworkManagerRoutingRuleCollectionBaseCmdlet
     {
-        private const string SetByNameParameterSet = "ByNameParameters";
+        private const string SetByNameParameterSet = "ByName";
         private const string SetByResourceIdParameterSet = "ByResourceId";
         private const string SetByInputObjectParameterSet = "ByInputObject";
 
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string NetworkManagerName { get; set; }
 
+        [Alias("ConfigName")]
         [Parameter(
             ParameterSetName = SetByNameParameterSet,
             Mandatory = true,
@@ -108,7 +110,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Fetch the InputObject if it is not set and ResourceId is provided
-                if (this.InputObject == null && !string.IsNullOrEmpty(this.ResourceId))
+                if (this.InputObject == null)
                 {
                     this.InputObject = this.GetNetworkManagerRoutingRuleCollection(resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName);
                 }
@@ -143,11 +145,17 @@ namespace Microsoft.Azure.Commands.Network
                     );
 
                 case SetByResourceIdParameterSet:
-                    return (
-                        NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
-                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
-                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "routingConfigurations"),
-                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "ruleCollections")
+                    var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+                    var segments = parsedResourceId.ParentResource.Split('/');
+                    if (segments.Length < 4)
+                    {
+                        throw new PSArgumentException("Invalid ResourceId format. Ensure the ResourceId is in the correct format.");
+                    }
+
+                    return (parsedResourceId.ResourceGroupName,
+                        segments[1], // NetworkManagerName
+                        segments[3], // RoutingConfigurationName
+                        parsedResourceId.ResourceName // RuleCollectionName)
                     );
 
                 case SetByNameParameterSet:

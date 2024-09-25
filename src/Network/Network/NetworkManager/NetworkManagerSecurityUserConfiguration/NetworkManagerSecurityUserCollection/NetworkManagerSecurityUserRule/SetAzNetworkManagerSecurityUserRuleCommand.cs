@@ -93,6 +93,92 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string RuleCollectionName { get; set; }
 
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = SetByNameParameterSet)]
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = SetByResourceIdParameterSet)]
+        public string Description { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Protocol of Rule. Valid values include 'Tcp', 'Udp', 'Icmp', 'Esp', 'Any', and 'Ah'.",
+            ParameterSetName = SetByNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Protocol of Rule. Valid values include 'Tcp', 'Udp', 'Icmp', 'Esp', 'Any', and 'Ah'.",
+            ParameterSetName = SetByResourceIdParameterSet)]
+        [ValidateSet("Tcp", "Udp", "Icmp", "Esp", "Any", "Ah", IgnoreCase = true)]
+        public string Protocol { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Direction of Rule. Valid values include 'Inbound' and 'Outbound'.",
+            ParameterSetName = SetByNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Direction of Rule. Valid values include 'Inbound' and 'Outbound'.",
+            ParameterSetName = SetByResourceIdParameterSet)]
+        [ValidateSet("Inbound", "Outbound", IgnoreCase = true)]
+        public string Direction { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Source Address Prefixes.",
+            ParameterSetName = SetByNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Source Address Prefixes.",
+            ParameterSetName = SetByResourceIdParameterSet)]
+        public PSNetworkManagerAddressPrefixItem[] SourceAddressPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Destination Address Prefixes.",
+            ParameterSetName = SetByNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Destination Address Prefixes.",
+            ParameterSetName = SetByResourceIdParameterSet)]
+        public PSNetworkManagerAddressPrefixItem[] DestinationAddressPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Source Port Ranges.",
+            ParameterSetName = SetByNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Source Port Ranges.",
+            ParameterSetName = SetByResourceIdParameterSet)]
+        public string[] SourcePortRange { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Destination Port Ranges.",
+            ParameterSetName = SetByNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Destination Port Ranges.",
+            ParameterSetName = SetByResourceIdParameterSet)]
+        public string[] DestinationPortRange { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -175,25 +261,32 @@ namespace Microsoft.Azure.Commands.Network
         /// <returns>Mapped SecurityUserRule object.</returns>
         private SecurityUserRule MapToSdkObject()
         {
-            if (this.InputObject.GetType().Name == "PSNetworkManagerSecurityUserRule")
+            if (this.InputObject != null)
             {
-                return NetworkResourceManagerProfile.Mapper.Map<SecurityUserRule>(InputObject);
+                if (this.InputObject is PSNetworkManagerSecurityUserRule)
+                {
+                    return NetworkResourceManagerProfile.Mapper.Map<SecurityUserRule>(InputObject);
+                }
+                else
+                {
+                    throw new PSArgumentException("Invalid InputObject type. Expected type is PSNetworkManagerSecurityUserRule.");
+                }
             }
             else
             {
                 var securityUserRule = new SecurityUserRule
                 {
-                    Protocol = this.InputObject.Protocol,
-                    Direction = this.InputObject.Direction,
-                    Sources = this.InputObject.Sources?.Select(s => new AddressPrefixItem(s.AddressPrefix, s.AddressPrefixType)).ToList(),
-                    Destinations = this.InputObject.Destinations?.Select(d => new AddressPrefixItem(d.AddressPrefix, d.AddressPrefixType)).ToList(),
-                    SourcePortRanges = this.InputObject.SourcePortRanges,
-                    DestinationPortRanges = this.InputObject.DestinationPortRanges
+                    Protocol = this.Protocol,
+                    Direction = this.Direction,
+                    Sources = this.SourceAddressPrefix?.Select(s => new AddressPrefixItem(s.AddressPrefix, s.AddressPrefixType)).ToList(),
+                    Destinations = this.DestinationAddressPrefix?.Select(d => new AddressPrefixItem(d.AddressPrefix, d.AddressPrefixType)).ToList(),
+                    SourcePortRanges = this.SourcePortRange,
+                    DestinationPortRanges = this.DestinationPortRange
                 };
 
-                if (!string.IsNullOrEmpty(this.InputObject.Description))
+                if (!string.IsNullOrEmpty(this.Description))
                 {
-                    securityUserRule.Description = this.InputObject.Description;
+                    securityUserRule.Description = this.Description;
                 }
 
                 return securityUserRule;

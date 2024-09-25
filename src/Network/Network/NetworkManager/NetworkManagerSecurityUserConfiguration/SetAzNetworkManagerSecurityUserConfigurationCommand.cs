@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using System;
 using System.Management.Automation;
@@ -122,14 +123,23 @@ namespace Microsoft.Azure.Commands.Network
             switch (this.ParameterSetName)
             {
                 case SetByResourceIdParameterSet:
+                    var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+
+                    // Validate the format of the ResourceId
+                    var segments = parsedResourceId.ParentResource.Split('/');
+                    if (segments.Length < 2)
+                    {
+                        throw new PSArgumentException("Invalid ResourceId format. Ensure the ResourceId is in the correct format.");
+                    }
+
                     return (
-                        NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
-                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
-                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "securityUserConfigurations"),
+                        parsedResourceId.ResourceGroupName,
+                        parsedResourceId.ParentResource.Split('/')[1], // NetworkManagerName
+                        parsedResourceId.ResourceName, // SecurityUserConfigurationName
                         this.GetNetworkManagerSecurityUserConfiguration(
-                            NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
-                            NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
-                            NetworkBaseCmdlet.GetResourceName(this.ResourceId, "securityUserConfigurations")
+                            parsedResourceId.ResourceGroupName,
+                            parsedResourceId.ParentResource.Split('/')[1],
+                            parsedResourceId.ResourceName
                         )
                     );
 

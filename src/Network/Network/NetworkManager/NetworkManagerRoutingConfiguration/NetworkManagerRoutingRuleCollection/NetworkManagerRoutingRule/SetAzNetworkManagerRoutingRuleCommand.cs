@@ -219,9 +219,16 @@ namespace Microsoft.Azure.Commands.Network
 
         private RoutingRule MapToSdkObject()
         {
-            if (this.InputObject?.GetType().Name == "PSNetworkManagerRoutingRule")
+            if (this.InputObject != null)
             {
-                return NetworkResourceManagerProfile.Mapper.Map<RoutingRule>(InputObject);
+                if (this.InputObject is PSNetworkManagerRoutingRule)
+                {
+                    return NetworkResourceManagerProfile.Mapper.Map<RoutingRule>(InputObject);
+                }
+                else
+                {
+                    throw new PSArgumentException("Invalid InputObject type. Expected type is PSNetworkManagerRoutingRule.");
+                }
             }
             else
             {

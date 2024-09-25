@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using System.Management.Automation;
 
@@ -135,11 +136,24 @@ namespace Microsoft.Azure.Commands.Network
                     );
 
                 case DeleteByResourceIdParameterSet:
+                    var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+
+                    var segments = parsedResourceId.ParentResource.Split('/');
+                    if (segments.Length < 4)
+                    {
+                        throw new PSArgumentException("Invalid ResourceId format. Ensure the ResourceId is in the correct format.");
+                    }
+
+                    var resourceGroupName = parsedResourceId.ResourceGroupName;
+                    var networkManagerName = segments[1]; // NetworkManagerName
+                    var routingConfigurationName = segments[3]; // RoutingConfigurationName
+                    var routingRuleCollectionName = parsedResourceId.ResourceName; // RuleCollectionName
+
                     return (
-                        NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
-                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
-                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "routingConfigurations"),
-                        NetworkBaseCmdlet.GetResourceName(this.ResourceId, "ruleCollections")
+                        resourceGroupName,
+                        networkManagerName,
+                        routingConfigurationName,
+                        routingRuleCollectionName
                     );
 
                 case DeleteByNameParameterSet:
