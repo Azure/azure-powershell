@@ -5,20 +5,20 @@ This directory contains management plane service clients of Az.Storage module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.91
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
-# title: ApiManagementClient
+title: ApiManagementClient
 ```
 
 
@@ -74,6 +74,183 @@ input-file:
 directive:
   - suppress: R3016
     reason: existing properties, can't be changed without breaking API.
+  - suppress: R4009
+    from: apimapis.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimapiversionsets.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimauthorizationservers.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimbackends.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimbackends.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimcaches.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimcertificates.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimdeployment.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimsubscriptions.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimusers.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimproducts.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimnamedvalues.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimgateways.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimgroups.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimcontenttypes.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimdeletedservices.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimdiagnostics.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimemailtemplates.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimidentityprovider.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimissues.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimloggers.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimopenidconnectproviders.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimpolicies.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimportalrevisions.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimschema.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimsettings.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimtags.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimtenant.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4009
+    from: apimnotifications.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: R4037
+    from: definitions.json
+    reason: We want customers to be able to supply any valid JSON token, object or otherwise    
+  - suppress: R4009
+    from: apimprivatelink.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.  
+  - suppress: R4009
+    from: apimprivatelink.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.  
+  - suppress: R4009
+    from: apimportalsettings.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.  
+  - suppress: R4009
+    from: apimportalconfigs.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.  
+  - suppress: R4009
+    from: apimpolicyfragments.json
+    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
+  - suppress: LroErrorContent
+    from: apimapis.json
+    reason: Error Schema not referencing Common Schema V2. Will fix in the future. 
+  - suppress: LroErrorContent
+    from: apimusers.json
+    reason: Error Schema not referencing Common Schema V2. Will fix in the future. 
+  - suppress: LroErrorContent
+    from: apimpolicyrestrictionsvalidation.json
+    reason: Error Schema not referencing Common Schema V2. Will fix in the future. 
+suppressions:
+  - code: PropertiesTypeObjectNoDefinition
+    from: definitions.json
+    reason: Invalid error
+  - code: PutRequestResponseSchemeArm
+    from: apimworkspacecertificates.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/certificates/{certificateId}"].put
+    reason: Certificate is a secret and it should not be available through get request
+  - code: GetCollectionOnlyHasValueAndNextLink
+    from: apimworkspacecertificates.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/certificates].get.responses["200"].schema.properties
+    reason: Our object contain count property as a sibling to nextLink and value and it used for proxy resource collection GETs.
+  - code: GetCollectionOnlyHasValueAndNextLink
+    from: apimworkspacebackends.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/backends"].get.responses["200"].schema.properties
+    reason: Our object contain count property as a sibling to nextLink and value and it used for proxy resource collection GETs.
+  - code: GetCollectionOnlyHasValueAndNextLink
+    from: apimworkspacediagnostics.json
+    where: 
+      - $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/diagnostics"].get.responses["200"].schema.properties
+      - $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/diagnostics"].get.responses.["200"].schema.properties
+    reason: Our object contain count property as a sibling to nextLink and value and it used for proxy resource collection GETs.
+  - code: GetCollectionOnlyHasValueAndNextLink
+    from: apimworkspaceloggers.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/loggers"].get.responses["200"].schema.properties
+    reason: Our object contain count property as a sibling to nextLink and value and it used for proxy resource collection GETs.
+  - code: PatchBodyParametersSchema
+    from: apimworkspacebackends.json
+    reasons: This are the object fields which when updated require some data to be present.
+  - from: apimproducts.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/groups/{groupId}"].head.responses
+    transform: >-
+      return {
+          "204": {
+            "description": "The Group is associated with the Product."
+          },
+          "404": {
+            "description": "The Group is not associated with the Product."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+      }
+  - from: apimproducts.json
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/apis/{apiId}"].head.responses
+    transform: >-
+      return {
+          "204": {
+            "description": "Entity exists"
+          },
+          "404": {
+            "description": "Entity does not exists."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+      }
 
 output-folder: Generated
 
