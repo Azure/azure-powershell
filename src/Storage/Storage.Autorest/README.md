@@ -34,8 +34,8 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 #  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/storage.json
-  - D:\code\swagger\specification\storage\resource-manager\Microsoft.Storage\stable\2024-01-01\file.json
-  - D:\code\swagger\specification\storage\resource-manager\Microsoft.Storage\stable\2024-01-01\storage.json
+  - https://github.com/blueww/azure-rest-api-specs/tree/mgadsing/jan24api/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/file.json
+  - https://github.com/blueww/azure-rest-api-specs/tree/mgadsing/jan24api/specification/storage/resource-manager/Microsoft.Storage/stable/2024-01-01/storage.json
 
 # For new RP, the version is 0.1.0
 module-version: 5.9.1
