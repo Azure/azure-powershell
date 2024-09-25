@@ -61,6 +61,14 @@ namespace Microsoft.Azure.Management.Storage
         public bool? GenerateClientRequestId { get; set;}
 
         /// <summary>
+        /// Gets the IFileServicesOperations
+        /// </summary>
+        public virtual IFileServicesOperations FileServices { get; private set; }
+        /// <summary>
+        /// Gets the IFileSharesOperations
+        /// </summary>
+        public virtual IFileSharesOperations FileShares { get; private set; }
+        /// <summary>
         /// Gets the IOperations
         /// </summary>
         public virtual IOperations Operations { get; private set; }
@@ -116,14 +124,6 @@ namespace Microsoft.Azure.Management.Storage
         /// Gets the IBlobContainersOperations
         /// </summary>
         public virtual IBlobContainersOperations BlobContainers { get; private set; }
-        /// <summary>
-        /// Gets the IFileServicesOperations
-        /// </summary>
-        public virtual IFileServicesOperations FileServices { get; private set; }
-        /// <summary>
-        /// Gets the IFileSharesOperations
-        /// </summary>
-        public virtual IFileSharesOperations FileShares { get; private set; }
         /// <summary>
         /// Initializes a new instance of the StorageManagementClient class.
         /// </summary>
@@ -359,6 +359,8 @@ namespace Microsoft.Azure.Management.Storage
         /// </summary>
         private void Initialize()
         {
+            this.FileServices = new FileServicesOperations(this);
+            this.FileShares = new FileSharesOperations(this);
             this.Operations = new Operations(this);
             this.Skus = new SkusOperations(this);
             this.StorageAccounts = new StorageAccountsOperations(this);
@@ -373,10 +375,8 @@ namespace Microsoft.Azure.Management.Storage
             this.EncryptionScopes = new EncryptionScopesOperations(this);
             this.BlobServices = new BlobServicesOperations(this);
             this.BlobContainers = new BlobContainersOperations(this);
-            this.FileServices = new FileServicesOperations(this);
-            this.FileShares = new FileSharesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-05-01";
+            this.ApiVersion = "2024-01-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

@@ -60,9 +60,46 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="metadata">A name-value pair to associate with the share as metadata.
         /// </param>
 
-        /// <param name="shareQuota">The maximum size of the share, in gigabytes. Must be greater than 0, and
-        /// less than or equal to 5TB (5120). For Large File Shares, the maximum size
-        /// is 102400.
+        /// <param name="shareQuota">The provisioned size of the share, in gibibytes. Must be greater than 0,
+        /// and less than or equal to 5TB (5120). For Large File Shares, the maximum
+        /// size is 102400. For file shares created under Files Provisioned v2 account
+        /// type, please refer to the GetFileServiceUsage API response for the minimum
+        /// and maximum allowed provisioned storage size.
+        /// </param>
+
+        /// <param name="provisionedIops">The provisioned IOPS of the share. This property is only for file shares
+        /// created under Files Provisioned v2 account type. Please refer to the
+        /// GetFileServiceUsage API response for the minimum and maximum allowed value
+        /// for provisioned IOPS.
+        /// </param>
+
+        /// <param name="provisionedBandwidthMibps">The provisioned bandwidth of the share, in mebibytes per second. This
+        /// property is only for file shares created under Files Provisioned v2 account
+        /// type. Please refer to the GetFileServiceUsage API response for the minimum
+        /// and maximum allowed value for provisioned bandwidth.
+        /// </param>
+
+        /// <param name="includedBurstIops">The calculated burst IOPS of the share. This property is only for file
+        /// shares created under Files Provisioned v2 account type.
+        /// </param>
+
+        /// <param name="maxBurstCreditsForIops">The calculated maximum burst credits for the share. This property is only
+        /// for file shares created under Files Provisioned v2 account type.
+        /// </param>
+
+        /// <param name="nextAllowedQuotaDowngradeTime">Returns the next allowed provisioned storage size downgrade time for the
+        /// share. This property is only for file shares created under Files
+        /// Provisioned v1 SSD and Files Provisioned v2 account type
+        /// </param>
+
+        /// <param name="nextAllowedProvisionedIopsDowngradeTime">Returns the next allowed provisioned IOPS downgrade time for the share.
+        /// This property is only for file shares created under Files Provisioned v2
+        /// account type.
+        /// </param>
+
+        /// <param name="nextAllowedProvisionedBandwidthDowngradeTime">Returns the next allowed provisioned bandwidth downgrade time for the
+        /// share. This property is only for file shares created under Files
+        /// Provisioned v2 account type.
         /// </param>
 
         /// <param name="rootSquash">The property is for NFS share only. The default is NoRootSquash.
@@ -101,7 +138,10 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="snapshotTime">Creation time of share snapshot returned in the response of list shares
         /// with expand param &#34;snapshots&#34;.
         /// </param>
-        public FileShareItem(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string enabledProtocols = default(string), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), int? shareQuota = default(int?), string rootSquash = default(string), string version = default(string), bool? deleted = default(bool?), System.DateTime? deletedTime = default(System.DateTime?), int? remainingRetentionDays = default(int?), string accessTier = default(string), System.DateTime? accessTierChangeTime = default(System.DateTime?), string accessTierStatus = default(string), long? shareUsageBytes = default(long?), System.Collections.Generic.IList<SignedIdentifier> signedIdentifiers = default(System.Collections.Generic.IList<SignedIdentifier>), System.DateTime? snapshotTime = default(System.DateTime?))
+
+        /// <param name="fileSharePaidBursting">File Share Paid Bursting properties.
+        /// </param>
+        public FileShareItem(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), string enabledProtocols = default(string), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), System.Collections.Generic.IDictionary<string, string> metadata = default(System.Collections.Generic.IDictionary<string, string>), int? shareQuota = default(int?), int? provisionedIops = default(int?), int? provisionedBandwidthMibps = default(int?), int? includedBurstIops = default(int?), long? maxBurstCreditsForIops = default(long?), System.DateTime? nextAllowedQuotaDowngradeTime = default(System.DateTime?), System.DateTime? nextAllowedProvisionedIopsDowngradeTime = default(System.DateTime?), System.DateTime? nextAllowedProvisionedBandwidthDowngradeTime = default(System.DateTime?), string rootSquash = default(string), string version = default(string), bool? deleted = default(bool?), System.DateTime? deletedTime = default(System.DateTime?), int? remainingRetentionDays = default(int?), string accessTier = default(string), System.DateTime? accessTierChangeTime = default(System.DateTime?), string accessTierStatus = default(string), long? shareUsageBytes = default(long?), System.Collections.Generic.IList<SignedIdentifier> signedIdentifiers = default(System.Collections.Generic.IList<SignedIdentifier>), System.DateTime? snapshotTime = default(System.DateTime?), FileSharePropertiesFileSharePaidBursting fileSharePaidBursting = default(FileSharePropertiesFileSharePaidBursting))
 
         : base(id, name, type, etag)
         {
@@ -112,6 +152,13 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.LastModifiedTime = lastModifiedTime;
             this.Metadata = metadata;
             this.ShareQuota = shareQuota;
+            this.ProvisionedIops = provisionedIops;
+            this.ProvisionedBandwidthMibps = provisionedBandwidthMibps;
+            this.IncludedBurstIops = includedBurstIops;
+            this.MaxBurstCreditsForIops = maxBurstCreditsForIops;
+            this.NextAllowedQuotaDowngradeTime = nextAllowedQuotaDowngradeTime;
+            this.NextAllowedProvisionedIopsDowngradeTime = nextAllowedProvisionedIopsDowngradeTime;
+            this.NextAllowedProvisionedBandwidthDowngradeTime = nextAllowedProvisionedBandwidthDowngradeTime;
             this.RootSquash = rootSquash;
             this.Version = version;
             this.Deleted = deleted;
@@ -123,6 +170,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.ShareUsageBytes = shareUsageBytes;
             this.SignedIdentifiers = signedIdentifiers;
             this.SnapshotTime = snapshotTime;
+            this.FileSharePaidBursting = fileSharePaidBursting;
             CustomInit();
         }
 
@@ -171,12 +219,71 @@ namespace Microsoft.Azure.Management.Storage.Models
         public System.Collections.Generic.IDictionary<string, string> Metadata {get; set; }
 
         /// <summary>
-        /// Gets or sets the maximum size of the share, in gigabytes. Must be greater
-        /// than 0, and less than or equal to 5TB (5120). For Large File Shares, the
-        /// maximum size is 102400.
+        /// Gets or sets the provisioned size of the share, in gibibytes. Must be
+        /// greater than 0, and less than or equal to 5TB (5120). For Large File
+        /// Shares, the maximum size is 102400. For file shares created under Files
+        /// Provisioned v2 account type, please refer to the GetFileServiceUsage API
+        /// response for the minimum and maximum allowed provisioned storage size.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.shareQuota")]
         public int? ShareQuota {get; set; }
+
+        /// <summary>
+        /// Gets or sets the provisioned IOPS of the share. This property is only for
+        /// file shares created under Files Provisioned v2 account type. Please refer
+        /// to the GetFileServiceUsage API response for the minimum and maximum allowed
+        /// value for provisioned IOPS.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisionedIops")]
+        public int? ProvisionedIops {get; set; }
+
+        /// <summary>
+        /// Gets or sets the provisioned bandwidth of the share, in mebibytes per
+        /// second. This property is only for file shares created under Files
+        /// Provisioned v2 account type. Please refer to the GetFileServiceUsage API
+        /// response for the minimum and maximum allowed value for provisioned
+        /// bandwidth.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisionedBandwidthMibps")]
+        public int? ProvisionedBandwidthMibps {get; set; }
+
+        /// <summary>
+        /// Gets the calculated burst IOPS of the share. This property is only for file
+        /// shares created under Files Provisioned v2 account type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.includedBurstIops")]
+        public int? IncludedBurstIops {get; private set; }
+
+        /// <summary>
+        /// Gets the calculated maximum burst credits for the share. This property is
+        /// only for file shares created under Files Provisioned v2 account type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maxBurstCreditsForIops")]
+        public long? MaxBurstCreditsForIops {get; private set; }
+
+        /// <summary>
+        /// Gets returns the next allowed provisioned storage size downgrade time for
+        /// the share. This property is only for file shares created under Files
+        /// Provisioned v1 SSD and Files Provisioned v2 account type
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextAllowedQuotaDowngradeTime")]
+        public System.DateTime? NextAllowedQuotaDowngradeTime {get; private set; }
+
+        /// <summary>
+        /// Gets returns the next allowed provisioned IOPS downgrade time for the
+        /// share. This property is only for file shares created under Files
+        /// Provisioned v2 account type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextAllowedProvisionedIopsDowngradeTime")]
+        public System.DateTime? NextAllowedProvisionedIopsDowngradeTime {get; private set; }
+
+        /// <summary>
+        /// Gets returns the next allowed provisioned bandwidth downgrade time for the
+        /// share. This property is only for file shares created under Files
+        /// Provisioned v2 account type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.nextAllowedProvisionedBandwidthDowngradeTime")]
+        public System.DateTime? NextAllowedProvisionedBandwidthDowngradeTime {get; private set; }
 
         /// <summary>
         /// Gets or sets the property is for NFS share only. The default is
@@ -248,35 +355,11 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.snapshotTime")]
         public System.DateTime? SnapshotTime {get; private set; }
+
         /// <summary>
-        /// Validate the object.
+        /// Gets or sets file Share Paid Bursting properties.
         /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-
-
-
-
-
-            if (this.ShareQuota != null)
-            {
-                if (this.ShareQuota > 102400)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "ShareQuota", 102400);
-                }
-                if (this.ShareQuota < 1)
-                {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "ShareQuota", 1);
-                }
-            }
-
-
-
-
-
-        }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.fileSharePaidBursting")]
+        public FileSharePropertiesFileSharePaidBursting FileSharePaidBursting {get; set; }
     }
 }
