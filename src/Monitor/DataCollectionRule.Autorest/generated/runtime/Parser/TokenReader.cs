@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 ﻿using System;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.Json
 {
     public class TokenReader : IDisposable
     {

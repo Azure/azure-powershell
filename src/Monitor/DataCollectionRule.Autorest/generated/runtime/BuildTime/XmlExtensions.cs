@@ -6,7 +6,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.PowerShell
 {
     internal static class XmlExtensions
     {

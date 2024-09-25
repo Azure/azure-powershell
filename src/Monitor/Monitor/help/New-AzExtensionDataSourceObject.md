@@ -143,7 +143,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ExtensionDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollectionRule.Models.ExtensionDataSource
 
 ## NOTES
 

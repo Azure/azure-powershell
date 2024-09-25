@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Reflection;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.Json
 {
     internal class JsonModel
     {

@@ -21,12 +21,12 @@ Create an in-memory object for MonitoringAccountDestination.
 Create an in-memory object for MonitoringAccountDestination.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.MonitoringAccountDestination
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.MonitoringAccountDestination
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azmonitoringaccountdestinationobject
 #>
 function New-AzMonitoringAccountDestinationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.MonitoringAccountDestination')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.MonitoringAccountDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,7 +40,7 @@ function New-AzMonitoringAccountDestinationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.MonitoringAccountDestination]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.MonitoringAccountDestination]::New()
 
         if ($PSBoundParameters.ContainsKey('AccountResourceId')) {
             $Object.AccountResourceId = $AccountResourceId

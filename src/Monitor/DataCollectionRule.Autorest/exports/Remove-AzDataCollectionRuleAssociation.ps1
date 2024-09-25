@@ -23,7 +23,7 @@ Deletes an association.
 Remove-AzDataCollectionRuleAssociation -AssociationName configurationAccessEndpoint -ResourceUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azsecpack-rg/providers/Microsoft.Compute/virtualMachines/ubuntu-2004
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleIdentity
 .Outputs
 System.Boolean
 .Notes
@@ -48,7 +48,7 @@ function Remove-AzDataCollectionRuleAssociation {
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Alias('Name')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Path')]
     [System.String]
     # The name of the association.
     # The name is case insensitive.
@@ -56,67 +56,67 @@ param(
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Alias('TargetResourceId')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Path')]
     [System.String]
     # The identifier of the resource.
     ${ResourceUri},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleIdentity]
     # Identity Parameter
     ${InputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Returns true when the command succeeds
     ${PassThru},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -136,7 +136,7 @@ begin {
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
         } else {
             $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
             if ($internalCalledCmdlets -eq '') {
@@ -152,9 +152,9 @@ begin {
             DeleteViaIdentity = 'Az.DataCollectionRule.private\Remove-AzDataCollectionRuleAssociation_DeleteViaIdentity';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -189,7 +189,7 @@ end {
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
         if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         }
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId

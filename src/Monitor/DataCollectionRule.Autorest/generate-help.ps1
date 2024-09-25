@@ -47,7 +47,7 @@ $moduleName = $modulePsd1.BaseName
 # Load DLL to use build-time cmdlets
 Import-Module -Name $modulePath
 Import-Module -Name (Join-Path $PSScriptRoot './bin/Az.DataCollectionRule.private.dll')
-$instance = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Module]::Instance
+$instance = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Module]::Instance
 # Module info is shared per profile
 $moduleInfo = Get-Module -Name $moduleName
 

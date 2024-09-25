@@ -3,7 +3,7 @@
   $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '..\bin\Az.DataCollectionRule.private.dll')
 
   # Get the private module's instance
-  $instance = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Module]::Instance
+  $instance = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Module]::Instance
 
   # Export nothing to clear implicit exports
   Export-ModuleMember

@@ -25,16 +25,16 @@ New-AzPerfCounterDataSourceObject -CounterSpecifier "\\Processor(_Total)\\% Proc
 New-AzPerfCounterDataSourceObject -CounterSpecifier "\\Processor(_Total)\\% Processor Time","\\Memory\\Committed Bytes","\\LogicalDisk(_Total)\\Free Megabytes","\\PhysicalDisk(_Total)\\Avg. Disk Queue Length" -Name cloudTeamCoreCounters -SamplingFrequencyInSecond 15 -Stream Microsoft-Perf
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PerfCounterDataSource
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PerfCounterDataSource
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azperfcounterdatasourceobject
 #>
 function New-AzPerfCounterDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PerfCounterDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PerfCounterDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String[]]
     # A list of specifier names of the performance counters you want to collect.
     #         Use a wildcard (*) to collect a counter for all instances.
@@ -42,21 +42,21 @@ param(
     ${CounterSpecifier},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # A friendly name for the data source.
     #         This name should be unique across all data sources (regardless of type) within the data collection rule.
     ${Name},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.Int32]
     # The number of seconds between consecutive counter measurements (samples).
     ${SamplingFrequencyInSecond},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Microsoft-Perf", "Microsoft-InsightsMetrics")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("Microsoft-Perf", "Microsoft-InsightsMetrics")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String[]]
     # List of streams that this data source will be sent to.
     #         A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
@@ -77,7 +77,7 @@ begin {
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
         } else {
             $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
             if ($internalCalledCmdlets -eq '') {
@@ -92,9 +92,9 @@ begin {
             __AllParameterSets = 'Az.DataCollectionRule.custom\New-AzPerfCounterDataSourceObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -129,7 +129,7 @@ end {
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
         if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         }
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId

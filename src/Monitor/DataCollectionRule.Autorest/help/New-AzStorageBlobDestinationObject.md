@@ -90,7 +90,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageBlobDestination
+### Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.StorageBlobDestination
 
 ## NOTES
 

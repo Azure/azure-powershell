@@ -103,7 +103,7 @@ Retrieve an scheduled query rule definition.
 Gets the active subscription diagnostic settings for the specified resource.
 
 ### [New-AzActionGroup](New-AzActionGroup.md)
-Create a new action group or update an existing one.
+create a new action group or create an existing one.
 
 ### [New-AzActionGroupArmRoleReceiverObject](New-AzActionGroupArmRoleReceiverObject.md)
 Create an in-memory object for ArmRoleReceiver.
@@ -175,13 +175,13 @@ Creates or updates an autoscale setting.
 Create an in-memory object for WebhookNotification.
 
 ### [New-AzDataCollectionEndpoint](New-AzDataCollectionEndpoint.md)
-Create a data collection endpoint.
+create a data collection endpoint.
 
 ### [New-AzDataCollectionRule](New-AzDataCollectionRule.md)
-Create a data collection rule.
+create a data collection rule.
 
 ### [New-AzDataCollectionRuleAssociation](New-AzDataCollectionRuleAssociation.md)
-Create an association.
+create an association.
 
 ### [New-AzDataFlowObject](New-AzDataFlowObject.md)
 Create an in-memory object for DataFlow.
@@ -322,7 +322,7 @@ Deletes existing subscription diagnostic settings for the specified resource.
 Send test notifications to a set of provided receivers
 
 ### [Update-AzActionGroup](Update-AzActionGroup.md)
-Update a new action group or update an existing one.
+update a new action group or update an existing one.
 
 ### [Update-AzActivityLogAlert](Update-AzActivityLogAlert.md)
 Updates 'tags' and 'enabled' fields in an existing Alert rule.
@@ -334,13 +334,13 @@ Updates an existing AutoscaleSettingsResource.
 To update other fields use the CreateOrUpdate method.
 
 ### [Update-AzDataCollectionEndpoint](Update-AzDataCollectionEndpoint.md)
-Update part of a data collection endpoint.
+update part of a data collection endpoint.
 
 ### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
 Update a data collection rule.
 
 ### [Update-AzDataCollectionRuleAssociation](Update-AzDataCollectionRuleAssociation.md)
-Update an association.
+update an association.
 
 ### [Update-AzInsightsPrivateLinkScope](Update-AzInsightsPrivateLinkScope.md)
 Update for private link scope

@@ -21,12 +21,12 @@ Create an in-memory object for WindowsEventLogDataSource.
 Create an in-memory object for WindowsEventLogDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsEventLogDataSource
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.WindowsEventLogDataSource
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azwindowseventlogdatasourceobject
 #>
 function New-AzWindowsEventLogDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsEventLogDataSource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.WindowsEventLogDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,7 +36,7 @@ function New-AzWindowsEventLogDataSourceObject {
         $Name,
         [Parameter(HelpMessage="List of streams that this data source will be sent to.
         A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Microsoft-WindowsEvent", "Microsoft-Event")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("Microsoft-WindowsEvent", "Microsoft-Event")]
         [string[]]
         $Stream,
         [Parameter(HelpMessage="A list of Windows Event Log queries in XPATH format.")]
@@ -45,7 +45,7 @@ function New-AzWindowsEventLogDataSourceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsEventLogDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.WindowsEventLogDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

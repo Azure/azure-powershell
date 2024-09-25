@@ -24,9 +24,9 @@ $syslog = New-AzSyslogDataSourceObject -FacilityName syslog -LogLevel Alert,Crit
 Update-AzDataCollectionRule -Name myCollectionRule1 -ResourceGroupName Monitor-ActionGroup -DataSourceSyslog $syslog
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -132,140 +132,140 @@ INPUTOBJECT <IDataCollectionRuleIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.monitor/update-azdatacollectionrule
 #>
 function Update-AzDataCollectionRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Alias('DataCollectionRuleName', 'RuleName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Path')]
     [System.String]
     # The name of the data collection rule.
     # The name is case insensitive.
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleIdentity]
     # Identity Parameter
     ${InputObject},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # The resource ID of the data collection endpoint that this rule can be used with.
     ${DataCollectionEndpointId},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataFlow[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataFlow[]]
     # The specification of data flows.
     ${DataFlow},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # Event Hub consumer group name
     ${DataSourceDataImportEventHubConsumerGroup},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # A friendly name for the data source.
     # This name should be unique across all data sources (regardless of type) within the data collection rule.
     ${DataSourceDataImportEventHubName},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # The stream to collect from EventHub
     ${DataSourceDataImportEventHubStream},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IExtensionDataSource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IExtensionDataSource[]]
     # The list of Azure VM extension data source configurations.
     ${DataSourceExtension},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IIisLogsDataSource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IIisLogsDataSource[]]
     # The list of IIS logs source configurations.
     ${DataSourceIisLog},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ILogFilesDataSource[]]
     # The list of Log files source configurations.
     ${DataSourceLogFile},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPerfCounterDataSource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IPerfCounterDataSource[]]
     # The list of performance counter data source configurations.
     ${DataSourcePerformanceCounter},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPlatformTelemetryDataSource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IPlatformTelemetryDataSource[]]
     # The list of platform telemetry configurations
     ${DataSourcePlatformTelemetry},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPrometheusForwarderDataSource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IPrometheusForwarderDataSource[]]
     # The list of Prometheus forwarder data source configurations.
     ${DataSourcePrometheusForwarder},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ISyslogDataSource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ISyslogDataSource[]]
     # The list of Syslog data source configurations.
     ${DataSourceSyslog},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsEventLogDataSource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IWindowsEventLogDataSource[]]
     # The list of Windows Event Log data source configurations.
     ${DataSourceWindowsEventLog},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsFirewallLogsDataSource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IWindowsFirewallLogsDataSource[]]
     # The list of Windows Firewall logs source configurations.
     ${DataSourceWindowsFirewallLog},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # Description of the data collection rule.
     ${Description},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # A friendly name for the destination.
     # This name should be unique across all destinations (regardless of type) within the data collection rule.
@@ -273,85 +273,85 @@ param(
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDestination[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IEventHubDestination[]]
     # List of Event Hubs destinations.
     ${DestinationEventHub},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDirectDestination[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IEventHubDirectDestination[]]
     # List of Event Hubs Direct destinations.
     ${DestinationEventHubsDirect},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogAnalyticsDestination[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ILogAnalyticsDestination[]]
     # List of Log Analytics destinations.
     ${DestinationLogAnalytic},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMonitoringAccountDestination[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IMonitoringAccountDestination[]]
     # List of monitoring account destinations.
     ${DestinationMonitoringAccount},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IStorageBlobDestination[]]
     # List of storage accounts destinations.
     ${DestinationStorageAccount},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IStorageBlobDestination[]]
     # List of Storage Blob Direct destinations.
     # To be used only for sending data directly to store from the agent.
     ${DestinationStorageBlobsDirect},
 
     [Parameter()]
     [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageTableDestination[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IStorageTableDestination[]]
     # List of Storage Table Direct destinations.
     ${DestinationStorageTablesDirect},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
     ${IdentityType},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Linux", "Windows")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("Linux", "Windows")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # The kind of the resource.
     ${Kind},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleStreamDeclarations]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleStreamDeclarations]))]
     [System.Collections.Hashtable]
     # Declaration of custom streams used in this rule.
     ${StreamDeclaration},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # The set of user assigned identities associated with the resource.
     # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
@@ -361,47 +361,47 @@ param(
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Azure')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Azure')]
     [System.Management.Automation.PSObject]
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
     [Parameter(DontShow)]
     [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
@@ -421,7 +421,7 @@ begin {
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
         } else {
             $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
             if ($internalCalledCmdlets -eq '') {
@@ -438,7 +438,7 @@ begin {
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -446,9 +446,9 @@ begin {
             }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -483,7 +483,7 @@ end {
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
         if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         }
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId

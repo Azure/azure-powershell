@@ -21,12 +21,12 @@ Create an in-memory object for LogAnalyticsDestination.
 Create an in-memory object for LogAnalyticsDestination.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogAnalyticsDestination
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogAnalyticsDestination
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azloganalyticsdestinationobject
 #>
 function New-AzLogAnalyticsDestinationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogAnalyticsDestination')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogAnalyticsDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,7 +40,7 @@ function New-AzLogAnalyticsDestinationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogAnalyticsDestination]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogAnalyticsDestination]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime
 {
     public interface IHeaderSerializable
     {

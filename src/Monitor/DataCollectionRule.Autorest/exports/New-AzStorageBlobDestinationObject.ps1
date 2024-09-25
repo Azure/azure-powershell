@@ -23,29 +23,29 @@ Create an in-memory object for StorageBlobDestination.
 New-AzStorageBlobDestinationObject -ContainerName "my-logs" -StorageAccountResourceId /subscriptions/da58aca0-2082-4f5a-85ba-27344286c17c/resourceGroups/sa-rg/providers/Microsoft.Storage/storageAccounts/rightregion:westus:sa-name1 -Name storageAccountDestination1
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageBlobDestination
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.StorageBlobDestination
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azstorageblobdestinationobject
 #>
 function New-AzStorageBlobDestinationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageBlobDestination])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.StorageBlobDestination])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # The container name of the Storage Blob.
     ${ContainerName},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # A friendly name for the destination.
     #         This name should be unique across all destinations (regardless of type) within the data collection rule.
     ${Name},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # The resource ID of the storage account.
     ${StorageAccountResourceId}
@@ -65,7 +65,7 @@ begin {
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
         } else {
             $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
             if ($internalCalledCmdlets -eq '') {
@@ -80,9 +80,9 @@ begin {
             __AllParameterSets = 'Az.DataCollectionRule.custom\New-AzStorageBlobDestinationObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -117,7 +117,7 @@ end {
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
         if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         }
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId

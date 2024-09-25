@@ -23,42 +23,42 @@ Create an in-memory object for DataFlow.
 New-AzDataFlowObject -Stream Microsoft-Perf,Microsoft-Syslog,Microsoft-WindowsEvent -Destination eastusWorkSpace
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataFlow
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataFlow
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azdataflowobject
 #>
 function New-AzDataFlowObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataFlow])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataFlow])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # The builtIn transform to transform stream data.
     ${BuiltInTransform},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String[]]
     # List of destinations for this data flow.
     ${Destination},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # The output stream of the transform.
     # Only required if the transform changes data to a different stream.
     ${OutputStream},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Microsoft-Event", "Microsoft-InsightsMetrics", "Microsoft-Perf", "Microsoft-Syslog", "Microsoft-WindowsEvent")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("Microsoft-Event", "Microsoft-InsightsMetrics", "Microsoft-Perf", "Microsoft-Syslog", "Microsoft-WindowsEvent")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String[]]
     # List of streams for this data flow.
     ${Stream},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # The KQL query to transform stream data.
     ${TransformKql}
@@ -78,7 +78,7 @@ begin {
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
         } else {
             $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
             if ($internalCalledCmdlets -eq '') {
@@ -93,9 +93,9 @@ begin {
             __AllParameterSets = 'Az.DataCollectionRule.custom\New-AzDataFlowObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -130,7 +130,7 @@ end {
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
         if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         }
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId

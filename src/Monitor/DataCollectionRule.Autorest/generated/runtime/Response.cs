@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime
 {
     using System;
     using System.Threading.Tasks;

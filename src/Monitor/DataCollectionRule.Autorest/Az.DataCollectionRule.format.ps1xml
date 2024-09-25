@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.AzureMonitorMetricsDestination</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.AzureMonitorMetricsDestination</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.AzureMonitorMetricsDestination#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.AzureMonitorMetricsDestination#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -24,9 +24,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ColumnDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ColumnDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ColumnDefinition#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ColumnDefinition#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -46,9 +46,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ConfigurationAccessEndpointSpec</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ConfigurationAccessEndpointSpec</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ConfigurationAccessEndpointSpec#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ConfigurationAccessEndpointSpec#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -68,9 +68,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpoint</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpoint#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpoint#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -102,9 +102,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointConfigurationAccess</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointConfigurationAccess</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointConfigurationAccess#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointConfigurationAccess#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -124,9 +124,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointFailoverConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointFailoverConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointFailoverConfiguration#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointFailoverConfiguration#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -146,9 +146,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointLogsIngestion</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointLogsIngestion</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointLogsIngestion#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointLogsIngestion#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -168,9 +168,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointMetadata#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointMetadata#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -196,9 +196,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointMetricsIngestion</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointMetricsIngestion</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointMetricsIngestion#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointMetricsIngestion#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -218,9 +218,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointNetworkAcls</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointNetworkAcls</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointNetworkAcls#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointNetworkAcls#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -240,9 +240,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointResource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -286,9 +286,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointResourceIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointResourceIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointResourceIdentity#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointResourceIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -314,9 +314,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointResourceListResult#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -336,9 +336,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointResourceProperties#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointResourceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -412,9 +412,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointResourceSystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointResourceSystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointResourceSystemData#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointResourceSystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -464,9 +464,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionEndpointResourceTags#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionEndpointResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -486,9 +486,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRule#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRule#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -526,9 +526,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleAssociation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleAssociation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleAssociation#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleAssociation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -566,9 +566,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleAssociationMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleAssociationMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleAssociationMetadata#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleAssociationMetadata#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -594,9 +594,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleAssociationProxyOnlyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleAssociationProxyOnlyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleAssociationProxyOnlyResource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleAssociationProxyOnlyResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -628,9 +628,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleAssociationProxyOnlyResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleAssociationProxyOnlyResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleAssociationProxyOnlyResourceListResult#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleAssociationProxyOnlyResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -650,9 +650,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleAssociationProxyOnlyResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleAssociationProxyOnlyResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleAssociationProxyOnlyResourceProperties#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleAssociationProxyOnlyResourceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -702,9 +702,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleAssociationProxyOnlyResourceSystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleAssociationProxyOnlyResourceSystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleAssociationProxyOnlyResourceSystemData#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleAssociationProxyOnlyResourceSystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -754,9 +754,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleDataSources</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleDataSources</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleDataSources#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleDataSources#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -788,9 +788,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleDestinations</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleDestinations</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleDestinations#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleDestinations#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -810,9 +810,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleIdentity#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -862,9 +862,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleMetadata#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleMetadata#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -890,9 +890,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleResource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -936,9 +936,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleResourceIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleResourceIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleResourceIdentity#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleResourceIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -964,9 +964,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleResourceListResult#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleResourceListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -986,9 +986,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleResourceProperties#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleResourceProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1062,9 +1062,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleResourceSystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleResourceSystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleResourceSystemData#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleResourceSystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1114,9 +1114,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataCollectionRuleResourceTags#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataCollectionRuleResourceTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1136,9 +1136,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataFlow</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataFlow</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataFlow#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataFlow#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1170,9 +1170,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataImportSourcesEventHub</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataImportSourcesEventHub</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataImportSourcesEventHub#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataImportSourcesEventHub#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1204,9 +1204,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataSourcesSpecDataImports</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataSourcesSpecDataImports</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataSourcesSpecDataImports#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataSourcesSpecDataImports#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1238,9 +1238,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DestinationsSpecAzureMonitorMetrics</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DestinationsSpecAzureMonitorMetrics</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DestinationsSpecAzureMonitorMetrics#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DestinationsSpecAzureMonitorMetrics#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1260,9 +1260,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ErrorDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ErrorDetail#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ErrorDetail#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1294,9 +1294,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.EventHubDataSource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.EventHubDataSource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.EventHubDataSource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.EventHubDataSource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1328,9 +1328,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.EventHubDestination</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.EventHubDestination</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.EventHubDestination#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.EventHubDestination#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1356,9 +1356,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.EventHubDirectDestination</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.EventHubDirectDestination</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.EventHubDirectDestination#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.EventHubDirectDestination#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1384,9 +1384,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ExtensionDataSource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ExtensionDataSource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ExtensionDataSource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ExtensionDataSource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1412,9 +1412,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.FailoverConfigurationSpec</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.FailoverConfigurationSpec</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.FailoverConfigurationSpec#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.FailoverConfigurationSpec#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1434,9 +1434,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IisLogsDataSource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IisLogsDataSource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IisLogsDataSource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IisLogsDataSource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1456,9 +1456,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LocationSpec</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LocationSpec</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LocationSpec#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LocationSpec#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1484,9 +1484,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogAnalyticsDestination</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogAnalyticsDestination</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogAnalyticsDestination#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogAnalyticsDestination#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1518,9 +1518,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFilesDataSource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFilesDataSource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFilesDataSource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFilesDataSource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1546,9 +1546,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFilesDataSourceSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFilesDataSourceSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFilesDataSourceSettings#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFilesDataSourceSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1568,9 +1568,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFileSettingsText</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFileSettingsText</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFileSettingsText#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFileSettingsText#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1590,9 +1590,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFileTextSettings</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFileTextSettings</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFileTextSettings#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFileTextSettings#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1612,9 +1612,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogsIngestionEndpointSpec</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogsIngestionEndpointSpec</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogsIngestionEndpointSpec#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogsIngestionEndpointSpec#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1634,9 +1634,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ManagedServiceIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ManagedServiceIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ManagedServiceIdentity#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ManagedServiceIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1662,9 +1662,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.Metadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.Metadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.Metadata#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.Metadata#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1690,9 +1690,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.MetricsIngestionEndpointSpec</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.MetricsIngestionEndpointSpec</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.MetricsIngestionEndpointSpec#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.MetricsIngestionEndpointSpec#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1712,9 +1712,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.MonitoringAccountDestination</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.MonitoringAccountDestination</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.MonitoringAccountDestination#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.MonitoringAccountDestination#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1746,9 +1746,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.NetworkRuleSet</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.NetworkRuleSet</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.NetworkRuleSet#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.NetworkRuleSet#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1768,9 +1768,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PerfCounterDataSource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PerfCounterDataSource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PerfCounterDataSource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PerfCounterDataSource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1796,9 +1796,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PlatformTelemetryDataSource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PlatformTelemetryDataSource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PlatformTelemetryDataSource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PlatformTelemetryDataSource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1818,9 +1818,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PrivateLinkScopedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PrivateLinkScopedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PrivateLinkScopedResource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PrivateLinkScopedResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1846,9 +1846,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PrometheusForwarderDataSource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PrometheusForwarderDataSource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PrometheusForwarderDataSource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PrometheusForwarderDataSource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1868,9 +1868,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PrometheusForwarderDataSourceLabelIncludeFilter</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PrometheusForwarderDataSourceLabelIncludeFilter</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PrometheusForwarderDataSourceLabelIncludeFilter#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PrometheusForwarderDataSourceLabelIncludeFilter#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1890,9 +1890,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ResourceForUpdateIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ResourceForUpdateIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ResourceForUpdateIdentity#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ResourceForUpdateIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1918,9 +1918,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ResourceForUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ResourceForUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ResourceForUpdateTags#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ResourceForUpdateTags#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1940,9 +1940,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageBlobDestination</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.StorageBlobDestination</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageBlobDestination#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.StorageBlobDestination#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1974,9 +1974,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageTableDestination</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.StorageTableDestination</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageTableDestination#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.StorageTableDestination#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2008,9 +2008,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.SyslogDataSource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.SyslogDataSource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.SyslogDataSource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.SyslogDataSource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2030,9 +2030,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.SystemData#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.SystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2082,9 +2082,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.UserAssignedIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.UserAssignedIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.UserAssignedIdentity#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.UserAssignedIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2110,9 +2110,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsEventLogDataSource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.WindowsEventLogDataSource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsEventLogDataSource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.WindowsEventLogDataSource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2132,9 +2132,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsFirewallLogsDataSource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.WindowsFirewallLogsDataSource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsFirewallLogsDataSource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.WindowsFirewallLogsDataSource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

@@ -21,21 +21,21 @@ Create an in-memory object for SyslogDataSource.
 Create an in-memory object for SyslogDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.SyslogDataSource
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.SyslogDataSource
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azsyslogdatasourceobject
 #>
 function New-AzSyslogDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.SyslogDataSource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.SyslogDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The list of facility names.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("auth", "authpriv", "cron", "daemon", "kern", "lpr", "mail", "mark", "news", "syslog", "user", "uucp", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "*")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("auth", "authpriv", "cron", "daemon", "kern", "lpr", "mail", "mark", "news", "syslog", "user", "uucp", "local0", "local1", "local2", "local3", "local4", "local5", "local6", "local7", "*")]
         [string[]]
         $FacilityName,
         [Parameter(HelpMessage="The log levels to collect.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Debug", "Info", "Notice", "Warning", "Error", "Critical", "Alert", "Emergency", "*")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("Debug", "Info", "Notice", "Warning", "Error", "Critical", "Alert", "Emergency", "*")]
         [string[]]
         $LogLevel,
         [Parameter(HelpMessage="A friendly name for the data source.
@@ -44,13 +44,13 @@ function New-AzSyslogDataSourceObject {
         $Name,
         [Parameter(HelpMessage="List of streams that this data source will be sent to.
         A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Microsoft-Syslog")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("Microsoft-Syslog")]
         [string[]]
         $Stream
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.SyslogDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.SyslogDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('FacilityName')) {
             $Object.FacilityName = $FacilityName

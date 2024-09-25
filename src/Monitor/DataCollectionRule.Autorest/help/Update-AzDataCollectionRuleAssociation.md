@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDataCollectionRuleAssociation
 
 ## SYNOPSIS
-Update an association.
+update an association.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Update-AzDataCollectionRuleAssociation -InputObject <IDataCollectionRuleIdentity
 ```
 
 ## DESCRIPTION
-Update an association.
+update an association.
 
 ## EXAMPLES
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -231,11 +231,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleAssociationProxyOnlyResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleAssociationProxyOnlyResource
 
 ## NOTES
 

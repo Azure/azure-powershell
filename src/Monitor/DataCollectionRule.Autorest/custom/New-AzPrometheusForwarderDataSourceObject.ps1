@@ -21,12 +21,12 @@ Create an in-memory object for PrometheusForwarderDataSource.
 Create an in-memory object for PrometheusForwarderDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PrometheusForwarderDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollectionRule.Models.PrometheusForwarderDataSource
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azprometheusforwarderdatasourceobject
 #>
 function New-AzPrometheusForwarderDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PrometheusForwarderDataSource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollectionRule.Models.PrometheusForwarderDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,13 +40,13 @@ function New-AzPrometheusForwarderDataSourceObject {
         [string]
         $Name,
         [Parameter(HelpMessage="List of streams that this data source will be sent to.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Microsoft-PrometheusMetrics")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("Microsoft-PrometheusMetrics")]
         [string[]]
         $Stream
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PrometheusForwarderDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollectionRule.Models.PrometheusForwarderDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('LabelIncludeFilter')) {
             $Object.LabelIncludeFilter = $LabelIncludeFilter

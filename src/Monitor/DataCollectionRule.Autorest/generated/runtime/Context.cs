@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime
 {
 
     using System;
@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime
     using System.Threading;
     using System.Threading.Tasks;
     using GetEventData = System.Func<EventData>;
-    using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Extensions;
+    using static Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.Extensions;
 
     /// <summary>
     /// The IContext Interface defines the communication mechanism for input customization.
@@ -28,6 +28,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime
         System.Threading.CancellationTokenSource CancellationTokenSource { get; set; }
         System.Collections.Generic.IDictionary<String, Object> ExtensibleParameters { get; }
         HttpPipeline Pipeline { get; set; }
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.DataCollectionRule Client { get; }
+        Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.DataCollectionRule Client { get; }
     }
 }

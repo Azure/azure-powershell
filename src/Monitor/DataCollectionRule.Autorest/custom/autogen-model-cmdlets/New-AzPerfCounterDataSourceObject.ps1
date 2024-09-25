@@ -21,12 +21,12 @@ Create an in-memory object for PerfCounterDataSource.
 Create an in-memory object for PerfCounterDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PerfCounterDataSource
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PerfCounterDataSource
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azperfcounterdatasourceobject
 #>
 function New-AzPerfCounterDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PerfCounterDataSource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PerfCounterDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -44,13 +44,13 @@ function New-AzPerfCounterDataSourceObject {
         $SamplingFrequencyInSecond,
         [Parameter(HelpMessage="List of streams that this data source will be sent to.
         A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Microsoft-Perf", "Microsoft-InsightsMetrics")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("Microsoft-Perf", "Microsoft-InsightsMetrics")]
         [string[]]
         $Stream
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PerfCounterDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PerfCounterDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('CounterSpecifier')) {
             $Object.CounterSpecifier = $CounterSpecifier

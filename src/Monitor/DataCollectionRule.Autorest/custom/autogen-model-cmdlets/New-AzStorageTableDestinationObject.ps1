@@ -21,12 +21,12 @@ Create an in-memory object for StorageTableDestination.
 Create an in-memory object for StorageTableDestination.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageTableDestination
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.StorageTableDestination
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azstoragetabledestinationobject
 #>
 function New-AzStorageTableDestinationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageTableDestination')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.StorageTableDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,7 +43,7 @@ function New-AzStorageTableDestinationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageTableDestination]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.StorageTableDestination]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

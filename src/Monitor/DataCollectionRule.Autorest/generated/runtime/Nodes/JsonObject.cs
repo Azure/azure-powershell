@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.Json
 {
     public partial class JsonObject : JsonNode, IDictionary<string, JsonNode>
     {

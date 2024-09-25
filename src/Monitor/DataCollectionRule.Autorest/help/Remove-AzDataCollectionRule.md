@@ -58,7 +58,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -167,7 +167,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleIdentity
 
 ## OUTPUTS
 

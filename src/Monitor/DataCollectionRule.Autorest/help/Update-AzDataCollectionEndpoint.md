@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDataCollectionEndpoint
 
 ## SYNOPSIS
-Update part of a data collection endpoint.
+update part of a data collection endpoint.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Update-AzDataCollectionEndpoint -InputObject <IDataCollectionRuleIdentity> [-Ide
 ```
 
 ## DESCRIPTION
-Update part of a data collection endpoint.
+update part of a data collection endpoint.
 
 ## EXAMPLES
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -237,11 +237,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionEndpointResource
 
 ## NOTES
 

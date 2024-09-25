@@ -137,7 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataFlow
+### Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataFlow
 
 ## NOTES
 

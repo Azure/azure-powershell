@@ -31,11 +31,11 @@ These provide functionality to our HTTP pipeline and other useful features. In s
 
 ### Attributes
 For processing the cmdlets, we've created some additional attributes:
-- `Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.DescriptionAttribute`
+- `Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.DescriptionAttribute`
   - Used in C# cmdlets to provide a high-level description of the cmdlet. This is propagated to reference documentation via [help comments](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_comment_based_help) in the exported scripts.
-- `Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.DoNotExportAttribute`
+- `Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.DoNotExportAttribute`
   - Used in C# and script cmdlets to suppress creating an exported cmdlet at build-time. These cmdlets will *not be exposed* by `Az.DataCollectionRule`.
-- `Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.InternalExportAttribute`
+- `Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.InternalExportAttribute`
   - Used in C# cmdlets to route exported cmdlets to the `..\internal`, which are *not exposed* by `Az.DataCollectionRule`. For more information, see [README.md](..\internal/README.md) in the `..\internal` folder.
-- `Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ProfileAttribute`
+- `Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.ProfileAttribute`
   - Used in C# and script cmdlets to define which Azure profiles the cmdlet supports. This is only supported for Azure (`--azure`) modules.

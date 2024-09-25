@@ -6,7 +6,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Cmdlets
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.Cmdlets
 {
     public abstract class InputHandler
     {
@@ -17,6 +17,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Cmdl
             this.NextHandler = nextHandler;
         }
 
-        public abstract void Process(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IContext context);
+        public abstract void Process(Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.IContext context);
     }
 }

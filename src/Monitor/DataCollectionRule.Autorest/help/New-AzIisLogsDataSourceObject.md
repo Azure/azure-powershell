@@ -90,7 +90,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IisLogsDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IisLogsDataSource
 
 ## NOTES
 

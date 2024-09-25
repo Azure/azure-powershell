@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using System;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class DescriptionAttribute : Attribute

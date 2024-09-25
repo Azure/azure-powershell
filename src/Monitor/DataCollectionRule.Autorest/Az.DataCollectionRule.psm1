@@ -43,7 +43,7 @@
   $null = Import-Module -Name (Join-Path $PSScriptRoot './bin/Az.DataCollectionRule.private.dll')
 
   # Get the private module's instance
-  $instance = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Module]::Instance
+  $instance = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Module]::Instance
 
   # Ask for the shared functionality table
   $VTable = Register-AzModule

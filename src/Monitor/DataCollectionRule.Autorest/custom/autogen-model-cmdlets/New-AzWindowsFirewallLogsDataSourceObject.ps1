@@ -21,12 +21,12 @@ Create an in-memory object for WindowsFirewallLogsDataSource.
 Create an in-memory object for WindowsFirewallLogsDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsFirewallLogsDataSource
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.WindowsFirewallLogsDataSource
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azwindowsfirewalllogsdatasourceobject
 #>
 function New-AzWindowsFirewallLogsDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsFirewallLogsDataSource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.WindowsFirewallLogsDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,7 +40,7 @@ function New-AzWindowsFirewallLogsDataSourceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.WindowsFirewallLogsDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.WindowsFirewallLogsDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

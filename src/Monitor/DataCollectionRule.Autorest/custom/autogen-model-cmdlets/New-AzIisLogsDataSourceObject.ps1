@@ -21,12 +21,12 @@ Create an in-memory object for IisLogsDataSource.
 Create an in-memory object for IisLogsDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IisLogsDataSource
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IisLogsDataSource
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-aziislogsdatasourceobject
 #>
 function New-AzIisLogsDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IisLogsDataSource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IisLogsDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,7 +43,7 @@ function New-AzIisLogsDataSourceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IisLogsDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IisLogsDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('LogDirectory')) {
             $Object.LogDirectory = $LogDirectory

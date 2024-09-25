@@ -11,9 +11,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.generated.runtime.Properties;
+    using Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.generated.runtime.Properties;
     using System;
     using System.Collections.Generic;
     using System.Linq;

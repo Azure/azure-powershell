@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataCollectionRuleAssociation
 
 ## SYNOPSIS
-Create an association.
+create an association.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ New-AzDataCollectionRuleAssociation -AssociationName <String> -ResourceUri <Stri
 ```
 
 ## DESCRIPTION
-Create an association.
+create an association.
 
 ## EXAMPLES
 
@@ -269,7 +269,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleAssociationProxyOnlyResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleAssociationProxyOnlyResource
 
 ## NOTES
 

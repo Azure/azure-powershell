@@ -23,37 +23,37 @@ Create an in-memory object for LogFilesDataSource.
 New-AzLogFilesDataSourceObject -FilePattern "C:\\JavaLogs\\*.log" -Stream "Custom-TabularData-ABC" -Name myTabularLogDataSource -SettingTextRecordStartTimestampFormat "yyyy-MM-ddTHH:mm:ssK"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFilesDataSource
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFilesDataSource
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azlogfilesdatasourceobject
 #>
 function New-AzLogFilesDataSourceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFilesDataSource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFilesDataSource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String[]]
     # File Patterns where the log files are located.
     ${FilePattern},
 
     [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String[]]
     # List of streams that this data source will be sent to.
     #         A stream indicates what schema will be used for this data source.
     ${Stream},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # A friendly name for the data source.
     #         This name should be unique across all data sources (regardless of type) within the data collection rule.
     ${Name},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("ISO 8601", "YYYY-MM-DD HH:MM:SS", "M/D/YYYY HH:MM:SS AM/PM", "Mon DD, YYYY HH:MM:SS", "yyMMdd HH:mm:ss", "ddMMyy HH:mm:ss", "MMM d hh:mm:ss", "dd/MMM/yyyy:HH:mm:ss zzz", "yyyy-MM-ddTHH:mm:ssK")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("ISO 8601", "YYYY-MM-DD HH:MM:SS", "M/D/YYYY HH:MM:SS AM/PM", "Mon DD, YYYY HH:MM:SS", "yyMMdd HH:mm:ss", "ddMMyy HH:mm:ss", "MMM d hh:mm:ss", "dd/MMM/yyyy:HH:mm:ss zzz", "yyyy-MM-ddTHH:mm:ssK")]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Category('Body')]
     [System.String]
     # One of the supported timestamp formats.
     ${SettingTextRecordStartTimestampFormat}
@@ -73,7 +73,7 @@ begin {
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
         } else {
             $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
             if ($internalCalledCmdlets -eq '') {
@@ -88,9 +88,9 @@ begin {
             __AllParameterSets = 'Az.DataCollectionRule.custom\New-AzLogFilesDataSourceObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -125,7 +125,7 @@ end {
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
         if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         }
         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId

@@ -2,7 +2,7 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.PowerShell
 {
     using System.Management.Automation;
     using System.Management.Automation.Host;
@@ -11,8 +11,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Powe
 
     internal interface IAsyncCommandRuntimeExtensions
     {
-        Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep Wrap(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep func);
-        System.Collections.Generic.IEnumerable<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep> Wrap(System.Collections.Generic.IEnumerable<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep> funcs);
+        Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.SendAsyncStep Wrap(Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.SendAsyncStep func);
+        System.Collections.Generic.IEnumerable<Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.SendAsyncStep> Wrap(System.Collections.Generic.IEnumerable<Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.SendAsyncStep> funcs);
 
         T ExecuteSync<T>(System.Func<T> step);
     }
@@ -781,8 +781,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Powe
                 throw ProcessRecordAsyncTask.Exception;
             }
         }
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep Wrap(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep func) => func.Target.GetType().Name != "Closure" ? func : (p1, p2, p3) => ExecuteSync<System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage>>(() => func(p1, p2, p3));
-        public System.Collections.Generic.IEnumerable<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep> Wrap(System.Collections.Generic.IEnumerable<Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep> funcs) => funcs?.Select(Wrap);
+        public Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.SendAsyncStep Wrap(Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.SendAsyncStep func) => func.Target.GetType().Name != "Closure" ? func : (p1, p2, p3) => ExecuteSync<System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage>>(() => func(p1, p2, p3));
+        public System.Collections.Generic.IEnumerable<Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.SendAsyncStep> Wrap(System.Collections.Generic.IEnumerable<Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.SendAsyncStep> funcs) => funcs?.Select(Wrap);
 
         public T ExecuteSync<T>(System.Func<T> step)
         {

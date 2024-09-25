@@ -21,12 +21,12 @@ Create an in-memory object for StorageBlobDestination.
 Create an in-memory object for StorageBlobDestination.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageBlobDestination
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.StorageBlobDestination
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azstorageblobdestinationobject
 #>
 function New-AzStorageBlobDestinationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageBlobDestination')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.StorageBlobDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,7 +43,7 @@ function New-AzStorageBlobDestinationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.StorageBlobDestination]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.StorageBlobDestination]::New()
 
         if ($PSBoundParameters.ContainsKey('ContainerName')) {
             $Object.ContainerName = $ContainerName

@@ -21,12 +21,12 @@ Create an in-memory object for EventHubDirectDestination.
 Create an in-memory object for EventHubDirectDestination.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.EventHubDirectDestination
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.EventHubDirectDestination
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azeventhubdirectdestinationobject
 #>
 function New-AzEventHubDirectDestinationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.EventHubDirectDestination')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.EventHubDirectDestination')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,7 +40,7 @@ function New-AzEventHubDirectDestinationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.EventHubDirectDestination]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.EventHubDirectDestination]::New()
 
         if ($PSBoundParameters.ContainsKey('EventHubResourceId')) {
             $Object.EventHubResourceId = $EventHubResourceId

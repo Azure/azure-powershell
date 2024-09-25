@@ -21,12 +21,12 @@ Create an in-memory object for LogFilesDataSource.
 Create an in-memory object for LogFilesDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFilesDataSource
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFilesDataSource
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azlogfilesdatasourceobject
 #>
 function New-AzLogFilesDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFilesDataSource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFilesDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,7 +38,7 @@ function New-AzLogFilesDataSourceObject {
         [string]
         $Name,
         [Parameter(HelpMessage="One of the supported timestamp formats.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("ISO 8601", "YYYY-MM-DD HH:MM:SS", "M/D/YYYY HH:MM:SS AM/PM", "Mon DD, YYYY HH:MM:SS", "yyMMdd HH:mm:ss", "ddMMyy HH:mm:ss", "MMM d hh:mm:ss", "dd/MMM/yyyy:HH:mm:ss zzz", "yyyy-MM-ddTHH:mm:ssK")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("ISO 8601", "YYYY-MM-DD HH:MM:SS", "M/D/YYYY HH:MM:SS AM/PM", "Mon DD, YYYY HH:MM:SS", "yyMMdd HH:mm:ss", "ddMMyy HH:mm:ss", "MMM d hh:mm:ss", "dd/MMM/yyyy:HH:mm:ss zzz", "yyyy-MM-ddTHH:mm:ssK")]
         [string]
         $SettingTextRecordStartTimestampFormat,
         [Parameter(Mandatory, HelpMessage="List of streams that this data source will be sent to.
@@ -48,7 +48,7 @@ function New-AzLogFilesDataSourceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFilesDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFilesDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('FilePattern')) {
             $Object.FilePattern = $FilePattern

@@ -8,7 +8,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.Json
 {
     
     

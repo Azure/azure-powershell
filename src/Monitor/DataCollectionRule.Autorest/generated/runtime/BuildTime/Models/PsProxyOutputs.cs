@@ -8,10 +8,10 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Text.RegularExpressions;
-using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.PowerShell.PsProxyOutputExtensions;
-using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.PowerShell.PsProxyTypeExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.PowerShell.PsProxyOutputExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.PowerShell.PsProxyTypeExtensions;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.PowerShell
 {
     internal class OutputTypeOutput
     {
@@ -208,12 +208,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Powe
         public string GetProcessCustomAttributesAtRuntime()
         {
             return VariantGroup.IsInternal ? "" : IsAzure ? $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]
-{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-{Indent}{Indent}if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){{
-{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){{
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
 {Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-{Indent}{Indent}}}" : $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]{Environment.NewLine}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)";
+{Indent}{Indent}}}" : $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]{Environment.NewLine}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)";
         }
 
         private string GetTelemetry()
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Powe
 {Indent}{Indent}$preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
 {Indent}{Indent}if ($preTelemetryId -eq '') {{
 {Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
 {Indent}{Indent}}} else {{
 {Indent}{Indent}{Indent}$internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
 {Indent}{Indent}{Indent}if ($internalCalledCmdlets -eq '') {{
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Powe
                 {
                     sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}'){setCondition}) {{");
                     sb.AppendLine($"{Indent}{Indent}{Indent}$testPlayback = $false");
-                    sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object {{ if ($_) {{ $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }} }}");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object {{ if ($_) {{ $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }} }}");
                     sb.AppendLine($"{Indent}{Indent}{Indent}if ($testPlayback) {{");
                     sb.AppendLine($"{Indent}{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')");
                     sb.AppendLine($"{Indent}{Indent}{Indent}}} else {{");
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Powe
 {Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
 {Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
 {Indent}{Indent}if ($preTelemetryId -eq '') {{
-{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
 {Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
 {Indent}{Indent}}}
 {Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId

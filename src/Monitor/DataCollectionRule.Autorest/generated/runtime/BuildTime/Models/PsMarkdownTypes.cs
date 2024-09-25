@@ -7,10 +7,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.PowerShell.MarkdownTypesExtensions;
-using static Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.PowerShell.PsHelpOutputExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.PowerShell.MarkdownTypesExtensions;
+using static Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.PowerShell.PsHelpOutputExtensions;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.PowerShell
 {
     internal class MarkdownHelpInfo
     {

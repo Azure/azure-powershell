@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule
 {
     public class PSArgumentCompleterAttribute : ArgumentCompleterAttribute
     {

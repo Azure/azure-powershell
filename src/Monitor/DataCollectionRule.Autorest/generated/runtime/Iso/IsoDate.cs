@@ -5,7 +5,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.Json
 {
     internal struct IsoDate
     {

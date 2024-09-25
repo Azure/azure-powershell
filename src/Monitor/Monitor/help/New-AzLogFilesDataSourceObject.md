@@ -123,7 +123,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.LogFilesDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.LogFilesDataSource
 
 ## NOTES
 

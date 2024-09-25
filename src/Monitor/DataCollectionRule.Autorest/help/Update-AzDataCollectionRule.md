@@ -168,7 +168,7 @@ Accept wildcard characters: False
 The specification of data flows.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataFlow[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataFlow[]
 Parameter Sets: (All)
 Aliases:
 
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 The list of Azure VM extension data source configurations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IExtensionDataSource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IExtensionDataSource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -244,7 +244,7 @@ Accept wildcard characters: False
 The list of IIS logs source configurations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IIisLogsDataSource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IIisLogsDataSource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -259,7 +259,7 @@ Accept wildcard characters: False
 The list of Log files source configurations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ILogFilesDataSource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -274,7 +274,7 @@ Accept wildcard characters: False
 The list of performance counter data source configurations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPerfCounterDataSource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IPerfCounterDataSource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -289,7 +289,7 @@ Accept wildcard characters: False
 The list of platform telemetry configurations
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPlatformTelemetryDataSource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IPlatformTelemetryDataSource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -304,7 +304,7 @@ Accept wildcard characters: False
 The list of Prometheus forwarder data source configurations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPrometheusForwarderDataSource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IPrometheusForwarderDataSource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -319,7 +319,7 @@ Accept wildcard characters: False
 The list of Syslog data source configurations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ISyslogDataSource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ISyslogDataSource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -334,7 +334,7 @@ Accept wildcard characters: False
 The list of Windows Event Log data source configurations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsEventLogDataSource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IWindowsEventLogDataSource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -349,7 +349,7 @@ Accept wildcard characters: False
 The list of Windows Firewall logs source configurations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsFirewallLogsDataSource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IWindowsFirewallLogsDataSource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -411,7 +411,7 @@ Accept wildcard characters: False
 List of Event Hubs destinations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDestination[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IEventHubDestination[]
 Parameter Sets: (All)
 Aliases:
 
@@ -426,7 +426,7 @@ Accept wildcard characters: False
 List of Event Hubs Direct destinations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDirectDestination[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IEventHubDirectDestination[]
 Parameter Sets: (All)
 Aliases:
 
@@ -441,7 +441,7 @@ Accept wildcard characters: False
 List of Log Analytics destinations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogAnalyticsDestination[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.ILogAnalyticsDestination[]
 Parameter Sets: (All)
 Aliases:
 
@@ -456,7 +456,7 @@ Accept wildcard characters: False
 List of monitoring account destinations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMonitoringAccountDestination[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IMonitoringAccountDestination[]
 Parameter Sets: (All)
 Aliases:
 
@@ -471,7 +471,7 @@ Accept wildcard characters: False
 List of storage accounts destinations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IStorageBlobDestination[]
 Parameter Sets: (All)
 Aliases:
 
@@ -487,7 +487,7 @@ List of Storage Blob Direct destinations.
 To be used only for sending data directly to store from the agent.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IStorageBlobDestination[]
 Parameter Sets: (All)
 Aliases:
 
@@ -502,7 +502,7 @@ Accept wildcard characters: False
 List of Storage Table Direct destinations.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageTableDestination[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IStorageTableDestination[]
 Parameter Sets: (All)
 Aliases:
 
@@ -532,7 +532,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -688,11 +688,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionRuleResource
 
 ## NOTES
 

@@ -21,12 +21,12 @@ Create an in-memory object for ExtensionDataSource.
 Create an in-memory object for ExtensionDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ExtensionDataSource
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollectionRule.Models.ExtensionDataSource
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azextensiondatasourceobject
 #>
 function New-AzExtensionDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ExtensionDataSource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollectionRule.Models.ExtensionDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -45,13 +45,13 @@ function New-AzExtensionDataSourceObject {
         $Name,
         [Parameter(HelpMessage="List of streams that this data source will be sent to.
         A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Microsoft-Event", "Microsoft-InsightsMetrics", "Microsoft-Perf", "Microsoft-Syslog", "Microsoft-WindowsEvent")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("Microsoft-Event", "Microsoft-InsightsMetrics", "Microsoft-Perf", "Microsoft-Syslog", "Microsoft-WindowsEvent")]
         [string[]]
         $Stream
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ExtensionDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollectionRule.Models.ExtensionDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('ExtensionName')) {
             $Object.ExtensionName = $ExtensionName

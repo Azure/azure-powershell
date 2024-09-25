@@ -21,12 +21,12 @@ Create an in-memory object for PlatformTelemetryDataSource.
 Create an in-memory object for PlatformTelemetryDataSource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PlatformTelemetryDataSource
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PlatformTelemetryDataSource
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azplatformtelemetrydatasourceobject
 #>
 function New-AzPlatformTelemetryDataSourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PlatformTelemetryDataSource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PlatformTelemetryDataSource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,7 +40,7 @@ function New-AzPlatformTelemetryDataSourceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.PlatformTelemetryDataSource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.PlatformTelemetryDataSource]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

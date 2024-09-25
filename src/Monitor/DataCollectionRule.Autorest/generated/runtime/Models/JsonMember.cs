@@ -6,7 +6,7 @@
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Runtime.Json
 {
     
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataCollectionEndpoint
 
 ## SYNOPSIS
-Create a data collection endpoint.
+create a data collection endpoint.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ New-AzDataCollectionEndpoint -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-Create a data collection endpoint.
+create a data collection endpoint.
 
 ## EXAMPLES
 
@@ -386,7 +386,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.IDataCollectionEndpointResource
 
 ## NOTES
 

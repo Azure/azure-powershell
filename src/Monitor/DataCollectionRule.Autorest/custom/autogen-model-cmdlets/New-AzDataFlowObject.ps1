@@ -21,12 +21,12 @@ Create an in-memory object for DataFlow.
 Create an in-memory object for DataFlow.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataFlow
+Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataFlow
 .Link
 https://learn.microsoft.com/powershell/module/Az.Monitor/new-azdataflowobject
 #>
 function New-AzDataFlowObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataFlow')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataFlow')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,7 +40,7 @@ function New-AzDataFlowObject {
         [string]
         $OutputStream,
         [Parameter(HelpMessage="List of streams for this data flow.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Microsoft-Event", "Microsoft-InsightsMetrics", "Microsoft-Perf", "Microsoft-Syslog", "Microsoft-WindowsEvent")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.PSArgumentCompleterAttribute("Microsoft-Event", "Microsoft-InsightsMetrics", "Microsoft-Perf", "Microsoft-Syslog", "Microsoft-WindowsEvent")]
         [string[]]
         $Stream,
         [Parameter(HelpMessage="The KQL query to transform stream data.")]
@@ -49,7 +49,7 @@ function New-AzDataFlowObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.DataFlow]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataCollectionRule.Models.DataFlow]::New()
 
         if ($PSBoundParameters.ContainsKey('BuiltInTransform')) {
             $Object.BuiltInTransform = $BuiltInTransform
