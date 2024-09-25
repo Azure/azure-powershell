@@ -9,9 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Updates the SAP Central Services Instance resource.
-
-
-This can be used to update tags on the resource.
+&lt;br&gt;&lt;br&gt;This can be used to update tags on the resource.
 
 ## SYNTAX
 
@@ -24,45 +22,37 @@ Update-AzWorkloadsSapCentralInstance -Name <String> -ResourceGroupName <String>
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWorkloadsSapCentralInstance -InputObject <IWorkloadsIdentity> [-Tag <Hashtable>]
+Update-AzWorkloadsSapCentralInstance -InputObject <ISapVirtualInstanceIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Updates the SAP Central Services Instance resource.
-
-
-This can be used to update tags on the resource.
+&lt;br&gt;&lt;br&gt;This can be used to update tags on the resource.
 
 ## EXAMPLES
 
-### Example 1: Add tags for an existing Central services instance resource
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzWorkloadsSapCentralInstance  -Name cs0 -ResourceGroupName db0-vis-rg -SapVirtualInstanceName DB0 -Tag @{ Test = "PS"; k2 = "v2"}
+{{ Add code here }}
 ```
 
 ```output
-Name ResourceGroupName Health  EnqueueServerPropertyHostname ProvisioningState Status  Location
----- ----------------- ------  ----------------------------- ----------------- ------  --------
-cs0  db0-vis-rg        Healthy db0vm                         Succeeded         Running centraluseuap
+{{ Add output here }}
 ```
 
-This cmdlet adds new tag name, value pairs to the existing Central services instance resource cs0.
-VIS name and Resource group name are the other input parameters.
+{{ Add description here }}
 
-### Example 2: Add tags for an existing Central services instance resource
+### Example 2: {{ Add title here }}
 ```powershell
-Update-AzWorkloadsSapCentralInstance  -InputObject /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0/centralInstances/cs0 -Tag @{ Test = "PS"; k2 = "v2"}
+{{ Add code here }}
 ```
 
 ```output
-Name ResourceGroupName Health  EnqueueServerPropertyHostname ProvisioningState Status  Location
----- ----------------- ------  ----------------------------- ----------------- ------  --------
-cs0  db0-vis-rg        Healthy db0vm                         Succeeded         Running centraluseuap
+{{ Add output here }}
 ```
 
-This cmdlet adds new tag name, value pairs to the existing Central services instance resource cs0.
-Here Central services instance Azure resource ID is used as the input parameter.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -87,7 +77,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -146,6 +136,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -210,32 +201,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapCentralServerInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.ISapCentralServerInstance
 
 ## NOTES
 
 ALIASES
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
-  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
-  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
-  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[MonitorName <String>]`: Name of the SAP monitor resource.
-  - `[ProviderInstanceName <String>]`: Name of the provider instance.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
+Update-AzVISCentralInstance
 
 ## RELATED LINKS
 

@@ -43,7 +43,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.Location = "northeurope"
+    $env.Location = "centraluseuap"
     $env.WaaSTenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47"
     $env.ResourceGroupName = "PS_CLI_TF_RG"
     $env.WaaSSubscriptionId = "49d64d54-e966-4c46-a868-1999802b762c"
@@ -87,7 +87,7 @@ function setupEnv() {
     $env.CreateSingleSystemWithNoTrustedAccessConfigPath = "CreateSingleSystemWithNoTrustedAccessConfig.json"
     $env.NoTransShareConfigType = "Skip"
     $env.MountTransShareConfigType = "Mount"
-    $env.IdentityName = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI"
+    $env.IdentityName = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/JASKIRAT-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/jaskirat-msi"
     $env.IdentityType = "UserAssigned"
     $env.DiscoverSVI = "PS1"
     $env.DiscoverRG = "PS_CLI_TF_RG"
