@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.cdn/move-azfrontdoorcdncdnprofilesto
+online version: https://learn.microsoft.com/powershell/module/az.cdn/move-azcdnprofiletoafd
 schema: 2.0.0
 ---
 
-# Move-AzFrontDoorCdnCdnProfilesTo
+# Move-AzCdnProfileToAFD
 
 ## SYNOPSIS
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
@@ -15,42 +15,40 @@ This step prepares the profile for migration and will be followed by Commit to f
 
 ### MigrateExpanded (Default)
 ```
-Move-AzFrontDoorCdnCdnProfilesTo -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-MigrationEndpointMapping <IMigrationEndpointMapping[]>] [-SkuName <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Migrate
 ```
-Move-AzFrontDoorCdnCdnProfilesTo -ProfileName <String> -ResourceGroupName <String>
+Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String>
  -MigrationParameter <ICdnMigrationToAfdParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MigrateViaIdentity
 ```
-Move-AzFrontDoorCdnCdnProfilesTo -InputObject <ICdnIdentity>
- -MigrationParameter <ICdnMigrationToAfdParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Move-AzCdnProfileToAFD -InputObject <ICdnIdentity> -MigrationParameter <ICdnMigrationToAfdParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MigrateViaIdentityExpanded
 ```
-Move-AzFrontDoorCdnCdnProfilesTo -InputObject <ICdnIdentity>
- [-MigrationEndpointMapping <IMigrationEndpointMapping[]>] [-SkuName <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Move-AzCdnProfileToAFD -InputObject <ICdnIdentity> [-MigrationEndpointMapping <IMigrationEndpointMapping[]>]
+ [-SkuName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MigrateViaJsonFilePath
 ```
-Move-AzFrontDoorCdnCdnProfilesTo -ProfileName <String> -ResourceGroupName <String> -JsonFilePath <String>
+Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### MigrateViaJsonString
 ```
-Move-AzFrontDoorCdnCdnProfilesTo -ProfileName <String> -ResourceGroupName <String> -JsonString <String>
+Move-AzCdnProfileToAFD -ProfileName <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```

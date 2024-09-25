@@ -109,7 +109,7 @@ Abort the migration to Azure Frontdoor Premium/Standard.
 ### [Invoke-AzCdnCommitProfileToAFDMigration](Invoke-AzCdnCommitProfileToAFDMigration.md)
 Commit the migrated Azure Front Door(Standard/Premium) profile..
 
-### [Move-AzFrontDoorCdnCdnProfilesTo](Move-AzFrontDoorCdnCdnProfilesTo.md)
+### [Move-AzCdnProfileToAFD](Move-AzCdnProfileToAFD.md)
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
 This step prepares the profile for migration and will be followed by Commit to finalize the migration.
 

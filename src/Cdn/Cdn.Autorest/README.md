@@ -392,21 +392,14 @@ directive:
   # Hide classicCdn migrate command and customize, must be put after rename
   - where:
       subject-prefix: FrontDoorCdn
-      subject: CdnProfileToAFD
+      subject: CdnProfilesTo
       verb: Move
     hide: true
-    set:
-      preview-announcement:
-        preview-message: This is a test preview message.
-        stimated-ga-date: 2024-08-30
 
   - where:
       subject: AbortProfileMigration
     set:
       subject: AbortProfileToAFDMigration
-      preview-announcement:
-        preview-message: This is a test preview message.
-        stimated-ga-date: 2024-08-30
   - where:
       verb: Invoke
       subject: CanCdnProfile
