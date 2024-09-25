@@ -19,6 +19,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         private Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Resource();
 
         /// <summary>
+        /// Indicates whether ACL authorization is allowed for this user. Set it to false to disallow using ACL authorization.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? AllowAclAuthorization { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)Property).AllowAclAuthorization; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)Property).AllowAclAuthorization = value ?? default(bool); }
+
+        /// <summary>
+        /// Supplementary group membership. Only applicable for local users enabled for NFSv3 access.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<int> ExtendedGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)Property).ExtendedGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)Property).ExtendedGroup = value ?? null /* arrayOf */; }
+
+        /// <summary>An identifier for associating a group of users.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public int? GroupId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)Property).GroupId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)Property).GroupId = value ?? default(int); }
+
+        /// <summary>
         /// Indicates whether shared key exists. Set it to false to remove existing shared key.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -44,6 +60,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id; }
 
+        /// <summary>Indicates if the local user is enabled for access with NFSv3 protocol.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public bool? IsNfSv3Enabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)Property).IsNfSv3Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)Property).IsNfSv3Enabled = value ?? default(bool); }
+
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserProperties Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.LocalUserProperties()); set { {_property = value;} } }
 
@@ -52,6 +72,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>Internal Acessors for SystemData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISystemData Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserInternal.SystemData { get => (this._systemData = this._systemData ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SystemData()); set { {_systemData = value;} } }
+
+        /// <summary>Internal Acessors for UserId</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserInternal.UserId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)Property).UserId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)Property).UserId = value; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Id = value; }
@@ -126,6 +149,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal)__resource).Type; }
 
+        /// <summary>A unique Identifier that is generated by the server.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
+        public int? UserId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ILocalUserPropertiesInternal)Property).UserId; }
+
         /// <summary>Creates an new <see cref="LocalUser" /> instance.</summary>
         public LocalUser()
         {
@@ -149,6 +176,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResource
     {
+        /// <summary>
+        /// Indicates whether ACL authorization is allowed for this user. Set it to false to disallow using ACL authorization.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates whether ACL authorization is allowed for this user. Set it to false to disallow using ACL authorization.",
+        SerializedName = @"allowAclAuthorization",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? AllowAclAuthorization { get; set; }
+        /// <summary>
+        /// Supplementary group membership. Only applicable for local users enabled for NFSv3 access.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Supplementary group membership. Only applicable for local users enabled for NFSv3 access.",
+        SerializedName = @"extendedGroups",
+        PossibleTypes = new [] { typeof(int) })]
+        System.Collections.Generic.List<int> ExtendedGroup { get; set; }
+        /// <summary>An identifier for associating a group of users.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"An identifier for associating a group of users.",
+        SerializedName = @"groupId",
+        PossibleTypes = new [] { typeof(int) })]
+        int? GroupId { get; set; }
         /// <summary>
         /// Indicates whether shared key exists. Set it to false to remove existing shared key.
         /// </summary>
@@ -197,6 +261,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         SerializedName = @"homeDirectory",
         PossibleTypes = new [] { typeof(string) })]
         string HomeDirectory { get; set; }
+        /// <summary>Indicates if the local user is enabled for access with NFSv3 protocol.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Indicates if the local user is enabled for access with NFSv3 protocol.",
+        SerializedName = @"isNFSv3Enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? IsNfSv3Enabled { get; set; }
         /// <summary>The permission scopes of the local user.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -298,12 +373,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
         string SystemDataLastModifiedByType { get;  }
+        /// <summary>A unique Identifier that is generated by the server.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"A unique Identifier that is generated by the server.",
+        SerializedName = @"userId",
+        PossibleTypes = new [] { typeof(int) })]
+        int? UserId { get;  }
 
     }
     /// The local user associated with the storage accounts.
     internal partial interface ILocalUserInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IResourceInternal
     {
+        /// <summary>
+        /// Indicates whether ACL authorization is allowed for this user. Set it to false to disallow using ACL authorization.
+        /// </summary>
+        bool? AllowAclAuthorization { get; set; }
+        /// <summary>
+        /// Supplementary group membership. Only applicable for local users enabled for NFSv3 access.
+        /// </summary>
+        System.Collections.Generic.List<int> ExtendedGroup { get; set; }
+        /// <summary>An identifier for associating a group of users.</summary>
+        int? GroupId { get; set; }
         /// <summary>
         /// Indicates whether shared key exists. Set it to false to remove existing shared key.
         /// </summary>
@@ -316,6 +412,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         bool? HasSshPassword { get; set; }
         /// <summary>Optional, local user home directory.</summary>
         string HomeDirectory { get; set; }
+        /// <summary>Indicates if the local user is enabled for access with NFSv3 protocol.</summary>
+        bool? IsNfSv3Enabled { get; set; }
         /// <summary>The permission scopes of the local user.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IPermissionScope> PermissionScope { get; set; }
         /// <summary>Storage account local user properties.</summary>
@@ -340,6 +438,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>The type of identity that last modified the resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Storage.PSArgumentCompleterAttribute("User", "Application", "ManagedIdentity", "Key")]
         string SystemDataLastModifiedByType { get; set; }
+        /// <summary>A unique Identifier that is generated by the server.</summary>
+        int? UserId { get; set; }
 
     }
 }

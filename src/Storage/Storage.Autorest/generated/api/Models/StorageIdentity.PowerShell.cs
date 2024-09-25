@@ -120,6 +120,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).AccountName, global::System.Convert.ToString);
             }
+            if (content.Contains("FileServicesName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).FileServicesName = (string) content.GetValueForProperty("FileServicesName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).FileServicesName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FileServiceUsagesName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).FileServiceUsagesName = (string) content.GetValueForProperty("FileServiceUsagesName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).FileServiceUsagesName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShareName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ShareName, global::System.Convert.ToString);
+            }
             if (content.Contains("MigrationName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).MigrationName = (string) content.GetValueForProperty("MigrationName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).MigrationName, global::System.Convert.ToString);
@@ -188,6 +200,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             if (content.Contains("AccountName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).AccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FileServicesName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).FileServicesName = (string) content.GetValueForProperty("FileServicesName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).FileServicesName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FileServiceUsagesName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).FileServiceUsagesName = (string) content.GetValueForProperty("FileServiceUsagesName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).FileServiceUsagesName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ShareName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ShareName = (string) content.GetValueForProperty("ShareName",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentityInternal)this).ShareName, global::System.Convert.ToString);
             }
             if (content.Contains("MigrationName"))
             {
