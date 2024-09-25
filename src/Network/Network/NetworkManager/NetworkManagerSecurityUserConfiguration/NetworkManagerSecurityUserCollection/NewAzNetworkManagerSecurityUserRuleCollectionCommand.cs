@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CreateByName,
             HelpMessage = "Applies To.")]
-        public PSNetworkManagerSecurityUserGroupItem[] AppliesToGroups { get; set; }
+        public PSNetworkManagerSecurityUserGroupItem[] AppliesToGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name,
                 () =>
                 {
-                    var networkManagerSecurityUserRuleCollection = this.CreateNetworkManagerSecurityUserRuleCollection(this.ResourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName, this.Name, this.Description, this.AppliesToGroups);
+                    var networkManagerSecurityUserRuleCollection = this.CreateNetworkManagerSecurityUserRuleCollection(this.ResourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName, this.Name, this.Description, this.AppliesToGroup);
                     WriteObject(networkManagerSecurityUserRuleCollection);
                 },
                 () => present);
