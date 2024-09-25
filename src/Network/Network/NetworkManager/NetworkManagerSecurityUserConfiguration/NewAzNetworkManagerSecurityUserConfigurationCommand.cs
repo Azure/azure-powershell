@@ -27,17 +27,17 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = CreateByName), OutputType(typeof(PSNetworkManagerSecurityUserConfiguration))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = CreateByNameParameterSet), OutputType(typeof(PSNetworkManagerSecurityUserConfiguration))]
     public class NewAzNetworkManagerSecurityUserConfigurationCommand : NetworkManagerSecurityUserConfigurationBaseCmdlet
     {
-        private const string CreateByName = "ByName";
+        private const string CreateByNameParameterSet = "ByName";
 
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string NetworkManagerName { get; set; }
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "Description.",
-             ParameterSetName = CreateByName)]
+             ParameterSetName = CreateByNameParameterSet)]
         public virtual string Description { get; set; }
 
         [Parameter(

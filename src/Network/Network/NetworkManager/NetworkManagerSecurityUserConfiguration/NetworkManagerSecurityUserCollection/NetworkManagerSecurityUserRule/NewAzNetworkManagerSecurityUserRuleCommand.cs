@@ -28,17 +28,17 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRule", SupportsShouldProcess = true, DefaultParameterSetName = CreateByName), OutputType(typeof(PSNetworkManagerSecurityUserRule))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRule", SupportsShouldProcess = true, DefaultParameterSetName = CreateByNameParameterSet), OutputType(typeof(PSNetworkManagerSecurityUserRule))]
     public class NewAzNetworkManagerSecurityUserRuleCommand : NetworkManagerSecurityUserRuleBaseCmdlet
     {
-        private const string CreateByName = "ByName";
+        private const string CreateByNameParameterSet = "ByName";
 
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string Name { get; set; }
@@ -47,51 +47,51 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager security user rule collection name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string RuleCollectionName { get; set; }
+        public string RuleCollectionName { get; set; }
 
         [Alias("ConfigName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager security user configuration name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string SecurityUserConfigurationName { get; set; }
+        public string SecurityUserConfigurationName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string NetworkManagerName { get; set; }
+        public string NetworkManagerName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Description.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         public string Description { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Protocol of Rule. Valid values include 'Tcp', 'Udp', 'Icmp', 'Esp', 'Any', and 'Ah'.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateSet("Tcp", "Udp", "Icmp", "Esp", "Any", "Ah", IgnoreCase = true)]
         public string Protocol { get; set; }
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Direction of Rule. Valid values include 'Inbound' and 'Outbound'.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateSet("Inbound", "Outbound", IgnoreCase = true)]
         public string Direction { get; set; }
 
@@ -107,28 +107,28 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Source Address Prefixes.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         public PSNetworkManagerAddressPrefixItem[] SourceAddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Destination Address Prefixes.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         public PSNetworkManagerAddressPrefixItem[] DestinationAddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Source Port Ranges.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         public string[] SourcePortRange { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Destination Port Ranges.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         public string[] DestinationPortRange { get; set; }
 
         [Parameter(

@@ -24,16 +24,16 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = SetByInputObject), OutputType(typeof(PSNetworkManagerRoutingConfiguration))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = SetByInputObjectParameterSet), OutputType(typeof(PSNetworkManagerRoutingConfiguration))]
     public class SetAzNetworkManagerRoutingConfiguration : NetworkManagerRoutingConfigurationBaseCmdlet
     {
-        private const string SetByResourceId = "ByResourceId";
-        private const string SetByInputObject = "ByInputObject";
-        private const string SetByName = "ByName";
+        private const string SetByNameParameterSet = "ByName";
+        private const string SetByResourceIdParameterSet = "ByResourceId";
+        private const string SetByInputObjectParameterSet = "ByInputObject";
 
         [Alias("ResourceName")]
         [Parameter(
-           ParameterSetName = SetByName,
+           ParameterSetName = SetByNameParameterSet,
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.")]
@@ -43,30 +43,30 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByInputObject,
+            ParameterSetName = SetByInputObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Network Manager RoutingConfiguration")]
+            HelpMessage = "The network manager routing configuration.")]
         public PSNetworkManagerRoutingConfiguration InputObject { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByResourceId,
+            ParameterSetName = SetByResourceIdParameterSet,
             Mandatory = true,
-            HelpMessage = "NetworkManager RoutingConfiguration Id",
+            HelpMessage = "The network manager routing configuration id.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [Alias("RoutingConfigurationId")]
         public string ResourceId { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByName,
+            ParameterSetName = SetByNameParameterSet,
             Mandatory = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByName,
+            ParameterSetName = SetByNameParameterSet,
             Mandatory = true,
             HelpMessage = "The network manager name.")]
         [ValidateNotNullOrEmpty]
@@ -76,12 +76,12 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "Description.",
-             ParameterSetName = SetByName)]
+             ParameterSetName = SetByNameParameterSet)]
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "Description.",
-             ParameterSetName = SetByResourceId)]
+             ParameterSetName = SetByResourceIdParameterSet)]
         public string Description { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             switch (this.ParameterSetName)
             {
-                case SetByResourceId:
+                case SetByResourceIdParameterSet:
                     return (
                         NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
                         NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Network
                         )
                     );
 
-                case SetByInputObject:
+                case SetByInputObjectParameterSet:
                     return (
                         this.InputObject.ResourceGroupName,
                         this.InputObject.NetworkManagerName,
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Network
                         this.InputObject
                     );
 
-                case SetByName:
+                case SetByNameParameterSet:
                     return (
                         this.ResourceGroupName,
                         this.NetworkManagerName,

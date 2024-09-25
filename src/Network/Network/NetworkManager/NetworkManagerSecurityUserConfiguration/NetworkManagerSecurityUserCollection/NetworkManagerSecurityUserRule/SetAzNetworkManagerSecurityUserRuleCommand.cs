@@ -30,16 +30,16 @@ namespace Microsoft.Azure.Commands.Network
     /// <summary>
     /// Cmdlet to set a Network Manager SecurityUser Rule.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRule", SupportsShouldProcess = true, DefaultParameterSetName = SetByInputObject), OutputType(typeof(PSNetworkManagerSecurityUserRule))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRule", SupportsShouldProcess = true, DefaultParameterSetName = SetByInputObjectParameterSet), OutputType(typeof(PSNetworkManagerSecurityUserRule))]
     public class SetAzNetworkManagerSecurityUserRuleCommand : NetworkManagerSecurityUserRuleBaseCmdlet
     {
-        private const string SetByResourceId = "ByResourceId";
-        private const string SetByInputObject = "ByInputObject";
-        private const string SetByName = "ByNameParameters";
+        private const string SetByNameParameterSet = "ByNameParameters";
+        private const string SetByResourceIdParameterSet = "ByResourceId";
+        private const string SetByInputObjectParameterSet = "ByInputObject";
 
         [Alias("ResourceName")]
         [Parameter(
-           ParameterSetName = SetByName,
+           ParameterSetName = SetByNameParameterSet,
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.")]
@@ -49,30 +49,30 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByInputObject,
+            ParameterSetName = SetByInputObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Network Manager SecurityUser Rule")]
+            HelpMessage = "The network manager security user rule.")]
         public PSNetworkManagerSecurityUserRule InputObject { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByResourceId,
+            ParameterSetName = SetByResourceIdParameterSet,
             Mandatory = true,
-            HelpMessage = "NetworkManager SecurityUserRule Id",
+            HelpMessage = "The network manager security user rule id.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [Alias("SecurityUserRuleId")]
         public string ResourceId { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByName,
+            ParameterSetName = SetByNameParameterSet,
             Mandatory = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByName,
+            ParameterSetName = SetByNameParameterSet,
             Mandatory = true,
             HelpMessage = "The network manager name.")]
         [ValidateNotNullOrEmpty]
@@ -80,14 +80,14 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ConfigName")]
         [Parameter(
-            ParameterSetName = SetByName,
+            ParameterSetName = SetByNameParameterSet,
             Mandatory = true,
             HelpMessage = "The security user configuration name.")]
         [ValidateNotNullOrEmpty]
         public string SecurityUserConfigurationName { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByName,
+            ParameterSetName = SetByNameParameterSet,
             Mandatory = true,
             HelpMessage = "The rule collection name.")]
         [ValidateNotNullOrEmpty]

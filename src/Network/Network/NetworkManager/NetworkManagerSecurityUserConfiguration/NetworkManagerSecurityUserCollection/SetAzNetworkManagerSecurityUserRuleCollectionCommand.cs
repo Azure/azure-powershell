@@ -24,16 +24,16 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = SetByInputObject), OutputType(typeof(PSNetworkManagerSecurityUserRuleCollection))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = SetByInputObjectParameterSet), OutputType(typeof(PSNetworkManagerSecurityUserRuleCollection))]
     public class SetAzNetworkManagerSecurityUserRuleCollection : NetworkManagerSecurityUserRuleCollectionBaseCmdlet
     {
-        private const string SetByResourceId = "ByResourceId";
-        private const string SetByInputObject = "ByInputObject";
-        private const string SetByName = "ByNameParameters";
+        private const string SetByNameParameterSet = "ByNameParameters";
+        private const string SetByResourceIdParameterSet = "ByResourceId";
+        private const string SetByInputObjectParameterSet = "ByInputObject";
 
         [Alias("ResourceName")]
         [Parameter(
-           ParameterSetName = SetByName,
+           ParameterSetName = SetByNameParameterSet,
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.")]
@@ -43,37 +43,37 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByInputObject,
+            ParameterSetName = SetByInputObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Network Manager SecurityUser Collection")]
+            HelpMessage = "The network manager security user collection.")]
         public PSNetworkManagerSecurityUserRuleCollection InputObject { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByResourceId,
+            ParameterSetName = SetByResourceIdParameterSet,
             Mandatory = true,
-            HelpMessage = "NetworkManager SecurityUserCollection Id",
+            HelpMessage = "The network manager security user collection id.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [Alias("SecurityUserCollectionId")]
         public string ResourceId { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByName,
+            ParameterSetName = SetByNameParameterSet,
             Mandatory = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByName,
+            ParameterSetName = SetByNameParameterSet,
             Mandatory = true,
             HelpMessage = "The network manager name.")]
         [ValidateNotNullOrEmpty]
         public string NetworkManagerName { get; set; }
 
         [Parameter(
-            ParameterSetName = SetByName,
+            ParameterSetName = SetByNameParameterSet,
             Mandatory = true,
             HelpMessage = "The securityUser configuration name.")]
         [ValidateNotNullOrEmpty]
@@ -83,12 +83,12 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "Description.",
-             ParameterSetName = SetByName)]
+             ParameterSetName = SetByNameParameterSet)]
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "Description.",
-             ParameterSetName = SetByResourceId)]
+             ParameterSetName = SetByResourceIdParameterSet)]
         public string Description { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             switch (this.ParameterSetName)
             {
-                case SetByInputObject:
+                case SetByInputObjectParameterSet:
                     return (
                         this.InputObject.ResourceGroupName,
                         this.InputObject.NetworkManagerName,
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Network
                         this.InputObject.Name
                     );
 
-                case SetByResourceId:
+                case SetByResourceIdParameterSet:
                     return (
                         NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
                         NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Network
                         NetworkBaseCmdlet.GetResourceName(this.ResourceId, "ruleCollections")
                     );
 
-                case SetByName:
+                case SetByNameParameterSet:
                     return (
                         this.ResourceGroupName,
                         this.NetworkManagerName,

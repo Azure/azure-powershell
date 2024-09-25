@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ParameterSetName = GetByResourceIdParameterSet,
-            HelpMessage = "NetworkManager SecurityUserConfiguration Id",
+            HelpMessage = "The network manager security user configuration id.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [Alias("SecurityUserConfigurationId")]

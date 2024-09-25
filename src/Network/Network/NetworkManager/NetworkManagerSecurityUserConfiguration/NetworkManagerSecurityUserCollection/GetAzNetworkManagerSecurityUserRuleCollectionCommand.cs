@@ -44,12 +44,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = GetByNameParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The network manager securityUser configuration name.")]
+            HelpMessage = "The network manager security user configuration name.")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = ListParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The network manager securityUser configuration name.")]
+            HelpMessage = "The network manager security user configuration name.")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string SecurityUserConfigurationName { get; set; }
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ParameterSetName = GetByResourceIdParameterSet,
-            HelpMessage = "NetworkManager SecurityUserCollection Id",
+            HelpMessage = "The network manager security user collection id.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [Alias("SecurityUserCollectionId")]

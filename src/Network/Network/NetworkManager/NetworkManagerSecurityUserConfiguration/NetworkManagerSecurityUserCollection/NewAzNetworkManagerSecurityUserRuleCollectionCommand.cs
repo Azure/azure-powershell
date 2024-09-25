@@ -26,17 +26,17 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = CreateByName), OutputType(typeof(PSNetworkManagerSecurityUserRuleCollection))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = CreateByNameParameterSet), OutputType(typeof(PSNetworkManagerSecurityUserRuleCollection))]
     public class NewAzNetworkManagerSecurityUserRuleCollectionCommand : NetworkManagerSecurityUserRuleCollectionBaseCmdlet
     {
-        private const string CreateByName = "ByName";
+        private const string CreateByNameParameterSet = "ByName";
 
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string Name { get; set; }
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager security user configuration name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string SecurityUserConfigurationName { get; set; }
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string NetworkManagerName { get; set; }
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -73,13 +73,13 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "Description.",
-             ParameterSetName = CreateByName)]
+             ParameterSetName = CreateByNameParameterSet)]
         public string Description { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CreateByName,
+            ParameterSetName = CreateByNameParameterSet,
             HelpMessage = "Applies To.")]
         public PSNetworkManagerSecurityUserGroupItem[] AppliesToGroup { get; set; }
 

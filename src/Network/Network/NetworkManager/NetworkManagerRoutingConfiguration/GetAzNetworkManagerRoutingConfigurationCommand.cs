@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ParameterSetName = GetByResourceIdParameterSet,
-            HelpMessage = "NetworkManager RoutingConfiguration Id",
+            HelpMessage = "The network manager routing configuration id.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [Alias("RoutingConfigurationId")]

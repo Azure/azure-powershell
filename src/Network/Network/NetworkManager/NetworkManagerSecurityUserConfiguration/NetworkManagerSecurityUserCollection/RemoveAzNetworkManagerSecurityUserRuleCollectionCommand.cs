@@ -19,19 +19,19 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = DeleteByName), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = DeleteByNameParameterSet), OutputType(typeof(bool))]
     public class RemoveAzNetworkManagerSecurityUserRuleCollectionCommand : NetworkManagerSecurityUserRuleCollectionBaseCmdlet
     {
-        private const string DeleteByName = "ByName";
-        private const string DeleteByResourceId = "ByResourceId";
-        private const string DeleteByInputObject = "ByInputObject";
+        private const string DeleteByNameParameterSet = "ByName";
+        private const string DeleteByResourceIdParameterSet = "ByResourceId";
+        private const string DeleteByInputObjectParameterSet = "ByInputObject";
 
         [Alias("ResourceName")]
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
-           ParameterSetName = DeleteByName)]
+           ParameterSetName = DeleteByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "SecurityUserConfigurationName")]
         [SupportsWildcards]
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager securityUser configuration name.",
-           ParameterSetName = DeleteByName)]
+           ParameterSetName = DeleteByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager name.",
-           ParameterSetName = DeleteByName)]
+           ParameterSetName = DeleteByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [SupportsWildcards]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = DeleteByName)]
+            ParameterSetName = DeleteByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -71,15 +71,15 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The SecurityUser rule collection resource.",
-            ParameterSetName = DeleteByInputObject)]
+            HelpMessage = "The network manager security user rule collection resource.",
+            ParameterSetName = DeleteByInputObjectParameterSet)]
         [ValidateNotNull]
         public PSNetworkManagerSecurityUserRuleCollection InputObject { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The resource id.",
-            ParameterSetName = DeleteByResourceId)]
+            ParameterSetName = DeleteByResourceIdParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             switch (this.ParameterSetName)
             {
-                case DeleteByInputObject:
+                case DeleteByInputObjectParameterSet:
                     return (
                         this.InputObject.ResourceGroupName,
                         this.InputObject.NetworkManagerName,
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Network
                         this.InputObject.Name
                     );
 
-                case DeleteByResourceId:
+                case DeleteByResourceIdParameterSet:
                     return (
                         NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
                         NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Network
                         NetworkBaseCmdlet.GetResourceName(this.ResourceId, "ruleCollections")
                     );
 
-                case DeleteByName:
+                case DeleteByNameParameterSet:
                     return (
                         this.ResourceGroupName,
                         this.NetworkManagerName,

@@ -28,17 +28,17 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRule", SupportsShouldProcess = true, DefaultParameterSetName = CreateByName), OutputType(typeof(PSNetworkManagerRoutingRule))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRule", SupportsShouldProcess = true, DefaultParameterSetName = CreateByNameParameterSet), OutputType(typeof(PSNetworkManagerRoutingRule))]
     public class NewAzNetworkManagerRoutingRuleCommand : NetworkManagerRoutingRuleBaseCmdlet
     {
-        private const string CreateByName = "ByName";
+        private const string CreateByNameParameterSet = "ByName";
 
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string Name { get; set; }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager routing rule collection name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string RuleCollectionName { get; set; }
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager routing configuration name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string RoutingConfigurationName { get; set; }
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = CreateByName)]
+            ParameterSetName = CreateByNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -83,22 +83,22 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Route destination.",
-           ParameterSetName = CreateByName)]
+           HelpMessage = "The routing rule destination.",
+           ParameterSetName = CreateByNameParameterSet)]
         public PSNetworkManagerRoutingRuleDestination Destination { get; set; }
 
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Route Next-hop.",
-           ParameterSetName = CreateByName)]
+           HelpMessage = "The routing rule next-hop.",
+           ParameterSetName = CreateByNameParameterSet)]
         public PSNetworkManagerRoutingRuleNextHop NextHop { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "Description.",
-             ParameterSetName = CreateByName)]
+             ParameterSetName = CreateByNameParameterSet)]
         public string Description { get; set; }
 
         [Parameter(
