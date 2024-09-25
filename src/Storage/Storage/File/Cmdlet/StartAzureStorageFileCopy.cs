@@ -19,6 +19,7 @@ using System;
 using System.Management.Automation;
 using System.Security.Permissions;
 using System.Threading.Tasks;
+using Microsoft.Azure.Storage.Blob;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Azure.Storage.Files.Shares;
 using Azure;
@@ -53,15 +54,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(HelpMessage = "Source container instance", Mandatory = true, ParameterSetName = ContainerParameterSet)]
         [ValidateNotNull]
-        [Alias("BlobContainerClient")]
-        public BlobContainerClient SrcContainer { get; set; }
+        public CloudBlobContainer SrcContainer { get; set; }
 
+        [Alias("ICloudBlob")]
         [Parameter(HelpMessage = "Source blob instance", Mandatory = true,
            ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFilePathParameterSet)]
         [Parameter(HelpMessage = "Source blob instance", Mandatory = true,
            ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFileParameterSet)]
-        [Alias("BlobBaseClient")]
-        public BlobBaseClient SrcBlob { get; set; }
+        [ValidateNotNull]
+        public CloudBlob SrcBlob { get; set; }
+
+        //[Parameter(HelpMessage = "Source container instance", Mandatory = true, ParameterSetName = ContainerParameterSet)]
+        //[ValidateNotNull]
+        //[Alias("BlobContainerClient")]
+        //public BlobContainerClient SrcContainer { get; set; }
+
+        //[Parameter(HelpMessage = "Source blob instance", Mandatory = true,
+        //   ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFilePathParameterSet)]
+        //[Parameter(HelpMessage = "Source blob instance", Mandatory = true,
+        //   ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFileParameterSet)]
+        //[Alias("BlobBaseClient")]
+        //public BlobBaseClient SrcBlob { get; set; }
 
         [Parameter(HelpMessage = "Source file path", Mandatory = true, ParameterSetName = ShareNameParameterSet)]
         [Parameter(HelpMessage = "Source file path", Mandatory = true, ParameterSetName = ShareParameterSet)]
@@ -130,10 +143,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareNameParameterSet)]
         //[Parameter(HelpMessage = "Source Azure Storage Context Object",
         //Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object",
-            Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFilePathParameterSet)]
-        [Parameter(HelpMessage = "Source Azure Storage Context Object",
-            Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFileParameterSet)]
+        //[Parameter(HelpMessage = "Source Azure Storage Context Object",
+        //    Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFilePathParameterSet)]
+        //[Parameter(HelpMessage = "Source Azure Storage Context Object",
+        //    Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFileParameterSet)]
         //[Parameter(HelpMessage = "Source Azure Storage Context Object",
         //Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareParameterSet)]
         //[Parameter(HelpMessage = "Source Azure Storage Context Object",
@@ -313,9 +326,49 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
         }
 
+        //private void StartCopyFromBlob()
+        //{
+        //    BlobBaseClient blob = null;
+        //    string sourceBlobRelativeName = null;
+
+        //    if (null != this.SrcBlob)
+        //    {
+        //        blob = this.SrcBlob;
+        //        sourceBlobRelativeName = blob.Name;
+        //    }
+        //    else
+        //    {
+        //        BlobContainerClient srcContainer = null;
+
+        //        if (null != this.SrcContainer)
+        //        {
+        //            srcContainer = this.SrcContainer;
+        //        }
+        //        else
+        //        {
+        //            NameUtil.ValidateContainerName(this.SrcContainerName);
+        //            srcContainer = this.blobChannel.GetBlobContainerClient(this.SrcContainerName);
+              
+        //        }
+        //        NameUtil.ValidateBlobName(this.SrcBlobName);
+        //        blob = srcContainer.GetBlobBaseClient(this.SrcBlobName);
+        //        sourceBlobRelativeName = this.SrcBlobName;
+        //    }
+
+        //    ShareFileClient destFile = GetDestFile();
+
+        //    Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
+        //        taskId,
+        //        destFile,
+        //        () => this.ConfirmOverwrite(Util.GetSnapshotQualifiedUri(blob.Uri), Util.GetSnapshotQualifiedUri(destFile.Uri)),
+        //        () => destFile.StartCopyAsync(blob.GenerateUriWithCredentialsForBlob((AzureStorageContext)this.Context), cancellationToken: this.CmdletCancellationToken));
+
+        //    this.RunTask(taskGenerator);
+        //}
+
         private void StartCopyFromBlob()
         {
-            BlobBaseClient blob = null;
+            CloudBlob blob = null;
             string sourceBlobRelativeName = null;
 
             if (null != this.SrcBlob)
@@ -325,7 +378,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
             else
             {
-                BlobContainerClient srcContainer = null;
+                CloudBlobContainer srcContainer = null;
 
                 if (null != this.SrcContainer)
                 {
@@ -334,11 +387,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 else
                 {
                     NameUtil.ValidateContainerName(this.SrcContainerName);
-                    srcContainer = this.blobChannel.GetBlobContainerClient(this.SrcContainerName);
-              
+                    srcContainer = this.blobChannel.GetContainerReference(this.SrcContainerName);
                 }
                 NameUtil.ValidateBlobName(this.SrcBlobName);
-                blob = srcContainer.GetBlobBaseClient(this.SrcBlobName);
+                blob = srcContainer.GetBlobReference(this.SrcBlobName);
                 sourceBlobRelativeName = this.SrcBlobName;
             }
 
@@ -347,8 +399,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
                 taskId,
                 destFile,
-                () => this.ConfirmOverwrite(Util.GetSnapshotQualifiedUri(blob.Uri), Util.GetSnapshotQualifiedUri(destFile.Uri)),
-                () => destFile.StartCopyAsync(blob.GenerateUriWithCredentialsForBlob((AzureStorageContext)this.Context), cancellationToken: this.CmdletCancellationToken));
+                () => this.ConfirmOverwrite(blob.SnapshotQualifiedUri.ToString(), Util.GetSnapshotQualifiedUri(destFile.Uri)),
+                () => destFile.StartCopyAsync(blob.GenerateUriWithCredentials(), cancellationToken: this.CmdletCancellationToken));
 
             this.RunTask(taskGenerator);
         }
