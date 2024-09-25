@@ -248,6 +248,9 @@ Create an in-memory object for HealthProbeParameters.
 ### [New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject](New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject.md)
 Create an in-memory object for LoadBalancingSettingsParameters.
 
+### [New-AzFrontDoorCdnProfile](New-AzFrontDoorCdnProfile.md)
+Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
+
 ### [New-AzFrontDoorCdnProfileChangeSkuWafMappingObject](New-AzFrontDoorCdnProfileChangeSkuWafMappingObject.md)
 Create an in-memory object for ProfileChangeSkuWafMapping.
 
@@ -497,6 +500,9 @@ Update an existing origin within an origin group.
 
 ### [Update-AzFrontDoorCdnOriginGroup](Update-AzFrontDoorCdnOriginGroup.md)
 Update an existing origin group within a profile.
+
+### [Update-AzFrontDoorCdnProfile](Update-AzFrontDoorCdnProfile.md)
+Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 
 ### [Update-AzFrontDoorCdnProfileSku](Update-AzFrontDoorCdnProfileSku.md)
 Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
