@@ -22,85 +22,76 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRuleCollection", DefaultParameterSetName = ByListParameterSet), OutputType(typeof(PSNetworkManagerSecurityUserRuleCollection))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRuleCollection", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSNetworkManagerSecurityUserRuleCollection))]
     public class GetAzNetworkManagerSecurityUserRuleCollectionCommand : NetworkManagerSecurityUserRuleCollectionBaseCmdlet
     {
-        private const string ByListParameterSet = "ByList";
-        private const string ByNameParameterSet = "ByName";
-        private const string ByResourceIdParameterSet = "ByResourceId";
-        private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ListParameterSet = "ByList";
+        private const string GetByNameParameterSet = "ByName";
+        private const string GetByResourceIdParameterSet = "ByResourceId";
 
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = ByNameParameterSet)]
+            ParameterSetName = GetByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "SecurityUserConfigurationName")]
         [SupportsWildcards]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Alias("ConfigName")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByNameParameterSet,
+            ParameterSetName = GetByNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager securityUser configuration name.")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByListParameterSet,
+            ParameterSetName = ListParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager securityUser configuration name.")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string SecurityUserConfigurationName { get; set; }
+        public string SecurityUserConfigurationName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByNameParameterSet,
+            ParameterSetName = GetByNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager name.")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByListParameterSet,
+            ParameterSetName = ListParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager name.")]
         [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string NetworkManagerName { get; set; }
+        public string NetworkManagerName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByNameParameterSet,
+            ParameterSetName = GetByNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByListParameterSet,
+            ParameterSetName = ListParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByResourceIdParameterSet,
+            ParameterSetName = GetByResourceIdParameterSet,
             HelpMessage = "NetworkManager SecurityUserCollection Id",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [Alias("SecurityUserCollectionId")]
         public string ResourceId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "The input object containing the necessary properties.",
-            ParameterSetName = ByInputObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public PSNetworkManagerSecurityUserRuleCollection InputObject { get; set; }
 
         public override void Execute()
         {
@@ -108,12 +99,12 @@ namespace Microsoft.Azure.Commands.Network
 
             switch (this.ParameterSetName)
             {
-                case ByNameParameterSet:
+                case GetByNameParameterSet:
                     var ruleCollectionByName = this.GetNetworkManagerSecurityUserRuleCollection(this.ResourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName, this.Name);
                     WriteObject(ruleCollectionByName);
                     break;
 
-                case ByResourceIdParameterSet:
+                case GetByResourceIdParameterSet:
                     var resourceId = this.ResourceId;
                     var resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(resourceId);
                     var networkManagerName = NetworkBaseCmdlet.GetResourceName(resourceId, "networkManagers");
@@ -124,13 +115,7 @@ namespace Microsoft.Azure.Commands.Network
                     WriteObject(ruleCollectionByResourceId);
                     break;
 
-                case ByInputObjectParameterSet:
-                    var inputObject = this.InputObject;
-                    var ruleCollectionByInputObject = this.GetNetworkManagerSecurityUserRuleCollection(inputObject.ResourceGroupName, inputObject.NetworkManagerName, inputObject.SecurityUserConfigurationName, inputObject.Name);
-                    WriteObject(ruleCollectionByInputObject);
-                    break;
-
-                case ByListParameterSet:
+                case ListParameterSet:
                     var ruleCollectionPage = this.NetworkManagerSecurityUserRuleCollectionClient.List(this.ResourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName);
 
                     // Get all resources by polling on next page link

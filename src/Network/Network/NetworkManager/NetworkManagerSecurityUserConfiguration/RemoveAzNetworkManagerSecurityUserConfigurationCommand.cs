@@ -20,56 +20,56 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = ByName), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = DeleteByName), OutputType(typeof(bool))]
     public class RemoveAzNetworkManagerSecurityUserConfigurationCommand : NetworkManagerSecurityUserConfigurationBaseCmdlet
     {
-        private const string ByName = "ByName";
-        private const string ByResourceId = "ByResourceId";
-        private const string ByInputObject = "ByInputObject";
+        private const string DeleteByName = "ByName";
+        private const string DeleteByResourceId = "ByResourceId";
+        private const string DeleteByInputObject = "ByInputObject";
 
         [Alias("ResourceName")]
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
-           ParameterSetName = ByName)]
+           ParameterSetName = DeleteByName)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager name.",
-           ParameterSetName = ByName)]
+           ParameterSetName = DeleteByName)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [SupportsWildcards]
-        public virtual string NetworkManagerName { get; set; }
+        public string NetworkManagerName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = ByName)]
+            ParameterSetName = DeleteByName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The SecurityUser Configuration resource.",
-            ParameterSetName = ByInputObject)]
+            ParameterSetName = DeleteByInputObject)]
         [ValidateNotNull]
         public PSNetworkManagerSecurityUserConfiguration InputObject { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The resource id.",
-            ParameterSetName = ByResourceId)]
+            ParameterSetName = DeleteByResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             switch (this.ParameterSetName)
             {
-                case ByResourceId:
+                case DeleteByResourceId:
                     var resourceId = this.ResourceId;
                     return (
                         NetworkBaseCmdlet.GetResourceGroup(resourceId),
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network
                         NetworkBaseCmdlet.GetResourceName(resourceId, "securityUserConfigurations")
                     );
 
-                case ByInputObject:
+                case DeleteByInputObject:
                     var inputObject = this.InputObject;
                     return (
                         inputObject.ResourceGroupName,
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Network
                         inputObject.Name
                     );
 
-                case ByName:
+                case DeleteByName:
                     return (
                         this.ResourceGroupName,
                         this.NetworkManagerName,

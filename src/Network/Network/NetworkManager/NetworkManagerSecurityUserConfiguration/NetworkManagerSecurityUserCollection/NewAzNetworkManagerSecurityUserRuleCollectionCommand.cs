@@ -26,70 +26,62 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = ByName), OutputType(typeof(PSNetworkManagerSecurityUserRuleCollection))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = CreateByName), OutputType(typeof(PSNetworkManagerSecurityUserRuleCollection))]
     public class NewAzNetworkManagerSecurityUserRuleCollectionCommand : NetworkManagerSecurityUserRuleCollectionBaseCmdlet
     {
-        private const string ByName = "ByName";
-        private const string ByInputObject = "ByInputObject";
+        private const string CreateByName = "ByName";
 
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = ByName)]
+            ParameterSetName = CreateByName)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Alias("ConfigName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The network manager securityUser configuration name.",
-            ParameterSetName = ByName)]
+            HelpMessage = "The network manager security user configuration name.",
+            ParameterSetName = CreateByName)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string SecurityUserConfigurationName { get; set; }
+        public string SecurityUserConfigurationName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager name.",
-            ParameterSetName = ByName)]
+            ParameterSetName = CreateByName)]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string NetworkManagerName { get; set; }
+        public string NetworkManagerName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = ByName)]
+            ParameterSetName = CreateByName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "Description.",
-             ParameterSetName = ByName)]
-        public virtual string Description { get; set; }
+             ParameterSetName = CreateByName)]
+        public string Description { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ByName,
+            ParameterSetName = CreateByName,
             HelpMessage = "Applies To.")]
-        public virtual PSNetworkManagerSecurityUserGroupItem[] AppliesToGroup { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "The input object representing the securityUser collection.",
-            ParameterSetName = ByInputObject)]
-        public PSNetworkManagerSecurityUserRuleCollection InputObject { get; set; }
+        public PSNetworkManagerSecurityUserGroupItem[] AppliesToGroups { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -103,17 +95,15 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            var (resourceGroupName, networkManagerName, securityUserConfigurationName, securityUserRuleCollectionName, description, appliesTo) = ExtractParameters();
-
-            var present = this.IsNetworkManagerSecurityUserRuleCollectionPresent(resourceGroupName, networkManagerName, securityUserConfigurationName, securityUserRuleCollectionName);
+            var present = this.IsNetworkManagerSecurityUserRuleCollectionPresent(this.ResourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.OverwritingResource, securityUserRuleCollectionName),
+                string.Format(Properties.Resources.OverwritingResource, this.Name),
                 Properties.Resources.CreatingResourceMessage,
-                securityUserRuleCollectionName,
+                this.Name,
                 () =>
                 {
-                    var networkManagerSecurityUserRuleCollection = this.CreateNetworkManagerSecurityUserRuleCollection(resourceGroupName, networkManagerName, securityUserConfigurationName, securityUserRuleCollectionName, description, appliesTo);
+                    var networkManagerSecurityUserRuleCollection = this.CreateNetworkManagerSecurityUserRuleCollection(this.ResourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName, this.Name, this.Description, this.AppliesToGroups);
                     WriteObject(networkManagerSecurityUserRuleCollection);
                 },
                 () => present);
@@ -132,39 +122,10 @@ namespace Microsoft.Azure.Commands.Network
             var ruleCollectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.SecurityUserRuleCollection>(ruleCollection);
 
             // Execute the Create SecurityUser Rule Collection call
-            this.NetworkManagerSecurityUserRuleCollectionClient.CreateOrUpdate(resourceGroupName, networkManagerName, securityUserConfigurationName, securityUserRuleCollectionName, ruleCollectionModel);
+            this.NetworkManagerSecurityUserRuleCollectionClient.CreateOrUpdate(resourceGroupName, this.NetworkManagerName, securityUserConfigurationName, securityUserRuleCollectionName, ruleCollectionModel);
 
-            var psSecurityUserRuleCollection = this.GetNetworkManagerSecurityUserRuleCollection(resourceGroupName, networkManagerName, securityUserConfigurationName, securityUserRuleCollectionName);
+            var psSecurityUserRuleCollection = this.GetNetworkManagerSecurityUserRuleCollection(resourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName, securityUserRuleCollectionName);
             return psSecurityUserRuleCollection;
-        }
-
-        private (string resourceGroupName, string networkManagerName, string securityUserConfigurationName, string securityUserRuleCollectionName, string description, PSNetworkManagerSecurityUserGroupItem[] appliesTo) ExtractParameters()
-        {
-            switch (this.ParameterSetName)
-            {
-                case ByInputObject:
-                    return (
-                        this.InputObject.ResourceGroupName,
-                        this.InputObject.NetworkManagerName,
-                        this.InputObject.SecurityUserConfigurationName,
-                        this.InputObject.Name,
-                        this.InputObject.Description,
-                        this.InputObject.AppliesToGroups.ToArray()
-                    );
-
-                case ByName:
-                    return (
-                        this.ResourceGroupName,
-                        this.NetworkManagerName,
-                        this.SecurityUserConfigurationName,
-                        this.Name,
-                        this.Description,
-                        this.AppliesToGroup.ToArray()
-                    );
-
-                default:
-                    throw new PSArgumentException("Invalid parameter set");
-            }
         }
     }
 }

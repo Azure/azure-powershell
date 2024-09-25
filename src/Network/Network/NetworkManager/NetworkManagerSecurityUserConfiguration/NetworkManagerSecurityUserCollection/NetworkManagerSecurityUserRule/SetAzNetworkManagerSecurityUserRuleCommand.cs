@@ -17,9 +17,11 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
+using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -28,26 +30,16 @@ namespace Microsoft.Azure.Commands.Network
     /// <summary>
     /// Cmdlet to set a Network Manager SecurityUser Rule.
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRule", SupportsShouldProcess = true, DefaultParameterSetName = ByInputObject), OutputType(typeof(PSNetworkManagerSecurityUserRule))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRule", SupportsShouldProcess = true, DefaultParameterSetName = SetByInputObject), OutputType(typeof(PSNetworkManagerSecurityUserRule))]
     public class SetAzNetworkManagerSecurityUserRuleCommand : NetworkManagerSecurityUserRuleBaseCmdlet
     {
-        private const string ByResourceId = "ByResourceId";
-        private const string ByInputObject = "ByInputObject";
-        private const string ByName = "ByNameParameters";
+        private const string SetByResourceId = "ByResourceId";
+        private const string SetByInputObject = "ByInputObject";
+        private const string SetByName = "ByNameParameters";
 
         [Alias("ResourceName")]
         [Parameter(
-           ParameterSetName = ByInputObject,
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource name.")]
-        [Parameter(
-           ParameterSetName = ByResourceId,
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource name.")]
-        [Parameter(
-           ParameterSetName = ByName,
+           ParameterSetName = SetByName,
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.")]
@@ -57,14 +49,14 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = ByInputObject,
+            ParameterSetName = SetByInputObject,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Network Manager SecurityUser Rule")]
         public PSNetworkManagerSecurityUserRule InputObject { get; set; }
 
         [Parameter(
-            ParameterSetName = ByResourceId,
+            ParameterSetName = SetByResourceId,
             Mandatory = true,
             HelpMessage = "NetworkManager SecurityUserRule Id",
             ValueFromPipelineByPropertyName = true)]
@@ -73,28 +65,29 @@ namespace Microsoft.Azure.Commands.Network
         public string ResourceId { get; set; }
 
         [Parameter(
-            ParameterSetName = ByName,
+            ParameterSetName = SetByName,
             Mandatory = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = ByName,
+            ParameterSetName = SetByName,
             Mandatory = true,
             HelpMessage = "The network manager name.")]
         [ValidateNotNullOrEmpty]
         public string NetworkManagerName { get; set; }
 
+        [Alias("ConfigName")]
         [Parameter(
-            ParameterSetName = ByName,
+            ParameterSetName = SetByName,
             Mandatory = true,
             HelpMessage = "The security user configuration name.")]
         [ValidateNotNullOrEmpty]
         public string SecurityUserConfigurationName { get; set; }
 
         [Parameter(
-            ParameterSetName = ByName,
+            ParameterSetName = SetByName,
             Mandatory = true,
             HelpMessage = "The rule collection name.")]
         [ValidateNotNullOrEmpty]
@@ -137,13 +130,22 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                return (
-                    NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
-                    NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
-                    NetworkBaseCmdlet.GetResourceName(this.ResourceId, "securityUserConfigurations"),
-                    NetworkBaseCmdlet.GetResourceName(this.ResourceId, "ruleCollections"),
-                    this.Name ?? NetworkBaseCmdlet.GetResourceName(this.ResourceId, "rules")
-                );
+                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+
+                // Validate the format of the ResourceId
+                var segments = parsedResourceId.ParentResource.Split('/');
+                if (segments.Length < 6)
+                {
+                    throw new PSArgumentException("Invalid ResourceId format. Ensure the ResourceId is in the correct format.");
+                }
+
+                this.Name = parsedResourceId.ResourceName;
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.NetworkManagerName = segments[1];
+                this.SecurityUserConfigurationName = segments[3];
+                this.RuleCollectionName = segments[5];
+
+                return (this.ResourceGroupName, this.NetworkManagerName, this.SecurityUserConfigurationName, this.RuleCollectionName, this.Name);
             }
             else if (this.InputObject != null)
             {
@@ -179,7 +181,22 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                throw new ErrorException("Unknown SecurityUser Rule Type");
+                var securityUserRule = new SecurityUserRule
+                {
+                    Protocol = this.InputObject.Protocol,
+                    Direction = this.InputObject.Direction,
+                    Sources = this.InputObject.Sources?.Select(s => new AddressPrefixItem(s.AddressPrefix, s.AddressPrefixType)).ToList(),
+                    Destinations = this.InputObject.Destinations?.Select(d => new AddressPrefixItem(d.AddressPrefix, d.AddressPrefixType)).ToList(),
+                    SourcePortRanges = this.InputObject.SourcePortRanges,
+                    DestinationPortRanges = this.InputObject.DestinationPortRanges
+                };
+
+                if (!string.IsNullOrEmpty(this.InputObject.Description))
+                {
+                    securityUserRule.Description = this.InputObject.Description;
+                }
+
+                return securityUserRule;
             }
         }
     }

@@ -24,26 +24,16 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = ByInputObject), OutputType(typeof(PSNetworkManagerSecurityUserConfiguration))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = SetByInputObject), OutputType(typeof(PSNetworkManagerSecurityUserConfiguration))]
     public class SetAzNetworkManagerSecurityUserConfiguration : NetworkManagerSecurityUserConfigurationBaseCmdlet
     {
-        private const string ByResourceId = "ByResourceId";
-        private const string ByInputObject = "ByInputObject";
-        private const string ByName = "ByName";
+        private const string SetByResourceId = "ByResourceId";
+        private const string SetByInputObject = "ByInputObject";
+        private const string SetByName = "ByName";
 
         [Alias("ResourceName")]
         [Parameter(
-           ParameterSetName = ByInputObject,
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource name.")]
-        [Parameter(
-           ParameterSetName = ByResourceId,
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource name.")]
-        [Parameter(
-           ParameterSetName = ByName,
+           ParameterSetName = SetByName,
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.")]
@@ -53,14 +43,14 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = ByInputObject,
+            ParameterSetName = SetByInputObject,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Network Manager SecurityUserConfiguration")]
         public PSNetworkManagerSecurityUserConfiguration InputObject { get; set; }
 
         [Parameter(
-            ParameterSetName = ByResourceId,
+            ParameterSetName = SetByResourceId,
             Mandatory = true,
             HelpMessage = "NetworkManager SecurityUserConfiguration Id",
             ValueFromPipelineByPropertyName = true)]
@@ -69,20 +59,30 @@ namespace Microsoft.Azure.Commands.Network
         public string ResourceId { get; set; }
 
         [Parameter(
-            ParameterSetName = ByName,
+            ParameterSetName = SetByName,
             Mandatory = true,
-            HelpMessage = "The name of the resource group.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = ByName,
+            ParameterSetName = SetByName,
             Mandatory = true,
-            HelpMessage = "The name of the network manager.",
-            ValueFromPipelineByPropertyName = true)]
+            HelpMessage = "The network manager name.")]
         [ValidateNotNullOrEmpty]
         public string NetworkManagerName { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = SetByName)]
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = SetByResourceId)]
+        public string Description { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -100,6 +100,12 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, securityUserConfigurationName));
                 }
 
+                // Update the description if provided
+                if (!string.IsNullOrEmpty(this.Description))
+                {
+                    securityUserConfiguration.Description = this.Description;
+                }
+
                 // Map to the SDK object
                 var securityUserConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.SecurityUserConfiguration>(securityUserConfiguration);
 
@@ -115,7 +121,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             switch (this.ParameterSetName)
             {
-                case ByResourceId:
+                case SetByResourceId:
                     return (
                         NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
                         NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
@@ -127,7 +133,7 @@ namespace Microsoft.Azure.Commands.Network
                         )
                     );
 
-                case ByInputObject:
+                case SetByInputObject:
                     return (
                         this.InputObject.ResourceGroupName,
                         this.InputObject.NetworkManagerName,
@@ -135,7 +141,7 @@ namespace Microsoft.Azure.Commands.Network
                         this.InputObject
                     );
 
-                case ByName:
+                case SetByName:
                     return (
                         this.ResourceGroupName,
                         this.NetworkManagerName,

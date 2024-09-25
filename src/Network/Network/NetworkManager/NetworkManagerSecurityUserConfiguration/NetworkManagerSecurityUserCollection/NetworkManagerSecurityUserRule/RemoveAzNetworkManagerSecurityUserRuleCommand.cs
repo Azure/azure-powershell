@@ -22,19 +22,19 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRule", SupportsShouldProcess = true, DefaultParameterSetName = ByName), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityUserRule", SupportsShouldProcess = true, DefaultParameterSetName = DeleteByName), OutputType(typeof(bool))]
     public class RemoveAzNetworkManagerSecurityUserRuleCommand : NetworkManagerSecurityUserRuleBaseCmdlet
     {
-        private const string ByName = "ByName";
-        private const string ByResourceId = "ByResourceId";
-        private const string ByInputObject = "ByInputObject";
+        private const string DeleteByName = "ByName";
+        private const string DeleteByResourceId = "ByResourceId";
+        private const string DeleteByInputObject = "ByInputObject";
 
         [Alias("ResourceName")]
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
-           ParameterSetName = ByName)]
+           ParameterSetName = DeleteByName)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations/ruleCollections/rules", "ResourceGroupName", "NetworkManagerName", "SecurityUserConfigurationName", "RuleCollectionName")]
         [SupportsWildcards]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager securityUser rule collection name.",
-           ParameterSetName = ByName)]
+           ParameterSetName = DeleteByName)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "SecurityUserConfigurationName")]
         [SupportsWildcards]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager securityUser configuration name.",
-           ParameterSetName = ByName)]
+           ParameterSetName = DeleteByName)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/securityUserConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The network manager name.",
-           ParameterSetName = ByName)]
+           ParameterSetName = DeleteByName)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [SupportsWildcards]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = ByName)]
+            ParameterSetName = DeleteByName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -84,14 +84,14 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The SecurityUser rule resource.",
-            ParameterSetName = ByInputObject)]
+            ParameterSetName = DeleteByInputObject)]
         [ValidateNotNull]
         public PSNetworkManagerSecurityUserRule InputObject { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The resource id.",
-            ParameterSetName = ByResourceId)]
+            ParameterSetName = DeleteByResourceId)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -113,11 +113,11 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            if (ParameterSetName.Equals(ByResourceId, StringComparison.OrdinalIgnoreCase))
+            if (ParameterSetName.Equals(DeleteByResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 this.PopulateResourceInfoFromId(this.ResourceId);
             }
-            else if (ParameterSetName.Equals(ByInputObject, StringComparison.OrdinalIgnoreCase))
+            else if (ParameterSetName.Equals(DeleteByInputObject, StringComparison.OrdinalIgnoreCase))
             {
                 this.PopulateResourceInfoFromId(this.InputObject.Id);
             }
