@@ -466,4 +466,24 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}"].delete
     transform: >-
       $["x-ms-long-running-operation-options"] = {"final-state-via": "azure-async-operation"}
+
+  # announce upcoming MI-related breaking changes
+  - where:
+      parameter-name: IdentityType
+    set:
+      breaking-change:
+        change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2024/11/19
+  - where:
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      breaking-change:
+        old-parameter-type: Hashtable
+        new-parameter-type: string[]
+        change-description: IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity. And its type will be simplified as string array.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 14.0.0
+        change-effective-date: 2024/11/19
 ```
