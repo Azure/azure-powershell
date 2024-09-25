@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Storage service.
 
 ---
-## Status
-[![Az.Storage](https://img.shields.io/powershellgallery/v/Az.Storage.svg?style=flat-square&label=Az.Storage "Az.Storage")](https://www.powershellgallery.com/packages/Az.Storage/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -36,7 +33,9 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/storage.json
+#  - $(repo)/specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/storage.json
+  - D:\code\swagger\specification\storage\resource-manager\Microsoft.Storage\stable\2024-01-01\file.json
+  - D:\code\swagger\specification\storage\resource-manager\Microsoft.Storage\stable\2024-01-01\storage.json
 
 # For new RP, the version is 0.1.0
 module-version: 5.9.1
@@ -48,6 +47,7 @@ identity-correction-for-post: true
 
 directive:
   - remove-operation: StorageAccounts_Update
+  - remove-operation: FileShares_Lease
   - where:
       subject: ^StorageAccountCustomerInitiatedMigration$
     set:
@@ -66,6 +66,6 @@ directive:
     set:
       parameter-name: TargetSku
   - where:
-      subject: ^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Sku$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$
+      subject: ^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Sku$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
     remove: true
 ```

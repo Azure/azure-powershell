@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Account Migration request can be triggered for a storage account to change its redundancy level.
-The migration updates the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
+The migration customer the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
 Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
 
 ## SYNTAX
@@ -44,7 +44,7 @@ Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String
 
 ## DESCRIPTION
 Account Migration request can be triggered for a storage account to change its redundancy level.
-The migration updates the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
+The migration customer the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
 Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
 
 ## EXAMPLES
@@ -134,7 +134,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity

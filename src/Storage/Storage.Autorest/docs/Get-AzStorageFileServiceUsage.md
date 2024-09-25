@@ -1,51 +1,61 @@
 ---
 external help file:
 Module Name: Az.Storage
-online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstorageaccountmigration
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstoragefileserviceusage
 schema: 2.0.0
 ---
 
-# Get-AzStorageAccountMigration
+# Get-AzStorageFileServiceUsage
 
 ## SYNOPSIS
-Gets the status of the ongoing migration for the specified storage account.
+Gets the usage of file service in storage account including account limits, file share limits and constants used in recommendations and bursting formula.
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStorageFileServiceUsage -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzStorageAccountMigration -InputObject <IStorageIdentity> [-DefaultProfile <PSObject>]
+Get-AzStorageFileServiceUsage -InputObject <IStorageIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
+### List
+```
+Get-AzStorageFileServiceUsage -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-Maxpagesize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Gets the status of the ongoing migration for the specified storage account.
+Gets the usage of file service in storage account including account limits, file share limits and constants used in recommendations and bursting formula.
 
 ## EXAMPLES
 
-### Example 1: Get a Storage account migration 
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzStorageAccountMigration -AccountName myaccount -ResourceGroupName myresroucegroup
+{{ Add code here }}
 ```
 
 ```output
-DetailMigrationFailedDetailedReason :
-DetailMigrationFailedReason         :
-DetailMigrationStatus               : SubmittedForConversion
-DetailTargetSkuName                 : Standard_LRS
-Id                                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresroucegroup/providers/Microsoft.Storage/storageAccounts/myaccount/accountMigrations/default
-Name                                : default
-ResourceGroupName                   : myresroucegroup
-Type                                : Microsoft.Storage/storageAccounts/accountMigrations
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This command gets the migration status of the storage account myaccount under resource group myresourcegroup.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -55,7 +65,7 @@ Storage account names must be between 3 and 24 characters in length and use numb
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -96,13 +106,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Maxpagesize
+Optional, specifies the maximum number of file service usages to be included in the list response.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group within the user's subscription.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -117,7 +142,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -136,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountMigration
+### Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsage
 
 ## NOTES
 
