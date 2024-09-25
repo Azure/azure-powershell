@@ -53,6 +53,9 @@ identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
 
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
+
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
   "@autorest/powershell": "4.x"
