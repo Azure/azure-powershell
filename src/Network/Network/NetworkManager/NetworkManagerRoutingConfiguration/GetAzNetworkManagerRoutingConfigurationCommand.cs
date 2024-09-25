@@ -23,70 +23,61 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingConfiguration", DefaultParameterSetName = ByListParameterSet), OutputType(typeof(PSNetworkManagerRoutingConfiguration))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingConfiguration", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSNetworkManagerRoutingConfiguration))]
     public class GetAzNetworkManagerRoutingConfigurationCommand : NetworkManagerRoutingConfigurationBaseCmdlet
     {
-        private const string ByListParameterSet = "ByList";
-        private const string ByNameParameterSet = "ByName";
-        private const string ByResourceIdParameterSet = "ByResourceId";
-        private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ListParameterSet = "ByList";
+        private const string GetByNameParameterSet = "ByName";
+        private const string GetByResourceIdParameterSet = "ByResourceId";
 
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = ByNameParameterSet)]
+            ParameterSetName = GetByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByNameParameterSet,
+            ParameterSetName = GetByNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager name.")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByListParameterSet,
+            ParameterSetName = ListParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The network manager name.")]
         [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string NetworkManagerName { get; set; }
+        public string NetworkManagerName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByNameParameterSet,
+            ParameterSetName = GetByNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByListParameterSet,
+            ParameterSetName = ListParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ByResourceIdParameterSet,
+            ParameterSetName = GetByResourceIdParameterSet,
             HelpMessage = "NetworkManager RoutingConfiguration Id",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [Alias("RoutingConfigurationId")]
         public string ResourceId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "The input object containing the necessary properties.",
-            ParameterSetName = ByInputObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public PSNetworkManagerRoutingConfiguration InputObject { get; set; }
 
         public override void Execute()
         {
@@ -94,12 +85,12 @@ namespace Microsoft.Azure.Commands.Network
 
             switch (this.ParameterSetName)
             {
-                case ByNameParameterSet:
+                case GetByNameParameterSet:
                     var nmRoutingConfigurationByName = this.GetNetworkManagerRoutingConfiguration(this.ResourceGroupName, this.NetworkManagerName, this.Name);
                     WriteObject(nmRoutingConfigurationByName);
                     break;
 
-                case ByResourceIdParameterSet:
+                case GetByResourceIdParameterSet:
                     var resourceId = this.ResourceId;
                     var resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(resourceId);
                     var networkManagerName = NetworkBaseCmdlet.GetResourceName(resourceId, "networkManagers");
@@ -108,13 +99,7 @@ namespace Microsoft.Azure.Commands.Network
                     WriteObject(nmRoutingConfigurationByResourceId);
                     break;
 
-                case ByInputObjectParameterSet:
-                    var inputObject = this.InputObject;
-                    var nmRoutingConfigurationByInputObject = this.GetNetworkManagerRoutingConfiguration(inputObject.ResourceGroupName, inputObject.NetworkManagerName, inputObject.Name);
-                    WriteObject(nmRoutingConfigurationByInputObject);
-                    break;
-
-                case ByListParameterSet:
+                case ListParameterSet:
                     var routingConfigurationPage = this.NetworkManagerRoutingConfigurationClient.List(this.ResourceGroupName, this.NetworkManagerName);
 
                     // Get all resources by polling on next page link

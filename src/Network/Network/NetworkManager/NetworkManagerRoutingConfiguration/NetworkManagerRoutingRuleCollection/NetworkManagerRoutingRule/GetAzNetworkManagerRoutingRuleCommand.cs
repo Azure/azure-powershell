@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.Network
         private const string ListParameterSet = "ByList";
         private const string GetByNameParameterSet = "ByName";
         private const string GetByResourceIdParameterSet = "ByResourceId";
-        private const string GetByInputObjectParameterSet = "ByInputObject";
 
         [Alias("ResourceName")]
         [Parameter(
@@ -62,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "RoutingConfigurationName")]
         [SupportsWildcards]
-        public virtual string RuleCollectionName { get; set; }
+        public string RuleCollectionName { get; set; }
 
         [Alias("ConfigName")]
         [Parameter(
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/routingConfigurations", "ResourceGroupName", "NetworkManagerName")]
         [SupportsWildcards]
-        public virtual string RoutingConfigurationName { get; set; }
+        public string RoutingConfigurationName { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -93,7 +92,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string NetworkManagerName { get; set; }
+        public string NetworkManagerName { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -107,7 +106,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -118,14 +117,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("RoutingRuleId")]
         public string ResourceId { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "The input object containing the necessary properties.",
-            ParameterSetName = GetByInputObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public PSNetworkManagerRoutingRule InputObject { get; set; }
-
         public override void Execute()
         {
             base.Execute();
@@ -135,10 +126,6 @@ namespace Microsoft.Azure.Commands.Network
                 if (this.ParameterSetName == GetByResourceIdParameterSet)
                 {
                     ProcessByResourceId();
-                }
-                else if (this.ParameterSetName == GetByInputObjectParameterSet)
-                {
-                    ProcessByInputObject();
                 }
                 else if (this.ParameterSetName == GetByNameParameterSet)
                 {
@@ -217,25 +204,6 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             WriteObject(pSNetworkManagerRoutingRules);
-        }
-
-        private void ProcessByInputObject()
-        {
-            if (InputObject == null)
-            {
-                throw new PSArgumentNullException(nameof(InputObject));
-            }
-
-            // Extract properties from InputObject
-            string resourceGroupName = InputObject.ResourceGroupName;
-            string networkManagerName = InputObject.NetworkManagerName;
-            string routingConfigurationName = InputObject.RoutingConfigurationName;
-            string ruleCollectionName = InputObject.RuleCollectionName;
-            string name = InputObject.Name;
-
-            var routingRule = GetNetworkManagerRoutingRule(resourceGroupName, networkManagerName, routingConfigurationName, ruleCollectionName, name);
-
-            WriteObject(routingRule);
         }
     }
 }

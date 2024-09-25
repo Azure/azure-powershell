@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
@@ -36,16 +37,6 @@ namespace Microsoft.Azure.Commands.Network
         private const string SetByName = "ByNameParameters";
 
         [Alias("ResourceName")]
-        [Parameter(
-           ParameterSetName = SetByInputObject,
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource name.")]
-        [Parameter(
-           ParameterSetName = SetByResourceId,
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource name.")]
         [Parameter(
            ParameterSetName = SetByName,
            Mandatory = true,
@@ -76,11 +67,6 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = SetByName,
             Mandatory = true,
             HelpMessage = "The resource group name.")]
-        [Parameter(
-            ParameterSetName = SetByResourceId,
-            Mandatory = true,
-            HelpMessage = "The resource group name.",
-            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -88,19 +74,12 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = SetByName,
             Mandatory = true,
             HelpMessage = "The network manager name.")]
-        [Parameter(
-            ParameterSetName = SetByResourceId,
-            Mandatory = true,
-            HelpMessage = "The network manager name.")]
         [ValidateNotNullOrEmpty]
         public string NetworkManagerName { get; set; }
 
+        [Alias("ConfigName")]
         [Parameter(
             ParameterSetName = SetByName,
-            Mandatory = true,
-            HelpMessage = "The routing configuration name.")]
-        [Parameter(
-            ParameterSetName = SetByResourceId,
             Mandatory = true,
             HelpMessage = "The routing configuration name.")]
         [ValidateNotNullOrEmpty]
@@ -110,24 +89,8 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = SetByName,
             Mandatory = true,
             HelpMessage = "The rule collection name.")]
-        [Parameter(
-            ParameterSetName = SetByResourceId,
-            Mandatory = true,
-            HelpMessage = "The rule collection name.")]
         [ValidateNotNullOrEmpty]
         public string RuleCollectionName { get; set; }
-
-        [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             HelpMessage = "Description.",
-             ParameterSetName = SetByName)]
-        [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             HelpMessage = "Description.",
-             ParameterSetName = SetByResourceId)]
-        public virtual string Description { get; set; }
 
         [Parameter(
             ParameterSetName = SetByName,
@@ -136,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The destination address.")]
         [Parameter(
             ParameterSetName = SetByResourceId,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The destination address.")]
         public string DestinationAddress { get; set; }
 
@@ -147,13 +110,13 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The destination type.")]
         [Parameter(
             ParameterSetName = SetByResourceId,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The destination type.")]
         public string DestinationType { get; set; }
 
         [Parameter(
             ParameterSetName = SetByName,
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The next hop address.")]
         [Parameter(
@@ -169,7 +132,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The next hop type.")]
         [Parameter(
             ParameterSetName = SetByResourceId,
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The next hop type.")]
         public string NextHopType { get; set; }
 
@@ -203,13 +166,22 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                return (
-                    NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
-                    NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
-                    NetworkBaseCmdlet.GetResourceName(this.ResourceId, "routingConfigurations"),
-                    NetworkBaseCmdlet.GetResourceName(this.ResourceId, "ruleCollections"),
-                    this.Name ?? NetworkBaseCmdlet.GetResourceName(this.ResourceId, "rules")
-                );
+                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+
+                // Validate the format of the ResourceId
+                var segments = parsedResourceId.ParentResource.Split('/');
+                if (segments.Length < 6)
+                {
+                    throw new PSArgumentException("Invalid ResourceId format. Ensure the ResourceId is in the correct format.");
+                }
+
+                this.Name = parsedResourceId.ResourceName;
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.NetworkManagerName = segments[1];
+                this.RoutingConfigurationName = segments[3];
+                this.RuleCollectionName = segments[5];
+
+                return (this.ResourceGroupName, this.NetworkManagerName, this.RoutingConfigurationName, this.RuleCollectionName, this.Name);
             }
             else if (this.InputObject != null)
             {

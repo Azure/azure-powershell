@@ -24,26 +24,16 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = ByInputObject), OutputType(typeof(PSNetworkManagerRoutingRuleCollection))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerRoutingRuleCollection", SupportsShouldProcess = true, DefaultParameterSetName = SetByInputObject), OutputType(typeof(PSNetworkManagerRoutingRuleCollection))]
     public class SetAzNetworkManagerRoutingRuleCollection : NetworkManagerRoutingRuleCollectionBaseCmdlet
     {
-        private const string ByResourceId = "ByResourceId";
-        private const string ByInputObject = "ByInputObject";
-        private const string ByName = "ByNameParameters";
+        private const string SetByResourceId = "ByResourceId";
+        private const string SetByInputObject = "ByInputObject";
+        private const string SetByName = "ByNameParameters";
 
         [Alias("ResourceName")]
         [Parameter(
-           ParameterSetName = ByInputObject,
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource name.")]
-        [Parameter(
-           ParameterSetName = ByResourceId,
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource name.")]
-        [Parameter(
-           ParameterSetName = ByName,
+           ParameterSetName = SetByName,
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.")]
@@ -53,14 +43,14 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = ByInputObject,
+            ParameterSetName = SetByInputObject,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Network Manager Routing Collection")]
         public PSNetworkManagerRoutingRuleCollection InputObject { get; set; }
 
         [Parameter(
-            ParameterSetName = ByResourceId,
+            ParameterSetName = SetByResourceId,
             Mandatory = true,
             HelpMessage = "NetworkManager RoutingCollection Id",
             ValueFromPipelineByPropertyName = true)]
@@ -69,21 +59,21 @@ namespace Microsoft.Azure.Commands.Network
         public string ResourceId { get; set; }
 
         [Parameter(
-            ParameterSetName = ByName,
+            ParameterSetName = SetByName,
             Mandatory = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = ByName,
+            ParameterSetName = SetByName,
             Mandatory = true,
             HelpMessage = "The network manager name.")]
         [ValidateNotNullOrEmpty]
         public string NetworkManagerName { get; set; }
 
         [Parameter(
-            ParameterSetName = ByName,
+            ParameterSetName = SetByName,
             Mandatory = true,
             HelpMessage = "The routing configuration name.")]
         [ValidateNotNullOrEmpty]
@@ -120,7 +110,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             switch (this.ParameterSetName)
             {
-                case ByInputObject:
+                case SetByInputObject:
                     return (
                         this.InputObject.ResourceGroupName,
                         this.InputObject.NetworkManagerName,
@@ -128,7 +118,7 @@ namespace Microsoft.Azure.Commands.Network
                         this.InputObject.Name
                     );
 
-                case ByResourceId:
+                case SetByResourceId:
                     return (
                         NetworkBaseCmdlet.GetResourceGroup(this.ResourceId),
                         NetworkBaseCmdlet.GetResourceName(this.ResourceId, "networkManagers"),
@@ -136,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network
                         NetworkBaseCmdlet.GetResourceName(this.ResourceId, "ruleCollections")
                     );
 
-                case ByName:
+                case SetByName:
                     return (
                         this.ResourceGroupName,
                         this.NetworkManagerName,

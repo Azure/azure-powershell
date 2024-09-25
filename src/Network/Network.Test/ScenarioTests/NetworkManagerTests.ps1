@@ -849,41 +849,22 @@ function Test-NetworkManagerRoutingRuleCRUD
         Assert-NotNull $ruleCollections
         Assert-AreEqual 1 $ruleCollections.Count
 
-        $ruleCollection.Description = "Sample rule Collection Description"
         $ruleCollection = Set-AzNetworkManagerRoutingRuleCollection -InputObject $ruleCollection
         Assert-NotNull $ruleCollection;
         Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
-        Assert-AreEqual "Sample rule Collection Description" $ruleCollection.Description;
  
         # Create Routing Rule and validate
         # ByName - Create a Routing Rule by Name
-        $destination1 = New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "10.1.1.1/32" -Type "AddressPrefix" 
-        $nextHop1 = New-AzNetworkManagerRoutingRuleNextHop -NextHopType "VirtualAppliance" -NextHopAddress "2.2.2.2"
+        $destination = New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "10.1.1.1/32" -Type "AddressPrefix" 
+        $nextHop = New-AzNetworkManagerRoutingRuleNextHop -NextHopType "VirtualAppliance" -NextHopAddress "2.2.2.2"
 
-        New-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -ResourceName $RuleName1 -Destination $destination1 -NextHop $nextHop1
-
-        $destination2 = New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "20.1.1.1/32" -Type "AddressPrefix" 
-        $nextHop2 = New-AzNetworkManagerRoutingRuleNextHop -NextHopType "VirtualAppliance" -NextHopAddress "2.2.2.2"
-
-        # ByInputObject - Create second Routing Rule using InputObject
-        $inputObject = @{
-            Name                    = $RuleName2
-            RuleCollectionName      = $RuleCollectionName
-            RoutingConfigurationName = $RoutingConfigurationName
-            NetworkManagerName      = $networkManagerName
-            ResourceGroupName       = $rgname
-            Description             = "Sample rule description"
-            Destination             = $destination2
-            NextHop                 = $nextHop2
-        }
-
-        New-AzNetworkManagerRoutingRule -InputObject $inputObject
+        New-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -ResourceName $RuleName1 -Destination $destination -NextHop $nextHop
 
         #region - Start Routing Rule Get-* cmdlets tests
 
         # Test List - List all the routing rules in a collection
         $routingRule = Get-AzNetworkManagerRoutingRule -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -ConfigName $routingConfigurationName -RuleCollectionName $ruleCollectionName
-        Assert-AreEqual 2 $routingRule.Count
+        Assert-AreEqual 1 $routingRule.Count
         Assert-NotNull $routingRule
 
         # Test GetByName - Get the routing rule by name
@@ -892,10 +873,10 @@ function Test-NetworkManagerRoutingRuleCRUD
         Assert-AreEqual $ruleName1 $routingRule.Name
         Assert-AreEqual $routingConfigurationName $routingRule.RoutingConfigurationName
         Assert-AreEqual $ruleCollectionName $routingRule.RuleCollectionName
-        Assert-AreEqual $destination1.DestinationAddress $routingRule.Destination.DestinationAddress
-        Assert-AreEqual $destination1.Type $routingRule.Destination.Type
-        Assert-AreEqual $nextHop1.NextHopAddress $routingRule.NextHop.NextHopAddress
-        Assert-AreEqual $nextHop1.NextHopType $routingRule.NextHop.NextHopType
+        Assert-AreEqual $destination.DestinationAddress $routingRule.Destination.DestinationAddress
+        Assert-AreEqual $destination.Type $routingRule.Destination.Type
+        Assert-AreEqual $nextHop.NextHopAddress $routingRule.NextHop.NextHopAddress
+        Assert-AreEqual $nextHop.NextHopType $routingRule.NextHop.NextHopType
 
         # Test GetByResourceId - Get the routing rule by resourceId
         $resourceId = $routingRule.Id
@@ -903,37 +884,27 @@ function Test-NetworkManagerRoutingRuleCRUD
         Assert-NotNull $routingRule
         Assert-AreEqual $resourceId $routingRule.Id
 
-        # Test GetByInputObject - Get the routing rule by input object
-        $inputObject = $routingRule
-        $routingRule = Get-AzNetworkManagerRoutingRule -InputObject $inputObject
-        Assert-NotNull $routingRule
-        Assert-AreEqual $inputObject.Name $routingRule.Name
-        Assert-AreEqual $inputObject.RoutingConfigurationName $routingRule.RoutingConfigurationName
-        Assert-AreEqual $inputObject.RuleCollectionName $routingRule.RuleCollectionName
-
         #endregion - End Routing Rule Get-* cmdlets tests
 
         #region - Start Routing Rule Set-* cmdlets tests
 
         # Test SetByInputObject - Set the routing rule by input object
-        $routingRule.Description = "Updated first routing rule."
         $updatedFirstRoutingRule = Set-AzNetworkManagerRoutingRule -InputObject $routingRule
         Assert-NotNull $updatedFirstRoutingRule;
         Assert-AreEqual $RuleName1 $updatedFirstRoutingRule.Name;
 
         # Test SetByResourceId - Set the routing rule by resourceId
         $resourceId = $updatedFirstRoutingRule.Id
-        $updatedFirstRoutingRule.Description = "Again updated routing rule."
         $updatedFirstRoutingRule = Set-AzNetworkManagerRoutingRule -ResourceId $resourceId -DestinationAddress "30.1.1.1/32" -DestinationType "AddressPrefix" -NextHopAddress "2.2.2.2" -NextHopType "VirtualAppliance"
+
         Assert-NotNull $updatedFirstRoutingRule;
         Assert-AreEqual $RuleName1 $updatedFirstRoutingRule.Name;
-        Assert-AreEqual "Again updated routing rule." $updatedFirstRoutingRule.Description;
 
         # Test SetByName - Set the routing rule by name
-        $thirdRoutingRule = Set-AzNetworkManagerRoutingRule -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -ConfigName $routingConfigurationName -RuleCollectionName $ruleCollectionName -Name $RuleName3 -DestinationAddress "40.1.1.1/32" -DestinationType "AddressPrefix" -NextHopAddress "2.2.2.2" -NextHopType "VirtualAppliance" -Description "Second updated routing rule."
+        $thirdRoutingRule = Set-AzNetworkManagerRoutingRule -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -ConfigName $routingConfigurationName -RuleCollectionName $ruleCollectionName -Name $RuleName3 -DestinationAddress "40.1.1.1/32" -DestinationType "AddressPrefix" -NextHopAddress "2.2.2.2" -NextHopType "VirtualAppliance"
+
         Assert-NotNull $thirdRoutingRule;
         Assert-AreEqual $RuleName3 $thirdRoutingRule.Name;
-        Assert-AreEqual "Second updated routing rule." $thirdRoutingRule.Description;
 
         #endregion - End Routing Rule Set-* cmdlets tests
 
