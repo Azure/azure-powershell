@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataBoundaryScope'))
 }
 
 Describe 'Get-AzDataBoundaryScope' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            $scope = "/subscriptions/" + $env.SubscriptionId
+            $boundaryData = Get-AzDataBoundaryScope -scope $scope
+            Assert-AreEqual $boundaryData.Properties.DataBoundary "EU"
+        } | Should -Not -Throw
     }
 }
