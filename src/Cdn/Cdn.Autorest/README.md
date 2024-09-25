@@ -389,10 +389,6 @@ directive:
       subject: CdnProfileTo
     set:
       subject: CdnProfileToAFD
-  - where:
-      subject: CanCdnProfile
-    set:
-      subject: CanCdnProfileToAFD
   # Hide classicCdn migrate command and customize, must be put after rename
   - where:
       subject-prefix: FrontDoorCdn
@@ -413,13 +409,10 @@ directive:
         stimated-ga-date: 2024-08-30
   - where:
       verb: Invoke
-      subject: CanCdnProfileToAFD
+      subject: CanCdnProfile
     set:
       verb: Test
       subject: ProfileMigrationCompatibility
-      preview-announcement:
-        preview-message: This is a test preview message.
-        stimated-ga-date: 2024-08-30
 
   # # https://github.com/Azure/autorest.powershell/issues/906
   # - where:
