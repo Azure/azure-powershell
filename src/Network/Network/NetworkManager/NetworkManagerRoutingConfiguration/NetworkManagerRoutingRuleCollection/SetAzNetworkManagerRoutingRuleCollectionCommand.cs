@@ -79,6 +79,18 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string RoutingConfigurationName { get; set; }
 
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = SetByName)]
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = SetByResourceId)]
+        public string Description { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -93,6 +105,18 @@ namespace Microsoft.Azure.Commands.Network
                 if (!this.IsNetworkManagerRoutingRuleCollectionPresent(resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName))
                 {
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, routingRuleCollectionName));
+                }
+
+                // Fetch the InputObject if it is not set and ResourceId is provided
+                if (this.InputObject == null && !string.IsNullOrEmpty(this.ResourceId))
+                {
+                    this.InputObject = this.GetNetworkManagerRoutingRuleCollection(resourceGroupName, networkManagerName, routingConfigurationName, routingRuleCollectionName);
+                }
+
+                // Update the description if provided
+                if (!string.IsNullOrEmpty(this.Description))
+                {
+                    this.InputObject.Description = this.Description;
                 }
 
                 // Map to the sdk object

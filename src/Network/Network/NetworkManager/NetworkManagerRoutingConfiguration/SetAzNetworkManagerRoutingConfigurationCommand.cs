@@ -100,6 +100,12 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, routingConfigurationName));
                 }
 
+                // Update the description if provided
+                if (!string.IsNullOrEmpty(this.Description))
+                {
+                    routingConfiguration.Description = this.Description;
+                }
+
                 // Map to the SDK object
                 var routingConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerRoutingConfiguration>(routingConfiguration);
 

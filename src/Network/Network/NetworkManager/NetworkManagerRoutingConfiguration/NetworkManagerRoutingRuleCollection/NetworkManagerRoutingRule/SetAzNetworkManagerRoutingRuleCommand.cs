@@ -136,6 +136,18 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The next hop type.")]
         public string NextHopType { get; set; }
 
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = SetByName)]
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = SetByResourceId)]
+        public string Description { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -226,6 +238,11 @@ namespace Microsoft.Azure.Commands.Network
                         NextHopType = this.NextHopType
                     }
                 };
+
+                if (!string.IsNullOrEmpty(this.Description))
+                {
+                    routingRule.Description = this.Description;
+                }
 
                 return routingRule;
             }

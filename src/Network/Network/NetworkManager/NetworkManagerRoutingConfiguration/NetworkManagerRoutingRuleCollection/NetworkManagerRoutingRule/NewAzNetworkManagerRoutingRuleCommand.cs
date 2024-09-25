@@ -95,6 +95,13 @@ namespace Microsoft.Azure.Commands.Network
         public PSNetworkManagerRoutingRuleNextHop NextHop { get; set; }
 
         [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "Description.",
+             ParameterSetName = CreateByName)]
+        public string Description { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
@@ -128,6 +135,11 @@ namespace Microsoft.Azure.Commands.Network
                 Destination = this.Destination,
                 NextHop = this.NextHop
             };
+
+            if (!string.IsNullOrEmpty(this.Description))
+            {
+                routingRule.Description = this.Description;
+            }
 
             // Map to the sdk object
             var routingRuleModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RoutingRule>(routingRule);

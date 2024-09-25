@@ -102,6 +102,11 @@ namespace Microsoft.Azure.Commands.Network
                 Name = routingConfigurationName
             };
 
+            if (!string.IsNullOrEmpty(this.Description))
+            {
+                routingConfig.Description = this.Description;
+            }
+
             // Map to the sdk object
             var routingConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerRoutingConfiguration>(routingConfig);
 
