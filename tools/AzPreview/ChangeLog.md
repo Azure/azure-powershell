@@ -1,3 +1,143 @@
+## 12.4.0 - October 2024
+#### Az.App 1.1.0
+* Added breaking change messages:
+  * 'New-AzContainerApp'
+  * 'New-AzContainerAppJob'
+  * 'Update-AzContainerApp'
+  * 'Update-AzContainerAppJob'
+* Fixed an issue that caused Get/New-Az* cmdlets with returned objects to incorrectly expose the parameter [-PassThru].
+  * 'Get-AzContainerApp'
+  * 'Get-AzContainerAppAuthToken'
+  * 'Get-AzContainerAppDiagnosticRoot'
+  * 'New-AzContainerAppManagedCert'
+
+#### Az.Billing 2.1.0
+* Renamed 'Get-UsageAggregates' to 'Get-AzUsageAggregate' and added 'Get-UsageAggregates' as the alias to avoid breaking change.
+
+#### Az.Blueprint 0.4.4
+* Removed Microsoft.Azure.Management.Blueprint 0.20.7-preview dependencies
+* Added Microsoft.Azure.PowerShell.Blueprint.Management.Sdk
+
+#### Az.Compute 8.4.0
+* Added 'SkuProfileVmSize' and 'SkuProfileAllocationStrategy' parameters to 'New-AzVmss', 'New-AzVmssConfig', and 'Update-AzVmss' cmdlets for VMSS Instance Mix operations.
+* Added a new optional parameter '-GenerateSshKey-type' to the 'New-AzVM' cmdlet, allowing users to specify the type of SSH key to generate (Ed25519 or RSA).
+* Added 'EnableResilientVMCreate' and 'EnableResilientVMDelete' parameters to 'Update-AzVmss' and 'New-AzVmssConfig' cmdlets for enhanced VM resilience options.
+* Added 'IsVMInStandByPool' property to 'PSVirtualMachineInstanceView' object. [#25736]
+
+#### Az.ConnectedKubernetes 0.11.0
+* Added support for Workload Identity Federation and OIDC Issuer features to the ConnectedKubernetes cmdlets.
+* Added support for arc gateway feature in cmdlet New-AzConnectedKubernetes.
+* Added Set-AzConnectedKubernetes cmdlet to support updateing arc gateway features on existing resource.
+
+#### Az.ConnectedMachine 0.9.0
+* Updated the API version to 2024-05-20-preview.
+
+#### Az.CosmosDB 1.15.0
+* Added new parameter 'DisableTtl' to 'Restore-AzCosmosDBAccount'.
+
+#### Az.CostManagement 0.3.3
+* Fixed an error that values in row could be null when grouping by the value of TagKey in Invoke-AzCostManagementQuery cmdlet. Fix in 0.3.1 accidentally removed from 0.3.2, added it back. [#25948]
+
+#### Az.DataFactory 1.18.8
+* Added support for Iceberg format as a sink.
+* Enabled sslMode and useSystemTrustStore options for MariaDB.
+
+#### Az.DataMigration 0.14.8
+* Removed Microsoft.Azure.Management.DataMigration 0.7.0-preview dependencies
+* Added Microsoft.Azure.PowerShell.DataMigration.Management.Sdk
+
+#### Az.ElasticSan 1.1.0
+* Supported 'EnforceDataIntegrityCheckForIscsi' for creating and updating volume groups
+
+#### Az.Fabric 0.1.0
+* First preview release for module Az.Fabric
+
+#### Az.HDInsight 6.2.1
+* Fixed a bug: Error occurs when setting the same assigned identity for storage and esp configurations.
+
+#### Az.IotCentral 0.10.2
+* Removed Microsoft.Azure.Management.IotCentral 4.0.0 dependencies
+* Added Microsoft.Azure.PowerShell.IotCentral.Management.Sdk
+
+#### Az.KeyVault 6.2.0
+* Fixed a parameter validation issue in Set-AzureKeyVaultCertificatePolicy. [#25649]
+
+#### Az.KubernetesRuntime 0.1.0
+* First preview release for module Az.KubernetesRuntime
+
+#### Az.ManagementPartner 0.7.4
+* Removed Microsoft.Azure.Management.ManagementPartner 1.1.1-preview dependency
+* Added Microsoft.Azure.PowerShell.ManagementPartner.Management.Sdk
+
+#### Az.Marketplace 0.5.1
+* Removed Microsoft.Azure.Management.Marketplace 1.1.0 dependencies
+* Added Microsoft.Azure.PowerShell.Marketplace.Management.Sdk
+
+#### Az.Monitor 5.2.2
+* Added breaking change messages:
+  * 'New-AzDataCollectionEndpoint'
+  * 'New-AzDataCollectionRule'
+  * 'Update-AzDataCollectionEndpoint'
+  * 'Update-AzDataCollectionRule'
+* Updated documentation for 'New-AzActionGroupLogicAppReceiverObject'
+
+#### Az.Network 7.9.0
+* Onboarded 'Microsoft.VideoIndexer/accounts' to private link cmdlets
+* Added support to create, get and delete Bastion shareable links
+    - 'New-AzBastionShareableLink'
+    - 'Get-AzBastionShareableLink'
+    - 'Remove-AzBastionShareableLink'
+* Fixed a bug in cmdlet 'Invoke-AzFirewallPacketCapture' which caused the packet capture request to be stuck in a waiting for activation state. 
+* Updated cmdlet to add the property of 'Sensitivity', and updated corresponding cmdlets.
+    - 'New-AzApplicationGatewayFirewallPolicyManagedRuleOverride'
+* Added support for 'DefaultOutboundAccess' property in 'Set-AzVirtualNetworkSubnetConfig' command
+* Added support for 'EnabledFilteringCriteria' property in 'New-AzNetworkWatcherFlowLog' and 'Set-AzNetworkWatcherFlowLog' commands
+* Added support of 'UserAssignedIdentityId' Property in 'New-AzNetworkWatcherFlowLog' and 'Set-AzNetworkWatcherFlowLog' commands
+* Added support of 'DestinationIPAddress' property in 'New-AzPrivateLinkService' command
+    - 'LoadBalancerFrontendIpConfiguration' is not a mandatory parameter anymore.
+    - The user can provide either 'LoadBalancerFrontendIpConfiguration' or 'DestinationIPAddress'.
+
+#### Az.RecoveryServices 7.2.0
+* Fixed bug for making RecoveryAzureStorageAccountId parameter optional in 'New-ASRReplicationProtectedItem' cmdlet of H2A.
+
+#### Az.RedisEnterpriseCache 1.3.0
+* Added support for using Microsoft Entra token-based authentication.
+* Added the new properties of Cluster: highAvailability and redundancyMode.
+* Added new product SKUs.
+* Added the new properties of Database: accessKeysAuthentication.
+* Added Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup to force link geo replicated caches.
+* Added Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion to upgrade the redis database version directly.
+
+#### Az.Resources 7.5.0
+* Added 'ResourceSelector' and 'Override' parameters to 'New/Update-AzPolicyAssignment'.
+* Added 'ResourceSelector' parameter to 'New/Update-AzPolicyExemption'.
+* Removed 'Experimental' notice from '-WithSource' parameter to 'Publish-AzBicepModule'.
+
+#### Az.StackHCIVM 1.0.5
+* Fixed the update issue
+
+#### Az.StandbyPool 0.2.0
+* Added new Cmdlets:
+  - Get-AzStandbyContainerGroupPoolStatus
+  - Get-AzStandbyVMPoolStatus
+* Updated existing Cmdlets
+  - New-AzStandbyVMPool by add new parameter -MinReadyCapacity to support new added properties in put call.
+* Deprecated Cmdlets
+  - Get-StandbyVMPoolVM
+
+#### Az.Storage 7.4.0
+* Added a warning for an upcoming breaking change for removing references to 'Microsoft.Azure.Storage.File'
+    - 'Start-AzStorageFileCopy'
+
+#### Az.Terraform 0.1.0
+* First preview release for module Az.Terraform
+
+#### Az.Websites 3.2.2
+* Fix bug where parameters could not be set to false for 'Publish-AzWebApp'
+
+#### Az.Workloads 0.3.0
+* Split Az.Workloads into two sub-modules
+
 ## 12.3.0 - September 2024
 #### Az.Accounts 3.0.4
 * Added customized UserAgent for ARM telemetry.

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.14.8
 * Removed Microsoft.Azure.Management.DataMigration 0.7.0-preview dependencies
 * Added Microsoft.Azure.PowerShell.DataMigration.Management.Sdk
 

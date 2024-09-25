@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.2.0
 * Fixed bug for making RecoveryAzureStorageAccountId parameter optional in `New-ASRReplicationProtectedItem` cmdlet of H2A.
 
 ## Version 7.1.0

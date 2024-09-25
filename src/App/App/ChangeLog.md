@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * Added breaking change messages:
   * `New-AzContainerApp`
   * `New-AzContainerAppJob`

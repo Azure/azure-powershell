@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.4.0
 * Added a warning for an upcoming breaking change for removing references to "Microsoft.Azure.Storage.File"
     - `Start-AzStorageFileCopy`
 

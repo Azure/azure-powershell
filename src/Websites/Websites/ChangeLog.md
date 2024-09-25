@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.2.2
 * Fix bug where parameters could not be set to false for `Publish-AzWebApp`
 
 ## Version 3.2.1
