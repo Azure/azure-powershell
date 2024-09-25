@@ -88,9 +88,9 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// Group identifier. Must be unique in the current API Management service
         /// instance.
         /// </param>
-        public static void CheckEntityExists(this IProductGroupOperations operations, string resourceGroupName, string serviceName, string productId, string groupId)
+        public static bool CheckEntityExists(this IProductGroupOperations operations, string resourceGroupName, string serviceName, string productId, string groupId)
         {
-                ((IProductGroupOperations)operations).CheckEntityExistsAsync(resourceGroupName, serviceName, productId, groupId).GetAwaiter().GetResult();
+                return ((IProductGroupOperations)operations).CheckEntityExistsAsync(resourceGroupName, serviceName, productId, groupId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -117,9 +117,12 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task CheckEntityExistsAsync(this IProductGroupOperations operations, string resourceGroupName, string serviceName, string productId, string groupId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<bool> CheckEntityExistsAsync(this IProductGroupOperations operations, string resourceGroupName, string serviceName, string productId, string groupId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.CheckEntityExistsWithHttpMessagesAsync(resourceGroupName, serviceName, productId, groupId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.CheckEntityExistsWithHttpMessagesAsync(resourceGroupName, serviceName, productId, groupId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Adds the association between the specified developer group with the

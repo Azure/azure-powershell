@@ -87,9 +87,9 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// service instance. Non-current revision has ;rev=n as a suffix where n is
         /// the revision number.
         /// </param>
-        public static void CheckEntityExists(this IProductApiOperations operations, string resourceGroupName, string serviceName, string productId, string apiId)
+        public static bool CheckEntityExists(this IProductApiOperations operations, string resourceGroupName, string serviceName, string productId, string apiId)
         {
-                ((IProductApiOperations)operations).CheckEntityExistsAsync(resourceGroupName, serviceName, productId, apiId).GetAwaiter().GetResult();
+                return ((IProductApiOperations)operations).CheckEntityExistsAsync(resourceGroupName, serviceName, productId, apiId).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -117,9 +117,12 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task CheckEntityExistsAsync(this IProductApiOperations operations, string resourceGroupName, string serviceName, string productId, string apiId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<bool> CheckEntityExistsAsync(this IProductApiOperations operations, string resourceGroupName, string serviceName, string productId, string apiId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.CheckEntityExistsWithHttpMessagesAsync(resourceGroupName, serviceName, productId, apiId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.CheckEntityExistsWithHttpMessagesAsync(resourceGroupName, serviceName, productId, apiId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Adds an API to the specified product.

@@ -171,52 +171,8 @@ directive:
     from: apimprivatelink.json
     reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.  
   - suppress: R4009
-    from: apimportalsettings.json
+    from: apimprivatelink.json
     reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.  
-  - suppress: R4009
-    from: apimportalconfigs.json
-    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.  
-  - suppress: R4009
-    from: apimpolicyfragments.json
-    reason: Warning raised to error while PR was being reviewed. SystemData will implement in next preview version.
-  - suppress: LroErrorContent
-    from: apimapis.json
-    reason: Error Schema not referencing Common Schema V2. Will fix in the future. 
-  - suppress: LroErrorContent
-    from: apimusers.json
-    reason: Error Schema not referencing Common Schema V2. Will fix in the future. 
-  - suppress: LroErrorContent
-    from: apimpolicyrestrictionsvalidation.json
-    reason: Error Schema not referencing Common Schema V2. Will fix in the future. 
-suppressions:
-  - code: PropertiesTypeObjectNoDefinition
-    from: definitions.json
-    reason: Invalid error
-  - code: PutRequestResponseSchemeArm
-    from: apimworkspacecertificates.json
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/certificates/{certificateId}"].put
-    reason: Certificate is a secret and it should not be available through get request
-  - code: GetCollectionOnlyHasValueAndNextLink
-    from: apimworkspacecertificates.json
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/certificates].get.responses["200"].schema.properties
-    reason: Our object contain count property as a sibling to nextLink and value and it used for proxy resource collection GETs.
-  - code: GetCollectionOnlyHasValueAndNextLink
-    from: apimworkspacebackends.json
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/backends"].get.responses["200"].schema.properties
-    reason: Our object contain count property as a sibling to nextLink and value and it used for proxy resource collection GETs.
-  - code: GetCollectionOnlyHasValueAndNextLink
-    from: apimworkspacediagnostics.json
-    where: 
-      - $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/diagnostics"].get.responses["200"].schema.properties
-      - $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/apis/{apiId}/diagnostics"].get.responses.["200"].schema.properties
-    reason: Our object contain count property as a sibling to nextLink and value and it used for proxy resource collection GETs.
-  - code: GetCollectionOnlyHasValueAndNextLink
-    from: apimworkspaceloggers.json
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/workspaces/{workspaceId}/loggers"].get.responses["200"].schema.properties
-    reason: Our object contain count property as a sibling to nextLink and value and it used for proxy resource collection GETs.
-  - code: PatchBodyParametersSchema
-    from: apimworkspacebackends.json
-    reasons: This are the object fields which when updated require some data to be present.
   - from: apimproducts.json
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/groups/{groupId}"].head.responses
     transform: >-

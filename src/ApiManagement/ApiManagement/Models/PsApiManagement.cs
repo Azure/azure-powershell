@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             PrivateIPAddresses = apiServiceResource.PrivateIPAddresses != null ? apiServiceResource.PrivateIPAddresses.ToArray() : null;
             EnableClientCertificate = apiServiceResource.EnableClientCertificate;
             PublicNetworkAccess = apiServiceResource.PublicNetworkAccess;
-            PublicIpAddressId = apiServiceResource.PublicIpAddressId;
+            PublicIpAddressId = apiServiceResource.PublicIPAddressId;
             PlatformVersion = apiServiceResource.PlatformVersion;
 
             VpnType = ApiManagementClient.Mapper.Map<string, PsApiManagementVpnType>(apiServiceResource.VirtualNetworkType);

@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 additionalLocation.DisableGateway = region.DisableGateway;
             }
 
-            additionalLocation.PublicIpAddressId = region.PublicIpAddressId;
+            additionalLocation.PublicIPAddressId = region.PublicIpAddressId;
 
             return additionalLocation;
         }

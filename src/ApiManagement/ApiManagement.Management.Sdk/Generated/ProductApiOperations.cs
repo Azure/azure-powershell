@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Management.ApiManagement
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> CheckEntityExistsWithHttpMessagesAsync(string resourceGroupName, string serviceName, string productId, string apiId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<bool>> CheckEntityExistsWithHttpMessagesAsync(string resourceGroupName, string serviceName, string productId, string apiId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Management.ApiManagement
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
 
-            if ((int)_statusCode != 204)
+            if ((int)_statusCode != 204 && (int)_statusCode != 404)
             {
                 var ex = new ErrorResponseException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Management.ApiManagement
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<bool>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             _result.Body = (_statusCode == System.Net.HttpStatusCode.NoContent);
