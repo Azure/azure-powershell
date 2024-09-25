@@ -84,6 +84,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {_hasSharedKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("hasSharedKey"), out var __jsonHasSharedKey) ? (bool?)__jsonHasSharedKey : _hasSharedKey;}
             {_hasSshKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("hasSshKey"), out var __jsonHasSshKey) ? (bool?)__jsonHasSshKey : _hasSshKey;}
             {_hasSshPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("hasSshPassword"), out var __jsonHasSshPassword) ? (bool?)__jsonHasSshPassword : _hasSshPassword;}
+            {_userId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("userId"), out var __jsonUserId) ? (int?)__jsonUserId : _userId;}
+            {_groupId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("groupId"), out var __jsonGroupId) ? (int?)__jsonGroupId : _groupId;}
+            {_allowAclAuthorization = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("allowAclAuthorization"), out var __jsonAllowAclAuthorization) ? (bool?)__jsonAllowAclAuthorization : _allowAclAuthorization;}
+            {_extendedGroup = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("extendedGroups"), out var __jsonExtendedGroups) ? If( __jsonExtendedGroups as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __l) ? new global::System.Func<System.Collections.Generic.List<int>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__l, (__k)=>(int) (__k is Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber __j ? (int)__j : default(int))) ))() : null : _extendedGroup;}
+            {_isNfSv3Enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("isNFSv3Enabled"), out var __jsonIsNfSv3Enabled) ? (bool?)__jsonIsNfSv3Enabled : _isNfSv3Enabled;}
             AfterFromJson(json);
         }
 
@@ -132,6 +137,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             AddIf( null != this._hasSharedKey ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._hasSharedKey) : null, "hasSharedKey" ,container.Add );
             AddIf( null != this._hasSshKey ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._hasSshKey) : null, "hasSshKey" ,container.Add );
             AddIf( null != this._hasSshPassword ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._hasSshPassword) : null, "hasSshPassword" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._userId ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber((int)this._userId) : null, "userId" ,container.Add );
+            }
+            AddIf( null != this._groupId ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber((int)this._groupId) : null, "groupId" ,container.Add );
+            AddIf( null != this._allowAclAuthorization ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._allowAclAuthorization) : null, "allowAclAuthorization" ,container.Add );
+            if (null != this._extendedGroup)
+            {
+                var __m = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.XNodeArray();
+                foreach( var __n in this._extendedGroup )
+                {
+                    AddIf((Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber(__n) ,__m.Add);
+                }
+                container.Add("extendedGroups",__m);
+            }
+            AddIf( null != this._isNfSv3Enabled ? (Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean((bool)this._isNfSv3Enabled) : null, "isNFSv3Enabled" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
