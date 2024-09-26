@@ -28,7 +28,7 @@ Describe 'New-AzConnectedPrivateLinkScope' {
     }
 
     It 'Create' {
-        $all = (New-AzConnectedPrivateLinkScope -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -PublicNetworkAccess "Enabled" -Location $env.Location)
+        $all = (New-AzConnectedPrivateLinkScope -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -PublicNetworkAccess "Enabled" -Location "westcentralus")
         $all | Should -Not -BeNullOrEmpty
     }
 
