@@ -86,6 +86,9 @@
 #### Az.Websites 3.2.2
 * Fix bug where parameters could not be set to false for 'Publish-AzWebApp'
 
+### Thanks to our community contributors
+* @jufuku0108, Update New-AzKeyVault.md (#26032)
+
 ## 12.3.0 - September 2024
 #### Az.Accounts 3.0.4
 * Added customized UserAgent for ARM telemetry.
