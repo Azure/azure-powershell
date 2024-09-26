@@ -29,27 +29,12 @@ Delete a pipeline group instance.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove Pipeline Group resource
 ```powershell
-{{ Add code here }}
+Remove-AzPipelineGroup -SubscriptionId 00000000-0000-0000-0000-000000000000 -ResourceGroupName kubetest -Name testgroup
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Remove Pipeline Group resource
 
 ## PARAMETERS
 
