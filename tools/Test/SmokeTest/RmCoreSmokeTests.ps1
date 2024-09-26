@@ -112,7 +112,8 @@ $resourceTestCommands = @(
     # @{Name = "Az.DataFactory [V1]";           Command = {Get-AzDataFactory -ResourceGroupName $resourceGroupName}},
     @{Name = "Az.DataFactoryV2 [V2]";         Command = {Get-AzDataFactoryV2}},
     @{Name = "Az.DataLakeAnalytics";          Command = {Get-AzDataLakeAnalyticsAccount}},
-    @{Name = "Az.DataLakeStore [MngmPlane]";  Command = {Get-AzDataLakeStoreAccount}},
+    # The resource type could not be found in the namespace 'Microsoft.DataLakeStore' for api version '2016-11-01'.
+    # @{Name = "Az.DataLakeStore [MngmPlane]";  Command = {Get-AzDataLakeStoreAccount}},
     @{Name = "Az.DataLakeStore [DataPlane]";  Command = {Get-Command New-AzDataLakeStoreItem}},
     @{Name = "Az.DataShare";                  Command = {Get-AzDataShareAccount -ResourceGroupName $resourceGroupName}},
     @{Name = "Az.DesktopVirtualization";      Command = {Get-AzWvdApplicationGroup -ResourceGroupName $resourceGroupName}},
@@ -129,7 +130,8 @@ $resourceTestCommands = @(
     @{Name = "Az.KeyVault [DataPlane]";       Command = {Get-Command Get-AzKeyVaultKey}},
     @{Name = "Az.Kusto";                      Command = {Get-AzKustoCluster}},
     @{Name = "Az.LogicApp";                   Command = {Get-AzIntegrationAccount}},
-    @{Name = "Az.MachineLearning";            Command = {Get-AzMlWebService}},
+    # The request uri is invalid. The requested path '/subscriptions/$subId/providers/Microsoft.MachineLearning/webServices' is not found
+    # @{Name = "Az.MachineLearning";            Command = {Get-AzMlWebService}},
     @{Name = "Az.Maintenance";                Command = {Get-AzMaintenanceConfiguration}},
     @{Name = "Az.ManagedServices";            Command = {Get-AzManagedServicesAssignment}},
     @{Name = "Az.Media";                      Command = {Get-AzMediaService -ResourceGroupName $resourceGroupName}},

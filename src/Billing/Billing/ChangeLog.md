@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Renamed `Get-UsageAggregates` to `Get-AzUsageAggregate` and added `Get-UsageAggregates` as the alias to avoid breaking change.
 
 ## Version 2.0.4
