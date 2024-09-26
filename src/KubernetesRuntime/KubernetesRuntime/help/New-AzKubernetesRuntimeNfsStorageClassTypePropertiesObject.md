@@ -14,7 +14,7 @@ Create an in-memory object for NfsStorageClassTypeProperties.
 
 ```
 New-AzKubernetesRuntimeNfsStorageClassTypePropertiesObject -Server <String> -Share <String>
- [-MountPermission <String>] [-OnDelete <String>] [-SubDir <String>] [-ProgressAction <ActionPreference>]
+ [-MountPermission <String>] [-OnDelete <String>] [-SubDir <String>]
  [<CommonParameters>]
 ```
 
@@ -62,21 +62,6 @@ Default is Delete.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

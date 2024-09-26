@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.18.8
 * Added support for Iceberg format as a sink.
 * Enabled sslMode and useSystemTrustStore options for MariaDB.
 

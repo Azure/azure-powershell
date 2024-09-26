@@ -1,3 +1,59 @@
+## 12.4.0 - October 2024
+#### Az.App 1.1.0 
+* Modified cmdlet `Get-AzContainerApp`
+   - Removed parameter `-PassThru`
+* Modified cmdlet `Get-AzContainerAppAuthToken`
+   - Removed parameter `-PassThru`
+* Modified cmdlet `Get-AzContainerAppDiagnosticRoot`
+   - Removed parameter `-PassThru`
+* Modified cmdlet `New-AzContainerAppManagedCert`
+   - Removed parameter `-PassThru`
+#### Az.Billing 2.1.0 
+* Removed cmdlet `Get-UsageAggregates`
+* Added cmdlet `Get-AzUsageAggregate`
+#### Az.Compute 8.4.0 
+* Modified cmdlet `New-AzSshKey`
+   - Added parameter `-SshKeyType`
+* Modified cmdlet `New-AzVM`
+   - Added parameter `-SshKeyType`
+* Modified cmdlet `New-AzVmss`
+   - Added parameters `-SkuProfileVmSize`, `-SkuProfileAllocationStrategy`
+* Modified cmdlet `New-AzVmssConfig`
+   - Added parameters `-SkuProfileVmSize`, `-SkuProfileAllocationStrategy`, `-EnableResilientVMCreate`, `-EnableResilientVMDelete`
+* Modified cmdlet `Update-AzVmss`
+   - Added parameters `-SkuProfileVmSize`, `-SkuProfileAllocationStrategy`, `-EnableResilientVMCreate`, `-EnableResilientVMDelete`
+#### Az.CosmosDB 1.15.0 
+* Modified cmdlet `Restore-AzCosmosDBAccount`
+   - Added parameter `-DisableTtl`
+#### Az.ElasticSan 1.1.0 
+* Modified cmdlet `New-AzElasticSanVolumeGroup`
+   - Added parameter `-EnforceDataIntegrityCheckForIscsi`
+* Modified cmdlet `Update-AzElasticSanVolumeGroup`
+   - Added parameter `-EnforceDataIntegrityCheckForIscsi`
+#### Az.Network 7.9.0 
+* Modified cmdlet `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
+   - Added parameter `-Sensitivity`
+* Modified cmdlet `New-AzNetworkWatcherFlowLog`
+   - Added parameters `-EnabledFilteringCriteria`, `-UserAssignedIdentityId`
+* Modified cmdlet `New-AzPrivateLinkService`
+   - Added parameter `-DestinationIPAddress`
+* Modified cmdlet `Set-AzNetworkWatcherFlowLog`
+   - Added parameters `-EnabledFilteringCriteria`, `-UserAssignedIdentityId`
+* Added cmdlet `Get-AzBastionShareableLink`, `New-AzBastionShareableLink`, `Remove-AzBastionShareableLink`
+#### Az.RedisEnterpriseCache 1.3.0 
+* Modified cmdlet `Update-AzRedisEnterpriseCache`
+   - Added parameter `-HighAvailability`
+* Added cmdlet `Get-AzRedisEnterpriseCacheAccessPolicyAssignment`, `Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup`, `New-AzRedisEnterpriseCacheAccessPolicyAssignment`, `Remove-AzRedisEnterpriseCacheAccessPolicyAssignment`, `Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion`
+#### Az.Resources 7.5.0 
+* Modified cmdlet `New-AzPolicyAssignment`
+   - Added parameters `-Override`, `-ResourceSelector`
+* Modified cmdlet `New-AzPolicyExemption`
+   - Added parameter `-ResourceSelector`
+* Modified cmdlet `Update-AzPolicyAssignment`
+   - Added parameters `-Override`, `-ResourceSelector`
+* Modified cmdlet `Update-AzPolicyExemption`
+   - Added parameter `-ResourceSelector`
+
 ## 12.3.0 - September 2024
 #### Az.Compute 8.3.0 
 * Modified cmdlet `Get-AzCapacityReservationGroup`
@@ -975,6 +1031,7 @@
    - Changed the type of parameter `-Status` from `Status` to `String`
    - Output type changed from ``PSSupportTicket`` to ``ISupportTicketDetails``
 * Added cmdlet `Get-AzSupportChatTranscript`, `Get-AzSupportChatTranscriptsNoSubscription`, `Get-AzSupportCommunication`, `Get-AzSupportCommunicationsNoSubscription`, `Get-AzSupportFile`, `Get-AzSupportFilesNoSubscription`, `Get-AzSupportFileWorkspace`, `Get-AzSupportFileWorkspacesNoSubscription`, `Get-AzSupportOperation`, `Get-AzSupportTicketsNoSubscription`, `New-AzSupportCommunication`, `New-AzSupportCommunicationsNoSubscription`, `New-AzSupportFileAndUpload`, `New-AzSupportFileAndUploadNoSubscription`, `New-AzSupportFileWorkspace`, `New-AzSupportFileWorkspacesNoSubscription`, `New-AzSupportTicketsNoSubscription`, `Test-AzSupportCommunicationNameAvailability`, `Test-AzSupportCommunicationsNoSubscriptionNameAvailability`, `Test-AzSupportTicketNameAvailability`, `Test-AzSupportTicketsNoSubscriptionNameAvailability`, `Update-AzSupportTicketsNoSubscription`
+
 
 
 

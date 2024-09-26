@@ -129,6 +129,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSetting = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings) content.GetValueForProperty("LinuxConfigurationPatchSetting",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSetting, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatus = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsStatus) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatus, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatus = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsStatus) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatus, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsStatusTypeConverter.ConvertFrom);
+            }
             if (content.Contains("WindowsConfigurationPatchSettingsAssessmentMode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsAssessmentMode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsAssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsAssessmentMode, global::System.Convert.ToString);
@@ -137,6 +145,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsPatchMode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsPatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsPatchMode, global::System.Convert.ToString);
             }
+            if (content.Contains("WindowsConfigurationPatchSettingsEnableHotpatching"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsEnableHotpatching = (bool?) content.GetValueForProperty("WindowsConfigurationPatchSettingsEnableHotpatching",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsEnableHotpatching, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("LinuxConfigurationPatchSettingsAssessmentMode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsAssessmentMode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsAssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsAssessmentMode, global::System.Convert.ToString);
@@ -144,6 +156,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("LinuxConfigurationPatchSettingsPatchMode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsPatchMode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsPatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsPatchMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsEnableHotpatching"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsEnableHotpatching = (bool?) content.GetValueForProperty("LinuxConfigurationPatchSettingsEnableHotpatching",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsEnableHotpatching, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusError = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusError",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusError, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusHotpatchEnablementStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusHotpatchEnablementStatus = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusHotpatchEnablementStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusHotpatchEnablementStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusError = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusError",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusError, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusHotpatchEnablementStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusHotpatchEnablementStatus = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusHotpatchEnablementStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusHotpatchEnablementStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorCode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorMessage = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusErrorTarget"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorTarget = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusErrorTarget",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorTarget, global::System.Convert.ToString);
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusErrorAdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorAdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusErrorAdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorAdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorCode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorMessage = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusErrorTarget"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorTarget = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusErrorTarget",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorTarget, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusErrorAdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorAdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusErrorAdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorAdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -182,6 +254,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSetting = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings) content.GetValueForProperty("LinuxConfigurationPatchSetting",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSetting, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsTypeConverter.ConvertFrom);
             }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatus = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsStatus) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatus, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatus = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsStatus) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatus, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsStatusTypeConverter.ConvertFrom);
+            }
             if (content.Contains("WindowsConfigurationPatchSettingsAssessmentMode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsAssessmentMode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsAssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsAssessmentMode, global::System.Convert.ToString);
@@ -190,6 +270,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsPatchMode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsPatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsPatchMode, global::System.Convert.ToString);
             }
+            if (content.Contains("WindowsConfigurationPatchSettingsEnableHotpatching"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsEnableHotpatching = (bool?) content.GetValueForProperty("WindowsConfigurationPatchSettingsEnableHotpatching",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsEnableHotpatching, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("LinuxConfigurationPatchSettingsAssessmentMode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsAssessmentMode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsAssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsAssessmentMode, global::System.Convert.ToString);
@@ -197,6 +281,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("LinuxConfigurationPatchSettingsPatchMode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsPatchMode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsPatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsPatchMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsEnableHotpatching"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsEnableHotpatching = (bool?) content.GetValueForProperty("LinuxConfigurationPatchSettingsEnableHotpatching",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsEnableHotpatching, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusError = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusError",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusError, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusHotpatchEnablementStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusHotpatchEnablementStatus = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusHotpatchEnablementStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusHotpatchEnablementStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusError = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusError",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusError, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusHotpatchEnablementStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusHotpatchEnablementStatus = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusHotpatchEnablementStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusHotpatchEnablementStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorCode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorMessage = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusErrorTarget"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorTarget = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusErrorTarget",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorTarget, global::System.Convert.ToString);
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("WindowsConfigurationPatchSettingsStatusErrorAdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorAdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>) content.GetValueForProperty("WindowsConfigurationPatchSettingsStatusErrorAdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).WindowsConfigurationPatchSettingsStatusErrorAdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorCode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorMessage = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusErrorTarget"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorTarget = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusErrorTarget",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorTarget, global::System.Convert.ToString);
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorDetail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorDetail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("LinuxConfigurationPatchSettingsStatusErrorAdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorAdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>) content.GetValueForProperty("LinuxConfigurationPatchSettingsStatusErrorAdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileInternal)this).LinuxConfigurationPatchSettingsStatusErrorAdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

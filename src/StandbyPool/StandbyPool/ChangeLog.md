@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.2.0
 * Added new Cmdlets:
   - Get-AzStandbyContainerGroupPoolStatus
   - Get-AzStandbyVMPoolStatus

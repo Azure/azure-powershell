@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.4
 * Removed Microsoft.Azure.Management.ManagementPartner 1.1.1-preview dependency
 * Added Microsoft.Azure.PowerShell.ManagementPartner.Management.Sdk
 
