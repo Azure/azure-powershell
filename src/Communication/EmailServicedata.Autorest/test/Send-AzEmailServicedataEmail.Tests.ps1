@@ -22,7 +22,7 @@ Describe 'Send-AzEmailServicedataEmail' {
                 DisplayName = "ContosoUser"
             }
         )
-        $fileBytes1 = [System.IO.File]::ReadAllBytes("test\inline-attachment.jpg")
+        $fileBytes1 = [System.IO.File]::ReadAllBytes(".\test\inline-attachment.jpg")
         $emailAttachment = @(
 	        @{
 		        ContentInBase64 = $fileBytes1
