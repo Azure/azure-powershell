@@ -14,11 +14,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using global::Azure.Storage.Blobs.Specialized;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Sas;
-    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Storage.Auth;
     using Microsoft.Azure.Storage.Blob;
     using Microsoft.Azure.Storage.File;
-    using Microsoft.OData.UriParser;
     using System;
     using System.Globalization;
 
@@ -252,7 +250,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <param name="context">The storage context for the storage account</param>
         /// <returns>Blob Uri with SAS appended.</returns>
         internal static Uri GenerateUriWithCredentials(
-            this BlobBaseClient blob, AzureStorageContext context = null)
+            this BlobBaseClient blob, AzureStorageContext context)
         {
             if (null == blob)
             {
