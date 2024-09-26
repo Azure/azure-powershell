@@ -262,14 +262,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     }
                     else
                     {
-                        destChannel = new StorageFileManagement(this.GetCmdletStorageContext(DestContext));
+                        destChannel = new StorageFileManagement(this.GetCmdletStorageContext(DestContext, isDestContext:true));
                     }
                 }
                 else if (BlobFileParameterSet == this.ParameterSetName ||
                     FileFileParameterSet == this.ParameterSetName ||
                     UriFileParameterSet == this.ParameterSetName)
                 {
-                    destChannel = new StorageFileManagement(this.GetCmdletStorageContext(DestContext));
+                    destChannel = new StorageFileManagement(this.GetCmdletStorageContext(DestContext, isDestContext:true));
                 }
                 else
                 {
