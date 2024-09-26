@@ -110,14 +110,12 @@ param(
 )
 
 process {
-    $APIVersion = "2024-01-01"
-    $null = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$APIVersion" -Method DELETE
-
     # Query status until delete is complete
     $stopLoop = $false
     do 
     {
-        $response = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$APIVersion" -Method GET
+        $null = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$ConnectedClusterAPIVersion" -Method DELETE
+        $response = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$ConnectedClusterAPIVersion" -Method GET
 
         if ($response.StatusCode -eq 404) {
             $stopLoop = $true
