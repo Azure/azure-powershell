@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to create or update a license.
+The operation to create a license.
 .Description
-The operation to create or update a license.
+The operation to create a license.
 .Example
 New-AzConnectedLicense -Name 'myESULicense' -ResourceGroupName 'ytongtest' -Location 'eastus2euap' -LicenseType 'ESU' -LicenseDetailState 'Activated'  -LicenseDetailTarget 'Windows Server 2012' -LicenseDetailEdition 'Datacenter' -LicenseDetailType 'pCore' -LicenseDetailProcessor 16 -SubscriptionId ********-****-****-****-**********
 

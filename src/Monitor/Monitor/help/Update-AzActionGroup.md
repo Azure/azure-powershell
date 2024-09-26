@@ -20,7 +20,7 @@ Update-AzActionGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-EmailReceiver <IEmailReceiver[]>] [-Enabled] [-EventHubReceiver <IEventHubReceiver[]>]
  [-GroupShortName <String>] [-ItsmReceiver <IItsmReceiver[]>] [-LogicAppReceiver <ILogicAppReceiver[]>]
  [-SmsReceiver <ISmsReceiver[]>] [-Tag <Hashtable>] [-VoiceReceiver <IVoiceReceiver[]>]
- [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzActionGroup -InputObject <IActionGroupIdentity> [-ArmRoleReceiver <IArm
  [-EventHubReceiver <IEventHubReceiver[]>] [-GroupShortName <String>] [-ItsmReceiver <IItsmReceiver[]>]
  [-LogicAppReceiver <ILogicAppReceiver[]>] [-SmsReceiver <ISmsReceiver[]>] [-Tag <Hashtable>]
  [-VoiceReceiver <IVoiceReceiver[]>] [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -325,21 +325,6 @@ Parameter Sets: UpdateExpanded
 Aliases: ActionGroupName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
