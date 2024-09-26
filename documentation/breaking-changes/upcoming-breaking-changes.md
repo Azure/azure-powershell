@@ -137,6 +137,64 @@
     - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
     - The change is expected to take effect from version : '2.0.0'
 
+## Az.Monitor
+
+### `New-AzDataCollectionEndpoint`
+- Parameter breaking-change will happen to all parameter sets
+  - `-IdentityType`
+    - The parameter : 'IdentityType' is changing.
+    - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
+    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - The change is expected to take effect from version : '2.0.0'
+- Parameter breaking-change will happen to all parameter sets
+  - `-UserAssignedIdentity`
+    - The parameter : 'UserAssignedIdentity' is changing. The type of the parameter is changing from 'Hashtable' to 'string[]'.
+    - Change description : UserAssignedIdentity's type will be simplified as string array.
+    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - The change is expected to take effect from version : '2.0.0'
+ 
+### `New-AzDataCollectionRule`
+- Parameter breaking-change will happen to all parameter sets
+  - `-IdentityType`
+    - The parameter : 'IdentityType' is changing.
+    - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
+    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - The change is expected to take effect from version : '2.0.0'
+- Parameter breaking-change will happen to all parameter sets
+  - `-UserAssignedIdentity`
+    - The parameter : 'UserAssignedIdentity' is changing. The type of the parameter is changing from 'Hashtable' to 'string[]'.
+    - Change description : UserAssignedIdentity's type will be simplified as string array.
+    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - The change is expected to take effect from version : '2.0.0'
+
+### `Update-AzDataCollectionEndpoint`
+- Parameter breaking-change will happen to all parameter sets
+  - `-IdentityType`
+    - The parameter : 'IdentityType' is changing.
+    - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
+    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - The change is expected to take effect from version : '2.0.0'
+- Parameter breaking-change will happen to all parameter sets
+  - `-UserAssignedIdentity`
+    - The parameter : 'UserAssignedIdentity' is changing. The type of the parameter is changing from 'Hashtable' to 'string[]'.
+    - Change description : UserAssignedIdentity's type will be simplified as string array.
+    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - The change is expected to take effect from version : '2.0.0'
+
+### `Update-AzDataCollectionRule`
+- Parameter breaking-change will happen to all parameter sets
+  - `-IdentityType`
+    - The parameter : 'IdentityType' is changing.
+    - Change description : IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities. 
+    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - The change is expected to take effect from version : '2.0.0'
+- Parameter breaking-change will happen to all parameter sets
+  - `-UserAssignedIdentity`
+    - The parameter : 'UserAssignedIdentity' is changing. The type of the parameter is changing from 'Hashtable' to 'string[]'.
+    - Change description : UserAssignedIdentity's type will be simplified as string array.
+    - This change will take effect on '11/19/2024'- The change is expected to take effect from Az version : '13.0.0'
+    - The change is expected to take effect from version : '2.0.0'
+
 ## Az.NetAppFiles
 
 ### `Get-AzNetAppFilesBackup`
