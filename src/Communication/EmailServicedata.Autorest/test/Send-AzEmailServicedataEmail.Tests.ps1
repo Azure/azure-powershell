@@ -25,6 +25,18 @@ Describe 'Send-AzEmailServicedataEmail' {
         $currentDirectory = Get-Location
         Write-Host "Current working directory: $currentDirectory"
         $filePath = Join-Path -Path $currentDirectory -ChildPath "test\inline-attachment.jpg"
+
+        # Check if the file exists, if not, set the fallback path
+        if (-Not (Test-Path $filePath)) {
+            $fallbackPath = Join-Path -Path $currentDirectory -ChildPath "artifacts\Debug\Az.Communication\EmailServicedata.Autorest\test\inline-attachment.jpg"
+            if (Test-Path $fallbackPath) {
+                $filePath = $fallbackPath
+            } else {
+                Write-Host "File not found in either location."
+                return
+            }
+        }
+
         $fileBytes1 = [System.IO.File]::ReadAllBytes($filePath)
         $emailAttachment = @(
 	        @{
