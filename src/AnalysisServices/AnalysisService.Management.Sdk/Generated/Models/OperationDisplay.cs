@@ -35,14 +35,11 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// performed: UsageDetail, etc.</param>
         /// <param name="operation">Operation type: Read, write, delete,
         /// etc.</param>
-        /// <param name="description">Description of the operation
-        /// object.</param>
-        public OperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string), string description = default(string))
+        public OperationDisplay(string provider = default(string), string resource = default(string), string operation = default(string))
         {
             Provider = provider;
             Resource = resource;
             Operation = operation;
-            Description = description;
             CustomInit();
         }
 
@@ -69,12 +66,6 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// </summary>
         [JsonProperty(PropertyName = "operation")]
         public string Operation { get; private set; }
-
-        /// <summary>
-        /// Gets description of the operation object.
-        /// </summary>
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; private set; }
 
     }
 }

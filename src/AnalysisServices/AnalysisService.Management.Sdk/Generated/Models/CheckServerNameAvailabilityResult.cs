@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
     using System.Linq;
 
     /// <summary>
-    /// The checking result of server name availability.
+    /// The checking result of server name availibility.
     /// </summary>
     public partial class CheckServerNameAvailabilityResult
     {

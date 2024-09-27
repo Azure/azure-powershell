@@ -19,7 +19,7 @@ openapi-type: arm
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
 
-commit: c943ce5e08690d4b0c840245a6f6f3ed28e56886
+commit: cb9c18b988dd67894653a34dc55b7978403b120a
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/analysisservices/resource-manager/Microsoft.AnalysisServices/stable/2017-08-01/analysisservices.json
 

@@ -29,10 +29,13 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// <summary>
         /// Initializes a new instance of the ErrorResponse class.
         /// </summary>
-        /// <param name="error">The error object</param>
-        public ErrorResponse(GatewayError error = default(GatewayError))
+        /// <param name="code">Error code</param>
+        /// <param name="message">Error message indicating why the operation
+        /// failed.</param>
+        public ErrorResponse(string code = default(string), string message = default(string))
         {
-            Error = error;
+            Code = code;
+            Message = message;
             CustomInit();
         }
 
@@ -42,10 +45,16 @@ namespace Microsoft.Azure.Management.Analysis.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the error object
+        /// Gets or sets error code
         /// </summary>
-        [JsonProperty(PropertyName = "error")]
-        public GatewayError Error { get; set; }
+        [JsonProperty(PropertyName = "code")]
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Gets or sets error message indicating why the operation failed.
+        /// </summary>
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; set; }
 
     }
 }
