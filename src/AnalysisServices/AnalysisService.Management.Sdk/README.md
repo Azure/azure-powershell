@@ -40,12 +40,12 @@ directive:
     set:
       property-name: IpV4FirewallSettings
   - where:
-      model-name:  AnalysisServicesServerUpdateParameters
+      model-name: AnalysisServicesServerUpdateParameters
       property-name: Ipv4FirewallSettings
     set:
       property-name: IpV4FirewallSettings
   - where:
-      model-name:  Ipv4FirewallSettings
+      model-name: Ipv4FirewallSettings
     set:
       model-name: IpV4FirewallSettings
 ```
