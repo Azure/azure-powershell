@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzDataBoundary'))
 }
 
 Describe 'Set-AzDataBoundary' {
-    It 'PutExpanded' -skip {
-        { $scope = "/subscriptions/" + $env.SubscriptionId
-        $boundaryData = Get-AzDataBoundaryScope -scope $scope
+    It 'PutExpanded' {
+        {
+        $dataBoundary = "EU"
+        $boundaryData = Get-AzDataBoundaryScope -DataBoundary $dataBoundary
         Assert-AreEqual $boundaryData.Properties.DataBoundary "EU" }
-    }
+    } | Should -Not -Throw
 
     It 'Put' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw

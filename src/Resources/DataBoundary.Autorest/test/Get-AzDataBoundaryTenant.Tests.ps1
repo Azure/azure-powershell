@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataBoundaryTenant'))
 }
 
 Describe 'Get-AzDataBoundaryTenant' {
-    It 'Get' -skip {
-        { 
-            $scope = "/subscriptions/" + $env.SubscriptionId
+    It 'Get' {
+        {
             $boundaryData = Get-AzDataBoundaryTenant
             Assert-AreEqual $boundaryData.Properties.DataBoundary "EU"
+            Assert-AreEqual $boundaryData.Properties.ProvisioningState "Created"
         } | Should -Not -Throw
     }
 }
