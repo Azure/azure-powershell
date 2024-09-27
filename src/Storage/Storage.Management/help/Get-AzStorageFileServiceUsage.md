@@ -52,7 +52,7 @@ The name of the storage account within the specified resource group.
 Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get, List
 Aliases:
 
@@ -68,7 +68,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IStorageIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 Optional, specifies the maximum number of file service usages to be included in the list response.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: List
 Aliases:
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -129,7 +129,7 @@ The name of the resource group within the user's subscription.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get, List
 Aliases:
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Get, List
 Aliases:
 

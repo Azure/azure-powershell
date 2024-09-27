@@ -64,7 +64,35 @@ directive:
   - where:
       parameter-name: StorageAccountMigrationDetailTargetSkuName
     set:
-      parameter-name: TargetSku
+      parameter-name: TargetSku  
+  - where:
+      property-name: BurstingConstantBurstFloorIop
+    set:
+      property-name: BurstingConstantBurstFloorIops
+  - where:
+      property-name: FileShareLimitMaxProvisionedIop 
+    set:
+      property-name: FileShareLimitMaxProvisionedIops
+  - where:
+      property-name: FileShareLimitMinProvisionedIop
+    set:
+      property-name: FileShareLimitMinProvisionedIops
+  - where:
+      property-name: FileShareRecommendationBaseIop
+    set:
+      property-name: FileShareRecommendationBaseIops
+  - where:
+      property-name: LiveShareProvisionedIop
+    set:
+      property-name: LiveShareProvisionedIops
+  - where:
+      property-name: SoftDeletedShareProvisionedIop
+    set:
+      property-name: SoftDeletedShareProvisionedIops
+  - where:
+      property-name: StorageAccountLimitMaxProvisionedIop
+    set:
+      property-name: StorageAccountLimitMaxProvisionedIops
   - where:
       subject: ^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Sku$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$|^FileShare$|^FileServiceProperty$|^FileService$
     remove: true

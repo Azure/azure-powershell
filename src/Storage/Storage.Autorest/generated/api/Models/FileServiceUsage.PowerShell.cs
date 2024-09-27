@@ -138,9 +138,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountUsage = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsage) content.GetValueForProperty("StorageAccountUsage",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountUsage, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountUsageTypeConverter.ConvertFrom);
             }
-            if (content.Contains("FileShareRecommendationBaseIop"))
+            if (content.Contains("FileShareRecommendationBaseIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareRecommendationBaseIop = (int?) content.GetValueForProperty("FileShareRecommendationBaseIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareRecommendationBaseIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareRecommendationBaseIops = (int?) content.GetValueForProperty("FileShareRecommendationBaseIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareRecommendationBaseIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("FileShareRecommendationIoScalar"))
             {
@@ -158,9 +158,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountLimitMaxProvisionedStorageGiB = (int?) content.GetValueForProperty("StorageAccountLimitMaxProvisionedStorageGiB",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountLimitMaxProvisionedStorageGiB, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("StorageAccountLimitMaxProvisionedIop"))
+            if (content.Contains("StorageAccountLimitMaxProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountLimitMaxProvisionedIop = (int?) content.GetValueForProperty("StorageAccountLimitMaxProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountLimitMaxProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountLimitMaxProvisionedIops = (int?) content.GetValueForProperty("StorageAccountLimitMaxProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountLimitMaxProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("StorageAccountLimitMaxProvisionedBandwidthMiBPerSec"))
             {
@@ -174,13 +174,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMaxProvisionedStorageGiB = (int?) content.GetValueForProperty("FileShareLimitMaxProvisionedStorageGiB",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMaxProvisionedStorageGiB, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("FileShareLimitMinProvisionedIop"))
+            if (content.Contains("FileShareLimitMinProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMinProvisionedIop = (int?) content.GetValueForProperty("FileShareLimitMinProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMinProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMinProvisionedIops = (int?) content.GetValueForProperty("FileShareLimitMinProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMinProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("FileShareLimitMaxProvisionedIop"))
+            if (content.Contains("FileShareLimitMaxProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMaxProvisionedIop = (int?) content.GetValueForProperty("FileShareLimitMaxProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMaxProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMaxProvisionedIops = (int?) content.GetValueForProperty("FileShareLimitMaxProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMaxProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("FileShareLimitMinProvisionedBandwidthMiBPerSec"))
             {
@@ -194,9 +194,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareRecommendationBaseBandwidthMiBPerSec = (int?) content.GetValueForProperty("FileShareRecommendationBaseBandwidthMiBPerSec",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareRecommendationBaseBandwidthMiBPerSec, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("BurstingConstantBurstFloorIop"))
+            if (content.Contains("BurstingConstantBurstFloorIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).BurstingConstantBurstFloorIop = (int?) content.GetValueForProperty("BurstingConstantBurstFloorIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).BurstingConstantBurstFloorIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).BurstingConstantBurstFloorIops = (int?) content.GetValueForProperty("BurstingConstantBurstFloorIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).BurstingConstantBurstFloorIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("BurstingConstantBurstIoScalar"))
             {
@@ -222,9 +222,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).LiveShareProvisionedStorageGiB = (int?) content.GetValueForProperty("LiveShareProvisionedStorageGiB",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).LiveShareProvisionedStorageGiB, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("LiveShareProvisionedIop"))
+            if (content.Contains("LiveShareProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).LiveShareProvisionedIop = (int?) content.GetValueForProperty("LiveShareProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).LiveShareProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).LiveShareProvisionedIops = (int?) content.GetValueForProperty("LiveShareProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).LiveShareProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LiveShareProvisionedBandwidthMiBPerSec"))
             {
@@ -238,9 +238,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).SoftDeletedShareProvisionedStorageGiB = (int?) content.GetValueForProperty("SoftDeletedShareProvisionedStorageGiB",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).SoftDeletedShareProvisionedStorageGiB, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("SoftDeletedShareProvisionedIop"))
+            if (content.Contains("SoftDeletedShareProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).SoftDeletedShareProvisionedIop = (int?) content.GetValueForProperty("SoftDeletedShareProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).SoftDeletedShareProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).SoftDeletedShareProvisionedIops = (int?) content.GetValueForProperty("SoftDeletedShareProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).SoftDeletedShareProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SoftDeletedShareProvisionedBandwidthMiBPerSec"))
             {
@@ -299,9 +299,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountUsage = (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsage) content.GetValueForProperty("StorageAccountUsage",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountUsage, Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountUsageTypeConverter.ConvertFrom);
             }
-            if (content.Contains("FileShareRecommendationBaseIop"))
+            if (content.Contains("FileShareRecommendationBaseIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareRecommendationBaseIop = (int?) content.GetValueForProperty("FileShareRecommendationBaseIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareRecommendationBaseIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareRecommendationBaseIops = (int?) content.GetValueForProperty("FileShareRecommendationBaseIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareRecommendationBaseIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("FileShareRecommendationIoScalar"))
             {
@@ -319,9 +319,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountLimitMaxProvisionedStorageGiB = (int?) content.GetValueForProperty("StorageAccountLimitMaxProvisionedStorageGiB",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountLimitMaxProvisionedStorageGiB, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("StorageAccountLimitMaxProvisionedIop"))
+            if (content.Contains("StorageAccountLimitMaxProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountLimitMaxProvisionedIop = (int?) content.GetValueForProperty("StorageAccountLimitMaxProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountLimitMaxProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountLimitMaxProvisionedIops = (int?) content.GetValueForProperty("StorageAccountLimitMaxProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).StorageAccountLimitMaxProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("StorageAccountLimitMaxProvisionedBandwidthMiBPerSec"))
             {
@@ -335,13 +335,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMaxProvisionedStorageGiB = (int?) content.GetValueForProperty("FileShareLimitMaxProvisionedStorageGiB",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMaxProvisionedStorageGiB, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("FileShareLimitMinProvisionedIop"))
+            if (content.Contains("FileShareLimitMinProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMinProvisionedIop = (int?) content.GetValueForProperty("FileShareLimitMinProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMinProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMinProvisionedIops = (int?) content.GetValueForProperty("FileShareLimitMinProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMinProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("FileShareLimitMaxProvisionedIop"))
+            if (content.Contains("FileShareLimitMaxProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMaxProvisionedIop = (int?) content.GetValueForProperty("FileShareLimitMaxProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMaxProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMaxProvisionedIops = (int?) content.GetValueForProperty("FileShareLimitMaxProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareLimitMaxProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("FileShareLimitMinProvisionedBandwidthMiBPerSec"))
             {
@@ -355,9 +355,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareRecommendationBaseBandwidthMiBPerSec = (int?) content.GetValueForProperty("FileShareRecommendationBaseBandwidthMiBPerSec",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).FileShareRecommendationBaseBandwidthMiBPerSec, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("BurstingConstantBurstFloorIop"))
+            if (content.Contains("BurstingConstantBurstFloorIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).BurstingConstantBurstFloorIop = (int?) content.GetValueForProperty("BurstingConstantBurstFloorIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).BurstingConstantBurstFloorIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).BurstingConstantBurstFloorIops = (int?) content.GetValueForProperty("BurstingConstantBurstFloorIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).BurstingConstantBurstFloorIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("BurstingConstantBurstIoScalar"))
             {
@@ -383,9 +383,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).LiveShareProvisionedStorageGiB = (int?) content.GetValueForProperty("LiveShareProvisionedStorageGiB",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).LiveShareProvisionedStorageGiB, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("LiveShareProvisionedIop"))
+            if (content.Contains("LiveShareProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).LiveShareProvisionedIop = (int?) content.GetValueForProperty("LiveShareProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).LiveShareProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).LiveShareProvisionedIops = (int?) content.GetValueForProperty("LiveShareProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).LiveShareProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LiveShareProvisionedBandwidthMiBPerSec"))
             {
@@ -399,9 +399,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).SoftDeletedShareProvisionedStorageGiB = (int?) content.GetValueForProperty("SoftDeletedShareProvisionedStorageGiB",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).SoftDeletedShareProvisionedStorageGiB, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("SoftDeletedShareProvisionedIop"))
+            if (content.Contains("SoftDeletedShareProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).SoftDeletedShareProvisionedIop = (int?) content.GetValueForProperty("SoftDeletedShareProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).SoftDeletedShareProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).SoftDeletedShareProvisionedIops = (int?) content.GetValueForProperty("SoftDeletedShareProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsageInternal)this).SoftDeletedShareProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SoftDeletedShareProvisionedBandwidthMiBPerSec"))
             {
