@@ -1,17 +1,17 @@
 if(($null -eq $TestName) -or ($TestName -contains 'Send-AzEmailServicedataEmail'))
 {
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Send-AzEmailServicedataEmail.Recording.json'
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
+    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+    if (-Not (Test-Path -Path $loadEnvPath)) {
+        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+    }
+    . ($loadEnvPath)
+    $TestRecordingFile = Join-Path $PSScriptRoot 'Send-AzEmailServicedataEmail.Recording.json'
+    $currentPath = $PSScriptRoot
+    while(-not $mockingPath) {
+        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+        $currentPath = Split-Path -Path $currentPath -Parent
+    }
+    . ($mockingPath | Select-Object -First 1).FullName
 }
 
 Describe 'Send-AzEmailServicedataEmail' {
@@ -22,7 +22,10 @@ Describe 'Send-AzEmailServicedataEmail' {
                 DisplayName = "ContosoUser"
             }
         )
-        $fileBytes1 = [System.IO.File]::ReadAllBytes(".\test\inline-attachment.jpg")
+        $currentDirectory = Get-Location
+        Write-Host "Current working directory: $currentDirectory"
+        $filePath = Join-Path -Path $currentDirectory -ChildPath "test\inline-attachment.jpg"
+        $fileBytes1 = [System.IO.File]::ReadAllBytes($filePath)
         $emailAttachment = @(
 	        @{
 		        ContentInBase64 = $fileBytes1
