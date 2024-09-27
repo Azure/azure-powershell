@@ -38,14 +38,14 @@ directive:
       model-name:  AnalysisServicesServer
       property-name: Ipv4FirewallSettings
     set:
-      property-name: IpV4FirewallSettings
+      property-name: IPv4FirewallSettings
   - where:
       model-name:  AnalysisServicesServerUpdateParameters
       property-name: Ipv4FirewallSettings
     set:
-      property-name: IpV4FirewallSettings
+      property-name: IPv4FirewallSettings
   - where:
       model-name:  Ipv4FirewallSettings
     set:
-      model-name: IpV4FirewallSettings
+      model-name: IPv4FirewallSettings
 ```

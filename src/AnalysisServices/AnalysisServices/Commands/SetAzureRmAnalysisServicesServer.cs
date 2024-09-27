@@ -131,10 +131,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     BackupBlobContainerUri = "-";
                 }
 
-                IpV4FirewallSettings setting = null;
+                IPv4FirewallSettings setting = null;
                 if (FirewallConfig != null)
                 {
-                    setting = new IpV4FirewallSettings(new List<IPv4FirewallRule>(), "False");
+                    setting = new IPv4FirewallSettings(new List<IPv4FirewallRule>(), "False");
 
                     setting.EnablePowerBiService = FirewallConfig.EnablePowerBIService.ToString();
 

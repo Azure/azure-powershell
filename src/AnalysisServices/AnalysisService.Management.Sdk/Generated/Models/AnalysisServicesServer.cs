@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// <param name="backupBlobContainerUri">The SAS container URI to the backup container.
         /// </param>
 
-        /// <param name="ipV4FirewallSettings">The firewall settings for the AS server.
+        /// <param name="iPv4FirewallSettings">The firewall settings for the AS server.
         /// </param>
 
         /// <param name="querypoolConnectionMode">How the read-write server&#39;s participation in the query pool is
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
 
         /// <param name="serverFullName">The full name of the Analysis Services resource.
         /// </param>
-        public AnalysisServicesServer(string location, ResourceSku sku, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), GatewayDetails gatewayDetails = default(GatewayDetails), string state = default(string), string provisioningState = default(string), ServerAdministrators asAdministrators = default(ServerAdministrators), string backupBlobContainerUri = default(string), IpV4FirewallSettings ipV4FirewallSettings = default(IpV4FirewallSettings), ConnectionMode? querypoolConnectionMode = default(ConnectionMode?), string serverFullName = default(string))
+        public AnalysisServicesServer(string location, ResourceSku sku, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), GatewayDetails gatewayDetails = default(GatewayDetails), string state = default(string), string provisioningState = default(string), ServerAdministrators asAdministrators = default(ServerAdministrators), string backupBlobContainerUri = default(string), IPv4FirewallSettings iPv4FirewallSettings = default(IPv4FirewallSettings), ConnectionMode? querypoolConnectionMode = default(ConnectionMode?), string serverFullName = default(string))
 
         : base(location, sku, id, name, type, tags)
         {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
             this.ProvisioningState = provisioningState;
             this.AsAdministrators = asAdministrators;
             this.BackupBlobContainerUri = backupBlobContainerUri;
-            this.IpV4FirewallSettings = ipV4FirewallSettings;
+            this.IPv4FirewallSettings = iPv4FirewallSettings;
             this.QuerypoolConnectionMode = querypoolConnectionMode;
             this.ServerFullName = serverFullName;
             CustomInit();
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// Gets or sets the firewall settings for the AS server.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipV4FirewallSettings")]
-        public IpV4FirewallSettings IpV4FirewallSettings {get; set; }
+        public IPv4FirewallSettings IPv4FirewallSettings {get; set; }
 
         /// <summary>
         /// Gets or sets how the read-write server&#39;s participation in the query pool is

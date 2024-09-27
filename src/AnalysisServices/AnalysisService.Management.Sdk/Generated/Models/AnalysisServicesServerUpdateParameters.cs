@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// <param name="backupBlobContainerUri">The SAS container URI to the backup container.
         /// </param>
 
-        /// <param name="ipV4FirewallSettings">The firewall settings for the AS server.
+        /// <param name="iPv4FirewallSettings">The firewall settings for the AS server.
         /// </param>
 
         /// <param name="querypoolConnectionMode">How the read-write server&#39;s participation in the query pool is
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// participate in query operations&lt;/li&gt;&lt;/ul&gt;Specifying readOnly when capacity
         /// is 1 results in error.
         /// Possible values include: &#39;All&#39;, &#39;ReadOnly&#39;</param>
-        public AnalysisServicesServerUpdateParameters(ResourceSku sku = default(ResourceSku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), GatewayDetails gatewayDetails = default(GatewayDetails), ServerAdministrators asAdministrators = default(ServerAdministrators), string backupBlobContainerUri = default(string), IpV4FirewallSettings ipV4FirewallSettings = default(IpV4FirewallSettings), ConnectionMode? querypoolConnectionMode = default(ConnectionMode?))
+        public AnalysisServicesServerUpdateParameters(ResourceSku sku = default(ResourceSku), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), GatewayDetails gatewayDetails = default(GatewayDetails), ServerAdministrators asAdministrators = default(ServerAdministrators), string backupBlobContainerUri = default(string), IPv4FirewallSettings iPv4FirewallSettings = default(IPv4FirewallSettings), ConnectionMode? querypoolConnectionMode = default(ConnectionMode?))
 
         {
             this.Sku = sku;
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
             this.GatewayDetails = gatewayDetails;
             this.AsAdministrators = asAdministrators;
             this.BackupBlobContainerUri = backupBlobContainerUri;
-            this.IpV4FirewallSettings = ipV4FirewallSettings;
+            this.IPv4FirewallSettings = iPv4FirewallSettings;
             this.QuerypoolConnectionMode = querypoolConnectionMode;
             CustomInit();
         }
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// Gets or sets the firewall settings for the AS server.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.ipV4FirewallSettings")]
-        public IpV4FirewallSettings IpV4FirewallSettings {get; set; }
+        public IPv4FirewallSettings IPv4FirewallSettings {get; set; }
 
         /// <summary>
         /// Gets or sets how the read-write server&#39;s participation in the query pool is
