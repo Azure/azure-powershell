@@ -16,28 +16,28 @@ Create new navigation property to appRoleAssignments for servicePrincipals
 ```
 New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId <String> -ResourceId <String>
  [-AdditionalProperties <Hashtable>] [-AppRoleId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectIdWithResourceDisplayNameParameterSet
 ```
 New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId <String> [-AdditionalProperties <Hashtable>]
  [-AppRoleId <String>] -ResourceDisplayName <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithResourceIdParameterSet
 ```
 New-AzADServicePrincipalAppRoleAssignment -ResourceId <String> [-AdditionalProperties <Hashtable>]
  [-AppRoleId <String>] -ServicePrincipalDisplayName <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithResourceDisplayNameParameterSet
 ```
 New-AzADServicePrincipalAppRoleAssignment [-AdditionalProperties <Hashtable>] [-AppRoleId <String>]
  -ResourceDisplayName <String> -ServicePrincipalDisplayName <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,13 +47,13 @@ Create new navigation property to appRoleAssignments for servicePrincipals
 
 ### Example 1: ObjectIdWithResourceIdParameterSet
 ```powershell
-New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId 00001111-aaaa-2222-bbbb-3333cccc4444 -ResourceId 351fa797-c81a-4998-9720-4c2ecb6c7abc -AppRoleId 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83
+New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId 71beb965-8347-495d-a589-c21cdde7a722 -ResourceId 351fa797-c81a-4998-9720-4c2ecb6c7abc -AppRoleId 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83
 ```
 
 ```output
 Id                                          AppRoleId                            PrincipalDisplayName PrincipalId                          CreatedDateTime
 --                                          ---------                            -------------------- -----------                          ---------------
-Zbm-cUeDXUmlicIc3eenIkgIm8kv9kJPj4MFhepACNE 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83 funapp1214           00001111-aaaa-2222-bbbb-3333cccc4444 12/14/2023 7:04:28 AM
+Zbm-cUeDXUmlicIc3eenIkgIm8kv9kJPj4MFhepACNE 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83 funapp1214           71beb965-8347-495d-a589-c21cdde7a722 12/14/2023 7:04:28 AM
 ```
 
 Create an appRoleAssignment using ServicePrincipalId and ResourceId.
@@ -66,7 +66,7 @@ New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalDisplayName funapp121
 ```output
 Id                                          AppRoleId                            PrincipalDisplayName PrincipalId                          CreatedDateTime
 --                                          ---------                            -------------------- -----------                          ---------------
-Zbm-cUeDXUmlicIc3eenIlqgWRlWp2hFrXIJiqP2j78 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83 funapp1214           00001111-aaaa-2222-bbbb-3333cccc4444 12/14/2023 7:07:16 AM
+Zbm-cUeDXUmlicIc3eenIlqgWRlWp2hFrXIJiqP2j78 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83 funapp1214           71beb965-8347-495d-a589-c21cdde7a722 12/14/2023 7:07:16 AM
 ```
 
 Create an appRoleAssignment for service principal using ServicePrincipal DisplayName and Resource DisplayName.
@@ -114,6 +114,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

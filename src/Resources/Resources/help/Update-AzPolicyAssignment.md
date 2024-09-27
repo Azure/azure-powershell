@@ -20,7 +20,7 @@ Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>
  [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
  [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
  [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NameParameterObject
@@ -29,7 +29,7 @@ Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>
  [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
  [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
  [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -PolicyParameterObject <PSObject>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NameParameterString
@@ -38,7 +38,7 @@ Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>
  [-Description <String>] [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>]
  [-IdentityType <String>] [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
  [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -PolicyParameter <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Id
@@ -47,7 +47,7 @@ Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <Str
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
  [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterObject
@@ -56,7 +56,7 @@ Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <Str
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
  [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -PolicyParameterObject <PSObject>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdParameterString
@@ -65,7 +65,7 @@ Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <Str
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
  [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -PolicyParameter <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -74,7 +74,7 @@ Update-AzPolicyAssignment [-NotScope <String[]>] [-DisplayName <String>] [-Descr
  [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
  [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-Override <IOverride[]>]
  [-ResourceSelector <IResourceSelector[]>] [-BackwardCompatible] -InputObject <IPolicyAssignment>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -466,6 +466,21 @@ Parameter Sets: NameParameterObject, IdParameterObject
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
