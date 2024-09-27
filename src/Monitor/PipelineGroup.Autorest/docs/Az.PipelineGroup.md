@@ -12,7 +12,7 @@ Microsoft Azure PowerShell: PipelineGroup cmdlets
 
 ## Az.PipelineGroup Cmdlets
 ### [Get-AzPipelineGroup](Get-AzPipelineGroup.md)
-Lists all workspaces in the specified subscription
+Returns the specific pipeline group instance.
 
 ### [New-AzPipelineGroup](New-AzPipelineGroup.md)
 Create a pipeline group instance.

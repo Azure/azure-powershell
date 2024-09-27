@@ -51,7 +51,7 @@ directive:
       model-name: ^AzureMonitorWorkspace(.*)
     remove: true
   - where:
-      variant: ^Get$|^GetViaIdentity$|^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
     remove: true
   - where:
       subject: MonitorOperation

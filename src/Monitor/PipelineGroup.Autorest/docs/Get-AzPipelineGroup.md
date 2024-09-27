@@ -8,13 +8,24 @@ schema: 2.0.0
 # Get-AzPipelineGroup
 
 ## SYNOPSIS
-Lists all workspaces in the specified subscription
+Returns the specific pipeline group instance.
 
 ## SYNTAX
 
 ### List (Default)
 ```
 Get-AzPipelineGroup [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzPipelineGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzPipelineGroup -InputObject <IPipelineGroupIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
@@ -24,7 +35,7 @@ Get-AzPipelineGroup -ResourceGroupName <String> [-SubscriptionId <String[]>] [-D
 ```
 
 ## DESCRIPTION
-Lists all workspaces in the specified subscription
+Returns the specific pipeline group instance.
 
 ## EXAMPLES
 
@@ -139,13 +150,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of pipeline group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: PipelineGroupName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -161,7 +203,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -175,6 +217,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.PipelineGroup.Models.IPipelineGroupIdentity
 
 ## OUTPUTS
 
