@@ -116,10 +116,10 @@ function Test-AnalysisServicesServer
 		Assert-True {$serverGetItem.State -like "Succeeded"}
 		
 		# Delete Analysis Servicesserver
-		# Remove-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
+		Remove-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -PassThru
 
 		# Verify that it is gone by trying to get it again
-		# Assert-Throws {Get-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName}
+		Assert-Throws {Get-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName}
 	}
 	finally
 	{

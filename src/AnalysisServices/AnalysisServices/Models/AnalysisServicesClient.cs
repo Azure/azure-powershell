@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
                 if (setting != null)
                 {
-                    updateParameters.IpV4FirewallSettings = setting;
+                    updateParameters.Ipv4FirewallSettings = setting;
                 }
 
                 if (gatewayDetails != null)
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                         Sku = GetResourceSkuFromName(skuName, ReadonlyReplicaCount + 1),
                         Tags = tags,
                         QuerypoolConnectionMode = connectionMode,
-                        IpV4FirewallSettings = setting,
+                        Ipv4FirewallSettings = setting,
                         GatewayDetails = gatewayDetails
                     });
             }            

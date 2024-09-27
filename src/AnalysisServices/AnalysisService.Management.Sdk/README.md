@@ -5,21 +5,22 @@ This directory contains management plane service clients of Az.Storage module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
+title: AnalysisServicesManagementClient
 
-commit: cb9c18b988dd67894653a34dc55b7978403b120a
+commit: b3b961c82028c83e2ef47e5d4884a3c089a68f0f
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/analysisservices/resource-manager/Microsoft.AnalysisServices/stable/2017-08-01/analysisservices.json
 

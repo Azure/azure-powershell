@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                 {
                     setting = new IPv4FirewallSettings(new List<IPv4FirewallRule>(), "false");
 
-                    setting.EnablePowerBIService = FirewallConfig.EnablePowerBIService.ToString();
+                    setting.EnablePowerBiService = FirewallConfig.EnablePowerBIService.ToString();
 
                     if (FirewallConfig.FirewallRules != null)
                     {
