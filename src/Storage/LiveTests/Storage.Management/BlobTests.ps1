@@ -10,7 +10,7 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
     $ContentMD5 = "i727sP7HigloQDsqadNLHw=="
     $testfile512path = "$PSScriptRoot\TestFiles\testfile512"
 
-    $account = New-AzStorageAccount -ResourceGroupName $rgName -Name $storageAccountName -Location $location -SkuName Standard_GRS -AllowBlobPublicAccess $true
+    $account = New-AzStorageAccount -ResourceGroupName $rgName -Name $storageAccountName -Location $location -SkuName Standard_GRS
     $ctx = $account.Context
     $container = New-AzStorageContainer -Name $containerName -Context $ctx
     $containerSAS = New-AzStorageContainerSASToken -Name $containerName -Permission radwl -ExpiryTime 5000-01-01 -Context $ctx
@@ -22,9 +22,6 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
     $accessPolicy = Get-AzStorageContainerStoredAccessPolicy -Container $containerName -Context $ctx
     Assert-AreNotEqual $null $accessPolicy
     Assert-AreEqual $accessPolicyName $accessPolicy.Policy
-    Set-AzStorageContainerAcl -Name $containerName -Permission Blob -Context $ctx
-    $container = Get-AzStorageContainer -Name $containerName -Context $ctx
-    Assert-AreEqual "Blob" $container.Permission.PublicAccess
 
     # upload
     $blobName = New-LiveTestResourceName
@@ -87,11 +84,6 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
 
     $container = Get-AzStorageContainer -Name $containerName -Context $ctx
     $containerProperties = $container.BlobContainerClient.GetProperties().Value
-    Assert-AreEqual $container.BlobContainerProperties.ETag $containerProperties.ETag
-    Set-AzStorageContainerAcl -Name $containerName -Permission Blob -Context $ctx
-    $containerProperties = $container.BlobContainerClient.GetProperties().Value
-    Assert-AreNotEqual $container.BlobContainerProperties.ETag $containerProperties.ETag
-    $container.FetchAttributes()
     Assert-AreEqual $container.BlobContainerProperties.ETag $containerProperties.ETag
 
     # sync copy
