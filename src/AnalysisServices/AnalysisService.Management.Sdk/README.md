@@ -27,4 +27,25 @@ input-file:
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.Analysis
+
+directive:
+  - where:
+      model-name: AnalysisServicesServer
+      property-name: EnablePowerBiService
+    set:
+      property-name: EnablePowerBIService
+  - where:
+      model-name:  AnalysisServicesServer
+      property-name: Ipv4FirewallSettings
+    set:
+      property-name: IpV4FirewallSettings
+  - where:
+      model-name:  AnalysisServicesServerUpdateParameters
+      property-name: Ipv4FirewallSettings
+    set:
+      property-name: IpV4FirewallSettings
+  - where:
+      model-name:  Ipv4FirewallSettings
+    set:
+      model-name: IpV4FirewallSettings
 ```

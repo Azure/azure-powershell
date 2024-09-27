@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
 
         /// <param name="serverFullName">The full name of the Analysis Services resource.
         /// </param>
-        public AnalysisServicesServerProperties(ServerAdministrators asAdministrators = default(ServerAdministrators), string backupBlobContainerUri = default(string), GatewayDetails gatewayDetails = default(GatewayDetails), IPv4FirewallSettings ipv4FirewallSettings = default(IPv4FirewallSettings), ConnectionMode? querypoolConnectionMode = default(ConnectionMode?), string state = default(string), string provisioningState = default(string), string serverFullName = default(string))
+        public AnalysisServicesServerProperties(ServerAdministrators asAdministrators = default(ServerAdministrators), string backupBlobContainerUri = default(string), GatewayDetails gatewayDetails = default(GatewayDetails), IpV4FirewallSettings ipv4FirewallSettings = default(IpV4FirewallSettings), ConnectionMode? querypoolConnectionMode = default(ConnectionMode?), string state = default(string), string provisioningState = default(string), string serverFullName = default(string))
 
         : base(asAdministrators, backupBlobContainerUri, gatewayDetails, ipv4FirewallSettings, querypoolConnectionMode)
         {
