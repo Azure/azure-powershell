@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             string backupBlobContainerUri = null,
             int ReadonlyReplicaCount = 0,
             string DefaultConnectionMode = null,
-            IPv4FirewallSettings setting = null,
+            IpV4FirewallSettings setting = null,
             string gatewayResourceId = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
                 if (setting != null)
                 {
-                    updateParameters.IPv4FirewallSettings = setting;
+                    updateParameters.IpV4FirewallSettings = setting;
                 }
 
                 if (gatewayDetails != null)
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                         Sku = GetResourceSkuFromName(skuName, ReadonlyReplicaCount + 1),
                         Tags = tags,
                         QuerypoolConnectionMode = connectionMode,
-                        IPv4FirewallSettings = setting,
+                        IpV4FirewallSettings = setting,
                         GatewayDetails = gatewayDetails
                     });
             }            

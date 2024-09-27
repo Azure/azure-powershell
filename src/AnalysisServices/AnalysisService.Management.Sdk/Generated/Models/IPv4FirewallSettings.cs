@@ -10,18 +10,18 @@ namespace Microsoft.Azure.Management.Analysis.Models
     /// <summary>
     /// An array of firewall rules.
     /// </summary>
-    public partial class IPv4FirewallSettings
+    public partial class IpV4FirewallSettings
     {
         /// <summary>
-        /// Initializes a new instance of the IPv4FirewallSettings class.
+        /// Initializes a new instance of the IpV4FirewallSettings class.
         /// </summary>
-        public IPv4FirewallSettings()
+        public IpV4FirewallSettings()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the IPv4FirewallSettings class.
+        /// Initializes a new instance of the IpV4FirewallSettings class.
         /// </summary>
 
         /// <param name="firewallRules">An array of firewall rules.
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
 
         /// <param name="enablePowerBiService">The indicator of enableing PBI service.
         /// </param>
-        public IPv4FirewallSettings(System.Collections.Generic.IList<IPv4FirewallRule> firewallRules = default(System.Collections.Generic.IList<IPv4FirewallRule>), string enablePowerBiService = default(string))
+        public IpV4FirewallSettings(System.Collections.Generic.IList<IPv4FirewallRule> firewallRules = default(System.Collections.Generic.IList<IPv4FirewallRule>), string enablePowerBiService = default(string))
 
         {
             this.FirewallRules = firewallRules;

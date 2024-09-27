@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// participate in query operations&lt;/li&gt;&lt;/ul&gt;Specifying readOnly when capacity
         /// is 1 results in error.
         /// Possible values include: &#39;All&#39;, &#39;ReadOnly&#39;</param>
-        public AnalysisServicesServerMutableProperties(ServerAdministrators asAdministrators = default(ServerAdministrators), string backupBlobContainerUri = default(string), GatewayDetails gatewayDetails = default(GatewayDetails), IPv4FirewallSettings ipv4FirewallSettings = default(IPv4FirewallSettings), ConnectionMode? querypoolConnectionMode = default(ConnectionMode?))
+        public AnalysisServicesServerMutableProperties(ServerAdministrators asAdministrators = default(ServerAdministrators), string backupBlobContainerUri = default(string), GatewayDetails gatewayDetails = default(GatewayDetails), IpV4FirewallSettings ipv4FirewallSettings = default(IpV4FirewallSettings), ConnectionMode? querypoolConnectionMode = default(ConnectionMode?))
 
         {
             this.AsAdministrators = asAdministrators;
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Management.Analysis.Models
         /// Gets or sets the firewall settings for the AS server.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "ipV4FirewallSettings")]
-        public IPv4FirewallSettings IPV4FirewallSettings {get; set; }
+        public IpV4FirewallSettings IPV4FirewallSettings {get; set; }
 
         /// <summary>
         /// Gets or sets how the read-write server&#39;s participation in the query pool is
