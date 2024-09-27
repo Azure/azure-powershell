@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>The guaranteed floor of burst IOPS for small file shares.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public int? BurstingConstantBurstFloorIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBurstingConstantsInternal)BurstingConstant).BurstFloorIop; }
+        public int? BurstingConstantBurstFloorIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBurstingConstantsInternal)BurstingConstant).BurstFloorIop; }
 
         /// <summary>
         /// The scalar against provisioned IOPS in the file share included burst IOPS formula.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>The maximum provisioned IOPS limit for a file share in the storage account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public int? FileShareLimitMaxProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MaxProvisionedIop; }
+        public int? FileShareLimitMaxProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MaxProvisionedIop; }
 
         /// <summary>
         /// The maximum provisioned storage quota limit in gibibytes for a file share in the storage account.
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>The minimum provisioned IOPS limit for a file share in the storage account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public int? FileShareLimitMinProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MinProvisionedIop; }
+        public int? FileShareLimitMinProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MinProvisionedIop; }
 
         /// <summary>
         /// The minimum provisioned storage quota limit in gibibytes for a file share in the storage account.
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>The base IOPS in the file share provisioned IOPS recommendation formula.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public int? FileShareRecommendationBaseIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareRecommendationsInternal)FileShareRecommendation).BaseIop; }
+        public int? FileShareRecommendationBaseIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareRecommendationsInternal)FileShareRecommendation).BaseIop; }
 
         /// <summary>The scalar for IO in the file share provisioned IOPS recommendation formula.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>The total provisioned IOPS.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public int? LiveShareProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).LiveShareProvisionedIop; }
+        public int? LiveShareProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).LiveShareProvisionedIops; }
 
         /// <summary>The total provisioned storage quota in gibibytes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -131,8 +131,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for BurstingConstant</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBurstingConstants Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.BurstingConstant { get => (this._burstingConstant = this._burstingConstant ?? new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BurstingConstants()); set { {_burstingConstant = value;} } }
 
-        /// <summary>Internal Acessors for BurstingConstantBurstFloorIop</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.BurstingConstantBurstFloorIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBurstingConstantsInternal)BurstingConstant).BurstFloorIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBurstingConstantsInternal)BurstingConstant).BurstFloorIop = value; }
+        /// <summary>Internal Acessors for BurstingConstantBurstFloorIops</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.BurstingConstantBurstFloorIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBurstingConstantsInternal)BurstingConstant).BurstFloorIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBurstingConstantsInternal)BurstingConstant).BurstFloorIop = value; }
 
         /// <summary>Internal Acessors for BurstingConstantBurstIoScalar</summary>
         double? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.BurstingConstantBurstIoScalar { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBurstingConstantsInternal)BurstingConstant).BurstIoScalar; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBurstingConstantsInternal)BurstingConstant).BurstIoScalar = value; }
@@ -146,8 +146,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for FileShareLimitMaxProvisionedBandwidthMiBPerSec</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.FileShareLimitMaxProvisionedBandwidthMiBPerSec { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MaxProvisionedBandwidthMiBPerSec; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MaxProvisionedBandwidthMiBPerSec = value; }
 
-        /// <summary>Internal Acessors for FileShareLimitMaxProvisionedIop</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.FileShareLimitMaxProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MaxProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MaxProvisionedIop = value; }
+        /// <summary>Internal Acessors for FileShareLimitMaxProvisionedIops</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.FileShareLimitMaxProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MaxProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MaxProvisionedIop = value; }
 
         /// <summary>Internal Acessors for FileShareLimitMaxProvisionedStorageGiB</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.FileShareLimitMaxProvisionedStorageGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MaxProvisionedStorageGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MaxProvisionedStorageGiB = value; }
@@ -155,8 +155,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for FileShareLimitMinProvisionedBandwidthMiBPerSec</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.FileShareLimitMinProvisionedBandwidthMiBPerSec { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MinProvisionedBandwidthMiBPerSec; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MinProvisionedBandwidthMiBPerSec = value; }
 
-        /// <summary>Internal Acessors for FileShareLimitMinProvisionedIop</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.FileShareLimitMinProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MinProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MinProvisionedIop = value; }
+        /// <summary>Internal Acessors for FileShareLimitMinProvisionedIops</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.FileShareLimitMinProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MinProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MinProvisionedIop = value; }
 
         /// <summary>Internal Acessors for FileShareLimitMinProvisionedStorageGiB</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.FileShareLimitMinProvisionedStorageGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MinProvisionedStorageGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareLimitsInternal)FileShareLimit).MinProvisionedStorageGiB = value; }
@@ -170,8 +170,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for FileShareRecommendationBaseBandwidthMiBPerSec</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.FileShareRecommendationBaseBandwidthMiBPerSec { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareRecommendationsInternal)FileShareRecommendation).BaseBandwidthMiBPerSec; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareRecommendationsInternal)FileShareRecommendation).BaseBandwidthMiBPerSec = value; }
 
-        /// <summary>Internal Acessors for FileShareRecommendationBaseIop</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.FileShareRecommendationBaseIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareRecommendationsInternal)FileShareRecommendation).BaseIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareRecommendationsInternal)FileShareRecommendation).BaseIop = value; }
+        /// <summary>Internal Acessors for FileShareRecommendationBaseIops</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.FileShareRecommendationBaseIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareRecommendationsInternal)FileShareRecommendation).BaseIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareRecommendationsInternal)FileShareRecommendation).BaseIop = value; }
 
         /// <summary>Internal Acessors for FileShareRecommendationIoScalar</summary>
         double? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.FileShareRecommendationIoScalar { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareRecommendationsInternal)FileShareRecommendation).IoScalar; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileShareRecommendationsInternal)FileShareRecommendation).IoScalar = value; }
@@ -182,8 +182,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for LiveShareProvisionedBandwidthMiBPerSec</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.LiveShareProvisionedBandwidthMiBPerSec { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).LiveShareProvisionedBandwidthMiBPerSec; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).LiveShareProvisionedBandwidthMiBPerSec = value; }
 
-        /// <summary>Internal Acessors for LiveShareProvisionedIop</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.LiveShareProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).LiveShareProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).LiveShareProvisionedIop = value; }
+        /// <summary>Internal Acessors for LiveShareProvisionedIops</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.LiveShareProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).LiveShareProvisionedIops; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).LiveShareProvisionedIops = value; }
 
         /// <summary>Internal Acessors for LiveShareProvisionedStorageGiB</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.LiveShareProvisionedStorageGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).LiveShareProvisionedStorageGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).LiveShareProvisionedStorageGiB = value; }
@@ -194,8 +194,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for SoftDeletedShareProvisionedBandwidthMiBPerSec</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.SoftDeletedShareProvisionedBandwidthMiBPerSec { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).SoftDeletedShareProvisionedBandwidthMiBPerSec; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).SoftDeletedShareProvisionedBandwidthMiBPerSec = value; }
 
-        /// <summary>Internal Acessors for SoftDeletedShareProvisionedIop</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.SoftDeletedShareProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).SoftDeletedShareProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).SoftDeletedShareProvisionedIop = value; }
+        /// <summary>Internal Acessors for SoftDeletedShareProvisionedIops</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.SoftDeletedShareProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).SoftDeletedShareProvisionedIops; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).SoftDeletedShareProvisionedIops = value; }
 
         /// <summary>Internal Acessors for SoftDeletedShareProvisionedStorageGiB</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.SoftDeletedShareProvisionedStorageGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).SoftDeletedShareProvisionedStorageGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).SoftDeletedShareProvisionedStorageGiB = value; }
@@ -209,8 +209,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for StorageAccountLimitMaxProvisionedBandwidthMiBPerSec</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.StorageAccountLimitMaxProvisionedBandwidthMiBPerSec { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountLimitsInternal)StorageAccountLimit).MaxProvisionedBandwidthMiBPerSec; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountLimitsInternal)StorageAccountLimit).MaxProvisionedBandwidthMiBPerSec = value; }
 
-        /// <summary>Internal Acessors for StorageAccountLimitMaxProvisionedIop</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.StorageAccountLimitMaxProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountLimitsInternal)StorageAccountLimit).MaxProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountLimitsInternal)StorageAccountLimit).MaxProvisionedIop = value; }
+        /// <summary>Internal Acessors for StorageAccountLimitMaxProvisionedIops</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.StorageAccountLimitMaxProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountLimitsInternal)StorageAccountLimit).MaxProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountLimitsInternal)StorageAccountLimit).MaxProvisionedIop = value; }
 
         /// <summary>Internal Acessors for StorageAccountLimitMaxProvisionedStorageGiB</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IFileServiceUsagePropertiesInternal.StorageAccountLimitMaxProvisionedStorageGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountLimitsInternal)StorageAccountLimit).MaxProvisionedStorageGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountLimitsInternal)StorageAccountLimit).MaxProvisionedStorageGiB = value; }
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>The total provisioned IOPS.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public int? SoftDeletedShareProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).SoftDeletedShareProvisionedIop; }
+        public int? SoftDeletedShareProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)StorageAccountUsage).SoftDeletedShareProvisionedIops; }
 
         /// <summary>The total provisioned storage quota in gibibytes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>The maximum provisioned IOPS limit for the storage account.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public int? StorageAccountLimitMaxProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountLimitsInternal)StorageAccountLimit).MaxProvisionedIop; }
+        public int? StorageAccountLimitMaxProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountLimitsInternal)StorageAccountLimit).MaxProvisionedIop; }
 
         /// <summary>
         /// The maximum provisioned storage quota limit in gibibytes for the storage account.
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"The guaranteed floor of burst IOPS for small file shares.",
         SerializedName = @"burstFloorIOPS",
         PossibleTypes = new [] { typeof(int) })]
-        int? BurstingConstantBurstFloorIop { get;  }
+        int? BurstingConstantBurstFloorIops { get;  }
         /// <summary>
         /// The scalar against provisioned IOPS in the file share included burst IOPS formula.
         /// </summary>
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"The maximum provisioned IOPS limit for a file share in the storage account.",
         SerializedName = @"maxProvisionedIOPS",
         PossibleTypes = new [] { typeof(int) })]
-        int? FileShareLimitMaxProvisionedIop { get;  }
+        int? FileShareLimitMaxProvisionedIops { get;  }
         /// <summary>
         /// The maximum provisioned storage quota limit in gibibytes for a file share in the storage account.
         /// </summary>
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"The minimum provisioned IOPS limit for a file share in the storage account.",
         SerializedName = @"minProvisionedIOPS",
         PossibleTypes = new [] { typeof(int) })]
-        int? FileShareLimitMinProvisionedIop { get;  }
+        int? FileShareLimitMinProvisionedIops { get;  }
         /// <summary>
         /// The minimum provisioned storage quota limit in gibibytes for a file share in the storage account.
         /// </summary>
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"The base IOPS in the file share provisioned IOPS recommendation formula.",
         SerializedName = @"baseIOPS",
         PossibleTypes = new [] { typeof(int) })]
-        int? FileShareRecommendationBaseIop { get;  }
+        int? FileShareRecommendationBaseIops { get;  }
         /// <summary>The scalar for IO in the file share provisioned IOPS recommendation formula.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"The total provisioned IOPS.",
         SerializedName = @"provisionedIOPS",
         PossibleTypes = new [] { typeof(int) })]
-        int? LiveShareProvisionedIop { get;  }
+        int? LiveShareProvisionedIops { get;  }
         /// <summary>The total provisioned storage quota in gibibytes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"The total provisioned IOPS.",
         SerializedName = @"provisionedIOPS",
         PossibleTypes = new [] { typeof(int) })]
-        int? SoftDeletedShareProvisionedIop { get;  }
+        int? SoftDeletedShareProvisionedIops { get;  }
         /// <summary>The total provisioned storage quota in gibibytes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -571,7 +571,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"The maximum provisioned IOPS limit for the storage account.",
         SerializedName = @"maxProvisionedIOPS",
         PossibleTypes = new [] { typeof(int) })]
-        int? StorageAccountLimitMaxProvisionedIop { get;  }
+        int? StorageAccountLimitMaxProvisionedIops { get;  }
         /// <summary>
         /// The maximum provisioned storage quota limit in gibibytes for the storage account.
         /// </summary>
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IBurstingConstants BurstingConstant { get; set; }
         /// <summary>The guaranteed floor of burst IOPS for small file shares.</summary>
-        int? BurstingConstantBurstFloorIop { get; set; }
+        int? BurstingConstantBurstFloorIops { get; set; }
         /// <summary>
         /// The scalar against provisioned IOPS in the file share included burst IOPS formula.
         /// </summary>
@@ -616,7 +616,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         int? FileShareLimitMaxProvisionedBandwidthMiBPerSec { get; set; }
         /// <summary>The maximum provisioned IOPS limit for a file share in the storage account.</summary>
-        int? FileShareLimitMaxProvisionedIop { get; set; }
+        int? FileShareLimitMaxProvisionedIops { get; set; }
         /// <summary>
         /// The maximum provisioned storage quota limit in gibibytes for a file share in the storage account.
         /// </summary>
@@ -626,7 +626,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         int? FileShareLimitMinProvisionedBandwidthMiBPerSec { get; set; }
         /// <summary>The minimum provisioned IOPS limit for a file share in the storage account.</summary>
-        int? FileShareLimitMinProvisionedIop { get; set; }
+        int? FileShareLimitMinProvisionedIops { get; set; }
         /// <summary>
         /// The minimum provisioned storage quota limit in gibibytes for a file share in the storage account.
         /// </summary>
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         int? FileShareRecommendationBaseBandwidthMiBPerSec { get; set; }
         /// <summary>The base IOPS in the file share provisioned IOPS recommendation formula.</summary>
-        int? FileShareRecommendationBaseIop { get; set; }
+        int? FileShareRecommendationBaseIops { get; set; }
         /// <summary>The scalar for IO in the file share provisioned IOPS recommendation formula.</summary>
         double? FileShareRecommendationIoScalar { get; set; }
         /// <summary>The total number of file shares.</summary>
@@ -652,7 +652,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>The total provisioned bandwidth in mebibytes per second.</summary>
         int? LiveShareProvisionedBandwidthMiBPerSec { get; set; }
         /// <summary>The total provisioned IOPS.</summary>
-        int? LiveShareProvisionedIop { get; set; }
+        int? LiveShareProvisionedIops { get; set; }
         /// <summary>The total provisioned storage quota in gibibytes.</summary>
         int? LiveShareProvisionedStorageGiB { get; set; }
         /// <summary>The total number of file shares.</summary>
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>The total provisioned bandwidth in mebibytes per second.</summary>
         int? SoftDeletedShareProvisionedBandwidthMiBPerSec { get; set; }
         /// <summary>The total provisioned IOPS.</summary>
-        int? SoftDeletedShareProvisionedIop { get; set; }
+        int? SoftDeletedShareProvisionedIops { get; set; }
         /// <summary>The total provisioned storage quota in gibibytes.</summary>
         int? SoftDeletedShareProvisionedStorageGiB { get; set; }
         /// <summary>
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// </summary>
         int? StorageAccountLimitMaxProvisionedBandwidthMiBPerSec { get; set; }
         /// <summary>The maximum provisioned IOPS limit for the storage account.</summary>
-        int? StorageAccountLimitMaxProvisionedIop { get; set; }
+        int? StorageAccountLimitMaxProvisionedIops { get; set; }
         /// <summary>
         /// The maximum provisioned storage quota limit in gibibytes for the storage account.
         /// </summary>

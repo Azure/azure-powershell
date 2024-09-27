@@ -95,9 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).LiveShareProvisionedStorageGiB = (int?) content.GetValueForProperty("LiveShareProvisionedStorageGiB",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).LiveShareProvisionedStorageGiB, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("LiveShareProvisionedIop"))
+            if (content.Contains("LiveShareProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).LiveShareProvisionedIop = (int?) content.GetValueForProperty("LiveShareProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).LiveShareProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).LiveShareProvisionedIops = (int?) content.GetValueForProperty("LiveShareProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).LiveShareProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LiveShareProvisionedBandwidthMiBPerSec"))
             {
@@ -111,9 +111,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).SoftDeletedShareProvisionedStorageGiB = (int?) content.GetValueForProperty("SoftDeletedShareProvisionedStorageGiB",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).SoftDeletedShareProvisionedStorageGiB, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("SoftDeletedShareProvisionedIop"))
+            if (content.Contains("SoftDeletedShareProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).SoftDeletedShareProvisionedIop = (int?) content.GetValueForProperty("SoftDeletedShareProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).SoftDeletedShareProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).SoftDeletedShareProvisionedIops = (int?) content.GetValueForProperty("SoftDeletedShareProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).SoftDeletedShareProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SoftDeletedShareProvisionedBandwidthMiBPerSec"))
             {
@@ -152,9 +152,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).LiveShareProvisionedStorageGiB = (int?) content.GetValueForProperty("LiveShareProvisionedStorageGiB",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).LiveShareProvisionedStorageGiB, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("LiveShareProvisionedIop"))
+            if (content.Contains("LiveShareProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).LiveShareProvisionedIop = (int?) content.GetValueForProperty("LiveShareProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).LiveShareProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).LiveShareProvisionedIops = (int?) content.GetValueForProperty("LiveShareProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).LiveShareProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("LiveShareProvisionedBandwidthMiBPerSec"))
             {
@@ -168,9 +168,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).SoftDeletedShareProvisionedStorageGiB = (int?) content.GetValueForProperty("SoftDeletedShareProvisionedStorageGiB",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).SoftDeletedShareProvisionedStorageGiB, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("SoftDeletedShareProvisionedIop"))
+            if (content.Contains("SoftDeletedShareProvisionedIops"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).SoftDeletedShareProvisionedIop = (int?) content.GetValueForProperty("SoftDeletedShareProvisionedIop",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).SoftDeletedShareProvisionedIop, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).SoftDeletedShareProvisionedIops = (int?) content.GetValueForProperty("SoftDeletedShareProvisionedIops",((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal)this).SoftDeletedShareProvisionedIops, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("SoftDeletedShareProvisionedBandwidthMiBPerSec"))
             {

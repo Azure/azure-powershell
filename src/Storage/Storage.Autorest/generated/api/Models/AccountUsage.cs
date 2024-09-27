@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>The total provisioned IOPS.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public int? LiveShareProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedIop; }
+        public int? LiveShareProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedIop; }
 
         /// <summary>The total provisioned storage quota in gibibytes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -51,8 +51,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for LiveShareProvisionedBandwidthMiBPerSec</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.LiveShareProvisionedBandwidthMiBPerSec { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedBandwidthMiBPerSec; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedBandwidthMiBPerSec = value; }
 
-        /// <summary>Internal Acessors for LiveShareProvisionedIop</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.LiveShareProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedIop = value; }
+        /// <summary>Internal Acessors for LiveShareProvisionedIops</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.LiveShareProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedIop = value; }
 
         /// <summary>Internal Acessors for LiveShareProvisionedStorageGiB</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.LiveShareProvisionedStorageGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedStorageGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)LiveShare).ProvisionedStorageGiB = value; }
@@ -66,8 +66,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>Internal Acessors for SoftDeletedShareProvisionedBandwidthMiBPerSec</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.SoftDeletedShareProvisionedBandwidthMiBPerSec { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedBandwidthMiBPerSec; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedBandwidthMiBPerSec = value; }
 
-        /// <summary>Internal Acessors for SoftDeletedShareProvisionedIop</summary>
-        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.SoftDeletedShareProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedIop = value; }
+        /// <summary>Internal Acessors for SoftDeletedShareProvisionedIops</summary>
+        int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.SoftDeletedShareProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedIop; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedIop = value; }
 
         /// <summary>Internal Acessors for SoftDeletedShareProvisionedStorageGiB</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageInternal.SoftDeletedShareProvisionedStorageGiB { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedStorageGiB; set => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedStorageGiB = value; }
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
 
         /// <summary>The total provisioned IOPS.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
-        public int? SoftDeletedShareProvisionedIop { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedIop; }
+        public int? SoftDeletedShareProvisionedIops { get => ((Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IAccountUsageElementsInternal)SoftDeletedShare).ProvisionedIop; }
 
         /// <summary>The total provisioned storage quota in gibibytes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Origin(Microsoft.Azure.PowerShell.Cmdlets.Storage.PropertyOrigin.Inlined)]
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"The total provisioned IOPS.",
         SerializedName = @"provisionedIOPS",
         PossibleTypes = new [] { typeof(int) })]
-        int? LiveShareProvisionedIop { get;  }
+        int? LiveShareProvisionedIops { get;  }
         /// <summary>The total provisioned storage quota in gibibytes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         Description = @"The total provisioned IOPS.",
         SerializedName = @"provisionedIOPS",
         PossibleTypes = new [] { typeof(int) })]
-        int? SoftDeletedShareProvisionedIop { get;  }
+        int? SoftDeletedShareProvisionedIops { get;  }
         /// <summary>The total provisioned storage quota in gibibytes.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Info(
         Required = false,
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>The total provisioned bandwidth in mebibytes per second.</summary>
         int? LiveShareProvisionedBandwidthMiBPerSec { get; set; }
         /// <summary>The total provisioned IOPS.</summary>
-        int? LiveShareProvisionedIop { get; set; }
+        int? LiveShareProvisionedIops { get; set; }
         /// <summary>The total provisioned storage quota in gibibytes.</summary>
         int? LiveShareProvisionedStorageGiB { get; set; }
         /// <summary>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
         /// <summary>The total provisioned bandwidth in mebibytes per second.</summary>
         int? SoftDeletedShareProvisionedBandwidthMiBPerSec { get; set; }
         /// <summary>The total provisioned IOPS.</summary>
-        int? SoftDeletedShareProvisionedIop { get; set; }
+        int? SoftDeletedShareProvisionedIops { get; set; }
         /// <summary>The total provisioned storage quota in gibibytes.</summary>
         int? SoftDeletedShareProvisionedStorageGiB { get; set; }
 
