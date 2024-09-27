@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-This operation updates a policy exemption with the given scope and name.
+This operation update a policy exemption with the given scope and name.
 .Description
-This operation updates a policy exemption with the given scope and name.
+This operation update a policy exemption with the given scope and name.
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
  $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07' -Scope $ResourceGroup.ResourceId

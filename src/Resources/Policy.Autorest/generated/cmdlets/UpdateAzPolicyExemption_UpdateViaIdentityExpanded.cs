@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Cmdlets;
     using System;
 
-    /// <summary>This operation updates a policy exemption with the given scope and name.</summary>
+    /// <summary>This operation update a policy exemption with the given scope and name.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/{scope}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}"
     /// </remarks>
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzPolicyExemption_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.Alias("Set-AzPolicyExemption")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@" This operation updates a policy exemption with the given scope and name.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@" This operation update a policy exemption with the given scope and name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/{scope}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}", ApiVersion = "2022-07-01-preview")]
     public partial class UpdateAzPolicyExemption_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
