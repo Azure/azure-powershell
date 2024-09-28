@@ -17,7 +17,7 @@ Creates a virtual machine scale set.
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,8 +38,8 @@ New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [
  [-OrchestrationMode <String>] [-CapacityReservationGroupId <String>] [-ImageReferenceId <String>]
  [-DiskControllerType <String>] [-SharedGalleryImageId <String>] [-SecurityType <String>]
  [-EnableVtpm <Boolean>] [-EnableSecureBoot <Boolean>] [-SkuProfileVmSize <String[]>]
- [-SkuProfileAllocationStrategy <String>] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SkuProfileAllocationStrategy <String>] [-EnableProxyAgent] [-DefaultProfile <IAzureContextContainer>]
+ [-SinglePlacementGroup] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -480,6 +480,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableProxyAgent
+Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableSecureBoot
 Specifies whether secure boot should be enabled on the virtual machine.
 
@@ -764,6 +779,21 @@ The priority for the virtual machine in the scale set.  Only supported values ar
 Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
