@@ -18,5 +18,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     {
         public const string Audit = "Audit";
         public const string Enforce = "Enforce";
+        public const string Disabled = "Disabled";
     }
 }

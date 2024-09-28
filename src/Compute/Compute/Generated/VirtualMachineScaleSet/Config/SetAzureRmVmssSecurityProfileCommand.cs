@@ -51,6 +51,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM", "Standard")]
         public string SecurityType { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.")]
+        public bool EnableProxyAgent { get; set; }
+
         protected override void ProcessRecord()
         {
             Run();
@@ -71,6 +76,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
             }
+
+            if (this.IsParameterBound(c => c.EnableProxyAgent))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled = this.EnableProxyAgent;
+            }
+
             WriteObject(this.VirtualMachineScaleSet);
         }
     }

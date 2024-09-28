@@ -369,6 +369,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.")]
         public SwitchParameter EnableResilientVMDelete { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.")]
+        public SwitchParameter EnableProxyAgent { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -993,6 +999,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
                 }
                 vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout = this.OSImageScheduledEventNotBeforeTimeoutInMinutes;
+            }
+
+            if (this.EnableProxyAgent.IsPresent)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile.ProxyAgentSettings == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile.ProxyAgentSettings = new ProxyAgentSettings();
+                }
+                vVirtualMachineProfile.SecurityProfile.ProxyAgentSettings.Enabled = this.EnableProxyAgent;
             }
 
 

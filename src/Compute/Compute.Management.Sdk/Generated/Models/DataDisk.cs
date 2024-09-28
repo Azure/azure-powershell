@@ -90,10 +90,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// virtual machine and the disk is still not released then use
         /// force-detach as a last resort option to detach the disk forcibly
         /// from the VM. All writes might not have been flushed when using this
-        /// detach behavior. **This feature is still in preview** mode and is
-        /// not supported for VirtualMachineScaleSet. To force-detach a data
-        /// disk update toBeDetached to 'true' along with setting detachOption:
-        /// 'ForceDetach'. Possible values include: 'ForceDetach'</param>
+        /// detach behavior. **This feature is still in preview**. To
+        /// force-detach a data disk update toBeDetached to 'true' along with
+        /// setting detachOption: 'ForceDetach'. Possible values include:
+        /// 'ForceDetach'</param>
         /// <param name="deleteOption">Specifies whether data disk should be
         /// deleted or detached upon VM deletion. Possible values are:
         /// **Delete.** If this value is used, the data disk is deleted when VM
@@ -246,8 +246,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// the disk is still not released then use force-detach as a last
         /// resort option to detach the disk forcibly from the VM. All writes
         /// might not have been flushed when using this detach behavior. **This
-        /// feature is still in preview** mode and is not supported for
-        /// VirtualMachineScaleSet. To force-detach a data disk update
+        /// feature is still in preview**. To force-detach a data disk update
         /// toBeDetached to 'true' along with setting detachOption:
         /// 'ForceDetach'. Possible values include: 'ForceDetach'
         /// </summary>

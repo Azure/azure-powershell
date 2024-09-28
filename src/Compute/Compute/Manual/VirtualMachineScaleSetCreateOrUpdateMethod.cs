@@ -271,6 +271,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("LowestPrice", "CapacityOptimized")]
         public string SkuProfileAllocationStrategy { get; set; }
 
+        [Parameter(
+             Mandatory = false,
+             ParameterSetName = SimpleParameterSet,
+             HelpMessage = "Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.")]
+        public SwitchParameter EnableProxyAgent { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -497,7 +503,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     skuProfileVmSize: skuProfileVmSizes,
                     skuProfileAllocationStrategy: _cmdlet.SkuProfileAllocationStrategy,
                     ifMatch: _cmdlet.IfMatch,
-                    ifNoneMatch: _cmdlet.IfNoneMatch
+                    ifNoneMatch: _cmdlet.IfNoneMatch,
+                    enableProxyAgent: (_cmdlet.EnableProxyAgent.IsPresent == true) ? true : (bool?)null
                     );
             }
 
@@ -666,7 +673,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     skuProfileAllocationStrategy: _cmdlet.SkuProfileAllocationStrategy,
                     auxAuthHeader: auxAuthHeader,
                     ifMatch: _cmdlet.IfMatch,
-                    ifNoneMatch: _cmdlet.IfNoneMatch
+                    ifNoneMatch: _cmdlet.IfNoneMatch,
+                    enableProxyAgent: (_cmdlet.EnableProxyAgent.IsPresent == true) ? true : (bool?)null
                     );
             }
         }

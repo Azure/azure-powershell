@@ -80,7 +80,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             SkuProfileVMSize[] skuProfileVmSize = null,
             string skuProfileAllocationStrategy = null,
             string ifMatch = null,
-            string ifNoneMatch = null
+            string ifNoneMatch = null,
+            bool? enableProxyAgent = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -106,12 +107,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         PlatformFaultDomainCount = platformFaultDomainCount,
                         VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                         {
-                            SecurityProfile = ((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType)) 
+                            SecurityProfile = (((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType))) || enableProxyAgent == true
                             ? new SecurityProfile
                             {
                                 EncryptionAtHost = encryptionAtHost,
                                 UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
                                 SecurityType = securityType,
+                                ProxyAgentSettings = enableProxyAgent == true ? new ProxyAgentSettings { Enabled = true } : null
                             } : null,
                             OsProfile = new VirtualMachineScaleSetOSProfile
                             {
@@ -241,7 +243,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             SkuProfileVMSize[] skuProfileVmSize = null,
             string skuProfileAllocationStrategy = null,
             string ifMatch = null,
-            string ifNoneMatch = null
+            string ifNoneMatch = null,
+            bool? enableProxyAgent = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -269,12 +272,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         PlatformFaultDomainCount = platformFaultDomainCount,
                         VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                         {
-                            SecurityProfile = ((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType))
+                            SecurityProfile = (((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType))) || enableProxyAgent == true
                             ? new SecurityProfile
                             {
                                 EncryptionAtHost = encryptionAtHost,
                                 UefiSettings = (enableVtpm != null || enableSecureBoot != null) ? new UefiSettings(enableSecureBoot, enableVtpm) : null,
                                 SecurityType = securityType,
+                                ProxyAgentSettings = enableProxyAgent == true ? new ProxyAgentSettings { Enabled = true } : null
                             } : null,
                             OsProfile = new VirtualMachineScaleSetOSProfile
                             {

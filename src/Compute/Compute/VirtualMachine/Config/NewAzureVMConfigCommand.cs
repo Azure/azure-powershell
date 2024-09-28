@@ -210,6 +210,12 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.")]
+        public SwitchParameter EnableProxyAgent { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var vm = new PSVirtualMachine
@@ -425,6 +431,19 @@ namespace Microsoft.Azure.Commands.Compute
                     vm.SecurityProfile.UefiSettings = new UefiSettings();
                 }
                 vm.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
+            }
+
+            if (this.EnableProxyAgent.IsPresent)
+            {
+                if (vm.SecurityProfile == null)
+                {
+                    vm.SecurityProfile = new SecurityProfile();
+                }
+                if (vm.SecurityProfile.ProxyAgentSettings == null)
+                {
+                    vm.SecurityProfile.ProxyAgentSettings = new ProxyAgentSettings();
+                }
+                vm.SecurityProfile.ProxyAgentSettings.Enabled = this.EnableProxyAgent;
             }
 
             WriteObject(vm);

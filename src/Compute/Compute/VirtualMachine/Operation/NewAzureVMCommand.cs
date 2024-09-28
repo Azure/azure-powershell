@@ -460,6 +460,12 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateSet("Ed25519", "RSA")]
         public string SshKeyType { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.")]
+        public SwitchParameter EnableProxyAgent { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.UserData))
@@ -721,7 +727,8 @@ namespace Microsoft.Azure.Commands.Compute
                         enableVtpm: _cmdlet.EnableVtpm,
                         enableSecureBoot: _cmdlet.EnableSecureBoot,
                         ifMatch: _cmdlet.IfMatch,
-                        ifNoneMatch: _cmdlet.IfNoneMatch
+                        ifNoneMatch: _cmdlet.IfNoneMatch,
+                        enableProxyAgent: (_cmdlet.EnableProxyAgent.IsPresent == true) ? true : (bool?)null
                         );
                 }
                 else  // does not get used. DiskFile parameter set is not supported.

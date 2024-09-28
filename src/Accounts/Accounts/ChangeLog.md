@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added parameter `-EnableProxyAgent` to cmdlets `New-AzVm`, `New-AzVmss`, `New-AzVmConfig`, `New-AzVmssConfig`, `Set-AzVmSecurtiyProfile`, and `Set-AzVmssSecurityProfile`.
 
 ## Version 3.0.4
 * Added customized UserAgent for ARM telemetry.
