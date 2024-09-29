@@ -153,8 +153,10 @@ if ($existingCsprojPath) {
 }
 
 try{
+    $tempAssemblyInfoPath = Join-Path $subModulePath 'tempAssemblyInfo'
+    Move-Item $assemblyInfoPath $tempAssemblyInfoPath -Force
     $subModuleCsprojPath = Join-Path $subModulePath $csprojName
-    $tempCsprojPath = Join-Path $subModulePath 'tmp'
+    $tempCsprojPath = Join-Path $subModulePath 'tmpCsproj'
     Move-Item $subModuleCsprojPath $tempCsprojPath -Force
     New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName $csprojName -GeneratedDirectory $subModulePath -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
 
@@ -217,7 +219,12 @@ try{
     $job | Wait-Job | Receive-Job
     $job | Remove-Job
 } finally {
-    Move-Item $tempCsprojPath $subModuleCsprojPath -Force
+    if (Test-Path $tempAssemblyInfoPath) {
+        Move-Item $tempAssemblyInfoPath $assemblyInfoPath -Force
+    }
+    if (Test-Path $tempCsprojPath) {
+        Move-Item $tempCsprojPath $subModuleCsprojPath -Force
+    }
 }
 
 <#
