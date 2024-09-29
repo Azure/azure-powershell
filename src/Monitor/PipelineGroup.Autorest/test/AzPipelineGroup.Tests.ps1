@@ -17,7 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzPipelineGroup'))
 Describe 'AzPipelineGroup' {
     It 'CreateExpanded' {
         {
-            $PSDefaultParameterValues["Disabled"] = $true
             $config = New-AzPipelineGroup -Name $env.pipelineGroupName `
                 -ResourceGroupName $env.resourceGroup `
                 -Location $env.location `
@@ -37,7 +36,6 @@ Describe 'AzPipelineGroup' {
 
     It 'Get' {
         {
-            $PSDefaultParameterValues["Disabled"] = $true
             $config = Get-AzPipelineGroup -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroup -Name $env.pipelineGroupName
             $config.Name | Should -Be $env.pipelineGroupName
         } | Should -Not -Throw
@@ -45,7 +43,6 @@ Describe 'AzPipelineGroup' {
 
     It 'List' {
         {
-            $PSDefaultParameterValues["Disabled"] = $true
             $config = Get-AzPipelineGroup -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroup
             $config.Count | Should -BeGreaterThan 0
         } | Should -Not -Throw
@@ -53,7 +50,6 @@ Describe 'AzPipelineGroup' {
 
     It 'Delete' {
         {
-            $PSDefaultParameterValues["Disabled"] = $true
             Remove-AzPipelineGroup -SubscriptionId $env.subscriptionId -ResourceGroupName $env.resourceGroup -Name $env.pipelineGroupName
         } | Should -Not -Throw
     }
