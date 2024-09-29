@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
             if (publicIpAddressId != null)
             {
-                parameters.PublicIPAddressId = publicIpAddressId;
+                parameters.PublicIpAddressId = publicIpAddressId;
             }
 
             if (publicNetworkAccess != null)

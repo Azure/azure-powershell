@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                     SubnetResourceId = apiManagement.VirtualNetwork.SubnetResourceId
                 };
 
-                parameters.PublicIPAddressId = apiManagement.PublicIpAddressId;
+                parameters.PublicIpAddressId = apiManagement.PublicIpAddressId;
             }
 
             if (apiManagement.AdditionalRegions != null && apiManagement.AdditionalRegions.Any())
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                                     },
                                 Zones = region.Zone,
                                 DisableGateway = region.DisableGateway,
-                                PublicIPAddressId = region.PublicIpAddressId
+                                PublicIpAddressId = region.PublicIpAddressId
                             })
                         .ToList();
             }

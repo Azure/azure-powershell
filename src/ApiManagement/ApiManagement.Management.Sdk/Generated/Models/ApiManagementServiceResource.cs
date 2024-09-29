@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             this.HostnameConfigurations = hostnameConfigurations;
             this.PublicIPAddresses = publicIPAddresses;
             this.PrivateIPAddresses = privateIPAddresses;
-            this.PublicIPAddressId = publicIPAddressId;
+            this.PublicIpAddressId = publicIPAddressId;
             this.PublicNetworkAccess = publicNetworkAccess;
             this.VirtualNetworkConfiguration = virtualNetworkConfiguration;
             this.AdditionalLocations = additionalLocations;
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// Developer and Premium SKU being deployed in Virtual Network.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicIpAddressId")]
-        public string PublicIPAddressId {get; set; }
+        public string PublicIpAddressId {get; set; }
 
         /// <summary>
         /// Gets or sets whether or not public endpoint access is allowed for this API

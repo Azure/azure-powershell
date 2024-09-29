@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
             this.Zones = zones;
             this.PublicIPAddresses = publicIPAddresses;
             this.PrivateIPAddresses = privateIPAddresses;
-            this.PublicIPAddressId = publicIPAddressId;
+            this.PublicIpAddressId = publicIPAddressId;
             this.VirtualNetworkConfiguration = virtualNetworkConfiguration;
             this.GatewayRegionalUrl = gatewayRegionalUrl;
             this.DisableGateway = disableGateway;
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.ApiManagement.Models
         /// Premium SKU being deployed in Virtual Network.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "publicIpAddressId")]
-        public string PublicIPAddressId {get; set; }
+        public string PublicIpAddressId {get; set; }
 
         /// <summary>
         /// Gets or sets virtual network configuration for the location.

@@ -207,6 +207,16 @@ directive:
             }
           }
       }
+  - where:
+      model-name: AdditionalLocation
+      property-name: PublicIPAddressId
+    set:
+      property-name: PublicIpAddressId
+  - where:
+      model-name: ApiManagementServiceResource
+      property-name: PublicIPAddressId
+    set:
+      property-name: PublicIpAddressId
 
 output-folder: Generated
 

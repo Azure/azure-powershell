@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             PrivateIPAddresses = additionalLocation.PrivateIPAddresses != null ? additionalLocation.PrivateIPAddresses.ToArray() : null;
             Zone = additionalLocation.Zones?.ToArray();
             DisableGateway = additionalLocation.DisableGateway;
-            PublicIpAddressId = additionalLocation.PublicIPAddressId;
+            PublicIpAddressId = additionalLocation.PublicIpAddressId;
             PlatformVersion = additionalLocation.PlatformVersion;
             if (additionalLocation.VirtualNetworkConfiguration != null)
             {
