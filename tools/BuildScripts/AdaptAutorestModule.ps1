@@ -126,6 +126,11 @@ $parentModuleMetadata.AliasesToExport = $parentModuleMetadata.AliasesToExport | 
 
 New-ModuleManifest -Path $parentModulePsd1Path @parentModuleMetadata
 
+# Update module version in submodule AssemblyInfo.cs with parent module version
+$moduleVersion = $parentModuleMetadata.ModuleVersion
+$assemblyInfoPath = Join-Path $subModulePath 'Properties' 'AssemblyInfo.cs'
+(Get-Content $assemblyInfoPath -Raw) -replace "0.1.0.0", $moduleVersion | Set-Content $assemblyInfoPath -Force
+
 <#
     merge temporary sub module csproj to parent module sln (for platyPS help markdown generation)
         1. delete submodule csproj
