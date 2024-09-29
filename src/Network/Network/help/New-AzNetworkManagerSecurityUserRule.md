@@ -12,7 +12,6 @@ Creates a security user rule.
 
 ## SYNTAX
 
-### ByName (Default)
 ```
 New-AzNetworkManagerSecurityUserRule -Name <String> -RuleCollectionName <String>
  -SecurityUserConfigurationName <String> -NetworkManagerName <String> -ResourceGroupName <String>
@@ -21,12 +20,6 @@ New-AzNetworkManagerSecurityUserRule -Name <String> -RuleCollectionName <String>
  [-DestinationAddressPrefix <PSNetworkManagerAddressPrefixItem[]>] [-SourcePortRange <String[]>]
  [-DestinationPortRange <String[]>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
-```
-
-### ByInputObject
-```
-New-AzNetworkManagerSecurityUserRule -InputObject <PSNetworkManagerSecurityUserRule> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +118,7 @@ Description.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -140,7 +133,7 @@ Destination Address Prefixes.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem[]
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -155,7 +148,7 @@ Destination Port Ranges.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -170,7 +163,7 @@ Direction of Rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 Accepted values: Inbound, Outbound
 
@@ -196,27 +189,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The input object representing the routing rule.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityUserRule
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
@@ -231,7 +209,7 @@ The network manager name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -246,7 +224,7 @@ Protocol of Rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 Accepted values: Tcp, Udp, Icmp, Esp, Any, Ah
 
@@ -262,7 +240,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -277,7 +255,7 @@ The network manager security user rule collection name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -292,7 +270,7 @@ The network manager security user configuration name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: ConfigName
 
 Required: True
@@ -307,7 +285,7 @@ Source Address Prefixes.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem[]
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -322,7 +300,7 @@ Source Port Ranges.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: False

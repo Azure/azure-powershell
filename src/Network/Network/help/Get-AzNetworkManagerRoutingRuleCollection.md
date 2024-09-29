@@ -14,9 +14,8 @@ Gets a routing rule collection in a network manager.
 
 ### ByList (Default)
 ```
-Get-AzNetworkManagerRoutingRuleCollection [-Name <String>] -RoutingConfigurationName <String>
- -NetworkManagerName <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzNetworkManagerRoutingRuleCollection -RoutingConfigurationName <String> -NetworkManagerName <String>
+ -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
@@ -30,12 +29,6 @@ Get-AzNetworkManagerRoutingRuleCollection -Name <String> -RoutingConfigurationNa
 ```
 Get-AzNetworkManagerRoutingRuleCollection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
-```
-
-### ByInputObject
-```
-Get-AzNetworkManagerRoutingRuleCollection -InputObject <PSNetworkManagerRoutingRuleCollection>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,35 +133,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The input object containing the necessary properties.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingRuleCollection
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByList
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
 
 ```yaml
 Type: System.String

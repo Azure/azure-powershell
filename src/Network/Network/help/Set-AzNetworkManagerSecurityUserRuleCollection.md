@@ -14,14 +14,20 @@ Updates a network manager security user rule collection.
 
 ### ByInputObject (Default)
 ```
-Set-AzNetworkManagerSecurityUserRuleCollection [-Name <String>]
- -InputObject <PSNetworkManagerSecurityUserRuleCollection> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkManagerSecurityUserRuleCollection -InputObject <PSNetworkManagerSecurityUserRuleCollection>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByName
+```
+Set-AzNetworkManagerSecurityUserRuleCollection -Name <String> -ResourceGroupName <String>
+ -NetworkManagerName <String> -SecurityUserConfigurationName <String> [-Description <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzNetworkManagerSecurityUserRuleCollection [-Name <String>] -ResourceId <String> [-AsJob]
+Set-AzNetworkManagerSecurityUserRuleCollection -ResourceId <String> [-Description <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -107,6 +113,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Description
+Description.
+
+```yaml
+Type: System.String
+Parameter Sets: ByName, ByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The NetworkManagerSecurityUserRuleCollection
 
@@ -127,14 +148,44 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -NetworkManagerName
+The network manager name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceId
@@ -149,6 +200,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityUserConfigurationName
+The securityUser configuration name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByName
+Aliases: ConfigName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

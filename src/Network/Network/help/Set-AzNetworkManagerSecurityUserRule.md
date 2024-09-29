@@ -14,14 +14,27 @@ Updates a network manager security user rule.
 
 ### ByInputObject (Default)
 ```
-Set-AzNetworkManagerSecurityUserRule [-Name <String>] -InputObject <PSNetworkManagerSecurityUserRule> [-AsJob]
+Set-AzNetworkManagerSecurityUserRule -InputObject <PSNetworkManagerSecurityUserRule> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByNameParameters
+```
+Set-AzNetworkManagerSecurityUserRule -Name <String> -ResourceGroupName <String> -NetworkManagerName <String>
+ -SecurityUserConfigurationName <String> -RuleCollectionName <String> [-Description <String>]
+ -Protocol <String> -Direction <String> [-SourceAddressPrefix <PSNetworkManagerAddressPrefixItem[]>]
+ [-DestinationAddressPrefix <PSNetworkManagerAddressPrefixItem[]>] [-SourcePortRange <String[]>]
+ [-DestinationPortRange <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzNetworkManagerSecurityUserRule [-Name <String>] -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkManagerSecurityUserRule -ResourceId <String> [-Description <String>] -Protocol <String>
+ -Direction <String> [-SourceAddressPrefix <PSNetworkManagerAddressPrefixItem[]>]
+ [-DestinationAddressPrefix <PSNetworkManagerAddressPrefixItem[]>] [-SourcePortRange <String[]>]
+ [-DestinationPortRange <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,6 +125,67 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Description
+Description.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters, ByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DestinationAddressPrefix
+Destination Address Prefixes.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem[]
+Parameter Sets: ByNameParameters, ByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DestinationPortRange
+Destination Port Ranges.
+
+```yaml
+Type: System.String[]
+Parameter Sets: ByNameParameters, ByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Direction
+Direction of Rule. Valid values include 'Inbound' and 'Outbound'.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters, ByResourceId
+Aliases:
+Accepted values: Inbound, Outbound
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The Network Manager Security User Rule
 
@@ -132,14 +206,60 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByNameParameters
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -NetworkManagerName
+The network manager name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Protocol
+Protocol of Rule. Valid values include 'Tcp', 'Udp', 'Icmp', 'Esp', 'Any', and 'Ah'.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters, ByResourceId
+Aliases:
+Accepted values: Tcp, Udp, Icmp, Esp, Any, Ah
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceId
@@ -151,6 +271,66 @@ Parameter Sets: ByResourceId
 Aliases: SecurityUserRuleId
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RuleCollectionName
+The rule collection name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityUserConfigurationName
+The security user configuration name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases: ConfigName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceAddressPrefix
+Source Address Prefixes.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem[]
+Parameter Sets: ByNameParameters, ByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SourcePortRange
+Source Port Ranges.
+
+```yaml
+Type: System.String[]
+Parameter Sets: ByNameParameters, ByResourceId
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

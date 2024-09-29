@@ -12,16 +12,9 @@ Creates a routing configuration.
 
 ## SYNTAX
 
-### ByName (Default)
 ```
 New-AzNetworkManagerRoutingConfiguration -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> [-Description <String>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByInputObject
-```
-New-AzNetworkManagerRoutingConfiguration -InputObject <PSNetworkManagerRoutingConfiguration> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -93,7 +86,7 @@ Description.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -118,27 +111,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The input object representing the routing configuration.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingConfiguration
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
@@ -153,7 +131,7 @@ The network manager name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -168,7 +146,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True

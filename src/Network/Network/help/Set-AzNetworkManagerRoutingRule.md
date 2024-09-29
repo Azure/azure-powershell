@@ -14,13 +14,22 @@ Updates a network manager routing rule.
 
 ### ByInputObject (Default)
 ```
-Set-AzNetworkManagerRoutingRule [-Name <String>] -InputObject <PSNetworkManagerRoutingRule> [-AsJob]
+Set-AzNetworkManagerRoutingRule -InputObject <PSNetworkManagerRoutingRule> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByNameParameters
+```
+Set-AzNetworkManagerRoutingRule -Name <String> -ResourceGroupName <String> -NetworkManagerName <String>
+ -RoutingConfigurationName <String> -RuleCollectionName <String> -DestinationAddress <String>
+ -DestinationType <String> [-NextHopAddress <String>] -NextHopType <String> [-Description <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzNetworkManagerRoutingRule [-Name <String>] -ResourceId <String> [-AsJob]
+Set-AzNetworkManagerRoutingRule -ResourceId <String> -DestinationAddress <String> -DestinationType <String>
+ [-NextHopAddress <String>] -NextHopType <String> [-Description <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -102,6 +111,75 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Description
+Description.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters, ByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DestinationAddress
+The routing rule destination address.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DestinationType
+The routing rule destination type.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The Network Manager Routing Rule
 
@@ -122,14 +200,98 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByNameParameters
 Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
+### -NetworkManagerName
+The network manager name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NextHopAddress
+The routing rule next hop address.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NextHopType
+The routing rule next hop type.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceId
@@ -144,6 +306,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RoutingConfigurationName
+The routing configuration name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases: ConfigName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleCollectionName
+The rule collection name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameters
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

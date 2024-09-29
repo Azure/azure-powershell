@@ -30,12 +30,6 @@ Get-AzNetworkManagerSecurityUserConfiguration -ResourceId <String> [-DefaultProf
  [<CommonParameters>]
 ```
 
-### ByInputObject
-```
-Get-AzNetworkManagerSecurityUserConfiguration -InputObject <PSNetworkManagerSecurityUserConfiguration>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Get-AzNetworkManagerSecurityUserConfiguration** cmdlet gets a security user configuration in a network manager.
 
@@ -118,21 +112,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The input object containing the necessary properties.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityUserConfiguration
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -12,18 +12,11 @@ Creates a security user rule collection.
 
 ## SYNTAX
 
-### ByName (Default)
 ```
 New-AzNetworkManagerSecurityUserRuleCollection -Name <String> -SecurityUserConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String> [-Description <String>]
  -AppliesToGroup <PSNetworkManagerSecurityUserGroupItem[]> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByInputObject
-```
-New-AzNetworkManagerSecurityUserRuleCollection -InputObject <PSNetworkManagerSecurityUserRuleCollection>
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +66,7 @@ Applies To Groups.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityUserGroupItem[]
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -118,7 +111,7 @@ Description.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -143,27 +136,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The input object representing the securityUser collection.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityUserRuleCollection
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
@@ -178,7 +156,7 @@ The network manager name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -193,7 +171,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -208,7 +186,7 @@ The network manager security user configuration name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: ConfigName
 
 Required: True

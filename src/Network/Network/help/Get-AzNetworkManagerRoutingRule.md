@@ -32,12 +32,6 @@ Get-AzNetworkManagerRoutingRule -ResourceId <String> [-DefaultProfile <IAzureCon
  [<CommonParameters>]
 ```
 
-### ByInputObject
-```
-Get-AzNetworkManagerRoutingRule -InputObject <PSNetworkManagerRoutingRule>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Get-AzNetworkManagerRoutingRule** cmdlets gets a routing rule in a network manager.
 
@@ -144,21 +138,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The input object containing the necessary properties.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingRule
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

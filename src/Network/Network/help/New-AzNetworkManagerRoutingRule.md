@@ -12,17 +12,10 @@ Creates a routing rule.
 
 ## SYNTAX
 
-### ByName (Default)
 ```
 New-AzNetworkManagerRoutingRule -Name <String> -RuleCollectionName <String> -RoutingConfigurationName <String>
- -NetworkManagerName <String> -ResourceGroupName <String> [-Description <String>]
- -Destination <PSNetworkManagerRoutingRuleDestination> -NextHop <PSNetworkManagerRoutingRuleNextHop> [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByInputObject
-```
-New-AzNetworkManagerRoutingRule -InputObject <PSNetworkManagerRoutingRule> [-Force] [-AsJob]
+ -NetworkManagerName <String> -ResourceGroupName <String> -Destination <PSNetworkManagerRoutingRuleDestination>
+ -NextHop <PSNetworkManagerRoutingRuleNextHop> [-Description <String>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -98,7 +91,7 @@ Description.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -113,7 +106,7 @@ Destination Address and type.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingRuleDestination
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -138,27 +131,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The input object representing the routing rule.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingRule
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
@@ -173,7 +151,7 @@ The network manager name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -188,7 +166,7 @@ Next hop address and type.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingRuleNextHop
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -203,7 +181,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -218,7 +196,7 @@ The network manager routing configuration name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: ConfigName
 
 Required: True
@@ -233,7 +211,7 @@ The network manager routing rule collection name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True

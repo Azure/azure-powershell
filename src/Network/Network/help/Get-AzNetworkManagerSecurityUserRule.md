@@ -32,12 +32,6 @@ Get-AzNetworkManagerSecurityUserRule -ResourceId <String> [-DefaultProfile <IAzu
  [<CommonParameters>]
 ```
 
-### ByInputObject
-```
-Get-AzNetworkManagerSecurityUserRule -InputObject <PSNetworkManagerSecurityUserRule>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Get-AzNetworkManagerSecurityUserRule** cmdlets gets security user rule in a network manager.
 
@@ -186,21 +180,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The input object containing the necessary properties.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityUserRule
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

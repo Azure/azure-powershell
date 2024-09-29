@@ -12,18 +12,11 @@ Creates a routing rule collection.
 
 ## SYNTAX
 
-### ByName (Default)
 ```
 New-AzNetworkManagerRoutingRuleCollection -Name <String> -RoutingConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String> [-Description <String>]
  -AppliesTo <PSNetworkManagerRoutingGroupItem[]> -DisableBgpRoutePropagation <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByInputObject
-```
-New-AzNetworkManagerRoutingRuleCollection -InputObject <PSNetworkManagerRoutingRuleCollection> [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,7 +65,7 @@ Network group to apply the routing rule collection to.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingGroupItem[]
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -117,7 +110,7 @@ Description.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -132,7 +125,7 @@ DisableBgpRoutePropagation.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -157,27 +150,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The input object representing the routing collection.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingRuleCollection
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
@@ -192,7 +170,7 @@ The network manager name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -207,7 +185,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -222,7 +200,7 @@ The network manager routing configuration name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: ConfigName
 
 Required: True

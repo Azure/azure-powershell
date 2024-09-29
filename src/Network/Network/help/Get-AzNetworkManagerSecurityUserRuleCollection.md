@@ -14,7 +14,7 @@ Gets a security user rule collection in a network manager.
 
 ### ByList (Default)
 ```
-Get-AzNetworkManagerSecurityUserRuleCollection [-Name <String>] -SecurityUserConfigurationName <String>
+Get-AzNetworkManagerSecurityUserRuleCollection -SecurityUserConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -30,12 +30,6 @@ Get-AzNetworkManagerSecurityUserRuleCollection -Name <String> -SecurityUserConfi
 ```
 Get-AzNetworkManagerSecurityUserRuleCollection -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
-```
-
-### ByInputObject
-```
-Get-AzNetworkManagerSecurityUserRuleCollection -InputObject <PSNetworkManagerSecurityUserRuleCollection>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,35 +132,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The input object containing the necessary properties.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityUserRuleCollection
-Parameter Sets: ByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 The resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByList
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
 
 ```yaml
 Type: System.String
