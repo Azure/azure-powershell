@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed "Microsoft.Azure.Management.Batch" Version="15.0.0" PackageReference
+* Added Batch.Management.Sdk ProjectReference
 
 ## Version 3.6.3
 * Fixed secrets exposure in example documentation.
