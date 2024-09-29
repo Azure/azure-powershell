@@ -1,38 +1,38 @@
 ---
 external help file:
 Module Name: Az.EventGrid
-online version: https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridfilterobject
+online version: https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstringnotinadvancedfilterobject
 schema: 2.0.0
 ---
 
-# New-AzEventGridFilterObject
+# New-AzEventGridStringNotInAdvancedFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for Filter.
+Create an in-memory object for StringNotInAdvancedFilter.
 
 ## SYNTAX
 
 ```
-New-AzEventGridFilterObject -OperatorType <String> [-Key <String>] [<CommonParameters>]
+New-AzEventGridStringNotInAdvancedFilterObject [-Key <String>] [-Value <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for Filter.
+Create an in-memory object for StringNotInAdvancedFilter.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for Filter.
+### Example 1: Create an in-memory object for StringNotInAdvancedFilter.
 ```powershell
-New-AzEventGridFilterObject -OperatorType NumberIn -Key "TestKey"
+New-AzEventGridStringNotInAdvancedFilterObject -Key "testKey" -Value "value1","value2"
 ```
 
 ```output
 Key     OperatorType
 ---     ------------
-TestKey NumberIn
+testKey StringNotIn
 ```
 
-Create an in-memory object for Filter.
+Create an in-memory object for StringNotInAdvancedFilter.
 
 ## PARAMETERS
 
@@ -51,15 +51,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperatorType
-The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+### -Value
+The set of filter values.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -73,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.Filter
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringNotInAdvancedFilter
 
 ## NOTES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzEventGridPartnerTopic
 
 ## SYNOPSIS
-Activate a newly Activated partner topic.
+Activate a newly created partner topic.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Enable-AzEventGridPartnerTopic -InputObject <IEventGridIdentity> [-DefaultProfil
 ```
 
 ## DESCRIPTION
-Activate a newly Activated partner topic.
+Activate a newly created partner topic.
 
 ## EXAMPLES
 
