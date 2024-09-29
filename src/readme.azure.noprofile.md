@@ -93,7 +93,7 @@ after-build-tasks-args:
 
 > AssemblyInfo attributes
 ``` yaml
-assemblyInfo-folder: "./Properties/AssemblyInfo.cs"
+assemblyInfo-path: "Properties/AssemblyInfo.cs"
 assembly-company: "Microsoft"
 assembly-product: "Microsoft Azure PowerShell"
 assembly-copyright: "Copyright © Microsoft"

@@ -147,74 +147,77 @@ if ($existingCsprojPath) {
     Set-Location $location
 }
 
-$subModuleCsprojPath = Join-Path $subModulePath $csprojName
-$tempCsprojPath = Join-Path $subModulePath 'tmp'
-Move-Item $subModuleCsprojPath $tempCsprojPath -Force
-New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName $csprojName -GeneratedDirectory $subModulePath -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
+try{
+    $subModuleCsprojPath = Join-Path $subModulePath $csprojName
+    $tempCsprojPath = Join-Path $subModulePath 'tmp'
+    Move-Item $subModuleCsprojPath $tempCsprojPath -Force
+    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName $csprojName -GeneratedDirectory $subModulePath -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
 
-dotnet sln $slnPath add $subModuleCsprojPath
-Write-Host "Building $slnPath ..." -ForegroundColor DarkGreen
-dotnet build $slnPath
-<#
-    generate help markdown by platyPS
-#>
+    dotnet sln $slnPath add $subModuleCsprojPath
+    Write-Host "Building $slnPath ..." -ForegroundColor DarkGreen
+    dotnet build $slnPath
+    <#
+        generate help markdown by platyPS
+    #>
 
-Write-Host "Refreshing help markdown ..." -ForegroundColor DarkGreen
-$job = start-job {
-    param(
-        [string]$RepoRoot,
-        [string]$ModuleRootName,
-        [string]$ParentModuleName,
-        [string]$SubModuleName,
-        [string]$SubModuleNameTrimmed
-    )
+    Write-Host "Refreshing help markdown ..." -ForegroundColor DarkGreen
+    $job = start-job {
+        param(
+            [string]$RepoRoot,
+            [string]$ModuleRootName,
+            [string]$ParentModuleName,
+            [string]$SubModuleName,
+            [string]$SubModuleNameTrimmed
+        )
 
-    $resolveScriptPath = Join-Path $RepoRoot 'tools' 'ResolveTools' 'Resolve-Psd1.ps1'
-    $artifacts = Join-Path $RepoRoot 'artifacts'
-    $artifactAccountPsd1Path = Join-Path $artifacts 'Debug' "Az.Accounts" "Az.Accounts.psd1"
-    Import-Module $artifactAccountPsd1Path
-    $artifactPsd1Path = Join-Path $artifacts 'Debug' "Az.$ModuleRootName" "Az.$ModuleRootName.psd1"
-    $parentModulePath = Join-Path $RepoRoot 'src' $ModuleRootName $ParentModuleName
+        $resolveScriptPath = Join-Path $RepoRoot 'tools' 'ResolveTools' 'Resolve-Psd1.ps1'
+        $artifacts = Join-Path $RepoRoot 'artifacts'
+        $artifactAccountPsd1Path = Join-Path $artifacts 'Debug' "Az.Accounts" "Az.Accounts.psd1"
+        Import-Module $artifactAccountPsd1Path
+        $artifactPsd1Path = Join-Path $artifacts 'Debug' "Az.$ModuleRootName" "Az.$ModuleRootName.psd1"
+        $parentModulePath = Join-Path $RepoRoot 'src' $ModuleRootName $ParentModuleName
 
-    $assemblyToRemove = "YamlDotNet.dll"
-    $psd1Data = Import-PowerShellDataFile -Path $artifactPsd1Path
-    if ($psd1Data.ContainsKey('RequiredAssemblies') -and $psd1Data.RequiredAssemblies -contains $assemblyToRemove) {
-        $psd1Data.RequiredAssemblies = $psd1Data.RequiredAssemblies | Where-Object { $_ -ne $assemblyToRemove }
-        Update-ModuleManifest -Path $artifactPsd1Path -RequiredAssemblies $psd1Data.RequiredAssemblies
-    }
-
-    Import-Module $artifactPsd1Path
-    Import-Module platyPS
-    $helpPath = Join-Path $parentModulePath 'help'
-    $subModuleHelpPath = Join-Path $RepoRoot 'src' $ModuleRootName $SubModuleName 'docs'
-
-    # Clean up the help folder and remove the help files which are not exported by the module.
-    $moduleMetadata = Get-Module "Az.$ModuleRootName"
-    $exportedCommands = $moduleMetadata.ExportedCommands.Values | Where-Object {$_.CommandType -ne 'Alias'} | ForEach-Object { $_.Name}
-
-    if (-Not (Test-Path $helpPath)) {
-        New-Item -Type Directory $helpPath -Force
-    }
-    Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination (Join-Path $helpPath $_.Name) -Force
-    Write-Host "Refreshing help markdown files under: $helpPath ..."
-    Update-MarkdownHelpModule -Path $helpPath -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
-    foreach ($helpFile in (Get-ChildItem $helpPath -Recurse)) {
-        $cmdeltName = $helpFile.Name.Replace(".md", "")
-        if ($exportedCommands -notcontains $cmdeltName)
-        {
-            Write-Host "Redundant help markdown detected, removing $helpFile.FullName ..."
-            Remove-Item $helpFile.FullName -Force
+        $assemblyToRemove = "YamlDotNet.dll"
+        $psd1Data = Import-PowerShellDataFile -Path $artifactPsd1Path
+        if ($psd1Data.ContainsKey('RequiredAssemblies') -and $psd1Data.RequiredAssemblies -contains $assemblyToRemove) {
+            $psd1Data.RequiredAssemblies = $psd1Data.RequiredAssemblies | Where-Object { $_ -ne $assemblyToRemove }
+            Update-ModuleManifest -Path $artifactPsd1Path -RequiredAssemblies $psd1Data.RequiredAssemblies
         }
-    }
-    & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
-} -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName, $subModuleNameTrimmed
-$job | Wait-Job | Receive-Job
-$job | Remove-Job
+
+        Import-Module $artifactPsd1Path
+        Import-Module platyPS
+        $helpPath = Join-Path $parentModulePath 'help'
+        $subModuleHelpPath = Join-Path $RepoRoot 'src' $ModuleRootName $SubModuleName 'docs'
+
+        # Clean up the help folder and remove the help files which are not exported by the module.
+        $moduleMetadata = Get-Module "Az.$ModuleRootName"
+        $exportedCommands = $moduleMetadata.ExportedCommands.Values | Where-Object {$_.CommandType -ne 'Alias'} | ForEach-Object { $_.Name}
+
+        if (-Not (Test-Path $helpPath)) {
+            New-Item -Type Directory $helpPath -Force
+        }
+        Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination (Join-Path $helpPath $_.Name) -Force
+        Write-Host "Refreshing help markdown files under: $helpPath ..."
+        Update-MarkdownHelpModule -Path $helpPath -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
+        foreach ($helpFile in (Get-ChildItem $helpPath -Recurse)) {
+            $cmdeltName = $helpFile.Name.Replace(".md", "")
+            if ($exportedCommands -notcontains $cmdeltName)
+            {
+                Write-Host "Redundant help markdown detected, removing $helpFile.FullName ..."
+                Remove-Item $helpFile.FullName -Force
+            }
+        }
+        & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
+    } -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName, $subModuleNameTrimmed
+    $job | Wait-Job | Receive-Job
+    $job | Remove-Job
+} finally {
+    Move-Item $tempCsprojPath $subModuleCsprojPath -Force
+}
 
 <#
     merge actual sub module csproj to parent module sln
 #>
-Move-Item $tempCsprojPath $subModuleCsprojPath -Force
 $existingCsprojPath = dotnet sln $slnPath list | Where-Object {
     $_ -match ".*$csprojName$"
 }
@@ -222,7 +225,6 @@ if ($existingCsprojPath) {
     $generatedCsprojPath = "..\..\generated\" + $existingCsprojPath
     (Get-Content $slnPath).Replace($existingCsprojPath, $generatedCsprojPath) | Set-Content $slnPath -force
 }
-
 
 <#
     Create or refresh generate-info.json for submodule
