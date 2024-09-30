@@ -44,8 +44,9 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     # Remove those file no need to check in
     $fileToRemove = @('MSSharedLibKey.snk', 'build-module.ps1', 'create-model-cmdlets.ps1', 'export-surface.ps1', 'generate-help.ps1', 'generate-portal-ux.ps1', 'pack-module.ps1', 'run-module.ps1')
     $fileToRemove | Foreach-Object {
-        if (-Not (Test-Path $_.FullName)) {
-            Remove-Item $_.FullName -Force
+        $currentFilePath = Join-Path $sourceSubModulePath $_
+        if (Test-Path $currentFilePath) {
+            Remove-Item $currentFilePath -Force
         }
     }
 
