@@ -37,7 +37,7 @@ $GeneratedDirectory = Join-Path $RepoRoot 'generated'
 $TemplatePath = Join-Path $PSScriptRoot "Templates"
 
 $rootToParentMap = @{
-    'Storage' = @('Storage.Management')
+    'Storage' = 'Storage.Management'
 }
 $parentModuleName = $ModuleRootName
 if ($ModuleRootName -in $rootToParentMap.keys) {
