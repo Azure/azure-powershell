@@ -14,7 +14,7 @@ Create an in-memory object for PrometheusOSProviderInstanceProperties.
 
 ```
 New-AzWorkloadsProviderPrometheusOSInstanceObject [-PrometheusUrl <String>] [-SapSid <String>]
- [-SslCertificateUri <String>] [-SslPreference <SslPreference>] [-ProgressAction <ActionPreference>]
+ [-SslCertificateUri <String>] [-SslPreference <SslPreference>]
  [<CommonParameters>]
 ```
 
@@ -37,21 +37,6 @@ PrometheusOS http://10.1.0.4:9100/metrics X00                      Disabled
 Create Linux Operating System provider for an AMS instance
 
 ## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -PrometheusUrl
 URL of the Node Exporter endpoint.
@@ -102,7 +87,7 @@ Accept wildcard characters: False
 Gets or sets certificate preference if secure communication is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SslPreference
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference
 Parameter Sets: (All)
 Aliases:
 

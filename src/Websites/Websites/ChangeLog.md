@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.2.2
+* Fix bug where parameters could not be set to false for `Publish-AzWebApp`
+
 ## Version 3.2.1
 * Introduced secrets detection feature to safeguard sensitive data.
 

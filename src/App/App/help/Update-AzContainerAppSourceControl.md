@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerAppSourceControl
 
 ## SYNOPSIS
-Create the SourceControl for a Container App.
+Update the SourceControl for a Container App.
 
 ## SYNTAX
 
@@ -20,8 +20,8 @@ Update-AzContainerAppSourceControl -ContainerAppName <String> -Name <String> -Re
  [-GithubAccessToken <SecureString>] [-GithubConfigurationImage <String>] [-GithubContextPath <String>]
  [-GithubOS <String>] [-GithubPublishType <String>] [-GithubRuntimeStack <String>]
  [-GithubRuntimeVersion <String>] [-RegistryPassword <SecureString>] [-RegistryUrl <String>]
- [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityContainerAppExpanded
@@ -32,8 +32,8 @@ Update-AzContainerAppSourceControl -Name <String> -ContainerAppInputObject <IApp
  [-GithubAccessToken <SecureString>] [-GithubConfigurationImage <String>] [-GithubContextPath <String>]
  [-GithubOS <String>] [-GithubPublishType <String>] [-GithubRuntimeStack <String>]
  [-GithubRuntimeVersion <String>] [-RegistryPassword <SecureString>] [-RegistryUrl <String>]
- [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -44,11 +44,12 @@ Update-AzContainerAppSourceControl -InputObject <IAppIdentity> [-AzureClientId <
  [-GithubConfigurationImage <String>] [-GithubContextPath <String>] [-GithubOS <String>]
  [-GithubPublishType <String>] [-GithubRuntimeStack <String>] [-GithubRuntimeVersion <String>]
  [-RegistryPassword <SecureString>] [-RegistryUrl <String>] [-RegistryUserName <String>] [-RepoUrl <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create the SourceControl for a Container App.
+Update the SourceControl for a Container App.
 
 ## EXAMPLES
 
@@ -214,7 +215,6 @@ Accept wildcard characters: False
 
 ### -ContainerAppInputObject
 Identity Parameter
-To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -366,7 +366,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity

@@ -19,7 +19,11 @@
 -->
 
 ## Upcoming Release
-* Removed `Experimental` notice from `-WithSource` parameter to `Publish-AzBicepModule`
+
+## Version 7.5.0
+* Added `ResourceSelector` and `Override` parameters to `New/Update-AzPolicyAssignment`.
+* Added `ResourceSelector` parameter to `New/Update-AzPolicyExemption`.
+* Removed `Experimental` notice from `-WithSource` parameter to `Publish-AzBicepModule`.
 
 ## Version 7.4.0
 * Fixed secrets exposure in example documentation.

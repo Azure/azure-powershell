@@ -245,6 +245,17 @@ function Test-subnetWithDefaultOutboundAccessCRUD
         Assert-AreEqual "10.0.2.0/24" $vnetExpected.Subnets[1].AddressPrefix
         Assert-AreEqual $true $vnetExpected.Subnets[0].DefaultOutboundAccess
         Assert-AreEqual $true $vnetExpected.Subnets[1].DefaultOutboundAccess
+
+        Set-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnetExpected -DefaultOutboundAccess $false -AddressPrefix 10.0.1.0/24
+        $vnetExpected | Set-AzVirtualNetwork
+
+        $vnetExpected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual 2 @($vnetExpected.Subnets).Count
+        Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
+        Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
+        Assert-AreEqual "10.0.2.0/24" $vnetExpected.Subnets[1].AddressPrefix
+        Assert-AreEqual $false $vnetExpected.Subnets[0].DefaultOutboundAccess
+        Assert-AreEqual $true $vnetExpected.Subnets[1].DefaultOutboundAccess
         
         # Remove a subnet
         Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Remove-AzVirtualNetworkSubnetConfig -Name $subnet2Name | Set-AzVirtualNetwork

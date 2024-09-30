@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedMachineRunCommand
 
 ## SYNOPSIS
-The operation to create or update a run command.
+The operation to update a run command.
 
 ## SYNTAX
 
@@ -74,7 +74,7 @@ Update-AzConnectedMachineRunCommand -MachineInputObject <IConnectedMachineIdenti
 ```
 
 ## DESCRIPTION
-The operation to create or update a run command.
+The operation to update a run command.
 
 ## EXAMPLES
 

@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     using System;
 
     /// <summary>
-    /// This operation creates or updates a policy set definition in the given management group with the given name.
+    /// This operation update a policy set definition in the given management group with the given name.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] GetAtManagementGroup=>GET:"/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}"
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzPolicySetDefinition_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation creates or updates a policy set definition in the given management group with the given name.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation update a policy set definition in the given management group with the given name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
     public partial class UpdateAzPolicySetDefinition_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener,
