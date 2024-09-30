@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 6.2.0
+* Fixed a parameter validation issue in Set-AzureKeyVaultCertificatePolicy. [#25649]
+
 ## Version 6.1.0
 * Fixed secrets exposure in example documentation.
 * Upgraded Get-AzKeyVaultKey for key vault key to track 2 SDK.

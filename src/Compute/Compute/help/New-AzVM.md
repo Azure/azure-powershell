@@ -28,7 +28,7 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DiskControllerType <String>]
  [-SharedGalleryImageId <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
- [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-EnableSecureBoot <Boolean>] [-IfMatch <String>] [-IfNoneMatch <String>] [-SshKeyType <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -1112,6 +1112,22 @@ Name of the SSH Public Key resource.
 Type: System.String
 Parameter Sets: SimpleParameterSet, DefaultParameterSet
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SshKeyType
+Specify the type of SSH key to generate. Allowed values are 'Ed25519' and 'RSA'.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+Accepted values: Ed25519, RSA
 
 Required: False
 Position: Named

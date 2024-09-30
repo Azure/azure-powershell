@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to create or update a run command.
+The operation to update a run command.
 .Description
-The operation to create or update a run command.
+The operation to update a run command.
 .Example
 Update-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommandName "myRunCommand3" -MachineName "testmachine" -SubscriptionId ********-****-****-****-********** -Tag @{Tag1="tag1"; Tag2="tag2"}
 
