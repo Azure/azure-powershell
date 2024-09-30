@@ -41,8 +41,16 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     }
     New-GenerateInfoJson -GeneratedDirectory $sourceSubModulePath
 
+    # Remove those file no need to check in
+    $fileToRemove = @('MSSharedLibKey.snk', 'build-module.ps1', 'create-model-cmdlets.ps1', 'export-surface.ps1', 'generate-help.ps1', 'generate-portal-ux.ps1', 'pack-module.ps1', 'run-module.ps1')
+    $fileToRemove | Foreach-Object {
+        if (-Not (Test-Path $_.FullName)) {
+            Remove-Item $_.FullName -Force
+        }
+    }
+
     # Move files from src to generated
-    $fileToMove = @('Properties', 'license.txt', 'generated', 'generate-info.json', 'resources', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', "Az.$subModuleNameTrimmed.csproj", 'test-module.ps1', 'check-dependencies.ps1')
+    $fileToMove = @('Properties', 'generated', 'generate-info.json', 'resources', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', "Az.$subModuleNameTrimmed.csproj", 'test-module.ps1', 'check-dependencies.ps1')
     $fileToMove | Foreach-Object {
         $fromPath = Join-Path $sourceSubModulePath $_
         $toPath = Join-Path $generatedSubModulePath $_
@@ -72,10 +80,6 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     $helpFolderPath = Join-Path $sourceSubModulePath "help"
     $docsFolderPath = Join-Path $sourceSubModulePath "docs"
     Move-Item $helpFolderPath $docsFolderPath
-
-    # Delete *.ps1 under *.Autorest, no need to check-in these files
-    $doNotDelete=@('test-module.ps1', 'check-dependencies.ps1')
-    Get-ChildItem $sourceSubModulePath -Filter '*.ps1' | Where-Object { $_.Name -NotIn $doNotDelete } | Foreach-Object { Remove-Item $_.FullName -Force }
 
     # add .gitignore and .gitattributes to every *.Autorest
     $assetsPath = Join-Path $PSScriptRoot 'assets'

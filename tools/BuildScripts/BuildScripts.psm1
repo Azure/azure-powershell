@@ -163,7 +163,7 @@ function Update-GeneratedSubModule {
         Remove-Item -Path $localModulesPath -Recurse -Force
     }
     $subModuleNameTrimmed = $SubModuleName.split('.')[-2]
-    $fileToUpdate = @('generated', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
+    $fileToUpdate = @('Properties', 'generated', 'resources', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
     # Copy from src/ to generated/ 
     $fileToUpdate | Foreach-Object {
         $moveFrom = Join-Path $SourceDirectory $_
