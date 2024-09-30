@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Initializes a new instance of the ApiProperties class.
         /// </summary>
 
-        /// <param name="serverVersion">Describes the ServerVersion of an a MongoDB account.
-        /// Possible values include: &#39;3.2&#39;, &#39;3.6&#39;, &#39;4.0&#39;, &#39;4.2&#39;</param>
+        /// <param name="serverVersion">Describes the version of the MongoDB account.
+        /// Possible values include: &#39;3.2&#39;, &#39;3.6&#39;, &#39;4.0&#39;, &#39;4.2&#39;, &#39;5.0&#39;, &#39;6.0&#39;, &#39;7.0&#39;</param>
         public ApiProperties(string serverVersion = default(string))
 
         {
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
 
         /// <summary>
-        /// Gets or sets describes the ServerVersion of an a MongoDB account. Possible values include: &#39;3.2&#39;, &#39;3.6&#39;, &#39;4.0&#39;, &#39;4.2&#39;
+        /// Gets or sets describes the version of the MongoDB account. Possible values include: &#39;3.2&#39;, &#39;3.6&#39;, &#39;4.0&#39;, &#39;4.2&#39;, &#39;5.0&#39;, &#39;6.0&#39;, &#39;7.0&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "serverVersion")]
         public string ServerVersion {get; set; }
