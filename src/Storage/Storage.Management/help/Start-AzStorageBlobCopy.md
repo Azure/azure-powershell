@@ -20,7 +20,7 @@ Start-AzStorageBlobCopy [-SrcBlob] <String> -SrcContainer <String> -DestContaine
  [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>] [-Context <IStorageContext>]
  [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-TagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Start-AzStorageBlobCopy -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient>
  [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>] [-Context <IStorageContext>]
  [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-TagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ Start-AzStorageBlobCopy -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient>
  [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>] [-Context <IStorageContext>]
  [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-TagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -53,7 +53,7 @@ Start-AzStorageBlobCopy -CloudBlobContainer <CloudBlobContainer> [-SrcBlob] <Str
  [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>] [-Context <IStorageContext>]
  [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-TagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,7 +63,7 @@ Start-AzStorageBlobCopy -SrcShareName <String> -SrcFilePath <String> -DestContai
  [-DestBlob <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -73,7 +73,7 @@ Start-AzStorageBlobCopy -SrcShare <CloudFileShare> -SrcFilePath <String> -DestCo
  [-DestBlob <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -83,7 +83,7 @@ Start-AzStorageBlobCopy -SrcDir <CloudFileDirectory> -SrcFilePath <String> -Dest
  [-DestBlob <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -93,7 +93,7 @@ Start-AzStorageBlobCopy -SrcFile <CloudFile> -DestContainer <String> [-DestBlob 
  [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-Force]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -103,7 +103,7 @@ Start-AzStorageBlobCopy -SrcFile <CloudFile> -DestCloudBlob <CloudBlob> [-Standa
  [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>] [-Context <IStorageContext>]
  [-DestContext <IStorageContext>] [-DestTagCondition <String>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UriPipeline
@@ -112,7 +112,7 @@ Start-AzStorageBlobCopy -AbsoluteUri <String> -DestContainer <String> -DestBlob 
  [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-Tag <Hashtable>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-DestTagCondition <String>]
  [-TagCondition <String>] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -459,6 +459,21 @@ Type: Microsoft.Azure.Storage.Blob.PremiumPageBlobTier
 Parameter Sets: ContainerName, BlobInstance, BlobInstanceToBlobInstance, ContainerInstance
 Aliases:
 Accepted values: Unknown, P4, P6, P10, P20, P30, P40, P50, P60, P70, P80
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
