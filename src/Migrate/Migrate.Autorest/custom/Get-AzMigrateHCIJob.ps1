@@ -22,7 +22,7 @@ The Get-AzMigrateHCIJob cmdlet retrives the status of an Azure Migrate job.
 https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratehcijob
 #>
 function Get-AzMigrateHCIJob {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ListByName', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'GetById', Mandatory)]
@@ -183,6 +183,6 @@ function Get-AzMigrateHCIJob {
             $null = $PSBoundParameters.Add('JobName', $Name)
         }
 
-        return  Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        return  Az.Migrate.Internal\Get-AzMigrateHCIReplicationJob @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
     }
 }

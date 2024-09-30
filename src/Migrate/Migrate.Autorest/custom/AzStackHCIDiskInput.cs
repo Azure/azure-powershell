@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview
+namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901
 {
     public class AzStackHCIDiskInput
     {
