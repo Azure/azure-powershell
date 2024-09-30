@@ -17,7 +17,7 @@ $toolsFolderPath = Join-Path $RepoRoot 'tools'
 New-Item -Path $generatedFolderPath -ItemType Directory -Force
 
 # find directories ends with .autorest 
-Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse | foreach-Object {
+Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse | where-Object {$_.FullName -match "^(?:(?!LiveTests).)*\.Autorest.*"} | Foreach-Object {
     $moduleRootName = $_.Parent.Name
     $subModuleName = $_.Name
     $subModuleNameTrimmed = $SubModuleName.split('.')[-2]
