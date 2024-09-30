@@ -672,7 +672,7 @@ function New-AzConnectedKubernetes {
         if ($PSCmdlet.ShouldProcess("configDP", "request Helm chart")) {
             $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
             if (Test-Path Env:HELMCHART) {
-                $ChartPath = Get-ChildItem -Path Env:HELMCHART
+                $ChartPath = Get-ChildItem -Path $Env:HELMCHART
             }
         }
 

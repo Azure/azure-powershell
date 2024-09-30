@@ -736,7 +736,7 @@ function Set-AzConnectedKubernetes {
             # Get helm chart path (within the OCI registry).
             $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
             if (Test-Path Env:HELMCHART) {
-                $ChartPath = Get-ChildItem -Path Env:HELMCHART
+                $ChartPath = Get-ChildItem -Path $Env:HELMCHART
             }
         }
 
