@@ -374,7 +374,7 @@ function Set-AzConnectedKubernetes {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         }
         elseif (Test-Path Env:KUBECONFIG) {
-            $KubeConfig = Get-ChildItem -Path Env:KUBECONFIG
+            $KubeConfig = Get-ChildItem -Path $Env:KUBECONFIG
         }
         elseif (Test-Path Env:Home) {
             $KubeConfig = Join-Path -Path $Env:Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
