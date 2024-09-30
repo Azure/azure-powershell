@@ -250,8 +250,8 @@ function Set-HelmRepositoryAndModules {
     )
     Write-Debug "Setting Helm repository and checking for required modules."
     if ((Test-Path Env:HELMREPONAME) -and (Test-Path Env:HELMREPOURL)) {
-        $HelmRepoName = Get-ChildItem -Path Env:HELMREPONAME
-        $HelmRepoUrl = Get-ChildItem -Path Env:HELMREPOURL
+        $HelmRepoName = Get-ChildItem -Path $Env:HELMREPONAME
+        $HelmRepoUrl = Get-ChildItem -Path $Env:HELMREPOURL
         helm repo add $HelmRepoName $HelmRepoUrl --kubeconfig $KubeConfig --kube-context $KubeContext
     }
 
@@ -262,12 +262,12 @@ function Set-HelmRepositoryAndModules {
     }
 
     if (Test-Path Env:HELMREGISTRY) {
-        $RegistryPath = Get-ChildItem -Path Env:HELMREGISTRY
+        $RegistryPath = Get-ChildItem -Path $Env:HELMREGISTRY
     }
     else {
         $ReleaseTrain = ''
         if ((Test-Path Env:RELEASETRAIN) -and (Test-Path Env:RELEASETRAIN)) {
-            $ReleaseTrain = Get-ChildItem -Path Env:RELEASETRAIN
+            $ReleaseTrain = Get-ChildItem -Path $Env:RELEASETRAIN
         }
         else {
             $ReleaseTrain = 'stable'
