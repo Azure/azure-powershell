@@ -29,27 +29,18 @@ Get the session host update status for a given hostpool.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a Azure Virtual Desktop SessionHostManagementUpdateStatus by HostPoolName
 ```powershell
-{{ Add code here }}
+Get-AzWvdSessionHostManagementsUpdateStatus -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
 
 ```output
-{{ Add output here }}
+Location   Name                 Type
+--------   ----                 ----
+eastus     default Microsoft.DesktopVirtualization/hostpools/sessionhostManagements/UpdateStatuses
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command gets a Azure Virtual Desktop SessionHostManagementUpdateStatus in a HostPool.
 
 ## PARAMETERS
 
