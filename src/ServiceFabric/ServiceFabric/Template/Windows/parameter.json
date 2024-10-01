@@ -6,13 +6,13 @@
       "value": "southcentralus"
     },
     "clusterName": {
-      "value": "GEN-UNIQUE"
+      "value": "azurermsfclustertptest"
     },
     "adminUserName": {
-      "value": "GEN-UNIQUE"
+      "value": "username"
     },
     "adminPassword": {
-      "value": "GEN-PASSWORD"
+      "value": ""
     },
     "vmImagePublisher": {
       "value": "MicrosoftWindowsServer"
@@ -21,7 +21,7 @@
       "value": "WindowsServer"
     },
     "vmImageSku": {
-      "value": "2016-Datacenter-with-Containers"
+      "value": "2022-datacenter-azure-edition"
     },
     "vmImageVersion": {
       "value": "latest"
@@ -35,16 +35,16 @@
     "clusterProtectionLevel": {
       "value": "EncryptAndSign"
     },
-    "certificateStoreValue": {
+    "certificateStorevalue": {
       "value": "My"
     },
     "certificateThumbprint": {
       "value": "GEN-CUSTOM-DOMAIN-SSLCERT-THUMBPRINT"
     },
-    "sourceVaultValue": {
+    "sourceVaultvalue": {
       "value": "GEN-KEYVAULT-RESOURCE-ID"
     },
-    "certificateUrlValue": {
+    "certificateUrlvalue": {
       "value": "GEN-KEYVAULT-SSL-SECRET-URI"
     },
     "storageAccountType": {
@@ -60,13 +60,7 @@
       "value": 5
     },
     "vmNodeType0Size": {
-      "value": "Standard_D2_V2"
-    },
-    "durabilityLevel": {
-      "value": "Bronze"
-    },
-    "reliabilityLevel": {
-      "value": "Silver"
+      "value": "Standard_D2s_v3"
     }
   }
 }
