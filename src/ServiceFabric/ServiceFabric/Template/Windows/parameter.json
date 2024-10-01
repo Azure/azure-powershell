@@ -6,13 +6,13 @@
       "value": "southcentralus"
     },
     "clusterName": {
-      "value": "azurermsfclustertptest"
+      "value": "GEN-UNIQUE"
     },
     "adminUserName": {
-      "value": "username"
+      "value": "GEN-UNIQUE"
     },
     "adminPassword": {
-      "value": ""
+      "value": "GEN-PASSWORD"
     },
     "vmImagePublisher": {
       "value": "MicrosoftWindowsServer"
