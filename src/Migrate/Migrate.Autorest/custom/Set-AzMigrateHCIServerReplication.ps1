@@ -22,7 +22,7 @@ The Set-AzMigrateHCIServerReplication cmdlet updates the target properties for t
 https://learn.microsoft.com/powershell/module/az.migrate/set-azmigratehciserverreplication
 #>
 function Set-AzMigrateHCIServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.IWorkflowModel])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.IJobModel])]
     [CmdletBinding(DefaultParameterSetName = 'ById', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -53,7 +53,7 @@ function Set-AzMigrateHCIServerReplication {
         
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemDynamicMemoryConfig]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig]
         # Specifies the dynamic memory configration of RAM.
         ${DynamicMemoryConfig},
 
@@ -65,7 +65,7 @@ function Set-AzMigrateHCIServerReplication {
 		
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCINicInput[]]
         # Specifies the nics on the source server to be included for replication.
         ${NicToInclude},
 
@@ -244,7 +244,7 @@ function Set-AzMigrateHCIServerReplication {
 
         # Dynamic memory is newly enabled and needs a default
         if ($customProperties.IsDynamicRam -and $null -eq $customProperties.DynamicMemoryConfig) {
-            $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.ProtectedItemDynamicMemoryConfig]::new()
+            $memoryConfig = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.ProtectedItemDynamicMemoryConfig]::new()
             $memoryConfig.MinimumMemoryInMegaByte = [System.Math]::Min($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMinDynamicMemoryInMB)
             $memoryConfig.MaximumMemoryInMegaByte = [System.Math]::Max($customProperties.TargetMemoryInMegaByte, $RAMConfig.DefaultMaxDynamicMemoryInMB)
             $memoryConfig.TargetMemoryBufferPercentage = $RAMConfig.DefaultTargetMemoryBufferPercentage
@@ -299,12 +299,12 @@ function Set-AzMigrateHCIServerReplication {
         }
 
         if ($SiteType -eq $SiteTypes.HyperVSites) {
-            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.HyperVToAzStackHCIDiskInput[]]$disks
-            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.HyperVToAzStackHCINicInput[]]$nics
+            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCIDiskInput[]]$disks
+            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.HyperVToAzStackHCINicInput[]]$nics
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {
-            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.VMwareToAzStackHCIDiskInput[]]$disks
-            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.VMwareToAzStackHCINicInput[]]$nics     
+            $customProperties.DisksToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.VMwareToAzStackHCIDiskInput[]]$disks
+            $customProperties.NicsToInclude = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AApi20240901.VMwareToAzStackHCINicInput[]]$nics     
         }
 
         $protectedItemProperties.CustomProperty = $customProperties
@@ -324,7 +324,7 @@ function Set-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Remove('NoWait')
 
             $null = $PSBoundParameters.Add('JobName', $jobName)
-            return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
+            return Az.Migrate.Internal\Get-AzMigrateHCIReplicationJob @PSBoundParameters
         }
     }
 }   

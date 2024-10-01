@@ -22,7 +22,7 @@ The New-AzMigrateHCINicMappingObject cmdlet creates a mapping of the source NIC 
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratehcinicmappingobject
 #>
 function New-AzMigrateHCINicMappingObject {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCINicInput])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
@@ -69,7 +69,7 @@ function New-AzMigrateHCINicMappingObject {
             $selectionTypeForFailover = $VMNicSelection.NotSelected
         }
 
-        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput]::new(
+        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20240901.AzStackHCINicInput]::new(
             $NicID,
             $TargetVirtualSwitchId,
             $TargetTestVirtualSwitchId,
