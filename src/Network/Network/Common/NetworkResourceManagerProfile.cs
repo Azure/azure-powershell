@@ -410,6 +410,7 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSVirtualNetwork, MNM.SubResource>();
                 cfg.CreateMap<CNM.PSAddressSpace, MNM.AddressSpace>();
+                cfg.CreateMap<CNM.PSIpamPoolPrefixAllocation, MNM.IpamPoolPrefixAllocation>();
                 cfg.CreateMap<CNM.PSVirtualNetwork, MNM.VirtualNetwork>()
                     .ForMember(
                         dest => dest.IPAllocations,
@@ -421,6 +422,7 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.SubResource, CNM.PSVirtualNetwork>();
                 cfg.CreateMap<MNM.AddressSpace, CNM.PSAddressSpace>();
+                cfg.CreateMap<MNM.IpamPoolPrefixAllocation, CNM.PSIpamPoolPrefixAllocation>();
                 cfg.CreateMap<MNM.VirtualNetwork, CNM.PSVirtualNetwork>()
                     .ForMember(
                         dest => dest.IpAllocations,
@@ -2305,6 +2307,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityAdminRuleCollection, MNM.AdminRuleCollection>();
                 cfg.CreateMap<ANM.PSNetworkManagerScopeConnection, MNM.ScopeConnection>();
                 cfg.CreateMap<ANM.PSNetworkManagerConnection, MNM.NetworkManagerConnection>();
+                // IpamPool
+                cfg.CreateMap<ANM.PSIpamPool, MNM.IpamPool>();
+                cfg.CreateMap<ANM.PSIpamPoolProperties, MNM.IpamPoolProperties>();
+                cfg.CreateMap<ANM.PSPoolAssociation, MNM.PoolAssociation>();
+                cfg.CreateMap<ANM.PSPoolUsage, MNM.PoolUsage>();
+                cfg.CreateMap<ANM.PSResourceBasics, MNM.ResourceBasics>();
+                cfg.CreateMap<ANM.PSStaticCidr, MNM.StaticCidr>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkManager, ANM.PSNetworkManager>();
@@ -2345,6 +2354,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ScopeConnection, ANM.PSNetworkManagerScopeConnection>();
                 cfg.CreateMap<MNM.NetworkManagerConnection, ANM.PSNetworkManagerConnection>();
 
+                // IpamPool
+                cfg.CreateMap<MNM.IpamPool, ANM.PSIpamPool>();
+                cfg.CreateMap<MNM.IpamPoolProperties, ANM.PSIpamPoolProperties>();
+                cfg.CreateMap<MNM.PoolAssociation, ANM.PSPoolAssociation>();
+                cfg.CreateMap<MNM.PoolUsage, ANM.PSPoolUsage>();
+                cfg.CreateMap<MNM.ResourceBasics, ANM.PSResourceBasics>();
+                cfg.CreateMap<MNM.StaticCidr, ANM.PSStaticCidr>();
             });
             _mapper = config.CreateMapper();
         }
