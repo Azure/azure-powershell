@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-         Mandatory = false,
+         Mandatory = true,
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "IP Address Manager Pool resource name.")]
          [ValidateNotNullOrEmpty]
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string NumberOfIPAddressesToAllocate { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "List of IP address prefixes of the resource.")]
         public virtual List<string> AddressPrefixes { get; set; }
