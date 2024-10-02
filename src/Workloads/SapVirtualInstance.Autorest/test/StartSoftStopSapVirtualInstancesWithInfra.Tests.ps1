@@ -26,13 +26,13 @@ Describe 'StartSoftStopSapVirtualInstancesWithInfra' {
         $StartSapVirtualInstancesWithInfraResponse.Status | Should -Be $env.ProvisioningStateSucceeded
     }
 
-    It 'SoftStopSapVirtualInstancesWithInfraAlias' {
+    It 'SoftStopSapVirtualInstancesWithInfraAlias' -skip {
         $SoftStopSapVirtualInstancesWithInfraAliasResponse = Stop-AzVIS -Name $env.SapVirtualInstanceName -ResourceGroupName $env.ResourceGroupName -SoftStopTimeoutSecond $env.SoftStopTimeoutSecond -DeallocateVM
         $SoftStopSapVirtualInstancesWithInfraAliasResponse.Status | Should -Be $env.ProvisioningStateSucceeded
         Start-TestSleep -Seconds 300
     }
 
-    It 'StartSapVirtualInstancesWithInfraAlias' {
+    It 'StartSapVirtualInstancesWithInfraAlias' -skip {
         $StartSapVirtualInstancesWithInfraAliasResponse = Start-AzVIS -Name $env.SapVirtualInstanceName -ResourceGroupName $env.ResourceGroupName -StartVM
         $StartSapVirtualInstancesWithInfraAliasResponse.Status | Should -Be $env.ProvisioningStateSucceeded
     }

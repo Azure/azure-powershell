@@ -45,7 +45,7 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     $env.Location = "centraluseuap"
     $env.WaaSTenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47"
-    $env.ResourceGroupName = "PS_CLI_TF_RG"
+    $env.ResourceGroupName = "PS6-RG"
     $env.WaaSSubscriptionId = "49d64d54-e966-4c46-a868-1999802b762c"
     $env.SapVirtualInstanceName = "PS6"
     $env.SapApplicationInstanceName = "ps6appvm0-0"
@@ -96,7 +96,7 @@ function setupEnv() {
     $env.MrgNetAccTypPrvt = "Private"
     $env.MrgNetAccTypPub = "Public"
     $env.CentralServerVmId = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG/providers/Microsoft.Compute/virtualMachines/ascsvm"
-    $env.DeletionRG = "PS_CLI_TF_RG"
+    $env.DeletionRG = "PS6-RG"
     $env.DeletionVIS = "PS6"
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

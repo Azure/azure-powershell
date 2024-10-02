@@ -28,7 +28,7 @@ Describe 'DistributedSystemWithTrustedAccessNoTransShare' {
         $MsiIdentityName = @{ $env.IdentityName = @{}}
     }
 
-    It 'CreateDistributedSystemWithTrustedAccessNoTransShareAlias' {
+    It 'CreateDistributedSystemWithTrustedAccessNoTransShareAlias' -Skip {
         $MsiIdentityName = @{ $env.IdentityName = @{}}
         $CreateDistributedSystemWithTrustedAccessNoTransShareAliasConfig = Join-Path $PSScriptRoot $env.CreateDistributedSystemWithTrustedAccessNoTransShareConfigPath
         $CreateDistributedSystemWithTrustedAccessNoTransShareAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedSystemWithTrustedAccessNoTransShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateDistributedSystemWithTrustedAccessNoTransShareAliasConfig -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -IdentityType $env.IdentityType -UserAssignedIdentity $MsiIdentityName

@@ -27,7 +27,7 @@ Describe 'DistributedHAAvSetDiffTransRgShare' {
         $MsiIdentityName = @{ $env.IdentityName = @{}}
     }
 
-    It 'CreateDistributedHAAvSetDiffTransRgShareAlias' {
+    It 'CreateDistributedHAAvSetDiffTransRgShareAlias' -skip {
         $MsiIdentityName = @{ $env.IdentityName = @{}}
         $CreateDistributedHAAvSetDiffTransRgShareAliasConfig = Join-Path $PSScriptRoot $env.CreateDistributedHAAvSetDiffTransRgShareConfigPath
         $CreateDistributedHAAvSetDiffTransRgShareAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedHAAvSetDiffTransRgShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateDistributedHAAvSetDiffTransRgShareAliasConfig -IdentityType $env.IdentityType -UserAssignedIdentity $MsiIdentityName

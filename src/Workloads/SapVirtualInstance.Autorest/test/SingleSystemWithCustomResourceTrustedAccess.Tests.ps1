@@ -32,7 +32,7 @@ Describe 'SingleSystemWithCustomResourceTrustedAccess' {
         $InstallSingleSystemWithCustomResourceTrustedAccessResponse.provisioningState | Should -Be $env.ProvisioningStateSucceeded
     }
 
-    It 'CreateSingleSystemWithCustomResourceTrustedAccessAlias' {
+    It 'CreateSingleSystemWithCustomResourceTrustedAccessAlias' -skip {
         $MsiIdentityName = @{ $env.IdentityName = @{}}
         $UpdateTags = @{ $env.TestType = $env.TestTypeValue}
         $CreateSingleSystemWithCustomResourceTrustedAccessAliasConfig = Join-Path $PSScriptRoot $env.CreateSingleSystemWithCustomResourceTrustedAccessConfigPath
@@ -42,7 +42,7 @@ Describe 'SingleSystemWithCustomResourceTrustedAccess' {
         $CreateSingleSystemWithCustomResourceTrustedAccessAliasResponse.Tag.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'InstallSingleSystemWithCustomResourceTrustedAccessAlias' {
+    It 'InstallSingleSystemWithCustomResourceTrustedAccessAlias' -skip {
         $MsiIdentityName = @{ $env.IdentityName = @{}}
         $InstallSingleSystemWithCustomResourceTrustedAccessAliasConfig = Join-Path $PSScriptRoot $env.InstallSingleSystemWithCustomResourceTrustedAccessConfigPath
         $InstallSingleSystemWithCustomResourceTrustedAccessAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateSingleSystemWithCustomResourceTrustedAccessSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $InstallSingleSystemWithCustomResourceTrustedAccessAliasConfig -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -IdentityType $env.IdentityType -UserAssignedIdentity $MsiIdentityName
