@@ -67,13 +67,14 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 37072829f795ce840b8085035e8adf4721602f34
+commit: 6483dfe96c1a736ce3bc78e5ed4d6d0def271611
 require:
-  - $(this-folder)/../../readme.azure.noprofile.md
+  - $(this-folder)/../../../tools/SwaggerCI/readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dnsresolver/resource-manager/Microsoft.Network/stable/2022-07-01/dnsresolver.json
+  - C:\Git\azure-rest-api-specs\specification\dnsresolver\resource-manager\Microsoft.Network\preview\2023-07-01-preview\dnsresolver.json
+  - C:\Git\azure-rest-api-specs\specification\dnsresolver\resource-manager\Microsoft.Network\preview\2023-07-01-preview\dnsresolverpolicy.json
 
-module-version: 0.2.1
+module-version: 0.2.9
 title: DnsResolver
 subject-prefix: DnsResolver
 

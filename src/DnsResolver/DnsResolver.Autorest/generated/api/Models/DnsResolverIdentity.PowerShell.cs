@@ -129,6 +129,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).VirtualNetworkLinkName = (string) content.GetValueForProperty("VirtualNetworkLinkName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).VirtualNetworkLinkName, global::System.Convert.ToString);
             }
+            if (content.Contains("DnsResolverPolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyName = (string) content.GetValueForProperty("DnsResolverPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DnsSecurityRuleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsSecurityRuleName = (string) content.GetValueForProperty("DnsSecurityRuleName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsSecurityRuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DnsResolverPolicyVirtualNetworkLinkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyVirtualNetworkLinkName = (string) content.GetValueForProperty("DnsResolverPolicyVirtualNetworkLinkName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyVirtualNetworkLinkName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DnsResolverDomainListName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverDomainListName = (string) content.GetValueForProperty("DnsResolverDomainListName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverDomainListName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -185,6 +201,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models
             if (content.Contains("VirtualNetworkLinkName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).VirtualNetworkLinkName = (string) content.GetValueForProperty("VirtualNetworkLinkName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).VirtualNetworkLinkName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DnsResolverPolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyName = (string) content.GetValueForProperty("DnsResolverPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DnsSecurityRuleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsSecurityRuleName = (string) content.GetValueForProperty("DnsSecurityRuleName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsSecurityRuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DnsResolverPolicyVirtualNetworkLinkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyVirtualNetworkLinkName = (string) content.GetValueForProperty("DnsResolverPolicyVirtualNetworkLinkName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverPolicyVirtualNetworkLinkName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DnsResolverDomainListName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverDomainListName = (string) content.GetValueForProperty("DnsResolverDomainListName",((Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentityInternal)this).DnsResolverDomainListName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
