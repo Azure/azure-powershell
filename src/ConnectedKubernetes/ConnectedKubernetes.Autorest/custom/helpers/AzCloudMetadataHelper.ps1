@@ -30,7 +30,7 @@ Function Get-AzCloudMetadata {
 
     try {
         # $Response = Invoke-RestMethod -Uri $MetadataEndpoint -Method Get -StatusCodeVariable StatusCode
-        $cloud = Get-AzureEnvironment -Name $cloudName
+        $cloud = Get-AzEnvironment -Name $cloudName
     }
     catch {
         Write-Error "Failed to request ARM metadata. Error: $_"
