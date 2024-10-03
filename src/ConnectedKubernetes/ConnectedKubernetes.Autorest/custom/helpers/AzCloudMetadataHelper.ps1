@@ -27,6 +27,7 @@ Function Get-AzCloudMetadata {
         throw "Failed to get the current Azure context. Error: $_"
     }
     $cloudName = $context.Environment.Name
+    Write-Debug -Message "cloudName: $cloudName."
 
     try {
         # $Response = Invoke-RestMethod -Uri $MetadataEndpoint -Method Get -StatusCodeVariable StatusCode
