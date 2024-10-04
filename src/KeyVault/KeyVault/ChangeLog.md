@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added Secret URI Parameter to Key Vault Secret Cmdlets [#23053]
 
 ## Version 6.2.0
 * Fixed a parameter validation issue in Set-AzureKeyVaultCertificatePolicy. [#25649]
