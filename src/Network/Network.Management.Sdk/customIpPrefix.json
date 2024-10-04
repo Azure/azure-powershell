@@ -1,0 +1,523 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}": {
+      "delete": {
+        "tags": [
+          "CustomIpPrefixes"
+        ],
+        "operationId": "CustomIPPrefixes_Delete",
+        "description": "Deletes the specified custom IP prefix.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "customIpPrefixName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the CustomIpPrefix."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete custom IP prefix": {
+            "$ref": "./examples/CustomIpPrefixDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "CustomIpPrefixes"
+        ],
+        "operationId": "CustomIPPrefixes_Get",
+        "description": "Gets the specified custom IP prefix in a specified resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "customIpPrefixName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the custom IP prefix."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expands referenced resources."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting CustomIpPrefix resource.",
+            "schema": {
+              "$ref": "#/definitions/CustomIpPrefix"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get custom IP prefix": {
+            "$ref": "./examples/CustomIpPrefixGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CustomIpPrefixes"
+        ],
+        "operationId": "CustomIPPrefixes_CreateOrUpdate",
+        "description": "Creates or updates a custom IP prefix.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "customIpPrefixName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the custom IP prefix."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomIpPrefix"
+            },
+            "description": "Parameters supplied to the create or update custom IP prefix operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create successful. The operation returns the resulting CustomIpPrefix resource.",
+            "schema": {
+              "$ref": "#/definitions/CustomIpPrefix"
+            }
+          },
+          "200": {
+            "description": "Update successful. The operation returns the resulting CustomIpPrefix resource.",
+            "schema": {
+              "$ref": "#/definitions/CustomIpPrefix"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create custom IP prefix allocation method": {
+            "$ref": "./examples/CustomIpPrefixCreateCustomizedValues.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "patch": {
+        "tags": [
+          "CustomIpPrefixes"
+        ],
+        "operationId": "CustomIPPrefixes_UpdateTags",
+        "description": "Updates custom IP prefix tags.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "customIpPrefixName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the custom IP prefix."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update custom IP prefix tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting customIpPrefix resource.",
+            "schema": {
+              "$ref": "#/definitions/CustomIpPrefix"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update public IP address tags": {
+            "$ref": "./examples/CustomIpPrefixUpdateTags.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/customIpPrefixes": {
+      "get": {
+        "tags": [
+          "CustomIpPrefixes"
+        ],
+        "operationId": "CustomIPPrefixes_ListAll",
+        "description": "Gets all the custom IP prefixes in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of CustomIpPrefix resources.",
+            "schema": {
+              "$ref": "#/definitions/CustomIpPrefixListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all custom IP prefixes": {
+            "$ref": "./examples/CustomIpPrefixListAll.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes": {
+      "get": {
+        "tags": [
+          "CustomIpPrefixes"
+        ],
+        "operationId": "CustomIPPrefixes_List",
+        "description": "Gets all custom IP prefixes in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of CustomIpPrefix resources.",
+            "schema": {
+              "$ref": "#/definitions/CustomIpPrefixListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List resource group Custom IP prefixes": {
+            "$ref": "./examples/CustomIpPrefixList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CustomIpPrefixPropertiesFormat": {
+      "properties": {
+        "asn": {
+          "type": "string",
+          "description": "The ASN for CIDR advertising. Should be an integer as string."
+        },
+        "cidr": {
+          "type": "string",
+          "description": "The prefix range in CIDR notation. Should include the start address and the prefix length."
+        },
+        "signedMessage": {
+          "type": "string",
+          "description": "Signed message for WAN validation."
+        },
+        "authorizationMessage": {
+          "type": "string",
+          "description": "Authorization message for WAN validation."
+        },
+        "customIpPrefixParent": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix."
+        },
+        "childCustomIpPrefixes": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "./network.json#/definitions/SubResource"
+          },
+          "description": "The list of all Children for IPv6 /48 CustomIpPrefix."
+        },
+        "commissionedState": {
+          "type": "string",
+          "description": "The commissioned state of the Custom IP Prefix.",
+          "enum": [
+            "Provisioning",
+            "Provisioned",
+            "Commissioning",
+            "CommissionedNoInternetAdvertise",
+            "Commissioned",
+            "Decommissioning",
+            "Deprovisioning",
+            "Deprovisioned"
+          ],
+          "x-ms-enum": {
+            "name": "CommissionedState",
+            "modelAsString": true
+          }
+        },
+        "expressRouteAdvertise": {
+          "type": "boolean",
+          "description": "Whether to do express route advertise."
+        },
+        "geo": {
+          "type": "string",
+          "description": "The Geo for CIDR advertising. Should be an Geo code.",
+          "enum": [
+            "GLOBAL",
+            "AFRI",
+            "APAC",
+            "EURO",
+            "LATAM",
+            "NAM",
+            "ME",
+            "OCEANIA",
+            "AQ"
+          ],
+          "x-ms-enum": {
+            "name": "Geo",
+            "modelAsString": true
+          }
+        },
+        "noInternetAdvertise": {
+          "type": "boolean",
+          "description": "Whether to Advertise the range to Internet."
+        },
+        "prefixType": {
+          "type": "string",
+          "description": "Type of custom IP prefix. Should be Singular, Parent, or Child.",
+          "enum": [
+            "Singular",
+            "Parent",
+            "Child"
+          ],
+          "x-ms-enum": {
+            "name": "CustomIpPrefixType",
+            "modelAsString": true
+          }
+        },
+        "publicIpPrefixes": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "./network.json#/definitions/SubResource"
+          },
+          "description": "The list of all referenced PublicIpPrefixes."
+        },
+        "resourceGuid": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The resource GUID property of the custom IP prefix resource."
+        },
+        "failedReason": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The reason why resource is in failed state."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the custom IP prefix resource."
+        }
+      },
+      "description": "Custom IP prefix properties."
+    },
+    "CustomIpPrefix": {
+      "properties": {
+        "extendedLocation": {
+          "$ref": "./network.json#/definitions/ExtendedLocation",
+          "description": "The extended location of the custom IP prefix."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/CustomIpPrefixPropertiesFormat",
+          "description": "Custom IP prefix properties."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "zones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of availability zones denoting the IP allocated for the resource needs to come from."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "Custom IP prefix resource."
+    },
+    "CustomIpPrefixListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomIpPrefix"
+          },
+          "description": "A list of Custom IP prefixes that exists in a resource group."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListCustomIpPrefixes API service call."
+    }
+  }
+}
+

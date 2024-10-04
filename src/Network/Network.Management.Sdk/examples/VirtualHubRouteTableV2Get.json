@@ -1,0 +1,48 @@
+{
+  "parameters": {
+    "routeTableName": "virtualHubRouteTable1a",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "virtualHubName": "virtualHub1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeTables/virtualHubRouteTable1a",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "name": "virtualHubRouteTable1a",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "routes": [
+            {
+              "destinationType": "CIDR",
+              "destinations": [
+                "20.10.0.0/16",
+                "20.20.0.0/16"
+              ],
+              "nextHopType": "IPAddress",
+              "nextHops": [
+                "10.0.0.68"
+              ]
+            },
+            {
+              "destinationType": "CIDR",
+              "destinations": [
+                "0.0.0.0/0"
+              ],
+              "nextHopType": "IPAddress",
+              "nextHops": [
+                "10.0.0.68"
+              ]
+            }
+          ],
+          "attachedConnections": [
+            "All_Vnets"
+          ]
+        }
+      }
+    }
+  }
+}
+

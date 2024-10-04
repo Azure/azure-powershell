@@ -1,0 +1,71 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkVirtualApplianceName": "nva",
+    "parameters": {
+      "tags": {
+        "key1": "value1",
+        "key2": "value2"
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "nva",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkVirtualAppliances/nva",
+        "type": "Microsoft.Network/networkVirtualAppliances",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "tags": {
+          "key1": "value1",
+          "key2": "value2"
+        },
+        "identity": {
+          "type": "UserAssigned",
+          "userAssignedIdentities": {
+            "/subscriptions/subid/resourcegroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1": {}
+          }
+        },
+        "properties": {
+          "nvaSku": {
+            "vendor": "Cisco SDWAN",
+            "bundledScaleUnit": "1",
+            "marketPlaceVersion": "12.1"
+          },
+          "addressPrefix": "192.168.1.0/16",
+          "virtualHub": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1"
+          },
+          "virtualApplianceSites": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networtkVirtualAppliances/nva/virtualApplianceSites/site1"
+            }
+          ],
+          "provisioningState": "Succeeded",
+          "bootStrapConfigurationBlobs": [
+            "https://csrncvhdstorage1.blob.core.windows.net/csrncvhdstoragecont/csrbootstrapconfig"
+          ],
+          "cloudInitConfigurationBlobs": [
+            "https://csrncvhdstorage1.blob.core.windows.net/csrncvhdstoragecont/csrcloudinitconfig"
+          ],
+          "virtualApplianceAsn": 10000,
+          "virtualApplianceNics": [
+            {
+              "name": "managementNic",
+              "publicIpAddress": "40.30.2.2",
+              "privateIpAddress": "192.168.12.1"
+            },
+            {
+              "name": "privateNic-1",
+              "privateIpAddress": "192.168.12.2"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,42 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "resourceGroupName": "testrg",
+    "virtualNetworkGatewayName": "test-vpn-gateway-1",
+    "api-version": "2024-05-01"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "test-vpn-connection",
+            "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/connections/test-vpn-connection",
+            "etag": "W/\\\"00000000-0000-0000-0000-000000000000\\\"",
+            "type": "Microsoft.Network/connections",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-000000000000",
+              "virtualNetworkGateway1": {
+                "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-1"
+              },
+              "virtualNetworkGateway2": {
+                "id": "/subscriptions/subid/resourceGroups/testrg-2/providers/Microsoft.Network/virtualNetworkGateways/test-vpn-gateway-2"
+              },
+              "connectionType": "Vnet2Vnet",
+              "routingWeight": 22,
+              "enableBgp": true,
+              "usePolicyBasedTrafficSelectors": false,
+              "ipsecPolicies": [],
+              "trafficSelectorPolicies": [],
+              "ingressBytesTransferred": 0,
+              "egressBytesTransferred": 0
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

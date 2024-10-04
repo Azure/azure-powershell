@@ -1,0 +1,13 @@
+{
+  "title": "Delete Subscription Connection to Azure Virtual Network Manager",
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "networkManagerConnectionName": "TestNMConnection"
+  },
+  "responses": {
+    "200": {},
+    "204": {}
+  }
+}
+

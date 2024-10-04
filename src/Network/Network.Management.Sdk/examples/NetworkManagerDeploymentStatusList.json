@@ -1,0 +1,52 @@
+{
+  "title": "Post Azure Virtual Network Manager Deployment Status",
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "resoureGroupSample",
+    "networkManagerName": "testNetworkManager",
+    "parameters": {
+      "regions": [
+        "eastus",
+        "westus"
+      ],
+      "deploymentTypes": [
+        "Connectivity",
+        "AdminPolicy"
+      ],
+      "skipToken": "FakeSkipTokenCode"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "deploymentType": "AdminPolicy",
+            "configurationIds": [
+              "SecConfig1",
+              "SecConfig2"
+            ],
+            "commitTime": "2021-01-26T06:58:50.883Z",
+            "region": "eastus",
+            "deploymentStatus": "Deploying",
+            "errorMessage": ""
+          },
+          {
+            "deploymentType": "Connectivity",
+            "configurationIds": [
+              "ConnConfig1",
+              "ConnConfig2"
+            ],
+            "commitTime": "2021-01-26T06:58:50.883Z",
+            "region": "eastus",
+            "deploymentStatus": "Deployed",
+            "errorMessage": ""
+          }
+        ],
+        "skipToken": "NextFakeSkipTokenCode"
+      }
+    }
+  }
+}
+

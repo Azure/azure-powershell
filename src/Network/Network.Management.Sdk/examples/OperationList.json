@@ -1,0 +1,138 @@
+{
+  "parameters": {
+    "location": "westus",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "Microsoft.Network/localnetworkgateways/read",
+            "display": {
+              "provider": "Microsoft Network",
+              "resource": "LocalNetworkGateway",
+              "operation": "Get LocalNetworkGateway",
+              "description": "Gets LocalNetworkGateway"
+            }
+          },
+          {
+            "name": "Microsoft.Network/localnetworkgateways/write",
+            "display": {
+              "provider": "Microsoft Network",
+              "resource": "LocalNetworkGateway",
+              "operation": "Create or update LocalNetworkGateway",
+              "description": "Creates or updates an existing LocalNetworkGateway"
+            }
+          },
+          {
+            "name": "Microsoft.Network/localnetworkgateways/delete",
+            "display": {
+              "provider": "Microsoft Network",
+              "resource": "LocalNetworkGateway",
+              "operation": "Delete LocalNetworkGateway",
+              "description": "Deletes LocalNetworkGateway"
+            }
+          },
+          {
+            "name": "Microsoft.Network/networkInterfaces/providers/Microsoft.Insights/metricDefinitions/read",
+            "display": {
+              "provider": "Microsoft Network",
+              "resource": "Network Interface metric definition",
+              "operation": "Read Network Interface metric definitions",
+              "description": "Gets available metrics for the Network Interface"
+            },
+            "origin": "system",
+            "properties": {
+              "serviceSpecification": {
+                "metricSpecifications": [
+                  {
+                    "name": "BytesSentRate",
+                    "displayName": "Bytes Sent",
+                    "displayDescription": "Number of bytes the Network Interface sent",
+                    "unit": "Count",
+                    "aggregationType": "Total",
+                    "availabilities": [
+                      {
+                        "timeGrain": "00:01:00",
+                        "retention": "00:00:00",
+                        "blobDuration": "01:00:00"
+                      },
+                      {
+                        "timeGrain": "01:00:00",
+                        "retention": "00:00:00",
+                        "blobDuration": "1.00:00:00"
+                      }
+                    ],
+                    "enableRegionalMdmAccount": false,
+                    "metricFilterPattern": "^__Ready__$",
+                    "fillGapWithZero": false,
+                    "dimensions": [],
+                    "isInternal": false
+                  },
+                  {
+                    "name": "BytesReceivedRate",
+                    "displayName": "Bytes Received",
+                    "displayDescription": "Number of bytes the Network Interface received",
+                    "unit": "Count",
+                    "aggregationType": "Total",
+                    "availabilities": [
+                      {
+                        "timeGrain": "00:01:00",
+                        "retention": "00:00:00",
+                        "blobDuration": "01:00:00"
+                      },
+                      {
+                        "timeGrain": "01:00:00",
+                        "retention": "00:00:00",
+                        "blobDuration": "1.00:00:00"
+                      }
+                    ],
+                    "enableRegionalMdmAccount": false,
+                    "metricFilterPattern": "^__Ready__$",
+                    "fillGapWithZero": false,
+                    "dimensions": [],
+                    "isInternal": false
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "Microsoft.Network/networksecuritygroups/providers/Microsoft.Insights/logDefinitions/read",
+            "display": {
+              "provider": "Microsoft Network",
+              "resource": "Network Security Groups Log Definitions",
+              "operation": "Get Network Security Group Event Log Definitions",
+              "description": "Gets the events for network security group"
+            },
+            "origin": "system",
+            "properties": {
+              "serviceSpecification": {
+                "logSpecifications": [
+                  {
+                    "name": "NetworkSecurityGroupEvent",
+                    "displayName": "Network Security Group Event",
+                    "blobDuration": "PT1H"
+                  },
+                  {
+                    "name": "NetworkSecurityGroupRuleCounter",
+                    "displayName": "Network Security Group Rule Counter",
+                    "blobDuration": "PT1H"
+                  },
+                  {
+                    "name": "NetworkSecurityGroupFlowEvent",
+                    "displayName": "Network Security Group Rule Flow Event",
+                    "blobDuration": "PT1H"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

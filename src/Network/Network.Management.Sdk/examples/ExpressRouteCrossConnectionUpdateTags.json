@@ -1,0 +1,42 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "CrossConnection-SiliconValley",
+    "crossConnectionName": "<circuitServiceKey>",
+    "crossConnectionParameters": {
+      "tags": {
+        "tag1": "value1",
+        "tag2": "value2"
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "er1",
+        "id": "/subscriptions/subid/resourceGroups/CrossConnectionSiliconValley/providers/Microsoft.Network/expressRouteCrossConnections/<circuitServiceKey>",
+        "type": "Microsoft.Network/expressRouteCrossConnections",
+        "location": "brazilsouth",
+        "tags": {
+          "tag1": "value1",
+          "tag2": "value2"
+        },
+        "properties": {
+          "provisioningState": "Failed",
+          "expressRouteCircuit": {
+            "id": "/subscriptions/subid/resourceGroups/ertest/providers/Microsoft.Network/expressRouteCircuits/er1"
+          },
+          "peerings": [],
+          "peeringLocation": "SiliconValley",
+          "bandwidthInMbps": 1000,
+          "primaryAzurePort": "bvtazureixp01",
+          "secondaryAzurePort": "bvtazureixp01",
+          "sTag": 2,
+          "serviceProviderProvisioningState": "NotProvisioned"
+        }
+      }
+    }
+  }
+}
+

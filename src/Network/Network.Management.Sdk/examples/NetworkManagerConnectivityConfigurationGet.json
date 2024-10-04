@@ -1,0 +1,50 @@
+{
+  "title": "Get Azure Virtual Network Manager Connectivity Configuration",
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "myResourceGroup",
+    "networkManagerName": "testNetworkManager",
+    "configurationName": "myTestConnectivityConfig"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "myTestConnectivityConfig",
+        "id": "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkManagers/testNetworkManager/connectivityConfigurations/myTestConnectivityConfig",
+        "type": "Microsoft.Network/networkManagers/connectivityConfigurations",
+        "systemData": {
+          "createdBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "createdByType": "User",
+          "createdAt": "2021-01-11T18:52:27Z",
+          "lastModifiedBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "lastModifiedByType": "User",
+          "lastModifiedAt": "2021-01-11T18:52:27Z"
+        },
+        "properties": {
+          "description": "Sample Configuration",
+          "connectivityTopology": "HubAndSpoke",
+          "hubs": [
+            {
+              "resourceId": "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myHubVnet",
+              "resourceType": "Microsoft.Network/virtualNetworks"
+            }
+          ],
+          "isGlobal": "True",
+          "deleteExistingPeering": "True",
+          "appliesToGroups": [
+            {
+              "networkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkManagers/testNetworkManager/networkGroups/group1",
+              "useHubGateway": "True",
+              "groupConnectivity": "None",
+              "isGlobal": "False"
+            }
+          ],
+          "provisioningState": "Succeeded",
+          "resourceGuid": "00000000-0000-0000-0000-000000000000"
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,22 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "groupName": "rg1",
+    "resourceName": "testCloudService",
+    "singletonResource": "swap"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Compute/cloudServices/testCloudService/providers/Microsoft.Network/cloudServiceSlots/swap",
+        "name": "swap",
+        "type": "Microsoft.Network/cloudServiceSlots",
+        "properties": {
+          "slotType": "Staging"
+        }
+      }
+    }
+  }
+}
+

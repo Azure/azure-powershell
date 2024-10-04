@@ -1,0 +1,18 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "api-version": "2024-05-01",
+    "resourceGroupName": "rg1",
+    "expressRoutePortName": "portName"
+  },
+  "responses": {
+    "200": {},
+    "202": {
+      "headers": {
+        "Azure-AsyncOperation": "<azure-operation-result>"
+      }
+    },
+    "204": {}
+  }
+}
+

@@ -1,0 +1,40 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1",
+    "parameters": {
+      "targetResourceGroupName": "rg2"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "ce592f46-8164-4bf2-ad36-b8e4acf6fb68",
+        "createdDateTime": "2017-08-02T19:31:55.9461781Z",
+        "lastModified": "2017-05-27T00:00:13.2005337Z",
+        "resources": [
+          {
+            "name": "MultiTierApp0",
+            "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/MultiTierApp0",
+            "location": "westus",
+            "associations": [
+              {
+                "name": "appNic0",
+                "resourceId": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/networkInterfaces/appNic0",
+                "associationType": "Contains"
+              },
+              {
+                "name": "appNic10",
+                "resourceId": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/networkInterfaces/appNic10",
+                "associationType": "Contains"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+

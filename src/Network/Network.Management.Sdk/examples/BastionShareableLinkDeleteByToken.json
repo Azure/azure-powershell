@@ -1,0 +1,22 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "bastionHostName": "bastionhosttenant",
+    "bslTokenRequest": {
+      "tokens": [
+        "abcd1234-efgh-hijk-5678-abcdefgh1234",
+        "dcba4321-hgfe-kjih-8765-hgfedcba4321"
+      ]
+    }
+  },
+  "responses": {
+    "202": {
+      "headers": {
+        "location": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/operationResults/{operationId}?api-version={api-version}"
+      }
+    }
+  }
+}
+

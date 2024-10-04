@@ -1,0 +1,27 @@
+{
+  "parameters": {
+    "circuitName": "circuitName",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "MyAuthorization1",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName/authorizations/MyAuthorization1",
+            "etag": "W/\"e33c875f-48df-4a91-b7d3-eb95b5ddbb89\"",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "authorizationKey": "authKey",
+              "authorizationUseStatus": "Available"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

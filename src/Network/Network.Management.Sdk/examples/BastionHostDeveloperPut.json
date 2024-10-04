@@ -1,0 +1,83 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg2",
+    "bastionHostName": "bastionhostdeveloper",
+    "sku": {
+      "name": "Developer"
+    },
+    "parameters": {
+      "properties": {
+        "virtualNetwork": {
+          "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/vnet2"
+        },
+        "networkAcls": {
+          "ipRules": [
+            {
+              "addressPrefix": "1.1.1.1/16"
+            }
+          ]
+        },
+        "ipConfigurations": []
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "bastionhostdeveloper",
+        "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/bastionHosts/bastionhostdeveloper'",
+        "type": "Microsoft.Network/bastionHosts",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "sku": {
+          "name": "Developer"
+        },
+        "properties": {
+          "provisioningState": "Succeeded",
+          "dnsName": "omnibrain.uswest.bastionglobal.azure.com",
+          "virtualNetwork": {
+            "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/vnet2"
+          },
+          "networkAcls": {
+            "ipRules": [
+              {
+                "addressPrefix": "1.1.1.1/16"
+              }
+            ]
+          },
+          "ipConfigurations": []
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "bastionhostdeveloper'",
+        "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/bastionHosts/bastionhostdeveloper'",
+        "type": "Microsoft.Network/bastionHosts",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "sku": {
+          "name": "Developer"
+        },
+        "properties": {
+          "provisioningState": "Succeeded",
+          "dnsName": "omnibrain.uswest.bastionglobal.azure.com",
+          "virtualNetwork": {
+            "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/vnet2"
+          },
+          "networkAcls": {
+            "ipRules": [
+              {
+                "addressPrefix": "1.1.1.1/16"
+              }
+            ]
+          },
+          "ipConfigurations": []
+        }
+      }
+    }
+  }
+}
+

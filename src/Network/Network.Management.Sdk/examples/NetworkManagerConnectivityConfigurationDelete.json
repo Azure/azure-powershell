@@ -1,0 +1,21 @@
+{
+  "title": "Get Azure Virtual Network Manager Connectivity Configuration",
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "myResourceGroup",
+    "networkManagerName": "testNetworkManager",
+    "configurationName": "myTestConnectivityConfig",
+    "force": false
+  },
+  "responses": {
+    "202": {
+      "headers": {
+        "Location": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SampleRG/providers/Microsoft.Network/networkManagers/TestNM/connectivityConfigurations/myTestConnectivityConfig/operationResults/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    },
+    "200": {},
+    "204": {}
+  }
+}
+

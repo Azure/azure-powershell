@@ -1,0 +1,18 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1",
+    "flowLogName": "fl"
+  },
+  "responses": {
+    "204": {},
+    "202": {
+      "headers": {
+        "location": "https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/operationresults/000000000000000000000==?api-version=2024-05-01"
+      }
+    }
+  }
+}
+

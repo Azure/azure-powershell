@@ -1,0 +1,108 @@
+{
+  "parameters": {
+    "gatewayName": "vpngw",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "202": {},
+    "200": {
+      "body": {
+        "name": "vpngw",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnGateways/vpngw",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "type": "Microsoft.Network/vpnGateways",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "virtualHub": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1"
+          },
+          "connections": [
+            {
+              "name": "vpnConnection1",
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnGateways/vpngw/vpnConnections/vpnConnection1",
+              "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "remoteVpnSite": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1"
+                },
+                "connectionStatus": "Connected",
+                "ingressBytesTransferred": 0,
+                "egressBytesTransferred": 0,
+                "routingWeight": 0,
+                "connectionBandwidth": 100,
+                "sharedKey": "key",
+                "enableBgp": false,
+                "useLocalAzureIpAddress": false,
+                "ipsecPolicies": [],
+                "routingConfiguration": {
+                  "associatedRouteTable": {
+                    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                  },
+                  "propagatedRouteTables": {
+                    "labels": [
+                      "label1",
+                      "label2"
+                    ],
+                    "ids": [
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                      },
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable2"
+                      },
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable3"
+                      }
+                    ]
+                  },
+                  "vnetRoutes": {
+                    "staticRoutes": []
+                  }
+                }
+              }
+            }
+          ],
+          "bgpSettings": {
+            "asn": 65514,
+            "bgpPeeringAddress": "10.0.1.30",
+            "peerWeight": 0,
+            "bgpPeeringAddresses": [
+              {
+                "ipconfigurationId": "Instance0",
+                "defaultBgpIpAddresses": [
+                  "10.30.0.4"
+                ],
+                "customBgpIpAddresses": [
+                  "169.254.21.5"
+                ],
+                "tunnelIpAddresses": [
+                  "104.208.48.178"
+                ]
+              },
+              {
+                "ipconfigurationId": "Instance1",
+                "defaultBgpIpAddresses": [
+                  "10.30.0.5"
+                ],
+                "customBgpIpAddresses": [
+                  "169.254.21.10"
+                ],
+                "tunnelIpAddresses": [
+                  "104.208.48.179"
+                ]
+              }
+            ]
+          },
+          "natRules": [],
+          "isRoutingPreferenceInternet": false,
+          "enableBgpRouteTranslationForNat": false
+        }
+      }
+    }
+  }
+}
+

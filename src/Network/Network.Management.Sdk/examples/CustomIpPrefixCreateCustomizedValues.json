@@ -1,0 +1,66 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "customIpPrefixName": "test-customipprefix",
+    "zones": [
+      "1"
+    ],
+    "parameters": {
+      "location": "westus",
+      "properties": {
+        "cidr": "0.0.0.0/24"
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "test-customipprefix",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/customIpPrefixes/test-customipprefix",
+        "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+        "location": "westus",
+        "zones": [
+          "1"
+        ],
+        "properties": {
+          "provisioningState": "Succeeded",
+          "resourceGuid": "00000000-0000-0000-0000-00000000",
+          "cidr": "192.168.254.2/24",
+          "commissionedState": "Provisioning",
+          "signedMessage": "signedMessage",
+          "authorizationMessage": "authorizationMessage",
+          "failedReason": "",
+          "publicIpPrefixes": [],
+          "childCustomIpPrefixes": []
+        },
+        "type": "Microsoft.Network/customIpPrefixes"
+      }
+    },
+    "201": {
+      "body": {
+        "name": "test-customipprefix",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/customIpPrefixes/test-customipprefix",
+        "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+        "location": "westus",
+        "zones": [
+          "1"
+        ],
+        "properties": {
+          "provisioningState": "Succeeded",
+          "resourceGuid": "00000000-0000-0000-0000-00000000",
+          "cidr": "192.168.254.2/24",
+          "commissionedState": "Provisioning",
+          "signedMessage": "signedMessage",
+          "authorizationMessage": "authorizationMessage",
+          "failedReason": "",
+          "publicIpPrefixes": [],
+          "childCustomIpPrefixes": []
+        },
+        "type": "Microsoft.Network/customIpPrefixes"
+      }
+    }
+  }
+}
+

@@ -1,0 +1,41 @@
+{
+  "parameters": {
+    "expressRoutePortName": "expressRoutePortName",
+    "resourceGroupName": "rg1",
+    "authorizationName": "authorizatinName",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "authorizationParameters": {
+      "properties": {}
+    }
+  },
+  "responses": {
+    "201": {
+      "body": {
+        "name": "authorizationName",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/ExpressRoutePorts/expressRoutePortName/authorizations/authorizationName",
+        "etag": "W/\"e22dd4b2-4c24-44cf-b702-70a472b62914\"",
+        "properties": {
+          "provisioningState": "Updating",
+          "authorizationUseStatus": "Available",
+          "circuitResourceUri": ""
+        },
+        "type": "Microsoft.Network/expressRoutePorts/authorizations"
+      }
+    },
+    "200": {
+      "body": {
+        "name": "authorizationName",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/ExpressRoutePorts/expressRoutePortName/authorizations/authorizationName",
+        "etag": "W/\"e22dd4b2-4c24-44cf-b702-70a472b62914\"",
+        "properties": {
+          "provisioningState": "Updating",
+          "authorizationUseStatus": "Available",
+          "circuitResourceUri": ""
+        },
+        "type": "Microsoft.Network/expressRoutePorts/authorizations"
+      }
+    }
+  }
+}
+

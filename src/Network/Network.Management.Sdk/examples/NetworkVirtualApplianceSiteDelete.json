@@ -1,0 +1,24 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "siteName": "site1",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkVirtualApplianceName": "nva"
+  },
+  "responses": {
+    "200": {
+      "description": "Delete successful."
+    },
+    "202": {
+      "description": "Accepted and the operation will complete asynchronously.",
+      "headers": {
+        "location": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/nfvOperations/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    },
+    "204": {
+      "description": "Request successful. Resource with the specified name does not exist."
+    }
+  }
+}
+
