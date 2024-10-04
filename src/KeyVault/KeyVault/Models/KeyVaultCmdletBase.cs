@@ -86,6 +86,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         /// <summary>
+        /// Utility function that will split the Vault secret uri into 
+        /// `vaultName`, `secretName`, `Version`
+        /// </summary>
+        /// <param name="secretUri">The user's input unique resource identifier</param>
+        protected string[] SplitSecretUri(Uri secretUri)
+        {
+            var vaultName = secretUri.Host.Split('.')[0]; // Extract vault name from the URI
+            var secretName = secretUri.Segments[2].TrimEnd('/'); // Extract secret name from the URI
+            var secretversion = secretUri.Segments.Length > 3 ? secretUri.Segments[3] : string.Empty; // Extract secret version (if present)
+
+            return new string[] { vaultName, secretName, secretversion };
+        }
+
+
+        /// <summary>
         /// Utility function that will continually iterate over the updated KeyVaultObjectFilterOptions until the options
         /// NextLink is null, and writes all the retrieved objects.
         /// </summary>

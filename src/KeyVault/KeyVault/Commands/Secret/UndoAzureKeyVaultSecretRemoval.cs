@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string DefaultParameterSet = "Default";
         private const string InputObjectParameterSet = "InputObject";
+        private const string BySecretUriParameterSet = "BySecretUri";
 
         #endregion
 
@@ -56,6 +57,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string Name { get; set; }
 
         /// <summary>
+        /// KeyVault Secret ID (uri of the secret)
+        /// </summary>
+        [Parameter(Mandatory = true,
+           Position = 0,
+           ParameterSetName = BySecretUriParameterSet,
+           HelpMessage = "The URI of the KeyVault Secret.")]
+        [Alias("SecretId")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
+
+        /// <summary>
         /// Deleted secret object
         /// </summary>
         [Parameter(Mandatory = true,
@@ -74,6 +86,15 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 VaultName = InputObject.VaultName;
                 Name = InputObject.Name;
+            }
+
+            if (ParameterSetName == BySecretUriParameterSet)
+            {
+                var secretUri = new Uri(Id);
+                string[] splitUri = SplitSecretUri(secretUri);
+
+                VaultName = splitUri[0];
+                Name = splitUri[1];
             }
 
             if (ShouldProcess(Name, Properties.Resources.RecoverSecret))
