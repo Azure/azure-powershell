@@ -83,6 +83,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ParameterSetName = ByParentResourceIdParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "KeyVault Resource Id")]
+        [Alias("ResourceId")]
         [ValidateNotNullOrEmpty]
         public string ParentResourceId { get; set; }
 
