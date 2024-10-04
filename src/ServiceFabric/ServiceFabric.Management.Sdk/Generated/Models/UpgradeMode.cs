@@ -14,11 +14,15 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
     public static class UpgradeMode
     {
         /// <summary>
-        /// The cluster will be automatically upgraded to the latest Service Fabric runtime version, **upgradeWave** will determine when the upgrade starts after the new version becomes available.
+        /// The cluster will be automatically upgraded to the latest Service Fabric
+        /// runtime version, **upgradeWave** will determine when the upgrade starts
+        /// after the new version becomes available.
         /// </summary>
         public const string Automatic = "Automatic";
         /// <summary>
-        /// The cluster will not be automatically upgraded to the latest Service Fabric runtime version. The cluster is upgraded by setting the **clusterCodeVersion** property in the cluster resource.
+        /// The cluster will not be automatically upgraded to the latest Service Fabric
+        /// runtime version. The cluster is upgraded by setting the
+        /// **clusterCodeVersion** property in the cluster resource.
         /// </summary>
         public const string Manual = "Manual";
     }

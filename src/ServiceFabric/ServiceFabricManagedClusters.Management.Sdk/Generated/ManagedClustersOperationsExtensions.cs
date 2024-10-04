@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     public static partial class ManagedClustersOperationsExtensions
     {
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -27,7 +28,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -46,7 +48,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -57,7 +60,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -73,7 +77,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.
+        /// Get a Service Fabric managed cluster resource created or in the process of
+        /// being created in the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -90,7 +95,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.
+        /// Get a Service Fabric managed cluster resource created or in the process of
+        /// being created in the specified resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -112,7 +118,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Create or update a Service Fabric managed cluster resource with the specified name.
+        /// Create or update a Service Fabric managed cluster resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -129,7 +136,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Create or update a Service Fabric managed cluster resource with the specified name.
+        /// Create or update a Service Fabric managed cluster resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -151,7 +159,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Update the tags of of a Service Fabric managed cluster resource with the specified name.
+        /// Update the tags of of a Service Fabric managed cluster resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -168,7 +177,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Update the tags of of a Service Fabric managed cluster resource with the specified name.
+        /// Update the tags of of a Service Fabric managed cluster resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -201,9 +211,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='clusterName'>
         /// The name of the cluster resource.
         /// </param>
-        public static void Delete(this IManagedClustersOperations operations, string resourceGroupName, string clusterName)
+        public static ManagedClustersDeleteHeaders Delete(this IManagedClustersOperations operations, string resourceGroupName, string clusterName)
         {
-                ((IManagedClustersOperations)operations).DeleteAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
+                return ((IManagedClustersOperations)operations).DeleteAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -221,12 +231,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedClustersDeleteHeaders> DeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Create or update a Service Fabric managed cluster resource with the specified name.
+        /// Create or update a Service Fabric managed cluster resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -243,7 +257,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Create or update a Service Fabric managed cluster resource with the specified name.
+        /// Create or update a Service Fabric managed cluster resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -276,9 +291,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='clusterName'>
         /// The name of the cluster resource.
         /// </param>
-        public static void BeginDelete(this IManagedClustersOperations operations, string resourceGroupName, string clusterName)
+        public static ManagedClustersDeleteHeaders BeginDelete(this IManagedClustersOperations operations, string resourceGroupName, string clusterName)
         {
-                ((IManagedClustersOperations)operations).BeginDeleteAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
+                return ((IManagedClustersOperations)operations).BeginDeleteAsync(resourceGroupName, clusterName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -296,12 +311,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ManagedClustersDeleteHeaders> BeginDeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string clusterName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -315,7 +334,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the resource group.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the resource group.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -334,7 +354,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             }
         }
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -348,7 +369,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         }
 
         /// <summary>
-        /// Gets all Service Fabric cluster resources created or in the process of being created in the subscription.
+        /// Gets all Service Fabric cluster resources created or in the process of
+        /// being created in the subscription.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

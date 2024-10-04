@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="protocol">Network protocol this rule applies to.
-        /// Possible values include: 'http', 'https', 'tcp', 'udp', 'icmp', 'ah', 'esp'</param>
+        /// Possible values include: &#39;http&#39;, &#39;https&#39;, &#39;tcp&#39;, &#39;udp&#39;, &#39;icmp&#39;, &#39;ah&#39;, &#39;esp&#39;</param>
 
         /// <param name="sourceAddressPrefixes">The CIDR or source IP ranges.
         /// </param>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="access">The network traffic is allowed or denied.
-        /// Possible values include: 'allow', 'deny'</param>
+        /// Possible values include: &#39;allow&#39;, &#39;deny&#39;</param>
 
         /// <param name="priority">The priority of the rule. The value can be in the range 1000 to 3000.
         /// Values outside this range are reserved for Service Fabric ManagerCluster
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="direction">Network security rule direction.
-        /// Possible values include: 'inbound', 'outbound'</param>
+        /// Possible values include: &#39;inbound&#39;, &#39;outbound&#39;</param>
         public NetworkSecurityRule(string name, string protocol, string access, int priority, string direction, string description = default(string), System.Collections.Generic.IList<string> sourceAddressPrefixes = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationAddressPrefixes = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> sourcePortRanges = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationPortRanges = default(System.Collections.Generic.IList<string>), string sourceAddressPrefix = default(string), string destinationAddressPrefix = default(string), string sourcePortRange = default(string), string destinationPortRange = default(string))
 
         {
