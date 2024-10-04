@@ -1,0 +1,35 @@
+{
+  "parameters": {
+    "cloudServiceName": "cs1",
+    "resourceGroupName": "cs-tester",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "roleInstanceName": "Test_VM_0",
+    "networkInterfaceName": "nic1",
+    "ipConfigurationName": "ip1",
+    "publicIpAddressName": "pub1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/subid/resourceGroups/cs-tester/providers/Microsoft.Compute/cloudServices/cs1/roleInstances/Test_VM_0/networkInterfaces/nic1/ipConfigurations/ip1/publicIPAddresses/pub1",
+        "name": "pub1",
+        "properties": {
+          "publicIPAllocationMethod": "Dynamic",
+          "publicIPAddressVersion": "IPv4",
+          "ipConfiguration": {
+            "id": "/subscriptions/subid/resourceGroups/cs-tester/providers/Microsoft.Compute/cloudServices/cs1/roleInstances/Test_VM_0/networkInterfaces/nic1/ipConfigurations/ip1"
+          },
+          "dnsSettings": {
+            "domainNameLabel": "vm1.testvmssacc",
+            "fqdn": "vm1.testvmssacc.southeastasia.cloudapp.azure.com"
+          },
+          "ipAddress": "13.67.119.72",
+          "idleTimeoutInMinutes": 10,
+          "provisioningState": "Succeeded"
+        }
+      }
+    }
+  }
+}
+

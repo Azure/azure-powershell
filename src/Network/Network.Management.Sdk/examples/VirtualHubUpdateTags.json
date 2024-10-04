@@ -1,0 +1,49 @@
+{
+  "parameters": {
+    "virtualHubName": "virtualHub2",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "virtualHubParameters": {
+      "tags": {
+        "key1": "value1",
+        "key2": "value2"
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub2",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "name": "virtualHub2",
+        "type": "Microsoft.Network/virtualHubs",
+        "tags": {
+          "key1": "value1",
+          "key2": "value2"
+        },
+        "properties": {
+          "provisioningState": "Succeeded",
+          "virtualWan": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualWans/virtualWan1"
+          },
+          "virtualHubRouteTableV2s": [],
+          "addressPrefix": "10.168.0.0/24",
+          "sku": "Basic",
+          "virtualRouterAsn": 65515,
+          "virtualRouterIps": [
+            "10.10.1.12",
+            "10.10.1.13"
+          ],
+          "allowBranchToBranchTraffic": false,
+          "hubRoutingPreference": "ExpressRoute",
+          "virtualRouterAutoScaleConfiguration": {
+            "minCapacity": 2
+          }
+        }
+      }
+    }
+  }
+}
+

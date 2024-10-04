@@ -1,0 +1,36 @@
+{
+  "parameters": {
+    "VirtualWANName": "wan1",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualWANs/wan1",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "name": "wan1",
+        "type": "Microsoft.Network/virtualWANs",
+        "tags": {
+          "key1": "value1"
+        },
+        "properties": {
+          "provisioningState": "Succeeded",
+          "disableVpnEncryption": false,
+          "virtualHubs": [
+            "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1",
+            "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub2"
+          ],
+          "vpnSites": [
+            "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1",
+            "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite2"
+          ],
+          "type": "Basic"
+        }
+      }
+    }
+  }
+}
+

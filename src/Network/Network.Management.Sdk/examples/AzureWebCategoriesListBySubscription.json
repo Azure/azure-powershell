@@ -1,0 +1,24 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "4de8428a-4a92-4cea-90ff-b47128b8cab8"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "Arts",
+            "id": "/subscriptions/4de8428a-4a92-4cea-90ff-b47128b8cab8/providers/Microsoft.Network/azureWebCategories/Arts",
+            "type": "Microsoft.Network/azureWebCategories",
+            "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+            "properties": {
+              "group": "General"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

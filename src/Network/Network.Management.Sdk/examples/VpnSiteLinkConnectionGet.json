@@ -1,0 +1,49 @@
+{
+  "parameters": {
+    "gatewayName": "gateway1",
+    "connectionName": "vpnConnection1",
+    "linkConnectionName": "Connection-Link1",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "Connection-Link1",
+        "type": "Microsoft.Network/vpnGateways/vpnConnections/VpnSiteLinkConnections",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnGateways/gateway1/vpnConnections/vpnConnection1/VpnSiteLinkConnections/Connection-Link1",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "vpnSiteLink": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1/vpnSiteLinks/siteLink1"
+          },
+          "connectionBandwidth": 200,
+          "ipsecPolicies": [],
+          "vpnConnectionProtocolType": "IKEv2",
+          "sharedKey": "key",
+          "ingressBytesTransferred": 0,
+          "egressBytesTransferred": 0,
+          "enableBgp": false,
+          "vpnGatewayCustomBgpAddresses": [
+            {
+              "ipConfigurationId": "Instance0",
+              "customBgpIpAddress": "169.254.21.1"
+            },
+            {
+              "ipConfigurationId": "Instance1",
+              "customBgpIpAddress": "169.254.21.3"
+            }
+          ],
+          "enableRateLimiting": false,
+          "useLocalAzureIpAddress": false,
+          "usePolicyBasedTrafficSelectors": false,
+          "routingWeight": 0,
+          "dpdTimeoutSeconds": 0
+        }
+      }
+    }
+  }
+}
+

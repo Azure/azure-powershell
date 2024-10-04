@@ -1,0 +1,25 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "location": "regionName",
+    "subscriptionId": "subId"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "privateLinkService": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPls1"
+          },
+          {
+            "privateLinkService": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPls2"
+          },
+          {
+            "privateLinkService": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPls3"
+          }
+        ]
+      }
+    }
+  }
+}
+

@@ -1,0 +1,62 @@
+{
+  "title": "Create/Update Management Group Azure Virtual Network Manager Connection",
+  "parameters": {
+    "api-version": "2024-05-01",
+    "managementGroupId": "managementGroupA",
+    "networkManagerConnectionName": "TestNMConnection",
+    "parameters": {
+      "properties": {
+        "networkManagerId": "/subscriptions/subscriptionC/resourceGroup/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager"
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "headers": {
+        "ETag": "be3cfaa2-3d02-4624-92d7-a26766306c8b"
+      },
+      "body": {
+        "id": "/providers/Microsoft.Management/managementGroups/managementGroupA/providers/Microsoft.Network/networkManagerConnections/TestNMConnection",
+        "type": "Microsoft.Network/networkManagerConnections",
+        "name": "TestNMConnection",
+        "systemData": {
+          "createdBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "createdByType": "User",
+          "createdAt": "2021-01-11T18:52:27Z",
+          "lastModifiedBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "lastModifiedByType": "User",
+          "lastModifiedAt": "2021-01-11T18:52:27Z"
+        },
+        "properties": {
+          "networkManagerId": "/subscriptions/subscriptionC/resourceGroup/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager",
+          "connectionState": "Pending",
+          "description": "This is a network manager connection to testNetworkManager."
+        }
+      }
+    },
+    "201": {
+      "headers": {
+        "ETag": "be3cfaa2-3d02-4624-92d7-a26766306c8b"
+      },
+      "body": {
+        "id": "/managementGroups/managementGroupA/providers/Microsoft.Network/networkManagerConnections/TestNMConnection",
+        "type": "Microsoft.Network/networkManagerConnections",
+        "name": "TestMConnection",
+        "systemData": {
+          "createdBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "createdByType": "User",
+          "createdAt": "2021-01-11T18:52:27Z",
+          "lastModifiedBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "lastModifiedByType": "User",
+          "lastModifiedAt": "2021-01-11T18:52:27Z"
+        },
+        "properties": {
+          "networkManagerId": "/subscriptions/subscriptionC/resourceGroup/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager",
+          "connectionState": "Pending",
+          "description": "This is a network manager connection to testNetworkManager."
+        }
+      }
+    }
+  }
+}
+

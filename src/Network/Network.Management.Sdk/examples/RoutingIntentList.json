@@ -1,0 +1,42 @@
+{
+  "parameters": {
+    "virtualHubName": "virtualHub1",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "Intent1",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routingIntent/Intent1",
+            "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "routingPolicies": [
+                {
+                  "name": "InternetTraffic",
+                  "destinations": [
+                    "Internet"
+                  ],
+                  "nextHop": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azfw1"
+                },
+                {
+                  "name": "PrivateTrafficPolicy",
+                  "destinations": [
+                    "PrivateTraffic"
+                  ],
+                  "nextHop": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azfw1"
+                }
+              ]
+            },
+            "type": "Microsoft.Network/virtualHubs/routingIntent"
+          }
+        ]
+      }
+    }
+  }
+}
+

@@ -1,0 +1,18 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkInterfaceName": "test-nic"
+  },
+  "responses": {
+    "200": {},
+    "202": {
+      "headers": {
+        "Location": "https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/test-nic/operationResults/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    },
+    "204": {}
+  }
+}
+

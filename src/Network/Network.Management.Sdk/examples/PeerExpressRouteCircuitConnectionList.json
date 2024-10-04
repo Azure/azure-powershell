@@ -1,0 +1,54 @@
+{
+  "parameters": {
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid1",
+    "circuitName": "ExpressRouteARMCircuitA",
+    "peeringName": "AzurePrivatePeering"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "60aee347-e889-4a42-8c1b-0aae8b1e4013",
+            "id": "/subscriptions/subid1/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitA/peerings/AzurePrivatePeering/peerConnections/60aee347-e889-4a42-8c1b-0aae8b1e4013",
+            "etag": "W/\"6ffbbb06-da20-44ca-a34f-280c4653b1e9\"",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "expressRouteCircuitPeering": {
+                "id": "/subscriptions/subid1/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitA/peerings/AzurePrivatePeering"
+              },
+              "peerExpressRouteCircuitPeering": {
+                "id": "/subscriptions/subid1/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitB/peerings/AzurePrivatePeering"
+              },
+              "addressPrefix": "20.0.0.0/29",
+              "circuitConnectionStatus": "Connected",
+              "connectionName": "circuitConnectionWestusEastus",
+              "authResourceGuid": ""
+            }
+          },
+          {
+            "name": "c8b17193-8dd3-4f61-866d-8cdd2e2e268e",
+            "id": "/subscriptions/subid1/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitA/peerings/AzurePrivatePeering/peerConnections/c8b17193-8dd3-4f61-866d-8cdd2e2e268e",
+            "etag": "W/\"6ffbbb06-da20-44ca-a34f-280c4653b1e9\"",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "expressRouteCircuitPeering": {
+                "id": "/subscriptions/subid1/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitA/peerings/AzurePrivatePeering"
+              },
+              "peerExpressRouteCircuitPeering": {
+                "id": "/subscriptions/subid2/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuitC/peerings/AzurePrivatePeering"
+              },
+              "addressPrefix": "30.0.0.0/29",
+              "circuitConnectionStatus": "Connected",
+              "connectionName": "circuitConnectionCentralusEastus",
+              "authResourceGuid": "64283012-d377-421d-8398-f6aeb2ac7ea0"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

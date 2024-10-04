@@ -1,0 +1,36 @@
+{
+  "parameters": {
+    "peeringName": "AzurePrivatePeering",
+    "crossConnectionName": "<circuitServiceKey>",
+    "resourceGroupName": "CrossConnection-SiliconValley",
+    "devicePath": "primary",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "neighbor": "10.6.1.112",
+            "asn": 65514,
+            "upDown": "1d14h",
+            "stateOrPrefixesReceived": "Active"
+          },
+          {
+            "neighbor": "10.6.1.113",
+            "asn": 65514,
+            "upDown": "1d14h",
+            "stateOrPrefixesReceived": "1"
+          }
+        ]
+      }
+    },
+    "202": {
+      "headers": {
+        "Azure-AsyncOperation": "<azure-operation-result>"
+      }
+    }
+  }
+}
+

@@ -1,0 +1,53 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1",
+    "flowLogName": "flowLog1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "flowLog1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/тц1/FlowLogs/flowLog1",
+        "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "targetResourceId": "/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Network/networkSecurityGroups/vm5-nsg",
+          "targetResourceGuid": "00000000-0000-0000-0000-000000000000",
+          "storageId": "/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/wzstorage002",
+          "enabled": true,
+          "flowAnalyticsConfiguration": {
+            "networkWatcherFlowAnalyticsConfiguration": {
+              "enabled": false,
+              "workspaceId": "-",
+              "workspaceRegion": "-",
+              "trafficAnalyticsInterval": 60
+            }
+          },
+          "retentionPolicy": {
+            "days": 0,
+            "enabled": false
+          },
+          "format": {
+            "type": "JSON",
+            "version": 2
+          }
+        },
+        "location": "centraluseuap",
+        "type": "Microsoft.Network/networkWatchers/FlowLogs",
+        "identity": {
+          "type": "UserAssigned",
+          "userAssignedIdentities": {
+            "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1": {
+              "clientId": "c16d15e1-f60a-40e4-8a05-df3d3f655c14",
+              "principalId": "e3858881-e40c-43bd-9cde-88da39c05023"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

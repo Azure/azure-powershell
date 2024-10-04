@@ -1,0 +1,14 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualNetworkGatewayName": "vpngw"
+  },
+  "responses": {
+    "200": {
+      "body": "<?xml version=\"1.0\" encoding=\"utf-8\"?><RpVpnDeviceList version=\"1.0\"><Vendor name=\"Cisco\"><DeviceFamily name=\"ISR\"><FirmwareVersion name=\"IOS 15.1 (Preview)\" /></DeviceFamily><DeviceFamily name=\"ASA (Adaptive Security Appliance)\"><FirmwareVersion name=\"ASA_9.8.x_ActivePassive_NoBGP_NoCustomPolicies\"/><FirmwareVersion name=\"ASA_9.8(x)_CustomPolicies\" /></DeviceFamily></Vendor><Vendor name=\"Juniper\"><DeviceFamily name=\"Juniper_SRX_GA\"><FirmwareVersion name=\"Juniper_SRX_12.x_GA\" /></DeviceFamily><DeviceFamily name=\"Juniper_SSG_GA\"><FirmwareVersion name=\"Juniper_SSG_ScreenOS-6.2.x_GA\"/></DeviceFamily><DeviceFamily name=\"Juniper_JSeries_GA\"><FirmwareVersion name=\"Juniper_JSeries_JunOS12.x._GA\" /></DeviceFamily></Vendor><Vendor name=\"Ubiquiti\"><DeviceFamily name=\"EdgeRouter\"><FirmwareVersion name=\"Ubiquiti_EdgeOS_1.10.x-RouteBased_VTI\" /><FirmwareVersionname=\"Ubiquiti_EdgeOS_1.10.x-RouteBased_BGP\" /></DeviceFamily></Vendor></RpVpnDeviceList>"
+    }
+  }
+}
+

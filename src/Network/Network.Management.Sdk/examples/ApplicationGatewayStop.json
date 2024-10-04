@@ -1,0 +1,17 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "applicationGatewayName": "appgw"
+  },
+  "responses": {
+    "200": {},
+    "202": {
+      "headers": {
+        "location": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus2/operationResults/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    }
+  }
+}
+

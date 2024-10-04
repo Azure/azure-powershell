@@ -1,0 +1,24 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualNetworkGatewayConnectionName": "conn1",
+    "parameters": {
+      "keyLength": 128
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "keyLength": 128
+      }
+    },
+    "202": {
+      "headers": {
+        "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/locations/eastus/operations/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    }
+  }
+}
+

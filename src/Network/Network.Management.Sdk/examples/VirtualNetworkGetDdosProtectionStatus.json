@@ -1,0 +1,34 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualNetworkName": "test-vnet",
+    "top": 75
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "publicIpAddressId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/test-pip",
+            "publicIpAddress": "10.0.1.5",
+            "isWorkloadProtected": "True",
+            "ddosProtectionPlanId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/ddosProtectionPlans/test-plan"
+          },
+          {
+            "publicIpAddressId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/test-pip2",
+            "publicIpAddress": "10.0.1.6",
+            "isWorkloadProtected": "False"
+          }
+        ]
+      }
+    },
+    "202": {
+      "headers": {
+        "Location": "https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/ddosProtectionStatus?api-version=2024-05-01"
+      }
+    }
+  }
+}
+

@@ -1,0 +1,57 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "hubName": "virtualRouter1",
+    "connectionName": "peer1"
+  },
+  "responses": {
+    "202": {},
+    "200": {
+      "body": {
+        "RouteServiceRole_IN_0": [
+          {
+            "localAddress": "10.85.3.4",
+            "network": "10.101.0.0/16",
+            "nextHop": "10.85.4.4",
+            "sourcePeer": "10.85.4.4",
+            "origin": "EBgp",
+            "asPath": "65002-65001",
+            "weight": 32768
+          },
+          {
+            "localAddress": "10.85.3.5",
+            "network": "10.101.0.0/16",
+            "nextHop": "10.85.4.4",
+            "sourcePeer": "10.85.4.4",
+            "origin": "EBgp",
+            "asPath": "65002-65001",
+            "weight": 32768
+          }
+        ],
+        "RouteServiceRole_IN_1": [
+          {
+            "localAddress": "10.85.3.4",
+            "network": "10.101.0.0/16",
+            "nextHop": "10.85.4.4",
+            "sourcePeer": "10.85.4.4",
+            "origin": "EBgp",
+            "asPath": "65002-65001",
+            "weight": 32768
+          },
+          {
+            "localAddress": "10.85.3.5",
+            "network": "10.101.0.0/16",
+            "nextHop": "10.85.4.4",
+            "sourcePeer": "10.85.4.4",
+            "origin": "EBgp",
+            "asPath": "65002-65001",
+            "weight": 32768
+          }
+        ]
+      }
+    }
+  }
+}
+

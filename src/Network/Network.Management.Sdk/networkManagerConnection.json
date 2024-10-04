@@ -1,0 +1,427 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ScopeConnections",
+    "description": "The Microsoft Azure Virtual Network Manager API provides a RESTful set of web services that interact with Microsoft Azure Network Manager service to manage your network resources.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerConnectionNameParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        }
+      ],
+      "put": {
+        "tags": [
+          "NetworkManagerConnections"
+        ],
+        "operationId": "SubscriptionNetworkManagerConnections_CreateOrUpdate",
+        "description": "Create a network manager connection on this subscription.",
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerConnection"
+            },
+            "description": "Network manager connection to be created/updated."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated - Returns information about the connection.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerConnection"
+            }
+          },
+          "201": {
+            "description": "Created - Returns information about the connection.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerConnection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create or Update Subscription Network Manager Connection": {
+            "$ref": "./examples/NetworkManagerConnectionSubscriptionPut.json"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "NetworkManagerConnections"
+        ],
+        "operationId": "SubscriptionNetworkManagerConnections_Get",
+        "description": "Get a specified connection created by this subscription.",
+        "responses": {
+          "200": {
+            "description": "OK - Returns the connection.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerConnection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Subscription Network Manager Connection": {
+            "$ref": "./examples/NetworkManagerConnectionSubscriptionGet.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NetworkManagerConnections"
+        ],
+        "operationId": "SubscriptionNetworkManagerConnections_Delete",
+        "description": "Delete specified connection created by this subscription.",
+        "responses": {
+          "200": {
+            "description": "Delete Succeed."
+          },
+          "204": {
+            "description": "Request successful. The resource does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete Subscription Network Manager Connection": {
+            "$ref": "./examples/NetworkManagerConnectionSubscriptionDelete.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagerConnections": {
+      "get": {
+        "tags": [
+          "NetworkManagerConnections"
+        ],
+        "operationId": "SubscriptionNetworkManagerConnections_List",
+        "description": "List all network manager connections created by this subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./networkManager.json#/parameters/ListTopParameter"
+          },
+          {
+            "$ref": "./networkManager.json#/parameters/ListSkipTokenParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - Returns information about the network manager connection(s).",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerConnectionListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "List Subscription Network Manager Connection": {
+            "$ref": "./examples/NetworkManagerConnectionSubscriptionList.json"
+          }
+        }
+      }
+    },
+    "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ManagementGroupIdParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerConnectionNameParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        }
+      ],
+      "put": {
+        "tags": [
+          "NetworkManagerConnections"
+        ],
+        "operationId": "ManagementGroupNetworkManagerConnections_CreateOrUpdate",
+        "description": "Create a network manager connection on this management group.",
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerConnection"
+            },
+            "description": "Network manager connection to be created/updated."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated - Returns information about the connection.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerConnection"
+            }
+          },
+          "201": {
+            "description": "Created - Returns information about the connection.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerConnection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create or Update Management Group Network Manager Connection": {
+            "$ref": "./examples/NetworkManagerConnectionManagementGroupPut.json"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "NetworkManagerConnections"
+        ],
+        "operationId": "ManagementGroupNetworkManagerConnections_Get",
+        "description": "Get a specified connection created by this management group.",
+        "responses": {
+          "200": {
+            "description": "OK - Returns the connection.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerConnection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Management Group Network Manager Connection": {
+            "$ref": "./examples/NetworkManagerConnectionManagementGroupGet.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NetworkManagerConnections"
+        ],
+        "operationId": "ManagementGroupNetworkManagerConnections_Delete",
+        "description": "Delete specified pending connection created by this management group.",
+        "responses": {
+          "200": {
+            "description": "Delete Succeed."
+          },
+          "204": {
+            "description": "Request successful. The resource does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete Management Group Network Manager Connection": {
+            "$ref": "./examples/NetworkManagerConnectionManagementGroupDelete.json"
+          }
+        }
+      }
+    },
+    "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Network/networkManagerConnections": {
+      "get": {
+        "tags": [
+          "NetworkManagerConnections"
+        ],
+        "operationId": "ManagementGroupNetworkManagerConnections_List",
+        "description": "List all network manager connections created by this management group.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ManagementGroupIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./networkManager.json#/parameters/ListTopParameter"
+          },
+          {
+            "$ref": "./networkManager.json#/parameters/ListSkipTokenParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - Returns information about the network manager connection(s).",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerConnectionListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "List Management Group Network Manager Connection": {
+            "$ref": "./examples/NetworkManagerConnectionManagementGroupList.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "NetworkManagerConnection": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/NetworkManagerConnectionProperties",
+          "description": "The scope connection properties"
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "systemData": {
+          "readOnly": true,
+          "description": "The system metadata related to this resource.",
+          "$ref": "./network.json#/definitions/SystemData"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/ChildResource"
+        }
+      ],
+      "description": "The Network Manager Connection resource"
+    },
+    "NetworkManagerConnectionProperties": {
+      "type": "object",
+      "properties": {
+        "networkManagerId": {
+          "type": "string",
+          "description": "Network Manager Id."
+        },
+        "connectionState": {
+          "x-ms-client-flatten": true,
+          "$ref": "./networkManagerScopeConnection.json#/definitions/ConnectionState",
+          "description": "Connection state."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the network manager connection."
+        }
+      },
+      "description": "Information about the network manager connection."
+    },
+    "NetworkManagerConnectionListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkManagerConnection"
+          },
+          "description": "List of network manager connections."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Gets the URL to get the next page of results."
+        }
+      },
+      "description": "List of network manager connections."
+    }
+  },
+  "parameters": {
+    "ManagementGroupIdParameter": {
+      "name": "managementGroupId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The management group Id which uniquely identify the Microsoft Azure management group.",
+      "x-ms-parameter-location": "method"
+    },
+    "NetworkManagerConnectionNameParameter": {
+      "name": "networkManagerConnectionName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "Name for the network manager connection.",
+      "x-ms-parameter-location": "method"
+    }
+  }
+}
+

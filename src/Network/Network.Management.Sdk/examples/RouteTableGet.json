@@ -1,0 +1,34 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "routeTableName": "testrt"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "testrt",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/routeTables/testrt",
+        "type": "Microsoft.Network/routeTables",
+        "location": "westus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "disableBgpRoutePropagation": false,
+          "routes": [
+            {
+              "name": "route1",
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/routeTables/testrt/routes/route1",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "addressPrefix": "10.0.3.0/24",
+                "nextHopType": "VirtualNetworkGateway"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

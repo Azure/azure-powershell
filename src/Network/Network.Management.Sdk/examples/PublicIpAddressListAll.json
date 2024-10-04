@@ -1,0 +1,80 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "testDNS-ip",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/testDNS-ip",
+            "location": "westus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "publicIPAddressVersion": "IPv4",
+              "publicIPAllocationMethod": "Dynamic",
+              "idleTimeoutInMinutes": 4,
+              "ipConfiguration": {
+                "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/testDNS649/ipConfigurations/ipconfig1"
+              },
+              "ddosSettings": {
+                "protectionMode": "VirtualNetworkInherited"
+              }
+            },
+            "type": "Microsoft.Network/publicIPAddresses"
+          },
+          {
+            "name": "ip01",
+            "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/publicIPAddresses/ip01",
+            "location": "westus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "ipAddress": "40.85.154.247",
+              "publicIPAddressVersion": "IPv4",
+              "publicIPAllocationMethod": "Dynamic",
+              "idleTimeoutInMinutes": 4,
+              "dnsSettings": {
+                "domainNameLabel": "testlbl",
+                "fqdn": "testlbl.westus.cloudapp.azure.com"
+              },
+              "ipConfiguration": {
+                "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/loadBalancers/testLb/frontendIPConfigurations/LoadBalancerFrontEnd"
+              },
+              "ddosSettings": {
+                "protectionMode": "VirtualNetworkInherited"
+              }
+            },
+            "type": "Microsoft.Network/publicIPAddresses"
+          },
+          {
+            "name": "ip02",
+            "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/publicIPAddresses/ip02",
+            "location": "westus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "ipAddress": "40.85.154.248",
+              "publicIPAddressVersion": "IPv4",
+              "publicIPAllocationMethod": "Dynamic",
+              "idleTimeoutInMinutes": 4,
+              "dnsSettings": {
+                "domainNameLabel": "testlbl",
+                "domainNameLabelScope": "TenantReuse",
+                "fqdn": "testlbl.hxdwgjcdfgbhgebs.eastus.sysgen.cloudapp.azure.com"
+              },
+              "ipConfiguration": {
+                "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/loadBalancers/testLb/frontendIPConfigurations/LoadBalancerFrontEnd"
+              },
+              "ddosSettings": {
+                "protectionMode": "VirtualNetworkInherited"
+              }
+            },
+            "type": "Microsoft.Network/publicIPAddresses"
+          }
+        ]
+      }
+    }
+  }
+}
+

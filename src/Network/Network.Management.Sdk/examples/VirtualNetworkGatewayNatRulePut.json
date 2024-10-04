@@ -1,0 +1,81 @@
+{
+  "parameters": {
+    "natRuleName": "natRule1",
+    "virtualNetworkGatewayName": "gateway1",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "NatRuleParameters": {
+      "properties": {
+        "type": "Static",
+        "mode": "EgressSnat",
+        "ipConfigurationId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/gateway1/ipConfigurations/default",
+        "internalMappings": [
+          {
+            "addressSpace": "10.4.0.0/24",
+            "portRange": "200-300"
+          }
+        ],
+        "externalMappings": [
+          {
+            "addressSpace": "192.168.21.0/24",
+            "portRange": "300-400"
+          }
+        ]
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "natRule1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/gateway1/natRules/natRule1",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "type": "Static",
+          "mode": "EgressSnat",
+          "ipConfigurationId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/gateway1/ipConfigurations/default",
+          "internalMappings": [
+            {
+              "addressSpace": "10.4.0.0/24",
+              "portRange": "200-300"
+            }
+          ],
+          "externalMappings": [
+            {
+              "addressSpace": "192.168.21.0/24",
+              "portRange": "300-400"
+            }
+          ]
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "natRule1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/gateway1/natRules/natRule1",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "type": "Static",
+          "mode": "EgressSnat",
+          "ipConfigurationId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/gateway1/ipConfigurations/default",
+          "internalMappings": [
+            {
+              "addressSpace": "10.4.0.0/24",
+              "portRange": "200-300"
+            }
+          ],
+          "externalMappings": [
+            {
+              "addressSpace": "192.168.21.0/24",
+              "portRange": "300-400"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

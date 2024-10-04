@@ -1,0 +1,258 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/applicationGatewayWafDynamicManifests/dafault": {
+      "get": {
+        "operationId": "ApplicationGatewayWafDynamicManifestsDefault_Get",
+        "description": "Gets the regional application gateway waf manifest.",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The region where the nrp are located at."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. Returns the regional application gateway waf manifest",
+            "schema": {
+              "$ref": "#/definitions/ApplicationGatewayWafDynamicManifestResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Gets WAF default manifest": {
+            "$ref": "./examples/GetApplicationGatewayWafDynamicManifestsDefault.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/applicationGatewayWafDynamicManifests": {
+      "get": {
+        "operationId": "ApplicationGatewayWafDynamicManifests_Get",
+        "description": "Gets the regional application gateway waf manifest.",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The region where the nrp are located at."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. Returns the regional application gateway waf manifest",
+            "schema": {
+              "$ref": "#/definitions/ApplicationGatewayWafDynamicManifestResultList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Gets WAF manifests": {
+            "$ref": "./examples/GetApplicationGatewayWafDynamicManifests.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ApplicationGatewayWafDynamicManifestResultList": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApplicationGatewayWafDynamicManifestResult"
+          },
+          "description": "The list of application gateway waf manifest."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to get the next set of results."
+        }
+      },
+      "type": "object",
+      "description": "Response for ApplicationGatewayWafDynamicManifests API service call."
+    },
+    "ApplicationGatewayWafDynamicManifestResult": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource ID."
+        },
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource name."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource type."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ApplicationGatewayWafDynamicManifestPropertiesResult",
+          "description": "Properties of the ApplicationGatewayWafDynamicManifest ."
+        }
+      },
+      "type": "object",
+      "description": "Response for ApplicationGatewayWafDynamicManifest API service call."
+    },
+    "ApplicationGatewayWafDynamicManifestPropertiesResult": {
+      "description": "Properties of ApplicationGatewayWafDynamicManifest.",
+      "type": "object",
+      "properties": {
+        "defaultRuleSet": {
+          "description": "The default ruleset.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/DefaultRuleSetPropertyFormat"
+        },
+        "availableRuleSets": {
+          "description": "The available rulesets.",
+          "x-ms-client-flatten": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApplicationGatewayFirewallManifestRuleSet"
+          },
+          "x-ms-identifiers": []
+        }
+      }
+    },
+    "DefaultRuleSetPropertyFormat": {
+      "description": "the default web application firewall rule set.",
+      "type": "object",
+      "properties": {
+        "ruleSetType": {
+          "description": "The type of the web application firewall rule set.",
+          "type": "string"
+        },
+        "ruleSetVersion": {
+          "description": "The version of the web application firewall rule set type.",
+          "type": "string"
+        }
+      }
+    },
+    "ApplicationGatewayFirewallManifestRuleSet": {
+      "description": "Properties of the web application firewall rule set.",
+      "type": "object",
+      "properties": {
+        "ruleSetType": {
+          "type": "string",
+          "description": "The type of the web application firewall rule set."
+        },
+        "ruleSetVersion": {
+          "type": "string",
+          "description": "The version of the web application firewall rule set type."
+        },
+        "status": {
+          "type": "string",
+          "description": "The rule set status",
+          "enum": [
+            "Preview",
+            "GA",
+            "Supported",
+            "Deprecated"
+          ],
+          "x-ms-enum": {
+            "name": "ApplicationGatewayRuleSetStatusOptions",
+            "modelAsString": true
+          }
+        },
+        "tiers": {
+          "type": "array",
+          "description": "Tier of an application gateway that support the rule set.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Standard",
+              "WAF",
+              "Standard_v2",
+              "WAF_v2"
+            ],
+            "x-ms-enum": {
+              "name": "ApplicationGatewayTierTypes",
+              "modelAsString": true
+            }
+          }
+        },
+        "ruleGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "applicationGateway.json#/definitions/ApplicationGatewayFirewallRuleGroup"
+          },
+          "description": "The rule groups of the web application firewall rule set.",
+          "x-ms-identifiers": []
+        }
+      },
+      "required": [
+        "ruleSetType",
+        "ruleSetVersion",
+        "ruleGroups"
+      ]
+    }
+  }
+}
+

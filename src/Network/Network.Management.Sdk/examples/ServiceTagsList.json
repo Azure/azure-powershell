@@ -1,0 +1,90 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "location": "westcentralus",
+    "subscriptionId": "subId"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "public",
+        "id": "/subscriptions/subId/providers/Microsoft.Network/serviceTags/public",
+        "type": "Microsoft.Network/serviceTags",
+        "changeNumber": "63",
+        "cloud": "Public",
+        "values": [
+          {
+            "name": "ApiManagement",
+            "id": "ApiManagement",
+            "properties": {
+              "changeNumber": "7",
+              "region": "",
+              "systemService": "AzureApiManagement",
+              "addressPrefixes": [
+                "13.64.39.16/32",
+                "40.74.146.80/31",
+                "40.74.147.32/28"
+              ]
+            }
+          },
+          {
+            "name": "ApiManagement.AustraliaCentral",
+            "id": "ApiManagement.AustraliaCentral",
+            "properties": {
+              "changeNumber": "2",
+              "region": "australiacentral",
+              "systemService": "AzureApiManagement",
+              "addressPrefixes": [
+                "20.36.106.68/31",
+                "20.36.107.176/28"
+              ]
+            }
+          },
+          {
+            "name": "AppService",
+            "id": "AppService",
+            "properties": {
+              "changeNumber": "13",
+              "region": "",
+              "systemService": "AzureAppService",
+              "addressPrefixes": [
+                "13.64.73.110/32",
+                "191.235.208.12/32",
+                "191.235.215.184/32"
+              ]
+            }
+          },
+          {
+            "name": "ServiceBus",
+            "id": "ServiceBus",
+            "properties": {
+              "changeNumber": "10",
+              "region": "",
+              "systemService": "AzureServiceBus",
+              "addressPrefixes": [
+                "23.98.82.96/29",
+                "40.68.127.68/32",
+                "40.70.146.64/29"
+              ]
+            }
+          },
+          {
+            "name": "ServiceBus.EastUS2",
+            "id": "ServiceBus.EastUS2",
+            "properties": {
+              "changeNumber": "1",
+              "region": "eastus2",
+              "systemService": "AzureServiceBus",
+              "addressPrefixes": [
+                "13.68.110.36/32",
+                "40.70.146.64/29"
+              ]
+            }
+          }
+        ],
+        "nextLink": "https://management.azure.com/subscriptions/subid/providers/Microsoft.Network/locations/centraluseuap/serviceTags?api-version=2020-06-01&changenumber=changenumber&$skipToken={skipToken}"
+      }
+    }
+  }
+}
+

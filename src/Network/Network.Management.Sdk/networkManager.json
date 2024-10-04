@@ -1,0 +1,754 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManager",
+    "description": "The Microsoft Azure Virtual Network Manager API provides a RESTful set of web services that interact with Microsoft Azure Network Manager service to manage your network resources.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerNameParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        }
+      ],
+      "get": {
+        "tags": [
+          "NetworkManagers"
+        ],
+        "operationId": "NetworkManagers_Get",
+        "description": "Gets the specified Network Manager.",
+        "responses": {
+          "200": {
+            "description": "OK - Returns information about the network manager.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManager"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "NetworkManagersGet": {
+            "$ref": "./examples/NetworkManagerGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NetworkManagers"
+        ],
+        "operationId": "NetworkManagers_CreateOrUpdate",
+        "description": "Creates or updates a Network Manager.",
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NetworkManager"
+            },
+            "description": "Parameters supplied to specify which network manager is."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated - Returns information about the network manager.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManager"
+            }
+          },
+          "201": {
+            "description": "Created - Returns information about the network manager.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManager"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Put Network Manager": {
+            "$ref": "./examples/NetworkManagerPut.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NetworkManagers"
+        ],
+        "operationId": "NetworkManagers_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ForceDeleteParameter"
+          }
+        ],
+        "description": "Deletes a network manager.",
+        "responses": {
+          "200": {
+            "description": "Delete Succeed."
+          },
+          "202": {
+            "description": "Accepted and will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "Request successful. The resource does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "NetworkManagersDelete": {
+            "$ref": "./examples/NetworkManagerDelete.json"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "NetworkManagers"
+        ],
+        "operationId": "NetworkManagers_Patch",
+        "description": "Patch NetworkManager.",
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PatchObject"
+            },
+            "description": "Parameters supplied to specify which network manager is."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated - Returns information about the network manager.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManager"
+            }
+          },
+          "default": {
+            "description": "Resource Provider error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "NetworkManagesPatch": {
+            "$ref": "./examples/NetworkManagerPatch.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/commit": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerNameParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        }
+      ],
+      "post": {
+        "tags": [
+          "NetworkManagers"
+        ],
+        "operationId": "NetworkManagerCommits_Post",
+        "description": "Post a Network Manager Commit.",
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerCommit"
+            },
+            "description": "Parameters supplied to specify which Managed Network commit is."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Succeed.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerCommit"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerCommit"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "NetworkManageCommitPost": {
+            "$ref": "./examples/NetworkManagerCommitPost.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/listDeploymentStatus": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerNameParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        },
+        {
+          "$ref": "#/parameters/ListTopParameter"
+        }
+      ],
+      "post": {
+        "tags": [
+          "NetworkManagers"
+        ],
+        "operationId": "NetworkManagerDeploymentStatus_List",
+        "description": "Post to List of Network Manager Deployment Status.",
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerDeploymentStatusParameter"
+            },
+            "description": "Parameters supplied to specify which Managed Network deployment status is."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - Returns a list of deployment status.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerDeploymentStatusListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "NetworkManagerDeploymentStatusList": {
+            "$ref": "./examples/NetworkManagerDeploymentStatusList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagers": {
+      "get": {
+        "tags": [
+          "NetworkManagers"
+        ],
+        "operationId": "NetworkManagers_ListBySubscription",
+        "description": "List all network managers in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/ListTopParameter"
+          },
+          {
+            "$ref": "#/parameters/ListSkipTokenParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - Returns information about the network managers.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "NetworkManagersList": {
+            "$ref": "./examples/NetworkManagerListAll.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers": {
+      "get": {
+        "tags": [
+          "NetworkManagers"
+        ],
+        "operationId": "NetworkManagers_List",
+        "description": "List network managers in a resource group.",
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/ListTopParameter"
+          },
+          {
+            "$ref": "#/parameters/ListSkipTokenParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - Returns a list of network managers.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List Network Manager": {
+            "$ref": "./examples/NetworkManagerList.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "NetworkManager": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/NetworkManagerProperties",
+          "description": "The network manager properties"
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "systemData": {
+          "readOnly": true,
+          "description": "The system metadata related to this resource.",
+          "$ref": "./network.json#/definitions/SystemData"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "The Managed Network resource"
+    },
+    "NetworkManagerListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkManager"
+          },
+          "description": "Gets a page of NetworkManager"
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Gets the URL to get the next page of results."
+        }
+      },
+      "description": "Result of the request to list NetworkManager. It contains a list of network managers and a URL link to get the next set of results."
+    },
+    "NetworkManagerProperties": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "A description of the network manager."
+        },
+        "networkManagerScopes": {
+          "type": "object",
+          "properties": {
+            "managementGroups": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of management groups."
+            },
+            "subscriptions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "List of subscriptions."
+            },
+            "crossTenantScopes": {
+              "readOnly": true,
+              "type": "array",
+              "x-ms-identifiers": [],
+              "items": {
+                "$ref": "#/definitions/CrossTenantScopes"
+              },
+              "description": "List of cross tenant scopes."
+            }
+          },
+          "description": "Scope of Network Manager."
+        },
+        "networkManagerScopeAccesses": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "$ref": "#/definitions/ConfigurationType"
+          },
+          "description": "Scope Access."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the network manager resource."
+        },
+        "resourceGuid": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Unique identifier for this resource."
+        }
+      },
+      "required": [
+        "networkManagerScopes",
+        "networkManagerScopeAccesses"
+      ],
+      "description": "Properties of Managed Network"
+    },
+    "CrossTenantScopes": {
+      "type": "object",
+      "properties": {
+        "tenantId": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Tenant ID."
+        },
+        "managementGroups": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "type": "string"
+          },
+          "description": "List of management groups."
+        },
+        "subscriptions": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "type": "string"
+          },
+          "description": "List of subscriptions."
+        }
+      },
+      "description": "Cross tenant scopes."
+    },
+    "NetworkManagerCommit": {
+      "type": "object",
+      "properties": {
+        "commitId": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Commit Id."
+        },
+        "targetLocations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of target locations."
+        },
+        "configurationIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of configuration ids."
+        },
+        "commitType": {
+          "type": "string",
+          "$ref": "#/definitions/ConfigurationType",
+          "description": "Commit Type."
+        }
+      },
+      "required": [
+        "targetLocations",
+        "commitType"
+      ],
+      "description": "Network Manager Commit."
+    },
+    "PatchObject": {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Resource tags."
+        }
+      },
+      "description": "Object for patch operations."
+    },
+    "NetworkManagerDeploymentStatusParameter": {
+      "type": "object",
+      "properties": {
+        "regions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of locations."
+        },
+        "deploymentTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConfigurationType"
+          },
+          "description": "List of deployment types."
+        },
+        "skipToken": {
+          "description": "Continuation token for pagination, capturing the next page size and offset, as well as the context of the query.",
+          "type": "string"
+        }
+      },
+      "description": "Network Manager Deployment Status Parameter."
+    },
+    "NetworkManagerDeploymentStatusListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "x-ms-identifiers": [],
+          "items": {
+            "$ref": "#/definitions/NetworkManagerDeploymentStatus"
+          },
+          "description": "Gets a page of Network Manager Deployment Status"
+        },
+        "skipToken": {
+          "description": "When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.",
+          "type": "string"
+        }
+      },
+      "description": "A list of Network Manager Deployment Status"
+    },
+    "NetworkManagerDeploymentStatus": {
+      "type": "object",
+      "properties": {
+        "commitTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Commit Time."
+        },
+        "region": {
+          "type": "string",
+          "description": "Region Name."
+        },
+        "deploymentStatus": {
+          "type": "string",
+          "enum": [
+            "NotStarted",
+            "Deploying",
+            "Deployed",
+            "Failed"
+          ],
+          "x-ms-enum": {
+            "name": "DeploymentStatus",
+            "modelAsString": true
+          },
+          "description": "Deployment Status."
+        },
+        "configurationIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of configuration ids."
+        },
+        "deploymentType": {
+          "type": "string",
+          "$ref": "#/definitions/ConfigurationType"
+        },
+        "errorMessage": {
+          "type": "string",
+          "description": "Error Message."
+        }
+      },
+      "description": "Network Manager Deployment Status."
+    },
+    "ConfigurationType": {
+      "type": "string",
+      "enum": [
+        "SecurityAdmin",
+        "Connectivity"
+      ],
+      "x-ms-enum": {
+        "name": "ConfigurationType",
+        "modelAsString": true
+      },
+      "description": "Configuration Deployment Type."
+    }
+  },
+  "parameters": {
+    "ResourceGroupNameParameter": {
+      "name": "resourceGroupName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the resource group.",
+      "x-ms-parameter-location": "method"
+    },
+    "NetworkManagerNameParameter": {
+      "name": "networkManagerName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the network manager.",
+      "x-ms-parameter-location": "method"
+    },
+    "OperationResultIdParameter": {
+      "name": "operationResultId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The id of operation Result.",
+      "x-ms-parameter-location": "method"
+    },
+    "ListTopParameter": {
+      "name": "$top",
+      "description": "An optional query parameter which specifies the maximum number of records to be returned by the server.",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "minimum": 1,
+      "maximum": 20,
+      "x-ms-parameter-location": "method"
+    },
+    "ListSkipTokenParameter": {
+      "name": "$skipToken",
+      "description": "SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "ForceDeleteParameter": {
+      "name": "force",
+      "in": "query",
+      "required": false,
+      "type": "boolean",
+      "description": "Deletes the resource even if it is part of a deployed configuration. If the configuration has been deployed, the service will do a cleanup deployment in the background, prior to the delete.",
+      "x-ms-parameter-location": "method"
+    }
+  }
+}
+

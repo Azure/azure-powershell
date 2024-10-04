@@ -1,0 +1,25 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "groupName": "rg1",
+    "loadBalancerName": "lb1",
+    "parameters": {
+      "pools": [
+        "pool1",
+        "pool2"
+      ]
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "migratedPools": [
+          "pool1",
+          "pool2"
+        ]
+      }
+    }
+  }
+}
+

@@ -1,0 +1,41 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "natGatewayName": "test-natGateway"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "test-natGateway",
+        "sku": {
+          "name": "Standard"
+        },
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/natGateways/test-natGateway",
+        "location": "westus",
+        "properties": {
+          "idleTimeoutInMinutes": 5,
+          "provisioningState": "Succeeded",
+          "publicIpAddresses": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/PublicIpAddress1"
+            }
+          ],
+          "publicIpPrefixes": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPPrefixes/PublicIpPrefix1"
+            }
+          ],
+          "subnets": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1"
+            }
+          ]
+        },
+        "type": "Microsoft.Network/natGateways"
+      }
+    }
+  }
+}
+

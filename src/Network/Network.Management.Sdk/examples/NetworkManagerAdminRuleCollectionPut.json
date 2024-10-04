@@ -1,0 +1,72 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "rg1",
+    "networkManagerName": "testNetworkManager",
+    "configurationName": "myTestSecurityConfig",
+    "ruleCollectionName": "testRuleCollection",
+    "ruleCollection": {
+      "properties": {
+        "description": "A sample policy",
+        "appliesToGroups": [
+          {
+            "networkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/networkGroups/testGroup"
+          }
+        ]
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkManager/testNetworkManager/securityAdminConfigurations/myTestSecurityConfig/ruleCollections/testRuleCollection",
+        "name": "myTestSecurityConfig",
+        "type": "Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections",
+        "systemData": {
+          "createdBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "createdByType": "User",
+          "createdAt": "2021-01-11T18:52:27Z",
+          "lastModifiedBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "lastModifiedByType": "User",
+          "lastModifiedAt": "2021-01-11T18:52:27Z"
+        },
+        "properties": {
+          "description": "A sample policy",
+          "provisioningState": "Succeeded",
+          "resourceGuid": "00000000-0000-0000-0000-000000000000",
+          "appliesToGroups": [
+            {
+              "networkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/networkGroups/testGroup"
+            }
+          ]
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkManager/testNetworkManager/securityConfigurations/myTestSecurityConfig",
+        "name": "myTestSecurityConfig",
+        "type": "Microsoft.Network/networkManagers/securityAdminConfigurations",
+        "systemData": {
+          "createdBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "createdByType": "User",
+          "createdAt": "2021-01-11T18:52:27Z",
+          "lastModifiedBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "lastModifiedByType": "User",
+          "lastModifiedAt": "2021-01-11T18:52:27Z"
+        },
+        "properties": {
+          "description": "A sample policy",
+          "provisioningState": "Succeeded",
+          "appliesToGroups": [
+            {
+              "networkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/networkGroups/testGroup"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

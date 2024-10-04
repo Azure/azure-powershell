@@ -1,0 +1,44 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "publicIpAddressName": "testDNS-ip"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "testDNS-ip",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/testDNS-ip",
+        "location": "westus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "publicIPAddressVersion": "IPv4",
+          "publicIPAllocationMethod": "Dynamic",
+          "idleTimeoutInMinutes": 4,
+          "ipConfiguration": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/testDNS649/ipConfigurations/ipconfig1"
+          },
+          "ddosSettings": {
+            "protectionMode": "Enabled",
+            "ddosProtectionPlan": {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/ddosProtectionPlans/test-plan"
+            }
+          },
+          "ipTags": [
+            {
+              "ipTagType": "FirstPartyUsage",
+              "tag": "SQL"
+            },
+            {
+              "ipTagType": "FirstPartyUsage",
+              "tag": "Storage"
+            }
+          ]
+        },
+        "type": "Microsoft.Network/publicIPAddresses"
+      }
+    }
+  }
+}
+

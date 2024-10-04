@@ -1,0 +1,510 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIpPrefixName}": {
+      "delete": {
+        "tags": [
+          "PublicIPPrefixes"
+        ],
+        "operationId": "PublicIPPrefixes_Delete",
+        "description": "Deletes the specified public IP prefix.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "publicIpPrefixName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the PublicIpPrefix."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete public IP prefix": {
+            "$ref": "./examples/PublicIpPrefixDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "PublicIPPrefixes"
+        ],
+        "operationId": "PublicIPPrefixes_Get",
+        "description": "Gets the specified public IP prefix in a specified resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "publicIpPrefixName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the public IP prefix."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expands referenced resources."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting PublicIPPrefix resource.",
+            "schema": {
+              "$ref": "#/definitions/PublicIPPrefix"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get public IP prefix": {
+            "$ref": "./examples/PublicIpPrefixGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PublicIPPrefixes"
+        ],
+        "operationId": "PublicIPPrefixes_CreateOrUpdate",
+        "description": "Creates or updates a static or dynamic public IP prefix.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "publicIpPrefixName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the public IP prefix."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PublicIPPrefix"
+            },
+            "description": "Parameters supplied to the create or update public IP prefix operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create successful. The operation returns the resulting PublicIPPrefix resource.",
+            "schema": {
+              "$ref": "#/definitions/PublicIPPrefix"
+            }
+          },
+          "200": {
+            "description": "Update successful. The operation returns the resulting PublicIPPrefix resource.",
+            "schema": {
+              "$ref": "#/definitions/PublicIPPrefix"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create public IP prefix defaults": {
+            "$ref": "./examples/PublicIpPrefixCreateDefaults.json"
+          },
+          "Create public IP prefix allocation method": {
+            "$ref": "./examples/PublicIpPrefixCreateCustomizedValues.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "patch": {
+        "tags": [
+          "PublicIPPrefixes"
+        ],
+        "operationId": "PublicIPPrefixes_UpdateTags",
+        "description": "Updates public IP prefix tags.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "publicIpPrefixName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the public IP prefix."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update public IP prefix tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting PublicIPPrefix resource.",
+            "schema": {
+              "$ref": "#/definitions/PublicIPPrefix"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update public IP prefix tags": {
+            "$ref": "./examples/PublicIpPrefixUpdateTags.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/publicIPPrefixes": {
+      "get": {
+        "tags": [
+          "PublicIPPrefixes"
+        ],
+        "operationId": "PublicIPPrefixes_ListAll",
+        "description": "Gets all the public IP prefixes in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of PublicIPPrefix resources.",
+            "schema": {
+              "$ref": "#/definitions/PublicIPPrefixListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all public IP prefixes": {
+            "$ref": "./examples/PublicIpPrefixListAll.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes": {
+      "get": {
+        "tags": [
+          "PublicIPPrefixes"
+        ],
+        "operationId": "PublicIPPrefixes_List",
+        "description": "Gets all public IP prefixes in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of PublicIPPrefix resources.",
+            "schema": {
+              "$ref": "#/definitions/PublicIPPrefixListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List resource group public IP prefixes": {
+            "$ref": "./examples/PublicIpPrefixList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PublicIPPrefixSku": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of a public IP prefix SKU.",
+          "enum": [
+            "Standard"
+          ],
+          "x-ms-enum": {
+            "name": "PublicIPPrefixSkuName",
+            "modelAsString": true
+          }
+        },
+        "tier": {
+          "type": "string",
+          "description": "Tier of a public IP prefix SKU.",
+          "enum": [
+            "Regional",
+            "Global"
+          ],
+          "x-ms-enum": {
+            "name": "PublicIPPrefixSkuTier",
+            "modelAsString": true
+          }
+        }
+      },
+      "description": "SKU of a public IP prefix."
+    },
+    "PublicIPPrefixPropertiesFormat": {
+      "properties": {
+        "publicIPAddressVersion": {
+          "$ref": "./network.json#/definitions/IPVersion",
+          "description": "The public IP address version."
+        },
+        "ipTags": {
+          "type": "array",
+          "items": {
+            "$ref": "./publicIpAddress.json#/definitions/IpTag"
+          },
+          "description": "The list of tags associated with the public IP prefix."
+        },
+        "prefixLength": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The Length of the Public IP Prefix."
+        },
+        "ipPrefix": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The allocated Prefix."
+        },
+        "publicIPAddresses": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReferencedPublicIpAddress"
+          },
+          "description": "The list of all referenced PublicIPAddresses."
+        },
+        "loadBalancerFrontendIpConfiguration": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The reference to load balancer frontend IP configuration associated with the public IP prefix."
+        },
+        "customIPPrefix": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The customIpPrefix that this prefix is associated with."
+        },
+        "resourceGuid": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The resource GUID property of the public IP prefix resource."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the public IP prefix resource."
+        },
+        "natGateway": {
+          "$ref": "./natGateway.json#/definitions/NatGateway",
+          "description": "NatGateway of Public IP Prefix."
+        }
+      },
+      "description": "Public IP prefix properties."
+    },
+    "PublicIPPrefix": {
+      "properties": {
+        "extendedLocation": {
+          "$ref": "./network.json#/definitions/ExtendedLocation",
+          "description": "The extended location of the public ip address."
+        },
+        "sku": {
+          "$ref": "#/definitions/PublicIPPrefixSku",
+          "description": "The public IP prefix SKU."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PublicIPPrefixPropertiesFormat",
+          "description": "Public IP prefix properties."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "zones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of availability zones denoting the IP allocated for the resource needs to come from."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "Public IP prefix resource."
+    },
+    "PublicIPPrefixListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicIPPrefix"
+          },
+          "description": "A list of public IP prefixes that exists in a resource group."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListPublicIpPrefixes API service call."
+    },
+    "ReferencedPublicIpAddress": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The PublicIPAddress Reference."
+        }
+      },
+      "description": "Reference to a public IP address."
+    }
+  }
+}
+

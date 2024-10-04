@@ -1,0 +1,26 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subId",
+    "resourceGroupName": "rg1",
+    "serviceName": "testPls",
+    "peConnectionName": "testPlePeConnection"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "testPlePeConnection",
+        "properties": {
+          "privateEndpoint": {
+            "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/testPe"
+          },
+          "privateLinkServiceConnectionState": {
+            "status": "Approved",
+            "description": "approved it for some reason."
+          }
+        }
+      }
+    }
+  }
+}
+

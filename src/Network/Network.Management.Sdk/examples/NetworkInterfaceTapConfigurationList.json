@@ -1,0 +1,29 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkInterfaceName": "mynic"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "tapConfiguration1",
+            "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/networkInterfaces/mynic/tapConfigurations/tapConfiguration1",
+            "etag": "etag",
+            "type": "Microsoft.Network/networkInterfaces/tapConfigurations",
+            "properties": {
+              "virtualNetworkTap": {
+                "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworkTaps/testvtap"
+              },
+              "provisioningState": "Succeded"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

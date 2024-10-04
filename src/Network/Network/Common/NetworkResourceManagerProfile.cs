@@ -1155,6 +1155,10 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.Active,
                         opt => opt.MapFrom(src => src.ActiveActive)
+                    )
+                    .ForMember(
+                        dest => dest.EnableHighBandwidthVpnGateway,
+                        opt => opt.MapFrom(src => src.EnableHighBandwidthVpnGateway)
                     );
                 cfg.CreateMap<CNM.PSConnectionResetSharedKey, MNM.ConnectionResetSharedKey>();
                 cfg.CreateMap<CNM.PSConnectionSharedKey, MNM.ConnectionSharedKey>();
@@ -1247,6 +1251,10 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.ActiveActive,
                         opt => opt.MapFrom(src => src.Active)
+                    )
+                    .ForMember(
+                        dest => dest.EnableHighBandwidthVpnGateway,
+                        opt => opt.MapFrom(src => src.EnableHighBandwidthVpnGateway)
                     );
                 cfg.CreateMap<MNM.ConnectionResetSharedKey, CNM.PSConnectionResetSharedKey>();
                 cfg.CreateMap<MNM.ConnectionSharedKey, CNM.PSConnectionSharedKey>();

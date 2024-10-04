@@ -1,0 +1,257 @@
+{
+  "parameters": {
+    "gatewayName": "p2sVpnGateway1",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "p2SVpnGatewayParameters": {
+      "location": "West US",
+      "tags": {
+        "key1": "value1"
+      },
+      "properties": {
+        "virtualHub": {
+          "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1"
+        },
+        "vpnServerConfiguration": {
+          "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1"
+        },
+        "p2SConnectionConfigurations": [
+          {
+            "name": "P2SConnectionConfig1",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/p2sVpnGateways/p2sVpnGateway1/p2sConnectionConfigurations/P2SConnectionConfig1",
+            "properties": {
+              "vpnClientAddressPool": {
+                "addressPrefixes": [
+                  "101.3.0.0/16"
+                ]
+              },
+              "routingConfiguration": {
+                "associatedRouteTable": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                },
+                "propagatedRouteTables": {
+                  "labels": [
+                    "label1",
+                    "label2"
+                  ],
+                  "ids": [
+                    {
+                      "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                    },
+                    {
+                      "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable2"
+                    },
+                    {
+                      "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable3"
+                    }
+                  ]
+                },
+                "vnetRoutes": {
+                  "staticRoutes": []
+                }
+              }
+            }
+          }
+        ],
+        "vpnGatewayScaleUnit": 1,
+        "customDnsServers": [
+          "1.1.1.1",
+          "2.2.2.2"
+        ],
+        "isRoutingPreferenceInternet": false
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "p2sVpnGateway1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/P2SvpnGateways/p2sVpnGateway1",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "type": "Microsoft.Network/p2sVpnGateways",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "virtualHub": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1"
+          },
+          "vpnServerConfiguration": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1"
+          },
+          "p2SConnectionConfigurations": [
+            {
+              "name": "P2SConnectionConfig1",
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/p2sVpnGateways/p2sVpnGateway1/p2sConnectionConfigurations/P2SConnectionConfig1",
+              "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "vpnClientAddressPool": {
+                  "addressPrefixes": [
+                    "101.3.0.0/16"
+                  ]
+                },
+                "configurationPolicyGroupAssociations": [
+                  {
+                    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1/configurationPolicyGroups/policyGroup1"
+                  }
+                ],
+                "previousConfigurationPolicyGroupAssociations": [
+                  {
+                    "name": "policyGroup1",
+                    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1/vpnServerConfigurationPolicyGroups/policyGroup1",
+                    "properties": {
+                      "provisioningState": "Succeeded",
+                      "isDefault": true,
+                      "priority": 0,
+                      "policyMembers": [
+                        {
+                          "name": "policy1",
+                          "attributeType": "RadiusAzureGroupId",
+                          "attributeValue": "6ad1bd08"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "routingConfiguration": {
+                  "associatedRouteTable": {
+                    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                  },
+                  "propagatedRouteTables": {
+                    "labels": [
+                      "label1",
+                      "label2"
+                    ],
+                    "ids": [
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                      },
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable2"
+                      },
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable3"
+                      }
+                    ]
+                  },
+                  "vnetRoutes": {
+                    "staticRoutes": []
+                  }
+                },
+                "enableInternetSecurity": false
+              }
+            }
+          ],
+          "vpnGatewayScaleUnit": 1,
+          "customDnsServers": [
+            "1.1.1.1",
+            "2.2.2.2"
+          ],
+          "vpnClientConnectionHealth": {
+            "vpnClientConnectionsCount": 0,
+            "allocatedIpAddresses": [],
+            "totalIngressBytesTransferred": 0,
+            "totalEgressBytesTransferred": 0
+          },
+          "isRoutingPreferenceInternet": false
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "p2sVpnGateway1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/P2SvpnGateways/p2sVpnGateway1",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "type": "Microsoft.Network/p2sVpnGateways",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "virtualHub": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1"
+          },
+          "vpnServerConfiguration": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1"
+          },
+          "p2SConnectionConfigurations": [
+            {
+              "name": "P2SConnectionConfig1",
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/p2sVpnGateways/p2sVpnGateway1/p2sConnectionConfigurations/P2SConnectionConfig1",
+              "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "vpnClientAddressPool": {
+                  "addressPrefixes": [
+                    "101.3.0.0/16"
+                  ]
+                },
+                "configurationPolicyGroupAssociations": [
+                  {
+                    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1/configurationPolicyGroups/policyGroup1"
+                  }
+                ],
+                "previousConfigurationPolicyGroupAssociations": [
+                  {
+                    "name": "policyGroup1",
+                    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1/vpnServerConfigurationPolicyGroups/policyGroup1",
+                    "properties": {
+                      "provisioningState": "Succeeded",
+                      "isDefault": true,
+                      "priority": 0,
+                      "policyMembers": [
+                        {
+                          "name": "policy1",
+                          "attributeType": "RadiusAzureGroupId",
+                          "attributeValue": "6ad1bd08"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "routingConfiguration": {
+                  "associatedRouteTable": {
+                    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                  },
+                  "propagatedRouteTables": {
+                    "labels": [
+                      "label1",
+                      "label2"
+                    ],
+                    "ids": [
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                      },
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable2"
+                      },
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable3"
+                      }
+                    ]
+                  },
+                  "vnetRoutes": {
+                    "staticRoutes": []
+                  }
+                },
+                "enableInternetSecurity": false
+              }
+            }
+          ],
+          "vpnGatewayScaleUnit": 1,
+          "customDnsServers": [
+            "1.1.1.1",
+            "2.2.2.2"
+          ],
+          "vpnClientConnectionHealth": {
+            "vpnClientConnectionsCount": 0,
+            "allocatedIpAddresses": [],
+            "totalIngressBytesTransferred": 0,
+            "totalEgressBytesTransferred": 0
+          },
+          "isRoutingPreferenceInternet": false
+        }
+      }
+    }
+  }
+}
+

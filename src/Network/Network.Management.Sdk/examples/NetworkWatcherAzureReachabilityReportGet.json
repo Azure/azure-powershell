@@ -1,0 +1,86 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1",
+    "parameters": {
+      "providerLocation": {
+        "country": "United States",
+        "state": "washington"
+      },
+      "providers": [
+        "Frontier Communications of America, Inc. - ASN 5650"
+      ],
+      "azureLocations": [
+        "West US"
+      ],
+      "startTime": "2017-09-07T00:00:00Z",
+      "endTime": "2017-09-10T00:00:00Z"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "aggregationLevel": "State",
+        "providerLocation": {
+          "country": "United States",
+          "state": "washington"
+        },
+        "reachabilityReport": [
+          {
+            "provider": "Frontier Communications of America, Inc. - ASN 5650",
+            "azureLocation": "West US",
+            "latencies": [
+              {
+                "timeStamp": "2017-09-07T00:00:00Z",
+                "score": 94
+              },
+              {
+                "timeStamp": "2017-09-08T00:00:00Z",
+                "score": 94
+              },
+              {
+                "timeStamp": "2017-09-09T00:00:00Z",
+                "score": 94
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "202": {
+      "headers": {
+        "Location": "https:/management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/azureReachabilityReport?api-version=2024-05-01"
+      },
+      "body": {
+        "aggregationLevel": "State",
+        "providerLocation": {
+          "country": "United States",
+          "state": "washington"
+        },
+        "reachabilityReport": [
+          {
+            "provider": "Frontier Communications of America, Inc. - ASN 5650",
+            "azureLocation": "West US",
+            "latencies": [
+              {
+                "timeStamp": "2017-09-07T00:00:00Z",
+                "score": 94
+              },
+              {
+                "timeStamp": "2017-09-08T00:00:00Z",
+                "score": 94
+              },
+              {
+                "timeStamp": "2017-09-09T00:00:00Z",
+                "score": 94
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+

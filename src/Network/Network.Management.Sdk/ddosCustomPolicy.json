@@ -1,0 +1,311 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}": {
+      "delete": {
+        "tags": [
+          "ddosCustomPolicies"
+        ],
+        "operationId": "DdosCustomPolicies_Delete",
+        "description": "Deletes the specified DDoS custom policy.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ddosCustomPolicyName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the DDoS custom policy."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Delete DDoS custom policy": {
+            "$ref": "./examples/DdosCustomPolicyDelete.json"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "ddosCustomPolicies"
+        ],
+        "operationId": "DdosCustomPolicies_Get",
+        "description": "Gets information about the specified DDoS custom policy.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ddosCustomPolicyName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the DDoS custom policy."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the specified DDoS custom policy resource.",
+            "schema": {
+              "$ref": "#/definitions/DdosCustomPolicy"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get DDoS custom policy": {
+            "$ref": "./examples/DdosCustomPolicyGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ddosCustomPolicies"
+        ],
+        "operationId": "DdosCustomPolicies_CreateOrUpdate",
+        "description": "Creates or updates a DDoS custom policy.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ddosCustomPolicyName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the DDoS custom policy."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DdosCustomPolicy"
+            },
+            "description": "Parameters supplied to the create or update operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create successful. The operation returns the resulting DDoS custom policy resource.",
+            "schema": {
+              "$ref": "#/definitions/DdosCustomPolicy"
+            }
+          },
+          "200": {
+            "description": "Update successful. The operation returns the resulting DDoS custom policy resource.",
+            "schema": {
+              "$ref": "#/definitions/DdosCustomPolicy"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "Create DDoS custom policy": {
+            "$ref": "./examples/DdosCustomPolicyCreate.json"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "ddosCustomPolicies"
+        ],
+        "operationId": "DdosCustomPolicies_UpdateTags",
+        "description": "Update a DDoS custom policy tags.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ddosCustomPolicyName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the DDoS custom policy."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update DDoS custom policy resource tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting DDoS custom policy resource.",
+            "schema": {
+              "$ref": "#/definitions/DdosCustomPolicy"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "DDoS Custom policy Update tags": {
+            "$ref": "./examples/DdosCustomPolicyUpdateTags.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "DdosCustomPolicy": {
+      "description": "A DDoS custom policy in a resource group.",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/DdosCustomPolicyPropertiesFormat",
+          "description": "Properties of the DDoS custom policy."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ]
+    },
+    "DdosCustomPolicyPropertiesFormat": {
+      "properties": {
+        "resourceGuid": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The resource GUID property of the DDoS custom policy resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the DDoS custom policy resource."
+        }
+      },
+      "description": "DDoS custom policy properties."
+    }
+  }
+}
+

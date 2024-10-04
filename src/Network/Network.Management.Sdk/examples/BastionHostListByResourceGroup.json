@@ -1,0 +1,96 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "bastionhosttenant",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/bastionHosts/bastionhosttenant",
+            "type": "Microsoft.Network/bastionHosts",
+            "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+            "location": "West US",
+            "sku": {
+              "name": "Standard"
+            },
+            "zones": [],
+            "properties": {
+              "provisioningState": "Succeeded",
+              "dnsName": "bst-9d89d361-100e-4c01-b92d-466548c476dc.bastion.azure.com",
+              "scaleUnits": 2,
+              "disableCopyPaste": false,
+              "enableTunneling": false,
+              "enableIpConnect": false,
+              "enableShareableLink": false,
+              "enableKerberos": false,
+              "enableSessionRecording": false,
+              "ipConfigurations": [
+                {
+                  "name": "bastionHostIpConfiguration",
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/bastionHosts/bastionhosttenant/bastionHostIpConfigurations/bastionHostIpConfiguration",
+                  "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+                  "type": "Microsoft.Network/bastionHosts/bastionHostIpConfigurations",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "privateIPAllocationMethod": "Dynamic",
+                    "subnet": {
+                      "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet/subnets/AzureBastionSubnet"
+                    },
+                    "publicIPAddress": {
+                      "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pipName"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "bastionhost2",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/bastionHosts/bastionhost2",
+            "type": "Microsoft.Network/bastionHosts",
+            "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+            "location": "West US",
+            "sku": {
+              "name": "Premium"
+            },
+            "zones": [],
+            "properties": {
+              "provisioningState": "Succeeded",
+              "dnsName": "bst-9d89d361-100e-4c01-b92d-466548c476dc.bastion.azure.com",
+              "scaleUnits": 2,
+              "disableCopyPaste": false,
+              "enableTunneling": false,
+              "enableIpConnect": false,
+              "enableShareableLink": false,
+              "enableKerberos": false,
+              "enableSessionRecording": true,
+              "ipConfigurations": [
+                {
+                  "name": "bastionHostIpConfiguration",
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/bastionHosts/bastionhost2/bastionHostIpConfigurations/IpConf",
+                  "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+                  "type": "Microsoft.Network/bastionHosts/bastionHostIpConfigurations",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "privateIPAllocationMethod": "Dynamic",
+                    "subnet": {
+                      "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureBastionSubnet"
+                    },
+                    "publicIPAddress": {
+                      "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pipName2"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

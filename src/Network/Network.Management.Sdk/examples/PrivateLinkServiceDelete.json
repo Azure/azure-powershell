@@ -1,0 +1,14 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subId",
+    "resourceGroupName": "rg1",
+    "serviceName": "testPls"
+  },
+  "responses": {
+    "200": {},
+    "202": {},
+    "204": {}
+  }
+}
+

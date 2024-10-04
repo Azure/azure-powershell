@@ -1,0 +1,442 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}": {
+      "delete": {
+        "tags": [
+          "SecurityPartnerProviders"
+        ],
+        "operationId": "SecurityPartnerProviders_Delete",
+        "description": "Deletes the specified Security Partner Provider.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "securityPartnerProviderName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Security Partner Provider."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Request successful. Resource with the specified name does not exist."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete Security Partner Provider": {
+            "$ref": "./examples/SecurityPartnerProviderDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "SecurityPartnerProviders"
+        ],
+        "operationId": "SecurityPartnerProviders_Get",
+        "description": "Gets the specified Security Partner Provider.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "securityPartnerProviderName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Security Partner Provider."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a SecurityPartnerProvider resource.",
+            "schema": {
+              "$ref": "#/definitions/SecurityPartnerProvider"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Security Partner Provider": {
+            "$ref": "./examples/SecurityPartnerProviderGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "SecurityPartnerProviders"
+        ],
+        "operationId": "SecurityPartnerProviders_CreateOrUpdate",
+        "description": "Creates or updates the specified Security Partner Provider.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "securityPartnerProviderName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Security Partner Provider."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SecurityPartnerProvider"
+            },
+            "description": "Parameters supplied to the create or update Security Partner Provider operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create successful. The operation returns the resulting SecurityPartnerProvider resource.",
+            "schema": {
+              "$ref": "#/definitions/SecurityPartnerProvider"
+            }
+          },
+          "200": {
+            "description": "Update successful. The operation returns the resulting SecurityPartnerProvider resource.",
+            "schema": {
+              "$ref": "#/definitions/SecurityPartnerProvider"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create Security Partner Provider": {
+            "$ref": "./examples/SecurityPartnerProviderPut.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "patch": {
+        "tags": [
+          "SecurityPartnerProviders"
+        ],
+        "operationId": "SecurityPartnerProviders_UpdateTags",
+        "description": "Updates tags of a Security Partner Provider resource.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "securityPartnerProviderName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Security Partner Provider."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update Security Partner Provider tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting SecurityPartnerProvider resource.",
+            "schema": {
+              "$ref": "#/definitions/SecurityPartnerProvider"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update Security Partner Provider Tags": {
+            "$ref": "./examples/SecurityPartnerProviderUpdateTags.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders": {
+      "get": {
+        "tags": [
+          "SecurityPartnerProviders"
+        ],
+        "operationId": "SecurityPartnerProviders_ListByResourceGroup",
+        "description": "Lists all Security Partner Providers in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of SecurityPartnerProvider resources.",
+            "schema": {
+              "$ref": "#/definitions/SecurityPartnerProviderListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all Security Partner Providers for a given resource group": {
+            "$ref": "./examples/SecurityPartnerProviderListByResourceGroup.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/securityPartnerProviders": {
+      "get": {
+        "tags": [
+          "SecurityPartnerProviders"
+        ],
+        "operationId": "SecurityPartnerProviders_List",
+        "description": "Gets all the Security Partner Providers in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of SecurityPartnerProvider resources.",
+            "schema": {
+              "$ref": "#/definitions/SecurityPartnerProviderListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all Security Partner Providers for a given subscription": {
+            "$ref": "./examples/SecurityPartnerProviderListBySubscription.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SecurityPartnerProviderPropertiesFormat": {
+      "properties": {
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the Security Partner Provider resource."
+        },
+        "securityProviderName": {
+          "description": "The security provider name.",
+          "$ref": "#/definitions/SecurityPartnerProvidersecurityProviderName"
+        },
+        "connectionStatus": {
+          "readOnly": true,
+          "description": "The connection status with the Security Partner Provider.",
+          "$ref": "#/definitions/SecurityPartnerProviderConnectionStatus"
+        },
+        "virtualHub": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The virtualHub to which the Security Partner Provider belongs."
+        }
+      },
+      "description": "Properties of the Security Partner Provider."
+    },
+    "SecurityPartnerProvider": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/SecurityPartnerProviderPropertiesFormat",
+          "description": "Properties of the Security Partner Provider."
+        },
+        "etag": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "Security Partner Provider resource."
+    },
+    "SecurityPartnerProviderListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SecurityPartnerProvider"
+          },
+          "description": "List of Security Partner Providers in a resource group."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListSecurityPartnerProviders API service call."
+    },
+    "SecurityPartnerProvidersecurityProviderName": {
+      "type": "string",
+      "description": "The Security Providers.",
+      "enum": [
+        "ZScaler",
+        "IBoss",
+        "Checkpoint"
+      ],
+      "x-ms-enum": {
+        "name": "SecurityProviderName",
+        "modelAsString": true
+      }
+    },
+    "SecurityPartnerProviderConnectionStatus": {
+      "type": "string",
+      "description": "The current state of the connection with Security Partner Provider.",
+      "readOnly": true,
+      "enum": [
+        "Unknown",
+        "PartiallyConnected",
+        "Connected",
+        "NotConnected"
+      ],
+      "x-ms-enum": {
+        "name": "SecurityPartnerProviderConnectionStatus",
+        "modelAsString": true
+      }
+    }
+  }
+}
+

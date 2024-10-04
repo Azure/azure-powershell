@@ -1,0 +1,139 @@
+{
+  "parameters": {
+    "expressRouteGatewayName": "gateway-2",
+    "resourceGroupName": "resourceGroupName",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "connectionName": "connectionName",
+    "putExpressRouteConnectionParameters": {
+      "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteGateways/gateway-2/expressRouteConnections/connectionName",
+      "name": "connectionName",
+      "properties": {
+        "routingWeight": 2,
+        "authorizationKey": "authorizationKey",
+        "expressRouteCircuitPeering": {
+          "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteCircuits/circuitName/peerings/AzurePrivatePeering"
+        },
+        "routingConfiguration": {
+          "associatedRouteTable": {
+            "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"
+          },
+          "inboundRouteMap": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"
+          },
+          "outboundRouteMap": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"
+          },
+          "propagatedRouteTables": {
+            "labels": [
+              "label1",
+              "label2"
+            ],
+            "ids": [
+              {
+                "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"
+              },
+              {
+                "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable2"
+              },
+              {
+                "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable3"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "connectionName",
+        "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteGateways/gateway-2/expressRouteConnections/connectionName",
+        "properties": {
+          "provisioningState": "Provisioned",
+          "expressRouteCircuitPeering": {
+            "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteCircuits/circuitName/peerings/AzurePrivatePeering"
+          },
+          "authorizationKey": "authorizationKey",
+          "routingWeight": 2,
+          "enableInternetSecurity": false,
+          "expressRouteGatewayBypass": false,
+          "enablePrivateLinkFastPath": false,
+          "routingConfiguration": {
+            "associatedRouteTable": {
+              "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"
+            },
+            "propagatedRouteTables": {
+              "labels": [
+                "label1",
+                "label2"
+              ],
+              "ids": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"
+                },
+                {
+                  "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable2"
+                },
+                {
+                  "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable3"
+                }
+              ]
+            },
+            "inboundRouteMap": {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"
+            },
+            "outboundRouteMap": {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"
+            }
+          }
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "connectionName",
+        "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteGateways/gateway-2/expressRouteConnections/connectionName",
+        "properties": {
+          "provisioningState": "Provisioned",
+          "expressRouteCircuitPeering": {
+            "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteCircuits/circuitName/peerings/AzurePrivatePeering"
+          },
+          "authorizationKey": "authorizationKey",
+          "routingWeight": 2,
+          "enableInternetSecurity": false,
+          "routingConfiguration": {
+            "associatedRouteTable": {
+              "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"
+            },
+            "propagatedRouteTables": {
+              "labels": [
+                "label1",
+                "label2"
+              ],
+              "ids": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"
+                },
+                {
+                  "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable2"
+                },
+                {
+                  "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable3"
+                }
+              ]
+            },
+            "inboundRouteMap": {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"
+            },
+            "outboundRouteMap": {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

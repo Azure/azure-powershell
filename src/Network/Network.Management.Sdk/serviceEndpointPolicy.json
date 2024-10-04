@@ -1,0 +1,763 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}": {
+      "delete": {
+        "tags": [
+          "ServiceEndpointPolicies"
+        ],
+        "operationId": "ServiceEndpointPolicies_Delete",
+        "description": "Deletes the specified service endpoint policy.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceEndpointPolicyName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the service endpoint policy."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete service endpoint policy": {
+            "$ref": "./examples/ServiceEndpointPolicyDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "ServiceEndpointPolicies"
+        ],
+        "operationId": "ServiceEndpointPolicies_Get",
+        "description": "Gets the specified service Endpoint Policies in a specified resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceEndpointPolicyName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the service endpoint policy."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expands referenced resources."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting ServiceEndpointPolicy resource.",
+            "schema": {
+              "$ref": "#/definitions/ServiceEndpointPolicy"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get service endPoint Policy": {
+            "$ref": "./examples/ServiceEndpointPolicyGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ServiceEndpointPolicies"
+        ],
+        "operationId": "ServiceEndpointPolicies_CreateOrUpdate",
+        "description": "Creates or updates a service Endpoint Policies.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceEndpointPolicyName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the service endpoint policy."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ServiceEndpointPolicy"
+            },
+            "description": "Parameters supplied to the create or update service endpoint policy operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create successful. The operation returns the resulting ServiceEndpointPolicy resource.",
+            "schema": {
+              "$ref": "#/definitions/ServiceEndpointPolicy"
+            }
+          },
+          "200": {
+            "description": "Update successful. The operation returns the resulting ServiceEndpointPolicy resource.",
+            "schema": {
+              "$ref": "#/definitions/ServiceEndpointPolicy"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create service endpoint policy": {
+            "$ref": "./examples/ServiceEndpointPolicyCreate.json"
+          },
+          "Create service endpoint policy with definition": {
+            "$ref": "./examples/ServiceEndpointPolicyCreateWithDefinition.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "patch": {
+        "tags": [
+          "ServiceEndpointPolicies"
+        ],
+        "operationId": "ServiceEndpointPolicies_UpdateTags",
+        "description": "Updates tags of a service endpoint policy.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceEndpointPolicyName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the service endpoint policy."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update service endpoint policy tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting ServiceEndpointPolicy resource.",
+            "schema": {
+              "$ref": "#/definitions/ServiceEndpointPolicy"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update service endpoint policy tags": {
+            "$ref": "./examples/ServiceEndpointPolicyUpdateTags.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ServiceEndpointPolicies": {
+      "get": {
+        "tags": [
+          "ServiceEndpointPolicies"
+        ],
+        "operationId": "ServiceEndpointPolicies_List",
+        "description": "Gets all the service endpoint policies in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of ServiceEndpointPolicy resources.",
+            "schema": {
+              "$ref": "#/definitions/ServiceEndpointPolicyListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all service endpoint policy": {
+            "$ref": "./examples/ServiceEndpointPolicyListAll.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies": {
+      "get": {
+        "tags": [
+          "ServiceEndpointPolicies"
+        ],
+        "operationId": "ServiceEndpointPolicies_ListByResourceGroup",
+        "description": "Gets all service endpoint Policies in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of ServiceEndpointPolicy resources.",
+            "schema": {
+              "$ref": "#/definitions/ServiceEndpointPolicyListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List resource group service endpoint policies": {
+            "$ref": "./examples/ServiceEndpointPolicyList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions/{serviceEndpointPolicyDefinitionName}": {
+      "delete": {
+        "tags": [
+          "ServiceEndpointPolicyDefinitions"
+        ],
+        "operationId": "ServiceEndpointPolicyDefinitions_Delete",
+        "description": "Deletes the specified ServiceEndpoint policy definitions.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceEndpointPolicyName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Service Endpoint Policy."
+          },
+          {
+            "name": "serviceEndpointPolicyDefinitionName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the service endpoint policy definition."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete service endpoint policy definitions from service endpoint policy": {
+            "$ref": "./examples/ServiceEndpointPolicyDefinitionDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "serviceEndpointPolicyDefinitions"
+        ],
+        "operationId": "ServiceEndpointPolicyDefinitions_Get",
+        "description": "Get the specified service endpoint policy definitions from service endpoint policy.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceEndpointPolicyName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the service endpoint policy name."
+          },
+          {
+            "name": "serviceEndpointPolicyDefinitionName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the service endpoint policy definition name."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting ServiceEndpointPolicyDefinition resource.",
+            "schema": {
+              "$ref": "#/definitions/ServiceEndpointPolicyDefinition"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get service endpoint definition in service endpoint policy": {
+            "$ref": "./examples/ServiceEndpointPolicyDefinitionGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "serviceEndpointPolicyDefinitions"
+        ],
+        "operationId": "ServiceEndpointPolicyDefinitions_CreateOrUpdate",
+        "description": "Creates or updates a service endpoint policy definition in the specified service endpoint policy.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceEndpointPolicyName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the service endpoint policy."
+          },
+          {
+            "name": "serviceEndpointPolicyDefinitionName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the service endpoint policy definition name."
+          },
+          {
+            "name": "ServiceEndpointPolicyDefinitions",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ServiceEndpointPolicyDefinition"
+            },
+            "description": "Parameters supplied to the create or update service endpoint policy operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting ServiceEndpointPolicyDefinition resource.",
+            "schema": {
+              "$ref": "#/definitions/ServiceEndpointPolicyDefinition"
+            }
+          },
+          "201": {
+            "description": "Create successful. The operation returns the resulting ServiceEndpointPolicyDefinition resource.",
+            "schema": {
+              "$ref": "#/definitions/ServiceEndpointPolicyDefinition"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create service endpoint policy definition": {
+            "$ref": "./examples/ServiceEndpointPolicyDefinitionCreate.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/serviceEndpointPolicies/{serviceEndpointPolicyName}/serviceEndpointPolicyDefinitions": {
+      "get": {
+        "tags": [
+          "ServiceEndpointPolicyDefinitions"
+        ],
+        "operationId": "ServiceEndpointPolicyDefinitions_ListByResourceGroup",
+        "description": "Gets all service endpoint policy definitions in a service end point policy.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceEndpointPolicyName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the service endpoint policy name."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of ServiceEndpointPolicyDefinition resources.",
+            "schema": {
+              "$ref": "#/definitions/ServiceEndpointPolicyDefinitionListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List service endpoint definitions in service end point policy": {
+            "$ref": "./examples/ServiceEndpointPolicyDefinitionList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ServiceEndpointPolicyDefinitionPropertiesFormat": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "A description for this rule. Restricted to 140 chars."
+        },
+        "service": {
+          "type": "string",
+          "description": "Service endpoint name."
+        },
+        "serviceResources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of service resources."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the service endpoint policy definition resource."
+        }
+      },
+      "description": "Service Endpoint policy definition resource."
+    },
+    "ServiceEndpointPolicyDefinition": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ServiceEndpointPolicyDefinitionPropertiesFormat",
+          "description": "Properties of the service endpoint policy definition."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the resource that is unique within a resource group. This name can be used to access the resource."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the resource."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ],
+      "description": "Service Endpoint policy definitions."
+    },
+    "ServiceEndpointPolicyDefinitionListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceEndpointPolicyDefinition"
+          },
+          "description": "The service endpoint policy definition in a service endpoint policy."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListServiceEndpointPolicyDefinition API service call. Retrieves all service endpoint policy definition that belongs to a service endpoint policy."
+    },
+    "ServiceEndpointPolicyPropertiesFormat": {
+      "properties": {
+        "serviceEndpointPolicyDefinitions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceEndpointPolicyDefinition"
+          },
+          "description": "A collection of service endpoint policy definitions of the service endpoint policy."
+        },
+        "subnets": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "./virtualNetwork.json#/definitions/Subnet"
+          },
+          "description": "A collection of references to subnets."
+        },
+        "resourceGuid": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The resource GUID property of the service endpoint policy resource."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the service endpoint policy resource."
+        },
+        "serviceAlias": {
+          "type": "string",
+          "description": "The alias indicating if the policy belongs to a service"
+        },
+        "contextualServiceEndpointPolicies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A collection of contextual service endpoint policy."
+        }
+      },
+      "description": "Service Endpoint Policy resource."
+    },
+    "ServiceEndpointPolicy": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ServiceEndpointPolicyPropertiesFormat",
+          "description": "Properties of the service end point policy."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "kind": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Kind of service endpoint policy. This is metadata used for the Azure portal experience."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "Service End point policy resource."
+    },
+    "ServiceEndpointPolicyListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceEndpointPolicy"
+          },
+          "description": "A list of ServiceEndpointPolicy resources."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListServiceEndpointPolicies API service call."
+    }
+  }
+}
+

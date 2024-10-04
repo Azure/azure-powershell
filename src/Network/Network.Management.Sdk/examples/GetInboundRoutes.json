@@ -1,0 +1,39 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualHubName": "virtualHub1",
+    "api-version": "2024-05-01",
+    "getInboundRoutesParameters": {
+      "resourceUri": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteGateways/exrGw1/expressRouteConnections/exrConn1",
+      "connectionType": "ExpressRouteConnection"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "status": "Succeeded",
+        "properties": {
+          "output": {
+            "value": [
+              {
+                "prefix": "192.168.50.0/24",
+                "asPath": "65520-65520",
+                "bgpCommunities": "4293853166,12076,51004"
+              },
+              {
+                "prefix": "10.200.0.0/16",
+                "asPath": "65520-65520-12076-12076",
+                "bgpCommunities": "4293787629,12076,51027,4293734188"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "202": {
+      "description": "Accepted and the operation will complete asynchronously."
+    }
+  }
+}
+

@@ -1,0 +1,64 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "api-version": "2024-05-01",
+    "resourceGroupName": "rg1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "portName",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRoutePorts/portName",
+            "type": "Microsoft.Network/expressRoutePorts",
+            "location": "westus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "peeringLocation": "peeringLocationName",
+              "bandwidthInGbps": 100,
+              "provisionedBandwidthInGbps": 0.0,
+              "mtu": "1500",
+              "encapsulation": "QinQ",
+              "billingType": "UnlimitedData",
+              "etherType": "0x8100",
+              "allocationDate": "Friday, July 1, 2018",
+              "links": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRoutePorts/portName/links/link1",
+                  "name": "link1",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "routerName": "router1",
+                    "interfaceName": "Ethernet 0/0",
+                    "patchPanelId": "patchPanelId1",
+                    "rackId": "rackId1",
+                    "coloLocation": "coloLocation1",
+                    "connectorType": "LC",
+                    "adminState": "Disabled"
+                  }
+                },
+                {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRoutePorts/portName/links/link2",
+                  "name": "link2",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "routerName": "router2",
+                    "interfaceName": "Ethernet 0/0",
+                    "patchPanelId": "patchPanelId2",
+                    "rackId": "rackId2",
+                    "coloLocation": "coloLocation2",
+                    "connectorType": "LC",
+                    "adminState": "Disabled"
+                  }
+                }
+              ],
+              "circuits": []
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

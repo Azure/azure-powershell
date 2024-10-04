@@ -1,0 +1,28 @@
+{
+  "parameters": {
+    "ruleName": "filterName",
+    "routeFilterName": "filterName",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/routeFilters/filterName/routeFilterRules/ruleName",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "name": "ruleName",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "access": "Allow",
+          "routeFilterRuleType": "Community",
+          "communities": [
+            "12076:5030",
+            "12076:5040"
+          ]
+        }
+      }
+    }
+  }
+}
+

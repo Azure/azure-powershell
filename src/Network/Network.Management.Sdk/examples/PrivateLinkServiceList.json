@@ -1,0 +1,142 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subId",
+    "resourceGroupName": "rg1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "testPls1",
+            "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPls1",
+            "type": "Microsoft.Network/privateLinkServices",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "visibility": {
+                "subscriptions": [
+                  "subscription1"
+                ]
+              },
+              "autoApproval": {
+                "subscriptions": [
+                  "subscription1"
+                ]
+              },
+              "fqdns": [
+                "fqdn1",
+                "fqdn2"
+              ],
+              "alias": "ContosoService.{guid}.azure.privatelinkservice",
+              "loadBalancerFrontendIpConfigurations": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb1"
+                }
+              ],
+              "ipConfigurations": [
+                {
+                  "name": "fe-lb1",
+                  "properties": {
+                    "privateIPAddress": "10.0.1.4",
+                    "privateIPAllocationMethod": "Static",
+                    "privateIPAddressVersion": "IPv4",
+                    "subnet": {
+                      "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb/subnets/subnetlb1"
+                    }
+                  }
+                }
+              ],
+              "privateEndpointConnections": [
+                {
+                  "name": "pec1",
+                  "properties": {
+                    "privateEndpoint": {
+                      "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/testPe1"
+                    },
+                    "privateLinkServiceConnectionState": {
+                      "status": "Approved",
+                      "description": "approved it for some reason."
+                    }
+                  }
+                }
+              ],
+              "networkInterfaces": [
+                {
+                  "id": "/subscriptions/subId/resourceGroups/rg1/provders/Microsoft.Network/networkInterfaces/testPls1.nic.abcd1234"
+                }
+              ]
+            }
+          },
+          {
+            "name": "testPls2",
+            "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPls2",
+            "type": "Microsoft.Network/privateLinkServices",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "visibility": {
+                "subscriptions": [
+                  "subscription1",
+                  "subscription2",
+                  "subscription3"
+                ]
+              },
+              "autoApproval": {
+                "subscriptions": [
+                  "subscription1",
+                  "subscription2"
+                ]
+              },
+              "fqdns": [
+                "fqdn1",
+                "fqdn2",
+                "fqdn3"
+              ],
+              "alias": "ContosoService.{guid}.azure.privatelinkservice",
+              "loadBalancerFrontendIpConfigurations": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb2"
+                }
+              ],
+              "ipConfigurations": [
+                {
+                  "name": "fe-lb2",
+                  "properties": {
+                    "privateIPAddress": "10.0.1.5",
+                    "privateIPAllocationMethod": "Static",
+                    "privateIPAddressVersion": "IPv4",
+                    "subnet": {
+                      "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb/subnets/subnetlb2"
+                    }
+                  }
+                }
+              ],
+              "privateEndpointConnections": [
+                {
+                  "name": "pec2",
+                  "properties": {
+                    "privateEndpoint": {
+                      "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/testPe2"
+                    },
+                    "privateLinkServiceConnectionState": {
+                      "status": "Approved",
+                      "description": "approved it for some reason."
+                    }
+                  }
+                }
+              ],
+              "networkInterfaces": [
+                {
+                  "id": "/subscriptions/subId/resourceGroups/rg1/provders/Microsoft.Network/networkInterfaces/testPls2.nic.efgh5678"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

@@ -1,0 +1,92 @@
+{
+  "title": "Create/Update Azure Virtual Network Manager",
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "rg1",
+    "networkManagerName": "TestNetworkManager",
+    "parameters": {
+      "properties": {
+        "description": "My Test Network Manager",
+        "networkManagerScopes": {
+          "managementGroups": [
+            "/Microsoft.Management/testmg"
+          ],
+          "subscriptions": [
+            "/subscriptions/00000000-0000-0000-0000-000000000000"
+          ]
+        },
+        "networkManagerScopeAccesses": [
+          "Connectivity"
+        ]
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "TestNetworkManager",
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroup/rg1/providers/Microsoft.Network/networkManagers/TestNetworkManager",
+        "type": "Microsoft.Network/networkManagers",
+        "etag": "sadf-asdf-asdf-asdf",
+        "systemData": {
+          "createdBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "createdByType": "User",
+          "createdAt": "2021-01-11T18:52:27Z",
+          "lastModifiedBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "lastModifiedByType": "User",
+          "lastModifiedAt": "2021-01-11T18:52:27Z"
+        },
+        "properties": {
+          "description": "My Test Network Manager",
+          "networkManagerScopes": {
+            "managementGroups": [
+              "Microsoft.Management/managementGroups/testMg"
+            ],
+            "subscriptions": [
+              "/subscriptions/00000000-0000-0000-0000-000000000000"
+            ]
+          },
+          "networkManagerScopeAccesses": [
+            "Connectivity"
+          ],
+          "provisioningState": "Succeeded",
+          "resourceGuid": "00000000-0000-0000-0000-000000000000"
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "TestNetworkManager",
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroup/rg1/providers/Microsoft.Network/networkManagers/TestNetworkManager",
+        "type": "Microsoft.Network/networkManagers",
+        "etag": "sadf-asdf-asdf-asdf",
+        "systemData": {
+          "createdBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "createdByType": "User",
+          "createdAt": "2021-01-11T18:52:27Z",
+          "lastModifiedBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "lastModifiedByType": "User",
+          "lastModifiedAt": "2021-01-11T18:52:27Z"
+        },
+        "properties": {
+          "description": "My Test Network Manager",
+          "networkManagerScopes": {
+            "managementGroups": [
+              "Microsoft.Management/managementGroups/testMg"
+            ],
+            "subscriptions": [
+              "/subscriptions/00000000-0000-0000-0000-000000000000"
+            ]
+          },
+          "networkManagerScopeAccesses": [
+            "Connectivity"
+          ],
+          "provisioningState": "Succeeded",
+          "resourceGuid": "00000000-0000-0000-0000-000000000000"
+        }
+      }
+    }
+  }
+}
+

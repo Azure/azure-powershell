@@ -1,0 +1,19 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "location": "westus",
+    "parameters": {
+      "privateLinkServiceAlias": "mypls.00000000-0000-0000-0000-000000000000.azure.privatelinkservice"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "visible": true
+      }
+    },
+    "202": {}
+  }
+}
+

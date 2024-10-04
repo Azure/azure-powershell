@@ -1,0 +1,116 @@
+{
+  "parameters": {
+    "gatewayName": "gateway1",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "vpnGatewayParameters": {
+      "tags": {
+        "tag1": "value1",
+        "tag2": "value2"
+      }
+    }
+  },
+  "responses": {
+    "202": {},
+    "200": {
+      "body": {
+        "name": "gateway1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnGateways/gateway1",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "type": "Microsoft.Network/vpnGateways",
+        "tags": {
+          "key1": "value1",
+          "key2": "value2"
+        },
+        "properties": {
+          "provisioningState": "Succeeded",
+          "virtualHub": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1"
+          },
+          "connections": [
+            {
+              "name": "vpnConnection1",
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnGateways/gateway1/vpnConnections/vpnConnection1",
+              "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "remoteVpnSite": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1"
+                },
+                "connectionStatus": "Connected",
+                "ingressBytesTransferred": 0,
+                "egressBytesTransferred": 0,
+                "routingWeight": 0,
+                "sharedKey": "key",
+                "enableBgp": false,
+                "ipsecPolicies": [],
+                "routingConfiguration": {
+                  "associatedRouteTable": {
+                    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                  },
+                  "propagatedRouteTables": {
+                    "labels": [
+                      "label1",
+                      "label2"
+                    ],
+                    "ids": [
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                      },
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable2"
+                      },
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable3"
+                      }
+                    ]
+                  },
+                  "vnetRoutes": {
+                    "staticRoutes": []
+                  }
+                }
+              }
+            }
+          ],
+          "bgpSettings": {
+            "asn": 65515,
+            "bgpPeeringAddress": "10.0.1.30",
+            "peerWeight": 0,
+            "bgpPeeringAddresses": [
+              {
+                "ipconfigurationId": "Instance0",
+                "defaultBgpIpAddresses": [
+                  "10.30.0.4"
+                ],
+                "customBgpIpAddresses": [
+                  "169.254.21.5"
+                ],
+                "tunnelIpAddresses": [
+                  "104.208.48.178"
+                ]
+              },
+              {
+                "ipconfigurationId": "Instance1",
+                "defaultBgpIpAddresses": [
+                  "10.30.0.5"
+                ],
+                "customBgpIpAddresses": [
+                  "169.254.21.10"
+                ],
+                "tunnelIpAddresses": [
+                  "104.208.48.179"
+                ]
+              }
+            ]
+          },
+          "natRules": [],
+          "isRoutingPreferenceInternet": false,
+          "enableBgpRouteTranslationForNat": false
+        }
+      }
+    }
+  }
+}
+

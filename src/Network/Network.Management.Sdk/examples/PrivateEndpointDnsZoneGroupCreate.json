@@ -1,0 +1,91 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subId",
+    "resourceGroupName": "rg1",
+    "privateEndpointName": "testPe",
+    "privateDnsZoneGroupName": "testPdnsgroup",
+    "parameters": {
+      "properties": {
+        "privateDnsZoneConfigs": [
+          {
+            "properties": {
+              "privateDnsZoneId": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateDnsZones/zone1.com"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "testPdnsgroup",
+        "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPe/privateDnsZoneGroups/testPdnsgroup",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "privateDnsZoneConfigs": [
+            {
+              "properties": {
+                "privateDnsZoneId": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateDnsZones/zone1.com",
+                "recordSets": [
+                  {
+                    "recordType": "A",
+                    "recordSetName": "abc",
+                    "fqdn": "abc.zone1.com",
+                    "ipAddresses": [
+                      "10.0.0.4"
+                    ]
+                  },
+                  {
+                    "recordType": "A",
+                    "recordSetName": "abc2",
+                    "fqdn": "abc2.zone1.com",
+                    "ipAddresses": [
+                      "10.0.0.5"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "testPdnsgroup",
+        "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPe/privateDnsZoneGroups/testPdnsgroup",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "privateDnsZoneConfigs": [
+            {
+              "properties": {
+                "privateDnsZoneId": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateDnsZones/zone1.com",
+                "recordSets": [
+                  {
+                    "recordType": "A",
+                    "recordSetName": "abc",
+                    "fqdn": "abc.zone1.com",
+                    "ipAddresses": [
+                      "10.0.0.4"
+                    ]
+                  },
+                  {
+                    "recordType": "A",
+                    "recordSetName": "abc2",
+                    "fqdn": "abc2.zone1.com",
+                    "ipAddresses": [
+                      "10.0.0.5"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

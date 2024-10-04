@@ -1,0 +1,19 @@
+{
+  "parameters": {
+    "routeFilterName": "filterName",
+    "ruleName": "ruleName",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {},
+    "202": {
+      "headers": {
+        "Azure-AsyncOperation": "<azure-operation-result>"
+      }
+    },
+    "204": {}
+  }
+}
+

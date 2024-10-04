@@ -1,0 +1,29 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualHubName": "hub1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "ipconfig1",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/ipConfigurations/ipconfig1",
+            "type": "Microsoft.Network/virtualHubs/ipConfigurations",
+            "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "subnet": {
+                "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

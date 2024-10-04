@@ -1,0 +1,29 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "applicationGatewayName": "appgw"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "privateLink1",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/privateLinkResources/privateLink1",
+            "type": "Microsoft.Network/applicationGateways/privateLinkResources",
+            "properties": {
+              "groupId": "privateLink1",
+              "requiredMembers": [
+                "privateLink1"
+              ],
+              "requiredZoneNames": []
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

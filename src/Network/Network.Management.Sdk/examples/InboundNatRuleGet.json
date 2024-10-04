@@ -1,0 +1,33 @@
+{
+  "parameters": {
+    "resourceGroupName": "testrg",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "loadBalancerName": "lb1",
+    "inboundNatRuleName": "natRule1.1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "natRule1.1",
+        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb1/inboundNatRules/natRule1.1",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "frontendIPConfiguration": {
+            "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/ip1"
+          },
+          "frontendPort": 3390,
+          "backendPort": 3389,
+          "enableFloatingIP": false,
+          "idleTimeoutInMinutes": 4,
+          "protocol": "Tcp",
+          "enableTcpReset": true,
+          "backendIPConfiguration": {
+            "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1/virtualMachines/1/networkInterfaces/nic1/ipConfigurations/ip1"
+          }
+        }
+      }
+    }
+  }
+}
+

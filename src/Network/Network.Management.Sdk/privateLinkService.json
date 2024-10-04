@@ -1,0 +1,1092 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}": {
+      "delete": {
+        "tags": [
+          "PrivateLinkServices"
+        ],
+        "operationId": "PrivateLinkServices_Delete",
+        "description": "Deletes the specified private link service.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private link service."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Delete successful."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Delete private link service": {
+            "$ref": "./examples/PrivateLinkServiceDelete.json"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "PrivateLinkServices"
+        ],
+        "operationId": "PrivateLinkServices_Get",
+        "description": "Gets the specified private link service by resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private link service."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expands referenced resources."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting PrivateLinkService resource.",
+            "schema": {
+              "$ref": "#/definitions/PrivateLinkService"
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get private link service": {
+            "$ref": "./examples/PrivateLinkServiceGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PrivateLinkService"
+        ],
+        "operationId": "PrivateLinkServices_CreateOrUpdate",
+        "description": "Creates or updates an private link service in the specified resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private link service."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PrivateLinkService"
+            },
+            "description": "Parameters supplied to the create or update private link service operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting privateLinkService resource.",
+            "schema": {
+              "$ref": "#/definitions/PrivateLinkService"
+            }
+          },
+          "201": {
+            "description": "Create successful. The operation returns the resulting privateLinkService resource.",
+            "schema": {
+              "$ref": "#/definitions/PrivateLinkService"
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "Create private link service": {
+            "$ref": "./examples/PrivateLinkServiceCreate.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices": {
+      "get": {
+        "tags": [
+          "PrivateLinkServices"
+        ],
+        "operationId": "PrivateLinkServices_List",
+        "description": "Gets all private link services in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of privateLinkService resources.",
+            "schema": {
+              "$ref": "#/definitions/PrivateLinkServiceListResult"
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List private link service in resource group": {
+            "$ref": "./examples/PrivateLinkServiceList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateLinkServices": {
+      "get": {
+        "tags": [
+          "PrivateLinkServices"
+        ],
+        "operationId": "PrivateLinkServices_ListBySubscription",
+        "description": "Gets all private link service in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of PrivateLinkService resources.",
+            "schema": {
+              "$ref": "#/definitions/PrivateLinkServiceListResult"
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all private list service": {
+            "$ref": "./examples/PrivateLinkServiceListAll.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections/{peConnectionName}": {
+      "get": {
+        "tags": [
+          "PrivateLinkServices"
+        ],
+        "operationId": "PrivateLinkServices_GetPrivateEndpointConnection",
+        "description": "Get the specific private end point connection by specific private link service in the resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private link service."
+          },
+          {
+            "name": "peConnectionName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private end point connection."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expands referenced resources."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting private end point connection resource.",
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpointConnection"
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get private end point connection": {
+            "$ref": "./examples/PrivateLinkServiceGetPrivateEndpointConnection.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PrivateLinkServices"
+        ],
+        "operationId": "PrivateLinkServices_UpdatePrivateEndpointConnection",
+        "description": "Approve or reject private end point connection for a private link service in a subscription.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private link service."
+          },
+          {
+            "name": "peConnectionName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private end point connection."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpointConnection"
+            },
+            "description": "Parameters supplied to approve or reject the private end point connection."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting PrivateEndpointConnection resource.",
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpointConnection"
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "approve or reject private end point connection for a private link service": {
+            "$ref": "./examples/PrivateLinkServiceUpdatePrivateEndpointConnection.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "PrivateLinkServices"
+        ],
+        "operationId": "PrivateLinkServices_DeletePrivateEndpointConnection",
+        "description": "Delete private end point connection for a private link service in a subscription.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private link service."
+          },
+          {
+            "name": "peConnectionName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private end point connection."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Delete successful."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "delete private end point connection for a private link service": {
+            "$ref": "./examples/PrivateLinkServiceDeletePrivateEndpointConnection.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateLinkServices/{serviceName}/privateEndpointConnections": {
+      "get": {
+        "tags": [
+          "PrivateLinkServices"
+        ],
+        "operationId": "PrivateLinkServices_ListPrivateEndpointConnections",
+        "description": "Gets all private end point connections for a specific private link service.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "serviceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private link service."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of private end point connection resources.",
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpointConnectionListResult"
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List private link service in resource group": {
+            "$ref": "./examples/PrivateLinkServiceListPrivateEndpointConnection.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility": {
+      "post": {
+        "tags": [
+          "PrivateLinkServices"
+        ],
+        "operationId": "PrivateLinkServices_CheckPrivateLinkServiceVisibility",
+        "description": "Checks whether the subscription is visible to private link service.",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The location of the domain name."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CheckPrivateLinkServiceVisibilityRequest"
+            },
+            "description": "The request body of CheckPrivateLinkService API call."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. Returns whether the subscription is visible to private link service.",
+            "schema": {
+              "$ref": "#/definitions/PrivateLinkServiceVisibility"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Check private link service visibility": {
+            "$ref": "./examples/CheckPrivateLinkServiceVisibility.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/checkPrivateLinkServiceVisibility": {
+      "post": {
+        "tags": [
+          "PrivateLinkServices"
+        ],
+        "operationId": "PrivateLinkServices_CheckPrivateLinkServiceVisibilityByResourceGroup",
+        "description": "Checks whether the subscription is visible to private link service in the specified resource group.",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The location of the domain name."
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CheckPrivateLinkServiceVisibilityRequest"
+            },
+            "description": "The request body of CheckPrivateLinkService API call."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. Returns whether the subscription is visible to private link service.",
+            "schema": {
+              "$ref": "#/definitions/PrivateLinkServiceVisibility"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Check private link service visibility": {
+            "$ref": "./examples/CheckPrivateLinkServiceVisibilityByResourceGroup.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices": {
+      "get": {
+        "tags": [
+          "PrivateLinkServices"
+        ],
+        "operationId": "PrivateLinkServices_ListAutoApprovedPrivateLinkServices",
+        "description": "Returns all of the private link service ids that can be linked to a Private Endpoint with auto approved in this subscription in this region.",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The location of the domain name."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. Returns all of the private link service ids that can be linked to a Private Endpoint with auto approved in this subscription in this region.",
+            "schema": {
+              "$ref": "#/definitions/AutoApprovedPrivateLinkServicesResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get list of private link service id that can be linked to a private end point with auto approved": {
+            "$ref": "./examples/AutoApprovedPrivateLinkServicesGet.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/autoApprovedPrivateLinkServices": {
+      "get": {
+        "tags": [
+          "PrivateLinkServices"
+        ],
+        "operationId": "PrivateLinkServices_ListAutoApprovedPrivateLinkServicesByResourceGroup",
+        "description": "Returns all of the private link service ids that can be linked to a Private Endpoint with auto approved in this subscription in this region.",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The location of the domain name."
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. Returns all of the private link service ids that can be linked to a Private Endpoint with auto approved in this subscription in this region.",
+            "schema": {
+              "$ref": "#/definitions/AutoApprovedPrivateLinkServicesResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get list of private link service id that can be linked to a private end point with auto approved": {
+            "$ref": "./examples/AutoApprovedPrivateLinkServicesResourceGroupGet.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PrivateLinkService": {
+      "properties": {
+        "extendedLocation": {
+          "$ref": "./network.json#/definitions/ExtendedLocation",
+          "description": "The extended location of the load balancer."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PrivateLinkServiceProperties",
+          "description": "Properties of the private link service."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "Private link service resource."
+    },
+    "PrivateLinkServiceProperties": {
+      "properties": {
+        "loadBalancerFrontendIpConfigurations": {
+          "type": "array",
+          "items": {
+            "$ref": "./loadBalancer.json#/definitions/FrontendIPConfiguration"
+          },
+          "description": "An array of references to the load balancer IP configurations."
+        },
+        "ipConfigurations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrivateLinkServiceIpConfiguration"
+          },
+          "description": "An array of private link service IP configurations."
+        },
+        "networkInterfaces": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "./networkInterface.json#/definitions/NetworkInterface"
+          },
+          "description": "An array of references to the network interfaces created for this private link service."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the private link service resource."
+        },
+        "privateEndpointConnections": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrivateEndpointConnection"
+          },
+          "description": "An array of list about connections to the private endpoint."
+        },
+        "visibility": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/ResourceSet"
+            }
+          ],
+          "description": "The visibility list of the private link service."
+        },
+        "autoApproval": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/ResourceSet"
+            }
+          ],
+          "description": "The auto-approval list of the private link service."
+        },
+        "fqdns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The list of Fqdn."
+        },
+        "alias": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The alias of the private link service."
+        },
+        "enableProxyProtocol": {
+          "type": "boolean",
+          "description": "Whether the private link service is enabled for proxy protocol or not."
+        }
+      },
+      "description": "Properties of the private link service."
+    },
+    "ResourceSet": {
+      "properties": {
+        "subscriptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The list of subscriptions."
+        }
+      },
+      "description": "The base resource set for visibility and auto-approval."
+    },
+    "PrivateLinkServiceIpConfiguration": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PrivateLinkServiceIpConfigurationProperties",
+          "description": "Properties of the private link service ip configuration."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of private link service ip configuration."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The resource type."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ],
+      "description": "The private link service ip configuration."
+    },
+    "PrivateLinkServiceIpConfigurationProperties": {
+      "properties": {
+        "privateIPAddress": {
+          "type": "string",
+          "description": "The private IP address of the IP configuration."
+        },
+        "privateIPAllocationMethod": {
+          "$ref": "./network.json#/definitions/IPAllocationMethod",
+          "description": "The private IP address allocation method."
+        },
+        "subnet": {
+          "$ref": "./virtualNetwork.json#/definitions/Subnet",
+          "description": "The reference to the subnet resource."
+        },
+        "primary": {
+          "type": "boolean",
+          "description": "Whether the ip configuration is primary or not."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the private link service IP configuration resource."
+        },
+        "privateIPAddressVersion": {
+          "$ref": "./network.json#/definitions/IPVersion",
+          "description": "Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4."
+        }
+      },
+      "description": "Properties of private link service IP configuration."
+    },
+    "PrivateEndpointConnection": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PrivateEndpointConnectionProperties",
+          "description": "Properties of the private end point connection."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the resource that is unique within a resource group. This name can be used to access the resource."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The resource type."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ],
+      "description": "PrivateEndpointConnection resource."
+    },
+    "PrivateEndpointConnectionProperties": {
+      "properties": {
+        "privateEndpoint": {
+          "readOnly": true,
+          "$ref": "./privateEndpoint.json#/definitions/PrivateEndpoint",
+          "description": "The resource of private end point."
+        },
+        "privateLinkServiceConnectionState": {
+          "$ref": "#/definitions/PrivateLinkServiceConnectionState",
+          "description": "A collection of information about the state of the connection between service consumer and provider."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the private endpoint connection resource."
+        },
+        "linkIdentifier": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The consumer link id."
+        },
+        "privateEndpointLocation": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The location of the private endpoint."
+        }
+      },
+      "description": "Properties of the PrivateEndpointConnectProperties."
+    },
+    "PrivateLinkServiceConnectionState": {
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service."
+        },
+        "description": {
+          "type": "string",
+          "description": "The reason for approval/rejection of the connection."
+        },
+        "actionsRequired": {
+          "type": "string",
+          "description": "A message indicating if changes on the service provider require any updates on the consumer."
+        }
+      },
+      "description": "A collection of information about the state of the connection between service consumer and provider."
+    },
+    "PrivateLinkServiceListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrivateLinkService"
+          },
+          "description": "A list of PrivateLinkService resources in a resource group."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results.",
+          "readOnly": true
+        }
+      },
+      "description": "Response for the ListPrivateLinkService API service call."
+    },
+    "PrivateEndpointConnectionListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrivateEndpointConnection"
+          },
+          "description": "A list of PrivateEndpointConnection resources for a specific private link service."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results.",
+          "readOnly": true
+        }
+      },
+      "description": "Response for the ListPrivateEndpointConnection API service call."
+    },
+    "CheckPrivateLinkServiceVisibilityRequest": {
+      "properties": {
+        "privateLinkServiceAlias": {
+          "type": "string",
+          "description": "The alias of the private link service."
+        }
+      },
+      "description": "Request body of the CheckPrivateLinkServiceVisibility API service call."
+    },
+    "PrivateLinkServiceVisibility": {
+      "properties": {
+        "visible": {
+          "type": "boolean",
+          "description": "Private Link Service Visibility (True/False)."
+        }
+      },
+      "description": "Response for the CheckPrivateLinkServiceVisibility API service call."
+    },
+    "AutoApprovedPrivateLinkServicesResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AutoApprovedPrivateLinkService"
+          },
+          "description": "An array of auto approved private link service."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "An array of private link service id that can be linked to a private end point with auto approved."
+    },
+    "AutoApprovedPrivateLinkService": {
+      "properties": {
+        "privateLinkService": {
+          "type": "string",
+          "description": "The id of the private link service resource."
+        }
+      },
+      "description": "The information of an AutoApprovedPrivateLinkService."
+    }
+  }
+}
+

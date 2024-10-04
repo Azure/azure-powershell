@@ -1,0 +1,142 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "resourceGroupName": "rg1",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1",
+            "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+            "location": "West US",
+            "name": "virtualHub1",
+            "type": "Microsoft.Network/virtualHubs",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "virtualWan": {
+                "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualWans/virtualWan1"
+              },
+              "virtualHubRouteTableV2s": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub2/routeTables/virtualHubRouteTable2",
+                  "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+                  "name": "rt2a",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "routes": [
+                      {
+                        "destinationType": "CIDR",
+                        "destinations": [
+                          "20.10.0.0/16",
+                          "20.20.0.0/16"
+                        ],
+                        "nextHopType": "IPAddress",
+                        "nextHops": [
+                          "10.0.0.68"
+                        ]
+                      },
+                      {
+                        "destinationType": "CIDR",
+                        "destinations": [
+                          "0.0.0.0/0"
+                        ],
+                        "nextHopType": "IPAddress",
+                        "nextHops": [
+                          "10.0.0.68"
+                        ]
+                      }
+                    ],
+                    "attachedConnections": [
+                      "All_Vnets"
+                    ]
+                  }
+                }
+              ],
+              "addressPrefix": "10.10.1.0/24",
+              "sku": "Basic",
+              "routingState": "Provisioned",
+              "virtualRouterAsn": 65515,
+              "virtualRouterIps": [
+                "10.10.1.12",
+                "10.10.1.13"
+              ],
+              "allowBranchToBranchTraffic": false,
+              "preferredRoutingGateway": "ExpressRoute",
+              "hubRoutingPreference": "ExpressRoute",
+              "virtualRouterAutoScaleConfiguration": {
+                "minCapacity": 2
+              }
+            }
+          },
+          {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub2",
+            "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+            "location": "East US",
+            "name": "virtualHub2",
+            "type": "Microsoft.Network/virtualHubs",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "virtualWan": {
+                "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualWans/virtualWan1"
+              },
+              "virtualHubRouteTableV2s": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub2/routeTables/virtualHubRouteTable2",
+                  "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+                  "name": "rt2a",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "routes": [
+                      {
+                        "destinationType": "CIDR",
+                        "destinations": [
+                          "20.10.0.0/16",
+                          "20.20.0.0/16"
+                        ],
+                        "nextHopType": "IPAddress",
+                        "nextHops": [
+                          "10.0.0.68"
+                        ]
+                      },
+                      {
+                        "destinationType": "CIDR",
+                        "destinations": [
+                          "0.0.0.0/0"
+                        ],
+                        "nextHopType": "IPAddress",
+                        "nextHops": [
+                          "10.0.0.68"
+                        ]
+                      }
+                    ],
+                    "attachedConnections": [
+                      "All_Vnets"
+                    ]
+                  }
+                }
+              ],
+              "addressPrefix": "210.10.1.0/24",
+              "sku": "Basic",
+              "routingState": "Provisioned",
+              "virtualRouterAsn": 65515,
+              "virtualRouterIps": [
+                "10.10.1.12",
+                "10.10.1.13"
+              ],
+              "allowBranchToBranchTraffic": false,
+              "preferredRoutingGateway": "ExpressRoute",
+              "hubRoutingPreference": "ExpressRoute",
+              "virtualRouterAutoScaleConfiguration": {
+                "minCapacity": 2
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

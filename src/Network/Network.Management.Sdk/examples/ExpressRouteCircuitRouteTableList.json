@@ -1,0 +1,31 @@
+{
+  "parameters": {
+    "circuitName": "circuitName",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "peeringName": "peeringName",
+    "devicePath": "devicePath"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "network": "",
+            "nextHop": "",
+            "locPrf": "",
+            "weight": 0,
+            "path": ""
+          }
+        ]
+      }
+    },
+    "202": {
+      "headers": {
+        "Location": "https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/locations/eastus/operationStatus/default/operationId/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    }
+  }
+}
+

@@ -1,0 +1,145 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1",
+    "parameters": {
+      "targetResourceId": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "networkInterfaces": [
+          {
+            "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/networkInterfaces/nic1",
+            "securityRuleAssociations": {
+              "subnetAssociation": {
+                "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1",
+                "securityRules": [
+                  {
+                    "name": "fe_rule",
+                    "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/networkSecurityGroups/AppNSG/securityRules/fe_rule",
+                    "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                    "properties": {
+                      "provisioningState": "Succeeded",
+                      "description": "Allow Frontend",
+                      "protocol": "Tcp",
+                      "sourcePortRange": "*",
+                      "destinationPortRange": "*",
+                      "sourceAddressPrefix": "10.1.0.0/24",
+                      "destinationAddressPrefix": "*",
+                      "access": "Allow",
+                      "priority": 100,
+                      "direction": "Inbound"
+                    }
+                  }
+                ]
+              },
+              "defaultSecurityRules": [
+                {
+                  "name": "AllowVnetInBound",
+                  "id": "/subscriptions//resourceGroups//providers/Microsoft.Network/networkSecurityGroups//defaultSecurityRules/",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "description": "Allow inbound traffic from all VMs in VNET",
+                    "protocol": "*",
+                    "sourcePortRange": "*",
+                    "destinationPortRange": "*",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "destinationAddressPrefix": "VirtualNetwork",
+                    "access": "Allow",
+                    "priority": 65000,
+                    "direction": "Inbound"
+                  }
+                }
+              ],
+              "effectiveSecurityRules": [
+                {
+                  "name": "DefaultOutboundDenyAll",
+                  "protocol": "All",
+                  "sourcePortRange": "0-65535",
+                  "destinationPortRange": "0-65535",
+                  "sourceAddressPrefix": "*",
+                  "destinationAddressPrefix": "*",
+                  "access": "Deny",
+                  "priority": 65500,
+                  "direction": "Outbound"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "202": {
+      "headers": {
+        "Location": "https:/management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/queryStatus?api-version=2024-05-01"
+      },
+      "body": {
+        "networkInterfaces": [
+          {
+            "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/networkInterfaces/nic1",
+            "securityRuleAssociations": {
+              "subnetAssociation": {
+                "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1",
+                "securityRules": [
+                  {
+                    "name": "fe_rule",
+                    "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/networkSecurityGroups/AppNSG/securityRules/fe_rule",
+                    "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+                    "properties": {
+                      "provisioningState": "Succeeded",
+                      "description": "Allow Frontend",
+                      "protocol": "Tcp",
+                      "sourcePortRange": "*",
+                      "destinationPortRange": "*",
+                      "sourceAddressPrefix": "10.1.0.0/24",
+                      "destinationAddressPrefix": "*",
+                      "access": "Allow",
+                      "priority": 100,
+                      "direction": "Inbound"
+                    }
+                  }
+                ]
+              },
+              "defaultSecurityRules": [
+                {
+                  "name": "AllowVnetInBound",
+                  "id": "/subscriptions//resourceGroups//providers/Microsoft.Network/networkSecurityGroups//defaultSecurityRules/",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "description": "Allow inbound traffic from all VMs in VNET",
+                    "protocol": "*",
+                    "sourcePortRange": "*",
+                    "destinationPortRange": "*",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "destinationAddressPrefix": "VirtualNetwork",
+                    "access": "Allow",
+                    "priority": 65000,
+                    "direction": "Inbound"
+                  }
+                }
+              ],
+              "effectiveSecurityRules": [
+                {
+                  "name": "DefaultOutboundDenyAll",
+                  "protocol": "All",
+                  "sourcePortRange": "0-65535",
+                  "destinationPortRange": "0-65535",
+                  "sourceAddressPrefix": "*",
+                  "destinationAddressPrefix": "*",
+                  "access": "Deny",
+                  "priority": 65500,
+                  "direction": "Outbound"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

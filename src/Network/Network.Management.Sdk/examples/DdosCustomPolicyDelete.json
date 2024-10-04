@@ -1,0 +1,21 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "ddosCustomPolicyName": "test-ddos-custom-policy",
+    "parameters": {
+      "properties": {}
+    }
+  },
+  "responses": {
+    "200": {},
+    "202": {
+      "headers": {
+        "Location": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SampleRG/providers/Microsoft.Network/locations/tempLocation/operationResults/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    },
+    "204": {}
+  }
+}
+

@@ -1,0 +1,39 @@
+{
+  "parameters": {
+    "circuitName": "circuitName",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "circuitName",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "type": "Microsoft.Network/expressRouteCircuits",
+        "location": "westus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "peerings": [],
+          "authorizations": [],
+          "serviceProviderProperties": {
+            "serviceProviderName": "providerName",
+            "peeringLocation": "peeringLocation",
+            "bandwidthInMbps": 200
+          },
+          "circuitProvisioningState": "Enabled",
+          "allowClassicOperations": false,
+          "serviceKey": "a1410692-0000-4ceb-b94a-b90b94d398d1",
+          "serviceProviderProvisioningState": "NotProvisioned"
+        },
+        "sku": {
+          "name": "Standard_MeteredData",
+          "tier": "Standard",
+          "family": "MeteredData"
+        }
+      }
+    }
+  }
+}
+

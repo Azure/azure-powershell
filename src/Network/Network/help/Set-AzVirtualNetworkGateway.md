@@ -686,6 +686,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableHighBandwidthVpnGatewayFeature
+Flag to enable high bandwidth VPN gateway feature on virtual network gateway
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableHighBandwidthVpnGatewayFeature
+Flag to disable high bandwidth VPN gateway feature on virtual network gateway
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnablePrivateIpAddress
 Flag to enable Active Active feature on virtual network gateway
 

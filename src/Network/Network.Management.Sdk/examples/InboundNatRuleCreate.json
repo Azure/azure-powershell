@@ -1,0 +1,67 @@
+{
+  "parameters": {
+    "resourceGroupName": "testrg",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "loadBalancerName": "lb1",
+    "inboundNatRuleName": "natRule1.1",
+    "inboundNatRuleParameters": {
+      "properties": {
+        "protocol": "Tcp",
+        "frontendIPConfiguration": {
+          "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/ip1"
+        },
+        "frontendPort": 3390,
+        "backendPort": 3389,
+        "idleTimeoutInMinutes": 4,
+        "enableTcpReset": false,
+        "enableFloatingIP": false
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "natRule1.1",
+        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb1/inboundNatRules/natRule1.1",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "frontendIPConfiguration": {
+            "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/ip1"
+          },
+          "frontendPort": 3390,
+          "backendPort": 3389,
+          "enableFloatingIP": false,
+          "idleTimeoutInMinutes": 4,
+          "protocol": "Tcp",
+          "enableTcpReset": false,
+          "backendIPConfiguration": {
+            "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1/virtualMachines/1/networkInterfaces/nic1/ipConfigurations/ip1"
+          }
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "natRule1.1",
+        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb1/inboundNatRules/natRule1.1",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "frontendIPConfiguration": {
+            "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/ip1"
+          },
+          "frontendPort": 3390,
+          "backendPort": 3389,
+          "enableFloatingIP": false,
+          "idleTimeoutInMinutes": 4,
+          "protocol": "Tcp",
+          "enableTcpReset": false,
+          "backendIPConfiguration": {
+            "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1/virtualMachines/1/networkInterfaces/nic1/ipConfigurations/ip1"
+          }
+        }
+      }
+    }
+  }
+}
+

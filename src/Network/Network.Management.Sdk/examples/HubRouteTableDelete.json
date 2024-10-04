@@ -1,0 +1,15 @@
+{
+  "parameters": {
+    "routeTableName": "hubRouteTable1",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "virtualHubName": "virtualHub1"
+  },
+  "responses": {
+    "200": {},
+    "202": {},
+    "204": {}
+  }
+}
+

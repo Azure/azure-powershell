@@ -1,0 +1,29 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "api-version": "2024-05-01",
+    "locationName": "locationName"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "locationName",
+        "id": "/subscriptions/subid/providers/Microsoft.Network/expressRoutePortsLocations/locationName",
+        "type": "Microsoft.Network/expressRoutePortsLocations",
+        "location": "westus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "address": "123 Main Street, City, State, Zip",
+          "contact": "email@address.com",
+          "availableBandwidths": [
+            {
+              "offerName": "100 Gbps",
+              "valueInGbps": 100
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

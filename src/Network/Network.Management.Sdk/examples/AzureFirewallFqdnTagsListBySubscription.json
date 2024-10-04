@@ -1,0 +1,29 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "azfwfqdntag",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewallFqdnTags/azfwfqdntag",
+            "type": "Microsoft.Network/azureFirewallFqdnTags",
+            "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+            "location": "West US",
+            "tags": {
+              "key1": "value1"
+            },
+            "properties": {
+              "provisioningState": "Succeeded",
+              "fqdnTagName": "azfwfqdntag"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

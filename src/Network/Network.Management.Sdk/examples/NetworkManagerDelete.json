@@ -1,0 +1,20 @@
+{
+  "title": "Delete Azure Virtual Network Manager",
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "rg1",
+    "networkManagerName": "testNetworkManager",
+    "force": false
+  },
+  "responses": {
+    "202": {
+      "headers": {
+        "Location": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SampleRG/providers/Microsoft.Network/networkManagers/TestNM/operationResults/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    },
+    "200": {},
+    "204": {}
+  }
+}
+

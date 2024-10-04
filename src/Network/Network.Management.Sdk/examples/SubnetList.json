@@ -1,0 +1,33 @@
+{
+  "parameters": {
+    "virtualNetworkName": "vnetname",
+    "resourceGroupName": "subnet-test",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/subid/resourceGroups/subnet-test/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnet1",
+            "name": "subnet1",
+            "properties": {
+              "addressPrefix": "10.0.0.0/16",
+              "provisioningState": "Succeeded"
+            }
+          },
+          {
+            "id": "/subscriptions/subid/resourceGroups/subnet-test/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnet2",
+            "name": "subnet2",
+            "properties": {
+              "addressPrefix": "10.0.0.0/16",
+              "provisioningState": "Succeeded"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

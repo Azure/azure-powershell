@@ -1,0 +1,21 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "location": "regionName",
+    "subscriptionId": "subId"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/subId/providers/Microsoft.Network/availablePrivateEndpointTypes/Microsoft.Provider.resourceType",
+            "type": "Microsoft.Network/availablePrivateEndpointTypes",
+            "resourceName": "Microsoft.Provider/resourceType"
+          }
+        ]
+      }
+    }
+  }
+}
+

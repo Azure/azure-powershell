@@ -1,0 +1,15 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualHubName": "virtualHub1",
+    "routeMapName": "routeMap1",
+    "api-version": "2024-05-01"
+  },
+  "responses": {
+    "200": {},
+    "202": {},
+    "204": {}
+  }
+}
+

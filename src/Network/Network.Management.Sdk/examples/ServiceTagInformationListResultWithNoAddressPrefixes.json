@@ -1,0 +1,37 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "location": "westeurope",
+    "subscriptionId": "subid",
+    "noAddressPrefixes": "true"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "ApiManagement",
+            "id": "ApiManagement",
+            "properties": {
+              "changeNumber": "7",
+              "region": "",
+              "systemService": "AzureApiManagement",
+              "addressPrefixes": []
+            }
+          },
+          {
+            "name": "ApiManagement.AustraliaCentral",
+            "id": "ApiManagement.AustraliaCentral",
+            "properties": {
+              "changeNumber": "2",
+              "region": "australiacentral",
+              "systemService": "AzureApiManagement",
+              "addressPrefixes": []
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

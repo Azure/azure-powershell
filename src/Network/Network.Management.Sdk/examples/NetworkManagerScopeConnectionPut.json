@@ -1,0 +1,67 @@
+{
+  "title": "Create/Update Azure Virtual Network Manager Scope Connection",
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "rg1",
+    "networkManagerName": "testNetworkManager",
+    "scopeConnectionName": "TestScopeConnection",
+    "parameters": {
+      "properties": {
+        "tenantId": "6babcaad-604b-40ac-a9d7-9fd97c0b779f",
+        "resourceId": "subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b",
+        "description": "This is a scope connection to a cross tenant subscription."
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "headers": {
+        "ETag": "be3cfaa2-3d02-4624-92d7-a26766306c8b"
+      },
+      "body": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroup/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/scopeConnections/TestScopeConnection",
+        "type": "Microsoft.Network/networkManagers/scopeConnections",
+        "name": "TestScopeConnection",
+        "systemData": {
+          "createdBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "createdByType": "User",
+          "createdAt": "2021-01-11T18:52:27Z",
+          "lastModifiedBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "lastModifiedByType": "User",
+          "lastModifiedAt": "2021-01-11T18:52:27Z"
+        },
+        "properties": {
+          "tenantId": "00000000-0000-0000-0000-000000000000",
+          "connectionState": "Pending",
+          "resourceId": "subscriptions/00000000-0000-0000-0000-000000000000",
+          "description": "This is a scope connection to a cross tenant subscription."
+        }
+      }
+    },
+    "201": {
+      "headers": {
+        "ETag": "be3cfaa2-3d02-4624-92d7-a26766306c8b"
+      },
+      "body": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroup/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/scopeConnections/TestScopeConnection",
+        "type": "Microsoft.Network/networkManagers/scopeConnections",
+        "systemData": {
+          "createdBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "createdByType": "User",
+          "createdAt": "2021-01-11T18:52:27Z",
+          "lastModifiedBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+          "lastModifiedByType": "User",
+          "lastModifiedAt": "2021-01-11T18:52:27Z"
+        },
+        "properties": {
+          "tenantId": "6babcaad-604b-40ac-a9d7-9fd97c0b779f",
+          "connectionState": "Pending",
+          "resourceId": "subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b",
+          "description": "This is a scope connection to a cross tenant subscription."
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,20 @@
+{
+  "parameters": {
+    "circuitName": "circuitName",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "peeringName": "peeringName"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "primarybytesIn": 537408,
+        "primarybytesOut": 44032550,
+        "secondarybytesIn": 0,
+        "secondarybytesOut": 39002500
+      }
+    }
+  }
+}
+

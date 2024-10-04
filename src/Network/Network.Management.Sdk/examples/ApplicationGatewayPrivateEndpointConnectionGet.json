@@ -1,0 +1,30 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "applicationGatewayName": "appgw",
+    "connectionName": "connection1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "coonection1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/privateLinkResources/connection1",
+        "type": "Microsoft.Network/applicationGateways/privateEndpointConnections",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "privateEndpoint": {
+            "id": "/subscriptions/subid2/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/pe1"
+          },
+          "privateLinkServiceConnectionState": {
+            "status": "Approved",
+            "description": "Approval Done"
+          },
+          "linkIdentifier": "805319460"
+        }
+      }
+    }
+  }
+}
+

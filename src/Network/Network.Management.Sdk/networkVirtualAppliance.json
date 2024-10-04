@@ -1,0 +1,1593 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}": {
+      "delete": {
+        "tags": [
+          "NetworkVirtualAppliances"
+        ],
+        "operationId": "NetworkVirtualAppliances_Delete",
+        "description": "Deletes the specified Network Virtual Appliance.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkVirtualApplianceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of Network Virtual Appliance."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "Request successful. Resource with the specified name does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete NetworkVirtualAppliance": {
+            "$ref": "./examples/NetworkVirtualApplianceDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "NetworkVirtualAppliances"
+        ],
+        "operationId": "NetworkVirtualAppliances_Get",
+        "description": "Gets the specified Network Virtual Appliance.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkVirtualApplianceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of Network Virtual Appliance."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expands referenced resources."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a Network Virtual Appliance resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkVirtualAppliance"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get NetworkVirtualAppliance": {
+            "$ref": "./examples/NetworkVirtualApplianceGet.json"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "NetworkVirtualAppliances"
+        ],
+        "operationId": "NetworkVirtualAppliances_UpdateTags",
+        "description": "Updates a Network Virtual Appliance.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The resource group name of Network Virtual Appliance."
+          },
+          {
+            "name": "networkVirtualApplianceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of Network Virtual Appliance being updated."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to Update Network Virtual Appliance Tags."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. Returns the details of Network Virtual Appliance updated.",
+            "schema": {
+              "$ref": "#/definitions/NetworkVirtualAppliance"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update NetworkVirtualAppliance": {
+            "$ref": "./examples/NetworkVirtualApplianceUpdateTags.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NetworkVirtualAppliances"
+        ],
+        "operationId": "NetworkVirtualAppliances_CreateOrUpdate",
+        "description": "Creates or updates the specified Network Virtual Appliance.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkVirtualApplianceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of Network Virtual Appliance."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NetworkVirtualAppliance"
+            },
+            "description": "Parameters supplied to the create or update Network Virtual Appliance."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting Network Virtual Appliance resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkVirtualAppliance"
+            }
+          },
+          "201": {
+            "description": "Request received successfully. The operation returns the resulting Network Virtual Appliance resource.",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/NetworkVirtualAppliance"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create NetworkVirtualAppliance": {
+            "$ref": "./examples/NetworkVirtualAppliancePut.json"
+          },
+          "Create SaaS NetworkVirtualAppliance": {
+            "$ref": "./examples/NetworkVirtualApplianceSaaSPut.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/restart": {
+      "post": {
+        "tags": [
+          "NetworkVirtualAppliances"
+        ],
+        "operationId": "NetworkVirtualAppliances_Restart",
+        "description": "Restarts one or more VMs belonging to the specified Network Virtual Appliance.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkVirtualApplianceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of Network Virtual Appliance."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "NetworkVirtualApplianceInstanceIds",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/NetworkVirtualApplianceInstanceIds"
+            },
+            "description": "Specifies a list of virtual machine instance IDs from the Network Virtual Appliance VM instances."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation restarts one or more Network Virtual Appliance VM resources.",
+            "schema": {
+              "$ref": "#/definitions/NetworkVirtualApplianceInstanceIds"
+            }
+          },
+          "202": {
+            "description": "Request accepted. The operation restarts one or more Network Virtual Appliance VM resources.",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Restart All NetworkVirtualAppliance VMs in VM Scale Set": {
+            "$ref": "./examples/NetworkVirtualApplianceEmptyRestart.json"
+          },
+          "Restart Specific NetworkVirtualAppliance VMs in VM Scale Set": {
+            "$ref": "./examples/NetworkVirtualApplianceSpecificRestart.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances": {
+      "get": {
+        "tags": [
+          "NetworkVirtualAppliances"
+        ],
+        "operationId": "NetworkVirtualAppliances_ListByResourceGroup",
+        "description": "Lists all Network Virtual Appliances in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of Network Virtual Appliance resources.",
+            "schema": {
+              "$ref": "#/definitions/NetworkVirtualApplianceListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all Network Virtual Appliance for a given resource group": {
+            "$ref": "./examples/NetworkVirtualApplianceListByResourceGroup.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkVirtualAppliances": {
+      "get": {
+        "tags": [
+          "NetworkVirtualAppliances"
+        ],
+        "operationId": "NetworkVirtualAppliances_List",
+        "description": "Gets all Network Virtual Appliances in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of Network Virtual Appliance resources.",
+            "schema": {
+              "$ref": "#/definitions/NetworkVirtualApplianceListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all Network Virtual Appliances for a given subscription": {
+            "$ref": "./examples/NetworkVirtualApplianceListBySubscription.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites/{siteName}": {
+      "delete": {
+        "tags": [
+          "VirtualApplianceSites"
+        ],
+        "operationId": "VirtualApplianceSites_Delete",
+        "description": "Deletes the specified site from a Virtual Appliance.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkVirtualApplianceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Virtual Appliance."
+          },
+          {
+            "name": "siteName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the site."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Request successful. Resource with the specified name does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete Network Virtual Appliance Site": {
+            "$ref": "./examples/NetworkVirtualApplianceSiteDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "VirtualApplianceSites"
+        ],
+        "operationId": "VirtualApplianceSites_Get",
+        "description": "Gets the specified Virtual Appliance Site.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkVirtualApplianceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Virtual Appliance."
+          },
+          {
+            "name": "siteName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the site."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a Network Virtual Appliance Site resource.",
+            "schema": {
+              "$ref": "#/definitions/VirtualApplianceSite"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "GetNetwork Virtual Appliance Site": {
+            "$ref": "./examples/NetworkVirtualApplianceSiteGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "VirtualApplianceSites"
+        ],
+        "operationId": "VirtualApplianceSites_CreateOrUpdate",
+        "description": "Creates or updates the specified Network Virtual Appliance Site.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkVirtualApplianceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Virtual Appliance."
+          },
+          {
+            "name": "siteName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the site."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VirtualApplianceSite"
+            },
+            "description": "Parameters supplied to the create or update Network Virtual Appliance Site operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting Network Virtual Appliance Site resource.",
+            "schema": {
+              "$ref": "#/definitions/VirtualApplianceSite"
+            }
+          },
+          "201": {
+            "description": "Request received successfully. The operation returns the resulting Network Virtual Appliance Site resource.",
+            "schema": {
+              "$ref": "#/definitions/VirtualApplianceSite"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create Network Virtual Appliance Site": {
+            "$ref": "./examples/NetworkVirtualApplianceSitePut.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/virtualApplianceSites": {
+      "get": {
+        "tags": [
+          "VirtualApplianceSites"
+        ],
+        "operationId": "VirtualApplianceSites_List",
+        "description": "Lists all Network Virtual Appliance Sites in a Network Virtual Appliance resource.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkVirtualApplianceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Virtual Appliance."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of Network Virtual Appliance site resources.",
+            "schema": {
+              "$ref": "#/definitions/NetworkVirtualApplianceSiteListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all Network Virtual Appliance sites for a given Network Virtual Appliance": {
+            "$ref": "./examples/NetworkVirtualApplianceSiteList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkVirtualApplianceSkus": {
+      "get": {
+        "tags": [
+          "VirtualApplianceSkus"
+        ],
+        "operationId": "VirtualApplianceSkus_List",
+        "description": "List all SKUs available for a virtual appliance.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the list of all virtual appliance skus.",
+            "schema": {
+              "$ref": "#/definitions/NetworkVirtualApplianceSkuListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "NetworkVirtualApplianceSkuListResult": {
+            "$ref": "./examples/NetworkVirtualApplianceSkuList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkVirtualApplianceSkus/{skuName}": {
+      "get": {
+        "tags": [
+          "VirtualApplianceSkus"
+        ],
+        "operationId": "VirtualApplianceSkus_Get",
+        "description": "Retrieves a single available sku for network virtual appliance.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "skuName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Name of the Sku."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the requested NetworkVirtualAppliance sku information.",
+            "schema": {
+              "$ref": "#/definitions/NetworkVirtualApplianceSku"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "NetworkVirtualApplianceSkuGet": {
+            "$ref": "./examples/NetworkVirtualApplianceSkuGet.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/inboundSecurityRules/{ruleCollectionName}": {
+      "put": {
+        "operationId": "InboundSecurityRule_CreateOrUpdate",
+        "description": "Creates or updates the specified Network Virtual Appliance Inbound Security Rules.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkVirtualApplianceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Virtual Appliance."
+          },
+          {
+            "name": "ruleCollectionName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of security rule collection."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InboundSecurityRule"
+            },
+            "description": "Parameters supplied to the create or update Network Virtual Appliance Inbound Security Rules operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting Network Virtual Appliance Inbound Security Rules resource.",
+            "schema": {
+              "$ref": "#/definitions/InboundSecurityRule"
+            }
+          },
+          "201": {
+            "description": "Request received successfully. The operation returns the resulting Network Virtual Appliance Inbound Security Rules resource.",
+            "schema": {
+              "$ref": "#/definitions/InboundSecurityRule"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create Network Virtual Appliance Inbound Security Rules": {
+            "$ref": "./examples/InboundSecurityRulePut.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "get": {
+        "operationId": "InboundSecurityRule_Get",
+        "description": "Retrieves the available specified Network Virtual Appliance Inbound Security Rules Collection.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkVirtualApplianceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Virtual Appliance."
+          },
+          {
+            "name": "ruleCollectionName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of security rule collection."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the requested Network Virtual Appliance Inbound Security Rules Collection resource.",
+            "schema": {
+              "$ref": "#/definitions/InboundSecurityRule"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create Network Virtual Appliance Inbound Security Rules": {
+            "$ref": "./examples/InboundSecurityRuleGet.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "NetworkVirtualAppliance": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/NetworkVirtualAppliancePropertiesFormat",
+          "description": "Properties of the Network Virtual Appliance."
+        },
+        "identity": {
+          "$ref": "./network.json#/definitions/ManagedServiceIdentity",
+          "description": "The service principal that has read access to cloud-init and config blob."
+        },
+        "etag": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "NetworkVirtualAppliance Resource."
+    },
+    "NetworkVirtualAppliancePropertiesFormat": {
+      "properties": {
+        "nvaSku": {
+          "readOnly": false,
+          "description": "Network Virtual Appliance SKU.",
+          "$ref": "#/definitions/VirtualApplianceSkuProperties"
+        },
+        "addressPrefix": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Address Prefix."
+        },
+        "bootStrapConfigurationBlobs": {
+          "type": "array",
+          "readOnly": false,
+          "description": "BootStrapConfigurationBlobs storage URLs.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "virtualHub": {
+          "readOnly": false,
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The Virtual Hub where Network Virtual Appliance is being deployed."
+        },
+        "cloudInitConfigurationBlobs": {
+          "type": "array",
+          "readOnly": false,
+          "description": "CloudInitConfigurationBlob storage URLs.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cloudInitConfiguration": {
+          "type": "string",
+          "readOnly": false,
+          "description": "CloudInitConfiguration string in plain text."
+        },
+        "virtualApplianceAsn": {
+          "type": "integer",
+          "readOnly": false,
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "description": "VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported."
+        },
+        "sshPublicKey": {
+          "type": "string",
+          "readOnly": false,
+          "description": "Public key for SSH login."
+        },
+        "virtualApplianceNics": {
+          "type": "array",
+          "readOnly": true,
+          "description": "List of Virtual Appliance Network Interfaces.",
+          "items": {
+            "$ref": "#/definitions/VirtualApplianceNicProperties"
+          }
+        },
+        "networkProfile": {
+          "type": "object",
+          "readOnly": false,
+          "description": "Network Profile containing configurations for Public and Private NIC.",
+          "properties": {
+            "networkInterfaceConfigurations": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/VirtualApplianceNetworkInterfaceConfiguration"
+              },
+              "x-ms-identifiers": []
+            }
+          }
+        },
+        "additionalNics": {
+          "type": "array",
+          "readOnly": false,
+          "description": "Details required for Additional Network Interface.",
+          "items": {
+            "$ref": "#/definitions/VirtualApplianceAdditionalNicProperties"
+          },
+          "x-ms-identifiers": []
+        },
+        "internetIngressPublicIps": {
+          "type": "array",
+          "readOnly": false,
+          "description": "List of Resource Uri of Public IPs for Internet Ingress Scenario.",
+          "items": {
+            "$ref": "#/definitions/InternetIngressPublicIpsProperties"
+          },
+          "x-ms-identifiers": []
+        },
+        "virtualApplianceSites": {
+          "type": "array",
+          "readOnly": true,
+          "description": "List of references to VirtualApplianceSite.",
+          "items": {
+            "$ref": "./network.json#/definitions/SubResource"
+          }
+        },
+        "virtualApplianceConnections": {
+          "type": "array",
+          "readOnly": true,
+          "description": "List of references to VirtualApplianceConnections.",
+          "items": {
+            "$ref": "./network.json#/definitions/SubResource"
+          }
+        },
+        "inboundSecurityRules": {
+          "type": "array",
+          "readOnly": true,
+          "description": "List of references to InboundSecurityRules.",
+          "items": {
+            "$ref": "./network.json#/definitions/SubResource"
+          }
+        },
+        "provisioningState": {
+          "description": "The provisioning state of the resource.",
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState"
+        },
+        "deploymentType": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The deployment type. PartnerManaged for the SaaS NVA"
+        },
+        "delegation": {
+          "description": "The delegation for the Virtual Appliance",
+          "$ref": "#/definitions/DelegationProperties"
+        },
+        "partnerManagedResource": {
+          "description": "The delegation for the Virtual Appliance",
+          "$ref": "#/definitions/PartnerManagedResourceProperties"
+        }
+      },
+      "description": "Network Virtual Appliance definition."
+    },
+    "VirtualApplianceSkuProperties": {
+      "properties": {
+        "vendor": {
+          "type": "string",
+          "readOnly": false,
+          "description": "Virtual Appliance Vendor."
+        },
+        "bundledScaleUnit": {
+          "type": "string",
+          "readOnly": false,
+          "description": "Virtual Appliance Scale Unit."
+        },
+        "marketPlaceVersion": {
+          "type": "string",
+          "readOnly": false,
+          "description": "Virtual Appliance Version."
+        }
+      },
+      "description": "Network Virtual Appliance Sku Properties."
+    },
+    "VirtualApplianceNicProperties": {
+      "properties": {
+        "nicType": {
+          "type": "string",
+          "readOnly": true,
+          "description": "NIC type - PublicNic, PrivateNic, or AdditionalNic.",
+          "enum": [
+            "PublicNic",
+            "PrivateNic",
+            "AdditionalNic"
+          ],
+          "x-ms-enum": {
+            "name": "NicTypeInResponse",
+            "modelAsString": true
+          }
+        },
+        "name": {
+          "type": "string",
+          "readOnly": true,
+          "description": "NIC name."
+        },
+        "publicIpAddress": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Public IP address."
+        },
+        "privateIpAddress": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Private IP address."
+        },
+        "instanceName": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Instance on which nic is attached."
+        }
+      },
+      "description": "Network Virtual Appliance NIC properties."
+    },
+    "VirtualApplianceNetworkInterfaceConfiguration": {
+      "type": "object",
+      "readOnly": false,
+      "description": "Represents a single NIC configuration.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "NIC type. This should be either PublicNic or PrivateNic.",
+          "enum": [
+            "PublicNic",
+            "PrivateNic"
+          ],
+          "x-ms-enum": {
+            "name": "NicTypeInRequest",
+            "modelAsString": true
+          },
+          "x-ms-client-name": "NicType"
+        },
+        "properties": {
+          "$ref": "#/definitions/VirtualApplianceNetworkInterfaceConfigurationProperties"
+        }
+      }
+    },
+    "VirtualApplianceNetworkInterfaceConfigurationProperties": {
+      "type": "object",
+      "readOnly": false,
+      "description": "Represents a single NIC configuration properties.",
+      "properties": {
+        "ipConfigurations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VirtualApplianceIPConfiguration"
+          },
+          "x-ms-identifiers": []
+        }
+      }
+    },
+    "VirtualApplianceIPConfiguration": {
+      "type": "object",
+      "readOnly": false,
+      "description": "Represents a single IP configuration.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the IP configuration."
+        },
+        "properties": {
+          "$ref": "#/definitions/VirtualApplianceIPConfigurationProperties"
+        }
+      }
+    },
+    "VirtualApplianceIPConfigurationProperties": {
+      "type": "object",
+      "readOnly": false,
+      "description": "Represents a single IP configuration properties.",
+      "properties": {
+        "primary": {
+          "type": "boolean",
+          "description": "Whether or not this is primary IP configuration of the NIC."
+        }
+      }
+    },
+    "VirtualApplianceAdditionalNicProperties": {
+      "type": "object",
+      "title": "Network Virtual Appliance Additional Nic Properties",
+      "description": "Network Virtual Appliance Additional NIC properties.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "readOnly": false,
+          "description": "Name of additional nic"
+        },
+        "hasPublicIp": {
+          "type": "boolean",
+          "readOnly": false,
+          "description": "Flag (true or false) for Intent for Public Ip on additional nic"
+        }
+      }
+    },
+    "InternetIngressPublicIpsProperties": {
+      "type": "object",
+      "title": "Internet Ingress Public Ip Properties",
+      "description": "Resource Uri of Public Ip for Standard Load Balancer Frontend End.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "readOnly": false,
+          "description": "Resource Uri of Public Ip",
+          "format": "arm-id",
+          "x-ms-arm-id-details": {
+            "allowedResources": [
+              {
+                "type": "Microsoft.Network/publicIPAddresses"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "VirtualApplianceSite": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/VirtualApplianceSiteProperties",
+          "description": "The properties of the Virtual Appliance Sites."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the virtual appliance site."
+        },
+        "etag": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "type": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Site type."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ],
+      "description": "Virtual Appliance Site resource."
+    },
+    "VirtualApplianceSiteProperties": {
+      "properties": {
+        "addressPrefix": {
+          "type": "string",
+          "readOnly": false,
+          "description": "Address Prefix."
+        },
+        "o365Policy": {
+          "readOnly": false,
+          "description": "Office 365 Policy.",
+          "$ref": "#/definitions/Office365PolicyProperties"
+        },
+        "provisioningState": {
+          "description": "The provisioning state of the resource.",
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState"
+        }
+      },
+      "description": "Properties of the rule group."
+    },
+    "Office365PolicyProperties": {
+      "properties": {
+        "breakOutCategories": {
+          "readOnly": false,
+          "description": "Office 365 breakout categories.",
+          "$ref": "#/definitions/BreakOutCategoryPolicies"
+        }
+      },
+      "description": "Network Virtual Appliance Sku Properties."
+    },
+    "BreakOutCategoryPolicies": {
+      "properties": {
+        "allow": {
+          "type": "boolean",
+          "readOnly": false,
+          "description": "Flag to control breakout of o365 allow category."
+        },
+        "optimize": {
+          "type": "boolean",
+          "readOnly": false,
+          "description": "Flag to control breakout of o365 optimize category."
+        },
+        "default": {
+          "type": "boolean",
+          "readOnly": false,
+          "description": "Flag to control breakout of o365 default category."
+        }
+      },
+      "description": "Network Virtual Appliance Sku Properties."
+    },
+    "NetworkVirtualApplianceSku": {
+      "title": "Available NetworkVirtualApplianceSkus",
+      "description": "Definition of the NetworkVirtualApplianceSkus resource.",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/NetworkVirtualApplianceSkuPropertiesFormat",
+          "description": "NetworkVirtualApplianceSku properties."
+        },
+        "etag": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ]
+    },
+    "NetworkVirtualApplianceSkuPropertiesFormat": {
+      "title": "Network Virtual Appliance Sku Properties",
+      "description": "Properties specific to NetworkVirtualApplianceSkus.",
+      "properties": {
+        "vendor": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Network Virtual Appliance Sku vendor."
+        },
+        "availableVersions": {
+          "type": "array",
+          "readOnly": true,
+          "description": "Available Network Virtual Appliance versions.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "availableScaleUnits": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkVirtualApplianceSkuInstances"
+          },
+          "description": "The list of scale units available."
+        }
+      }
+    },
+    "NetworkVirtualApplianceSkuInstances": {
+      "title": "Network Virtual Appliance Sku Instances",
+      "description": "List of available Sku and instances.",
+      "properties": {
+        "scaleUnit": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Scale Unit."
+        },
+        "instanceCount": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "Instance Count."
+        }
+      }
+    },
+    "NetworkVirtualApplianceListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkVirtualAppliance"
+          },
+          "description": "List of Network Virtual Appliances."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListNetworkVirtualAppliances API service call."
+    },
+    "NetworkVirtualApplianceSiteListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VirtualApplianceSite"
+          },
+          "description": "List of Network Virtual Appliance sites."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListNetworkVirtualApplianceSites API service call."
+    },
+    "NetworkVirtualApplianceSkuListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkVirtualApplianceSku"
+          },
+          "description": "List of Network Virtual Appliance Skus that are available."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListNetworkVirtualApplianceSkus API service call."
+    },
+    "InboundSecurityRule": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/InboundSecurityRuleProperties",
+          "description": "The properties of the Inbound Security Rules."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of security rule collection."
+        },
+        "etag": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "type": {
+          "type": "string",
+          "readOnly": true,
+          "description": "NVA inbound security rule type."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ],
+      "description": "NVA Inbound Security Rule resource."
+    },
+    "InboundSecurityRuleProperties": {
+      "properties": {
+        "ruleType": {
+          "type": "string",
+          "enum": [
+            "AutoExpire",
+            "Permanent"
+          ],
+          "x-ms-enum": {
+            "name": "InboundSecurityRuleType",
+            "modelAsString": true
+          },
+          "description": "Rule Type. This should be either AutoExpire or Permanent. Auto Expire Rule only creates NSG rules. Permanent Rule creates NSG rule and SLB LB Rule."
+        },
+        "rules": {
+          "type": "array",
+          "readOnly": false,
+          "description": "List of allowed rules.",
+          "items": {
+            "$ref": "#/definitions/InboundSecurityRules"
+          }
+        },
+        "provisioningState": {
+          "description": "The provisioning state of the resource.",
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState"
+        }
+      },
+      "description": "Properties of the Inbound Security Rules resource."
+    },
+    "InboundSecurityRules": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the rule."
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [
+            "TCP",
+            "UDP"
+          ],
+          "x-ms-enum": {
+            "name": "InboundSecurityRulesProtocol",
+            "modelAsString": true
+          },
+          "description": "Protocol. This should be either TCP or UDP."
+        },
+        "sourceAddressPrefix": {
+          "type": "string",
+          "description": "The CIDR or source IP range."
+        },
+        "destinationPortRange": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 65535,
+          "description": "NVA port ranges to be opened up. One needs to provide specific ports."
+        },
+        "destinationPortRanges": {
+          "type": "array",
+          "readOnly": false,
+          "description": "NVA port ranges to be opened up. One can provide a range of ports. Allowed port value between 0 and 65535.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "appliesOn": {
+          "type": "array",
+          "readOnly": false,
+          "description": "Public IP name in case of Permanent Rule type & Interface Name in case of Auto Expire Rule type",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Properties of the Inbound Security Rules resource."
+    },
+    "DelegationProperties": {
+      "type": "object",
+      "properties": {
+        "serviceName": {
+          "type": "string",
+          "description": "The service name to which the NVA is delegated."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState"
+        }
+      },
+      "description": "Properties of the delegation."
+    },
+    "PartnerManagedResourceProperties": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "format": "arm-id",
+          "x-ms-arm-id-details": {
+            "allowedResources": [
+              {
+                "type": "PaloAltoNetworks.Cloudngfw/firewalls"
+              }
+            ]
+          },
+          "description": "The partner managed resource id."
+        },
+        "internalLoadBalancerId": {
+          "readOnly": true,
+          "type": "string",
+          "format": "arm-id",
+          "x-ms-arm-id-details": {
+            "allowedResources": [
+              {
+                "type": "Microsoft.Network/loadBalancers"
+              }
+            ]
+          },
+          "description": "The partner managed ILB resource id"
+        },
+        "standardLoadBalancerId": {
+          "readOnly": true,
+          "type": "string",
+          "format": "arm-id",
+          "x-ms-arm-id-details": {
+            "allowedResources": [
+              {
+                "type": "Microsoft.Network/loadBalancers"
+              }
+            ]
+          },
+          "description": "The partner managed SLB resource id"
+        }
+      },
+      "description": "Properties of the partner managed resource."
+    },
+    "NetworkVirtualApplianceInstanceIds": {
+      "type": "object",
+      "properties": {
+        "instanceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The network virtual appliance instance ids. Omitting the network virtual appliance instance ids will result in the operation being performed on all virtual machines belonging to the network virtual appliance."
+        }
+      },
+      "description": "Specifies a list of virtual machine instance IDs from the Network Virtual Appliance VM instances."
+    }
+  }
+}
+

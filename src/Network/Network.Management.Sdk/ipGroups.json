@@ -1,0 +1,431 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups/{ipGroupsName}": {
+      "get": {
+        "tags": [
+          "IpGroups"
+        ],
+        "operationId": "IpGroups_Get",
+        "description": "Gets the specified ipGroups.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ipGroupsName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the ipGroups."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expands resourceIds (of Firewalls/Network Security Groups etc.) back referenced by the IpGroups resource."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting IpGroups resource.",
+            "schema": {
+              "$ref": "#/definitions/IpGroup"
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get_IpGroups": {
+            "$ref": "./examples/IpGroupsGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "IpGroups"
+        ],
+        "operationId": "IpGroups_CreateOrUpdate",
+        "description": "Creates or updates an ipGroups in a specified resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ipGroupsName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the ipGroups."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IpGroup"
+            },
+            "description": "Parameters supplied to the create or update IpGroups operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting ipGroups resource.",
+            "schema": {
+              "$ref": "#/definitions/IpGroup"
+            }
+          },
+          "201": {
+            "description": "Create successful. The operation returns the resulting ipGroups resource.",
+            "schema": {
+              "$ref": "#/definitions/IpGroup"
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "CreateOrUpdate_IpGroups": {
+            "$ref": "./examples/IpGroupsCreate.json"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "IpGroups"
+        ],
+        "operationId": "IpGroups_UpdateGroups",
+        "description": "Updates tags of an IpGroups resource.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ipGroupsName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the ipGroups."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to the update ipGroups operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting ipGroups resource.",
+            "schema": {
+              "$ref": "#/definitions/IpGroup"
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update_IpGroups": {
+            "$ref": "./examples/IpGroupsUpdateTags.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "IpGroups"
+        ],
+        "operationId": "IpGroups_Delete",
+        "description": "Deletes the specified ipGroups.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ipGroupsName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the ipGroups."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete_IpGroups": {
+            "$ref": "./examples/IpGroupsDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ipGroups": {
+      "get": {
+        "tags": [
+          "IpGroups"
+        ],
+        "operationId": "IpGroups_ListByResourceGroup",
+        "description": "Gets all IpGroups in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of ipGroups resources.",
+            "schema": {
+              "$ref": "#/definitions/IpGroupListResult"
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ListByResourceGroup_IpGroups": {
+            "$ref": "./examples/IpGroupsListByResourceGroup.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ipGroups": {
+      "get": {
+        "tags": [
+          "IpGroups"
+        ],
+        "operationId": "IpGroups_List",
+        "description": "Gets all IpGroups in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of ipGroups resources.",
+            "schema": {
+              "$ref": "#/definitions/IpGroupListResult"
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List_IpGroups": {
+            "$ref": "./examples/IpGroupsListBySubscription.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "IpGroup": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/IpGroupPropertiesFormat",
+          "description": "Properties of the IpGroups."
+        },
+        "etag": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "The IpGroups resource information."
+    },
+    "IpGroupListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IpGroup"
+          },
+          "description": "The list of IpGroups information resources."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to get the next set of results."
+        }
+      },
+      "description": "Response for the ListIpGroups API service call."
+    },
+    "IpGroupPropertiesFormat": {
+      "properties": {
+        "provisioningState": {
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the IpGroups resource.",
+          "readOnly": true
+        },
+        "ipAddresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "IpAddresses/IpAddressPrefixes in the IpGroups resource."
+        },
+        "firewalls": {
+          "type": "array",
+          "readOnly": true,
+          "description": "List of references to Firewall resources that this IpGroups is associated with.",
+          "items": {
+            "$ref": "./network.json#/definitions/SubResource"
+          }
+        },
+        "firewallPolicies": {
+          "type": "array",
+          "readOnly": true,
+          "description": "List of references to Firewall Policies resources that this IpGroups is associated with.",
+          "items": {
+            "$ref": "./network.json#/definitions/SubResource"
+          }
+        }
+      },
+      "description": "The IpGroups property information."
+    }
+  }
+}
+

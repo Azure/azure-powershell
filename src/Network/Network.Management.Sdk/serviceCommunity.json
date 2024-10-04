@@ -1,0 +1,159 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/bgpServiceCommunities": {
+      "get": {
+        "tags": [
+          "BgpServiceCommunities"
+        ],
+        "operationId": "BgpServiceCommunities_List",
+        "x-ms-examples": {
+          "ServiceCommunityList": {
+            "$ref": "./examples/ServiceCommunityList.json"
+          }
+        },
+        "description": "Gets all the available bgp service communities.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of BgpServiceCommunity resources.",
+            "schema": {
+              "$ref": "#/definitions/BgpServiceCommunityListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "BGPCommunity": {
+      "properties": {
+        "serviceSupportedRegion": {
+          "type": "string",
+          "description": "The region which the service support. e.g. For O365, region is Global."
+        },
+        "communityName": {
+          "type": "string",
+          "description": "The name of the bgp community. e.g. Skype."
+        },
+        "communityValue": {
+          "type": "string",
+          "description": "The value of the bgp community. For more information: https://docs.microsoft.com/en-us/azure/expressroute/expressroute-routing."
+        },
+        "communityPrefixes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The prefixes that the bgp community contains."
+        },
+        "isAuthorizedToUse": {
+          "type": "boolean",
+          "description": "Customer is authorized to use bgp community or not."
+        },
+        "serviceGroup": {
+          "type": "string",
+          "description": "The service group of the bgp community contains."
+        }
+      },
+      "description": "Contains bgp community information offered in Service Community resources."
+    },
+    "BgpServiceCommunityPropertiesFormat": {
+      "properties": {
+        "serviceName": {
+          "type": "string",
+          "description": "The name of the bgp community. e.g. Skype."
+        },
+        "bgpCommunities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BGPCommunity"
+          },
+          "description": "A list of bgp communities."
+        }
+      },
+      "description": "Properties of Service Community."
+    },
+    "BgpServiceCommunity": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/BgpServiceCommunityPropertiesFormat",
+          "description": "Properties of the BGP service community."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "Service Community Properties."
+    },
+    "BgpServiceCommunityListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BgpServiceCommunity"
+          },
+          "description": "A list of service community resources."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for the ListServiceCommunity API service call."
+    }
+  }
+}
+

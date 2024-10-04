@@ -1,0 +1,38 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "bastionHostName": "bastionhostdeveloper'"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "bastionhostdeveloper'",
+        "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/bastionHosts/bastionhostdeveloper'",
+        "type": "Microsoft.Network/bastionHosts",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "sku": {
+          "name": "Developer"
+        },
+        "properties": {
+          "provisioningState": "Succeeded",
+          "virtualNetwork": {
+            "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/vnet2"
+          },
+          "networkAcls": {
+            "ipRules": [
+              {
+                "addressPrefix": "1.1.1.1/16"
+              }
+            ]
+          },
+          "dnsName": "omnibrain.uswest.bastionglobal.azure.com",
+          "ipConfigurations": []
+        }
+      }
+    }
+  }
+}
+

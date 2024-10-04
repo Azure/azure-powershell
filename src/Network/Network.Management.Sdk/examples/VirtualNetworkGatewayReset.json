@@ -1,0 +1,82 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualNetworkGatewayName": "vpngw"
+  },
+  "responses": {
+    "202": {
+      "headers": {
+        "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/locations/eastus/operations/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    },
+    "200": {
+      "body": {
+        "name": "vpngw",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw",
+        "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+        "type": "Microsoft.Network/virtualNetworkGateways",
+        "location": "centralus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "resourceGuid": "00000000-0000-0000-0000-000000000000",
+          "ipConfigurations": [
+            {
+              "name": "gwipconfig1",
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/ipConfigurations/gwipconfig1",
+              "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "privateIPAllocationMethod": "Dynamic",
+                "publicIPAddress": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/gwpip"
+                },
+                "subnet": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/GatewaySubnet"
+                }
+              }
+            }
+          ],
+          "natRules": [],
+          "enableBgpRouteTranslationForNat": false,
+          "sku": {
+            "name": "VpnGw1",
+            "tier": "VpnGw1",
+            "capacity": 0
+          },
+          "gatewayType": "Vpn",
+          "vpnType": "RouteBased",
+          "enableBgp": false,
+          "activeActive": false,
+          "disableIPSecReplayProtection": false,
+          "bgpSettings": {
+            "asn": 65514,
+            "bgpPeeringAddress": "10.0.1.30",
+            "peerWeight": 0,
+            "bgpPeeringAddresses": [
+              {
+                "ipconfigurationId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/ipConfigurations/gwipconfig1",
+                "defaultBgpIpAddresses": [
+                  "10.3.1.254"
+                ],
+                "customBgpIpAddresses": [
+                  "169.254.21.10"
+                ],
+                "tunnelIpAddresses": [
+                  "52.161.10.135"
+                ]
+              }
+            ]
+          },
+          "customRoutes": {
+            "addressPrefixes": [
+              "101.168.0.6/32"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,46 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1",
+    "connectionMonitorName": "cm1",
+    "parameters": {
+      "tags": {
+        "tag1": "value1",
+        "tag2": "value2"
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "cm1",
+        "id": "/subscriptions/subid/`/rg1/providers/Microsoft.Network/networkWatchers/nw1/connectionMonitors/cm1",
+        "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "source": {
+            "resourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1",
+            "port": 0
+          },
+          "destination": {
+            "address": "bing.com",
+            "port": 80
+          },
+          "monitoringIntervalInSeconds": 60,
+          "autoStart": true,
+          "startTime": "2019-09-04T02:48:10.6797393Z",
+          "monitoringStatus": "Running"
+        },
+        "tags": {
+          "tag1": "value1",
+          "tag2": "value2"
+        },
+        "type": "Microsoft.Network/networkWatchers/connectionMonitors",
+        "location": "westcentralus"
+      }
+    }
+  }
+}
+

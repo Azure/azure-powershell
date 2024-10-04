@@ -1,0 +1,23 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "e747cc13-97d4-4a79-b463-42d7f4e558f2",
+    "resourceGroupName": "rg1",
+    "firewallPolicyName": "firewallPolicy",
+    "parameters": {
+      "filterName": "severity"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "filterValues": [
+          "low",
+          "medium",
+          "high"
+        ]
+      }
+    }
+  }
+}
+

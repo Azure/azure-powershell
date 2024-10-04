@@ -1,0 +1,56 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw",
+    "flowLogName": "fl",
+    "parameters": {
+      "tags": {
+        "tag1": "value1",
+        "tag2": "value2"
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "Microsoft.Networkdesmond-rgdesmondcentral-nsg",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw/FlowLogs/fl",
+        "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "targetResourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/desmondcentral-nsg",
+          "targetResourceGuid": "00000000-0000-0000-0000-000000000000",
+          "storageId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/nwtest1mgvbfmqsigdxe",
+          "enabled": true,
+          "flowAnalyticsConfiguration": {},
+          "retentionPolicy": {
+            "days": 0,
+            "enabled": false
+          },
+          "format": {
+            "type": "JSON",
+            "version": 1
+          }
+        },
+        "tags": {
+          "tag1": "value1",
+          "tag2": "value2"
+        },
+        "type": "Microsoft.Network/networkWatchers/FlowLogs",
+        "location": "centralus",
+        "identity": {
+          "type": "UserAssigned",
+          "userAssignedIdentities": {
+            "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1": {
+              "clientId": "c16d15e1-f60a-40e4-8a05-df3d3f655c14",
+              "principalId": "e3858881-e40c-43bd-9cde-88da39c05023"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

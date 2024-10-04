@@ -1,0 +1,58 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "azureFirewallName": "azureFirewall1",
+    "parameters": {
+      "durationInSeconds": 300,
+      "numberOfPacketsToCapture": 5000,
+      "sasUrl": "someSASURL",
+      "fileName": "azureFirewallPacketCapture",
+      "protocol": "Any",
+      "flags": [
+        {
+          "type": "syn"
+        },
+        {
+          "type": "fin"
+        }
+      ],
+      "filters": [
+        {
+          "sources": [
+            "20.1.1.0"
+          ],
+          "destinations": [
+            "20.1.2.0"
+          ],
+          "destinationPorts": [
+            "4500"
+          ]
+        },
+        {
+          "sources": [
+            "10.1.1.0",
+            "10.1.1.1"
+          ],
+          "destinations": [
+            "10.1.2.0"
+          ],
+          "destinationPorts": [
+            "123",
+            "80"
+          ]
+        }
+      ]
+    }
+  },
+  "responses": {
+    "202": {
+      "headers": {
+        "Location": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/locations/eastus/operationResults/00000000-0000-0000-0000-000000000000?api-version=2024-05-01",
+        "Azure-AsyncOperation": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/locations/eastus/operations/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    }
+  }
+}
+

@@ -1,0 +1,152 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subId",
+    "resourceGroupName": "rg1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/pe1",
+            "name": "pe1",
+            "type": "Microsoft.Network/privateEndpoints",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "privateLinkServiceConnections": [
+                {
+                  "properties": {
+                    "privateLinkServiceId": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPls1",
+                    "groupIds": [
+                      "groupIdFromResource"
+                    ],
+                    "requestMessage": "Please approve my connection for pe1.",
+                    "privateLinkServiceConnectionState": {
+                      "status": "Approved",
+                      "description": "Auto-approved",
+                      "actionsRequired": "None"
+                    }
+                  }
+                }
+              ],
+              "manualPrivateLinkServiceConnections": [],
+              "subnet": {
+                "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"
+              },
+              "networkInterfaces": [
+                {
+                  "id": "/subscriptions/subId/resourceGroups/rg1/provders/Microsoft.Network/networkInterfaces/pe1.nic.abcd1234"
+                }
+              ],
+              "customDnsConfigs": [
+                {
+                  "fqdn": "abc.cosmos.com",
+                  "ipAddresses": [
+                    "192.168.0.4"
+                  ]
+                },
+                {
+                  "fqdn": "abc2.cosmos.com",
+                  "ipAddresses": [
+                    "192.168.0.5"
+                  ]
+                }
+              ],
+              "applicationSecurityGroups": [],
+              "ipConfigurations": [
+                {
+                  "name": "pestaticconfig",
+                  "properties": {
+                    "groupId": "file",
+                    "memberName": "file",
+                    "privateIPAddress": "192.168.0.10"
+                  }
+                },
+                {
+                  "name": "pestaticconfig",
+                  "properties": {
+                    "groupId": "file",
+                    "memberName": "file2",
+                    "privateIPAddress": "192.168.0.11"
+                  }
+                }
+              ],
+              "customNetworkInterfaceName": "testPeNic"
+            }
+          },
+          {
+            "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/pe2",
+            "name": "pe2",
+            "type": "Microsoft.Network/privateEndpoints",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "privateLinkServiceConnections": [],
+              "manualPrivateLinkServiceConnections": [
+                {
+                  "properties": {
+                    "privateLinkServiceId": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPls2",
+                    "groupIds": [
+                      "groupIdFromResource"
+                    ],
+                    "requestMessage": "Please manually approve my connection for pe2.",
+                    "privateLinkServiceConnectionState": {
+                      "status": "Pending",
+                      "description": "Awaiting approval",
+                      "actionsRequired": "None"
+                    }
+                  }
+                }
+              ],
+              "subnet": {
+                "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet2"
+              },
+              "networkInterfaces": [
+                {
+                  "id": "/subscriptions/subId/resourceGroups/rg1/provders/Microsoft.Network/networkInterfaces/pe2.nic.zyxw9876"
+                }
+              ],
+              "customDnsConfigs": [
+                {
+                  "fqdn": "abc3.cosmos1.com",
+                  "ipAddresses": [
+                    "192.168.0.6"
+                  ]
+                },
+                {
+                  "fqdn": "abc4.cosmos1.com",
+                  "ipAddresses": [
+                    "192.168.0.7"
+                  ]
+                }
+              ],
+              "applicationSecurityGroups": [],
+              "ipConfigurations": [
+                {
+                  "name": "pestaticconfig3",
+                  "properties": {
+                    "groupId": "file",
+                    "memberName": "file",
+                    "privateIPAddress": "192.168.0.8"
+                  }
+                },
+                {
+                  "name": "pestaticconfig4",
+                  "properties": {
+                    "groupId": "file",
+                    "memberName": "file2",
+                    "privateIPAddress": "192.168.0.9"
+                  }
+                }
+              ],
+              "customNetworkInterfaceName": "testPeNic"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

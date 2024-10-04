@@ -1,0 +1,87 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkVirtualApplianceName": "nva",
+    "parameters": {
+      "tags": {
+        "key1": "value1"
+      },
+      "location": "West US",
+      "properties": {
+        "virtualHub": {
+          "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1"
+        },
+        "delegation": {
+          "serviceName": "PaloAltoNetworks.Cloudngfw/firewalls"
+        }
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "nva",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkVirtualAppliances/nva",
+        "type": "Microsoft.Network/networkVirtualAppliances",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "tags": {
+          "key1": "value1"
+        },
+        "properties": {
+          "virtualHub": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1"
+          },
+          "delegation": {
+            "serviceName": "PaloAltoNetworks.Cloudngfw/firewalls",
+            "provisioningState": "Succeeded"
+          },
+          "deploymentType": "PartnerManaged",
+          "partnerManagedResource": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Lifter/firewalls/paloAltoFirewall",
+            "internalLoadBalancerId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/trustILB",
+            "standardLoadBalancerId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/trustSLB"
+          },
+          "provisioningState": "Succeeded"
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "nva",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkVirtualAppliances/nva",
+        "type": "Microsoft.Network/networkVirtualAppliances",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "tags": {
+          "key1": "value1"
+        },
+        "identity": {
+          "type": "UserAssigned",
+          "userAssignedIdentities": {
+            "/subscriptions/subid/resourcegroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1": {}
+          }
+        },
+        "properties": {
+          "virtualHub": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1"
+          },
+          "delegation": {
+            "serviceName": "PaloAltoNetworks.Cloudngfw/firewalls",
+            "provisioningState": "Succeeded"
+          },
+          "deploymentType": "PartnerManaged",
+          "partnerManagedResource": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Lifter/firewalls/paloAltoFirewall",
+            "internalLoadBalancerId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/trustILB",
+            "standardLoadBalancerId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/trustSLB"
+          },
+          "provisioningState": "Succeeded"
+        }
+      }
+    }
+  }
+}
+

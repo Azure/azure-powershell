@@ -1,0 +1,72 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1",
+    "parameters": {
+      "azureLocations": [
+        "West US"
+      ],
+      "country": "United States",
+      "state": "washington",
+      "city": "seattle"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "countries": [
+          {
+            "countryName": "United States",
+            "states": [
+              {
+                "stateName": "washington",
+                "cities": [
+                  {
+                    "cityName": "seattle",
+                    "providers": [
+                      "Comcast Cable Communications, Inc. - ASN 7922",
+                      "Comcast Cable Communications, LLC - ASN 7922",
+                      "Level 3 Communications, Inc. (GBLX) - ASN 3549",
+                      "Qwest Communications Company, LLC - ASN 209"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "202": {
+      "headers": {
+        "Location": "https:/management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/availableProvidersList?api-version=2024-05-01"
+      },
+      "body": {
+        "countries": [
+          {
+            "countryName": "United States",
+            "states": [
+              {
+                "stateName": "washington",
+                "cities": [
+                  {
+                    "cityName": "seattle",
+                    "providers": [
+                      "Comcast Cable Communications, Inc. - ASN 7922",
+                      "Comcast Cable Communications, LLC - ASN 7922",
+                      "Level 3 Communications, Inc. (GBLX) - ASN 3549",
+                      "Qwest Communications Company, LLC - ASN 209"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+

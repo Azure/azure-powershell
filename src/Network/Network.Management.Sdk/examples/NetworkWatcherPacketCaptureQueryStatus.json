@@ -1,0 +1,35 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1",
+    "packetCaptureName": "pc1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "pc1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/packetCaptures/pc1",
+        "captureStartTime": "2016-09-07T12:35:24Z",
+        "packetCaptureStatus": "Stopped",
+        "stopReason": "TimeExceeded",
+        "packetCaptureError": []
+      }
+    },
+    "202": {
+      "headers": {
+        "Location": "https:/management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/troubleshoot?api-version=2024-05-01"
+      },
+      "body": {
+        "name": "pc1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/packetCaptures/pc1",
+        "captureStartTime": "2016-09-07T12:35:24Z",
+        "packetCaptureStatus": "Stopped",
+        "stopReason": "TimeExceeded",
+        "packetCaptureError": []
+      }
+    }
+  }
+}
+

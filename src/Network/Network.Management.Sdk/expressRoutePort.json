@@ -1,0 +1,1331 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations": {
+      "get": {
+        "tags": [
+          "ExpressRoutePortsLocations"
+        ],
+        "operationId": "ExpressRoutePortsLocations_List",
+        "description": "Retrieves all ExpressRoutePort peering locations. Does not return available bandwidths for each location. Available bandwidths can only be obtained when retrieving a specific peering location.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the list of all ExpressRoutePort peering locations.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePortsLocationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "ExpressRoutePortsLocationList": {
+            "$ref": "./examples/ExpressRoutePortsLocationList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations/{locationName}": {
+      "get": {
+        "tags": [
+          "ExpressRoutePortsLocations"
+        ],
+        "operationId": "ExpressRoutePortsLocations_Get",
+        "description": "Retrieves a single ExpressRoutePort peering location, including the list of available bandwidths available at said peering location.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "locationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Name of the requested ExpressRoutePort peering location."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the requested ExpressRoutePort peering location.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePortsLocation"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ExpressRoutePortsLocationGet": {
+            "$ref": "./examples/ExpressRoutePortsLocationGet.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}": {
+      "delete": {
+        "tags": [
+          "ExpressRoutePorts"
+        ],
+        "operationId": "ExpressRoutePorts_Delete",
+        "description": "Deletes the specified ExpressRoutePort resource.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "expressRoutePortName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the ExpressRoutePort resource."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "URL for determining when an operation has completed. Send a GET request to the URL in Location header.\nThe URI should return a 202 until the operation reaches a terminal state and 200 once it reaches a terminal state.\n\nFor more info: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#202-accepted-and-location-headers",
+                "type": "string"
+              },
+              "Azure-AsyncOperation": {
+                "description": "URL for checking the ongoing status of the operation.\nTo get the status of the asynchronous operation, send a GET request to the URL in Azure-AsyncOperation header value.\n\nFor more info: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#asynchronous-operations",
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "ExpressRoutePortDelete": {
+            "$ref": "./examples/ExpressRoutePortDelete.json"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "ExpressRoutePorts"
+        ],
+        "operationId": "ExpressRoutePorts_Get",
+        "description": "Retrieves the requested ExpressRoutePort resource.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "expressRoutePortName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of ExpressRoutePort."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the requested ExpressRoutePort resource.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePort"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ExpressRoutePortGet": {
+            "$ref": "./examples/ExpressRoutePortGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ExpressRoutePorts"
+        ],
+        "operationId": "ExpressRoutePorts_CreateOrUpdate",
+        "description": "Creates or updates the specified ExpressRoutePort resource.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "expressRoutePortName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the ExpressRoutePort resource."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePort"
+            },
+            "description": "Parameters supplied to the create ExpressRoutePort operation."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting ExpressRoutePort resource.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePort"
+            }
+          },
+          "201": {
+            "description": "Create successful. The operation returns the resulting ExpressRoutePort resource.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePort"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "ExpressRoutePortCreate": {
+            "$ref": "./examples/ExpressRoutePortCreate.json"
+          },
+          "ExpressRoutePortUpdateLink": {
+            "$ref": "./examples/ExpressRoutePortUpdateLink.json"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "ExpressRoutePorts"
+        ],
+        "operationId": "ExpressRoutePorts_UpdateTags",
+        "description": "Update ExpressRoutePort tags.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "expressRoutePortName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the ExpressRoutePort resource."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update ExpressRoutePort resource tags."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting ExpressRoutePort resource.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePort"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ExpressRoutePortUpdateTags": {
+            "$ref": "./examples/ExpressRoutePortUpdateTags.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts": {
+      "get": {
+        "tags": [
+          "ExpressRoutePorts"
+        ],
+        "operationId": "ExpressRoutePorts_ListByResourceGroup",
+        "description": "List all the ExpressRoutePort resources in the specified resource group.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of ExpressRoutePort resources. If there are no ExpressRoutePort resources then an empty list is returned.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePortListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "ExpressRoutePortListByResourceGroup": {
+            "$ref": "./examples/ExpressRoutePortListByResourceGroup.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePorts": {
+      "get": {
+        "tags": [
+          "ExpressRoutePorts"
+        ],
+        "operationId": "ExpressRoutePorts_List",
+        "description": "List all the ExpressRoutePort resources in the specified subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of ExpressRoutePort resources. If there are no ExpressRoutePort resources then an empty list is returned.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePortListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "ExpressRoutePortList": {
+            "$ref": "./examples/ExpressRoutePortList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links/{linkName}": {
+      "get": {
+        "tags": [
+          "ExpressRouteLinks"
+        ],
+        "operationId": "ExpressRouteLinks_Get",
+        "description": "Retrieves the specified ExpressRouteLink resource.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "expressRoutePortName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the ExpressRoutePort resource."
+          },
+          {
+            "name": "linkName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the ExpressRouteLink resource."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the requested ExpressRouteLink resource.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRouteLink"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ExpressRouteLinkGet": {
+            "$ref": "./examples/ExpressRouteLinkGet.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}/links": {
+      "get": {
+        "tags": [
+          "ExpressRouteLinks"
+        ],
+        "operationId": "ExpressRouteLinks_List",
+        "description": "Retrieve the ExpressRouteLink sub-resources of the specified ExpressRoutePort resource.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "expressRoutePortName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the ExpressRoutePort resource."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of ExpressRouteLink resources. If there are no ExpressRouteLink resources then an empty list is returned.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRouteLinkListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "ExpressRouteLinkGet": {
+            "$ref": "./examples/ExpressRouteLinkList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/generateLoa": {
+      "post": {
+        "tags": [
+          "ExpressRoutePorts"
+        ],
+        "operationId": "ExpressRoutePorts_GenerateLOA",
+        "description": "Generate a letter of authorization for the requested ExpressRoutePort resource.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "expressRoutePortName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of ExpressRoutePort."
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GenerateExpressRoutePortsLOARequest"
+            },
+            "description": "Request parameters supplied to generate a letter of authorization."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. Returns the content as a base64 encoded string.",
+            "schema": {
+              "$ref": "#/definitions/GenerateExpressRoutePortsLOAResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "GenerateExpressRoutePortLOA": {
+            "$ref": "./examples/GenerateExpressRoutePortsLOA.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations/{authorizationName}": {
+      "delete": {
+        "tags": [
+          "ExpressRoutePortAuthorizations"
+        ],
+        "operationId": "ExpressRoutePortAuthorizations_Delete",
+        "description": "Deletes the specified authorization from the specified express route port.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "expressRoutePortName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the express route port."
+          },
+          {
+            "name": "authorizationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the authorization."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "URL for determining when an operation has completed. Send a GET request to the URL in Location header.\nThe URI should return a 202 until the operation reaches a terminal state and 200 once it reaches a terminal state.\n\nFor more info: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#202-accepted-and-location-headers",
+                "type": "string"
+              },
+              "Azure-AsyncOperation": {
+                "description": "URL for checking the ongoing status of the operation.\nTo get the status of the asynchronous operation, send a GET request to the URL in Azure-AsyncOperation header value.\n\nFor more info: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#asynchronous-operations",
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "Delete ExpressRoutePort Authorization": {
+            "$ref": "./examples/ExpressRoutePortAuthorizationDelete.json"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "ExpressRoutePortAuthorizations"
+        ],
+        "operationId": "ExpressRoutePortAuthorizations_Get",
+        "description": "Gets the specified authorization from the specified express route port.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "expressRoutePortName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the express route port."
+          },
+          {
+            "name": "authorizationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the authorization."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the ExpressRoutePortAuthorization resource.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePortAuthorization"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get ExpressRoutePort Authorization": {
+            "$ref": "./examples/ExpressRoutePortAuthorizationGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ExpressRoutePortAuthorizations"
+        ],
+        "operationId": "ExpressRoutePortAuthorizations_CreateOrUpdate",
+        "description": "Creates or updates an authorization in the specified express route port.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "expressRoutePortName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the express route port."
+          },
+          {
+            "name": "authorizationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the authorization."
+          },
+          {
+            "name": "authorizationParameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePortAuthorization"
+            },
+            "description": "Parameters supplied to the create or update express route port authorization operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create successful. The operation returns the resulting ExpressRoutePortAuthorization resource.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePortAuthorization"
+            }
+          },
+          "200": {
+            "description": "Update successful. The operation returns the resulting ExpressRoutePortAuthorization resource.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePortAuthorization"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "Create ExpressRoutePort Authorization": {
+            "$ref": "./examples/ExpressRoutePortAuthorizationCreate.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations": {
+      "get": {
+        "tags": [
+          "ExpressRoutePortAuthorizations"
+        ],
+        "operationId": "ExpressRoutePortAuthorizations_List",
+        "description": "Gets all authorizations in an express route port.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "expressRoutePortName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the express route port."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of ExpressRoutePortAuthorization resources.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRoutePortAuthorizationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "List ExpressRoutePort Authorization": {
+            "$ref": "./examples/ExpressRoutePortAuthorizationList.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ExpressRoutePortsLocationBandwidths": {
+      "title": "ExpressRoutePorts Location Bandwidths",
+      "description": "Real-time inventory of available ExpressRoute port bandwidths.",
+      "properties": {
+        "offerName": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Bandwidth descriptive name."
+        },
+        "valueInGbps": {
+          "type": "integer",
+          "readOnly": true,
+          "description": "Bandwidth value in Gbps."
+        }
+      }
+    },
+    "ExpressRoutePortsLocationPropertiesFormat": {
+      "title": "ExpressRoutePorts Location Properties",
+      "description": "Properties specific to ExpressRoutePorts peering location resources.",
+      "properties": {
+        "address": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Address of peering location."
+        },
+        "contact": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Contact details of peering locations."
+        },
+        "availableBandwidths": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExpressRoutePortsLocationBandwidths"
+          },
+          "description": "The inventory of available ExpressRoutePort bandwidths."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the express route port location resource."
+        }
+      }
+    },
+    "ExpressRoutePortsLocation": {
+      "title": "ExpressRoutePorts Peering Location",
+      "description": "Definition of the ExpressRoutePorts peering location resource.",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ExpressRoutePortsLocationPropertiesFormat",
+          "description": "ExpressRoutePort peering location properties."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ]
+    },
+    "ExpressRoutePortsLocationListResult": {
+      "title": "ExpressRoutePorts Location List Result",
+      "description": "Response for ListExpressRoutePortsLocations API service call.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExpressRoutePortsLocation"
+          },
+          "description": "The list of all ExpressRoutePort peering locations."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      }
+    },
+    "ExpressRouteLinkMacSecConfig": {
+      "description": "ExpressRouteLink Mac Security Configuration.",
+      "title": "Definition of ExpressRouteLink Mac Security configuration.",
+      "properties": {
+        "cknSecretIdentifier": {
+          "type": "string",
+          "description": "Keyvault Secret Identifier URL containing Mac security CKN key."
+        },
+        "cakSecretIdentifier": {
+          "type": "string",
+          "description": "Keyvault Secret Identifier URL containing Mac security CAK key."
+        },
+        "cipher": {
+          "type": "string",
+          "description": "Mac security cipher.",
+          "enum": [
+            "GcmAes256",
+            "GcmAes128",
+            "GcmAesXpn128",
+            "GcmAesXpn256"
+          ],
+          "x-ms-enum": {
+            "name": "ExpressRouteLinkMacSecCipher",
+            "modelAsString": true
+          }
+        },
+        "sciState": {
+          "type": "string",
+          "description": "Sci mode enabled/disabled.",
+          "enum": [
+            "Disabled",
+            "Enabled"
+          ],
+          "x-ms-enum": {
+            "name": "ExpressRouteLinkMacSecSciState",
+            "modelAsString": true
+          }
+        }
+      }
+    },
+    "ExpressRouteLinkPropertiesFormat": {
+      "title": "ExpressRouteLink Resource Properties",
+      "description": "Properties specific to ExpressRouteLink resources.",
+      "properties": {
+        "routerName": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Name of Azure router associated with physical port."
+        },
+        "interfaceName": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Name of Azure router interface."
+        },
+        "patchPanelId": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Mapping between physical port to patch panel port."
+        },
+        "rackId": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Mapping of physical patch panel to rack."
+        },
+        "coloLocation": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Cololocation for ExpressRoute Hybrid Direct."
+        },
+        "connectorType": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Physical fiber port type.",
+          "enum": [
+            "LC",
+            "SC"
+          ],
+          "x-ms-enum": {
+            "name": "ExpressRouteLinkConnectorType",
+            "modelAsString": true
+          }
+        },
+        "adminState": {
+          "type": "string",
+          "description": "Administrative state of the physical port.",
+          "enum": [
+            "Enabled",
+            "Disabled"
+          ],
+          "x-ms-enum": {
+            "name": "ExpressRouteLinkAdminState",
+            "modelAsString": true
+          }
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the express route link resource."
+        },
+        "macSecConfig": {
+          "$ref": "#/definitions/ExpressRouteLinkMacSecConfig",
+          "description": "MacSec configuration."
+        }
+      }
+    },
+    "ExpressRouteLink": {
+      "title": "ExpressRouteLink",
+      "description": "ExpressRouteLink child resource definition.",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ExpressRouteLinkPropertiesFormat",
+          "description": "ExpressRouteLink properties."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of child port resource that is unique among child port resources of the parent."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ]
+    },
+    "ExpressRouteLinkListResult": {
+      "title": "ExpressRouteLink List Result",
+      "description": "Response for ListExpressRouteLinks API service call.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExpressRouteLink"
+          },
+          "description": "The list of ExpressRouteLink sub-resources."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      }
+    },
+    "ExpressRoutePortPropertiesFormat": {
+      "title": "ExpressRoutePort Properties",
+      "description": "Properties specific to ExpressRoutePort resources.",
+      "properties": {
+        "peeringLocation": {
+          "type": "string",
+          "description": "The name of the peering location that the ExpressRoutePort is mapped to physically."
+        },
+        "bandwidthInGbps": {
+          "type": "integer",
+          "description": "Bandwidth of procured ports in Gbps."
+        },
+        "provisionedBandwidthInGbps": {
+          "readOnly": true,
+          "type": "number",
+          "description": "Aggregate Gbps of associated circuit bandwidths."
+        },
+        "mtu": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Maximum transmission unit of the physical port pair(s)."
+        },
+        "encapsulation": {
+          "type": "string",
+          "description": "Encapsulation method on physical ports.",
+          "enum": [
+            "Dot1Q",
+            "QinQ"
+          ],
+          "x-ms-enum": {
+            "name": "ExpressRoutePortsEncapsulation",
+            "modelAsString": true
+          }
+        },
+        "etherType": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Ether type of the physical port."
+        },
+        "allocationDate": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Date of the physical port allocation to be used in Letter of Authorization."
+        },
+        "links": {
+          "title": "ExpressRouteLink Sub-Resources",
+          "description": "The set of physical links of the ExpressRoutePort resource.",
+          "readOnly": false,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExpressRouteLink"
+          }
+        },
+        "circuits": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "./network.json#/definitions/SubResource"
+          },
+          "description": "Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the express route port resource."
+        },
+        "resourceGuid": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The resource GUID property of the express route port resource."
+        },
+        "billingType": {
+          "type": "string",
+          "description": "The billing type of the ExpressRoutePort resource.",
+          "enum": [
+            "MeteredData",
+            "UnlimitedData"
+          ],
+          "x-ms-enum": {
+            "name": "ExpressRoutePortsBillingType",
+            "modelAsString": true
+          }
+        }
+      }
+    },
+    "ExpressRoutePort": {
+      "title": "ExpressRoute Port",
+      "description": "ExpressRoutePort resource definition.",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ExpressRoutePortPropertiesFormat",
+          "description": "ExpressRoutePort properties."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "identity": {
+          "$ref": "./network.json#/definitions/ManagedServiceIdentity",
+          "description": "The identity of ExpressRoutePort, if configured."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ]
+    },
+    "ExpressRoutePortListResult": {
+      "title": "ExpressRoute Port List Result",
+      "description": "Response for ListExpressRoutePorts API service call.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExpressRoutePort"
+          },
+          "description": "A list of ExpressRoutePort resources."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      }
+    },
+    "GenerateExpressRoutePortsLOARequest": {
+      "description": "The customer name to be printed on a letter of authorization.",
+      "properties": {
+        "customerName": {
+          "type": "string",
+          "description": "The customer name."
+        }
+      },
+      "required": [
+        "customerName"
+      ]
+    },
+    "GenerateExpressRoutePortsLOAResult": {
+      "description": "Response for GenerateExpressRoutePortsLOA API service call.",
+      "properties": {
+        "encodedContent": {
+          "type": "string",
+          "description": "The content as a base64 encoded string."
+        }
+      }
+    },
+    "ExpressRoutePortAuthorizationPropertiesFormat": {
+      "type": "object",
+      "title": "ExpressRoute Port Authorization Properties",
+      "description": "Properties of ExpressRoutePort Authorization.",
+      "properties": {
+        "authorizationKey": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The authorization key."
+        },
+        "authorizationUseStatus": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The authorization use status.",
+          "enum": [
+            "Available",
+            "InUse"
+          ],
+          "x-ms-enum": {
+            "name": "ExpressRoutePortAuthorizationUseStatus",
+            "modelAsString": true
+          }
+        },
+        "circuitResourceUri": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The reference to the ExpressRoute circuit resource using the authorization."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the authorization resource."
+        }
+      }
+    },
+    "ExpressRoutePortAuthorization": {
+      "type": "object",
+      "title": "ExpressRoute Port Authorization",
+      "description": "ExpressRoutePort Authorization resource definition.",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ExpressRoutePortAuthorizationPropertiesFormat",
+          "description": "ExpressRoutePort properties."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the resource that is unique within a resource group. This name can be used to access the resource."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Type of the resource."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ]
+    },
+    "ExpressRoutePortAuthorizationListResult": {
+      "type": "object",
+      "title": "ExpressRoute Port Authorization List Result",
+      "description": "Response for ListExpressRoutePortAuthorizations API service call.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExpressRoutePortAuthorization"
+          },
+          "description": "The authorizations in an ExpressRoute Port."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      }
+    }
+  }
+}
+

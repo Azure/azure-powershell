@@ -1,0 +1,88 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "api-version": "2024-05-01",
+    "resourceGroupName": "rg1",
+    "type": "Microsoft.Network/expressRouteCircuits",
+    "circuitName": "expressRouteCircuit1",
+    "parameters": {
+      "location": "westus",
+      "sku": {
+        "name": "Premium_MeteredData",
+        "tier": "Premium",
+        "family": "MeteredData"
+      },
+      "properties": {
+        "expressRoutePort": {
+          "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRoutePorts/portName"
+        },
+        "enableDirectPortRateLimit": false,
+        "authorizationKey": "b0be57f5-1fba-463b-adec-ffe767354cdd",
+        "bandwidthInGbps": 10
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "expressRouteCircuit1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuit1",
+        "type": "Microsoft.Network/expressRouteCircuits",
+        "location": "westus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "peerings": [],
+          "authorizations": [],
+          "expressRoutePort": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRoutePorts/portName"
+          },
+          "enableDirectPortRateLimit": false,
+          "authorizationKey": "b0be57f5-1fba-463b-adec-ffe767354cdd",
+          "authorizationStatus": "Enabled",
+          "bandwidthInGbps": 10,
+          "circuitProvisioningState": "Enabled",
+          "allowClassicOperations": false,
+          "gatewayManagerEtag": "20",
+          "serviceKey": "d281f746-ee01-4d00-8b0a-edec4833772b",
+          "serviceProviderProvisioningState": "Provisioned"
+        },
+        "sku": {
+          "name": "Premium_MeteredData",
+          "tier": "Premium",
+          "family": "MeteredData"
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "expressRouteCircuit1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuit1",
+        "type": "Microsoft.Network/expressRouteCircuits",
+        "location": "westus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "peerings": [],
+          "authorizations": [],
+          "expressRoutePort": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRoutePorts/portName"
+          },
+          "enableDirectPortRateLimit": false,
+          "authorizationKey": "b0be57f5-1fba-463b-adec-ffe767354cdd",
+          "authorizationStatus": "Enabled",
+          "bandwidthInGbps": 10,
+          "circuitProvisioningState": "Enabled",
+          "allowClassicOperations": false,
+          "gatewayManagerEtag": "20",
+          "serviceKey": "d281f746-ee01-4d00-8b0a-edec4833772b",
+          "serviceProviderProvisioningState": "Provisioned"
+        },
+        "sku": {
+          "name": "Premium_MeteredData",
+          "tier": "Premium",
+          "family": "MeteredData"
+        }
+      }
+    }
+  }
+}
+

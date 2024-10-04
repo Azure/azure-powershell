@@ -1,0 +1,992 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}": {
+      "delete": {
+        "tags": [
+          "NetworkSecurityGroups"
+        ],
+        "operationId": "NetworkSecurityGroups_Delete",
+        "description": "Deletes the specified network security group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkSecurityGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network security group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete network security group": {
+            "$ref": "./examples/NetworkSecurityGroupDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "NetworkSecurityGroups"
+        ],
+        "operationId": "NetworkSecurityGroups_Get",
+        "description": "Gets the specified network security group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkSecurityGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network security group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expands referenced resources."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting NetworkSecurityGroup resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkSecurityGroup"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get network security group": {
+            "$ref": "./examples/NetworkSecurityGroupGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NetworkSecurityGroups"
+        ],
+        "operationId": "NetworkSecurityGroups_CreateOrUpdate",
+        "description": "Creates or updates a network security group in the specified resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkSecurityGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network security group."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NetworkSecurityGroup"
+            },
+            "description": "Parameters supplied to the create or update network security group operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create successful. The operation returns the resulting NetworkSecurityGroup resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkSecurityGroup"
+            }
+          },
+          "200": {
+            "description": "Update successful. The operation returns the resulting NetworkSecurityGroup resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkSecurityGroup"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create network security group": {
+            "$ref": "./examples/NetworkSecurityGroupCreate.json"
+          },
+          "Create network security group with rule": {
+            "$ref": "./examples/NetworkSecurityGroupCreateWithRule.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "patch": {
+        "tags": [
+          "NetworkSecurityGroups"
+        ],
+        "operationId": "NetworkSecurityGroups_UpdateTags",
+        "description": "Updates a network security group tags.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkSecurityGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network security group."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update network security group tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting NetworkSecurityGroup resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkSecurityGroup"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update network security group tags": {
+            "$ref": "./examples/NetworkSecurityGroupUpdateTags.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkSecurityGroups": {
+      "get": {
+        "tags": [
+          "NetworkSecurityGroups"
+        ],
+        "operationId": "NetworkSecurityGroups_ListAll",
+        "description": "Gets all network security groups in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of NetworkSecurityGroup resources.",
+            "schema": {
+              "$ref": "#/definitions/NetworkSecurityGroupListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all network security groups": {
+            "$ref": "./examples/NetworkSecurityGroupListAll.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups": {
+      "get": {
+        "tags": [
+          "NetworkSecurityGroups"
+        ],
+        "operationId": "NetworkSecurityGroups_List",
+        "description": "Gets all network security groups in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of NetworkSecurityGroup resources.",
+            "schema": {
+              "$ref": "#/definitions/NetworkSecurityGroupListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List network security groups in resource group": {
+            "$ref": "./examples/NetworkSecurityGroupList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}": {
+      "delete": {
+        "tags": [
+          "SecurityRules"
+        ],
+        "operationId": "SecurityRules_Delete",
+        "description": "Deletes the specified network security rule.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkSecurityGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network security group."
+          },
+          {
+            "name": "securityRuleName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the security rule."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete network security rule from network security group": {
+            "$ref": "./examples/NetworkSecurityGroupRuleDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "SecurityRules"
+        ],
+        "operationId": "SecurityRules_Get",
+        "description": "Get the specified network security rule.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkSecurityGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network security group."
+          },
+          {
+            "name": "securityRuleName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the security rule."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting SecurityRule resource.",
+            "schema": {
+              "$ref": "#/definitions/SecurityRule"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get network security rule in network security group": {
+            "$ref": "./examples/NetworkSecurityGroupRuleGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "SecurityRules"
+        ],
+        "operationId": "SecurityRules_CreateOrUpdate",
+        "description": "Creates or updates a security rule in the specified network security group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkSecurityGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network security group."
+          },
+          {
+            "name": "securityRuleName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the security rule."
+          },
+          {
+            "name": "securityRuleParameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SecurityRule"
+            },
+            "description": "Parameters supplied to the create or update network security rule operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting SecurityRule resource.",
+            "schema": {
+              "$ref": "#/definitions/SecurityRule"
+            }
+          },
+          "201": {
+            "description": "Create successful. The operation returns the resulting SecurityRule resource.",
+            "schema": {
+              "$ref": "#/definitions/SecurityRule"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create security rule": {
+            "$ref": "./examples/NetworkSecurityGroupRuleCreate.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules": {
+      "get": {
+        "tags": [
+          "SecurityRules"
+        ],
+        "operationId": "SecurityRules_List",
+        "description": "Gets all security rules in a network security group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkSecurityGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network security group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of SecurityRule resources.",
+            "schema": {
+              "$ref": "#/definitions/SecurityRuleListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List network security rules in network security group": {
+            "$ref": "./examples/NetworkSecurityGroupRuleList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/defaultSecurityRules": {
+      "get": {
+        "tags": [
+          "SecurityRules"
+        ],
+        "operationId": "DefaultSecurityRules_List",
+        "description": "Gets all default security rules in a network security group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkSecurityGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network security group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of SecurityRule resources.",
+            "schema": {
+              "$ref": "#/definitions/SecurityRuleListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "DefaultSecurityRuleList": {
+            "$ref": "./examples/DefaultSecurityRuleList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/defaultSecurityRules/{defaultSecurityRuleName}": {
+      "get": {
+        "tags": [
+          "SecurityRules"
+        ],
+        "operationId": "DefaultSecurityRules_Get",
+        "description": "Get the specified default network security rule.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkSecurityGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network security group."
+          },
+          {
+            "name": "defaultSecurityRuleName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the default security rule."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting SecurityRule resource.",
+            "schema": {
+              "$ref": "#/definitions/SecurityRule"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "DefaultSecurityRuleGet": {
+            "$ref": "./examples/DefaultSecurityRuleGet.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SecurityRulePropertiesFormat": {
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "A description for this rule. Restricted to 140 chars."
+        },
+        "protocol": {
+          "type": "string",
+          "description": "Network protocol this rule applies to.",
+          "enum": [
+            "Tcp",
+            "Udp",
+            "Icmp",
+            "Esp",
+            "*",
+            "Ah"
+          ],
+          "x-ms-enum": {
+            "name": "SecurityRuleProtocol",
+            "modelAsString": true
+          }
+        },
+        "sourcePortRange": {
+          "type": "string",
+          "description": "The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports."
+        },
+        "destinationPortRange": {
+          "type": "string",
+          "description": "The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports."
+        },
+        "sourceAddressPrefix": {
+          "type": "string",
+          "description": "The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from."
+        },
+        "sourceAddressPrefixes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The CIDR or source IP ranges."
+        },
+        "sourceApplicationSecurityGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "./applicationSecurityGroup.json#/definitions/ApplicationSecurityGroup"
+          },
+          "description": "The application security group specified as source."
+        },
+        "destinationAddressPrefix": {
+          "type": "string",
+          "description": "The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used."
+        },
+        "destinationAddressPrefixes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The destination address prefixes. CIDR or destination IP ranges."
+        },
+        "destinationApplicationSecurityGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "./applicationSecurityGroup.json#/definitions/ApplicationSecurityGroup"
+          },
+          "description": "The application security group specified as destination."
+        },
+        "sourcePortRanges": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "The source port."
+          },
+          "description": "The source port ranges."
+        },
+        "destinationPortRanges": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "The destination port."
+          },
+          "description": "The destination port ranges."
+        },
+        "access": {
+          "$ref": "#/definitions/SecurityRuleAccess",
+          "description": "The network traffic is allowed or denied."
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule."
+        },
+        "direction": {
+          "$ref": "#/definitions/SecurityRuleDirection",
+          "description": "The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the security rule resource."
+        }
+      },
+      "required": [
+        "protocol",
+        "access",
+        "priority",
+        "direction"
+      ],
+      "description": "Security rule resource."
+    },
+    "SecurityRule": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/SecurityRulePropertiesFormat",
+          "description": "Properties of the security rule."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the resource that is unique within a resource group. This name can be used to access the resource."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "type": {
+          "type": "string",
+          "description": "The type of the resource."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ],
+      "description": "Network security rule."
+    },
+    "SecurityRuleListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SecurityRule"
+          },
+          "description": "The security rules in a network security group."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListSecurityRule API service call. Retrieves all security rules that belongs to a network security group."
+    },
+    "NetworkSecurityGroupPropertiesFormat": {
+      "properties": {
+        "flushConnection": {
+          "type": "boolean",
+          "description": "When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation."
+        },
+        "securityRules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SecurityRule"
+          },
+          "description": "A collection of security rules of the network security group."
+        },
+        "defaultSecurityRules": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SecurityRule"
+          },
+          "description": "The default security rules of network security group."
+        },
+        "networkInterfaces": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "./networkInterface.json#/definitions/NetworkInterface"
+          },
+          "description": "A collection of references to network interfaces."
+        },
+        "subnets": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "./virtualNetwork.json#/definitions/Subnet"
+          },
+          "description": "A collection of references to subnets."
+        },
+        "flowLogs": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "./networkWatcher.json#/definitions/FlowLog"
+          },
+          "description": "A collection of references to flow log resources."
+        },
+        "resourceGuid": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The resource GUID property of the network security group resource."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the network security group resource."
+        }
+      },
+      "description": "Network Security Group resource."
+    },
+    "NetworkSecurityGroup": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/NetworkSecurityGroupPropertiesFormat",
+          "description": "Properties of the network security group."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "NetworkSecurityGroup resource."
+    },
+    "NetworkSecurityGroupListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkSecurityGroup"
+          },
+          "description": "A list of NetworkSecurityGroup resources."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListNetworkSecurityGroups API service call."
+    },
+    "SecurityRuleAccess": {
+      "type": "string",
+      "description": "Whether network traffic is allowed or denied.",
+      "enum": [
+        "Allow",
+        "Deny"
+      ],
+      "x-ms-enum": {
+        "name": "SecurityRuleAccess",
+        "modelAsString": true
+      }
+    },
+    "SecurityRuleDirection": {
+      "type": "string",
+      "description": "The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.",
+      "enum": [
+        "Inbound",
+        "Outbound"
+      ],
+      "x-ms-enum": {
+        "name": "SecurityRuleDirection",
+        "modelAsString": true
+      }
+    }
+  }
+}
+

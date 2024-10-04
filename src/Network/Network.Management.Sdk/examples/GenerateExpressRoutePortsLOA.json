@@ -1,0 +1,20 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "api-version": "2024-05-01",
+    "resourceGroupName": "rg1",
+    "expressRoutePortName": "portName",
+    "request": {
+      "customerName": "customerName"
+    }
+  },
+  "responses": {
+    "200": {
+      "description": "Request successful. Returns the content as a base64 encoded string",
+      "body": {
+        "encodedContent": "TWFuIGlzIGRpc3"
+      }
+    }
+  }
+}
+

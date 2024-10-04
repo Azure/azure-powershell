@@ -1,0 +1,52 @@
+{
+  "parameters": {
+    "networkVirtualApplianceName": "nva1",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "connection1",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/NetworkVirtualAppliances/nva1/NetworkVirtualApplianceConnections/connection1",
+            "properties": {
+              "name": "connection1",
+              "asn": 64512,
+              "tunnelIdentifier": 0,
+              "bgpPeerAddress": [
+                "169.254.16.13",
+                "169.254.16.14"
+              ],
+              "routingConfiguration": {
+                "associatedRouteTable": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                },
+                "propagatedRouteTables": {
+                  "labels": [
+                    "label1"
+                  ],
+                  "ids": [
+                    {
+                      "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                    }
+                  ]
+                },
+                "inboundRouteMap": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"
+                },
+                "outboundRouteMap": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"
+                }
+              },
+              "provisioningState": "Succeeded"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

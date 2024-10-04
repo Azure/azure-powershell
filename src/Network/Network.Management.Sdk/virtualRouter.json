@@ -1,0 +1,699 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}": {
+      "delete": {
+        "tags": [
+          "VirtualRouters"
+        ],
+        "operationId": "VirtualRouters_Delete",
+        "description": "Deletes the specified Virtual Router.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "virtualRouterName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Virtual Router."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Request successful. Resource with the specified name does not exist."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete VirtualRouter": {
+            "$ref": "./examples/VirtualRouterDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "VirtualRouters"
+        ],
+        "operationId": "VirtualRouters_Get",
+        "description": "Gets the specified Virtual Router.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "virtualRouterName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Virtual Router."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expands referenced resources."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a Virtual Router resource.",
+            "schema": {
+              "$ref": "#/definitions/VirtualRouter"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get VirtualRouter": {
+            "$ref": "./examples/VirtualRouterGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "VirtualRouters"
+        ],
+        "operationId": "VirtualRouters_CreateOrUpdate",
+        "description": "Creates or updates the specified Virtual Router.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "virtualRouterName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Virtual Router."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VirtualRouter"
+            },
+            "description": "Parameters supplied to the create or update Virtual Router."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Request received successfully. The operation returns the resulting Virtual Router resource.",
+            "schema": {
+              "$ref": "#/definitions/VirtualRouter"
+            }
+          },
+          "200": {
+            "description": "Request successful. The operation returns the resulting Virtual Router resource.",
+            "schema": {
+              "$ref": "#/definitions/VirtualRouter"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create VirtualRouter": {
+            "$ref": "./examples/VirtualRouterPut.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters": {
+      "get": {
+        "tags": [
+          "VirtualRouters"
+        ],
+        "operationId": "VirtualRouters_ListByResourceGroup",
+        "description": "Lists all Virtual Routers in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of Virtual Router resources.",
+            "schema": {
+              "$ref": "#/definitions/VirtualRouterListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all Virtual Router for a given resource group": {
+            "$ref": "./examples/VirtualRouterListByResourceGroup.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualRouters": {
+      "get": {
+        "tags": [
+          "VirtualRouters"
+        ],
+        "operationId": "VirtualRouters_List",
+        "description": "Gets all the Virtual Routers in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of Virtual Router resources.",
+            "schema": {
+              "$ref": "#/definitions/VirtualRouterListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all Virtual Routers for a given subscription": {
+            "$ref": "./examples/VirtualRouterListBySubscription.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings/{peeringName}": {
+      "delete": {
+        "tags": [
+          "VirtualRouterPeerings"
+        ],
+        "operationId": "VirtualRouterPeerings_Delete",
+        "description": "Deletes the specified peering from a Virtual Router.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "virtualRouterName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Virtual Router."
+          },
+          {
+            "name": "peeringName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the peering."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Request successful. Resource with the specified name does not exist."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete VirtualRouterPeering": {
+            "$ref": "./examples/VirtualRouterPeeringDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "VirtualRouterPeerings"
+        ],
+        "operationId": "VirtualRouterPeerings_Get",
+        "description": "Gets the specified Virtual Router Peering.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "virtualRouterName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Virtual Router."
+          },
+          {
+            "name": "peeringName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Virtual Router Peering."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a Virtual Router Peering resource.",
+            "schema": {
+              "$ref": "#/definitions/VirtualRouterPeering"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Virtual Router Peering": {
+            "$ref": "./examples/VirtualRouterPeeringGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "VirtualRouterPeerings"
+        ],
+        "operationId": "VirtualRouterPeerings_CreateOrUpdate",
+        "description": "Creates or updates the specified Virtual Router Peering.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "virtualRouterName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Virtual Router."
+          },
+          {
+            "name": "peeringName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Virtual Router Peering."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VirtualRouterPeering"
+            },
+            "description": "Parameters supplied to the create or update Virtual Router Peering operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Request received successfully. The operation returns the resulting Virtual Router Peering resource.",
+            "schema": {
+              "$ref": "#/definitions/VirtualRouterPeering"
+            }
+          },
+          "200": {
+            "description": "Request successful. The operation returns the resulting Virtual Router Peering resource.",
+            "schema": {
+              "$ref": "#/definitions/VirtualRouterPeering"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create Virtual Router Peering": {
+            "$ref": "./examples/VirtualRouterPeeringPut.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualRouters/{virtualRouterName}/peerings": {
+      "get": {
+        "tags": [
+          "VirtualRouterPeerings"
+        ],
+        "operationId": "VirtualRouterPeerings_List",
+        "description": "Lists all Virtual Router Peerings in a Virtual Router resource.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "virtualRouterName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Virtual Router."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of Virtual Router Peering resources.",
+            "schema": {
+              "$ref": "#/definitions/VirtualRouterPeeringListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all Virtual Router Peerings for a given Virtual Router": {
+            "$ref": "./examples/VirtualRouterPeeringList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "VirtualRouter": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/VirtualRouterPropertiesFormat",
+          "description": "Properties of the Virtual Router."
+        },
+        "etag": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "VirtualRouter Resource."
+    },
+    "VirtualRouterPropertiesFormat": {
+      "properties": {
+        "virtualRouterAsn": {
+          "type": "integer",
+          "readOnly": false,
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "description": "VirtualRouter ASN."
+        },
+        "virtualRouterIps": {
+          "type": "array",
+          "readOnly": false,
+          "description": "VirtualRouter IPs.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "hostedSubnet": {
+          "readOnly": false,
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The Subnet on which VirtualRouter is hosted."
+        },
+        "hostedGateway": {
+          "readOnly": false,
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The Gateway on which VirtualRouter is hosted."
+        },
+        "peerings": {
+          "type": "array",
+          "readOnly": true,
+          "description": "List of references to VirtualRouterPeerings.",
+          "items": {
+            "$ref": "./network.json#/definitions/SubResource"
+          }
+        },
+        "provisioningState": {
+          "description": "The provisioning state of the resource.",
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState"
+        }
+      },
+      "description": "Virtual Router definition."
+    },
+    "VirtualRouterPeering": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/VirtualRouterPeeringProperties",
+          "description": "The properties of the Virtual Router Peering."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the virtual router peering that is unique within a virtual router."
+        },
+        "etag": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "type": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Peering type."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ],
+      "description": "Virtual Router Peering resource."
+    },
+    "VirtualRouterPeeringProperties": {
+      "properties": {
+        "peerAsn": {
+          "type": "integer",
+          "readOnly": false,
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "description": "Peer ASN."
+        },
+        "peerIp": {
+          "type": "string",
+          "readOnly": false,
+          "description": "Peer IP."
+        },
+        "provisioningState": {
+          "description": "The provisioning state of the resource.",
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState"
+        }
+      },
+      "description": "Properties of the rule group."
+    },
+    "VirtualRouterListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VirtualRouter"
+          },
+          "description": "List of Virtual Routers."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListVirtualRouters API service call."
+    },
+    "VirtualRouterPeeringListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VirtualRouterPeering"
+          },
+          "description": "List of VirtualRouterPeerings in a VirtualRouter."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListVirtualRouterPeerings API service call."
+    }
+  }
+}
+

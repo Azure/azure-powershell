@@ -1,0 +1,23 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "virtualWANName": "wan1"
+  },
+  "responses": {
+    "200": {
+      "description": "Request successful.",
+      "body": {
+        "supportedProviders": [
+          {
+            "name": "AzureFirewall",
+            "url": "",
+            "type": "Native"
+          }
+        ]
+      }
+    }
+  }
+}
+

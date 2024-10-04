@@ -1,0 +1,226 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteProviderPorts": {
+      "get": {
+        "tags": [
+          "ExpressRouteProviderPorts"
+        ],
+        "operationId": "ExpressRouteProviderPortsLocation_List",
+        "description": "Retrieves all the ExpressRouteProviderPorts in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "The filter to apply on the operation. For example, you can use $filter=location eq '{state}'."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of ExpressRouteProviderPort resources at a location. If there are no ports for the provider, an empty list is returned.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRouteProviderPortListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ExpressRouteProviderPortList": {
+            "$ref": "./examples/expressRouteProviderPortList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteProviderPorts/{providerport}": {
+      "get": {
+        "tags": [
+          "ExpressRouteProviderPorts"
+        ],
+        "operationId": "ExpressRouteProviderPort",
+        "description": "Retrieves detail of a provider port.",
+        "parameters": [
+          {
+            "name": "providerport",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the provider port."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns detail of individual provider port resources. If there is no port, an empty result is returned.",
+            "schema": {
+              "$ref": "#/definitions/ExpressRouteProviderPort"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ExpressRouteProviderPort": {
+            "$ref": "./examples/expressRouteProviderPort.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ExpressRouteProviderPortProperties": {
+      "type": "object",
+      "properties": {
+        "portPairDescriptor": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The name of the port pair."
+        },
+        "primaryAzurePort": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The name of the primary port."
+        },
+        "secondaryAzurePort": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The name of the secondary port."
+        },
+        "peeringLocation": {
+          "type": "string",
+          "description": "The peering location of the port pair."
+        },
+        "overprovisionFactor": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Overprovisioning factor for the port pair."
+        },
+        "portBandwidthInMbps": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Bandwidth of the port in Mbps"
+        },
+        "usedBandwidthInMbps": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Used Bandwidth of the port in Mbps"
+        },
+        "remainingBandwidthInMbps": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Remaining Bandwidth of the port in Mbps"
+        }
+      },
+      "description": "Properties of ExpressRouteProviderPort."
+    },
+    "ExpressRouteProviderPort": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ExpressRouteProviderPortProperties",
+          "description": "Properties of the express route Service Provider Port."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Fully qualified resource ID for the resource."
+        },
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The name of the resource"
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "ExpressRouteProviderPort resource."
+    },
+    "ExpressRouteProviderPortListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExpressRouteProviderPort"
+          },
+          "description": "A list of ExpressRouteProviderPort resources."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListExpressRouteProviderPort API service call."
+    }
+  }
+}
+

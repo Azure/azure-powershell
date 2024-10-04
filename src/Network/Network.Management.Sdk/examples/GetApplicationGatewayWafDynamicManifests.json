@@ -1,0 +1,66 @@
+{
+  "parameters": {
+    "location": "westus",
+    "api-version": "2021-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "default",
+            "id": "/subscriptions/subid/providers/Microsoft.Network/applicationGatewayWafDynamicManifests/default",
+            "type": "Microsoft.Network/applicationGatewayWafDynamicManifest",
+            "properties": {
+              "defaultRuleSet": {
+                "ruleSetType": "OWASP",
+                "ruleSetVersion": "3.2"
+              },
+              "availableRuleSets": [
+                {
+                  "ruleSetType": "OWASP",
+                  "ruleSetVersion": "3.2",
+                  "status": "0",
+                  "tiers": [
+                    "WAF_v2"
+                  ],
+                  "ruleGroups": [
+                    {
+                      "ruleGroupName": "General",
+                      "description": "",
+                      "rules": [
+                        {
+                          "ruleId": 200002,
+                          "ruleIdString": "200002",
+                          "description": "Failed to Parse Request Body.",
+                          "state": "Enabled",
+                          "action": "AnomalyScoring"
+                        },
+                        {
+                          "ruleId": 200003,
+                          "ruleIdString": "200003",
+                          "description": "Multipart Request Body Strict Validation.",
+                          "state": "Enabled",
+                          "action": "AnomalyScoring"
+                        },
+                        {
+                          "ruleId": 200004,
+                          "ruleIdString": "200004",
+                          "description": "Possible Multipart Unmatched Boundary.",
+                          "state": "Enabled",
+                          "action": "AnomalyScoring"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

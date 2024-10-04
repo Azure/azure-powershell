@@ -1,0 +1,38 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "resourceGroupName": "testrg",
+    "loadBalancerName": "lb1",
+    "api-version": "2024-05-01"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "rule1",
+            "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb1/outboundRules/rule1",
+            "type": "Microsoft.Network/loadBalancers/outboundRules",
+            "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "frontendIPConfigurations": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/lbfrontend"
+                }
+              ],
+              "allocatedOutboundPorts": 64,
+              "idleTimeoutInMinutes": 15,
+              "protocol": "Tcp",
+              "enableTcpReset": true,
+              "backendAddressPool": {
+                "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bepool1"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

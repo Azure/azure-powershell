@@ -1,0 +1,99 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualNetworkGatewayName": "vpngw",
+    "parameters": {
+      "tags": {
+        "tag1": "value1",
+        "tag2": "value2"
+      }
+    }
+  },
+  "responses": {
+    "202": {
+      "headers": {
+        "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/locations/eastus/operations/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    },
+    "200": {
+      "body": {
+        "name": "vpngw",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw",
+        "type": "Microsoft.Network/virtualNetworkGateways",
+        "location": "westus",
+        "identity": {
+          "type": "UserAssigned",
+          "userAssignedIdentities": {
+            "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1": {}
+          }
+        },
+        "tags": {
+          "tag1": "value1",
+          "tag2": "value2"
+        },
+        "properties": {
+          "provisioningState": "Succeeded",
+          "resourceGuid": "00000000-0000-0000-0000-000000000000",
+          "ipConfigurations": [
+            {
+              "name": "default",
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/ipConfigurations/default",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "privateIPAllocationMethod": "Dynamic",
+                "publicIPAddress": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/testpub1"
+                },
+                "subnet": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/GatewaySubnet"
+                }
+              }
+            }
+          ],
+          "natRules": [],
+          "enableBgpRouteTranslationForNat": false,
+          "sku": {
+            "name": "VpnGw1",
+            "tier": "VpnGw1",
+            "capacity": 2
+          },
+          "gatewayType": "Vpn",
+          "vpnType": "RouteBased",
+          "vpnGatewayGeneration": "None",
+          "enableBgp": false,
+          "activeActive": false,
+          "disableIPSecReplayProtection": false,
+          "bgpSettings": {
+            "asn": 65515,
+            "bgpPeeringAddress": "10.0.0.254",
+            "peerWeight": 0,
+            "bgpPeeringAddresses": [
+              {
+                "ipconfigurationId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/ipConfigurations/gwipconfig1",
+                "defaultBgpIpAddresses": [
+                  "10.3.1.254"
+                ],
+                "customBgpIpAddresses": [
+                  "169.254.21.10"
+                ],
+                "tunnelIpAddresses": [
+                  "52.161.10.135"
+                ]
+              }
+            ]
+          },
+          "customRoutes": {
+            "addressPrefixes": [
+              "101.168.0.6/32"
+            ]
+          },
+          "allowVirtualWanTraffic": false,
+          "allowRemoteVnetTraffic": false
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,21 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualWANName": "wan1",
+    "vpnClientParams": {
+      "vpnServerConfigurationResourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnconfig1",
+      "authenticationMethod": "EAPTLS"
+    }
+  },
+  "responses": {
+    "202": {},
+    "200": {
+      "body": {
+        "profileUrl": "aaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    }
+  }
+}
+

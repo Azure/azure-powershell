@@ -1,0 +1,19 @@
+{
+  "parameters": {
+    "virtualNetworkPeeringName": "peer",
+    "virtualNetworkName": "vnet1",
+    "resourceGroupName": "peerTest",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {},
+    "202": {
+      "headers": {
+        "Location": "https://management.azure.com/subscriptions/subid/resourceGroups/peerTest/providers/Microsoft.Network/virtualNetworks/vnet1/virtualNetworkPeerings/peer?api-version=2024-05-01"
+      }
+    },
+    "204": {}
+  }
+}
+

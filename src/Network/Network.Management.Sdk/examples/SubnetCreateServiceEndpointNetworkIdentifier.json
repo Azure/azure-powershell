@@ -1,0 +1,71 @@
+{
+  "parameters": {
+    "subnetName": "subnet1",
+    "virtualNetworkName": "vnetname",
+    "resourceGroupName": "subnet-test",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "subnetParameters": {
+      "properties": {
+        "addressPrefix": "10.0.0.0/16",
+        "serviceEndpoints": [
+          {
+            "service": "Microsoft.Storage",
+            "networkIdentifier": {
+              "id": "/subscriptions/subid/resourceGroups/subnet-test/providers/Microsoft.Network/publicIPAddresses/test-ip"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/subid/resourceGroups/subnet-test/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnet1",
+        "name": "subnet1",
+        "properties": {
+          "addressPrefix": "10.0.0.0/16",
+          "serviceEndpoints": [
+            {
+              "service": "Microsoft.Storage",
+              "networkIdentifier": {
+                "id": "/subscriptions/subid/resourceGroups/subnet-test/providers/Microsoft.Network/publicIPAddresses/test-ip"
+              },
+              "locations": [
+                "eastus2(stage)",
+                "usnorth(stage)"
+              ],
+              "provisioningState": "Succeeded"
+            }
+          ],
+          "provisioningState": "Succeeded"
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "id": "/subscriptions/subid/resourceGroups/subnet-test/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnet1",
+        "name": "subnet1",
+        "properties": {
+          "addressPrefix": "10.0.0.0/16",
+          "serviceEndpoints": [
+            {
+              "service": "Microsoft.Storage",
+              "networkIdentifier": {
+                "id": "/subscriptions/subid/resourceGroups/subnet-test/providers/Microsoft.Network/publicIPAddresses/test-ip"
+              },
+              "locations": [
+                "eastus2(stage)",
+                "usnorth(stage)"
+              ],
+              "provisioningState": "Succeeded"
+            }
+          ],
+          "provisioningState": "Succeeded"
+        }
+      }
+    }
+  }
+}
+

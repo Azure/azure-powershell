@@ -1,0 +1,98 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkProfiles/networkProfile1",
+            "name": "networkProfile1",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "1570d8b6-ab8a-4ad2-81d6-d2799b429cbf",
+              "containerNetworkInterfaceConfigurations": [
+                {
+                  "name": "eth0",
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkProfiles/networkProfile1/containerNetworkInterfaceConfigurations/eth0",
+                  "etag": "W/\"4d705a71-752f-4e0a-8057-c02b125b1c08\"",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "ipConfigurations": [
+                      {
+                        "name": "ipconfigprofile1",
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkProfiles/networkProfile1/containerNetworkInterfaceConfigurations/eth0/ipConfigurations/ipconfigprofile1",
+                        "etag": "W/\"4d705a71-752f-4e0a-8057-c02b125b1c08\"",
+                        "type": "Microsoft.Network/networkProfiles/containerNetworkInterfaceConfigurations/ipConfigurations",
+                        "properties": {
+                          "provisioningState": "Succeeded",
+                          "subnet": {
+                            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/networkProfileVnet/subnets/networkProfileSubnet1"
+                          }
+                        }
+                      },
+                      {
+                        "name": "ipconfigprofile2",
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkProfiles/networkProfile1/containerNetworkInterfaceConfigurations/eth0/ipConfigurations/ipconfigprofile2",
+                        "etag": "W/\"4d705a71-752f-4e0a-8057-c02b125b1c08\"",
+                        "type": "Microsoft.Network/networkProfiles/containerNetworkInterfaceConfigurations/ipConfigurations",
+                        "properties": {
+                          "provisioningState": "Succeeded",
+                          "subnet": {
+                            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/networkProfileVnet/subnets/networkProfileSubnet1"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "type": "Microsoft.Network/networkProfiles/containerNetworkInterfaceConfigurations"
+                }
+              ],
+              "containerNetworkInterfaces": []
+            },
+            "type": "Microsoft.Network/networkProfiles",
+            "location": "centraluseuap"
+          },
+          {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkProfiles/networkProfile2",
+            "name": "networkProfile2",
+            "properties": {
+              "containerNetworkInterfaceConfigurations": [
+                {
+                  "name": "eth1",
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkProfiles/networkProfile1/containerNetworkInterfaceConfigurations/eth1",
+                  "etag": "W/\"4d705a71-752f-4e0a-8057-c02b125b1c08\"",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "ipConfigurations": [
+                      {
+                        "name": "ipconfigprofile3",
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkProfiles/networkProfile1/containerNetworkInterfaceConfigurations/eth1/ipConfigurations/ipconfigprofile3",
+                        "etag": "W/\"4d705a71-752f-4e0a-8057-c02b125b1c08\"",
+                        "type": "Microsoft.Network/networkProfiles/containerNetworkInterfaceConfigurations/ipConfigurations",
+                        "properties": {
+                          "provisioningState": "Succeeded",
+                          "subnet": {
+                            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/networkProfileVnet/subnets/networkProfileSubnet1"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "type": "Microsoft.Network/networkProfiles/containerNetworkInterfaceConfigurations"
+                }
+              ],
+              "containerNetworkInterfaces": []
+            },
+            "type": "Microsoft.Network/networkProfiles",
+            "location": "centraluseuap"
+          }
+        ]
+      }
+    }
+  }
+}
+

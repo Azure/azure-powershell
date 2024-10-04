@@ -1,0 +1,451 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans/{ddosProtectionPlanName}": {
+      "delete": {
+        "tags": [
+          "DdosProtectionPlans"
+        ],
+        "operationId": "DdosProtectionPlans_Delete",
+        "description": "Deletes the specified DDoS protection plan.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ddosProtectionPlanName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the DDoS protection plan."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Delete DDoS protection plan": {
+            "$ref": "./examples/DdosProtectionPlanDelete.json"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "DdosProtectionPlans"
+        ],
+        "operationId": "DdosProtectionPlans_Get",
+        "description": "Gets information about the specified DDoS protection plan.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ddosProtectionPlanName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the DDoS protection plan."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the specified DDoS protection plan resource.",
+            "schema": {
+              "$ref": "#/definitions/DdosProtectionPlan"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get DDoS protection plan": {
+            "$ref": "./examples/DdosProtectionPlanGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DdosProtectionPlans"
+        ],
+        "operationId": "DdosProtectionPlans_CreateOrUpdate",
+        "description": "Creates or updates a DDoS protection plan.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ddosProtectionPlanName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the DDoS protection plan."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DdosProtectionPlan"
+            },
+            "description": "Parameters supplied to the create or update operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create successful. The operation returns the resulting DDoS protection plan resource.",
+            "schema": {
+              "$ref": "#/definitions/DdosProtectionPlan"
+            }
+          },
+          "200": {
+            "description": "Update successful. The operation returns the resulting DDoS protection plan resource.",
+            "schema": {
+              "$ref": "#/definitions/DdosProtectionPlan"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "Create DDoS protection plan": {
+            "$ref": "./examples/DdosProtectionPlanCreate.json"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "DdosProtectionPlans"
+        ],
+        "operationId": "DdosProtectionPlans_UpdateTags",
+        "description": "Update a DDoS protection plan tags.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ddosProtectionPlanName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the DDoS protection plan."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to the update DDoS protection plan resource tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting DDoS protection plan resource.",
+            "schema": {
+              "$ref": "#/definitions/DdosProtectionPlan"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "DDoS protection plan Update tags": {
+            "$ref": "./examples/DdosProtectionPlanUpdateTags.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ddosProtectionPlans": {
+      "get": {
+        "tags": [
+          "DdosProtectionPlans"
+        ],
+        "operationId": "DdosProtectionPlans_List",
+        "description": "Gets all DDoS protection plans in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of DDoS protection plan resources.",
+            "schema": {
+              "$ref": "#/definitions/DdosProtectionPlanListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "List all DDoS protection plans": {
+            "$ref": "./examples/DdosProtectionPlanListAll.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosProtectionPlans": {
+      "get": {
+        "tags": [
+          "DdosProtectionPlans"
+        ],
+        "operationId": "DdosProtectionPlans_ListByResourceGroup",
+        "description": "Gets all the DDoS protection plans in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of DDoS protection plan resources.",
+            "schema": {
+              "$ref": "#/definitions/DdosProtectionPlanListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List DDoS protection plans in resource group": {
+            "$ref": "./examples/DdosProtectionPlanList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "DdosProtectionPlan": {
+      "description": "A DDoS protection plan in a resource group.",
+      "x-ms-azure-resource": true,
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource ID."
+        },
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource name."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource type."
+        },
+        "location": {
+          "type": "string",
+          "description": "Resource location."
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Resource tags."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/DdosProtectionPlanPropertiesFormat",
+          "description": "Properties of the DDoS protection plan."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      }
+    },
+    "DdosProtectionPlanPropertiesFormat": {
+      "properties": {
+        "resourceGuid": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The resource GUID property of the DDoS protection plan resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the DDoS protection plan resource."
+        },
+        "publicIPAddresses": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "./network.json#/definitions/SubResource"
+          },
+          "description": "The list of public IPs associated with the DDoS protection plan resource. This list is read-only."
+        },
+        "virtualNetworks": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "./network.json#/definitions/SubResource"
+          },
+          "description": "The list of virtual networks associated with the DDoS protection plan resource. This list is read-only."
+        }
+      },
+      "description": "DDoS protection plan properties."
+    },
+    "DdosProtectionPlanListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DdosProtectionPlan"
+          },
+          "description": "A list of DDoS protection plans."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "A list of DDoS protection plans."
+    }
+  }
+}
+

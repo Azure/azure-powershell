@@ -1,0 +1,514 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations/{dscpConfigurationName}": {
+      "put": {
+        "tags": [
+          "DscpConfiguration"
+        ],
+        "operationId": "DscpConfiguration_CreateOrUpdate",
+        "description": "Creates or updates a DSCP Configuration.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "dscpConfigurationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DscpConfiguration"
+            },
+            "description": "Parameters supplied to the create or update dscp configuration operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create successful. The operation returns the resulting DscpConfiguration resource.",
+            "schema": {
+              "$ref": "#/definitions/DscpConfiguration"
+            }
+          },
+          "200": {
+            "description": "Update successful. The operation returns the resulting DscpConfiguration resource.",
+            "schema": {
+              "$ref": "#/definitions/DscpConfiguration"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create DSCP Configuration": {
+            "$ref": "./examples/DscpConfigurationCreate.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "delete": {
+        "tags": [
+          "DscpConfiguration"
+        ],
+        "operationId": "DscpConfiguration_Delete",
+        "description": "Deletes a DSCP Configuration.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "dscpConfigurationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete DSCP Configuration": {
+            "$ref": "./examples/DscpConfigurationDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "DscpConfiguration"
+        ],
+        "operationId": "DscpConfiguration_Get",
+        "description": "Gets a DSCP Configuration.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "dscpConfigurationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting DSCP Configuration resource.",
+            "schema": {
+              "$ref": "#/definitions/DscpConfiguration"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Dscp Configuration": {
+            "$ref": "./examples/DscpConfigurationGet.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dscpConfigurations": {
+      "get": {
+        "tags": [
+          "DscpConfigurations"
+        ],
+        "operationId": "DscpConfiguration_List",
+        "description": "Gets a DSCP Configuration.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting DSCP Configuration resource.",
+            "schema": {
+              "$ref": "#/definitions/DscpConfigurationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Dscp Configuration": {
+            "$ref": "./examples/DscpConfigurationList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/dscpConfigurations": {
+      "get": {
+        "tags": [
+          "DscpConfigurations"
+        ],
+        "operationId": "DscpConfiguration_ListAll",
+        "description": "Gets all dscp configurations in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of NetworkInterface resources.",
+            "schema": {
+              "$ref": "#/definitions/DscpConfigurationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all network interfaces": {
+            "$ref": "./examples/DscpConfigurationListAll.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "DscpConfiguration": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/DscpConfigurationPropertiesFormat",
+          "description": "Properties of the network interface."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "Differentiated Services Code Point configuration for any given network interface"
+    },
+    "DscpConfigurationPropertiesFormat": {
+      "properties": {
+        "markings": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": "List of markings to be used in the configuration."
+        },
+        "sourceIpRanges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QosIpRange"
+          },
+          "description": "Source IP ranges."
+        },
+        "destinationIpRanges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QosIpRange"
+          },
+          "description": "Destination IP ranges."
+        },
+        "sourcePortRanges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QosPortRange"
+          },
+          "description": "Sources port ranges."
+        },
+        "destinationPortRanges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QosPortRange"
+          },
+          "description": "Destination port ranges."
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [
+            "DoNotUse",
+            "Icmp",
+            "Tcp",
+            "Udp",
+            "Gre",
+            "Esp",
+            "Ah",
+            "Vxlan",
+            "All"
+          ],
+          "x-ms-enum": {
+            "name": "ProtocolType",
+            "modelAsString": true
+          },
+          "description": "RNM supported protocol types."
+        },
+        "qosDefinitionCollection": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QosDefinition"
+          },
+          "description": "QoS object definitions"
+        },
+        "qosCollectionId": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Qos Collection ID generated by RNM."
+        },
+        "associatedNetworkInterfaces": {
+          "type": "array",
+          "items": {
+            "$ref": "./networkInterface.json#/definitions/NetworkInterface"
+          },
+          "readOnly": true,
+          "description": "Associated Network Interfaces to the DSCP Configuration."
+        },
+        "resourceGuid": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The resource GUID property of the DSCP Configuration resource."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the DSCP Configuration resource."
+        }
+      },
+      "description": "Differentiated Services Code Point configuration properties."
+    },
+    "QosDefinition": {
+      "type": "object",
+      "properties": {
+        "markings": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": "List of markings to be used in the configuration."
+        },
+        "sourceIpRanges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QosIpRange"
+          },
+          "description": "Source IP ranges."
+        },
+        "destinationIpRanges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QosIpRange"
+          },
+          "description": "Destination IP ranges."
+        },
+        "sourcePortRanges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QosPortRange"
+          },
+          "description": "Sources port ranges."
+        },
+        "destinationPortRanges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QosPortRange"
+          },
+          "description": "Destination port ranges."
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [
+            "DoNotUse",
+            "Icmp",
+            "Tcp",
+            "Udp",
+            "Gre",
+            "Esp",
+            "Ah",
+            "Vxlan",
+            "All"
+          ],
+          "x-ms-enum": {
+            "name": "ProtocolType",
+            "modelAsString": true
+          },
+          "description": "RNM supported protocol types."
+        }
+      },
+      "description": "Quality of Service defines the traffic configuration between endpoints. Mandatory to have one marking."
+    },
+    "QosIpRange": {
+      "properties": {
+        "startIP": {
+          "type": "string",
+          "description": "Start IP Address."
+        },
+        "endIP": {
+          "type": "string",
+          "description": "End IP Address."
+        }
+      },
+      "description": "Qos Traffic Profiler IP Range properties."
+    },
+    "QosPortRange": {
+      "properties": {
+        "start": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Qos Port Range start."
+        },
+        "end": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Qos Port Range end."
+        }
+      },
+      "description": "Qos Traffic Profiler Port range properties."
+    },
+    "DscpConfigurationListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DscpConfiguration"
+          },
+          "description": "A list of dscp configurations in a resource group."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for the DscpConfigurationList API service call."
+    }
+  }
+}
+

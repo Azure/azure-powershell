@@ -143,6 +143,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Flag to enable high bandwidth VPN gateway feature on virtual network gateway")]
+        public SwitchParameter EnableHighBandwidthVpnGatewayFeature { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Flag to enable private IPAddress on virtual network gateway")]
         public bool? EnablePrivateIpAddress { get; set; }
 
@@ -150,6 +155,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Flag to disable Active Active feature on virtual network gateway")]
         public SwitchParameter DisableActiveActiveFeature { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to disable high bandwidth VPN gateway feature on virtual network gateway")]
+        public SwitchParameter DisableHighBandwidthVpnGatewayFeature { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -289,6 +299,21 @@ namespace Microsoft.Azure.Commands.Network
             if (this.DisableActiveActiveFeature.IsPresent)
             {
                 this.VirtualNetworkGateway.ActiveActive = false;
+            }
+
+            if (this.EnableHighBandwidthVpnGatewayFeature.IsPresent && this.DisableHighBandwidthVpnGatewayFeature.IsPresent)
+            {
+                throw new ArgumentException("Both EnableHighBandwidthVpnGatewayFeature and DisableHighBandwidthVpnGatewayFeature Parameters can not be passed.");
+            }
+
+            if (this.EnableHighBandwidthVpnGatewayFeature.IsPresent)
+            {
+                this.VirtualNetworkGateway.EnableHighBandwidthVpnGateway = true;
+            }
+
+            if (this.DisableHighBandwidthVpnGatewayFeature.IsPresent)
+            {
+                this.VirtualNetworkGateway.EnableHighBandwidthVpnGateway = false;
             }
 
             if (this.EnablePrivateIpAddress.HasValue)

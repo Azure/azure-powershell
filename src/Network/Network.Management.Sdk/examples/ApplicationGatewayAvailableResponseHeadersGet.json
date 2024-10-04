@@ -1,0 +1,14 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "72f988bf-86f1-41af-91ab-2d7cd0dddd4"
+  },
+  "responses": {
+    "200": {
+      "body": [
+        "Access-Control-Allow-Origin"
+      ]
+    }
+  }
+}
+

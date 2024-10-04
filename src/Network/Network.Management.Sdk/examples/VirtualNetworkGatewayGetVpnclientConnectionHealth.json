@@ -1,0 +1,50 @@
+{
+  "parameters": {
+    "resourceGroupName": "p2s-vnet-test",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "virtualNetworkGatewayName": "vpnp2sgw"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "vpnConnectionId": "IKEv2_1e1cfe59-5c7c-4315-a876-b11fbfdfeed4",
+            "vpnConnectionDuration": 900,
+            "vpnConnectionTime": "2019-05-02T22:26:22",
+            "publicIpAddress": "167.220.2.232:45522",
+            "privateIpAddress": "192.168.210.2",
+            "vpnUserName": "gwp2schildcert",
+            "maxBandwidth": 240000000,
+            "egressPacketsTransferred": 557,
+            "egressBytesTransferred": 33420,
+            "ingressPacketsTransferred": 557,
+            "ingressBytesTransferred": 33420,
+            "maxPacketsPerSecond": 4
+          },
+          {
+            "vpnConnectionId": "IKEv2_571cfe59-2c7d-1415-e813-c51fbfdfea16",
+            "vpnConnectionDuration": 800,
+            "vpnConnectionTime": "2019-05-01T21:06:12",
+            "publicIpAddress": "167.220.2.232:45213",
+            "privateIpAddress": "192.168.210.1",
+            "vpnUserName": "gwp2schildcert",
+            "maxBandwidth": 220000000,
+            "egressPacketsTransferred": 357,
+            "egressBytesTransferred": 23420,
+            "ingressPacketsTransferred": 357,
+            "ingressBytesTransferred": 23420,
+            "maxPacketsPerSecond": 4
+          }
+        ]
+      }
+    },
+    "202": {
+      "headers": {
+        "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/locations/eastus/operations/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    }
+  }
+}
+

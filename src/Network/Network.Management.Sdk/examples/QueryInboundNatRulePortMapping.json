@@ -1,0 +1,42 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "groupName": "rg1",
+    "loadBalancerName": "lb1",
+    "backendPoolName": "bp1",
+    "parameters": {
+      "ipAddress": "10.0.0.4"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "inboundNatRulePortMappings": [
+          {
+            "inboundNatRuleName": "natRule",
+            "protocol": "Tcp",
+            "frontendPort": 3389,
+            "backendPort": 3389
+          }
+        ]
+      }
+    },
+    "202": {
+      "headers": {
+        "Location": "https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bp1/queryInboundNatRulePortMapping?api-version=2024-05-01"
+      },
+      "body": {
+        "inboundNatRulePortMappings": [
+          {
+            "inboundNatRuleName": "natRule",
+            "protocol": "Tcp",
+            "frontendPort": 3389,
+            "backendPort": 3389
+          }
+        ]
+      }
+    }
+  }
+}
+
