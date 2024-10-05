@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the primary availability group name
+        /// Gets or sets the partner availability group name
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the partner availability group.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the partner availability group.")]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         public string PartnerAvailabilityGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the secondary availability group name
+        /// Gets or sets the managed instance availability group name
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the managed instance availability group.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the managed instance availability group.")]
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         public string InstanceAvailabilityGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the target database
+        /// Gets or sets the target database/databases
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Database names in the distributed availability group.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Database names in the distributed availability group.")]
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         public List<string> Databases { get; set; }
 
         /// <summary>
-        /// Gets or sets the source endpoint
+        /// Gets or sets the partner endpoint
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "SQL server side endpoint - IP or DNS resolvable name")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "SQL server side endpoint - IP or DNS resolvable name")]

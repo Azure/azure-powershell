@@ -53,10 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.DistributedAvailabilityGroup.Cmdlet
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the link failover mode - can be Manual if intended to
-        /// be used for two-way failover with a supported SQL Server, or None
-        /// for one-way failover to Azure. Possible values include: 'None',
-        /// 'Manual'
+        /// Gets or sets the link failover type - Can be ForcedAllowDataLoss or Planned.
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = FailoverByNameParameterSet, HelpMessage = "The failover type, can be ForcedAllowDataLoss or Planned.")]
         [Parameter(Mandatory = true, ParameterSetName = FailoverByParentObjectParameterSet, HelpMessage = "The failover type, can be ForcedAllowDataLoss or Planned.")]
