@@ -361,12 +361,6 @@ directive:
       subject: NetworkConfiguration
     remove: true
 
-  # Remove when this API is fixed
-  - where:
-      subject: ReconcileNetworkSecurityPerimeterConfiguration$
-      verb: Invoke
-    remove: true
-
   # becasue autorest.powershell is unable to transform IdentityType as the best practice design if it uses managed identity
   # we hide the original cmdlet and custom it under /custom folder
   - where:

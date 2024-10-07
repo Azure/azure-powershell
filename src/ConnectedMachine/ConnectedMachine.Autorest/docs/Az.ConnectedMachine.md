@@ -38,6 +38,9 @@ The operation to install patches on a hybrid machine identity in Azure.
 ### [Invoke-AzConnectedAssessMachinePatch](Invoke-AzConnectedAssessMachinePatch.md)
 The operation to assess patches on a hybrid machine identity in Azure.
 
+### [Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration](Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration.md)
+Forces the network security perimeter configuration to refresh for a private link scope.
+
 ### [New-AzConnectedLicense](New-AzConnectedLicense.md)
 The operation to create or update a license.
 
