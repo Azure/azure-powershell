@@ -91,6 +91,17 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Wait till the long-running operation completes before returning the result.")]
+        public SwitchParameter WaitTillCompletion { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifies where to poll for long-running operation status.")]
+        [ValidateSet("AzureAsyncLocation", "Location", "OriginalUri", "OperationLocation", IgnoreCase = true)]
+        public string PollFrom { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifies where to get the final result after the long-running operation completes.")]
+        [ValidateSet("FinalStateVia", "Location", "OriginalUri", "OperationLocation", IgnoreCase = true)]
+        public string FinalResultFrom { get; set; }
+
         #endregion
 
         IAzureContext context;
@@ -100,7 +111,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             this.ValidateParameters();
 
             context = DefaultContext;
-            AzureOperationResponse<string> response = null;
 
             if (ByParameters.Equals(this.ParameterSetName))
             {
@@ -111,7 +121,21 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 this.Path = Uri.PathAndQuery;
             }
 
+            
+            IAzureRestClient serviceClient = this.InitializeServiceClient();
+
+            RestRequestHandler handler = new RestRequestHandler(this, serviceClient, Method);
+            AzureOperationResponse<string> response = handler.ExecuteRestRequest(Path, ApiVersion, Payload);
+
+            WriteObject("This is New DEV TESTINGG VERSION!!!!");
+            WriteObject(new PSHttpResponse(response));
+        }
+
+
+        private IAzureRestClient InitializeServiceClient()
+        {
             IAzureRestClient serviceClient = null;
+
             if (ByPath.Equals(this.ParameterSetName) || ByParameters.Equals(this.ParameterSetName))
             {
                 serviceClient = AzureSession.Instance.ClientFactory.CreateArmClient<AzureRestClient>(context, AzureEnvironment.Endpoint.ResourceManager);
@@ -119,9 +143,9 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             else if (ByURI.Equals(this.ParameterSetName))
             {
                 string targetResourceIdKey = null;
-                string resourceId = this.IsParameterBound(c => c.ResourceId) ? ResourceId.ToString() : null; 
-                if(this.IsParameterBound(c => c.ResourceId) 
-                    && context.Environment.ActiveDirectoryServiceEndpointResourceId.Equals(resourceId) 
+                string resourceId = this.IsParameterBound(c => c.ResourceId) ? ResourceId.ToString() : null;
+                if (this.IsParameterBound(c => c.ResourceId)
+                    && context.Environment.ActiveDirectoryServiceEndpointResourceId.Equals(resourceId)
                     && !HasSameEndpoint(Uri.Authority, context.Environment.ResourceManagerUrl))
                 {
                     throw new AzPSArgumentException("The resource ID of Azure Resource Manager cannot be used for other endpoint. Please make sure to input the correct resource ID that matches the request URI.",
@@ -150,51 +174,9 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 WriteErrorWithTimestamp("Parameter set is not implemented");
             }
 
-            switch (this.Method.ToUpper())
-            {
-                case "GET":
-                    response = serviceClient
-                    .Operations
-                    .GetResourceWithFullResponse(this.Path, this.ApiVersion);
-                    break;
-                case "POST":
-                    if (this.ShouldProcess(Path, "POST"))
-                    {
-                        response = serviceClient
-                        .Operations
-                        .PostResourceWithFullResponse(this.Path, this.ApiVersion, this.Payload);
-                    }                    
-                    break;
-                case "PUT":
-                    if (this.ShouldProcess(Path, "PUT"))
-                    {
-                        response = serviceClient
-                        .Operations
-                        .PutResourceWithFullResponse(this.Path, this.ApiVersion, this.Payload);
-                    }
-                    break;
-                case "PATCH":
-                    if (this.ShouldProcess(Path, "PATCH"))
-                    {
-                        response = serviceClient
-                        .Operations
-                        .PatchResourceWithFullResponse(this.Path, this.ApiVersion, this.Payload);
-                    }
-                    break;
-                case "DELETE":
-                    if (this.ShouldProcess(Path, "DELETE"))
-                    {
-                        response = serviceClient
-                        .Operations
-                        .DeleteResourceWithFullResponse(this.Path, this.ApiVersion);
-                    }                    
-                    break;
-                default:
-                    throw new AzPSArgumentException("Invalid HTTP Method", nameof(Method));
-            }
+            return serviceClient;
+        } 
 
-            WriteObject(new PSHttpResponse(response));
-        }
 
         private string MatchResourceId(IAzureContext context, string authority, out string targetResourceIdKey)
         {
