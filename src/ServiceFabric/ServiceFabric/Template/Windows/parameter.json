@@ -35,7 +35,7 @@
     "clusterProtectionLevel": {
       "value": "EncryptAndSign"
     },
-    "certificateStorevalue": {
+    "certificateStoreValue": {
       "value": "My"
     },
     "certificateThumbprint": {
@@ -61,6 +61,12 @@
     },
     "vmNodeType0Size": {
       "value": "Standard_D2s_v3"
+    },
+    "durabilityLevel": {
+      "value": "Silver"
+    },
+    "reliabilityLevel": {
+      "value": "Silver"
     }
   }
 }

@@ -152,6 +152,22 @@
     "vmNodeType0Size": {
       "type": "string",
       "defaultValue": "Standard_D2s_v3"
+    },
+    "durabilityLevel": {
+      "type": "string",
+      "allowedValues": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultValue": "Silver"
+    },
+    "reliabilityLevel": {
+      "type": "string",
+      "allowedValues": [
+        "Silver",
+        "Gold"
+      ],
+      "defaultValue": "Silver"
     }
   },
   "variables": {
@@ -638,7 +654,7 @@
                     "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
                     "nodeTypeRef": "[variables('vmNodeType0Name')]",
                     "dataPath": "D:\\SvcFab",
-                    "durabilityLevel": "Silver",
+                    "durabilityLevel": "[parameters('durabilityLevel')]",
                     "enableParallelJobs": true,
                     "nicPrefixOverride": "[variables('subnet0Prefix')]",
                     "certificate": {
@@ -823,7 +839,7 @@
               "startPort": "[variables('nt0applicationStartPort')]"
             },
             "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
-            "durabilityLevel": "Silver",
+            "durabilityLevel": "[parameters('durabilityLevel')]",
             "ephemeralPorts": {
               "endPort": "[variables('nt0ephemeralEndPort')]",
               "startPort": "[variables('nt0ephemeralStartPort')]"
@@ -834,7 +850,7 @@
           }
         ],
         "provisioningState": "Default",
-        "reliabilityLevel": "Silver",
+        "reliabilityLevel": "[parameters('reliabilityLevel')]",
         "upgradeMode": "Automatic",
         "vmImage": "Windows"
       },
