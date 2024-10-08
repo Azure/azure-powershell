@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Refined migration of Azure Storgae File dataplane cmdlets from 'Microsoft.Azure.Storage.File 11.2.3' to 'Azure.Storage.Files.Shares 12.16.0'
+    - `Start-AzStorageFileCopy`
 
 ## Version 7.4.0
 * Added a warning for an upcoming breaking change for removing references to "Microsoft.Azure.Storage.File"
