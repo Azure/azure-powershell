@@ -264,8 +264,11 @@ namespace VersionController
                 }
 
                 var outputModuleManifestFile = outputModuleManifest.FirstOrDefault();
-
-                _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules,new AzurePSVersion(_assignedVersion), _releaseType);
+                if (!string.IsNullOrEmpty(_moduleNameFilter)) {
+                    _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules,new AzurePSVersion(_assignedVersion), _releaseType);
+                } else {
+                    _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules, _releaseType);
+                }
                 _versionBumper.PSRepositories = targetRepositories;
                 if (_minimalVersion.ContainsKey(moduleName))
                 {
