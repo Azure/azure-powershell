@@ -271,7 +271,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShareDirectoryClient
-CloudFileDirectory object indicated the cloud directory where the file would be uploaded.
+ShareDirectoryClient object indicated the directory where the file would be uploaded.
 
 ```yaml
 Type: Azure.Storage.Files.Shares.ShareDirectoryClient

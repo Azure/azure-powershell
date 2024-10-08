@@ -62,7 +62,7 @@ This command downloads a file that is named CurrentDataFile in the folder Contos
 
 ### Example 2: Downloads the files under sample file share
 ```powershell
-Get-AzStorageFile -ShareName sample | Where-Object {$_.GetType().Name -eq "CloudFile"} | Get-AzStorageFileContent
+Get-AzStorageFile -ShareName sample | Where-Object {$_.GetType().Name -eq "AzureStorageFile"} | Get-AzStorageFileContent
 ```
 
 This example downloads the files under sample file share
@@ -282,7 +282,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShareClient
-CloudFileShare object indicated the share where the file would be downloaded.
+ShareClient object indicated the share where the file would be downloaded.
 
 ```yaml
 Type: Azure.Storage.Files.Shares.ShareClient
