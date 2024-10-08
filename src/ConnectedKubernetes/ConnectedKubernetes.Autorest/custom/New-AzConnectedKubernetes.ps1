@@ -601,6 +601,7 @@ function New-AzConnectedKubernetes {
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
 
         Write-Output "Creating 'Kubernetes - Azure Arc' object in Azure"
+        Write-Debug "PSBoundParameters: $PSBoundParameters"
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
         if ((-not $WhatIfPreference) -and (-not $Response)) {
@@ -654,7 +655,7 @@ function New-AzConnectedKubernetes {
             # hashtable.
             $optionsFromDp = ""
             foreach ($field in $helmValuesContent.PSObject.Properties) {
-                if($field.Value.StartsWith($ProtectedSettingsPlaceholderValue)){
+                if ($field.Value.StartsWith($ProtectedSettingsPlaceholderValue)) {
                     $parsedValue = $field.Value.Split(":")
                     # "${ProtectedSettingsPlaceholderValue}:${feature}:${setting}"
                     $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
@@ -722,9 +723,11 @@ function New-AzConnectedKubernetes {
     
                 if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
                     Write-Output "Cluster configuration succeeded."
-                } elseif ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Failed") {
+                }
+                elseif ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Failed") {
                     Write-Error "Cluster configuration failed."
-                } else {
+                }
+                else {
                     Write-Error "Cluster configuration timed out after 60 minutes."
                 }      
             }
