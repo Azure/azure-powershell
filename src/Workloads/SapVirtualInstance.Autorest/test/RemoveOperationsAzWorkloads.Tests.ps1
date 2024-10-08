@@ -20,7 +20,7 @@ Describe 'RemoveOperationsAzWorkloads' {
         $RemoveOperationsAzWorkloadsResponse.Status | Should -Be $null
     }
 
-    It 'RemoveOperationsAzWorkloadsAlias' -skip {
+    It 'RemoveOperationsAzWorkloadsAlias' {
         $RemoveOperationsAzWorkloadsAliasResponse = Remove-AzVIS -Name $env.DeletionVIS -ResourceGroupName $env.DeletionRG
         $RemoveOperationsAzWorkloadsAliasResponse.Status | Should -Be $null
     }

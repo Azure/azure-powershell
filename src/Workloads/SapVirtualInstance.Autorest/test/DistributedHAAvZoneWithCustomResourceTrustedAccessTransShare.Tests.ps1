@@ -31,7 +31,7 @@ Describe 'DistributedHAAvZoneWithCustomResourceTrustedAccessTransShare' {
         $InstallDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareResponse.provisioningState | Should -Be $env.ProvisioningStateSucceeded
     }
 
-    It 'CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareAlias' -skip {
+    It 'CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareAlias' {
         $MsiIdentityName = @{ $env.IdentityName = @{}}
         $CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareAliasConfig = Join-Path $PSScriptRoot $env.CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareConfigPath
         $CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareAliasConfig -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -IdentityType $env.IdentityType -UserAssignedIdentity $MsiIdentityName
@@ -40,7 +40,7 @@ Describe 'DistributedHAAvZoneWithCustomResourceTrustedAccessTransShare' {
         ($CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareAliasResponse.Configuration | ConvertFrom-Json).infrastructureConfiguration.storageConfiguration.transportFileShareConfiguration.configurationType | Should -Be $env.MountTransShareConfigType
     }
 
-    It 'InstallDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareAlias' -skip {
+    It 'InstallDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareAlias' {
         $MsiIdentityName = @{ $env.IdentityName = @{}}
         $InstallDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareAliasConfig = Join-Path $PSScriptRoot $env.InstallDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareConfigPath
         $InstallDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $InstallDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareAliasConfig -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -IdentityType $env.IdentityType -UserAssignedIdentity $MsiIdentityName

@@ -15,11 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'RegisterWithTrustedAccessCust
 }
 
 Describe 'RegisterWithTrustedAccessCustomSaMrg' {
-    It 'DeleteRegisterWithTrustedAccessCustomSaMrg' {
-        $DeleteRegisterWithTrustedAccessCustomSaMrgResponse = Remove-AzWorkloadsSapVirtualInstance -Name $env.CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareSID -ResourceGroupName $env.DeletionRG
-        $DeleteRegisterWithTrustedAccessCustomSaMrgResponse.Status | Should -Be $null
-        Start-TestSleep 60
-    }
 
     It 'RegisterWithTrustedAccessCustomSaMrg' {
         $MsiIdentityName = @{ $env.IdentityName = @{}}
@@ -30,13 +25,7 @@ Describe 'RegisterWithTrustedAccessCustomSaMrg' {
         $RegisterWithTrustedAccessCustomSaMrgResponse.managedResourceGroupConfigurationName | Should -Be $env.MrgRGName
     }
 
-    It 'DeleteRegisterWithTrustedAccessCustomSaMrgAlias' -skip {
-        $DeleteRegisterWithTrustedAccessCustomSaMrgAliasResponse = Remove-AzVIS -Name $env.CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareSID -ResourceGroupName $env.DeletionRG
-        $DeleteRegisterWithTrustedAccessCustomSaMrgAliasResponse.Status | Should -Be $null
-        Start-TestSleep 60
-    }
-
-    It 'RegisterWithTrustedAccessCustomSaMrgAlias' -skip {
+    It 'RegisterWithTrustedAccessCustomSaMrgAlias' {
         $MsiIdentityName = @{ $env.IdentityName = @{}}
         $RegisterWithTrustedAccessCustomSaMrgAliasResponse = New-AzVIS -SubscriptionId $env.WaaSSubscriptionId -Name $env.CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareSID -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -CentralServerVmId $env.CentralServerVmId -ManagedResourceGroupName $env.MrgRGName -ManagedRgStorageAccountName $env.MrgSAName -ManagedResourcesNetworkAccessType $env.MrgNetAccTypPrvt -IdentityType $env.IdentityType -UserAssignedIdentity $MsiIdentityName
         $RegisterWithTrustedAccessCustomSaMrgAliasResponse.provisioningState | Should -Be $env.ProvisioningStateSucceeded

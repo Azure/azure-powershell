@@ -30,17 +30,17 @@ Describe 'PostOperationsAzWorkloads' {
         $PostOperationsSapSupportedSkuResponse.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'PostOperationsSapDiskConfigurationAlias' -skip {
+    It 'PostOperationsSapDiskConfigurationAlias' {
         $PostOperationsSapDiskConfigurationAliasResponse = Invoke-AzVISDiskConfiguration -SubscriptionId $env.WaaSSubscriptionId -Location $env.Location -AppLocation $env.Location -DatabaseType $env.DatabaseType -DbVMSku $env.DbVMSku -DeploymentType $env.DeploymentType -Environment $env.EnviornmentNonProd -SapProduct $env.SapProduct
         $PostOperationsSapDiskConfigurationAliasResponse.Count | Should -BeGreaterOrEqual 1
     }
     
-    It 'PostOperationsSapSizingRecommendationAlias' -skip {
+    It 'PostOperationsSapSizingRecommendationAlias' {
         $PostOperationsSapSizingRecommendationAliasResponse = Invoke-AzVISSizingRecommendation -SubscriptionId $env.WaaSSubscriptionId -Location $env.Location -AppLocation $env.Location -DatabaseType $env.DatabaseType -DbMemory $env.DbMemory -DeploymentType $env.DeploymentType -Environment $env.EnviornmentNonProd -SapProduct $env.SapProduct -Sap $env.Saps -DbScaleMethod $env.DbScaleMethod
         $PostOperationsSapSizingRecommendationAliasResponse.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'PostOperationsSapSupportedSkuAlias' -skip {
+    It 'PostOperationsSapSupportedSkuAlias' {
         $PostOperationsSapSupportedSkuAliasResponse = Invoke-AzVISSupportedSKU -SubscriptionId $env.WaaSSubscriptionId -Location $env.Location -AppLocation $env.Location -DatabaseType $env.DatabaseType -DeploymentType $env.DeploymentTypeThreeTier -Environment $env.EnviornmentProd -SapProduct $env.SapProduct
         $PostOperationsSapSupportedSkuAliasResponse.Count | Should -BeGreaterOrEqual 1
     }
