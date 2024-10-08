@@ -1828,6 +1828,7 @@ function Test-VirtualNetworkPrivateEndpointVNetPolicies
     # Setup
     $rgname = Get-ResourceGroupName
     $vnet1Name = Get-ResourceName
+    $vnet2Name = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
     $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
@@ -1843,6 +1844,10 @@ function Test-VirtualNetworkPrivateEndpointVNetPolicies
         # Perform GET operations to retrieve virtual network and verify that PrivateEndpointVNetPolicies is "Disabled" by default
         $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
         Assert-AreEqual "Disabled" $vnet1.PrivateEndpointVNetPolicies
+
+        New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.2.0.0/16 -PrivateEndpointVNetPoliciesValue "Basic"
+        $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname
+        Assert-AreEqual "Basic" $vnet2.PrivateEndpointVNetPolicies
     }
     finally
     {
