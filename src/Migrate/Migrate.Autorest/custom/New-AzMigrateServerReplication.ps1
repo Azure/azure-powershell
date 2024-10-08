@@ -62,6 +62,14 @@ function New-AzMigrateServerReplication {
         # Specifies if Azure Hybrid benefit for SQL Server is applicable for the server to be migrated.
         ${SqlServerLicenseType},
 
+        [Parameter()]
+        [ValidateSet( "NotSpecified", "NoLicenseType", "LinuxServer")]
+        [ArgumentCompleter( { "NotSpecified", "NoLicenseType", "LinuxServer" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies if Azure Hybrid benefit is applicable for the source linux server to be migrated.
+        ${LinuxLicenseType},
+
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
@@ -283,6 +291,7 @@ function New-AzMigrateServerReplication {
         $HasDiskTag = $PSBoundParameters.ContainsKey('DiskTag')
         $HasTag = $PSBoundParameters.ContainsKey('Tag')
         $HasSqlServerLicenseType = $PSBoundParameters.ContainsKey('SqlServerLicenseType')
+        $HasLinuxLicenseType = $PSBoundParameters.ContainsKey('LinuxLicenseType')
         $HasTargetBDStorage = $PSBoundParameters.ContainsKey('TargetBootDiagnosticsStorageAccount')
         $HasResync = $PSBoundParameters.ContainsKey('PerformAutoResync')
         $HasDiskEncryptionSetID = $PSBoundParameters.ContainsKey('DiskEncryptionSetID')
@@ -320,6 +329,7 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('OSDiskID')
         $null = $PSBoundParameters.Remove('SqlServerLicenseType')
         $null = $PSBoundParameters.Remove('LicenseType')
+        $null = $PSBoundParameters.Remove('LinuxLicenseType')
         $null = $PSBoundParameters.Remove('DiskEncryptionSetID')
         $null = $PSBoundParameters.Remove('TargetSecurityType')
         $null = $PSBoundParameters.Remove('TargetVMConfidentialEncryptionEnabled')
@@ -615,6 +625,16 @@ public static int hashForArtifact(String artifact)
             }
             $SqlServerLicenseType = $validSqlLicenseSpellings[$SqlServerLicenseType]
             $ProviderSpecificDetails.SqlServerLicenseType = $SqlServerLicenseType
+        }
+
+        if ($HasLinuxLicenseType) {
+            $validLinuxLicenseSpellings = @{ 
+                NotSpecified  = "NotSpecified";
+                NoLicenseType = "NoLicenseType";
+                LinuxServer   = "LinuxServer";
+            }
+            $LinuxLicenseType = $validLinuxLicenseSpellings[$LinuxLicenseType]
+            $ProviderSpecificDetails.LinuxLicenseType = $LinuxLicenseType
         }
 
         $UserProvidedTags = $null

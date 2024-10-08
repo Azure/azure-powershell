@@ -106,6 +106,14 @@ function Set-AzMigrateServerReplication {
         ${SqlServerLicenseType},
 
         [Parameter()]
+        [ValidateSet( "NotSpecified", "NoLicenseType", "LinuxServer")]
+        [ArgumentCompleter( { "NotSpecified", "NoLicenseType", "LinuxServer" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies if Azure Hybrid benefit is applicable for the source linux server to be migrated.
+        ${LinuxLicenseType},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.Collections.Hashtable]
         # Specifies the tag to be used for Resource creation.
@@ -235,6 +243,7 @@ function Set-AzMigrateServerReplication {
         $HasTargetAvailabilitySet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
         $HasTargetAvailabilityZone = $PSBoundParameters.ContainsKey('TargetAvailabilityZone')
         $HasSqlServerLicenseType = $PSBoundParameters.ContainsKey('SqlServerLicenseType')
+        $HasLinuxLicenseType = $PSBoundParameters.ContainsKey('LinuxLicenseType')
         $HasUpdateTag = $PSBoundParameters.ContainsKey('UpdateTag')
         $HasUpdateTagOperation = $PSBoundParameters.ContainsKey('UpdateTagOperation')
         $HasUpdateVMTag = $PSBoundParameters.ContainsKey('UpdateVMTag')
@@ -257,6 +266,7 @@ function Set-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('TargetAvailabilitySet')
         $null = $PSBoundParameters.Remove('TargetAvailabilityZone')
         $null = $PSBoundParameters.Remove('SqlServerLicenseType')
+        $null = $PSBoundParameters.Remove('LinuxLicenseType')
         $null = $PSBoundParameters.Remove('UpdateTag')
         $null = $PSBoundParameters.Remove('UpdateTagOperation')
         $null = $PSBoundParameters.Remove('UpdateVMTag')
@@ -320,6 +330,19 @@ function Set-AzMigrateServerReplication {
             }
             else {
                 $ProviderSpecificDetails.SqlServerLicenseType = $ReplicationMigrationItem.ProviderSpecificDetail.SqlServerLicenseType
+            }
+
+            if ($HasLinuxLicenseType) {
+                $validLinuxLicenseSpellings = @{ 
+                    NotSpecified  = "NotSpecified";
+                    NoLicenseType = "NoLicenseType";
+                    LinuxServer   = "LinuxServer";
+                }
+                $LinuxLicenseType = $validLinuxLicenseSpellings[$LinuxLicenseType]
+                $ProviderSpecificDetails.LinuxLicenseType = $LinuxLicenseType
+            }
+            else {
+                $ProviderSpecificDetails.LinuxLicenseType = $ReplicationMigrationItem.ProviderSpecificDetail.LinuxLicenseType
             }
 
             $UserProvidedTag = $null
