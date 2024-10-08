@@ -1845,8 +1845,8 @@ function Test-VirtualNetworkPrivateEndpointVNetPolicies
     #    New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.2.0.0/16 -EnableEncryption true -EncryptionEnforcementPolicy "dropUnencrypted"
     #
     #    # Perform GET operations to retrieve both virtual networks and verify that the encryption property is set to the expected value
-    #    $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
-    #    Assert-AreEqual "Disabled" $vnet1.PrivateEndpointVNetPolicies
+        $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
+        Assert-AreEqual "Disabled" $vnet1.PrivateEndpointVNetPolicies
     }
     finally
     {
