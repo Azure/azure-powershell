@@ -104,6 +104,12 @@ function Update-AzElasticSanVolumeGroup {
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+        [System.Boolean]
+        # A boolean indicating whether or not Data Integrity Check is enabled
+        ${EnforceDataIntegrityCheckForIscsi},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PSArgumentCompleterAttribute("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerManagedKey")]
@@ -246,7 +252,7 @@ function Update-AzElasticSanVolumeGroup {
                     break
                 }
                 Default {
-                    $volumeGroupProperties = AZ.ElasticSan\Get-AzElasticSanVolumeGroup -Nam $Name -ResourceGroupName $ResourceGroupName -ElasticSanName $ElasticSanName
+                    $volumeGroupProperties = AZ.ElasticSan\Get-AzElasticSanVolumeGroup -Name $Name -ResourceGroupName $ResourceGroupName -ElasticSanName $ElasticSanName
                     break 
                 }
             }
@@ -261,6 +267,10 @@ function Update-AzElasticSanVolumeGroup {
             }
             $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentityId')
         }
+
+        if ($PSBoundParameters.ContainsKey("EnforceDataIntegrityCheckForIscsi") -and ($PSBoundParameters.EnforceDataIntegrityCheckForIscsi -eq $true)) {
+            Write-Warning "This needs CRC32C to be set on header and data digests on the client for all the connections from the client to the volumes in this volume group. You can do this by disconnecting the volumes from the client and reconnecting using multi-session scripts generated in portal connect flow or from documentation, which contain steps to set CRC32C on header and data digests. Do not enable CRC protection on the volume group if you are using Fedora or its downstream Linux distributions such as RHEL, CentOS etc. as data digests are not supported on them. If you enable this flag for those distributions, connectivity to the volumes will fail. Refer to https://learn.microsoft.com/en-us/azure/storage/elastic-san/elastic-san-create?tabs=azure-portal for more information."
+          }
         Az.ElasticSan.internal\Update-AzElasticSanVolumeGroup @PSBoundParameters
     }
 }

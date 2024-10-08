@@ -14,19 +14,19 @@ Gets an Azure Firewall Policy Rule Collection Group Draft.
 
 ### GetByNameParameterSet (Default)
 ```
-Get-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String> -ResourceGroupName <String>
+Get-AzFirewallPolicyRuleCollectionGroup -Name <String> -ResourceGroupName <String>
  -AzureFirewallPolicyName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetByParentInputObjectParameterSet
+### GetByInputObjectParameterSet
 ```
-Get-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String> -FirewallPolicyObject <PSAzureFirewallPolicy>
+Get-AzFirewallPolicyRuleCollectionGroup -Name <String> -AzureFirewallPolicy <PSAzureFirewallPolicy>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzFirewallPolicyRuleCollectionGroupDraft -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzFirewallPolicyRuleCollectionGroup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -55,12 +55,12 @@ Get-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyName fpName -Az
 
 ## PARAMETERS
 
-### -FirewallPolicyObject
+### -AzureFirewallPolicy
 Firewall Policy.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
-Parameter Sets: GetByParentInputObjectParameterSet
+Parameter Sets: GetByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -100,8 +100,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AzureFirewallPolicyRuleCollectionGroupName
-The name of the Firewall Policy Rule Collection Group, associated with the draft. For example: "DefaultNetworkRuleCollectionGroup".
+### -Name
+The resource name.
 
 ```yaml
 Type: System.String
@@ -117,7 +117,7 @@ Accept wildcard characters: True
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByParentInputObjectParameterSet
+Parameter Sets: GetByInputObjectParameterSet
 Aliases: ResourceName
 
 Required: True

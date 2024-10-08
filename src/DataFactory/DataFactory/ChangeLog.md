@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.18.8
+* Added support for Iceberg format as a sink.
+* Enabled sslMode and useSystemTrustStore options for MariaDB.
+
 ## Version 1.18.7
 * Supported managed identity for Data Factory Azure File connector.
 * Supported ServicePrincipalCert Auth for Data Factory Rest connector.

@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 7.4.0
+* Added a warning for an upcoming breaking change for removing references to "Microsoft.Azure.Storage.File"
+    - `Start-AzStorageFileCopy`
+
 ## Version 7.3.2
 * Migrated following Azure Storage File dataplane cmdlets from 'Microsoft.Azure.Storage.File 11.2.3' to 'Azure.Storage.Files.Shares 12.16.0'
    - `Close-AzStorageFileHandle`
@@ -51,7 +55,7 @@
 * Supported EnableExtendedGroup when creating and updating a storage account 
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
-    
+
 ## Version 7.3.1
 * Fixed issue that table cmdlet fail when execute with Storage context get from StorageAccount object and based on sharedkey authentication.
 * Refined Storage account cmdlet output context generation function based on OAuth token 
