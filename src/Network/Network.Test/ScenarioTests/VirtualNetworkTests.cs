@@ -212,7 +212,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.wanrpdev_subset1)]
+        [Trait(Category.Owner, NrpTeamAlias.plcpdev)]
         public void TestVirtualNetworkPrivateEndpointVNetPolicies()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkPrivateEndpointVNetPolicies");
