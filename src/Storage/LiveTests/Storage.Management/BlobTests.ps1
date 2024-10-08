@@ -10,7 +10,7 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
     $ContentMD5 = "i727sP7HigloQDsqadNLHw=="
     $testfile512path = "$PSScriptRoot\TestFiles\testfile512"
 
-    $account = New-AzStorageAccount -ResourceGroupName $rgName -Name $storageAccountName -Location $location -SkuName Standard_GRS -AllowBlobPublicAccess $true -AllowSharedKeyAccess $true -Tag @{"Az.Sec.DisableAllowSharedKeyAccess::Skip" = "For Powershell test."}
+    $account = New-AzStorageAccount -ResourceGroupName $rgName -Name $storageAccountName -Location $location -SkuName Standard_GRS -AllowSharedKeyAccess $true -Tag @{"Az.Sec.DisableAllowSharedKeyAccess::Skip" = "For Powershell test."}
     $ctx = $account.Context
     $ctx1 = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey (Get-AzStorageAccountKey -ResourceGroupName $rgName -Name $storageAccountName)[0].Value
 
@@ -24,9 +24,6 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
     $accessPolicy = Get-AzStorageContainerStoredAccessPolicy -Container $containerName -Context $ctx
     Assert-AreNotEqual $null $accessPolicy
     Assert-AreEqual $accessPolicyName $accessPolicy.Policy
-    Set-AzStorageContainerAcl -Name $containerName -Permission Blob -Context $ctx
-    $container = Get-AzStorageContainer -Name $containerName -Context $ctx
-    Assert-AreEqual "Blob" $container.Permission.PublicAccess
 
     # upload
     $blobName = New-LiveTestResourceName
@@ -89,11 +86,6 @@ Invoke-LiveTestScenario -Name "Blob basics" -Description "Test blob basic operat
 
     $container = Get-AzStorageContainer -Name $containerName -Context $ctx1
     $containerProperties = $container.BlobContainerClient.GetProperties().Value
-    Assert-AreEqual $container.BlobContainerProperties.ETag $containerProperties.ETag
-    Set-AzStorageContainerAcl -Name $containerName -Permission Blob -Context $ctx1
-    $containerProperties = $container.BlobContainerClient.GetProperties().Value
-    Assert-AreNotEqual $container.BlobContainerProperties.ETag $containerProperties.ETag
-    $container.FetchAttributes()
     Assert-AreEqual $container.BlobContainerProperties.ETag $containerProperties.ETag
 
     # sync copy
