@@ -53,7 +53,7 @@ Rename-AzStorageFile -SourcePath testfile1 -DestinationPath testfile2 -ShareName
 ```
 
 ```output
-Directory: https://myaccount.file.core.windows.net/myshare
+AccountName: myaccount, ShareName: myshare
 
 Type                Length Name
 ----                ------ ----
@@ -68,7 +68,7 @@ Get-AzStorageFile -ShareName myshare -Path testfile1 | Rename-AzStorageFile -Des
 ```
 
 ```output
-Directory: https://myaccount.file.core.windows.net/myshare
+AccountName: myaccount, ShareName: myshare
 
 Type                Length Name
 ----                ------ ----

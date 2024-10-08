@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShareFileClient
-CloudFile instance to represent the file to get SAS token against.
+ShareFileClient instance to represent the file to get SAS token against.
 
 ```yaml
 Type: Azure.Storage.Files.Shares.ShareFileClient
