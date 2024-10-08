@@ -1827,21 +1827,21 @@ function Test-VirtualNetworkPrivateEndpointVNetPolicies
 {
     # Setup
     $rgname = Get-ResourceGroupName
-    #$vnet1Name = Get-ResourceName
+    $vnet1Name = Get-ResourceName
     #$vnet2Name = Get-ResourceName
     #$peering1Name = Get-ResourceName
     #$peering2Name = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
-    #$resourceTypeParent = "Microsoft.Network/virtualNetworks"
-    #$location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
     #
     try
     {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
     
-        # Create two virtual networks with encryption property
-    #    New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16 -EnableEncryption true -EncryptionEnforcementPolicy "dropUnencrypted" -PrivateEndpointVNetPoliciesValue "Disabled"
+        # Create virtual network
+        New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16
     #    New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.2.0.0/16 -EnableEncryption true -EncryptionEnforcementPolicy "dropUnencrypted"
     #
     #    # Perform GET operations to retrieve both virtual networks and verify that the encryption property is set to the expected value
