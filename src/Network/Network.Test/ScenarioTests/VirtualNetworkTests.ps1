@@ -1829,6 +1829,7 @@ function Test-VirtualNetworkPrivateEndpointVNetPolicies
     $rgname = Get-ResourceGroupName
     $vnet1Name = Get-ResourceName
     $vnet2Name = Get-ResourceName
+    $vnet3Name = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
     $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
@@ -1838,26 +1839,34 @@ function Test-VirtualNetworkPrivateEndpointVNetPolicies
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
     
-        # Create virtual network
+        # Create virtual network without specifying PrivateEndpointVNetPolicies
         New-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.1.0.0/16
         
-        # Perform GET operations to retrieve virtual network and verify that PrivateEndpointVNetPolicies is "Disabled" by default
+        # Verify that PrivateEndpointVNetPolicies is "Disabled" by default
         $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
         Assert-AreEqual "Disabled" $vnet1.PrivateEndpointVNetPolicies
 
-        $vnet1.PrivateEndpointVNetPolicies = "Basic"
-        $vnet1 | Set-AzVirtualNetwork
-        $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
-        Assert-AreEqual "Basic" $vnet1.PrivateEndpointVNetPolicies
+        # Create virtual network with PrivateEndpointVNetPolicies specified as "Disabled"
+        New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.2.0.0/16 -PrivateEndpointVNetPoliciesValue "Disabled"
+        $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname
+        Assert-AreEqual "Disabled" $vnet2.PrivateEndpointVNetPolicies
 
-        New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.2.0.0/16 -PrivateEndpointVNetPoliciesValue "Basic"
+        # Validate that the virtual network can be updated to set PrivateEndpointVNetPolicies to "Basic"
+        $vnet2.PrivateEndpointVNetPolicies = "Basic"
+        $vnet2 | Set-AzVirtualNetwork
         $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname
         Assert-AreEqual "Basic" $vnet2.PrivateEndpointVNetPolicies
 
-        $vnet2.PrivateEndpointVNetPolicies = "Disabled"
-        $vnet2 | Set-AzVirtualNetwork
-        $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname
-        Assert-AreEqual "Disabled" $vnet2.PrivateEndpointVNetPolicies
+        # Create virtual network with PrivateEndpointVNetPolicies specified as "Basic"
+        New-AzVirtualNetwork -Name $vnet3Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.3.0.0/16 -PrivateEndpointVNetPoliciesValue "Basic"
+        $vnet3 = Get-AzVirtualNetwork -Name $vnet3Name -ResourceGroupName $rgname
+        Assert-AreEqual "Basic" $vnet3.PrivateEndpointVNetPolicies
+
+        # Validate that the virtual network can be updated to set PrivateEndpointVNetPolicies to "Disabled"
+        $vnet3.PrivateEndpointVNetPolicies = "Disabled"
+        $vnet3 | Set-AzVirtualNetwork
+        $vnet3 = Get-AzVirtualNetwork -Name $vnet3Name -ResourceGroupName $rgname
+        Assert-AreEqual "Disabled" $vnet3.PrivateEndpointVNetPolicies
     }
     finally
     {
