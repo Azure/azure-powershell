@@ -1853,6 +1853,11 @@ function Test-VirtualNetworkPrivateEndpointVNetPolicies
         New-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.2.0.0/16 -PrivateEndpointVNetPoliciesValue "Basic"
         $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname
         Assert-AreEqual "Basic" $vnet2.PrivateEndpointVNetPolicies
+
+        $vnet2.PrivateEndpointVNetPolicies = "Disabled"
+        $vnet2 | Set-AzVirtualNetwork
+        $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname
+        Assert-AreEqual "Disabled" $vnet2.PrivateEndpointVNetPolicies
     }
     finally
     {
