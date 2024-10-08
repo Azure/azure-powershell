@@ -43,7 +43,7 @@ Get-AzDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "Wiki
 ```
 
 ```output
-    LinkedServiceName : LinkedServiceCuratedWikiData
+LinkedServiceName : LinkedServiceCuratedWikiData
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
@@ -70,7 +70,7 @@ Get-AzDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFactoryName "Wiki
 ```
 
 ```output
-    LinkedServiceName : LinkedServiceCuratedWikiData
+LinkedServiceName : LinkedServiceCuratedWikiData
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
@@ -85,7 +85,7 @@ Get-AzDataFactoryV2LinkedService -DataFactory $DataFactory | Format-Table -Prope
 ```
 
 ```output
-     Name                          DataFactoryName ResourceGroupName
+Name                          DataFactoryName ResourceGroupName
      ----                          --------------- -----------------
      LinkedServiceCuratedWikiData  ContosoFactory  ADF
 ```
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

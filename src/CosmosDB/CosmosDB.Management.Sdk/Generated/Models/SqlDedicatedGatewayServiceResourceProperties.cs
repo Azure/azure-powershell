@@ -44,13 +44,17 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="sqlDedicatedGatewayEndpoint">SqlDedicatedGateway endpoint for the service.
         /// </param>
 
+        /// <param name="dedicatedGatewayType">DedicatedGatewayType for the service.
+        /// Possible values include: &#39;IntegratedCache&#39;, &#39;DistributedQuery&#39;</param>
+
         /// <param name="locations">An array that contains all of the locations for the service.
         /// </param>
-        public SqlDedicatedGatewayServiceResourceProperties(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), System.DateTime? creationTime = default(System.DateTime?), string instanceSize = default(string), int? instanceCount = default(int?), string status = default(string), string sqlDedicatedGatewayEndpoint = default(string), System.Collections.Generic.IList<SqlDedicatedGatewayRegionalServiceResource> locations = default(System.Collections.Generic.IList<SqlDedicatedGatewayRegionalServiceResource>))
+        public SqlDedicatedGatewayServiceResourceProperties(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), System.DateTime? creationTime = default(System.DateTime?), string instanceSize = default(string), int? instanceCount = default(int?), string status = default(string), string sqlDedicatedGatewayEndpoint = default(string), string dedicatedGatewayType = default(string), System.Collections.Generic.IList<SqlDedicatedGatewayRegionalServiceResource> locations = default(System.Collections.Generic.IList<SqlDedicatedGatewayRegionalServiceResource>))
 
         : base(additionalProperties, creationTime, instanceSize, instanceCount, status)
         {
             this.SqlDedicatedGatewayEndpoint = sqlDedicatedGatewayEndpoint;
+            this.DedicatedGatewayType = dedicatedGatewayType;
             this.Locations = locations;
             CustomInit();
         }
@@ -68,6 +72,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string SqlDedicatedGatewayEndpoint {get; set; }
 
         /// <summary>
+        /// Gets or sets dedicatedGatewayType for the service. Possible values include: &#39;IntegratedCache&#39;, &#39;DistributedQuery&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "dedicatedGatewayType")]
+        public string DedicatedGatewayType {get; set; }
+
+        /// <summary>
         /// Gets an array that contains all of the locations for the service.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "locations")]
@@ -81,6 +91,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public override void Validate()
         {
             base.Validate();
+
 
 
         }

@@ -15,7 +15,7 @@ Create an in-memory object for MsSqlServerProviderInstanceProperties.
 ```
 New-AzWorkloadsProviderSqlServerInstanceObject [-Password <String>] [-PasswordUri <String>] [-Port <String>]
  [-Username <String>] [-Hostname <String>] [-SapSid <String>] [-SslCertificateUri <String>]
- [-SslPreference <SslPreference>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-SslPreference <SslPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,21 +98,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SapSid
 Gets or sets the SAP System Identifier.
 
@@ -147,7 +132,7 @@ Accept wildcard characters: False
 Gets or sets certificate preference if secure communication is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SslPreference
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference
 Parameter Sets: (All)
 Aliases:
 

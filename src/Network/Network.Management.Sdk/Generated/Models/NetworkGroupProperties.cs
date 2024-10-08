@@ -27,15 +27,19 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="description">A description of the network group.
         /// </param>
 
+        /// <param name="memberType">The type of the group member.
+        /// Possible values include: &#39;VirtualNetwork&#39;, &#39;Subnet&#39;</param>
+
         /// <param name="provisioningState">The provisioning state of the scope assignment resource.
         /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
 
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public NetworkGroupProperties(string description = default(string), string provisioningState = default(string), string resourceGuid = default(string))
+        public NetworkGroupProperties(string description = default(string), string memberType = default(string), string provisioningState = default(string), string resourceGuid = default(string))
 
         {
             this.Description = description;
+            this.MemberType = memberType;
             this.ProvisioningState = provisioningState;
             this.ResourceGuid = resourceGuid;
             CustomInit();
@@ -52,6 +56,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "description")]
         public string Description {get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the group member. Possible values include: &#39;VirtualNetwork&#39;, &#39;Subnet&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "memberType")]
+        public string MemberType {get; set; }
 
         /// <summary>
         /// Gets the provisioning state of the scope assignment resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;

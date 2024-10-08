@@ -32,7 +32,7 @@ namespace VersionController
         private static SyntaxChangelogGenerator _syntaxChangelogGenerator = new SyntaxChangelogGenerator();
         private static Dictionary<string, AzurePSVersion> _minimalVersion = new Dictionary<string, AzurePSVersion>();
         private static List<string> _projectDirectories, _outputDirectories;
-        private static string _rootDirectory, _moduleNameFilter, _exceptionsDirectory;
+        private static string _rootDirectory, _moduleNameFilter, _exceptionsDirectory, _assignedVersion;
         private static ReleaseType _releaseType = ReleaseType.STS;
         private static bool _generateSyntaxChangelog = true;
 
@@ -99,6 +99,10 @@ namespace VersionController
                         if(args.Length > 2  && !string.IsNullOrEmpty(args[2]))
                         {
                             Enum.TryParse(args[2], out _releaseType);
+                        }
+                        if (args.Length > 3  && !string.IsNullOrEmpty(args[3]))
+                        {
+                            _assignedVersion = args[3];
                         }
                         break;
                 }
@@ -208,15 +212,15 @@ namespace VersionController
             var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
             var versionControllerDirectory = Directory.GetParent(executingAssemblyPath).FullName;
             var miniVersionFile = Path.Combine(versionControllerDirectory, "MinimalVersion.csv");
+            var changedModuleNames = changedModules.Select(c => Path.GetFileName(c).Replace(".psd1", ""));
             if (File.Exists(miniVersionFile))
             {
                 var file = File.ReadAllLines(miniVersionFile);
                 var header = file.First();
-                var lines = file.Skip(1).Where(c => !string.IsNullOrEmpty(c));
+                var lines = file.Skip(1).Where(c => !string.IsNullOrWhiteSpace(c));
 
                 var bumpingModule = _moduleNameFilter.Replace(Psd1NameExtension, "");
                 List<string> _minimalVersionContent = new List<string>() { header };
-
                 foreach (var line in lines)
                 {
                     var cols = line.Split(",").Select(c => c.StartsWith("\"") ? c.Substring(1) : c)
@@ -227,7 +231,8 @@ namespace VersionController
                         _minimalVersion.Add(cols[0], new AzurePSVersion(cols[1]));
 
                         // Bump one module, only remove its minimal version from MinimalVersion.csv content
-                        if (!string.IsNullOrEmpty(bumpingModule) && !cols[0].Equals(bumpingModule))
+                        if (!string.IsNullOrEmpty(bumpingModule) && !cols[0].Equals(bumpingModule) ||
+                            !changedModuleNames.Contains(cols[0]))
                         {
                             _minimalVersionContent.Add(line);
                         }
@@ -259,8 +264,11 @@ namespace VersionController
                 }
 
                 var outputModuleManifestFile = outputModuleManifest.FirstOrDefault();
-
-                _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules, _releaseType);
+                if (!string.IsNullOrEmpty(_moduleNameFilter)) {
+                    _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules,new AzurePSVersion(_assignedVersion), _releaseType);
+                } else {
+                    _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules, _releaseType);
+                }
                 _versionBumper.PSRepositories = targetRepositories;
                 if (_minimalVersion.ContainsKey(moduleName))
                 {

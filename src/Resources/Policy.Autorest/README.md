@@ -282,12 +282,10 @@ directive:
           - DisplayName
 
 # Hide parameters that aren't supported.
-# For some reason these can't be hidden by hiding them in
-# the custom folder so we have to do it here.
   - where:
       verb: New|Update
       subject: PolicyAssignment|PolicyExemption
-      parameter-name: PolicyDefinitionId|ResourceSelector|Override
+      parameter-name: PolicyDefinitionId
     hide: true
   - where:
       verb: New
