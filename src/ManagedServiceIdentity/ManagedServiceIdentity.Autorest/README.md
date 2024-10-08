@@ -30,12 +30,13 @@ For information on how to develop for `Az.ManagedServiceIdentity`, see [how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 78eac0bd58633028293cb1ec1709baa200bed9e2
+commit: da815d92779165652fdb1daa0bd3fa6416d0291a
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/msi/resource-manager/Microsoft.ManagedIdentity/stable/2023-01-31/ManagedIdentity.json
   - $(repo)/specification/msi/resource-manager/Microsoft.ManagedIdentity/preview/2022-01-31-preview/ManagedIdentity.json
+  - $(repo)/specification/msi/resource-manager/Microsoft.ManagedIdentity/preview/2023-07-31-preview/ManagedIdentity.json
 
 subject-prefix: ""
 resourcegroup-append: true
