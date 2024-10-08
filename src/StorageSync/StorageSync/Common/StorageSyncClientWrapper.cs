@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <param name="roleDefinitionId">Role definition id</param>
         /// <param name="scope">Scope</param>
         /// <returns>Role Assignment</returns>
-        public RoleAssignment EnsureRoleAssignmentWithIdentity(string storageAccountSubscriptionId, Guid principalId, string roleDefinitionId, string scope)
+        public (RoleAssignment,bool) EnsureRoleAssignmentWithIdentity(string storageAccountSubscriptionId, Guid principalId, string roleDefinitionId, string scope)
         {
             if(principalId == Guid.Empty)
             { 
@@ -413,13 +413,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 var resourceIdentifier = new ResourceIdentifier(scope);
                 string roleDefinitionScope = $"/subscriptions/{storageAccountSubscriptionId}";
                 RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleDefinitionScope, roleDefinitionId);
-                VerboseLogger.Invoke($"Creating role assignment for Identity {principalId} RoleDef:{roleDefinition.Name} ({roleDefinition.RoleName}) and Scope: {scope}"); 
+                VerboseLogger.Invoke($"Creating role assignment for Identity {principalId} RoleDef:{roleDefinition.Name} ({roleDefinition.RoleName}) and Scope: {scope}");
 
                 var serverPrincipalId = principalId.ToString();
-                
+
 
                 var resourceType = string.Empty;
-                if(!string.IsNullOrEmpty(resourceIdentifier.ParentResource))
+                if (!string.IsNullOrEmpty(resourceIdentifier.ParentResource))
                 {
                     resourceType = $"{resourceIdentifier.ParentResource}/";
                 }
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 Guid roleAssignmentId = StorageSyncResourceManager.GetGuid();
                 RoleAssignment roleAssignment = roleAssignments.FirstOrDefault(r => r.PrincipalId == serverPrincipalId &&
                     string.Equals(r.RoleDefinitionId, roleDefinition.Id, StringComparison.OrdinalIgnoreCase));
-
+                bool alreadyExists;
                 if (roleAssignment == null)
                 {
                     VerboseLogger.Invoke(StorageSyncResources.CreateRoleAssignmentMessage);
@@ -450,15 +450,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId.ToString(), createParameters);
                     StorageSyncResourceManager.Wait();
                     VerboseLogger.Invoke($"Successfully created role assignment {roleAssignment.Id}");
+                    alreadyExists = false;
                 }
                 else
                 {
                     VerboseLogger.Invoke($"Role assignment already exists {roleAssignment.Id}");
+                    alreadyExists = true;
                 }
 
-                return roleAssignment;
+                return (roleAssignment, alreadyExists);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 VerboseLogger.Invoke($"Failed to create role assignment with exception {ex.Message}. Please create role assignment using troubleshooting documents.");
                 throw;
