@@ -373,10 +373,10 @@ function Set-AzConnectedKubernetes {
         if ($PSBoundParameters.ContainsKey("KubeConfig")) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         }
-        elseif (Test-Path Env:KUBECONFIG) {
+        elseif ($Env:KUBECONFIG -and (Test-Path $Env:KUBECONFIG)) {
             $KubeConfig = Get-ChildItem -Path $Env:KUBECONFIG
         }
-        elseif (Test-Path Env:Home) {
+        elseif ($Env:Home -and (Test-Path $Env:Home)) {
             $KubeConfig = Join-Path -Path $Env:Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
         }
         else {
@@ -542,12 +542,12 @@ function Set-AzConnectedKubernetes {
         # If the user does not provide proxy settings, or configuration settings, we shall use arc config of existing object
         $userProvidedArcConfiguration = (
             ($null -ne $InputObject) -and ($InputObject.ArcAgentryConfiguration.Length > 0) `
-            -and (-not ([string]::IsNullOrEmpty($HttpProxy))) `
-            -and (-not ([string]::IsNullOrEmpty($HttpsProxy))) `
-            -and (-not ([string]::IsNullOrEmpty($NoProxy))) `
-            -and ((-not ([string]::IsNullOrEmpty($ProxyCert)))) `
-            -and ($PSBoundParameters.ContainsKey('ConfigurationSetting')) `
-            -and ($PSBoundParameters.ContainsKey('ConfigurationProtectedSetting')))
+                -and (-not ([string]::IsNullOrEmpty($HttpProxy))) `
+                -and (-not ([string]::IsNullOrEmpty($HttpsProxy))) `
+                -and (-not ([string]::IsNullOrEmpty($NoProxy))) `
+                -and ((-not ([string]::IsNullOrEmpty($ProxyCert)))) `
+                -and ($PSBoundParameters.ContainsKey('ConfigurationSetting')) `
+                -and ($PSBoundParameters.ContainsKey('ConfigurationProtectedSetting')))
         
         if ($null -eq $ConfigurationSetting) {
             $ConfigurationSetting = @{}
@@ -656,7 +656,8 @@ function Set-AzConnectedKubernetes {
 
         if ($userProvidedArcConfiguration) {
             $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
-        } else {
+        }
+        else {
             $PSBoundParameters.Add('ArcAgentryConfiguration', $ExistConnectedKubernetes.ArcAgentryConfiguration)        
         }
 
@@ -682,7 +683,8 @@ function Set-AzConnectedKubernetes {
 
         if ($userProvidedArcConfiguration) {
             $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
-        } else {
+        }
+        else {
             $Response['properties']['arcAgentryConfigurations'] = $ExistConnectedKubernetes.ArcAgentryConfiguration
         }
         
@@ -713,7 +715,7 @@ function Set-AzConnectedKubernetes {
 
             $optionsFromDp = ""
             foreach ($field in $helmValuesContent.PSObject.Properties) {
-                if ($field.Value.StartsWith($ProtectedSettingsPlaceholderValue)){
+                if ($field.Value.StartsWith($ProtectedSettingsPlaceholderValue)) {
                     $parsedValue = $field.Value.Split(":")
                     # "${ProtectedSettingsPlaceholderValue}:${feature}:${setting}"
                     $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
@@ -735,7 +737,7 @@ function Set-AzConnectedKubernetes {
         if ($PSCmdlet.ShouldProcess('configDP', 'get helm chart path')) {
             # Get helm chart path (within the OCI registry).
             $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
-            if (Test-Path Env:HELMCHART) {
+            if ($Env:HELMCHART -and (Test-Path $Env:HELMCHART)) {
                 $ChartPath = Get-ChildItem -Path $Env:HELMCHART
             }
         }
@@ -792,9 +794,11 @@ function Set-AzConnectedKubernetes {
     
                 if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
                     Write-Output "Cluster configuration succeeded."
-                } elseif ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Failed") {
+                }
+                elseif ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Failed") {
                     Write-Error "Cluster configuration failed."
-                } else {
+                }
+                else {
                     Write-Error "Cluster configuration timed out after 60 minutes."
                 }      
             }
