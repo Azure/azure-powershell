@@ -318,10 +318,10 @@ function New-AzConnectedKubernetes {
         if ($PSBoundParameters.ContainsKey("KubeConfig")) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         }
-        elseif ($Env:KUBECONFIG -and (Test-Path $Env:KUBECONFIG)) {
+        elseif (Test-Path Env:KUBECONFIG) {
             $KubeConfig = Get-ChildItem -Path $Env:KUBECONFIG
         }
-        elseif ($Env:Home -and (Test-Path $Env:Home)) {
+        elseif (Test-Path Env:Home) {
             $KubeConfig = Join-Path -Path $Env:Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
         }
         else {
@@ -574,11 +574,13 @@ function New-AzConnectedKubernetes {
         Write-Debug "Writing Connected Kubernetes ARM objects."
 
         # We sometimes see the AgentPublicKeyCertificate present with value $null.
-        # If this is the case, remove then add again.
+        # If this is the case, update rather than adding.
         if ($PSBoundParameters.ContainsKey('AgentPublicKeyCertificate')) {
-            $Null = $PSBoundParameters.Remove('AgentPublicKeyCertificate')
+            $PSBoundParameters['AgentPublicKeyCertificate'] = $AgentPublicKey
         }
-        $PSBoundParameters.Add('AgentPublicKeyCertificate', $AgentPublicKey)
+        else {
+            $PSBoundParameters.Add('AgentPublicKeyCertificate', $AgentPublicKey)
+        }
 
         # Process the Arc agentry settings and protected settings
         # Create any empty array of IArcAgentryConfigurations.
@@ -619,11 +621,11 @@ function New-AzConnectedKubernetes {
         if ($PSBoundParameters.ContainsKey('ConfigurationProtectedSetting')) {
             $PSBoundParameters.Remove('ConfigurationProtectedSetting')
         }
-        if ($arcAgentryConfigs.Count -ne 0) {
-            $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
-        }
+
+        $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
 
         Write-Output "Creating 'Kubernetes - Azure Arc' object in Azure"
+        Write-Debug "PSBoundParameters: $PSBoundParameters"
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
         if ((-not $WhatIfPreference) -and (-not $Response)) {
@@ -705,7 +707,7 @@ function New-AzConnectedKubernetes {
                 -helmClientLocation $HelmClientLocation `
                 -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
                 -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
-            if ($Env:HELMCHART -and (Test-Path $Env:HELMCHART)) {
+            if (Test-Path Env:HELMCHART) {
                 $ChartPath = Get-ChildItem -Path $Env:HELMCHART
             }
         }

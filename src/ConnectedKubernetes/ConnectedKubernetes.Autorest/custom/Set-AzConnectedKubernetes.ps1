@@ -373,10 +373,10 @@ function Set-AzConnectedKubernetes {
         if ($PSBoundParameters.ContainsKey("KubeConfig")) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         }
-        elseif ($Env:KUBECONFIG -and (Test-Path $Env:KUBECONFIG)) {
+        elseif (Test-Path Env:KUBECONFIG) {
             $KubeConfig = Get-ChildItem -Path $Env:KUBECONFIG
         }
-        elseif ($Env:Home -and (Test-Path $Env:Home)) {
+        elseif (Test-Path Env:Home) {
             $KubeConfig = Join-Path -Path $Env:Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
         }
         else {
@@ -767,7 +767,7 @@ function Set-AzConnectedKubernetes {
                 -helmClientLocation $HelmClientLocation `
                 -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
                 -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
-            if ($Env:HELMCHART -and (Test-Path $Env:HELMCHART)) {
+            if (Test-Path Env:HELMCHART) {
                 $ChartPath = Get-ChildItem -Path $Env:HELMCHART
             }
         }

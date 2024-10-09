@@ -31,7 +31,7 @@ function Get-HelmClientLocation {
         Write-Debug "Getting Helm client location."
         if (IsWindows -and IsAmd64) {
             Write-Debug "Detected Windows AMD64 architecture."
-            if ($Env:HELM_CLIENT_PATH -and (Test-Path $Env:HELM_CLIENT_PATH)) {
+            if (Test-Path Env:HELM_CLIENT_PATH) {
                 $CustomPath = (Get-Item Env:HELM_CLIENT_PATH).Value
                 Write-Debug "Custom Helm path detected: $CustomPath"
                 if ($CustomPath.EndsWith("helm.exe") -and (!((Get-Item $CustomPath) -is [System.IO.DirectoryInfo]))) {
@@ -39,7 +39,7 @@ function Get-HelmClientLocation {
                 }
                 return $CustomPath
             }
-            if ($Env:Home -and (Test-Path $Env:Home)) {
+            if (Test-Path Env:Home) {
                 $HomePath = (Get-Item Env:HOME).Value
             }
             else {
@@ -264,13 +264,13 @@ function Set-HelmRepositoryAndModules {
         return
     }
 
-    if ($Env:HELMREGISTRY -and (Test-Path $Env:HELMREGISTRY)) {
+    if (Test-Path Env:HELMREGISTRY) {
         $RegistryPath = (Get-Item Env:HELMREGISTRY).Value
     }
     else {
         $ReleaseTrain = ''
-        if (($Env:RELEASETRAIN) -and (Test-Path Env:RELEASETRAIN)) {
-            $ReleaseTrain = (Get-Item $Env:RELEASETRAIN).Value
+        if ((Test-Path Env:RELEASETRAIN) -and (Test-Path Env:RELEASETRAIN)) {
+            $ReleaseTrain = (Get-Item Env:RELEASETRAIN).Value
         }
         else {
             $ReleaseTrain = 'stable'
