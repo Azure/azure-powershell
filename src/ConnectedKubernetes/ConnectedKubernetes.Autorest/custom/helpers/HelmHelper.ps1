@@ -7,7 +7,10 @@ function Set-HelmClientLocation {
     )
     process {
         Write-Debug "Setting Helm client location."
-        $HelmLocation = Get-HelmClientLocation
+        $HelmLocation = Get-HelmClientLocation `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
         if ($null -eq $HelmLocation) {
             Write-Debug "Helm location not found."
             return
@@ -314,7 +317,10 @@ function Get-HelmReleaseNamespaces {
         [string]$KubeContext
     )
     Write-Debug "Getting release namespace."
-    $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
+    $ReleaseInstallNamespace = Get-ReleaseInstallNamespace `
+        -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+        -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
     $ReleaseNamespace = $null
     try {
         $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace 2> $null | ConvertFrom-Json).namespace
@@ -332,7 +338,10 @@ function Confirm-HelmVersion {
     )
     Write-Debug "Setting up Helm client location and validating Helm version."
     try {
-        Set-HelmClientLocation
+        Set-HelmClientLocation `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
         $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
         if ($HelmVersion.Contains("v2")) {
             Write-Error "Helm version 3+ is required (not ${HelmVersion}). Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"

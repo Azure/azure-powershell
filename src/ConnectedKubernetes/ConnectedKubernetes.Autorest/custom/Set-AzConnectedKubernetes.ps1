@@ -452,7 +452,10 @@ function Set-AzConnectedKubernetes {
         $PSBoundParameters.Add('IdentityType', $IdentityType)
 
         #Region check helm install
-        Confirm-HelmVersion -KubeConfig $KubeConfig
+        Confirm-HelmVersion `
+            -KubeConfig $KubeConfig `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         #EndRegion
         $helmClientLocation = 'helm'
@@ -613,15 +616,25 @@ function Set-AzConnectedKubernetes {
 
         # A lot of what follows relies on knowing the cloud we are using and the
         # various endpoints so get that information now.
-        $cloudMetadata = Get-AzCloudMetadata
+        $cloudMetadata = Get-AzCloudMetadata `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # Perform DP health check
-        $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
+        $configDpinfo = Get-ConfigDPEndpoint `
+            -location $Location `
+            -Cloud $cloudMetadata `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
         $configDPEndpoint = $configDpInfo.configDPEndpoint
 
         # If the health check fails (not 200 response), an exception is thrown
         # so we can ignore the output.
-        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint
+        $null = Invoke-ConfigDPHealthCheck `
+            -configDPEndpoint $configDPEndpoint `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # This call does the "pure ARM" update of the ARM objects.
         Write-Debug "Updating Connected Kubernetes ARM objects."
@@ -642,7 +655,12 @@ function Set-AzConnectedKubernetes {
         #          Config DP annd this Powershell script if a new Kubernetes
         #          feature is added.
         # Do not send protected settings to CCRP
-        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration @{} -CCRP $true
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration `
+            -ConfigurationSetting $ConfigurationSetting `
+            -RedactedProtectedConfiguration @{} `
+            -CCRP $true `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # It is possible to set an empty value for these parameters and then
         # the code above gets skipped but we still need to remove the empty
@@ -667,7 +685,13 @@ function Set-AzConnectedKubernetes {
             Write-Error "Failed to update the 'Kubernetes - Azure Arc' resource"
             return
         }
-        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration `
+            -ConfigurationSetting $ConfigurationSetting `
+            -RedactedProtectedConfiguration $RedactedProtectedConfiguration `
+            -CCRP $false `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
 
         # Convert the $Response object into a nested hashtable.
         Write-Debug "PUT response: $Response"
@@ -736,7 +760,13 @@ function Set-AzConnectedKubernetes {
 
         if ($PSCmdlet.ShouldProcess('configDP', 'get helm chart path')) {
             # Get helm chart path (within the OCI registry).
-            $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
+            $chartPath = Get-HelmChartPath `
+                -registryPath $registryPath `
+                -kubeConfig $KubeConfig `
+                -kubeContext $KubeContext `
+                -helmClientLocation $HelmClientLocation `
+                -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+                -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
             if ($Env:HELMCHART -and (Test-Path $Env:HELMCHART)) {
                 $ChartPath = Get-ChildItem -Path $Env:HELMCHART
             }

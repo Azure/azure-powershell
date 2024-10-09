@@ -318,10 +318,10 @@ function New-AzConnectedKubernetes {
         if ($PSBoundParameters.ContainsKey("KubeConfig")) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         }
-        elseif (Test-Path $Env:KUBECONFIG) {
+        elseif ($Env:KUBECONFIG -and (Test-Path $Env:KUBECONFIG)) {
             $KubeConfig = Get-ChildItem -Path $Env:KUBECONFIG
         }
-        elseif (Test-Path $Env:Home) {
+        elseif ($Env:Home -and (Test-Path $Env:Home)) {
             $KubeConfig = Join-Path -Path $Env:Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
         }
         else {
@@ -364,7 +364,11 @@ function New-AzConnectedKubernetes {
         $PSBoundParameters.Add('IdentityType', $IdentityType)
 
         #Region check helm install
-        Confirm-HelmVersion -KubeConfig $KubeConfig
+        Confirm-HelmVersion `
+            -KubeConfig $KubeConfig `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
 
         #EndRegion
         $helmClientLocation = 'helm'
@@ -421,8 +425,13 @@ function New-AzConnectedKubernetes {
         if ($PSVersionTable.PSVersion.Major -eq 5) {
             try {
                 . "$PSScriptRoot/helpers/RSAHelper.ps1"
-                $AgentPublicKey = ExportRSAPublicKeyBase64($RSA)
-                $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA)
+                $AgentPublicKey = ExportRSAPublicKeyBase64($RSA) `
+                    -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+                    -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+                $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA) `
+                    -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+                    -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
                 $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + $AgentPrivateKey + "`n-----END RSA PRIVATE KEY-----"
             }
             catch {
@@ -541,15 +550,25 @@ function New-AzConnectedKubernetes {
 
         # A lot of what follows relies on knowing the cloud we are using and the
         # various endpoints so get that information now.
-        $cloudMetadata = Get-AzCloudMetadata
+        $cloudMetadata = Get-AzCloudMetadata `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # Perform DP health check
-        $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
+        $configDpinfo = Get-ConfigDPEndpoint `
+            -location $Location `
+            -Cloud $cloudMetadata `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
         $configDPEndpoint = $configDpInfo.configDPEndpoint
 
         # If the health check fails (not 200 response), an exception is thrown
         # so we can ignore the output.
-        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint
+        $null = Invoke-ConfigDPHealthCheck `
+            -configDPEndpoint $configDPEndpoint `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # This call does the "pure ARM" update of the ARM objects.
         Write-Debug "Writing Connected Kubernetes ARM objects."
@@ -584,7 +603,12 @@ function New-AzConnectedKubernetes {
         # needs to change and not the Powershell script (or az CLI).
         #
         # Do not send protected settings to CCRP
-        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration @{} -CCRP $true
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration `
+            -ConfigurationSetting $ConfigurationSetting `
+            -RedactedProtectedConfiguration @{} `
+            -CCRP $true `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # It is possible to set an empty value for these parameters and then
         # the code above gets skipped but we still need to remove the empty
@@ -607,7 +631,12 @@ function New-AzConnectedKubernetes {
             return
         }
 
-        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration `
+            -ConfigurationSetting $ConfigurationSetting `
+            -RedactedProtectedConfiguration $RedactedProtectedConfiguration `
+            -CCRP $false `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # Convert the $Response object into a nested hashtable.
 
@@ -669,8 +698,14 @@ function New-AzConnectedKubernetes {
 
         # Get helm chart path (within the OCI registry).
         if ($PSCmdlet.ShouldProcess("configDP", "request Helm chart")) {
-            $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
-            if (Test-Path $Env:HELMCHART) {
+            $chartPath = Get-HelmChartPath `
+                -registryPath $registryPath `
+                -kubeConfig $KubeConfig `
+                -kubeContext $KubeContext `
+                -helmClientLocation $HelmClientLocation `
+                -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+                -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+            if ($Env:HELMCHART -and (Test-Path $Env:HELMCHART)) {
                 $ChartPath = Get-ChildItem -Path $Env:HELMCHART
             }
         }
