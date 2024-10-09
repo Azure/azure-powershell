@@ -25,7 +25,7 @@
     https://github.com/Azure/azure-powershell/blob/dev/documentation/breaking-changes/breaking-change-template.md
 -->
 
-# Upcoming Breaking Changes
+# Upcoming Breaking Changes of Az.DesktopVirtualization
 
     ## Release Az 13.0.0 - November 2024
 
