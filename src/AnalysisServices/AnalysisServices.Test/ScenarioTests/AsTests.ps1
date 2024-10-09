@@ -10,11 +10,10 @@ function Test-AnalysisServicesServer
 		$location = Get-AnalysisServicesLocation
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
-		$backupBlobContainerUri = $env:AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI
 
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-		$serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
+		$serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator 'astestuser1@AzureSDKTeam.onmicrosoft.com,astestuser2@AzureSDKTeam.onmicrosoft.com'
     
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
@@ -51,7 +50,7 @@ function Test-AnalysisServicesServer
 		Assert-AreEqual 1 $serverUpdated.Sku.Capacity
 		Assert-AreEqual $resourceGroupName $serverUpdated.ResourceGroupName
 
-		$serverUpdated = Set-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrator 'aztest1@stabletest.ccsctp.net' -PassThru
+		$serverUpdated = Set-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Administrator 'astestuser1@AzureSDKTeam.onmicrosoft.com' -PassThru
 		Assert-NotNull $serverUpdated.AsAdministrators "Server Administrator list is empty"
 		Assert-AreEqual $serverUpdated.AsAdministrators.Count 1
 		Assert-AreEqual 1 $serverUpdated.Sku.Capacity
@@ -143,7 +142,7 @@ function Test-AnalysisServicesServerScaleUpDown
 		$serverName = Get-AnalysisServicesServerName
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-		$serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
+		$serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'astestuser1@AzureSDKTeam.onmicrosoft.com,astestuser2@AzureSDKTeam.onmicrosoft.com'
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual $resourceGroupName $serverCreated.ResourceGroupName
@@ -201,7 +200,7 @@ function Test-AnalysisServicesServerFirewall
 		$rule1 = New-AzAnalysisServicesFirewallRule -FirewallRuleName abc1 -RangeStart 0.0.0.0 -RangeEnd 255.255.255.255
         $rule2 = New-AzAnalysisServicesFirewallRule -FirewallRuleName abc2 -RangeStart 6.6.6.6 -RangeEnd 7.7.7.7
         $config = New-AzAnalysisServicesFirewallConfig -FirewallRule $rule1, $rule2
-		$serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net' -FirewallConfig $config
+		$serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'astestuser1@AzureSDKTeam.onmicrosoft.com,astestuser2@AzureSDKTeam.onmicrosoft.com' -FirewallConfig $config
 		Assert-AreEqual 1 $serverCreated.Sku.Capacity
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
@@ -212,10 +211,11 @@ function Test-AnalysisServicesServerFirewall
 		Assert-True {$serverCreated.ServerFullName -ne $null -and $serverCreated.ServerFullName.Contains("$serverName")}
 	    Assert-AreEqual $FALSE $serverCreated.FirewallConfig.EnablePowerBIService
 		Assert-AreEqual 2 $serverCreated.FirewallConfig.FirewallRules.Count
-		Assert-AreEqual 0.0.0.0 $serverCreated.FirewallConfig.FirewallRules[0].RangeStart
-		Assert-AreEqual 255.255.255.255 $serverCreated.FirewallConfig.FirewallRules[0].RangeEnd
-		Assert-AreEqual 6.6.6.6 $serverCreated.FirewallConfig.FirewallRules[1].RangeStart
-		Assert-AreEqual 7.7.7.7 $serverCreated.FirewallConfig.FirewallRules[1].RangeEnd
+		$sortedRules = $serverCreated.FirewallConfig.FirewallRules | Sort-Object -Property FirewallRuleName
+		Assert-AreEqual 0.0.0.0 $sortedRules[0].RangeStart
+		Assert-AreEqual 255.255.255.255 $sortedRules[0].RangeEnd
+		Assert-AreEqual 6.6.6.6 $sortedRules[1].RangeStart
+		Assert-AreEqual 7.7.7.7 $sortedRules[1].RangeEnd
 
 		# Check server was created successfully
 		[array]$serverGet = Get-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName
@@ -266,7 +266,7 @@ function Test-AnalysisServicesServerScaleOutIn
 		$serverName = Get-AnalysisServicesServerName
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-		$serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -ReadonlyReplicaCount 1 -DefaultConnectionMode 'Readonly' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
+		$serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -ReadonlyReplicaCount 1 -DefaultConnectionMode 'Readonly' -Administrator 'astestuser1@AzureSDKTeam.onmicrosoft.com,astestuser2@AzureSDKTeam.onmicrosoft.com'
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
@@ -329,7 +329,7 @@ function Test-AnalysisServicesServerDisableBackup
 		$backupBlobContainerUri = $env:AAS_DEFAULT_BACKUP_BLOB_CONTAINER_URI
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-		$serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net' -BackupBlobContainerUri $backupBlobContainerUri
+		$serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'B1' -Administrator 'astestuser1@AzureSDKTeam.onmicrosoft.com,astestuser2@AzureSDKTeam.onmicrosoft.com' -BackupBlobContainerUri $backupBlobContainerUri
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
 		Assert-AreEqual "Microsoft.AnalysisServices/servers" $serverCreated.Type
@@ -393,7 +393,7 @@ function Test-NegativeAnalysisServicesServer
 		$resourceGroupName = Get-ResourceGroupName
 		$serverName = Get-AnalysisServicesServerName
 		New-AzResourceGroup -Name $resourceGroupName -Location $location
-		$serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
+		$serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator 'astestuser1@AzureSDKTeam.onmicrosoft.com,astestuser2@AzureSDKTeam.onmicrosoft.com'
 
 		Assert-AreEqual $serverName $serverCreated.Name
 		Assert-AreEqual $location $serverCreated.Location
@@ -412,7 +412,7 @@ function Test-NegativeAnalysisServicesServer
 		Assert-Throws {Get-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName}
 
 		# attempt to create a server with invalid Sku
-		Assert-Throws {New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName -Location $location -Sku $invalidSku -Administrator 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'}
+		Assert-Throws {New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $fakeserverName -Location $location -Sku $invalidSku -Administrator 'astestuser1@AzureSDKTeam.onmicrosoft.com,astestuser2@AzureSDKTeam.onmicrosoft.com'}
 
 		# attempt to scale a server to invalid Sku
 		Assert-Throws {Set-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Sku $invalidSku}
@@ -558,7 +558,7 @@ function Test-AnalysisServicesServerSynchronizeSingle
         $serverName = Get-AnalysisServicesServerName
         New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-        $serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators $env.ASAZURE_TESTUSER
+        $serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrator $env.ASAZURE_TESTUSER
         Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
         Assert-True {$serverCreated.State -like "Succeeded"}
 
@@ -626,6 +626,7 @@ The associated gateway is a unified gateway, which required pre-setup.
 1. Install on-premise gateway on target host https://www.microsoft.com/en-us/download/details.aspx?id=53127 
 2. Follow installation instruction to create azure on-premise gateway resource associating to the host.
 Afterward, use the gateway resource to associate with the AAS for testing.
+3. Create a gateway on Azure and set environment variables GATEWAY_NAME and GATEWAY_GROUP
 #>
 function Test-AnalysisServicesServerGateway
 {
@@ -635,9 +636,11 @@ function Test-AnalysisServicesServerGateway
         $location = Get-AnalysisServicesLocation
         $resourceGroupName = Get-ResourceGroupName
         $serverName = Get-AnalysisServicesServerName
-        $gatewayName = $env:GATEWAY_NAME
-        $gateway = Get-AzResource -ResourceName $gatewayName -ResourceGroupName $resourceGroupName
-        $serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku S0 -GatewayResourceId $gateway.ResourceId -PassThru
+		New-AzResourceGroup -Name $resourceGroupName -Location $location
+		$gatewayName = $env:GATEWAY_NAME
+		$gatewayGroup = $env:GATEWAY_GROUP
+        $gateway = Get-AzResource -ResourceName $gatewayName -ResourceGroupName $gatewayGroup
+        $serverCreated = New-AzAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku S0 -GatewayResourceId $gateway.ResourceId
 
         Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
         Assert-True {$serverCreated.State -like "Succeeded"}
