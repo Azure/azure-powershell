@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="keyType">Encryption key type to be used for the encryption service. &#39;Account&#39; key
         /// type implies that an account-scoped encryption key will be used. &#39;Service&#39;
         /// key type implies that a default service key is used.
-        /// Possible values include: 'Service', 'Account'</param>
+        /// Possible values include: &#39;Service&#39;, &#39;Account&#39;</param>
         public EncryptionService(bool? enabled = default(bool?), System.DateTime? lastEnabledTime = default(System.DateTime?), string keyType = default(string))
 
         {

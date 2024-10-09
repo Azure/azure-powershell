@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the availability set that this cmdlet gets.
+Specifies the name of the virtual machine to gets.
 
 ```yaml
 Type: System.String

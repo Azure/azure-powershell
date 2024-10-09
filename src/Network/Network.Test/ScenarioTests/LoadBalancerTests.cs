@@ -100,6 +100,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestLoadBalancerProbes_NoHealthyBackendsBehaviorParameter()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerProbes_NoHealthyBackendsBehaviorParameter");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestLoadBalancerChildResource()
         {
             TestRunner.RunTestScript("Test-LoadBalancerChildResource");

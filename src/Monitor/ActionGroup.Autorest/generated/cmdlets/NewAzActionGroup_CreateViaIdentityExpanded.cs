@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a new action group or Create an existing one.</summary>
+    /// <summary>Create a new action group or update an existing one.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzActionGroup_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Description(@"Create a new action group or Create an existing one.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Description(@"Create a new action group or update an existing one.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}", ApiVersion = "2023-01-01")]
     public partial class NewAzActionGroup_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,

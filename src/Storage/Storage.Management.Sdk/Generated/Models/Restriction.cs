@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// &#34;NotAvailableForSubscription&#34;. Quota Id is set when the SKU has
         /// requiredQuotas parameter as the subscription does not belong to that quota.
         /// The &#34;NotAvailableForSubscription&#34; is related to capacity at DC.
-        /// Possible values include: 'QuotaId', 'NotAvailableForSubscription'</param>
+        /// Possible values include: &#39;QuotaId&#39;, &#39;NotAvailableForSubscription&#39;</param>
         public Restriction(string type = default(string), System.Collections.Generic.IList<string> values = default(System.Collections.Generic.IList<string>), string reasonCode = default(string))
 
         {

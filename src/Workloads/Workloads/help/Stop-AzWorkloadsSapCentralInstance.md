@@ -21,7 +21,7 @@ Stop-AzWorkloadsSapCentralInstance -Name <String> -ResourceGroupName <String> -S
 
 ### StopViaIdentityExpanded
 ```
-Stop-AzWorkloadsSapCentralInstance -InputObject <IWorkloadsIdentity> [-DeallocateVM]
+Stop-AzWorkloadsSapCentralInstance -InputObject <ISapVirtualInstanceIdentity> [-DeallocateVM]
  [-SoftStopTimeoutSecond <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -83,6 +83,32 @@ Stop-AzWorkloadsSapCentralInstance cmdlet stops the Central services instance of
 Currently, stop action is supported for ABAP central services stack.
 In this example, you can see that instance can be stopped by passing the Central services instance Azure resource ID as InputObject to the cmdlet.
 
+### Example 3: Stop Central services instance of the SAP system and its underlying Virtual Machine
+```powershell
+Stop-AzWorkloadsSapCentralInstance -Name cs0 -ResourceGroupName db0-vis-rg -SapVirtualInstanceName DB0 -DeallocateVM
+```
+
+```output
+AdditionalInfo    :
+Code              :
+Detail            :
+EndTime           : 15-03-2023 08:45:40
+Id                : /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/CENTRALUSEUAP/operationStatuses/881d4ff9-1d38-4596-b215-28e
+                    77dbfe176*DF20ACAC495F17B1D0D9182C3A4C44BC6EDFF718387348FAE17F19BCB5DE687C
+Message           :
+Name              : 881d4ff9-1d38-4596-b215-28e77dbfe176*DF20ACAC495F17B1D0D9182C3A4C44BC6EDFF718387348FAE17F19BCB5DE687C
+Operation         :
+PercentComplete   :
+ResourceGroupName :
+StartTime         : 15-03-2023 08:43:32
+Status            : Succeeded
+Target            :
+```
+
+Stop-AzWorkloadsSapCentralInstance cmdlet stops the Central services instance of the SAP system represented by the VIS.
+Currently, stop action is supported for ABAP central services stack.
+In this example, you can see that instance and its VMs can be stopped by passing the Central services instance resource name, Resource Group name, VIS name and DeallocateVM parameter as inputs.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -136,7 +162,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: StopViaIdentityExpanded
 Aliases:
 
@@ -276,12 +302,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api30.IOperationStatusResult
 
 ## NOTES
+
+ALIASES
+
+Stop-AzVISCentralInstance
 
 ## RELATED LINKS

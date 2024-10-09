@@ -18,15 +18,15 @@ Get-AzNetAppFilesPool -ResourceGroupName <String> -AccountName <String> [-Name <
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByParentObjectParameterSet
+```
+Get-AzNetAppFilesPool [-Name <String>] -AccountObject <PSNetAppFilesAccount>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### ByResourceIdParameterSet
 ```
 Get-AzNetAppFilesPool -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByParentObjectParameterSet
-```
-Get-AzNetAppFilesPool -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -109,7 +109,7 @@ The name of the ANF pool
 
 ```yaml
 Type: System.String
-Parameter Sets: ByFieldsParameterSet
+Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
 Aliases: PoolName
 
 Required: False

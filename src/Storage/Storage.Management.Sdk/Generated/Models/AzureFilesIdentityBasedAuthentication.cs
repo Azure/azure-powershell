@@ -26,16 +26,16 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="directoryServiceOptions">Indicates the directory service used. Note that this enum may be extended
         /// in the future.
-        /// Possible values include: 'None', 'AADDS', 'AD', 'AADKERB'</param>
+        /// Possible values include: &#39;None&#39;, &#39;AADDS&#39;, &#39;AD&#39;, &#39;AADKERB&#39;</param>
 
         /// <param name="activeDirectoryProperties">Required if directoryServiceOptions are AD, optional if they are AADKERB.
         /// </param>
 
         /// <param name="defaultSharePermission">Default share permission for users using Kerberos authentication if RBAC
         /// role is not assigned.
-        /// Possible values include: 'None', 'StorageFileDataSmbShareReader',
-        /// 'StorageFileDataSmbShareContributor',
-        /// 'StorageFileDataSmbShareElevatedContributor'</param>
+        /// Possible values include: &#39;None&#39;, &#39;StorageFileDataSmbShareReader&#39;,
+        /// &#39;StorageFileDataSmbShareContributor&#39;,
+        /// &#39;StorageFileDataSmbShareElevatedContributor&#39;</param>
         public AzureFilesIdentityBasedAuthentication(string directoryServiceOptions, ActiveDirectoryProperties activeDirectoryProperties = default(ActiveDirectoryProperties), string defaultSharePermission = default(string))
 
         {

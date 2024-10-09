@@ -141,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Display name of the Public IP Block.",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Number of Public IPs requested.",
         SerializedName = @"numberOfPublicIPs",
         PossibleTypes = new [] { typeof(long) })]

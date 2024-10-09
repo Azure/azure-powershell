@@ -29,14 +29,14 @@ function Test-ScriptActionRelatedCommands{
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 		
 		$scriptActionName = Generate-Name("scriptaction")
 		$uri = "https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh"
 		$nodeTypes = ("Worker")
 		
 		#test Submit-AzHDInsightScriptAction
-		$script = Submit-AzHDInsightScriptAction -ClusterName $cluster.Name -Name $scriptActionName -Uri $uri -NodeTypes $nodeTypes
+		$script = Submit-AzHDInsightScriptAction -ResourceGroupName $params.resourceGroupName -ClusterName $cluster.Name -Name $scriptActionName -Uri $uri -NodeTypes $nodeTypes
 		
 		#test Get-AzHDInsightScriptActionHistory
 		$getScript = Get-AzHDInsightScriptActionHistory -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup `
@@ -66,7 +66,6 @@ function Test-ScriptActionRelatedCommands{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
 		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }

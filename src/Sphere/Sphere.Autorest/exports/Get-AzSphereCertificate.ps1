@@ -20,7 +20,7 @@ Get a Certificate
 .Description
 Get a Certificate
 .Example
-Get-AzSphereCertificate -CatalogName test2024 -ResourceGroupName joyer-test
+Get-AzSphereCertificate -CatalogName test2024 -ResourceGroupName group-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

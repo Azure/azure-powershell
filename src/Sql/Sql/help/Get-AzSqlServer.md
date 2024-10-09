@@ -172,14 +172,14 @@ AdministratorType         : ActiveDirectory
 PrincipalType             : Group
 Login                     : Dummy
 Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
-TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+TenantId                  : 00001111-aaaa-2222-bbbb-3333cccc4444
 AzureADOnlyAuthentication : True
 
 AdministratorType         : ActiveDirectory
 PrincipalType             : Group
 Login                     : Dummy2
 Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
-TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+TenantId                  : 00001111-aaaa-2222-bbbb-3333cccc4444
 AzureADOnlyAuthentication : True
 ```
 
@@ -205,7 +205,7 @@ AdministratorType         : ActiveDirectory
 PrincipalType             : Group
 Login                     : Dummy
 Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
-TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+TenantId                  : 00001111-aaaa-2222-bbbb-3333cccc4444
 AzureADOnlyAuthentication : True
 ```
 

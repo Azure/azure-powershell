@@ -33,7 +33,15 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="flowAnalyticsConfiguration">Parameters that define the configuration of traffic analytics.
         /// </param>
 
+        /// <param name="identity">FlowLog resource Managed Identity
+        /// </param>
+
         /// <param name="storageId">ID of the storage account which is used to store the flow log.
+        /// </param>
+
+        /// <param name="enabledFilteringCriteria">Optional field to filter network traffic logs based on SrcIP, SrcPort,
+        /// DstIP, DstPort, Protocol, Encryption, Direction and Action. If not
+        /// specified, all network traffic will be logged.
         /// </param>
 
         /// <param name="enabled">Flag to enable/disable flow logging.
@@ -44,12 +52,14 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="format">Parameters that define the flow log format.
         /// </param>
-        public FlowLogInformation(string targetResourceId, string storageId, bool enabled, TrafficAnalyticsProperties flowAnalyticsConfiguration = default(TrafficAnalyticsProperties), RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), FlowLogFormatParameters format = default(FlowLogFormatParameters))
+        public FlowLogInformation(string targetResourceId, string storageId, bool enabled, TrafficAnalyticsProperties flowAnalyticsConfiguration = default(TrafficAnalyticsProperties), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string enabledFilteringCriteria = default(string), RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), FlowLogFormatParameters format = default(FlowLogFormatParameters))
 
         {
             this.TargetResourceId = targetResourceId;
             this.FlowAnalyticsConfiguration = flowAnalyticsConfiguration;
+            this.Identity = identity;
             this.StorageId = storageId;
+            this.EnabledFilteringCriteria = enabledFilteringCriteria;
             this.Enabled = enabled;
             this.RetentionPolicy = retentionPolicy;
             this.Format = format;
@@ -76,10 +86,24 @@ namespace Microsoft.Azure.Management.Network.Models
         public TrafficAnalyticsProperties FlowAnalyticsConfiguration {get; set; }
 
         /// <summary>
+        /// Gets or sets flowLog resource Managed Identity
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity {get; set; }
+
+        /// <summary>
         /// Gets or sets iD of the storage account which is used to store the flow log.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.storageId")]
         public string StorageId {get; set; }
+
+        /// <summary>
+        /// Gets or sets optional field to filter network traffic logs based on SrcIP,
+        /// SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not
+        /// specified, all network traffic will be logged.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enabledFilteringCriteria")]
+        public string EnabledFilteringCriteria {get; set; }
 
         /// <summary>
         /// Gets or sets flag to enable/disable flow logging.
@@ -114,6 +138,8 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "StorageId");
             }
+
+
 
 
 

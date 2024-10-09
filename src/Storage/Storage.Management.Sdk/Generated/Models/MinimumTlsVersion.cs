@@ -16,5 +16,6 @@ namespace Microsoft.Azure.Management.Storage.Models
         public const string TLS10 = "TLS1_0";
         public const string TLS11 = "TLS1_1";
         public const string TLS12 = "TLS1_2";
+        public const string TLS13 = "TLS1_3";
     }
 }

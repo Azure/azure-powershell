@@ -14,81 +14,174 @@
 # is regenerated.
 # ----------------------------------------------------------------------------------
 
-# split policy ids into usable parts (only used internally in this file)
-function parsePolicyId {
+# split policy ids into usable parts
+function ParsePolicyId {
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     # the resource Id of a policy definition
-    param($resourceId, $typeName)
+    param($resourceId, $policyType)
 
     # validate args
     if (!$resourceId) {
-        throw 'parsePolicyId(resourceId, typeName) argument error: resourceId must be provided.'
+        throw 'ParsePolicyId(resourceId, policyType) argument error: resourceId must be provided.'
     }
 
-    if (!$typeName) {
-        # extract typename
+    if (!$policyType) {
+        # extract policyType
         $temp = $resourceId -split '/providers/Microsoft.Authorization/'
         if ($temp.Length -lt 2) {
-            throw 'parsePolicy(resourceId, typeName) argument error: resourceId is not a Microsoft.Authorization resource type'
+            throw 'parsePolicy(resourceId, policyType) argument error: resourceId is not a Microsoft.Authorization resource type'
         }
 
-        $typeName = ($temp[1] -split '/')[0]
+        $policyType = ($temp[1] -split '/')[0]
     }
 
-    if (!$typeName) {
-        throw 'parsePolicyId(resourceId, typeName) argument error: unable to find type name.'
+    if (!$policyType) {
+        throw 'ParsePolicyId(resourceId, policyType) argument error: unable to find type name.'
     }
 
-    $mark = "/providers/microsoft.authorization/$($typeName)/"
+    $mark = "/providers/Microsoft.Authorization/$($policyType)/"
     $parts = $resourceId -split $mark
+    $scope = $parts[0]
     $name = ''
+
     if ($parts.Length -gt 1) {
-        $name = $parts[1]
+        $parts = $parts[1] -split '/'
+        $name = $parts[0]
+        if (($parts.Length -gt 2) -and ($parts[1] -eq 'versions')) {
+            $parsedVersion = ParsePolicyVersion $parts[2]
+        }
     }
 
-    $scope = $parts[0]
+    $scopeType = 'none'
     $subId = ''
     $mgName = ''
     $rgName = ''
-    $type = 'none'
+    $resource = ''
+    $resNamespace = ''
+    $resType = ''
+    $resName = ''
 
-    if ($scope -eq '') {
-        $type = 'builtin'
+    if (!$scope) {
+        $scopeType = 'builtin'
     }
     elseif ($scope -like '/providers/Microsoft.Management/managementGroups/*') {
-        $type = 'mgname'
+        $scopeType = 'mgname'
         $mgName = ($scope -split '/providers/Microsoft.Management/managementGroups/')[1]
     }
     elseif ($scope -like '/subscriptions/*/resourceGroups/*/*') {
-        $type = 'resource'
+        $scopeType = 'resource'
         $temp = ($scope -split '/subscriptions/')[1]
         $temp = ($temp -split '/resourceGroups/')
         $subId = $temp[0]
         $temp = ($temp[1] -split '/providers/')
         $rgName = $temp[0]
-        $resource = $temp[1]
+        $temp = $temp[1] -split '/'
+        if ($temp.Length -gt 2) {
+            $resNamespace = $temp[0]
+            $resType = $temp[1..($temp.Length-2)] -join '/'
+            $resName = $temp[$temp.Length-1]
+        }
+
+        $resource = $scope
     }
     elseif ($scope -like '/subscriptions/*/resourceGroups/*') {
-        $type = 'rgname'
+        $scopeType = 'rgname'
         $temp = ($scope -split '/subscriptions/')[1]
         $temp = ($temp -split '/resourceGroups/')
         $subId = $temp[0]
         $rgName = $temp[1]
     }
     elseif ($scope -like '/subscriptions/*') {
-        $type = 'subId'
+        $scopeType = 'subId'
         $subId = ($scope -split '/subscriptions/')[1]
     }
 
+    $artifactRef = ''
+
+    $artifact = $scope + $mark + $name
+    if ($parsedVersion.VersionRef) {
+        $artifactRef = "$artifact/versions/$($parsedVersion.VersionRef)"
+    }
+
     return @{
-        ScopeType = $type
+        PolicyType = $policyType
+        Scope = $scope
+        ScopeType = $scopeType
         SubscriptionId = $subId
         ManagementGroupName = $mgName
         ResourceGroupName = $rgName
         Resource = $resource
+        ResourceNamespace = $resNamespace
+        ResourceType = $resType
+        ResourceName = $resName
         Name = $name
-        Scope = $scope
-        TypeName = $typeName
+        Artifact = $artifact
+        ArtifactRef = $artifactRef
+        Version = $parsedVersion.Version
+        Major = $parsedVersion.Major
+        Minor = $parsedVersion.Minor
+        Patch = $parsedVersion.Patch
+        Suffix = $parsedVersion.Suffix
+        VersionRef = $parsedVersion.VersionRef
+        VersionMajorRef = $parsedVersion.VersionMajorRef
+        VersionMinorRef = $parsedVersion.VersionMinorRef
+    }
+}
+
+# parse policy version with format: (ddd|*).(ddd|*).(ddd|*)[-suffix]
+function ParsePolicyVersion {
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
+    # the resource Id of a policy definition
+    param($version)
+
+    $parts = $version -split '\.'
+    $major = $parts[0]
+    $minor = ''
+    if ($parts.Length -gt 1) {
+        $minor = $parts[1]
+    }
+
+    $patch = ''
+    $suffix = ''
+    if ($parts.Length -gt 2) {
+        $parts = $parts[2] -split '-'
+        $patch = $parts[0]
+        if ($parts.Length -gt 1) {
+            $suffix = $parts[1]
+        }
+    }
+
+    $versionMinorRef = ''
+    $versionMajorRef = @($major,'*','*') -join '.'
+    if ($minor -ne '*') {
+        $versionMinorRef = @($major,$minor,'*') -join '.'
+    }
+
+    if ($suffix) {
+        if ($versionMinorRef) {
+            $versionMinorRef = $versionMinorRef + '-' + $suffix
+        }
+
+        $versionMajorRef = $versionMajorRef + '-' + $suffix
+    }
+
+    $versionRef = ''
+    if ($versionMinorRef) {
+        $versionRef = $versionMinorRef
+    }
+    else {
+        $versionRef = $versionMajorRef
+    }
+
+    return @{
+        Version = $version
+        Major = $major
+        Minor = $minor
+        Patch = $patch
+        Suffix = $suffix
+        VersionRef = $versionRef
+        VersionMajorRef = $versionMajorRef
+        VersionMinorRef = $versionMinorRef
     }
 }
 
@@ -98,7 +191,7 @@ function ParsePolicyDefinitionId {
     # the resource Id of a policy definition
     param($ResourceId)
 
-    parsePolicyId $ResourceId 'policyDefinitions'
+    ParsePolicyId $ResourceId 'policyDefinitions'
 }
 
 # split policy set definition resourceId into its parts
@@ -107,7 +200,7 @@ function ParsePolicySetDefinitionId {
     # the resource Id of a policy set definition
     param($ResourceId)
 
-    parsePolicyId $ResourceId 'policySetDefinitions'
+    ParsePolicyId $ResourceId 'policySetDefinitions'
 }
 
 # split policy assignment resourceId into its parts
@@ -116,7 +209,7 @@ function ParsePolicyAssignmentId {
     # the resource Id of a policy set definition
     param($ResourceId)
 
-    parsePolicyId $ResourceId 'policyAssignments'
+    ParsePolicyId $ResourceId 'policyAssignments'
 }
 
 # split policy assignment resourceId into its parts
@@ -125,7 +218,57 @@ function ParsePolicyExemptionId {
     # the resource Id of a policy set definition
     param($resourceId)
 
-    parsePolicyId $ResourceId 'policyExemptions'
+    ParsePolicyId $ResourceId 'policyExemptions'
+}
+
+# Wrapper for JSON -> PSObject conversion that works on both Core and Desktop editions
+function ConvertFrom-JsonSafe
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
+    param(
+        [Parameter(ValueFromPipeline)]
+        $InputObject,
+        [switch]$AsHashtable = $false
+    )
+
+    if ($PSVersionTable.PSEdition -eq 'Core') {
+        ConvertFrom-Json $InputObject -AsHashtable:$AsHashtable
+    }
+    elseif ($AsHashtable) {
+        # ConvertFrom-Json on Windows Powershell doesn't support -AsHashtable parameter
+        $converted = ConvertParameterInput ($InputObject | ConvertFrom-Json)
+        if (($converted -is [array]) -and ($converted.Count -eq 1)) {
+            return $converted[0]
+        }
+        else {
+            return $converted
+        }
+    }
+    else {
+        ConvertFrom-Json $InputObject
+    }
+}
+
+# convert the parameter object (could be either hashtable or PSCustomObject) to policy-formatted hashtable suitable for autorest serializers
+function ConvertParameterObject
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
+    param ($InputObject)
+
+    $returnValue = @{}
+
+    if ($InputObject -is [hashtable]) {
+        foreach ($key in $InputObject.Keys) {
+            $returnValue[$key] = @{ value = (ConvertParameterInput -InputObject $InputObject[$key]) }
+        }
+    }
+    else {
+        foreach ($property in $InputObject.PSObject.Properties) {
+            $returnValue[$property.Name] = @{ value = (ConvertParameterInput -InputObject $InputObject.PSObject.Properties[$property.Name]) }
+        }
+    }
+
+    return $returnValue
 }
 
 # Convert input parameter value to hashtable type expected by the autorest serializers
@@ -162,42 +305,40 @@ function ConvertParameterArray
     }
 }
 
-# convert various input formats to policy-formatted hashtable suitable for autorest serializers
-function ConvertParameterObject
+# convert various parameter input formats to policy-formatted hashtable suitable for autorest serializers
+function ConvertParameterInput
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExportAttribute()]
     param ($InputObject)
 
-    if (!$InputObject)
-    {
-        return $InputObject
-    }
-    elseif ($InputObject -is [hashtable])
-    {
-        # traverse hash table to ensure nested values are all processed
+    # traverse collections to ensure nested values are all processed
+    if ($InputObject -is [hashtable]) {
         $returnValue = @{}
         foreach ($key in $InputObject.Keys) {
-            $returnValue[$key] = (ConvertParameterObject $InputObject[$key])
+            $returnValue[$key] = (ConvertParameterInput $InputObject[$key])
         }
 
         return $returnValue
     }
-    elseif ($InputObject -is [array])
-    {
-        return @{ value = [array](ConvertParameterArray -InputObject $InputObject) }
+    elseif ($InputObject -is [array]) {
+        $returnValue = @()
+        foreach ($object in $InputObject) {
+            $returnValue += (ConvertParameterInput $object)
+        }
+
+        return ,$returnValue
     }
     elseif ($InputObject -is [PSObject])
     {
         $returnValue = @{}
-
         foreach ($property in $InputObject.PSObject.Properties) {
-            $returnValue[$property.Name] = (ConvertParameterObject $property.Value).PSObject.BaseObject
+            $returnValue[$property.Name] = (ConvertParameterInput $property.Value)
         }
 
         return $returnValue
     }
     else {
-        return @{ value = $InputObject }
+        return $InputObject
     }
 }
 
@@ -223,7 +364,7 @@ function ConvertObjectToPSObject {
         $jsonString = "[$([System.String]::Join(',', $jsonString))]"
     }
 
-    ConvertFrom-Json $jsonString -Depth 100
+    ConvertFrom-JsonSafe $jsonString
 }
 
 function GetPSObjectProperty {
@@ -305,7 +446,7 @@ function ResolvePolicyParameter {
         Write-Host -ForegroundColor Cyan "Parameter ${ParameterName}:" $policy
     }
 
-    $policyParameter = ConvertFrom-Json -Depth 100 -AsHashtable $policy
+    $policyParameter = ConvertFrom-JsonSafe -AsHashtable $policy
     if ($policyParameter.properties) {
         return $policyParameter.properties
     } else {
@@ -340,7 +481,7 @@ function ResolvePolicyMetadataParameter {
 
     # otherwise it should be a JSON string
     if ($metadata -like '{*}') {
-        return $metadata | ConvertFrom-Json -Depth 100 -AsHashtable
+        return $metadata | ConvertFrom-JsonSafe -AsHashtable
     }
 
     throw "Unrecognized metadata format - value: [$($metadataValue)], type: [$($metadataValue.GetType())]"
@@ -354,89 +495,75 @@ function resolvePolicyArtifact {
         [string]$subscriptionId,
         [string]$managementGroupName,
         [string]$id,
-        [string]$typeName
+        [string]$policyType
     )
 
-    $type = 'none'
     $scope = ''
     $scopeType = 'none'
     $scopeName = ''
-    $fullScope = ''
     $resourceId = '<invalid>'
-    $resourceGroupName = ''
 
     if ($id -and !$subscriptionId -and !$managementGroupName) {
-        $resolved = parsePolicyId $id $typeName
-        $fullScope = $resolved.Scope
+        $resolved = ParsePolicyId $id $policyType
+        $scope = $resolved.Scope
         $scopeType = $resolved.ScopeType
         switch ($scopeType) {
             'subId' {
-                $scope = $resolved.SubscriptionId
-                $scopeName = "subscription $($scope)"
                 $subscriptionId = $resolved.SubscriptionId
+                $scopeName = "subscription $($subscriptionId)"
             }
             'mgName' {
-                $scope = $resolved.ManagementGroupName
-                $scopeName = "management group $($scope)"
                 $managementGroupName = $resolved.ManagementGroupName
+                $scopeName = "management group $($managementGroupName)"
             }
             'rgname' {
-                $scope = $resolved.ResourceGroupName
-                $scopeName = "resource group $($scope)"
                 $subscriptionId = $resolved.SubscriptionId
-                $resourceGroupName = $resolved.ResourceGroupName
+                $scopeName = "resource group $($resolved.ResourceGroupName) (subId: $($subscriptionId))"
             }
             'resource' {
-                $scope = $resolved.Resource
-                $scopeName = "resource id $($scope)"
                 $subscriptionId = $resolved.SubscriptionId
-                $resourceGroupName = $resolved.ResourceGroupName
+                $scopeName = "resource id $($resolved.Resource)"
             }
             'none' {
-                $scope = $resolved.Scope
                 $scopeName = "scope $($scope)"
             }
         }
 
         $name = $resolved.Name
         $resourceId = $id
-    } else {
+    }
+    else {
         if ($name) {
             if ($managementGroupName) {
-                $type = 'mgName'
-                $scope = $managementGroupName
                 $scopeType = 'mgName'
-                $scopeName = "management group $($scope)"
-                $fullScope = "/providers/Microsoft.Management/managementGroups/$($managementGroupName)"
-                $resourceId = "$($fullScope)/providers/Microsoft.Authorization/$($typeName)/$($name)"
-            } else {
-                if (!$subscriptionId) {
-                    $type = 'name'
-                    $subscriptionId = (Get-SubscriptionId)
-                } else {
-                    $type = 'subId'
-                }
-
-                $scope = $subscriptionId
-                $scopeType = 'subId'
-                $scopeName = "subscription $($scope)"
-                $fullScope = "/subscriptions/$($subscriptionId)"
-                $resourceId = "$($fullScope)/providers/Microsoft.Authorization/$($typeName)/$($name)"
+                $scopeName = "management group $($managementGroupName)"
+                $scope = "/providers/Microsoft.Management/managementGroups/$($managementGroupName)"
             }
+            else {
+                if (!$subscriptionId) {
+                    $subscriptionId = (Get-SubscriptionId)
+                }
+                $scopeType = 'subId'
+                $scopeName = "subscription $($subscriptionId)"
+                $scope = "/subscriptions/$($subscriptionId)"
+            }
+
+            $resourceId = "$($scope)/providers/Microsoft.Authorization/$($policyType)/$($name)"
         }
     }
 
     return @{
-        Type = $type;
         Scope = $scope;
         ScopeType = $scopeType
         ScopeName = $scopeName;
-        FullScope = $fullScope;
         Name = $name;
         SubscriptionId = $subscriptionId
-        ResourceGroupName = $resourceGroupName
         ManagementGroupName = $managementGroupName
         ResourceId = $resourceId
+        ResourceGroupName = $resolved.ResourceGroupName
+        ResourceNamespace = $resolved.ResourceNamespace
+        ResourceType = $resolved.ResourceType
+        ResourceName = $resolved.ResourceName
     }
 }
 
@@ -516,7 +643,7 @@ function LocationCompleter(
 {
     if ($global:AzPSPolicyCachedLocations.Count -le 0) {
         $response = Invoke-AzRestMethod -Uri "https://management.azure.com/subscriptions/$($(Get-SubscriptionId))/locations?api-version=2022-12-01" -Method GET
-        $global:AzPSPolicyCachedLocations = ($response.Content | ConvertFrom-Json -Depth 100).value | Sort-Object -Property name | Select-Object -ExpandProperty name
+        $global:AzPSPolicyCachedLocations = ($response.Content | ConvertFrom-JsonSafe).value | Sort-Object -Property name | Select-Object -ExpandProperty name
     }
 
     # If you see the following error, it means your context access has expired

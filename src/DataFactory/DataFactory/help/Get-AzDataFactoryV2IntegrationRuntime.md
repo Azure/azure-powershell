@@ -43,7 +43,7 @@ Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFacto
 ```
 
 ```output
-	ResourceGroupName DataFactoryName Name                   Description
+ResourceGroupName DataFactoryName Name                   Description
 	----------------- --------------- ----                   -----------
 	rg-test-dfv2      test-df-eu2     test-reserved-ir       Reserved IR
 	rg-test-dfv2      test-df-eu2     test-dedicated-ir      Reserved IR
@@ -58,7 +58,7 @@ Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFacto
 ```
 
 ```output
-	Location                     : West US
+Location                     : West US
 	NodeSize                     : Standard_D1_v2
 	NodeCount                    : 1
 	MaxParallelExecutionsPerNode : 1
@@ -86,7 +86,7 @@ Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFacto
 ```
 
 ```output
-	CreateTime                   : 
+CreateTime                   : 
 	Nodes                        : 
 	OtherErrors                  : 
 	LastOperation                : 
@@ -118,7 +118,7 @@ Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFacto
 ```
 
 ```output
-	ResourceGroupName DataFactoryName Name                 Description
+ResourceGroupName DataFactoryName Name                 Description
 	----------------- --------------- ----                 -----------
 	rg-test-dfv2      test-df-eu2     test-selfhost-ir     selfhost IR
 ```
@@ -131,7 +131,7 @@ Get-AzDataFactoryV2IntegrationRuntime -ResourceGroupName rg-test-dfv2 -DataFacto
 ```
 
 ```output
-	State                     : Online
+State                     : Online
 	Version                   : 4.2.7233.1
 	CreateTime                : 9/26/2019 6:00:08 AM
 	AutoUpdate                : Off
@@ -264,7 +264,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

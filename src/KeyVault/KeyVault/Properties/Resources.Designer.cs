@@ -703,6 +703,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value must be between 1 and int.MaxValue..
+        /// </summary>
+        internal static string InvalidRangeDaysBeforeExpiry {
+            get {
+                return ResourceManager.GetString("InvalidRangeDaysBeforeExpiry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Value must be between 0 and 99.&quot;.
+        /// </summary>
+        internal static string InvalidRangePercentageLifetime {
+            get {
+                return ResourceManager.GetString("InvalidRangePercentageLifetime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Sas permission &apos;{0}&apos;..
         /// </summary>
         internal static string InvalidSasPermission {
@@ -870,6 +888,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string PermissionsNotSpecified {
             get {
                 return ResourceManager.GetString("PermissionsNotSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error happens when processing certificate &apos;{0}&apos;. See detailed error: {1}.
+        /// </summary>
+        internal static string ProcessingCertError {
+            get {
+                return ResourceManager.GetString("ProcessingCertError", resourceCulture);
             }
         }
         

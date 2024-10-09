@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Possible values include: &#39;Auto&#39;, &#39;Manual&#39;</param>
 
         /// <param name="size">Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks
-        /// (value must be multiply of 4398046511104).
+        /// (value must be multiple of 1099511627776).
         /// </param>
 
         /// <param name="coolAccess">If enabled (true) the pool can contain cool Access enabled volumes.
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <summary>
         /// Gets or sets provisioned size of the pool (in bytes). Allowed values are in
-        /// 1TiB chunks (value must be multiply of 4398046511104).
+        /// 1TiB chunks (value must be multiple of 1099511627776).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.size")]
         public long? Size {get; set; }

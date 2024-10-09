@@ -18,7 +18,7 @@ New-AzSqlVMGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
  [-ClusterSubnetType <ClusterSubnetType>] [-DomainFqdn <String>] [-FileShareWitnessPath <String>]
  [-Offer <String>] [-OuPath <String>] [-Sku <SqlVMGroupImageSku>] [-SqlServiceAccount <String>]
  [-StorageAccountPrimaryKey <SecureString>] [-StorageAccountUrl <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -29,8 +29,7 @@ Creates or updates a SQL virtual machine group.
 
 ### Example
 ```powershell
-# $accessKey is a valid access key for the storage account
-$storageAccountPrimaryKey = ConvertTo-SecureString -String $accessKey -AsPlainText -Force
+$storageAccountPrimaryKey = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzSqlVMGroup -ResourceGroupName 'ResourceGroup01' -Name 'sqlvmgroup01' -Location 'eastus' -Offer 'SQL2022-WS2022' -Sku 'Developer' -DomainFqdn 'yourdomain.com' -ClusterOperatorAccount 'operatoruser@yourdomain.com' -ClusterBootstrapAccount 'bootstrapuser@yourdomain.com' -StorageAccountUrl 'https://yourstorageaccount.blob.core.windows.net/' -StorageAccountPrimaryKey $storageAccountPrimaryKey -SqlServiceAccount 'sqladmin@yourdomain.com' -ClusterSubnetType 'SingleSubnet'
 ```
 
@@ -219,21 +218,6 @@ Organizational Unit path in which the nodes and cluster will be present.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

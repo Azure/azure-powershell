@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
     public partial struct OutputDeliveryMode :
         System.IEquatable<OutputDeliveryMode>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OutputDeliveryMode Direct = @"Direct";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OutputDeliveryMode ReadWriteMount = @"ReadWriteMount";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OutputDeliveryMode Upload = @"Upload";

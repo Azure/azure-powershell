@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="size">Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks
-        /// (value must be multiply of 4398046511104).
+        /// (value must be multiple of 1099511627776).
         /// </param>
 
         /// <param name="provisioningState">Azure lifecycle management
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <summary>
         /// Gets or sets provisioned size of the pool (in bytes). Allowed values are in
-        /// 1TiB chunks (value must be multiply of 4398046511104).
+        /// 1TiB chunks (value must be multiple of 1099511627776).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.size")]
         public long Size {get; set; }

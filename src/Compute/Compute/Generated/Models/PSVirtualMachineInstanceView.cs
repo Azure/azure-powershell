@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public IList<InstanceViewStatus> Statuses { get; set; }
         public VirtualMachinePatchStatus PatchStatus { get; set; }
         public VirtualMachineHealthStatus VmHealth { get; set; }
+        public bool? IsVMInStandbyPool { get; set; }
 
     }
 }

@@ -58,6 +58,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         public Management.Internal.Resources.Models.Sku Sku { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not this is a GPv2 variant of General Purpose edition.
+        /// </summary>
+        public bool? IsGeneralPurposeV2 { get; set; }
+
+        /// <summary>
         /// Gets or sets the fully qualified domain name of the managed instance
         /// </summary>
         public string FullyQualifiedDomainName { get; set; }
@@ -92,6 +97,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the maximum storage size in GB.
         /// </summary>
         public int? StorageSizeInGB { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maximum storage IOps.
+        /// </summary>
+        public int? StorageIOps { get; set; }
 
         /// <summary>
         /// Gets or sets the Managed Instance collation
@@ -196,5 +206,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
         /// </summary>
         public string ExternalGovernanceStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets the authentication metadata mode of the managed instance.
+        /// Possible values include: &#39;AzureAD&#39;, &#39;Paired&#39;, &#39;Windows&#39;
+        /// </summary>
+        public string AuthenticationMetadata { get; set; }
     }
 }

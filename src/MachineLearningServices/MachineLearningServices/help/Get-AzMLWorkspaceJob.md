@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacejob
 schema: 2.0.0
@@ -14,15 +14,15 @@ Gets a Job by name/id.
 
 ### List (Default)
 ```
-Get-AzMLWorkspaceJob -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>]
- [-JobType <String>] [-ListViewType <ListViewType>] [-Skip <String>] [-Tag <String>]
+Get-AzMLWorkspaceJob -ResourceGroupName <String> [-SubscriptionId <String[]>] -WorkspaceName <String>
+ [-Job <String>] [-JobType <String>] [-ListViewType <ListViewType>] [-Skip <String>] [-Tag <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzMLWorkspaceJob -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMLWorkspaceJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -44,11 +44,11 @@ Get-AzMLWorkspaceJob  -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-c
 ```output
 Name                       SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ----                       -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-willing_vinegar_mwjs1dyft0 5/31/2022 7:58:38 AM Lucas Yao (Wicresoft North America) User                                                                                                   ml-rg-test
-ivory_beard_fsbkdw8n77     5/18/2022 8:03:36 AM Lucas Yao (Wicresoft North America) User                                                                                                   ml-rg-test
-plucky_collar_5x0ds0fgb3   5/18/2022 7:44:55 AM Lucas Yao (Wicresoft North America) User                                                                                                   ml-rg-test
-heroic_quince_0vqqqpq7mt   5/18/2022 7:10:35 AM Lucas Yao (Wicresoft North America) User                                                                                                   ml-rg-test
-amiable_hominy_g700h46sb5  5/18/2022 6:42:32 AM Lucas Yao (Wicresoft North America) User                                                                                                   ml-rg-test
+willing_vinegar_mwjs1dyft0 5/31/2022 7:58:38 AM UserName (Example)         User                                                                                                   ml-rg-test
+ivory_beard_fsbkdw8n77     5/18/2022 8:03:36 AM UserName (Example)         User                                                                                                   ml-rg-test
+plucky_collar_5x0ds0fgb3   5/18/2022 7:44:55 AM UserName (Example)         User                                                                                                   ml-rg-test
+heroic_quince_0vqqqpq7mt   5/18/2022 7:10:35 AM UserName (Example)         User                                                                                                   ml-rg-test
+amiable_hominy_g700h46sb5  5/18/2022 6:42:32 AM UserName (Example)         User                                                                                                   ml-rg-test
 ```
 
 Lists all jobs under a workspace
@@ -61,7 +61,7 @@ Get-AzMLWorkspaceJob  -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-c
 ```output
 Name                       SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ----                       -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-willing_vinegar_mwjs1dyft0 5/31/2022 7:58:38 AM Lucas Yao (Wicresoft North America) User                                                                                                   ml-rg-test
+willing_vinegar_mwjs1dyft0 5/31/2022 7:58:38 AM UserName (Example)         User                                                                                                   ml-rg-test
 ```
 
 Gets a Job by name
@@ -69,7 +69,8 @@ Gets a Job by name
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -96,6 +97,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Job
+Comma-separated list of user property names (and optionally values).
+Example: prop1,prop2=value2
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -151,25 +168,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Skip
-Continuation token for pagination.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -181,7 +183,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -211,10 +213,25 @@ Name of Azure Machine Learning workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Skip
+Continuation token for pagination.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -230,31 +247,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBase
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBase
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IMachineLearningServicesIdentity>`: Identity Parameter
-  - `[ComputeName <String>]`: Name of the Azure Machine Learning compute.
-  - `[ConnectionName <String>]`: Friendly name of the workspace connection
-  - `[DeploymentName <String>]`: Inference deployment identifier.
-  - `[EndpointName <String>]`: Inference Endpoint name.
-  - `[Id <String>]`: The name and identifier for the Job. This is case-sensitive.
-  - `[Id1 <String>]`: Resource identity path
-  - `[Location <String>]`: The location for which resource usage is queried.
-  - `[Name <String>]`: Container name. This is case-sensitive.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the workspace
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[Version <String>]`: Version identifier. This is case-sensitive.
-  - `[WorkspaceName <String>]`: Name of Azure Machine Learning workspace.
-
 ## RELATED LINKS
-

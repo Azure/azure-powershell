@@ -19,6 +19,30 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.0.4
+* Added customized UserAgent for ARM telemetry.
+* Fixed secrets exposure in example documentation.
+* Updated `Connect-AzAccount` to fix a display issue in PowerShell ISE [#24556].
+* Updated the reference of Azure PowerShell Common to 1.3.100-preview.
+* Used Azure.Identity and Azure.Core directly for client assertion [#22628].
+* Integrated new detection library to expand the scope of secrets.
+
+## Version 3.0.3
+* Reduced the frequency of displaying sign-in announcement messages.
+* Upgraded Azure.Core to 1.41.0 to include the fix for `BearerTokenAuthenticationPolicy`
+* Removed the informational table about selected context to avoid duplication with output table.
+
+## Version 3.0.2
+* Fixed bug handling GUID type subscription Id.
+* Added a warning message in `Connect-AzAccount` to discourage the use of the username/password (a.k.a ROPC) login flow.
+* Preannounced a breaking change in `Get-AzAccessToken` to change `Token` property from `String` to `SecureString`.
+
+## Version 3.0.1
+* Disable WAM when the customers login with device code flow or username password (ROPC) flow to prevent a potential issue with token cache.
+* Fixed [CVE-2024-35255](https://github.com/advisories/GHSA-m5vv-6r4h-3vj9)
+* Updated `Microsoft.Identity.Client.NativeInterop` to fix the WAM pop window issue in elevated mode [#24967]
+* Updated the reference of Azure PowerShell Common to 1.3.98-preview.
 * Limited promotional message to interactive scenarios only
 
 ## Version 3.0.0

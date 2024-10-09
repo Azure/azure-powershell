@@ -15,9 +15,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
     {
 
         /// <summary>
-        /// This operation creates or updates a policy assignment with the given scope and name. Policy assignments apply to all resources
-        /// contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all
-        /// resources in the group.
+        /// This operation create a policy assignment with the given scope and name. Policy assignments apply to all resources contained
+        /// within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources
+        /// in the group.
         /// </summary>
         /// <param name="scope">The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
@@ -67,9 +67,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates the policy assignment with the given ID. Policy assignments made on a scope apply to
-        /// all resources contained in that scope. For example, when you assign a policy to a resource group that policy applies to
-        /// all resources in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+        /// This operation update the policy assignment with the given ID. Policy assignments made on a scope apply to all resources
+        /// contained in that scope. For example, when you assign a policy to a resource group that policy applies to all resources
+        /// in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
         /// Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription
         /// (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
         /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
@@ -117,9 +117,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates the policy assignment with the given ID. Policy assignments made on a scope apply to
-        /// all resources contained in that scope. For example, when you assign a policy to a resource group that policy applies to
-        /// all resources in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+        /// This operation update the policy assignment with the given ID. Policy assignments made on a scope apply to all resources
+        /// contained in that scope. For example, when you assign a policy to a resource group that policy applies to all resources
+        /// in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
         /// Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription
         /// (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
         /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
@@ -177,9 +177,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates the policy assignment with the given ID. Policy assignments made on a scope apply to
-        /// all resources contained in that scope. For example, when you assign a policy to a resource group that policy applies to
-        /// all resources in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+        /// This operation update the policy assignment with the given ID. Policy assignments made on a scope apply to all resources
+        /// contained in that scope. For example, when you assign a policy to a resource group that policy applies to all resources
+        /// in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
         /// Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription
         /// (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
         /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
@@ -235,9 +235,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates the policy assignment with the given ID. Policy assignments made on a scope apply to
-        /// all resources contained in that scope. For example, when you assign a policy to a resource group that policy applies to
-        /// all resources in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+        /// This operation update the policy assignment with the given ID. Policy assignments made on a scope apply to all resources
+        /// contained in that scope. For example, when you assign a policy to a resource group that policy applies to all resources
+        /// in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
         /// Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription
         /// (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
         /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
@@ -284,9 +284,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates the policy assignment with the given ID. Policy assignments made on a scope apply to
-        /// all resources contained in that scope. For example, when you assign a policy to a resource group that policy applies to
-        /// all resources in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+        /// This operation update the policy assignment with the given ID. Policy assignments made on a scope apply to all resources
+        /// contained in that scope. For example, when you assign a policy to a resource group that policy applies to all resources
+        /// in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
         /// Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription
         /// (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
         /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
@@ -331,9 +331,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates the policy assignment with the given ID. Policy assignments made on a scope apply to
-        /// all resources contained in that scope. For example, when you assign a policy to a resource group that policy applies to
-        /// all resources in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+        /// This operation update the policy assignment with the given ID. Policy assignments made on a scope apply to all resources
+        /// contained in that scope. For example, when you assign a policy to a resource group that policy applies to all resources
+        /// in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
         /// Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription
         /// (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
         /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
@@ -511,9 +511,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy assignment with the given scope and name. Policy assignments apply to all resources
-        /// contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all
-        /// resources in the group.
+        /// This operation create a policy assignment with the given scope and name. Policy assignments apply to all resources contained
+        /// within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources
+        /// in the group.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for the policy assignment.</param>
@@ -571,9 +571,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy assignment with the given scope and name. Policy assignments apply to all resources
-        /// contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all
-        /// resources in the group.
+        /// This operation create a policy assignment with the given scope and name. Policy assignments apply to all resources contained
+        /// within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources
+        /// in the group.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for the policy assignment.</param>
@@ -629,9 +629,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy assignment with the given scope and name. Policy assignments apply to all resources
-        /// contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all
-        /// resources in the group.
+        /// This operation create a policy assignment with the given scope and name. Policy assignments apply to all resources contained
+        /// within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources
+        /// in the group.
         /// </summary>
         /// <param name="scope">The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
@@ -680,9 +680,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy assignment with the given scope and name. Policy assignments apply to all resources
-        /// contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all
-        /// resources in the group.
+        /// This operation create a policy assignment with the given scope and name. Policy assignments apply to all resources contained
+        /// within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources
+        /// in the group.
         /// </summary>
         /// <param name="scope">The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
@@ -729,9 +729,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy assignment with the given scope and name. Policy assignments apply to all resources
-        /// contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all
-        /// resources in the group.
+        /// This operation create a policy assignment with the given scope and name. Policy assignments apply to all resources contained
+        /// within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources
+        /// in the group.
         /// </summary>
         /// <param name="scope">The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
@@ -4796,7 +4796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given subscription with the given name.
+        /// This operation update a policy definition in the given subscription with the given name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policyDefinitionName">The name of the policy definition.</param>
@@ -4849,7 +4849,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition version in the given management group with the given name.
+        /// This operation update a policy definition version in the given management group with the given name.
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policyDefinitionName">The name of the policy definition.</param>
@@ -4902,7 +4902,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition version in the given management group with the given name.
+        /// This operation update a policy definition version in the given management group with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy definition properties.</param>
@@ -4964,7 +4964,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition version in the given management group with the given name.
+        /// This operation update a policy definition version in the given management group with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy definition properties.</param>
@@ -5023,7 +5023,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition version in the given management group with the given name.
+        /// This operation update a policy definition version in the given management group with the given name.
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policyDefinitionName">The name of the policy definition.</param>
@@ -5075,7 +5075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition version in the given management group with the given name.
+        /// This operation update a policy definition version in the given management group with the given name.
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policyDefinitionName">The name of the policy definition.</param>
@@ -5124,7 +5124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition version in the given management group with the given name.
+        /// This operation update a policy definition version in the given management group with the given name.
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policyDefinitionName">The name of the policy definition.</param>
@@ -5330,7 +5330,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given subscription with the given name.
+        /// This operation update a policy definition in the given subscription with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy definition properties.</param>
@@ -5392,7 +5392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given subscription with the given name.
+        /// This operation update a policy definition in the given subscription with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy definition properties.</param>
@@ -5451,7 +5451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given subscription with the given name.
+        /// This operation update a policy definition in the given subscription with the given name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policyDefinitionName">The name of the policy definition.</param>
@@ -5503,7 +5503,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given subscription with the given name.
+        /// This operation update a policy definition in the given subscription with the given name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policyDefinitionName">The name of the policy definition.</param>
@@ -5552,7 +5552,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given subscription with the given name.
+        /// This operation update a policy definition in the given subscription with the given name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policyDefinitionName">The name of the policy definition.</param>
@@ -9034,7 +9034,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given subscription with the given name.
+        /// This operation update a policy definition in the given subscription with the given name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policyDefinitionName">The name of the policy definition to create.</param>
@@ -9082,7 +9082,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given management group with the given name.
+        /// This operation update a policy definition in the given management group with the given name.
         /// </summary>
         /// <param name="managementGroupId">The ID of the management group.</param>
         /// <param name="policyDefinitionName">The name of the policy definition to create.</param>
@@ -9130,7 +9130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given management group with the given name.
+        /// This operation update a policy definition in the given management group with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy definition properties.</param>
@@ -9188,7 +9188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given management group with the given name.
+        /// This operation update a policy definition in the given management group with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy definition properties.</param>
@@ -9244,7 +9244,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given management group with the given name.
+        /// This operation update a policy definition in the given management group with the given name.
         /// </summary>
         /// <param name="managementGroupId">The ID of the management group.</param>
         /// <param name="policyDefinitionName">The name of the policy definition to create.</param>
@@ -9291,7 +9291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given management group with the given name.
+        /// This operation update a policy definition in the given management group with the given name.
         /// </summary>
         /// <param name="managementGroupId">The ID of the management group.</param>
         /// <param name="policyDefinitionName">The name of the policy definition to create.</param>
@@ -9336,7 +9336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given management group with the given name.
+        /// This operation update a policy definition in the given management group with the given name.
         /// </summary>
         /// <param name="managementGroupId">The ID of the management group.</param>
         /// <param name="policyDefinitionName">The name of the policy definition to create.</param>
@@ -9519,7 +9519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given subscription with the given name.
+        /// This operation update a policy definition in the given subscription with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy definition properties.</param>
@@ -9577,7 +9577,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given subscription with the given name.
+        /// This operation update a policy definition in the given subscription with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy definition properties.</param>
@@ -9633,7 +9633,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given subscription with the given name.
+        /// This operation update a policy definition in the given subscription with the given name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policyDefinitionName">The name of the policy definition to create.</param>
@@ -9680,7 +9680,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given subscription with the given name.
+        /// This operation update a policy definition in the given subscription with the given name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policyDefinitionName">The name of the policy definition to create.</param>
@@ -9725,7 +9725,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy definition in the given subscription with the given name.
+        /// This operation update a policy definition in the given subscription with the given name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policyDefinitionName">The name of the policy definition to create.</param>
@@ -12315,9 +12315,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy exemption with the given scope and name. Policy exemptions apply to all resources
-        /// contained within their scope. For example, when you create a policy exemption at resource group scope for a policy assignment
-        /// at the same or above level, the exemption exempts to all applicable resources in the resource group.
+        /// This operation update a policy exemption with the given scope and name. Policy exemptions apply to all resources contained
+        /// within their scope. For example, when you update a policy exemption at resource group scope for a policy assignment at
+        /// the same or above level, the exemption exempts to all applicable resources in the resource group.
         /// </summary>
         /// <param name="scope">The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
@@ -12368,9 +12368,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy exemption with the given scope and name. Policy exemptions apply to all resources
-        /// contained within their scope. For example, when you create a policy exemption at resource group scope for a policy assignment
-        /// at the same or above level, the exemption exempts to all applicable resources in the resource group.
+        /// This operation update a policy exemption with the given scope and name. Policy exemptions apply to all resources contained
+        /// within their scope. For example, when you update a policy exemption at resource group scope for a policy assignment at
+        /// the same or above level, the exemption exempts to all applicable resources in the resource group.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for the policy exemption.</param>
@@ -12429,9 +12429,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy exemption with the given scope and name. Policy exemptions apply to all resources
-        /// contained within their scope. For example, when you create a policy exemption at resource group scope for a policy assignment
-        /// at the same or above level, the exemption exempts to all applicable resources in the resource group.
+        /// This operation update a policy exemption with the given scope and name. Policy exemptions apply to all resources contained
+        /// within their scope. For example, when you update a policy exemption at resource group scope for a policy assignment at
+        /// the same or above level, the exemption exempts to all applicable resources in the resource group.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for the policy exemption.</param>
@@ -12487,9 +12487,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy exemption with the given scope and name. Policy exemptions apply to all resources
-        /// contained within their scope. For example, when you create a policy exemption at resource group scope for a policy assignment
-        /// at the same or above level, the exemption exempts to all applicable resources in the resource group.
+        /// This operation update a policy exemption with the given scope and name. Policy exemptions apply to all resources contained
+        /// within their scope. For example, when you update a policy exemption at resource group scope for a policy assignment at
+        /// the same or above level, the exemption exempts to all applicable resources in the resource group.
         /// </summary>
         /// <param name="scope">The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
@@ -12539,9 +12539,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy exemption with the given scope and name. Policy exemptions apply to all resources
-        /// contained within their scope. For example, when you create a policy exemption at resource group scope for a policy assignment
-        /// at the same or above level, the exemption exempts to all applicable resources in the resource group.
+        /// This operation update a policy exemption with the given scope and name. Policy exemptions apply to all resources contained
+        /// within their scope. For example, when you update a policy exemption at resource group scope for a policy assignment at
+        /// the same or above level, the exemption exempts to all applicable resources in the resource group.
         /// </summary>
         /// <param name="scope">The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
@@ -12588,9 +12588,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy exemption with the given scope and name. Policy exemptions apply to all resources
-        /// contained within their scope. For example, when you create a policy exemption at resource group scope for a policy assignment
-        /// at the same or above level, the exemption exempts to all applicable resources in the resource group.
+        /// This operation update a policy exemption with the given scope and name. Policy exemptions apply to all resources contained
+        /// within their scope. For example, when you update a policy exemption at resource group scope for a policy assignment at
+        /// the same or above level, the exemption exempts to all applicable resources in the resource group.
         /// </summary>
         /// <param name="scope">The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
@@ -14909,7 +14909,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
             }
         }
 
-        /// <summary>This operation updates a policy exemption with the given scope and name.</summary>
+        /// <summary>This operation update a policy exemption with the given scope and name.</summary>
         /// <param name="scope">The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
         /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'</param>
@@ -14957,7 +14957,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
             }
         }
 
-        /// <summary>This operation updates a policy exemption with the given scope and name.</summary>
+        /// <summary>This operation update a policy exemption with the given scope and name.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for policy exemption patch request.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -15013,7 +15013,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
             }
         }
 
-        /// <summary>This operation updates a policy exemption with the given scope and name.</summary>
+        /// <summary>This operation update a policy exemption with the given scope and name.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters for policy exemption patch request.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15067,7 +15067,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
             }
         }
 
-        /// <summary>This operation updates a policy exemption with the given scope and name.</summary>
+        /// <summary>This operation update a policy exemption with the given scope and name.</summary>
         /// <param name="scope">The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
         /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'</param>
@@ -15114,7 +15114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
             }
         }
 
-        /// <summary>This operation updates a policy exemption with the given scope and name.</summary>
+        /// <summary>This operation update a policy exemption with the given scope and name.</summary>
         /// <param name="scope">The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
         /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'</param>
@@ -15159,7 +15159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
             }
         }
 
-        /// <summary>This operation updates a policy exemption with the given scope and name.</summary>
+        /// <summary>This operation update a policy exemption with the given scope and name.</summary>
         /// <param name="scope">The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'),
         /// subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
         /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'</param>
@@ -15340,11 +15340,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition version in the given subscription with the given name and version.
+        /// This operation update a policy set definition version in the given subscription with the given name and version.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="body">The policy set definition properties.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -15393,12 +15393,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition version in the given management group with the given name and
-        /// version.
+        /// This operation update a policy set definition version in the given management group with the given name and version.
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="body">The policy set definition version properties.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -15447,8 +15446,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition version in the given management group with the given name and
-        /// version.
+        /// This operation update a policy set definition version in the given management group with the given name and version.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy set definition version properties.</param>
@@ -15510,8 +15508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition version in the given management group with the given name and
-        /// version.
+        /// This operation update a policy set definition version in the given management group with the given name and version.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy set definition version properties.</param>
@@ -15570,12 +15567,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition version in the given management group with the given name and
-        /// version.
+        /// This operation update a policy set definition version in the given management group with the given name and version.
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="jsonString">Json string supplied to the PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroup operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -15623,12 +15619,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition version in the given management group with the given name and
-        /// version.
+        /// This operation update a policy set definition version in the given management group with the given name and version.
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="jsonString">Json string supplied to the PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroup operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15673,12 +15668,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition version in the given management group with the given name and
-        /// version.
+        /// This operation update a policy set definition version in the given management group with the given name and version.
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="body">The policy set definition version properties.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15856,7 +15850,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="body">The policy set definition version properties.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -15880,7 +15874,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition version in the given subscription with the given name and version.
+        /// This operation update a policy set definition version in the given subscription with the given name and version.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy set definition properties.</param>
@@ -15942,7 +15936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition version in the given subscription with the given name and version.
+        /// This operation update a policy set definition version in the given subscription with the given name and version.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy set definition properties.</param>
@@ -16001,11 +15995,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition version in the given subscription with the given name and version.
+        /// This operation update a policy set definition version in the given subscription with the given name and version.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="jsonString">Json string supplied to the PolicySetDefinitionVersionsCreateOrUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -16053,11 +16047,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition version in the given subscription with the given name and version.
+        /// This operation update a policy set definition version in the given subscription with the given name and version.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="jsonString">Json string supplied to the PolicySetDefinitionVersionsCreateOrUpdate operation</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16102,11 +16096,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition version in the given subscription with the given name and version.
+        /// This operation update a policy set definition version in the given subscription with the given name and version.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="body">The policy set definition properties.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16284,7 +16278,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="body">The policy set definition properties.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16311,7 +16305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -16358,7 +16352,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -16521,7 +16515,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -16660,7 +16654,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -16684,7 +16678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -16730,7 +16724,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -16884,7 +16878,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -17043,7 +17037,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="managementGroupName">The name of the management group. The name is case insensitive.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -17067,7 +17061,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the built-in policy set definition version with the given name and version.
         /// </summary>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -17212,7 +17206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// This operation retrieves the built-in policy set definition version with the given name and version.
         /// </summary>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -17368,7 +17362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// you will get validation events back.
         /// </summary>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -17498,7 +17492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -17655,7 +17649,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition.</param>
-        /// <param name="policyDefinitionVersion">The policy definition version. The format is x.y.z where x is the major version
+        /// <param name="policyDefinitionVersion">The policy set definition version. The format is x.y.z where x is the major version
         /// number, y is the minor version number, and z is the patch number</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -19586,7 +19580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition in the given subscription with the given name.
+        /// This operation update a policy set definition in the given subscription with the given name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to create.</param>
@@ -19635,7 +19629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition in the given management group with the given name.
+        /// This operation update a policy set definition in the given management group with the given name.
         /// </summary>
         /// <param name="managementGroupId">The ID of the management group.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to create.</param>
@@ -19684,7 +19678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition in the given management group with the given name.
+        /// This operation update a policy set definition in the given management group with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy set definition properties.</param>
@@ -19743,7 +19737,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition in the given management group with the given name.
+        /// This operation update a policy set definition in the given management group with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy set definition properties.</param>
@@ -19799,7 +19793,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition in the given management group with the given name.
+        /// This operation update a policy set definition in the given management group with the given name.
         /// </summary>
         /// <param name="managementGroupId">The ID of the management group.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to create.</param>
@@ -19847,7 +19841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition in the given management group with the given name.
+        /// This operation update a policy set definition in the given management group with the given name.
         /// </summary>
         /// <param name="managementGroupId">The ID of the management group.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to create.</param>
@@ -19892,7 +19886,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition in the given management group with the given name.
+        /// This operation update a policy set definition in the given management group with the given name.
         /// </summary>
         /// <param name="managementGroupId">The ID of the management group.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to create.</param>
@@ -20088,7 +20082,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition in the given subscription with the given name.
+        /// This operation update a policy set definition in the given subscription with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy set definition properties.</param>
@@ -20147,7 +20141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition in the given subscription with the given name.
+        /// This operation update a policy set definition in the given subscription with the given name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The policy set definition properties.</param>
@@ -20203,7 +20197,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition in the given subscription with the given name.
+        /// This operation update a policy set definition in the given subscription with the given name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to create.</param>
@@ -20251,7 +20245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition in the given subscription with the given name.
+        /// This operation update a policy set definition in the given subscription with the given name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to create.</param>
@@ -20296,7 +20290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy
         }
 
         /// <summary>
-        /// This operation creates or updates a policy set definition in the given subscription with the given name.
+        /// This operation update a policy set definition in the given subscription with the given name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="policySetDefinitionName">The name of the policy set definition to create.</param>

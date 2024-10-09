@@ -16,6 +16,108 @@
 .SYNOPSIS
 Test New-AzMaintenanceConfiguration, Get-AzMaintenanceConfiguration, Remove-AzMaintenanceConfiguration
 #>
+function Test-GetAzMaintenanceConfiguration
+{
+    $resourceGroups = @()
+    $maintenanceConfigurations = @()
+    $numConfigsToTest = 2
+    $maintenanceConfigurationName = Get-RandomMaintenanceConfigurationName
+    $location = "eastus2euap"
+    $maintenanceScope = "Host"
+    $visibility = "Custom"
+    $startDateTime = "2024-08-05 12:30"
+    $timezone = "Pacific Standard Time"
+    $recurEvery = "Day"
+    $duration = "05:00"
+    $expirationDateTime = "9999-12-31 23:59"
+    
+    try
+    {
+
+        # Create and validate maintenance configurations in a loop
+        for ($i = 1; $i -le $numConfigsToTest; $i++) {
+            $resourceGroupName = Get-RandomResourceGroupName
+            $resourceGroups += $resourceGroupName
+
+            # Create Resource Group
+            New-AzResourceGroup -Name $resourceGroupName -Location $location
+            Write-Host "Created Resource Group $resourceGroupName in $location"
+
+            # Create Maintenance Configuration
+            $maintenanceConfiguration = New-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -MaintenanceScope $maintenanceScope -Location $location -Visibility $visibility -StartDateTime $startDateTime -Timezone $timezone -RecurEvery $recurEvery -Duration $duration -ExpirationDateTime $expirationDateTime
+            Write-Host "Created Maintenance Configuration $maintenanceConfigurationName in $resourceGroupName"
+
+            # Store the configuration for further validation
+            $maintenanceConfigurations += $maintenanceConfiguration
+
+            # Validate Maintenance Configuration
+            Assert-AreEqual $maintenanceConfiguration.Name $maintenanceConfigurationName
+            Assert-AreEqual $maintenanceConfiguration.Location $location
+            Assert-AreEqual $maintenanceConfiguration.MaintenanceScope $maintenanceScope
+            Assert-AreEqual $maintenanceConfiguration.Visibility $visibility
+            Assert-AreEqual $maintenanceConfiguration.StartDateTime $startDateTime
+            Assert-AreEqual $maintenanceConfiguration.Timezone $timezone
+            Assert-AreEqual $maintenanceConfiguration.RecurEvery $recurEvery
+            Assert-AreEqual $maintenanceConfiguration.Duration $duration
+            Assert-AreEqual $maintenanceConfiguration.ExpirationDateTime $expirationDateTime
+
+            # Retrieve and Validate Maintenance Configuration with ResourceGroupName
+            $retrievedMaintenanceConfiguration = Get-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName
+            Assert-AreEqual $retrievedMaintenanceConfiguration.Name $maintenanceConfigurationName
+            Assert-AreEqual $retrievedMaintenanceConfiguration.Location $location
+            Assert-AreEqual $retrievedMaintenanceConfiguration.MaintenanceScope $maintenanceScope
+            Assert-AreEqual $retrievedMaintenanceConfiguration.Visibility $visibility
+            Assert-AreEqual $retrievedMaintenanceConfiguration.StartDateTime $startDateTime
+            Assert-AreEqual $retrievedMaintenanceConfiguration.Timezone $timezone
+            Assert-AreEqual $retrievedMaintenanceConfiguration.RecurEvery $recurEvery
+            Assert-AreEqual $retrievedMaintenanceConfiguration.Duration $duration
+            Assert-AreEqual $retrievedMaintenanceConfiguration.ExpirationDateTime $expirationDateTime
+        }
+
+        # Retrieve Maintenance Configurations without ResourceGroupName and validate it returns a list
+        $retrievedConfigurations = Get-AzMaintenanceConfiguration -Name $maintenanceConfigurationName
+
+        # Validate that the returned object is a list containing two objects
+        if ($retrievedConfigurations.Count -ne $numConfigsToTest) {
+            throw "Expected $numConfigsToTest maintenance configurations, but found $($retrievedConfigurations.Count)."
+        } else {
+            Write-Host "Retrieved $($retrievedConfigurations.Count) maintenance configurations."
+        }
+
+        # Update the configurations & Testing 2 sifferent input styles
+        for ($i = 0; $i -lt $retrievedConfigurations.Count; $i++) {
+            try {
+                Update-AzMaintenanceConfiguration -ResourceGroupName $resourceGroups[$i] -Name $maintenanceConfigurationName -Configuration $retrievedConfigurations[$i]
+                $retrievedConfigurations[$i] | Update-AzMaintenanceConfiguration -ResourceGroupName $resourceGroups[$i] -Name $maintenanceConfigurationName
+            }
+            catch {
+                throw "Caught Exception while updating maintenance configuration in $resourceGroups[$i]."
+            }
+        }
+
+    }
+    finally
+    {
+        # Cleanup in a loop
+        foreach ($resourceGroupName in $resourceGroups) {
+            try {
+                Remove-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -Force
+                Remove-AzResourceGroup -Name $resourceGroupName -Force
+                Write-Host "Cleaned up Resource Group $resourceGroupName and Maintenance Configuration $maintenanceConfigurationName"
+            }
+            catch {
+                throw "Caught Exception while deleting resourceGroup in $resourceGroupName."
+            }
+            
+        }
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test New-AzMaintenanceConfiguration, Get-AzMaintenanceConfiguration, Remove-AzMaintenanceConfiguration
+#>
 function Test-AzMaintenanceConfiguration
 {
     $resourceGroupName = Get-RandomResourceGroupName
@@ -172,6 +274,7 @@ function Test-AzMaintenanceConfigurationInGuestPatch
         $maintenanceConfigurationNameInstance = $allMaintenanceConfigInSubscription | ?{ $_.Name -eq $maintenanceConfigurationName}
 
         $maintenanceConfigurationNameInstance.LinuxParameterPackageNameMaskToInclude.Add("package3")
+        $maintenanceConfigurationNameInstance.InstallPatchRebootSetting = "AlwaysReboot"
 
         # Act
         Update-AzMaintenanceConfiguration -ResourceGroupName $resourceGroupName -Name $maintenanceConfigurationName -Configuration  $maintenanceConfigurationNameInstance
@@ -182,6 +285,7 @@ function Test-AzMaintenanceConfigurationInGuestPatch
         Assert-True { $updatedMRPConfig.LinuxParameterPackageNameMaskToInclude.Contains("apt") }
         Assert-True { $updatedMRPConfig.LinuxParameterPackageNameMaskToInclude.Contains("httpd") }
         Assert-True { $updatedMRPConfig.LinuxParameterPackageNameMaskToInclude.Contains("package3") }
+        Assert-AreEqual $updatedMRPConfig.InstallPatchRebootSetting "AlwaysReboot"
 
         # Default patch config
         $maintenanceConfigurationName2 = Get-RandomMaintenanceConfigurationName

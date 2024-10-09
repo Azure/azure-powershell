@@ -109,6 +109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).PolicyDefinitionId = (string) content.GetValueForProperty("PolicyDefinitionId",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).PolicyDefinitionId, global::System.Convert.ToString);
             }
+            if (content.Contains("DefinitionVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).DefinitionVersion = (string) content.GetValueForProperty("DefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).DefinitionVersion, global::System.Convert.ToString);
+            }
             if (content.Contains("Scope"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).Scope, global::System.Convert.ToString);
@@ -169,6 +173,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
             if (content.Contains("PolicyDefinitionId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).PolicyDefinitionId = (string) content.GetValueForProperty("PolicyDefinitionId",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).PolicyDefinitionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DefinitionVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).DefinitionVersion = (string) content.GetValueForProperty("DefinitionVersion",((Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignmentPropertiesInternal)this).DefinitionVersion, global::System.Convert.ToString);
             }
             if (content.Contains("Scope"))
             {
