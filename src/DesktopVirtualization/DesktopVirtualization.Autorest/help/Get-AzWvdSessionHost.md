@@ -15,7 +15,8 @@ Get a session host.
 ### List (Default)
 ```
 Get-AzWvdSessionHost -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-VMPath <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -35,7 +36,7 @@ Get a session host.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop SessionHost by name
+### Example 1: Get a Azure Virtual Desktop SessionHost by name
 ```powershell
 Get-AzWvdSessionHost -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -Name SessionHostName
 ```
@@ -46,9 +47,9 @@ Name                                               Type
 HostPoolName/SessionHostName Microsoft.DesktopVirtualization/hostpools/sessionhosts
 ```
 
-This command gets a Windows Virtual Desktop SessionHost in a Host Pool.
+This command gets a Azure Virtual Desktop SessionHost in a Host Pool.
 
-### Example 2: List Windows Virtual Desktop SessionHosts
+### Example 2: List Azure Virtual Desktop SessionHosts
 ```powershell
 Get-AzWvdSessionHost -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
@@ -60,7 +61,7 @@ HostPoolName/SessionHostName1 Microsoft.DesktopVirtualization/hostpools/sessionh
 HostPoolName/SessionHostName2 Microsoft.DesktopVirtualization/hostpools/sessionhosts
 ```
 
-This command lists a Windows Virtual Desktop SessionHosts in a Host Pool.
+This command lists a Azure Virtual Desktop SessionHosts in a Host Pool.
 
 ## PARAMETERS
 
@@ -189,6 +190,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -202,6 +204,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VMPath
+The path to the VM.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -211,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.ISessionHost
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.ISessionHost
 
 ## NOTES
 

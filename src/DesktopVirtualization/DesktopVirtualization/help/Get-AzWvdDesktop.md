@@ -16,20 +16,20 @@ Get a desktop.
 ```
 Get-AzWvdDesktop -ApplicationGroupName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-InitialSkip <Int32>] [-IsDescending] [-PageSize <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWvdDesktop -ApplicationGroupName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzWvdDesktop -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ Get a desktop.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop Desktop by name
+### Example 1: Get a Azure Virtual Desktop Desktop by name
 ```powershell
 Get-AzWvdDesktop -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName -Name DesktopName
 ```
@@ -48,9 +48,9 @@ Name                             Type
 ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops
 ```
 
-This command gets a Windows Virtual Desktop Desktop in an application Group.
+This command gets a Azure Virtual Desktop Desktop in an application Group.
 
-### Example 2: List Windows Virtual Desktop Desktops
+### Example 2: List Azure Virtual Desktop Desktops
 ```powershell
 Get-AzWvdDesktop -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName
 ```
@@ -61,7 +61,7 @@ Name                             Type
 ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops
 ```
 
-This command lists Windows Virtual Desktop Desktops in an application Group.
+This command lists Azure Virtual Desktop Desktops in an application Group.
 
 ## PARAMETERS
 
@@ -172,6 +172,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -190,6 +205,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -212,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IDesktop
 
 ## NOTES
 

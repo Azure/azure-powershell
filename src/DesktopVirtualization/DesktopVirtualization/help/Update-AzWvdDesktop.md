@@ -16,13 +16,13 @@ Update a desktop.
 ```
 Update-AzWvdDesktop -ApplicationGroupName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Description <String>] [-FriendlyName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzWvdDesktop -InputObject <IDesktopVirtualizationIdentity> [-Description <String>]
- [-FriendlyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-FriendlyName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Update a desktop.
 
 ## EXAMPLES
 
-### Example 1: Update a Windows Virtual Desktop Desktop
+### Example 1: Update a Azure Virtual Desktop Desktop
 ```powershell
 Update-AzWvdDesktop -ResourceGroupName ResourceGroupName `
                     -ApplicationGroupName ApplicationGroupName `
@@ -46,7 +46,7 @@ Name                             Type
 ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops
 ```
 
-This command updates a Windows Virtual Desktop Desktop in an applicaton Group.
+This command updates a Azure Virtual Desktop Desktop in an applicaton Group.
 
 ## PARAMETERS
 
@@ -142,6 +142,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -160,6 +175,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -228,7 +244,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IDesktop
 
 ## NOTES
 

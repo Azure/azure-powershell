@@ -30,12 +30,12 @@ Disconnect a userSession.
 
 ## EXAMPLES
 
-### Example 1: Disconnect a Windows Virtual Desktop UserSession by name
+### Example 1: Disconnect a Azure Virtual Desktop UserSession by name
 ```powershell
 Disconnect-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -SessionHostName SessionHostName -Id 2
 ```
 
-This command disconnects a Windows Virtual Desktop UserSession in a Session Host.
+This command disconnects a Azure Virtual Desktop UserSession in a Session Host.
 
 ## PARAMETERS
 
@@ -149,6 +149,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
