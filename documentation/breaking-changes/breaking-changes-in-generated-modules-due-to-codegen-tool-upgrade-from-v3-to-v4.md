@@ -17,7 +17,7 @@ We now generate collection-like properties as [`List`](https://learn.microsoft.c
 
 ## Use Primitive Types for Enum Instead of Struct
 
-We used to generate a struct for [enum](Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue) to support tab completer for parameters. This design has been abondoned.
+We used to generate a struct for [enum](https://github.com/Azure/autorest/blob/main/docs/extensions/readme.md#x-ms-enum) to support tab completer for parameters. This design has been abandoned due to its limitation of only supporting enums with string type.
 
 ### How to Mitigate the Impact of Breaking Changes
 
@@ -35,7 +35,7 @@ Discontinue using the `PassThru` parameter for these cmdlets. Be careful that by
 
 ### Removal of Readonly Parameters
 
-In AutoRest.PowerShell v3, Readonly parameters were incorrectly generated for some cmdlets.
+If a property is marked `"x-ms-mutability": ["read"]` in the OpenAPI spec, it means it should only appear in the output but never as an input parameter. However, in AutoRest.PowerShell v3, such kind of readonly parameters were incorrectly generated for cmdlets.
 
 #### How to Mitigate the Impact of Breaking Changes
 
