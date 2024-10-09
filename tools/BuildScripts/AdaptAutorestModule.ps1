@@ -206,11 +206,11 @@ try{
         Get-ChildItem $subModuleHelpPath -Filter *-*.md | Copy-Item -Destination (Join-Path $helpPath $_.Name) -Force
         Write-Host "Refreshing help markdown files under: $helpPath ..."
         Update-MarkdownHelpModule -Path $helpPath -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
-        foreach ($helpFile in (Get-ChildItem $helpPath -Recurse)) {
+        foreach ($helpFile in (Get-ChildItem $helpPath -Filter "*-*.md" -Recurse)) {
             $cmdeltName = $helpFile.Name.Replace(".md", "")
             if ($exportedCommands -notcontains $cmdeltName)
             {
-                Write-Host "Redundant help markdown detected, removing $helpFile.FullName ..."
+                Write-Host "Redundant help markdown detected, removing $helpFile ..."
                 Remove-Item $helpFile.FullName -Force
             }
         }
