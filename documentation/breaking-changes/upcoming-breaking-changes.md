@@ -27,7 +27,7 @@
 
 # Upcoming Breaking Changes
 
-    ## Release 13.0.0 - November 2024
+    ## Release Az 13.0.0 - November 2024
 
     The following cmdlets were affected this release:
 
