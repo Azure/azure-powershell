@@ -103,4 +103,10 @@ directive:
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
+  - where:
+      verb: (.*)
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/upcoming-breaking-changes.md)
+        estimated-ga-date: 2024-11-30
 ```
