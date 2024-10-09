@@ -40,10 +40,6 @@
 * Modified cmdlet `Set-AzNetworkWatcherFlowLog`
    - Added parameters `-EnabledFilteringCriteria`, `-UserAssignedIdentityId`
 * Added cmdlet `Get-AzBastionShareableLink`, `New-AzBastionShareableLink`, `Remove-AzBastionShareableLink`
-#### Az.RedisEnterpriseCache 1.3.0 
-* Modified cmdlet `Update-AzRedisEnterpriseCache`
-   - Added parameter `-HighAvailability`
-* Added cmdlet `Get-AzRedisEnterpriseCacheAccessPolicyAssignment`, `Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup`, `New-AzRedisEnterpriseCacheAccessPolicyAssignment`, `Remove-AzRedisEnterpriseCacheAccessPolicyAssignment`, `Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion`
 #### Az.Resources 7.5.0 
 * Modified cmdlet `New-AzPolicyAssignment`
    - Added parameters `-Override`, `-ResourceSelector`
