@@ -660,9 +660,9 @@ end {
 
 <#
 .Synopsis
-Create a data collection endpoint.
+create a data collection endpoint.
 .Description
-Create a data collection endpoint.
+create a data collection endpoint.
 .Example
 New-AzDataCollectionEndpoint -Name myCollectionEndpoint -ResourceGroupName AMCS-TEST -Location eastus -NetworkAclsPublicNetworkAccess Enabled
 .Example
@@ -916,9 +916,9 @@ end {
 
 <#
 .Synopsis
-Create an association.
+create an association.
 .Description
-Create an association.
+create an association.
 .Example
 New-AzDataCollectionRuleAssociation -AssociationName myCollectionRule2-association1 -ResourceUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/amcs-test/providers/microsoft.compute/virtualmachines/monitortestvm01 -DataCollectionRuleId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionRules/myCollectionRule2
 .Example
@@ -1110,9 +1110,9 @@ end {
 
 <#
 .Synopsis
-Create a data collection rule.
+create a data collection rule.
 .Description
-Create a data collection rule.
+create a data collection rule.
 .Example
 New-AzDataCollectionRule -Name myCollectionRule1 -ResourceGroupName AMCS-TEST -JsonFilePath .\test\jsonfile\ruleTest1.json
 # Note: content of .\test\jsonfile\ruleTest1.json
@@ -2249,9 +2249,9 @@ end {
 
 <#
 .Synopsis
-Update part of a data collection endpoint.
+update part of a data collection endpoint.
 .Description
-Update part of a data collection endpoint.
+update part of a data collection endpoint.
 .Example
 Update-AzDataCollectionEndpoint -Name myCollectionEndpoint -ResourceGroupName AMCS-TEST -Tag @{"123"="abc"}
 
@@ -2469,9 +2469,9 @@ end {
 
 <#
 .Synopsis
-Update an association.
+update an association.
 .Description
-Update an association.
+update an association.
 .Example
 Update-AzDataCollectionRuleAssociation -AssociationName configurationAccessEndpoint -DataCollectionEndpointId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionEndpoints/myCollectionEndpoint -ResourceUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/amcs-test/providers/Microsoft.Compute/virtualMachines/MonitorTestVM01 -Description "monitor test VM endpoint association"
 .Example
