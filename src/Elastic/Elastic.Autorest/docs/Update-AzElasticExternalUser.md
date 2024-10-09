@@ -45,7 +45,6 @@ Create User inside elastic deployment which are used by customers to perform ope
 
 ### Example 1: Create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 ```powershell
-PS C:\> {{ Add code here }}
 Update-AzElasticExternalUser -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
 

@@ -1,6 +1,6 @@
 ### Example 1: Get a list of available versions for a region.
 ```powershell
-Get -AzElasticVersion -Region westus2
+Get-AzElasticVersion -Region westus2
 ```
 
 ```output
