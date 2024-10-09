@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Communication", "..\..\g
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailService", "..\..\generated\Communication\EmailService.Autorest\Az.EmailService.csproj", "{25CACD1C-C4B0-47F7-B5D4-F98038525D3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailServicedata", "..\..\generated\Communication\EmailServicedata.Autorest\Az.EmailServicedata.csproj", "{929C1A75-BA49-4C8E-8198-8D1184CD137C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailServicedata", "..\..\generated\EmailServicedata.Autorest\Az.EmailServicedata.csproj", "{672D3EFD-7A0D-4EE1-8124-DCD7C43E26AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,10 +70,10 @@ Global
 		{25CACD1C-C4B0-47F7-B5D4-F98038525D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25CACD1C-C4B0-47F7-B5D4-F98038525D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25CACD1C-C4B0-47F7-B5D4-F98038525D3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{929C1A75-BA49-4C8E-8198-8D1184CD137C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{929C1A75-BA49-4C8E-8198-8D1184CD137C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{929C1A75-BA49-4C8E-8198-8D1184CD137C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{929C1A75-BA49-4C8E-8198-8D1184CD137C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672D3EFD-7A0D-4EE1-8124-DCD7C43E26AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672D3EFD-7A0D-4EE1-8124-DCD7C43E26AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672D3EFD-7A0D-4EE1-8124-DCD7C43E26AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672D3EFD-7A0D-4EE1-8124-DCD7C43E26AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BDECA744-485E-4FBF-BDBC-D58635179F45} = {8C6025CF-0F63-49CE-8FBE-8275AFC0AD14}
