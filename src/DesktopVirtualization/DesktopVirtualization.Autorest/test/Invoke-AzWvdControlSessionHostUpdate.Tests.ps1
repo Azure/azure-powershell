@@ -21,8 +21,7 @@ Describe 'Invoke-AzWvdControlSessionHostUpdate' {
         -UpdateDeleteOriginalVM `
         -UpdateLogOffDelayMinute 0 `
         -UpdateLogOffMessage 'Updating Session Hosts. Will Log off' `
-        -UpdateMaxVmsRemoved 1 `
-        -NoWait
+        -UpdateMaxVmsRemoved 1
 
         Invoke-AzWvdControlSessionHostUpdate -HostPoolName $env.AutomatedHostpoolPersistent -ResourceGroupName $env.ResourceGroupPersistent `
         -SubscriptionId $env.subscriptionId `

@@ -1,6 +1,6 @@
 {
   "resourceType": "hostPools",
-  "apiVersion": "2024-01-16-preview",
+  "apiVersion": "2024-04-08-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization"
   },
@@ -159,7 +159,7 @@
     },
     {
       "name": "Get-AzWvdHostPoolRegistrationToken",
-      "description": "Registration token of the host pool.",
+      "description": "Operation to list the RegistrationTokens associated with the HostPool.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/retrieveRegistrationToken",
       "help": {
         "learnMore": {
@@ -254,6 +254,44 @@
       "examples": [
         {
           "description": "Get a SessionHostConfiguration.",
+          "parameters": [
+            {
+              "name": "-HostPoolName",
+              "value": "[Path.hostPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzWvdSessionHostManagementsUpdateStatus",
+      "description": "Get the session host update status for a given hostpool.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/sessionHostManagements/default/sessionHostUpdateStatuses/default",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdsessionhostmanagementsupdatestatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-HostPoolName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the session host update status for a given hostpool.",
           "parameters": [
             {
               "name": "-HostPoolName",

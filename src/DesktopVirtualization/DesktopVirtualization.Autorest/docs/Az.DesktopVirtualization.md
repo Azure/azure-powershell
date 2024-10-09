@@ -36,7 +36,7 @@ Get a desktop.
 Get a host pool.
 
 ### [Get-AzWvdHostPoolRegistrationToken](Get-AzWvdHostPoolRegistrationToken.md)
-Registration token of the host pool.
+Operation to list the RegistrationTokens associated with the HostPool.
 
 ### [Get-AzWvdMsixPackage](Get-AzWvdMsixPackage.md)
 Get a msixpackage.
@@ -65,14 +65,11 @@ Get a session host.
 ### [Get-AzWvdSessionHostConfiguration](Get-AzWvdSessionHostConfiguration.md)
 Get a SessionHostConfiguration.
 
-### [Get-AzWvdSessionHostConfigurationsOperationStatus](Get-AzWvdSessionHostConfigurationsOperationStatus.md)
-Get Operation status for SessionHostManagement
-
 ### [Get-AzWvdSessionHostManagement](Get-AzWvdSessionHostManagement.md)
 Get a SessionHostManagement.
 
-### [Get-AzWvdSessionHostManagementsOperationStatus](Get-AzWvdSessionHostManagementsOperationStatus.md)
-Get Operation status for SessionHostManagement
+### [Get-AzWvdSessionHostManagementsUpdateStatus](Get-AzWvdSessionHostManagementsUpdateStatus.md)
+Get the session host update status for a given hostpool.
 
 ### [Get-AzWvdStartMenuItem](Get-AzWvdStartMenuItem.md)
 List start menu items in the given application group.

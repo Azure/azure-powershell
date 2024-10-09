@@ -52,10 +52,11 @@ function setupEnv() {
     $null = $env.Add("AutomatedHostpoolPersistent", "alecbhpuHP")
     $null = $env.Add("HostPoolPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroupPersistent + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPoolPersistent)
     $null = $env.Add("SessionHostName", "userSess-sh-0")
-    $null = $env.Add("SessionHostNameRemove", "Delete4Test-1")
+    $null = $env.Add("SessionHostNameRemove", "Delete4Test-0")
     $null = $env.Add("PersistentDesktopAppGroup", "alecbUserSessionHP-DAG")
     $null = $env.Add("PersistentRemoteAppGroup", "alecbRemoteAppHP-RAG")
     $null = $env.Add("VnetName", "alecbUserSession-vnet")
+    $null = $env.Add("SHMHostPoolPersistent", "poshSHMHP")
     # The context in which the tests are run will change the tenant and subscription ID when -record is run. 
     # Currently the scaling tests need to be run in a context with @microsoft, while the other tests are run with a test account
     # Modify the env.json manually after recording the necessary tests to get around this issue.
@@ -151,9 +152,11 @@ function setupEnv() {
         Write-Host -ForegroundColor Red 'Failed to create Private Link Workspace resources required for testing...'
         Write-Host -ForegroundColor Red $_.Exception.Message
     }
+
     #Grab latest Marketplace images
     $imageList = Get-AzVMImage -Location $env.Location -PublisherName "microsoftwindowsdesktop" -Offer "office-365" -Sku "win11-23h2-avd-m365" | Select Version
     $env.Add("MarketplaceImageVersion", $imageList[0].Version)
+    Write-Host -ForegroundColor Green 'Marketplace image version: ' $env.MarketplaceImageVersion
     #Wrap up and create JSON file for tests to use
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -192,4 +195,3 @@ function cleanupEnv() {
                              -Name $PrivateEndpointNameHP1 `
                              -Force
 }
-
