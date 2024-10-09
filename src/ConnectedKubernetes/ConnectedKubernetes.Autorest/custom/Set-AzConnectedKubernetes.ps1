@@ -713,7 +713,7 @@ function Set-AzConnectedKubernetes {
 
             $optionsFromDp = ""
             foreach ($field in $helmValuesContent.PSObject.Properties) {
-                if($field.Value.StartsWith($ProtectedSettingsPlaceholderValue)){
+                if ($field.Value.StartsWith($ProtectedSettingsPlaceholderValue)){
                     $parsedValue = $field.Value.Split(":")
                     # "${ProtectedSettingsPlaceholderValue}:${feature}:${setting}"
                     $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
