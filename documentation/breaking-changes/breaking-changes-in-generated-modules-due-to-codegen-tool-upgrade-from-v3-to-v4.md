@@ -4,11 +4,11 @@ We are moving forward with using the new version of the code generation tool, Au
 
 Below, we list the potential breaking changes from the perspective of users that may occur when upgrading the code generation tool for Azure PowerShell modules.
 
-**Note: The breaking changes listed below may not apply universally to all generated modules. The occurrence of these breaking changes also depends on the specific configurations used when generating Azure PowerShell modules with AutoRest.PowerShell v4. For detailed information on which breaking changes may occur, please refer to the [breaking change list](https://learn.microsoft.com/en-us/powershell/azure/upcoming-breaking-changes) for the specific module.**
+**Note: The breaking changes listed below may not apply universally to all generated modules. The occurrence of these breaking changes also depends on the specific configurations used when generating Azure PowerShell modules with AutoRest.PowerShell v4. For detailed information on which breaking changes may occur, please refer to the [breaking change list](https://learn.microsoft.com/powershell/azure/upcoming-breaking-changes) for the specific module.**
 
 ## List Replaces Array in Generated C# Classes
 
-We use `List` to replace `Array` mainly because `List` is a dynamic array that allows adding new elements using the Add method.
+We now generate collection-like properties as [`List`](https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1) instead of [`Array`](https://learn.microsoft.com/en-us/dotnet/api/system.array) in the models. This is because `List` is dynamic that it allows appending/deleting elements, while `Array` is fixed-size hence difficult to edit.
 
 ### How to Mitigate the Impact of Breaking Changes
 
@@ -27,11 +27,11 @@ Generally, this change will not cause a breaking change for users. In modules ge
 
 ### Removal of PassThru for Certain Cmdlets
 
-In AutoRest.PowerShell v3, `PassThru` parameters were incorrectly generated for some cmdlets.
+`-PassThru` is a switch parameter that we add to cmdlets that don't have outputs to enable the pipline functionality. In AutoRest.PowerShell v3, `-PassThru` was incorrectly added to some cmdlets that do have outputs. This is fixed in v4 and those extra `-PassThru` parameters are removed.
 
 #### How to Mitigate the Impact of Breaking Changes
 
-Discontinue using the `PassThru` parameter for these cmdlets.
+Discontinue using the `PassThru` parameter for these cmdlets. Be careful that by doing so the output may change.
 
 ### Removal of Readonly Parameters
 
@@ -39,4 +39,4 @@ In AutoRest.PowerShell v3, Readonly parameters were incorrectly generated for so
 
 #### How to Mitigate the Impact of Breaking Changes
 
-Discontinue using these Readonly parameters, as they are ignored by the service.
+It's safe to simply remove these Readonly parameters, as they are ignored by the service.
