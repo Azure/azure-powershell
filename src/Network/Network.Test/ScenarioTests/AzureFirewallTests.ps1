@@ -2312,3 +2312,66 @@ function Test-InvokeAzureAllocateByopipHubFirewall {
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests Azure Firewall Autoscale Configuration feature
+#>
+function Test-AzureFirewallAutoscaleConfiguration {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+
+    $expectedMinCapacity = 3
+    $expectedMaxCapacity = 5
+    $expectedUpdatedMinCapacity = 4
+    $expectedUpdatedMaxCapacity = 4
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create public ip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -MinCapacity $expectedMinCapacity -MaxCapacity $expectedMaxCapacity
+
+        # Verify
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqual $getAzureFirewall.AutoscaleConfiguration.MinCapacity $expectedMinCapacity
+        Assert-AreEqual $getAzureFirewall.AutoscaleConfiguration.MaxCapacity $expectedMaxCapacity
+
+        # Update Scale
+        $azureFirewall.AutoscaleConfiguration.MinCapacity = $expectedUpdatedMinCapacity
+        $azureFirewall.AutoscaleConfiguration.MaxCapacity = $expectedUpdatedMaxCapacity
+        Set-AzFirewall -AzureFirewall $azureFirewall
+
+        # Verify
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqual $getAzureFirewall.AutoscaleConfiguration.MinCapacity $expectedUpdatedMinCapacity
+        Assert-AreEqual $getAzureFirewall.AutoscaleConfiguration.MaxCapacity $expectedUpdatedMaxCapacity
+
+        # Reset
+        $azureFirewall.AutoscaleConfiguration.MinCapacity = $null
+        $azureFirewall.AutoscaleConfiguration.MaxCapacity = $null
+        Set-AzFirewall -AzureFirewall $azureFirewall
+
+        # Verify
+        $getAzureFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-Null $getAzureFirewall.AutoscaleConfiguration
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

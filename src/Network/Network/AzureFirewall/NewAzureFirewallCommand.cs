@@ -230,6 +230,16 @@ namespace Microsoft.Azure.Commands.Network
         HelpMessage = "The Route Server Id for the firewall")]
         public string RouteServerId { get; set; }
 
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "The minimum number of capacity units for this azure firewall")]
+        public int? MinCapacity { get; set; }
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "The maximum number of capacity units for this azure firewall")]
+        public int? MaxCapacity { get; set; }
+
         public override void Execute()
         {
             // Old params provided - Get the virtual network, get the public IP address
@@ -371,6 +381,19 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 firewall.ValidateDNSProxyRequirements();
             }
+
+            PSAzureFirewallAutoscaleConfiguration autoscaleConfiguration = new PSAzureFirewallAutoscaleConfiguration();
+
+            if (this.MinCapacity.HasValue)
+            {
+                autoscaleConfiguration.MinCapacity = this.MinCapacity.Value;
+            }
+            if (this.MaxCapacity.HasValue)
+            {
+                autoscaleConfiguration.MaxCapacity = this.MaxCapacity.Value;
+            }
+
+            firewall.AutoscaleConfiguration = autoscaleConfiguration;
 
             // Map to the sdk object
             var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(firewall);
