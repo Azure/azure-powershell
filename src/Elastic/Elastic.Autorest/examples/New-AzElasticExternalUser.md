@@ -1,22 +1,5 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 ```powershell
-{{ Add code here }}
+New-AzElasticExternalUser -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command Creates an User inside elastic deployment which are used by customers to perform operations on the elastic deployment

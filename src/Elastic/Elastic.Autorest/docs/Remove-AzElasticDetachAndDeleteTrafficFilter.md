@@ -30,27 +30,12 @@ Detach and Delete traffic filter from the given deployment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Detach and Delete traffic filter from the given deployment.
 ```powershell
-{{ Add code here }}
+Remove-AzElasticDetachAndDeleteTrafficFilter -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command will detach and delete the traffic filter.
 
 ## PARAMETERS
 

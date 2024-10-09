@@ -22,27 +22,18 @@ List of all active deployments that are associated with the marketplace subscrip
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List of all active deployments linked to the given monitor
 ```powershell
-{{ Add code here }}
+Get-AzNewRelicConnectedPartnerResource -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
 
 ```output
-{{ Add output here }}
+AccountId AccountName     AzureResourceId                                                                                                                 Location
+--------- -----------     ---------------                                                                                                                 --------
+4404219   Account 4404219 /SUBSCRIPTIONS/11111111-2222-3333-4444-123456789101/RESOURCEGROUPS/elastic-rg-3eytki/PROVIDERS/MICROSOFT.ELASTIC/MONITORS/elastic-rhqz1v eastus
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command list of all active deployments that are associated with the marketplace subscription linked to the given monitor.
 
 ## PARAMETERS
 

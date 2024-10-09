@@ -31,27 +31,12 @@ Create and Associate private link traffic filter for the given deployment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create and Associate private link traffic filter for the given deployment.
 ```powershell
-{{ Add code here }}
+New-AzElasticCreateAndAssociatePlFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create and Associate private link traffic filter for the given deployment.
 
 ## PARAMETERS
 

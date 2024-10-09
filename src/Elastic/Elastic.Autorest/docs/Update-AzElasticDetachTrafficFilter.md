@@ -32,7 +32,7 @@ Detach traffic filter for the given deployment.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+Update-AzElasticDetachTrafficFilter -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 ```
 
 ```output

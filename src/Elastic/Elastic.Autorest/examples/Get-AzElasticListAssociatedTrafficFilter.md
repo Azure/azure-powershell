@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the traffic filters associated with the Elastic monitor resource
 ```powershell
-{{ Add code here }}
+Get-AzElasticListAssociatedTrafficFilter -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command lists the traffic filters associated with the Elastic monitor resource

@@ -29,27 +29,12 @@ Delete traffic filter from the account.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a traffic filter
 ```powershell
-{{ Add code here }}
+Remove-AzElasticTrafficFilter -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command delete a traffic filter.
 
 ## PARAMETERS
 

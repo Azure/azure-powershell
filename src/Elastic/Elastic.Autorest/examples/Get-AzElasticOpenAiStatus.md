@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get OpenAI integration status for a given integration.
 ```powershell
-{{ Add code here }}
+Get-AzElasticOpenAiStatus -IntegrationName default -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 ```
 
-```output
-{{ Add output here }}
+```output:
+IntegrationName: default
+Status: Active
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command gets OpenAI integration status for a given integration.

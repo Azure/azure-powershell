@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create or update a OpenAI integration rule for a given monitor resource.
 ```powershell
-{{ Add code here }}
+New-AzElasticOpenAi -IntegrationName default -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
 
 ```output
-{{ Add output here }}
+IntegrationName              Status            ResourceGroupName
+------------------          ---------          -----------------
+default                      Active            elastic-rg-3eytki
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command Creates or updates a OpenAI integration rule for a given monitor resource.

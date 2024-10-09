@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
 ```powershell
-{{ Add code here }}
+Get-AzElasticOrganizationElasticToAzureSubscriptionMapping 
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command Gets the Elastic Organization To Azure Subscription Mapping details for the logged-in user.

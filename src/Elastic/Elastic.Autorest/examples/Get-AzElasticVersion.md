@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a list of available versions for a region.
 ```powershell
-{{ Add code here }}
+Get -AzElasticVersion -Region westus2
 ```
 
 ```output
-{{ Add output here }}
+version
+---------
+8.15.2 (Lattest)
+8.14.3
+7.17.24
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command gets a list of available versions for a region.

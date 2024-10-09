@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the list of all traffic filters for the account.
 ```powershell
-{{ Add code here }}
+Get-AzElasticAllTrafficFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command will Get the list of all traffic filters for the account.

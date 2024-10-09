@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete an OPen AI resource
 ```powershell
-{{ Add code here }}
+Remove-AzElasticOpenAi -IntegrationName default -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command deletes an open AI resource.
