@@ -1,15 +1,15 @@
 {
-  "New-AzElasticTagRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/tagRules/default?api-version=2020-07-01+1": {
+  "New-AzElasticTagRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-vzhtoj/providers/Microsoft.Elastic/monitors/elastic-ly54gp/tagRules/default?api-version=2024-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/tagRules/default?api-version=2020-07-01",
-      "Content": "{\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-vzhtoj/providers/Microsoft.Elastic/monitors/elastic-ly54gp/tagRules/default?api-version=2024-03-01",
+      "Content": "{\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "4" ]
+        "Content-Length": [ "3" ]
       }
     },
     "Response": {
@@ -17,23 +17,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"19001720-0000-0800-0000-613711bf0000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "ETag": [ "\"ad02b8d4-0000-0800-0000-670665790000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
+        "mise-correlation-id": [ "77da8506-bf62-4cae-983d-aae85c259109" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "b9bfcef5-f096-4991-be7f-340140d1fa1b" ],
-        "x-ms-correlation-request-id": [ "d6837814-6908-45af-8572-8e2acb137500" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210907T071615Z:d6837814-6908-45af-8572-8e2acb137500" ],
-        "Date": [ "Tue, 07 Sep 2021 07:16:14 GMT" ]
+        "x-ms-request-id": [ "f57a75b7-c997-4b6f-b647-0ba0a6ad4def" ],
+        "x-ms-correlation-request-id": [ "4a95f806-05d3-4e86-8d0c-b741f8d6c848" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20241009T111402Z:4a95f806-05d3-4e86-8d0c-b741f8d6c848" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0622AD2806394F8D9E998150C31EECE9 Ref B: MAA201060513045 Ref C: 2024-10-09T11:14:00Z" ],
+        "Date": [ "Wed, 09 Oct 2024 11:14:01 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "607" ],
+        "Content-Length": [ "685" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.elastic/monitors/tagrules\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-09-06T07:13:47.527095Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-09-06T07:13:47.527095Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]}}}",
+      "Content": "{\"id\":\"/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-vzhtoj/providers/Microsoft.Elastic/monitors/elastic-ly54gp/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.elastic/monitors/tagrules\",\"systemData\":{\"createdBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-09T10:54:35.4153754Z\",\"lastModifiedBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-09T11:14:01.2979195Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]}}}",
       "isContentBase64": false
     }
   }

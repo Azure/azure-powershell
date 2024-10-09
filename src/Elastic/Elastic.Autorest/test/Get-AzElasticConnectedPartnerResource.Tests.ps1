@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Test-AzVMwareLocationTrialAvailability'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticConnectedPartnerResource'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Test-AzVMwareLocationTrialAvailability.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzElasticConnectedPartnerResource.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzVMwareLocationTrialAva
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Test-AzVMwareLocationTrialAvailability' {
-    It 'CheckExpanded' -skip {
+Describe 'Get-AzElasticConnectedPartnerResource' {
+    It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

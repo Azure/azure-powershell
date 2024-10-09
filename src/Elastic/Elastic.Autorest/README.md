@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Elastic service.
 
 ---
-## Status
-[![Az.Elastic](https://img.shields.io/powershellgallery/v/Az.Elastic.svg?style=flat-square&label=Az.Elastic "Az.Elastic")](https://www.powershellgallery.com/packages/Az.Elastic/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -31,15 +28,20 @@ For information on how to develop for `Az.Elastic`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-commit: eee9cbba738edde2ea48ea0c826f84619e2561df
+commit: d38a2c3ce2e2dfc38053af2f6b5fc10cb6221961
+tag: package-2024-03-01
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-input-file:
-  - $(repo)/specification/elastic/resource-manager/Microsoft.Elastic/stable/2020-07-01/elastic.json
+  - $(repo)/specification/elastic/resource-manager/readme.md
+# If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
+# - (this-folder)/relative-path-to-your-local-readme.md
+
+try-require: 
+  - $(repo)/specification/elastic/resource-manager/readme.powershell.md
 
 title: Elastic
 module-version: 0.1.0
-subject-prefix: $(service-name)
+subject-prefix: $elastic
 
 identity-correction-for-post: true
 resourcegroup-append: true
