@@ -31,7 +31,6 @@
 
     The following cmdlets were affected this release:
 
-    **All Cmdlets**
     - All cmdlets with SystemData properties have their property-type switched from struct to string.
     - All cmdlets using enums have switched from property-type enum to string.
     - All cmdlets using DaysOfWeek enum have switched from property-type DaysOfWeek to string.
