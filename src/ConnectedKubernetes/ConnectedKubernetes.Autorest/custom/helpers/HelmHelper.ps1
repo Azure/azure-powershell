@@ -141,20 +141,38 @@ function Get-HelmChartPath {
     # Special path!
     $PreOnboardingHelmChartsFolderName = 'PreOnboardingChecksCharts'
 
-    # Exporting Helm chart
+    # Exporting Helm chart; note that we might be one Windows or Linux.
+    if (Test-Path Env:USERPROFILE) {
+        $root = $Env:USERPROFILE
+    }
+    elseif (Test-Path Env:HOME) {
+        $root = $Env:HOME
+    }
+    else {
+        throw "No environment to use as root."
+    }
     Write-Verbose "Using 'helm' to add Azure Arc resources to Kubernetes cluster"
-    $ChartExportPath = Join-Path $env:USERPROFILE ('.azure', $ChartFolderName -join '\')
+    $ChartExportPath = Join-Path -Path $root -ChildPath '.azure' -AdditionalChildPath $ChartFolderName
     try {
         if (Test-Path $ChartExportPath) {
             Write-Debug "Cleaning up existing Helm chart folder at: $ChartExportPath"
-            Remove-Item $ChartExportPath -Recurse -Force
+            Remove-Item -Path $ChartExportPath -Recurse -Force
         }
     }
     catch {
         Write-Warning -Message "Unable to cleanup the $ChartFolderName already present on the machine. In case of failure, please cleanup the directory '$ChartExportPath' and try again."
     }
     Write-Debug "Starting Helm chart export to path: $ChartExportPath"
-    Get-HelmChart -RegistryPath $RegistryPath -ChartExportPath $ChartExportPath -KubeConfig $KubeConfig -KubeContext $KubeContext -HelmClientLocation $HelmClientLocation -NewPath $NewPath -ChartName $ChartName
+    Get-HelmChart `
+        -RegistryPath $RegistryPath `
+        -ChartExportPath $ChartExportPath `
+        -KubeConfig $KubeConfig `
+        -KubeContext $KubeContext `
+        -HelmClientLocation $HelmClientLocation `
+        -NewPath $NewPath `
+        -ChartName $ChartName `
+        -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+        -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
     # Returning helm chart path
     $HelmChartPath = Join-Path $ChartExportPath $ChartName

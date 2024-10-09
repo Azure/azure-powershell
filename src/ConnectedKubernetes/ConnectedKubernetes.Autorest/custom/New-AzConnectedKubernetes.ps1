@@ -673,7 +673,7 @@ function New-AzConnectedKubernetes {
             Write-Debug "OCI Artifact location: ${helmValuesDp.repositoryPath}."
 
             $registryPath = if ($env:HELMREGISTRY) { $env:HELMREGISTRY } else { $helmValuesDp.repositoryPath }
-            Write-Debug "RegistryPath: ${registryPath}."
+            Write-Debug "RegistryPath: ${registryPath}"
 
             $helmValuesContent = $helmValuesDp.helmValuesContent
             Write-Debug "Helm values: ${helmValuesContent}."
