@@ -28,13 +28,13 @@ Start-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <Strin
 
 ### StartViaIdentity
 ```
-Start-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> -Body <IStartRequest>
+Start-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdentity> -Body <IStartRequest>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StartViaIdentityExpanded
 ```
-Start-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> [-StartVM]
+Start-AzWorkloadsSapApplicationInstance -InputObject <ISapVirtualInstanceIdentity> [-StartVM]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -119,7 +119,7 @@ Target            :
 
 Start-AzWorkloadsSapApplicationInstance cmdlet starts the App server instance of the SAP system and its underlying Virtual Machines represented by the VIS.
 Currently, start action is supported for ABAP stack.
-In this example, you can see that instance can be started by passing the App server instance resource name, Resource Group name, VIS name and VM Operation flag as inputs.
+In this example, you can see that the VMs and instance can be started by passing the App server instance resource name, Resource Group name, VIS name and StartVM parameter as inputs.
 
 ## PARAMETERS
 
@@ -143,7 +143,7 @@ Start SAP instance(s) request body.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStartRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.IStartRequest
 Parameter Sets: Start, StartViaIdentity
 Aliases:
 
@@ -175,7 +175,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 Parameter Sets: StartViaIdentity, StartViaIdentityExpanded
 Aliases:
 
@@ -264,6 +264,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -313,34 +314,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStartRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20240901.IStartRequest
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.IWorkloadsIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.ISapVirtualInstanceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api50.IOperationStatusResult
 
 ## NOTES
 
 ALIASES
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
-  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
-  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
-  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[MonitorName <String>]`: Name of the SAP monitor resource.
-  - `[ProviderInstanceName <String>]`: Name of the provider instance.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
+Start-AzVISApplicationInstance
 
 ## RELATED LINKS
 
