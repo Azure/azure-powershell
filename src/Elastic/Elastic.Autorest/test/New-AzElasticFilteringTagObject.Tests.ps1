@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzElasticFilteringTagObje
 
 Describe 'New-AzElasticFilteringTagObject' {
     It '__AllParameterSets' -skip {
-        { New-AzElasticFilteringTagObject -Action Include -Name key -Value '1' } | Should -Not -Throw
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
