@@ -57,7 +57,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.AspNetCore.WebUtilities.dll', 
-               'Microsoft.Azure.Batch.dll', 'Microsoft.Azure.Management.Batch.dll', 
+               'Microsoft.Azure.Batch.dll', 'Microsoft.Azure.PowerShell.Batch.Management.Sdk.dll', 
                'Microsoft.Extensions.Primitives.dll', 
                'Microsoft.Net.Http.Headers.dll', 
                'Microsoft.WindowsAzure.Storage.dll', 
