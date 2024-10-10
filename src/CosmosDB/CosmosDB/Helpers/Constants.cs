@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string RestoreTableNamesHelpMessage = "The names of the tables to be restored. (If not provided, all the tables will be restored)";
 
         //Cassandra cmdlets help messages
-        public const string KeyspaceNameHelpMessage = "Cassandra Keyspace Name.";
+        public const string KeyspaceNameHelpMessage = "Cassandra Keyspace  Name.";
         public const string CassandraTableNameHelpMessage = "Cassandra Table Name.";
         public const string CassandraKeyspaceObjectHelpMessage = "Cassandra Keyspace object.";
         public const string CassandraTableObjectHelpMessage = "Cassandra Table object.";
