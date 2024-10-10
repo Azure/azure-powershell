@@ -58,6 +58,13 @@ identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
 
+metadata:
+  requiredModules:
+    - name: Az.Accounts
+      version: 2.7.5
+    - name: Az.Resources
+      version: 6.3.1
+
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
   "@autorest/powershell": "3.x"
