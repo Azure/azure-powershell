@@ -3988,6 +3988,22 @@ configuration:
           - labelAdded:
               label: Service Attention
           - labelAdded:
+              label: SSH
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: SSH
+        then:
+        - mentionUsers:
+            mentionees:
+            - vthiebaut10
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
               label: StackHCIVM
         - hasLabel:
             label: Service Attention
@@ -4151,6 +4167,22 @@ configuration:
         - mentionUsers:
             mentionees:
             - Shipra1Mishra
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Traffic Collector
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Traffic Collector
+        then:
+        - mentionUsers:
+            mentionees:
+            - rmodh
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
