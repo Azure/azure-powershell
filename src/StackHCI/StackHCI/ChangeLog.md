@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* added support for new environment
 
 ## Version 2.4.0
 * Upgraded API version to 2024-04-01
