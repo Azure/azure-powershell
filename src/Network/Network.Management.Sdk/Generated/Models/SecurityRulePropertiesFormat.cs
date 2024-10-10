@@ -80,7 +80,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;Inbound&#39;, &#39;Outbound&#39;</param>
 
         /// <param name="provisioningState">The provisioning state of the security rule resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public SecurityRulePropertiesFormat(string protocol, string access, int priority, string direction, string description = default(string), string sourcePortRange = default(string), string destinationPortRange = default(string), string sourceAddressPrefix = default(string), System.Collections.Generic.IList<string> sourceAddressPrefixes = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ApplicationSecurityGroup> sourceApplicationSecurityGroups = default(System.Collections.Generic.IList<ApplicationSecurityGroup>), string destinationAddressPrefix = default(string), System.Collections.Generic.IList<string> destinationAddressPrefixes = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ApplicationSecurityGroup> destinationApplicationSecurityGroups = default(System.Collections.Generic.IList<ApplicationSecurityGroup>), System.Collections.Generic.IList<string> sourcePortRanges = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationPortRanges = default(System.Collections.Generic.IList<string>), string provisioningState = default(string))
 
         {
@@ -211,7 +212,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string Direction {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the security rule resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the security rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
