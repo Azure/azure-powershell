@@ -1,17 +1,17 @@
 {
-  "Get-AzElasticDeploymentInfo+[NoContext]+List+$POST+https://management.azure.com/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/listDeploymentInfo?api-version=2020-07-01+1": {
+  "Get-AzElasticDeploymentInfo+[NoContext]+List+$POST+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-vzhtoj/providers/Microsoft.Elastic/monitors/elastic-ly54gp/listDeploymentInfo?api-version=2024-03-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/5a611eed-e33a-44e8-92b1-3f6bf835905e/resourceGroups/elastic-rg-3eytki/providers/Microsoft.Elastic/monitors/elastic-d49xjm/listDeploymentInfo?api-version=2020-07-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-vzhtoj/providers/Microsoft.Elastic/monitors/elastic-ly54gp/listDeploymentInfo?api-version=2024-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "82f66db7-3414-4aea-b3c8-0900180f5c90" ],
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "d78691de-9bd9-4486-b7b4-838d64b3aba3" ],
         "CommandName": [ "Get-AzElasticDeploymentInfo" ],
         "FullCommandName": [ "Get-AzElasticDeploymentInfo_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.23", "Az.Elastic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,22 +22,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
+        "mise-correlation-id": [ "13b87f24-b5cf-4b54-8026-108d3692eb57" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "326f771a-6aa5-4424-8f53-4adb130ee42c" ],
-        "x-ms-correlation-request-id": [ "3e4fc511-91ed-4ff4-b5c6-9b829a9589a7" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210907T071627Z:3e4fc511-91ed-4ff4-b5c6-9b829a9589a7" ],
-        "Date": [ "Tue, 07 Sep 2021 07:16:27 GMT" ]
+        "x-ms-request-id": [ "d0438be1-2602-4dce-a691-a4dc1a076221" ],
+        "x-ms-correlation-request-id": [ "d658314c-76ef-42a9-ae21-a4029deefab7" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20241009T105510Z:d658314c-76ef-42a9-ae21-a4029deefab7" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F5D825AB41594953B23C41EBE51D2AD2 Ref B: MAA201060513045 Ref C: 2024-10-09T10:55:07Z" ],
+        "Date": [ "Wed, 09 Oct 2024 10:55:09 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "88" ],
+        "Content-Length": [ "701" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"status\":\"Healthy\",\"version\":\"7.14.1\",\"memoryCapacity\":\"16384\",\"diskCapacity\":\"491520\"}",
+      "Content": "{\"status\":\"Healthy\",\"version\":\"8.15.2\",\"memoryCapacity\":\"16384\",\"diskCapacity\":\"573440\",\"elasticsearchEndPoint\":\"https://elastic-ly54gp.es.westus2.azure.elastic-cloud.com/\",\"deploymentUrl\":\"/sso/v1/go/ec:2419531357:kibana-elastic-ly54gp?acs=https://elastic-ly54gp.kb.westus2.azure.elastic-cloud.com:9243/api/security/saml/callback\u0026sp_login_url=https://elastic-ly54gp.kb.westus2.azure.elastic-cloud.com:9243\",\"marketplaceSaasInfo\":{\"marketplaceSubscription\":{\"id\":\"79ae90f2-7366-4d9a-c36f-0655b3b281a6\"},\"marketplaceName\":\"AzElastic_bedde969-f23d-4ec0-82a4-c456823c99ab_testrefresh7809\",\"marketplaceResourceId\":null,\"marketplaceStatus\":\"Subscribed\",\"billedAzureSubscriptionId\":null,\"subscribed\":false}}",
       "isContentBase64": false
     }
   }
