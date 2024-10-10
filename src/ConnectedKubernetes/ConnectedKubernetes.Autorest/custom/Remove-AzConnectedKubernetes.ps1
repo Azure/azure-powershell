@@ -156,7 +156,7 @@ param(
         if ($PSBoundParameters.ContainsKey('KubeConfig')) {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         } elseif (Test-Path Env:KUBECONFIG) {
-            $KubeConfig = Get-ChildItem -Path Env:KUBECONFIG
+            $KubeConfig = Get-ChildItem -Path $Env:KUBECONFIG
         } elseif (Test-Path Env:Home) {
             $KubeConfig = Join-Path -Path $Env:Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
         } else {
@@ -175,7 +175,10 @@ param(
 
         #Region check helm install
         try {
-            Set-HelmClientLocation
+            Set-HelmClientLocation `
+                -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+                -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
             $HelmVersion = helm version --short --kubeconfig $KubeConfig
             if ($HelmVersion.Contains("v2")) {
                 Write-Error "Helm version 3+ is required. Ensure that you have installed the latest version of Helm. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
@@ -187,7 +190,10 @@ param(
         #Endregion
 
         #Region get release namespace
-        $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
+        $ReleaseInstallNamespace = Get-ReleaseInstallNamespace `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
         $ReleaseNamespace = $null
         try {
             $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace | ConvertFrom-Json).namespace
