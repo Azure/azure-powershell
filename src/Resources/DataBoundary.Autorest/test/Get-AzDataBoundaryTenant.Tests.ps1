@@ -18,8 +18,8 @@ Describe 'Get-AzDataBoundaryTenant' {
     It 'Get' {
         {
             $boundaryData = Get-AzDataBoundaryTenant
-            Assert-AreEqual $boundaryData.Properties.DataBoundary "EU"
-            Assert-AreEqual $boundaryData.Properties.ProvisioningState "Created"
+            $boundaryData.DataBoundary | Should -Be "EU"
+            $boundaryData.ProvisioningState | Should -Be "Created"
         } | Should -Not -Throw
     }
 }

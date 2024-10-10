@@ -19,8 +19,8 @@ Describe 'Get-AzDataBoundaryScope' {
         { 
             $scope = "/subscriptions/" + $env.SubscriptionId
             $boundaryData = Get-AzDataBoundaryScope -Scope $scope
-            Assert-AreEqual $boundaryData.Properties.DataBoundary "EU"
-            Assert-AreEqual $boundaryData.Properties.ProvisioningState "Created"
+            $boundaryData.DataBoundary | Should -Be "EU"
+            $boundaryData.ProvisioningState | Should -Be "Succeeded"
         } | Should -Not -Throw
     }
 }

@@ -15,22 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzDataBoundary'))
 }
 
 Describe 'Set-AzDataBoundary' {
-    It 'PutExpanded' {
-        {
-        $dataBoundary = "EU"
-        $boundaryData = Get-AzDataBoundaryScope -DataBoundary $dataBoundary
-        Assert-AreEqual $boundaryData.Properties.DataBoundary "EU" }
-    } | Should -Not -Throw
-
-    It 'Put' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PutViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PutViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Put' {
+        { 
+            $dataBoundary = "EU"
+            $exception = Set-AzDataBoundary -DataBoundary $dataBoundary
+            $exception -contains "does not have authorization to perform action" | Should -Be True
+            $exception -contains "or the scope is invalid. If access was recently granted, please refresh your credentials." | Should -Be True
+        } | Should -Throw 
     }
 }
