@@ -104,7 +104,43 @@ directive:
     set:
       parameter-description: 'Specify to force userSession deletion.'
   - where:
-      verb: (.*)
+      verb: Register
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/upcoming-breaking-changes.md)
+        estimated-ga-date: 2024-11-30
+  - where:
+      verb: Unregister
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/upcoming-breaking-changes.md)
+        estimated-ga-date: 2024-11-30
+  - where:
+      verb: Send
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/upcoming-breaking-changes.md)
+        estimated-ga-date: 2024-11-30
+  - where:
+      verb: Expand
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/upcoming-breaking-changes.md)
+        estimated-ga-date: 2024-11-30
+  - where:
+      verb: Get
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/upcoming-breaking-changes.md)
+        estimated-ga-date: 2024-11-30
+  - where:
+      verb: New
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/upcoming-breaking-changes.md)
+        estimated-ga-date: 2024-11-30
+  - where:
+      verb: Update
     set:
       preview-announcement:
         preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/upcoming-breaking-changes.md)
