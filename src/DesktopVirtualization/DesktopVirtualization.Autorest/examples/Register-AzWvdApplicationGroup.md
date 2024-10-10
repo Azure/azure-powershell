@@ -11,4 +11,4 @@ Location   Name                 Type
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 ```
 
-This command registers an Application Group to a workspace
+This command registers an Application Group to a workspace.
