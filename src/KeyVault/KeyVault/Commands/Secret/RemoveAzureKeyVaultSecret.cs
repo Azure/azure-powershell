@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string BySecretUriParameterSet = "BySecretUri";
 
         #endregion
 
@@ -56,6 +57,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         [Alias(Constants.SecretName)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// KeyVault Secret ID (uri of the secret)
+        /// </summary>
+        [Parameter(Mandatory = true,
+           Position = 0,
+           ParameterSetName = BySecretUriParameterSet,
+           HelpMessage = "The URI of the KeyVault Secret.")]
+        [Alias("SecretId")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
 
         /// <summary>
         /// Secret Object
@@ -96,7 +108,16 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Name = InputObject.Name;
             }
 
-            if(InRemovedState.IsPresent)
+            if (ParameterSetName == BySecretUriParameterSet)
+            {
+                var secretUri = new Uri(Id);
+                string[] splitUri = SplitSecretUri(secretUri);
+
+                VaultName = splitUri[0];
+                Name = splitUri[1];
+            }
+
+            if (InRemovedState.IsPresent)
             {
                 ConfirmAction(
                     Force.IsPresent,
