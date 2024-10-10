@@ -18,7 +18,7 @@ Update-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-Subscriptio
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### UpdateOrUpgradeViaIdentityExpanded
 ```
 Update-AzElasticMonitor -InputObject <IElasticIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -41,12 +41,6 @@ Update-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-Subscriptio
 ```
 Update-AzElasticMonitor -InputObject <IElasticIdentity> -Body <IElasticMonitorUpgrade>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpgradeViaIdentityExpanded
-```
-Update-AzElasticMonitor -InputObject <IElasticIdentity> [-Version <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +81,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity, UpgradeViaIdentityExpanded
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity
 Aliases:
 
 Required: False
@@ -135,7 +129,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpgradeViaIdentity, UpgradeViaIdentityExpanded
+Parameter Sets: UpdateOrUpgradeViaIdentityExpanded, UpgradeViaIdentity
 Aliases:
 
 Required: True
@@ -165,7 +159,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity, UpgradeViaIdentityExpanded
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity
 Aliases:
 
 Required: False
@@ -212,7 +206,7 @@ elastic monitor resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateOrUpgradeViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -227,7 +221,7 @@ Version to which the elastic monitor should be upgraded to
 
 ```yaml
 Type: System.String
-Parameter Sets: UpgradeExpanded, UpgradeViaIdentityExpanded
+Parameter Sets: UpgradeExpanded
 Aliases:
 
 Required: False
