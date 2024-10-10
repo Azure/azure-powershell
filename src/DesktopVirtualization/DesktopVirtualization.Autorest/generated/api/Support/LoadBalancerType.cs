@@ -14,6 +14,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType DepthFirst = @"DepthFirst";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType MultiplePersistent = @"MultiplePersistent";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType Persistent = @"Persistent";
 
         /// <summary>the value for an instance of the <see cref="LoadBalancerType" /> Enum.</summary>

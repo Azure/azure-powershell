@@ -22,7 +22,8 @@ Describe 'New-AzWvdHostPool' {
                                 -LoadBalancerType 'DepthFirst' `
                                 -PreferredAppGroupType 'Desktop' `
                                 -DesktopAppGroupName 'FullSenerioCreateAG' `
-                                -WorkspaceName 'FullSenerioCreateWS'
+                                -WorkspaceName 'FullSenerioCreateWS' `
+                                -ManagementType 'Standard'
         }
         finally{
             $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
@@ -57,7 +58,8 @@ Describe 'New-AzWvdHostPool' {
                                 -Ring $null `
                                 -ValidationEnvironment:$false `
                                 -PreferredAppGroupType 'Desktop' `
-                                -StartVMOnConnect:$false
+                                -StartVMOnConnect:$false `
+                                -ManagementType 'Standard'
 
                 $hostPool.Name | Should -Be $env.HostPool
                 $hostPool.Location | Should -Be $env.Location

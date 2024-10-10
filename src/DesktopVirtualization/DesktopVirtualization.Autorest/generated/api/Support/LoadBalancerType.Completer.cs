@@ -38,6 +38,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Persistent'", "Persistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "Persistent");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MultiplePersistent".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MultiplePersistent'", "MultiplePersistent", global::System.Management.Automation.CompletionResultType.ParameterValue, "MultiplePersistent");
+            }
         }
     }
 }

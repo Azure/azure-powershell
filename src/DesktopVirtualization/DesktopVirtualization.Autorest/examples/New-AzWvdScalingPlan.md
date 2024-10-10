@@ -1,4 +1,4 @@
-### Example 1: Create a Windows Virtual Desktop Scaling Plan without a schedule
+### Example 1: Create a Azure Virtual Desktop Scaling Plan without a schedule
 ```powershell
 New-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
@@ -23,9 +23,9 @@ Location      Name         Type
 westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans 
 ```
 
-This command creates a new Windows Virtual Desktop Scaling Plan in a Resource Group.
+This command creates a new Azure Virtual Desktop Scaling Plan in a Resource Group.
 
-### Example 2: Create a Windows Virtual Desktop Scaling Plan with a pooled schedule (Only available for Pooled HostPools)
+### Example 2: Create a Azure Virtual Desktop Scaling Plan with a pooled schedule (Only available for Pooled HostPools)
 ```powershell
 New-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
@@ -86,4 +86,4 @@ Location      Name         Type
 westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans 
 ```
 
-This command creates a new Windows Virtual Desktop Scaling Plan in a Resource Group with a pooled schedule assigned at creation. This method is only available for pooled host pools. Please create a scaling plan, and then use New-AzWvdScalingPersonalSchedule or New-AzWvdScalingPooledSchedule to assign schedules after scaling plan creation. 
+This command creates a new Azure Virtual Desktop Scaling Plan in a Resource Group with a pooled schedule assigned at creation. This method is only available for pooled host pools. Please create a scaling plan, and then use New-AzWvdScalingPersonalSchedule or New-AzWvdScalingPooledSchedule to assign schedules after scaling plan creation. 

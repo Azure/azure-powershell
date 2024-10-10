@@ -10,6 +10,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
     public partial struct ScalingHostPoolType :
         System.IEquatable<ScalingHostPoolType>
     {
+        /// <summary>
+        /// Users will be assigned a SessionHost either by administrators (PersonalDesktopAssignmentType = Direct) or upon connecting
+        /// to the pool (PersonalDesktopAssignmentType = Automatic). They will always be redirected to their assigned SessionHost.
+        /// </summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ScalingHostPoolType Personal = @"Personal";
+
         /// <summary>Users get a new (random) SessionHost every time it connects to the HostPool.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ScalingHostPoolType Pooled = @"Pooled";
 

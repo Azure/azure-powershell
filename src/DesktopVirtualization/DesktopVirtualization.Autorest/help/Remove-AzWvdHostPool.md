@@ -29,12 +29,12 @@ Remove a host pool.
 
 ## EXAMPLES
 
-### Example 1: Delete a Windows Virtual Desktop HostPool by name
+### Example 1: Delete a Azure Virtual Desktop HostPool by name
 ```powershell
 Remove-AzWvdHostPool -ResourceGroupName ResourceGroupName -Name HostPoolName
 ```
 
-This command deletes a Windows Virtual Desktop HostPool in a Resource Group.
+This command deletes a Azure Virtual Desktop HostPool in a Resource Group.
 
 ## PARAMETERS
 
@@ -133,6 +133,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

@@ -31,7 +31,7 @@ Update a desktop.
 
 ## EXAMPLES
 
-### Example 1: Update a Windows Virtual Desktop Desktop
+### Example 1: Update a Azure Virtual Desktop Desktop
 ```powershell
 Update-AzWvdDesktop -ResourceGroupName ResourceGroupName `
                     -ApplicationGroupName ApplicationGroupName `
@@ -46,7 +46,7 @@ Name                             Type
 ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops
 ```
 
-This command updates a Windows Virtual Desktop Desktop in an applicaton Group.
+This command updates a Azure Virtual Desktop Desktop in an applicaton Group.
 
 ## PARAMETERS
 
@@ -160,6 +160,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -228,7 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IDesktop
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IDesktop
 
 ## NOTES
 

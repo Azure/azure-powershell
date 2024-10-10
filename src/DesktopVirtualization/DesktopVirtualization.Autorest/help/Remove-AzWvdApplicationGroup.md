@@ -29,12 +29,12 @@ Remove an applicationGroup.
 
 ## EXAMPLES
 
-### Example 1: Delete a Windows Virtual Desktop ApplicationGroup by name
+### Example 1: Delete a Azure Virtual Desktop ApplicationGroup by name
 ```powershell
 Remove-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName -Name ApplicationGroupName
 ```
 
-This command deletes a Windows Virtual Desktop ApplicationGroup in a Resource Group.
+This command deletes a Azure Virtual Desktop ApplicationGroup in a Resource Group.
 
 ## PARAMETERS
 
@@ -118,6 +118,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

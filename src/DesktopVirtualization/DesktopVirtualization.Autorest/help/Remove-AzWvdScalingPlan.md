@@ -29,12 +29,12 @@ Remove a scaling plan.
 
 ## EXAMPLES
 
-### Example 1: Delete a Windows Virtual Desktop Scaling Plan by name
+### Example 1: Delete a Azure Virtual Desktop Scaling Plan by name
 ```powershell
 Remove-AzWvdScalingPlan -ResourceGroupName ResourceGroupName -Name scalingPlan1
 ```
 
-This command deletes a Windows Virtual Desktop Scaling Plan in a Resource Group.
+This command deletes a Azure Virtual Desktop Scaling Plan in a Resource Group.
 
 ## PARAMETERS
 
@@ -118,6 +118,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

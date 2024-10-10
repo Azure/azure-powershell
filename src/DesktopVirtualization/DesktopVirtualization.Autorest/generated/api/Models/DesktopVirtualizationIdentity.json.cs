@@ -77,6 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             {_sessionHostName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("sessionHostName"), out var __jsonSessionHostName) ? (string)__jsonSessionHostName : (string)SessionHostName;}
             {_userSessionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("userSessionId"), out var __jsonUserSessionId) ? (string)__jsonUserSessionId : (string)UserSessionId;}
             {_msixPackageFullName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("msixPackageFullName"), out var __jsonMsixPackageFullName) ? (string)__jsonMsixPackageFullName : (string)MsixPackageFullName;}
+            {_appAttachPackageName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("appAttachPackageName"), out var __jsonAppAttachPackageName) ? (string)__jsonAppAttachPackageName : (string)AppAttachPackageName;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             AfterFromJson(json);
         }
@@ -125,6 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
             AddIf( null != (((object)this._sessionHostName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._sessionHostName.ToString()) : null, "sessionHostName" ,container.Add );
             AddIf( null != (((object)this._userSessionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._userSessionId.ToString()) : null, "userSessionId" ,container.Add );
             AddIf( null != (((object)this._msixPackageFullName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._msixPackageFullName.ToString()) : null, "msixPackageFullName" ,container.Add );
+            AddIf( null != (((object)this._appAttachPackageName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._appAttachPackageName.ToString()) : null, "appAttachPackageName" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;
