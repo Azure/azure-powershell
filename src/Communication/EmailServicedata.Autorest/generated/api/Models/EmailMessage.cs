@@ -17,7 +17,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachment> _attachment;
 
         /// <summary>
-        /// List of attachments. Please note that we limit the total size of an email request (which includes attachments) to 10MB.
+        /// List of attachments. Please note that we limit the total size of an email request (which includes both regular and inline
+        /// attachments) to 10MB.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Origin(Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachment> Attachment { get => this._attachment; set => this._attachment = value; }
@@ -108,7 +109,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models
         Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// List of attachments. Please note that we limit the total size of an email request (which includes attachments) to 10MB.
+        /// List of attachments. Please note that we limit the total size of an email request (which includes both regular and inline
+        /// attachments) to 10MB.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Info(
         Required = false,
@@ -116,7 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"List of attachments. Please note that we limit the total size of an email request (which includes attachments) to 10MB.",
+        Description = @"List of attachments. Please note that we limit the total size of an email request (which includes both regular and inline attachments) to 10MB.",
         SerializedName = @"attachments",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachment) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachment> Attachment { get; set; }
@@ -240,7 +242,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models
 
     {
         /// <summary>
-        /// List of attachments. Please note that we limit the total size of an email request (which includes attachments) to 10MB.
+        /// List of attachments. Please note that we limit the total size of an email request (which includes both regular and inline
+        /// attachments) to 10MB.
         /// </summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachment> Attachment { get; set; }
         /// <summary>Email content to be sent.</summary>

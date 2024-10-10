@@ -27,13 +27,13 @@ For information on how to develop for `Az.EmailServicedata`, see [how-to.md](how
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 512e966e15cd8e6ffd756279971c478702f4e19e
+commit: 8276d8bcb5787b2c11b9281751eb8a305db56476
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/communication/data-plane/Email/stable/2023-03-31/CommunicationServicesEmail.json
+  - $(repo)/specification/communication/data-plane/Email/preview/2024-07-01-preview/CommunicationServicesEmail.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 

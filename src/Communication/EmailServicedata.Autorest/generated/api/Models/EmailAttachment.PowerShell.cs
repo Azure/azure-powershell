@@ -114,6 +114,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachmentInternal)this).ContentInBase64 = (byte[]) content.GetValueForProperty("ContentInBase64",((Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachmentInternal)this).ContentInBase64, i => i);
             }
+            if (content.Contains("ContentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachmentInternal)this).ContentId = (string) content.GetValueForProperty("ContentId",((Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachmentInternal)this).ContentId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -142,6 +146,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models
             if (content.Contains("ContentInBase64"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachmentInternal)this).ContentInBase64 = (byte[]) content.GetValueForProperty("ContentInBase64",((Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachmentInternal)this).ContentInBase64, i => i);
+            }
+            if (content.Contains("ContentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachmentInternal)this).ContentId = (string) content.GetValueForProperty("ContentId",((Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachmentInternal)this).ContentId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

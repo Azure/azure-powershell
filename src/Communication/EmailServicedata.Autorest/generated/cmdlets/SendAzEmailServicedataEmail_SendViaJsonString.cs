@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Description(@"Queues an email message to be sent to one or more recipients")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.HttpPath(Path = "/emails:send", ApiVersion = "2023-03-31")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.HttpPath(Path = "/emails:send", ApiVersion = "2024-07-01-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.NotSuggestDefaultParameterSet]
     public partial class SendAzEmailServicedataEmail_SendViaJsonString : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IEventListener,

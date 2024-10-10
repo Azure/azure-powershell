@@ -24,13 +24,13 @@ Get a valid sender username for a domains resource.
 Initiate verification of DNS record.
 
 ### [New-AzEmailService](New-AzEmailService.md)
-Create a new EmailService or update an existing EmailService.
+create a new EmailService or create an existing EmailService.
 
 ### [New-AzEmailServiceDomain](New-AzEmailServiceDomain.md)
-Add a new Domains resource under the parent EmailService resource or update an existing Domains resource.
+Add a new Domains resource under the parent EmailService resource or create an existing Domains resource.
 
 ### [New-AzEmailServiceSenderUsername](New-AzEmailServiceSenderUsername.md)
-Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or create an existing SenderUsername resource.
 
 ### [Remove-AzEmailService](Remove-AzEmailService.md)
 Operation to delete a EmailService.

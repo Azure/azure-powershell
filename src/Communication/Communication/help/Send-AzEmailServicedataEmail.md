@@ -15,7 +15,7 @@ Queues an email message to be sent to one or more recipients
 ### Send (Default)
 ```
 Send-AzEmailServicedataEmail -Endpoint <String> [-ClientRequestId <String>] [-OperationId <String>]
- -Message <IEmailMessage> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -Message <IEmailMessage> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,20 +26,20 @@ Send-AzEmailServicedataEmail -Endpoint <String> [-ClientRequestId <String>] [-Op
  [-Attachment <IEmailAttachment[]>] [-ContentHtml <String>] [-ContentPlainText <String>] [-Header <Hashtable>]
  [-RecipientBcc <IEmailAddress[]>] [-RecipientCc <IEmailAddress[]>] [-ReplyTo <IEmailAddress[]>]
  [-UserEngagementTrackingDisabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SendViaJsonFilePath
 ```
 Send-AzEmailServicedataEmail -Endpoint <String> [-ClientRequestId <String>] [-OperationId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SendViaJsonString
 ```
 Send-AzEmailServicedataEmail -Endpoint <String> [-ClientRequestId <String>] [-OperationId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -94,13 +94,21 @@ $emailRecipientTo = @(
     }
 )
 
-$fileBytes = [System.IO.File]::ReadAllBytes("<file path>")
+$fileBytes1 = [System.IO.File]::ReadAllBytes("<file path>")
+
+$fileBytes2 = [System.IO.File]::ReadAllBytes("<image file path>")
 
 $emailAttachment = @(
 	@{
-		ContentInBase64 = $fileBytes
+		ContentInBase64 = $fileBytes1
 		ContentType = "<text/plain>"
 		Name = "<test.txt>"
+	},
+	@{
+		ContentInBase64 = $fileBytes2
+		ContentType = "image/png"
+		Name = "<inline-attachment.png>"
+		contentId = "<inline-attachment>"
 	}
 )
 
@@ -136,7 +144,7 @@ $message = @{
 	RecipientTo = @($emailRecipientTo)  # Array of email address objects
 	SenderAddress = 'info@contoso.com'
 	Attachment = @($emailAttachment) # Array of attachments
-	ContentHtml = "<html><head><title>Enter title</title></head><body><h1>This is the first email from ACS - HTML</h1></body></html>"
+	ContentHtml = "<html><head><title>Enter title</title></head><body><img src='cid:inline-attachment' alt='Company Logo'/><h1>This is the first email from ACS - HTML</h1></body></html>"
 	ContentPlainText = "This is the first email from ACS - HTML"
 	Header = $headers  # Importance = high/medium/low or X-Priority = 2/3/4  
 	RecipientBcc = @($emailRecipientBcc) # Array of email address objects
@@ -181,7 +189,7 @@ Accept wildcard characters: False
 
 ### -Attachment
 List of attachments.
-Please note that we limit the total size of an email request (which includes attachments) to 10MB.
+Please note that we limit the total size of an email request (which includes both regular and inline attachments) to 10MB.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachment[]
@@ -272,7 +280,7 @@ Accept wildcard characters: False
 ```
 
 ### -Endpoint
-The communication resource, for example `https://my-resource.communication.azure.com`
+The communication resource, for example https://my-resource.communication.azure.com
 
 ```yaml
 Type: System.String
@@ -369,6 +377,21 @@ If an ID is not provided by the customer, the service will generate one.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
