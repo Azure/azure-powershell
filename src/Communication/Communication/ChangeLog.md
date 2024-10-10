@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for inline attachments in the send mail operation.
+    - This update introduced a new property in the EmailAttachment object called contentId, which serves as a unique identifier in the HTML content.
+    - The contentId property should be referenced in the HTML body of the email for inline rendering.
+    Please let me know if you need any further modifications!
 
 ## Version 0.4.0
 * Added dataplane cmdlets:
