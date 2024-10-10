@@ -2314,6 +2314,14 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<ANM.PSPoolUsage, MNM.PoolUsage>();
                 cfg.CreateMap<ANM.PSResourceBasics, MNM.ResourceBasics>();
                 cfg.CreateMap<ANM.PSStaticCidr, MNM.StaticCidr>();
+                // VnetVerifier
+                cfg.CreateMap<ANM.PSVerifierWorkspace, MNM.VerifierWorkspace>();
+                cfg.CreateMap<ANM.PSVerifierWorkspaceProperties, MNM.VerifierWorkspaceProperties>();
+                cfg.CreateMap<ANM.PSReachabilityAnalysisRun, MNM.ReachabilityAnalysisRun>();
+                cfg.CreateMap<ANM.PSReachabilityAnalysisRunProperties, MNM.ReachabilityAnalysisRunProperties>();
+                cfg.CreateMap<ANM.PSReachabilityAnalysisIntent, MNM.ReachabilityAnalysisIntent>();
+                cfg.CreateMap<ANM.PSReachabilityAnalysisIntentProperties, MNM.ReachabilityAnalysisIntentProperties>();
+                cfg.CreateMap<ANM.PSIPTraffic, MNM.IPTraffic>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkManager, ANM.PSNetworkManager>();
@@ -2361,6 +2369,14 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.PoolUsage, ANM.PSPoolUsage>();
                 cfg.CreateMap<MNM.ResourceBasics, ANM.PSResourceBasics>();
                 cfg.CreateMap<MNM.StaticCidr, ANM.PSStaticCidr>();
+                // VnetVerifier
+                cfg.CreateMap<ANM.PSVerifierWorkspace, MNM.VerifierWorkspace>();
+                cfg.CreateMap<ANM.PSVerifierWorkspaceProperties, MNM.VerifierWorkspaceProperties>();
+                cfg.CreateMap<ANM.PSReachabilityAnalysisRun, MNM.ReachabilityAnalysisRun>();
+                cfg.CreateMap<ANM.PSReachabilityAnalysisRunProperties, MNM.ReachabilityAnalysisRunProperties>();
+                cfg.CreateMap<ANM.PSReachabilityAnalysisIntent, MNM.ReachabilityAnalysisIntent>();
+                cfg.CreateMap<ANM.PSReachabilityAnalysisIntentProperties, MNM.ReachabilityAnalysisIntentProperties>();
+                cfg.CreateMap<ANM.PSIPTraffic, MNM.IPTraffic>();
             });
             _mapper = config.CreateMapper();
         }

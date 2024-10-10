@@ -35,6 +35,18 @@
     'Remove-AzNetworkManagerIpamPool',
     'Remove-AzNetworkManagerIpamPoolStaticCidr',
     'Set-AzNetworkManagerIpamPool'
+* Onboarded Azure Virtual Network Manager Cmdlets for VnetVerifier
+    'New-AzNetworkManagerVerifierWorkspace'
+    'Get-AzNetworkManagerVerifierWorkspace'
+    'Set-AzNetworkManagerVerifierWorkspace'
+    'Remove-AzNetworkManagerVerifierWorkspace'
+    'New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent'
+    'Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent'
+    'Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent'
+    'New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun'
+    'Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun'
+    'Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun'
+
 
 ## Version 7.8.0
 * Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)
