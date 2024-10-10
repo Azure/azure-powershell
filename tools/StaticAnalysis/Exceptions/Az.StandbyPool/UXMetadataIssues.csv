@@ -1,4 +1,0 @@
-"Module","Severity","ResourceType","SubResourceType","Command","Description"
-"Az.StandbyPool","1","Microsoft.StandbyPool","standbyContainerGroupPools-runtimeViews","Get-AzStandbyContainerGroupPoolStatus","runtimeView is defined in path but cannot find in example"
-"Az.StandbyPool","1","Microsoft.StandbyPool","standbyVirtualMachinePools-runtimeViews","Get-AzStandbyVMPoolStatus","runtimeView is defined in path but cannot find in example"
-"Az.StandbyPool","1","Microsoft.StandbyPool","standbyVirtualMachinePools-standbyVirtualMachines","Get-AzStandbyVMPoolVM","Cmdlet Get-AzStandbyVMPoolVM is not contained in Az.StandbyPool."
