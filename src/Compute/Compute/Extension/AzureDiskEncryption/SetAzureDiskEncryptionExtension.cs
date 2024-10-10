@@ -26,10 +26,11 @@ using System.Collections;
 using System.Globalization;
 using System.Management.Automation;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDiskEncryptionExtension", SupportsShouldProcess = true, DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDiskEncryptionExtension", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -123,6 +124,19 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             ParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet,
             HelpMessage = "ResourceID of the KeyVault where generated encryption key will be placed to")]
         public string DiskEncryptionKeyVaultId { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = AzureDiskEncryptionExtensionConstants.encryptionIdentityParameterSet,
+           HelpMessage = "ResourceID of the managed identity with access to keyvault for ADE operations.")]
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet,
+           HelpMessage = "ResourceID of the managed identity with access to keyvault for ADE operations.")]
+        [ValidateNotNullOrEmpty]
+        public string EncryptionIdentity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -502,6 +516,82 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             return setEncryptionEnabledFalse;
         }
 
+        private bool UpdateVmEncryptionIdentity()
+        {
+            bool updateVm = false;
+            IDictionary<string, UserAssignedIdentitiesValue> vmUserAssignedIdentities = null;
+            var vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
+                this.ResourceGroupName, this.VMName));
+
+            if(vmParameters.Identity == null)
+            {
+                vmParameters.Identity = new VirtualMachineIdentity(type: ResourceIdentityType.UserAssigned);
+            }
+            if (vmParameters.Identity.Type == ResourceIdentityType.SystemAssigned)
+            {
+                vmParameters.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
+            }
+            vmUserAssignedIdentities = vmParameters.Identity.UserAssignedIdentities;
+            if (vmUserAssignedIdentities == null)
+            {
+                vmUserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
+            }
+
+            if (vmUserAssignedIdentities.ContainsKey(this.EncryptionIdentity))
+            {
+                this.WriteObject("Encryption Identity already assigned to the VM.");
+            }
+            else
+            {
+                vmUserAssignedIdentities.Add(this.EncryptionIdentity, new UserAssignedIdentitiesValue());
+                vmParameters.Identity.UserAssignedIdentities = vmUserAssignedIdentities;
+                updateVm = true;
+            }
+
+            if (vmParameters.SecurityProfile == null)
+            {
+                vmParameters.SecurityProfile = new SecurityProfile();
+            }
+
+            if (vmParameters.SecurityProfile.EncryptionIdentity == null)
+            {
+                vmParameters.SecurityProfile.EncryptionIdentity = new EncryptionIdentity();
+            }
+
+            if (String.IsNullOrEmpty(vmParameters.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId) || !vmParameters.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId.Equals(this.EncryptionIdentity, StringComparison.OrdinalIgnoreCase))
+            {
+                vmParameters.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId = this.EncryptionIdentity;
+                updateVm = true;
+            }
+            else
+            {
+                this.WriteObject("No change in Encryption Identity.");
+            }
+
+            if (updateVm)
+            {
+                // update VM
+                AzureOperationResponse<VirtualMachine> updateEncryptionIdentity = null;
+                updateEncryptionIdentity = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        vmParameters.Name,
+                        vmParameters).GetAwaiter().GetResult();
+
+                if (!updateEncryptionIdentity.Response.IsSuccessStatusCode)
+                {
+                    ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture,
+                                                                                   Resources.EncryptionIdentityADEFailure,
+                                                                                    this.EncryptionIdentity, this.VMName,
+                                                                                    updateEncryptionIdentity.Response.Content.ReadAsStringAsync().GetAwaiter().GetResult())),
+                                                                                   "InvalidResult",
+                                                                                    ErrorCategory.InvalidResult,
+                                                                                    null));
+                }
+                return false;
+            }
+            return true;
+        }
+
         private AzureOperationResponse<VirtualMachine> ClearVmEncryptionSettingsForMigration()
         {
             var vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
@@ -862,8 +952,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             ExecuteClientAction(() =>
             {
+                bool skipContinue = false;
+                if(this.Force.IsPresent || this.ParameterSetName.Equals(AzureDiskEncryptionExtensionConstants.encryptionIdentityParameterSet))
+                {
+                    skipContinue = true;
+                }
                 if (this.ShouldProcess(VMName, Properties.Resources.EnableDiskEncryptionAction)
-                && (this.Force.IsPresent || ((this.Migrate.IsPresent || this.MigrationRecovery.IsPresent) ? this.ShouldContinue(Properties.Resources.MigrateAzureDiskEncryptionConfirmation, Properties.Resources.MigrateAzureDiskEncryptionCaption)
+                && (skipContinue || ((this.Migrate.IsPresent || this.MigrationRecovery.IsPresent) ? this.ShouldContinue(Properties.Resources.MigrateAzureDiskEncryptionConfirmation, Properties.Resources.MigrateAzureDiskEncryptionCaption)
                                     : this.ShouldContinue(Properties.Resources.EnableAzureDiskEncryptionConfirmation, Properties.Resources.EnableAzureDiskEncryptionCaption))))
                 {
                     VirtualMachine virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(
@@ -899,7 +994,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     {
                         DiskEncryptionSettings encryptionSettingsBackup = virtualMachineResponse.StorageProfile.OsDisk.EncryptionSettings ??
                                                                       new DiskEncryptionSettings { Enabled = false };
-                        if (OperatingSystemTypes.Linux.Equals(currentOSType) && !SkipVmBackup)
+                        if (OperatingSystemTypes.Linux.Equals(currentOSType) && !SkipVmBackup && !this.ParameterSetName.Equals(AzureDiskEncryptionExtensionConstants.encryptionIdentityParameterSet))
                         {
                             if (vmParameters.StorageProfile.OsDisk.ManagedDisk != null)
                             {
@@ -912,6 +1007,21 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             {
                                 CreateVMBackupForLinx();
                             }
+                        }
+
+                        if (this.EncryptionIdentity != null)
+                        {
+                            var updateEncryptionIdentity = UpdateVmEncryptionIdentity();
+                            if (!updateEncryptionIdentity)
+                            {
+                                this.WriteObject("Encryption identity updated successfully on VM.");
+                            }  
+                        }
+
+                        if (this.ParameterSetName.Equals(AzureDiskEncryptionExtensionConstants.encryptionIdentityParameterSet))
+                        {
+                            // Update VM model with encryption settings and exit
+                            return;
                         }
 
                         // Single Pass
