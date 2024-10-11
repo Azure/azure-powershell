@@ -87,7 +87,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity, UpgradeViaIdentityExpanded
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity
 Aliases:
 
 Required: False
@@ -165,7 +165,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity, UpgradeViaIdentityExpanded
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity
 Aliases:
 
 Required: False
@@ -211,7 +211,7 @@ elastic monitor resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpgradeViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -226,7 +226,7 @@ Version to which the elastic monitor should be upgraded to
 
 ```yaml
 Type: System.String
-Parameter Sets: UpgradeExpanded, UpgradeViaIdentityExpanded
+Parameter Sets: UpgradeExpanded
 Aliases:
 
 Required: False
