@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public string VmImageOffer { get; set; } = "WindowsServer";
 
         [Parameter(Mandatory = false, HelpMessage = "The SKU of the Azure Virtual Machines Marketplace image. Default: 2019-Datacenter.")]
-        public string VmImageSku { get; set; } = "2019-Datacenter";
+        public string VmImageSku { get; set; } = "2022-Datacenter";
 
         [Parameter(Mandatory = false, HelpMessage = "The version of the Azure Virtual Machines Marketplace image. Default: latest.")]
         public string VmImageVersion { get; set; } = "latest";

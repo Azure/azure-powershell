@@ -43,9 +43,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCertAndExtension()
+        public void TestExtension()
         {
-            TestRunner.RunTestScript("Test-CertAndExtension");
+            TestRunner.RunTestScript("Test-Extension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCertificate()
+        {
+            TestRunner.RunTestScript("Test-Certificate");
         }
 
         [Fact]

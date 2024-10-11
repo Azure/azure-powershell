@@ -223,7 +223,7 @@ function WaitForManagedClusterReadyState($clusterName, $resourceGroupName, $time
     return $false
 }
 
-function WaitForAllJob($timeoutInSeconds = 2100)
+function WaitForAllJob($timeoutInSeconds = 6100)
 {
     $timeoutTime = (Get-Date).AddSeconds($timeoutInSeconds)
     $allJobs = Get-Job
@@ -382,12 +382,12 @@ function Get-ManagedAppTypeV2Name
 
 function Get-ManagedAppPackageV1
 {
-    return "https://sfmcpstest.blob.core.windows.net/powcontainer/Voting.sfpkg?sp=racwdyti&st=2024-05-03T20:27:35Z&se=2024-05-10T04:27:35Z&sv=2022-11-02&sr=b&sig=%2F4HcteYvwfiDU0vPRfA5N2Pkz7civ5Qw0BBfMtKbyWA%3D"
+    return "https://sfmcpsacc.blob.core.windows.net/sfmcptest/Voting.sfpkg?sp=racwdyti&st=2024-10-08T18:15:25Z&se=2024-11-10T03:15:25Z&sv=2022-11-02&sr=b&sig=ariv2Dgs1rkTgzGYGjyDcVkfUCgsleZ2bkC9%2BcBpXs4%3D"
 }
 
 function Get-ManagedAppPackageV2
 {
-    return "https://sfmcpstest.blob.core.windows.net/powcontainer/Voting.2.0.0.sfpkg?sp=racwdyti&st=2024-05-03T20:28:38Z&se=2024-05-10T04:28:38Z&sv=2022-11-02&sr=b&sig=JF0wGUOMWDV38HaDifwuGou8zKRFtganAlnEo43P0dE%3D"
+    return "https://sfmcpsacc.blob.core.windows.net/sfmcptest/Voting.2.0.0.sfpkg?sp=racwdyti&st=2024-10-08T18:16:03Z&se=2024-11-10T03:16:03Z&sv=2022-11-02&sr=b&sig=yxUFSn10SxKMDI3%2FuWv16vOUFYSIcpcR5n3GGcRGk1w%3D"
 }
 
 function Get-ManagedStatelessServiceTypeName
