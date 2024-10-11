@@ -24,6 +24,31 @@ Update-AzElasticMonitor -InputObject <IElasticIdentity> [-Tag <Hashtable>] [-Def
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Upgrade
+```
+Update-AzElasticMonitor -Name <String> -ResourceGroupName <String> -Body <IElasticMonitorUpgrade>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpgradeExpanded
+```
+Update-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpgradeViaIdentity
+```
+Update-AzElasticMonitor -InputObject <IElasticIdentity> -Body <IElasticMonitorUpgrade>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpgradeViaIdentityExpanded
+```
+Update-AzElasticMonitor -InputObject <IElasticIdentity> [-Version <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Update a monitor resource.
 
@@ -57,6 +82,37 @@ This command updates a monitor resource by pipeline.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity, UpgradeViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Body
+Upgrade elastic monitor version
+To construct, see NOTES section for BODY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorUpgrade
+Parameter Sets: Upgrade, UpgradeViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -79,7 +135,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpgradeViaIdentity, UpgradeViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -94,10 +150,25 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, Upgrade, UpgradeExpanded
 Aliases: MonitorName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity, UpgradeViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -109,7 +180,7 @@ The name of the resource group to which the Elastic resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, Upgrade, UpgradeExpanded
 Aliases:
 
 Required: True
@@ -120,13 +191,12 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription ID.
-This is a GUID-formatted string (e.g.
-00000000-0000-0000-0000-000000000000)
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, Upgrade, UpgradeExpanded
 Aliases:
 
 Required: False
@@ -141,7 +211,22 @@ elastic monitor resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+Version to which the elastic monitor should be upgraded to
+
+```yaml
+Type: System.String
+Parameter Sets: UpgradeExpanded, UpgradeViaIdentityExpanded
 Aliases:
 
 Required: False
