@@ -16,48 +16,48 @@ Add a new SenderUsername resource under the parent Domains resource or update an
 ```
 New-AzEmailServiceSenderUsername -SenderUsername <String> -DomainName <String> -EmailServiceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DisplayName <String>] [-Username <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzEmailServiceSenderUsername -SenderUsername <String> -DomainName <String> -EmailServiceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzEmailServiceSenderUsername -SenderUsername <String> -DomainName <String> -EmailServiceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityEmailServiceExpanded
 ```
 New-AzEmailServiceSenderUsername -SenderUsername <String> -DomainName <String>
  -EmailServiceInputObject <IEmailServiceIdentity> [-DisplayName <String>] [-Username <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityEmailService
 ```
 New-AzEmailServiceSenderUsername -SenderUsername <String> -DomainName <String>
  -EmailServiceInputObject <IEmailServiceIdentity> -Parameter <ISenderUsernameResource>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityDomainExpanded
 ```
 New-AzEmailServiceSenderUsername -SenderUsername <String> -DomainInputObject <IEmailServiceIdentity>
- [-DisplayName <String>] [-Username <String>] [-DefaultProfile <PSObject>]
+ [-DisplayName <String>] [-Username <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityDomain
 ```
 New-AzEmailServiceSenderUsername -SenderUsername <String> -DomainInputObject <IEmailServiceIdentity>
- -Parameter <ISenderUsernameResource> [-DefaultProfile <PSObject>]
+ -Parameter <ISenderUsernameResource> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -251,6 +251,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
