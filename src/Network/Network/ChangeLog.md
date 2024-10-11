@@ -19,12 +19,6 @@
 --->
 
 ## Upcoming Release
-* Fixed a bug in cmdlet `Invoke-AzFirewallPacketCapture` which caused the packet capture request to be stuck in a waiting for activation state. 
-* Updated cmdlet to add the property of `Sensitivity`, and updated corresponding cmdlets.
-    - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
-* Added support for `DefaultOutboundAccess` property in `Set-AzVirtualNetworkSubnetConfig` command
-* Added support for `EnabledFilteringCriteria` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
-* Added support of `UserAssignedIdentityId` Property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 * Onboarded Azure Virtual Network Manager Cmdlets for IpamPool
     - `Get-AzNetworkManagerAssociatedResourcesList`
     - `Get-AzNetworkManagerIpamPool`
@@ -51,6 +45,25 @@
     - `New-AzNetworkManagerSecurityAdminConfiguration`
     - `New-AzNetworkManagerAddressPrefixItemCommand`
 
+## Version 7.9.0
+* Onboarded `Microsoft.VideoIndexer/accounts` to private link cmdlets
+* Added support to create, get and delete Bastion shareable links
+    - `New-AzBastionShareableLink`
+    - `Get-AzBastionShareableLink`
+    - `Remove-AzBastionShareableLink`
+* Fixed a bug in cmdlet `Invoke-AzFirewallPacketCapture` which caused the packet capture request to be stuck in a waiting for activation state. 
+* Updated cmdlet to add the property of `Sensitivity`, and updated corresponding cmdlets.
+    - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
+* Added support for `DefaultOutboundAccess` property in `Set-AzVirtualNetworkSubnetConfig` command
+* Added support for `EnabledFilteringCriteria` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
+* Added support of `UserAssignedIdentityId` Property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
+* Added support of `DestinationIPAddress` property in `New-AzPrivateLinkService` command
+    - `LoadBalancerFrontendIpConfiguration` is not a mandatory parameter anymore.
+    - The user can provide either `LoadBalancerFrontendIpConfiguration` or `DestinationIPAddress`.
+
+## Version 7.8.1
+* Fixed secrets exposure in example documentation.
+* Onboarded `Microsoft.App/managedEnvironments` to private link cmdlets
 
 ## Version 7.8.0
 * Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)

@@ -2369,14 +2369,15 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.PoolUsage, ANM.PSPoolUsage>();
                 cfg.CreateMap<MNM.ResourceBasics, ANM.PSResourceBasics>();
                 cfg.CreateMap<MNM.StaticCidr, ANM.PSStaticCidr>();
+                
                 // VnetVerifier
-                cfg.CreateMap<ANM.PSVerifierWorkspace, MNM.VerifierWorkspace>();
-                cfg.CreateMap<ANM.PSVerifierWorkspaceProperties, MNM.VerifierWorkspaceProperties>();
-                cfg.CreateMap<ANM.PSReachabilityAnalysisRun, MNM.ReachabilityAnalysisRun>();
-                cfg.CreateMap<ANM.PSReachabilityAnalysisRunProperties, MNM.ReachabilityAnalysisRunProperties>();
-                cfg.CreateMap<ANM.PSReachabilityAnalysisIntent, MNM.ReachabilityAnalysisIntent>();
-                cfg.CreateMap<ANM.PSReachabilityAnalysisIntentProperties, MNM.ReachabilityAnalysisIntentProperties>();
-                cfg.CreateMap<ANM.PSIPTraffic, MNM.IPTraffic>();
+                cfg.CreateMap<MNM.VerifierWorkspace, ANM.PSVerifierWorkspace>();
+                cfg.CreateMap<MNM.VerifierWorkspaceProperties, ANM.PSVerifierWorkspaceProperties>();
+                cfg.CreateMap<MNM.ReachabilityAnalysisRun, ANM.PSReachabilityAnalysisRun>();
+                cfg.CreateMap<MNM.ReachabilityAnalysisRunProperties, ANM.PSReachabilityAnalysisRunProperties>();
+                cfg.CreateMap<MNM.ReachabilityAnalysisIntent, ANM.PSReachabilityAnalysisIntent>();
+                cfg.CreateMap<MNM.ReachabilityAnalysisIntentProperties, ANM.PSReachabilityAnalysisIntentProperties>();
+                cfg.CreateMap<MNM.IPTraffic, ANM.PSIPTraffic>();
             });
             _mapper = config.CreateMapper();
         }

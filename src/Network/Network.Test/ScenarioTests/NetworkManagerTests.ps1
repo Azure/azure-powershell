@@ -1072,7 +1072,7 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentCRUD
         New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -Location $rglocation
 
         # Create verifier workspace
-        New-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName -Description "Sample description" 
+        New-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName -Location $rglocation -Description "Sample description" 
 
         $sourcePortList = @("100")
         $destinationPortList = @("99")
@@ -1128,7 +1128,7 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -Location $rglocation
 
         # Create verifier workspace
-        New-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName -Description "Sample description" 
+        New-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName -Location $rglocation -Description "Sample description" 
 
          # Create analysis intent
         $sourcePortList = @("100")

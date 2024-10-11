@@ -23,8 +23,8 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerpsVerifierWorkspace", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSVerifierWorkspace))]
-    public class GetAzNetworkManagerpsVerifierWorkspaceommand : VerifierWorkspaceBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspace", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSVerifierWorkspace))]
+    public class GetAzNetworkManagerVerifierWorkspaceCommand : VerifierWorkspaceBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
