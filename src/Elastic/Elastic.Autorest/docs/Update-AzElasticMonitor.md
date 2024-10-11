@@ -18,7 +18,7 @@ Update-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-Subscriptio
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateOrUpgradeViaIdentityExpanded
+### UpdateViaIdentityExpanded
 ```
 Update-AzElasticMonitor -InputObject <IElasticIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -129,7 +129,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: UpdateOrUpgradeViaIdentityExpanded, UpgradeViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded, UpgradeViaIdentity
 Aliases:
 
 Required: True
@@ -206,7 +206,7 @@ elastic monitor resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateOrUpgradeViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
