@@ -264,7 +264,7 @@ namespace VersionController
                 }
 
                 var outputModuleManifestFile = outputModuleManifest.FirstOrDefault();
-                if (!string.IsNullOrEmpty(_moduleNameFilter)) {
+                if (!string.IsNullOrEmpty(_assignedVersion)) {
                     _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules,new AzurePSVersion(_assignedVersion), _releaseType);
                 } else {
                     _versionBumper = new VersionBumper(new VersionFileHelper(_rootDirectory, outputModuleManifestFile, projectModuleManifestPath), changedModules, _releaseType);
