@@ -37,27 +37,12 @@ Forces the network security perimeter configuration to refresh for a private lin
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Invoke Network Security Perimeter Configuration
 ```powershell
-{{ Add code here }}
+Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName $env.PerimeterName -ResourceGroupName $env.ResourceGroupNameNSP -ScopeName $env.PrivateLinkScopeNameNSP
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Invoke Network Security Perimeter Configuration
 
 ## PARAMETERS
 
