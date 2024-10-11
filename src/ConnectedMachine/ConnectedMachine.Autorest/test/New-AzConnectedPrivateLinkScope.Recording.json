@@ -1,8 +1,8 @@
 {
-  "New-AzConnectedPrivateLinkScope+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope2?api-version=2024-07-10+1": {
+  "New-AzConnectedPrivateLinkScope+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3?api-version=2024-07-10+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope2?api-version=2024-07-10",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3?api-version=2024-07-10",
       "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,22 +17,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "948de9fa-d3ed-4f0e-802e-e58ebb339606" ],
-        "x-ms-correlation-request-id": [ "d8d28498-a430-4ee5-b1f5-3a5f54ae557e" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20241004T185411Z:d8d28498-a430-4ee5-b1f5-3a5f54ae557e" ],
+        "x-ms-request-id": [ "ca7d5d5f-14a0-4cc8-8b96-1d6d59c9d114" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "94bd83de-4133-4e73-9482-c7f408bc437d" ],
+        "x-ms-routing-request-id": [ "EASTUS:20241011T181006Z:94bd83de-4133-4e73-9482-c7f408bc437d" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C1448557A7AD45A3B84A1AC84F98DA07 Ref B: MNZ221060609021 Ref C: 2024-10-04T18:54:09Z" ],
-        "Date": [ "Fri, 04 Oct 2024 18:54:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A94B3403D32F4AE88985CFC635F6CCCE Ref B: BL2AA2030101005 Ref C: 2024-10-11T18:10:05Z" ],
+        "Date": [ "Fri, 11 Oct 2024 18:10:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "406" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope2\",\"name\":\"myScope2\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus\",\"properties\":{\"privateLinkScopeId\":\"356f7535-ee02-4aa8-ab36-c44e347d1d9d\",\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\",\"privateEndpointConnections\":[]}}",
+      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3\",\"name\":\"myScope3\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes\",\"location\":\"eastus\",\"properties\":{\"privateLinkScopeId\":\"bd4171de-1fcd-4c30-80df-fc2b96827f1c\",\"publicNetworkAccess\":\"Enabled\",\"provisioningState\":\"Succeeded\",\"privateEndpointConnections\":[]}}",
       "isContentBase64": false
     }
   }

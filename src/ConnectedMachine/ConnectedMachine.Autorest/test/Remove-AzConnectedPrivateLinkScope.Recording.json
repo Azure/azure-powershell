@@ -1,13 +1,13 @@
 {
-  "Remove-AzConnectedPrivateLinkScope+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope2?api-version=2024-07-10+1": {
+  "Remove-AzConnectedPrivateLinkScope+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3?api-version=2024-07-10+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope2?api-version=2024-07-10",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3?api-version=2024-07-10",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "c63bd4bd-5fff-4bef-a77d-b098fb74628e" ],
+        "x-ms-client-request-id": [ "0e781817-a2ce-4fd3-8110-b127f67b9eb1" ],
         "CommandName": [ "Remove-AzConnectedPrivateLinkScope" ],
         "FullCommandName": [ "Remove-AzConnectedPrivateLinkScope_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,15 +22,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "799" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "c9653358-ba23-4aa9-b4fd-0a4b8aca9e8b" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "ad53a937-ffd6-4cd6-b1e4-fd2918058253" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20241004T185519Z:ad53a937-ffd6-4cd6-b1e4-fd2918058253" ],
+        "x-ms-request-id": [ "30f593fd-3028-4d0e-bcb7-6bafd830105b" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "b9fe2efd-8330-412f-bcb5-83240e93739a" ],
+        "x-ms-routing-request-id": [ "EASTUS:20241011T181133Z:b9fe2efd-8330-412f-bcb5-83240e93739a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 46D4C9483FC141CEBFAD182B41EEE238 Ref B: MNZ221060609025 Ref C: 2024-10-04T18:55:18Z" ],
-        "Date": [ "Fri, 04 Oct 2024 18:55:19 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A5545BEB06354F8DA359E890FE296836 Ref B: BL2AA2010205029 Ref C: 2024-10-11T18:11:32Z" ],
+        "Date": [ "Fri, 11 Oct 2024 18:11:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
