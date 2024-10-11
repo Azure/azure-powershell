@@ -26,26 +26,27 @@
 * Added support for `EnabledFilteringCriteria` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 * Added support of `UserAssignedIdentityId` Property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
 * Onboarded Azure Virtual Network Manager Cmdlets for IpamPool
-    'Get-AzNetworkManagerAssociatedResourcesList',
-    'Get-AzNetworkManagerIpamPool',
-    'Get-AzNetworkManagerIpamPoolStaticCidr',
-    'Get-AzNetworkManagerIpamPoolUsage',
-    'New-AzNetworkManagerIpamPool',
-    'New-AzNetworkManagerIpamPoolStaticCidr',
-    'Remove-AzNetworkManagerIpamPool',
-    'Remove-AzNetworkManagerIpamPoolStaticCidr',
-    'Set-AzNetworkManagerIpamPool'
+    - `Get-AzNetworkManagerAssociatedResourcesList`
+    - `Get-AzNetworkManagerIpamPool`
+    - `Get-AzNetworkManagerIpamPoolStaticCidr`
+    - `Get-AzNetworkManagerIpamPoolUsage`
+    - `New-AzNetworkManagerIpamPool`
+    - `New-AzNetworkManagerIpamPoolStaticCidr`
+    - `Remove-AzNetworkManagerIpamPool`
+    - `Remove-AzNetworkManagerIpamPoolStaticCidr`
+    - `Set-AzNetworkManagerIpamPool`
 * Onboarded Azure Virtual Network Manager Cmdlets for VnetVerifier
-    'New-AzNetworkManagerVerifierWorkspace'
-    'Get-AzNetworkManagerVerifierWorkspace'
-    'Set-AzNetworkManagerVerifierWorkspace'
-    'Remove-AzNetworkManagerVerifierWorkspace'
-    'New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent'
-    'Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent'
-    'Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent'
-    'New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun'
-    'Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun'
-    'Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun'
+    - `New-AzNetworkManagerSecurityGroupItem`
+    - `New-AzNetworkManagerVerifierWorkspace`
+    - `Get-AzNetworkManagerVerifierWorkspace`
+    - `Set-AzNetworkManagerVerifierWorkspace`
+    - `Remove-AzNetworkManagerVerifierWorkspace`
+    - `New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+    - `Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+    - `Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
 
 
 ## Version 7.8.0

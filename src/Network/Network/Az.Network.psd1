@@ -391,6 +391,7 @@
                    'New-AzNetworkManagerGroup', 'New-AzNetworkManagerHub', 
                    'New-AzNetworkManagerIpamPool',
                    'New-AzNetworkManagerIpamPoolStaticCidr',
+                   'New-AzNetworkManagerIPTraffic', 
                    'New-AzNetworkManagerManagementGroupConnection', 
                    'New-AzNetworkManagerScope', 'New-AzNetworkManagerScopeConnection', 
                    'New-AzNetworkManagerSecurityAdminConfiguration', 
