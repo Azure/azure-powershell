@@ -105,7 +105,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public override void ClearCache()
         {
-            var client = CreatePublicClient();
+            ClearCache(string.Empty);
+        }
+
+        public override void ClearCache(string authority)
+        {
+            var client = CreatePublicClient(authority);
             var accounts = client.GetAccountsAsync().GetAwaiter().GetResult();
             foreach (var account in accounts)
             {
