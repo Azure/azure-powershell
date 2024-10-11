@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a data collection endpoint.
+create a data collection endpoint.
 .Description
-Create a data collection endpoint.
+create a data collection endpoint.
 .Example
 New-AzDataCollectionEndpoint -Name myCollectionEndpoint -ResourceGroupName AMCS-TEST -Location eastus -NetworkAclsPublicNetworkAccess Enabled
 .Example
