@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new feature - inline attachment while sending an email.
 
 ## Version 0.4.0
 * Added dataplane cmdlets:
