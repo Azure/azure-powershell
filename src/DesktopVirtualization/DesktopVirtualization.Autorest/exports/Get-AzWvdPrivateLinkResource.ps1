@@ -25,12 +25,12 @@ Get-AzWvdPrivateLinkResource -ResourceGroupName ResourceGroupName -WorkspaceName
 Get-AzWvdPrivateLinkResource -ResourceGroupName ResourceGroupName -HostPoolName hostpoolName
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IPrivateLinkResource
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IPrivateLinkResource
 .Link
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdprivatelinkresource
 #>
 function Get-AzWvdPrivateLinkResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IPrivateLinkResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IPrivateLinkResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -45,6 +45,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='List', Mandatory)]

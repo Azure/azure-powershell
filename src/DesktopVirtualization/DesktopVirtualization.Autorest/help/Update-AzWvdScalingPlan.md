@@ -33,7 +33,7 @@ Update a scaling plan.
 
 ## EXAMPLES
 
-### Example 1: Update a Windows Virtual Desktop Scaling Plan by name
+### Example 1: Update a Azure Virtual Desktop Scaling Plan by name
 ```powershell
 Update-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
@@ -97,7 +97,7 @@ Location      Name         Type
 westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans
 ```
 
-This command updates a Windows Virtual Desktop Scaling Plan in a Resource Group.
+This command updates a Azure Virtual Desktop Scaling Plan in a Resource Group.
 
 ## PARAMETERS
 
@@ -167,7 +167,7 @@ List of ScalingHostPoolReference definitions.
 To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingHostPoolReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IScalingHostPoolReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +230,7 @@ List of ScalingSchedule definitions.
 To construct, see NOTES section for SCHEDULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingSchedule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IScalingSchedule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -243,6 +243,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -326,7 +327,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IScalingPlan
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IScalingPlan
 
 ## NOTES
 

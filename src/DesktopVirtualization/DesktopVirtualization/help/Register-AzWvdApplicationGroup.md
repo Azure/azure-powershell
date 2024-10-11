@@ -8,18 +8,18 @@ schema: 2.0.0
 # Register-AzWvdApplicationGroup
 
 ## SYNOPSIS
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 
 ## SYNTAX
 
 ```
 Register-AzWvdApplicationGroup -ResourceGroupName <String> -WorkspaceName <String>
  -ApplicationGroupPath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Register a Windows virtual desktop application group.
+Register a Azure Virtual Desktop application group.
 
 ## EXAMPLES
 
@@ -62,6 +62,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -153,7 +168,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IWorkspace
 
 ## NOTES
 

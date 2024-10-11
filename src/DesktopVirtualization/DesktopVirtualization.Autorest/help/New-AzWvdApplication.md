@@ -33,7 +33,7 @@ Create or update an application.
 
 ## EXAMPLES
 
-### Example 1: Create a Windows Virtual Desktop Application
+### Example 1: Create a Azure Virtual Desktop Application
 ```powershell
 New-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -GroupName ApplicationGroupName `
@@ -53,7 +53,7 @@ Name                                 Type
 ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/applicationgroups/applications
 ```
 
-This command creates a Windows Virtual Desktop Application in an application Group.
+This command creates a Azure Virtual Desktop Application in an application Group.
 
 ## PARAMETERS
 
@@ -301,6 +301,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -352,7 +353,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IApplication
 
 ## NOTES
 

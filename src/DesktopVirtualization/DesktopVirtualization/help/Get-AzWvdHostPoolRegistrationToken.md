@@ -8,29 +8,36 @@ schema: 2.0.0
 # Get-AzWvdHostPoolRegistrationToken
 
 ## SYNOPSIS
-Registration token of the host pool.
+Operation to list the RegistrationTokens associated with the HostPool.
 
 ## SYNTAX
 
-### Retrieve (Default)
+### List (Default)
 ```
 Get-AzWvdHostPoolRegistrationToken -HostPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### Retrieve
+```
+Get-AzWvdHostPoolRegistrationToken -HostPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### RetrieveViaIdentity
 ```
 Get-AzWvdHostPoolRegistrationToken -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Registration token of the host pool.
+Operation to list the RegistrationTokens associated with the HostPool.
 
 ## EXAMPLES
 
-### Example 1: Get Windows Virtual Desktop registration token information by HostPoolName
+### Example 1: Get Azure Virtual Desktop registration token information by HostPoolName
 ```powershell
 Get-AzWvdHostPoolRegistrationToken -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 ```
@@ -41,7 +48,7 @@ ExpirationTime       RegistrationTokenOperation Token
 4/1/2020 10:19:33 PM None                       eyJhbGciOiJSUzI1NiIsImtpZCI6IkMyRjU1RUYxNzg0MEFCNzkzMDk2RUYzRjdEMkNBRDk0NThGNDhEOTQiLCJ0eXAiOiJKV1QifQ.eyJSZWdpc3RyYXRpb25JZCI6IjU5NGJjZWUwLTk5MjQtNDg3ZC1iOW...
 ```
 
-This command gets Windows Virtual Desktop registration token information from a HostPool.
+This command gets Azure Virtual Desktop registration token information from a HostPool.
 
 ## PARAMETERS
 
@@ -66,7 +73,7 @@ The name of the host pool within the specified resource group
 
 ```yaml
 Type: System.String
-Parameter Sets: Retrieve
+Parameter Sets: List, Retrieve
 Aliases:
 
 Required: True
@@ -92,13 +99,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Retrieve
+Parameter Sets: List, Retrieve
 Aliases:
 
 Required: True
@@ -110,10 +132,11 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Retrieve
+Parameter Sets: List, Retrieve
 Aliases:
 
 Required: False
@@ -163,7 +186,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IRegistrationInfo
+
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20240408Preview.IRegistrationTokenList
 
 ## NOTES
 
