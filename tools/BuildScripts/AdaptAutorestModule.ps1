@@ -153,8 +153,6 @@ if ($existingCsprojPath) {
 }
 
 try{
-    $tempAssemblyInfoPath = Join-Path $subModulePath 'tempAssemblyInfo'
-    Move-Item $assemblyInfoPath $tempAssemblyInfoPath -Force
     $subModuleCsprojPath = Join-Path $subModulePath $csprojName
     $tempCsprojPath = Join-Path $subModulePath 'tmpCsproj'
     Move-Item $subModuleCsprojPath $tempCsprojPath -Force
@@ -219,9 +217,6 @@ try{
     $job | Wait-Job | Receive-Job
     $job | Remove-Job
 } finally {
-    if (Test-Path $tempAssemblyInfoPath) {
-        Move-Item $tempAssemblyInfoPath $assemblyInfoPath -Force
-    }
     if (Test-Path $tempCsprojPath) {
         Move-Item $tempCsprojPath $subModuleCsprojPath -Force
     }
