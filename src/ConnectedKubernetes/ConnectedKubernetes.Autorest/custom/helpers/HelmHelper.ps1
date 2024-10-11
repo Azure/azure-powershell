@@ -7,7 +7,10 @@ function Set-HelmClientLocation {
     )
     process {
         Write-Debug "Setting Helm client location."
-        $HelmLocation = Get-HelmClientLocation
+        $HelmLocation = Get-HelmClientLocation `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
         if ($null -eq $HelmLocation) {
             Write-Debug "Helm location not found."
             return
@@ -138,20 +141,38 @@ function Get-HelmChartPath {
     # Special path!
     $PreOnboardingHelmChartsFolderName = 'PreOnboardingChecksCharts'
 
-    # Exporting Helm chart
+    # Exporting Helm chart; note that we might be one Windows or Linux.
+    if (Test-Path Env:USERPROFILE) {
+        $root = $Env:USERPROFILE
+    }
+    elseif (Test-Path Env:HOME) {
+        $root = $Env:HOME
+    }
+    else {
+        throw "No environment to use as root."
+    }
     Write-Verbose "Using 'helm' to add Azure Arc resources to Kubernetes cluster"
-    $ChartExportPath = Join-Path $env:USERPROFILE ('.azure', $ChartFolderName -join '\')
+    $ChartExportPath = Join-Path -Path $root -ChildPath '.azure' -AdditionalChildPath $ChartFolderName
     try {
         if (Test-Path $ChartExportPath) {
             Write-Debug "Cleaning up existing Helm chart folder at: $ChartExportPath"
-            Remove-Item $ChartExportPath -Recurse -Force
+            Remove-Item -Path $ChartExportPath -Recurse -Force
         }
     }
     catch {
         Write-Warning -Message "Unable to cleanup the $ChartFolderName already present on the machine. In case of failure, please cleanup the directory '$ChartExportPath' and try again."
     }
     Write-Debug "Starting Helm chart export to path: $ChartExportPath"
-    Get-HelmChart -RegistryPath $RegistryPath -ChartExportPath $ChartExportPath -KubeConfig $KubeConfig -KubeContext $KubeContext -HelmClientLocation $HelmClientLocation -NewPath $NewPath -ChartName $ChartName
+    Get-HelmChart `
+        -RegistryPath $RegistryPath `
+        -ChartExportPath $ChartExportPath `
+        -KubeConfig $KubeConfig `
+        -KubeContext $KubeContext `
+        -HelmClientLocation $HelmClientLocation `
+        -NewPath $NewPath `
+        -ChartName $ChartName `
+        -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+        -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
     # Returning helm chart path
     $HelmChartPath = Join-Path $ChartExportPath $ChartName
@@ -250,8 +271,8 @@ function Set-HelmRepositoryAndModules {
     )
     Write-Debug "Setting Helm repository and checking for required modules."
     if ((Test-Path Env:HELMREPONAME) -and (Test-Path Env:HELMREPOURL)) {
-        $HelmRepoName = Get-ChildItem -Path Env:HELMREPONAME
-        $HelmRepoUrl = Get-ChildItem -Path Env:HELMREPOURL
+        $HelmRepoName = (Get-Item Env:HELMREPONAME).Value
+        $HelmRepoUrl = (Get-Item Env:HELMREPOURL).Value
         helm repo add $HelmRepoName $HelmRepoUrl --kubeconfig $KubeConfig --kube-context $KubeContext
     }
 
@@ -262,12 +283,12 @@ function Set-HelmRepositoryAndModules {
     }
 
     if (Test-Path Env:HELMREGISTRY) {
-        $RegistryPath = Get-ChildItem -Path Env:HELMREGISTRY
+        $RegistryPath = (Get-Item Env:HELMREGISTRY).Value
     }
     else {
         $ReleaseTrain = ''
         if ((Test-Path Env:RELEASETRAIN) -and (Test-Path Env:RELEASETRAIN)) {
-            $ReleaseTrain = Get-ChildItem -Path Env:RELEASETRAIN
+            $ReleaseTrain = (Get-Item Env:RELEASETRAIN).Value
         }
         else {
             $ReleaseTrain = 'stable'
@@ -314,7 +335,10 @@ function Get-HelmReleaseNamespaces {
         [string]$KubeContext
     )
     Write-Debug "Getting release namespace."
-    $ReleaseInstallNamespace = Get-ReleaseInstallNamespace
+    $ReleaseInstallNamespace = Get-ReleaseInstallNamespace `
+        -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+        -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
     $ReleaseNamespace = $null
     try {
         $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext -n $ReleaseInstallNamespace 2> $null | ConvertFrom-Json).namespace
@@ -332,7 +356,10 @@ function Confirm-HelmVersion {
     )
     Write-Debug "Setting up Helm client location and validating Helm version."
     try {
-        Set-HelmClientLocation
+        Set-HelmClientLocation `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
         $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
         if ($HelmVersion.Contains("v2")) {
             Write-Error "Helm version 3+ is required (not ${HelmVersion}). Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"

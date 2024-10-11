@@ -22,7 +22,17 @@ function Invoke-ConfigDPHealthCheck {
     }
 
     # Sending request with retries
-    Invoke-RestMethodWithUriParameters -Method 'post' -Uri $chartLocationUrl -Headers $headers -UriParameters $uriParameters -MaximumRetryCount 5 -RetryIntervalSec 3 -StatusCodeVariable statusCode
+    Invoke-RestMethodWithUriParameters `
+        -Method 'post' `
+        -Uri $chartLocationUrl `
+        -Headers $headers `
+        -UriParameters $uriParameters `
+        -MaximumRetryCount 5 `
+        -RetryIntervalSec 3 `
+        -StatusCodeVariable statusCode `
+        -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+        -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
     if ($statusCode -ne 200) {
         throw "Error while performing DP health check, StatusCode: ${statusCode}"
     }
@@ -41,7 +51,11 @@ function Get-ConfigDPEndpoint {
 
     $ReleaseTrain = $null
     # Get the default config dataplane endpoint.  Note that there may be code
-    $ConfigDpEndpoint = Get-ConfigDpDefaultEndpoint -Location $Location -CloudMetadata $cloudMetadata
+    $ConfigDpEndpoint = Get-ConfigDpDefaultEndpoint `
+        -Location $Location `
+        -CloudMetadata $cloudMetadata `
+        -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+        -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
     
     return @{ ConfigDpEndpoint = $ConfigDpEndpoint; ReleaseTrain = $ReleaseTrain }
 }
