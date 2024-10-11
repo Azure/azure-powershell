@@ -23,8 +23,8 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerReachabilityAnalysisRun", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSReachabilityAnalysisRun))]
-    public class GetAzNetworkManagerReachabilityAnalysisRunCommand : ReachabilityAnalysisRunBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspaceReachabilityAnalysis", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSReachabilityAnalysisRun))]
+    public class GetAzNetworkManagerVerifierWorkspaceReachabilityAnalysisRunCommand : ReachabilityAnalysisRunBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(

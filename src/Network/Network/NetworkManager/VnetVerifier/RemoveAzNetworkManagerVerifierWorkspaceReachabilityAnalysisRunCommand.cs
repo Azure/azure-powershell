@@ -18,8 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerReachabilityAnalysisRun", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzNetworkManagerReachabilityAnalysisRunCommand : ReachabilityAnalysisRunBaseCmdlet
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspaceReachabilityAnalysisRun", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzNetworkManagerVerifierWorkspaceReachabilityAnalysisRunCommand : ReachabilityAnalysisRunBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(

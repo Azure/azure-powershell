@@ -28,9 +28,9 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerReachabilityAnalysisIntent", SupportsShouldProcess = true), OutputType(typeof(PSReachabilityAnalysisIntent))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent", SupportsShouldProcess = true), OutputType(typeof(PSReachabilityAnalysisIntent))]
 
-    public class NewAzNetworkManagerReachabilityAnalysisIntentCommand : ReachabilityAnalysisIntentBaseCmdlet
+    public class NewAzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntentCommand : ReachabilityAnalysisIntentBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
