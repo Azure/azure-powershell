@@ -2,6 +2,11 @@
 
 ## Az.Accounts
 
+### `Resolve-AzError`
+
+- The alias `Resolve-Error` will be removed. Please use `Resolve-AzError` instead.
+  - This change is expected to take effect from Az.Accounts version: 4.0.0 and Az version: 13.0.0
+
 ### `Get-AzAccessToken`
 
 - Cmdlet breaking-change will happen to all parameter sets
