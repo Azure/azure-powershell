@@ -68,6 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models
             {_name = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Json.JsonString>("name"), out var __jsonName) ? (string)__jsonName : (string)_name;}
             {_contentType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Json.JsonString>("contentType"), out var __jsonContentType) ? (string)__jsonContentType : (string)_contentType;}
             {_contentInBase64 = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Json.JsonString>("contentInBase64"), out var __w) ?  System.Convert.FromBase64String( ((string)__w).Replace("_","/").Replace("-","+").PadRight(  ((string)__w).Length  + ((string)__w).Length * 3 % 4, '=') ) : null;}
+            {_contentId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Json.JsonString>("contentId"), out var __jsonContentId) ? (string)__jsonContentId : (string)_contentId;}
             AfterFromJson(json);
         }
 
@@ -105,6 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models
             AddIf( null != (((object)this._name)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Json.JsonString(this._name.ToString()) : null, "name" ,container.Add );
             AddIf( null != (((object)this._contentType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Json.JsonString(this._contentType.ToString()) : null, "contentType" ,container.Add );
             AddIf( null != this._contentInBase64 ? global::System.Convert.ToBase64String( this._contentInBase64) : null ,(v)=> container.Add( "contentInBase64",v) );
+            AddIf( null != (((object)this._contentId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Json.JsonString(this._contentId.ToString()) : null, "contentId" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
