@@ -34,7 +34,6 @@
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
-          "2999"
         ],
         "x-ms-request-id": [
           "c70e2d91-e847-48d9-9b0c-28cdbbb5f698"
