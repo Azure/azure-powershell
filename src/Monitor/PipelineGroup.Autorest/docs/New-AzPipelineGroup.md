@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPipelineGroup
 
 ## SYNOPSIS
-Create a pipeline group instance.
+create a pipeline group instance.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzPipelineGroup -Name <String> -ResourceGroupName <String> -JsonString <Stri
 ```
 
 ## DESCRIPTION
-Create a pipeline group instance.
+create a pipeline group instance.
 
 ## EXAMPLES
 

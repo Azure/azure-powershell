@@ -15,11 +15,11 @@ Microsoft Azure PowerShell: PipelineGroup cmdlets
 Returns the specific pipeline group instance.
 
 ### [New-AzPipelineGroup](New-AzPipelineGroup.md)
-Create a pipeline group instance.
+create a pipeline group instance.
 
 ### [Remove-AzPipelineGroup](Remove-AzPipelineGroup.md)
 Delete a pipeline group instance.
 
 ### [Update-AzPipelineGroup](Update-AzPipelineGroup.md)
-Update a pipeline group instance
+update a pipeline group instance
 

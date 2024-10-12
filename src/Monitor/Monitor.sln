@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -52,6 +52,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScheduledQueryRule", "..\..\generated\Monitor\ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj", "{473C815F-781C-4C36-AACD-DDA08689FBCD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ApplicationInsights", "..\..\generated\ApplicationInsights\ApplicationInsights.Autorest\Az.ApplicationInsights.csproj", "{E4A033B3-2058-474C-97EB-68CC1FD6987B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PipelineGroup", "..\..\generated\PipelineGroup.Autorest\Az.PipelineGroup.csproj", "{B4F3C4B3-F54D-4C74-96F2-7F21CD8362B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -150,6 +152,10 @@ Global
 		{E4A033B3-2058-474C-97EB-68CC1FD6987B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4A033B3-2058-474C-97EB-68CC1FD6987B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4A033B3-2058-474C-97EB-68CC1FD6987B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4F3C4B3-F54D-4C74-96F2-7F21CD8362B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4F3C4B3-F54D-4C74-96F2-7F21CD8362B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4F3C4B3-F54D-4C74-96F2-7F21CD8362B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4F3C4B3-F54D-4C74-96F2-7F21CD8362B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{99E9B517-1C84-47CA-8364-F4F1C25EC656} = {EAA233B5-64B2-4DB0-991A-DD490E0B252B}
