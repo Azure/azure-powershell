@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the MSGraph service.
 
 ---
-## Status
-[![Az.MSGraph](https://img.shields.io/powershellgallery/v/Az.MSGraph.svg?style=flat-square&label=Az.MSGraph "Az.MSGraph")](https://www.powershellgallery.com/packages/Az.MSGraph/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -49,7 +46,7 @@ In this directory, run AutoRest:
 ``` yaml
 version: "3.9.5"
 use-extension:
-  "@autorest/powershell": "4.0.0-dev.14"
+  "@autorest/powershell": "4.x"
 
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -126,6 +123,23 @@ directive:
     where: $
     transform: if ($documentPath.endsWith("MSGraph.cs")) {$ = $.replace(/Count.ToString\(\)/g, "Count.ToString().ToLower()")}
   
+  - where:
+      subject: ApplicationsApplication
+    set:
+      subject: Application
+  - where:
+      subject: GroupsGroup
+    set:
+      subject: Group
+  - where:
+      subject: ServicePrincipalsServicePrincipal
+    set:
+      subject: ServicePrincipal
+  - where:
+      subject: (UsersUser)(.*)
+    set:
+      subject: User$2
+
   # hide user owned application cmdlets
   - where:
       subject: UserOwnedApplication|UserOwnedObject
