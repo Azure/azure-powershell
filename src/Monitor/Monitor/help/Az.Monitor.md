@@ -96,6 +96,9 @@ Lists the metric values for multiple resources.
 ### [Get-AzMonitorWorkspace](Get-AzMonitorWorkspace.md)
 Returns the specific Azure Monitor workspace
 
+### [Get-AzPipelineGroup](Get-AzPipelineGroup.md)
+Returns the specific pipeline group instance.
+
 ### [Get-AzScheduledQueryRule](Get-AzScheduledQueryRule.md)
 Retrieve an scheduled query rule definition.
 
@@ -240,6 +243,9 @@ Create or update a workspace
 ### [New-AzPerfCounterDataSourceObject](New-AzPerfCounterDataSourceObject.md)
 Create an in-memory object for PerfCounterDataSource.
 
+### [New-AzPipelineGroup](New-AzPipelineGroup.md)
+create a pipeline group instance.
+
 ### [New-AzPlatformTelemetryDataSourceObject](New-AzPlatformTelemetryDataSourceObject.md)
 Create an in-memory object for PlatformTelemetryDataSource.
 
@@ -312,6 +318,9 @@ Removes a V2 (non-classic) metric alert rule.
 ### [Remove-AzMonitorWorkspace](Remove-AzMonitorWorkspace.md)
 Delete a workspace
 
+### [Remove-AzPipelineGroup](Remove-AzPipelineGroup.md)
+Delete a pipeline group instance.
+
 ### [Remove-AzScheduledQueryRule](Remove-AzScheduledQueryRule.md)
 Deletes a scheduled query rule.
 
@@ -347,6 +356,9 @@ Update for private link scope
 
 ### [Update-AzMonitorWorkspace](Update-AzMonitorWorkspace.md)
 Updates part of a workspace
+
+### [Update-AzPipelineGroup](Update-AzPipelineGroup.md)
+update a pipeline group instance
 
 ### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
 Update a scheduled query rule.
