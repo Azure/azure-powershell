@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata
         /// </returns>
         public async global::System.Threading.Tasks.Task EmailGetSendResult(string operationId, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-03-31";
+            var apiVersion = @"2024-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata
         /// </returns>
         public async global::System.Threading.Tasks.Task EmailGetSendResultViaIdentity(global::System.String viaIdentity, string endpoint, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-03-31";
+            var apiVersion = @"2024-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult> EmailGetSendResultViaIdentityWithResult(global::System.String viaIdentity, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-03-31";
+            var apiVersion = @"2024-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult> EmailGetSendResultWithResult(string operationId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-03-31";
+            var apiVersion = @"2024-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata
         /// </returns>
         public async global::System.Threading.Tasks.Task EmailSend(string operationId, string xMSClientRequestId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailMessage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-03-31";
+            var apiVersion = @"2024-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata
         /// </returns>
         public async global::System.Threading.Tasks.Task EmailSendViaIdentity(global::System.String viaIdentity, string operationId, string xMSClientRequestId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailMessage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-03-31";
+            var apiVersion = @"2024-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult> EmailSendViaIdentityWithResult(global::System.String viaIdentity, string operationId, string xMSClientRequestId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailMessage body, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-03-31";
+            var apiVersion = @"2024-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata
         /// </returns>
         public async global::System.Threading.Tasks.Task EmailSendViaJsonString(string operationId, string xMSClientRequestId, string endpoint, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-03-31";
+            var apiVersion = @"2024-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult> EmailSendViaJsonStringWithResult(string operationId, string xMSClientRequestId, string endpoint, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-03-31";
+            var apiVersion = @"2024-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult> EmailSendWithResult(string operationId, string xMSClientRequestId, string endpoint, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailMessage body, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-03-31";
+            var apiVersion = @"2024-07-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

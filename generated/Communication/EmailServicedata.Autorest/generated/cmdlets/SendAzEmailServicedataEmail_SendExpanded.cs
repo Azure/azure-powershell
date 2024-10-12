@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Description(@"Queues an email message to be sent to one or more recipients")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.HttpPath(Path = "/emails:send", ApiVersion = "2023-03-31")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.HttpPath(Path = "/emails:send", ApiVersion = "2024-07-01-preview")]
     public partial class SendAzEmailServicedataEmail_SendExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IContext
@@ -58,15 +58,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Cmdlets
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
         /// <summary>
-        /// List of attachments. Please note that we limit the total size of an email request (which includes attachments) to 10MB.
+        /// List of attachments. Please note that we limit the total size of an email request (which includes both regular and inline
+        /// attachments) to 10MB.
         /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of attachments. Please note that we limit the total size of an email request (which includes attachments) to 10MB.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of attachments. Please note that we limit the total size of an email request (which includes both regular and inline attachments) to 10MB.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"List of attachments. Please note that we limit the total size of an email request (which includes attachments) to 10MB.",
+        Description = @"List of attachments. Please note that we limit the total size of an email request (which includes both regular and inline attachments) to 10MB.",
         SerializedName = @"attachments",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachment) })]
         public Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachment[] Attachment { get => _messageBody.Attachment?.ToArray() ?? null /* fixedArrayOf */; set => _messageBody.Attachment = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailAttachment>(value) : null); }

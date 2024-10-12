@@ -1,5 +1,5 @@
 @{
-  GUID = '5168d495-7a9d-45d6-ab8f-9127f05ee378'
+  GUID = 'f8860724-7666-4e38-bc35-59133fd6def2'
   RootModule = './Az.EmailServicedata.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
