@@ -1,6 +1,6 @@
 {
   "resourceType": "licenses",
-  "apiVersion": "2024-05-20-preview",
+  "apiVersion": "2024-07-10",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine"
   },

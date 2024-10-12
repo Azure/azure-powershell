@@ -26,9 +26,6 @@ Retrieves information about the model view or the instance view of a hybrid mach
 ### [Get-AzConnectedMachineExtension](Get-AzConnectedMachineExtension.md)
 The operation to get the extension.
 
-### [Get-AzConnectedMachineRunCommand](Get-AzConnectedMachineRunCommand.md)
-The operation to get a run command.
-
 ### [Get-AzConnectedNetworkSecurityPerimeterConfiguration](Get-AzConnectedNetworkSecurityPerimeterConfiguration.md)
 Gets the network security perimeter configuration for a private link scope.
 
@@ -41,6 +38,9 @@ The operation to install patches on a hybrid machine identity in Azure.
 ### [Invoke-AzConnectedAssessMachinePatch](Invoke-AzConnectedAssessMachinePatch.md)
 The operation to assess patches on a hybrid machine identity in Azure.
 
+### [Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration](Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration.md)
+Forces the network security perimeter configuration to refresh for a private link scope.
+
 ### [New-AzConnectedLicense](New-AzConnectedLicense.md)
 The operation to create a license.
 
@@ -49,9 +49,6 @@ Create an in-memory object for LicenseDetails.
 
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
 The operation to create the extension.
-
-### [New-AzConnectedMachineRunCommand](New-AzConnectedMachineRunCommand.md)
-The operation to create a run command.
 
 ### [New-AzConnectedPrivateLinkScope](New-AzConnectedPrivateLinkScope.md)
 create (or create  a Azure Arc PrivateLinkScope.
@@ -65,9 +62,6 @@ The operation to delete a hybrid machine.
 
 ### [Remove-AzConnectedMachineExtension](Remove-AzConnectedMachineExtension.md)
 The operation to delete the extension.
-
-### [Remove-AzConnectedMachineRunCommand](Remove-AzConnectedMachineRunCommand.md)
-The operation to delete a run command.
 
 ### [Remove-AzConnectedPrivateLinkScope](Remove-AzConnectedPrivateLinkScope.md)
 Deletes a Azure Arc PrivateLinkScope.
@@ -90,9 +84,6 @@ The operation to update a hybrid machine.
 
 ### [Update-AzConnectedMachineExtension](Update-AzConnectedMachineExtension.md)
 The operation to update the extension.
-
-### [Update-AzConnectedMachineRunCommand](Update-AzConnectedMachineRunCommand.md)
-The operation to update a run command.
 
 ### [Update-AzConnectedPrivateLinkScopeTag](Update-AzConnectedPrivateLinkScopeTag.md)
 update an existing PrivateLinkScope's tags.
