@@ -838,20 +838,20 @@ function Test-NetworkManagerVerifierWorkspaceCRUD
         New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -Location $rglocation
 
         # Create verifier workspace
-        New-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName -Description "Sample description" 
+        New-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName -Location $rglocation -Description "Sample description" 
 
         #Get verifier workspace
-        $verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name AzNetworkManagerVerifierWorkspaceName
+        $verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName
         Assert-NotNull $verifierWorkspace;
         Assert-AreEqual $verifierWorkspaceName $verifierWorkspace.Name;
         Assert-AreEqual $rglocation $verifierWorkspace.Location;
 
         # Update verifier workspace
-        $verifierWorkspace.Description = "A different description."
+        $verifierWorkspace.Properties.Description = "A different description."
         $newVerifierWorkspace = Set-AzNetworkManagerVerifierWorkspace -InputObject $verifierWorkspace
         Assert-NotNull $newVerifierWorkspace;
-        Assert-AreEqual "A different description." $newVerifierWorkspace.Description;
-        Assert-AreEqual $networkGroupName $newVerifierWorkspace.Name;
+        Assert-AreEqual "A different description." $newVerifierWorkspace.Properties.Description;
+        Assert-AreEqual $verifierWorkspaceName $newVerifierWorkspace.Name;
 
         # Delete verifier workspace
         $job = Remove-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName -PassThru -Force -AsJob;
