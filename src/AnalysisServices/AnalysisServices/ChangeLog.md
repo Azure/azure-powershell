@@ -18,8 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Removed "Microsoft.Azure.Management.Analysis" Version "2.0.4"
-* Added AnalysisService.Management.Sdk
+* Migrate Analysis SDK to generated SDK
+    - Removed "Microsoft.Azure.Management.Analysis" Version "2.0.4" PackageReference
+    - Added AnalysisService.Management.Sdk ProjectReference
 
 ## Version 1.1.5
 * Removed the outdated deps.json file.
