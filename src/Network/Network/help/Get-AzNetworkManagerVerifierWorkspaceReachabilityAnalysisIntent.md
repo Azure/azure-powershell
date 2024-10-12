@@ -8,8 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
-
+To get network manager verifier workspace reachability analysis intent.
 ## SYNTAX
 
 ### NoExpand (Default)
@@ -27,16 +26,103 @@ Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name <String> -
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+When given a 'Name', the **Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent** cmdlet gets that specific Verifier Workspace Reachability Analysis Intent. When not given a 'Name', the **Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent** cmdlet gets a list of the Verifier Workspace Reachability Analysis Intents in the specified network manager.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -NetworkManagerName "testNM" -ResourceGroupName "testRG" -WorkspaceName "testVerifierWorkspace9"
 ```
 
-{{ Add example description here }}
+```output
+Name                  : testReachabilityAnalysisIntent5
+VerifierWorkspaceName :
+ResourceGroupName     : testRG
+NetworkManagerName    : testNM
+Properties            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSReachabilityAnalysisIntentProperties
+Type                  : Microsoft.Network/networkManagers/verifierWorkspaces/reachabilityAnalysisIntents
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "test@email.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2024-02-16T00:03:44.5882378Z",
+                          "LastModifiedBy": "test@email.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2024-02-16T00:03:44.5882378Z"
+                        }
+Id                    : /subscriptions//00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Micro
+                        soft.Network/networkManagers/testNM/verifierWorkspaces/testVerifierWorkspace9/reachabilit
+                        yAnalysisIntents/testReachabilityAnalysisIntent5
+
+Name                  : testReachabilityAnalysisIntenant6
+VerifierWorkspaceName :
+ResourceGroupName     : testRG
+NetworkManagerName    : testNM
+Properties            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSReachabilityAnalysisIntentProperties
+Type                  : Microsoft.Network/networkManagers/verifierWorkspaces/reachabilityAnalysisIntents
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "test@email.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2024-02-16T00:19:07.6430128Z",
+                          "LastModifiedBy": "test@email.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2024-02-16T00:19:07.6430128Z"
+                        }
+Id                    : /subscriptions//00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Micro
+                        soft.Network/networkManagers/testNM/verifierWorkspaces/testVerifierWorkspace9/reachabilit
+                        yAnalysisIntents/testReachabilityAnalysisIntenant6
+
+Name                  : testReachabilityAnalysisIntenant7
+VerifierWorkspaceName :
+ResourceGroupName     : testRG
+NetworkManagerName    : testNM
+Properties            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSReachabilityAnalysisIntentProperties
+Type                  : Microsoft.Network/networkManagers/verifierWorkspaces/reachabilityAnalysisIntents
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "test@email.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2024-02-16T00:24:30.5939209Z",
+                          "LastModifiedBy": "test@email.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2024-02-16T00:24:30.5939209Z"
+                        }
+Id                    : /subscriptions//00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Micro
+                        soft.Network/networkManagers/testNM/verifierWorkspaces/testVerifierWorkspace9/reachabilit
+                        yAnalysisIntents/testReachabilityAnalysisIntenant7
+```
+
+Gets all Verifier Workspace Reachability Analysis Intents in workspace 'testVerifierWorkspace9'
+
+### Example 2
+
+```powershell
+Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -NetworkManagerName "testNM" -ResourceGroupName "testRG" -WorkspaceName "testVerifierWorkspace9" -Name "testReachabilityAnalysisIntenant7"
+```
+```output
+Name                  : testReachabilityAnalysisIntenant7
+VerifierWorkspaceName : testVerifierWorkspace9
+ResourceGroupName     : testRG
+NetworkManagerName    : testNM
+Properties            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSReachabilityAnalysisIntentProperties
+Type                  : Microsoft.Network/networkManagers/verifierWorkspaces/reachabilityAnalysisIntents
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "test@email.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2024-02-16T00:24:30.5939209Z",
+                          "LastModifiedBy": "test@email.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2024-02-16T00:24:30.5939209Z"
+                        }
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Micro
+                        soft.Network/networkManagers/testNM/verifierWorkspaces/testVerifierWorkspace9/reachabilit
+                        yAnalysisIntents/testReachabilityAnalysisIntenant7
+```
+
+Gets the Verifier Workspace Reachability Analysis Intent for 'testReachabilityAnalysisIntenant7'
 
 ## PARAMETERS
 

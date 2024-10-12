@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+To create network manager verifier workspace reachability analysis run
 
 ## SYNTAX
 
@@ -20,16 +20,36 @@ New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name <String> -Net
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun** cmdlet creates a new network manager verifier workspace reachability analysis run.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName "testRG"  -VerifierWorkspaceName "paigeVNV" -Name "TestReachabilityAnalysisRun3" -NetworkManagerName "testNM" -IntentId “/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierWorkspaces/paigeVNV/reachabilityAnalysisIntents/test”
 ```
 
-{{ Add example description here }}
+```output
+Name                  : TestReachabilityAnalysisRun3
+VerifierWorkspaceName : paigeVNV
+ResourceGroupName     : testRG
+NetworkManagerName    : testNM
+Properties            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSReachabilityAnalysisRunProperties
+Type                  : Microsoft.Network/networkManagers/verifierWorkspaces/reachabilityAnalysisRuns
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "test@email.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2024-10-12T17:55:25.4518154Z",
+                          "LastModifiedBy": "test@email.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2024-10-12T17:55:25.4518154Z"
+                        }
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierW
+                        orkspaces/paigeVNV/reachabilityAnalysisRuns/TestReachabilityAnalysisRun3
+```
+
+Created a new network manager verifier workspace reachability analysis run named TestReachabilityAnalysisRun3
 
 ## PARAMETERS
 

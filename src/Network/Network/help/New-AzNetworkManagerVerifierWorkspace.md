@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerVerifierWorkspace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+To create network manager verifier workspace.
 
 ## SYNTAX
 
@@ -20,16 +20,41 @@ New-AzNetworkManagerVerifierWorkspace -Name <String> -NetworkManagerName <String
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**New-AzNetworkManagerVerifierWorkspace** cmdlet creates a new network manager verifier workspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+New-AzNetworkManagerVerifierWorkspace -Name "testVerifierWorkspace10" -NetworkManagerName "testNM" -ResourceGroupName "testRG" -Location "eastus2euap "
 ```
 
-{{ Add example description here }}
+```output
+Location           : eastus2euap
+Tags               :
+Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspaceProperties
+TagsTable          :
+PropertiesText     : {
+                       "ProvisioningState": "Succeeded"
+                     }
+Name               : testVerifierWorkspace10
+ResourceGroupName  : testRG
+NetworkManagerName : testNM
+Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText     : {
+                       "CreatedBy": "test@email.com",
+                       "CreatedByType": "User",
+                       "CreatedAt": "2024-10-12T17:17:22.4851889Z",
+                       "LastModifiedBy": "test@email.com",
+                       "LastModifiedByType": "User",
+                       "LastModifiedAt": "2024-10-12T17:17:22.4851889Z"
+                     }
+Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierWork
+                     spaces/testVerifierWorkspace10
+```
+
+Created a new network manager verifier workspace of name 'testVerifierWorkspace10'.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerVerifierWorkspace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+To get network manager verifier workspace
 
 ## SYNTAX
 
@@ -25,16 +25,216 @@ Get-AzNetworkManagerVerifierWorkspace -Name <String> -NetworkManagerName <String
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+When given a 'Name', the **Get-AzNetworkManagerVerifierWorkspace** cmdlet gets that specific network manager verifier workspace. When not given a 'Name', the **Get-AzNetworkManagerVerifierWorkspace** cmdlet gets a list of the network manager verifier workspaces in the specified network manager.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzNetworkManagerVerifierWorkspace -NetworkManagerName "testNM" -ResourceGroupName "testRG"
 ```
 
-{{ Add example description here }}
+```output
+Location           : eastus2euap
+Tags               : {}
+Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspaceProperties
+TagsTable          :
+PropertiesText     : {
+                       "ProvisioningState": "Succeeded",
+                       "Description": ""
+                     }
+Name               : AmeWorkspace
+ResourceGroupName  : testRG
+NetworkManagerName : testNM
+Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText     : {
+                       "CreatedBy": "test@email.com",
+                       "CreatedByType": "User",
+                       "CreatedAt": "2024-04-08T22:14:28.9064474Z",
+                       "LastModifiedBy": "test@email.com",
+                       "LastModifiedByType": "User",
+                       "LastModifiedAt": "2024-04-08T22:14:28.9064474Z"
+                     }
+Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsof
+                     t.Network/networkManagers/testNM/verifierWorkspaces/AmeWorkspace
+
+Location           : eastus2euap
+Tags               : {}
+Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspaceProperties
+TagsTable          :
+PropertiesText     : {
+                       "ProvisioningState": "Succeeded",
+                       "Description": ""
+                     }
+Name               : ameWorkspace2
+ResourceGroupName  : testRG
+NetworkManagerName : testNM
+Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText     : {
+                       "CreatedBy": "test@email.com",
+                       "CreatedByType": "User",
+                       "CreatedAt": "2024-04-08T22:34:58.4212634Z",
+                       "LastModifiedBy": "test@email.com",
+                       "LastModifiedByType": "User",
+                       "LastModifiedAt": "2024-04-08T22:34:58.4212634Z"
+                     }
+Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsof
+                     t.Network/networkManagers/testNM/verifierWorkspaces/ameWorkspace2
+
+Location           : eastus2euap
+Tags               : {}
+Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspaceProperties
+TagsTable          :
+PropertiesText     : {
+                       "ProvisioningState": "Succeeded",
+                       "Description": "string"
+                     }
+Name               : testworkspaceame1
+ResourceGroupName  : testRG
+NetworkManagerName : testNM
+Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText     : {
+                       "CreatedBy": "test@email.com",
+                       "CreatedByType": "User",
+                       "CreatedAt": "2024-04-08T23:02:36.3712Z",
+                       "LastModifiedBy": "test@email.com",
+                       "LastModifiedByType": "User",
+                       "LastModifiedAt": "2024-04-08T23:02:36.3712Z"
+                     }
+Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsof
+                     t.Network/networkManagers/testNM/verifierWorkspaces/testworkspaceame1
+
+Location           : eastus2euap
+Tags               : {}
+Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspaceProperties
+TagsTable          :
+PropertiesText     : {
+                       "ProvisioningState": "Succeeded",
+                       "Description": ""
+                     }
+Name               : testVNV
+ResourceGroupName  : testRG
+NetworkManagerName : testNM
+Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText     : {
+                       "CreatedBy": "test@email.com",
+                       "CreatedByType": "User",
+                       "CreatedAt": "2024-05-03T20:34:19.9181023Z",
+                       "LastModifiedBy": "test@email.com",
+                       "LastModifiedByType": "User",
+                       "LastModifiedAt": "2024-05-03T20:34:19.9181023Z"
+                     }
+Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsof
+                     t.Network/networkManagers/testNM/verifierWorkspaces/testVNV
+
+Location           : eastus2euap
+Tags               : {}
+Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspaceProperties
+TagsTable          :
+PropertiesText     : {
+                       "ProvisioningState": "Succeeded",
+                       "Description": "string"
+                     }
+Name               : testVerifierWorkspace5
+ResourceGroupName  : testRG
+NetworkManagerName : testNM
+Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText     : {
+                       "CreatedBy": "test@email.com",
+                       "CreatedByType": "User",
+                       "CreatedAt": "2024-01-30T16:25:07.4175577Z",
+                       "LastModifiedBy": "test@email.com",
+                       "LastModifiedByType": "User",
+                       "LastModifiedAt": "2024-01-30T16:25:07.4175577Z"
+                     }
+Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsof
+                     t.Network/networkManagers/testNM/verifierWorkspaces/testVerifierWorkspace5
+
+Location           : eastus2euap
+Tags               : {}
+Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspaceProperties
+TagsTable          :
+PropertiesText     : {
+                       "ProvisioningState": "Succeeded",
+                       "Description": "string"
+                     }
+Name               : testVerifierWorkspace8
+ResourceGroupName  : testRG
+NetworkManagerName : testNM
+Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText     : {
+                       "LastModifiedBy": "test@email.com",
+                       "LastModifiedByType": "User",
+                       "LastModifiedAt": "2024-02-15T23:35:24.1880643Z"
+                     }
+Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsof
+                     t.Network/networkManagers/testNM/verifierWorkspaces/testVerifierWorkspace8
+
+Location           : eastus2euap
+Tags               : {}
+Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspaceProperties
+TagsTable          :
+PropertiesText     : {
+                       "ProvisioningState": "Succeeded",
+                       "Description": "string"
+                     }
+Name               : testVerifierWorkspace9
+ResourceGroupName  : testRG
+NetworkManagerName : testNM
+Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText     : {
+                       "CreatedBy": "test@email.com",
+                       "CreatedByType": "User",
+                       "CreatedAt": "2024-02-16T00:03:39.541236Z",
+                       "LastModifiedBy": "test@email.com",
+                       "LastModifiedByType": "User",
+                       "LastModifiedAt": "2024-02-16T00:24:13.1874766Z"
+                     }
+Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsof
+                     t.Network/networkManagers/testNM/verifierWorkspaces/testVerifierWorkspace9
+```
+
+Gets all network manager verifier workspaces in network manager 'testNM'.
+
+### Example 2
+
+```powershell
+Get-AzNetworkManagerVerifierWorkspace -Name "testVerifierWorkspace9" -NetworkManagerName "testNM" -ResourceGroupName "testRG"
+```
+
+```output
+Location           : eastus2euap
+Tags               :
+Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspaceProperties
+TagsTable          :
+PropertiesText     : {
+                       "ProvisioningState": "Succeeded",
+                       "Description": "string"
+                     }
+Name               : testVerifierWorkspace9
+ResourceGroupName  : testRG
+NetworkManagerName : testNM
+Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText     : {
+                       "CreatedBy": "test@email.com",
+                       "CreatedByType": "User",
+                       "CreatedAt": "2024-02-16T00:03:39.541236Z",
+                       "LastModifiedBy": "test@email.com",
+                       "LastModifiedByType": "User",
+                       "LastModifiedAt": "2024-02-16T00:24:13.1874766Z"
+                     }
+Id                 : /subscriptions//00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsof
+                     t.Network/networkManagers/testNM/verifierWorkspaces/testVerifierWorkspace9
+```
+Gets the network manager verifier workspace of name'testVerifierWorkspace9'.
 
 ## PARAMETERS
 

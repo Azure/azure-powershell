@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetworkManagerVerifierWorkspace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+To remove network manager verifier workspace. 
 
 ## SYNTAX
 
@@ -19,16 +19,22 @@ Remove-AzNetworkManagerVerifierWorkspace -Name <String> -NetworkManagerName <Str
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Remove-AzNetworkManagerVerifierWorkspace** cmdlet removes a network manager verifier workspace. 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzNetworkManagerVerifierWorkspace -Name "testVerifierWorkspace10" -NetworkManagerName "testNM" -ResourceGroupName "testRG"
 ```
 
-{{ Add example description here }}
+```output
+Confirm
+Are you sure you want to remove resource 'testVerifierWorkspace10'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+```
+
+Removes the network manager verifier workspace 'testVerifierWorkspace10'.
 
 ## PARAMETERS
 

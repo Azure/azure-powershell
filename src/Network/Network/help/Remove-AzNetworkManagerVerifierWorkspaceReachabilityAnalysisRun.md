@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+To remove network manager verifier workspace reachability analysis run. 
 
 ## SYNTAX
 
@@ -20,16 +20,22 @@ Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name <String> -
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun** cmdlet removes a network manager verifier workspace reachability analysis run.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+ Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name TestReachabilityAnalysisRun3 -NetworkManagerName "testNM" -ResourceGroupName "testRG" -WorkspaceName "testVNV"
+ ```
+
+```output
+Confirm
+Are you sure you want to remove resource 'TestReachabilityAnalysisRun3'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```
 
-{{ Add example description here }}
+Removed the network manager verifier workspace reachability analysis run 'TestReachabilityAnalysisRun3'.
 
 ## PARAMETERS
 
