@@ -158,7 +158,7 @@ function Update-GeneratedSubModule {
     # Copy assemblyinfo.cs separately because it will be regenerated
     Write-Host "Copying AssemblyInfo.cs from $SourceDirectory to $GeneratedDirectory ..." -ForegroundColor DarkGreen
     $assemblyInfoPath = Join-Path $SourceDirectory "Properties"
-    Copy-Item -Path $assemblyInfoPath -Destination $GeneratedDirectory -Force
+    Copy-Item -Path $assemblyInfoPath -Destination $GeneratedDirectory -Recurse -Force
 
     if (-not (Invoke-SubModuleGeneration -GenerateDirectory $SourceDirectory -GenerateLog $GenerateLog -IsInvokedByPipeline $IsInvokedByPipeline)) {
         return $false;
