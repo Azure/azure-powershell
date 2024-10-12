@@ -1,24 +1,24 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/f782b158-10b8-4a42-b9e4-f7fbaf769f35/providers/Microsoft.Attestation/locations/East%20US/defaultProvider?api-version=2018-09-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjc4MmIxNTgtMTBiOC00YTQyLWI5ZTQtZjdmYmFmNzY5ZjM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXR0ZXN0YXRpb24vbG9jYXRpb25zL0Vhc3QlMjBVUy9kZWZhdWx0UHJvdmlkZXI/YXBpLXZlcnNpb249MjAxOC0wOS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Attestation/locations/East%20US/defaultProvider?api-version=2018-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXR0ZXN0YXRpb24vbG9jYXRpb25zL0Vhc3QlMjBVUy9kZWZhdWx0UHJvdmlkZXI/YXBpLXZlcnNpb249MjAxOC0wOS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "adaf9868-9246-46aa-8363-229d3a3c993c"
+          "89ea2b97-f77c-49de-bc39-e86583043e38"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.Attestation.AttestationManagementClient/0.12.0.0"
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Attestation.AttestationManagementClient/0.10.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -27,22 +27,22 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "249"
         ],
         "x-ms-request-id": [
-          "00-360d90177adb1615be0f21b2bf5436d8-0000000000000000-00"
+          "00-4ec2affb4da3d867d2b66670fe054046-0000000000000000-00"
         ],
         "x-ms-maa-service-version": [
-          "1.10.01279.0001"
+          "1.11.02831.3112"
         ],
-        "Server": [
-          "Kestrel"
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "3749"
         ],
         "x-ms-correlation-request-id": [
-          "fe9dbf49-d0a5-4512-a01a-90982bfb2567"
+          "6711aa48-d6e9-4073-8446-4e19e980aaaf"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200703T122815Z:fe9dbf49-d0a5-4512-a01a-90982bfb2567"
+          "SOUTHEASTASIA:20241012T020709Z:6711aa48-d6e9-4073-8446-4e19e980aaaf"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -50,11 +50,17 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3B052B95AD3C4818B8E9B79A3D5C2C77 Ref B: MAA201060516035 Ref C: 2024-10-12T02:07:08Z"
+        ],
         "Date": [
-          "Fri, 03 Jul 2020 12:28:15 GMT"
+          "Sat, 12 Oct 2024 02:07:09 GMT"
         ],
         "Content-Length": [
-          "285"
+          "268"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,54 +69,54 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedeus\",\r\n  \"name\": \"sharedeus\",\r\n  \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n  \"location\": \"East US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"trustModel\": \"AAD\",\r\n    \"status\": \"Ready\",\r\n    \"attestUri\": \"https://sharedeus.eus.test.attest.azure.net\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Attestation/attestationProviders/sharedeus\",\r\n  \"name\": \"sharedeus\",\r\n  \"type\": \"Microsoft.Attestation/attestationProviders\",\r\n  \"location\": \"east us\",\r\n  \"properties\": {\r\n    \"trustModel\": \"AAD\",\r\n    \"status\": \"Ready\",\r\n    \"attestUri\": \"https://sharedeus.eus.attest.azure.net\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
       "RequestUri": "/operations/policy/current?api-version=2018-09-01-preview&tee=SgxEnclave",
       "EncodedRequestUri": "L29wZXJhdGlvbnMvcG9saWN5L2N1cnJlbnQ/YXBpLXZlcnNpb249MjAxOC0wOS0wMS1wcmV2aWV3JnRlZT1TZ3hFbmNsYXZl",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b2d1fd53-ff7e-4660-be39-7b6855ee22f2"
+          "89ea2b97-f77c-49de-bc39-e86583043e38"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28928.01",
+          "FxVersion/6.0.3524.45918",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.26100",
           "Microsoft.Azure.Attestation.AttestationClient/0.1000.20.12804"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Date": [
-          "Fri, 03 Jul 2020 12:28:16 GMT"
+          "Sat, 12 Oct 2024 02:07:09 GMT"
         ],
         "Server": [
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "00-9a477dd744b5be54030f2b7593b8dd4c-0000000000000000-00"
+          "00-2a0a1b634f9eb23e5873236bda9ff092-0000000000000000-00"
         ],
         "x-ms-maa-service-version": [
-          "1.10.01279.0001"
+          "1.11.02831.3112"
+        ],
+        "Content-Length": [
+          "1101"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "920"
         ]
       },
-      "ResponseBody": "{\r\n  \"Policy\": \"eyJhbGciOiJub25lIn0.eyJBdHRlc3RhdGlvblBvbGljeSI6ICJkbVZ5YzJsdmJqMGdNUzR3TzJGMWRHaHZjbWw2WVhScGIyNXlkV3hsYzN0ak9sdDBlWEJsUFQwaUpHbHpMV1JsWW5WbloyRmliR1VpWFNBOVBpQndaWEp0YVhRb0tUdDlPMmx6YzNWaGJtTmxjblZzWlhON1l6cGJkSGx3WlQwOUlpUnBjeTFrWldKMVoyZGhZbXhsSWwwZ1BUNGdhWE56ZFdVb2RIbHdaVDBpYVhNdFpHVmlkV2RuWVdKc1pTSXNJSFpoYkhWbFBXTXVkbUZzZFdVcE8yTTZXM1I1Y0dVOVBTSWtjMmQ0TFcxeWMybG5ibVZ5SWwwZ1BUNGdhWE56ZFdVb2RIbHdaVDBpYzJkNExXMXljMmxuYm1WeUlpd2dkbUZzZFdVOVl5NTJZV3gxWlNrN1l6cGJkSGx3WlQwOUlpUnpaM2d0YlhKbGJtTnNZWFpsSWwwZ1BUNGdhWE56ZFdVb2RIbHdaVDBpYzJkNExXMXlaVzVqYkdGMlpTSXNJSFpoYkhWbFBXTXVkbUZzZFdVcE8yTTZXM1I1Y0dVOVBTSWtjSEp2WkhWamRDMXBaQ0pkSUQwLUlHbHpjM1ZsS0hSNWNHVTlJbkJ5YjJSMVkzUXRhV1FpTENCMllXeDFaVDFqTG5aaGJIVmxLVHRqT2x0MGVYQmxQVDBpSkhOMmJpSmRJRDAtSUdsemMzVmxLSFI1Y0dVOUluTjJiaUlzSUhaaGJIVmxQV011ZG1Gc2RXVXBPMk02VzNSNWNHVTlQU0lrZEdWbElsMGdQVDRnYVhOemRXVW9kSGx3WlQwaWRHVmxJaXdnZG1Gc2RXVTlZeTUyWVd4MVpTazdmVHMifQ.\"\r\n}",
+      "ResponseBody": "{\r\n  \"Policy\": \"eyJhbGciOiJub25lIn0.eyJBdHRlc3RhdGlvblBvbGljeSI6ImRtVnljMmx2YmowZ01TNHhPMk52Ym1acFozVnlZWFJwYjI1eWRXeGxjM3M5UGlCcGMzTjFaWEJ5YjNCbGNuUjVLSFI1Y0dVOUluZ3RiWE10YzJkNExYUmpZbWxrWlc1MGFXWnBaWElpTENCMllXeDFaVDBpTVRBaUtUdDlPMkYxZEdodmNtbDZZWFJwYjI1eWRXeGxjM3M5UGlCd1pYSnRhWFFvS1R0OU8ybHpjM1ZoYm1ObGNuVnNaWE43WXpwYmRIbHdaVDA5SW5ndGJYTXRjMmQ0TFdsekxXUmxZblZuWjJGaWJHVWlYU0E5UGlCcGMzTjFaU2gwZVhCbFBTSnBjeTFrWldKMVoyZGhZbXhsSWl3Z2RtRnNkV1U5WXk1MllXeDFaU2s3WXpwYmRIbHdaVDA5SW5ndGJYTXRjMmQ0TFcxeWMybG5ibVZ5SWwwZ1BUNGdhWE56ZFdVb2RIbHdaVDBpYzJkNExXMXljMmxuYm1WeUlpd2dkbUZzZFdVOVl5NTJZV3gxWlNrN1l6cGJkSGx3WlQwOUluZ3RiWE10YzJkNExXMXlaVzVqYkdGMlpTSmRJRDAtSUdsemMzVmxLSFI1Y0dVOUluTm5lQzF0Y21WdVkyeGhkbVVpTENCMllXeDFaVDFqTG5aaGJIVmxLVHRqT2x0MGVYQmxQVDBpZUMxdGN5MXpaM2d0Y0hKdlpIVmpkQzFwWkNKZElEMC1JR2x6YzNWbEtIUjVjR1U5SW5CeWIyUjFZM1F0YVdRaUxDQjJZV3gxWlQxakxuWmhiSFZsS1R0ak9sdDBlWEJsUFQwaWVDMXRjeTF6WjNndGMzWnVJbDBnUFQ0Z2FYTnpkV1VvZEhsd1pUMGljM1p1SWl3Z2RtRnNkV1U5WXk1MllXeDFaU2s3WXpwYmRIbHdaVDA5SW5ndGJYTXRZWFIwWlhOMFlYUnBiMjR0ZEhsd1pTSmRJRDAtSUdsemMzVmxLSFI1Y0dVOUluUmxaU0lzSUhaaGJIVmxQV011ZG1Gc2RXVXBPMzA3In0.\"\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "f782b158-10b8-4a42-b9e4-f7fbaf769f35"
+    "SubscriptionId": "0b1f6471-1bf0-4dda-aec3-cb9272f09590"
   }
 }
