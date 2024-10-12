@@ -150,9 +150,15 @@ function Update-GeneratedSubModule {
     Write-Host "Cleaning directory: $GeneratedDirectory ..." -ForegroundColor DarkGreen
     Get-ChildItem $GeneratedDirectory | Foreach-Object { Remove-Item -Path $_.FullName -Recurse -Force }
 
+    # Copy generate-info.json separately because it will be regenerated
     Write-Host "Copying generate-info.json from $SourceDirectory to $GeneratedDirectory ..." -ForegroundColor DarkGreen
     $generateInfoPath = Join-Path $SourceDirectory "generate-info.json"
     Copy-Item -Path $generateInfoPath -Destination $GeneratedDirectory -Force
+
+    # Copy assemblyinfo.cs separately because it will be regenerated
+    Write-Host "Copying AssemblyInfo.cs from $SourceDirectory to $GeneratedDirectory ..." -ForegroundColor DarkGreen
+    $assemblyInfoPath = Join-Path $SourceDirectory "Properties"
+    Copy-Item -Path $assemblyInfoPath -Destination $GeneratedDirectory -Force
 
     if (-not (Invoke-SubModuleGeneration -GenerateDirectory $SourceDirectory -GenerateLog $GenerateLog -IsInvokedByPipeline $IsInvokedByPipeline)) {
         return $false;
@@ -163,7 +169,7 @@ function Update-GeneratedSubModule {
         Remove-Item -Path $localModulesPath -Recurse -Force
     }
     $subModuleNameTrimmed = $SubModuleName.split('.')[-2]
-    $fileToUpdate = @('Properties', 'generated', 'resources', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
+    $fileToUpdate = @('generated', 'resources', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
     # Copy from src/ to generated/ 
     $fileToUpdate | Foreach-Object {
         $moveFrom = Join-Path $SourceDirectory $_
