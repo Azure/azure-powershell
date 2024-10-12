@@ -332,8 +332,8 @@
         <TypeName>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileDirectory</TypeName>
       </ViewSelectedBy>
       <GroupBy>
-        <ScriptBlock>if ($_.ShareFileClient -eq $null) {$_.ShareDirectoryClient.ShareName} else {$_.ShareFileClient.ShareName}</ScriptBlock>
-        <Label>Share</Label>
+        <ScriptBlock>if ($_.ShareDirectoryClient -eq $null) {$_.ShareFileClient.AccountName + ", ShareName: " + $_.ShareFileClient.ShareName} else {$_.ShareDirectoryClient.AccountName + ", ShareName: " + $_.ShareDirectoryClient.ShareName}</ScriptBlock>
+        <Label>AccountName</Label>
       </GroupBy>
       <TableControl>
         <TableHeaders>

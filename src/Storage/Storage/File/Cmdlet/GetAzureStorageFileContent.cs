@@ -150,7 +150,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             string[] path = NamingUtil.ValidatePath(this.Path, true);
             switch (this.ParameterSetName)
             {
-                case LocalConstants.FileParameterSetName:                    
+                case LocalConstants.FileParameterSetName:  
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
                     fileClientToBeDownloaded = this.ShareFileClient;
                     fileToBeDownloaded = AzureStorageFile.GetTrack1FileClient(fileClientToBeDownloaded, ((AzureStorageContext)this.Context).StorageAccount.Credentials);
                     break;
@@ -164,11 +165,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case LocalConstants.ShareParameterSetName:
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
                     fileClientToBeDownloaded = this.ShareClient.GetRootDirectoryClient().GetFileClient(this.Path);
                     fileToBeDownloaded = AzureStorageFile.GetTrack1FileClient(fileClientToBeDownloaded, ((AzureStorageContext)this.Context).StorageAccount.Credentials);
                     break;
 
                 case LocalConstants.DirectoryParameterSetName:
+                    CheckContextForObjectInput((AzureStorageContext)this.Context);
                     fileClientToBeDownloaded = this.ShareDirectoryClient.GetFileClient(this.Path);
                     fileToBeDownloaded = AzureStorageFile.GetTrack1FileClient(fileClientToBeDownloaded, ((AzureStorageContext)this.Context).StorageAccount.Credentials);
                     break;
