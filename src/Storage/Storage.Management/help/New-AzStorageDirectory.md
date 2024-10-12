@@ -36,7 +36,7 @@ New-AzStorageDirectory [-ShareDirectoryClient] <ShareDirectoryClient> [-Path] <S
 
 ## DESCRIPTION
 The **New-AzStorageDirectory** cmdlet creates a directory.
-This cmdlet returns a **CloudFileDirectory** object.
+This cmdlet returns a **AzureStorageFileDirectory** object.
 
 ## EXAMPLES
 

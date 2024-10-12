@@ -16,11 +16,9 @@ using Microsoft.WindowsAzure.Commands.Storage.Common;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Azure.Storage.Files.Shares;
 using Azure.Storage.Files.Shares.Models;
-using System;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
