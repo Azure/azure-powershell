@@ -87,7 +87,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity, UpgradeViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -114,8 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -165,7 +164,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity
+Parameter Sets: Upgrade, UpgradeExpanded, UpgradeViaIdentity, UpgradeViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -176,7 +175,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the Elastic resource belongs.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -211,7 +211,7 @@ elastic monitor resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpgradeViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -226,7 +226,7 @@ Version to which the elastic monitor should be upgraded to
 
 ```yaml
 Type: System.String
-Parameter Sets: UpgradeExpanded
+Parameter Sets: UpgradeExpanded, UpgradeViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -283,6 +283,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+BODY <IElasticMonitorUpgrade>: Upgrade elastic monitor version
+  - `[Version <String>]`: Version to which the elastic monitor should be upgraded to
+
+INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[IntegrationName <String>]`: OpenAI Integration name
+  - `[MonitorName <String>]`: Monitor resource name
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RuleSetName <String>]`: Tag Rule Set resource name
+  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
 
 ## RELATED LINKS
 
