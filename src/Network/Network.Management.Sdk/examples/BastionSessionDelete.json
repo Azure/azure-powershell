@@ -1,0 +1,37 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "bastionHostName": "bastionhosttenant",
+    "sessionIds": [
+      "session1",
+      "session2",
+      "session3"
+    ]
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "sessionId": "session1",
+            "message": "session session1 invalidated!",
+            "state": "Disconnected"
+          },
+          {
+            "sessionId": "session2",
+            "message": "session session2 could not be disconnected!",
+            "state": "Failed"
+          },
+          {
+            "sessionId": "session3",
+            "message": "session session3 not found!",
+            "state": "NotFound"
+          }
+        ]
+      }
+    }
+  }
+}
+

@@ -1,0 +1,30 @@
+{
+  "parameters": {
+    "peeringName": "AzurePrivatePeering",
+    "crossConnectionName": "<circuitServiceKey>",
+    "resourceGroupName": "CrossConnection-SiliconValley",
+    "devicePath": "primary",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "age": 0,
+            "interface": "Microsoft",
+            "ipAddress": "192.116.14.254",
+            "macAddress": "885a.9269.9110"
+          }
+        ]
+      }
+    },
+    "202": {
+      "headers": {
+        "Azure-AsyncOperation": "<azure-operation-result>"
+      }
+    }
+  }
+}
+

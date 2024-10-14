@@ -1,0 +1,19 @@
+{
+  "parameters": {
+    "peeringName": "AzurePrivatePeering",
+    "crossConnectionName": "<circuitServiceKey>",
+    "resourceGroupName": "CrossConnection-SiliconValley",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {},
+    "202": {
+      "headers": {
+        "Azure-AsyncOperation": "<azure-operation-result>"
+      }
+    },
+    "204": {}
+  }
+}
+

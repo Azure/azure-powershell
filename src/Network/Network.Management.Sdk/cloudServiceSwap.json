@@ -1,0 +1,281 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Compute/cloudServices/{resourceName}/providers/Microsoft.Network/cloudServiceSlots/{singletonResource}": {
+      "get": {
+        "tags": [
+          "VipSwap"
+        ],
+        "operationId": "VipSwap_Get",
+        "description": "Gets the SwapResource which identifies the slot type for the specified cloud service. The slot type on a cloud service can either be Staging or Production",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "resourceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the cloud service."
+          },
+          {
+            "name": "singletonResource",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Specifies a synthetic proxy resource that cannot be created or deleted. Value must be set to swap.",
+            "enum": [
+              "swap"
+            ],
+            "x-ms-enum": {
+              "name": "singletonResource",
+              "modelAsString": false
+            }
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "Request successful. The operation returns the slot type for the specified cloud service.",
+            "schema": {
+              "$ref": "#/definitions/SwapResource"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get swap resource": {
+            "$ref": "./examples/CloudServiceSwapGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "VipSwap"
+        ],
+        "operationId": "VipSwap_Create",
+        "description": "Performs vip swap operation on swappable cloud services.",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "resourceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the cloud service."
+          },
+          {
+            "name": "singletonResource",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Specifies a synthetic resource that cannot be created or deleted. Value must be set to swap.",
+            "enum": [
+              "swap"
+            ],
+            "x-ms-enum": {
+              "name": "singletonResource",
+              "modelAsString": false
+            }
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SwapResource"
+            },
+            "description": "SwapResource object where slot type should be the target slot after vip swap for the specified cloud service."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-examples": {
+          "Put vip swap operation.": {
+            "$ref": "./examples/CloudServiceSwapPut.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Compute/cloudServices/{resourceName}/providers/Microsoft.Network/cloudServiceSlots": {
+      "get": {
+        "tags": [
+          "VipSwap"
+        ],
+        "operationId": "VipSwap_List",
+        "description": "Gets the list of SwapResource which identifies the slot type for the specified cloud service. The slot type on a cloud service can either be Staging or Production",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "resourceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the cloud service."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          },
+          "200": {
+            "description": "Request successful. The operation returns the slot type for the specified cloud service.",
+            "schema": {
+              "$ref": "#/definitions/SwapResourceListResult"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get swap resource list": {
+            "$ref": "./examples/CloudServiceSwapList.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SwapResource": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Resource Id.",
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "description": "Resource name.",
+          "type": "string",
+          "readOnly": true
+        },
+        "type": {
+          "description": "Resource type.",
+          "type": "string",
+          "readOnly": true
+        },
+        "properties": {
+          "$ref": "#/definitions/SwapResourceProperties"
+        }
+      },
+      "description": "SwapResource to represent slot type on the specified cloud service."
+    },
+    "SwapResourceProperties": {
+      "description": "Swap resource properties",
+      "type": "object",
+      "properties": {
+        "slotType": {
+          "description": "Specifies slot info on a cloud service",
+          "type": "string",
+          "enum": [
+            "Production",
+            "Staging"
+          ],
+          "x-ms-enum": {
+            "name": "slotType",
+            "modelAsString": false
+          }
+        }
+      }
+    },
+    "SwapResourceListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SwapResource"
+          }
+        }
+      },
+      "description": "SwapResource List with single entry to represent slot type on the specified cloud service."
+    }
+  }
+}
+

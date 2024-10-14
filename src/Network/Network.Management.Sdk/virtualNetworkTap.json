@@ -1,0 +1,427 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps/{tapName}": {
+      "delete": {
+        "tags": [
+          "VirtualNetworkTap"
+        ],
+        "operationId": "VirtualNetworkTaps_Delete",
+        "description": "Deletes the specified virtual network tap.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "tapName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the virtual network tap."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
+          "202": {
+            "description": "Accepted. Sets 'Deleting' provisioningState until the operation completes. Returns an operation URI that can be queried to find the current state of the operation."
+          },
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete Virtual Network Tap resource": {
+            "$ref": "./examples/VirtualNetworkTapDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "VirtualNetworkTap"
+        ],
+        "operationId": "VirtualNetworkTaps_Get",
+        "description": "Gets information about the specified virtual network tap.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "tapName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of virtual network tap."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting VirtualNetworkTap resource.",
+            "schema": {
+              "$ref": "#/definitions/VirtualNetworkTap"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Virtual Network Tap": {
+            "$ref": "./examples/VirtualNetworkTapGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "VirtualNetworkTap"
+        ],
+        "operationId": "VirtualNetworkTaps_CreateOrUpdate",
+        "description": "Creates or updates a Virtual Network Tap.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "tapName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the virtual network tap."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VirtualNetworkTap"
+            },
+            "description": "Parameters supplied to the create or update virtual network tap operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting VirtualNetworkTap resource.",
+            "schema": {
+              "$ref": "#/definitions/VirtualNetworkTap"
+            }
+          },
+          "201": {
+            "description": "Create successful. The operation returns the resulting VirtualNetworkTap resource.",
+            "schema": {
+              "$ref": "#/definitions/VirtualNetworkTap"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create Virtual Network Tap": {
+            "$ref": "./examples/VirtualNetworkTapCreate.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "patch": {
+        "tags": [
+          "VirtualNetworkTap"
+        ],
+        "operationId": "VirtualNetworkTaps_UpdateTags",
+        "description": "Updates an VirtualNetworkTap tags.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "tapName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the tap."
+          },
+          {
+            "name": "tapParameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update VirtualNetworkTap tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting VirtualNetworkTap resource.",
+            "schema": {
+              "$ref": "#/definitions/VirtualNetworkTap"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update virtual network tap tags": {
+            "$ref": "./examples/VirtualNetworkTapUpdateTags.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/virtualNetworkTaps": {
+      "get": {
+        "tags": [
+          "VirtualNetworkTaps"
+        ],
+        "operationId": "VirtualNetworkTaps_ListAll",
+        "description": "Gets all the VirtualNetworkTaps in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of Virtual Network Tap resources.",
+            "schema": {
+              "$ref": "#/definitions/VirtualNetworkTapListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all virtual network taps": {
+            "$ref": "./examples/VirtualNetworkTapListAll.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkTaps": {
+      "get": {
+        "tags": [
+          "VirtualNetworkTaps"
+        ],
+        "operationId": "VirtualNetworkTaps_ListByResourceGroup",
+        "description": "Gets all the VirtualNetworkTaps in a subscription.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of Virtual Network Tap resources.",
+            "schema": {
+              "$ref": "#/definitions/VirtualNetworkTapListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List virtual network taps in resource group": {
+            "$ref": "./examples/VirtualNetworkTapList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "VirtualNetworkTap": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/VirtualNetworkTapPropertiesFormat",
+          "description": "Virtual Network Tap Properties."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "Virtual Network Tap resource."
+    },
+    "VirtualNetworkTapPropertiesFormat": {
+      "description": "Virtual Network Tap properties.",
+      "properties": {
+        "networkInterfaceTapConfigurations": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "./networkInterface.json#/definitions/NetworkInterfaceTapConfiguration",
+            "description": "The reference to the Network Interface."
+          },
+          "description": "Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped."
+        },
+        "resourceGuid": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The resource GUID property of the virtual network tap resource."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the virtual network tap resource."
+        },
+        "destinationNetworkInterfaceIPConfiguration": {
+          "$ref": "./networkInterface.json#/definitions/NetworkInterfaceIPConfiguration",
+          "description": "The reference to the private IP Address of the collector nic that will receive the tap."
+        },
+        "destinationLoadBalancerFrontEndIPConfiguration": {
+          "$ref": "./loadBalancer.json#/definitions/FrontendIPConfiguration",
+          "description": "The reference to the private IP address on the internal Load Balancer that will receive the tap."
+        },
+        "destinationPort": {
+          "type": "integer",
+          "description": "The VXLAN destination port that will receive the tapped traffic."
+        }
+      }
+    },
+    "VirtualNetworkTapListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VirtualNetworkTap"
+          },
+          "description": "A list of VirtualNetworkTaps in a resource group."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListVirtualNetworkTap API service call."
+    }
+  }
+}
+

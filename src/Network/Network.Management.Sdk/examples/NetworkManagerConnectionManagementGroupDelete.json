@@ -1,0 +1,13 @@
+{
+  "title": "Delete Management Group Connection to Azure Virtual Network Manager",
+  "parameters": {
+    "api-version": "2024-05-01",
+    "managementGroupId": "managementGroupA",
+    "networkManagerConnectionName": "TestNMConnection"
+  },
+  "responses": {
+    "200": {},
+    "204": {}
+  }
+}
+

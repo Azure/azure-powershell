@@ -1,0 +1,35 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1",
+    "parameters": {
+      "targetResourceId": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1",
+      "direction": "Outbound",
+      "protocol": "TCP",
+      "localPort": "80",
+      "remotePort": "80",
+      "localIPAddress": "10.2.0.4",
+      "remoteIPAddress": "121.10.1.1"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "access": "Allow",
+        "ruleName": "Rule1"
+      }
+    },
+    "202": {
+      "headers": {
+        "Location": "https:/management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/ipFlowVerify?api-version=2024-05-01"
+      },
+      "body": {
+        "access": "Allow",
+        "ruleName": "Rule1"
+      }
+    }
+  }
+}
+

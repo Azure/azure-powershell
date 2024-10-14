@@ -1,0 +1,41 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "tapName": "test-vtap",
+    "tapParameters": {
+      "tags": {
+        "tag1": "value1",
+        "tag2": "value2"
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "test-vtap",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkTaps/test-vtap",
+        "location": "eastus",
+        "tags": {
+          "tag1": "value1",
+          "tag2": "value2"
+        },
+        "properties": {
+          "destinationNetworkInterfaceIPConfiguration": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/testNetworkInterface/ipConfigurations/testIPConfig1"
+          },
+          "destinationPort": 4789,
+          "provisioningState": "Succeded",
+          "networkInterfaceTapConfigurations": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/testNetworkInterface2/tapConfigurations/testtapConfiguration"
+            }
+          ]
+        },
+        "type": "Microsoft.Network/virtualNetworkTaps"
+      }
+    }
+  }
+}
+

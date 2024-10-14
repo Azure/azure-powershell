@@ -1,0 +1,42 @@
+{
+  "parameters": {
+    "virtualNetworkPeeringName": "peer",
+    "virtualNetworkName": "vnet1",
+    "resourceGroupName": "peerTest",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/subid/resourceGroups/peerTest/providers/Microsoft.Network/virtualNetworks/vnet1/virtualNetworkPeerings/peer",
+        "name": "peer",
+        "properties": {
+          "allowVirtualNetworkAccess": true,
+          "allowForwardedTraffic": true,
+          "allowGatewayTransit": false,
+          "useRemoteGateways": false,
+          "remoteVirtualNetwork": {
+            "id": "/subscriptions/subid/resourceGroups/peerTest/providers/Microsoft.Network/virtualNetworks/vnet2"
+          },
+          "remoteAddressSpace": {
+            "addressPrefixes": [
+              "12.0.0.0/8"
+            ]
+          },
+          "remoteBgpCommunities": {
+            "virtualNetworkCommunity": "12076:20002",
+            "regionalCommunity": "12076:50004"
+          },
+          "remoteVirtualNetworkEncryption": {
+            "enabled": true,
+            "enforcement": "AllowUnencrypted"
+          },
+          "peeringState": "Initiated",
+          "provisioningState": "Succeeded"
+        }
+      }
+    }
+  }
+}
+

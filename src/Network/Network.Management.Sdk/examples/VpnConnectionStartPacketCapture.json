@@ -1,0 +1,22 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "gatewayName": "gateway1",
+    "vpnConnectionName": "vpnConnection1",
+    "parameters": {
+      "linkConnectionNames": [
+        "siteLink1",
+        "siteLink2"
+      ]
+    }
+  },
+  "responses": {
+    "202": {},
+    "200": {
+      "body": "\"{\"Status\":\"Successful\",\"Data\":null}\""
+    }
+  }
+}
+

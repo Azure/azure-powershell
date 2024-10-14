@@ -1,0 +1,82 @@
+{
+  "parameters": {
+    "virtualHubName": "virtualHub1",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": [
+        {
+          "name": "hubRouteTable1",
+          "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1",
+          "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "routes": [
+              {
+                "name": "route1a",
+                "destinationType": "CIDR",
+                "destinations": [
+                  "10.0.0.0/8",
+                  "20.0.0.0/8",
+                  "30.0.0.0/8"
+                ],
+                "nextHopType": "ResourceId",
+                "nextHop": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azureFirewall1"
+              }
+            ],
+            "labels": [
+              "label1",
+              "label2"
+            ],
+            "associatedConnections": [
+              "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubVirtualNetworkConnections/vnetConnn1",
+              "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubVirtualNetworkConnections/vnetConnn2"
+            ],
+            "propagatingConnections": [
+              "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteGateways/erg1/expressRouteConnections/erConn1",
+              "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnGateways/vpngw1/vpnConnections/vpnConn2"
+            ]
+          },
+          "type": "Microsoft.Network/virtualHubs/hubRouteTables"
+        },
+        {
+          "name": "hubRouteTable2",
+          "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable2",
+          "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "routes": [
+              {
+                "name": "route2a",
+                "destinationType": "CIDR",
+                "destinations": [
+                  "40.0.0.0/8",
+                  "50.0.0.0/8",
+                  "60.0.0.0/8"
+                ],
+                "nextHopType": "ResourceId",
+                "nextHop": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubVirtualNetworkConnections/vn1"
+              }
+            ],
+            "labels": [
+              "label3"
+            ],
+            "associatedConnections": [
+              "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubVirtualNetworkConnections/vnetConnn3",
+              "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubVirtualNetworkConnections/vnetConnn4"
+            ],
+            "propagatingConnections": [
+              "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteGateways/erg1/expressRouteConnections/erConn2",
+              "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnGateways/vpngw1/vpnConnections/vpnConn1"
+            ]
+          },
+          "type": "Microsoft.Network/virtualHubs/hubRouteTables"
+        }
+      ]
+    }
+  }
+}
+

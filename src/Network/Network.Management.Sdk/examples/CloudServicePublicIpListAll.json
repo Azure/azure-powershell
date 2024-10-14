@@ -1,0 +1,53 @@
+{
+  "parameters": {
+    "cloudServiceName": "cs1",
+    "resourceGroupName": "cs-tester",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/subid/resourceGroups/cs-tester/providers/Microsoft.Compute/cloudServices/cs1/roleInstances/Test_VM_0/networkInterfaces/nic1/ipConfigurations/ip1/publicIPAddresses/pub1",
+            "name": "pub1",
+            "properties": {
+              "publicIPAllocationMethod": "Dynamic",
+              "publicIPAddressVersion": "IPv4",
+              "ipConfiguration": {
+                "id": "/subscriptions/subid/resourceGroups/cs-tester/providers/Microsoft.Compute/cloudServices/cs1/roleInstances/Test_VM_0/networkInterfaces/nic1/ipConfigurations/ip1"
+              },
+              "dnsSettings": {
+                "domainNameLabel": "vm1.testvmssacc",
+                "fqdn": "vm1.testvmssacc.southeastasia.cloudapp.azure.com"
+              },
+              "ipAddress": "13.67.119.72",
+              "idleTimeoutInMinutes": 10,
+              "provisioningState": "Succeeded"
+            }
+          },
+          {
+            "id": "/subscriptions/subid/resourceGroups/cs-tester/providers/Microsoft.Compute/cloudServices/cs1/roleInstances/Test_VM_3/networkInterfaces/nic1/ipConfigurations/ip1/publicIPAddresses/pub1",
+            "name": "pub1",
+            "properties": {
+              "publicIPAllocationMethod": "Dynamic",
+              "publicIPAddressVersion": "IPv4",
+              "ipConfiguration": {
+                "id": "/subscriptions/subid/resourceGroups/cs-tester/providers/Microsoft.Compute/cloudServices/cs1/roleInstances/Test_VM_3/networkInterfaces/nic1/ipConfigurations/ip1"
+              },
+              "dnsSettings": {
+                "domainNameLabel": "vm3.testvmssacc",
+                "fqdn": "vm3.testvmssacc.southeastasia.cloudapp.azure.com"
+              },
+              "ipAddress": "13.67.118.216",
+              "idleTimeoutInMinutes": 10,
+              "provisioningState": "Succeeded"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

@@ -1,0 +1,31 @@
+{
+  "parameters": {
+    "vpnSiteName": "vpnSite1",
+    "vpnSiteLinkName": "vpnSiteLink1",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "vpnSiteLink1",
+        "type": "Microsoft.Network/vpnSites/vpnSiteLinks",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1/vpnSiteLinks/vpnSiteLink1",
+        "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "ipAddress": "50.50.50.56",
+          "linkProperties": {
+            "linkSpeedInMbps": 0
+          },
+          "bgpProperties": {
+            "bgpPeeringAddress": "192.168.0.0",
+            "asn": 1234
+          }
+        }
+      }
+    }
+  }
+}
+

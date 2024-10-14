@@ -1,0 +1,53 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "serviceEndpointPolicyName": "testPolicy",
+    "serviceEndpointPolicyDefinitionName": "testDefinition",
+    "ServiceEndpointPolicyDefinitions": {
+      "properties": {
+        "description": "Storage Service EndpointPolicy Definition",
+        "service": "Microsoft.Storage",
+        "serviceResources": [
+          "/subscriptions/subid1",
+          "/subscriptions/subid1/resourceGroups/storageRg",
+          "/subscriptions/subid1/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount"
+        ]
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "testDefinition",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/serviceEndpointPolicies/testPolicy/serviceEndpointPolicyDefinitions/testDefinition",
+        "properties": {
+          "description": "Storage Service EndpointPolicy Definition",
+          "service": "Microsoft.Storage",
+          "serviceResources": [
+            "/subscriptions/subid1",
+            "/subscriptions/subid1/resourceGroups/storageRg",
+            "/subscriptions/subid1/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount"
+          ]
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "rule1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/rule1",
+        "properties": {
+          "description": "Storage Service EndpointPolicy Definition",
+          "service": "Microsoft.Storage",
+          "serviceResources": [
+            "/subscriptions/subid1",
+            "/subscriptions/subid1/resourceGroups/storageRg",
+            "/subscriptions/subid1/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount"
+          ]
+        }
+      }
+    }
+  }
+}
+

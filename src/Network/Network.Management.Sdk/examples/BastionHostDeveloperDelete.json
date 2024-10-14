@@ -1,0 +1,18 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg2",
+    "bastionHostName": "bastionhostdeveloper"
+  },
+  "responses": {
+    "200": {},
+    "202": {
+      "headers": {
+        "location": "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/operationResults/{operationId}?api-version={api-version}"
+      }
+    },
+    "204": {}
+  }
+}
+

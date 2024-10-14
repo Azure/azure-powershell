@@ -1,0 +1,71 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1",
+    "parameters": {
+      "targetResourceId": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "startTime": "2017-01-12T00:19:47.0442834Z",
+        "endTime": "2017-01-12T00:20:09.914Z",
+        "code": "UnHealthy",
+        "results": [
+          {
+            "id": "000000",
+            "reasonType": "VipUnResponsive",
+            "summary": "We are sorry, your VPN gateway is unreachable from the Internet",
+            "detail": "During this time S2S VPN tunnels to on premises sites or other Azure virtual networks will be disconnected",
+            "recommendedActions": [
+              {
+                "actionText": "Verify if there is a network security group (NSG) applied to the GatewaySubnet",
+                "actionUri": "https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-create-nsg-arm-pportal",
+                "actionUriText": "Verify"
+              },
+              {
+                "actionText": "If your VPN gateway isn't up and running by the expected resolution time, contact support",
+                "actionUri": "http://azure.microsoft.com/support",
+                "actionUriText": "contact support"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "202": {
+      "headers": {
+        "Location": "https:/management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/queryTroubleshootResult?api-version=2024-05-01"
+      },
+      "body": {
+        "startTime": "2017-01-12T00:19:47.0442834Z",
+        "endTime": "2017-01-12T00:20:09.914Z",
+        "code": "UnHealthy",
+        "results": [
+          {
+            "id": "000000",
+            "reasonType": "VipUnResponsive",
+            "summary": "We are sorry, your VPN gateway is unreachable from the Internet",
+            "detail": "During this time S2S VPN tunnels to on premises sites or other Azure virtual networks will be disconnected",
+            "recommendedActions": [
+              {
+                "actionText": "Verify if there is a network security group (NSG) applied to the GatewaySubnet",
+                "actionUri": "https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-create-nsg-arm-pportal",
+                "actionUriText": "Verify"
+              },
+              {
+                "actionText": "If your VPN gateway isn't up and running by the expected resolution time, contact support",
+                "actionUri": "http://azure.microsoft.com/support",
+                "actionUriText": "contact support"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+

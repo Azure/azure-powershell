@@ -1,0 +1,1115 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}": {
+      "delete": {
+        "tags": [
+          "BastionHosts"
+        ],
+        "operationId": "BastionHosts_Delete",
+        "description": "Deletes the specified Bastion Host.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupName"
+          },
+          {
+            "$ref": "#/parameters/BastionHostName"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Request successful. Resource with the specified name does not exist."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete Bastion Host": {
+            "$ref": "./examples/BastionHostDelete.json"
+          },
+          "Delete Developer Bastion Host": {
+            "$ref": "./examples/BastionHostDeveloperDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "BastionHosts"
+        ],
+        "operationId": "BastionHosts_Get",
+        "description": "Gets the specified Bastion Host.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupName"
+          },
+          {
+            "$ref": "#/parameters/BastionHostName"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns an BastionHost resource.",
+            "schema": {
+              "$ref": "#/definitions/BastionHost"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Bastion Host": {
+            "$ref": "./examples/BastionHostGet.json"
+          },
+          "Get Developer Bastion Host": {
+            "$ref": "./examples/BastionHostDeveloperGet.json"
+          },
+          "Get Bastion Host With Zones": {
+            "$ref": "./examples/BastionHostGetWithZones.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "BastionHosts"
+        ],
+        "operationId": "BastionHosts_CreateOrUpdate",
+        "description": "Creates or updates the specified Bastion Host.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupName"
+          },
+          {
+            "$ref": "#/parameters/BastionHostName"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BastionHost"
+            },
+            "description": "Parameters supplied to the create or update Bastion Host operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create successful. The operation returns the resulting Bastion Host resource.",
+            "schema": {
+              "$ref": "#/definitions/BastionHost"
+            }
+          },
+          "200": {
+            "description": "Update successful. The operation returns the resulting Bastion Host resource.",
+            "schema": {
+              "$ref": "#/definitions/BastionHost"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create Bastion Host": {
+            "$ref": "./examples/BastionHostPut.json"
+          },
+          "Create Bastion Host With Zones": {
+            "$ref": "./examples/BastionHostPutWithZones.json"
+          },
+          "Create Developer Bastion Host": {
+            "$ref": "./examples/BastionHostDeveloperPut.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "patch": {
+        "tags": [
+          "BastionHosts"
+        ],
+        "operationId": "BastionHosts_UpdateTags",
+        "description": "Updates Tags for BastionHost resource",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupName"
+          },
+          {
+            "$ref": "#/parameters/BastionHostName"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update BastionHost tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting BastionHost resource.",
+            "schema": {
+              "$ref": "#/definitions/BastionHost"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Patch Bastion Host": {
+            "$ref": "./examples/BastionHostPatch.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/bastionHosts": {
+      "get": {
+        "tags": [
+          "BastionHosts"
+        ],
+        "operationId": "BastionHosts_List",
+        "description": "Lists all Bastion Hosts in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of Bastion Host resources.",
+            "schema": {
+              "$ref": "#/definitions/BastionHostListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all Bastion Hosts for a given subscription": {
+            "$ref": "./examples/BastionHostListBySubscription.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts": {
+      "get": {
+        "tags": [
+          "BastionHosts"
+        ],
+        "operationId": "BastionHosts_ListByResourceGroup",
+        "description": "Lists all Bastion Hosts in a resource group.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupName"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of BastionHost resources.",
+            "schema": {
+              "$ref": "#/definitions/BastionHostListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all Bastion Hosts for a given resource group": {
+            "$ref": "./examples/BastionHostListByResourceGroup.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/createShareableLinks": {
+      "post": {
+        "tags": [
+          "BastionHosts",
+          "BastionShareableLink"
+        ],
+        "operationId": "PutBastionShareableLink",
+        "description": "Creates a Bastion Shareable Links for all the VMs specified in the request.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupName"
+          },
+          {
+            "$ref": "#/parameters/BastionHostName"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/BastionShareableLinkRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of shareable links for the specified VMs, giving appropriate error messages as needed.",
+            "schema": {
+              "$ref": "#/definitions/BastionShareableLinkListResult"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "Create Bastion Shareable Links for the request VMs": {
+            "$ref": "./examples/BastionShareableLinkCreate.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinks": {
+      "post": {
+        "tags": [
+          "BastionHosts",
+          "BastionShareableLink"
+        ],
+        "operationId": "DeleteBastionShareableLink",
+        "description": "Deletes the Bastion Shareable Links for all the VMs specified in the request.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupName"
+          },
+          {
+            "$ref": "#/parameters/BastionHostName"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/BastionShareableLinkRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation deleted the BastionShareableLinks associated with the VMs, if they existed. No return body."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Delete Bastion Shareable Links for the request VMs": {
+            "$ref": "./examples/BastionShareableLinkDelete.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/deleteShareableLinksByToken": {
+      "post": {
+        "tags": [
+          "BastionHosts",
+          "BastionShareableLink"
+        ],
+        "operationId": "DeleteBastionShareableLinkByToken",
+        "description": "Deletes the Bastion Shareable Links for all the tokens specified in the request.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupName"
+          },
+          {
+            "$ref": "#/parameters/BastionHostName"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/BastionShareableLinkTokenRequest"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Delete Bastion Shareable Links for the request VMs": {
+            "$ref": "./examples/BastionShareableLinkDeleteByToken.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getShareableLinks": {
+      "post": {
+        "tags": [
+          "BastionHosts",
+          "BastionShareableLink"
+        ],
+        "operationId": "GetBastionShareableLink",
+        "description": "Return the Bastion Shareable Links for all the VMs specified in the request.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupName"
+          },
+          {
+            "$ref": "#/parameters/BastionHostName"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/BastionShareableLinkRequest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of shareable links for the specified VMs, giving appropriate error messages as needed.",
+            "schema": {
+              "$ref": "#/definitions/BastionShareableLinkListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "Returns the Bastion Shareable Links for the request VMs": {
+            "$ref": "./examples/BastionShareableLinkGet.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/getActiveSessions": {
+      "post": {
+        "tags": [
+          "BastionHosts"
+        ],
+        "operationId": "GetActiveSessions",
+        "description": "Returns the list of currently active sessions on the Bastion.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupName"
+          },
+          {
+            "$ref": "#/parameters/BastionHostName"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of active sessions on the Bastion.",
+            "schema": {
+              "$ref": "#/definitions/BastionActiveSessionListResult"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "Returns a list of currently active sessions on the Bastion": {
+            "$ref": "./examples/BastionSessionsList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/bastionHosts/{bastionHostName}/disconnectActiveSessions": {
+      "post": {
+        "tags": [
+          "BastionHosts"
+        ],
+        "operationId": "DisconnectActiveSessions",
+        "description": "Returns the list of currently active sessions on the Bastion.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ResourceGroupName"
+          },
+          {
+            "$ref": "#/parameters/BastionHostName"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/SessionIdsParameters"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. The operation returns a list of sessions with the state of deleted/failed/not found.",
+            "schema": {
+              "$ref": "#/definitions/BastionSessionDeleteResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "Deletes the specified active session": {
+            "$ref": "./examples/BastionSessionDelete.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Sku": {
+      "description": "The sku of this Bastion Host.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the sku of this Bastion Host.",
+          "enum": [
+            "Basic",
+            "Standard",
+            "Developer",
+            "Premium"
+          ],
+          "default": "Standard",
+          "x-ms-enum": {
+            "name": "BastionHostSkuName",
+            "modelAsString": true
+          }
+        }
+      },
+      "type": "object"
+    },
+    "IPRule": {
+      "properties": {
+        "addressPrefix": {
+          "type": "string",
+          "description": "Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed."
+        }
+      },
+      "type": "object"
+    },
+    "BastionHostIPConfigurationPropertiesFormat": {
+      "properties": {
+        "subnet": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "Reference of the subnet resource."
+        },
+        "publicIPAddress": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "Reference of the PublicIP resource."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the bastion host IP configuration resource."
+        },
+        "privateIPAllocationMethod": {
+          "$ref": "./network.json#/definitions/IPAllocationMethod",
+          "description": "Private IP allocation method."
+        }
+      },
+      "required": [
+        "subnet",
+        "publicIPAddress"
+      ],
+      "description": "Properties of IP configuration of an Bastion Host."
+    },
+    "BastionHostIPConfiguration": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/BastionHostIPConfigurationPropertiesFormat",
+          "description": "Represents the ip configuration associated with the resource."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the resource that is unique within a resource group. This name can be used to access the resource."
+        },
+        "etag": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Ip configuration type."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ],
+      "description": "IP configuration of an Bastion Host."
+    },
+    "BastionHostPropertiesFormat": {
+      "properties": {
+        "ipConfigurations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BastionHostIPConfiguration"
+          },
+          "description": "IP configuration of the Bastion Host resource."
+        },
+        "dnsName": {
+          "type": "string",
+          "description": "FQDN for the endpoint on which bastion host is accessible."
+        },
+        "virtualNetwork": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "Reference to an existing virtual network required for Developer Bastion Host only."
+        },
+        "networkAcls": {
+          "properties": {
+            "ipRules": {
+              "type": "array",
+              "items": {
+                "description": "IP rule with specific IP or IP range in CIDR format.",
+                "$ref": "#/definitions/IPRule"
+              },
+              "description": "Sets the IP ACL rules for Developer Bastion Host."
+            }
+          }
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the bastion host resource."
+        },
+        "scaleUnits": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The scale units for the Bastion Host resource.",
+          "minimum": 2,
+          "maximum": 50
+        },
+        "disableCopyPaste": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/Disable Copy/Paste feature of the Bastion Host resource."
+        },
+        "enableFileCopy": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/Disable File Copy feature of the Bastion Host resource."
+        },
+        "enableIpConnect": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/Disable IP Connect feature of the Bastion Host resource."
+        },
+        "enableShareableLink": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/Disable Shareable Link of the Bastion Host resource."
+        },
+        "enableTunneling": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/Disable Tunneling feature of the Bastion Host resource."
+        },
+        "enableKerberos": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/Disable Kerberos feature of the Bastion Host resource."
+        },
+        "enableSessionRecording": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable/Disable Session Recording feature of the Bastion Host resource."
+        }
+      },
+      "description": "Properties of the Bastion Host."
+    },
+    "BastionHost": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/BastionHostPropertiesFormat",
+          "description": "Represents the bastion host resource."
+        },
+        "zones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of availability zones denoting where the resource needs to come from."
+        },
+        "etag": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "sku": {
+          "description": "The sku of this Bastion Host.",
+          "$ref": "#/definitions/Sku"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "Bastion Host resource."
+    },
+    "BastionHostListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BastionHost"
+          },
+          "description": "List of Bastion Hosts in a resource group."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListBastionHosts API service call."
+    },
+    "BastionShareableLink": {
+      "properties": {
+        "vm": {
+          "$ref": "#/definitions/VM",
+          "description": "Reference of the virtual machine resource."
+        },
+        "bsl": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The unique Bastion Shareable Link to the virtual machine."
+        },
+        "createdAt": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The time when the link was created."
+        },
+        "message": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Optional field indicating the warning or error message related to the vm in case of partial failure."
+        }
+      },
+      "required": [
+        "vm"
+      ],
+      "description": "Bastion Shareable Link."
+    },
+    "BastionShareableLinkListRequest": {
+      "properties": {
+        "vms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BastionShareableLink"
+          },
+          "description": "List of VM references."
+        }
+      },
+      "description": "Post request for Create/Delete/Get Bastion Shareable Link endpoints."
+    },
+    "BastionShareableLinkTokenListRequest": {
+      "type": "object",
+      "properties": {
+        "tokens": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of Bastion Shareable Link Token."
+        }
+      },
+      "description": "Post request for Delete Bastion Shareable Link By Token endpoint."
+    },
+    "BastionShareableLinkListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BastionShareableLink"
+          },
+          "description": "List of Bastion Shareable Links for the request."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for all the Bastion Shareable Link endpoints."
+    },
+    "BastionActiveSession": {
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A unique id for the session."
+        },
+        "startTime": {
+          "type": "object",
+          "readOnly": true,
+          "description": "The time when the session started."
+        },
+        "targetSubscriptionId": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The subscription id for the target virtual machine."
+        },
+        "resourceType": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The type of the resource."
+        },
+        "targetHostName": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The host name of the target."
+        },
+        "targetResourceGroup": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The resource group of the target."
+        },
+        "userName": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The user name who is active on this session."
+        },
+        "targetIpAddress": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The IP Address of the target."
+        },
+        "protocol": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The protocol used to connect to the target.",
+          "enum": [
+            "SSH",
+            "RDP"
+          ],
+          "x-ms-enum": {
+            "name": "BastionConnectProtocol",
+            "modelAsString": true
+          }
+        },
+        "targetResourceId": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The resource id of the target."
+        },
+        "sessionDurationInMins": {
+          "type": "number",
+          "readOnly": true,
+          "description": "Duration in mins the session has been active."
+        }
+      },
+      "description": "The session detail for a target."
+    },
+    "BastionActiveSessionListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BastionActiveSession"
+          },
+          "description": "List of active sessions on the bastion."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for GetActiveSessions."
+    },
+    "BastionSessionState": {
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A unique id for the session."
+        },
+        "message": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Used for extra information."
+        },
+        "state": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The state of the session. Disconnected/Failed/NotFound."
+        }
+      },
+      "description": "The session state detail for a target."
+    },
+    "BastionSessionDeleteResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BastionSessionState"
+          },
+          "description": "List of sessions with their corresponding state."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for DisconnectActiveSessions."
+    },
+    "VM": {
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "Describes a Virtual Machine."
+    },
+    "SessionIds": {
+      "properties": {
+        "sessionIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of session IDs."
+        }
+      },
+      "description": "List of session IDs."
+    }
+  },
+  "parameters": {
+    "ResourceGroupName": {
+      "name": "resourceGroupName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the resource group.",
+      "x-ms-parameter-location": "method"
+    },
+    "BastionShareableLinkRequest": {
+      "name": "bslRequest",
+      "in": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/BastionShareableLinkListRequest"
+      },
+      "description": "Post request for Create/Delete/Get Bastion Shareable Link endpoints.",
+      "x-ms-parameter-location": "method"
+    },
+    "BastionShareableLinkTokenRequest": {
+      "name": "bslTokenRequest",
+      "in": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/BastionShareableLinkTokenListRequest"
+      },
+      "description": "Post request for Delete Bastion Shareable Link By Token endpoint.",
+      "x-ms-parameter-location": "method"
+    },
+    "BastionHostName": {
+      "name": "bastionHostName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the Bastion Host.",
+      "x-ms-parameter-location": "method"
+    },
+    "SessionIdsParameters": {
+      "name": "sessionIds",
+      "in": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/SessionIds"
+      },
+      "description": "The list of sessionids to disconnect.",
+      "x-ms-parameter-location": "method"
+    }
+  }
+}
+

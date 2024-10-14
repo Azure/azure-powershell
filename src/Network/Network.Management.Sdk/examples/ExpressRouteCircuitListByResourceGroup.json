@@ -1,0 +1,92 @@
+{
+  "parameters": {
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "circuitName1",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName1",
+            "etag": "W/\"832b28c3-f5fd-4d2a-a2cb-6e4a2fe452b3\"",
+            "type": "Microsoft.Network/expressRouteCircuits",
+            "location": "westus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "peerings": [],
+              "authorizations": [
+                {
+                  "name": "MyAuthorization1",
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName/authorizations/MyAuthorization1",
+                  "etag": "W/\"832b28c3-f5fd-4d2a-a2cb-6e4a2fe452b3\"",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "authorizationKey": "authkey",
+                    "authorizationUseStatus": "Available"
+                  }
+                }
+              ],
+              "serviceProviderProperties": {
+                "serviceProviderName": "providerName",
+                "peeringLocation": "peeringLocation",
+                "bandwidthInMbps": 200
+              },
+              "circuitProvisioningState": "Enabled",
+              "allowClassicOperations": false,
+              "gatewayManagerEtag": "113",
+              "serviceKey": "a1410692-ed3b-4ceb-b94a-b90b95d398d1",
+              "serviceProviderProvisioningState": "Provisioned"
+            },
+            "sku": {
+              "name": "Standard_MeteredData",
+              "tier": "Standard",
+              "family": "MeteredData"
+            }
+          },
+          {
+            "name": "circuitName2",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName2",
+            "etag": "W/\"e33c875f-48df-4a91-b7d3-eb95b5ddbb89\"",
+            "type": "Microsoft.Network/expressRouteCircuits",
+            "location": "westus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "peerings": [],
+              "authorizations": [
+                {
+                  "name": "MyAuthorization2",
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName2/authorizations/MyAuthorization2",
+                  "etag": "W/\"e33c875f-48df-4a91-b7d3-eb95b5ddbb89\"",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "authorizationKey": "authkey",
+                    "authorizationUseStatus": "Available"
+                  }
+                }
+              ],
+              "serviceProviderProperties": {
+                "serviceProviderName": "providerName",
+                "peeringLocation": "peeringLocation",
+                "bandwidthInMbps": 200
+              },
+              "circuitProvisioningState": "Enabled",
+              "allowClassicOperations": false,
+              "gatewayManagerEtag": "",
+              "serviceKey": "6569625a-9ba4-498b-9719-14d778eef609",
+              "serviceProviderProvisioningState": "NotProvisioned"
+            },
+            "sku": {
+              "name": "Standard_MeteredData",
+              "tier": "Standard",
+              "family": "MeteredData"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

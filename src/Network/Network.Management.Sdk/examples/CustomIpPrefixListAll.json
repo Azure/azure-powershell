@@ -1,0 +1,265 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "test-customipprefix",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/customIpPrefixes/test-customipprefix",
+            "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+            "location": "westus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-00000000",
+              "cidr": "0.0.0.0/24",
+              "commissionedState": "Commissioned",
+              "signedMessage": "signedMessage",
+              "authorizationMessage": "authorizationMessage",
+              "noInternetAdvertise": false,
+              "expressRouteAdvertise": false,
+              "failedReason": "",
+              "publicIpPrefixes": [],
+              "childCustomIpPrefixes": []
+            },
+            "type": "Microsoft.Network/customIpPrefixes"
+          },
+          {
+            "name": "test-customipprefix2",
+            "id": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/customIpPrefixes/test-customipprefix2",
+            "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+            "location": "westus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-00000000",
+              "cidr": "0.0.2.0/23",
+              "commissionedState": "Commissioned",
+              "signedMessage": "signedMessage",
+              "authorizationMessage": "authorizationMessage",
+              "noInternetAdvertise": false,
+              "expressRouteAdvertise": false,
+              "failedReason": "",
+              "publicIpPrefixes": [],
+              "childCustomIpPrefixes": []
+            },
+            "type": "Microsoft.Network/customIpPrefixes"
+          },
+          {
+            "name": "test-customipprefix3",
+            "id": "/subscriptions/subid/resourceGroups/rg3/providers/Microsoft.Network/customIpPrefixes/test-customipprefix3",
+            "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-00000000",
+              "cidr": "0.0.4.0/22",
+              "commissionedState": "Provisioning",
+              "signedMessage": "signedMessage",
+              "authorizationMessage": "authorizationMessage",
+              "noInternetAdvertise": false,
+              "expressRouteAdvertise": false,
+              "failedReason": "",
+              "publicIpPrefixes": [],
+              "childCustomIpPrefixes": []
+            },
+            "type": "Microsoft.Network/customIpPrefixes"
+          },
+          {
+            "name": "test-customipprefix4",
+            "id": "/subscriptions/subid/resourceGroups/rg3/providers/Microsoft.Network/customIpPrefixes/test-customipprefix4",
+            "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-00000000",
+              "cidr": "2607:f0d1:1002:0001::/64",
+              "commissionedState": "Commissioned",
+              "signedMessage": "signedMessage",
+              "authorizationMessage": "authorizationMessage",
+              "noInternetAdvertise": false,
+              "expressRouteAdvertise": false,
+              "failedReason": "",
+              "publicIpPrefixes": [],
+              "childCustomIpPrefixes": [],
+              "customIpPrefixParent": {
+                "id": "/subscriptions/subid/resourceGroups/rg3/providers/Microsoft.Network/customIpPrefixes/test-customipprefix5"
+              }
+            },
+            "type": "Microsoft.Network/customIpPrefixes"
+          },
+          {
+            "name": "test-customipprefix5",
+            "id": "/subscriptions/subid/resourceGroups/rg3/providers/Microsoft.Network/customIpPrefixes/test-customipprefix5",
+            "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-00000000",
+              "cidr": "2607:f0d1:1002::/48",
+              "commissionedState": "Provisioned",
+              "signedMessage": "signedMessage",
+              "authorizationMessage": "authorizationMessage",
+              "noInternetAdvertise": false,
+              "expressRouteAdvertise": false,
+              "failedReason": "",
+              "publicIpPrefixes": [],
+              "childCustomIpPrefixes": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/rg3/providers/Microsoft.Network/customIpPrefixes/test-customipprefix4"
+                }
+              ]
+            },
+            "type": "Microsoft.Network/customIpPrefixes"
+          },
+          {
+            "name": "test-customipprefix6",
+            "id": "/subscriptions/subid/resourceGroups/rg3/providers/Microsoft.Network/customIpPrefixes/test-customipprefix6",
+            "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Failed",
+              "resourceGuid": "00000000-0000-0000-0000-00000000",
+              "cidr": "0.0.5.0/22",
+              "commissionedState": "ProvisionFailed",
+              "signedMessage": "signedMessage",
+              "authorizationMessage": "authorizationMessage",
+              "noInternetAdvertise": false,
+              "expressRouteAdvertise": false,
+              "failedReason": "CustomerSignatureNotVerified",
+              "publicIpPrefixes": [],
+              "childCustomIpPrefixes": []
+            },
+            "type": "Microsoft.Network/customIpPrefixes"
+          },
+          {
+            "name": "test-customipprefix6",
+            "id": "/subscriptions/subid/resourceGroups/rg3/providers/Microsoft.Network/customIpPrefixes/test-customipprefix7",
+            "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-00000000",
+              "cidr": "0.0.6.0/22",
+              "commissionedState": "Commissioning",
+              "signedMessage": "signedMessage",
+              "authorizationMessage": "authorizationMessage",
+              "noInternetAdvertise": false,
+              "expressRouteAdvertise": false,
+              "failedReason": "",
+              "publicIpPrefixes": [],
+              "childCustomIpPrefixes": []
+            },
+            "type": "Microsoft.Network/customIpPrefixes"
+          },
+          {
+            "name": "test-customipprefix6",
+            "id": "/subscriptions/subid/resourceGroups/rg3/providers/Microsoft.Network/customIpPrefixes/test-customipprefix8",
+            "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-00000000",
+              "cidr": "0.0.7.0/22",
+              "commissionedState": "Commissioning",
+              "signedMessage": "signedMessage",
+              "authorizationMessage": "authorizationMessage",
+              "noInternetAdvertise": false,
+              "expressRouteAdvertise": false,
+              "failedReason": "",
+              "publicIpPrefixes": [],
+              "childCustomIpPrefixes": []
+            },
+            "type": "Microsoft.Network/customIpPrefixes"
+          },
+          {
+            "name": "test-customipprefix6",
+            "id": "/subscriptions/subid/resourceGroups/rg3/providers/Microsoft.Network/customIpPrefixes/test-customipprefix8",
+            "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-00000000",
+              "cidr": "0.0.7.0/22",
+              "commissionedState": "Commissioning",
+              "signedMessage": "signedMessage",
+              "authorizationMessage": "authorizationMessage",
+              "noInternetAdvertise": false,
+              "expressRouteAdvertise": false,
+              "asn": "11",
+              "failedReason": "",
+              "publicIpPrefixes": [],
+              "childCustomIpPrefixes": []
+            },
+            "type": "Microsoft.Network/customIpPrefixes"
+          },
+          {
+            "name": "test-customipprefix6",
+            "id": "/subscriptions/subid/resourceGroups/rg3/providers/Microsoft.Network/customIpPrefixes/test-customipprefix8",
+            "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-00000000",
+              "cidr": "0.0.7.0/22",
+              "commissionedState": "Commissioning",
+              "signedMessage": "signedMessage",
+              "authorizationMessage": "authorizationMessage",
+              "noInternetAdvertise": false,
+              "expressRouteAdvertise": false,
+              "failedReason": "",
+              "geo": "GLOBAL",
+              "publicIpPrefixes": [],
+              "childCustomIpPrefixes": []
+            },
+            "type": "Microsoft.Network/customIpPrefixes"
+          },
+          {
+            "name": "test-customipprefix6",
+            "id": "/subscriptions/subid/resourceGroups/rg3/providers/Microsoft.Network/customIpPrefixes/test-customipprefix8",
+            "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-00000000",
+              "cidr": "0.0.7.0/22",
+              "commissionedState": "Commissioning",
+              "signedMessage": "signedMessage",
+              "authorizationMessage": "authorizationMessage",
+              "expressRouteAdvertise": true,
+              "noInternetAdvertise": false,
+              "failedReason": "",
+              "publicIpPrefixes": [],
+              "childCustomIpPrefixes": []
+            },
+            "type": "Microsoft.Network/customIpPrefixes"
+          },
+          {
+            "name": "test-customipprefix6",
+            "id": "/subscriptions/subid/resourceGroups/rg3/providers/Microsoft.Network/customIpPrefixes/test-customipprefix8",
+            "etag": "W/\"00000000-0000-0000-0000-00000000\"",
+            "location": "eastus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-00000000",
+              "cidr": "0.0.7.0/22",
+              "commissionedState": "Commissioning",
+              "signedMessage": "signedMessage",
+              "authorizationMessage": "authorizationMessage",
+              "expressRouteAdvertise": true,
+              "noInternetAdvertise": false,
+              "failedReason": "",
+              "prefixType": "Parent",
+              "publicIpPrefixes": [],
+              "childCustomIpPrefixes": []
+            },
+            "type": "Microsoft.Network/customIpPrefixes"
+          }
+        ]
+      }
+    }
+  }
+}
+

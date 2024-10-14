@@ -1,0 +1,32 @@
+{
+  "parameters": {
+    "gatewayName": "gateway1",
+    "natRuleName": "natRule1",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "natRule1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnGateways/gateway1/natRules/natRule1",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "type": "Static",
+          "mode": "EgressSnat",
+          "internalMappings": [
+            {
+              "addressSpace": "10.4.0.0/24"
+            }
+          ],
+          "externalMappings": [],
+          "egressVpnSiteLinkConnections": [],
+          "ingressVpnSiteLinkConnections": []
+        }
+      }
+    }
+  }
+}
+

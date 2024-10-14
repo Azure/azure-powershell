@@ -1,0 +1,37 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "nw1",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1",
+            "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+            "type": "Microsoft.Network/networkWatchers",
+            "location": "eastus",
+            "tags": {},
+            "properties": {
+              "provisioningState": "Succeeded"
+            }
+          },
+          {
+            "name": "nw2",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw2",
+            "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+            "type": "Microsoft.Network/networkWatchers",
+            "location": "westus",
+            "tags": {},
+            "properties": {
+              "provisioningState": "Succeeded"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

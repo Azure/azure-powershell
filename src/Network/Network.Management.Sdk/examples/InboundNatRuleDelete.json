@@ -1,0 +1,27 @@
+{
+  "parameters": {
+    "resourceGroupName": "testrg",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "loadBalancerName": "lb1",
+    "inboundNatRuleName": "natRule1.1"
+  },
+  "responses": {
+    "200": {
+      "headers": {
+        "location": "https://management.azure.com/subscriptions/subid/providers/Microsoft.Network/locations/westus2/operationResults/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    },
+    "202": {
+      "headers": {
+        "location": "https://management.azure.com/subscriptions/subid/providers/Microsoft.Network/locations/westus2/operationResults/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    },
+    "204": {
+      "headers": {
+        "location": "https://management.azure.com/subscriptions/subid/providers/Microsoft.Network/locations/westus2/operationResults/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    }
+  }
+}
+

@@ -1,0 +1,29 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "location": "westcentralus",
+    "subscriptionId": "subId",
+    "resourceGroupName": "rg1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "servicesAzure",
+            "id": "/subscriptions/subId/providers/Microsoft.Network/AvailableServiceAliases/servicesAzure",
+            "type": "Microsoft.Network/AvailableServiceAliases",
+            "resourceName": "/services/Azure"
+          },
+          {
+            "name": "servicesAzureManagedInstance",
+            "id": "/subscriptions/subId/providers/Microsoft.Network/AvailableServiceAliases/servicesAzureManagedInstance",
+            "type": "Microsoft.Network/AvailableServiceAliases",
+            "resourceName": "/services/Azure/ManagedInstance"
+          }
+        ]
+      }
+    }
+  }
+}
+

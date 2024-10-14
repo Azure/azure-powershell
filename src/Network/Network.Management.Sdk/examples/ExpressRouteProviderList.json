@@ -1,0 +1,61 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "providerName",
+            "id": "/subscriptions//resourceGroups//providers/Microsoft.Network/expressRouteServiceProviders/",
+            "type": "Microsoft.Network/expressRouteServiceProviders",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "peeringLocations": [
+                "peeringLocation1",
+                "peeringLocation2"
+              ],
+              "bandwidthsOffered": [
+                {
+                  "offerName": "50Mbps",
+                  "valueInMbps": 50
+                },
+                {
+                  "offerName": "100Mbps",
+                  "valueInMbps": 100
+                },
+                {
+                  "offerName": "200Mbps",
+                  "valueInMbps": 200
+                },
+                {
+                  "offerName": "500Mbps",
+                  "valueInMbps": 500
+                },
+                {
+                  "offerName": "1Gbps",
+                  "valueInMbps": 1000
+                },
+                {
+                  "offerName": "2Gbps",
+                  "valueInMbps": 2000
+                },
+                {
+                  "offerName": "5Gbps",
+                  "valueInMbps": 5000
+                },
+                {
+                  "offerName": "10Gbps",
+                  "valueInMbps": 10000
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

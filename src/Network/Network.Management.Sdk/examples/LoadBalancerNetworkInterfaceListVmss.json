@@ -1,0 +1,113 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "resourceGroupName": "testrg",
+    "loadBalancerName": "lb",
+    "api-version": "2024-05-01"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "vmss1Nic",
+            "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1/virtualMachines/0/networkInterfaces/vmss1Nic",
+            "etag": "W/\\\"00000000-0000-0000-0000-000000000000\\\"",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-000000000000",
+              "ipConfigurations": [
+                {
+                  "name": "vmss1IpConfig",
+                  "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1/virtualMachines/0/networkInterfaces/vmss1Nic/ipConfigurations/vmss1IpConfig",
+                  "etag": "W/\\\"00000000-0000-0000-0000-000000000000\\\"",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "privateIPAddress": "10.0.0.4",
+                    "privateIPAllocationMethod": "Dynamic",
+                    "subnet": {
+                      "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/vmss1Vnet/subnets/default"
+                    },
+                    "primary": true,
+                    "privateIPAddressVersion": "IPv4",
+                    "loadBalancerBackendAddressPools": [
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/bepool"
+                      }
+                    ],
+                    "loadBalancerInboundNatRules": [
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/inboundNatRules/natpool.0"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "dnsSettings": {
+                "dnsServers": [],
+                "appliedDnsServers": [],
+                "internalDomainNameSuffix": "aaaaaaaaaaaaaaaaaaaaaaaaaa.dx.internal.cloudapp.net"
+              },
+              "macAddress": "00-00-00-00-00-00",
+              "enableAcceleratedNetworking": false,
+              "enableIPForwarding": false,
+              "primary": true,
+              "virtualMachine": {
+                "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1/virtualMachines/0"
+              }
+            }
+          },
+          {
+            "name": "vmss1Nic",
+            "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1/virtualMachines/1/networkInterfaces/vmss1Nic",
+            "etag": "W/\\\"00000000-0000-0000-0000-000000000000\\\"",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-000000000000",
+              "ipConfigurations": [
+                {
+                  "name": "vmss1IpConfig",
+                  "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1/virtualMachines/1/networkInterfaces/vmss1Nic/ipConfigurations/vmss1IpConfig",
+                  "etag": "W/\\\"00000000-0000-0000-0000-000000000000\\\"",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "privateIPAddress": "10.0.0.5",
+                    "privateIPAllocationMethod": "Dynamic",
+                    "subnet": {
+                      "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/vmss1Vnet/subnets/default"
+                    },
+                    "primary": true,
+                    "privateIPAddressVersion": "IPv4",
+                    "loadBalancerBackendAddressPools": [
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/bepool"
+                      }
+                    ],
+                    "loadBalancerInboundNatRules": [
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/inboundNatRules/natpool.1"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "dnsSettings": {
+                "dnsServers": [],
+                "appliedDnsServers": [],
+                "internalDomainNameSuffix": "aaaaaaaaaaaaaaaaaaaaaaaaaa.dx.internal.cloudapp.net"
+              },
+              "macAddress": "00-00-00-00-00-00",
+              "enableAcceleratedNetworking": false,
+              "enableIPForwarding": false,
+              "primary": true,
+              "virtualMachine": {
+                "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1/virtualMachines/1"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+
