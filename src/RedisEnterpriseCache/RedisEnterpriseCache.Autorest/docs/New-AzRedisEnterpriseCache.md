@@ -15,9 +15,10 @@ Creates a Redis Enterprise cache.
 ### CreateClusterWithDatabase (Default)
 ```
 New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Location <String> -Sku <SkuName>
- [-SubscriptionId <String>] [-AofPersistenceEnabled] [-AofPersistenceFrequency <AofFrequency>]
- [-Capacity <Int32>] [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>]
- [-CustomerManagedKeyEncryptionKeyUrl <String>] [-EvictionPolicy <EvictionPolicy>] [-GroupNickname <String>]
+ [-SubscriptionId <String>] [-AccessKeysAuthentication <AccessKeysAuthentication>] [-AofPersistenceEnabled]
+ [-AofPersistenceFrequency <AofFrequency>] [-Capacity <Int32>] [-ClientProtocol <Protocol>]
+ [-ClusteringPolicy <ClusteringPolicy>] [-CustomerManagedKeyEncryptionKeyUrl <String>]
+ [-EvictionPolicy <EvictionPolicy>] [-GroupNickname <String>] [-HighAvailability <HighAvailability>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-LinkedDatabase <ILinkedDatabase[]>]
@@ -29,7 +30,8 @@ New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Lo
 ### CreateClusterOnly
 ```
 New-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -Location <String> -Sku <SkuName>
- -NoDatabase [-SubscriptionId <String>] [-Capacity <Int32>] [-CustomerManagedKeyEncryptionKeyUrl <String>]
+ -NoDatabase [-SubscriptionId <String>] [-AccessKeysAuthentication <AccessKeysAuthentication>]
+ [-Capacity <Int32>] [-CustomerManagedKeyEncryptionKeyUrl <String>] [-HighAvailability <HighAvailability>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-MinimumTlsVersion <TlsVersion>]
@@ -99,6 +101,22 @@ West US  MyCache   Microsoft.Cache/redisEnterprise      {default}
 This command creates a cache name MyCache with a georeplicated database named default
 
 ## PARAMETERS
+
+### -AccessKeysAuthentication
+This property can be Enabled/Disabled to allow or deny access with the current access keys.
+Can be updated even after database is created.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AofPersistenceEnabled
 [Preview] Sets whether AOF persistence is enabled.
@@ -265,6 +283,23 @@ Name for the group of linked database resources
 ```yaml
 Type: System.String
 Parameter Sets: CreateClusterWithDatabase
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HighAvailability
+Enabled by default.
+If highAvailability is disabled, the data set is not replicated.
+This affects the availability SLA, and increases the risk of data loss.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.HighAvailability
+Parameter Sets: (All)
 Aliases:
 
 Required: False

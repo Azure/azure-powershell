@@ -169,10 +169,27 @@ function New-AzRedisEnterpriseCache {
         ${ClusteringPolicy},
 
         [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication]
+        # This property can be Enabled/Disabled to allow or deny access with the current access keys.
+        # Can be updated even after database is created.
+        ${AccessKeysAuthentication},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.String]
         # Key encryption key Url versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78"
         ${CustomerManagedKeyEncryptionKeyUrl},
+
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.HighAvailability])]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.HighAvailability]
+        # Enabled by default.
+        # If highAvailability is disabled, the data set is not replicated.
+        # This affects the availability SLA, and increases the risk of data loss.
+        ${HighAvailability},
 
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ManagedServiceIdentityType])]
@@ -321,6 +338,7 @@ function New-AzRedisEnterpriseCache {
         $null = $GetPSBoundParameters.Remove("RdbPersistenceFrequency")
         $null = $GetPSBoundParameters.Remove("GroupNickname")
         $null = $GetPSBoundParameters.Remove("LinkedDatabase")
+        $null = $GetPSBoundParameters.Remove("AccessKeysAuthentication")
         $cluster = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCache @GetPSBoundParameters
 
         if (('CreateClusterOnly') -contains $PSCmdlet.ParameterSetName)
@@ -341,6 +359,7 @@ function New-AzRedisEnterpriseCache {
         $null = $PSBoundParameters.Remove("CustomerManagedKeyEncryptionKeyUrl")
         $null = $PSBoundParameters.Remove("KeyEncryptionKeyIdentityType")
         $null = $PSBoundParameters.Remove("KeyEncryptionKeyIdentityUserAssignedIdentityResourceId")
+        $null = $PSBoundParameters.Remove("HighAvailability")
         $null = $PSBoundParameters.Add("DatabaseName", "default")
         $database = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabase @PSBoundParameters
         $cluster.Database = @{$database.Name = $database}
