@@ -47,6 +47,7 @@ Create User inside elastic deployment which are used by customers to perform ope
 ```powershell
 New-AzElasticExternalUser -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
+
 This command Creates an User inside elastic deployment which are used by customers to perform operations on the elastic deployment
 
 ## PARAMETERS
@@ -68,8 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -266,6 +266,28 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+BODY <IExternalUserInfo>: The properties of the request required for creating user on elastic side
+  - `[EmailId <String>]`: Email id of the user to be created or updated
+  - `[FullName <String>]`: Full name of the user to be created or updated
+  - `[Password <String>]`: Password of the user to be created or updated
+  - `[Role <String[]>]`: Roles to be assigned for  created or updated user
+  - `[UserName <String>]`: Username of the user to be created or updated
+
+INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[IntegrationName <String>]`: OpenAI Integration name
+  - `[MonitorName <String>]`: Monitor resource name
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RuleSetName <String>]`: Tag Rule Set resource name
+  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
 
 ## RELATED LINKS
 

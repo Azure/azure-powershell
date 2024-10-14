@@ -42,8 +42,6 @@ Fetch User API Key from internal database, if it was generated and stored while 
 ## EXAMPLES
 
 ### Example 1: Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
-$EmailIdObject = [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UserEmailId]::new()
-$EmailIdObject.EmailId = "jkore@microsoft.com"
 ```powershell
 Get-AzElasticOrganizationApiKey -Body $EmailIdObject
 ```
@@ -69,8 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -176,6 +173,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IUserApiKeyResponseProperties
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+BODY <IUserEmailId>: Email Id of the User Organization, of which the API Key must be returned
+  - `[EmailId <String>]`: The User email Id
+
+INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[IntegrationName <String>]`: OpenAI Integration name
+  - `[MonitorName <String>]`: Monitor resource name
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RuleSetName <String>]`: Tag Rule Set resource name
+  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
 
 ## RELATED LINKS
 

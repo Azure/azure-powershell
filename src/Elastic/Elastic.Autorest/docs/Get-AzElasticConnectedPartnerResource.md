@@ -24,7 +24,7 @@ List of all active deployments that are associated with the marketplace subscrip
 
 ### Example 1: List of all active deployments linked to the given monitor
 ```powershell
-Get-AzElasticConnectedPartnerResource -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
+Get-AzElasticSConnectedPartnerResource -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
 
 ```output
@@ -38,8 +38,7 @@ This command list of all active deployments that are associated with the marketp
 ## PARAMETERS
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -141,6 +140,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IConnectedPartnerResourcesListFormat
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
 

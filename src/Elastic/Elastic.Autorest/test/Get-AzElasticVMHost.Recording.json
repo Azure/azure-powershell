@@ -1,13 +1,13 @@
 {
-  "Get-AzElasticVMHost+[NoContext]+List+$POST+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-j35v6a/providers/Microsoft.Elastic/monitors/elastic-xetkhi/listVMHost?api-version=2024-03-01+1": {
+  "Get-AzElasticVMHost+[NoContext]+List+$POST+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-kj4sw7/providers/Microsoft.Elastic/monitors/elastic-z3qcia/listVMHost?api-version=2024-03-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-j35v6a/providers/Microsoft.Elastic/monitors/elastic-xetkhi/listVMHost?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-kj4sw7/providers/Microsoft.Elastic/monitors/elastic-z3qcia/listVMHost?api-version=2024-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "63" ],
-        "x-ms-client-request-id": [ "e927269e-e440-4fc4-82fd-554aa837ddbb" ],
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "65b1c5ea-e569-4dbb-8e8b-a0c2548ea3e3" ],
         "CommandName": [ "Get-AzElasticVMHost" ],
         "FullCommandName": [ "Get-AzElasticVMHost_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -25,16 +25,16 @@
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
-        "mise-correlation-id": [ "16852038-d196-4b0c-8a86-a21784aef4e3" ],
+        "mise-correlation-id": [ "ffd52e52-281e-4919-a5c0-2dd2b7cce8b7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "0b2cad0a-b266-407a-8924-ef4ad78dbabf" ],
-        "x-ms-correlation-request-id": [ "7edc0a0a-9395-4e88-ac0e-1f9a40638cc9" ],
+        "x-ms-request-id": [ "bb734e81-beb1-47e0-9e34-f79229078499" ],
+        "x-ms-correlation-request-id": [ "8a09689c-08eb-4795-8c4c-9156f80f4703" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20241011T062747Z:7edc0a0a-9395-4e88-ac0e-1f9a40638cc9" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20241011T065935Z:8a09689c-08eb-4795-8c4c-9156f80f4703" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: EC811F50DEDC4D68AAB60CC63B6F2E98 Ref B: MAA201060514009 Ref C: 2024-10-11T06:27:46Z" ],
-        "Date": [ "Fri, 11 Oct 2024 06:27:47 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CA92E3C6392940E180B217AA4AF9F0E8 Ref B: MAA201060515017 Ref C: 2024-10-11T06:59:34Z" ],
+        "Date": [ "Fri, 11 Oct 2024 06:59:35 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "28" ],

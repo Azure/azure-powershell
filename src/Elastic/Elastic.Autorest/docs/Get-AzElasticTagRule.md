@@ -14,8 +14,8 @@ Get a tag rule set for a given monitor resource.
 
 ### Get (Default)
 ```
-Get-AzElasticTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzElasticTagRule -MonitorName <String> -ResourceGroupName <String> [-RuleSetName <String>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -57,8 +57,7 @@ This command gets a tag rule set for a given monitor resource by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -119,6 +118,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RuleSetName
+Tag Rule Set resource name
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: "default"
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
@@ -147,6 +161,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IElasticIdentity>: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[IntegrationName <String>]`: OpenAI Integration name
+  - `[MonitorName <String>]`: Monitor resource name
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RuleSetName <String>]`: Tag Rule Set resource name
+  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
 
 ## RELATED LINKS
 
