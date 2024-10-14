@@ -8,6 +8,9 @@ schema: 2.0.0
 
 # Export-AzRedisCache
 
+ "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"lAtOnGkE2IFR1QjF7aoRSJbtIVMTXvtUeUHZb+BfZTPtACw6dGeSVSNVZw9sev6HVpegqQoXUmrW+AStCGjTvw==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"8VoFSxv78nt5/kWUqskk90zywJijaa5zIVwWu9t1KrGT+5mUB5wT+i4WIYiiz8VyFbwmOobOPPto+ASt1c5zsg==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
+      
+
 ## SYNOPSIS
 Exports data from Azure Redis Cache to a container.
 
