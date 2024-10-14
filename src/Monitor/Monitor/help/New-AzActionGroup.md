@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzActionGroup
 
 ## SYNOPSIS
-Create a new action group or Create an existing one.
+Create a new action group or update an existing one.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ New-AzActionGroup -InputObject <IActionGroupIdentity> -Location <String>
 ```
 
 ## DESCRIPTION
-Create a new action group or Create an existing one.
+Create a new action group or update an existing one.
 
 ## EXAMPLES
 

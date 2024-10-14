@@ -5664,6 +5664,10 @@
                 <Label>ExtendedLocation</Label>
                 <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>DestinationIPAddress</Label>
+                <PropertyName>DestinationIPAddress</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -7082,6 +7086,84 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>ScaleUnit</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.Bastion.PSBastionShareableLink</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.Bastion.PSBastionShareableLink</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>VM Resource ID</Label>
+                <PropertyName>VmId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Bastion Shareable Link(s)</Label>
+                <PropertyName>Bsl</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Created At</Label>
+                <PropertyName>CreatedAt</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Message</Label>
+                <PropertyName>Message</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.Bastion.PSBastionShareableLink</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.Bastion.PSBastionShareableLink</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>VM Resource ID</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Bastion Shareable Link(s)</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Created At</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Message</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>VmId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Bsl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>CreatedAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Message</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

@@ -67,7 +67,7 @@ autorest.powershell is unable to transform IdentityType as the best practice des
 - Include a customization script to transform the parameter IdentityType to EnableSystemAssignedIdentity by `get` + `patch` update for this type of operation. The following are the detailed steps on how to accomplish this.
   - disable transformation for the operation which reported error in README.md by
   ```
-  disable-transform-identity-type-for-operation
+  disable-transform-identity-type-for-operation:
     - Operation_id
   ```
   - hide the corresponding Update cmdlet in directive by

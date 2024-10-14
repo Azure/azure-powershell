@@ -16,13 +16,13 @@
 
 <#
 .Synopsis
-This operation creates or updates the policy assignment with the given ID.
+This operation update the policy assignment with the given ID.
 Policy assignments made on a scope apply to all resources contained in that scope.
 For example, when you assign a policy to a resource group that policy applies to all resources in the group.
 Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
 Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
 .Description
-This operation creates or updates the policy assignment with the given ID.
+This operation update the policy assignment with the given ID.
 Policy assignments made on a scope apply to all resources contained in that scope.
 For example, when you assign a policy to a resource group that policy applies to all resources in the group.
 Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
@@ -63,6 +63,13 @@ Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Defa
 .Example
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicy'
 Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
+.Example
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -ResourceSelector $ResourceSelector
+.Example
+$Selector = @{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")}
+$Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Override $Override
 .Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
@@ -154,6 +161,20 @@ param(
     [System.String[]]
     # The policy's excluded scopes.
     ${NotScope},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]]
+    # The policy property value override.
+    ${Override},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [AllowEmptyCollection()]

@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.ManagementPartner",
-  "ModuleVersion": "0.7.3",
+  "ModuleVersion": "0.7.4",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagementPartner",
             "Name": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PartnerId": "System.String",
               "PartnerName": "System.String",
@@ -159,7 +159,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagementPartner",
             "Name": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PartnerId": "System.String",
               "PartnerName": "System.String",
@@ -324,7 +324,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -374,7 +374,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.21.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -427,7 +427,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagementPartner",
             "Name": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PartnerId": "System.String",
               "PartnerName": "System.String",

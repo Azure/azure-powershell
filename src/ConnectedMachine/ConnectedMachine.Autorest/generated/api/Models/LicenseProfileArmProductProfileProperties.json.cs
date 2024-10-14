@@ -77,11 +77,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 return;
             }
+            {_error = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("error"), out var __jsonError) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetail.FromJson(__jsonError) : _error;}
             {_subscriptionStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("subscriptionStatus"), out var __jsonSubscriptionStatus) ? (string)__jsonSubscriptionStatus : (string)_subscriptionStatus;}
             {_productType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("productType"), out var __jsonProductType) ? (string)__jsonProductType : (string)_productType;}
-            {_billingStartDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("billingStartDate"), out var __jsonBillingStartDate) ? global::System.DateTime.TryParse((string)__jsonBillingStartDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonBillingStartDateValue) ? __jsonBillingStartDateValue : _billingStartDate : _billingStartDate;}
             {_enrollmentDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("enrollmentDate"), out var __jsonEnrollmentDate) ? global::System.DateTime.TryParse((string)__jsonEnrollmentDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonEnrollmentDateValue) ? __jsonEnrollmentDateValue : _enrollmentDate : _enrollmentDate;}
+            {_billingStartDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("billingStartDate"), out var __jsonBillingStartDate) ? global::System.DateTime.TryParse((string)__jsonBillingStartDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonBillingStartDateValue) ? __jsonBillingStartDateValue : _billingStartDate : _billingStartDate;}
             {_disenrollmentDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("disenrollmentDate"), out var __jsonDisenrollmentDate) ? global::System.DateTime.TryParse((string)__jsonDisenrollmentDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonDisenrollmentDateValue) ? __jsonDisenrollmentDateValue : _disenrollmentDate : _disenrollmentDate;}
+            {_billingEndDate = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("billingEndDate"), out var __jsonBillingEndDate) ? global::System.DateTime.TryParse((string)__jsonBillingEndDate, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonBillingEndDateValue) ? __jsonBillingEndDateValue : _billingEndDate : _billingEndDate;}
             {_productFeature = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray>("productFeatures"), out var __jsonProductFeatures) ? If( __jsonProductFeatures as Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature) (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeature.FromJson(__u) )) ))() : null : _productFeature;}
             AfterFromJson(json);
         }
@@ -107,19 +109,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._subscriptionStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._subscriptionStatus.ToString()) : null, "subscriptionStatus" ,container.Add );
-            AddIf( null != (((object)this._productType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._productType.ToString()) : null, "productType" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
             {
-                AddIf( null != this._billingStartDate ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._billingStartDate?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "billingStartDate" ,container.Add );
+                AddIf( null != this._error ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._error.ToJson(null,serializationMode) : null, "error" ,container.Add );
             }
+            AddIf( null != (((object)this._subscriptionStatus)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._subscriptionStatus.ToString()) : null, "subscriptionStatus" ,container.Add );
+            AddIf( null != (((object)this._productType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._productType.ToString()) : null, "productType" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._enrollmentDate ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._enrollmentDate?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "enrollmentDate" ,container.Add );
             }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
             {
+                AddIf( null != this._billingStartDate ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._billingStartDate?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "billingStartDate" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
+            {
                 AddIf( null != this._disenrollmentDate ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._disenrollmentDate?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "disenrollmentDate" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._billingEndDate ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._billingEndDate?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "billingEndDate" ,container.Add );
             }
             if (null != this._productFeature)
             {

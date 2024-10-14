@@ -56,7 +56,6 @@ Accept wildcard characters: False
 
 ### -DataUri
 [Required] Uri of the data.
-Example: https://go.microsoft.com/fwlink/linkid=2202330
 
 ```yaml
 Type: System.String
