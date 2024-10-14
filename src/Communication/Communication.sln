@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Communication", "..\..\g
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailService", "..\..\generated\Communication\EmailService.Autorest\Az.EmailService.csproj", "{25CACD1C-C4B0-47F7-B5D4-F98038525D3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailServicedata", "..\..\generated\EmailServicedata.Autorest\Az.EmailServicedata.csproj", "{D9DC0BEF-FE6B-48E3-B16A-4D955C8E2C3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EmailServicedata", "..\..\generated\Communication\EmailServicedata.Autorest\Az.EmailServicedata.csproj", "{D9DC0BEF-FE6B-48E3-B16A-4D955C8E2C3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
