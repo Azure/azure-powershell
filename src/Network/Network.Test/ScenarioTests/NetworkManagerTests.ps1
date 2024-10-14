@@ -592,10 +592,8 @@ function Test-NetworkManagerSecurityAdminRuleManualAggregationCRUD
     Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
     Assert-AreEqual "Sample rule Collection Description" $ruleCollection.Description;
 	
-	
- 
-    $sourceAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix "Internet" -AddressPrefixType "ServiceTag"
-    $destinationAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix "10.0.0.1" -AddressPrefixType "IPPrefix" 
+	 $sourceAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix "Internet" -AddressPrefixType "ServiceTag"
+    $destinationAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix $networkGroup.Id -AddressPrefixType "NetworkGroup" 
 
     $sourcePortList = @("100")
     $destinationPortList = @("99")
@@ -611,7 +609,7 @@ function Test-NetworkManagerSecurityAdminRuleManualAggregationCRUD
 
     Assert-AreEqual "100" $adminRule.SourcePortRanges[0] 
     Assert-AreEqual "99" $adminRule.DestinationPortRanges[0]
-    Assert-AreEqual "10.0.0.1" $adminRule.Destinations[0].AddressPrefix
+    Assert-AreEqual $networkGroup.Id $adminRule.Destinations[0].AddressPrefix
     Assert-AreEqual "Internet" $adminRule.Sources[0].AddressPrefix
 
     $newAdminRule = Set-AzNetworkManagerSecurityAdminRule -InputObject $adminRule
@@ -645,7 +643,7 @@ function Test-NetworkManagerSecurityAdminRuleManualAggregationCRUD
 
     Assert-AreEqual "100" $activeSecurityAdminRule.Value[0].SourcePortRanges[0] 
     Assert-AreEqual "99" $activeSecurityAdminRule.Value[0].DestinationPortRanges[0]
-    Assert-AreEqual "10.0.0.1" $activeSecurityAdminRule.Value[0].Destinations[0].AddressPrefix
+    Assert-AreEqual $networkGroup.Id $activeSecurityAdminRule.Value[0].Destinations[0].AddressPrefix
     Assert-AreEqual "Internet" $activeSecurityAdminRule.Value[0].Sources[0].AddressPrefix
 
     $effectiveSecurityAdminRuleList = Get-AzNetworkManagerEffectiveSecurityAdminRule  -VirtualNetworkName $vnetName -VirtualNetworkResourceGroupName $vnetRGName
