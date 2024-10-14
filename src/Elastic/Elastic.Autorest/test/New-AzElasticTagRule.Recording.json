@@ -1,15 +1,15 @@
 {
-  "New-AzElasticTagRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-kj4sw7/providers/Microsoft.Elastic/monitors/elastic-z3qcia/tagRules/default?api-version=2024-03-01+1": {
+  "New-AzElasticTagRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/tagRules/default?api-version=2024-03-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-kj4sw7/providers/Microsoft.Elastic/monitors/elastic-z3qcia/tagRules/default?api-version=2024-03-01",
-      "Content": "{\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/tagRules/default?api-version=2024-03-01",
+      "Content": "{\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "4" ]
+        "Content-Length": [ "3" ]
       }
     },
     "Response": {
@@ -17,27 +17,27 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"890354a4-0000-0800-0000-6708ce360000\"" ],
+        "ETag": [ "\"8404624e-0000-0800-0000-670ce3440000\"" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
-        "mise-correlation-id": [ "19af83ff-2742-4ecb-9266-9af19d76aaac" ],
+        "mise-correlation-id": [ "bd976246-2183-4005-a78d-ae64f5d1e380" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "3db7dfcd-c98c-437d-9c9f-c75db82ded50" ],
-        "x-ms-correlation-request-id": [ "49c639c6-b595-4fc4-a579-adf20dee4212" ],
+        "x-ms-request-id": [ "4aaf136b-87ad-4819-8c72-9a503a073f2e" ],
+        "x-ms-correlation-request-id": [ "edb7f625-943c-4d7e-a1fc-d51a52ce292c" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20241011T070526Z:49c639c6-b595-4fc4-a579-adf20dee4212" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20241014T092420Z:edb7f625-943c-4d7e-a1fc-d51a52ce292c" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C6ECB9D8CD6B45369DED29996FA0029E Ref B: MAA201060515017 Ref C: 2024-10-11T07:05:25Z" ],
-        "Date": [ "Fri, 11 Oct 2024 07:05:26 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D8CD865D2CE94C8E937DC2E30FD7A251 Ref B: MAA201060514009 Ref C: 2024-10-14T09:24:19Z" ],
+        "Date": [ "Mon, 14 Oct 2024 09:24:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "685" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-kj4sw7/providers/Microsoft.Elastic/monitors/elastic-z3qcia/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.elastic/monitors/tagrules\",\"systemData\":{\"createdBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-11T06:59:03.2548942Z\",\"lastModifiedBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-11T07:05:25.8648497Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]}}}",
+      "Content": "{\"id\":\"/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.elastic/monitors/tagrules\",\"systemData\":{\"createdBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-14T09:17:44.5186774Z\",\"lastModifiedBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-14T09:24:19.9001389Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]}}}",
       "isContentBase64": false
     }
   }

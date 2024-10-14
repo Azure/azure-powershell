@@ -39,7 +39,7 @@ Get OpenAI integration rule for a given monitor resource.
 Get-AzElasticOpenAi -IntegrationName default -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 ```
 
-```output:
+```output
 IntegrationName          : default
 openAIResourceId         : /subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/utkarshjain-rg/providers/Microsoft.CognitiveServices/accounts/utkarshTestResource1
 openAIResourceEndpoint   : https://utkarshtestresource1.openai.azure.com/openai/deployments/test1/chat/completions?api-version=2024-06-15-preview
@@ -52,7 +52,8 @@ This command gets OpenAI integration rule for a given monitor resource.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -156,21 +157,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IOpenAiIntegrationRpmodel
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IElasticIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[IntegrationName <String>]`: OpenAI Integration name
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: Tag Rule Set resource name
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
 
 ## RELATED LINKS
 

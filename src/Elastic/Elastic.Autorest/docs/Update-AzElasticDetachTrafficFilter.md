@@ -1,50 +1,69 @@
 ---
 external help file:
 Module Name: Az.Elastic
-online version: https://learn.microsoft.com/powershell/module/az.elastic/update-azelasticvmcollection
+online version: https://learn.microsoft.com/powershell/module/az.elastic/update-azelasticdetachtrafficfilter
 schema: 2.0.0
 ---
 
-# Update-AzElasticVMCollection
+# Update-AzElasticDetachTrafficFilter
 
 ## SYNOPSIS
-Update the vm details that will be monitored by the Elastic monitor resource.
+Detach traffic filter for the given deployment.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Update (Default)
 ```
-Update-AzElasticVMCollection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-OperationName <OperationName>] [-VMResourceId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+Update-AzElasticDetachTrafficFilter -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-RulesetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### UpdateViaIdentity
 ```
-Update-AzElasticVMCollection -InputObject <IElasticIdentity> [-OperationName <OperationName>]
- [-VMResourceId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzElasticDetachTrafficFilter -InputObject <IElasticIdentity> [-RulesetId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update the vm details that will be monitored by the Elastic monitor resource.
+Detach traffic filter for the given deployment.
 
 ## EXAMPLES
 
-### Example 1: Update the vm details that will be monitored by the Elastic monitor resource
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzElasticVMCollection -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 -OperationName Add -VMResourceId '/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxx/resourceGroups/VIDHI-RG/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS'
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-This command updates the vm details that will be monitored by the Elastic monitor resource
+{{ Add description here }}
 
-### Example 2: Update the vm details that will be monitored by the Elastic monitor resource by pipeline
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 | Update-AzElasticVMCollection -OperationName Delete -VMResourceId '/subscriptions/xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxx/resourceGroups/VIDHI-RG/providers/Microsoft.Compute/virtualMachines/vidhi-linuxOS'
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-This command updates the vm details that will be monitored by the Elastic monitor resource by pipeline.
+{{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -68,7 +87,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -78,12 +97,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Update
 Aliases:
 
 Required: True
@@ -93,23 +112,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationName
-Operation to be performed for given VM.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.OperationName
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -129,10 +133,25 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Update
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RulesetId
+Ruleset Id of the filter
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -145,27 +164,12 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Update
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VMResourceId
-ARM id of the VM resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
