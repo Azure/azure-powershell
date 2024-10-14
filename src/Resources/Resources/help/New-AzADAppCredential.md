@@ -202,6 +202,8 @@ Accept wildcard characters: False
 ```
 
 ### -CustomKeyIdentifier
+Custom Key Identifier.
+The format should be base64: `$Bytes=[System.Text.Encoding]::Unicode.GetBytes($key);$key=[Convert]::ToBase64String($Bytes)`
 
 ```yaml
 Type: System.String
