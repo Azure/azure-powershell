@@ -1,6 +1,6 @@
 ### Example 1: List of all active deployments linked to the given monitor
 ```powershell
-Get-AzElasticSConnectedPartnerResource -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
+Get-AzElasticConnectedPartnerResource -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
 
 ```output

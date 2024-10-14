@@ -1,18 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Detach traffic filter for the given deployment.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Update-AzElasticDetachTrafficFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command will detach traffic filter for the given deployment.
