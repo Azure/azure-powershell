@@ -36,35 +36,35 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The source IPs.")]
         [ValidateNotNullOrEmpty]
-        public IList<string> SourceIps { get; set; }
+        public List<string> SourceIps { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The destination IPs.")]
         [ValidateNotNullOrEmpty]
-        public IList<string> DestinationIps { get; set; }
+        public List<string> DestinationIps { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The source ports.")]
         [ValidateNotNullOrEmpty]
-        public IList<string> SourcePorts { get; set; }
+        public List<string> SourcePorts { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The destination ports.")]
         [ValidateNotNullOrEmpty]
-        public IList<string> DestinationPorts { get; set; }
+        public List<string> DestinationPorts { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protocols (e.g., TCP, UDP).")]
         [ValidateNotNullOrEmpty]
-        public IList<string> Protocols { get; set; }
+        public List<string> Protocols { get; set; }
 
         public override void Execute()
         {

@@ -1113,6 +1113,9 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
     $verifierWorkspaceName = Get-ResourceName
     $rglocation = "eastus2euap"
     $subscriptionId = "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359"
+    $reachabilityAnalysisIntentName = "analysisIntentTest06"
+    $reachabilityAnalysisRunName = "analysisRunTest06"
+
 
     try{
         #Create the resource group
@@ -1134,26 +1137,24 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         $protocolList = @("TCP")
         $sourceIpList = @("192.168.1.10")
         $destinationIpList = @("172.16.0.5")
-         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSIPTraffic]]$ipTraffic  = @() 
         $groupItem = New-AzNetworkManagerIPTraffic -SourceIps $sourceIpList -DestinationIps $destinationIpList -SourcePorts $sourcePortList -DestinationPorts $destinationPortList -Protocols $protocolList
-        $ipTraffic.Add($groupItem)
 
-        $analysisIntent = New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisIntentName -Location $rglocation -SourceResourceId "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ipam-test-rg/providers/Microsoft.Compute/virtualMachines/testVM" -DestinationResourceId "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ipam-test-rg/providers/Microsoft.Compute/virtualMachines/ipam-test-vm-integration-test" -IpTraffic $ipTraffic
+        $analysisIntent = New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisIntentName -SourceResourceId "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ipam-test-rg/providers/Microsoft.Compute/virtualMachines/testVM" -DestinationResourceId "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ipam-test-rg/providers/Microsoft.Compute/virtualMachines/ipam-test-vm-integration-test" -IpTraffic $groupItem
 
         # Create analysis run
         # Get the intent ID
         $intentId = $analysisIntent.Id
         Write-Host "Analysis Intent ID: $intentId"
 
-        New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisRunName -IntentId -Location $rglocation
+        New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisRunName -IntentId $intentId
 
         # Get analysis run
-        $reachabilityAnalysisRun = Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisRunName
-        Assert-NotNull $reachabilityAnalysisRun;
-        Assert-AreEqual $$reachabilityAnalysisRunName $reachabilityAnalysisRun.Name;
+        $reachabilityAnalysisRun = Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -workspaceName $verifierWorkspaceName -Name $reachabilityAnalysisRunName
+        Assert-NotNull $reachabilityAnalysisRun
+        Assert-AreEqual $reachabilityAnalysisRunName $reachabilityAnalysisRun.Name
 
         # Delete analysis run
-        $job = Remove-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisRunName -PassThru -Force -AsJob;
+        $job = Remove-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 	}

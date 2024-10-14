@@ -19,15 +19,15 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
     public class PSIPTraffic
     {
-        public IList<string> SourceIps { get; set; }
+        public List<string> SourceIps { get; set; }
 
-        public IList<string> DestinationIps { get; set; }
+        public List<string> DestinationIps { get; set; }
 
-        public IList<string> SourcePorts { get; set; }
+        public List<string> SourcePorts { get; set; }
 
-        public IList<string> DestinationPorts { get; set; }
+        public List<string> DestinationPorts { get; set; }
 
-        public IList<string> Protocols { get; set; }
+        public List<string> Protocols { get; set; }
 
         [JsonIgnore]
         public string IpTrafficText
