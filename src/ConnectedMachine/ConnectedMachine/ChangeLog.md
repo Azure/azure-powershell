@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.0
 * Updated stable version api of HybridCompute to 2024-07-10
 
 ## Version 0.9.0
