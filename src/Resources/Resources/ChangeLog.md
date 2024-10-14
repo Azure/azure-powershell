@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed bug for `Remove-AzPolicyAssignment` and `Remove-AzPolicyExemption`
 
 ## Version 7.5.0
 * Added `ResourceSelector` and `Override` parameters to `New/Update-AzPolicyAssignment`.
