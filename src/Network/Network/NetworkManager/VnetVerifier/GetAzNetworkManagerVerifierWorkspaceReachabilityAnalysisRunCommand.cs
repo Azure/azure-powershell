@@ -67,14 +67,14 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string workspaceName { get; set; }
+        public virtual string VerifierWorkspaceName { get; set; }
 
         public override void Execute()
         {
             base.Execute();
             if (this.Name != null)
             {
-                var analysisRun = this.GetAnalysisRun(this.ResourceGroupName, this.NetworkManagerName, this.workspaceName, this.Name);
+                var analysisRun = this.GetAnalysisRun(this.ResourceGroupName, this.NetworkManagerName, this.VerifierWorkspaceName, this.Name);
                 analysisRun.ResourceGroupName = this.ResourceGroupName;
                 analysisRun.NetworkManagerName = this.NetworkManagerName;
                 WriteObject(analysisRun);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<ReachabilityAnalysisRun> analysisRunPage;
-                analysisRunPage = this.ReachabilityAnalysisRunClient.List(this.ResourceGroupName, this.NetworkManagerName, this.workspaceName);
+                analysisRunPage = this.ReachabilityAnalysisRunClient.List(this.ResourceGroupName, this.NetworkManagerName, this.VerifierWorkspaceName);
 
                 // Get all resources by polling on next page link
                 var analysisRunList = ListNextLink<ReachabilityAnalysisRun>.GetAllResourcesByPollingNextLink(analysisRunPage, this.ReachabilityAnalysisRunClient.ListNext);

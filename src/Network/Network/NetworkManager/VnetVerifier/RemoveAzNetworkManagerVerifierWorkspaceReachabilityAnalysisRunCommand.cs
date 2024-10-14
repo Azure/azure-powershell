@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string WorkspaceName { get; set; }
+        public virtual string VerifierWorkspaceName { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    this.ReachabilityAnalysisRunClient.Delete(this.ResourceGroupName, this.NetworkManagerName, this.WorkspaceName, this.Name);
+                    this.ReachabilityAnalysisRunClient.Delete(this.ResourceGroupName, this.NetworkManagerName, this.VerifierWorkspaceName, this.Name);
                     if (PassThru.IsPresent)
                     {
                         WriteObject(true);
