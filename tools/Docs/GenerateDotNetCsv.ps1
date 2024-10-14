@@ -27,26 +27,58 @@ $feedDir = (Get-Item $FeedPsd1FullPath).Directory
 $feedName = (Get-Item $FeedPsd1FullPath).Name
 Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $feedDir -FileName $feedName
 $modules = $ModuleMetadata.RequiredModules
-
-$dotnetCsv = New-Item -Path "$PSScriptRoot\" -Name "az-ps-latest.csv" -ItemType "file" -Force
-$dotnetCsvContent = ""
-
-for ($index = 0; $index -lt $modules.Count; $index++){
-    $moduleName = $modules[$index].ModuleName
-    $moduleVersion = [string]::IsNullOrEmpty($modules[$index].RequiredVersion) ? $modules[$index].ModuleVersion : $modules[$index].RequiredVersion
-    $dotnetCsvLine = ""
-    switch ($SourceType) {
-        "sa" { 
-            $dotnetCsvLine = "pac$index,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.zip;sourceType=$SourceType]$moduleName,$moduleVersion`n"
-            break
+# the hardline is calculated by the number of cmdlet, may adjust if one of two repos is out-of-memory
+$hardlineForSplittingRepo = "Az.MobileNetwork"
+$dotnetCsv1 = New-Item -Path "$PSScriptRoot\" -Name "az-ps-latest-1.csv" -ItemType "file" -Force
+$dotnetCsv2 = New-Item -Path "$PSScriptRoot\" -Name "az-ps-latest-2.csv" -ItemType "file" -Force
+$dotnetCsvContent1 = ""
+$dotnetCsvContent2 = ""
+$index1 = 0
+$index2 = 1
+$dotnetCsvLine1 = ""
+$dotnetCsvLine2 = ""
+foreach($module in $modules){
+    if($module.ModuleName -le $hardlineForSplittingRepo){
+        $moduleName = $module.ModuleName
+        if([string]::IsNullOrEmpty($module.RequiredVersion)){
+            $moduleVersion = $module.ModuleVersion
+            $dotnetCsvContent2 = "pac0,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.zip;sourceType=$SourceType]$moduleName,$moduleVersion`n"
+        }else{
+            $moduleVersion = $module.RequiredVersion
         }
-        Default {
-            $dotnetCsvLine = "pac$index,[ps=true;customSource=$CustomSource]$moduleName,$moduleVersion`n"
+        switch ($SourceType) {
+            "sa" { 
+                $dotnetCsvLine1 = "pac$index1,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.zip;sourceType=$SourceType]$moduleName,$moduleVersion`n"
+                break
+            }
+            Default {
+                $dotnetCsvLine1 = "pac$index1,[ps=true;customSource=$CustomSource]$moduleName,$moduleVersion`n"
+            }
         }
+        $dotnetCsvContent1 += $dotnetCsvLine1
+        $index1 =  $index1 + 1
     }
-    $dotnetCsvContent += $dotnetCsvLine
+    if($module.ModuleName -gt $hardlineForSplittingRepo){
+        $moduleName = $module.ModuleName
+        $moduleVersion = [string]::IsNullOrEmpty($module.RequiredVersion) ? $module.ModuleVersion : $module.RequiredVersion
+        switch ($SourceType) {
+            "sa" { 
+                $dotnetCsvLine2 = "pac$index2,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.zip;sourceType=$SourceType]$moduleName,$moduleVersion`n"
+                break
+            }
+            Default {
+                $dotnetCsvLine2 = "pac$index2,[ps=true;customSource=$CustomSource]$moduleName,$moduleVersion`n"
+            }
+        }
+        $dotnetCsvContent2 += $dotnetCsvLine2
+        $index2 =  $index2 + 1
+    }
+    
 }
-Set-Content -Path $dotnetCsv.FullName -Value $dotnetCsvContent -Encoding UTF8
+
+Set-Content -Path $dotnetCsv1.FullName -Value $dotnetCsvContent1 -Encoding UTF8
+Set-Content -Path $dotnetCsv2.FullName -Value $dotnetCsvContent2 -Encoding UTF8
+
 
 
 
