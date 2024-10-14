@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectedKubernetes", "ConnectedKubernetes\ConnectedKubernetes.csproj", "{5BCE9349-D102-48DA-A4CA-58A17607C0B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ConnectedKubernetes", "..\..\generated\ConnectedKubernetes.Autorest\Az.ConnectedKubernetes.csproj", "{A5A9C3ED-5412-4E30-BDC3-6DA4C70CA0E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ConnectedKubernetes", "..\..\generated\ConnectedKubernetes\ConnectedKubernetes.Autorest\Az.ConnectedKubernetes.csproj", "{A5A9C3ED-5412-4E30-BDC3-6DA4C70CA0E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
