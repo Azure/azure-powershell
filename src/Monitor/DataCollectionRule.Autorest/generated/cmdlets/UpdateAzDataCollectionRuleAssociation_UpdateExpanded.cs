@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update an association.</summary>
+    /// <summary>update an association.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/{resourceUri}/providers/Microsoft.Insights/dataCollectionRuleAssociations/{associationName}"
     /// [OpenAPI] Create=>PUT:"/{resourceUri}/providers/Microsoft.Insights/dataCollectionRuleAssociations/{associationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDataCollectionRuleAssociation_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleAssociationProxyOnlyResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Description(@"Update an association.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Description(@"update an association.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Generated]
     public partial class UpdateAzDataCollectionRuleAssociation_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener,

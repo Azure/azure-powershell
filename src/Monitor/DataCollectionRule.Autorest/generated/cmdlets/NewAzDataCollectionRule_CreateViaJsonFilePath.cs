@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a data collection rule.</summary>
+    /// <summary>create a data collection rule.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dataCollectionRuleName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDataCollectionRule_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Description(@"Create a data collection rule.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Description(@"create a data collection rule.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dataCollectionRuleName}", ApiVersion = "2022-06-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.NotSuggestDefaultParameterSet]

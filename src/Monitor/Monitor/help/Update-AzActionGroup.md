@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzActionGroup
 
 ## SYNOPSIS
-Update a new action group or update an existing one.
+update a new action group or update an existing one.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Update-AzActionGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-EmailReceiver <IEmailReceiver[]>] [-Enabled] [-EventHubReceiver <IEventHubReceiver[]>]
  [-GroupShortName <String>] [-ItsmReceiver <IItsmReceiver[]>] [-LogicAppReceiver <ILogicAppReceiver[]>]
  [-SmsReceiver <ISmsReceiver[]>] [-Tag <Hashtable>] [-VoiceReceiver <IVoiceReceiver[]>]
- [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>]
+ [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,11 +32,11 @@ Update-AzActionGroup -InputObject <IActionGroupIdentity> [-ArmRoleReceiver <IArm
  [-EventHubReceiver <IEventHubReceiver[]>] [-GroupShortName <String>] [-ItsmReceiver <IItsmReceiver[]>]
  [-LogicAppReceiver <ILogicAppReceiver[]>] [-SmsReceiver <ISmsReceiver[]>] [-Tag <Hashtable>]
  [-VoiceReceiver <IVoiceReceiver[]>] [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a new action group or update an existing one.
+update a new action group or update an existing one.
 
 ## EXAMPLES
 
@@ -325,6 +325,21 @@ Parameter Sets: UpdateExpanded
 Aliases: ActionGroupName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
