@@ -90,6 +90,8 @@ namespace Microsoft.Azure.Commands.Network
         {
             SecurityAdmin,
             Connectivity,
+            Routing,
+            SecurityUser
         }
 
         public override void Execute()

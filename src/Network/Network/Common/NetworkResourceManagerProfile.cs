@@ -2361,6 +2361,16 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.AdminRuleCollection, ANM.PSNetworkManagerSecurityAdminRuleCollection>();
                 cfg.CreateMap<MNM.ScopeConnection, ANM.PSNetworkManagerScopeConnection>();
                 cfg.CreateMap<MNM.NetworkManagerConnection, ANM.PSNetworkManagerConnection>();
+                cfg.CreateMap<MNM.RoutingRule, ANM.PSNetworkManagerRoutingRule>();
+                cfg.CreateMap<MNM.RoutingRuleCollection, ANM.PSNetworkManagerRoutingRuleCollection>();
+                cfg.CreateMap<MNM.NetworkManagerRoutingConfiguration, ANM.PSNetworkManagerRoutingConfiguration>();
+                cfg.CreateMap<MNM.RoutingRuleRouteDestination, ANM.PSNetworkManagerRoutingRuleDestination>();
+                cfg.CreateMap<MNM.RoutingRuleNextHop, ANM.PSNetworkManagerRoutingRuleNextHop>();
+                cfg.CreateMap<MNM.NetworkManagerRoutingGroupItem, ANM.PSNetworkManagerRoutingGroupItem>();
+                cfg.CreateMap<MNM.SecurityUserRule, ANM.PSNetworkManagerSecurityUserRule>();
+                cfg.CreateMap<MNM.SecurityUserRuleCollection, ANM.PSNetworkManagerSecurityUserRuleCollection>();
+                cfg.CreateMap<MNM.SecurityUserConfiguration, ANM.PSNetworkManagerSecurityUserConfiguration>();
+                cfg.CreateMap<MNM.SecurityUserGroupItem, ANM.PSNetworkManagerSecurityUserGroupItem>();
 
                 // IpamPool
                 cfg.CreateMap<MNM.IpamPool, ANM.PSIpamPool>();

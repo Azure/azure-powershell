@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed Microsoft.Azure.Management.DeviceProvisioningServices 0.10.0-preview dependencies
+* Added Microsoft.Azure.PowerShell.DeviceProvisioningServices.Management.Sdk
 
 ## Version 0.10.2
 * Fixed secrets exposure in example documentation.
