@@ -14,11 +14,9 @@
 
 using System;
 using System.Collections;
-using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Xml;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -75,7 +73,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 sb.Append(" : ");
                 if (obj is DateTime dateTime)
                 {
-                    sb.AppendLine(dateTime.ToString("G", new CultureInfo("en-US")));
+                    sb.AppendLine(dateTime.ToString(System.Globalization.CultureInfo.InvariantCulture));
                 }
                 else
                 {
