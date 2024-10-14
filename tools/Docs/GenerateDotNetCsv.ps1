@@ -35,9 +35,14 @@ $dotnetCsvContent1 = ""
 $dotnetCsvContent2 = ""
 $index1 = 0
 $index2 = 1
+
 foreach($module in $modules){
     $moduleName = $module.ModuleName
     $moduleVersion = [string]::IsNullOrEmpty($module.RequiredVersion) ? $module.ModuleVersion : $module.RequiredVersion
+    # Az.Accounts should be included in repo2 as well
+    if($moduleName -eq "Az.Accounts"){
+        $dotnetCsvContent2 = "pac0,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.zip;sourceType=$SourceType]$moduleName,$moduleVersion`n"
+    }
     $index = ($moduleName -le $hardlineForSplittingRepo) ? $index1 : $index2
     switch ($SourceType) {
         "sa" { 
@@ -48,12 +53,7 @@ foreach($module in $modules){
             $dotnetCsvLine = "pac$index,[ps=true;customSource=$CustomSource]$moduleName,$moduleVersion`n"
         }
     }
-    if($module.ModuleName -le $hardlineForSplittingRepo){
-        if([string]::IsNullOrEmpty($module.RequiredVersion)){
-            $moduleVersion = $module.ModuleVersion
-            $dotnetCsvContent2 = "pac0,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.zip;sourceType=$SourceType]$moduleName,$moduleVersion`n"
-        }
-
+    if($moduleName -le $hardlineForSplittingRepo){
         $dotnetCsvContent1 += $dotnetCsvLine
         $index1 =  $index1 + 1
     }else{
@@ -64,8 +64,3 @@ foreach($module in $modules){
 
 Set-Content -Path $dotnetCsv1.FullName -Value $dotnetCsvContent1 -Encoding UTF8
 Set-Content -Path $dotnetCsv2.FullName -Value $dotnetCsvContent2 -Encoding UTF8
-
-
-
-
-
