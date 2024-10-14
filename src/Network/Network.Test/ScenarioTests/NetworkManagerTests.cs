@@ -138,5 +138,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerSecurityAdminRuleManualAggregationCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerSecurityAdminRuleManualAggregationCRUD");
+        }
     }
 }
