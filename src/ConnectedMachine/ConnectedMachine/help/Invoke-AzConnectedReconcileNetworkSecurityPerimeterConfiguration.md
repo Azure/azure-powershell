@@ -1,48 +1,49 @@
 ---
 external help file: Az.ConnectedMachine-help.xml
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachineruncommand
+online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/invoke-azconnectedreconcilenetworksecurityperimeterconfiguration
 schema: 2.0.0
 ---
 
-# Remove-AzConnectedMachineRunCommand
+# Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration
 
 ## SYNOPSIS
-The operation to delete a run command.
+Forces the network security perimeter configuration to refresh for a private link scope.
 
 ## SYNTAX
 
-### Delete (Default)
+### Reconcile (Default)
 ```
-Remove-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <String> -RunCommandName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName <String>
+ -ResourceGroupName <String> -ScopeName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ReconcileViaIdentityPrivateLinkScope
+```
+Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName <String>
+ -PrivateLinkScopeInputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityMachine
+### ReconcileViaIdentity
 ```
-Remove-AzConnectedMachineRunCommand -RunCommandName <String> -MachineInputObject <IConnectedMachineIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzConnectedMachineRunCommand -InputObject <IConnectedMachineIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -InputObject <IConnectedMachineIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to delete a run command.
+Forces the network security perimeter configuration to refresh for a private link scope.
 
 ## EXAMPLES
 
-### Example 1: Remove a run-command for a machine
+### Example 1: Invoke Network Security Perimeter Configuration
 ```powershell
-Remove-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommandName "myRunCommand3" -MachineName "testmachine"
+Invoke-AzConnectedReconcileNetworkSecurityPerimeterConfiguration -PerimeterName $env.PerimeterName -ResourceGroupName $env.ResourceGroupNameNSP -ScopeName $env.PrivateLinkScopeNameNSP
 ```
 
-Remove a run-command for a machine
+Invoke Network Security Perimeter Configuration
 
 ## PARAMETERS
 
@@ -82,43 +83,13 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: ReconcileViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -MachineInputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: DeleteViaIdentityMachine
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -MachineName
-The name of the hybrid machine.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -137,18 +108,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -PerimeterName
+The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Reconcile, ReconcileViaIdentityPrivateLinkScope
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateLinkScopeInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+Parameter Sets: ReconcileViaIdentityPrivateLinkScope
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -173,7 +159,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Reconcile
 Aliases:
 
 Required: True
@@ -183,12 +169,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RunCommandName
-The name of the run command.
+### -ScopeName
+The name of the Azure Arc PrivateLinkScope resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityMachine
+Parameter Sets: Reconcile
 Aliases:
 
 Required: True
@@ -203,7 +189,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Reconcile
 Aliases:
 
 Required: False
@@ -253,7 +239,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationReconcileResult
 
 ## NOTES
 

@@ -81,7 +81,7 @@ New-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-The operation to create or update the extension.
+The operation to create the extension.
 
 ## EXAMPLES
 

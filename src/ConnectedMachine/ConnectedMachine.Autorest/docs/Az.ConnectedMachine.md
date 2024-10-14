@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ConnectedMachine
-Module Guid: 259a0542-8329-4b9e-8f72-dab0efc583e9
+Module Guid: 505cb2e3-9be2-49aa-a2d6-1a83d879431c
 Download Help Link: https://learn.microsoft.com/powershell/module/az.connectedmachine
 Help Version: 1.0.0.0
 Locale: en-US
@@ -42,16 +42,16 @@ The operation to assess patches on a hybrid machine identity in Azure.
 Forces the network security perimeter configuration to refresh for a private link scope.
 
 ### [New-AzConnectedLicense](New-AzConnectedLicense.md)
-The operation to create or update a license.
+The operation to create a license.
 
 ### [New-AzConnectedLicenseDetail](New-AzConnectedLicenseDetail.md)
 Create an in-memory object for LicenseDetails.
 
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to create the extension.
 
 ### [New-AzConnectedPrivateLinkScope](New-AzConnectedPrivateLinkScope.md)
-Create (or updates) a Azure Arc PrivateLinkScope.
+create (or create  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ### [Remove-AzConnectedLicense](Remove-AzConnectedLicense.md)
@@ -67,13 +67,13 @@ The operation to delete the extension.
 Deletes a Azure Arc PrivateLinkScope.
 
 ### [Set-AzConnectedLicense](Set-AzConnectedLicense.md)
-The operation to create or update a license.
+The operation to update a license.
 
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to update the extension.
 
 ### [Set-AzConnectedPrivateLinkScope](Set-AzConnectedPrivateLinkScope.md)
-Update (or updates) a Azure Arc PrivateLinkScope.
+update (or update  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ### [Update-AzConnectedExtension](Update-AzConnectedExtension.md)
@@ -86,6 +86,6 @@ The operation to update a hybrid machine.
 The operation to update the extension.
 
 ### [Update-AzConnectedPrivateLinkScopeTag](Update-AzConnectedPrivateLinkScopeTag.md)
-Update an existing PrivateLinkScope's tags.
-To update other fields use the CreateOrUpdate method.
+update an existing PrivateLinkScope's tags.
+To update other fields use the CreateOrupdate method.
 
