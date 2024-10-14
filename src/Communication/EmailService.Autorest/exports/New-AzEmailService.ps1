@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new EmailService or update an existing EmailService.
+create a new EmailService or create an existing EmailService.
 .Description
-Create a new EmailService or update an existing EmailService.
+create a new EmailService or create an existing EmailService.
 .Example
 New-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -DataLocation "United States"
 
