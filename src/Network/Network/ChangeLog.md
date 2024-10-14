@@ -47,6 +47,9 @@
     - `New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
     - `Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
     - `Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+* Updated cmdlet to add the property of `NetworkGroupAddressSpaceAggregationOption`, and updated corresponding cmdlets.
+    - `New-AzNetworkManagerSecurityAdminConfiguration`
+    - `New-AzNetworkManagerAddressPrefixItemCommand`
 
 
 ## Version 7.8.0
