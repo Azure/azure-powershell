@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrate Billing sdk to generated sdk
+    - Removed "Microsoft.Azure.Management.Billing" Version "4.1.0" PackageReference
+    - Added Microsoft.Azure.PowerShell.Billing.Management.Sdk
 
 ## Version 2.1.0
 * Renamed `Get-UsageAggregates` to `Get-AzUsageAggregate` and added `Get-UsageAggregates` as the alias to avoid breaking change.
