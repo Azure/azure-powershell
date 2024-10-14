@@ -232,7 +232,7 @@ $existingCsprojPath = dotnet sln $slnPath list | Where-Object {
     $_ -match ".*$csprojName$"
 }
 if ($existingCsprojPath) {
-    $generatedCsprojPath = "..\..\generated\" + $existingCsprojPath
+    $generatedCsprojPath = Join-Path "..\..\generated\$ModuleRootName\" $existingCsprojPath
     (Get-Content $slnPath).Replace($existingCsprojPath, $generatedCsprojPath) | Set-Content $slnPath -force
 }
 
