@@ -57,8 +57,7 @@ foreach($module in $modules){
         }
         $dotnetCsvContent1 += $dotnetCsvLine1
         $index1 =  $index1 + 1
-    }
-    if($module.ModuleName -gt $hardlineForSplittingRepo){
+    }else{
         $moduleName = $module.ModuleName
         $moduleVersion = [string]::IsNullOrEmpty($module.RequiredVersion) ? $module.ModuleVersion : $module.RequiredVersion
         switch ($SourceType) {
@@ -72,8 +71,7 @@ foreach($module in $modules){
         }
         $dotnetCsvContent2 += $dotnetCsvLine2
         $index2 =  $index2 + 1
-    }
-    
+    }    
 }
 
 Set-Content -Path $dotnetCsv1.FullName -Value $dotnetCsvContent1 -Encoding UTF8
