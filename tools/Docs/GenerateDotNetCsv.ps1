@@ -35,41 +35,29 @@ $dotnetCsvContent1 = ""
 $dotnetCsvContent2 = ""
 $index1 = 0
 $index2 = 1
-$dotnetCsvLine1 = ""
-$dotnetCsvLine2 = ""
 foreach($module in $modules){
+    $moduleName = $module.ModuleName
+    $moduleVersion = [string]::IsNullOrEmpty($module.RequiredVersion) ? $module.ModuleVersion : $module.RequiredVersion
+    $index = ($moduleName -le $hardlineForSplittingRepo) ? $index1 : $index2
+    switch ($SourceType) {
+        "sa" { 
+            $dotnetCsvLine = "pac$index,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.zip;sourceType=$SourceType]$moduleName,$moduleVersion`n"
+            break
+        }
+        Default {
+            $dotnetCsvLine = "pac$index,[ps=true;customSource=$CustomSource]$moduleName,$moduleVersion`n"
+        }
+    }
     if($module.ModuleName -le $hardlineForSplittingRepo){
-        $moduleName = $module.ModuleName
         if([string]::IsNullOrEmpty($module.RequiredVersion)){
             $moduleVersion = $module.ModuleVersion
             $dotnetCsvContent2 = "pac0,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.zip;sourceType=$SourceType]$moduleName,$moduleVersion`n"
-        }else{
-            $moduleVersion = $module.RequiredVersion
         }
-        switch ($SourceType) {
-            "sa" { 
-                $dotnetCsvLine1 = "pac$index1,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.zip;sourceType=$SourceType]$moduleName,$moduleVersion`n"
-                break
-            }
-            Default {
-                $dotnetCsvLine1 = "pac$index1,[ps=true;customSource=$CustomSource]$moduleName,$moduleVersion`n"
-            }
-        }
-        $dotnetCsvContent1 += $dotnetCsvLine1
+
+        $dotnetCsvContent1 += $dotnetCsvLine
         $index1 =  $index1 + 1
     }else{
-        $moduleName = $module.ModuleName
-        $moduleVersion = [string]::IsNullOrEmpty($module.RequiredVersion) ? $module.ModuleVersion : $module.RequiredVersion
-        switch ($SourceType) {
-            "sa" { 
-                $dotnetCsvLine2 = "pac$index2,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.zip;sourceType=$SourceType]$moduleName,$moduleVersion`n"
-                break
-            }
-            Default {
-                $dotnetCsvLine2 = "pac$index2,[ps=true;customSource=$CustomSource]$moduleName,$moduleVersion`n"
-            }
-        }
-        $dotnetCsvContent2 += $dotnetCsvLine2
+        $dotnetCsvContent2 += $dotnetCsvLine
         $index2 =  $index2 + 1
     }    
 }
