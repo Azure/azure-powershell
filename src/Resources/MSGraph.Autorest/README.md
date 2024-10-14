@@ -68,6 +68,7 @@ endpoint-resource-id-key-name: MicrosoftGraphEndpointResourceId
 export-properties-for-dict: false
 nested-object-to-string: true
 add-api-version-in-model-namespace: true
+fixed-array: true
 
 # Disable default settings and Set in to empty for msgraph
 default-exclude-tableview-properties: false
