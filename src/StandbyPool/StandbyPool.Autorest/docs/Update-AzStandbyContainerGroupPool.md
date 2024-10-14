@@ -44,7 +44,7 @@ Update a StandbyContainerGroupPoolResource
 
 ## EXAMPLES
 
-### Example 1: Update a standby container pool's max ready capacity to 5
+### Example 1: Update a standby container group pool's max ready capacity to 5
 ```powershell
 Update-AzStandbyContainerGroupPool `
 -Name testPool `
@@ -77,8 +77,7 @@ Tag                               : {
 Type                              : microsoft.standbypool/standbycontainergrouppools
 ```
 
-The above command updated a standby container pool's max ready capacity to 5.
-
+The above command updated a standby container group pool's max ready capacity to 5.
 
 ## PARAMETERS
 

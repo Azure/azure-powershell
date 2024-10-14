@@ -181,6 +181,24 @@ function New-AzConnectedKubernetes {
         ${CustomLocationsOid},
 
         [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Whether to enable oidc issuer for workload identity integration.
+        ${OidcIssuerProfileEnabled},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.String]
+        # The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
+        ${OidcIssuerProfileSelfHostedIssuerUrl},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Whether to enable or disable the workload identity Webhook
+        ${WorkloadIdentityEnabled},
+
+        [Parameter()]
         [System.Management.Automation.SwitchParameter]
         # Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
         ${AcceptEULA},
@@ -301,7 +319,7 @@ function New-AzConnectedKubernetes {
             $Null = $PSBoundParameters.Remove('KubeConfig')
         }
         elseif (Test-Path Env:KUBECONFIG) {
-            $KubeConfig = Get-ChildItem -Path Env:KUBECONFIG
+            $KubeConfig = Get-ChildItem -Path $Env:KUBECONFIG
         }
         elseif (Test-Path Env:Home) {
             $KubeConfig = Join-Path -Path $Env:Home -ChildPath '.kube' | Join-Path -ChildPath 'config'
@@ -346,7 +364,11 @@ function New-AzConnectedKubernetes {
         $PSBoundParameters.Add('IdentityType', $IdentityType)
 
         #Region check helm install
-        Confirm-HelmVersion -KubeConfig $KubeConfig
+        Confirm-HelmVersion `
+            -KubeConfig $KubeConfig `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
 
         #EndRegion
         $helmClientLocation = 'helm'
@@ -403,8 +425,13 @@ function New-AzConnectedKubernetes {
         if ($PSVersionTable.PSVersion.Major -eq 5) {
             try {
                 . "$PSScriptRoot/helpers/RSAHelper.ps1"
-                $AgentPublicKey = ExportRSAPublicKeyBase64($RSA)
-                $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA)
+                $AgentPublicKey = ExportRSAPublicKeyBase64($RSA) `
+                    -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+                    -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+                $AgentPrivateKey = ExportRSAPrivateKeyBase64($RSA) `
+                    -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+                    -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
                 $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + $AgentPrivateKey + "`n-----END RSA PRIVATE KEY-----"
             }
             catch {
@@ -421,8 +448,9 @@ function New-AzConnectedKubernetes {
         $options = ""
 
         if ($DisableAutoUpgrade) {
-            $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
+            # $options += " --set systemDefaultValues.azureArcAgents.autoUpdate=false"
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
+            $PSBoundParameters.Add('ArcAgentProfileAgentAutoUpgrade', 'Disabled')
         }
         if (-not ([string]::IsNullOrEmpty($ContainerLogPath))) {
             $options += " --set systemDefaultValues.fluent-bit.containerLogPath=$ContainerLogPath"
@@ -522,15 +550,25 @@ function New-AzConnectedKubernetes {
 
         # A lot of what follows relies on knowing the cloud we are using and the
         # various endpoints so get that information now.
-        $cloudMetadata = Get-AzCloudMetadata
+        $cloudMetadata = Get-AzCloudMetadata `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # Perform DP health check
-        $configDpinfo = Get-ConfigDPEndpoint -location $Location -Cloud $cloudMetadata
+        $configDpinfo = Get-ConfigDPEndpoint `
+            -location $Location `
+            -Cloud $cloudMetadata `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
         $configDPEndpoint = $configDpInfo.configDPEndpoint
 
         # If the health check fails (not 200 response), an exception is thrown
         # so we can ignore the output.
-        $null = Invoke-ConfigDPHealthCheck -configDPEndpoint $configDPEndpoint
+        $null = Invoke-ConfigDPHealthCheck `
+            -configDPEndpoint $configDPEndpoint `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # This call does the "pure ARM" update of the ARM objects.
         Write-Debug "Writing Connected Kubernetes ARM objects."
@@ -567,7 +605,12 @@ function New-AzConnectedKubernetes {
         # needs to change and not the Powershell script (or az CLI).
         #
         # Do not send protected settings to CCRP
-        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration @{} -CCRP $true
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration `
+            -ConfigurationSetting $ConfigurationSetting `
+            -RedactedProtectedConfiguration @{} `
+            -CCRP $true `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # It is possible to set an empty value for these parameters and then
         # the code above gets skipped but we still need to remove the empty
@@ -581,10 +624,21 @@ function New-AzConnectedKubernetes {
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
 
-        Write-Verbose "Creating 'Kubernetes - Azure Arc' object in Azure"
+        Write-Output "Creating 'Kubernetes - Azure Arc' object in Azure"
+        Write-Debug "PSBoundParameters: $PSBoundParameters"
         $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
-        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration -ConfigurationSetting $ConfigurationSetting -RedactedProtectedConfiguration $RedactedProtectedConfiguration -CCRP $false
+        if ((-not $WhatIfPreference) -and (-not $Response)) {
+            Write-Error "Failed to create the 'Kubernetes - Azure Arc' resource."
+            return
+        }
+
+        $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration `
+            -ConfigurationSetting $ConfigurationSetting `
+            -RedactedProtectedConfiguration $RedactedProtectedConfiguration `
+            -CCRP $false `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # Convert the $Response object into a nested hashtable.
 
@@ -619,7 +673,7 @@ function New-AzConnectedKubernetes {
             Write-Debug "OCI Artifact location: ${helmValuesDp.repositoryPath}."
 
             $registryPath = if ($env:HELMREGISTRY) { $env:HELMREGISTRY } else { $helmValuesDp.repositoryPath }
-            Write-Debug "RegistryPath: ${registryPath}."
+            Write-Debug "RegistryPath: ${registryPath}"
 
             $helmValuesContent = $helmValuesDp.helmValuesContent
             Write-Debug "Helm values: ${helmValuesContent}."
@@ -630,7 +684,7 @@ function New-AzConnectedKubernetes {
             # hashtable.
             $optionsFromDp = ""
             foreach ($field in $helmValuesContent.PSObject.Properties) {
-                if($field.Value.StartsWith($ProtectedSettingsPlaceholderValue)){
+                if ($field.Value.StartsWith($ProtectedSettingsPlaceholderValue)) {
                     $parsedValue = $field.Value.Split(":")
                     # "${ProtectedSettingsPlaceholderValue}:${feature}:${setting}"
                     $field.Value = $ConfigurationProtectedSetting[$parsedValue[1]][$parsedValue[2]]
@@ -646,9 +700,15 @@ function New-AzConnectedKubernetes {
 
         # Get helm chart path (within the OCI registry).
         if ($PSCmdlet.ShouldProcess("configDP", "request Helm chart")) {
-            $chartPath = Get-HelmChartPath -registryPath $registryPath -kubeConfig $KubeConfig -kubeContext $KubeContext -helmClientLocation $HelmClientLocation
+            $chartPath = Get-HelmChartPath `
+                -registryPath $registryPath `
+                -kubeConfig $KubeConfig `
+                -kubeContext $KubeContext `
+                -helmClientLocation $HelmClientLocation `
+                -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+                -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
             if (Test-Path Env:HELMCHART) {
-                $ChartPath = Get-ChildItem -Path Env:HELMCHART
+                $ChartPath = Get-ChildItem -Path $Env:HELMCHART
             }
         }
 
@@ -658,6 +718,7 @@ function New-AzConnectedKubernetes {
             $options += " --debug"
         }
         if ($PSCmdlet.ShouldProcess($ClusterName, "Update Kubernetes cluster with Azure Arc")) {
+            Write-Output "Executing helm upgrade command, this can take a few minutes...."
             try {
                 helm upgrade `
                     --install azure-arc `
@@ -680,6 +741,30 @@ function New-AzConnectedKubernetes {
             }
             catch {
                 throw "Unable to install helm chart at $ChartPath"
+            }
+        }
+
+        if ($PSCmdlet.ShouldProcess($ClusterName, "Check agent state of the connected cluster")) {
+            if ($PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled') -or $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled') ) {
+                $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
+    
+                Write-Output "Cluster configuration is in progress..."
+                $timeout = [datetime]::Now.AddMinutes(60)
+    
+                while (($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Succeeded") -and ($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Failed") -and ([datetime]::Now -lt $timeout)) {
+                    Start-Sleep -Seconds 30
+                    $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
+                }
+    
+                if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
+                    Write-Output "Cluster configuration succeeded."
+                }
+                elseif ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Failed") {
+                    Write-Error "Cluster configuration failed."
+                }
+                else {
+                    Write-Error "Cluster configuration timed out after 60 minutes."
+                }      
             }
         }
         Return $Response
