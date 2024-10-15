@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update a topic space with the specified parameters.
+update a topic space with the specified parameters.
 .Description
-Update a topic space with the specified parameters.
+update a topic space with the specified parameters.
 .Example
 Update-AzEventGridTopicSpace -Name azps-topicspace -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -TopicTemplate "filter1"
 .Example

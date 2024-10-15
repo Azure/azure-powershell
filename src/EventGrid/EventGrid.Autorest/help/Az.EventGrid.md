@@ -170,41 +170,44 @@ Get properties of a verified partner.
 ### [Grant-AzEventGridPartnerConfiguration](Grant-AzEventGridPartnerConfiguration.md)
 Authorize a single partner either by partner registration immutable Id or by partner name.
 
-### [New-AzEventGridAdvancedFilterObject](New-AzEventGridAdvancedFilterObject.md)
-Create an in-memory object for AdvancedFilter.
-
 ### [New-AzEventGridAzureFunctionEventSubscriptionDestinationObject](New-AzEventGridAzureFunctionEventSubscriptionDestinationObject.md)
 Create an in-memory object for AzureFunctionEventSubscriptionDestination.
 
+### [New-AzEventGridBoolEqualsAdvancedFilterObject](New-AzEventGridBoolEqualsAdvancedFilterObject.md)
+Create an in-memory object for BoolEqualsAdvancedFilter.
+
+### [New-AzEventGridBoolEqualsFilterObject](New-AzEventGridBoolEqualsFilterObject.md)
+Create an in-memory object for BoolEqualsFilter.
+
 ### [New-AzEventGridCaCertificate](New-AzEventGridCaCertificate.md)
-Create a CA certificate with the specified parameters.
+create a CA certificate with the specified parameters.
 
 ### [New-AzEventGridChannel](New-AzEventGridChannel.md)
-Synchronously creates or updates a new channel with the specified parameters.
+Synchronously create a new channel with the specified parameters.
 
 ### [New-AzEventGridClient](New-AzEventGridClient.md)
-Create a client with the specified parameters.
+create a client with the specified parameters.
 
 ### [New-AzEventGridClientGroup](New-AzEventGridClientGroup.md)
-Create a client group with the specified parameters.
-
-### [New-AzEventGridDeliveryAttributeMappingObject](New-AzEventGridDeliveryAttributeMappingObject.md)
-Create an in-memory object for DeliveryAttributeMapping.
+create a client group with the specified parameters.
 
 ### [New-AzEventGridDomain](New-AzEventGridDomain.md)
-Asynchronously creates or updates a new domain with the specified parameters.
+Asynchronously create a new domain with the specified parameters.
 
 ### [New-AzEventGridDomainEventSubscription](New-AzEventGridDomainEventSubscription.md)
-Asynchronously creates a new event subscription or updates an existing event subscription.
+Asynchronously create a new event subscription or create an existing event subscription.
 
 ### [New-AzEventGridDomainKey](New-AzEventGridDomainKey.md)
 Regenerate a shared access key for a domain.
 
 ### [New-AzEventGridDomainTopic](New-AzEventGridDomainTopic.md)
-Asynchronously creates or updates a new domain topic with the specified parameters.
+Asynchronously create a new domain topic with the specified parameters.
 
 ### [New-AzEventGridDomainTopicEventSubscription](New-AzEventGridDomainTopicEventSubscription.md)
-Asynchronously creates a new event subscription or updates an existing event subscription.
+Asynchronously create a new event subscription or create an existing event subscription.
+
+### [New-AzEventGridDynamicDeliveryAttributeMappingObject](New-AzEventGridDynamicDeliveryAttributeMappingObject.md)
+Create an in-memory object for DynamicDeliveryAttributeMapping.
 
 ### [New-AzEventGridDynamicRoutingEnrichmentObject](New-AzEventGridDynamicRoutingEnrichmentObject.md)
 Create an in-memory object for DynamicRoutingEnrichment.
@@ -212,8 +215,8 @@ Create an in-memory object for DynamicRoutingEnrichment.
 ### [New-AzEventGridEventHubEventSubscriptionDestinationObject](New-AzEventGridEventHubEventSubscriptionDestinationObject.md)
 Create an in-memory object for EventHubEventSubscriptionDestination.
 
-### [New-AzEventGridFilterObject](New-AzEventGridFilterObject.md)
-Create an in-memory object for Filter.
+### [New-AzEventGridEventSubscriptionFilterObject](New-AzEventGridEventSubscriptionFilterObject.md)
+Create an in-memory object for EventSubscriptionFilter.
 
 ### [New-AzEventGridHybridConnectionEventSubscriptionDestinationObject](New-AzEventGridHybridConnectionEventSubscriptionDestinationObject.md)
 Create an in-memory object for HybridConnectionEventSubscriptionDestination.
@@ -221,33 +224,93 @@ Create an in-memory object for HybridConnectionEventSubscriptionDestination.
 ### [New-AzEventGridInboundIPRuleObject](New-AzEventGridInboundIPRuleObject.md)
 Create an in-memory object for InboundIPRule.
 
+### [New-AzEventGridIsNotNullAdvancedFilterObject](New-AzEventGridIsNotNullAdvancedFilterObject.md)
+Create an in-memory object for IsNotNullAdvancedFilter.
+
+### [New-AzEventGridIsNotNullFilterObject](New-AzEventGridIsNotNullFilterObject.md)
+Create an in-memory object for IsNotNullFilter.
+
+### [New-AzEventGridIsNullOrUndefinedAdvancedFilterObject](New-AzEventGridIsNullOrUndefinedAdvancedFilterObject.md)
+Create an in-memory object for IsNullOrUndefinedAdvancedFilter.
+
+### [New-AzEventGridIsNullOrUndefinedFilterObject](New-AzEventGridIsNullOrUndefinedFilterObject.md)
+Create an in-memory object for IsNullOrUndefinedFilter.
+
 ### [New-AzEventGridNamespace](New-AzEventGridNamespace.md)
-Asynchronously creates or updates a new namespace with the specified parameters.
+Asynchronously create a new namespace with the specified parameters.
 
 ### [New-AzEventGridNamespaceKey](New-AzEventGridNamespaceKey.md)
 Regenerate a shared access key for a namespace.
 
 ### [New-AzEventGridNamespaceTopic](New-AzEventGridNamespaceTopic.md)
-Asynchronously creates a new namespace topic with the specified parameters.
+Asynchronously create a new namespace topic with the specified parameters.
 
 ### [New-AzEventGridNamespaceTopicEventSubscription](New-AzEventGridNamespaceTopicEventSubscription.md)
-Asynchronously creates or updates an event subscription of a namespace topic with the specified parameters.
+Asynchronously create an event subscription of a namespace topic with the specified parameters.
 Existing event subscriptions will be updated with this API.
 
 ### [New-AzEventGridNamespaceTopicKey](New-AzEventGridNamespaceTopicKey.md)
 Regenerate a shared access key for a namespace topic.
 
+### [New-AzEventGridNumberGreaterThanAdvancedFilterObject](New-AzEventGridNumberGreaterThanAdvancedFilterObject.md)
+Create an in-memory object for NumberGreaterThanAdvancedFilter.
+
+### [New-AzEventGridNumberGreaterThanFilterObject](New-AzEventGridNumberGreaterThanFilterObject.md)
+Create an in-memory object for NumberGreaterThanFilter.
+
+### [New-AzEventGridNumberGreaterThanOrEqualsAdvancedFilterObject](New-AzEventGridNumberGreaterThanOrEqualsAdvancedFilterObject.md)
+Create an in-memory object for NumberGreaterThanOrEqualsAdvancedFilter.
+
+### [New-AzEventGridNumberGreaterThanOrEqualsFilterObject](New-AzEventGridNumberGreaterThanOrEqualsFilterObject.md)
+Create an in-memory object for NumberGreaterThanOrEqualsFilter.
+
+### [New-AzEventGridNumberInAdvancedFilterObject](New-AzEventGridNumberInAdvancedFilterObject.md)
+Create an in-memory object for NumberInAdvancedFilter.
+
+### [New-AzEventGridNumberInFilterObject](New-AzEventGridNumberInFilterObject.md)
+Create an in-memory object for NumberInFilter.
+
+### [New-AzEventGridNumberInRangeAdvancedFilterObject](New-AzEventGridNumberInRangeAdvancedFilterObject.md)
+Create an in-memory object for NumberInRangeAdvancedFilter.
+
+### [New-AzEventGridNumberInRangeFilterObject](New-AzEventGridNumberInRangeFilterObject.md)
+Create an in-memory object for NumberInRangeFilter.
+
+### [New-AzEventGridNumberLessThanAdvancedFilterObject](New-AzEventGridNumberLessThanAdvancedFilterObject.md)
+Create an in-memory object for NumberLessThanAdvancedFilter.
+
+### [New-AzEventGridNumberLessThanFilterObject](New-AzEventGridNumberLessThanFilterObject.md)
+Create an in-memory object for NumberLessThanFilter.
+
+### [New-AzEventGridNumberLessThanOrEqualsAdvancedFilterObject](New-AzEventGridNumberLessThanOrEqualsAdvancedFilterObject.md)
+Create an in-memory object for NumberLessThanOrEqualsAdvancedFilter.
+
+### [New-AzEventGridNumberLessThanOrEqualsFilterObject](New-AzEventGridNumberLessThanOrEqualsFilterObject.md)
+Create an in-memory object for NumberLessThanOrEqualsFilter.
+
+### [New-AzEventGridNumberNotInAdvancedFilterObject](New-AzEventGridNumberNotInAdvancedFilterObject.md)
+Create an in-memory object for NumberNotInAdvancedFilter.
+
+### [New-AzEventGridNumberNotInFilterObject](New-AzEventGridNumberNotInFilterObject.md)
+Create an in-memory object for NumberNotInFilter.
+
+### [New-AzEventGridNumberNotInRangeAdvancedFilterObject](New-AzEventGridNumberNotInRangeAdvancedFilterObject.md)
+Create an in-memory object for NumberNotInRangeAdvancedFilter.
+
+### [New-AzEventGridNumberNotInRangeFilterObject](New-AzEventGridNumberNotInRangeFilterObject.md)
+Create an in-memory object for NumberNotInRangeFilter.
+
 ### [New-AzEventGridPartnerConfiguration](New-AzEventGridPartnerConfiguration.md)
-Synchronously creates or updates a partner configuration with the specified parameters.
+Synchronously create a partner configuration with the specified parameters.
 
 ### [New-AzEventGridPartnerDestination](New-AzEventGridPartnerDestination.md)
-Asynchronously creates a new partner destination with the specified parameters.
+Asynchronously create a new partner destination with the specified parameters.
 
 ### [New-AzEventGridPartnerEventSubscriptionDestinationObject](New-AzEventGridPartnerEventSubscriptionDestinationObject.md)
 Create an in-memory object for PartnerEventSubscriptionDestination.
 
 ### [New-AzEventGridPartnerNamespace](New-AzEventGridPartnerNamespace.md)
-Asynchronously creates a new partner namespace with the specified parameters.
+Asynchronously create a new partner namespace with the specified parameters.
 
 ### [New-AzEventGridPartnerNamespaceKey](New-AzEventGridPartnerNamespaceKey.md)
 Regenerate a shared access key for a partner namespace.
@@ -256,17 +319,17 @@ Regenerate a shared access key for a partner namespace.
 Create an in-memory object for Partner.
 
 ### [New-AzEventGridPartnerRegistration](New-AzEventGridPartnerRegistration.md)
-Create a new partner registration with the specified parameters.
+create a new partner registration with the specified parameters.
 
 ### [New-AzEventGridPartnerTopic](New-AzEventGridPartnerTopic.md)
-Asynchronously creates a new partner topic with the specified parameters.
+Asynchronously create a new partner topic with the specified parameters.
 
 ### [New-AzEventGridPartnerTopicEventSubscription](New-AzEventGridPartnerTopicEventSubscription.md)
-Asynchronously creates or updates an event subscription of a partner topic with the specified parameters.
+Asynchronously create an event subscription of a partner topic with the specified parameters.
 Existing event subscriptions will be updated with this API.
 
 ### [New-AzEventGridPermissionBinding](New-AzEventGridPermissionBinding.md)
-Create a permission binding with the specified parameters.
+create a permission binding with the specified parameters.
 
 ### [New-AzEventGridPrivateEndpointConnectionObject](New-AzEventGridPrivateEndpointConnectionObject.md)
 Create an in-memory object for PrivateEndpointConnection.
@@ -280,33 +343,84 @@ Create an in-memory object for ServiceBusQueueEventSubscriptionDestination.
 ### [New-AzEventGridServiceBusTopicEventSubscriptionDestinationObject](New-AzEventGridServiceBusTopicEventSubscriptionDestinationObject.md)
 Create an in-memory object for ServiceBusTopicEventSubscriptionDestination.
 
+### [New-AzEventGridStaticDeliveryAttributeMappingObject](New-AzEventGridStaticDeliveryAttributeMappingObject.md)
+Create an in-memory object for StaticDeliveryAttributeMapping.
+
 ### [New-AzEventGridStaticRoutingEnrichmentObject](New-AzEventGridStaticRoutingEnrichmentObject.md)
 Create an in-memory object for StaticRoutingEnrichment.
 
 ### [New-AzEventGridStorageQueueEventSubscriptionDestinationObject](New-AzEventGridStorageQueueEventSubscriptionDestinationObject.md)
 Create an in-memory object for StorageQueueEventSubscriptionDestination.
 
+### [New-AzEventGridStringBeginsWithAdvancedFilterObject](New-AzEventGridStringBeginsWithAdvancedFilterObject.md)
+Create an in-memory object for StringBeginsWithAdvancedFilter.
+
+### [New-AzEventGridStringBeginsWithFilterObject](New-AzEventGridStringBeginsWithFilterObject.md)
+Create an in-memory object for StringBeginsWithFilter.
+
+### [New-AzEventGridStringContainsAdvancedFilterObject](New-AzEventGridStringContainsAdvancedFilterObject.md)
+Create an in-memory object for StringContainsAdvancedFilter.
+
+### [New-AzEventGridStringContainsFilterObject](New-AzEventGridStringContainsFilterObject.md)
+Create an in-memory object for StringContainsFilter.
+
+### [New-AzEventGridStringEndsWithAdvancedFilterObject](New-AzEventGridStringEndsWithAdvancedFilterObject.md)
+Create an in-memory object for StringEndsWithAdvancedFilter.
+
+### [New-AzEventGridStringEndsWithFilterObject](New-AzEventGridStringEndsWithFilterObject.md)
+Create an in-memory object for StringEndsWithFilter.
+
+### [New-AzEventGridStringInAdvancedFilterObject](New-AzEventGridStringInAdvancedFilterObject.md)
+Create an in-memory object for StringInAdvancedFilter.
+
+### [New-AzEventGridStringInFilterObject](New-AzEventGridStringInFilterObject.md)
+Create an in-memory object for StringInFilter.
+
+### [New-AzEventGridStringNotBeginsWithAdvancedFilterObject](New-AzEventGridStringNotBeginsWithAdvancedFilterObject.md)
+Create an in-memory object for StringNotBeginsWithAdvancedFilter.
+
+### [New-AzEventGridStringNotBeginsWithFilterObject](New-AzEventGridStringNotBeginsWithFilterObject.md)
+Create an in-memory object for StringNotBeginsWithFilter.
+
+### [New-AzEventGridStringNotContainsAdvancedFilterObject](New-AzEventGridStringNotContainsAdvancedFilterObject.md)
+Create an in-memory object for StringNotContainsAdvancedFilter.
+
+### [New-AzEventGridStringNotContainsFilterObject](New-AzEventGridStringNotContainsFilterObject.md)
+Create an in-memory object for StringNotContainsFilter.
+
+### [New-AzEventGridStringNotEndsWithAdvancedFilterObject](New-AzEventGridStringNotEndsWithAdvancedFilterObject.md)
+Create an in-memory object for StringNotEndsWithAdvancedFilter.
+
+### [New-AzEventGridStringNotEndsWithFilterObject](New-AzEventGridStringNotEndsWithFilterObject.md)
+Create an in-memory object for StringNotEndsWithFilter.
+
+### [New-AzEventGridStringNotInAdvancedFilterObject](New-AzEventGridStringNotInAdvancedFilterObject.md)
+Create an in-memory object for StringNotInAdvancedFilter.
+
+### [New-AzEventGridStringNotInFilterObject](New-AzEventGridStringNotInFilterObject.md)
+Create an in-memory object for StringNotInFilter.
+
 ### [New-AzEventGridSubscription](New-AzEventGridSubscription.md)
-Asynchronously creates a new event subscription or updates an existing event subscription based on the specified scope.
+Asynchronously create a new event subscription or create an existing event subscription based on the specified scope.
 
 ### [New-AzEventGridSystemTopic](New-AzEventGridSystemTopic.md)
-Asynchronously creates a new system topic with the specified parameters.
+Asynchronously create a new system topic with the specified parameters.
 
 ### [New-AzEventGridSystemTopicEventSubscription](New-AzEventGridSystemTopicEventSubscription.md)
-Asynchronously creates or updates an event subscription with the specified parameters.
+Asynchronously create an event subscription with the specified parameters.
 Existing event subscriptions will be updated with this API.
 
 ### [New-AzEventGridTopic](New-AzEventGridTopic.md)
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously create a new topic with the specified parameters.
 
 ### [New-AzEventGridTopicEventSubscription](New-AzEventGridTopicEventSubscription.md)
-Asynchronously creates a new event subscription or updates an existing event subscription.
+Asynchronously create a new event subscription or create an existing event subscription.
 
 ### [New-AzEventGridTopicKey](New-AzEventGridTopicKey.md)
 Regenerate a shared access key for a topic.
 
 ### [New-AzEventGridTopicSpace](New-AzEventGridTopicSpace.md)
-Create a topic space with the specified parameters.
+create a topic space with the specified parameters.
 
 ### [New-AzEventGridWebHookEventSubscriptionDestinationObject](New-AzEventGridWebHookEventSubscriptionDestinationObject.md)
 Create an in-memory object for WebHookEventSubscriptionDestination.
@@ -387,65 +501,65 @@ Delete an existing topic space.
 Unauthorize a single partner either by partner registration immutable Id or by partner name.
 
 ### [Update-AzEventGridChannel](Update-AzEventGridChannel.md)
-Synchronously updates a channel with the specified parameters.
+Synchronously update a channel with the specified parameters.
 
 ### [Update-AzEventGridClient](Update-AzEventGridClient.md)
-Update a client with the specified parameters.
+update a client with the specified parameters.
 
 ### [Update-AzEventGridClientGroup](Update-AzEventGridClientGroup.md)
-Update a client group with the specified parameters.
+update a client group with the specified parameters.
 
 ### [Update-AzEventGridDomain](Update-AzEventGridDomain.md)
-Asynchronously creates or updates a new domain with the specified parameters.
+Asynchronously update a new domain with the specified parameters.
 
 ### [Update-AzEventGridDomainEventSubscription](Update-AzEventGridDomainEventSubscription.md)
-Update an existing event subscription for a topic.
+update an existing event subscription for a topic.
 
 ### [Update-AzEventGridDomainTopicEventSubscription](Update-AzEventGridDomainTopicEventSubscription.md)
-Update an existing event subscription for a domain topic.
+update an existing event subscription for a domain topic.
 
 ### [Update-AzEventGridNamespace](Update-AzEventGridNamespace.md)
-Asynchronously creates or updates a new namespace with the specified parameters.
+Asynchronously update a new namespace with the specified parameters.
 
 ### [Update-AzEventGridNamespaceTopic](Update-AzEventGridNamespaceTopic.md)
-Asynchronously updates a namespace topic with the specified parameters.
+Asynchronously update a namespace topic with the specified parameters.
 
 ### [Update-AzEventGridNamespaceTopicEventSubscription](Update-AzEventGridNamespaceTopicEventSubscription.md)
-Update an existing event subscription of a namespace topic.
+update an existing event subscription of a namespace topic.
 
 ### [Update-AzEventGridPartnerConfiguration](Update-AzEventGridPartnerConfiguration.md)
-Synchronously updates a partner configuration with the specified parameters.
+Synchronously update a partner configuration with the specified parameters.
 
 ### [Update-AzEventGridPartnerDestination](Update-AzEventGridPartnerDestination.md)
-Asynchronously updates a partner destination with the specified parameters.
+Asynchronously update a partner destination with the specified parameters.
 
 ### [Update-AzEventGridPartnerNamespace](Update-AzEventGridPartnerNamespace.md)
-Asynchronously updates a partner namespace with the specified parameters.
+Asynchronously update a partner namespace with the specified parameters.
 
 ### [Update-AzEventGridPartnerTopic](Update-AzEventGridPartnerTopic.md)
-Asynchronously creates a new partner topic with the specified parameters.
+Asynchronously update a new partner topic with the specified parameters.
 
 ### [Update-AzEventGridPartnerTopicEventSubscription](Update-AzEventGridPartnerTopicEventSubscription.md)
-Update an existing event subscription of a partner topic.
+update an existing event subscription of a partner topic.
 
 ### [Update-AzEventGridPermissionBinding](Update-AzEventGridPermissionBinding.md)
-Update a permission binding with the specified parameters.
+update a permission binding with the specified parameters.
 
 ### [Update-AzEventGridSubscription](Update-AzEventGridSubscription.md)
-Asynchronously updates an existing event subscription.
+Asynchronously update an existing event subscription.
 
 ### [Update-AzEventGridSystemTopic](Update-AzEventGridSystemTopic.md)
-Asynchronously creates a new system topic with the specified parameters.
+Asynchronously update a new system topic with the specified parameters.
 
 ### [Update-AzEventGridSystemTopicEventSubscription](Update-AzEventGridSystemTopicEventSubscription.md)
-Update an existing event subscription of a system topic.
+update an existing event subscription of a system topic.
 
 ### [Update-AzEventGridTopic](Update-AzEventGridTopic.md)
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously update a new topic with the specified parameters.
 
 ### [Update-AzEventGridTopicEventSubscription](Update-AzEventGridTopicEventSubscription.md)
-Update an existing event subscription for a topic.
+update an existing event subscription for a topic.
 
 ### [Update-AzEventGridTopicSpace](Update-AzEventGridTopicSpace.md)
-Update a topic space with the specified parameters.
+update a topic space with the specified parameters.
 

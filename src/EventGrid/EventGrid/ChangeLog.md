@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue that caused some commands ending in `Object` to not work properly.
 
 ## Version 2.0.0
 * Updated to use the 2023-06-01-preview API version.
