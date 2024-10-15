@@ -8,18 +8,31 @@ schema: 2.0.0
 # Update-AzADAppFederatedCredential
 
 ## SYNOPSIS
-Update the navigation property federatedIdentityCredentials in applications
+update the navigation property federatedIdentityCredentials in applications
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
 Update-AzADAppFederatedCredential -ApplicationObjectId <String> -FederatedCredentialId <String>
  [-AdditionalProperties <Hashtable>] [-Audience <String[]>] [-Description <String>] [-Issuer <String>]
  [-Subject <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaJsonFilePath
+```
+Update-AzADAppFederatedCredential -ApplicationObjectId <String> -FederatedCredentialId <String>
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzADAppFederatedCredential -ApplicationObjectId <String> -FederatedCredentialId <String>
+ -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Update the navigation property federatedIdentityCredentials in applications
+update the navigation property federatedIdentityCredentials in applications
 
 ## EXAMPLES
 
@@ -37,7 +50,7 @@ Additional Parameters
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -71,7 +84,7 @@ Required.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -82,7 +95,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -102,7 +116,7 @@ Optional.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -134,10 +148,40 @@ Required.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -169,7 +213,7 @@ Supports $filter (eq).
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -220,8 +264,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
