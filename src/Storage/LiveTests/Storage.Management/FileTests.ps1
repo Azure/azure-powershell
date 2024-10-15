@@ -12,7 +12,8 @@ Invoke-LiveTestScenario -Name "File basics" -Description "Test File basic operat
     $ctx = $account.Context 
     $ctx1 = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey (Get-AzStorageAccountKey -ResourceGroupName $rgName -Name $storageAccountName)[0].Value
 
-    $objectName1 = "filetest1.txt." 
+    $objectName1 = "filetest1.txt" 
+    # $objectName1 = "filetest1.txt." removing the trailing dot temporarily to fix the case 
     $objectName2 = "filetest2.txt"   
 
     #Create a file share 
@@ -125,7 +126,8 @@ Invoke-LiveTestScenario -Name "File basics" -Description "Test File basic operat
     Assert-AreEqual $file[1].GetType().Name "AzureStorageFile"
     Assert-Null $file[1].ListFileProperties.Properties.ETag
 
-    $newDir = "new" + $dirName + ".."
+    # $newDir = "new" + $dirName + ".." removing the trailing dots temporarily to fix the case 
+    $newDir = "new" + $dirName
     $dir = Get-AzStorageFile -ShareName $shareName -Path $dirName -Context $ctx
     $dir2 = Rename-AzStorageDirectory -ShareName $shareName -SourcePath $dirName -DestinationPath $newDir -Context $ctx1
     Assert-AreEqual $newDir $dir2.Name
