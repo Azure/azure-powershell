@@ -16,7 +16,7 @@ Creates/Updates a particular access policy assignment for a database
 ```
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName <String> -ClusterName <String>
  -DatabaseName <String> -ResourceGroupName <String> [-SubscriptionId <String>] -AccessPolicyName <String>
- -UserObjectId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -UserObjectId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,21 +25,21 @@ New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName <St
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -AccessPolicyAssignmentName <String> -ClusterName <String>
  -DatabaseName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Parameter <IAccessPolicyAssignment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseCacheIdentity>
  -AccessPolicyName <String> -UserObjectId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzRedisEnterpriseCacheAccessPolicyAssignment -InputObject <IRedisEnterpriseCacheIdentity>
  -Parameter <IAccessPolicyAssignment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -198,6 +198,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

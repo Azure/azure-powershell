@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for using Microsoft Entra token-based authentication.
+* Added the new properties of Cluster: highAvailability and redundancyMode.
+* Added new product SKUs.
+* Added the new properties of Database: accessKeysAuthentication.
+* Added Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup to force link geo replicated caches.
+* Added Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion to upgrade the redis database version directly.
 
 ## Version 1.3.0
 * Added support for using Microsoft Entra token-based authentication.
