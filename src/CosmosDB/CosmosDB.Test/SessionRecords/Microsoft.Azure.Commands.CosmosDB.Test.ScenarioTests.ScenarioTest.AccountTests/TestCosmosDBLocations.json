@@ -1,12 +1,12 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/dec9ed54-2b7f-4476-9bd0-875544af59df/providers/Microsoft.DocumentDB/locations?api-version=2024-02-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGVjOWVkNTQtMmI3Zi00NDc2LTliZDAtODc1NTQ0YWY1OWRmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnM/YXBpLXZlcnNpb249MjAyNC0wMi0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/dec9ed54-2b7f-4476-9bd0-875544af59df/providers/Microsoft.DocumentDB/locations?api-version=2024-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGVjOWVkNTQtMmI3Zi00NDc2LTliZDAtODc1NTQ0YWY1OWRmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnM/YXBpLXZlcnNpb249MjAyNC0wOS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ad1486be-ecca-4d69-9a59-24bf29cdc07b"
+          "05a814ab-0116-4cbb-93ff-5986f5adac98"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,16 +33,16 @@
           "version=2.14.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11990"
         ],
         "x-ms-request-id": [
-          "e52db751-d6b1-4580-b14a-5923ed62dfd6"
+          "2f8c08a7-2072-45b0-bfe8-72d955f51d85"
         ],
         "x-ms-correlation-request-id": [
-          "e52db751-d6b1-4580-b14a-5923ed62dfd6"
+          "2f8c08a7-2072-45b0-bfe8-72d955f51d85"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20240903T193934Z:e52db751-d6b1-4580-b14a-5923ed62dfd6"
+          "NORTHCENTRALUS:20240923T194409Z:2f8c08a7-2072-45b0-bfe8-72d955f51d85"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -51,10 +51,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: C35A96DBC13C4017B772C014BF3A356F Ref B: BL2AA2010201027 Ref C: 2024-09-03T19:39:27Z"
+          "Ref A: 4969F9E991C84C0FA9687795996999B0 Ref B: CH1AA2020613021 Ref C: 2024-09-23T19:44:03Z"
         ],
         "Date": [
-          "Tue, 03 Sep 2024 19:39:34 GMT"
+          "Mon, 23 Sep 2024 19:44:09 GMT"
         ],
         "Content-Length": [
           "23446"
@@ -67,12 +67,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/dec9ed54-2b7f-4476-9bd0-875544af59df/providers/Microsoft.DocumentDB/locations/East%20US?api-version=2024-02-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGVjOWVkNTQtMmI3Zi00NDc2LTliZDAtODc1NTQ0YWY1OWRmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvRWFzdCUyMFVTP2FwaS12ZXJzaW9uPTIwMjQtMDItMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dec9ed54-2b7f-4476-9bd0-875544af59df/providers/Microsoft.DocumentDB/locations/East%20US?api-version=2024-09-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGVjOWVkNTQtMmI3Zi00NDc2LTliZDAtODc1NTQ0YWY1OWRmL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvRWFzdCUyMFVTP2FwaS12ZXJzaW9uPTIwMjQtMDktMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f49990e4-dfb8-416c-bb13-fd29a79dc317"
+          "34c331ea-7fbc-4487-b0c7-472bc38707d7"
         ],
         "Accept-Language": [
           "en-US"
@@ -99,16 +99,16 @@
           "version=2.14.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11985"
         ],
         "x-ms-request-id": [
-          "05899941-c676-4585-8e1b-c86677bd3831"
+          "61aafce5-07e0-4bb9-a7e4-407d50666ac2"
         ],
         "x-ms-correlation-request-id": [
-          "05899941-c676-4585-8e1b-c86677bd3831"
+          "61aafce5-07e0-4bb9-a7e4-407d50666ac2"
         ],
         "x-ms-routing-request-id": [
-          "NORTHCENTRALUS:20240903T193935Z:05899941-c676-4585-8e1b-c86677bd3831"
+          "EASTUS2:20240923T194410Z:61aafce5-07e0-4bb9-a7e4-407d50666ac2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -117,10 +117,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 7928E23894D2493BBA6C9CA270CC878B Ref B: CH1AA2020613003 Ref C: 2024-09-03T19:39:34Z"
+          "Ref A: CE301BA8CE374398B92997A53FF6BFBD Ref B: MNZ221060619045 Ref C: 2024-09-23T19:44:09Z"
         ],
         "Date": [
-          "Tue, 03 Sep 2024 19:39:35 GMT"
+          "Mon, 23 Sep 2024 19:44:10 GMT"
         ],
         "Content-Length": [
           "409"
