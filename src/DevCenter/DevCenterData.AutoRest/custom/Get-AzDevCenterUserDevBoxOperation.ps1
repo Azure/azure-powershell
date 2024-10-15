@@ -20,37 +20,50 @@ Gets an operation on a Dev Box.
 .Description
 Gets an operation on a Dev Box.
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserDevBoxOperation -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject
 .Example
-{{ Add code here }}
+Get-AzDevCenterUserDevBoxOperation -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject
+.Example
+Get-AzDevCenterUserDevBoxOperation -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
+.Example
+Get-AzDevCenterUserDevBoxOperation -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
+.Example
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "OperationId" = "d0954a94-3550-4919-bcbe-1c94ed79e0cd"}
+Get-AzDevCenterUserDevBoxOperation -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
+.Example
+$devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject"; "OperationId" = "d0954a94-3550-4919-bcbe-1c94ed79e0cd"}
+Get-AzDevCenterUserDevBoxOperation -DevCenterName Contoso -InputObject $devBoxInput
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxOperation
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxOperation
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
-  [Name <String>]: The name of an action that will take place on a Dev Box.
-  [CatalogName <String>]: The name of the catalog
-  [DefinitionName <String>]: The name of the environment definition
-  [DevBoxName <String>]: The name of a Dev Box.
-  [EnvironmentName <String>]: The name of the environment.
+  [ActionName <String>]: The name of the action.
+  [CatalogName <String>]: Name of the catalog.
+  [CustomizationGroupName <String>]: Name of the customization group.
+  [CustomizationTaskId <String>]: A customization task ID.
+  [DefinitionName <String>]: Name of the environment definition.
+  [DevBoxName <String>]: Display name for the Dev Box.
+  [EnvironmentName <String>]: Environment name.
+  [EnvironmentTypeName <String>]: Name of the environment type.
   [Id <String>]: Resource identity path
-  [OperationId <String>]: The id of the operation on a Dev Box.
-  [PoolName <String>]: The name of a pool of Dev Boxes.
-  [ProjectName <String>]: The DevCenter Project upon which to execute operations.
-  [ScheduleName <String>]: The name of a schedule.
+  [OperationId <String>]: Unique identifier for the Dev Box operation.
+  [PoolName <String>]: Pool name.
+  [ProjectName <String>]: Name of the project.
+  [ScheduleName <String>]: Display name for the Schedule.
+  [TaskName <String>]: Full name of the task: {catalogName}/{taskName}.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserdevboxoperation
 #>
 function Get-AzDevCenterUserDevBoxOperation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxOperation])]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.OutputBreakingChangeAttribute("DevBoxOperation", "13.0.0", "2.0.0", "2024/11/19", ReplacementCmdletOutputType = "DevBoxOperation", DeprecatedOutputProperties = ("Detail", "Status"), NewOutputProperties = ("Detail", "Status"))]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IDevBoxOperation])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]
@@ -75,23 +88,23 @@ function Get-AzDevCenterUserDevBoxOperation {
         [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
-        # The name of a Dev Box.
+        # Display name for the Dev Box.
         ${DevBoxName},
     
         [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
-        # The id of the operation on a Dev Box.
+        # Unique identifier for the Dev Box operation.
         ${OperationId},
     
         [Parameter(ParameterSetName='Get', Mandatory)]
         [Parameter(ParameterSetName='List', Mandatory)]
-        [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
         [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
         [System.String]
-        # The DevCenter Project upon which to execute operations.
+        # Name of the project.
         ${ProjectName},
     
         [Parameter(ParameterSetName='Get')]
