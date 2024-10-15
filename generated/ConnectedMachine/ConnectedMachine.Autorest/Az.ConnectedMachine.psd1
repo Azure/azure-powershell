@@ -1,5 +1,5 @@
 @{
-  GUID = '259a0542-8329-4b9e-8f72-dab0efc583e9'
+  GUID = '368c49bb-8fdf-4c4d-96bd-47d9f9cd5734'
   RootModule = './Az.ConnectedMachine.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
