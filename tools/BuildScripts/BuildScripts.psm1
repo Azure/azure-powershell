@@ -145,8 +145,15 @@ function Update-GeneratedSubModule {
     $GeneratedDirectory = Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName
     if (-not (Test-Path $GeneratedDirectory)) {
         New-Item -ItemType Directory -Force -Path $GeneratedDirectory
-    }   
-    #clean generated directory before update
+    }
+
+    # save guid from psd1 if existed for later use
+    $subModuleNameTrimmed = $SubModuleName.split('.')[-2]
+    if (Test-Path (Join-Path $GeneratedDirectory "Az.$subModuleNameTrimmed.psd1")) {
+        $guid = (Import-LocalizedData -BaseDirectory $GeneratedDirectory -FileName "Az.$subModuleNameTrimmed.psd1").GUID
+    }
+
+    # clean generated directory before update
     Write-Host "Cleaning directory: $GeneratedDirectory ..." -ForegroundColor DarkGreen
     Get-ChildItem $GeneratedDirectory | Foreach-Object { Remove-Item -Path $_.FullName -Recurse -Force }
 
@@ -170,7 +177,6 @@ function Update-GeneratedSubModule {
     if (Test-Path $localModulesPath) {
         Remove-Item -Path $localModulesPath -Recurse -Force
     }
-    $subModuleNameTrimmed = $SubModuleName.split('.')[-2]
     $fileToUpdate = @('generated', 'resources', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
     # Copy from src/ to generated/ 
     $fileToUpdate | Foreach-Object {
@@ -182,6 +188,14 @@ function Update-GeneratedSubModule {
     # regenerate csproj
     New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName "Az.$subModuleNameTrimmed.csproj" -GeneratedDirectory $GeneratedDirectory -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
     
+    # revert guid in psd1 so that no conflict in updating this file
+    if ($guid) {
+        $psd1Path = Join-Path $GeneratedDirectory "Az.$subModuleNameTrimmed.psd1"
+        $psd1Content = Get-Content $psd1Path
+        $newGuid = (Import-LocalizedData -BaseDirectory $GeneratedDirectory -FileName "Az.$subModuleNameTrimmed.psd1").GUID
+        $psd1Content -replace $newGuid, $guid | Set-Content $psd1Path -Force
+    }
+
     Write-Host "Copying generate-info.json from $GeneratedDirectory to $SourceDirectory ..." -ForegroundColor DarkGreen
     $generateInfoPath = Join-Path $GeneratedDirectory "generate-info.json"
     Copy-Item -Path $generateInfoPath -Destination $SourceDirectory -Force
