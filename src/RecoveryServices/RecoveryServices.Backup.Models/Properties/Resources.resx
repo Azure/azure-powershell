@@ -859,4 +859,16 @@ Please contact Microsoft for further assistance.</value>
   <data name="CRRAccessTokenCouldNotBeFetchedException" xml:space="preserve">
     <value>Unable to fetch CRR access token. Please retry the operation or contact Microsoft support if issue persists</value>
   </data>
+  <data name="AFSPolicyUpdateNotAllowed" xml:space="preserve">
+    <value>Modifying existing policies to stop data transfer to the vault and retain backups only as snapshots is not supported. Please create a new policy to opt-out of the data transfer to the recovery services vault.</value>
+  </data>
+  <data name="AFSPolicyUpdateWarning" xml:space="preserve">
+    <value>Changing the backup tier will retain the existing snapshots AS-IS per the configured retention in the current policy. The future backups will be moved to the vault and retained as per the vault retention you configure. It is an irreversible operation with additional cost for backup storage and switching from vault to snapshot tier requires reconfiguration of the backup. Learn more.</value>
+  </data>
+  <data name="AFSPolicyUpdate" xml:space="preserve">
+    <value>Changing Policy to VaultStandard tier.</value>
+  </data>
+  <data name="AFSPolicyUpdateCanceled" xml:space="preserve">
+    <value>Canceled Operation.</value>
+  </data>
 </root>

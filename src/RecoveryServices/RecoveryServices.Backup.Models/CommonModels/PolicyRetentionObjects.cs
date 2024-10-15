@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class LongTermRetentionPolicy : RetentionPolicyBase
     {
+
         /// <summary>
         /// Specifies if daily schedule is enabled.
         /// </summary>
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public override void Validate()
         {
             // redirecting to overloaded method
-            Validate(0); 
+            Validate(0);
         }
 
         /// <summary>
@@ -113,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public void Validate(ScheduleRunType ScheduleRunFrequency = 0)
         {
             base.Validate();
-            
+
             if (IsDailyScheduleEnabled == false && IsWeeklyScheduleEnabled == false &&
                 IsMonthlyScheduleEnabled == false && IsYearlyScheduleEnabled == false)
             {
@@ -187,6 +188,112 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
+    /// <summary>
+    /// Backup vault retention policy class. 
+    /// </summary>
+    public class VaultRetentionPolicy : LongTermRetentionPolicy
+    {
+        /// <summary>
+        /// Object defining the retention days for a snapshot
+        /// </summary>
+        public int SnapshotRetentionInDays { get; set; }
+
+        public VaultRetentionPolicy(string backupManagementType = "")
+        {
+            SnapshotRetentionInDays = 5;
+            IsDailyScheduleEnabled = false;
+            IsWeeklyScheduleEnabled = false;
+            IsMonthlyScheduleEnabled = false;
+            IsYearlyScheduleEnabled = false;
+            this.BackupManagementType = backupManagementType;
+        }
+
+        public override void Validate()
+        {
+            // redirecting to overloaded method
+            Validate(0);
+        }
+
+        /// <summary>
+        /// Validates null values and other possible combinations
+        /// </summary>
+        //public void Validate(ScheduleRunType ScheduleRunFrequency = 0)
+        //{
+        //    base.Validate();
+
+        //    if (IsDailyScheduleEnabled == false && IsWeeklyScheduleEnabled == false &&
+        //        IsMonthlyScheduleEnabled == false && IsYearlyScheduleEnabled == false)
+        //    {
+        //        throw new ArgumentException(Resources.AllRetentionSchedulesEmptyException);
+        //    }
+
+        //    if (IsDailyScheduleEnabled)
+        //    {
+        //        if (DailySchedule == null)
+        //        {
+        //            throw new ArgumentException(Resources.DailyScheduleEnabledButScheduleIsNullException);
+        //        }
+        //        else
+        //        {
+        //            DailySchedule.BackupManagementType = BackupManagementType;
+        //            DailySchedule.Validate(ScheduleRunFrequency);
+        //        }
+        //    }
+
+        //    if (IsWeeklyScheduleEnabled)
+        //    {
+        //        if (WeeklySchedule == null)
+        //        {
+        //            throw new ArgumentException(Resources.WeeklyScheduleEnabledButScheduleIsNullException);
+        //        }
+        //        else
+        //        {
+        //            WeeklySchedule.BackupManagementType = BackupManagementType;
+        //            WeeklySchedule.Validate(ScheduleRunFrequency);
+        //        }
+        //    }
+
+        //    if (IsMonthlyScheduleEnabled)
+        //    {
+        //        if (MonthlySchedule == null)
+        //        {
+        //            throw new ArgumentException(Resources.MonthlyScheduleEnabledButScheduleIsNullException);
+        //        }
+        //        else
+        //        {
+        //            MonthlySchedule.BackupManagementType = BackupManagementType;
+        //            MonthlySchedule.Validate(ScheduleRunFrequency);
+        //        }
+        //    }
+
+        //    if (IsYearlyScheduleEnabled)
+        //    {
+        //        if (YearlySchedule == null)
+        //        {
+        //            throw new ArgumentException(Resources.YearlyScheduleEnabledButScheduleIsNullException);
+        //        }
+        //        else
+        //        {
+        //            YearlySchedule.BackupManagementType = BackupManagementType;
+        //            YearlySchedule.Validate(ScheduleRunFrequency);
+        //        }
+        //    }
+        //}
+
+        public override string ToString()
+        {
+            return string.Format("SnapshotRetentionInDays:{0}, IsDailyScheduleEnabled:{1}, IsWeeklyScheduleEnabled:{2}, " +
+                                 "IsMonthlyScheduleEnabled:{3}, IsYearlyScheduleEnabled:{4} " +
+                                 "DailySchedule: {5}, WeeklySchedule: {6}, MonthlySchedule:{7}, YearlySchedule:{8}",
+                                  SnapshotRetentionInDays, IsDailyScheduleEnabled, IsWeeklyScheduleEnabled,
+                                  IsMonthlyScheduleEnabled, IsYearlyScheduleEnabled,
+                                  DailySchedule == null ? "NULL" : DailySchedule.ToString(),
+                                  WeeklySchedule == null ? "NULL" : WeeklySchedule.ToString(),
+                                  MonthlySchedule == null ? "NULL" : MonthlySchedule.ToString(),
+                                  YearlySchedule == null ? "NULL" : YearlySchedule.ToString());
+        }
+    }
+
     public class SQLRetentionPolicy : RetentionPolicyBase
     {
         /// <summary>
@@ -242,7 +349,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Daily rentention schedule.
+    /// Daily retention schedule.
     /// </summary>
     public class DailyRetentionSchedule : RetentionScheduleBase
     {

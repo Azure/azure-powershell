@@ -2753,5 +2753,49 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("CRRAccessTokenCouldNotBeFetchedException", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Modifying existing policies to stop data transfer to the vault and retain backups only as snapshots is not supported. Please create a new policy to opt-out of the data transfer to the recovery services vault.
+        /// </summary>
+        public static string AFSPolicyUpdateNotAllowed
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdateNotAllowed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Changing the backup tier will retain the existing snapshots AS-IS per the configured retention in the current policy. The future backups will be moved to the vault and retained as per the vault retention you configure. It is an irreversible operation with additional cost for backup storage and switching from vault to snapshot tier requires reconfiguration of the backup. Learn more.
+        /// </summary>
+        public static string AFSPolicyUpdateWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdateWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Changing Policy to VaultStandard tier.
+        /// </summary>
+        public static string AFSPolicyUpdate
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Canceled Operation.
+        /// </summary>
+        public static string AFSPolicyUpdateCanceled
+        {
+            get
+            {
+                return ResourceManager.GetString("AFSPolicyUpdateCanceled", resourceCulture);
+            }
+        }
     }
 }

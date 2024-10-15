@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
@@ -22,6 +22,7 @@
 ## Version 7.3.0
 * Added CRR support for southeastus, westus3 regions.
 * Added support for enabling Disk access settings for managed VM restores.
+* Updated the policy, protection commands to support AFS Vault Tier.
 
 ## Version 7.2.1
 * Fixed bug in `Set-ASRReplicationProtectedItem` cmdlet of H2A for replication to MD scenario.
