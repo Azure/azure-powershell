@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridSystemTopic
 
 ## SYNOPSIS
-Asynchronously creates a new system topic with the specified parameters.
+Asynchronously update a new system topic with the specified parameters.
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Update-AzEventGridSystemTopic -InputObject <IEventGridIdentity> [-EnableSystemAs
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new system topic with the specified parameters.
+Asynchronously update a new system topic with the specified parameters.
 
 ## EXAMPLES
 
