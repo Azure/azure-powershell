@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridClient
 
 ## SYNOPSIS
-Update a client with the specified parameters.
+update a client with the specified parameters.
 
 ## SYNTAX
 
@@ -47,7 +47,7 @@ Update-AzEventGridClient -Name <String> -NamespaceInputObject <IEventGridIdentit
 ```
 
 ## DESCRIPTION
-Update a client with the specified parameters.
+update a client with the specified parameters.
 
 ## EXAMPLES
 

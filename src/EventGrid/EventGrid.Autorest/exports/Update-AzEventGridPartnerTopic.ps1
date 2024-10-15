@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously creates a new partner topic with the specified parameters.
+Asynchronously update a new partner topic with the specified parameters.
 .Description
-Asynchronously creates a new partner topic with the specified parameters.
+Asynchronously update a new partner topic with the specified parameters.
 .Example
 Update-AzEventGridPartnerTopic -Name default -ResourceGroupName azps_test_group_eventgrid -UserAssignedIdentity "/subscriptions/{subId}/resourcegroups/azps_test_group_eventgrid/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami"
 
