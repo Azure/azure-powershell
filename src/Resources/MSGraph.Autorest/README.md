@@ -47,10 +47,6 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-version: "3.9.5"
-use-extension:
-  "@autorest/powershell": "4.0.0-dev.14"
-
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 
@@ -71,6 +67,7 @@ endpoint-resource-id-key-name: MicrosoftGraphEndpointResourceId
 export-properties-for-dict: false
 nested-object-to-string: true
 add-api-version-in-model-namespace: true
+fixed-array: true
 
 # Disable default settings and Set in to empty for msgraph
 default-exclude-tableview-properties: false
@@ -126,6 +123,23 @@ directive:
     where: $
     transform: if ($documentPath.endsWith("MSGraph.cs")) {$ = $.replace(/Count.ToString\(\)/g, "Count.ToString().ToLower()")}
   
+  - where:
+      subject: ApplicationsApplication
+    set:
+      subject: Application
+  - where:
+      subject: GroupsGroup
+    set:
+      subject: Group
+  - where:
+      subject: ServicePrincipalsServicePrincipal
+    set:
+      subject: ServicePrincipal
+  - where:
+      subject: (UsersUser)(.*)
+    set:
+      subject: User$2
+
   # hide user owned application cmdlets
   - where:
       subject: UserOwnedApplication|UserOwnedObject
