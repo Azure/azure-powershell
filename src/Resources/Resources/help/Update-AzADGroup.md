@@ -359,7 +359,7 @@ key: id of group
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: GroupId
 
 Required: True
 Position: Named
