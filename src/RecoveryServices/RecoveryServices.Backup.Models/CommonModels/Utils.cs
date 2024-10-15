@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public const int MaxAllowedRetentionDurationCountMonthly = 1188;
         public const int MaxAllowedRetentionDurationCountYearly = 99;
 
+        public const int AfsSnapshotRetentionDaysMax = 30;
         public const int AfsDailyRetentionDaysMax = 200;
         public const int AfsDailyRetentionDaysMin = 1;
         public const int AfsWeeklyRetentionMax = 200;

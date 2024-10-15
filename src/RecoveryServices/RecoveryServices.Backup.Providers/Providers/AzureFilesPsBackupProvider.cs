@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private const string separator = ";";
         private const CmdletModel.RetentionDurationType defaultFileRetentionType =
             CmdletModel.RetentionDurationType.Days;
+        private const int defaultSnapshotRetentionInDays = 5;
         private const int defaultFileRetentionCount = 30;
         private const int defaultDailyRetentionCountForHourly = 5;
         private const int defaultWeeklyRetentionCount = 12;
@@ -770,6 +771,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string backupManagementType = Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage;
             CmdletModel.LongTermRetentionPolicy defaultRetention = new CmdletModel.LongTermRetentionPolicy();
             DateTime retentionTime = AzureWorkloadProviderHelper.GenerateRandomScheduleTime();
+
+            //Backup Tier
+            CmdletModel.BackupTierType backupTier = (CmdletModel.BackupTierType)ProviderData[PolicyParams.BackupTier];
+
+            if (backupTier == CmdletModel.BackupTierType.VaultStandard)
+            {
+                defaultRetention.IsVaultTierEnabled = true;
+                defaultRetention.SnapshotSchedule = new CmdletModel.SnapshotRetentionSchedule();
+                defaultRetention.SnapshotSchedule.DurationCountInDays = defaultSnapshotRetentionInDays;
+                defaultRetention.SnapshotSchedule.BackupManagementType = backupManagementType;
+                defaultRetention.SnapshotSchedule.RetentionTimes = new List<DateTime>();
+                defaultRetention.SnapshotSchedule.RetentionTimes.Add(retentionTime);
+            }
 
             //Daily Retention policy
             defaultRetention.IsDailyScheduleEnabled = true;
