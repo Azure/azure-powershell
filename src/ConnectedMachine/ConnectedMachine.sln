@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectedMachine", "ConnectedMachine\ConnectedMachine.csproj", "{0BB26818-7946-4B3A-AE49-AC55C5E86A65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ConnectedMachine", "..\..\generated\ConnectedMachine\ConnectedMachine.Autorest\Az.ConnectedMachine.csproj", "{092B48AF-783B-4942-A05F-5DD3EDE758B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ConnectedMachine", "..\..\generated\ConnectedMachine\ConnectedMachine.Autorest\Az.ConnectedMachine.csproj", "{BF02D210-C86E-4FEA-BE32-AEEEC2DCFB40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{0BB26818-7946-4B3A-AE49-AC55C5E86A65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BB26818-7946-4B3A-AE49-AC55C5E86A65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BB26818-7946-4B3A-AE49-AC55C5E86A65}.Release|Any CPU.Build.0 = Release|Any CPU
-		{092B48AF-783B-4942-A05F-5DD3EDE758B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{092B48AF-783B-4942-A05F-5DD3EDE758B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{092B48AF-783B-4942-A05F-5DD3EDE758B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{092B48AF-783B-4942-A05F-5DD3EDE758B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF02D210-C86E-4FEA-BE32-AEEEC2DCFB40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF02D210-C86E-4FEA-BE32-AEEEC2DCFB40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF02D210-C86E-4FEA-BE32-AEEEC2DCFB40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF02D210-C86E-4FEA-BE32-AEEEC2DCFB40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{944461AB-FAF3-429D-B9CA-ADA4CE21D2A8} = {E3B4A6D3-F74E-4D6D-832E-3F1CB017952D}

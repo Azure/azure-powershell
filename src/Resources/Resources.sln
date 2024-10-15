@@ -41,8 +41,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Management.Sd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Authorization", "..\..\generated\Resources\Authorization.Autorest\Az.Authorization.csproj", "{E6521094-D44B-4F91-BBE7-E793478D92BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "..\..\generated\Resources\Policy.Autorest\Az.Policy.csproj", "{196FFB0C-EF3C-4DF8-BD2C-05C620B91D32}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ManagedServiceIdentity", "..\..\generated\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj", "{2555ECC6-2204-49D0-9A11-1AA0C0D21C18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ActionGroup", "..\..\generated\Monitor\ActionGroup.Autorest\Az.ActionGroup.csproj", "{45F2DC44-5185-4AE6-9144-4F0B0E428151}"
@@ -62,6 +60,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScheduledQueryRule", "..\..\generated\Monitor\ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj", "{8CF04C4F-C59A-4971-BB46-CFF636B355B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MSGraph", "..\..\generated\Resources\MSGraph.Autorest\Az.MSGraph.csproj", "{A5E3EDB3-7544-43C5-A5F8-7B2DF830AC67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "..\..\generated\Resources\Policy.Autorest\Az.Policy.csproj", "{1769C68D-5F64-4418-B90A-8F7376BE54D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -138,10 +138,6 @@ Global
 		{E6521094-D44B-4F91-BBE7-E793478D92BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6521094-D44B-4F91-BBE7-E793478D92BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6521094-D44B-4F91-BBE7-E793478D92BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{196FFB0C-EF3C-4DF8-BD2C-05C620B91D32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{196FFB0C-EF3C-4DF8-BD2C-05C620B91D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{196FFB0C-EF3C-4DF8-BD2C-05C620B91D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{196FFB0C-EF3C-4DF8-BD2C-05C620B91D32}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2555ECC6-2204-49D0-9A11-1AA0C0D21C18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2555ECC6-2204-49D0-9A11-1AA0C0D21C18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2555ECC6-2204-49D0-9A11-1AA0C0D21C18}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -182,6 +178,10 @@ Global
 		{A5E3EDB3-7544-43C5-A5F8-7B2DF830AC67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5E3EDB3-7544-43C5-A5F8-7B2DF830AC67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5E3EDB3-7544-43C5-A5F8-7B2DF830AC67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1769C68D-5F64-4418-B90A-8F7376BE54D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1769C68D-5F64-4418-B90A-8F7376BE54D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1769C68D-5F64-4418-B90A-8F7376BE54D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1769C68D-5F64-4418-B90A-8F7376BE54D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5323D4CC-D4B7-44A7-B79A-F91C47AC9650} = {23F657BD-37C1-4E91-8548-5783E43D40B0}
