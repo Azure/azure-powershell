@@ -1,5 +1,5 @@
 @{
-  GUID = '0b3b43eb-9078-4d06-8c79-d156a1410906'
+  GUID = 'f128fd69-0b2e-41eb-ae64-891feee56e91'
   RootModule = './Az.RedisEnterpriseCache.psm1'
   ModuleVersion = '1.0.0'
   CompatiblePSEditions = 'Core', 'Desktop'
