@@ -468,6 +468,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 DefaultUserQuotaInKiBs = volume.DefaultUserQuotaInKiBs,
                 DefaultGroupQuotaInKiBs = volume.DefaultGroupQuotaInKiBs,
                 NetworkFeatures = volume.NetworkFeatures,
+                EffectiveNetworkFeatures = volume.EffectiveNetworkFeatures,
                 NetworkSiblingSetId = volume.NetworkSiblingSetId,
                 StorageToNetworkProximity = volume.StorageToNetworkProximity,
                 VolumeGroupName = volume.VolumeGroupName,
