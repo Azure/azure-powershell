@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Management.NetApp
             this.BackupsUnderVolume = new BackupsUnderVolumeOperations(this);
             this.BackupsUnderAccount = new BackupsUnderAccountOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2024-03-01";
+            this.ApiVersion = "2024-07-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

@@ -31,11 +31,17 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="subnetId">The Azure Resource URI for a delegated subnet. Must have the delegation
         /// Microsoft.NetApp/volumes
         /// </param>
-        public FilePathAvailabilityRequest(string name, string subnetId)
+
+        /// <param name="availabilityZone">The Azure Resource logical availability zone which is used within zone
+        /// mapping lookup for the subscription and region. The lookup will retrieve
+        /// the physical zone where volume is placed.
+        /// </param>
+        public FilePathAvailabilityRequest(string name, string subnetId, string availabilityZone = default(string))
 
         {
             this.Name = name;
             this.SubnetId = subnetId;
+            this.AvailabilityZone = availabilityZone;
             CustomInit();
         }
 
@@ -57,6 +63,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnetId")]
         public string SubnetId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Azure Resource logical availability zone which is used
+        /// within zone mapping lookup for the subscription and region. The lookup will
+        /// retrieve the physical zone where volume is placed.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "availabilityZone")]
+        public string AvailabilityZone {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -73,6 +87,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "SubnetId");
             }
+
 
 
         }
