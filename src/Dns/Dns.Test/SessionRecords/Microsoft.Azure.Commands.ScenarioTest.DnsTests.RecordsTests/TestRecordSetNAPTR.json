@@ -1,0 +1,236 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourcegroups/ps1401?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTk4NGNlNTgtMjI1ZS00NGQyLWJjNzktMjBhODM0Y2U4NWFlL3Jlc291cmNlZ3JvdXBzL3BzMTQwMT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "77ff6c5e-d3de-4cd7-b652-d2ef55c7763f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3324.36610",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.101"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ]
+      },
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "799"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "fce78910-c202-4e50-8c29-67837d2c105a"
+        ],
+        "x-ms-correlation-request-id": [
+          "fce78910-c202-4e50-8c29-67837d2c105a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20241008T162711Z:fce78910-c202-4e50-8c29-67837d2c105a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: CDB4A095E3EA4BA9B43CBB4A3930635A Ref B: CO6AA3150217031 Ref C: 2024-10-08T16:27:11Z"
+        ],
+        "Date": [
+          "Tue, 08 Oct 2024 16:27:11 GMT"
+        ],
+        "Content-Length": [
+          "165"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/ps1401\",\r\n  \"name\": \"ps1401\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/ps1401/providers/Microsoft.Network/dnsZones/ps4504.pstest.test?api-version=2023-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTk4NGNlNTgtMjI1ZS00NGQyLWJjNzktMjBhODM0Y2U4NWFlL3Jlc291cmNlR3JvdXBzL3BzMTQwMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZG5zWm9uZXMvcHM0NTA0LnBzdGVzdC50ZXN0P2FwaS12ZXJzaW9uPTIwMjMtMDctMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6a462dcc-7e06-4692-9fc8-b66b30efdc9e"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "If-None-Match": [
+          "*"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3324.36610",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.2.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "157"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"zoneType\": \"Public\",\r\n    \"registrationVirtualNetworks\": [],\r\n    \"resolutionVirtualNetworks\": []\r\n  },\r\n  \"location\": \"global\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "ETag": [
+          "fb5f45e8-4ac4-49ab-9f75-26ccec341203"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "6a462dcc-7e06-4692-9fc8-b66b30efdc9e"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "d254c611-9e15-45cc-b2b6-2fb23cb9d111"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20241008T162716Z:d254c611-9e15-45cc-b2b6-2fb23cb9d111"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 30ABDDFD651B44779C6FB2DA372A7FC7 Ref B: CO6AA3150217035 Ref C: 2024-10-08T16:27:11Z"
+        ],
+        "Date": [
+          "Tue, 08 Oct 2024 16:27:15 GMT"
+        ],
+        "Content-Length": [
+          "542"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/ps1401/providers/Microsoft.Network/dnszones/ps4504.pstest.test\",\r\n  \"name\": \"ps4504.pstest.test\",\r\n  \"type\": \"Microsoft.Network/dnszones\",\r\n  \"etag\": \"fb5f45e8-4ac4-49ab-9f75-26ccec341203\",\r\n  \"location\": \"global\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"maxNumberOfRecordSets\": 10000,\r\n    \"maxNumberOfRecordsPerRecordSet\": null,\r\n    \"nameServers\": [\r\n      \"ns1-34.ppe.azure-dns.com.\",\r\n      \"ns2-34.ppe.azure-dns.net.\",\r\n      \"ns3-34.ppe.azure-dns.org.\",\r\n      \"ns4-34.ppe.azure-dns.info.\"\r\n    ],\r\n    \"numberOfRecordSets\": 2,\r\n    \"zoneType\": \"Public\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/a984ce58-225e-44d2-bc79-20a834ce85ae/resourceGroups/ps1401/providers/Microsoft.Network/dnsZones/ps4504.pstest.test/NAPTR/ps2441?api-version=2023-07-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTk4NGNlNTgtMjI1ZS00NGQyLWJjNzktMjBhODM0Y2U4NWFlL3Jlc291cmNlR3JvdXBzL3BzMTQwMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZG5zWm9uZXMvcHM0NTA0LnBzdGVzdC50ZXN0L05BUFRSL3BzMjQ0MT9hcGktdmVyc2lvbj0yMDIzLTA3LTAxLXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "49c70909-36c8-49be-ac10-7e91304fa7fa"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "If-None-Match": [
+          "*"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.3324.36610",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.26100",
+          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.2.1"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "69"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"TTL\": 100,\r\n    \"NAPTRRecords\": []\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "private"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "49c70909-36c8-49be-ac10-7e91304fa7fa"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "317320a9-91eb-4281-b219-fb6ad8c0517c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20241008T162717Z:317320a9-91eb-4281-b219-fb6ad8c0517c"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C11C81B4CD7A481CA1AE2E0156844602 Ref B: CO6AA3150217049 Ref C: 2024-10-08T16:27:16Z"
+        ],
+        "Date": [
+          "Tue, 08 Oct 2024 16:27:16 GMT"
+        ],
+        "Content-Length": [
+          "69"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"BadRequest\",\r\n  \"message\": \"The feature NAPTR is not available.\"\r\n}",
+      "StatusCode": 400
+    }
+  ],
+  "Names": {
+    "Test-RecordSetNAPTR": [
+      "ps4504",
+      "ps2441",
+      "ps1401"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a984ce58-225e-44d2-bc79-20a834ce85ae"
+  }
+}
