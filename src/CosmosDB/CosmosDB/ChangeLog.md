@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 
+## Version 2.0.7
+* Updated CosmosDB module to support 09-01-preview API version
+* Fixed the issue in RestoreAzCosmosDBAccount related to DeletionTime.
+
+
 ## Version 2.0.6
 * Added capability to provide Min/Max Throughput RU Consumption
 * Added SecuredByPerimeter value to PublicNetworkAccess enum
