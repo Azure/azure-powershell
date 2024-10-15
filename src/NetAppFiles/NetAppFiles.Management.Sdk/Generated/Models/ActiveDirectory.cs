@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// list of unique usernames without domain specifier
         /// </param>
 
-        /// <param name="kdcIP">kdc server IP addresses for the active directory machine. This optional
+        /// <param name="kdcIP">kdc server IP address for the active directory machine. This optional
         /// parameter is used only while creating kerberos volume.
         /// </param>
 
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public System.Collections.Generic.IList<string> Administrators {get; set; }
 
         /// <summary>
-        /// Gets or sets kdc server IP addresses for the active directory machine. This
+        /// Gets or sets kdc server IP address for the active directory machine. This
         /// optional parameter is used only while creating kerberos volume.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "kdcIP")]
