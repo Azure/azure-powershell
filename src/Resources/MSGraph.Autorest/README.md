@@ -246,6 +246,12 @@ directive:
       parameter-name: GroupId
     set:
       parameter-name: ObjectId
+  - where:
+      subject: ^group$
+      verb: ^Update$
+      parameter-name: ObjectId
+    set:
+      alias: GroupId
 
   - where: 
       subject: ^group$
