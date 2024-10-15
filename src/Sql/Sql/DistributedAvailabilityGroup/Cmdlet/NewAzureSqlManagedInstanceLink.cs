@@ -15,8 +15,8 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model;
+using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -28,11 +28,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Managed Instance Link
     /// </summary>
-    [CmdletOutputBreakingChangeWithVersion(typeof(AzureSqlManagedInstanceLinkModel), "13.0.0", "6.0.0",
-        DeprecatedOutputProperties = new String[] { "TargetDatabase", "PrimaryAvailabilityGroupName", "SecondaryAvailabilityGroupName",
-            "SourceEndpoint", "SourceReplicaId", "TargetReplicaId", "LinkState", "LastHardenedLsn" },
-        NewOutputProperties = new String[] { "Databases", "DistributedAvailabilityGroupName ", "InstanceAvailabilityGroupName", "PartnerAvailabilityGroupName",
-            "InstanceLinkRole", "PartnerLinkRole", "FailoverMode", "SeedingMode", "PartnerEndpoint" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLink",
         DefaultParameterSetName = CreateByNameParameterSet,
         SupportsShouldProcess = true),
@@ -68,40 +63,70 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the primary availability group name
+        /// Gets or sets the partner availability group name
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("PrimaryAvailabilityGroupName", "13.0.0", "6.0.0", ReplaceMentCmdletParameterName = "PartnerAvailabilityGroupName")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the primary availability group.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the primary availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the partner availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the partner availability group.")]
         [ValidateNotNullOrEmpty]
-        public string PrimaryAvailabilityGroupName { get; set; }
+        public string PartnerAvailabilityGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the secondary availability group name
+        /// Gets or sets the managed instance availability group name
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("SecondaryAvailabilityGroupName", "13.0.0", "6.0.0", ReplaceMentCmdletParameterName = "InstanceAvailabilityGroupName")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the secondary availability group.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the secondary availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the managed instance availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the managed instance availability group.")]
         [ValidateNotNullOrEmpty]
-        public string SecondaryAvailabilityGroupName { get; set; }
+        public string InstanceAvailabilityGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the target database
+        /// Gets or sets the target database/databases
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("TargetDatabase", "13.0.0", "6.0.0", ChangeDescription = "The parameter 'TargetDatabase' is being replaced by parameter 'Databases'. The type of new parameter is changing from 'String' to 'List<String>'")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the target database.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the target database.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Database names in the distributed availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Database names in the distributed availability group.")]
         [ValidateNotNullOrEmpty]
-        public string TargetDatabase { get; set; }
+        public List<string> Databases { get; set; }
 
         /// <summary>
-        /// Gets or sets the source endpoint
+        /// Gets or sets the partner endpoint
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("SourceEndpoint", "13.0.0", "6.0.0", ReplaceMentCmdletParameterName = "PartnerEndpoint")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "IP adress of the source endpoint.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "IP adress of the source endpoint.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "SQL server side endpoint - IP or DNS resolvable name")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "SQL server side endpoint - IP or DNS resolvable name")]
         [ValidateNotNullOrEmpty]
-        public string SourceEndpoint { get; set; }
+        public string PartnerEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or sets the link failover mode - can be Manual if intended to
+        /// be used for two-way failover with a supported SQL Server, or None
+        /// for one-way failover to Azure. Possible values include: 'None',
+        /// 'Manual'
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Link failover mode.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Link failover mode.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Manual", "None")]
+        public string FailoverMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets managed instance side link role. Possible values
+        /// include: 'Primary', 'Secondary'
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Managed instance side link role.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Managed instance side link role.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Primary", "Secondary")]
+        public string InstanceLinkRole { get; set; }
+
+        /// <summary>
+        /// Gets or sets database seeding mode – can be Automatic (default), or
+        /// Manual for supported scenarios. Possible values include:
+        /// 'Automatic', 'Manual'
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Database seeding mode.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Database seeding mode.")]
+        [ValidateNotNullOrEmpty]
+        [PSDefaultValue(Value = "Automatic")]
+        [PSArgumentCompleter("Automatic", "Manual")]
+        public string SeedingMode { get; set; }
 
         /// <summary>
         /// Gets or sets the instance Object
@@ -143,7 +168,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
             {
                 base.ExecuteCmdlet();
             }
-                        
         }
 
         /// <summary>
@@ -157,7 +181,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
             {
                 ModelAdapter.GetManagedInstanceLink(ResourceGroupName, InstanceName, Name);
             }
-            catch (CloudException ex)
+            catch (ErrorResponseException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -190,10 +214,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     ResourceGroupName = ResourceGroupName,
                     InstanceName = InstanceName,
                     Name = Name,
-                    PrimaryAvailabilityGroupName = PrimaryAvailabilityGroupName,
-                    SecondaryAvailabilityGroupName = SecondaryAvailabilityGroupName,
-                    TargetDatabase = TargetDatabase,
-                    SourceEndpoint = SourceEndpoint,
+                    Databases = Databases.Select(databaseName => new DistributedAvailabilityGroupDatabase { DatabaseName = databaseName }).ToList(),
+                    InstanceAvailabilityGroupName = InstanceAvailabilityGroupName,
+                    PartnerAvailabilityGroupName = PartnerAvailabilityGroupName,
+                    InstanceLinkRole = InstanceLinkRole,
+                    FailoverMode = FailoverMode,
+                    PartnerEndpoint = PartnerEndpoint,
+                    SeedingMode = SeedingMode
                 }
             };
             return newEntity;
