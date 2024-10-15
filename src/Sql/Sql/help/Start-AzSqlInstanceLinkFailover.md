@@ -53,49 +53,49 @@ Start-AzSqlInstanceLinkFailover -ResourceGroupName "ResourceGroup01" -InstanceNa
 ResourceGroupName                : ResourceGroup01
 InstanceName                     : ManagedInstance01
 Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                             : Link01
 DistributedAvailabilityGroupName : Link01
-DistributedAvailabilityGroupId   :
-ReplicationMode                  :
-PartnerLinkRole                  :
-PartnerAvailabilityGroupName     :
-PartnerEndpoint                  :
+DistributedAvailabilityGroupId   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Databases                        : {Database01}
+InstanceAvailabilityGroupName    : AG_Database01_MI
+PartnerAvailabilityGroupName     : AG_Database01
+PartnerEndpoint                  : TCP://SERVER01:5022
 InstanceLinkRole                 : Primary
-InstanceAvailabilityGroupName    :
-FailoverMode                     : None
+PartnerLinkRole                  : Secondary
+ReplicationMode                  : Async
+FailoverMode                     : Manual
 SeedingMode                      : Automatic
-Databases                        :
 ```
 
-This command failovers an instance link with name "Link01".
+This command does forced failover of the instance link with name "Link01".
 
 ### Example 2
 ```powershell
 $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01"
-$instance | Start-AzSqlInstanceLinkFailover -Name "Link01" -FailoverType "ForcedAllowDataLoss"
+$instance | Start-AzSqlInstanceLinkFailover -Name "Link01" -FailoverType "Planned"
 ```
 
 ```output
 ResourceGroupName                : ResourceGroup01
 InstanceName                     : ManagedInstance01
 Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
 Name                             : Link01
 DistributedAvailabilityGroupName : Link01
-DistributedAvailabilityGroupId   :
-ReplicationMode                  :
-PartnerLinkRole                  :
-PartnerAvailabilityGroupName     :
-PartnerEndpoint                  :
+DistributedAvailabilityGroupId   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Databases                        : {Database01}
+InstanceAvailabilityGroupName    : AG_Database01_MI
+PartnerAvailabilityGroupName     : AG_Database01
+PartnerEndpoint                  : TCP://SERVER01:5022
 InstanceLinkRole                 : Primary
-InstanceAvailabilityGroupName    :
-FailoverMode                     : None
+PartnerLinkRole                  : Secondary
+ReplicationMode                  : Async
+FailoverMode                     : Manual
 SeedingMode                      : Automatic
-Databases                        :
 ```
 
-This command failovers an instance link by piping an instance object.
+This command does planned failover of the instance link by piping an instance object.
 
 ## PARAMETERS
 
