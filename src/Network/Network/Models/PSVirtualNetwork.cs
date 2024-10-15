@@ -49,6 +49,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSExtendedLocation ExtendedLocation { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string PrivateEndpointVNetPolicies { get; set; }
+
         [JsonIgnore]
         public string AddressSpaceText
         {
