@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update the provisioned cluster instance</summary>
+    /// <summary>update the provisioned cluster instance</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default"
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzAksArcCluster_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"Update the provisioned cluster instance")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"update the provisioned cluster instance")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Generated]
     public partial class UpdateAzAksArcCluster_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener,
