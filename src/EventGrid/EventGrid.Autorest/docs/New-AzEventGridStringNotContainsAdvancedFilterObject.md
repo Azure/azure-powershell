@@ -1,38 +1,38 @@
 ---
 external help file:
 Module Name: Az.EventGrid
-online version: https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridadvancedfilterobject
+online version: https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstringnotcontainsadvancedfilterobject
 schema: 2.0.0
 ---
 
-# New-AzEventGridAdvancedFilterObject
+# New-AzEventGridStringNotContainsAdvancedFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for AdvancedFilter.
+Create an in-memory object for StringNotContainsAdvancedFilter.
 
 ## SYNTAX
 
 ```
-New-AzEventGridAdvancedFilterObject -OperatorType <String> [-Key <String>] [<CommonParameters>]
+New-AzEventGridStringNotContainsAdvancedFilterObject [-Key <String>] [-Value <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for AdvancedFilter.
+Create an in-memory object for StringNotContainsAdvancedFilter.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for AdvancedFilter.
+### Example 1: Create an in-memory object for StringNotContainsAdvancedFilter.
 ```powershell
-New-AzEventGridAdvancedFilterObject -OperatorType NumberIn -Key "TestKey"
+New-AzEventGridStringNotContainsAdvancedFilterObject -Key "testKey" -Value "value1","value2"
 ```
 
 ```output
 Key     OperatorType
 ---     ------------
-TestKey NumberIn
+testKey StringNotContains
 ```
 
-Create an in-memory object for AdvancedFilter.
+Create an in-memory object for StringNotContainsAdvancedFilter.
 
 ## PARAMETERS
 
@@ -51,15 +51,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperatorType
-The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+### -Value
+The set of filter values.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -73,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.AdvancedFilter
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringNotContainsAdvancedFilter
 
 ## NOTES
 

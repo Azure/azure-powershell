@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridChannel
 
 ## SYNOPSIS
-Synchronously creates or updates a new channel with the specified parameters.
+Synchronously create a new channel with the specified parameters.
 
 ## SYNTAX
 
@@ -72,7 +72,7 @@ New-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-Synchronously creates or updates a new channel with the specified parameters.
+Synchronously create a new channel with the specified parameters.
 
 ## EXAMPLES
 

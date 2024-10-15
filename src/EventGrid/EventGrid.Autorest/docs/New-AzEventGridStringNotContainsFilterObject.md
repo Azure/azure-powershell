@@ -1,43 +1,43 @@
 ---
 external help file:
 Module Name: Az.EventGrid
-online version: https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgriddeliveryattributemappingobject
+online version: https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstringnotcontainsfilterobject
 schema: 2.0.0
 ---
 
-# New-AzEventGridDeliveryAttributeMappingObject
+# New-AzEventGridStringNotContainsFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for DeliveryAttributeMapping.
+Create an in-memory object for StringNotContainsFilter.
 
 ## SYNTAX
 
 ```
-New-AzEventGridDeliveryAttributeMappingObject -Type <String> [-Name <String>] [<CommonParameters>]
+New-AzEventGridStringNotContainsFilterObject [-Key <String>] [-Value <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for DeliveryAttributeMapping.
+Create an in-memory object for StringNotContainsFilter.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for DeliveryAttributeMapping.
+### Example 1: Create an in-memory object for StringNotContainsFilter.
 ```powershell
-New-AzEventGridDeliveryAttributeMappingObject -Type "TestType" -Name "TestName"
+New-AzEventGridStringNotContainsFilterObject -Key "testKey" -Value "value1","value2"
 ```
 
 ```output
-Name
-----
-TestName
+Key     OperatorType
+---     ------------
+testKey StringNotContains
 ```
 
-Create an in-memory object for DeliveryAttributeMapping.
+Create an in-memory object for StringNotContainsFilter.
 
 ## PARAMETERS
 
-### -Name
-Name of the delivery attribute or header.
+### -Key
+The field/property in the event based on which you want to filter.
 
 ```yaml
 Type: System.String
@@ -51,15 +51,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Type
-Type of the delivery attribute or header name.
+### -Value
+The set of filter values.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -73,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.DeliveryAttributeMapping
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringNotContainsFilter
 
 ## NOTES
 
