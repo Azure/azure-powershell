@@ -243,7 +243,7 @@ directive:
   - where:
       subject: ^group$
       verb: ^Update$
-      parameter-name: Id
+      parameter-name: GroupId
     set:
       parameter-name: ObjectId
 
