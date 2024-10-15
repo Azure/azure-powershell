@@ -152,6 +152,10 @@
                 <Label>ExtendedLocation</Label>
                 <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>PrivateEndpointVNetPolicies</Label>
+                <PropertyName>PrivateEndpointVNetPolicies</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
