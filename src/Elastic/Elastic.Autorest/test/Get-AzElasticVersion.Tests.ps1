@@ -15,7 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticVersion'))
 }
 
 Describe 'Get-AzElasticVersion' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        # Test with a valid region
+        $region = 'westus2'
+        $elasticVersions = Get-AzElasticVersion -Region $region
+        $elasticVersions | Should -Not -BeNullOrEmpty
+        $elasticVersions | Should -BeOfType 'Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticVersionListFormat'
+        
+        # Ensure output contains version data
+        $elasticVersions.version | Should -Contain '8.15.2'
+        $elasticVersions.version | Should -Contain '8.14.3'
     }
 }

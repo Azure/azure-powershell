@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticAllTrafficFilter
 }
 
 Describe 'Get-AzElasticAllTrafficFilter' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzElasticAllTrafficFilter -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01 } | Should -Not -Throw
     }
 }

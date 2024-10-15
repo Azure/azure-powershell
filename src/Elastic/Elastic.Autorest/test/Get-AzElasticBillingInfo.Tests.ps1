@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticBillingInfo'))
 }
 
 Describe 'Get-AzElasticBillingInfo' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzElasticBillingInfo -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01 } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        { 
+            $elastic = Get-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName01
+            Get-AzElasticBillingInfo -InputObject $elastic
+        } | Should -Not -Throw
     }
 }

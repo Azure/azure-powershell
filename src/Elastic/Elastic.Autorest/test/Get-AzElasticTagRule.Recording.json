@@ -1,13 +1,13 @@
 {
-  "Get-AzElasticTagRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/tagRules/default?api-version=2024-03-01+1": {
+  "Get-AzElasticTagRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/tagRules/default?api-version=2024-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/tagRules/default?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/tagRules/default?api-version=2024-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "32" ],
-        "x-ms-client-request-id": [ "4b2aedb3-86c5-4679-bc79-9ea9a20d7545" ],
+        "x-ms-unique-id": [ "48" ],
+        "x-ms-client-request-id": [ "264dd2b1-d076-4ab6-a290-6d82d2cfa31f" ],
         "CommandName": [ "Get-AzElasticTagRule" ],
         "FullCommandName": [ "Get-AzElasticTagRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,37 +22,37 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"830465d0-0000-0800-0000-670ce1b90000\"" ],
+        "ETag": [ "\"0100cbae-0000-0800-0000-670dfbfc0000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "4319ef42-b174-4d09-b829-62027a2cca9b" ],
-        "x-ms-correlation-request-id": [ "112b820d-625c-4122-982f-a9957ac8039e" ],
+        "x-ms-request-id": [ "6770bbe2-4921-4804-b63e-ec1dc2ecaeb2" ],
+        "x-ms-correlation-request-id": [ "ac1d8cb4-080f-4267-a0fa-c7734dd2fb2a" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20241014T091930Z:112b820d-625c-4122-982f-a9957ac8039e" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20241015T052405Z:ac1d8cb4-080f-4267-a0fa-c7734dd2fb2a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 699E4BCA35914899BC08AD11948BD835 Ref B: MAA201060514009 Ref C: 2024-10-14T09:19:29Z" ],
-        "Date": [ "Mon, 14 Oct 2024 09:19:30 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C63D9E26A31A414AB3D0D7BEEE1B2927 Ref B: MAA201060513037 Ref C: 2024-10-15T05:24:04Z" ],
+        "Date": [ "Tue, 15 Oct 2024 05:24:04 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "685" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.elastic/monitors/tagrules\",\"systemData\":{\"createdBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-14T09:17:44.5186774Z\",\"lastModifiedBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-14T09:17:44.5186774Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]}}}",
+      "Content": "{\"id\":\"/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.elastic/monitors/tagrules\",\"systemData\":{\"createdBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-15T05:22:02.8289189Z\",\"lastModifiedBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-15T05:22:02.8289189Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]}}}",
       "isContentBase64": false
     }
   },
-  "Get-AzElasticTagRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/tagRules/default?api-version=2024-03-01+1": {
+  "Get-AzElasticTagRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/tagRules/default?api-version=2024-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/tagRules/default?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/tagRules/default?api-version=2024-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "33" ],
-        "x-ms-client-request-id": [ "f92879bd-07a4-4a03-b0bd-be4a3d62e755" ],
+        "x-ms-unique-id": [ "49" ],
+        "x-ms-client-request-id": [ "21ba3a41-fb4a-4dda-a428-695a6006dcb2" ],
         "CommandName": [ "Get-AzElasticTagRule" ],
         "FullCommandName": [ "Get-AzElasticTagRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -67,37 +67,37 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"830465d0-0000-0800-0000-670ce1b90000\"" ],
+        "ETag": [ "\"0100cbae-0000-0800-0000-670dfbfc0000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "6b41cad9-9679-42be-80ad-f7617f3dba90" ],
-        "x-ms-correlation-request-id": [ "7192964d-c530-47c1-9c88-d4c255d59c75" ],
+        "x-ms-request-id": [ "d1bfad6f-a246-4193-9c03-8680de20c860" ],
+        "x-ms-correlation-request-id": [ "67bc6eb5-e95a-4a80-bcd4-8f005d8f0433" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20241014T091931Z:7192964d-c530-47c1-9c88-d4c255d59c75" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20241015T052406Z:67bc6eb5-e95a-4a80-bcd4-8f005d8f0433" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 90C9639C87D9430E9FBE63492A100A1C Ref B: MAA201060514009 Ref C: 2024-10-14T09:19:30Z" ],
-        "Date": [ "Mon, 14 Oct 2024 09:19:30 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6BA9760D462E408483971D40DD57555D Ref B: MAA201060513037 Ref C: 2024-10-15T05:24:05Z" ],
+        "Date": [ "Tue, 15 Oct 2024 05:24:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "685" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.elastic/monitors/tagrules\",\"systemData\":{\"createdBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-14T09:17:44.5186774Z\",\"lastModifiedBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-14T09:17:44.5186774Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]}}}",
+      "Content": "{\"id\":\"/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.elastic/monitors/tagrules\",\"systemData\":{\"createdBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-15T05:22:02.8289189Z\",\"lastModifiedBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-15T05:22:02.8289189Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]}}}",
       "isContentBase64": false
     }
   },
-  "Get-AzElasticTagRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/tagRules/default?api-version=2024-03-01+2": {
+  "Get-AzElasticTagRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/tagRules/default?api-version=2024-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/tagRules/default?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/tagRules/default?api-version=2024-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "34" ],
-        "x-ms-client-request-id": [ "aae2f188-51a6-4cf1-9977-8de6cdb7e11d" ],
+        "x-ms-unique-id": [ "50" ],
+        "x-ms-client-request-id": [ "0484c770-18da-4f32-937d-f7277e212a31" ],
         "CommandName": [ "Get-AzElasticTagRule" ],
         "FullCommandName": [ "Get-AzElasticTagRule_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -112,25 +112,25 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"830465d0-0000-0800-0000-670ce1b90000\"" ],
+        "ETag": [ "\"0100cbae-0000-0800-0000-670dfbfc0000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "c38a3d63-7d2d-4ee0-900f-8eacb6e700ed" ],
-        "x-ms-correlation-request-id": [ "c33da51f-75e9-4412-8227-50920a4dff55" ],
+        "x-ms-request-id": [ "fb702358-14e0-4a7f-8291-53f59fad715a" ],
+        "x-ms-correlation-request-id": [ "9d04291b-6b02-4985-bc99-b328fbb5a41b" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20241014T091931Z:c33da51f-75e9-4412-8227-50920a4dff55" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20241015T052406Z:9d04291b-6b02-4985-bc99-b328fbb5a41b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2CBE588EB4C04D51A4EA927B83B19B1A Ref B: MAA201060514009 Ref C: 2024-10-14T09:19:31Z" ],
-        "Date": [ "Mon, 14 Oct 2024 09:19:31 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B1C1A40B56F94606BB88355A0A34991C Ref B: MAA201060513037 Ref C: 2024-10-15T05:24:06Z" ],
+        "Date": [ "Tue, 15 Oct 2024 05:24:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "685" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.elastic/monitors/tagrules\",\"systemData\":{\"createdBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-14T09:17:44.5186774Z\",\"lastModifiedBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-14T09:17:44.5186774Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]}}}",
+      "Content": "{\"id\":\"/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/tagRules/default\",\"name\":\"default\",\"type\":\"microsoft.elastic/monitors/tagrules\",\"systemData\":{\"createdBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-15T05:22:02.8289189Z\",\"lastModifiedBy\":\"testrefresh199@mpliftrelastic20211117outlo.onmicrosoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-15T05:22:02.8289189Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"logRules\":{\"sendAadLogs\":false,\"sendSubscriptionLogs\":false,\"sendActivityLogs\":false,\"filteringTags\":[]}}}",
       "isContentBase64": false
     }
   }

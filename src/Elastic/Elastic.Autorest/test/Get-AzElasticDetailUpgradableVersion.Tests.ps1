@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzElasticDetailUpgradable
 }
 
 Describe 'Get-AzElasticDetailUpgradableVersion' {
-    It 'Details' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Details' {
+        { Get-AzElasticDetailUpgradableVersion -ResourceGroupName $env.resourceGroup -MonitorName $env.elasticName01 } | Should -Not -Throw
     }
 
-    It 'DetailsViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DetailsViaIdentity' {
+        { 
+            $elastic = Get-AzElasticMonitor -ResourceGroupName $env.resourceGroup -Name $env.elasticName01
+            Get-AzElasticDetailUpgradableVersion -InputObject $elastic
+        } | Should -Not -Throw
     }
 }

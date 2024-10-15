@@ -1,15 +1,15 @@
 {
-  "Get-AzElasticDetailVMIngestion+[NoContext]+Details+$POST+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/vmIngestionDetails?api-version=2024-03-01+1": {
+  "Get-AzElasticDetailUpgradableVersion+[NoContext]+Details+$POST+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/listUpgradableVersions?api-version=2024-03-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/vmIngestionDetails?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/listUpgradableVersions?api-version=2024-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "33" ],
-        "x-ms-client-request-id": [ "be270d8a-9912-4a1b-aef0-d49ec1e60f0c" ],
-        "CommandName": [ "Get-AzElasticDetailVMIngestion" ],
-        "FullCommandName": [ "Get-AzElasticDetailVMIngestion_Details" ],
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "7de5945f-660b-4cdd-85be-3e5849701803" ],
+        "CommandName": [ "Get-AzElasticDetailUpgradableVersion" ],
+        "FullCommandName": [ "Get-AzElasticDetailUpgradableVersion_Details" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.23", "Az.Elastic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
@@ -25,35 +25,35 @@
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
-        "mise-correlation-id": [ "cfd08883-8dcb-4a25-b1b3-d0b6c78273d2" ],
+        "mise-correlation-id": [ "d3be1db3-b547-445c-951f-9f066cc8a892" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "cf436061-be73-4cc5-96d6-5e2849944030" ],
-        "x-ms-correlation-request-id": [ "f953d3aa-90c7-44f0-b629-065136c6ed36" ],
+        "x-ms-request-id": [ "5bfbd869-3ab0-4a12-ba6f-b14b3f60214b" ],
+        "x-ms-correlation-request-id": [ "c634b18e-da44-48a0-9503-92a9d36c15e9" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20241015T052301Z:f953d3aa-90c7-44f0-b629-065136c6ed36" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20241015T052250Z:c634b18e-da44-48a0-9503-92a9d36c15e9" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 32635D89173D4BD8BBB2E0AA4319A274 Ref B: MAA201060513037 Ref C: 2024-10-15T05:22:59Z" ],
-        "Date": [ "Tue, 15 Oct 2024 05:23:00 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FB312D2781414EE397F83112897B16D7 Ref B: MAA201060513037 Ref C: 2024-10-15T05:22:46Z" ],
+        "Date": [ "Tue, 15 Oct 2024 05:22:49 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "227" ],
+        "Content-Length": [ "51" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"cloudId\":\"elastic-mfvsw9:d2VzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo0NDMkNjliOTY4MjdjNjI1NDhmNDkyZGJjOTk3YzU4MzQwNzAkYzQ2ZDdmZmJjNDY4NGE1Nzg4OTg4MDA5OTE1ODdmNTg=\",\"ingestionKey\":\"TGlmdHJfRWxhc3RpYzpLSUxZTE8zNzI4R0NIWUpLUE0=\"}",
+      "Content": "{\"currentVersion\":\"8.15.2\",\"upgradableVersions\":[]}",
       "isContentBase64": false
     }
   },
-  "Get-AzElasticDetailVMIngestion+[NoContext]+DetailsViaIdentity+$GET+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9?api-version=2024-03-01+1": {
+  "Get-AzElasticDetailUpgradableVersion+[NoContext]+DetailsViaIdentity+$GET+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9?api-version=2024-03-01+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9?api-version=2024-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "34" ],
-        "x-ms-client-request-id": [ "ac03f072-5ebe-4757-a268-510c287632a3" ],
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "bdd994a0-1d59-4237-91c6-866b73309e03" ],
         "CommandName": [ "Get-AzElasticMonitor" ],
         "FullCommandName": [ "Get-AzElasticMonitor_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -71,15 +71,15 @@
         "ETag": [ "\"eb02a10e-0000-0800-0000-670dfadd0000\"" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "6e51bc8d-fd9e-4ca4-98f6-7cb648fa389a" ],
-        "x-ms-correlation-request-id": [ "91001a3f-c1da-48ce-a8b3-d6c57a1dbcaf" ],
+        "x-ms-request-id": [ "d074049c-a54a-4cf0-a2de-d8fa81a60991" ],
+        "x-ms-correlation-request-id": [ "10ab08c4-6596-4227-bb0d-0cd38b09b97d" ],
         "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20241015T052301Z:91001a3f-c1da-48ce-a8b3-d6c57a1dbcaf" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20241015T052250Z:10ab08c4-6596-4227-bb0d-0cd38b09b97d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C6A60A2F575646208F94DEF1B49AA74D Ref B: MAA201060513037 Ref C: 2024-10-15T05:23:01Z" ],
-        "Date": [ "Tue, 15 Oct 2024 05:23:00 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 9BD2BAEC1C2E4B178E99545175050DC5 Ref B: MAA201060513037 Ref C: 2024-10-15T05:22:50Z" ],
+        "Date": [ "Tue, 15 Oct 2024 05:22:50 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1556" ],
@@ -90,17 +90,17 @@
       "isContentBase64": false
     }
   },
-  "Get-AzElasticDetailVMIngestion+[NoContext]+DetailsViaIdentity+$POST+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/vmIngestionDetails?api-version=2024-03-01+2": {
+  "Get-AzElasticDetailUpgradableVersion+[NoContext]+DetailsViaIdentity+$POST+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/listUpgradableVersions?api-version=2024-03-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/vmIngestionDetails?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/listUpgradableVersions?api-version=2024-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "758a9f33-64fd-4a5c-8f74-e18131eca7d6" ],
-        "CommandName": [ "Get-AzElasticDetailVMIngestion" ],
-        "FullCommandName": [ "Get-AzElasticDetailVMIngestion_DetailsViaIdentity" ],
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "8b4fd936-4128-4e94-9dfd-e4215d2598f5" ],
+        "CommandName": [ "Get-AzElasticDetailUpgradableVersion" ],
+        "FullCommandName": [ "Get-AzElasticDetailUpgradableVersion_DetailsViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
         "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.23", "Az.Elastic/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
@@ -113,26 +113,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "198" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
-        "mise-correlation-id": [ "e67ad021-bff9-415b-93cf-f28db2a376b4" ],
+        "mise-correlation-id": [ "a5c06bd2-6b09-4450-9c8f-72f45086cf87" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "7fbf6215-422e-46c8-b00e-8dadb01a747f" ],
-        "x-ms-correlation-request-id": [ "31687a7c-5a55-46ba-8eac-2947e118bc4f" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2998" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20241015T052302Z:31687a7c-5a55-46ba-8eac-2947e118bc4f" ],
+        "x-ms-request-id": [ "253e98ef-7f1e-4e14-9ece-701a7626cad2" ],
+        "x-ms-correlation-request-id": [ "bb20de3a-a7bd-4468-b096-5aa399c93a4c" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20241015T052253Z:bb20de3a-a7bd-4468-b096-5aa399c93a4c" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 609F41D9966F470D88E12C530E0A7059 Ref B: MAA201060513037 Ref C: 2024-10-15T05:23:01Z" ],
-        "Date": [ "Tue, 15 Oct 2024 05:23:01 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 2C9728EA8D4D4FD3BC628ECBCD77DD37 Ref B: MAA201060513037 Ref C: 2024-10-15T05:22:51Z" ],
+        "Date": [ "Tue, 15 Oct 2024 05:22:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "227" ],
+        "Content-Length": [ "51" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"cloudId\":\"elastic-mfvsw9:d2VzdHVzMi5henVyZS5lbGFzdGljLWNsb3VkLmNvbTo0NDMkNjliOTY4MjdjNjI1NDhmNDkyZGJjOTk3YzU4MzQwNzAkYzQ2ZDdmZmJjNDY4NGE1Nzg4OTg4MDA5OTE1ODdmNTg=\",\"ingestionKey\":\"TGlmdHJfRWxhc3RpYzpLSUxZTE8zNzI4R0NIWUpLUE0=\"}",
+      "Content": "{\"currentVersion\":\"8.15.2\",\"upgradableVersions\":[]}",
       "isContentBase64": false
     }
   }

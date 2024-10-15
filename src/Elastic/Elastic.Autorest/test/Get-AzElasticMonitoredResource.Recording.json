@@ -1,13 +1,13 @@
 {
-  "Get-AzElasticMonitoredResource+[NoContext]+List+$POST+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/listMonitoredResources?api-version=2024-03-01+1": {
+  "Get-AzElasticMonitoredResource+[NoContext]+List+$POST+https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/listMonitoredResources?api-version=2024-03-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-58gcn9/providers/Microsoft.Elastic/monitors/elastic-yn2jc5/listMonitoredResources?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/elastic-rg-pl0jai/providers/Microsoft.Elastic/monitors/elastic-mfvsw9/listMonitoredResources?api-version=2024-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "31" ],
-        "x-ms-client-request-id": [ "8a6f0c87-ce39-4a4e-81d8-875903058a2d" ],
+        "x-ms-unique-id": [ "42" ],
+        "x-ms-client-request-id": [ "939080e8-6e15-49b3-abd9-a3534d610a7f" ],
         "CommandName": [ "Get-AzElasticMonitoredResource" ],
         "FullCommandName": [ "Get-AzElasticMonitoredResource_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -25,16 +25,16 @@
         "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:13f6b276-8851-4983-9417-68bc36807add" ],
-        "mise-correlation-id": [ "d3eea394-0507-4510-9b8e-cfdea0b0669f" ],
+        "mise-correlation-id": [ "b457b857-8495-4470-a838-349ab42f1a90" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "b1c467ec-cc72-42bc-beda-14dcc91088e1" ],
-        "x-ms-correlation-request-id": [ "099141ad-9b3e-45e7-ae9b-9dc4763f524e" ],
+        "x-ms-request-id": [ "39ecb0d9-856f-4fb1-9975-847acfcae6c5" ],
+        "x-ms-correlation-request-id": [ "1c506a50-8890-4f72-aec5-66df494196f1" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
-        "x-ms-routing-request-id": [ "WESTINDIA:20241014T091859Z:099141ad-9b3e-45e7-ae9b-9dc4763f524e" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20241015T052330Z:1c506a50-8890-4f72-aec5-66df494196f1" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 350E0A0ECF294E998D39F7AFCF4B2310 Ref B: MAA201060514009 Ref C: 2024-10-14T09:18:58Z" ],
-        "Date": [ "Mon, 14 Oct 2024 09:18:59 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 21D38181B1D440D08F73317D17E95C38 Ref B: MAA201060513037 Ref C: 2024-10-15T05:23:29Z" ],
+        "Date": [ "Tue, 15 Oct 2024 05:23:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "28" ],
