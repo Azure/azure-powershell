@@ -61,11 +61,38 @@ namespace Microsoft.Azure.Commands.StorageSync.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &gt;This hybrid server is not Azure Arc-enabled. Please ensure that the Azure Connected Machine agent is installed and the server is connected to Azure Arc..
+        /// </summary>
+        internal static string AgentMI_ArcServerNotEnabled {
+            get {
+                return ResourceManager.GetString("AgentMI_ArcServerNotEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Secret file path content is empty. Expected to read challenge key..
         /// </summary>
         internal static string AgentMI_ChallengeTokenNullError {
             get {
                 return ResourceManager.GetString("AgentMI_ChallengeTokenNullError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request to HIMDS endpoint failed due to a socket exception. Ensure Azure Arc process is running on this server via &apos;azcmagent show&apos;..
+        /// </summary>
+        internal static string AgentMI_HIMDSSocketExceptionError {
+            get {
+                return ResourceManager.GetString("AgentMI_HIMDSSocketExceptionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request to Azure IMDS endpoint failed due to a socket exception. Ensure Azure VM IMDS is running. .
+        /// </summary>
+        internal static string AgentMI_IMDSSocketExceptionError {
+            get {
+                return ResourceManager.GetString("AgentMI_IMDSSocketExceptionError", resourceCulture);
             }
         }
         
