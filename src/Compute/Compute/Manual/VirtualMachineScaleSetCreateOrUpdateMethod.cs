@@ -511,8 +511,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     skuProfileVmSize: skuProfileVmSizes,
                     skuProfileAllocationStrategy: _cmdlet.SkuProfileAllocationStrategy,
                     ifMatch: _cmdlet.IfMatch,
-                    ifNoneMatch: _cmdlet.IfNoneMatch
-                    
+                    ifNoneMatch: _cmdlet.IfNoneMatch,
+                    securityPostureId: _cmdlet.SecurityPostureId,
+                    securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension
                     );
             }
 
@@ -681,7 +682,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     skuProfileAllocationStrategy: _cmdlet.SkuProfileAllocationStrategy,
                     auxAuthHeader: auxAuthHeader,
                     ifMatch: _cmdlet.IfMatch,
-                    ifNoneMatch: _cmdlet.IfNoneMatch
+                    ifNoneMatch: _cmdlet.IfNoneMatch,
+                    securityPostureId: _cmdlet.SecurityPostureId,
+                    securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension
                     );
             }
         }
