@@ -66,8 +66,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "How security admin rules are applied to virtual networks with services using network intent policies. Valid values include 'None', 'All', and 'AllowRulesOnly'.")]
+           HelpMessage = "How security admin rules are applied to virtual networks with services using network intent policies.  Valid values include 'None', 'All', and 'AllowRulesOnly'.")]
         public NetworkIntentPolicyBasedServiceType[] ApplyOnNetworkIntentPolicyBasedService { get; set; }
+       
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "How security admin rules are applied using network group address space aggregation. Valid values include 'None' and 'Manual'.")]
+        public NetworkGroupAddressSpaceAggregation[] NetworkGroupAddressSpaceAggregationOption { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -88,6 +94,12 @@ namespace Microsoft.Azure.Commands.Network
             None,
             All,
             AllowRulesOnly,
+        }
+
+        public enum NetworkGroupAddressSpaceAggregation
+        {
+            None,
+            Manual,
         }
 
         public override void Execute()
@@ -118,6 +130,15 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (NetworkIntentPolicyBasedServiceType nipType in this.ApplyOnNetworkIntentPolicyBasedService)
                 {
                     securityConfig.ApplyOnNetworkIntentPolicyBasedServices.Add(nipType.ToString());
+                }
+            }
+
+            if (this.NetworkGroupAddressSpaceAggregationOption != null)
+            {
+                securityConfig.NetworkGroupAddressSpaceAggregationOption = new List<string>();
+                foreach (NetworkGroupAddressSpaceAggregation aggType in this.NetworkGroupAddressSpaceAggregationOption)
+                {
+                    securityConfig.NetworkGroupAddressSpaceAggregationOption.Add(aggType.ToString());
                 }
             }
 

@@ -19,6 +19,31 @@
 --->
 
 ## Upcoming Release
+* Onboarded Azure Virtual Network Manager Cmdlets for IpamPool
+    - `Get-AzNetworkManagerAssociatedResourcesList`
+    - `Get-AzNetworkManagerIpamPool`
+    - `Get-AzNetworkManagerIpamPoolStaticCidr`
+    - `Get-AzNetworkManagerIpamPoolUsage`
+    - `New-AzNetworkManagerIpamPool`
+    - `New-AzNetworkManagerIpamPoolStaticCidr`
+    - `Remove-AzNetworkManagerIpamPool`
+    - `Remove-AzNetworkManagerIpamPoolStaticCidr`
+    - `Set-AzNetworkManagerIpamPool`
+* Onboarded Azure Virtual Network Manager Cmdlets for VnetVerifier
+    - `New-AzNetworkManagerSecurityGroupItem`
+    - `New-AzNetworkManagerVerifierWorkspace`
+    - `Get-AzNetworkManagerVerifierWorkspace`
+    - `Set-AzNetworkManagerVerifierWorkspace`
+    - `Remove-AzNetworkManagerVerifierWorkspace`
+    - `New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+    - `Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+    - `Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+* Updated cmdlet to add the property of `NetworkGroupAddressSpaceAggregationOption`, and updated corresponding cmdlets.
+    - `New-AzNetworkManagerSecurityAdminConfiguration`
+    - `New-AzNetworkManagerAddressPrefixItemCommand`
 
 ## Version 7.9.0
 * Onboarded `Microsoft.VideoIndexer/accounts` to private link cmdlets
