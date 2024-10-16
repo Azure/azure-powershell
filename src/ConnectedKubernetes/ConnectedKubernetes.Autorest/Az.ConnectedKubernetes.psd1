@@ -9,6 +9,7 @@
   Description = 'Microsoft Azure PowerShell: ConnectedKubernetes cmdlets'
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
+  RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.5'}, @{ModuleName = 'Az.Resources'; ModuleVersion = '6.3.1'})
   RequiredAssemblies = './bin/Az.ConnectedKubernetes.private.dll'
   FormatsToProcess = './Az.ConnectedKubernetes.format.ps1xml'
   FunctionsToExport = 'Get-AzConnectedKubernetes', 'Get-AzConnectedKubernetesUserCredential', 'New-AzConnectedKubernetes', 'Remove-AzConnectedKubernetes', 'Set-AzConnectedKubernetes', 'Update-AzConnectedKubernetes', '*'
