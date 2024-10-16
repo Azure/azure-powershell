@@ -660,7 +660,7 @@ function New-AzConnectedKubernetes {
         Write-Debug "PUT response: $Response"
         $ResponseStr = $Response | ConvertTo-Json -Depth 10
         Write-Debug "PUT response: $ResponseStr"
-        
+
         if ($PSCmdlet.ShouldProcess("configDP", "request Helm values")) {
             $helmValuesDp = Get-HelmValuesFromConfigDP `
                 -configDPEndpoint $configDPEndpoint `
@@ -747,15 +747,15 @@ function New-AzConnectedKubernetes {
         if ($PSCmdlet.ShouldProcess($ClusterName, "Check agent state of the connected cluster")) {
             if ($PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled') -or $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled') ) {
                 $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
-    
+
                 Write-Output "Cluster configuration is in progress..."
                 $timeout = [datetime]::Now.AddMinutes(60)
-    
+
                 while (($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Succeeded") -and ($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Failed") -and ([datetime]::Now -lt $timeout)) {
                     Start-Sleep -Seconds 30
                     $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
                 }
-    
+
                 if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
                     Write-Output "Cluster configuration succeeded."
                 }
@@ -764,7 +764,7 @@ function New-AzConnectedKubernetes {
                 }
                 else {
                     Write-Error "Cluster configuration timed out after 60 minutes."
-                }      
+                }
             }
         }
         Return $Response

@@ -36,7 +36,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IConnectedCluster>: 
+INPUTOBJECT <IConnectedCluster>:
   Location <String>: The geo-location where the resource lives
   AgentPublicKeyCertificate <String>: Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.
   IdentityType <ResourceIdentityType>: The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
@@ -541,7 +541,7 @@ function Set-AzConnectedKubernetes {
         #Endregion
 
         #Region Deal with configuration settings and protected settings
-        
+
         # If the user does not provide proxy settings, or configuration settings, we shall use arc config of existing object
         $userProvidedArcConfiguration = (
             ($null -ne $InputObject) -and ($InputObject.ArcAgentryConfiguration.Length > 0) `
@@ -551,7 +551,7 @@ function Set-AzConnectedKubernetes {
                 -and ((-not ([string]::IsNullOrEmpty($ProxyCert)))) `
                 -and ($PSBoundParameters.ContainsKey('ConfigurationSetting')) `
                 -and ($PSBoundParameters.ContainsKey('ConfigurationProtectedSetting')))
-        
+
         if ($null -eq $ConfigurationSetting) {
             $ConfigurationSetting = @{}
         }
@@ -591,7 +591,7 @@ function Set-AzConnectedKubernetes {
             $NoProxy = $NoProxy -replace '/', '\/'
             $ConfigurationProtectedSetting["proxy"]["no_proxy"] = $NoProxy
             $Null = $PSBoundParameters.Remove('NoProxy')
-        }        
+        }
 
         try {
             if ((-not ([string]::IsNullOrEmpty($ProxyCert))) -and (Test-Path $ProxyCert)) {
@@ -676,7 +676,7 @@ function Set-AzConnectedKubernetes {
             $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
         }
         else {
-            $PSBoundParameters.Add('ArcAgentryConfiguration', $ExistConnectedKubernetes.ArcAgentryConfiguration)        
+            $PSBoundParameters.Add('ArcAgentryConfiguration', $ExistConnectedKubernetes.ArcAgentryConfiguration)
         }
 
         Write-Output "Updating the connected cluster resource...."
@@ -696,7 +696,7 @@ function Set-AzConnectedKubernetes {
         # Convert the $Response object into a nested hashtable.
         Write-Debug "PUT response: $Response"
         $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
-        
+
         # Whatif may return empty response
         if (-not $Response) {
             $Response = @{}
@@ -711,13 +711,13 @@ function Set-AzConnectedKubernetes {
         else {
             $Response['properties']['arcAgentryConfigurations'] = $ExistConnectedKubernetes.ArcAgentryConfiguration
         }
-        
+
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
         $ResponseStr = $Response | ConvertTo-Json -Depth 10
         Write-Debug "PUT response: $ResponseStr"
-        
+
         Write-Output "Preparing helm ...."
 
         if ($PSCmdlet.ShouldProcess('configDP', 'get helm values from config DP')) {
@@ -756,7 +756,7 @@ function Set-AzConnectedKubernetes {
             if ($ExistConnectedKubernetes.AgentVersion) {
                 $repositoryPath = $repositoryPath -replace "(?<=:).*", $ExistConnectedKubernetes.AgentVersion
             }
-        }   
+        }
 
         if ($PSCmdlet.ShouldProcess('configDP', 'get helm chart path')) {
             # Get helm chart path (within the OCI registry).
@@ -813,15 +813,15 @@ function Set-AzConnectedKubernetes {
         if ($PSCmdlet.ShouldProcess($ClusterName, "Check agent state of the connected cluster")) {
             if ($PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled') -or $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled') ) {
                 $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
-    
+
                 Write-Output "Cluster configuration is in progress..."
                 $timeout = [datetime]::Now.AddMinutes(60)
-    
+
                 while (($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Succeeded") -and ($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Failed") -and ([datetime]::Now -lt $timeout)) {
                     Start-Sleep -Seconds 30
                     $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
                 }
-    
+
                 if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
                     Write-Output "Cluster configuration succeeded."
                 }
@@ -830,7 +830,7 @@ function Set-AzConnectedKubernetes {
                 }
                 else {
                     Write-Error "Cluster configuration timed out after 60 minutes."
-                }      
+                }
             }
         }
     }

@@ -1,7 +1,7 @@
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
     Justification = 'Uses multiple parameters', Scope = 'Function', Target = 'Invoke-RestMethodWithUriParameters')]
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
-    Justification = 'Helm values is a recognised term', Scope = 'Function', Target = 'Get-HelmValuesFromConfigDP')]
+    Justification = 'Helm values is a recognised term', Scope = 'Function', Target = '')]
 param()
 
 function Invoke-ConfigDPHealthCheck {
@@ -40,7 +40,7 @@ function Invoke-ConfigDPHealthCheck {
 
 
 function Get-ConfigDPEndpoint {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Connected.DoNotExport()]
     param (
         [Parameter(Mandatory = $true)]
         [string]$Location,
@@ -56,12 +56,12 @@ function Get-ConfigDPEndpoint {
         -CloudMetadata $cloudMetadata `
         -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
         -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
-    
+
     return @{ ConfigDpEndpoint = $ConfigDpEndpoint; ReleaseTrain = $ReleaseTrain }
 }
 
 function Get-ConfigDpDefaultEndpoint {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Connected.DoNotExport()]
     param (
         [Parameter(Mandatory = $true)]
         [string]$location,
@@ -76,7 +76,7 @@ function Get-ConfigDpDefaultEndpoint {
     # Remove optional trailing "/" from $cloudBasedDomain
     $cloudBasedDomain = $cloudBasedDomain.TrimEnd('/')
 
-    $configDpEndpoint = "https://${location}.dp.kubernetesconfiguration.azure.${cloudBasedDomain}"
+    $configDpEndpoint = "https://${location}.dp.configuration.azure.${cloudBasedDomain}"
     return $configDpEndpoint
 }
 
@@ -125,8 +125,9 @@ function Invoke-RestMethodWithUriParameters {
     Set-Variable -Name "${statusCodeVariable}" -Value $statusCode -Scope Script -WhatIf:$false
     return $rsp
 }
+
 function Get-HelmValuesFromConfigDP {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Connected.DoNotExport()]
     param (
         [Parameter(Mandatory = $true)]
         $ConfigDpEndpoint,
@@ -158,7 +159,7 @@ function Get-HelmValuesFromConfigDP {
 
     # Sending request with retries
     try {
-        Write-Verbose "Calculating Azure Arc resources required by Kubernetes cluster"
+        Write-Verbose "Calculating Azure Arc resources required by  cluster"
         $r = Invoke-RestMethodWithUriParameters `
             -Method 'post' `
             -Uri $chartLocationUrl `
