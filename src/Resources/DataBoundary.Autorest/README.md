@@ -27,6 +27,10 @@ For information on how to develop for `Az.DataBoundary`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ```yaml
+root-module-name: $(prefix).Resources
+title: DataBoundary
+module-version: 0.1.1
+
 # pin the swagger version by using the commit id instead of branch name
 commit: a6074b7654c388dec49c9969d0136cfeb03575c9
 tag:  package-databoundaries-2024-08
@@ -39,5 +43,17 @@ require:
 
 try-require: 
   - $(repo)/specification/resources/resource-manager/readme.powershell.md
+
+directive:
+# Following are common directives which are normally required in all the RPs
+# 1. Remove the unexpanded parameter set
+# 2. For New-* cmdlets, ViaIdentity is not required
+# Following two directives are v4 specific
+- where:
+    variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+  remove: true
+- where:
+    variant: ^CreateViaIdentity.*$
+  remove: true
 
   ```
