@@ -11,6 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
@@ -21,8 +22,12 @@ using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Linq;
 using System.Management.Automation;
+using System.Net.Http;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Profile.Rest
 {
@@ -95,11 +100,11 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         public SwitchParameter WaitTillCompletion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Specifies where to poll for long-running operation status.")]
-        [ValidateSet("AzureAsyncLocation", "Location", "OriginalUri", "OperationLocation", IgnoreCase = true)]
+        [ValidateSet("AzureAsyncLocation", "Location", "OriginalUri", "Operation-Location", IgnoreCase = true)]
         public string PollFrom { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Specifies where to get the final result after the long-running operation completes.")]
-        [ValidateSet("FinalStateVia", "Location", "OriginalUri", "OperationLocation", IgnoreCase = true)]
+        [ValidateSet("FinalStateVia", "Location", "OriginalUri", "Operation-Location", IgnoreCase = true)]
         public string FinalResultFrom { get; set; }
 
         #endregion
@@ -121,14 +126,279 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 this.Path = Uri.PathAndQuery;
             }
 
-            
             IAzureRestClient serviceClient = this.InitializeServiceClient();
 
-            RestRequestHandler handler = new RestRequestHandler(this, serviceClient, Method);
-            AzureOperationResponse<string> response = handler.ExecuteRestRequest(Path, ApiVersion, Payload);
-
-            WriteObject("This is New DEV TESTINGG VERSION!!!!");
+            WriteObject("Executing rest requst");
+            AzureOperationResponse<string> response = ExecuteRestRequest(serviceClient);
             WriteObject(new PSHttpResponse(response));
+            WriteObject("PUT Request Complete!");
+            WriteObject("PollFrom:" + PollFrom);
+
+            if (WaitTillCompletion.IsPresent && IsRequestLRO(response))
+            {
+                response = ExecuteLRORequest(serviceClient, response);
+            }
+
+            WriteObject(new PSHttpResponse(response));
+            
+        }
+
+        private AzureOperationResponse<string> ExecuteLRORequest(IAzureRestClient serviceClient, AzureOperationResponse<string> response)
+        {
+
+            while (IsRequestLRO(response))
+            {
+                // Delay between polling requests; default to 30 seconds if not specified
+                int delay = response.Response.Headers.Contains("Retry-After")
+                    ? int.Parse(response.Response.Headers.GetValues("Retry-After").FirstOrDefault())
+                    : 30;
+
+                Thread.Sleep(TimeSpan.FromSeconds(delay));
+
+                // Polling logic; uses GET method to check operation status
+                string pollingUri = DeterminePollingUri(response);
+                response = serviceClient.Operations.GetResourceWithFullResponse(pollingUri, this.ApiVersion);
+                WriteObject("New Response Received:" + ": " + response.Response.StatusCode);
+
+                WriteObject(new PSHttpResponse(response));
+
+                if (response.Response.StatusCode == System.Net.HttpStatusCode.Created ||
+                    response.Response.StatusCode == System.Net.HttpStatusCode.Accepted)
+                {
+                    continue;
+                }
+                else
+                if (response.Response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var error = false;
+                    try
+                    {
+                        string state = GetProvisioningState(response);
+                        if (state is null)
+                        {
+                            // There is insufficient information to continue LRO
+                            // We will return the final request-response
+                            break;
+                        }
+
+                        switch (state?.ToLower())
+                        {
+                            case "failed":
+                                error = true;
+                                break;
+                            case "succeeded":
+                            case "canceled":
+                                break;
+
+                            default:
+                                // Continue Polling
+                                response.Response.StatusCode = System.Net.HttpStatusCode.Created;
+                                continue;
+                        }
+
+                    }
+                    catch
+                    {
+                        // Cannot Peek into response
+                    }
+                    if (error)
+                    {
+                        WriteObject(new PSHttpResponse(response));
+                        throw new AzPSException("Azure Service operation failed.", Commands.Common.ErrorKind.ServiceError);
+                    }
+
+                    // Polling is Complete, Return Final Response
+                    WriteObject("Fetching for Final Response.");
+
+                    // Retrieve final resource state based on FinalResultFrom
+                    string finalUri = DetermineFinalUri(response);
+                    response = serviceClient.Operations.GetResourceWithFullResponse(finalUri, this.ApiVersion);
+                    break;
+                }
+                
+            }
+
+            
+            return response;
+        }
+
+        
+        // ============================================================================================================
+        public string DetermineFinalUri(AzureOperationResponse<string> response)
+        {
+            /*
+                final-state-via SHOULD BE one of
+
+                azure-async-operation - poll until terminal state, skip any final GET on Location or Origin-URI and use the final response at the uri pointed to by the header Azure-AsyncOperation.
+                location - poll until terminal state, if the initial response had a Location header, a final GET will be done. Default behavior for POST operation.
+                original-uri - poll until terminal state, a final GET will be done at the original resource URI. Default behavior for PUT operations.
+                operation-location - poll until terminal state, skip any final GET on Location or Origin-URI and use the final response at the uri pointed to by the header Operation-Location
+            */
+
+            /*
+             * Priority sequence => 
+             * PUT/PATCH => originalUri
+             * 
+             * POST => operation-location
+             * 
+             * DELETE => Location from first response/ None
+             * 
+             */
+
+            if(!string.IsNullOrEmpty(FinalResultFrom))
+            {
+                return GetUriFromHeader(response, FinalResultFrom);
+            }
+
+
+            switch (this.Method.ToUpper())
+            {
+                case "POST":
+                    return GetUriFromHeader(response, "operation-location");
+
+                case "DELETE":
+                    return GetUriFromHeader(response, "Location");
+
+                case "PUT":
+                case "PATCH":
+                    return this.Path;
+                
+                default:
+                    throw new AzPSArgumentException("Invalid HTTP Method", nameof(Method));
+            }
+
+
+            //if (response.Response.Headers.Contains("Location"))
+            //{
+            //    var res = new Uri(response.Response.Headers.GetValues("Location").FirstOrDefault());
+            //    return res.PathAndQuery;
+            //}
+            //return this.Path; // Default to ori21ginal URI
+        }
+
+        public string DeterminePollingUri(AzureOperationResponse<string> response)
+        {
+            /*
+             * Priority of Polling Uri:
+             * 1. `PollFrom` (User Ovrride)
+             * 2. "Azure-AsyncOperation"
+             * 3. "Location"
+             * 4. originalUri (Resource Uri)
+             * 
+             */
+            
+            // User input (PollFrom) overrides everything
+            if (!string.IsNullOrEmpty(PollFrom))
+            {
+                return GetUriFromHeader(response, PollFrom);
+            }
+
+
+            // Check if each header is present in response following certain priority
+            string[] priorityHeaders = { "Azure-AsyncOperation", "Location" };
+
+            foreach (string header in priorityHeaders)
+            {
+                if (response.Response.Headers.Contains(header))
+                {
+                    return GetUriFromHeader(response, header);
+                }
+            }
+
+
+            WriteObject("Determined Header: originalUri: " + this.Path);
+            return this.Path; // Default to original URI
+        }
+
+        private string GetUriFromHeader(AzureOperationResponse<string> response, string chosenHeader)
+        {
+            var headerValues = response.Response.Headers.GetValues(chosenHeader);
+            if (headerValues == null || !headerValues.Any())
+            {
+                throw new AzPSInvalidOperationException($"Polling header `{chosenHeader}` is not present in the response.");
+            }
+
+            WriteObject($"Determined Header: {chosenHeader}");
+            return new Uri(headerValues.FirstOrDefault()).PathAndQuery;
+        }
+
+        private bool IsRequestLRO(AzureOperationResponse<string> response)
+        {
+            var responseMsg = response.Response;
+            return (response.Response.RequestMessage.Method == System.Net.Http.HttpMethod.Put &&
+                    response.Response.StatusCode == System.Net.HttpStatusCode.OK) ||
+                    response.Response.StatusCode == System.Net.HttpStatusCode.Created ||
+                    response.Response.StatusCode == System.Net.HttpStatusCode.Accepted;
+        }
+
+        public string GetProvisioningState(AzureOperationResponse<string> response)
+        {
+            var content = response.Body;
+            var json = Newtonsoft.Json.JsonConvert.DeserializeObject<Newtonsoft.Json.Linq.JObject>(content);
+            return json["properties"]?["provisioningState"]?.ToString() ?? json["status"]?.ToString();
+        }
+
+        //public bool IsTerminalStatus(AzureOperationResponse<string> response)
+        //{
+        //    var ResponseMsg = response.Response;
+        //    return ResponseMsg.StatusCode == System.Net.HttpStatusCode.OK ||
+        //           ResponseMsg.StatusCode == System.Net.HttpStatusCode.Created ||
+        //           ResponseMsg.StatusCode == System.Net.HttpStatusCode.Accepted;
+        //}
+
+
+        // ============================================================================================================
+
+
+        private AzureOperationResponse<string> ExecuteRestRequest(IAzureRestClient serviceClient)
+        {
+            AzureOperationResponse<string> response = null;
+
+            switch (this.Method.ToUpper())
+            {
+                case "GET":
+                    response = serviceClient
+                    .Operations
+                    .GetResourceWithFullResponse(Path, ApiVersion);        
+                    break;
+                case "POST":
+                    if (this.ShouldProcess(Path, "POST"))
+                    {
+                        response = serviceClient
+                        .Operations
+                        .PostResourceWithFullResponse(Path, ApiVersion, Payload);
+                    }
+                    break;
+                case "PUT":
+                    if (this.ShouldProcess(Path, "PUT"))
+                    {
+                        WriteObject("Sending put req");
+                        response = serviceClient
+                        .Operations
+                        .PutResourceWithFullResponse(Path, ApiVersion, Payload);
+                    }
+                    break;
+                case "PATCH":
+                    if (this.ShouldProcess(Path, "PATCH"))
+                    {
+                        response = serviceClient
+                        .Operations
+                        .PatchResourceWithFullResponse(Path, ApiVersion, Payload);
+                    }
+                    break;
+                case "DELETE":
+                    if (this.ShouldProcess(Path, "DELETE"))
+                    {
+                        response = serviceClient
+                        .Operations
+                        .DeleteResourceWithFullResponse(Path, ApiVersion);
+                    }
+                    break;
+                default:
+                    throw new AzPSArgumentException("Invalid HTTP Method", nameof(Method));
+            }
+
+            return response;
         }
 
 
@@ -335,5 +605,8 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             }
             return sb.ToString();
         }
+
+
+
     }
 }
