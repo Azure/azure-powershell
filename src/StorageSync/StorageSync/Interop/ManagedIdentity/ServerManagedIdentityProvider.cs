@@ -1,6 +1,7 @@
 ﻿using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
 using Hyak.Common;
+using Kailani.Afs.ServerManagedIdentity;
 using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
 using Microsoft.Azure.Commands.StorageSync.Interop.Exceptions;
 using Microsoft.Azure.Commands.StorageSync.Interop.Interfaces;
@@ -13,7 +14,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
     /// <summary>
     /// ServerManagedIdentityProvider provides info about the Server -- the type/if server MI is enabled
     /// </summary>
-    public class ServerManagedIdentityProvider : IServerManagedIdentityProvider , IDisposable
+    public class ServerManagedIdentityProvider : IServerManagedIdentityProvider
     {
         private IServerManagedIdentityTokenProvider serverManagedIdentityTokenProvider;
 
@@ -66,27 +67,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
                         return applicationId;
                     }
 
-                    serverManagedIdentityTokenProvider = serverManagedIdentityTokenProvider ?? new ServerManagedIdentityTokenProvider(localServerType, traceLog: this.TraceLog);
+                    // We need to use the https://storage.azure.com resource, as this provides us the x-ms-rid header to use for validation.
+                    // Application id should be from real time token getting from the IMDS endpoint instead of cached token. Also we noticed 
+                    // an issue that PowerShell Core(5+) doesn't work with ProtectedMemory: https://github.com/PSKeePass/PoShKeePass/issues/170
+                    // When we cache token in ServerManagedIdentityTokenProvider, it will use ProtectedMemory to encrypt/decrypt the token,
+                    // and this GetServerApplicationId can be triggered from server registration using PowerShell Core which causes that issue.
+                    // So this is another reason we need to get the token from IMDS endpoint directly via ServerManagedIdentityUtils, not ServerManagedIdentityTokenProvider.
+                    ServerManagedIdentityTokenResponse tokenResponse;
 
-                    // We need to use the https://storage.azure.com resource, as this provides us the x-ms-rid header to use for validation
-                    var token = Task.Run(() => serverManagedIdentityTokenProvider.GetManagedIdentityAccessToken(resource: "https://storage.azure.com/")).GetAwaiter().GetResult();
+                    tokenResponse = ServerManagedIdentityUtils.GetManagedIdentityTokenResponseAsync(resource: "https://storage.azure.com/").GetAwaiter().GetResult();
 
-                    try
-                    {
-                        if (validateSAMI)
-                        {
-                            ServerManagedIdentityTokenHelper.ValidateMIToken(token);
-                        }
-                    }
-                    catch (ServerManagedIdentityTokenException ex) when (ex.ErrorCode == ManagedIdentityErrorCodes.ServerManagedIdentitySystemIdentityNotFound)
-                    {
-                        if (throwIfNotFound)
-                        {
-                            throw;
-                        }
 
-                        return applicationId;
-                    }
+                    var token = tokenResponse.AccessToken;
 
                     applicationId = ServerManagedIdentityTokenHelper.GetTokenOid(token);
                 }
@@ -135,11 +127,5 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
 
             return serverInfo;
         }
-
-        public void Dispose()
-        {
-            this.serverManagedIdentityTokenProvider?.Dispose();
-        }
     }
-
 }
