@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the MSGraph service.
 
 ---
-## Status
-[![Az.MSGraph](https://img.shields.io/powershellgallery/v/Az.MSGraph.svg?style=flat-square&label=Az.MSGraph "Az.MSGraph")](https://www.powershellgallery.com/packages/Az.MSGraph/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -246,9 +243,15 @@ directive:
   - where:
       subject: ^group$
       verb: ^Update$
-      parameter-name: Id
+      parameter-name: GroupId
     set:
       parameter-name: ObjectId
+  - where:
+      subject: ^group$
+      verb: ^Update$
+      parameter-name: ObjectId
+    set:
+      alias: GroupId
 
   - where: 
       subject: ^group$
