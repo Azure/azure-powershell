@@ -120,7 +120,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.4'; },
                @{ModuleName = 'Az.PrivateDns'; RequiredVersion = '1.0.5'; }, 
                @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '7.2.0'; }, 
                @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.10.0'; }, 
-               @{ModuleName = 'Az.RedisEnterpriseCache'; RequiredVersion = '1.3.0'; }, 
+               @{ModuleName = 'Az.RedisEnterpriseCache'; RequiredVersion = '1.2.1'; },
                @{ModuleName = 'Az.Relay'; RequiredVersion = '2.0.1'; }, 
                @{ModuleName = 'Az.ResourceGraph'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.ResourceMover'; RequiredVersion = '1.2.1'; }, 
@@ -261,14 +261,6 @@ Az.Network
 
 Az.RecoveryServices
 * Fixed bug for making RecoveryAzureStorageAccountId parameter optional in ''New-ASRReplicationProtectedItem'' cmdlet of H2A.
-
-Az.RedisEnterpriseCache
-* Added support for using Microsoft Entra token-based authentication.
-* Added the new properties of Cluster: highAvailability and redundancyMode.
-* Added new product SKUs.
-* Added the new properties of Database: accessKeysAuthentication.
-* Added Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup to force link geo replicated caches.
-* Added Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion to upgrade the redis database version directly.
 
 Az.Resources
 * Added ''ResourceSelector'' and ''Override'' parameters to ''New/Update-AzPolicyAssignment''.
