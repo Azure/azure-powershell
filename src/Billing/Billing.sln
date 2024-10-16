@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Billing.Management.Sdk", "Billing.Management.Sdk\Billing.Management.Sdk.csproj", "{162555C6-2861-4C0A-879F-1BF3BBFDB281}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumption.Management.Sdk", "Consumption.Management.Sdk\Consumption.Management.Sdk.csproj", "{CEA30F59-BCB7-4934-94A5-C6992411509D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{162555C6-2861-4C0A-879F-1BF3BBFDB281}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{162555C6-2861-4C0A-879F-1BF3BBFDB281}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{162555C6-2861-4C0A-879F-1BF3BBFDB281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEA30F59-BCB7-4934-94A5-C6992411509D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEA30F59-BCB7-4934-94A5-C6992411509D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEA30F59-BCB7-4934-94A5-C6992411509D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEA30F59-BCB7-4934-94A5-C6992411509D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
