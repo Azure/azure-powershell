@@ -27,7 +27,7 @@ pac25,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Quota.0.1.2.zip;sourceType=sa]Az.Quota,0.1.2
 pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RecoveryServices.7.2.0.zip;sourceType=sa]Az.RecoveryServices,7.2.0
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisCache.1.10.0.zip;sourceType=sa]Az.RedisCache,1.10.0
-pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.1.2.1.zip;sourceType=sa]Az.RedisEnterpriseCache,1.2.1
+pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.1.3.0.zip;sourceType=sa]Az.RedisEnterpriseCache,1.3.0
 pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Relay.2.0.1.zip;sourceType=sa]Az.Relay,2.0.1
 pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.13.0.zip;sourceType=sa]Az.Reservations,0.13.0
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceGraph.1.0.0.zip;sourceType=sa]Az.ResourceGraph,1.0.0
@@ -58,7 +58,7 @@ pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Subscription.0.11.1.zip;sourceType=sa]Az.Subscription,0.11.1
 pac58,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Support.2.0.0.zip;sourceType=sa]Az.Support,2.0.0
 pac59,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Synapse.3.0.10.zip;sourceType=sa]Az.Synapse,3.0.10
-pac60,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Terraform.0.1.0.zip;sourceType=sa]Az.Terraform,0.1.0
+pac60,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Terraform.0.1.1.zip;sourceType=sa]Az.Terraform,0.1.1
 pac61,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.TimeSeriesInsights.0.2.2.zip;sourceType=sa]Az.TimeSeriesInsights,0.2.2
 pac62,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.TrafficManager.1.2.2.zip;sourceType=sa]Az.TrafficManager,1.2.2
 pac63,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.VMware.0.7.1.zip;sourceType=sa]Az.VMware,0.7.1
