@@ -551,7 +551,6 @@ function Set-AzConnectedKubernetes {
                 -and ((-not ([string]::IsNullOrEmpty($ProxyCert)))) `
                 -and ($PSBoundParameters.ContainsKey('ConfigurationSetting')) `
                 -and ($PSBoundParameters.ContainsKey('ConfigurationProtectedSetting')))
-
         if ($null -eq $ConfigurationSetting) {
             $ConfigurationSetting = @{}
         }
