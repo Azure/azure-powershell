@@ -18,6 +18,222 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+[CmdletOutputBreakingChangeWithVersion(typeof(PSCluster), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmInstanceCount", "VmImage", "MaxUnusedVersionsToKeep"})]
+[Cmdlet(VerbsCommon.Add, "Add-AzServiceFabricClientCertificate"), OutputType(typeof(PSCluster))]
+public class AddAzureRmServiceFabricClientCertificate : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSManagedNodeType), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmManagedIdentity", "VmSecrets", "VmExtensions", "DataDiskSizeGB", "VmInstanceCount", "VmSize", "VmImagePublisher",
+    "VmImageOffer", "VmImageSku", "VmImageVersion"})]
+[Cmdlet(VerbsCommon.Add, "Add-AzServiceFabricManagedNodeTypeVMExtension"), OutputType(typeof(PSManagedNodeType))]
+public class AddAzServiceFabricManagedNodeTypeVMExtension : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSManagedNodeType), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmManagedIdentity", "VmSecrets", "VmExtensions", "DataDiskSizeGB", "VmInstanceCount", "VmSize", "VmImagePublisher",
+    "VmImageOffer", "VmImageSku", "VmImageVersion"})]
+[Cmdlet(VerbsCommon.Add, "Add-AzServiceFabricManagedNodeTypeVMExtension"), OutputType(typeof(PSManagedNodeType))]
+public class AddAzServiceFabricManagedNodeTypeVMExtension : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSCluster), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmImage"})]
+[Cmdlet(VerbsCommon.Add, "Add-AzServiceFabricNode"), OutputType(typeof(PSCluster))]
+public class AddAzureRmServiceFabricNode : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSCluster), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmImage"})]
+[Cmdlet(VerbsCommon.Add, "Add-AzServiceFabricNodeType"), OutputType(typeof(PSCluster))]
+public class AddAzureRmServiceFabricNodeType : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSCluster), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmImage"})]
+[Cmdlet(VerbsCommon.Get, "Get-AzServiceFabricCluster"), OutputType(typeof(PSCluster))]
+public class GetAzureRmServiceFabricCluster : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSManagedNodeType), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmManagedIdentity", "VmSecrets", "VmExtensions", "DataDiskSizeGB", "VmInstanceCount", "VmSize", "VmImagePublisher",
+    "VmImageOffer", "VmImageSku", "VmImageVersion"})]
+[Cmdlet(VerbsCommon.Get, "Get-AzServiceFabricManagedNodeType"), OutputType(typeof(PSManagedNodeType))]
+public class GetAzServiceFabricManagedNodeType : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSCluster), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmImage"})]
+[Cmdlet(VerbsCommon.New, "New-AzServiceFabricCluster"), OutputType(typeof(PSCluster))]
+public class NewAzureRmServiceFabricCluster : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSManagedNodeType), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmManagedIdentity", "VmSecrets", "VmExtensions", "DataDiskSizeGB", "VmInstanceCount", "VmSize", "VmImagePublisher",
+    "VmImageOffer", "VmImageSku", "VmImageVersion"})]
+[Cmdlet(VerbsCommon.New, "New-AzServiceFabricManagedNodeType"), OutputType(typeof(PSManagedNodeType))]
+public class NewAzServiceFabricManagedNodeType : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSManagedNodeType), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmManagedIdentity", "VmSecrets", "VmExtensions", "DataDiskSizeGB", "VmInstanceCount", "VmSize", "VmImagePublisher",
+    "VmImageOffer", "VmImageSku", "VmImageVersion"})]
+[Cmdlet(VerbsCommon.Remove, "Remove-AzServiceFabricManagedNodeType"), OutputType(typeof(PSManagedNodeType))]
+public class RemoveAzServiceFabricManagedNodeType : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSManagedNodeType), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmManagedIdentity", "VmSecrets", "VmExtensions", "DataDiskSizeGB", "VmInstanceCount", "VmSize", "VmImagePublisher",
+    "VmImageOffer", "VmImageSku", "VmImageVersion"})]
+[Cmdlet(VerbsCommon.Remove, "Remove-AzServiceFabricManagedNodeTypeVMExtension"), OutputType(typeof(PSManagedNodeType))]
+public class RemoveAzServiceFabricManagedNodeTypeVMExtension : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSCluster), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmImage"})]
+[Cmdlet(VerbsCommon.Remove, "Remove-AzServiceFabricNode"), OutputType(typeof(PSCluster))]
+public class RemoveAzureRmServiceFabricNode : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSCluster), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmImage"})]
+[Cmdlet(VerbsCommon.Remove, "Remove-AzServiceFabricNodeType"), OutputType(typeof(PSCluster))]
+public class RemoveAzureRmServiceFabricNodeType : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSManagedNodeType), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmImage"})]
+[Cmdlet(VerbsCommon.Remove, "Remove-AzServiceFabricSetting"), OutputType(typeof(PSManagedNodeType))]
+public class RemoveAzureRmServiceFabricSetting : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSManagedNodeType), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmManagedIdentity", "VmSecrets", "VmExtensions", "DataDiskSizeGB", "VmInstanceCount", "VmSize", "VmImagePublisher",
+    "VmImageOffer", "VmImageSku", "VmImageVersion"})]
+[Cmdlet(VerbsCommon.Set, "Set-AzServiceFabricManagedNodeType"), OutputType(typeof(PSManagedNodeType))]
+public class SetAzServiceFabricManagedNodeType : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSCluster), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmImage"})]
+[Cmdlet(VerbsCommon.Set, "Set-AzServiceFabricSetting"), OutputType(typeof(PSCluster))]
+public class SetAzureRmServiceFabricSetting : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSCluster), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmImage"})]
+[Cmdlet(VerbsCommon.Set, "Set-AzServiceFabricUpgradeType"), OutputType(typeof(PSCluster))]
+public class SetAzureRmServiceFabricUpgradeType : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSCluster), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmImage"})]
+[Cmdlet(VerbsCommon.Update, "Update-AzServiceFabricDurability"), OutputType(typeof(PSCluster))]
+public class UpdateAzureRmServiceFabricDurability : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSCluster), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmImage"})]
+[Cmdlet(VerbsCommon.Update, "Update-AzServiceFabricNodeType"), OutputType(typeof(PSCluster))]
+public class UpdateAzServiceFabricNodeType : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSCluster), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmImage"})]
+[Cmdlet(VerbsCommon.Update, "Update-AzServiceFabricReliability"), OutputType(typeof(PSCluster))]
+public class UpdateAzureRmServiceFabricReliability : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+
+[CmdletOutputBreakingChangeWithVersion(typeof(PSCluster), "3.3.4", "4.0.0", DeprecatedOutputProperties = new String[] {"VmImage"})]
+[Cmdlet(VerbsCommon.Update, "Update-AzServiceFabricVmImage"), OutputType(typeof(PSCluster))]
+public class UpdateAzServiceFabricVmImage : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
 
 ## Version 3.3.4
 * Fixed secrets exposure in example documentation.
