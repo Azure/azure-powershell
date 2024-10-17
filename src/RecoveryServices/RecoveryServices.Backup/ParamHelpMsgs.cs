@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string IdentityType = "The MSI type assigned to Recovery Services Vault. Input 'None' if MSI has to be removed."; 
             public const string UseSecondaryReg = "Filters from Secondary Region for Cross Region Restore";
             public const string HybridBackupSecurity = "Optional flag ($true/$false) to disable/enable security setting for hybrid backups against accidental deletes and add additional layer of authentication for critical operations. Provide $false to enable the security.";
+            public const string BackupTierType = "Backup tier for the resource. The current supported values are Snapshot, VaultStandard";
         }
 
         internal static class Policy
