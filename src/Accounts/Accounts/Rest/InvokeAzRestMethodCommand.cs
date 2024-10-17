@@ -11,7 +11,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
@@ -234,16 +233,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 original-uri - poll until terminal state, a final GET will be done at the original resource URI. Default behavior for PUT operations.
                 operation-location - poll until terminal state, skip any final GET on Location or Origin-URI and use the final response at the uri pointed to by the header Operation-Location
             */
-
-            /*
-             * Priority sequence => 
-             * PUT/PATCH => originalUri
-             * 
-             * POST => operation-location
-             * 
-             * DELETE => Location from first response/ None
-             * 
-             */
 
             if(!string.IsNullOrEmpty(FinalResultFrom))
             {
