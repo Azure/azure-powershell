@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added support for new environment
+
+## Version 2.4.1
+* added support for new environment
 
 ## Version 2.4.0
 * Upgraded API version to 2024-04-01
