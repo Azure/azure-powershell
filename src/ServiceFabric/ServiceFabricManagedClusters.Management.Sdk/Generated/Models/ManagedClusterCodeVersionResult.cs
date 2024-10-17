@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="osType">Cluster operating system, the default will be Windows
-        /// Possible values include: 'Windows'</param>
+        /// Possible values include: &#39;Windows&#39;</param>
 
         /// <param name="clusterCodeVersion">The Service Fabric runtime version of the cluster.
         /// </param>

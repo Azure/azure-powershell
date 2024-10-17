@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated ServiceFabric.Management.Sdk to 2023-11-01-preview
+* Updated ServiceFabricManagedClusters.Sdk to 2024-04-01
 
 ## Version 3.3.4
 * Fixed secrets exposure in example documentation.

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
 
         /// <param name="weight">The service load metric relative weight, compared to other metrics
         /// configured for this service, as a number.
-        /// Possible values include: 'Zero', 'Low', 'Medium', 'High'</param>
+        /// Possible values include: &#39;Zero&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;</param>
 
         /// <param name="primaryDefaultLoad">Used only for Stateful services. The default amount of load, as a number,
         /// that this service creates for this metric when it is a Primary replica.
