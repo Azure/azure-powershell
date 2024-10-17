@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Get-AzDnsResolverDnsSecurityRule",
+      "name": "Get-AzDnsResolverPolicyDnsSecurityRule",
       "description": "Gets properties of a DNS security rule for a DNS resolver policy.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverdnssecurityrule"
+          "url": "https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverpolicydnssecurityrule"
         },
         "parameterSets": [
           {
@@ -49,12 +49,12 @@
       ]
     },
     {
-      "name": "Remove-AzDnsResolverDnsSecurityRule",
+      "name": "Remove-AzDnsResolverPolicyDnsSecurityRule",
       "description": "Deletes a DNS security rule for a DNS resolver policy.\nWARNING: This operation cannot be undone.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverdnssecurityrule"
+          "url": "https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverpolicydnssecurityrule"
         },
         "parameterSets": [
           {

@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Get-AzDnsForwardingRulesetDnsResolverPolicyVirtualNetworkLink",
+      "name": "Get-AzDnsResolverPolicyVirtualNetworkLink",
       "description": "Gets properties of a DNS resolver policy virtual network link.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsforwardingrulesetdnsresolverpolicyvirtualnetworklink"
+          "url": "https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverpolicyvirtualnetworklink"
         },
         "parameterSets": [
           {
@@ -49,12 +49,12 @@
       ]
     },
     {
-      "name": "Remove-AzDnsForwardingRulesetDnsResolverPolicyVirtualNetworkLink",
+      "name": "Remove-AzDnsResolverPolicyVirtualNetworkLink",
       "description": "Deletes a DNS resolver policy virtual network link.\nWARNING: This operation cannot be undone.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/virtualNetworkLinks/{dnsResolverPolicyVirtualNetworkLinkName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsforwardingrulesetdnsresolverpolicyvirtualnetworklink"
+          "url": "https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverpolicyvirtualnetworklink"
         },
         "parameterSets": [
           {

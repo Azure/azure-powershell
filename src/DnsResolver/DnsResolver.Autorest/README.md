@@ -89,7 +89,23 @@ use-extension:
 
 directive:
   - where:
-      subject: ForwardingRule|VirtualNetworkLink
+      subject: DnsResolverPolicyVirtualNetworkLink
+    set:
+      subject-prefix: ''
+  - where:
+      subject: DnsResolverPolicy
+    set:
+      subject-prefix: ''
+  - where:
+      subject: DnsResolverDomainList
+    set:
+      subject-prefix: ''
+  - where:
+      subject: DnsSecurityRule
+    set:
+      subject-prefix: 'DnsResolverPolicy'
+  - where:
+      subject: ^(ForwardingRule|VirtualNetworkLink)$
     set:
       subject-prefix: DnsForwardingRuleset
   - where:
