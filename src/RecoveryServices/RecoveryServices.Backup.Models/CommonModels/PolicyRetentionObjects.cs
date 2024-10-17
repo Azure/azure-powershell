@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Specifies the snapshot schedule object
         /// </summary>
-        public SnapshotRetentionSchedule SnapshotSchedule { get; set; }
+        public int SnapshotRetentionInDays { get; set; }
 
         /// <summary>
         /// Specifies the daily schedule object

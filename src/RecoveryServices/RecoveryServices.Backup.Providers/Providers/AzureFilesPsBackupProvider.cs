@@ -399,9 +399,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 null;
 
             CmdletModel.ScheduleRunType ScheduleRunFrequency = (schedulePolicy != null) ? ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleRunFrequency :
-                ((policy != null) ? ((CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy).ScheduleRunFrequency : 0);            
+                ((policy != null) ? ((CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy).ScheduleRunFrequency : 0);
 
-            // convert Window start time to UTC as expected
+            // Todo: Null Checks - ianna
+            CmdletModel.LongTermRetentionPolicy vaultedRetentionPolicy = (CmdletModel.LongTermRetentionPolicy)ProviderData[PolicyParams.RetentionPolicy];
+            CmdletModel.BackupTierType backupTier = vaultedRetentionPolicy.IsVaultTierEnabled ? BackupTierType.VaultStandard: BackupTierType.Snapshot;
+
             if (schedulePolicy != null && ScheduleRunFrequency == CmdletModel.ScheduleRunType.Hourly &&
                 ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleWindowStartTime != null)
             {
@@ -468,6 +471,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
 
                 azureFileShareProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
+
+                if (backupTier == CmdletModel.BackupTierType.VaultStandard)
+                {
+                    int SnapshotRetentionInDays = vaultedRetentionPolicy.SnapshotRetentionInDays;
+                    azureFileShareProtectionPolicy.VaultRetentionPolicy = new VaultRetentionPolicy(azureFileShareProtectionPolicy.RetentionPolicy, SnapshotRetentionInDays);
+                    azureFileShareProtectionPolicy.RetentionPolicy = null;
+                }
+
                 serviceClientRequest.Properties = azureFileShareProtectionPolicy;
             }
             else
@@ -515,7 +526,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
 
                 azureFileShareProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(workloadType.ToString());
-                
+
+                if (backupTier == CmdletModel.BackupTierType.VaultStandard)
+                {
+                    int SnapshotRetentionInDays = vaultedRetentionPolicy.SnapshotRetentionInDays;
+                    azureFileShareProtectionPolicy.VaultRetentionPolicy = new VaultRetentionPolicy(azureFileShareProtectionPolicy.RetentionPolicy, SnapshotRetentionInDays);
+                    azureFileShareProtectionPolicy.RetentionPolicy = null;
+                }
+
                 serviceClientRequest.Properties = azureFileShareProtectionPolicy;
             }
 
@@ -778,11 +796,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (backupTier == CmdletModel.BackupTierType.VaultStandard)
             {
                 defaultRetention.IsVaultTierEnabled = true;
-                defaultRetention.SnapshotSchedule = new CmdletModel.SnapshotRetentionSchedule();
-                defaultRetention.SnapshotSchedule.DurationCountInDays = defaultSnapshotRetentionInDays;
-                defaultRetention.SnapshotSchedule.BackupManagementType = backupManagementType;
-                defaultRetention.SnapshotSchedule.RetentionTimes = new List<DateTime>();
-                defaultRetention.SnapshotSchedule.RetentionTimes.Add(retentionTime);
+                defaultRetention.SnapshotRetentionInDays = defaultSnapshotRetentionInDays;
             }
 
             //Daily Retention policy
