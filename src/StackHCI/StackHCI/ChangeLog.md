@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.4.1
 * added support for new environment
 
 ## Version 2.4.0
