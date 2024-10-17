@@ -782,7 +782,6 @@ function Set-AzConnectedKubernetes {
                 $userValuesLocation = Join-Path $env:USERPROFILE ".azure\userValues.txt"
 
                 helm get values azure-arc `
-                    --debug `
                     --namespace $ReleaseInstallNamespace `
                     --kubeconfig $KubeConfig `
                     --kube-context $KubeContext > $userValuesLocation
@@ -800,7 +799,6 @@ function Set-AzConnectedKubernetes {
         if ($PSCmdlet.ShouldProcess($ClusterName, "Update Kubernetes cluster with Azure Arc")) {
             try {
                 helm upgrade `
-                    --debug `
                     azure-arc `
                     $ChartPath `
                     --namespace $ReleaseInstallNamespace `
