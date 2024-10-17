@@ -21,7 +21,6 @@
 ## Upcoming Release
 * Added parameter `-Tag` to cmdlet `New-AzHDInsightCluster` to set cluster tags.
 * Changed the type of parameter `-IdentityId` in command `Update-AzHDInsightCluster` from `string`  to `string[]`.
-* Fixed a bug: Error occurs when setting the same assigned identity for storage and esp configurations.
 
 ## Version 6.2.1
 * Fixed a bug: Error occurs when setting the same assigned identity for storage and esp configurations.
