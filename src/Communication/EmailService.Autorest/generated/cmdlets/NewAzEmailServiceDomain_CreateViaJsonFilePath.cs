@@ -11,14 +11,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
     using System;
 
     /// <summary>
-    /// Add a new Domains resource under the parent EmailService resource or update an existing Domains resource.
+    /// Add a new Domains resource under the parent EmailService resource or create an existing Domains resource.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEmailServiceDomain_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"Add a new Domains resource under the parent EmailService resource or update an existing Domains resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"Add a new Domains resource under the parent EmailService resource or create an existing Domains resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}", ApiVersion = "2023-06-01-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.NotSuggestDefaultParameterSet]

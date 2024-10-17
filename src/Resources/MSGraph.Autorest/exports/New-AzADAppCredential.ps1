@@ -356,6 +356,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
+    # Custom Key Identifier.
+    # The format should be base64: `$Bytes=[System.Text.Encoding]::Unicode.GetBytes($key);$key=[Convert]::ToBase64String($Bytes)`
     ${CustomKeyIdentifier},
 
     [Parameter(ParameterSetName='ApplicationObjectIdWithPasswordCredentialParameterSet', Mandatory)]

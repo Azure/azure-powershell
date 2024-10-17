@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridTopic
 
 ## SYNOPSIS
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously update a new topic with the specified parameters.
 
 ## SYNTAX
 
@@ -21,7 +21,7 @@ Update-AzEventGridTopic -Name <String> -ResourceGroupName <String> [-Subscriptio
  [-InboundIPRule <IInboundIPRule[]>] [-InputSchema <String>] [-Kind <String>] [-Location <String>]
  [-MinimumTlsVersionAllowed <String>] [-PublicNetworkAccess <String>] [-SkuName <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -32,12 +32,12 @@ Update-AzEventGridTopic -InputObject <IEventGridIdentity> [-DataResidencyBoundar
  [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-InboundIPRule <IInboundIPRule[]>]
  [-InputSchema <String>] [-Kind <String>] [-Location <String>] [-MinimumTlsVersionAllowed <String>]
  [-PublicNetworkAccess <String>] [-SkuName <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously update a new topic with the specified parameters.
 
 ## EXAMPLES
 
@@ -369,6 +369,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

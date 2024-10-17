@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             PrivateLinkServiceConnectionState state = new PrivateLinkServiceConnectionState(status: status, description: description);
 
-            BatchManagementClient.PrivateEndpointConnection.Update(resourceGroup, accountName, name, default, state);
+            BatchManagementClient.PrivateEndpointConnection.Update(resourceGroup, accountName, name, state, default);
         }
 
         internal IEnumerable<PrivateEndpointConnection> ListAllPrivateEndpointConnections(string resourceGroup, string accountName, int? maxResults = null)
