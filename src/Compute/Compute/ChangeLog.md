@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Added optional parameters `-SecurityPostureId` and `-SecurityPostureExcludeExtension` to cmdlets `Update-AzVmss`, `New-AzVmss` and `New-AzVmssConfig`.
+* Added optional parameters `-SecurityPostureId` and `-SecurityPostureExcludeExtension` to cmdlets `New-AzVmss` and `New-AzVmssConfig`.
 
 ## Version 8.4.0
 * Added `SkuProfileVmSize` and `SkuProfileAllocationStrategy` parameters to `New-AzVmss`, `New-AzVmssConfig`, and `Update-AzVmss` cmdlets for VMSS Instance Mix operations.

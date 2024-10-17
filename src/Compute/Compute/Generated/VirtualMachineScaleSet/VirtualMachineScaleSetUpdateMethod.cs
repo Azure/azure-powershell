@@ -423,18 +423,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest")]
-        public string SecurityPostureId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "List of virtual machine extensions to exclude when applying the security posture.")]
-        public string[] SecurityPostureExcludeExtension { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "Array of VM sizes for the scale set.",
             ValueFromPipelineByPropertyName = true)]
         public string[] SkuProfileVmSize { get; set; }
@@ -458,39 +446,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void BuildPatchObject()
         {
-            if (this.IsParameterBound(c => c.SecurityPostureId)){
-                if (this.VirtualMachineScaleSetUpdate == null)
-                {
-                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
-                }
-                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
-                }
-                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityPostureReference == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityPostureReference = new SecurityPostureReferenceUpdate();
-                }
-                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityPostureReference.Id = this.SecurityPostureId;
-            }
-
-            if (this.IsParameterBound(c => c.SecurityPostureExcludeExtension))
-            {
-                if (this.VirtualMachineScaleSetUpdate == null)
-                {
-                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
-                }
-                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
-                }
-                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityPostureReference == null)
-                {
-                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityPostureReference = new SecurityPostureReferenceUpdate();
-                }
-                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.SecurityPostureReference.ExcludeExtensions = this.SecurityPostureExcludeExtension;
-            }
-
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -1503,32 +1458,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void BuildPutObject()
         {
-            if (this.IsParameterBound(c => c.SecurityPostureId))
-            {
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
-                }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityPostureReference == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityPostureReference = new SecurityPostureReference();
-                }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityPostureReference.Id = this.SecurityPostureId;
-            }
-
-            if (this.IsParameterBound(c => c.SecurityPostureExcludeExtension))
-            {
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
-                }
-                if (this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityPostureReference == null)
-                {
-                    this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityPostureReference = new SecurityPostureReference();
-                }
-                this.VirtualMachineScaleSet.VirtualMachineProfile.SecurityPostureReference.ExcludeExtensions = this.SecurityPostureExcludeExtension;
-            }
-
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
             {
                 if (this.VirtualMachineScaleSet.UpgradePolicy == null)

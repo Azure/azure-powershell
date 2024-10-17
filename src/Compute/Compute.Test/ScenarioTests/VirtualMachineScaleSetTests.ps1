@@ -5550,6 +5550,10 @@ function Test-SecurityPostureFeature
         # verify
         Assert-AreEqual $vmss.VirtualMAchineProfile.SecurityPostureReference.Id $SecurityPostureId
         Assert-AreEqual $vmss.virtualMachineProfile.SecurityPostureReference.ExcludeExtensions.count 1
+
+        # Test New-AzVmssConfig 
+
+        # Verify 
     }
     finally
     {
