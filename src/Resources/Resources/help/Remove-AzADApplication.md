@@ -15,25 +15,25 @@ Deletes entity from applications
 ### ObjectIdParameterSet (Default)
 ```
 Remove-AzADApplication -ObjectId <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
 Remove-AzADApplication -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationDisplayNameParameterSet
 ```
 Remove-AzADApplication -DisplayName <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Remove-AzADApplication -InputObject <IMicrosoftGraphApplication> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,6 +148,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -199,7 +214,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IMicrosoftGraphApplication>`: The application object, could be used as pipeline input.
+INPUTOBJECT <IMicrosoftGraphApplication>: The application object, could be used as pipeline input.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory
@@ -258,9 +273,9 @@ INPUTOBJECT `<IMicrosoftGraphApplication>`: The application object, could be use
       - `[Branding <IMicrosoftGraphOrganizationalBranding>]`: organizationalBranding
         - `[(Any) <Object>]`: This indicates any property can be added to this object.
         - `[BackgroundColor <String>]`: Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
-        - `[BackgroundImage <Byte[]>]`: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+        - `[BackgroundImage <Byte[]>]`: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
         - `[BackgroundImageRelativeUrl <String>]`: A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
-        - `[BannerLogo <Byte[]>]`: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+        - `[BannerLogo <Byte[]>]`: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
         - `[BannerLogoRelativeUrl <String>]`: A relative url for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
         - `[CdnList <String[]>]`: A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
         - `[SignInPageText <String>]`: Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
@@ -270,9 +285,9 @@ INPUTOBJECT `<IMicrosoftGraphApplication>`: The application object, could be use
         - `[Id <String>]`: The unique idenfier for an entity. Read-only.
         - `[Localization <IMicrosoftGraphOrganizationalBrandingLocalization[]>]`: Add different branding based on a locale.
           - `[BackgroundColor <String>]`: Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
-          - `[BackgroundImage <Byte[]>]`: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+          - `[BackgroundImage <Byte[]>]`: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
           - `[BackgroundImageRelativeUrl <String>]`: A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
-          - `[BannerLogo <Byte[]>]`: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+          - `[BannerLogo <Byte[]>]`: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
           - `[BannerLogoRelativeUrl <String>]`: A relative url for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
           - `[CdnList <String[]>]`: A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
           - `[SignInPageText <String>]`: Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
@@ -381,6 +396,7 @@ INPUTOBJECT `<IMicrosoftGraphApplication>`: The application object, could be use
           - `[Id <String>]`: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
           - `[Type <String>]`: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
         - `[ResourceAppId <String>]`: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+      - `[ServiceManagementReference <String>]`: References application or service contact information from a Service or Asset Management database. Nullable.
       - `[SignInAudience <String>]`: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
       - `[Spa <IMicrosoftGraphSpaApplication>]`: spaApplication
         - `[(Any) <Object>]`: This indicates any property can be added to this object.
@@ -435,6 +451,7 @@ INPUTOBJECT `<IMicrosoftGraphApplication>`: The application object, could be use
   - `[PasswordCredentials <IMicrosoftGraphPasswordCredential[]>]`: The collection of password credentials associated with the application. Not nullable.
   - `[PublicClient <IMicrosoftGraphPublicClientApplication>]`: publicClientApplication
   - `[RequiredResourceAccess <IMicrosoftGraphRequiredResourceAccess[]>]`: Specifies the resources that the application needs to access. This property also specifies the set of OAuth permission scopes and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. Not nullable. Supports $filter (eq, NOT, ge, le).
+  - `[ServiceManagementReference <String>]`: References application or service contact information from a Service or Asset Management database. Nullable.
   - `[SignInAudience <String>]`: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
   - `[Spa <IMicrosoftGraphSpaApplication>]`: spaApplication
   - `[Tag <String[]>]`: Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).
@@ -444,23 +461,5 @@ INPUTOBJECT `<IMicrosoftGraphApplication>`: The application object, could be use
   - `[Web <IMicrosoftGraphWebApplication>]`: webApplication
 
 ## RELATED LINKS
-
-## RELATED LINKS
-
-
-## RELATED LINKS
-
-
-## RELATED LINKS
-
-
-## RELATED LINKS
-
-
-## RELATED LINKS
-
-
-## RELATED LINKS
-
 
 ## RELATED LINKS

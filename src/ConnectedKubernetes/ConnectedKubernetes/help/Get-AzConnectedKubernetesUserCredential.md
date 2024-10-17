@@ -16,14 +16,14 @@ Gets cluster user credentials of the connected cluster with a specified resource
 ```
 Get-AzConnectedKubernetesUserCredential -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -AuthenticationMethod <AuthenticationMethod> [-ClientProxy]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzConnectedKubernetesUserCredential -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -Property <IListClusterUserCredentialProperties> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,12 +130,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Property
 .
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IListClusterUserCredentialProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IListClusterUserCredentialProperties
 Parameter Sets: List
 Aliases:
 
@@ -213,11 +228,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IListClusterUserCredentialProperties
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IListClusterUserCredentialProperties
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ICredentialResults
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ICredentialResults
 
 ## NOTES
 

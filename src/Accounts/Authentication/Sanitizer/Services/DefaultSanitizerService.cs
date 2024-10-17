@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Security.Utilities;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
 {
@@ -44,53 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
             { "Microsoft.Azure.Storage.File.CloudFileDirectory", new[] { "Parent" } },
         };
 
-        private static readonly IEnumerable<string> SensitiveDataPatterns = new List<string>()
-        {
-            // AAD client app, most recent two versions.
-            @"\b" // pre-match
-          + @"[0-9A-Za-z-_~.]{3}7Q~[0-9A-Za-z-_~.]{31}\b|\b[0-9A-Za-z-_~.]{3}8Q~[0-9A-Za-z-_~.]{34}" // match
-          + @"\b", // post-match
-            
-            // Prominent Azure provider 512-bit symmetric keys.
-            @"\b" // pre-match
-          + @"[0-9A-Za-z+/]{76}(APIM|ACDb|\+(ABa|AMC|ASt))[0-9A-Za-z+/]{5}[AQgw]==" // match
-          + @"", // post-match
-
-            // Prominent Azure provider 256-bit symmetric keys.
-            @"\b" // pre-match
-          + @"[0-9A-Za-z+/]{33}(AIoT|\+(ASb|AEh|ARm))[A-P][0-9A-Za-z+/]{5}=" // match
-          + @"", // post-match
-            
-            // Azure Function key.
-            @"\b" // pre-match
-          + @"[0-9A-Za-z_\-]{44}AzFu[0-9A-Za-z\-_]{5}[AQgw]==" // match
-          + @"", // post-match
-
-            // Azure Search keys.
-            @"\b" // pre-match
-          + @"[0-9A-Za-z]{42}AzSe[A-D][0-9A-Za-z]{5}" // match
-          + @"\b", // post-match
-            
-            // Azure Container Registry keys.
-            @"\b" // pre-match
-          + @"[0-9A-Za-z+/]{42}\+ACR[A-D][0-9A-Za-z+/]{5}" // match
-          + @"\b", // post-match
-            
-            // Azure Cache for Redis keys.
-            @"\b" // pre-match
-          + @"[0-9A-Za-z]{33}AzCa[A-P][0-9A-Za-z]{5}=" // match
-          + @"", // post-match
-            
-            // NuGet API keys.
-            @"\b" // pre-match
-          + @"oy2[a-p][0-9a-z]{15}[aq][0-9a-z]{11}[eu][bdfhjlnprtvxz357][a-p][0-9a-z]{11}[aeimquy4]" // match
-          + @"\b", // post-match
-            
-            // NPM author keys.
-            @"\b" // pre-match
-          + @"npm_[0-9A-Za-z]{36}" // match
-          + @"\b", // post-match
-        };
+        private readonly SecretMasker _secretMasker = new SecretMasker(WellKnownRegexPatterns.HighConfidenceMicrosoftSecurityModels, generateCorrelatingIds: true);
 
         public bool TrySanitizeData(string data, out string sanitizedData)
         {
@@ -98,13 +53,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
 
             if (!string.IsNullOrWhiteSpace(data))
             {
-                foreach (var pattern in SensitiveDataPatterns)
-                {
-                    if (Regex.IsMatch(data, pattern))
-                    {
-                        return true;
-                    }
-                }
+                var detections = _secretMasker.DetectSecrets(data);
+                return detections.Any();
             }
 
             return false;

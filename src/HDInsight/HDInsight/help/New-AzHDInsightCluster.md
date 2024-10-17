@@ -632,16 +632,13 @@ $storageAccountResourceId = "yourstorageaccountresourceid"
 $storageManagedIdentity = "yourstorageusermanagedidentity"
 $storageFileSystem = "filesystem01"
 $storageAccountType = "AzureDataLakeStorageGen2"
-
 # Cluster configuration info
 $location = "East US 2"
 $clusterResourceGroupName = "Group"
 $clusterName = "your-hadoop-002"
 $clusterCreds = Get-Credential
-
 # If the cluster's resource group doesn't exist yet, run:
 # New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
-
 # ESP configuration
 $domainResourceId = "your Azure AD Domin Service resource id"
 $domainUser = "yourdomainuser"
@@ -649,15 +646,12 @@ $domainPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $domainCredential = New-Object System.Management.Automation.PSCredential($domainUser, $domainPassword)
 $clusterUserGroupDns = "dominusergroup"
 $ldapUrls = "ldaps://{your domain name}:636"
-
 $clusterTier = "Premium"
 $vnetId = "yourvnetid"
 $subnetName = "yoursubnetname"
 $assignedIdentity = "your user managed assigned identity resourcee id"
-
 #Create security profile
 $config= New-AzHDInsightClusterConfig|Add-AzHDInsightSecurityProfile -DomainResourceId $domainResourceId -DomainUserCredential $domainCredential -LdapsUrls $ldapUrls -ClusterUsersGroupDNs $clusterUserGroupDns
-
 # Create the cluster
 New-AzHDInsightCluster `
     -ClusterTier $clusterTier `

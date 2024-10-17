@@ -61,6 +61,214 @@ namespace Microsoft.Azure.Management.Network
             (await operations.ResetConnectionWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Lists all shared keys of VpnLink connection specified.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ConnectionSharedKeyResult> GetAllSharedKeys(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
+        {
+                return ((IVpnLinkConnectionsOperations)operations).GetAllSharedKeysAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all shared keys of VpnLink connection specified.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConnectionSharedKeyResult>> GetAllSharedKeysAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetAllSharedKeysWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the shared key of VpnLink connection specified.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        public static ConnectionSharedKeyResult GetDefaultSharedKey(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
+        {
+                return ((IVpnLinkConnectionsOperations)operations).GetDefaultSharedKeyAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the shared key of VpnLink connection specified.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectionSharedKeyResult> GetDefaultSharedKeyAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetDefaultSharedKeyWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Sets or auto generates the shared key based on the user input. If users
+        /// give a shared key value, it does the set operation. If key length is given,
+        /// the operation creates a random key of the pre-defined length.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the VpnGateway.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        public static ConnectionSharedKeyResult SetOrInitDefaultSharedKey(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, ConnectionSharedKeyResult connectionSharedKeyParameters)
+        {
+                return ((IVpnLinkConnectionsOperations)operations).SetOrInitDefaultSharedKeyAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, connectionSharedKeyParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Sets or auto generates the shared key based on the user input. If users
+        /// give a shared key value, it does the set operation. If key length is given,
+        /// the operation creates a random key of the pre-defined length.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the VpnGateway.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectionSharedKeyResult> SetOrInitDefaultSharedKeyAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, ConnectionSharedKeyResult connectionSharedKeyParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.SetOrInitDefaultSharedKeyWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, connectionSharedKeyParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Gets the value of the shared key of VpnLink connection specified.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        public static ConnectionSharedKeyResult ListDefaultSharedKey(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName)
+        {
+                return ((IVpnLinkConnectionsOperations)operations).ListDefaultSharedKeyAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets the value of the shared key of VpnLink connection specified.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the vpn connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectionSharedKeyResult> ListDefaultSharedKeyAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.ListDefaultSharedKeyWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Lists IKE Security Associations for Vpn Site Link Connection in the
         /// specified resource group.
         /// </summary>
@@ -209,6 +417,61 @@ namespace Microsoft.Azure.Management.Network
             (await operations.BeginResetConnectionWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Sets or auto generates the shared key based on the user input. If users
+        /// give a shared key value, it does the set operation. If key length is given,
+        /// the operation creates a random key of the pre-defined length.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the VpnGateway.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        public static ConnectionSharedKeyResult BeginSetOrInitDefaultSharedKey(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, ConnectionSharedKeyResult connectionSharedKeyParameters)
+        {
+                return ((IVpnLinkConnectionsOperations)operations).BeginSetOrInitDefaultSharedKeyAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, connectionSharedKeyParameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Sets or auto generates the shared key based on the user input. If users
+        /// give a shared key value, it does the set operation. If key length is given,
+        /// the operation creates a random key of the pre-defined length.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The resource group name of the VpnGateway.
+        /// </param>
+        /// <param name='gatewayName'>
+        /// The name of the gateway.
+        /// </param>
+        /// <param name='connectionName'>
+        /// The name of the connection.
+        /// </param>
+        /// <param name='linkConnectionName'>
+        /// The name of the vpn link connection.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ConnectionSharedKeyResult> BeginSetOrInitDefaultSharedKeyAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, ConnectionSharedKeyResult connectionSharedKeyParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginSetOrInitDefaultSharedKeyWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, connectionSharedKeyParameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Lists IKE Security Associations for Vpn Site Link Connection in the
         /// specified resource group.
         /// </summary>
@@ -257,6 +520,39 @@ namespace Microsoft.Azure.Management.Network
         public static async System.Threading.Tasks.Task<string> BeginGetIkeSasAsync(this IVpnLinkConnectionsOperations operations, string resourceGroupName, string gatewayName, string connectionName, string linkConnectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.BeginGetIkeSasWithHttpMessagesAsync(resourceGroupName, gatewayName, connectionName, linkConnectionName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Lists all shared keys of VpnLink connection specified.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        public static Microsoft.Rest.Azure.IPage<ConnectionSharedKeyResult> GetAllSharedKeysNext(this IVpnLinkConnectionsOperations operations, string nextPageLink)
+        {
+                return ((IVpnLinkConnectionsOperations)operations).GetAllSharedKeysNextAsync(nextPageLink).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Lists all shared keys of VpnLink connection specified.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Microsoft.Rest.Azure.IPage<ConnectionSharedKeyResult>> GetAllSharedKeysNextAsync(this IVpnLinkConnectionsOperations operations, string nextPageLink, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.GetAllSharedKeysNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

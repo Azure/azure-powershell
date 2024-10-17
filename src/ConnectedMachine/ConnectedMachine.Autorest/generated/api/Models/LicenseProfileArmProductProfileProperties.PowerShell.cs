@@ -114,6 +114,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SubscriptionStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).SubscriptionStatus = (string) content.GetValueForProperty("SubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).SubscriptionStatus, global::System.Convert.ToString);
@@ -122,21 +126,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).ProductType = (string) content.GetValueForProperty("ProductType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).ProductType, global::System.Convert.ToString);
             }
-            if (content.Contains("BillingStartDate"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).BillingStartDate = (global::System.DateTime?) content.GetValueForProperty("BillingStartDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).BillingStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
             if (content.Contains("EnrollmentDate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).EnrollmentDate = (global::System.DateTime?) content.GetValueForProperty("EnrollmentDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).EnrollmentDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("BillingStartDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).BillingStartDate = (global::System.DateTime?) content.GetValueForProperty("BillingStartDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).BillingStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("DisenrollmentDate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).DisenrollmentDate = (global::System.DateTime?) content.GetValueForProperty("DisenrollmentDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).DisenrollmentDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
+            if (content.Contains("BillingEndDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).BillingEndDate = (global::System.DateTime?) content.GetValueForProperty("BillingEndDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).BillingEndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("ProductFeature"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).ProductFeature = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature>) content.GetValueForProperty("ProductFeature",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).ProductFeature, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeatureTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).AdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -155,6 +183,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Error, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SubscriptionStatus"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).SubscriptionStatus = (string) content.GetValueForProperty("SubscriptionStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).SubscriptionStatus, global::System.Convert.ToString);
@@ -163,21 +195,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).ProductType = (string) content.GetValueForProperty("ProductType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).ProductType, global::System.Convert.ToString);
             }
-            if (content.Contains("BillingStartDate"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).BillingStartDate = (global::System.DateTime?) content.GetValueForProperty("BillingStartDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).BillingStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
             if (content.Contains("EnrollmentDate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).EnrollmentDate = (global::System.DateTime?) content.GetValueForProperty("EnrollmentDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).EnrollmentDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("BillingStartDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).BillingStartDate = (global::System.DateTime?) content.GetValueForProperty("BillingStartDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).BillingStartDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             if (content.Contains("DisenrollmentDate"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).DisenrollmentDate = (global::System.DateTime?) content.GetValueForProperty("DisenrollmentDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).DisenrollmentDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
+            if (content.Contains("BillingEndDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).BillingEndDate = (global::System.DateTime?) content.GetValueForProperty("BillingEndDate",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).BillingEndDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             if (content.Contains("ProductFeature"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).ProductFeature = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature>) content.GetValueForProperty("ProductFeature",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).ProductFeature, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeatureTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).AdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

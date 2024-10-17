@@ -42,7 +42,7 @@ function setupEnv() {
     $env.ClusterName3  = 'ps-cache-test3-' + (RandomString -allChars $false -len 8)
     $env.ClusterName4 = 'ps-cache-test4-' + (RandomString -allChars $false -len 8)
     $env.ResourceGroupName = 'ps-redisenterprise-rg-' + (RandomString -allChars $false -len 8)
-    $env.Location = 'East US'
+    $env.Location = 'westus3'
     New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null
 
     $envFile = 'env.json'
@@ -53,6 +53,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.ResourceGroupName | Out-Null
+    Remove-AzResourceGroup -Name $env.ResourceGroupName -Force | Out-Null
 }
 

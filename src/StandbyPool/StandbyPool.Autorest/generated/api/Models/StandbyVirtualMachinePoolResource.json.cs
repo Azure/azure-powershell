@@ -102,10 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return container;
             }
             __trackedResource?.ToJson(container, serializationMode);
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
-            }
+            AddIf( null != this._property ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode) this._property.ToJson(null,serializationMode) : null, "properties" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
