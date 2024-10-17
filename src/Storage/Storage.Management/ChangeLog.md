@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added a warning for an upcoming breaking change for download blob will block input parameter -AbsoluteUri and -Context together.
+    - `Get-AzStorageBlobContent`
 
 ## Version 7.4.0
 * Added a warning for an upcoming breaking change for removing references to "Microsoft.Azure.Storage.File"
