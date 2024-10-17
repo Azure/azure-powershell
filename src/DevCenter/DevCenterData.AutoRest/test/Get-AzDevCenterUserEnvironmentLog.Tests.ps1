@@ -16,7 +16,7 @@ if (($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCenterUserEnvironme
 Describe 'Get-AzDevCenterUserEnvironmentLog' {
     It 'Get' {
         if ($Record -or $Live) {
-            Get-AzDevCenterUserEnvironmentLog -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -OperationId "4d48a4d5-7edc-437d-9bfa-30e9b4328f68" -OutFile "C:\Users\amlim\repos\testing.txt" 
+            Get-AzDevCenterUserEnvironmentLog -Endpoint $env.endpoint10 -EnvironmentName $env.envName10 -ProjectName $env.projectName10 -OperationId "4d48a4d5-7edc-437d-9bfa-30e9b4328f68"
         }
     }
 
