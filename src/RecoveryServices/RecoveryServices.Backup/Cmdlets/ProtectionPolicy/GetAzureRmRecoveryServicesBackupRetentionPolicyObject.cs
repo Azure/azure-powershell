@@ -39,11 +39,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         private const string validWorkloadTypes = "AzureVM, AzureFiles, MSSQL";
 
         /// <summary>
-        /// List of supported BackupTierTypes for this cmdlet. Used in help text creation.
-        /// </summary>
-        private const string validBackupTierTypes = "Snapshot, VaultStandard";
-
-        /// <summary>
         /// Workload type of the policy to be created.
         /// </summary>
         [Parameter(Mandatory = true, Position = 0,
@@ -71,8 +66,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Schedule run frequency for the policy. 
         /// </summary>
         [Parameter(Mandatory = false, Position = 3,
-            HelpMessage = ParamHelpMsgs.Common.BackupTierType + validBackupTierTypes)]
-        [ValidateNotNullOrEmpty]
+            HelpMessage = ParamHelpMsgs.Common.BackupTierType)]
+        [ValidateSet("Snapshot", "VaultStandard")]
         public BackupTierType BackupTier { get; set; }
 
         public override void ExecuteCmdlet()
