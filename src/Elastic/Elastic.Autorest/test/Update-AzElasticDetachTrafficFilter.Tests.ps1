@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzVMwarePrivateCloud'))
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzElasticDetachTrafficFilter'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzVMwarePrivateCloud.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzElasticDetachTrafficFilter.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzVMwarePrivateCloud'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzVMwarePrivateCloud' {
-    It 'CreateExpanded' -skip {
+Describe 'Update-AzElasticDetachTrafficFilter' {
+    It 'Update' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
