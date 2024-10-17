@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Long Running Operation Support for Invoke-AzRest command.
 * Added breaking change preannouncement for the removal of alias `Resolve-Error`. #26189
 * Integrated new detection library to expand the scope of secrets.
 
