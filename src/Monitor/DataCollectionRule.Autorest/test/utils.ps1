@@ -91,10 +91,11 @@ function setupEnv() {
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
     try {
-        $VM = Get-AzVM -ResourceGroupName $env.resourceGroup -Name $vmname -ErrorAction Stop
         Write-Host "Get created VM"
+        $VM = Get-AzVM -ResourceGroupName $env.resourceGroup -Name $vmname -ErrorAction Stop
     }
     catch {
+        Write-Host "Create test VM"
         $VM = New-AzVM -ResourceGroupName $env.resourceGroup -Location $env.Location -Name $vmname -Credential $cred
     }
     $env.VMId = $VM.Id
