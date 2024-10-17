@@ -374,7 +374,7 @@ function New-AzConnectedKubernetes {
         $helmClientLocation = 'helm'
 
         #Region get release namespace
-        $ReleaseNamespaces = Get-HelmReleaseNamespaces -KubeConfig $KubeConfig -KubeContext $KubeContext
+        $ReleaseNamespaces = Get-HelmReleaseNamespace -KubeConfig $KubeConfig -KubeContext $KubeContext
         $ReleaseNamespace = $ReleaseNamespaces['ReleaseNamespace']
         $ReleaseInstallNamespace = $ReleaseNamespaces['ReleaseInstallNamespace']
 
@@ -417,7 +417,7 @@ function New-AzConnectedKubernetes {
             }
         }
 
-        $RegistryPath = Set-HelmRepositoryAndModules -KubeConfig $KubeConfig -KubeContext $KubeContext -Location $Location -ProxyCert $ProxyCert -DisableAutoUpgrade $DisableAutoUpgrade -ContainerLogPath $ContainerLogPath -CustomLocationsOid $CustomLocationsOid
+        $RegistryPath = Set-HelmModulesAndRepository -KubeConfig $KubeConfig -KubeContext $KubeContext -Location $Location
 
         # Region create RSA keys
         Write-Debug "Generating RSA keys for secure communication."
@@ -643,7 +643,11 @@ function New-AzConnectedKubernetes {
         # Convert the $Response object into a nested hashtable.
 
         Write-Debug "PUT response: $Response"
-        $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
+        # The following parameters do not exist in Powershell 5.1
+        # -AsHashTable
+        # -Depth 10
+        $Response = ConvertFrom-Json "$Response"
+        $Response = ConvertTo-Hashtable $Response
 
         # What-If processing does not create a full response so we might have
         # to create a minimal one.
@@ -660,7 +664,7 @@ function New-AzConnectedKubernetes {
         Write-Debug "PUT response: $Response"
         $ResponseStr = $Response | ConvertTo-Json -Depth 10
         Write-Debug "PUT response: $ResponseStr"
-        
+
         if ($PSCmdlet.ShouldProcess("configDP", "request Helm values")) {
             $helmValuesDp = Get-HelmValuesFromConfigDP `
                 -configDPEndpoint $configDPEndpoint `
@@ -747,15 +751,15 @@ function New-AzConnectedKubernetes {
         if ($PSCmdlet.ShouldProcess($ClusterName, "Check agent state of the connected cluster")) {
             if ($PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled') -or $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled') ) {
                 $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
-    
+
                 Write-Output "Cluster configuration is in progress..."
                 $timeout = [datetime]::Now.AddMinutes(60)
-    
+
                 while (($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Succeeded") -and ($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Failed") -and ([datetime]::Now -lt $timeout)) {
                     Start-Sleep -Seconds 30
                     $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
                 }
-    
+
                 if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
                     Write-Output "Cluster configuration succeeded."
                 }
@@ -764,7 +768,7 @@ function New-AzConnectedKubernetes {
                 }
                 else {
                     Write-Error "Cluster configuration timed out after 60 minutes."
-                }      
+                }
             }
         }
         Return $Response
