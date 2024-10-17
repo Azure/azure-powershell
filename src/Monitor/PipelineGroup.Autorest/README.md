@@ -29,7 +29,7 @@ For information on how to develop for `Az.PipelineGroup`, see [how-to.md](how-to
 ``` yaml
 commit: cf406046c304ec528a84ae1a151f3d1a647058a2
 require:
-  - $(this-folder)/../../../tools/SwaggerCI/readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/monitor/resource-manager/Microsoft.Monitor/preview/2023-10-01-preview/azuremonitor.json
 
@@ -51,7 +51,11 @@ directive:
       model-name: ^AzureMonitorWorkspace(.*)
     remove: true
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+    remove: true
+  - where:
+      verb: Set
+      subject: PipelineGroup
     remove: true
   - where:
       subject: MonitorOperation

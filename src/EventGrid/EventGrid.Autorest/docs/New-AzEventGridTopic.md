@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridTopic
 
 ## SYNOPSIS
-Asynchronously Create a new topic with the specified parameters.
+Asynchronously create a new topic with the specified parameters.
 
 ## SYNTAX
 
@@ -50,7 +50,7 @@ New-AzEventGridTopic -Name <String> -ResourceGroupName <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-Asynchronously Create a new topic with the specified parameters.
+Asynchronously create a new topic with the specified parameters.
 
 ## EXAMPLES
 

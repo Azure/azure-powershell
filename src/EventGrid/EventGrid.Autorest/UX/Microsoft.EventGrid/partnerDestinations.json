@@ -7,7 +7,7 @@
   "commands": [
     {
       "name": "Enable-AzEventGridPartnerDestination",
-      "description": "Activate a newly Activated partner destination.",
+      "description": "Activate a newly created partner destination.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerDestinations/{partnerDestinationName}/activate",
       "help": {
         "learnMore": {
@@ -25,7 +25,7 @@
       },
       "examples": [
         {
-          "description": "Activate a newly Activated partner destination.",
+          "description": "Activate a newly created partner destination.",
           "parameters": [
             {
               "name": "-Name",
