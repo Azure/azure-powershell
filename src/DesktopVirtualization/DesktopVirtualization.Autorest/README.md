@@ -108,38 +108,15 @@ directive:
     set:
       parameter-name: SessionHostsInProgress
   - where:
-      verb: Get
-      subject: AppAttachPackage
-    set:
-      preview-announcement:
-        preview-message: This cmdlet is currently in preview, behavior is subject to change.
-        estimated-ga-date: 2024-04-01
-  - where:
-      verb: Import
-      subject: AppAttachPackageInfo
-    set:
-      preview-announcement:
-        preview-message: This cmdlet is currently in preview, behavior is subject to change.
-        estimated-ga-date: 2024-04-01
-  - where:
       verb: New
-      subject: AppAttachPackage
+      subject: HostPool
     set:
       preview-announcement:
-        preview-message: This cmdlet is currently in preview, behavior is subject to change.
-        estimated-ga-date: 2024-04-01
-  - where:
-      verb: Remove
-      subject: AppAttachPackage
-    set:
-      preview-announcement:
-        preview-message: This cmdlet is currently in preview, behavior is subject to change.
-        estimated-ga-date: 2024-04-01
+        preview-message: The IdentityType property is not currently supported and will be enabled in a future update.
   - where:
       verb: Update
-      subject: AppAttachPackage
+      subject: HostPool
     set:
       preview-announcement:
-        preview-message: This cmdlet is currently in preview, behavior is subject to change.
-        estimated-ga-date: 2024-04-01
+        preview-message: The IdentityType property is not currently supported and will be enabled in a future update.
 ```

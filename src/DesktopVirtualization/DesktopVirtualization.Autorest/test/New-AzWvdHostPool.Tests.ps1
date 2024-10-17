@@ -72,7 +72,7 @@ Describe 'New-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option1}'
                 # @todo not corrct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
-                $hostPool.Ring | Should -Be $null
+                $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
@@ -92,7 +92,7 @@ Describe 'New-AzWvdHostPool' {
                 $hostPool.VMTemplate | Should -Be '{option1}'
                 # @todo not corrct since it should be null need to look into it
                 # $hostPool.CustomRdpProperty | Should -Be ""
-                $hostPool.Ring | Should -Be $null
+                $hostPool.Ring | Should -Be 1
                 # @todo need to check this
                 # $hostPool.ValidationEnvironment | Should -Be $false
                 $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
