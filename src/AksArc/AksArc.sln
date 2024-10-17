@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accoun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AksArc", "AksArc\AksArc.csproj", "{038A8AE2-0731-4E6C-B21D-6542B2F3A662}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.AksArc", "..\..\generated\AksArc\AksArc.Autorest\Az.AksArc.csproj", "{54A662DB-12F0-4CF2-A97C-228C1AAC59A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.AksArc", "..\..\generated\AksArc\AksArc.Autorest\Az.AksArc.csproj", "{D387172A-6DB8-4108-A120-BDF2FDDE9578}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,10 +58,10 @@ Global
 		{038A8AE2-0731-4E6C-B21D-6542B2F3A662}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{038A8AE2-0731-4E6C-B21D-6542B2F3A662}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{038A8AE2-0731-4E6C-B21D-6542B2F3A662}.Release|Any CPU.Build.0 = Release|Any CPU
-		{54A662DB-12F0-4CF2-A97C-228C1AAC59A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54A662DB-12F0-4CF2-A97C-228C1AAC59A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54A662DB-12F0-4CF2-A97C-228C1AAC59A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54A662DB-12F0-4CF2-A97C-228C1AAC59A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D387172A-6DB8-4108-A120-BDF2FDDE9578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D387172A-6DB8-4108-A120-BDF2FDDE9578}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D387172A-6DB8-4108-A120-BDF2FDDE9578}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D387172A-6DB8-4108-A120-BDF2FDDE9578}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{533CAFFA-97FE-41EC-8D9A-614E0F9016B7} = {0E85B387-C3D9-413E-84E2-990F9030542D}
