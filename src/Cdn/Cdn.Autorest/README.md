@@ -32,10 +32,8 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  # - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2024-05-01-preview/afdx.json
-  # - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2024-05-01-preview/cdn.json
-  - C:/Users/jingnanxu/source/repos/rest-09-01/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/afdx.json
-  - C:/Users/jingnanxu/source/repos/rest-09-01/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/cdn.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/afdx.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/cdn.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -44,7 +42,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-commit: a83c34348fbd25ad79a05e36816b91da0122b583
+commit: cf9f241708ed82f2dad218fed3c09ca5fd191311
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -406,18 +404,6 @@ directive:
     set:
       verb: Test
       subject: ProfileMigrationCompatibility
-
-  # # https://github.com/Azure/autorest.powershell/issues/906
-  # - where:
-  #     model-name: AfdDomainUpdatePropertiesParameters
-  #     property-name: PreValidatedCustomDomainResourceId
-  #   set:
-  #     property-name: AfdDomainUpdatePropertiesParametersPreValidatedCustomDomainResourceId
-  # - where:
-  #     model-name: AfdDomainUpdatePropertiesParameters
-  #     property-name: PreValidatedCustomDomainResourceIdId
-  #   set:
-  #     property-name: PreValidatedCustomDomainResourceId
 
   # Customize the output table formatting
   - where:
