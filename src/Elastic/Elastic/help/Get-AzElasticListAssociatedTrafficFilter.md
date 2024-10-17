@@ -1,33 +1,34 @@
 ---
 external help file: Az.Elastic-help.xml
 Module Name: Az.Elastic
-online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticmonitoredresource
+online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticlistassociatedtrafficfilter
 schema: 2.0.0
 ---
 
-# Get-AzElasticMonitoredResource
+# Get-AzElasticListAssociatedTrafficFilter
 
 ## SYNOPSIS
-List the resources currently being monitored by the Elastic monitor resource.
+Get the list of all associated traffic filters for the given deployment.
 
 ## SYNTAX
 
 ```
-Get-AzElasticMonitoredResource -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzElasticListAssociatedTrafficFilter -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List the resources currently being monitored by the Elastic monitor resource.
+Get the list of all associated traffic filters for the given deployment.
 
 ## EXAMPLES
 
-### Example 1: List the resources currently being monitored by the Elastic monitor resource
+### Example 1: List the traffic filters associated with the Elastic monitor resource
 ```powershell
-Get-AzElasticMonitoredResource -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
+Get-AzElasticListAssociatedTrafficFilter -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 ```
 
-This command lists the resources currently being monitored by the Elastic monitor resource.
+This command lists the traffic filters associated with the Elastic monitor resource
 
 ## PARAMETERS
 
@@ -47,7 +48,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -MonitorName
 Monitor resource name
 
 ```yaml
@@ -147,7 +148,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoredResource
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticTrafficFilter
 
 ## NOTES
 

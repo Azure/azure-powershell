@@ -1,33 +1,50 @@
 ---
 external help file: Az.Elastic-help.xml
 Module Name: Az.Elastic
-online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticmonitoredresource
+online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticbillinginfo
 schema: 2.0.0
 ---
 
-# Get-AzElasticMonitoredResource
+# Get-AzElasticBillingInfo
 
 ## SYNOPSIS
-List the resources currently being monitored by the Elastic monitor resource.
+Get marketplace and organization info mapped to the given monitor.
 
 ## SYNTAX
 
+### Get (Default)
 ```
-Get-AzElasticMonitoredResource -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzElasticBillingInfo -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzElasticBillingInfo -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-List the resources currently being monitored by the Elastic monitor resource.
+Get marketplace and organization info mapped to the given monitor.
 
 ## EXAMPLES
 
-### Example 1: List the resources currently being monitored by the Elastic monitor resource
+### Example 1: Get marketplace info mapped to the given monitor.
 ```powershell
-Get-AzElasticMonitoredResource -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
+Get-AzElasticBillingInfo -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
 
-This command lists the resources currently being monitored by the Elastic monitor resource.
+```output
+MarketplaceSaaInfoBilledAzureSubscriptionId   : 11111111-2222-3333-4444-123456789101
+MarketplaceSaaInfoMarketplaceResourceId       : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/elastic-rg-3eytki/providers/Microsoft.SaaS/resources/AzElastic_11111111-2222-3333-4444-123456789102_elastic-rhqz1v
+MarketplaceSaaInfoMarketplaceStatus           : Subscribed
+MarketplaceSaaInfoMarketplaceSubscriptionId   : 00000000-0000-0000-0000-000000000000
+MarketplaceSaaInfoMarketplaceSubscriptionName : AzElastic_11111111-2222-3333-4444-123456789102_elastic-rhqz1v
+PartnerBillingEntityOrganizationId            : 11111111-2222-3333-4444-123456789103
+PartnerBillingEntityOrganizationName          : 11111111-2222-3333-4444-123456789103
+```
+
+This command gets marketplace info mapped to the given monitor.
 
 ## PARAMETERS
 
@@ -47,12 +64,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -83,7 +116,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -99,7 +132,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -145,9 +178,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoredResource
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IBillingInfoResponse
 
 ## NOTES
 

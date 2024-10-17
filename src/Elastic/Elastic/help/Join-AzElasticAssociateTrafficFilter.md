@@ -1,35 +1,59 @@
 ---
 external help file: Az.Elastic-help.xml
 Module Name: Az.Elastic
-online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticmonitoredresource
+online version: https://learn.microsoft.com/powershell/module/az.elastic/join-azelasticassociatetrafficfilter
 schema: 2.0.0
 ---
 
-# Get-AzElasticMonitoredResource
+# Join-AzElasticAssociateTrafficFilter
 
 ## SYNOPSIS
-List the resources currently being monitored by the Elastic monitor resource.
+Associate traffic filter for the given deployment.
 
 ## SYNTAX
 
+### Associate (Default)
 ```
-Get-AzElasticMonitoredResource -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Join-AzElasticAssociateTrafficFilter -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-RulesetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AssociateViaIdentity
+```
+Join-AzElasticAssociateTrafficFilter -InputObject <IElasticIdentity> [-RulesetId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List the resources currently being monitored by the Elastic monitor resource.
+Associate traffic filter for the given deployment.
 
 ## EXAMPLES
 
-### Example 1: List the resources currently being monitored by the Elastic monitor resource
+### Example 1: Associate traffic filter for the given deployment.
 ```powershell
-Get-AzElasticMonitoredResource -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
+Join-AzElasticAssociateTrafficFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
 
-This command lists the resources currently being monitored by the Elastic monitor resource.
+This command Associates traffic filter for the given deployment.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -47,15 +71,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+Parameter Sets: AssociateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Associate
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -83,10 +138,25 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Associate
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RulesetId
+Ruleset Id of the filter
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -98,8 +168,8 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Associate
 Aliases:
 
 Required: False
@@ -145,9 +215,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoredResource
+### System.Boolean
 
 ## NOTES
 

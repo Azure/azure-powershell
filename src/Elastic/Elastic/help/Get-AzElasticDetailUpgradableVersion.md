@@ -1,33 +1,41 @@
 ---
 external help file: Az.Elastic-help.xml
 Module Name: Az.Elastic
-online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticmonitoredresource
+online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticdetailupgradableversion
 schema: 2.0.0
 ---
 
-# Get-AzElasticMonitoredResource
+# Get-AzElasticDetailUpgradableVersion
 
 ## SYNOPSIS
-List the resources currently being monitored by the Elastic monitor resource.
+List of upgradable versions for a given monitor resource.
 
 ## SYNTAX
 
+### Details (Default)
 ```
-Get-AzElasticMonitoredResource -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzElasticDetailUpgradableVersion -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DetailsViaIdentity
+```
+Get-AzElasticDetailUpgradableVersion -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List the resources currently being monitored by the Elastic monitor resource.
+List of upgradable versions for a given monitor resource.
 
 ## EXAMPLES
 
-### Example 1: List the resources currently being monitored by the Elastic monitor resource
+### Example 1: List of upgradable versions for a given monitor resource.
 ```powershell
-Get-AzElasticMonitoredResource -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
+Get-AzElasticDetailUpgradableVersion -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
 
-This command lists the resources currently being monitored by the Elastic monitor resource.
+This command will provide the List of upgradable versions for a given monitor resource.
 
 ## PARAMETERS
 
@@ -47,12 +55,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+Parameter Sets: DetailsViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Details
 Aliases:
 
 Required: True
@@ -83,7 +107,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Details
 Aliases:
 
 Required: True
@@ -99,7 +123,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: Details
 Aliases:
 
 Required: False
@@ -145,9 +169,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoredResource
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IUpgradableVersionsList
 
 ## NOTES
 

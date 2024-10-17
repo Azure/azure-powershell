@@ -1,63 +1,77 @@
 ---
 external help file: Az.Elastic-help.xml
 Module Name: Az.Elastic
-online version: https://learn.microsoft.com/powershell/module/az.elastic/remove-azelasticmonitor
+online version: https://learn.microsoft.com/powershell/module/az.elastic/new-azelasticopenai
 schema: 2.0.0
 ---
 
-# Remove-AzElasticMonitor
+# New-AzElasticOpenAi
 
 ## SYNOPSIS
-Delete a monitor resource.
+Create or update a OpenAI integration rule for a given monitor resource.
 
 ## SYNTAX
 
-### Delete (Default)
+### CreateExpanded (Default)
 ```
-Remove-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+New-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Key <String>] [-OpenAiResourceEndpoint <String>] [-OpenAiResourceId <String>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Body <IOpenAiIntegrationRpmodel> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzElasticOpenAi -InputObject <IElasticIdentity> [-Key <String>] [-OpenAiResourceEndpoint <String>]
+ [-OpenAiResourceId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### CreateViaIdentity
 ```
-Remove-AzElasticMonitor -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzElasticOpenAi -InputObject <IElasticIdentity> -Body <IOpenAiIntegrationRpmodel>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a monitor resource.
+Create or update a OpenAI integration rule for a given monitor resource.
 
 ## EXAMPLES
 
-### Example 1: Delete a monitor resource
+### Example 1: Create or update a OpenAI integration rule for a given monitor resource.
 ```powershell
-Remove-AzElasticMonitor -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
+New-AzElasticOpenAi -IntegrationName default -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
 
-This command delete a monitor resource.
-
-### Example 2: Delete a monitor resource by pipeline
-```powershell
-Get-AzElasticMonitor -ResourceGroupName azure-elastic-test -Name elastic-pwsh03 | Remove-AzElasticMonitor
+```output
+IntegrationName              Status            ResourceGroupName
+------------------          ---------          -----------------
+default                      Active            elastic-rg-3eytki
 ```
 
-This command delete a monitor resource by pipeline.
+This command Creates or updates a OpenAI integration rule for a given monitor resource.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -Body
+Capture properties of Open AI resource Integration.
+To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IOpenAiIntegrationRpmodel
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -83,7 +97,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -93,13 +107,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Monitor resource name
+### -IntegrationName
+OpenAI Integration name
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: MonitorName
+Parameter Sets: CreateExpanded, Create
+Aliases:
 
 Required: True
 Position: Named
@@ -108,12 +122,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -Key
+Value of API key for Open AI resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -123,12 +137,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -MonitorName
+Monitor resource name
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded, Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OpenAiResourceEndpoint
+The API endpoint for Open AI resource
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OpenAiResourceId
+The resource name of Open AI resource
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -159,7 +203,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: True
@@ -175,7 +219,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: CreateExpanded, Create
 Aliases:
 
 Required: False
@@ -221,11 +265,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IOpenAiIntegrationRpmodel
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IOpenAiIntegrationRpmodel
 
 ## NOTES
 

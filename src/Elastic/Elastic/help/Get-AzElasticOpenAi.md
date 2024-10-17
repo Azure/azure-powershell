@@ -1,59 +1,55 @@
 ---
 external help file: Az.Elastic-help.xml
 Module Name: Az.Elastic
-online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelastictagrule
+online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticopenai
 schema: 2.0.0
 ---
 
-# Get-AzElasticTagRule
+# Get-AzElasticOpenAi
 
 ## SYNOPSIS
-Get a tag rule set for a given monitor resource.
+Get OpenAI integration rule for a given monitor resource.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
-Get-AzElasticTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzElasticOpenAi -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzElasticTagRule -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>]
+Get-AzElasticOpenAi -InputObject <IElasticIdentity> [-DefaultProfile <PSObject>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a tag rule set for a given monitor resource.
+Get OpenAI integration rule for a given monitor resource.
 
 ## EXAMPLES
 
-### Example 1: Get a tag rule set for a given monitor resource
+### Example 1: Get OpenAI integration rule for a given monitor resource.
 ```powershell
-Get-AzElasticTagRule -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
+Get-AzElasticOpenAi -IntegrationName default -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 ```
 
 ```output
-Name    ProvisioningState ResourceGroupName
-----    ----------------- -----------------
-default Succeeded         azure-elastic-test
+IntegrationName          : default
+openAIResourceId         : /subscriptions/cff37b56-870a-448f-a2fb-1a89235d4d32/resourceGroups/utkarshjain-rg/providers/Microsoft.CognitiveServices/accounts/utkarshTestResource1
+openAIResourceEndpoint   : https://utkarshtestresource1.openai.azure.com/openai/deployments/test1/chat/completions?api-version=2024-06-15-preview
+CreatedAt                : 2024-02-10T09:25:43Z
+Status                   : Active
 ```
 
-This command gets a tag rule set for a given monitor resource.
-
-### Example 2: Get a tag rule set for a given monitor resource by pipeline
-```powershell
-New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 | Get-AzElasticTagRule
-```
-
-```output
-Name    ProvisioningState ResourceGroupName
-----    ----------------- -----------------
-default Succeeded         azure-elastic-test
-```
-
-This command gets a tag rule set for a given monitor resource by pipeline.
+This command gets OpenAI integration rule for a given monitor resource.
 
 ## PARAMETERS
 
@@ -89,12 +85,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IntegrationName
+OpenAI Integration name
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -125,7 +136,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -141,7 +152,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -160,7 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IOpenAiIntegrationRpmodel
 
 ## NOTES
 

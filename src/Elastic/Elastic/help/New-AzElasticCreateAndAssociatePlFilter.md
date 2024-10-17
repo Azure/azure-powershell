@@ -1,43 +1,60 @@
 ---
 external help file: Az.Elastic-help.xml
 Module Name: Az.Elastic
-online version: https://learn.microsoft.com/powershell/module/az.elastic/new-azelastictagrule
+online version: https://learn.microsoft.com/powershell/module/az.elastic/new-azelasticcreateandassociateplfilter
 schema: 2.0.0
 ---
 
-# New-AzElasticTagRule
+# New-AzElasticCreateAndAssociatePlFilter
 
 ## SYNOPSIS
-Create or update a tag rule set for a given monitor resource.
+Create and Associate private link traffic filter for the given deployment.
 
 ## SYNTAX
 
+### Create (Default)
 ```
-New-AzElasticTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog] [-LogRuleSendActivityLog]
- [-LogRuleSendSubscriptionLog] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+New-AzElasticCreateAndAssociatePlFilter -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Name <String>] [-PrivateEndpointGuid <String>] [-PrivateEndpointName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
+### CreateViaIdentity
+```
+New-AzElasticCreateAndAssociatePlFilter -InputObject <IElasticIdentity> [-Name <String>]
+ [-PrivateEndpointGuid <String>] [-PrivateEndpointName <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update a tag rule set for a given monitor resource.
+Create and Associate private link traffic filter for the given deployment.
 
 ## EXAMPLES
 
-### Example 1: Create or update a tag rule set for a given monitor resource
+### Example 1: Create and Associate private link traffic filter for the given deployment.
 ```powershell
-New-AzElasticTagRule -ResourceGroupName azps-elastic-test -MonitorName elastic-pwsh02 -LogRuleSendActivityLog
+New-AzElasticCreateAndAssociatePlFilter -ResourceGroupName elastic-rg-3eytki -MonitorName elastic-rhqz1v
 ```
 
-```output
-Name    ProvisioningState ResourceGroupName
-----    ----------------- -----------------
-default Succeeded         azps-elastic-test
-```
-
-This command creates or updates a tag rule set for a given monitor resource.
+Create and Associate private link traffic filter for the given deployment.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -55,68 +72,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LogRuleFilteringTag
-List of filtering tags to be used for capturing logs.
-This only takes effect if SendActivityLogs flag is enabled.
-If empty, all resources will be captured.
-If only Exclude action is specified, the rules will apply to the list of all available resources.
-If Include actions are specified, the rules will only include resources with the associated tags.
-To construct, see NOTES section for LOGRULEFILTERINGTAG properties and create a hash table.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IFilteringTag[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+Parameter Sets: CreateViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LogRuleSendAadLog
-Flag specifying if AAD logs should be sent for the Monitor resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LogRuleSendActivityLog
-Flag specifying if activity logs from Azure resources should be sent for the Monitor resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LogRuleSendSubscriptionLog
-Flag specifying if subscription logs should be sent for the Monitor resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -125,10 +93,85 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the traffic filter
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateEndpointGuid
+Guid of the private endpoint
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrivateEndpointName
+Name of the private endpoint
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,7 +199,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create
 Aliases:
 
 Required: True
@@ -172,7 +215,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create
 Aliases:
 
 Required: False
@@ -218,9 +261,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules
+### System.Boolean
 
 ## NOTES
 

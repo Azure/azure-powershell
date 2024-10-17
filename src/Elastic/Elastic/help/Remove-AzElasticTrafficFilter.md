@@ -1,33 +1,42 @@
 ---
 external help file: Az.Elastic-help.xml
 Module Name: Az.Elastic
-online version: https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticmonitoredresource
+online version: https://learn.microsoft.com/powershell/module/az.elastic/remove-azelastictrafficfilter
 schema: 2.0.0
 ---
 
-# Get-AzElasticMonitoredResource
+# Remove-AzElasticTrafficFilter
 
 ## SYNOPSIS
-List the resources currently being monitored by the Elastic monitor resource.
+Delete traffic filter from the account.
 
 ## SYNTAX
 
+### Delete (Default)
 ```
-Get-AzElasticMonitoredResource -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzElasticTrafficFilter -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-RulesetId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzElasticTrafficFilter -InputObject <IElasticIdentity> [-RulesetId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List the resources currently being monitored by the Elastic monitor resource.
+Delete traffic filter from the account.
 
 ## EXAMPLES
 
-### Example 1: List the resources currently being monitored by the Elastic monitor resource
+### Example 1: Delete a traffic filter
 ```powershell
-Get-AzElasticMonitoredResource -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
+Remove-AzElasticTrafficFilter -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02
 ```
 
-This command lists the resources currently being monitored by the Elastic monitor resource.
+This command delete a traffic filter.
 
 ## PARAMETERS
 
@@ -47,15 +56,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+Parameter Sets: DeleteViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MonitorName
 Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -83,10 +123,25 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Delete
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RulesetId
+Ruleset Id of the filter
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -98,8 +153,8 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
@@ -145,9 +200,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoredResource
+### System.Boolean
 
 ## NOTES
 
