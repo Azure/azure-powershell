@@ -973,9 +973,9 @@ end {
 
 <#
 .Synopsis
-Add a new Domains resource under the parent EmailService resource or update an existing Domains resource.
+Add a new Domains resource under the parent EmailService resource or create an existing Domains resource.
 .Description
-Add a new Domains resource under the parent EmailService resource or update an existing Domains resource.
+Add a new Domains resource under the parent EmailService resource or create an existing Domains resource.
 .Example
 New-AzEmailServiceDomain -Name testcustomdomain2.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -DomainManagement CustomerManaged
 .Example
@@ -1261,9 +1261,9 @@ end {
 
 <#
 .Synopsis
-Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or create an existing SenderUsername resource.
 .Description
-Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or create an existing SenderUsername resource.
 .Example
 New-AzEmailServiceSenderUsername -SenderUsername test -Username test -DomainName testcustomdomain2.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 .Example
@@ -1542,9 +1542,9 @@ end {
 
 <#
 .Synopsis
-Create a new EmailService or update an existing EmailService.
+create a new EmailService or create an existing EmailService.
 .Description
-Create a new EmailService or update an existing EmailService.
+create a new EmailService or create an existing EmailService.
 .Example
 New-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -DataLocation "United States"
 

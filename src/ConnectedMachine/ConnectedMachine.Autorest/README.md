@@ -38,12 +38,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
  
 ``` yaml
-commit: 2e5be0e72597c6fc8d438f20e38087d900c16427
+commit: f41d0c9332078cb2ef07b749081d94915255ada5
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-05-20-preview/HybridCompute.json
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-05-20-preview/privateLinkScopes.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2024-07-10/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2024-07-10/privateLinkScopes.json
  
 module-version: 0.1.0
 title: ConnectedMachine
@@ -175,42 +175,42 @@ directive:
         }
       }
 
-  # add 200 response to run-command delete 
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}"].delete.responses
-    transform: >-
-      return {
-        "200": {
-          "description": "OK"
-        },
-        "202": {
-          "description": "Accepted",
-          "headers": {
-            "Location": {
-              "description": "The URL of the resource used to check the status of the asynchronous operation.",
-              "type": "string"
-            },
-            "Retry-After": {
-              "description": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation.",
-              "type": "integer",
-              "format": "int32"
-            },
-            "Azure-AsyncOperation": {
-              "description": "The URI to poll for completion status.",
-              "type": "string"
-            }
-          }
-        },
-        "204": {
-          "description": "No Content"
-        },
-        "default": {
-          "description": "Error response describing why the operation failed.",
-          "schema": {
-            "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
-          }
-        }
-      }
+  # add 200 response to run-command delete - comment out for stable release
+  # - from: swagger-document
+  #   where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}"].delete.responses
+  #   transform: >-
+  #     return {
+  #       "200": {
+  #         "description": "OK"
+  #       },
+  #       "202": {
+  #         "description": "Accepted",
+  #         "headers": {
+  #           "Location": {
+  #             "description": "The URL of the resource used to check the status of the asynchronous operation.",
+  #             "type": "string"
+  #           },
+  #           "Retry-After": {
+  #             "description": "The recommended number of seconds to wait before calling the URI specified in Azure-AsyncOperation.",
+  #             "type": "integer",
+  #             "format": "int32"
+  #           },
+  #           "Azure-AsyncOperation": {
+  #             "description": "The URI to poll for completion status.",
+  #             "type": "string"
+  #           }
+  #         }
+  #       },
+  #       "204": {
+  #         "description": "No Content"
+  #       },
+  #       "default": {
+  #         "description": "Error response describing why the operation failed.",
+  #         "schema": {
+  #           "$ref": "../../../../../common-types/resource-management/v3/types.json#/definitions/ErrorResponse"
+  #         }
+  #       }
+  #     }
 
   # GetViaIdentity isn't useful until Azure PowerShell supports piping of different subjects
   - where:
@@ -333,14 +333,14 @@ directive:
       variant: Upgrade
     remove: true
 
-  # we will release gateway and setting commands in a seperate module
-  - where:
-      subject: Gateway
-    remove: true
-  # Remove when this API version is added
-  - where:
-      subject: Setting
-    remove: true
+  # we will release gateway and setting commands in a seperate module - comment out for stable release
+  # - where:
+  #     subject: Gateway
+  #   remove: true
+  # Remove when this API version is added - comment out for stable release
+  # - where:
+  #     subject: Setting
+  #   remove: true
 
   # We don't want user to send PATCH to the ESU license API
   - where:
@@ -359,12 +359,6 @@ directive:
   # We don't want user to talk directly to the network configuration API
   - where:
       subject: NetworkConfiguration
-    remove: true
-
-  # Remove when this API is fixed
-  - where:
-      subject: ReconcileNetworkSecurityPerimeterConfiguration$
-      verb: Invoke
     remove: true
 
   # becasue autorest.powershell is unable to transform IdentityType as the best practice design if it uses managed identity

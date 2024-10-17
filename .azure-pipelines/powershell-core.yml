@@ -7,7 +7,7 @@ variables:
   LinuxAgentPoolVMImage: ''
   MacOSName: macOS
   MacOSAgentPoolName: 'Azure Pipelines'
-  MacOSAgentPoolVMImage: macOS-latest
+  MacOSAgentPoolVMImage: macOS-13
   TestFramework: net6.0
   TestTarget: Test
   Configuration: Debug

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Add a new Domains resource under the parent EmailService resource or update an existing Domains resource.
+Add a new Domains resource under the parent EmailService resource or create an existing Domains resource.
 .Description
-Add a new Domains resource under the parent EmailService resource or update an existing Domains resource.
+Add a new Domains resource under the parent EmailService resource or create an existing Domains resource.
 .Example
 New-AzEmailServiceDomain -Name testcustomdomain2.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -DomainManagement CustomerManaged
 .Example

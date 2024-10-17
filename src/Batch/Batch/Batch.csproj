@@ -13,8 +13,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Batch" Version="16.2.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Batch" Version="15.0.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Batch.Management.Sdk\Batch.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>
