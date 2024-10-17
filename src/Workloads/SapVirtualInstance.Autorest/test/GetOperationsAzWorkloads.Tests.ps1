@@ -50,7 +50,47 @@ Describe 'GetOperationsAzWorkloads' {
         $GetAzWorkloadsSapDatabaseInstanceListResponse.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'GetAzWorkloadsSapDatabaseInstance' {
+    It 'GetAzWorkloadsSapDatabaseInstanceAlias' {
+        $GetAzWorkloadsSapDatabaseInstanceResponse = Get-AzWorkloadsSapDatabaseInstance -SubscriptionId $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -Name $env.SapDatabseInstanceName
+        $GetAzWorkloadsSapDatabaseInstanceResponse.Name | Should -Be $env.SapDatabseInstanceName
+    }
+
+    It 'GetAzWorkloadsSapVirtualInstanceAlias' {
+        $GetAzWorkloadsSapVirtualInstanceResponse = Get-AzWorkloadsSapVirtualInstance -SubscriptionId  $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName
+        $GetAzWorkloadsSapVirtualInstanceResponse.Name | Should -Be $env.SapVirtualInstanceName
+    }
+
+    It 'GetAzWorkloadsSapVirtualInstanceListAlias' {
+        $GetAzWorkloadsSapVirtualInstanceListResponse = Get-AzWorkloadsSapVirtualInstance -SubscriptionId  $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName
+        $GetAzWorkloadsSapVirtualInstanceListResponse.Count | Should -BeGreaterOrEqual 1
+    }
+
+    It 'GetAzWorkloadsSapCentralInstanceListAlias' {
+        $GetAzWorkloadsSapCentralInstanceListResponse = Get-AzWorkloadsSapCentralInstance -SubscriptionId $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName
+        $GetAzWorkloadsSapCentralInstanceListResponse.Count | Should -BeGreaterOrEqual 1 
+    }
+
+    It 'GetAzWorkloadsSapCentralInstanceAlias' {
+        $GetAzWorkloadsSapCentralInstanceResponse = Get-AzWorkloadsSapCentralInstance -SubscriptionId $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -Name $env.SapCentralInstanceName
+        $GetAzWorkloadsSapCentralInstanceResponse.Name | Should -Be $env.SapCentralInstanceName
+    }
+
+    It 'GetAzWorkloadsSapApplicationInstanceListAlias' {
+        $GetAzWorkloadsSapApplicationInstanceListResponse = Get-AzWorkloadsSapApplicationInstance -SubscriptionId $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName
+        $GetAzWorkloadsSapApplicationInstanceListResponse.Count | Should -BeGreaterOrEqual 1 
+    }
+
+    It 'GetAzWorkloadsSapApplicationInstanceAlias' {
+        $GetAzWorkloadsSapApplicationInstanceResponse = Get-AzWorkloadsSapApplicationInstance -SubscriptionId $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -Name $env.SapApplicationInstanceName
+        $GetAzWorkloadsSapApplicationInstanceResponse.Name | Should -Be $env.SapApplicationInstanceName
+    }
+
+    It 'GetAzWorkloadsSapDatabaseInstanceListAlias' {
+        $GetAzWorkloadsSapDatabaseInstanceListResponse = Get-AzWorkloadsSapDatabaseInstance -SubscriptionId $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName
+        $GetAzWorkloadsSapDatabaseInstanceListResponse.Count | Should -BeGreaterOrEqual 1 
+    }
+
+    It 'GetAzWorkloadsSapDatabaseInstanceAlias' {
         $GetAzWorkloadsSapDatabaseInstanceResponse = Get-AzWorkloadsSapDatabaseInstance -SubscriptionId $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -Name $env.SapDatabseInstanceName
         $GetAzWorkloadsSapDatabaseInstanceResponse.Name | Should -Be $env.SapDatabseInstanceName
     }
