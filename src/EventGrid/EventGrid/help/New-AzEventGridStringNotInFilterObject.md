@@ -1,39 +1,39 @@
 ---
 external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
-online version: https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridadvancedfilterobject
+online version: https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstringnotinfilterobject
 schema: 2.0.0
 ---
 
-# New-AzEventGridAdvancedFilterObject
+# New-AzEventGridStringNotInFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for AdvancedFilter.
+Create an in-memory object for StringNotInFilter.
 
 ## SYNTAX
 
 ```
-New-AzEventGridAdvancedFilterObject -OperatorType <String> [-Key <String>]
+New-AzEventGridStringNotInFilterObject [-Value <String[]>] [-Key <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for AdvancedFilter.
+Create an in-memory object for StringNotInFilter.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for AdvancedFilter.
+### Example 1: Create an in-memory object for StringNotInFilter.
 ```powershell
-New-AzEventGridAdvancedFilterObject -OperatorType NumberIn -Key "TestKey"
+New-AzEventGridStringNotInFilterObject -Key "testKey" -Value "value1","value2"
 ```
 
 ```output
 Key     OperatorType
 ---     ------------
-TestKey NumberIn
+testKey StringNotIn
 ```
 
-Create an in-memory object for AdvancedFilter.
+Create an in-memory object for StringNotInFilter.
 
 ## PARAMETERS
 
@@ -52,15 +52,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperatorType
-The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Value
+The set of filter values.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -74,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.AdvancedFilter
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringNotInFilter
 
 ## NOTES
 

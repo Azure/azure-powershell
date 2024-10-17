@@ -1,44 +1,44 @@
 ---
 external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
-online version: https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgriddeliveryattributemappingobject
+online version: https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridisnullorundefinedfilterobject
 schema: 2.0.0
 ---
 
-# New-AzEventGridDeliveryAttributeMappingObject
+# New-AzEventGridIsNullOrUndefinedFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for DeliveryAttributeMapping.
+Create an in-memory object for IsNullOrUndefinedFilter.
 
 ## SYNTAX
 
 ```
-New-AzEventGridDeliveryAttributeMappingObject -Type <String> [-Name <String>]
+New-AzEventGridIsNullOrUndefinedFilterObject [-Key <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for DeliveryAttributeMapping.
+Create an in-memory object for IsNullOrUndefinedFilter.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for DeliveryAttributeMapping.
+### Example 1: Create an in-memory object for IsNullOrUndefinedFilter.
 ```powershell
-New-AzEventGridDeliveryAttributeMappingObject -Type "TestType" -Name "TestName"
+New-AzEventGridIsNullOrUndefinedFilterObject -Key "testKey"
 ```
 
 ```output
-Name
-----
-TestName
+Key     OperatorType
+---     ------------
+testKey IsNullOrUndefined
 ```
 
-Create an in-memory object for DeliveryAttributeMapping.
+Create an in-memory object for IsNullOrUndefinedFilter.
 
 ## PARAMETERS
 
-### -Name
-Name of the delivery attribute or header.
+### -Key
+The field/property in the event based on which you want to filter.
 
 ```yaml
 Type: System.String
@@ -52,15 +52,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Type
-Type of the delivery attribute or header name.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
-Aliases:
+Aliases: proga
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.DeliveryAttributeMapping
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IsNullOrUndefinedFilter
 
 ## NOTES
 

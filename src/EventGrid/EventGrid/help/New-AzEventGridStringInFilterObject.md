@@ -1,39 +1,39 @@
 ---
 external help file: Az.EventGrid-help.xml
 Module Name: Az.EventGrid
-online version: https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridfilterobject
+online version: https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstringinfilterobject
 schema: 2.0.0
 ---
 
-# New-AzEventGridFilterObject
+# New-AzEventGridStringInFilterObject
 
 ## SYNOPSIS
-Create an in-memory object for Filter.
+Create an in-memory object for StringInFilter.
 
 ## SYNTAX
 
 ```
-New-AzEventGridFilterObject -OperatorType <String> [-Key <String>]
+New-AzEventGridStringInFilterObject [-Value <String[]>] [-Key <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for Filter.
+Create an in-memory object for StringInFilter.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for Filter.
+### Example 1: Create an in-memory object for StringInFilter.
 ```powershell
-New-AzEventGridFilterObject -OperatorType NumberIn -Key "TestKey"
+New-AzEventGridStringInFilterObject -Key "testKey" -Value "value1","value2"
 ```
 
 ```output
 Key     OperatorType
 ---     ------------
-TestKey NumberIn
+testKey StringIn
 ```
 
-Create an in-memory object for Filter.
+Create an in-memory object for StringInFilter.
 
 ## PARAMETERS
 
@@ -52,15 +52,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperatorType
-The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Value
+The set of filter values.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -74,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.Filter
+### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StringInFilter
 
 ## NOTES
 
