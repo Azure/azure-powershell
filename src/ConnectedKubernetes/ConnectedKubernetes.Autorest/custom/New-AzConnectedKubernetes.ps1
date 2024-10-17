@@ -374,7 +374,7 @@ function New-AzConnectedKubernetes {
         $helmClientLocation = 'helm'
 
         #Region get release namespace
-        $ReleaseNamespaces = Get-HelmReleaseNamespaces -KubeConfig $KubeConfig -KubeContext $KubeContext
+        $ReleaseNamespaces = Get-HelmReleaseNamespace -KubeConfig $KubeConfig -KubeContext $KubeContext
         $ReleaseNamespace = $ReleaseNamespaces['ReleaseNamespace']
         $ReleaseInstallNamespace = $ReleaseNamespaces['ReleaseInstallNamespace']
 
@@ -417,7 +417,7 @@ function New-AzConnectedKubernetes {
             }
         }
 
-        $RegistryPath = Set-HelmRepositoryAndModules -KubeConfig $KubeConfig -KubeContext $KubeContext -Location $Location -ProxyCert $ProxyCert -DisableAutoUpgrade $DisableAutoUpgrade -ContainerLogPath $ContainerLogPath -CustomLocationsOid $CustomLocationsOid
+        $RegistryPath = Set-HelmModulesAndRepository -KubeConfig $KubeConfig -KubeContext $KubeContext -Location $Location
 
         # Region create RSA keys
         Write-Debug "Generating RSA keys for secure communication."
@@ -643,7 +643,11 @@ function New-AzConnectedKubernetes {
         # Convert the $Response object into a nested hashtable.
 
         Write-Debug "PUT response: $Response"
-        $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
+        # The following parameters do not exist in Powershell 5.1
+        # -AsHashTable
+        # -Depth 10
+        $Response = ConvertFrom-Json "$Response"
+        $Response = ConvertTo-Hashtable $Response
 
         # What-If processing does not create a full response so we might have
         # to create a minimal one.

@@ -14,7 +14,7 @@
 # is regenerated.
 # ----------------------------------------------------------------------------------
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
-    Justification = 'Kubernetes is a recognised term', Scope = 'Function', Target = 'Set-AzConnectedKubernetes')]
+    Justification = 'Kubernetes is a recognised term', Scope = 'Function', Target = 'Update-AzConnectedKubernetes')]
 param()
 
 <#
@@ -46,7 +46,7 @@ https://learn.microsoft.com/powershell/module/az.connectedkubernetes/update-azco
 #>
 function Update-AzConnectedKubernetes {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
-    [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, ConfirmImpact = 'Medium', SupportsShouldProcess)]
     param(
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
         [Alias('Name')]
@@ -174,6 +174,8 @@ function Update-AzConnectedKubernetes {
         }
         $null = $PSBoundParameters.Remove('AcceptEULA')
 
-        Az.ConnectedKubernetes.internal\Update-AzConnectedKubernetes @PSBoundParameters
+        if ($PSCmdlet.ShouldProcess($PSBoundParameters)) {
+            Az.ConnectedKubernetes.internal\Update-AzConnectedKubernetes @PSBoundParameters
+        }
     }
 }

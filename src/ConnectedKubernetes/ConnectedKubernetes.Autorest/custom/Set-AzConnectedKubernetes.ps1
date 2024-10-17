@@ -461,7 +461,7 @@ function Set-AzConnectedKubernetes {
         $helmClientLocation = 'helm'
 
         #Region get release namespace
-        $ReleaseNamespaces = Get-HelmReleaseNamespaces -KubeConfig $KubeConfig -KubeContext $KubeContext
+        $ReleaseNamespaces = Get-HelmReleaseNamespace -KubeConfig $KubeConfig -KubeContext $KubeContext
         $ReleaseNamespace = $ReleaseNamespaces['ReleaseNamespace']
         $ReleaseInstallNamespace = $ReleaseNamespaces['ReleaseInstallNamespace']
 
@@ -497,7 +497,7 @@ function Set-AzConnectedKubernetes {
         #Endregion
 
         # Adding Helm repo
-        $RegistryPath = Set-HelmRepositoryAndModules -KubeConfig $KubeConfig -KubeContext $KubeContext -Location $Location -ProxyCert $ProxyCert -DisableAutoUpgrade $DisableAutoUpgrade -ContainerLogPath $ContainerLogPath -CustomLocationsOid $CustomLocationsOid
+        $RegistryPath = Set-HelmModulesAndRepository -KubeConfig $KubeConfig -KubeContext $KubeContext -Location $Location
 
         Write-Debug "Processing Helm chart installation options."
 
@@ -694,7 +694,11 @@ function Set-AzConnectedKubernetes {
 
         # Convert the $Response object into a nested hashtable.
         Write-Debug "PUT response: $Response"
-        $Response = ConvertFrom-Json "$Response" -AsHashTable -Depth 10
+        # The following parameters are not supported in Powershell 5.1
+        # -Depth 10
+        # -AsHashTable
+        $Response = ConvertFrom-Json "$Response"
+        $Response = ConvertTo-Hashtable $Response
 
         # Whatif may return empty response
         if (-not $Response) {

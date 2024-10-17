@@ -1,7 +1,7 @@
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
     Justification = 'Uses multiple parameters', Scope = 'Function', Target = 'Invoke-RestMethodWithUriParameters')]
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
-    Justification = 'Helm values is a recognised term', Scope = 'Function', Target = '')]
+    Justification = 'Helm values is a recognised term', Scope = 'Function', Target = 'Get-HelmValuesFromConfigDP')]
 param()
 
 function Invoke-ConfigDPHealthCheck {
@@ -40,7 +40,7 @@ function Invoke-ConfigDPHealthCheck {
 
 
 function Get-ConfigDPEndpoint {
-    [Microsoft.Azure.PowerShell.Cmdlets.Connected.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory = $true)]
         [string]$Location,
@@ -60,7 +60,7 @@ function Get-ConfigDPEndpoint {
 }
 
 function Get-ConfigDpDefaultEndpoint {
-    [Microsoft.Azure.PowerShell.Cmdlets.Connected.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory = $true)]
         [string]$location,
@@ -75,7 +75,7 @@ function Get-ConfigDpDefaultEndpoint {
     # Remove optional trailing "/" from $cloudBasedDomain
     $cloudBasedDomain = $cloudBasedDomain.TrimEnd('/')
 
-    $configDpEndpoint = "https://${location}.dp.configuration.azure.${cloudBasedDomain}"
+    $configDpEndpoint = "https://${location}.dp.kubernetesconfiguration.azure.${cloudBasedDomain}"
     return $configDpEndpoint
 }
 
@@ -106,17 +106,26 @@ function Invoke-RestMethodWithUriParameters {
     #     $uriParametersArray = $uriParameters.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" } | ForEach-Object { $_ -join '=' } | ForEach-Object { $_ -join '&' }
     # }
     Write-Debug "Issue REST request to ${uri} with method ${method} and headers ${headers} and body ${requestBody}"
-    $rsp = Invoke-RestMethod `
-        -Method $method `
-        -Uri $uri `
-        -Headers $headers `
-        -Body $requestBody `
-        -ContentType "application/json" `
-        -MaximumRetryCount $maximumRetryCount `
-        -RetryIntervalSec $retryintervalSec `
-        -StatusCodeVariable statusCode `
-        -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
-        -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+    try {
+        # These parameters are not supported in PowerShell 5.1
+        # -MaximumRetryCount $maximumRetryCount `
+        # -RetryIntervalSec $retryintervalSec `
+        # -StatusCodeVariable statusCode `
+        $rsp = Invoke-RestMethod `
+            -Method $method `
+            -Uri $uri `
+            -Headers $headers `
+            -Body $requestBody `
+            -ContentType "application/json" `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+        $statusCode = 200;
+    }
+    catch {
+        # We do not know what went wrong, but something did!
+        Write-Error "Error while issuing REST request: $_"
+        $statusCode = 400
+    }
 
     Write-Debug "Response: $($rsp | ConvertTo-Json -Depth 10)"
     # Note need to explcitly clear WhatIf for this method otherwise the value is
@@ -126,7 +135,7 @@ function Invoke-RestMethodWithUriParameters {
 }
 
 function Get-HelmValuesFromConfigDP {
-    [Microsoft.Azure.PowerShell.Cmdlets.Connected.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory = $true)]
         $ConfigDpEndpoint,
@@ -158,7 +167,7 @@ function Get-HelmValuesFromConfigDP {
 
     # Sending request with retries
     try {
-        Write-Verbose "Calculating Azure Arc resources required by  cluster"
+        Write-Verbose "Calculating Azure Arc resources required by Kubernetes cluster"
         $r = Invoke-RestMethodWithUriParameters `
             -Method 'post' `
             -Uri $chartLocationUrl `

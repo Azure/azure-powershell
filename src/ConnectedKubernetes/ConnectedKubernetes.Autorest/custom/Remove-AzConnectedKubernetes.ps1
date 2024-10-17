@@ -14,7 +14,7 @@
 # is regenerated.
 # ----------------------------------------------------------------------------------
 [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '',
-    Justification = 'Kubernetes is a recognised term', Scope = 'Function', Target = 'Set-AzConnectedKubernetes')]
+    Justification = 'Kubernetes is a recognised term', Scope = 'Function', Target = 'Remove-AzConnectedKubernetes')]
 param()
 
 <#
@@ -46,7 +46,7 @@ https://learn.microsoft.com/powershell/module/az.connectedkubernetes/remove-azco
 #>
 function Remove-AzConnectedKubernetes {
     [OutputType([System.Boolean])]
-    [CmdletBinding(DefaultParameterSetName = 'Delete', PositionalBinding = $false, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'Delete', PositionalBinding = $false, ConfirmImpact = 'Medium', SupportsShouldProcess = $true)]
     param(
         [Parameter(ParameterSetName = 'Delete', Mandatory)]
         [Alias('Name')]
@@ -211,7 +211,9 @@ function Remove-AzConnectedKubernetes {
         #Endregion
 
         if ($null -eq $ReleaseNamespace) {
-            Az.ConnectedKubernetes.internal\Remove-AzConnectedKubernetes @PSBoundParameters
+            if ($PSCmdlet.ShouldProcess($PSBoundParameters)) {
+                Az.ConnectedKubernetes.internal\Remove-AzConnectedKubernetes @PSBoundParameters
+            }
             return
         }
 
@@ -226,7 +228,9 @@ function Remove-AzConnectedKubernetes {
             $PSBoundParameters.Add('ClusterName')
         }
         if (($ResourceGroupName -eq $ConfigmapRgName) -and ($ClusterName -eq $ConfigmapClusterName)) {
-            Az.ConnectedKubernetes.internal\Remove-AzConnectedKubernetes @PSBoundParameters
+            if ($PSCmdlet.ShouldProcess($PSBoundParameters)) {
+                Az.ConnectedKubernetes.internal\Remove-AzConnectedKubernetes @PSBoundParameters
+            }
             helm delete azure-arc --namespace $ReleaseInstallNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
         }
         else {
