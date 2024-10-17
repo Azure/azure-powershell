@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridTopic
 
 ## SYNOPSIS
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously create a new topic with the specified parameters.
 
 ## SYNTAX
 
@@ -21,13 +21,13 @@ New-AzEventGridTopic -Name <String> -ResourceGroupName <String> [-SubscriptionId
  [-InboundIPRule <IInboundIPRule[]>] [-InputSchema <String>] [-Kind <String>]
  [-MinimumTlsVersionAllowed <String>] [-PublicNetworkAccess <String>] [-SkuName <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzEventGridTopic -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ New-AzEventGridTopic -Name <String> -ResourceGroupName <String> [-SubscriptionId
 ```
 New-AzEventGridTopic -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -46,11 +46,11 @@ New-AzEventGridTopic -InputObject <IEventGridIdentity> -Location <String> [-Data
  [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-InboundIPRule <IInboundIPRule[]>]
  [-InputSchema <String>] [-Kind <String>] [-MinimumTlsVersionAllowed <String>] [-PublicNetworkAccess <String>]
  [-SkuName <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously create a new topic with the specified parameters.
 
 ## EXAMPLES
 
@@ -397,6 +397,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

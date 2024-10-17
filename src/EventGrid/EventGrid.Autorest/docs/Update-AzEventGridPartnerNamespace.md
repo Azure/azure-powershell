@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridPartnerNamespace
 
 ## SYNOPSIS
-Asynchronously updates a partner namespace with the specified parameters.
+Asynchronously update a partner namespace with the specified parameters.
 
 ## SYNTAX
 
@@ -43,7 +43,7 @@ Update-AzEventGridPartnerNamespace -Name <String> -ResourceGroupName <String> -J
 ```
 
 ## DESCRIPTION
-Asynchronously updates a partner namespace with the specified parameters.
+Asynchronously update a partner namespace with the specified parameters.
 
 ## EXAMPLES
 

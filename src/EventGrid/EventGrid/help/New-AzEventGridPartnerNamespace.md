@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPartnerNamespace
 
 ## SYNOPSIS
-Asynchronously creates a new partner namespace with the specified parameters.
+Asynchronously create a new partner namespace with the specified parameters.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzEventGridPartnerNamespace -Name <String> -ResourceGroupName <String> [-Sub
  -Location <String> [-DisableLocalAuth] [-InboundIPRule <IInboundIPRule[]>]
  [-MinimumTlsVersionAllowed <String>] [-PartnerRegistrationFullyQualifiedId <String>]
  [-PartnerTopicRoutingMode <String>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,14 +26,14 @@ New-AzEventGridPartnerNamespace -Name <String> -ResourceGroupName <String> [-Sub
 ```
 New-AzEventGridPartnerNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzEventGridPartnerNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -42,11 +42,11 @@ New-AzEventGridPartnerNamespace -InputObject <IEventGridIdentity> -Location <Str
  [-InboundIPRule <IInboundIPRule[]>] [-MinimumTlsVersionAllowed <String>]
  [-PartnerRegistrationFullyQualifiedId <String>] [-PartnerTopicRoutingMode <String>]
  [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new partner namespace with the specified parameters.
+Asynchronously create a new partner namespace with the specified parameters.
 
 ## EXAMPLES
 
@@ -286,6 +286,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
