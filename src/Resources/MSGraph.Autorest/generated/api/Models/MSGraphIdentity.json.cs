@@ -76,15 +76,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models
             {
                 return;
             }
-            {_applicationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("application-id"), out var __jsonApplicationId) ? (string)__jsonApplicationId : (string)ApplicationId;}
-            {_federatedIdentityCredentialId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("federatedIdentityCredential-id"), out var __jsonFederatedIdentityCredentialId) ? (string)__jsonFederatedIdentityCredentialId : (string)FederatedIdentityCredentialId;}
-            {_servicePrincipalId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("servicePrincipal-id"), out var __jsonServicePrincipalId) ? (string)__jsonServicePrincipalId : (string)ServicePrincipalId;}
-            {_appRoleAssignmentId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("appRoleAssignment-id"), out var __jsonAppRoleAssignmentId) ? (string)__jsonAppRoleAssignmentId : (string)AppRoleAssignmentId;}
-            {_groupId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("group-id"), out var __jsonGroupId) ? (string)__jsonGroupId : (string)GroupId;}
-            {_directoryObjectId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("directoryObject-id"), out var __jsonDirectoryObjectId) ? (string)__jsonDirectoryObjectId : (string)DirectoryObjectId;}
-            {_memberId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("member-id"), out var __jsonMemberId) ? (string)__jsonMemberId : (string)MemberId;}
-            {_userId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("user-id"), out var __jsonUserId) ? (string)__jsonUserId : (string)UserId;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_applicationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("application-id"), out var __jsonApplicationId) ? (string)__jsonApplicationId : (string)_applicationId;}
+            {_federatedIdentityCredentialId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("federatedIdentityCredential-id"), out var __jsonFederatedIdentityCredentialId) ? (string)__jsonFederatedIdentityCredentialId : (string)_federatedIdentityCredentialId;}
+            {_servicePrincipalId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("servicePrincipal-id"), out var __jsonServicePrincipalId) ? (string)__jsonServicePrincipalId : (string)_servicePrincipalId;}
+            {_appRoleAssignmentId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("appRoleAssignment-id"), out var __jsonAppRoleAssignmentId) ? (string)__jsonAppRoleAssignmentId : (string)_appRoleAssignmentId;}
+            {_groupId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("group-id"), out var __jsonGroupId) ? (string)__jsonGroupId : (string)_groupId;}
+            {_directoryObjectId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("directoryObject-id"), out var __jsonDirectoryObjectId) ? (string)__jsonDirectoryObjectId : (string)_directoryObjectId;}
+            {_memberId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("member-id"), out var __jsonMemberId) ? (string)__jsonMemberId : (string)_memberId;}
+            {_userId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("user-id"), out var __jsonUserId) ? (string)__jsonUserId : (string)_userId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
             AfterFromJson(json);
         }
 

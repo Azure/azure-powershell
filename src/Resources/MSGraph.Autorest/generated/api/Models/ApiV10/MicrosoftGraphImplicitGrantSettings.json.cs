@@ -79,8 +79,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
-            {_enableAccessTokenIssuance = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonBoolean>("enableAccessTokenIssuance"), out var __jsonEnableAccessTokenIssuance) ? (bool?)__jsonEnableAccessTokenIssuance : EnableAccessTokenIssuance;}
-            {_enableIdTokenIssuance = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonBoolean>("enableIdTokenIssuance"), out var __jsonEnableIdTokenIssuance) ? (bool?)__jsonEnableIdTokenIssuance : EnableIdTokenIssuance;}
+            {_enableAccessTokenIssuance = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonBoolean>("enableAccessTokenIssuance"), out var __jsonEnableAccessTokenIssuance) ? (bool?)__jsonEnableAccessTokenIssuance : _enableAccessTokenIssuance;}
+            {_enableIdTokenIssuance = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonBoolean>("enableIdTokenIssuance"), out var __jsonEnableIdTokenIssuance) ? (bool?)__jsonEnableIdTokenIssuance : _enableIdTokenIssuance;}
             AfterFromJson(json);
         }
 
