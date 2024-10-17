@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts (2)", "Accounts (2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{DACA957F-AAFE-4DDF-B325-36F995DC41BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeSigning.Autorest", "CodeSigning.Autorest\CodeSigning.Autorest.csproj", "{A77BD850-FF57-4466-9D7C-EAF11ABEAAD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeSigning.Autorest", "CodeSigning.Autorest\CodeSigning.Autorest.csproj", "{92F1366A-B99B-48BA-B2A6-A7497643065D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,10 +69,10 @@ Global
 		{DACA957F-AAFE-4DDF-B325-36F995DC41BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DACA957F-AAFE-4DDF-B325-36F995DC41BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DACA957F-AAFE-4DDF-B325-36F995DC41BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A77BD850-FF57-4466-9D7C-EAF11ABEAAD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A77BD850-FF57-4466-9D7C-EAF11ABEAAD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A77BD850-FF57-4466-9D7C-EAF11ABEAAD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A77BD850-FF57-4466-9D7C-EAF11ABEAAD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92F1366A-B99B-48BA-B2A6-A7497643065D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92F1366A-B99B-48BA-B2A6-A7497643065D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92F1366A-B99B-48BA-B2A6-A7497643065D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92F1366A-B99B-48BA-B2A6-A7497643065D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
