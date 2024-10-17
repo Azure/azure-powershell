@@ -1,0 +1,45 @@
+{
+  "Get-AzDataBoundaryScope+[NoContext]+Get+$GET+https://management.azure.com//subscriptions/1200d73d-d350-413a-98c5-e77ca51245de/providers/Microsoft.Resources/dataBoundaries/default?api-version=2024-08-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/1200d73d-d350-413a-98c5-e77ca51245de/providers/Microsoft.Resources/dataBoundaries/default?api-version=2024-08-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "dd0b5918-ed7f-42f1-bd80-5f6eeadddb47" ],
+        "CommandName": [ "Get-AzDataBoundaryScope" ],
+        "FullCommandName": [ "Get-AzDataBoundaryScope_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v9.5.0", "PSVersion/v7.4.5", "Az.DataBoundary/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-request-id": [ "f57be162-e2d4-4f41-959d-650e0c5cf5be" ],
+        "x-ms-correlation-request-id": [ "f57be162-e2d4-4f41-959d-650e0c5cf5be" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241010T202119Z:f57be162-e2d4-4f41-959d-650e0c5cf5be" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 478419D4487F4A429F966397C4FCC651 Ref B: CO6AA3150218035 Ref C: 2024-10-10T20:21:19Z" ],
+        "Date": [ "Thu, 10 Oct 2024 20:21:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "122" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Resources/dataBoundaries/\",\"properties\":{\"dataBoundary\":\"EU\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}
