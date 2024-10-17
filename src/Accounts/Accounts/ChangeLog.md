@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added Long Running Operation Support for Invoke-AzRest command.
 
 ## Version 3.0.4
 * Added customized UserAgent for ARM telemetry.
