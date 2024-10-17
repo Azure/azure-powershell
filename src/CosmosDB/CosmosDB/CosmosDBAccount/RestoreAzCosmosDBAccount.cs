@@ -16,6 +16,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                             sourceAccountToRestore.Location,
                             sourceAccountToRestore.Name,
                             Location,
-                            utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
+                            utcRestoreDateTime.ToString("M/dd/yyyy h:mm:ss tt")).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
                     }
@@ -156,7 +157,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
                         Location,
-                        utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
+                        utcRestoreDateTime.ToString("M/dd/yyyy h:mm:ss tt")).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
                     }
@@ -174,7 +175,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
                         Location,
-                        utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
+                        utcRestoreDateTime.ToString("M/dd/yyyy h:mm:ss tt")).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
                     }
@@ -192,7 +193,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
                         Location,
-                        utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
+                        utcRestoreDateTime.ToString("M/dd/yyyy h:mm:ss tt")).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
                     }
