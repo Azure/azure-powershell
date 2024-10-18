@@ -200,7 +200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
                 {SymmetricKey = new SymmetricKey(iotEdgeDeviceSecret)};
             var ioTEdgeDeviceInfo = new IoTDeviceInfo(edgeDeviceId, ioTHostHub, authentication: edgeAuthentication);
 
-            return new IoTRole(platform, ioTDeviceInfo, ioTEdgeDeviceInfo, roleStatus);
+            return new IoTRole(default(string), default(string), default(string), roleStatus, platform, ioTDeviceInfo, ioTEdgeDeviceInfo);
         }
 
 
@@ -279,8 +279,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Roles
             );
             return new PSResourceModel(
                 DataBoxEdgeManagementClient.Roles.CreateOrUpdate(
-                    this.DeviceName, this.Name, iotRole,
-                    this.ResourceGroupName)
+                    this.DeviceName, this.Name,
+                    this.ResourceGroupName, iotRole)
             );
         }
 

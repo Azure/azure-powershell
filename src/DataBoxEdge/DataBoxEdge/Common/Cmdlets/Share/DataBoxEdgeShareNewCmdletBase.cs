@@ -183,8 +183,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                 DataBoxEdgeManagementClient.Shares,
                 this.DeviceName,
                 this.Name,
-                _share,
-                this.ResourceGroupName));
+                this.ResourceGroupName,
+                _share));
         }
 
         private ResourceModel AddAzureContainer(ResourceModel resourceModel)
