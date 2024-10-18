@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="upgradeMode">The mode used to monitor health during a rolling upgrade. The values are
         /// Monitored, and UnmonitoredAuto.
-        /// Possible values include: 'Monitored', 'UnmonitoredAuto'</param>
+        /// Possible values include: &#39;Monitored&#39;, &#39;UnmonitoredAuto&#39;</param>
 
         /// <param name="upgradeReplicaSetCheckTimeout">The maximum amount of time to block processing of an upgrade domain and
         /// prevent loss of availability when there are unexpected issues. When this

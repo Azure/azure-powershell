@@ -14,15 +14,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     public static class DiskType
     {
         /// <summary>
-        /// Standard HDD locally redundant storage. Best for backup, non-critical, and infrequent access.
+        /// Standard HDD locally redundant storage. Best for backup, non-critical, and
+        /// infrequent access.
         /// </summary>
         public const string StandardLRS = "Standard_LRS";
         /// <summary>
-        /// Standard SSD locally redundant storage. Best for web servers, lightly used enterprise applications and dev/test.
+        /// Standard SSD locally redundant storage. Best for web servers, lightly used
+        /// enterprise applications and dev/test.
         /// </summary>
         public const string StandardSSDLRS = "StandardSSD_LRS";
         /// <summary>
-        /// Premium SSD locally redundant storage. Best for production and performance sensitive workloads.
+        /// Premium SSD locally redundant storage. Best for production and performance
+        /// sensitive workloads.
         /// </summary>
         public const string PremiumLRS = "Premium_LRS";
     }

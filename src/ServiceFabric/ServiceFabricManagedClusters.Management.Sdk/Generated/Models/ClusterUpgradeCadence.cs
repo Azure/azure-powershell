@@ -14,15 +14,18 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
     public static class ClusterUpgradeCadence
     {
         /// <summary>
-        /// Cluster upgrade starts immediately after a new version is rolled out. Recommended for Test/Dev clusters.
+        /// Cluster upgrade starts immediately after a new version is rolled out.
+        /// Recommended for Test/Dev clusters.
         /// </summary>
         public const string Wave0 = "Wave0";
         /// <summary>
-        /// Cluster upgrade starts 7 days after a new version is rolled out. Recommended for Pre-prod clusters.
+        /// Cluster upgrade starts 7 days after a new version is rolled out.
+        /// Recommended for Pre-prod clusters.
         /// </summary>
         public const string Wave1 = "Wave1";
         /// <summary>
-        /// Cluster upgrade starts 14 days after a new version is rolled out. Recommended for Production clusters.
+        /// Cluster upgrade starts 14 days after a new version is rolled out.
+        /// Recommended for Production clusters.
         /// </summary>
         public const string Wave2 = "Wave2";
     }
