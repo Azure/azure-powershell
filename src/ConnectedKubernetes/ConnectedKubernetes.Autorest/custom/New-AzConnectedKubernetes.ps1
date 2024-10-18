@@ -641,7 +641,6 @@ function New-AzConnectedKubernetes {
             -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # Convert the $Response object into a nested hashtable.
-
         Write-Debug "PUT response: $Response"
         # The following parameters do not exist in Powershell 5.1
         # -AsHashTable
@@ -740,8 +739,6 @@ function New-AzConnectedKubernetes {
                     --set systemDefaultValues.clusterconnect-agent.enabled=true `
                     --set global.kubernetesDistro=$Distribution `
                     --set global.kubernetesInfra=$Infrastructure (-split $options)
-
-                # $helmDebug
             }
             catch {
                 throw "Unable to install helm chart at $ChartPath"

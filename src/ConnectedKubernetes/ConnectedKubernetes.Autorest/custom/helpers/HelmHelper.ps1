@@ -263,6 +263,7 @@ function Invoke-ExternalCommand {
 }
 
 function Set-HelmModulesAndRepository {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     [CmdletBinding(SupportsShouldProcess = $true)]
     param (
         [string]$KubeConfig,

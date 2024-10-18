@@ -88,6 +88,8 @@ function Set-AzConnectedKubernetes {
     param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
         [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedEnableWorkloadIdentity', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedDisableWorkloadIdentity', Mandatory)]
         [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
@@ -96,6 +98,8 @@ function Set-AzConnectedKubernetes {
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
         [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedEnableWorkloadIdentity', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedDisableWorkloadIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
         # The name of the resource group.
@@ -104,6 +108,8 @@ function Set-AzConnectedKubernetes {
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
         [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedEnableWorkloadIdentity', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedDisableWorkloadIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
         # The geo-location where the resource lives
@@ -111,6 +117,8 @@ function Set-AzConnectedKubernetes {
 
         [Parameter(ParameterSetName = 'Set', Mandatory)]
         [Parameter(ParameterSetName = 'SetDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetEnableWorkloadIdentity', Mandatory)]
+        [Parameter(ParameterSetName = 'SetDisableWorkloadIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
         ${InputObject},
@@ -240,11 +248,19 @@ function Set-AzConnectedKubernetes {
         # The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
         ${OidcIssuerProfileSelfHostedIssuerUrl},
 
-        [Parameter()]
+        [Parameter(ParameterSetName = 'SetEnableWorkloadIdentity', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedEnableWorkloadIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.Management.Automation.SwitchParameter]
-        # Whether to enable or disable the workload identity Webhook
+        # Disable the workload identity Webhook
         ${WorkloadIdentityEnabled},
+
+        [Parameter(ParameterSetName = 'SetDisableWorkloadIdentity', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedDisableWorkloadIdentity', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Disable the workload identity Webhook
+        ${WorkloadIdentityDisabled},
 
         [Parameter()]
         [System.Management.Automation.SwitchParameter]
@@ -395,6 +411,9 @@ function Set-AzConnectedKubernetes {
         }
 
         # Parse value from inputObject
+        # ArcAgentryConfiguration is handled in separate block
+        # TODO XW: parse WIF from inputOjbect
+        # Distribution, DistributionVersion, Infrastructure, OidcIssuerProfileSelfHostedIssuerUrl, PrivateLinkState, Tag, ProxyCredential
         if ($null -ne $InputObject) {
             $Location = $InputObject.Location
             $PSBoundParameters.Add('Location', $Location)
@@ -418,6 +437,21 @@ function Set-AzConnectedKubernetes {
             if (-not $PSBoundParameters.ContainsKey('DisableAutoUpgrade')) {
                 $DisableAutoUpgrade = ($InputObject.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')
             }
+
+            # TODO XW: test provide both parameter and inputObject
+            if ((-not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled')) -and (-not $PSBoundParameters.ContainsKey('WorkloadIdentityDisabled')) -and $InputObject.PSObject.Properties['WorkloadIdentityEnabled']) {
+                if ($InputObject.WorkloadIdentityEnabled) {
+                    $WorkloadIdentityEnabled = $true
+                } else {
+                    $WorkloadIdentityDisabled = $true
+                }
+                $PSBoundParameters.Add('WorkloadIdentityEnabled', $InputObject.WorkloadIdentityEnabled)
+            }
+
+            if ((-not $PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled')) -and $InputObject.OidcIssuerProfileEnabled) {
+                $OidcIssuerProfileEnabled = $true
+                $PSBoundParameters.Add('OidcIssuerProfileEnabled', $OidcIssuerProfileEnabled)
+            }
         }
 
         if (-not [String]::IsNullOrEmpty($GatewayResourceId) -and -not $DisableGateway) {
@@ -429,6 +463,13 @@ function Set-AzConnectedKubernetes {
             Write-Debug "Gateway disabled"
             $Null = $PSBoundParameters.Remove('DisableGateway')
             $PSBoundParameters.Add('GatewayEnabled', $false)
+        }
+
+        # If WorkloadIdentityDisabled is provided, then set the workload identity enabled as false
+        if ($WorkloadIdentityDisabled) {
+            Write-Debug "Workload identity disabled"
+            $Null = $PSBoundParameters.Remove('WorkloadIdentityDisabled')
+            $PSBoundParameters.Add('WorkloadIdentityEnabled', $false)
         }
 
         $CommonPSBoundParameters = @{}
@@ -503,7 +544,7 @@ function Set-AzConnectedKubernetes {
 
         $options = ""
 
-        if ($DisableAutoUpgrade -or ($ExistConnectedKubernetes.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')) {
+        if ($DisableAutoUpgrade) {
             $Null = $PSBoundParameters.Remove('DisableAutoUpgrade')
             $PSBoundParameters.Add('ArcAgentProfileAgentAutoUpgrade', 'Disabled')
         }
@@ -538,19 +579,11 @@ function Set-AzConnectedKubernetes {
                 Write-Warning "If the proxy is a private proxy, pass ProxyCredential parameter or provide username and password in the Proxy parameter"
             }
         }
+
         #Endregion
 
         #Region Deal with configuration settings and protected settings
 
-        # If the user does not provide proxy settings, or configuration settings, we shall use arc config of existing object
-        $userProvidedArcConfiguration = (
-            ($null -ne $InputObject) -and ($InputObject.ArcAgentryConfiguration.Length > 0) `
-                -and (-not ([string]::IsNullOrEmpty($HttpProxy))) `
-                -and (-not ([string]::IsNullOrEmpty($HttpsProxy))) `
-                -and (-not ([string]::IsNullOrEmpty($NoProxy))) `
-                -and ((-not ([string]::IsNullOrEmpty($ProxyCert)))) `
-                -and ($PSBoundParameters.ContainsKey('ConfigurationSetting')) `
-                -and ($PSBoundParameters.ContainsKey('ConfigurationProtectedSetting')))
         if ($null -eq $ConfigurationSetting) {
             $ConfigurationSetting = @{}
         }
@@ -671,12 +704,7 @@ function Set-AzConnectedKubernetes {
             $PSBoundParameters.Remove('ConfigurationProtectedSetting')
         }
 
-        if ($userProvidedArcConfiguration) {
-            $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
-        }
-        else {
-            $PSBoundParameters.Add('ArcAgentryConfiguration', $ExistConnectedKubernetes.ArcAgentryConfiguration)
-        }
+        $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
 
         Write-Output "Updating the connected cluster resource...."
         $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
@@ -708,13 +736,7 @@ function Set-AzConnectedKubernetes {
             $Response['properties'] = @{}
         }
 
-        if ($userProvidedArcConfiguration) {
-            $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
-        }
-        else {
-            $Response['properties']['arcAgentryConfigurations'] = $ExistConnectedKubernetes.ArcAgentryConfiguration
-        }
-
+        $Response['properties']['arcAgentryConfigurations'] = $arcAgentryConfigs
 
         # Retrieving Helm chart OCI (Open Container Initiative) Artifact location
         Write-Debug "Retrieving Helm chart OCI (Open Container Initiative) Artifact location."
