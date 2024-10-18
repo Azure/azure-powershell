@@ -114,18 +114,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.EdgeStor
             {
                 DataFormat = "BlockBlob";
             }
-            var container = new Container(
-                name: Name,
-                dataFormat: DataFormat
-            );
-
+            
             return new PSDataBoxEdgeStorageContainer(
                 this.DataBoxEdgeManagementClient.Containers.CreateOrUpdate(
                     DeviceName,
                     EdgeStorageAccountName,
                     Name,
-                    container,
-                    this.ResourceGroupName
+                    this.ResourceGroupName,
+                    DataFormat
                 ));
         }
 
