@@ -47,6 +47,7 @@
 * Added support of `DestinationIPAddress` property in `New-AzPrivateLinkService` command
     - `LoadBalancerFrontendIpConfiguration` is not a mandatory parameter anymore.
     - The user can provide either `LoadBalancerFrontendIpConfiguration` or `DestinationIPAddress`.
+* Added support for `PrivateEndpointVNetPolicies` property in `New-AzVirtualNetwork`
 
 ## Version 7.8.1
 * Fixed secrets exposure in example documentation.
