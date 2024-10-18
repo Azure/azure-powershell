@@ -12,19 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Linq;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB.Models;
-using Microsoft.Extensions.Azure;
+
 using Newtonsoft.Json.Converters;
+
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Management.Automation;
+
 using SDKModel = Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
@@ -139,7 +140,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                             sourceAccountToRestore.Location,
                             sourceAccountToRestore.Name,
                             Location,
-                            utcRestoreDateTime.ToString("M/dd/yyyy h:mm:ss tt")).GetAwaiter().GetResult().Body;
+                            utcRestoreDateTime.ToInvariantString()).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
                     }
@@ -157,7 +158,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
                         Location,
-                        utcRestoreDateTime.ToString("M/dd/yyyy h:mm:ss tt")).GetAwaiter().GetResult().Body;
+                        utcRestoreDateTime.ToInvariantString()).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
                     }
@@ -175,7 +176,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
                         Location,
-                        utcRestoreDateTime.ToString("M/dd/yyyy h:mm:ss tt")).GetAwaiter().GetResult().Body;
+                        utcRestoreDateTime.ToInvariantString()).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
                     }
@@ -193,7 +194,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
                         Location,
-                        utcRestoreDateTime.ToString("M/dd/yyyy h:mm:ss tt")).GetAwaiter().GetResult().Body;
+                        utcRestoreDateTime.ToInvariantString()).GetAwaiter().GetResult().Body;
 
                         restorableResourcesNotFound = restorableResources == null || !restorableResources.Any();
                     }

@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Use invariant culture to serialize timestamp into query string when call Restore-AzCosmosDBAccount.
+* Serialized timestamp into query string by invariant culture for `Restore-AzCosmosDBAccount` and `Restore-AzCosmosDBTable`.
 
 ## Version 1.15.0
 * Added new parameter `DisableTtl` to `Restore-AzCosmosDBAccount`.
