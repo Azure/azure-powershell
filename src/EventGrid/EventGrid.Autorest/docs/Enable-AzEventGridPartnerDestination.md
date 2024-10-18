@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzEventGridPartnerDestination
 
 ## SYNOPSIS
-Activate a newly Activated partner destination.
+Activate a newly created partner destination.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Enable-AzEventGridPartnerDestination -InputObject <IEventGridIdentity> [-Default
 ```
 
 ## DESCRIPTION
-Activate a newly Activated partner destination.
+Activate a newly created partner destination.
 
 ## EXAMPLES
 
