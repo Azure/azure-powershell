@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Consumption.Models
         /// <param name="notifications">Dictionary of notifications associated with the budget. Budget can have up
         /// to five notifications.
         /// </param>
-        public Budget(string id = default(string), string name = default(string), string type = default(string), string eTag = default(string), Filters filters = default(Filters), CurrentSpend currentSpend = default(CurrentSpend), string category = default(string), decimal amount = default(decimal), string timeGrain = default(string), BudgetTimePeriod timePeriod = default(BudgetTimePeriod), System.Collections.Generic.IDictionary<string, Notification> notifications = default(System.Collections.Generic.IDictionary<string, Notification>))
+        public Budget(string id = default(string), string name = default(string), string type = default(string), string eTag = default(string), Filters filters = default(Filters), CurrentSpend currentSpend = default(CurrentSpend), string category = default(string), decimal? amount = default(decimal?), string timeGrain = default(string), BudgetTimePeriod timePeriod = default(BudgetTimePeriod), System.Collections.Generic.IDictionary<string, Notification> notifications = default(System.Collections.Generic.IDictionary<string, Notification>))
 
         : base(id, name, type, eTag)
         {
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Consumption.Models
         /// Gets or sets the total amount of cost to track with the budget
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.amount")]
-        public decimal Amount {get; set; }
+        public decimal? Amount {get; set; }
 
         /// <summary>
         /// Gets or sets the time covered by a budget. Tracking of the amount will be

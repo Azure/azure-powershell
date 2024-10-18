@@ -33,13 +33,4 @@ directive:
     from: consumption.json
     reason: it's not actually a resource path; the validator is confused because the Billing namespace is in the URI path.
     approved-by: "@fearthecowboy"
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/double/g, 'decimal');
-  - from: Budget.cs
-    where: $
-    transform: $ = $.replace('public decimal? Amount', 'public decimal Amount');
-  - from: Budget.cs
-    where: $
-    transform: $ = $.replace('decimal? amount = default(decimal?)', 'decimal amount = default(decimal)');
 ```
