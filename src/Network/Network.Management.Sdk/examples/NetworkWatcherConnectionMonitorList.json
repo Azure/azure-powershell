@@ -1,0 +1,105 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "cm1",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/connectionMonitors/cm1",
+            "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "endpoints": [
+                {
+                  "name": "source",
+                  "resourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/ct1"
+                },
+                {
+                  "name": "destination",
+                  "address": "bing.com"
+                }
+              ],
+              "testConfigurations": [
+                {
+                  "name": "tcp",
+                  "testFrequencySec": 60,
+                  "protocol": "Tcp",
+                  "tcpConfiguration": {
+                    "port": 80
+                  }
+                }
+              ],
+              "testGroups": [
+                {
+                  "name": "tg",
+                  "testConfigurations": [
+                    "tcp"
+                  ],
+                  "sources": [
+                    "source"
+                  ],
+                  "destinations": [
+                    "destination"
+                  ]
+                }
+              ]
+            },
+            "location": "eastus",
+            "type": "Microsoft.Network/networkWatchers/connectionMonitors"
+          },
+          {
+            "name": "cm2",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/connectionMonitors/cm2",
+            "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "endpoints": [
+                {
+                  "name": "source",
+                  "resourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/ct2"
+                },
+                {
+                  "name": "destination",
+                  "address": "google.com"
+                }
+              ],
+              "testConfigurations": [
+                {
+                  "name": "tcp",
+                  "testFrequencySec": 60,
+                  "protocol": "Tcp",
+                  "tcpConfiguration": {
+                    "port": 80
+                  }
+                }
+              ],
+              "testGroups": [
+                {
+                  "name": "tg",
+                  "testConfigurations": [
+                    "tcp"
+                  ],
+                  "sources": [
+                    "source"
+                  ],
+                  "destinations": [
+                    "destination"
+                  ]
+                }
+              ]
+            },
+            "location": "eastus",
+            "type": "Microsoft.Network/networkWatchers/connectionMonitors"
+          }
+        ]
+      }
+    }
+  }
+}
+

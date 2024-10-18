@@ -1,0 +1,41 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subId",
+    "resourceGroupName": "rg1",
+    "serviceName": "testPls"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "testPlePeConnection1",
+            "properties": {
+              "privateEndpoint": {
+                "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/testPe1"
+              },
+              "privateLinkServiceConnectionState": {
+                "status": "Approved",
+                "description": "approved it for some reason."
+              }
+            }
+          },
+          {
+            "name": "testPlePeConnection2",
+            "properties": {
+              "privateEndpoint": {
+                "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/testPe2"
+              },
+              "privateLinkServiceConnectionState": {
+                "status": "Rejected",
+                "description": "rejected by some reason."
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

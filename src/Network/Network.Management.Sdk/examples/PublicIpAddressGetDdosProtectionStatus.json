@@ -1,0 +1,24 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "publicIpAddressName": "test-pip"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "publicIpAddressId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/test-pip",
+        "publicIpAddress": "10.0.1.5",
+        "isWorkloadProtected": "True",
+        "ddosProtectionPlanId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/ddosProtectionPlans/test-plan"
+      }
+    },
+    "202": {
+      "headers": {
+        "Location": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SampleRG/providers/Microsoft.Network/locations/tempLocation/operationResults/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    }
+  }
+}
+

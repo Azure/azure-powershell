@@ -1,0 +1,24 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "resourceGroupName": "p2s-vpn-gateway-test",
+    "gatewayName": "p2svpngateway",
+    "api-version": "2024-05-01",
+    "request": {
+      "vpnUserNamesFilter": [
+        "vpnUser1",
+        "vpnUser2"
+      ],
+      "outputBlobSasUrl": "https://blobcortextesturl.blob.core.windows.net/folderforconfig/p2sconnectionhealths?sp=rw&se=2018-01-10T03%3A42%3A04Z&sv=2017-04-17&sig=WvXrT5bDmDFfgHs%2Brz%2BjAu123eRCNE9BO0eQYcPDT7pY%3D&sr=b"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "sasUrl": "aaaaaaaaaaaaaaaaaa"
+      }
+    },
+    "202": {}
+  }
+}
+

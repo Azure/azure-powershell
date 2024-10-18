@@ -1,0 +1,602 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkGroup",
+    "description": "The Microsoft Azure Network Group API provides a RESTful set of web services that interact with Microsoft Azure Network Manager service to manage your network resources.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkGroupNameParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        }
+      ],
+      "get": {
+        "tags": [
+          "NetworkGroups"
+        ],
+        "operationId": "NetworkGroups_Get",
+        "description": "Gets the specified network group.",
+        "responses": {
+          "200": {
+            "description": "OK - Returns information about the network group.",
+            "schema": {
+              "$ref": "#/definitions/NetworkGroup"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "NetworkGroupsGet": {
+            "$ref": "./examples/NetworkManagerGroupGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NetworkGroups"
+        ],
+        "operationId": "NetworkGroups_CreateOrUpdate",
+        "description": "Creates or updates a network group.",
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NetworkGroup"
+            },
+            "description": "Parameters supplied to the specify which network group need to create"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": false,
+            "type": "string",
+            "x-ms-client-name": "IfMatch",
+            "description": "The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated - Returns information about the network group.",
+            "schema": {
+              "$ref": "#/definitions/NetworkGroup"
+            },
+            "headers": {
+              "ETag": {
+                "description": "The current entity tag.",
+                "type": "string"
+              }
+            }
+          },
+          "201": {
+            "description": "Created - Returns information about the network group.",
+            "schema": {
+              "$ref": "#/definitions/NetworkGroup"
+            },
+            "headers": {
+              "ETag": {
+                "description": "The current entity tag.",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "NetworkGroupsPut": {
+            "$ref": "./examples/NetworkManagerGroupPut.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NetworkGroups"
+        ],
+        "operationId": "NetworkGroups_Delete",
+        "description": "Deletes a network group.",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ForceDeleteParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete Succeed."
+          },
+          "202": {
+            "description": "Accepted and will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "Request successful. The resource does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "NetworkGroupsDelete": {
+            "$ref": "./examples/NetworkManagerGroupDelete.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups": {
+      "get": {
+        "tags": [
+          "NetworkGroups"
+        ],
+        "operationId": "NetworkGroups_List",
+        "description": "Lists the specified network group.",
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/NetworkManagerNameParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/ListTopParameter"
+          },
+          {
+            "$ref": "#/parameters/ListSkipTokenParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - Returns information about the network group.",
+            "schema": {
+              "$ref": "#/definitions/NetworkGroupListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "NetworkGroupsList": {
+            "$ref": "./examples/NetworkManagerGroupList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}/staticMembers/{staticMemberName}": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/StaticMemberNameParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        }
+      ],
+      "get": {
+        "tags": [
+          "StaticMembers"
+        ],
+        "operationId": "StaticMembers_Get",
+        "description": "Gets the specified static member.",
+        "responses": {
+          "200": {
+            "description": "OK - Returns information about the static member.",
+            "schema": {
+              "$ref": "#/definitions/StaticMember"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "StaticMembersGet": {
+            "$ref": "./examples/NetworkManagerStaticMemberGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "StaticMembers"
+        ],
+        "operationId": "StaticMembers_CreateOrUpdate",
+        "description": "Creates or updates a static member.",
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StaticMember"
+            },
+            "description": "Parameters supplied to the specify the static member to create"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated - Returns information about the static member.",
+            "schema": {
+              "$ref": "#/definitions/StaticMember"
+            }
+          },
+          "201": {
+            "description": "Created - Returns information about the static member.",
+            "schema": {
+              "$ref": "#/definitions/StaticMember"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "StaticMemberPut": {
+            "$ref": "./examples/NetworkManagerStaticMemberPut.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "StaticMembers"
+        ],
+        "operationId": "StaticMembers_Delete",
+        "description": "Deletes a static member.",
+        "responses": {
+          "200": {
+            "description": "Delete Succeed."
+          },
+          "204": {
+            "description": "Request successful. The resource does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "StaticMembersDelete": {
+            "$ref": "./examples/NetworkManagerStaticMemberDelete.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups/{networkGroupName}/staticMembers": {
+      "get": {
+        "tags": [
+          "StaticMembers"
+        ],
+        "operationId": "StaticMembers_List",
+        "description": "Lists the specified static member.",
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/NetworkManagerNameParameter"
+          },
+          {
+            "$ref": "#/parameters/NetworkGroupNameParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/ListTopParameter"
+          },
+          {
+            "$ref": "#/parameters/ListSkipTokenParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - Returns information about the static member.",
+            "schema": {
+              "$ref": "#/definitions/StaticMemberListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "StaticMembersList": {
+            "$ref": "./examples/NetworkManagerStaticMemberList.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "NetworkGroup": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/NetworkGroupProperties",
+          "description": "The Network Group properties"
+        },
+        "systemData": {
+          "readOnly": true,
+          "description": "The system metadata related to this resource.",
+          "$ref": "./network.json#/definitions/SystemData"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/ChildResource"
+        }
+      ],
+      "description": "The network group resource"
+    },
+    "NetworkGroupListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkGroup"
+          },
+          "description": "Gets a page of NetworkGroup"
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Gets the URL to get the next set of results."
+        }
+      },
+      "description": "Result of the request to list NetworkGroup. It contains a list of groups and a URL link to get the next set of results."
+    },
+    "NetworkGroupProperties": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "A description of the network group."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the scope assignment resource."
+        },
+        "resourceGuid": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Unique identifier for this resource."
+        }
+      },
+      "description": "Properties of network group"
+    },
+    "StaticMember": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/StaticMemberProperties",
+          "description": "The Static Member properties"
+        },
+        "systemData": {
+          "readOnly": true,
+          "description": "The system metadata related to this resource.",
+          "$ref": "./network.json#/definitions/SystemData"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/ChildResource"
+        }
+      ],
+      "description": "StaticMember Item."
+    },
+    "StaticMemberListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StaticMember"
+          },
+          "description": "Gets a page of StaticMember"
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Gets the URL to get the next set of results."
+        }
+      },
+      "description": "Result of the request to list StaticMember. It contains a list of groups and a URL link to get the next set of results."
+    },
+    "StaticMemberProperties": {
+      "type": "object",
+      "properties": {
+        "resourceId": {
+          "type": "string",
+          "description": "Resource Id."
+        },
+        "region": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Resource region."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the scope assignment resource."
+        }
+      },
+      "description": "Properties of static member."
+    },
+    "QueryRequestOptions": {
+      "type": "object",
+      "properties": {
+        "skipToken": {
+          "description": "When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.",
+          "type": "string"
+        }
+      },
+      "description": "Query Request Options"
+    }
+  },
+  "parameters": {
+    "ResourceGroupNameParameter": {
+      "name": "resourceGroupName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the resource group.",
+      "x-ms-parameter-location": "method"
+    },
+    "NetworkManagerNameParameter": {
+      "name": "networkManagerName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the network manager.",
+      "x-ms-parameter-location": "method"
+    },
+    "NetworkGroupNameParameter": {
+      "name": "networkGroupName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the network group.",
+      "x-ms-parameter-location": "method"
+    },
+    "StaticMemberNameParameter": {
+      "name": "staticMemberName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the static member.",
+      "x-ms-parameter-location": "method"
+    },
+    "ListTopParameter": {
+      "name": "$top",
+      "description": "An optional query parameter which specifies the maximum number of records to be returned by the server.",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "minimum": 1,
+      "maximum": 20,
+      "x-ms-parameter-location": "method"
+    },
+    "ListSkipTokenParameter": {
+      "name": "$skipToken",
+      "description": "SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "ForceDeleteParameter": {
+      "name": "force",
+      "in": "query",
+      "required": false,
+      "type": "boolean",
+      "description": "Deletes the resource even if it is part of a deployed configuration. If the configuration has been deployed, the service will do a cleanup deployment in the background, prior to the delete.",
+      "x-ms-parameter-location": "method"
+    }
+  }
+}
+

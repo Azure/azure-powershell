@@ -1,0 +1,48 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "serviceEndpointPolicyName": "testServiceEndpointPolicy",
+    "parameters": {
+      "tags": {
+        "tag1": "value1",
+        "tag2": "value2"
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "testServiceEndpointPolicy",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/serviceEndpointPolicies/testServiceEndpointPolicy",
+        "type": "Microsoft.Network/serviceEndpointPolicies",
+        "location": "westus",
+        "tags": {
+          "tag1": "value1",
+          "tag2": "value2"
+        },
+        "properties": {
+          "provisioningState": "Succeeded",
+          "resourceGuid": "00000000-0000-0000-0000-000000000000",
+          "serviceEndpointPolicyDefinitions": [
+            {
+              "name": "StorageServiceEndpointPolicyDefinition",
+              "properties": {
+                "description": "Storage Service EndpointPolicy Definition",
+                "service": "Microsoft.Storage",
+                "serviceResources": [
+                  "/subscriptions/subid1",
+                  "/subscriptions/subid1/resourceGroups/storageRg",
+                  "/subscriptions/subid1/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount"
+                ]
+              }
+            }
+          ],
+          "subnets": []
+        }
+      }
+    }
+  }
+}
+

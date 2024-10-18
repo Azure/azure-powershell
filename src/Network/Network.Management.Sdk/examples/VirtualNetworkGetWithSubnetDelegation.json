@@ -1,0 +1,55 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subId",
+    "resourceGroupName": "rg1",
+    "virtualNetworkName": "test-vnet"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "test-vnet",
+        "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet",
+        "type": "Microsoft.Network/virtualNetworks",
+        "location": "westus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "addressSpace": {
+            "addressPrefixes": [
+              "10.0.0.0/16"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "subnet1",
+              "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "addressPrefix": "10.0.1.0/24",
+                "ipConfigurations": [
+                  {
+                    "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe"
+                  }
+                ],
+                "delegations": [
+                  {
+                    "name": "myDelegation",
+                    "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1/delegations/myDelegation",
+                    "properties": {
+                      "provisioningState": "Succeeded",
+                      "serviceName": "Microsoft.Provider/resourceType",
+                      "actions": []
+                    }
+                  }
+                ],
+                "purpose": ""
+              }
+            }
+          ],
+          "virtualNetworkPeerings": []
+        }
+      }
+    }
+  }
+}
+

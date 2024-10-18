@@ -1,0 +1,37 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "resourceGroupName": "testrg",
+    "loadBalancerName": "lb",
+    "api-version": "2024-05-01"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "prlb",
+            "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/probes/prlb",
+            "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+            "type": "Microsoft.Network/loadBalancers/probes",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "protocol": "Http",
+              "port": 80,
+              "requestPath": "healthcheck.aspx",
+              "intervalInSeconds": 15,
+              "numberOfProbes": 2,
+              "probeThreshold": 1,
+              "loadBalancingRules": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/loadBalancingRules/rulelb"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

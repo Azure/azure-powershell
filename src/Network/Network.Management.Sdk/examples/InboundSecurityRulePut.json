@@ -1,0 +1,81 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "ruleCollectionName": "rule1",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkVirtualApplianceName": "nva",
+    "parameters": {
+      "properties": {
+        "ruleType": "Permanent",
+        "rules": [
+          {
+            "name": "inboundRule1",
+            "protocol": "TCP",
+            "sourceAddressPrefix": "50.20.121.5/32",
+            "destinationPortRange": 22,
+            "destinationPortRanges": [
+              "80-100"
+            ],
+            "appliesOn": [
+              "slbip1"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "rule1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkVirtualAppliances/nva/InboundSecurityRules/rule1",
+        "etag": "W/\"72090554-7e3b-43f2-80ad-99a9020dcb11\"",
+        "properties": {
+          "ruleType": "Permanent",
+          "provisioningState": "Succeeded",
+          "rules": [
+            {
+              "name": "inboundRule1",
+              "protocol": "TCP",
+              "sourceAddressPrefix": "50.20.121.5/32",
+              "destinationPortRange": 22,
+              "destinationPortRanges": [
+                "80-100"
+              ],
+              "appliesOn": [
+                "slbip1"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "rule1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkVirtualAppliances/nva/InboundSecurityRules/rule1",
+        "etag": "W/\"72090554-7e3b-43f2-80ad-99a9020dcb11\"",
+        "properties": {
+          "ruleType": "Permanent",
+          "provisioningState": "Succeeded",
+          "rules": [
+            {
+              "name": "inboundRule1",
+              "protocol": "TCP",
+              "sourceAddressPrefix": "50.20.121.5/32",
+              "destinationPortRange": 22,
+              "destinationPortRanges": [
+                "80-100"
+              ],
+              "appliesOn": [
+                "slbip1"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

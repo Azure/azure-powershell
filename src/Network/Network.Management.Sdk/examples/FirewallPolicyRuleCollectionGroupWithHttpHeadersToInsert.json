@@ -1,0 +1,144 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "e747cc13-97d4-4a79-b463-42d7f4e558f2",
+    "resourceGroupName": "rg1",
+    "firewallPolicyName": "firewallPolicy",
+    "ruleCollectionGroupName": "ruleCollectionGroup1",
+    "parameters": {
+      "properties": {
+        "priority": 110,
+        "ruleCollections": [
+          {
+            "ruleCollectionType": "FirewallPolicyFilterRuleCollection",
+            "name": "Example-Filter-Rule-Collection",
+            "action": {
+              "type": "Allow"
+            },
+            "rules": [
+              {
+                "ruleType": "ApplicationRule",
+                "name": "rule1",
+                "description": "Insert trusted tenants header",
+                "protocols": [
+                  {
+                    "protocolType": "Http",
+                    "port": 80
+                  }
+                ],
+                "sourceAddresses": [
+                  "216.58.216.164",
+                  "10.0.0.0/24"
+                ],
+                "fqdnTags": [
+                  "WindowsVirtualDesktop"
+                ],
+                "httpHeadersToInsert": [
+                  {
+                    "headerName": "Restrict-Access-To-Tenants",
+                    "headerValue": "contoso.com,fabrikam.onmicrosoft.com"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "ruleCollectionGroup1",
+        "id": "/subscriptions/e747cc13-97d4-4a79-b463-42d7f4e558f2/resourceGroups/rg1/providers/Microsoft.Network/firewallPolicies/firewallPolicy/ruleCollectionGroups/ruleCollectionGroup1",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "priority": 110,
+          "ruleCollections": [
+            {
+              "ruleCollectionType": "FirewallPolicyFilterRuleCollection",
+              "name": "Example-Filter-Rule-Collection",
+              "action": {
+                "type": "Allow"
+              },
+              "rules": [
+                {
+                  "ruleType": "ApplicationRule",
+                  "name": "rule1",
+                  "description": "Insert trusted tenants header",
+                  "protocols": [
+                    {
+                      "protocolType": "Http",
+                      "port": 80
+                    }
+                  ],
+                  "sourceAddresses": [
+                    "216.58.216.164",
+                    "10.0.0.0/24"
+                  ],
+                  "fqdnTags": [
+                    "WindowsVirtualDesktop"
+                  ],
+                  "httpHeadersToInsert": [
+                    {
+                      "headerName": "Restrict-Access-To-Tenants",
+                      "headerValue": "contoso.com,fabrikam.onmicrosoft.com"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "ruleCollectionGroup1",
+        "id": "/subscriptions/e747cc13-97d4-4a79-b463-42d7f4e558f2/resourceGroups/rg1/providers/Microsoft.Network/firewallPolicies/firewallPolicy/ruleCollectionGroups/ruleCollectionGroup1",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "priority": 110,
+          "ruleCollections": [
+            {
+              "ruleCollectionType": "FirewallPolicyFilterRuleCollection",
+              "name": "Example-Filter-Rule-Collection",
+              "action": {
+                "type": "Allow"
+              },
+              "rules": [
+                {
+                  "ruleType": "ApplicationRule",
+                  "name": "rule1",
+                  "description": "Insert trusted tenants header",
+                  "protocols": [
+                    {
+                      "protocolType": "Http",
+                      "port": 80
+                    }
+                  ],
+                  "sourceAddresses": [
+                    "216.58.216.164",
+                    "10.0.0.0/24"
+                  ],
+                  "fqdnTags": [
+                    "WindowsVirtualDesktop"
+                  ],
+                  "httpHeadersToInsert": [
+                    {
+                      "headerName": "Restrict-Access-To-Tenants",
+                      "headerValue": "contoso.com,fabrikam.onmicrosoft.com"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

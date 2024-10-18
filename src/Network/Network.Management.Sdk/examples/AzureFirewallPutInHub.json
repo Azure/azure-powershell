@@ -1,0 +1,116 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "azureFirewallName": "azurefirewall",
+    "parameters": {
+      "tags": {
+        "key1": "value1"
+      },
+      "location": "West US",
+      "zones": [],
+      "properties": {
+        "sku": {
+          "name": "AZFW_Hub",
+          "tier": "Standard"
+        },
+        "threatIntelMode": "Alert",
+        "virtualHub": {
+          "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1"
+        },
+        "firewallPolicy": {
+          "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/firewallPolicies/policy1"
+        },
+        "hubIPAddresses": {
+          "publicIPs": {
+            "addresses": [],
+            "count": 1
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "azurefirewall",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall",
+        "type": "Microsoft.Network/azureFirewalls",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "zones": [],
+        "tags": {
+          "key1": "value1"
+        },
+        "properties": {
+          "provisioningState": "Succeeded",
+          "sku": {
+            "name": "AZFW_Hub",
+            "tier": "Standard"
+          },
+          "threatIntelMode": "Alert",
+          "virtualHub": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1"
+          },
+          "firewallPolicy": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/firewallPolicies/policy1"
+          },
+          "hubIPAddresses": {
+            "publicIPs": {
+              "addresses": [
+                {
+                  "address": "13.73.240.12"
+                }
+              ],
+              "count": 1
+            },
+            "privateIPAddress": "10.0.0.0"
+          },
+          "additionalProperties": {}
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "azurefirewall",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall",
+        "type": "Microsoft.Network/azureFirewalls",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "zones": [],
+        "tags": {
+          "key1": "value1"
+        },
+        "properties": {
+          "provisioningState": "Succeeded",
+          "sku": {
+            "name": "AZFW_Hub",
+            "tier": "Standard"
+          },
+          "threatIntelMode": "Alert",
+          "virtualHub": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1"
+          },
+          "firewallPolicy": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/firewallPolicies/policy1"
+          },
+          "hubIPAddresses": {
+            "publicIPs": {
+              "addresses": [
+                {
+                  "address": "13.73.240.12"
+                }
+              ],
+              "count": 1
+            },
+            "privateIPAddress": "10.0.0.0"
+          },
+          "ipGroups": [],
+          "additionalProperties": {}
+        }
+      }
+    }
+  }
+}
+

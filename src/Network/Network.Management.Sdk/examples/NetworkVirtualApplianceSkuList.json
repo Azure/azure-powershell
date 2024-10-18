@@ -1,0 +1,37 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "ciscoSdwan",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkVirtualApplianceSkus/ciscoSdwan",
+            "type": "Microsoft.Network/networkVirtualApplianceSkus",
+            "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+            "properties": {
+              "vendor": "Cisco",
+              "availableVersions": [
+                "11.12"
+              ],
+              "availableScaleUnits": [
+                {
+                  "scaleUnit": "1",
+                  "instanceCount": 2
+                },
+                {
+                  "scaleUnit": "2",
+                  "instanceCount": 2
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

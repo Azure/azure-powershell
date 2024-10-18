@@ -1,0 +1,455 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}": {
+      "delete": {
+        "tags": [
+          "IpAllocations"
+        ],
+        "operationId": "IpAllocations_Delete",
+        "description": "Deletes the specified IpAllocation.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ipAllocationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the IpAllocation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Delete successful."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Delete IpAllocation": {
+            "$ref": "./examples/IpAllocationDelete.json"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "IpAllocations"
+        ],
+        "operationId": "IpAllocations_Get",
+        "description": "Gets the specified IpAllocation by resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ipAllocationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the IpAllocation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expands referenced resources."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting IpAllocation resource.",
+            "schema": {
+              "$ref": "#/definitions/IpAllocation"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get IpAllocation": {
+            "$ref": "./examples/IpAllocationGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "IpAllocations"
+        ],
+        "operationId": "IpAllocations_CreateOrUpdate",
+        "description": "Creates or updates an IpAllocation in the specified resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ipAllocationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the IpAllocation."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/IpAllocation"
+            },
+            "description": "Parameters supplied to the create or update virtual network operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting IpAllocation resource.",
+            "schema": {
+              "$ref": "#/definitions/IpAllocation"
+            }
+          },
+          "201": {
+            "description": "Create successful. The operation returns the resulting IpAllocation resource.",
+            "schema": {
+              "$ref": "#/definitions/IpAllocation"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "Create IpAllocation": {
+            "$ref": "./examples/IpAllocationCreate.json"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "IpAllocations"
+        ],
+        "operationId": "IpAllocations_UpdateTags",
+        "description": "Updates a IpAllocation tags.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "ipAllocationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the IpAllocation."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update IpAllocation tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting IpAllocation resource.",
+            "schema": {
+              "$ref": "#/definitions/IpAllocation"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update virtual network tags": {
+            "$ref": "./examples/IpAllocationUpdateTags.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/IpAllocations": {
+      "get": {
+        "tags": [
+          "IpAllocations"
+        ],
+        "operationId": "IpAllocations_List",
+        "description": "Gets all IpAllocations in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of IpAllocation resources.",
+            "schema": {
+              "$ref": "#/definitions/IpAllocationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all IpAllocations": {
+            "$ref": "./examples/IpAllocationList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations": {
+      "get": {
+        "tags": [
+          "IpAllocations"
+        ],
+        "operationId": "IpAllocations_ListByResourceGroup",
+        "description": "Gets all IpAllocations in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of IpAllocation resources.",
+            "schema": {
+              "$ref": "#/definitions/IpAllocationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List IpAllocations in resource group": {
+            "$ref": "./examples/IpAllocationListByResourceGroup.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "IpAllocationPropertiesFormat": {
+      "properties": {
+        "subnet": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The Subnet that using the prefix of this IpAllocation resource."
+        },
+        "virtualNetwork": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The VirtualNetwork that using the prefix of this IpAllocation resource."
+        },
+        "type": {
+          "$ref": "#/definitions/IpAllocationType",
+          "description": "The type for the IpAllocation."
+        },
+        "prefix": {
+          "type": "string",
+          "description": "The address prefix for the IpAllocation."
+        },
+        "prefixLength": {
+          "type": "integer",
+          "x-nullable": true,
+          "default": 0,
+          "description": "The address prefix length for the IpAllocation."
+        },
+        "prefixType": {
+          "$ref": "./network.json#/definitions/IPVersion",
+          "default": null,
+          "description": "The address prefix Type for the IpAllocation."
+        },
+        "ipamAllocationId": {
+          "type": "string",
+          "description": "The IPAM allocation ID."
+        },
+        "allocationTags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "IpAllocation tags."
+        }
+      },
+      "description": "Properties of the IpAllocation."
+    },
+    "IpAllocation": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/IpAllocationPropertiesFormat",
+          "description": "Properties of the IpAllocation."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "IpAllocation resource."
+    },
+    "IpAllocationListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IpAllocation"
+          },
+          "description": "A list of IpAllocation resources."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for the ListIpAllocations API service call."
+    },
+    "IpAllocationType": {
+      "type": "string",
+      "description": "IpAllocation type.",
+      "enum": [
+        "Undefined",
+        "Hypernet"
+      ],
+      "x-ms-enum": {
+        "name": "IpAllocationType",
+        "modelAsString": true
+      }
+    }
+  }
+}
+

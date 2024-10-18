@@ -1,0 +1,38 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualNetworkGatewayName": "vpngw",
+    "vpnclientIpsecParams": {
+      "saLifeTimeSeconds": 86473,
+      "saDataSizeKilobytes": 429497,
+      "ipsecEncryption": "AES256",
+      "ipsecIntegrity": "SHA256",
+      "ikeEncryption": "AES256",
+      "ikeIntegrity": "SHA384",
+      "dhGroup": "DHGroup2",
+      "pfsGroup": "PFS2"
+    }
+  },
+  "responses": {
+    "202": {
+      "headers": {
+        "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/locations/eastus/operations/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    },
+    "200": {
+      "body": {
+        "saLifeTimeSeconds": 86473,
+        "saDataSizeKilobytes": 429497,
+        "ipsecEncryption": "AES256",
+        "ipsecIntegrity": "SHA256",
+        "ikeEncryption": "AES256",
+        "ikeIntegrity": "SHA384",
+        "dhGroup": "DHGroup2",
+        "pfsGroup": "PFS2"
+      }
+    }
+  }
+}
+

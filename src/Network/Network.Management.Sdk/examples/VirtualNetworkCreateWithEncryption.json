@@ -1,0 +1,95 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualNetworkName": "test-vnet",
+    "parameters": {
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "test-1",
+            "properties": {
+              "addressPrefix": "10.0.0.0/24"
+            }
+          }
+        ],
+        "encryption": {
+          "enabled": true,
+          "enforcement": "AllowUnencrypted"
+        }
+      },
+      "location": "eastus"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "test-vnet",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet",
+        "type": "Microsoft.Network/virtualNetworks",
+        "location": "eastus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "addressSpace": {
+            "addressPrefixes": [
+              "10.0.0.0/16"
+            ]
+          },
+          "subnets": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/test-1",
+              "name": "test-1",
+              "properties": {
+                "addressPrefix": "10.0.0.0/24",
+                "provisioningState": "Succeeded"
+              }
+            }
+          ],
+          "encryption": {
+            "enabled": true,
+            "enforcement": "AllowUnencrypted"
+          },
+          "virtualNetworkPeerings": []
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "test-vnet",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet",
+        "type": "Microsoft.Network/virtualNetworks",
+        "location": "eastus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "addressSpace": {
+            "addressPrefixes": [
+              "10.0.0.0/16"
+            ]
+          },
+          "subnets": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/test-1",
+              "name": "test-1",
+              "properties": {
+                "addressPrefix": "10.0.0.0/24",
+                "provisioningState": "Succeeded"
+              }
+            }
+          ],
+          "encryption": {
+            "enabled": true,
+            "enforcement": "AllowUnencrypted"
+          },
+          "virtualNetworkPeerings": []
+        }
+      }
+    }
+  }
+}
+

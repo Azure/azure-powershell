@@ -1,0 +1,1159 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "SecurityAdminConfiguration",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations": {
+      "get": {
+        "tags": [
+          "SecurityAdminConfigurations"
+        ],
+        "operationId": "SecurityAdminConfigurations_List",
+        "description": "Lists all the network manager security admin configurations in a network manager, in a paginated format.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/NetworkManagerNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ListTopParameter"
+          },
+          {
+            "$ref": "#/parameters/ListSkipTokenParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get successful. The operation returns all security admin configuration resources in the specified network manager, in a paginated format",
+            "schema": {
+              "$ref": "#/definitions/SecurityAdminConfigurationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "List security admin configurations in a network manager": {
+            "$ref": "./examples/NetworkManagerSecurityAdminConfigurationList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerNameParameter"
+        },
+        {
+          "$ref": "#/parameters/SecurityConfigurationParameter"
+        }
+      ],
+      "get": {
+        "tags": [
+          "SecurityAdminConfigurations"
+        ],
+        "description": "Retrieves a network manager security admin configuration.",
+        "operationId": "SecurityAdminConfigurations_Get",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/SecurityAdminConfiguration"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get security admin configurations": {
+            "$ref": "./examples/NetworkManagerSecurityAdminConfigurationGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "SecurityAdminConfigurations"
+        ],
+        "description": "Creates or updates a network manager security admin configuration.",
+        "operationId": "SecurityAdminConfigurations_CreateOrUpdate",
+        "parameters": [
+          {
+            "name": "securityAdminConfiguration",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SecurityAdminConfiguration"
+            },
+            "description": "The security admin configuration to create or update"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated Admin Configuration",
+            "schema": {
+              "$ref": "#/definitions/SecurityAdminConfiguration"
+            }
+          },
+          "201": {
+            "description": "Created Admin Configuration",
+            "schema": {
+              "$ref": "#/definitions/SecurityAdminConfiguration"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create network manager security admin configuration": {
+            "$ref": "./examples/NetworkManagerSecurityAdminConfigurationPut.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "SecurityAdminConfigurations"
+        ],
+        "description": "Deletes a network manager security admin configuration.",
+        "operationId": "SecurityAdminConfigurations_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ForceDeleteParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted and will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Delete network manager security admin configuration": {
+            "$ref": "./examples/NetworkManagerSecurityAdminConfigurationDelete.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections": {
+      "get": {
+        "tags": [
+          "AdminRuleCollections"
+        ],
+        "operationId": "AdminRuleCollections_List",
+        "description": "Lists all the rule collections in a security admin configuration, in a paginated format.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/NetworkManagerNameParameter"
+          },
+          {
+            "$ref": "#/parameters/SecurityConfigurationParameter"
+          },
+          {
+            "$ref": "#/parameters/ListTopParameter"
+          },
+          {
+            "$ref": "#/parameters/ListSkipTokenParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get successful. The operation returns all ruleCollections in the specified security configuration, in a paginated format",
+            "schema": {
+              "$ref": "#/definitions/AdminRuleCollectionListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "List security admin rule collections": {
+            "$ref": "./examples/NetworkManagerAdminRuleCollectionList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerNameParameter"
+        },
+        {
+          "$ref": "#/parameters/SecurityConfigurationParameter"
+        },
+        {
+          "$ref": "#/parameters/RuleCollectionParameter"
+        }
+      ],
+      "get": {
+        "tags": [
+          "AdminRuleCollections"
+        ],
+        "description": "Gets a network manager security admin configuration rule collection.",
+        "operationId": "AdminRuleCollections_Get",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/AdminRuleCollection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Gets security admin rule collection": {
+            "$ref": "./examples/NetworkManagerAdminRuleCollectionGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "AdminRuleCollections"
+        ],
+        "description": "Creates or updates an admin rule collection.",
+        "operationId": "AdminRuleCollections_CreateOrUpdate",
+        "parameters": [
+          {
+            "name": "ruleCollection",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminRuleCollection"
+            },
+            "description": "The Rule Collection to create or update"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated Rule Collection",
+            "schema": {
+              "$ref": "#/definitions/AdminRuleCollection"
+            }
+          },
+          "201": {
+            "description": "Created Rule Collection",
+            "schema": {
+              "$ref": "#/definitions/AdminRuleCollection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create or Update an admin rule collection": {
+            "$ref": "./examples/NetworkManagerAdminRuleCollectionPut.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "AdminRuleCollections"
+        ],
+        "description": "Deletes an admin rule collection.",
+        "operationId": "AdminRuleCollections_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ForceDeleteParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted and will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Deletes an admin rule collection": {
+            "$ref": "./examples/NetworkManagerAdminRuleCollectionDelete.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerNameParameter"
+        },
+        {
+          "$ref": "#/parameters/SecurityConfigurationParameter"
+        },
+        {
+          "$ref": "#/parameters/RuleCollectionParameter"
+        },
+        {
+          "$ref": "#/parameters/ListTopParameter"
+        },
+        {
+          "$ref": "#/parameters/ListSkipTokenParameter"
+        }
+      ],
+      "get": {
+        "tags": [
+          "AdminRules"
+        ],
+        "description": "List all network manager security configuration admin rules.",
+        "operationId": "AdminRules_List",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/AdminRuleListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List security admin rules": {
+            "$ref": "./examples/NetworkManagerAdminRuleList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules/{ruleName}": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerNameParameter"
+        },
+        {
+          "$ref": "#/parameters/SecurityConfigurationParameter"
+        },
+        {
+          "$ref": "#/parameters/RuleCollectionParameter"
+        },
+        {
+          "$ref": "#/parameters/SecurityConfigurationsRuleParameter"
+        }
+      ],
+      "get": {
+        "tags": [
+          "AdminRules"
+        ],
+        "description": "Gets a network manager security configuration admin rule.",
+        "operationId": "AdminRules_Get",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/BaseAdminRule"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Gets security admin rule": {
+            "$ref": "./examples/NetworkManagerAdminRuleGet.json"
+          },
+          "Gets security default admin rule": {
+            "$ref": "./examples/NetworkManagerDefaultAdminRuleGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "AdminRules"
+        ],
+        "description": "Creates or updates an admin rule.",
+        "operationId": "AdminRules_CreateOrUpdate",
+        "parameters": [
+          {
+            "name": "adminRule",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BaseAdminRule"
+            },
+            "description": "The admin rule to create or update"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated rule",
+            "schema": {
+              "$ref": "#/definitions/BaseAdminRule"
+            }
+          },
+          "201": {
+            "description": "Created rule",
+            "schema": {
+              "$ref": "#/definitions/BaseAdminRule"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create an admin rule": {
+            "$ref": "./examples/NetworkManagerAdminRulePut.json"
+          },
+          "Create a default admin rule": {
+            "$ref": "./examples/NetworkManagerDefaultAdminRulePut.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "AdminRules"
+        ],
+        "description": "Deletes an admin rule.",
+        "operationId": "AdminRules_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ForceDeleteParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted and will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Deletes an admin rule": {
+            "$ref": "./examples/NetworkManagerAdminRuleDelete.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "SecurityAdminConfiguration": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/SecurityAdminConfigurationPropertiesFormat",
+          "description": "Indicates the properties for the network manager security admin configuration."
+        },
+        "systemData": {
+          "readOnly": true,
+          "description": "The system metadata related to this resource.",
+          "$ref": "./network.json#/definitions/SystemData"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/ChildResource"
+        }
+      ],
+      "description": "Defines the security admin configuration"
+    },
+    "SecurityAdminConfigurationPropertiesFormat": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "A description of the security configuration."
+        },
+        "applyOnNetworkIntentPolicyBasedServices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkIntentPolicyBasedService"
+          },
+          "description": "Enum list of network intent policy based services."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the resource."
+        },
+        "resourceGuid": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Unique identifier for this resource."
+        }
+      },
+      "description": "Defines the security admin configuration properties."
+    },
+    "SecurityAdminConfigurationListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SecurityAdminConfiguration"
+          },
+          "description": "Gets a page of security admin configurations"
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Gets the URL to get the next page of results."
+        }
+      },
+      "description": "A list of network manager security admin configurations"
+    },
+    "AdminRuleListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BaseAdminRule"
+          },
+          "description": "A list of admin rules"
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "security configuration admin rule list result."
+    },
+    "AdminRuleCollectionListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AdminRuleCollection"
+          },
+          "description": "A list of network manager security admin configuration rule collections"
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Gets the URL to get the next set of results."
+        }
+      },
+      "description": "Security admin configuration rule collection list result."
+    },
+    "AdminRuleCollection": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/AdminRuleCollectionPropertiesFormat",
+          "description": "Indicates the properties for the network manager admin rule collection."
+        },
+        "systemData": {
+          "readOnly": true,
+          "description": "The system metadata related to this resource.",
+          "$ref": "./network.json#/definitions/SystemData"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/ChildResource"
+        }
+      ],
+      "description": "Defines the admin rule collection."
+    },
+    "AdminRuleCollectionPropertiesFormat": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "A description of the admin rule collection."
+        },
+        "appliesToGroups": {
+          "type": "array",
+          "x-ms-identifiers": [
+            "networkGroupId"
+          ],
+          "items": {
+            "$ref": "#/definitions/NetworkManagerSecurityGroupItem"
+          },
+          "description": "Groups for configuration"
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the resource."
+        },
+        "resourceGuid": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Unique identifier for this resource."
+        }
+      },
+      "required": [
+        "appliesToGroups"
+      ],
+      "description": "Defines the admin rule collection properties."
+    },
+    "BaseAdminRule": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "description": "Whether the rule is custom or default.",
+          "enum": [
+            "Custom",
+            "Default"
+          ],
+          "x-ms-enum": {
+            "name": "AdminRuleKind",
+            "modelAsString": true
+          }
+        },
+        "systemData": {
+          "readOnly": true,
+          "description": "The system metadata related to this resource.",
+          "$ref": "./network.json#/definitions/SystemData"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/ChildResource"
+        }
+      ],
+      "required": [
+        "kind"
+      ],
+      "discriminator": "kind",
+      "description": "Network base admin rule."
+    },
+    "AdminRule": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/AdminPropertiesFormat",
+          "x-ms-client-flatten": true,
+          "description": "Indicates the properties of the security admin rule"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/BaseAdminRule"
+        }
+      ],
+      "description": "Network admin rule.",
+      "x-ms-discriminator-value": "Custom"
+    },
+    "AdminPropertiesFormat": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "A description for this rule. Restricted to 140 chars."
+        },
+        "protocol": {
+          "type": "string",
+          "$ref": "#/definitions/RuleProtocol",
+          "description": "Network protocol this rule applies to."
+        },
+        "sources": {
+          "type": "array",
+          "x-ms-identifiers": [
+            "addressPrefix"
+          ],
+          "items": {
+            "$ref": "#/definitions/AddressPrefixItem"
+          },
+          "description": "The CIDR or source IP ranges."
+        },
+        "destinations": {
+          "type": "array",
+          "x-ms-identifiers": [
+            "addressPrefix"
+          ],
+          "items": {
+            "$ref": "#/definitions/AddressPrefixItem"
+          },
+          "description": "The destination address prefixes. CIDR or destination IP ranges."
+        },
+        "sourcePortRanges": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "The source port."
+          },
+          "description": "The source port ranges."
+        },
+        "destinationPortRanges": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "The destination port."
+          },
+          "description": "The destination port ranges."
+        },
+        "access": {
+          "$ref": "#/definitions/SecurityConfigurationRuleAccess",
+          "description": "Indicates the access allowed for this particular rule"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 4096,
+          "description": "The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule."
+        },
+        "direction": {
+          "$ref": "#/definitions/SecurityConfigurationRuleDirection",
+          "description": "Indicates if the traffic matched against the rule in inbound or outbound."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the resource."
+        },
+        "resourceGuid": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Unique identifier for this resource."
+        }
+      },
+      "required": [
+        "protocol",
+        "access",
+        "direction",
+        "priority"
+      ],
+      "description": "Security admin rule resource."
+    },
+    "DefaultAdminRule": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "$ref": "#/definitions/DefaultAdminPropertiesFormat",
+          "x-ms-client-flatten": true,
+          "description": "Indicates the properties of the security admin rule"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/BaseAdminRule"
+        }
+      ],
+      "description": "Network default admin rule.",
+      "x-ms-discriminator-value": "Default"
+    },
+    "DefaultAdminPropertiesFormat": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "readOnly": true,
+          "description": "A description for this rule. Restricted to 140 chars."
+        },
+        "flag": {
+          "type": "string",
+          "description": "Default rule flag."
+        },
+        "protocol": {
+          "type": "string",
+          "readOnly": true,
+          "$ref": "#/definitions/RuleProtocol",
+          "description": "Network protocol this rule applies to."
+        },
+        "sources": {
+          "type": "array",
+          "x-ms-identifiers": [
+            "addressPrefix"
+          ],
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/AddressPrefixItem"
+          },
+          "description": "The CIDR or source IP ranges."
+        },
+        "destinations": {
+          "type": "array",
+          "x-ms-identifiers": [
+            "addressPrefix"
+          ],
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/AddressPrefixItem"
+          },
+          "description": "The destination address prefixes. CIDR or destination IP ranges."
+        },
+        "sourcePortRanges": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "type": "string",
+            "description": "The source port."
+          },
+          "description": "The source port ranges."
+        },
+        "destinationPortRanges": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "type": "string",
+            "description": "The destination port."
+          },
+          "description": "The destination port ranges."
+        },
+        "access": {
+          "$ref": "#/definitions/SecurityConfigurationRuleAccess",
+          "readOnly": true,
+          "description": "Indicates the access allowed for this particular rule"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32",
+          "readOnly": true,
+          "description": "The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule."
+        },
+        "direction": {
+          "$ref": "#/definitions/SecurityConfigurationRuleDirection",
+          "readOnly": true,
+          "description": "Indicates if the traffic matched against the rule in inbound or outbound."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the resource."
+        },
+        "resourceGuid": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Unique identifier for this resource."
+        }
+      },
+      "description": "Security default admin rule resource."
+    },
+    "SecurityConfigurationRuleAccess": {
+      "type": "string",
+      "description": "Whether network traffic is allowed or denied.",
+      "enum": [
+        "Allow",
+        "Deny",
+        "AlwaysAllow"
+      ],
+      "x-ms-enum": {
+        "name": "SecurityConfigurationRuleAccess",
+        "modelAsString": true
+      }
+    },
+    "SecurityConfigurationRuleDirection": {
+      "type": "string",
+      "description": "The direction of the rule. The direction specifies if the rule will be evaluated on incoming or outgoing traffic.",
+      "enum": [
+        "Inbound",
+        "Outbound"
+      ],
+      "x-ms-enum": {
+        "name": "SecurityConfigurationRuleDirection",
+        "modelAsString": true
+      }
+    },
+    "RuleProtocol": {
+      "type": "string",
+      "description": "Network protocol this rule applies to.",
+      "enum": [
+        "Tcp",
+        "Udp",
+        "Icmp",
+        "Esp",
+        "Any",
+        "Ah"
+      ],
+      "x-ms-enum": {
+        "name": "SecurityConfigurationRuleProtocol",
+        "modelAsString": true
+      }
+    },
+    "NetworkManagerSecurityGroupItem": {
+      "type": "object",
+      "properties": {
+        "networkGroupId": {
+          "type": "string",
+          "description": "Network manager group Id."
+        }
+      },
+      "required": [
+        "networkGroupId"
+      ],
+      "description": "Network manager security group item."
+    },
+    "AddressPrefixItem": {
+      "type": "object",
+      "properties": {
+        "addressPrefix": {
+          "type": "string",
+          "description": "Address prefix."
+        },
+        "addressPrefixType": {
+          "type": "string",
+          "description": "Address prefix type.",
+          "enum": [
+            "IPPrefix",
+            "ServiceTag"
+          ],
+          "x-ms-enum": {
+            "name": "AddressPrefixType",
+            "modelAsString": true
+          }
+        }
+      },
+      "description": "Address prefix item."
+    },
+    "NetworkIntentPolicyBasedService": {
+      "type": "string",
+      "description": "Network intent policy based services.",
+      "enum": [
+        "None",
+        "All",
+        "AllowRulesOnly"
+      ],
+      "x-ms-enum": {
+        "name": "NetworkIntentPolicyBasedService",
+        "modelAsString": true
+      }
+    }
+  },
+  "parameters": {
+    "SecurityConfigurationParameter": {
+      "name": "configurationName",
+      "in": "path",
+      "description": "The name of the network manager Security Configuration.",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "RuleCollectionParameter": {
+      "name": "ruleCollectionName",
+      "in": "path",
+      "description": "The name of the network manager security Configuration rule collection.",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "SecurityConfigurationsRuleParameter": {
+      "name": "ruleName",
+      "in": "path",
+      "description": "The name of the rule.",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "ResourceGroupNameParameter": {
+      "name": "resourceGroupName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the resource group.",
+      "x-ms-parameter-location": "method"
+    },
+    "NetworkManagerNameParameter": {
+      "name": "networkManagerName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the network manager.",
+      "x-ms-parameter-location": "method"
+    },
+    "ListTopParameter": {
+      "name": "$top",
+      "description": "An optional query parameter which specifies the maximum number of records to be returned by the server.",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "minimum": 1,
+      "maximum": 20,
+      "x-ms-parameter-location": "method"
+    },
+    "ListSkipTokenParameter": {
+      "name": "$skipToken",
+      "description": "SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "ForceDeleteParameter": {
+      "name": "force",
+      "in": "query",
+      "required": false,
+      "type": "boolean",
+      "description": "Deletes the resource even if it is part of a deployed configuration. If the configuration has been deployed, the service will do a cleanup deployment in the background, prior to the delete.",
+      "x-ms-parameter-location": "method"
+    }
+  }
+}
+

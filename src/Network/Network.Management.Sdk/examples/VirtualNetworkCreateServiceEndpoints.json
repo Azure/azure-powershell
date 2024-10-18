@@ -1,0 +1,112 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "vnetTest",
+    "virtualNetworkName": "vnet1",
+    "parameters": {
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "test-1",
+            "properties": {
+              "addressPrefix": "10.0.0.0/16",
+              "serviceEndpoints": [
+                {
+                  "service": "Microsoft.Storage"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "location": "eastus"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "vnet1",
+        "id": "/subscriptions/subid/resourceGroups/vnetTest/providers/Microsoft.Network/virtualNetworks/vnet1",
+        "type": "Microsoft.Network/virtualNetworks",
+        "location": "eastus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "addressSpace": {
+            "addressPrefixes": [
+              "10.0.0.0/16"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "test-1",
+              "id": "/subscriptions/subid/resourceGroups/vnetTest/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/test-1",
+              "properties": {
+                "addressPrefix": "10.0.0.0/16",
+                "ipConfigurations": [],
+                "resourceNavigationLinks": [],
+                "serviceEndpoints": [
+                  {
+                    "provisioningState": "Succeeded",
+                    "service": "Microsoft.Storage",
+                    "locations": [
+                      "eastus2(stage)",
+                      "usnorth(stage)"
+                    ]
+                  }
+                ],
+                "provisioningState": "Succeeded"
+              }
+            }
+          ],
+          "virtualNetworkPeerings": []
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "vnet1",
+        "id": "/subscriptions/subid/resourceGroups/vnetTest/providers/Microsoft.Network/virtualNetworks/vnet1",
+        "type": "Microsoft.Network/virtualNetworks",
+        "location": "eastus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "addressSpace": {
+            "addressPrefixes": [
+              "10.0.0.0/16"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "test-1",
+              "id": "/subscriptions/subid/resourceGroups/vnetTest/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/test-1",
+              "properties": {
+                "addressPrefix": "10.0.0.0/16",
+                "ipConfigurations": [],
+                "resourceNavigationLinks": [],
+                "serviceEndpoints": [
+                  {
+                    "provisioningState": "Succeeded",
+                    "service": "Microsoft.Storage",
+                    "locations": [
+                      "eastus2(stage)",
+                      "usnorth(stage)"
+                    ]
+                  }
+                ],
+                "provisioningState": "Succeeded"
+              }
+            }
+          ],
+          "virtualNetworkPeerings": []
+        }
+      }
+    }
+  }
+}
+

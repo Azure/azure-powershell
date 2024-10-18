@@ -1,0 +1,76 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualNetworkGatewayConnectionName": "connS2S"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "connS2S",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/connections/connS2S",
+        "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+        "type": "Microsoft.Network/connections",
+        "location": "centralus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "resourceGuid": "00000000-0000-0000-0000-000000000000",
+          "virtualNetworkGateway1": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw",
+            "properties": {}
+          },
+          "localNetworkGateway2": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/localNetworkGateways/localgw",
+            "properties": {}
+          },
+          "ingressNatRules": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/natRules/natRule1"
+            }
+          ],
+          "egressNatRules": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/natRules/natRule2"
+            }
+          ],
+          "connectionType": "IPsec",
+          "connectionProtocol": "IKEv2",
+          "routingWeight": 0,
+          "dpdTimeoutSeconds": 30,
+          "sharedKey": "Abc123",
+          "enableBgp": false,
+          "gatewayCustomBgpIpAddresses": [
+            {
+              "ipConfigurationId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/ipConfigurations/default",
+              "customBgpIpAddress": "169.254.21.1"
+            },
+            {
+              "ipConfigurationId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/ipConfigurations/ActiveActive",
+              "customBgpIpAddress": "169.254.21.3"
+            }
+          ],
+          "useLocalAzureIpAddress": false,
+          "usePolicyBasedTrafficSelectors": false,
+          "ipsecPolicies": [],
+          "trafficSelectorPolicies": [],
+          "connectionStatus": "Connecting",
+          "ingressBytesTransferred": 0,
+          "egressBytesTransferred": 0,
+          "connectionMode": "Default",
+          "tunnelProperties": [
+            {
+                "tunnelIpAddress": "10.10.1.1",
+                "bgpPeeringAddress": "10.10.1.5"
+            },
+            {
+              "tunnelIpAddress": "10.10.1.2",
+              "bgpPeeringAddress": "10.10.1.6"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

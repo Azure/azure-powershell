@@ -1,0 +1,73 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subId",
+    "resourceGroupName": "rg1",
+    "privateEndpointName": "testPe"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "testPe",
+        "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/testPe",
+        "type": "Microsoft.Network/privateEndpoints",
+        "location": "eastus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "privateLinkServiceConnections": [],
+          "manualPrivateLinkServiceConnections": [
+            {
+              "properties": {
+                "privateLinkServiceId": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPls",
+                "groupIds": [
+                  "groupIdFromResource"
+                ],
+                "requestMessage": "Please manually approve my connection.",
+                "privateLinkServiceConnectionState": {
+                  "status": "Pending",
+                  "description": "Awaiting approval",
+                  "actionsRequired": "None"
+                }
+              }
+            }
+          ],
+          "subnet": {
+            "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"
+          },
+          "networkInterfaces": [
+            {
+              "id": "/subscriptions/subId/resourceGroups/rg1/provders/Microsoft.Network/networkInterfaces/testPe.nic.abcd1234"
+            }
+          ],
+          "customDnsConfigs": [
+            {
+              "fqdn": "abc.cosmos.com",
+              "ipAddresses": [
+                "192.168.0.4"
+              ]
+            },
+            {
+              "fqdn": "abc2.cosmos.com",
+              "ipAddresses": [
+                "192.168.0.5"
+              ]
+            }
+          ],
+          "applicationSecurityGroups": [],
+          "ipConfigurations": [
+            {
+              "name": "pestaticconfig",
+              "properties": {
+                "groupId": "file",
+                "memberName": "file",
+                "privateIPAddress": "192.168.0.5"
+              }
+            }
+          ],
+          "customNetworkInterfaceName": "testPeNic"
+        }
+      }
+    }
+  }
+}
+

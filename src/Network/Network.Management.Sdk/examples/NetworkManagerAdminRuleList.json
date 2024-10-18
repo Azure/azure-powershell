@@ -1,0 +1,61 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "rg1",
+    "networkManagerName": "testNetworkManager",
+    "ruleCollectionName": "testRuleCollection",
+    "configurationName": "myTestSecurityConfig"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkmanagers/testNetworkManager/securityAdminConfigurations/myTestSecurityConfig/ruleCollections/testRuleCollection/rules/SampleAdminRule",
+            "type": "Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections/rules",
+            "name": "SampleAdminRule",
+            "systemData": {
+              "createdBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+              "createdByType": "User",
+              "createdAt": "2021-01-11T18:52:27Z",
+              "lastModifiedBy": "b69a9388-9488-4534-b470-7ec6d41beef5",
+              "lastModifiedByType": "User",
+              "lastModifiedAt": "2021-01-11T18:52:27Z"
+            },
+            "kind": "Custom",
+            "properties": {
+              "description": "This is Sample Admin Rule",
+              "protocol": "Tcp",
+              "sources": [
+                {
+                  "addressPrefixType": "IPPrefix",
+                  "addressPrefix": "*"
+                }
+              ],
+              "destinations": [
+                {
+                  "addressPrefixType": "IPPrefix",
+                  "addressPrefix": "*"
+                }
+              ],
+              "sourcePortRanges": [
+                "0-65535"
+              ],
+              "destinationPortRanges": [
+                "22"
+              ],
+              "access": "Deny",
+              "priority": 1,
+              "direction": "Inbound",
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-000000000000"
+            }
+          }
+        ],
+        "nextLink": "{baseurl}/subscriptions/subscriptionC/resourceGroup/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/networkManagers/securityAdminConfigurations/myTestSecurityConfig/ruleCollections/testRuleCollection/rules?api-version=2024-05-01&$skipToken=10"
+      }
+    }
+  }
+}
+

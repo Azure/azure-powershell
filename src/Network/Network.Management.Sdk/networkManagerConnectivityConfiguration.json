@@ -1,0 +1,459 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ConnectivityConfiguration",
+    "description": "The Microsoft Azure Virtual Network Manager Connectivity Configuration API provides a RESTful set of web services that interact with Microsoft Azure Network Manager service to manage your network resources.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/connectivityConfigurations/{configurationName}": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerNameParameter"
+        },
+        {
+          "$ref": "#/parameters/ConnectivityConfigurationNameParameter"
+        }
+      ],
+      "get": {
+        "tags": [
+          "ConnectivityConfigurations"
+        ],
+        "operationId": "ConnectivityConfigurations_Get",
+        "description": "Gets a Network Connectivity Configuration, specified by the resource group, network manager name, and connectivity Configuration name",
+        "responses": {
+          "200": {
+            "description": "Get successful. The operation returns the specified Managed Network Connectivity Configuration resource.",
+            "schema": {
+              "$ref": "#/definitions/ConnectivityConfiguration"
+            }
+          },
+          "default": {
+            "description": "Resource Provider error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ConnectivityConfigurationsGet": {
+            "$ref": "./examples/NetworkManagerConnectivityConfigurationGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ConnectivityConfigurations"
+        ],
+        "operationId": "ConnectivityConfigurations_CreateOrUpdate",
+        "description": "Creates/Updates a new network manager connectivity configuration",
+        "parameters": [
+          {
+            "name": "connectivityConfiguration",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ConnectivityConfiguration"
+            },
+            "description": "Parameters supplied to create/update a network manager connectivity configuration"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting network manager connectivity configuration.",
+            "schema": {
+              "$ref": "#/definitions/ConnectivityConfiguration"
+            }
+          },
+          "201": {
+            "description": "Create successful. The operation returns the resulting network manager connectivity configuration.",
+            "schema": {
+              "$ref": "#/definitions/ConnectivityConfiguration"
+            }
+          },
+          "default": {
+            "description": "Resource Provider error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "ConnectivityConfigurationsPut": {
+            "$ref": "./examples/NetworkManagerConnectivityConfigurationPut.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ConnectivityConfigurations"
+        ],
+        "operationId": "ConnectivityConfigurations_Delete",
+        "description": "Deletes a network manager connectivity configuration, specified by the resource group, network manager name, and connectivity configuration name",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ForceDeleteParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
+          "202": {
+            "description": "Accepted and will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            }
+          },
+          "204": {
+            "description": "Request successful. The resource does not exist."
+          },
+          "default": {
+            "description": "Resource Provider error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "ConnectivityConfigurationsDelete": {
+            "$ref": "./examples/NetworkManagerConnectivityConfigurationDelete.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/connectivityConfigurations": {
+      "get": {
+        "tags": [
+          "ConnectivityConfigurations"
+        ],
+        "operationId": "ConnectivityConfigurations_List",
+        "description": "Lists all the network manager connectivity configuration in a specified network manager.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/NetworkManagerNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ListTopParameter"
+          },
+          {
+            "$ref": "#/parameters/ListSkipTokenParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get successful. The operation returns all network manager connectivity configuration resources in the specified network manager, in a paginated format",
+            "schema": {
+              "$ref": "#/definitions/ConnectivityConfigurationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "ConnectivityConfigurationsList": {
+            "$ref": "./examples/NetworkManagerConnectivityConfigurationList.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ConnectivityConfigurationListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConnectivityConfiguration"
+          },
+          "description": "Gets a page of Connectivity Configurations"
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Gets the URL to get the next page of results."
+        }
+      },
+      "description": "Result of the request to list network manager connectivity configurations. It contains a list of configurations and a link to get the next set of results."
+    },
+    "ConnectivityConfiguration": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ConnectivityConfigurationProperties",
+          "description": "Properties of a network manager connectivity configuration"
+        },
+        "systemData": {
+          "readOnly": true,
+          "description": "The system metadata related to this resource.",
+          "$ref": "./network.json#/definitions/SystemData"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/ChildResource"
+        }
+      ],
+      "description": "The network manager connectivity configuration resource"
+    },
+    "ConnectivityConfigurationProperties": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "A description of the connectivity configuration."
+        },
+        "connectivityTopology": {
+          "type": "string",
+          "enum": [
+            "HubAndSpoke",
+            "Mesh"
+          ],
+          "x-ms-enum": {
+            "name": "ConnectivityTopology",
+            "modelAsString": true
+          },
+          "description": "Connectivity topology type."
+        },
+        "hubs": {
+          "type": "array",
+          "x-ms-identifiers": [
+            "resourceId"
+          ],
+          "items": {
+            "$ref": "#/definitions/Hub"
+          },
+          "description": "List of hubItems"
+        },
+        "isGlobal": {
+          "type": "string",
+          "enum": [
+            "False",
+            "True"
+          ],
+          "x-ms-enum": {
+            "name": "IsGlobal",
+            "modelAsString": true
+          },
+          "description": "Flag if global mesh is supported."
+        },
+        "appliesToGroups": {
+          "type": "array",
+          "x-ms-identifiers": [
+            "networkGroupId"
+          ],
+          "items": {
+            "$ref": "#/definitions/connectivityGroupItem"
+          },
+          "description": "Groups for configuration"
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the connectivity configuration resource."
+        },
+        "deleteExistingPeering": {
+          "type": "string",
+          "enum": [
+            "False",
+            "True"
+          ],
+          "x-ms-enum": {
+            "name": "DeleteExistingPeering",
+            "modelAsString": true
+          },
+          "description": "Flag if need to remove current existing peerings."
+        },
+        "resourceGuid": {
+          "type": "string",
+          "readOnly": true,
+          "description": "Unique identifier for this resource."
+        }
+      },
+      "required": [
+        "connectivityTopology",
+        "appliesToGroups"
+      ],
+      "description": "Properties of network manager connectivity configuration"
+    },
+    "Hub": {
+      "type": "object",
+      "properties": {
+        "resourceId": {
+          "type": "string",
+          "description": "Resource Id."
+        },
+        "resourceType": {
+          "type": "string",
+          "description": "Resource Type."
+        }
+      },
+      "description": "Hub Item."
+    },
+    "connectivityGroupItem": {
+      "type": "object",
+      "properties": {
+        "networkGroupId": {
+          "type": "string",
+          "description": "Network group Id."
+        },
+        "useHubGateway": {
+          "type": "string",
+          "enum": [
+            "False",
+            "True"
+          ],
+          "x-ms-enum": {
+            "name": "UseHubGateway",
+            "modelAsString": true
+          },
+          "description": "Flag if need to use hub gateway."
+        },
+        "isGlobal": {
+          "type": "string",
+          "enum": [
+            "False",
+            "True"
+          ],
+          "x-ms-enum": {
+            "name": "IsGlobal",
+            "modelAsString": true
+          },
+          "description": "Flag if global is supported."
+        },
+        "groupConnectivity": {
+          "type": "string",
+          "enum": [
+            "None",
+            "DirectlyConnected"
+          ],
+          "x-ms-enum": {
+            "name": "GroupConnectivity",
+            "modelAsString": true
+          },
+          "description": "Group connectivity type."
+        }
+      },
+      "description": "Connectivity group item.",
+      "required": [
+        "networkGroupId",
+        "groupConnectivity"
+      ]
+    }
+  },
+  "parameters": {
+    "ConnectivityConfigurationNameParameter": {
+      "name": "configurationName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the network manager connectivity configuration.",
+      "x-ms-parameter-location": "method"
+    },
+    "ResourceGroupNameParameter": {
+      "name": "resourceGroupName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the resource group.",
+      "x-ms-parameter-location": "method"
+    },
+    "NetworkManagerNameParameter": {
+      "name": "networkManagerName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the network manager.",
+      "x-ms-parameter-location": "method"
+    },
+    "ListTopParameter": {
+      "name": "$top",
+      "description": "An optional query parameter which specifies the maximum number of records to be returned by the server.",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "minimum": 1,
+      "maximum": 20,
+      "x-ms-parameter-location": "method"
+    },
+    "ListSkipTokenParameter": {
+      "name": "$skipToken",
+      "description": "SkipToken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.",
+      "in": "query",
+      "required": false,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "ForceDeleteParameter": {
+      "name": "force",
+      "in": "query",
+      "required": false,
+      "type": "boolean",
+      "description": "Deletes the resource even if it is part of a deployed configuration. If the configuration has been deployed, the service will do a cleanup deployment in the background, prior to the delete.",
+      "x-ms-parameter-location": "method"
+    }
+  }
+}
+

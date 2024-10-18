@@ -1,0 +1,16 @@
+{
+  "title": "Delete Azure Virtual Network Manager Scope Connection",
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "rg1",
+    "networkManagerName": "testNetworkManager",
+    "scopeConnectionName": "TestScopeConnection",
+    "force": false
+  },
+  "responses": {
+    "200": {},
+    "204": {}
+  }
+}
+

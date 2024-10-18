@@ -1,0 +1,23 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "resourceGroupName": "vpn-gateway-test",
+    "virtualNetworkGatewayName": "vpngateway",
+    "api-version": "2024-05-01",
+    "request": {
+      "vpnConnectionIds": [
+        "vpnconnId1",
+        "vpnconnId2"
+      ]
+    }
+  },
+  "responses": {
+    "200": {},
+    "202": {
+      "headers": {
+        "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/locations/eastus/operations/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    }
+  }
+}
+

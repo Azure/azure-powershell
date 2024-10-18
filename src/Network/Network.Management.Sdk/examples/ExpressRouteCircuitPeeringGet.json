@@ -1,0 +1,62 @@
+{
+  "parameters": {
+    "circuitName": "circuitName",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "peeringName": "MicrosoftPeering"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "MicrosoftPeering",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName/peerings/MicrosoftPeering",
+        "etag": "W/\"b2a25b98-2e6d-4d46-87f2-089de5f6fdf9\"",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "peeringType": "MicrosoftPeering",
+          "azureASN": 12076,
+          "peerASN": 100,
+          "primaryPeerAddressPrefix": "123.0.0.0/30",
+          "secondaryPeerAddressPrefix": "123.0.0.4/30",
+          "primaryAzurePort": "A51-TEST-06GMR-CIS-1-PRI-A",
+          "secondaryAzurePort": "A51-TEST-06GMR-CIS-2-SEC-A",
+          "state": "Enabled",
+          "vlanId": 300,
+          "gatewayManagerEtag": "103",
+          "lastModifiedBy": "Customer",
+          "microsoftPeeringConfig": {
+            "advertisedPublicPrefixes": [
+              "123.1.0.0/24"
+            ],
+            "advertisedCommunities": [],
+            "advertisedPublicPrefixesState": "ValidationNeeded",
+            "customerASN": 23,
+            "legacyMode": 0,
+            "routingRegistryName": "ARIN"
+          },
+          "ipv6PeeringConfig": {
+            "primaryPeerAddressPrefix": "3FFE:FFFF:0:CD30::/126",
+            "secondaryPeerAddressPrefix": "3FFE:FFFF:0:CD30::4/126",
+            "state": "Enabled",
+            "microsoftPeeringConfig": {
+              "advertisedPublicPrefixes": [
+                "3FFE:FFFF:0:CD31::/120"
+              ],
+              "advertisedCommunities": [],
+              "advertisedPublicPrefixesState": "ValidationNeeded",
+              "customerASN": 23,
+              "legacyMode": 0,
+              "routingRegistryName": "ARIN"
+            }
+          },
+          "routeFilter": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/routeFilters/filterName"
+          }
+        },
+        "type": "Microsoft.Network/expressRouteCircuits/peerings"
+      }
+    }
+  }
+}
+

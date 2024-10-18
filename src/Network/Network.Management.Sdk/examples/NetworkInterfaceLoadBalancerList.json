@@ -1,0 +1,141 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "resourceGroupName": "testrg",
+    "networkInterfaceName": "nic1",
+    "api-version": "2024-05-01"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "lbname1",
+            "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1",
+            "etag": "W/\\\"00000000-0000-0000-0000-000000000000\\\"",
+            "type": "Microsoft.Network/loadBalancers",
+            "location": "westus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "resourceGuid": "00000000-0000-0000-0000-000000000000",
+              "frontendIPConfigurations": [
+                {
+                  "name": "lbfrontend",
+                  "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/frontendIPConfigurations/lbfrontend",
+                  "etag": "W/\\\"00000000-0000-0000-0000-000000000000\\\"",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "privateIPAllocationMethod": "Dynamic",
+                    "publicIPAddress": {
+                      "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/publicIPAddresses/myDynamicPublicIP"
+                    },
+                    "loadBalancingRules": [
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/loadBalancingRules/rule1"
+                      }
+                    ],
+                    "inboundNatRules": [
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/inboundNatRules/inbound1"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "backendAddressPools": [
+                {
+                  "name": "bepool1",
+                  "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/backendAddressPools/bepool1",
+                  "etag": "W/\\\"00000000-0000-0000-0000-000000000000\\\"",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "backendIPConfigurations": [
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/networkInterfaces/nic1/ipConfigurations/ipconfig1"
+                      }
+                    ],
+                    "loadBalancingRules": [
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/loadBalancingRules/rule1"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "loadBalancingRules": [
+                {
+                  "name": "rule1",
+                  "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/loadBalancingRules/rule1",
+                  "etag": "W/\\\"00000000-0000-0000-0000-000000000000\\\"",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "frontendIPConfiguration": {
+                      "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/frontendIPConfigurations/lbfrontend"
+                    },
+                    "frontendPort": 80,
+                    "backendPort": 80,
+                    "enableFloatingIP": false,
+                    "idleTimeoutInMinutes": 15,
+                    "protocol": "Tcp",
+                    "loadDistribution": "Default",
+                    "backendAddressPool": {
+                      "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/backendAddressPools/bepool1"
+                    },
+                    "probe": {
+                      "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/probes/probe1"
+                    }
+                  }
+                }
+              ],
+              "probes": [
+                {
+                  "name": "probe1",
+                  "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/probes/probe1",
+                  "etag": "W/\\\"00000000-0000-0000-0000-000000000000\\\"",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "protocol": "Http",
+                    "port": 80,
+                    "requestPath": "healthcheck.aspx",
+                    "intervalInSeconds": 15,
+                    "numberOfProbes": 2,
+                    "probeThreshold": 1,
+                    "loadBalancingRules": [
+                      {
+                        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/loadBalancingRules/rule1"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "inboundNatRules": [
+                {
+                  "name": "inbound1",
+                  "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/inboundNatRules/inbound1",
+                  "etag": "W/\\\"00000000-0000-0000-0000-000000000000\\\"",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "frontendIPConfiguration": {
+                      "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lbname1/frontendIPConfigurations/lbfrontend"
+                    },
+                    "frontendPort": 3389,
+                    "backendPort": 3389,
+                    "enableFloatingIP": false,
+                    "idleTimeoutInMinutes": 15,
+                    "protocol": "Tcp",
+                    "backendIPConfiguration": {
+                      "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/networkInterfaces/nic1/ipConfigurations/ipconfig1"
+                    }
+                  }
+                }
+              ],
+              "outboundRules": [],
+              "inboundNatPools": []
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

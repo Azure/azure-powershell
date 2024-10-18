@@ -1,0 +1,108 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "resourceGroupName": "testrg",
+    "loadBalancerName": "lb",
+    "backendAddressPoolName": "backend",
+    "api-version": "2024-05-01",
+    "parameters": {
+      "properties": {
+        "loadBalancerBackendAddresses": [
+          {
+            "name": "address1",
+            "properties": {
+              "virtualNetwork": {
+                "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb"
+              },
+              "ipAddress": "10.0.0.4"
+            }
+          },
+          {
+            "name": "address2",
+            "properties": {
+              "virtualNetwork": {
+                "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb"
+              },
+              "ipAddress": "10.0.0.5"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "backend",
+        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/backend",
+        "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+        "type": "Microsoft.Network/loadBalancers/backendAddressPools",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "loadBalancerBackendAddresses": [
+            {
+              "name": "address1",
+              "properties": {
+                "virtualNetwork": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb"
+                },
+                "ipAddress": "10.0.0.4"
+              }
+            },
+            {
+              "name": "address2",
+              "properties": {
+                "virtualNetwork": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb"
+                },
+                "ipAddress": "10.0.0.5"
+              }
+            }
+          ],
+          "loadBalancingRules": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/loadBalancingRules/rulelb"
+            }
+          ]
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "backend",
+        "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/backend",
+        "etag": "W/\"00000000-0000-0000-0000-000000000000\"",
+        "type": "Microsoft.Network/loadBalancers/backendAddressPools",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "loadBalancerBackendAddresses": [
+            {
+              "name": "address1",
+              "properties": {
+                "virtualNetwork": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb"
+                },
+                "ipAddress": "10.0.0.4"
+              }
+            },
+            {
+              "name": "address2",
+              "properties": {
+                "virtualNetwork": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb"
+                },
+                "ipAddress": "10.0.0.5"
+              }
+            }
+          ],
+          "loadBalancingRules": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/loadBalancingRules/rulelb"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+
