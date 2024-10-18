@@ -19,6 +19,8 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 
+using Microsoft.Azure.Commands.Common;
+
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     public static class CustomPrinter
@@ -73,7 +75,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
                 sb.Append(" : ");
                 if (obj is DateTime dateTime)
                 {
-                    sb.AppendLine(dateTime.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                    sb.AppendLine(dateTime.ToInvariantString());
                 }
                 else
                 {
