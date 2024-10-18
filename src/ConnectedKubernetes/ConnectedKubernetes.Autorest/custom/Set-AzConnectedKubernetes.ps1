@@ -23,7 +23,7 @@ param()
 .Synopsis
 API to set properties of the connected cluster resource
 .Description
-API to set properties of the connected cluster resource
+API to set properties of the connected cluster resource. If input parameters are not provided, the corresponding properties will be replaced with empty values where possible.
 .Example
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -GatewayResourceId $gatewayResourceId
 .Example
