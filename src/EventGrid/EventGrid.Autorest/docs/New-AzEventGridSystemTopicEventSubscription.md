@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridSystemTopicEventSubscription
 
 ## SYNOPSIS
-Asynchronously creates or updates an event subscription with the specified parameters.
+Asynchronously create an event subscription with the specified parameters.
 Existing event subscriptions will be updated with this API.
 
 ## SYNTAX
@@ -72,7 +72,7 @@ New-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -Res
 ```
 
 ## DESCRIPTION
-Asynchronously creates or updates an event subscription with the specified parameters.
+Asynchronously create an event subscription with the specified parameters.
 Existing event subscriptions will be updated with this API.
 
 ## EXAMPLES

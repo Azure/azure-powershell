@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridTopicSpace
 
 ## SYNOPSIS
-Update a topic space with the specified parameters.
+update a topic space with the specified parameters.
 
 ## SYNTAX
 
@@ -16,25 +16,25 @@ Update a topic space with the specified parameters.
 ```
 Update-AzEventGridTopicSpace -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Description <String>] [-TopicTemplate <String[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityNamespaceExpanded
 ```
 Update-AzEventGridTopicSpace -Name <String> -NamespaceInputObject <IEventGridIdentity> [-Description <String>]
  [-TopicTemplate <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzEventGridTopicSpace -InputObject <IEventGridIdentity> [-Description <String>]
  [-TopicTemplate <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a topic space with the specified parameters.
+update a topic space with the specified parameters.
 
 ## EXAMPLES
 
@@ -194,6 +194,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

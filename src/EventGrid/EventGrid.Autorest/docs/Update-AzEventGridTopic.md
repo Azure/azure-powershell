@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridTopic
 
 ## SYNOPSIS
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously update a new topic with the specified parameters.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Update-AzEventGridTopic -InputObject <IEventGridIdentity> [-DataResidencyBoundar
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously update a new topic with the specified parameters.
 
 ## EXAMPLES
 

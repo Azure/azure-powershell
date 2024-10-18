@@ -8,18 +8,18 @@ schema: 2.0.0
 # New-AzEventGridDomainTopic
 
 ## SYNOPSIS
-Asynchronously creates or updates a new domain topic with the specified parameters.
+Asynchronously create a new domain topic with the specified parameters.
 
 ## SYNTAX
 
 ```
 New-AzEventGridDomainTopic -DomainName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Asynchronously creates or updates a new domain topic with the specified parameters.
+Asynchronously create a new domain topic with the specified parameters.
 
 ## EXAMPLES
 
@@ -121,6 +121,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

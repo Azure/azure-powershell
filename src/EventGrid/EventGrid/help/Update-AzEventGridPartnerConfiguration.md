@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridPartnerConfiguration
 
 ## SYNOPSIS
-Synchronously updates a partner configuration with the specified parameters.
+Synchronously update a partner configuration with the specified parameters.
 
 ## SYNTAX
 
@@ -16,25 +16,25 @@ Synchronously updates a partner configuration with the specified parameters.
 ```
 Update-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultMaximumExpirationTimeInDay <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzEventGridPartnerConfiguration -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Synchronously updates a partner configuration with the specified parameters.
+Synchronously update a partner configuration with the specified parameters.
 
 ## EXAMPLES
 
@@ -152,6 +152,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

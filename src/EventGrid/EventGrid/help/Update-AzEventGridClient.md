@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridClient
 
 ## SYNOPSIS
-Update a client with the specified parameters.
+update a client with the specified parameters.
 
 ## SYNTAX
 
@@ -21,7 +21,7 @@ Update-AzEventGridClient -Name <String> -NamespaceName <String> -ResourceGroupNa
  [-CertificateThumbprintPrimary <String>] [-CertificateThumbprintSecondary <String>]
  [-ClientCertificateAuthenticationAllowedThumbprint <String[]>]
  [-ClientCertificateAuthenticationValidationScheme <String>] [-Description <String>] [-State <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Update-AzEventGridClient -Name <String> -NamespaceInputObject <IEventGridIdentit
  [-CertificateSubjectOrganizationUnit <String>] [-CertificateThumbprintPrimary <String>]
  [-CertificateThumbprintSecondary <String>] [-ClientCertificateAuthenticationAllowedThumbprint <String[]>]
  [-ClientCertificateAuthenticationValidationScheme <String>] [-Description <String>] [-State <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -45,12 +45,12 @@ Update-AzEventGridClient -InputObject <IEventGridIdentity> [-Attribute <Hashtabl
  [-CertificateSubjectOrganizationUnit <String>] [-CertificateThumbprintPrimary <String>]
  [-CertificateThumbprintSecondary <String>] [-ClientCertificateAuthenticationAllowedThumbprint <String[]>]
  [-ClientCertificateAuthenticationValidationScheme <String>] [-Description <String>] [-State <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a client with the specified parameters.
+update a client with the specified parameters.
 
 ## EXAMPLES
 
@@ -372,6 +372,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
