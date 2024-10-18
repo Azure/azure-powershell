@@ -79,12 +79,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
-            {_city = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("city"), out var __jsonCity) ? (string)__jsonCity : (string)City;}
-            {_countryOrRegion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("countryOrRegion"), out var __jsonCountryOrRegion) ? (string)__jsonCountryOrRegion : (string)CountryOrRegion;}
-            {_officeLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("officeLocation"), out var __jsonOfficeLocation) ? (string)__jsonOfficeLocation : (string)OfficeLocation;}
-            {_postalCode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("postalCode"), out var __jsonPostalCode) ? (string)__jsonPostalCode : (string)PostalCode;}
-            {_state = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("state"), out var __jsonState) ? (string)__jsonState : (string)State;}
-            {_street = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("street"), out var __jsonStreet) ? (string)__jsonStreet : (string)Street;}
+            {_city = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("city"), out var __jsonCity) ? (string)__jsonCity : (string)_city;}
+            {_countryOrRegion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("countryOrRegion"), out var __jsonCountryOrRegion) ? (string)__jsonCountryOrRegion : (string)_countryOrRegion;}
+            {_officeLocation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("officeLocation"), out var __jsonOfficeLocation) ? (string)__jsonOfficeLocation : (string)_officeLocation;}
+            {_postalCode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("postalCode"), out var __jsonPostalCode) ? (string)__jsonPostalCode : (string)_postalCode;}
+            {_state = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("state"), out var __jsonState) ? (string)__jsonState : (string)_state;}
+            {_street = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("street"), out var __jsonStreet) ? (string)__jsonStreet : (string)_street;}
             AfterFromJson(json);
         }
 
