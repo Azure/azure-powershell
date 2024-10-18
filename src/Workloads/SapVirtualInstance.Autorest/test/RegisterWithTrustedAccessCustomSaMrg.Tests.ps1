@@ -15,11 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'RegisterWithTrustedAccessCust
 }
 
 Describe 'RegisterWithTrustedAccessCustomSaMrg' {
-    It 'DeleteRegisterWithTrustedAccessCustomSaMrg' {
-        $DeleteRegisterWithTrustedAccessCustomSaMrgResponse = Remove-AzWorkloadsSapVirtualInstance -Name $env.CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareSID -ResourceGroupName $env.DeletionRG
-        $DeleteRegisterWithTrustedAccessCustomSaMrgResponse.Status | Should -Be $null
-        Start-TestSleep 60
-    }
 
     It 'RegisterWithTrustedAccessCustomSaMrg' {
         $MsiIdentityName = @{ $env.IdentityName = @{}}
@@ -28,12 +23,6 @@ Describe 'RegisterWithTrustedAccessCustomSaMrg' {
         $RegisterWithTrustedAccessCustomSaMrgResponse.managedResourcesNetworkAccessType | Should -Be $env.MrgNetAccTypPrvt
         ($RegisterWithTrustedAccessCustomSaMrgResponse.Configuration | ConvertFrom-Json).managedRgStorageAccountName | Should -Be $env.MrgSAName
         $RegisterWithTrustedAccessCustomSaMrgResponse.managedResourceGroupConfigurationName | Should -Be $env.MrgRGName
-    }
-
-    It 'DeleteRegisterWithTrustedAccessCustomSaMrgAlias' {
-        $DeleteRegisterWithTrustedAccessCustomSaMrgAliasResponse = Remove-AzVIS -Name $env.CreateDistributedHAAvZoneWithCustomResourceTrustedAccessTransShareSID -ResourceGroupName $env.DeletionRG
-        $DeleteRegisterWithTrustedAccessCustomSaMrgAliasResponse.Status | Should -Be $null
-        Start-TestSleep 60
     }
 
     It 'RegisterWithTrustedAccessCustomSaMrgAlias' {
