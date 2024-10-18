@@ -43,7 +43,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Possible values include: &#39;Default&#39;, &#39;SourceIP&#39;, &#39;SourceIPProtocol&#39;</param>
 
         /// <param name="provisioningState">The provisioning state of the load balancing rule resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="frontendIPConfiguration">A reference to frontend IP addresses.
         /// </param>
@@ -146,7 +147,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string LoadDistribution {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the load balancing rule resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the load balancing rule resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
