@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AnalysisService.Management.Sdk\AnalysisService.Management.Sdk.csproj" />
+    <ProjectReference Include="..\AnalysisServices.Management.Sdk\AnalysisServices.Management.Sdk.csproj" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
