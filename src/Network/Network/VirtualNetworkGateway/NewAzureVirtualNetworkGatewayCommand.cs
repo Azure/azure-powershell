@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.EnableBgp = this.EnableBgp;
             vnetGateway.DisableIPsecProtection = this.DisableIPsecProtection;
             vnetGateway.ActiveActive = this.EnableActiveActiveFeature.IsPresent;
-            vnetGateway.EnableHighBandwidthVpnGateway = this.EnableHighBandwidthVpnGatewayFeature.IsPresent;
+            // vnetGateway.EnableHighBandwidthVpnGateway = this.EnableHighBandwidthVpnGatewayFeature.IsPresent;
             vnetGateway.EnablePrivateIpAddress = this.EnablePrivateIpAddress.IsPresent;
 
             if (this.VirtualNetworkGatewayPolicyGroup != null && this.VirtualNetworkGatewayPolicyGroup.Length > 0)
