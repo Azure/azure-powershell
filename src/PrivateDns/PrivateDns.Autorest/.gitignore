@@ -1,0 +1,5 @@
+bin
+obj
+.vs
+test/*-TestResults.xml
+license.txt
