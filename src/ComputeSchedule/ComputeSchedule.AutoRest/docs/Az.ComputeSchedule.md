@@ -11,15 +11,30 @@ Locale: en-US
 Microsoft Azure PowerShell: ComputeSchedule cmdlets
 
 ## Az.ComputeSchedule Cmdlets
-### [Get-AzComputeScheduleTestThisVm](Get-AzComputeScheduleTestThisVm.md)
+### [Get-AzComputeScheduleOperationsErrors](Get-AzComputeScheduleOperationsErrors.md)
 virtualMachinesGetOperationErrors: getOperationErrors associated with an operation on a virtual machine
 
-### [Invoke-AzComputeScheduleExecuteScheduledAction](Invoke-AzComputeScheduleExecuteScheduledAction.md)
+### [Get-AzComputeScheduleOperationsStatus](Get-AzComputeScheduleOperationsStatus.md)
+virtualMachinesGetOperationStatus: getOperationStatus for a virtual machine
+
+### [Invoke-AzComputeScheduleExecuteDeallocate](Invoke-AzComputeScheduleExecuteDeallocate.md)
 virtualMachinesExecuteDeallocate: executeDeallocate for a virtual machine
 
-### [Stop-AzComputeScheduleScheduledAction](Stop-AzComputeScheduleScheduledAction.md)
-virtualMachinesCancelOperations: cancelOperations for a virtual machine
+### [Invoke-AzComputeScheduleExecuteHibernate](Invoke-AzComputeScheduleExecuteHibernate.md)
+virtualMachinesExecuteHibernate: executeHibernate for a virtual machine
 
-### [Submit-AzComputeScheduleScheduledAction](Submit-AzComputeScheduleScheduledAction.md)
+### [Invoke-AzComputeScheduleExecuteStart](Invoke-AzComputeScheduleExecuteStart.md)
+virtualMachinesExecuteStart: executeStart for a virtual machine
+
+### [Invoke-AzComputeScheduleSubmitDeallocate](Invoke-AzComputeScheduleSubmitDeallocate.md)
 virtualMachinesSubmitDeallocate: submitDeallocate for a virtual machine
+
+### [Invoke-AzComputeScheduleSubmitHibernate](Invoke-AzComputeScheduleSubmitHibernate.md)
+virtualMachinesSubmitHibernate: submitHibernate for a virtual machine
+
+### [Invoke-AzComputeScheduleSubmitStart](Invoke-AzComputeScheduleSubmitStart.md)
+virtualMachinesSubmitStart: submitStart for a virtual machine
+
+### [Stop-AzComputeScheduleOperations](Stop-AzComputeScheduleOperations.md)
+virtualMachinesCancelOperations: cancelOperations for a virtual machine
 

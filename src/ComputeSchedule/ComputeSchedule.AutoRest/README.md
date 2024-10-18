@@ -72,11 +72,136 @@ directive:
       variant: ^(Get)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
 
+# Rename cmdlets to expose endpoints
   - where:
       verb: Get
       subject: ScheduledAction
+      variant: GetExpanded
     set:
-      subject: TestThisVm
+      subject: OperationsErrors
+
+  - where:
+      verb: Get
+      subject: ScheduledAction
+      variant: GetExpanded1
+    set:
+      subject: OperationsStatus
+
+  - where:
+      verb: Invoke
+      subject: ExecuteScheduledAction
+      variant: ExecuteExpanded
+    set:
+      subject: ExecuteDeallocate
+
+  - where:
+      verb: Invoke
+      subject: ExecuteScheduledAction
+      variant: ExecuteExpanded1
+    set:
+      subject: ExecuteHibernate
+
+  - where:
+      verb: Invoke
+      subject: ExecuteScheduledAction
+      variant: ExecuteExpanded2
+    set:
+      subject: ExecuteStart
+
+  - where:
+      verb: Submit
+      subject: ScheduledAction
+      variant: SubmitExpanded
+    set:
+      verb: Invoke
+      subject: SubmitDeallocate
+
+  - where:
+      verb: Submit
+      subject: ScheduledAction
+      variant: SubmitExpanded1
+    set:
+      verb: Invoke
+      subject: SubmitHibernate
+
+  - where:
+      verb: Submit
+      subject: ScheduledAction
+      variant: SubmitExpanded2
+    set:
+      verb: Invoke
+      subject: SubmitStart
+
+  - where:
+      verb: Stop
+      subject: ScheduledAction
+      variant: CancelExpanded
+    set:
+      subject: Operations
+
+# Hide initial cmdlets generated with all endpoints grouped
+  - where:
+      verb: Invoke
+      subject: ExecuteScheduledAction
+    hide: true
+
+  - where:
+      verb: Submit
+      subject: ScheduledAction
+    hide: true
+
+  - where:
+      verb: Stop
+      subject: ScheduledAction
+    hide: true
+
+  - where:
+      verb: Get
+      subject: ScheduledAction
+    hide: true
+
+# rename parameters
+  - where:
+      verb: Invoke
+      subject: ^(Submit|Execute)(.*)
+      parameter-name: RetryPolicyRetryCount
+    set:
+      parameter-name: RetryCount
+
+  - where:
+      verb: Invoke
+      subject: ^(Submit|Execute)(.*)
+      parameter-name: RetryPolicyRetryWindowInMinute
+    set:
+      parameter-name: RetryWindowInMinutes
+
+  - where:
+      verb: Invoke
+      subject: ^(Submit)(.*)
+      parameter-name: ScheduleDeadLine
+    set:
+      parameter-name: Deadline
+
+  - where:
+      verb: Invoke
+      subject: ^(Submit)(.*)
+      parameter-name: ScheduleDeadlineType
+    set:
+      parameter-name: DeadlineType
+
+  - where:
+      verb: Invoke
+      subject: ^(Submit)(.*)
+      parameter-name: ScheduleTimeZone
+    set:
+      parameter-name: TimeZone
+
+# Hide OptimizationPreference paramater
+  - where:
+      verb: Invoke
+      subject: ^(Submit|Execute)(.*)
+      parameter-name: ExecutionParameterOptimizationPreference
+    hide: true
 
   # Remove the set-* cmdlet
   - where:
