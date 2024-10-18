@@ -522,7 +522,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
 
 <#
 .SYNOPSIS
-Tests creating/getting/deleting new simple public networkmanager security admin Configuration/RuleCollection/Rule
+Tests creating/getting/deleting new public networkmanager security admin Configuration/RuleCollection/Rule with manual aggregation option
 #>
 function Test-NetworkManagerSecurityAdminRuleManualAggregationCRUD
 {
