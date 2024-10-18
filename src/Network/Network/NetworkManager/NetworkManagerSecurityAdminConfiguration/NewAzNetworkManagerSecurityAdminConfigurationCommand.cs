@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
           Mandatory = false,
           ValueFromPipelineByPropertyName = true,
           HelpMessage = "How security admin rules are applied using network group address space aggregation. Valid values include 'None' and 'Manual'.")]
-        public NetworkGroupAddressSpaceAggregation[] NetworkGroupAddressSpaceAggregationOption { get; set; }
+        public virtual string NetworkGroupAddressSpaceAggregationOption { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -133,13 +133,9 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            if (this.NetworkGroupAddressSpaceAggregationOption != null)
+            if (!string.IsNullOrEmpty(this.NetworkGroupAddressSpaceAggregationOption))
             {
-                securityConfig.NetworkGroupAddressSpaceAggregationOption = new List<string>();
-                foreach (NetworkGroupAddressSpaceAggregation aggType in this.NetworkGroupAddressSpaceAggregationOption)
-                {
-                    securityConfig.NetworkGroupAddressSpaceAggregationOption.Add(aggType.ToString());
-                }
+                securityConfig.NetworkGroupAddressSpaceAggregationOption = this.NetworkGroupAddressSpaceAggregationOption;
             }
 
             if (!string.IsNullOrEmpty(this.Description))
