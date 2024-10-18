@@ -17,6 +17,9 @@ Disconnect a userSession.
 ### [Expand-AzWvdMsixImage](Expand-AzWvdMsixImage.md)
 Expands and Lists MSIX packages in an Image, given the Image Path.
 
+### [Get-AzWvdAppAttachPackage](Get-AzWvdAppAttachPackage.md)
+Get an app attach package.
+
 ### [Get-AzWvdApplication](Get-AzWvdApplication.md)
 Get an application.
 
@@ -30,7 +33,7 @@ Get a desktop.
 Get a host pool.
 
 ### [Get-AzWvdHostPoolRegistrationToken](Get-AzWvdHostPoolRegistrationToken.md)
-Registration token of the host pool.
+Operation to list the RegistrationTokens associated with the HostPool
 
 ### [Get-AzWvdMsixPackage](Get-AzWvdMsixPackage.md)
 Get a msixpackage.
@@ -65,35 +68,44 @@ Get a userSession.
 ### [Get-AzWvdWorkspace](Get-AzWvdWorkspace.md)
 Get a workspace.
 
+### [Import-AzWvdAppAttachPackageInfo](Import-AzWvdAppAttachPackageInfo.md)
+Gets information from a package given the path to the package.
+
+### [New-AzWvdAppAttachPackage](New-AzWvdAppAttachPackage.md)
+Create an App Attach package.
+
 ### [New-AzWvdApplication](New-AzWvdApplication.md)
-Create or update an application.
+Create an application.
 
 ### [New-AzWvdApplicationGroup](New-AzWvdApplicationGroup.md)
-Create or update an applicationGroup.
+Create an applicationGroup.
 
 ### [New-AzWvdHostPool](New-AzWvdHostPool.md)
-Create or update a host pool.
+Create a host pool.
 
 ### [New-AzWvdMsixPackage](New-AzWvdMsixPackage.md)
-Create or update a MSIX package.
+Create a MSIX package.
 
 ### [New-AzWvdRegistrationInfo](New-AzWvdRegistrationInfo.md)
 Create Windows virtual desktop registration info.
 
 ### [New-AzWvdScalingPlan](New-AzWvdScalingPlan.md)
-Create or update a scaling plan.
+Create a scaling plan.
 
 ### [New-AzWvdScalingPlanPersonalSchedule](New-AzWvdScalingPlanPersonalSchedule.md)
-Create or update a ScalingPlanPersonalSchedule.
+Create a ScalingPlanPersonalSchedule.
 
 ### [New-AzWvdScalingPlanPooledSchedule](New-AzWvdScalingPlanPooledSchedule.md)
-Create or update a ScalingPlanPooledSchedule.
+Create a ScalingPlanPooledSchedule.
 
 ### [New-AzWvdWorkspace](New-AzWvdWorkspace.md)
-Create or update a workspace.
+Create a workspace.
 
 ### [Register-AzWvdApplicationGroup](Register-AzWvdApplicationGroup.md)
 Register a Windows virtual desktop application group.
+
+### [Remove-AzWvdAppAttachPackage](Remove-AzWvdAppAttachPackage.md)
+Remove an App Attach Package.
 
 ### [Remove-AzWvdApplication](Remove-AzWvdApplication.md)
 Remove an application.
@@ -136,6 +148,9 @@ Send a message to a user.
 
 ### [Unregister-AzWvdApplicationGroup](Unregister-AzWvdApplicationGroup.md)
 Unregister the Windows virtual desktop application group.
+
+### [Update-AzWvdAppAttachPackage](Update-AzWvdAppAttachPackage.md)
+Update an App Attach Package
 
 ### [Update-AzWvdApplication](Update-AzWvdApplication.md)
 Update an application.

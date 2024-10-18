@@ -77,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-help foo 1
+Subscription ID
 
 ```yaml
 Type: System.String

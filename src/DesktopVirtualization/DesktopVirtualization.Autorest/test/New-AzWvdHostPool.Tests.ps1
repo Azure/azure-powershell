@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzWvdHostPool' {
-    It 'FullSenerioCreate' {
+    It 'FullScenarioCreate' {
         try{
             $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -21,13 +21,13 @@ Describe 'New-AzWvdHostPool' {
                                 -HostPoolType 'Pooled' `
                                 -LoadBalancerType 'DepthFirst' `
                                 -PreferredAppGroupType 'Desktop' `
-                                -DesktopAppGroupName 'FullSenerioCreateAG' `
-                                -WorkspaceName 'FullSenerioCreateWS'
+                                -DesktopAppGroupName 'FullScenarioCreateAG' `
+                                -WorkspaceName 'FullScenarioCreateWS'
         }
         finally{
             $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                -Name 'FullSenerioCreateAG'
+                                -Name 'FullScenarioCreateAG'
 
             $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
@@ -35,7 +35,7 @@ Describe 'New-AzWvdHostPool' {
 
             $workspace = Remove-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
                                 -ResourceGroupName $env.ResourceGroup `
-                                -Name 'FullSenerioCreateWS'
+                                -Name 'FullScenarioCreateWS'
         }
     }
 
