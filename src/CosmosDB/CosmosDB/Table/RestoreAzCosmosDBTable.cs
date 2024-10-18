@@ -18,7 +18,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Rest.Azure;
@@ -170,7 +169,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                 string accountInstanceId = databaseAccount.Name;
 
-                IEnumerable restorableTables = CosmosDBManagementClient.RestorableTables.ListWithHttpMessagesAsync(databaseAccount.Location, accountInstanceId, databaseAccount.CreationTime.ToString(), DateTime.MaxValue.ToString()).GetAwaiter().GetResult().Body;
+                IEnumerable restorableTables = CosmosDBManagementClient.RestorableTables.ListWithHttpMessagesAsync(databaseAccount.Location, accountInstanceId, databaseAccount.CreationTime?.ToString("M/dd/yyyy h:mm:ss tt"), DateTime.MaxValue.ToString("M/dd/yyyy h:mm:ss tt")).GetAwaiter().GetResult().Body;
                 (DateTime latestDatabaseDeleteTime, DateTime latestDatabaseCreateOrRecreateTime, string databaseRid) = ProcessRestorableDatabases(restorableTables);
 
                 if (databaseRid == null)
