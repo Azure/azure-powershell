@@ -1,7 +1,7 @@
 #input path to parent folder to perform recursive replace under
 param([Parameter(Mandatory=$true)]$ResourceProviderFolder)
 
-$regexA = '(token\\":\\")(.*)(\\")'
+$regexA = '(token\\":\\")(.*?)(\\")'
 
 $fileNames = Get-ChildItem -Path $ResourceProviderFolder -Recurse -Include '*.Recording.json'
 
