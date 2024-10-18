@@ -79,9 +79,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
-            {_capabilityStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("capabilityStatus"), out var __jsonCapabilityStatus) ? (string)__jsonCapabilityStatus : (string)CapabilityStatus;}
-            {_provisioningStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("provisioningStatus"), out var __jsonProvisioningStatus) ? (string)__jsonProvisioningStatus : (string)ProvisioningStatus;}
-            {_service = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("service"), out var __jsonService) ? (string)__jsonService : (string)Service;}
+            {_capabilityStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("capabilityStatus"), out var __jsonCapabilityStatus) ? (string)__jsonCapabilityStatus : (string)_capabilityStatus;}
+            {_provisioningStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("provisioningStatus"), out var __jsonProvisioningStatus) ? (string)__jsonProvisioningStatus : (string)_provisioningStatus;}
+            {_service = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("service"), out var __jsonService) ? (string)__jsonService : (string)_service;}
             AfterFromJson(json);
         }
 
