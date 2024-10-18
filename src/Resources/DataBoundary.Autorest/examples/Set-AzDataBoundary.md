@@ -10,4 +10,4 @@ Name                                    Id                                      
 00000000-0000-0000-0000-000000000000    /providers/Microsoft.Resources/dataBoundaries/00000000-0000-0000-0000-000000000000      dataBoundary: EU, provisioningState: Created
 ```
 
-{{ Sets the dataBoundary at the tenant level }}
+Sets the dataBoundary at the tenant level

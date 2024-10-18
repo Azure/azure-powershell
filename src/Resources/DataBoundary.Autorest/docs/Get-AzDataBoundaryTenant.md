@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.DataBoundary
-online version: https://learn.microsoft.com/powershell/module/az.databoundary/get-azdataboundarytenant
+Module Name: Az.Resources
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azdataboundarytenant
 schema: 2.0.0
 ---
 
@@ -21,27 +21,18 @@ Get data boundary of tenant.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: {{ Get Data Boundary (Tenant) }}
 ```powershell
-{{ Add code here }}
+Get-AzDataBoundaryTenant
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                    Id                                                                                      Properties 
+--------                                ----                                                                                    ------------
+00000000-0000-0000-0000-000000000000    /providers/Microsoft.Resources/dataBoundaries/00000000-0000-0000-0000-000000000000      dataBoundary: EU, provisioningState: Created
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Gets the dataBoundary at the tenant level
 
 ## PARAMETERS
 

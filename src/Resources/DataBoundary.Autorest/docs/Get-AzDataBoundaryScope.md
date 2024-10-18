@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.DataBoundary
-online version: https://learn.microsoft.com/powershell/module/az.databoundary/get-azdataboundaryscope
+Module Name: Az.Resources
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azdataboundaryscope
 schema: 2.0.0
 ---
 
@@ -21,27 +21,33 @@ Get data boundary at specified scope
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: {{ Get Data Boundary (Subscription) }}
 ```powershell
-{{ Add code here }}
+$scope = "/subscriptions/11111111-1111-1111-1111-111111111111"
+Get-AzDataBoundaryScope -Scope $scope
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                    Id                                                                                      Properties 
+--------                                ----                                                                                    ------------
+00000000-0000-0000-0000-000000000000    /providers/Microsoft.Resources/dataBoundaries/00000000-0000-0000-0000-000000000000      dataBoundary: EU, provisioningState: Created
 ```
 
-{{ Add description here }}
+{{ Gets the dataBoundary at the subscription scope }}
 
-### Example 2: {{ Add title here }}
+### Example 2: {{ Get Data Boundary (Resource Group) }}
 ```powershell
-{{ Add code here }}
+$scope =  "/subscriptions/11111111-1111-1111-1111-111111111111/resourcegroups/my-resource-group"
+Get-AzDataBoundaryScope -Scope $scope
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                                    Id                                                                                      Properties 
+--------                                ----                                                                                    ------------
+00000000-0000-0000-0000-000000000000    /providers/Microsoft.Resources/dataBoundaries/00000000-0000-0000-0000-000000000000      dataBoundary: EU, provisioningState: Created
 ```
 
-{{ Add description here }}
+Gets the dataBoundary at the subscription or resource group scope
 
 ## PARAMETERS
 

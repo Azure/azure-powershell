@@ -24,5 +24,5 @@ Name                                    Id                                      
 00000000-0000-0000-0000-000000000000    /providers/Microsoft.Resources/dataBoundaries/00000000-0000-0000-0000-000000000000      dataBoundary: EU, provisioningState: Created
 ```
 
-{{ Gets the dataBoundary at the resource group scope }}
+Gets the dataBoundary at the subscription or resource group scope
 

@@ -2,7 +2,7 @@
   "resourceType": "dataBoundaries",
   "apiVersion": "2024-08-01",
   "learnMore": {
-    "url": "https://learn.microsoft.com/powershell/module/az.databoundary"
+    "url": "https://learn.microsoft.com/powershell/module/az.resources"
   },
   "commands": [
     {
@@ -11,7 +11,7 @@
       "path": "/{scope}/providers/Microsoft.Resources/dataBoundaries/{default}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.databoundary/get-azdataboundaryscope"
+          "url": "https://learn.microsoft.com/powershell/module/az.resources/get-azdataboundaryscope"
         },
         "parameterSets": [
           {
@@ -39,7 +39,7 @@
       "path": "/providers/Microsoft.Resources/dataBoundaries/{default}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.databoundary/get-azdataboundarytenant"
+          "url": "https://learn.microsoft.com/powershell/module/az.resources/get-azdataboundarytenant"
         },
         "parameterSets": [
           {
