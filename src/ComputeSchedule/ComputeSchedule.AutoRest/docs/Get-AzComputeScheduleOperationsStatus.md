@@ -14,7 +14,7 @@ virtualMachinesGetOperationStatus: getOperationStatus for a virtual machine
 
 ```
 Get-AzComputeScheduleOperationsStatus -Locationparameter <String> -Correlationid <String>
- -OperationId <String[]> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ -OperationIds <String[]> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -93,7 +93,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationId
+### -OperationIds
 The list of operation ids to get the status of
 
 ```yaml

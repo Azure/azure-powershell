@@ -13,7 +13,7 @@ virtualMachinesCancelOperations: cancelOperations for a virtual machine
 ## SYNTAX
 
 ```
-Stop-AzComputeScheduleOperations -Locationparameter <String> -Correlationid <String> -OperationId <String[]>
+Stop-AzComputeScheduleOperations -Locationparameter <String> -Correlationid <String> -OperationIds <String[]>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -92,7 +92,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationId
+### -OperationIds
 The list of operation ids to cancel operations on
 
 ```yaml

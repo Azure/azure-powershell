@@ -196,6 +196,13 @@ directive:
     set:
       parameter-name: TimeZone
 
+  - where:
+      verb: Get|Stop
+      subject: ^(Operations)(.*)
+      parameter-name: OperationId
+    set:
+      parameter-name: OperationIds
+
 # Hide OptimizationPreference paramater
   - where:
       verb: Invoke

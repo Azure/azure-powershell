@@ -13,7 +13,7 @@ virtualMachinesGetOperationErrors: getOperationErrors associated with an operati
 ## SYNTAX
 
 ```
-Get-AzComputeScheduleOperationsErrors -Locationparameter <String> -OperationId <String[]>
+Get-AzComputeScheduleOperationsErrors -Locationparameter <String> -OperationIds <String[]>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -77,7 +77,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationId
+### -OperationIds
 The list of operation ids to query errors of
 
 ```yaml
