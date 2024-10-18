@@ -8,28 +8,32 @@ schema: 2.0.0
 # Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
-
+To remove network manager verifier workspace reachability analysis intent. 
 ## SYNTAX
 
 ```
 Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> -WorkspaceName <String> [-Force] [-PassThru] [-AsJob]
+ -ResourceGroupName <String> -VerifierWorkspaceName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
-
+**Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent** cmdlet removes a given Verifier Workspace Reachability Analysis Intent
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name "ameIntent2" -NetworkManagerName "TestNM" -ResourceGroupName "TestRG" -VerifierWorkspaceName "AmeWorkspace"
 ```
 
-{{ Add example description here }}
+```output
+Confirm
+Are you sure you want to remove resource 'ameIntent2'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+```
+
+Removed the Verifier Workspace Reachability Analysis Intent named 'ameIntent2'.
 
 ## PARAMETERS
 

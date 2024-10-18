@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetworkManagerVerifierWorkspace
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+To update network manager verifier workspace.
 
 ## SYNTAX
 
@@ -19,16 +19,93 @@ Set-AzNetworkManagerVerifierWorkspace -InputObject <PSVerifierWorkspace> [-AsJob
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
-
+**Set-AzNetworkManagerVerifierWorkspace** cmdlet enables the details of a network manager verifier workspace to be updated
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+ $verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName "testRG" -NetworkManagerName "testNM" -Name "AmeWorkspace"
+>>
+>> # Modify properties of the verifier workspace as needed
+>> $verifierWorkspace.Properties.Description = "Updated description"
+>>
+>> # Update the verifier workspace using the Set-AzNetworkManagerVerifierWorkspace cmdlet
+>> Set-AzNetworkManagerVerifierWorkspace -InputObject $verifierWorkspace
 ```
 
-{{ Add example description here }}
+```output
+Location           : eastus2euap
+Tags               : {}
+Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspaceProperties
+TagsTable          :
+PropertiesText     : {
+                       "ProvisioningState": "Succeeded",
+                       "Description": "Updated description"
+                     }
+Name               : AmeWorkspace
+ResourceGroupName  : testRG
+NetworkManagerName : testNM
+Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText     : {
+                       "CreatedBy": "test@email.com",
+                       "CreatedByType": "User",
+                       "CreatedAt": "2024-04-08T22:14:28.9064474Z",
+                       "LastModifiedBy": "test@email.com",
+                       "LastModifiedByType": "User",
+                       "LastModifiedAt": "2024-10-15T17:48:28.0902461Z"
+                     }
+Id                 : /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierWorkspaces/AmeWorkspace
+
+```
+
+Changed the description of the Verifier Workspace 'AmeWorkspace' to "Updated description"
+### Example 2
+```powershell
+>> $verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName "testRG" -NetworkManagerName "testNM" -Name "testVerifierWorkspace5"
+>>
+>> # Define the tags as a dictionary
+>> $tags = [System.Collections.Generic.Dictionary[string, string]]::new()
+>> $tags.Add("testTag", "test")
+>>
+>> # Modify properties of the verifier workspace as needed
+>> $verifierWorkspace.Tags = $tags
+>>
+>> # Update the verifier workspace using the Set-AzNetworkManagerVerifierWorkspace cmdlet
+>> Set-AzNetworkManagerVerifierWorkspace -InputObject $verifierWorkspace
+
+```
+
+```output
+Location           : eastus2euap
+Tags               : {[testTag, test]}
+Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSVerifierWorkspaceProperties
+TagsTable          :
+                     Name   Value
+                     =====  =====
+                     testTag   test
+
+PropertiesText     : {
+                       "ProvisioningState": "Succeeded",
+                       "Description": "string"
+                     }
+Name               : testVerifierWorkspace5
+ResourceGroupName  : testRG
+NetworkManagerName : testNM
+Type               : Microsoft.Network/networkManagers/verifierWorkspaces
+SystemData         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText     : {
+                       "CreatedBy": "test@email.com",
+                       "CreatedByType": "User",
+                       "CreatedAt": "2024-01-30T16:25:07.4175577Z",
+                       "LastModifiedBy": "test@email.com",
+                       "LastModifiedByType": "User",
+                       "LastModifiedAt": "2024-10-15T18:00:26.5078204Z"
+                     }
+Id                 : /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierWorkspaces/testVerifierWorkspace5
+```
+
+Added the tag of of name 'testTag' and value 'test' to the Verifier Workspace 'testVerifierWorkspace5'
 
 ## PARAMETERS
 

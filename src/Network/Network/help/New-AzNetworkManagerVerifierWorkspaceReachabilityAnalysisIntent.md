@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+To create a new Network Manager Verifier Workspace Reachability Analysis Intent
 
 ## SYNTAX
 
@@ -21,16 +21,63 @@ New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name <String> -
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
-
+**New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent** cmdlet creates a new Network Manager Verifier Workspace Reachability Analysis Intent
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$ipTraffic = New-AzNetworkManagerIPTraffic -SourceIps @("192.168.1.10") -DestinationIps @("172.16.0.5") -SourcePorts @("100") -DestinationPorts @("99") -Protocols @("TCP");
+New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name "analysisIntentTest24" -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVNV" -SourceResourceId "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM" -DestinationResourceId "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/ipam-test-vm-integration-test" -IpTraffic $ipTraffic;
 ```
 
-{{ Add example description here }}
+```output
+Name                  : analysisIntentTest24
+VerifierWorkspaceName : testVNV
+ResourceGroupName     : testRG
+NetworkManagerName    : testNM
+Properties            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSReachabilityAnalysisIntentProperties
+Type                  : Microsoft.Network/networkManagers/verifierWorkspaces/reachabilityAnalysisIntents
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "test@email.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2024-10-15T18:45:22.9301207Z",
+                          "LastModifiedBy": "test@email.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2024-10-15T18:45:22.9301207Z"
+                        }
+Id                    : /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierWorkspaces/testVNV/reachabilityA
+                        nalysisIntents/analysisIntentTest24
+```
+
+Created a new Network Manager Verifier Workspace Reachability Analysis Intent
+
+### Example 2
+```powershell
+New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name "analysisIntentTest23" -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVNV" -SourceResourceId "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM" -DestinationResourceId "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/ipam-test-vm-integration-test" -IpTraffic (New-AzNetworkManagerIPTraffic -SourceIps @("192.168.1.10") -DestinationIps @("172.16.0.5") -SourcePorts @("100") -DestinationPorts @("99") -Protocols @("TCP"))
+```
+
+```output
+Name                  : analysisIntentTest23
+VerifierWorkspaceName : testVNV
+ResourceGroupName     : testRG
+NetworkManagerName    : testNM
+Properties            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSReachabilityAnalysisIntentProperties
+Type                  : Microsoft.Network/networkManagers/verifierWorkspaces/reachabilityAnalysisIntents
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "test@email.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2024-10-15T18:47:37.9813771Z",
+                          "LastModifiedBy": "test@email.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2024-10-15T18:47:37.9813771Z"
+                        }
+Id                    : /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierWorkspaces/testVNV/reachabilityA
+                        nalysisIntents/analysisIntentTest23
+```
+
+Created a new Network Manager Verifier Workspace Reachability Analysis Intent
 
 ## PARAMETERS
 

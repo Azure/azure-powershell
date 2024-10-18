@@ -138,6 +138,15 @@ namespace Microsoft.Azure.Commands.Network
                 securityConfig.NetworkGroupAddressSpaceAggregationOption = this.NetworkGroupAddressSpaceAggregationOption;
             }
 
+            if (this.NetworkGroupAddressSpaceAggregationOption != null)
+            {
+                securityConfig.NetworkGroupAddressSpaceAggregationOption = new List<string>();
+                foreach (NetworkGroupAddressSpaceAggregation aggType in this.NetworkGroupAddressSpaceAggregationOption)
+                {
+                    securityConfig.NetworkGroupAddressSpaceAggregationOption.Add(aggType.ToString());
+                }
+            }
+
             if (!string.IsNullOrEmpty(this.Description))
             {
                 securityConfig.Description = this.Description;

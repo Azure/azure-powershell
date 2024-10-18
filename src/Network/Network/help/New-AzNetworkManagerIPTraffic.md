@@ -8,8 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerIPTraffic
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
-
+Create a new instance of IP Traffic
 ## SYNTAX
 
 ```
@@ -22,17 +21,42 @@ New-AzNetworkManagerIPTraffic -SourceIps <System.Collections.Generic.IList`1[Sys
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
-
+**New-AzNetworkManagerIPTraffic** cmdlet creates a new instance of IP Traffic
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+New-AzNetworkManagerIPTraffic -SourceIps @("192.168.1.10") -DestinationIps @("172.16.0.5") -SourcePorts @("100") -DestinationPorts @("99") -Protocols @("TCP")
 ```
 
-{{ Add example description here }}
+```output
+SourceIps        : {192.168.1.10}
+DestinationIps   : {172.16.0.5}
+SourcePorts      : {100}
+DestinationPorts : {99}
+Protocols        : {TCP}
+IpTrafficText    : {
+                     "SourceIps": [
+                       "192.168.1.10"
+                     ],
+                     "DestinationIps": [
+                       "172.16.0.5"
+                     ],
+                     "SourcePorts": [
+                       "100"
+                     ],
+                     "DestinationPorts": [
+                       "99"
+                     ],
+                     "Protocols": [
+                       "TCP"
+                     ]
+                   }
 
+```
+
+
+Created a new instance of IP Traffic
 ## PARAMETERS
 
 ### -DefaultProfile
