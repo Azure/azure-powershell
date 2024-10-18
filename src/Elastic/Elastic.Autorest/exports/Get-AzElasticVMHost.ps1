@@ -23,12 +23,12 @@ List the vm resources currently being monitored by the Elastic monitor resource.
 Get-AzElasticVMHost -ResourceGroupName azure-elastic-test -Name elastic-pwsh02
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IVMResources
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IVMResources
 .Link
 https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticvmhost
 #>
 function Get-AzElasticVMHost {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IVMResources])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IVMResources])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -40,16 +40,16 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [System.String]
-    # The name of the resource group to which the Elastic resource belongs.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # The Azure subscription ID.
-    # This is a GUID-formatted string (e.g.
-    # 00000000-0000-0000-0000-000000000000)
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter()]

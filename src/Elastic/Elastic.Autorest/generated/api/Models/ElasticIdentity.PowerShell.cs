@@ -105,6 +105,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).MonitorName, global::System.Convert.ToString);
             }
+            if (content.Contains("IntegrationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).IntegrationName = (string) content.GetValueForProperty("IntegrationName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).IntegrationName, global::System.Convert.ToString);
+            }
             if (content.Contains("RuleSetName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).RuleSetName = (string) content.GetValueForProperty("RuleSetName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).RuleSetName, global::System.Convert.ToString);
@@ -141,6 +145,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models
             if (content.Contains("MonitorName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).MonitorName = (string) content.GetValueForProperty("MonitorName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).MonitorName, global::System.Convert.ToString);
+            }
+            if (content.Contains("IntegrationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).IntegrationName = (string) content.GetValueForProperty("IntegrationName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentityInternal)this).IntegrationName, global::System.Convert.ToString);
             }
             if (content.Contains("RuleSetName"))
             {
