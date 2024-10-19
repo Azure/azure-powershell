@@ -1,0 +1,6 @@
+src/Compute/Compute
+src/Compute/Compute.AlcWrapper
+src/Compute/Compute.Autorest
+src/Compute/Compute.Helpers
+src/Compute/Compute.Management.Sdk
+src/Compute/documentation
