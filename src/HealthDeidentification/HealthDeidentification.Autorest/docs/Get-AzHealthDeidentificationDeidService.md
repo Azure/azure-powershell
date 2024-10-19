@@ -12,7 +12,7 @@ Get a DeidService
 
 ## SYNTAX
 
-### List (Default)
+### List (Default) 
 ```
 Get-AzHealthDeidentificationDeidService [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]

@@ -15,15 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzHealthDeidentificationD
 }
 
 Describe 'New-AzHealthDeidentificationDeidService' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { 
+            $config = New-AzHealthDeidentificationDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests -Location $env.location
+            $config.Name | Should -Be $env.deidServiceToCreateInTests
+        } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaJsonFilePath' {
+        { 
+            $config = New-AzHealthDeidentificationDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests -Location $env.location -JsonFilePath (Join-Path $PSScriptRoot '.\jsonConfigs\deidServiceJson.json')
+            $config.Name | Should -Be $env.deidServiceToCreateInTests
+        } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaJsonString' {
+        { 
+            $config = New-AzHealthDeidentificationDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests -Location $env.location -JsonString (Get-Content (Join-Path $PSScriptRoot '.\jsonConfigs\deidServiceJson.json'))
+            $config.Name | Should -Be $env.deidServiceToCreateInTests
+        } | Should -Not -Throw
     }
 }

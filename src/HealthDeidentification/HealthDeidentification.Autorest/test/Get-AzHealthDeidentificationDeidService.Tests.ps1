@@ -15,19 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzHealthDeidentificationD
 }
 
 Describe 'Get-AzHealthDeidentificationDeidService' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $config = Get-AzHealthDeidentificationDeidService
+            $config.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            $config = Get-AzHealthDeidentificationDeidService -Name $env.deidServiceName -ResourceGroupName $env.resourceGroupName
+            $config.Name | Should -Be $env.deidServiceName
+        } | Should -Not -Throw
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        { 
+            $config = Get-AzHealthDeidentificationDeidService -ResourceGroupName $env.resourceGroupName
+            $config.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { 
+            $config = Get-AzHealthDeidentificationDeidService -Name $env.deidServiceName -ResourceGroupName $env.resourceGroupName
+            $config2 = Get-AzHealthDeidentificationDeidService -InputObject $config
+            $config2.Name | Should -Be $env.deidServiceName
+        } | Should -Not -Throw
     }
 }

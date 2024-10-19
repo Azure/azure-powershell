@@ -15,11 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzHealthDeidentificati
 }
 
 Describe 'Update-AzHealthDeidentificationDeidService' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { 
+            $config = Update-AzHealthDeidentificationDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceName -Location $env.location -EnableSystemAssignedIdentity $true -PublicNetworkAccess "Disabled"
+            $config.Name | Should -Be $env.deidServiceName
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        { 
+            $config = Get-AzHealthDeidentificationDeidService -Name $env.deidServiceName -ResourceGroupName $env.resourceGroupName
+            $config.Location = $env.location
+            $config2 = Update-AzHealthDeidentificationDeidService -InputObject $config -EnableSystemAssignedIdentity $true -PublicNetworkAccess "Disabled"
+            $config2.Name | Should -Be $env.deidServiceName
+        } | Should -Not -Throw
     }
 }

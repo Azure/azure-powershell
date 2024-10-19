@@ -15,11 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzHealthDeidentificati
 }
 
 Describe 'Remove-AzHealthDeidentificationDeidService' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { 
+            Remove-AzHealthDeidentificationDeidService -Name $env.deidServiceName -ResourceGroupName $env.resourceGroupName
+        } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        { 
+            $config = Get-AzHealthDeidentificationDeidService -Name $env.deidServiceName -ResourceGroupName $env.resourceGroupName
+            Remove-AzHealthDeidentificationDeidService -InputObject $config
+        } | Should -Not -Throw
     }
 }

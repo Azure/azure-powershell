@@ -15,7 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzHealthDeidentificationP
 }
 
 Describe 'Get-AzHealthDeidentificationPrivateLink' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { 
+            $config = Get-AzHealthDeidentificationPrivateLink -Name $env.deidServiceName -ResourceGroupName $env.resourceGroupName
+            $config.Count | Should -Be 0
+        } | Should -Not -Throw
+    }
+
+    It 'List' {
+        { 
+            $config = Get-AzHealthDeidentificationPrivateLink -Name $env.deidServiceNameWithPL -ResourceGroupName $env.resourceGroupName
+            $config.Count | Should -BeGreaterThan 0 # TODO: create private link
+        } | Should -Not -Throw
     }
 }
