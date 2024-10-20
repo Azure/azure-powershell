@@ -1,0 +1,44 @@
+{
+  "Update-AzHealthDeidService+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azps-test-rg-eus2/providers/Microsoft.HealthDataAIServices/deidServices/kox0df?api-version=2024-02-28-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azps-test-rg-eus2/providers/Microsoft.HealthDataAIServices/deidServices/kox0df?api-version=2024-02-28-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "8d580a98-fe13-416b-b65c-d66b787cec36" ],
+        "CommandName": [ "Get-AzHealthDeidService" ],
+        "FullCommandName": [ "Get-AzHealthDeidService_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.23", "Az.HealthDeid/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "a98999b2-afbb-4a52-98bc-014d9f45b18a" ],
+        "x-ms-correlation-request-id": [ "a98999b2-afbb-4a52-98bc-014d9f45b18a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241020T053445Z:a98999b2-afbb-4a52-98bc-014d9f45b18a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 78D1294297F6453BB1E96B8357EA36E2 Ref B: CO6AA3150218035 Ref C: 2024-10-20T05:34:45Z" ],
+        "Date": [ "Sun, 20 Oct 2024 05:34:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "239" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.HealthDataAIServices/DeidServices/kox0df\u0027 under resource group \u0027azps-test-rg-eus2\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "isContentBase64": false
+    }
+  }
+}
