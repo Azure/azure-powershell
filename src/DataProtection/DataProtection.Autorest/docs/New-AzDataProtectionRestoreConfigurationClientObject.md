@@ -18,7 +18,8 @@ New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType <Datasource
  [-IncludeClusterScopeResource <Boolean?>] [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>]
  [-LabelSelector <String[]>] [-NamespaceMapping <KubernetesClusterRestoreCriteriaNamespaceMappings>]
  [-PersistentVolumeRestoreMode <String>] [-ResourceModifierReference <NamespacedNameResource>]
- [-RestoreHookReference <NamespacedNameResource[]>] [<CommonParameters>]
+ [-RestoreHookReference <NamespacedNameResource[]>] [-StagingResourceGroupId <String>]
+ [-StagingStorageAccountId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -220,6 +221,36 @@ To construct, see NOTES section for RESTOREHOOKREFERENCE properties and create a
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StagingResourceGroupId
+Staging resource group Id for restore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StagingStorageAccountId
+Staging storage account Id for restore.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

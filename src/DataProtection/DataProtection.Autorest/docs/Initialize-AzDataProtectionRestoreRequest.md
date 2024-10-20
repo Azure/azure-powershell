@@ -17,8 +17,8 @@ Initializes Restore Request object for triggering restore on a protected backup 
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RestoreLocation <String>
  -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> -TargetResourceId <String>
  [-PointInTime <DateTime>] [-RecoveryPoint <String>] [-RehydrationDuration <String>]
- [-RehydrationPriority <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
- [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>] [<CommonParameters>]
+ [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>] [-SecretStoreType <SecretStoreTypes>]
+ [-SecretStoreURI <String>] [<CommonParameters>]
 ```
 
 ### AlternateLocationILR
@@ -26,7 +26,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Res
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -ItemLevelRecovery
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType>
  -TargetResourceId <String> [-ContainersList <String[]>] [-PrefixMatch <Hashtable>] [-RecoveryPoint <String>]
- [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [<CommonParameters>]
+ [-RestoreConfiguration <PSObject>] [<CommonParameters>]
 ```
 
 ### OriginalLocationFullRecovery
@@ -34,9 +34,8 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Ite
 Initialize-AzDataProtectionRestoreRequest -BackupInstance <BackupInstanceResource>
  -DatasourceType <DatasourceTypes> -RestoreLocation <String> -RestoreType <RestoreTargetType>
  -SourceDataStore <DataStoreType> [-PointInTime <DateTime>] [-RecoveryPoint <String>]
- [-RehydrationDuration <String>] [-RehydrationPriority <String>]
- [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreType <SecretStoreTypes>]
- [-SecretStoreURI <String>] [<CommonParameters>]
+ [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>]
+ [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>] [<CommonParameters>]
 ```
 
 ### OriginalLocationILR
@@ -45,9 +44,9 @@ Initialize-AzDataProtectionRestoreRequest -BackupInstance <BackupInstanceResourc
  -DatasourceType <DatasourceTypes> -ItemLevelRecovery -RestoreLocation <String>
  -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> [-ContainersList <String[]>]
  [-FromPrefixPattern <String[]>] [-PointInTime <DateTime>] [-RecoveryPoint <String>]
- [-RehydrationDuration <String>] [-RehydrationPriority <String>]
- [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreType <SecretStoreTypes>]
- [-SecretStoreURI <String>] [-ToPrefixPattern <String[]>] [<CommonParameters>]
+ [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-RestoreConfiguration <PSObject>]
+ [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>] [-ToPrefixPattern <String[]>]
+ [<CommonParameters>]
 ```
 
 ### RestoreAsFiles
@@ -362,10 +361,9 @@ Accept wildcard characters: False
 ### -RestoreConfiguration
 Restore configuration for restore.
 Use this parameter to restore with AzureKubernetesService.
-To construct, see NOTES section for RESTORECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.KubernetesClusterRestoreCriteria
+Type: System.Management.Automation.PSObject
 Parameter Sets: AlternateLocationFullRecovery, AlternateLocationILR, OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 

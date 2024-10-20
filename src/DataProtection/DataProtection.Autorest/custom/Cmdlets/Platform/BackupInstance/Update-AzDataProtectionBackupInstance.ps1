@@ -150,6 +150,11 @@ function Update-AzDataProtectionBackupInstance
             $null = $PSBoundParameters.Add("Token", "Bearer $Token")
         }
 
+        # Explicitly setting the whole DSSetInfo object as null when ResourceID is null
+        if($instance.Property.DataSourceSetInfo.ResourceId -eq $null){
+            $instance.Property.DataSourceSetInfo =$null      
+        }
+
         $null = $PSBoundParameters.Remove("BackupInstanceName")
         $null = $PSBoundParameters.Add("Name", $instance.Name)
         $null = $PSBoundParameters.Add("Parameter", $instance)

@@ -140,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGuardOperationRequest
-Resource guard operation request in the format similar to \<ResourceGuard-ARMID\>/dppDisableStopProtectionRequests/default.
+Resource guard operation request in the format similar to \<ResourceGuard-ARMID\>/dppModifyPolicy/default.
 Use this parameter when the operation is MUA protected.
 
 ```yaml

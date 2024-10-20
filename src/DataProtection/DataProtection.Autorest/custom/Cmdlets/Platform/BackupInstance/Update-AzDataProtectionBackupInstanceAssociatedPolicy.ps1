@@ -97,6 +97,11 @@ function Update-AzDataProtectionBackupInstanceAssociatedPolicy
         if($hasResourceGuardOperationRequest){
             $instance.Property.ResourceGuardOperationRequest = $ResourceGuardOperationRequest
         }
+        
+        # Explicitly setting the whole DSSetInfo object as null when ResourceID is null
+        if($instance.Property.DataSourceSetInfo.ResourceId -eq $null){
+            $instance.Property.DataSourceSetInfo =$null      
+        }
 
         $null = $PSBoundParameters.Add("Parameter", $instance)
         $null = $PSBoundParameters.Add("Name", $instance.Name)        
