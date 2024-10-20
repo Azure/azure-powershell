@@ -41,35 +41,37 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
-    $env.Tenant = (Get-AzContext).Tenant.Id
+    $env.AddWithCache("SubscriptionId", (Get-AzContext).Subscription.Id, $true)
+    $env.AddWithCache("Tenant", (Get-AzContext).Tenant.Id, $true)
 
-    Write-Output "Creating DeID services"
-    $deidServiceName = RandomString -allChars $false -len 6
-    $env.Add("deidServiceName", $deidServiceName)
-    $deidServiceNameWithPL = RandomString -allChars $false -len 6
-    $env.Add("deidServiceNameWithPL", $deidServiceNameWithPL)
-    $deidServiceNameToDelete1 = RandomString -allChars $false -len 6
-    $env.Add("deidServiceNameToDelete1", $deidServiceNameToDelete1)
-    $deidServiceNameToDelete2 = RandomString -allChars $false -len 6
-    $env.Add("deidServiceNameToDelete1", $deidServiceNameToDelete2)
-    $deidServiceToCreateInTests = RandomString -allChars $false -len 6
-    $env.Add("deidServiceToCreateInTests", $deidServiceToCreateInTests)
-    Write-Output "Finished creating DeID services"
-
-    $env.Add("location", "eastus2")
+    $env.AddWithCache("location", "eastus2", $true)
 
     # Create the test resource group
     Write-Host "Creating test resource group"
     $resourceGroup = "azps-test-rg-eus2"
-    $env.Add("resourceGroupName", $resourceGroup)
+    $env.AddWithCache("resourceGroupName", $resourceGroup, $true)
     New-AzResourceGroup -Name $env.resourceGroupName -Location $env.location
     Write-Host "Resource group created"
+
+    Write-Output "Creating DeID services"
+    $deidServiceName = RandomString -allChars $false -len 6
+    $env.AddWithCache("deidServiceName", $deidServiceName, $true)
+    $deidServiceNameWithPL = RandomString -allChars $false -len 6
+    $env.AddWithCache("deidServiceNameWithPL", $deidServiceNameWithPL, $true)
+    $deidServiceNameToDelete1 = RandomString -allChars $false -len 6
+    $env.AddWithCache("deidServiceNameToDelete1", $deidServiceNameToDelete1, $true)
+    $deidServiceNameToDelete2 = RandomString -allChars $false -len 6
+    $env.AddWithCache("deidServiceNameToDelete2", $deidServiceNameToDelete2, $true)
+    $deidServiceToCreateInTests = RandomString -allChars $false -len 6
+    $env.AddWithCache("deidServiceToCreateInTests", $deidServiceToCreateInTests, $true)
 
     # Create resources to use in tests
     New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceName -Location $env.location
     New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceNameWithPL -Location $env.location
+    New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceNameToDelete1 -Location $env.location
+    New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceNameToDelete2 -Location $env.location
     # TODO: add private link
+    Write-Output "Finished creating DeID services"
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
@@ -80,7 +82,9 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroup -Name $env.resourceGroup
+    $resourceGroup = "azps-test-rg-eus2"
+    $env.AddWithCache("resourceGroupName", $resourceGroup, $true)
+    Remove-AzResourceGroup -Name $env.resourceGroupName
     Write-Host "Resource group deleted"
 }
 

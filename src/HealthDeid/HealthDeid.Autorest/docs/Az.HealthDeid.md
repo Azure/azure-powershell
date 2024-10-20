@@ -18,11 +18,11 @@ List private links on the given resource
 Get a DeidService
 
 ### [New-AzHealthDeidService](New-AzHealthDeidService.md)
-Create a DeidService
+create a DeidService
 
 ### [Remove-AzHealthDeidService](Remove-AzHealthDeidService.md)
 Delete a DeidService
 
 ### [Update-AzHealthDeidService](Update-AzHealthDeidService.md)
-Update a DeidService
+update a DeidService
 

@@ -21,6 +21,12 @@ Describe 'Remove-AzHealthDeidService' {
         } | Should -Not -Throw
     }
 
+    It 'Delete' {
+        { 
+            Remove-AzHealthDeidService -Name "nonexistent" -ResourceGroupName $env.resourceGroupName
+        } | Should -Not -Throw
+    }
+
     It 'DeleteViaIdentity' {
         { 
             $config = Get-AzHealthDeidService -Name $env.deidServiceNameToDelete2 -ResourceGroupName $env.resourceGroupName

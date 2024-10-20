@@ -24,14 +24,15 @@ Describe 'New-AzHealthDeidService' {
 
     It 'CreateViaJsonFilePath' {
         { 
-            $config = New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests -Location $env.location -JsonFilePath (Join-Path $PSScriptRoot '.\jsonConfigs\deidServiceJson.json')
+            $config = New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests -JsonFilePath (Join-Path $PSScriptRoot '.\jsonConfigs\deidServiceJson.json')
             $config.Name | Should -Be $env.deidServiceToCreateInTests
         } | Should -Not -Throw
     }
 
     It 'CreateViaJsonString' {
         { 
-            $config = New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests -Location $env.location -JsonString (Get-Content (Join-Path $PSScriptRoot '.\jsonConfigs\deidServiceJson.json'))
+            $jsonString = Get-Content -Path (Join-Path $PSScriptRoot '.\jsonConfigs\deidServiceJson.json') -Raw
+            $config = New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests -JsonString $jsonString
             $config.Name | Should -Be $env.deidServiceToCreateInTests
         } | Should -Not -Throw
     }

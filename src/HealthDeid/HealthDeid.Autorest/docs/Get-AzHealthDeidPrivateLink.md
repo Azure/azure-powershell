@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzHealthDeidPrivateLink
 
 ## SYNOPSIS
-List private links on the given deidentification resource
+List private links on the given resource
 
 ## SYNTAX
 
@@ -24,11 +24,24 @@ List private links on the given resource
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+{{ Get-AzHealthDeidPrivateLink -DeidServiceName deidServiceTestPl -ResourceGroup azps-test-rg-eus2 }}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+{{ 
+GroupId                      : deid
+Id                           : /subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azps-test-rg-eus2/providers/Microsoft.Hea
+                               lthDataAIServices/deidServices/deidServiceTestPl/privateLinkResources/deid
+Name                         : deid
+RequiredMember               : {deid}
+RequiredZoneName             : {privatelink.deid.azure.com}
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Type                         : deidServices/privateLinkResources }}
 ```
 
 {{ Add description here }}

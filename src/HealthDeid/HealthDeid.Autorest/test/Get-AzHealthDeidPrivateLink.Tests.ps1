@@ -17,14 +17,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzHealthDeidPrivateLink')
 Describe 'Get-AzHealthDeidPrivateLink' {
     It 'List' {
         { 
-            $config = Get-AzHealthDeidPrivateLink -Name $env.deidServiceName -ResourceGroupName $env.resourceGroupName
+            $config = Get-AzHealthDeidPrivateLink -DeidServiceName $env.deidServiceName -ResourceGroupName $env.resourceGroupName
             $config.Count | Should -Be 0
         } | Should -Not -Throw
     }
 
     It 'List' {
         { 
-            $config = Get-AzHealthDeidPrivateLink -Name $env.deidServiceNameWithPL -ResourceGroupName $env.resourceGroupName
+            $config = Get-AzHealthDeidPrivateLink -DeidServiceName $env.deidServiceNameWithPL -ResourceGroupName $env.resourceGroupName
             $config.Count | Should -BeGreaterThan 0 # TODO: create private link
         } | Should -Not -Throw
     }
