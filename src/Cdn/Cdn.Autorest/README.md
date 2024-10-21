@@ -310,6 +310,7 @@ directive:
     hide: true
   # Hide classicAfd migrate command and customize
   - where:
+      verb: Invoke
       subject: CanProfileMigrate
     hide: true
   - where:
@@ -400,7 +401,8 @@ directive:
       subject: AbortProfileToAFDMigration
   - where:
       verb: Invoke
-      subject: CanProfileMigrate
+      subjectPrefix: Cdn
+      subject: CanProfile
     set:
       verb: Test
       subject: ProfileMigrationCompatibility
