@@ -15,23 +15,45 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDnsResolverPolicy'))
 }
 
 Describe 'Get-AzDnsResolverPolicy' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get single DNS resolver policy by name, expect DNS resolver policy by name retrieved' {
+        # ARRANGE
+        $dnsResolverPolicyName = "psdnsresolverpolicyname62";
+        $resourceGroupName = "powershell-test-rg-debug-get";
+        
+        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
+
+        # ACT
+        $dnsResolver =  Get-AzDnsResolverPolicy -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName
+
+        # ASSERT
+        $dnsResolver | Should -BeSuccessfullyCreated
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List DNS resolver policies in a resource group, expected least number of DNS resolver policies retrieved' {
+        # ARRANGE
+        $dnsResolverPolicyName = "psdnsresolverpolicyname63";
+        $resourceGroupName = "powershell-test-rg-debug-get";
+
+        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
+
+        # ACT
+        $dnsResolvers =  Get-AzDnsResolverPolicy -ResourceGroupName $resourceGroupName
+
+        # ASSERT
+        $dnsResolvers.Count | Should -BeGreaterThan 0
     }
 
-    It 'List2' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'List DNS resolver policies in a subscription, expected least number of DNS resolver policies retrieved' {
+        # ARRANGE
+        $dnsResolverPolicyName = "psdnsresolverpolicyname64";
+        $resourceGroupName = "powershell-test-rg-debug-get";
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        # ACT
+        $dnsResolvers =  Get-AzDnsResolverPolicy
+
+        # ASSERT
+        $dnsResolvers.Count | Should -BeGreaterThan 0
     }
 }

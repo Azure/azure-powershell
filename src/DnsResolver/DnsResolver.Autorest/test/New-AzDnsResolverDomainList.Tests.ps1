@@ -15,7 +15,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDnsResolverDomainList')
 }
 
 Describe 'New-AzDnsResolverDomainList' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Create DNS resolver domain list' {
+        # ARRANGE
+        $dnsResolverDomainListName = "psdnsresolverdomainlistname0j0cdzg";
+        $resourceGroupName = "powershell-test-rg-debug-new";
+        $location = "westus2";
+
+        # ACT
+        $domainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
+
+        # ASSERT
+        $domainList | Should -BeSuccessfullyCreated
+    }
+
+    It 'Update DNS Resolver domain list with new tags.' {
+        # ARRANGE
+        $dnsResolverDomainListName = "psdnsresolverdomainlistname4c7glpm";
+        $resourceGroupName = "powershell-test-rg-debug-new";
+        $location = "westus2";
+
+        New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
+        $tag = GetRandomHashtable -size 2
+
+        # ACT
+        $domainList = New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.") -Tag $tag
+
+        # ASSERT
+        $domainList.ProvisioningState  | Should -Be "Succeeded"
+        $domainList.Tag.Count | Should -Be $tag.Count
     }
 }

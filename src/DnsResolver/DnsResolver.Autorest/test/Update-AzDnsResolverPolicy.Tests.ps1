@@ -15,11 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDnsResolverPolicy'))
 }
 
 Describe 'Update-AzDnsResolverPolicy' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Update DNS Resolver Policy by adding tag, expect DNS resolver policy updated' {
+        # ARRANGE
+        $dnsResolverPolicyName = "psdnsresolverpolicyname47";
+        $resourceGroupName = "powershell-test-rg-debug-update";
+        $location = "westus2";
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $originalDnsResolverPolicy = New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
+
+        $tag  = GetRandomHashtable -size 5
+
+        # ACT
+        $updatedDnsResolverPolicy = Update-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Tag $tag
+
+        # ASSERT
+        $updatedDnsResolverPolicy | Should -BeSuccessfullyCreated
+        $updatedDnsResolverPolicy | Should -BeSameAsExpected -ExpectedValue $originalDnsResolverPolicy
+        $updatedDnsResolverPolicy.Tag.Count | Should -Be $tag.Count
     }
 }

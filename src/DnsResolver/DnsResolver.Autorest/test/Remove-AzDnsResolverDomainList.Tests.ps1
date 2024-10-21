@@ -15,11 +15,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDnsResolverDomainLis
 }
 
 Describe 'Remove-AzDnsResolverDomainList' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Delete a DNS resolver domain list by name, expected DNS resolver domain list deleted' {
+        # ARRANGE
+       $dnsResolverDomainListName = "psdnsresolverdomainlistname65";
+       $resourceGroupName = "powershell-test-rg-debug-remove";
+       $location = "westus2";
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+       New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
+
+       # ACT
+       Remove-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName
+
+       # ASSERT 
+        {Get-AzDnsResolverDomainList  -DnsResolverDomainListName $dnsResolverDomainListName -ResourceGroupName $resourceGroupName } | Should -Throw
+   }
+
+   It 'Delete a DNS resolver domain list via identity, expected DNS resolver domain list deleted' {
+        # ARRANGE
+        $dnsResolverDomainListName = "psdnsresolverdomainlistname66";
+        $resourceGroupName = "powershell-test-rg-debug-remove";
+        $location = "westus2";
+
+        New-AzDnsResolverDomainList -Name $dnsResolverDomainListName -ResourceGroupName $resourceGroupName -Location $location -Domain @("contoso.com.", "example.com.")
+
+        # ACT
+        Get-AzDnsResolverDomainList  -DnsResolverDomainListName $dnsResolverDomainListName -ResourceGroupName $resourceGroupName | Remove-AzDnsResolverDomainList
+
+        # ASSERT
+        {Get-AzDnsResolverDomainList  -DnsResolverDomainListName $dnsResolverDomainListName -ResourceGroupName $resourceGroupName } | Should -Throw
     }
 }

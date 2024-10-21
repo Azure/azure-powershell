@@ -15,11 +15,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDnsResolverPolicy'))
 }
 
 Describe 'Remove-AzDnsResolverPolicy' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Delete a DNS resolver policy by name, expected DNS resolver policy deleted' {
+        # ARRANGE
+       $dnsResolverPolicyName = "psdnsresolverpolicyname65";
+       $resourceGroupName = "powershell-test-rg-debug-remove";
+       $location = "westus2";
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+       New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
+
+       # ACT
+       Remove-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName
+
+       # ASSERT 
+        {Get-AzDnsResolverPolicy  -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName } | Should -Throw
+   }
+
+   It 'Delete a DNS resolver policy via identity, expected DNS resolver policy deleted' {
+        # ARRANGE
+        $dnsResolverPolicyName = "psdnsresolverpolicyname66";
+        $resourceGroupName = "powershell-test-rg-debug-remove";
+        $location = "westus2";
+
+        New-AzDnsResolverPolicy -Name $dnsResolverPolicyName -ResourceGroupName $resourceGroupName -Location $location
+
+        # ACT
+        Get-AzDnsResolverPolicy  -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName | Remove-AzDnsResolverPolicy
+
+        # ASSERT
+        {Get-AzDnsResolverPolicy  -DnsResolverPolicyName $dnsResolverPolicyName -ResourceGroupName $resourceGroupName } | Should -Throw
     }
 }
