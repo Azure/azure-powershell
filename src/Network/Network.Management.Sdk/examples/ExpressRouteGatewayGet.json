@@ -1,0 +1,27 @@
+{
+  "parameters": {
+    "expressRouteGatewayName": "expressRouteGatewayName",
+    "resourceGroupName": "resourceGroupName",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "expressRouteGatewayName",
+        "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteGateways/expressRouteGatewayName",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "westus",
+        "type": "Microsoft.Network/expressRouteGateways",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "virtualHub": {
+            "id": "/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/virtualHubName"
+          },
+          "allowNonVirtualWanTraffic": false
+        }
+      }
+    }
+  }
+}
+

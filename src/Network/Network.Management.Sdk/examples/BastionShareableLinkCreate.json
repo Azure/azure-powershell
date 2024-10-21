@@ -1,0 +1,50 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "bastionHostName": "bastionhosttenant",
+    "bslRequest": {
+      "vms": [
+        {
+          "vm": {
+            "id": "/subscriptions/subid/resourceGroups/rgx/providers/Microsoft.Compute/virtualMachines/vm1"
+          }
+        },
+        {
+          "vm": {
+            "id": "/subscriptions/subid/resourceGroups/rgx/providers/Microsoft.Compute/virtualMachines/vm2"
+          }
+        }
+      ]
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "vm": {
+              "id": "/subscriptions/subid/resourceGroups/rgx/providers/Microsoft.Compute/virtualMachines/vm1"
+            },
+            "bsl": "http://bst-bastionhostid.bastion.com/api/shareable-url/tokenvm1",
+            "createdAt": "2019-10-18T12:00:00.0000Z"
+          },
+          {
+            "vm": {
+              "id": "/subscriptions/subid/resourceGroups/rgx/providers/Microsoft.Compute/virtualMachines/vm2"
+            },
+            "bsl": "http://bst-bastionhostid.bastion.com/api/shareable-url/tokenvm2",
+            "createdAt": "2019-10-17T12:00:00.0000Z"
+          }
+        ]
+      }
+    },
+    "202": {
+      "headers": {
+        "location": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/operationResults/{operationId}?api-version={api-version}"
+      }
+    }
+  }
+}
+

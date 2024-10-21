@@ -1,0 +1,195 @@
+{
+  "parameters": {
+    "connectionName": "connection1",
+    "virtualHubName": "virtualHub1",
+    "resourceGroupName": "rg1",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "hubVirtualNetworkConnectionParameters": {
+      "properties": {
+        "remoteVirtualNetwork": {
+          "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/SpokeVnet1"
+        },
+        "enableInternetSecurity": false,
+        "routingConfiguration": {
+          "associatedRouteTable": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+          },
+          "propagatedRouteTables": {
+            "labels": [
+              "label1",
+              "label2"
+            ],
+            "ids": [
+              {
+                "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+              }
+            ]
+          },
+          "vnetRoutes": {
+            "staticRoutesConfig": {
+              "vnetLocalRouteOverrideCriteria": "Equal"
+            },
+            "staticRoutes": [
+              {
+                "name": "route1",
+                "addressPrefixes": [
+                  "10.1.0.0/16",
+                  "10.2.0.0/16"
+                ],
+                "nextHopIpAddress": "10.0.0.68"
+              },
+              {
+                "name": "route2",
+                "addressPrefixes": [
+                  "10.3.0.0/16",
+                  "10.4.0.0/16"
+                ],
+                "nextHopIpAddress": "10.0.0.65"
+              }
+            ]
+          },
+          "inboundRouteMap": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"
+          },
+          "outboundRouteMap": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "connection1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubVirtualNetworkConnections/connection1",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "properties": {
+          "provisioningState": "Updating",
+          "remoteVirtualNetwork": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/SpokeVnet1"
+          },
+          "enableInternetSecurity": false,
+          "routingConfiguration": {
+            "associatedRouteTable": {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+            },
+            "propagatedRouteTables": {
+              "labels": [
+                "label1",
+                "label2"
+              ],
+              "ids": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                }
+              ]
+            },
+            "vnetRoutes": {
+              "staticRoutesConfig": {
+                "propagateStaticRoutes": true,
+                "vnetLocalRouteOverrideCriteria": "Equal"
+              },
+              "staticRoutes": [
+                {
+                  "name": "route1",
+                  "addressPrefixes": [
+                    "10.1.0.0/16",
+                    "10.2.0.0/16"
+                  ],
+                  "nextHopIpAddress": "10.0.0.68"
+                },
+                {
+                  "name": "route2",
+                  "addressPrefixes": [
+                    "10.3.0.0/16",
+                    "10.4.0.0/16"
+                  ],
+                  "nextHopIpAddress": "10.0.0.65"
+                }
+              ],
+              "bgpConnections": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/bgpConnections/bgpConn1"
+                }
+              ]
+            },
+            "inboundRouteMap": {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"
+            },
+            "outboundRouteMap": {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"
+            }
+          }
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "connection1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubVirtualNetworkConnections/connection1",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "properties": {
+          "provisioningState": "Updating",
+          "remoteVirtualNetwork": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/SpokeVnet1"
+          },
+          "enableInternetSecurity": false,
+          "routingConfiguration": {
+            "associatedRouteTable": {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+            },
+            "propagatedRouteTables": {
+              "labels": [
+                "label1",
+                "label2"
+              ],
+              "ids": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"
+                }
+              ]
+            },
+            "vnetRoutes": {
+              "staticRoutesConfig": {
+                "propagateStaticRoutes": true,
+                "vnetLocalRouteOverrideCriteria": "Equal"
+              },
+              "staticRoutes": [
+                {
+                  "name": "route1",
+                  "addressPrefixes": [
+                    "10.1.0.0/16",
+                    "10.2.0.0/16"
+                  ],
+                  "nextHopIpAddress": "10.0.0.68"
+                },
+                {
+                  "name": "route2",
+                  "addressPrefixes": [
+                    "10.3.0.0/16",
+                    "10.4.0.0/16"
+                  ],
+                  "nextHopIpAddress": "10.0.0.65"
+                }
+              ],
+              "bgpConnections": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/bgpConnections/bgpConn1"
+                }
+              ]
+            },
+            "inboundRouteMap": {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"
+            },
+            "outboundRouteMap": {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

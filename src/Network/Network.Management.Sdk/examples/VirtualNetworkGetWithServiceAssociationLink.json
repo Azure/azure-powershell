@@ -1,0 +1,70 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subId",
+    "resourceGroupName": "rg1",
+    "virtualNetworkName": "test-vnet"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "test-vnet",
+        "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet",
+        "type": "Microsoft.Network/virtualNetworks",
+        "location": "westus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "addressSpace": {
+            "addressPrefixes": [
+              "10.0.0.0/16"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "subnet1",
+              "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1",
+              "etag": "W/\"4d3e91b4-f67f-48be-880b-e4a8abdd019e\"",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "addressPrefix": "10.0.214.0/24",
+                "ipConfigurationProfiles": [
+                  {
+                    "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/networkProfiles/networkProfile1/containerNetworkInterfaceConfigurations/eth0/ipConfigurations/ipconfigprofile1"
+                  }
+                ],
+                "serviceAssociationLinks": [
+                  {
+                    "name": "serviceAssociationLink1",
+                    "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1/serviceAssociationLinks/serviceAssociationLink1",
+                    "etag": "W/\"4d3e91b4-f67f-48be-880b-e4a8abdd019e\"",
+                    "properties": {
+                      "provisioningState": "Succeeded",
+                      "linkedResourceType": "Microsoft.Provider/resourceType"
+                    }
+                  }
+                ],
+                "serviceEndpoints": [],
+                "delegations": [
+                  {
+                    "name": "aciDelegation",
+                    "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1/delegations/aciDelegation",
+                    "etag": "W/\"4d3e91b4-f67f-48be-880b-e4a8abdd019e\"",
+                    "properties": {
+                      "provisioningState": "Succeeded",
+                      "serviceName": "Microsoft.Provider/resourceType",
+                      "actions": [
+                        "Microsoft.Network/virtualNetworks/subnets/action"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "virtualNetworkPeerings": []
+        }
+      }
+    }
+  }
+}
+

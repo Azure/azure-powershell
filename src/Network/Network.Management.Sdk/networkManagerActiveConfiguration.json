@@ -1,0 +1,346 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagerActiveConfiguration",
+    "description": "The Microsoft Azure Network Manager Active Configuration API provides a RESTful set of web services that interact with Microsoft Azure Network Manager service to list all active configuration by network manager.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/listActiveConnectivityConfigurations": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerNameParameter"
+        },
+        {
+          "$ref": "#/parameters/ListTopParameter"
+        }
+      ],
+      "post": {
+        "tags": [
+          "NetworkManagerActiveConnectivityConfigurations"
+        ],
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ActiveConfigurationParameter"
+            },
+            "description": "Active Configuration Parameter."
+          }
+        ],
+        "operationId": "ListActiveConnectivityConfigurations",
+        "description": "Lists active connectivity configurations in a network manager.",
+        "responses": {
+          "200": {
+            "description": "Post successful. The operation returns the specified Managed Network active connectivity configuration resource.",
+            "schema": {
+              "$ref": "#/definitions/ActiveConnectivityConfigurationsListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List Active Connectivity Configurations": {
+            "$ref": "./examples/NetworkManagerActiveConnectivityConfigurationsList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/listActiveSecurityAdminRules": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/NetworkManagerNameParameter"
+        },
+        {
+          "$ref": "#/parameters/ListTopParameter"
+        }
+      ],
+      "post": {
+        "tags": [
+          "NetworkManagerActiveConfigurations"
+        ],
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ActiveConfigurationParameter"
+            },
+            "description": "Active Configuration Parameter."
+          }
+        ],
+        "operationId": "ListActiveSecurityAdminRules",
+        "description": "Lists active security admin rules in a network manager.",
+        "responses": {
+          "200": {
+            "description": "Post successful. The operation returns the specified Managed Network active security admin rules resource.",
+            "schema": {
+              "$ref": "#/definitions/ActiveSecurityAdminRulesListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List Active Security Admin Rules": {
+            "$ref": "./examples/NetworkManagerActiveSecurityAdminRulesList.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ActiveConfigurationParameter": {
+      "type": "object",
+      "properties": {
+        "regions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "region Name."
+          },
+          "description": "List of regions."
+        },
+        "skipToken": {
+          "description": "When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.",
+          "type": "string"
+        }
+      },
+      "description": "Effective Virtual Networks Parameter."
+    },
+    "ActiveConnectivityConfiguration": {
+      "type": "object",
+      "properties": {
+        "commitTime": {
+          "type": "string",
+          "description": "Deployment time string.",
+          "format": "date-time"
+        },
+        "region": {
+          "type": "string",
+          "description": "Deployment region."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./networkManagerEffectiveConfiguration.json#/definitions/EffectiveConnectivityConfiguration"
+        }
+      ],
+      "description": "Active connectivity configuration."
+    },
+    "ActiveConnectivityConfigurationsListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActiveConnectivityConfiguration"
+          },
+          "description": "Gets a page of active connectivity configurations."
+        },
+        "skipToken": {
+          "description": "When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.",
+          "type": "string"
+        }
+      },
+      "description": "Result of the request to list active connectivity configurations. It contains a list of active connectivity configurations and a skiptoken to get the next set of results."
+    },
+    "ActiveSecurityAdminRulesListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActiveBaseSecurityAdminRule"
+          },
+          "description": "Gets a page of active security admin rules."
+        },
+        "skipToken": {
+          "description": "When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.",
+          "type": "string"
+        }
+      },
+      "description": "Result of the request to list active security admin rules. It contains a list of active security admin rules and a skiptoken to get the next set of results."
+    },
+    "ActiveBaseSecurityAdminRule": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource ID."
+        },
+        "commitTime": {
+          "type": "string",
+          "description": "Deployment time string.",
+          "format": "date-time"
+        },
+        "region": {
+          "type": "string",
+          "description": "Deployment region."
+        },
+        "configurationDescription": {
+          "type": "string",
+          "description": "A description of the security admin configuration."
+        },
+        "ruleCollectionDescription": {
+          "type": "string",
+          "description": "A description of the rule collection."
+        },
+        "ruleCollectionAppliesToGroups": {
+          "type": "array",
+          "x-ms-identifiers": [],
+          "items": {
+            "$ref": "./networkManagerSecurityAdminConfiguration.json#/definitions/NetworkManagerSecurityGroupItem"
+          },
+          "description": "Groups for rule collection"
+        },
+        "ruleGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "./networkManagerEffectiveConfiguration.json#/definitions/ConfigurationGroup"
+          },
+          "description": "Effective configuration groups."
+        },
+        "kind": {
+          "type": "string",
+          "description": "Whether the rule is custom or default.",
+          "enum": [
+            "Custom",
+            "Default"
+          ],
+          "x-ms-enum": {
+            "name": "EffectiveAdminRuleKind",
+            "modelAsString": true
+          }
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "discriminator": "kind",
+      "description": "Network base admin rule."
+    },
+    "ActiveSecurityAdminRule": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "$ref": "./networkManagerSecurityAdminConfiguration.json#/definitions/AdminPropertiesFormat",
+          "x-ms-client-flatten": true,
+          "description": "Indicates the properties of the security admin rule"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActiveBaseSecurityAdminRule"
+        }
+      ],
+      "description": "Network admin rule.",
+      "x-ms-discriminator-value": "Custom"
+    },
+    "ActiveDefaultSecurityAdminRule": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "$ref": "./networkManagerSecurityAdminConfiguration.json#/definitions/DefaultAdminPropertiesFormat",
+          "x-ms-client-flatten": true,
+          "description": "Indicates the properties of the default security admin rule"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/ActiveBaseSecurityAdminRule"
+        }
+      ],
+      "description": "Network default admin rule.",
+      "x-ms-discriminator-value": "Default"
+    }
+  },
+  "parameters": {
+    "ResourceGroupNameParameter": {
+      "name": "resourceGroupName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the resource group.",
+      "x-ms-parameter-location": "method"
+    },
+    "NetworkManagerNameParameter": {
+      "name": "networkManagerName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the network manager.",
+      "x-ms-parameter-location": "method"
+    },
+    "ListTopParameter": {
+      "name": "$top",
+      "description": "An optional query parameter which specifies the maximum number of records to be returned by the server.",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "minimum": 1,
+      "maximum": 20,
+      "x-ms-parameter-location": "method"
+    }
+  }
+}
+

@@ -1,0 +1,38 @@
+{
+  "parameters": {
+    "peeringName": "AzurePrivatePeering",
+    "crossConnectionName": "<circuitServiceKey>",
+    "resourceGroupName": "CrossConnection-SiliconValley",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "AzurePrivatePeering",
+        "id": "/subscriptions/subid/resourceGroups/CrossConnection-Boydton1DC/providers/Microsoft.Network/expressRouteCrossConnections/<circuitServiceKey>/peerings/AzurePrivatePeering",
+        "etag": "W/\"72090554-7e3b-43f2-80ad-99a9020dcb11\"",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "peeringType": "AzurePrivatePeering",
+          "azureASN": 12076,
+          "peerASN": 200,
+          "primaryPeerAddressPrefix": "192.168.16.252/30",
+          "secondaryPeerAddressPrefix": "192.168.18.252/30",
+          "primaryAzurePort": "",
+          "secondaryAzurePort": "",
+          "state": "Enabled",
+          "vlanId": 200,
+          "gatewayManagerEtag": "",
+          "lastModifiedBy": "Customer",
+          "ipv6PeeringConfig": {
+            "primaryPeerAddressPrefix": "3FFE:FFFF:0:CD30::/126",
+            "secondaryPeerAddressPrefix": "3FFE:FFFF:0:CD30::4/126",
+            "state": "Enabled"
+          }
+        }
+      }
+    }
+  }
+}
+

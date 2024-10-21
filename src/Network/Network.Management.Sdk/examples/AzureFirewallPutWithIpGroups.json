@@ -1,0 +1,506 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "azureFirewallName": "azurefirewall",
+    "parameters": {
+      "tags": {
+        "key1": "value1"
+      },
+      "location": "West US",
+      "zones": [],
+      "properties": {
+        "sku": {
+          "name": "AZFW_VNet",
+          "tier": "Standard"
+        },
+        "threatIntelMode": "Alert",
+        "ipConfigurations": [
+          {
+            "name": "azureFirewallIpConfiguration",
+            "properties": {
+              "subnet": {
+                "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureFirewallSubnet"
+              },
+              "publicIPAddress": {
+                "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pipName"
+              }
+            }
+          }
+        ],
+        "applicationRuleCollections": [
+          {
+            "name": "apprulecoll",
+            "properties": {
+              "priority": 110,
+              "action": {
+                "type": "Deny"
+              },
+              "rules": [
+                {
+                  "name": "rule1",
+                  "description": "Deny inbound rule",
+                  "protocols": [
+                    {
+                      "protocolType": "Https",
+                      "port": 443
+                    }
+                  ],
+                  "targetFqdns": [
+                    "www.test.com"
+                  ],
+                  "sourceAddresses": [
+                    "216.58.216.164",
+                    "10.0.0.0/24"
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "natRuleCollections": [
+          {
+            "name": "natrulecoll",
+            "properties": {
+              "priority": 112,
+              "action": {
+                "type": "Dnat"
+              },
+              "rules": [
+                {
+                  "name": "DNAT-HTTPS-traffic",
+                  "description": "D-NAT all outbound web traffic for inspection",
+                  "sourceAddresses": [
+                    "*"
+                  ],
+                  "destinationAddresses": [
+                    "1.2.3.4"
+                  ],
+                  "destinationPorts": [
+                    "443"
+                  ],
+                  "protocols": [
+                    "TCP"
+                  ],
+                  "translatedAddress": "1.2.3.5",
+                  "translatedPort": "8443"
+                },
+                {
+                  "name": "DNAT-HTTP-traffic-With-FQDN",
+                  "description": "D-NAT all inbound web traffic for inspection",
+                  "sourceAddresses": [
+                    "*"
+                  ],
+                  "destinationAddresses": [
+                    "1.2.3.4"
+                  ],
+                  "destinationPorts": [
+                    "80"
+                  ],
+                  "protocols": [
+                    "TCP"
+                  ],
+                  "translatedFqdn": "internalhttpserver",
+                  "translatedPort": "880"
+                }
+              ]
+            }
+          }
+        ],
+        "networkRuleCollections": [
+          {
+            "name": "netrulecoll",
+            "properties": {
+              "priority": 112,
+              "action": {
+                "type": "Deny"
+              },
+              "rules": [
+                {
+                  "name": "L4-traffic",
+                  "description": "Block traffic based on source IPs and ports",
+                  "sourceAddresses": [
+                    "192.168.1.1-192.168.1.12",
+                    "10.1.4.12-10.1.4.255"
+                  ],
+                  "destinationPorts": [
+                    "443-444",
+                    "8443"
+                  ],
+                  "destinationAddresses": [
+                    "*"
+                  ],
+                  "protocols": [
+                    "TCP"
+                  ]
+                },
+                {
+                  "name": "L4-traffic-with-FQDN",
+                  "description": "Block traffic based on source IPs and ports to amazon",
+                  "sourceAddresses": [
+                    "10.2.4.12-10.2.4.255"
+                  ],
+                  "destinationPorts": [
+                    "443-444",
+                    "8443"
+                  ],
+                  "destinationFqdns": [
+                    "www.amazon.com"
+                  ],
+                  "protocols": [
+                    "TCP"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "azurefirewall",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall",
+        "type": "Microsoft.Network/azureFirewalls",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "zones": [],
+        "tags": {
+          "key1": "value1"
+        },
+        "properties": {
+          "provisioningState": "Succeeded",
+          "sku": {
+            "name": "AZFW_VNet",
+            "tier": "Standard"
+          },
+          "threatIntelMode": "Alert",
+          "ipConfigurations": [
+            {
+              "name": "azureFirewallIpConfiguration",
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azfirewallgw/ipConfigurations/azureFirewallIpConfiguration",
+              "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "privateIPAddress": "10.0.0.0",
+                "subnet": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureFirewallSubnet"
+                },
+                "publicIPAddress": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pipName"
+                }
+              }
+            }
+          ],
+          "applicationRuleCollections": [
+            {
+              "name": "apprulecoll",
+              "properties": {
+                "priority": 110,
+                "action": {
+                  "type": "Deny"
+                },
+                "rules": [
+                  {
+                    "name": "rule1",
+                    "description": "Deny inbound rule",
+                    "protocols": [
+                      {
+                        "protocolType": "Https",
+                        "port": 443
+                      }
+                    ],
+                    "targetFqdns": [
+                      "www.test.com"
+                    ],
+                    "sourceAddresses": [
+                      "216.58.216.164",
+                      "10.0.0.0/24"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "natRuleCollections": [
+            {
+              "name": "natrulecoll",
+              "properties": {
+                "priority": 112,
+                "action": {
+                  "type": "Dnat"
+                },
+                "rules": [
+                  {
+                    "name": "DNAT-HTTPS-traffic",
+                    "description": "D-NAT all outbound web traffic for inspection",
+                    "sourceAddresses": [
+                      "*"
+                    ],
+                    "destinationAddresses": [
+                      "1.2.3.4"
+                    ],
+                    "destinationPorts": [
+                      "443"
+                    ],
+                    "protocols": [
+                      "TCP"
+                    ],
+                    "translatedAddress": "1.2.3.5",
+                    "translatedPort": "8443"
+                  },
+                  {
+                    "name": "DNAT-HTTP-traffic-With-FQDN",
+                    "description": "D-NAT all inbound web traffic for inspection",
+                    "sourceAddresses": [
+                      "*"
+                    ],
+                    "destinationAddresses": [
+                      "1.2.3.4"
+                    ],
+                    "destinationPorts": [
+                      "80"
+                    ],
+                    "protocols": [
+                      "TCP"
+                    ],
+                    "translatedPort": "880",
+                    "translatedFqdn": "internalhttpserver"
+                  }
+                ]
+              }
+            }
+          ],
+          "networkRuleCollections": [
+            {
+              "name": "netrulecoll",
+              "properties": {
+                "priority": 112,
+                "action": {
+                  "type": "Deny"
+                },
+                "rules": [
+                  {
+                    "name": "L4-traffic",
+                    "description": "Block traffic based on source IPs and ports",
+                    "sourceAddresses": [
+                      "192.168.1.1-192.168.1.12",
+                      "10.1.4.12-10.1.4.255"
+                    ],
+                    "destinationPorts": [
+                      "443-444",
+                      "8443"
+                    ],
+                    "destinationAddresses": [
+                      "*"
+                    ],
+                    "protocols": [
+                      "TCP"
+                    ]
+                  },
+                  {
+                    "name": "L4-traffic-with-FQDN",
+                    "description": "Block traffic based on source IPs and ports to amazon",
+                    "sourceAddresses": [
+                      "10.2.4.12-10.2.4.255"
+                    ],
+                    "destinationPorts": [
+                      "443-444",
+                      "8443"
+                    ],
+                    "protocols": [
+                      "TCP"
+                    ],
+                    "destinationFqdns": [
+                      "www.amazon.com"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "additionalProperties": {}
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "azurefirewall",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall",
+        "type": "Microsoft.Network/azureFirewalls",
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+        "location": "West US",
+        "zones": [],
+        "tags": {
+          "key1": "value1"
+        },
+        "properties": {
+          "provisioningState": "Succeeded",
+          "sku": {
+            "name": "AZFW_VNet",
+            "tier": "Standard"
+          },
+          "threatIntelMode": "Alert",
+          "ipConfigurations": [
+            {
+              "name": "azureFirewallIpConfiguration",
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azfirewallgw/ipConfigurations/azureFirewallIpConfiguration",
+              "etag": "w/\\00000000-0000-0000-0000-000000000000\\",
+              "properties": {
+                "provisioningState": "Succeeded",
+                "privateIPAddress": "10.0.0.0",
+                "subnet": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureFirewallSubnet"
+                },
+                "publicIPAddress": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pipName"
+                }
+              }
+            }
+          ],
+          "applicationRuleCollections": [
+            {
+              "name": "apprulecoll",
+              "properties": {
+                "priority": 110,
+                "action": {
+                  "type": "Deny"
+                },
+                "rules": [
+                  {
+                    "name": "rule1",
+                    "description": "Deny inbound rule",
+                    "protocols": [
+                      {
+                        "protocolType": "Https",
+                        "port": 443
+                      }
+                    ],
+                    "targetFqdns": [
+                      "www.test.com"
+                    ],
+                    "sourceIpGroups": [
+                      "/subscriptions/subId/providers/Microsoft.Network/resourceGroup/myResourceGroup/ipGroups/ipGroups1"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "natRuleCollections": [
+            {
+              "name": "natrulecoll",
+              "properties": {
+                "priority": 112,
+                "action": {
+                  "type": "Dnat"
+                },
+                "rules": [
+                  {
+                    "name": "DNAT-HTTPS-traffic",
+                    "description": "D-NAT all outbound web traffic for inspection",
+                    "sourceIpGroups": [
+                      "/subscriptions/subId/providers/Microsoft.Network/resourceGroup/myResourceGroup/ipGroups/ipGroups1"
+                    ],
+                    "destinationAddresses": [
+                      "1.2.3.4"
+                    ],
+                    "destinationPorts": [
+                      "443"
+                    ],
+                    "protocols": [
+                      "TCP"
+                    ],
+                    "translatedAddress": "1.2.3.5",
+                    "translatedPort": "8443"
+                  },
+                  {
+                    "name": "DNAT-HTTP-traffic-With-FQDN",
+                    "description": "D-NAT all inbound web traffic for inspection",
+                    "sourceAddresses": [
+                      "*"
+                    ],
+                    "destinationAddresses": [
+                      "1.2.3.4"
+                    ],
+                    "destinationPorts": [
+                      "80"
+                    ],
+                    "protocols": [
+                      "TCP"
+                    ],
+                    "translatedFqdn": "internalhttpserver",
+                    "translatedPort": "880"
+                  }
+                ]
+              }
+            }
+          ],
+          "networkRuleCollections": [
+            {
+              "name": "netrulecoll",
+              "properties": {
+                "priority": 112,
+                "action": {
+                  "type": "Deny"
+                },
+                "rules": [
+                  {
+                    "name": "L4-traffic",
+                    "description": "Block traffic based on source IPs and ports",
+                    "sourceAddresses": [
+                      "192.168.1.1-192.168.1.12",
+                      "10.1.4.12-10.1.4.255"
+                    ],
+                    "destinationPorts": [
+                      "443-444",
+                      "8443"
+                    ],
+                    "destinationAddresses": [
+                      "*"
+                    ],
+                    "protocols": [
+                      "TCP"
+                    ]
+                  },
+                  {
+                    "name": "L4-traffic-with-FQDN",
+                    "description": "Block traffic based on source IPs and ports to amazon",
+                    "sourceAddresses": [
+                      "10.2.4.12-10.2.4.255"
+                    ],
+                    "destinationPorts": [
+                      "443-444",
+                      "8443"
+                    ],
+                    "destinationIpGroups": [
+                      "/subscriptions/subId/providers/Microsoft.Network/resourceGroup/myResourceGroup/ipGroups/ipGroups2"
+                    ],
+                    "protocols": [
+                      "TCP"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "ipGroups": [
+            {
+              "id": "/subscriptions/subId/providers/Microsoft.Network/resourceGroup/myResourceGroup/ipGroups/ipGroups1",
+              "changeNumber": "5"
+            },
+            {
+              "id": "/subscriptions/subId/providers/Microsoft.Network/resourceGroup/myResourceGroup/ipGroups/ipGroups2",
+              "changeNumber": "4"
+            }
+          ],
+          "additionalProperties": {}
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,4855 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}": {
+      "put": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_CreateOrUpdate",
+        "description": "Creates or updates a network watcher in the specified resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NetworkWatcher"
+            },
+            "description": "Parameters that define the network watcher resource."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting network watcher resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkWatcher"
+            }
+          },
+          "201": {
+            "description": "Create successful. The operation returns the resulting network watcher resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkWatcher"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create network watcher": {
+            "$ref": "./examples/NetworkWatcherCreate.json"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_Get",
+        "description": "Gets the specified network watcher by resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a network watcher resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkWatcher"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get network watcher": {
+            "$ref": "./examples/NetworkWatcherGet.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_Delete",
+        "description": "Deletes the specified network watcher resource.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete network watcher": {
+            "$ref": "./examples/NetworkWatcherDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "patch": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_UpdateTags",
+        "description": "Updates a network watcher tags.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update network watcher tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting network watcher resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkWatcher"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update network watcher tags": {
+            "$ref": "./examples/NetworkWatcherUpdateTags.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers": {
+      "get": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_List",
+        "description": "Gets all network watchers by resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of network watcher resources.",
+            "schema": {
+              "$ref": "#/definitions/NetworkWatcherListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
+        },
+        "x-ms-examples": {
+          "List network watchers": {
+            "$ref": "./examples/NetworkWatcherList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkWatchers": {
+      "get": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_ListAll",
+        "description": "Gets all network watchers by subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of network watcher resources.",
+            "schema": {
+              "$ref": "#/definitions/NetworkWatcherListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
+        },
+        "x-ms-examples": {
+          "List all network watchers": {
+            "$ref": "./examples/NetworkWatcherListAll.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/topology": {
+      "post": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_GetTopology",
+        "description": "Gets the current network topology by resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TopologyParameters"
+            },
+            "description": "Parameters that define the representation of topology."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the topology of resource group.",
+            "schema": {
+              "$ref": "#/definitions/Topology"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Topology": {
+            "$ref": "./examples/NetworkWatcherTopologyGet.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/ipFlowVerify": {
+      "post": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_VerifyIPFlow",
+        "description": "Verify IP flow from the specified VM to a location given the currently configured NSG rules.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VerificationIPFlowParameters"
+            },
+            "description": "Parameters that define the IP flow to be verified."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the result of IP flow verification.",
+            "schema": {
+              "$ref": "#/definitions/VerificationIPFlowResult"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/VerificationIPFlowResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Ip flow verify": {
+            "$ref": "./examples/NetworkWatcherIpFlowVerify.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/nextHop": {
+      "post": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_GetNextHop",
+        "description": "Gets the next hop from the specified VM.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NextHopParameters"
+            },
+            "description": "Parameters that define the source and destination endpoint."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the next hop from the VM.",
+            "schema": {
+              "$ref": "#/definitions/NextHopResult"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/NextHopResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get next hop": {
+            "$ref": "./examples/NetworkWatcherNextHopGet.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/securityGroupView": {
+      "post": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_GetVMSecurityRules",
+        "description": "Gets the configured and effective security group rules on the specified VM.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SecurityGroupViewParameters"
+            },
+            "description": "Parameters that define the VM to check security groups for."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns security group rules on the VM.",
+            "schema": {
+              "$ref": "#/definitions/SecurityGroupViewResult"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/SecurityGroupViewResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get security group view": {
+            "$ref": "./examples/NetworkWatcherSecurityGroupViewGet.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}": {
+      "put": {
+        "tags": [
+          "PacketCaptures"
+        ],
+        "operationId": "PacketCaptures_Create",
+        "description": "Create and start a packet capture on the specified VM.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "packetCaptureName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the packet capture session."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PacketCapture"
+            },
+            "description": "Parameters that define the create packet capture operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Request successful. The operation returns the resulting packet capture session.",
+            "schema": {
+              "$ref": "#/definitions/PacketCaptureResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create packet capture": {
+            "$ref": "./examples/NetworkWatcherPacketCaptureCreate.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "get": {
+        "tags": [
+          "PacketCaptures"
+        ],
+        "operationId": "PacketCaptures_Get",
+        "description": "Gets a packet capture session by name.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "packetCaptureName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the packet capture session."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a packet capture session.",
+            "schema": {
+              "$ref": "#/definitions/PacketCaptureResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get packet capture": {
+            "$ref": "./examples/NetworkWatcherPacketCaptureGet.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "PacketCaptures"
+        ],
+        "operationId": "PacketCaptures_Delete",
+        "description": "Deletes the specified packet capture session.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "packetCaptureName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the packet capture session."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Delete successful."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete packet capture": {
+            "$ref": "./examples/NetworkWatcherPacketCaptureDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/stop": {
+      "post": {
+        "tags": [
+          "PacketCaptures"
+        ],
+        "operationId": "PacketCaptures_Stop",
+        "description": "Stops a specified packet capture session.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "packetCaptureName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the packet capture session."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation stops the packet capture session."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Stop packet capture": {
+            "$ref": "./examples/NetworkWatcherPacketCaptureStop.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}/queryStatus": {
+      "post": {
+        "tags": [
+          "PacketCaptures"
+        ],
+        "operationId": "PacketCaptures_GetStatus",
+        "description": "Query the status of a running packet capture session.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Watcher resource."
+          },
+          {
+            "name": "packetCaptureName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name given to the packet capture session."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful query of packet capture status.",
+            "schema": {
+              "$ref": "#/definitions/PacketCaptureQueryStatusResult"
+            }
+          },
+          "202": {
+            "description": "Accepted query status of packet capture.",
+            "schema": {
+              "$ref": "#/definitions/PacketCaptureQueryStatusResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Query packet capture status": {
+            "$ref": "./examples/NetworkWatcherPacketCaptureQueryStatus.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures": {
+      "get": {
+        "tags": [
+          "PacketCaptures"
+        ],
+        "operationId": "PacketCaptures_List",
+        "description": "Lists all packet capture sessions within the specified resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Watcher resource."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful packet capture enumeration request.",
+            "schema": {
+              "$ref": "#/definitions/PacketCaptureListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
+        },
+        "x-ms-examples": {
+          "List packet captures": {
+            "$ref": "./examples/NetworkWatcherPacketCapturesList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/troubleshoot": {
+      "post": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_GetTroubleshooting",
+        "description": "Initiate troubleshooting on a specified resource.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher resource."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TroubleshootingParameters"
+            },
+            "description": "Parameters that define the resource to troubleshoot."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful troubleshooting request.",
+            "schema": {
+              "$ref": "#/definitions/TroubleshootingResult"
+            }
+          },
+          "202": {
+            "description": "Accepted get troubleshooting request.",
+            "schema": {
+              "$ref": "#/definitions/TroubleshootingResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get troubleshooting": {
+            "$ref": "./examples/NetworkWatcherTroubleshootGet.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryTroubleshootResult": {
+      "post": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_GetTroubleshootingResult",
+        "description": "Get the last completed troubleshooting result on a specified resource.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher resource."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryTroubleshootingParameters"
+            },
+            "description": "Parameters that define the resource to query the troubleshooting result."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful get troubleshooting result request.",
+            "schema": {
+              "$ref": "#/definitions/TroubleshootingResult"
+            }
+          },
+          "202": {
+            "description": "Accepted get troubleshooting result request.",
+            "schema": {
+              "$ref": "#/definitions/TroubleshootingResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get troubleshoot result": {
+            "$ref": "./examples/NetworkWatcherTroubleshootResultQuery.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/configureFlowLog": {
+      "post": {
+        "tags": [
+          "NetworkWatchers",
+          "TrafficAnalytics"
+        ],
+        "operationId": "NetworkWatchers_SetFlowLogConfiguration",
+        "description": "Configures flow log and traffic analytics (optional) on a specified resource.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher resource."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FlowLogInformation"
+            },
+            "description": "Parameters that define the configuration of flow log."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request for setting flow log and traffic analytics (optional) configuration.",
+            "schema": {
+              "$ref": "#/definitions/FlowLogInformation"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/FlowLogInformation"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Configure flow log": {
+            "$ref": "./examples/NetworkWatcherFlowLogConfigure.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryFlowLogStatus": {
+      "post": {
+        "tags": [
+          "NetworkWatchers",
+          "TrafficAnalytics"
+        ],
+        "operationId": "NetworkWatchers_GetFlowLogStatus",
+        "description": "Queries status of flow log and traffic analytics (optional) on a specified resource.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher resource."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FlowLogStatusParameters"
+            },
+            "description": "Parameters that define a resource to query flow log and traffic analytics (optional) status."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request for query flow log and traffic analytics (optional) status.",
+            "schema": {
+              "$ref": "#/definitions/FlowLogInformation"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/FlowLogInformation"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get flow log status": {
+            "$ref": "./examples/NetworkWatcherFlowLogStatusQuery.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectivityCheck": {
+      "post": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_CheckConnectivity",
+        "description": "Verifies the possibility of establishing a direct TCP connection from a virtual machine to a given endpoint including another VM or an arbitrary remote server.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher resource."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ConnectivityParameters"
+            },
+            "description": "Parameters that determine how the connectivity check will be performed."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request for checking connectivity.",
+            "schema": {
+              "$ref": "#/definitions/ConnectivityInformation"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/ConnectivityInformation"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Check connectivity": {
+            "$ref": "./examples/NetworkWatcherConnectivityCheck.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/azureReachabilityReport": {
+      "post": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_GetAzureReachabilityReport",
+        "description": "NOTE: This feature is currently in preview and still being tested for stability. Gets the relative latency score for internet service providers from a specified location to Azure regions.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher resource."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AzureReachabilityReportParameters"
+            },
+            "description": "Parameters that determine Azure reachability report configuration."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request for Azure reachability report.",
+            "schema": {
+              "$ref": "#/definitions/AzureReachabilityReport"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/AzureReachabilityReport"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Azure Reachability Report": {
+            "$ref": "./examples/NetworkWatcherAzureReachabilityReportGet.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/availableProvidersList": {
+      "post": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_ListAvailableProviders",
+        "description": "NOTE: This feature is currently in preview and still being tested for stability. Lists all available internet service providers for a specified Azure region.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher resource."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AvailableProvidersListParameters"
+            },
+            "description": "Parameters that scope the list of available providers."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request for list of available providers.",
+            "schema": {
+              "$ref": "#/definitions/AvailableProvidersList"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/AvailableProvidersList"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Available Providers List": {
+            "$ref": "./examples/NetworkWatcherAvailableProvidersListGet.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/networkConfigurationDiagnostic": {
+      "post": {
+        "tags": [
+          "NetworkWatchers"
+        ],
+        "operationId": "NetworkWatchers_GetNetworkConfigurationDiagnostic",
+        "description": "Gets Network Configuration Diagnostic data to help customers understand and debug network behavior. It provides detailed information on what security rules were applied to a specified traffic flow and the result of evaluating these rules. Customers must provide details of a flow like source, destination, protocol, etc. The API returns whether traffic was allowed or denied, the rules evaluated for the specified flow and the evaluation results.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NetworkConfigurationDiagnosticParameters"
+            },
+            "description": "Parameters to get network configuration diagnostic."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the result of network configuration diagnostic.",
+            "schema": {
+              "$ref": "#/definitions/NetworkConfigurationDiagnosticResponse"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "schema": {
+              "$ref": "#/definitions/NetworkConfigurationDiagnosticResponse"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Network configuration diagnostic": {
+            "$ref": "./examples/NetworkWatcherNetworkConfigurationDiagnostic.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}": {
+      "put": {
+        "tags": [
+          "ConnectionMonitors"
+        ],
+        "operationId": "ConnectionMonitors_CreateOrUpdate",
+        "description": "Create or update a connection monitor.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group containing Network Watcher."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Watcher resource."
+          },
+          {
+            "name": "connectionMonitorName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the connection monitor."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ConnectionMonitor"
+            },
+            "description": "Parameters that define the operation to create a connection monitor."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "migrate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Value indicating whether connection monitor V1 should be migrated to V2 format."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting network watcher resource.",
+            "schema": {
+              "$ref": "#/definitions/ConnectionMonitorResult"
+            }
+          },
+          "201": {
+            "description": "Create successful. The operation returns the resulting network watcher resource.",
+            "schema": {
+              "$ref": "#/definitions/ConnectionMonitorResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./networkWatcher.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create connection monitor V1": {
+            "$ref": "./examples/NetworkWatcherConnectionMonitorCreate.json"
+          },
+          "Create connection monitor V2": {
+            "$ref": "./examples/NetworkWatcherConnectionMonitorV2Create.json"
+          },
+          "Create connection monitor with Arc Network": {
+            "$ref": "./examples/NetworkWatcherConnectionMonitorCreateWithArcNetwork.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "get": {
+        "tags": [
+          "ConnectionMonitors"
+        ],
+        "operationId": "ConnectionMonitors_Get",
+        "description": "Gets a connection monitor by name.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group containing Network Watcher."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Watcher resource."
+          },
+          {
+            "name": "connectionMonitorName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the connection monitor."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a connection monitor.",
+            "schema": {
+              "$ref": "#/definitions/ConnectionMonitorResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./networkWatcher.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get connection monitor": {
+            "$ref": "./examples/NetworkWatcherConnectionMonitorGet.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ConnectionMonitors"
+        ],
+        "operationId": "ConnectionMonitors_Delete",
+        "description": "Deletes the specified connection monitor.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group containing Network Watcher."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Watcher resource."
+          },
+          {
+            "name": "connectionMonitorName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the connection monitor."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Delete successful."
+          },
+          "202": {
+            "description": "Accepted. The operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./networkWatcher.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete connection monitor": {
+            "$ref": "./examples/NetworkWatcherConnectionMonitorDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "patch": {
+        "tags": [
+          "ConnectionMonitors"
+        ],
+        "operationId": "ConnectionMonitors_UpdateTags",
+        "description": "Update tags of the specified connection monitor.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "connectionMonitorName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the connection monitor."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update connection monitor tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns updated connection monitor.",
+            "schema": {
+              "$ref": "#/definitions/ConnectionMonitorResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./networkWatcher.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update connection monitor tags": {
+            "$ref": "./examples/NetworkWatcherConnectionMonitorUpdateTags.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/stop": {
+      "post": {
+        "tags": [
+          "ConnectionMonitors"
+        ],
+        "operationId": "ConnectionMonitors_Stop",
+        "description": "Stops the specified connection monitor.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group containing Network Watcher."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Watcher resource."
+          },
+          {
+            "name": "connectionMonitorName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the connection monitor."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation stops the connection monitor."
+          },
+          "202": {
+            "description": "Accepted. The operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./networkWatcher.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Stop connection monitor": {
+            "$ref": "./examples/NetworkWatcherConnectionMonitorStop.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/start": {
+      "post": {
+        "tags": [
+          "ConnectionMonitors"
+        ],
+        "operationId": "ConnectionMonitors_Start",
+        "description": "Starts the specified connection monitor.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group containing Network Watcher."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Watcher resource."
+          },
+          {
+            "name": "connectionMonitorName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the connection monitor."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation starts the connection monitor."
+          },
+          "202": {
+            "description": "Accepted. The operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./networkWatcher.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Start connection monitor": {
+            "$ref": "./examples/NetworkWatcherConnectionMonitorStart.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/query": {
+      "post": {
+        "tags": [
+          "ConnectionMonitors"
+        ],
+        "operationId": "ConnectionMonitors_Query",
+        "description": "Query a snapshot of the most recent connection states.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group containing Network Watcher."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Watcher resource."
+          },
+          {
+            "name": "connectionMonitorName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name given to the connection monitor."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful query of connection states.",
+            "schema": {
+              "$ref": "#/definitions/ConnectionMonitorQueryResult"
+            }
+          },
+          "202": {
+            "description": "Accepted query of connection states.",
+            "schema": {
+              "$ref": "#/definitions/ConnectionMonitorQueryResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./networkWatcher.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Query connection monitor": {
+            "$ref": "./examples/NetworkWatcherConnectionMonitorQuery.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors": {
+      "get": {
+        "tags": [
+          "ConnectionMonitors"
+        ],
+        "operationId": "ConnectionMonitors_List",
+        "description": "Lists all connection monitors for the specified Network Watcher.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group containing Network Watcher."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Watcher resource."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful connection monitor enumeration request.",
+            "schema": {
+              "$ref": "#/definitions/ConnectionMonitorListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./networkWatcher.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
+        },
+        "x-ms-examples": {
+          "List connection monitors": {
+            "$ref": "./examples/NetworkWatcherConnectionMonitorList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs/{flowLogName}": {
+      "put": {
+        "tags": [
+          "FlowLogs"
+        ],
+        "operationId": "FlowLogs_CreateOrUpdate",
+        "description": "Create or update a flow log for the specified network security group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "flowLogName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the flow log."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FlowLog"
+            },
+            "description": "Parameters that define the create or update flow log resource."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Request successful. The operation returns the resulting flow log resource.",
+            "schema": {
+              "$ref": "#/definitions/FlowLog"
+            }
+          },
+          "200": {
+            "description": "Update successful. The operation returns the resulting flow log resource.",
+            "schema": {
+              "$ref": "#/definitions/FlowLog"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create or update flow log": {
+            "$ref": "./examples/NetworkWatcherFlowLogCreate.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "patch": {
+        "tags": [
+          "FlowLogs"
+        ],
+        "operationId": "FlowLogs_UpdateTags",
+        "description": "Update tags of the specified flow log.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "flowLogName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the flow log."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update flow log tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns updated flow log.",
+            "schema": {
+              "$ref": "#/definitions/FlowLog"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./networkWatcher.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update flow log tags": {
+            "$ref": "./examples/NetworkWatcherFlowLogUpdateTags.json"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "FlowLogs"
+        ],
+        "operationId": "FlowLogs_Get",
+        "description": "Gets a flow log resource by name.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "flowLogName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the flow log resource."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a flow log resource.",
+            "schema": {
+              "$ref": "#/definitions/FlowLog"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get flow log": {
+            "$ref": "./examples/NetworkWatcherFlowLogGet.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "FlowLogs"
+        ],
+        "operationId": "FlowLogs_Delete",
+        "description": "Deletes the specified flow log resource.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network watcher."
+          },
+          {
+            "name": "flowLogName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the flow log resource."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Delete successful."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete flow log": {
+            "$ref": "./examples/NetworkWatcherFlowLogDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs": {
+      "get": {
+        "tags": [
+          "FlowLogs"
+        ],
+        "operationId": "FlowLogs_List",
+        "description": "Lists all flow log resources for the specified Network Watcher.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group containing Network Watcher."
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the Network Watcher resource."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful flow log enumeration request.",
+            "schema": {
+              "$ref": "#/definitions/FlowLogListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./networkWatcher.json#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "List connection monitors": {
+            "$ref": "./examples/NetworkWatcherFlowLogList.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ErrorResponse": {
+      "description": "The error object.",
+      "properties": {
+        "error": {
+          "title": "Error",
+          "$ref": "./network.json#/definitions/ErrorDetails",
+          "description": "The error details object."
+        }
+      }
+    },
+    "NetworkWatcher": {
+      "properties": {
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/NetworkWatcherPropertiesFormat",
+          "description": "Properties of the network watcher."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "Network watcher in a resource group."
+    },
+    "NetworkWatcherPropertiesFormat": {
+      "properties": {
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the network watcher resource."
+        }
+      },
+      "description": "The network watcher properties."
+    },
+    "NetworkWatcherListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkWatcher"
+          },
+          "description": "List of network watcher resources."
+        }
+      },
+      "description": "Response for ListNetworkWatchers API service call."
+    },
+    "TopologyParameters": {
+      "properties": {
+        "targetResourceGroupName": {
+          "type": "string",
+          "description": "The name of the target resource group to perform topology on."
+        },
+        "targetVirtualNetwork": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The reference to the Virtual Network resource."
+        },
+        "targetSubnet": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The reference to the Subnet resource."
+        }
+      },
+      "description": "Parameters that define the representation of topology."
+    },
+    "Topology": {
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "GUID representing the operation id."
+        },
+        "createdDateTime": {
+          "readOnly": true,
+          "type": "string",
+          "format": "date-time",
+          "description": "The datetime when the topology was initially created for the resource group."
+        },
+        "lastModified": {
+          "readOnly": true,
+          "type": "string",
+          "format": "date-time",
+          "description": "The datetime when the topology was last modified."
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TopologyResource"
+          },
+          "description": "A list of topology resources."
+        }
+      },
+      "description": "Topology of the specified resource group."
+    },
+    "TopologyResource": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the resource."
+        },
+        "id": {
+          "type": "string",
+          "description": "ID of the resource."
+        },
+        "location": {
+          "type": "string",
+          "description": "Resource location."
+        },
+        "associations": {
+          "type": "array",
+          "description": "Holds the associations the resource has with other resources in the resource group.",
+          "items": {
+            "$ref": "#/definitions/TopologyAssociation"
+          }
+        }
+      },
+      "description": "The network resource topology information for the given resource group."
+    },
+    "TopologyAssociation": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the resource that is associated with the parent resource."
+        },
+        "resourceId": {
+          "type": "string",
+          "description": "The ID of the resource that is associated with the parent resource."
+        },
+        "associationType": {
+          "type": "string",
+          "enum": [
+            "Associated",
+            "Contains"
+          ],
+          "x-ms-enum": {
+            "name": "AssociationType",
+            "modelAsString": true
+          },
+          "description": "The association type of the child resource to the parent resource."
+        }
+      },
+      "description": "Resources that have an association with the parent resource."
+    },
+    "VerificationIPFlowParameters": {
+      "description": "Parameters that define the IP flow to be verified.",
+      "required": [
+        "targetResourceId",
+        "direction",
+        "protocol",
+        "localPort",
+        "remotePort",
+        "localIPAddress",
+        "remoteIPAddress"
+      ],
+      "properties": {
+        "targetResourceId": {
+          "type": "string",
+          "description": "The ID of the target resource to perform next-hop on."
+        },
+        "direction": {
+          "$ref": "#/definitions/Direction",
+          "description": "The direction of the packet represented as a 5-tuple."
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [
+            "TCP",
+            "UDP"
+          ],
+          "x-ms-enum": {
+            "name": "IpFlowProtocol",
+            "modelAsString": true
+          },
+          "description": "Protocol to be verified on."
+        },
+        "localPort": {
+          "type": "string",
+          "description": "The local port. Acceptable values are a single integer in the range (0-65535). Support for * for the source port, which depends on the direction."
+        },
+        "remotePort": {
+          "type": "string",
+          "description": "The remote port. Acceptable values are a single integer in the range (0-65535). Support for * for the source port, which depends on the direction."
+        },
+        "localIPAddress": {
+          "type": "string",
+          "description": "The local IP address. Acceptable values are valid IPv4 addresses."
+        },
+        "remoteIPAddress": {
+          "type": "string",
+          "description": "The remote IP address. Acceptable values are valid IPv4 addresses."
+        },
+        "targetNicResourceId": {
+          "type": "string",
+          "description": "The NIC ID. (If VM has multiple NICs and IP forwarding is enabled on any of them, then this parameter must be specified. Otherwise optional)."
+        }
+      }
+    },
+    "VerificationIPFlowResult": {
+      "description": "Results of IP flow verification on the target resource.",
+      "properties": {
+        "access": {
+          "$ref": "./network.json#/definitions/Access",
+          "description": "Indicates whether the traffic is allowed or denied."
+        },
+        "ruleName": {
+          "type": "string",
+          "description": "Name of the rule. If input is not matched against any security rule, it is not displayed."
+        }
+      }
+    },
+    "NextHopParameters": {
+      "description": "Parameters that define the source and destination endpoint.",
+      "required": [
+        "targetResourceId",
+        "sourceIPAddress",
+        "destinationIPAddress"
+      ],
+      "properties": {
+        "targetResourceId": {
+          "type": "string",
+          "description": "The resource identifier of the target resource against which the action is to be performed."
+        },
+        "sourceIPAddress": {
+          "type": "string",
+          "description": "The source IP address."
+        },
+        "destinationIPAddress": {
+          "type": "string",
+          "description": "The destination IP address."
+        },
+        "targetNicResourceId": {
+          "type": "string",
+          "description": "The NIC ID. (If VM has multiple NICs and IP forwarding is enabled on any of the nics, then this parameter must be specified. Otherwise optional)."
+        }
+      }
+    },
+    "NextHopResult": {
+      "description": "The information about next hop from the specified VM.",
+      "properties": {
+        "nextHopType": {
+          "type": "string",
+          "enum": [
+            "Internet",
+            "VirtualAppliance",
+            "VirtualNetworkGateway",
+            "VnetLocal",
+            "HyperNetGateway",
+            "None"
+          ],
+          "x-ms-enum": {
+            "name": "NextHopType",
+            "modelAsString": true
+          },
+          "description": "Next hop type."
+        },
+        "nextHopIpAddress": {
+          "type": "string",
+          "description": "Next hop IP Address."
+        },
+        "routeTableId": {
+          "type": "string",
+          "description": "The resource identifier for the route table associated with the route being returned. If the route being returned does not correspond to any user created routes then this field will be the string 'System Route'."
+        }
+      }
+    },
+    "SecurityGroupViewParameters": {
+      "description": "Parameters that define the VM to check security groups for.",
+      "required": [
+        "targetResourceId"
+      ],
+      "properties": {
+        "targetResourceId": {
+          "type": "string",
+          "description": "ID of the target VM."
+        }
+      }
+    },
+    "SecurityGroupViewResult": {
+      "description": "The information about security rules applied to the specified VM.",
+      "properties": {
+        "networkInterfaces": {
+          "type": "array",
+          "description": "List of network interfaces on the specified VM.",
+          "items": {
+            "$ref": "#/definitions/SecurityGroupNetworkInterface"
+          }
+        }
+      }
+    },
+    "SecurityGroupNetworkInterface": {
+      "description": "Network interface and all its associated security rules.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID of the network interface."
+        },
+        "securityRuleAssociations": {
+          "$ref": "#/definitions/SecurityRuleAssociations",
+          "description": "All security rules associated with the network interface."
+        }
+      }
+    },
+    "SecurityRuleAssociations": {
+      "description": "All security rules associated with the network interface.",
+      "properties": {
+        "networkInterfaceAssociation": {
+          "$ref": "#/definitions/NetworkInterfaceAssociation",
+          "description": "Network interface and it's custom security rules."
+        },
+        "subnetAssociation": {
+          "$ref": "#/definitions/SubnetAssociation",
+          "description": "Subnet and it's custom security rules."
+        },
+        "defaultSecurityRules": {
+          "type": "array",
+          "items": {
+            "$ref": "./networkSecurityGroup.json#/definitions/SecurityRule"
+          },
+          "description": "Collection of default security rules of the network security group."
+        },
+        "effectiveSecurityRules": {
+          "type": "array",
+          "items": {
+            "$ref": "./networkInterface.json#/definitions/EffectiveNetworkSecurityRule"
+          },
+          "description": "Collection of effective security rules."
+        }
+      }
+    },
+    "NetworkInterfaceAssociation": {
+      "description": "Network interface and its custom security rules.",
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Network interface ID."
+        },
+        "securityRules": {
+          "type": "array",
+          "description": "Collection of custom security rules.",
+          "items": {
+            "$ref": "./networkSecurityGroup.json#/definitions/SecurityRule"
+          }
+        }
+      }
+    },
+    "SubnetAssociation": {
+      "description": "Subnet and it's custom security rules.",
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Subnet ID."
+        },
+        "securityRules": {
+          "type": "array",
+          "description": "Collection of custom security rules.",
+          "items": {
+            "$ref": "./networkSecurityGroup.json#/definitions/SecurityRule"
+          }
+        }
+      }
+    },
+    "PacketCapture": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PacketCaptureParameters",
+          "description": "Properties of the packet capture."
+        }
+      },
+      "required": [
+        "properties"
+      ],
+      "description": "Parameters that define the create packet capture operation."
+    },
+    "PacketCaptureParameters": {
+      "properties": {
+        "target": {
+          "type": "string",
+          "description": "The ID of the targeted resource, only AzureVM and AzureVMSS as target type are currently supported."
+        },
+        "scope": {
+          "$ref": "#/definitions/PacketCaptureMachineScope",
+          "description": "A list of AzureVMSS instances which can be included or excluded to run packet capture. If both included and excluded are empty, then the packet capture will run on all instances of AzureVMSS."
+        },
+        "targetType": {
+          "description": "Target type of the resource provided.",
+          "type": "string",
+          "enum": [
+            "AzureVM",
+            "AzureVMSS"
+          ],
+          "x-ms-enum": {
+            "name": "PacketCaptureTargetType",
+            "modelAsString": false
+          }
+        },
+        "bytesToCapturePerPacket": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "default": 0,
+          "description": "Number of bytes captured per packet, the remaining bytes are truncated."
+        },
+        "totalBytesPerSession": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "default": 1073741824,
+          "description": "Maximum size of the capture output."
+        },
+        "timeLimitInSeconds": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 18000,
+          "default": 18000,
+          "description": "Maximum duration of the capture session in seconds."
+        },
+        "storageLocation": {
+          "$ref": "#/definitions/PacketCaptureStorageLocation",
+          "description": "The storage location for a packet capture session."
+        },
+        "filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PacketCaptureFilter"
+          },
+          "description": "A list of packet capture filters."
+        },
+        "continuousCapture": {
+          "description": "This continuous capture is a nullable boolean, which can hold 'null', 'true' or 'false' value. If we do not pass this parameter, it would be consider as 'null', default value is 'null'.",
+          "type": "boolean"
+        },
+        "captureSettings": {
+          "type": "object",
+          "$ref": "#/definitions/PacketCaptureSettings",
+          "description": "The capture setting holds the 'FileCount', 'FileSizeInBytes', 'SessionTimeLimitInSeconds' values."
+        }
+      },
+      "required": [
+        "target",
+        "storageLocation"
+      ],
+      "description": "Parameters that define the create packet capture operation."
+    },
+    "PacketCaptureMachineScope": {
+      "type": "object",
+      "properties": {
+        "include": {
+          "type": "array",
+          "description": "List of AzureVMSS instances to run packet capture on.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "description": "List of AzureVMSS instances which has to be excluded from the AzureVMSS from running packet capture.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "A list of AzureVMSS instances which can be included or excluded to run packet capture. If both included and excluded are empty, then the packet capture will run on all instances of AzureVMSS."
+    },
+    "PacketCaptureStorageLocation": {
+      "properties": {
+        "storageId": {
+          "type": "string",
+          "description": "The ID of the storage account to save the packet capture session. Required if no localPath or filePath is provided."
+        },
+        "storagePath": {
+          "type": "string",
+          "description": "The URI of the storage path to save the packet capture. Must be a well-formed URI describing the location to save the packet capture."
+        },
+        "filePath": {
+          "type": "string",
+          "description": "This path is invalid if 'Continuous Capture' is provided with 'true' or 'false'. A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures. Required if no storage ID is provided, otherwise optional."
+        },
+        "localPath": {
+          "type": "string",
+          "description": "This path is valid if 'Continuous Capture' is provided with 'true' or 'false' and required if no storage ID is provided, otherwise optional. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures."
+        }
+      },
+      "description": "The storage location for a packet capture session."
+    },
+    "PacketCaptureSettings": {
+      "properties": {
+        "fileCount": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 10000,
+          "default": 10,
+          "description": "Number of file count. Default value of count is 10 and maximum number is 10000."
+        },
+        "fileSizeInBytes": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "default": 104857600,
+          "description": "Number of bytes captured per packet. Default value in bytes 104857600 (100MB) and maximum in bytes 4294967295 (4GB)."
+        },
+        "sessionTimeLimitInSeconds": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 604800,
+          "default": 86400,
+          "description": "Maximum duration of the capture session in seconds is 604800s (7 days) for a file. Default value in second 86400s (1 day)."
+        }
+      },
+      "description": "The storage location for a packet capture session."
+    },
+    "PacketCaptureFilter": {
+      "properties": {
+        "protocol": {
+          "type": "string",
+          "enum": [
+            "TCP",
+            "UDP",
+            "Any"
+          ],
+          "x-ms-enum": {
+            "name": "PcProtocol",
+            "modelAsString": true
+          },
+          "default": "Any",
+          "description": "Protocol to be filtered on."
+        },
+        "localIPAddress": {
+          "type": "string",
+          "description": "Local IP Address to be filtered on. Notation: \"127.0.0.1\" for single address entry. \"127.0.0.1-127.0.0.255\" for range. \"127.0.0.1;127.0.0.5\"? for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null."
+        },
+        "remoteIPAddress": {
+          "type": "string",
+          "description": "Local IP Address to be filtered on. Notation: \"127.0.0.1\" for single address entry. \"127.0.0.1-127.0.0.255\" for range. \"127.0.0.1;127.0.0.5;\" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null."
+        },
+        "localPort": {
+          "type": "string",
+          "description": "Local port to be filtered on. Notation: \"80\" for single port entry.\"80-85\" for range. \"80;443;\" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null."
+        },
+        "remotePort": {
+          "type": "string",
+          "description": "Remote port to be filtered on. Notation: \"80\" for single port entry.\"80-85\" for range. \"80;443;\" for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default = null."
+        }
+      },
+      "description": "Filter that is applied to packet capture request. Multiple filters can be applied."
+    },
+    "PacketCaptureListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PacketCaptureResult"
+          },
+          "description": "Information about packet capture sessions."
+        }
+      },
+      "description": "List of packet capture sessions."
+    },
+    "PacketCaptureResult": {
+      "properties": {
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Name of the packet capture session."
+        },
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "ID of the packet capture operation."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PacketCaptureResultProperties",
+          "description": "Properties of the packet capture result."
+        }
+      },
+      "description": "Information about packet capture session."
+    },
+    "PacketCaptureResultProperties": {
+      "properties": {
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the packet capture session."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/PacketCaptureParameters"
+        }
+      ],
+      "description": "The properties of a packet capture session."
+    },
+    "PacketCaptureQueryStatusResult": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the packet capture resource."
+        },
+        "id": {
+          "type": "string",
+          "description": "The ID of the packet capture resource."
+        },
+        "captureStartTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start time of the packet capture session."
+        },
+        "packetCaptureStatus": {
+          "type": "string",
+          "enum": [
+            "NotStarted",
+            "Running",
+            "Stopped",
+            "Error",
+            "Unknown"
+          ],
+          "x-ms-enum": {
+            "name": "PcStatus",
+            "modelAsString": true
+          },
+          "description": "The status of the packet capture session."
+        },
+        "stopReason": {
+          "type": "string",
+          "description": "The reason the current packet capture session was stopped."
+        },
+        "packetCaptureError": {
+          "type": "array",
+          "description": "List of errors of packet capture session.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "InternalError",
+              "AgentStopped",
+              "CaptureFailed",
+              "LocalFileFailed",
+              "StorageFailed"
+            ],
+            "x-ms-enum": {
+              "name": "PcError",
+              "modelAsString": true
+            }
+          }
+        }
+      },
+      "description": "Status of packet capture session."
+    },
+    "TroubleshootingParameters": {
+      "description": "Parameters that define the resource to troubleshoot.",
+      "required": [
+        "targetResourceId",
+        "properties"
+      ],
+      "properties": {
+        "targetResourceId": {
+          "description": "The target resource to troubleshoot.",
+          "type": "string"
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/TroubleshootingProperties",
+          "description": "Properties of the troubleshooting resource."
+        }
+      }
+    },
+    "QueryTroubleshootingParameters": {
+      "description": "Parameters that define the resource to query the troubleshooting result.",
+      "required": [
+        "targetResourceId"
+      ],
+      "properties": {
+        "targetResourceId": {
+          "description": "The target resource ID to query the troubleshooting result.",
+          "type": "string"
+        }
+      }
+    },
+    "TroubleshootingProperties": {
+      "description": "Storage location provided for troubleshoot.",
+      "required": [
+        "storageId",
+        "storagePath"
+      ],
+      "properties": {
+        "storageId": {
+          "description": "The ID for the storage account to save the troubleshoot result.",
+          "type": "string"
+        },
+        "storagePath": {
+          "description": "The path to the blob to save the troubleshoot result in.",
+          "type": "string"
+        }
+      }
+    },
+    "TroubleshootingResult": {
+      "description": "Troubleshooting information gained from specified resource.",
+      "properties": {
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start time of the troubleshooting."
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end time of the troubleshooting."
+        },
+        "code": {
+          "type": "string",
+          "description": "The result code of the troubleshooting."
+        },
+        "results": {
+          "type": "array",
+          "description": "Information from troubleshooting.",
+          "items": {
+            "$ref": "#/definitions/TroubleshootingDetails"
+          }
+        }
+      }
+    },
+    "TroubleshootingDetails": {
+      "description": "Information gained from troubleshooting of specified resource.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the get troubleshoot operation."
+        },
+        "reasonType": {
+          "type": "string",
+          "description": "Reason type of failure."
+        },
+        "summary": {
+          "type": "string",
+          "description": "A summary of troubleshooting."
+        },
+        "detail": {
+          "type": "string",
+          "description": "Details on troubleshooting results."
+        },
+        "recommendedActions": {
+          "type": "array",
+          "description": "List of recommended actions.",
+          "items": {
+            "$ref": "#/definitions/TroubleshootingRecommendedActions"
+          }
+        }
+      }
+    },
+    "TroubleshootingRecommendedActions": {
+      "description": "Recommended actions based on discovered issues.",
+      "properties": {
+        "actionId": {
+          "description": "ID of the recommended action.",
+          "type": "string"
+        },
+        "actionText": {
+          "description": "Description of recommended actions.",
+          "type": "string"
+        },
+        "actionUri": {
+          "description": "The uri linking to a documentation for the recommended troubleshooting actions.",
+          "type": "string"
+        },
+        "actionUriText": {
+          "description": "The information from the URI for the recommended troubleshooting actions.",
+          "type": "string"
+        }
+      }
+    },
+    "FlowLogListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FlowLog"
+          },
+          "description": "Information about flow log resource."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "List of flow logs."
+    },
+    "FlowLog": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/FlowLogPropertiesFormat",
+          "description": "Properties of the flow log."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "identity": {
+          "description": "FlowLog resource Managed Identity",
+          "$ref": "./network.json#/definitions/ManagedServiceIdentity"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "A flow log resource."
+    },
+    "FlowLogPropertiesFormat": {
+      "description": "Parameters that define the configuration of flow log.",
+      "required": [
+        "targetResourceId",
+        "storageId"
+      ],
+      "properties": {
+        "targetResourceId": {
+          "description": "ID of network security group to which flow log will be applied.",
+          "type": "string"
+        },
+        "targetResourceGuid": {
+          "readOnly": true,
+          "description": "Guid of network security group to which flow log will be applied.",
+          "type": "string"
+        },
+        "storageId": {
+          "description": "ID of the storage account which is used to store the flow log.",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "Flag to enable/disable flow logging.",
+          "type": "boolean"
+        },
+        "retentionPolicy": {
+          "$ref": "#/definitions/RetentionPolicyParameters",
+          "description": "Parameters that define the retention policy for flow log."
+        },
+        "format": {
+          "$ref": "#/definitions/FlowLogFormatParameters",
+          "description": "Parameters that define the flow log format."
+        },
+        "flowAnalyticsConfiguration": {
+          "$ref": "#/definitions/TrafficAnalyticsProperties",
+          "description": "Parameters that define the configuration of traffic analytics."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the flow log."
+        }
+      }
+    },
+    "FlowLogProperties": {
+      "description": "Parameters that define the configuration of flow log.",
+      "required": [
+        "storageId",
+        "enabled"
+      ],
+      "properties": {
+        "storageId": {
+          "description": "ID of the storage account which is used to store the flow log.",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "Flag to enable/disable flow logging.",
+          "type": "boolean"
+        },
+        "retentionPolicy": {
+          "$ref": "#/definitions/RetentionPolicyParameters",
+          "description": "Parameters that define the retention policy for flow log."
+        },
+        "format": {
+          "$ref": "#/definitions/FlowLogFormatParameters",
+          "description": "Parameters that define the flow log format."
+        }
+      }
+    },
+    "FlowLogStatusParameters": {
+      "description": "Parameters that define a resource to query flow log and traffic analytics (optional) status.",
+      "required": [
+        "targetResourceId"
+      ],
+      "properties": {
+        "targetResourceId": {
+          "description": "The target resource where getting the flow log and traffic analytics (optional) status.",
+          "type": "string"
+        }
+      }
+    },
+    "RetentionPolicyParameters": {
+      "description": "Parameters that define the retention policy for flow log.",
+      "properties": {
+        "days": {
+          "description": "Number of days to retain flow log records.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "enabled": {
+          "description": "Flag to enable/disable retention.",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "FlowLogFormatParameters": {
+      "description": "Parameters that define the flow log format.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The file type of flow log.",
+          "enum": [
+            "JSON"
+          ],
+          "x-ms-enum": {
+            "name": "FlowLogFormatType",
+            "modelAsString": true
+          }
+        },
+        "version": {
+          "description": "The version (revision) of the flow log.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        }
+      }
+    },
+    "FlowLogInformation": {
+      "description": "Information on the configuration of flow log and traffic analytics (optional) .",
+      "required": [
+        "targetResourceId",
+        "properties"
+      ],
+      "properties": {
+        "targetResourceId": {
+          "description": "The ID of the resource to configure for flow log and traffic analytics (optional) .",
+          "type": "string"
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/FlowLogProperties",
+          "description": "Properties of the flow log."
+        },
+        "flowAnalyticsConfiguration": {
+          "$ref": "#/definitions/TrafficAnalyticsProperties",
+          "description": "Parameters that define the configuration of traffic analytics."
+        },
+        "identity": {
+          "description": "FlowLog resource Managed Identity",
+          "$ref": "./network.json#/definitions/ManagedServiceIdentity"
+        }
+      }
+    },
+    "TrafficAnalyticsProperties": {
+      "description": "Parameters that define the configuration of traffic analytics.",
+      "properties": {
+        "networkWatcherFlowAnalyticsConfiguration": {
+          "$ref": "#/definitions/TrafficAnalyticsConfigurationProperties",
+          "description": "Parameters that define the configuration of traffic analytics."
+        }
+      }
+    },
+    "TrafficAnalyticsConfigurationProperties": {
+      "description": "Parameters that define the configuration of traffic analytics.",
+      "properties": {
+        "enabled": {
+          "description": "Flag to enable/disable traffic analytics.",
+          "type": "boolean"
+        },
+        "workspaceId": {
+          "description": "The resource guid of the attached workspace.",
+          "type": "string"
+        },
+        "workspaceRegion": {
+          "description": "The location of the attached workspace.",
+          "type": "string"
+        },
+        "workspaceResourceId": {
+          "description": "Resource Id of the attached workspace.",
+          "type": "string"
+        },
+        "trafficAnalyticsInterval": {
+          "description": "The interval in minutes which would decide how frequently TA service should do flow analytics.",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "ConnectivityParameters": {
+      "description": "Parameters that determine how the connectivity check will be performed.",
+      "required": [
+        "source",
+        "destination"
+      ],
+      "properties": {
+        "source": {
+          "$ref": "#/definitions/ConnectivitySource",
+          "description": "The source of the connection."
+        },
+        "destination": {
+          "$ref": "#/definitions/ConnectivityDestination",
+          "description": "The destination of connection."
+        },
+        "protocol": {
+          "type": "string",
+          "description": "Network protocol.",
+          "enum": [
+            "Tcp",
+            "Http",
+            "Https",
+            "Icmp"
+          ],
+          "x-ms-enum": {
+            "name": "Protocol",
+            "modelAsString": true
+          }
+        },
+        "protocolConfiguration": {
+          "$ref": "#/definitions/ProtocolConfiguration",
+          "description": "Configuration of the protocol."
+        },
+        "preferredIPVersion": {
+          "$ref": "./network.json#/definitions/IPVersion",
+          "description": "Preferred IP version of the connection."
+        }
+      }
+    },
+    "ConnectivitySource": {
+      "description": "Parameters that define the source of the connection.",
+      "required": [
+        "resourceId"
+      ],
+      "properties": {
+        "resourceId": {
+          "description": "The ID of the resource from which a connectivity check will be initiated.",
+          "type": "string"
+        },
+        "port": {
+          "description": "The source port from which a connectivity check will be performed.",
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "ConnectivityDestination": {
+      "description": "Parameters that define destination of connection.",
+      "properties": {
+        "resourceId": {
+          "description": "The ID of the resource to which a connection attempt will be made.",
+          "type": "string"
+        },
+        "address": {
+          "description": "The IP address or URI the resource to which a connection attempt will be made.",
+          "type": "string"
+        },
+        "port": {
+          "description": "Port on which check connectivity will be performed.",
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      }
+    },
+    "ConnectivityInformation": {
+      "description": "Information on the connectivity status.",
+      "properties": {
+        "hops": {
+          "readOnly": true,
+          "type": "array",
+          "description": "List of hops between the source and the destination.",
+          "items": {
+            "$ref": "#/definitions/ConnectivityHop"
+          }
+        },
+        "connectionStatus": {
+          "readOnly": true,
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "Connected",
+            "Disconnected",
+            "Degraded"
+          ],
+          "x-ms-enum": {
+            "name": "ConnectionStatus",
+            "modelAsString": true
+          },
+          "description": "The connection status."
+        },
+        "avgLatencyInMs": {
+          "description": "Average latency in milliseconds.",
+          "readOnly": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "minLatencyInMs": {
+          "description": "Minimum latency in milliseconds.",
+          "readOnly": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "maxLatencyInMs": {
+          "description": "Maximum latency in milliseconds.",
+          "readOnly": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "probesSent": {
+          "description": "Total number of probes sent.",
+          "readOnly": true,
+          "type": "integer",
+          "format": "int32"
+        },
+        "probesFailed": {
+          "description": "Number of failed probes.",
+          "readOnly": true,
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "ConnectivityHop": {
+      "description": "Information about a hop between the source and the destination.",
+      "properties": {
+        "type": {
+          "description": "The type of the hop.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "id": {
+          "description": "The ID of the hop.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "address": {
+          "description": "The IP address of the hop.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "resourceId": {
+          "description": "The ID of the resource corresponding to this hop.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "nextHopIds": {
+          "readOnly": true,
+          "type": "array",
+          "description": "List of next hop identifiers.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "previousHopIds": {
+          "readOnly": true,
+          "type": "array",
+          "description": "List of previous hop identifiers.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "links": {
+          "readOnly": true,
+          "type": "array",
+          "description": "List of hop links.",
+          "items": {
+            "$ref": "#/definitions/HopLink"
+          }
+        },
+        "previousLinks": {
+          "readOnly": true,
+          "type": "array",
+          "description": "List of previous hop links.",
+          "items": {
+            "$ref": "#/definitions/HopLink"
+          }
+        },
+        "issues": {
+          "readOnly": true,
+          "type": "array",
+          "description": "List of issues.",
+          "items": {
+            "$ref": "#/definitions/ConnectivityIssue"
+          }
+        }
+      }
+    },
+    "HopLink": {
+      "description": "Hop link.",
+      "properties": {
+        "nextHopId": {
+          "description": "The ID of the next hop.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "linkType": {
+          "description": "Link type.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/HopLinkProperties",
+          "description": "Hop link properties."
+        },
+        "issues": {
+          "readOnly": true,
+          "type": "array",
+          "description": "List of issues.",
+          "items": {
+            "$ref": "#/definitions/ConnectivityIssue"
+          }
+        },
+        "context": {
+          "readOnly": true,
+          "type": "object",
+          "description": "Provides additional context on links.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "resourceId": {
+          "description": "Resource ID.",
+          "readOnly": true,
+          "type": "string"
+        }
+      }
+    },
+    "HopLinkProperties": {
+      "description": "Hop link properties.",
+      "properties": {
+        "roundTripTimeMin": {
+          "description": "Minimum roundtrip time in milliseconds.",
+          "readOnly": true,
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "roundTripTimeAvg": {
+          "description": "Average roundtrip time in milliseconds.",
+          "readOnly": true,
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "roundTripTimeMax": {
+          "description": "Maximum roundtrip time in milliseconds.",
+          "readOnly": true,
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295
+        }
+      }
+    },
+    "ConnectivityIssue": {
+      "description": "Information about an issue encountered in the process of checking for connectivity.",
+      "properties": {
+        "origin": {
+          "readOnly": true,
+          "type": "string",
+          "enum": [
+            "Local",
+            "Inbound",
+            "Outbound"
+          ],
+          "x-ms-enum": {
+            "name": "Origin",
+            "modelAsString": true
+          },
+          "description": "The origin of the issue."
+        },
+        "severity": {
+          "readOnly": true,
+          "type": "string",
+          "enum": [
+            "Error",
+            "Warning"
+          ],
+          "x-ms-enum": {
+            "name": "Severity",
+            "modelAsString": true
+          },
+          "description": "The severity of the issue."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "AgentStopped",
+            "GuestFirewall",
+            "DnsResolution",
+            "SocketBind",
+            "NetworkSecurityRule",
+            "UserDefinedRoute",
+            "PortThrottled",
+            "Platform"
+          ],
+          "x-ms-enum": {
+            "name": "IssueType",
+            "modelAsString": true
+          },
+          "description": "The type of issue."
+        },
+        "context": {
+          "readOnly": true,
+          "type": "array",
+          "description": "Provides additional context on the issue.",
+          "items": {
+            "$ref": "#/definitions/IssueContext"
+          }
+        }
+      }
+    },
+    "IssueContext": {
+      "description": "A key-value pair that provides additional context on the issue.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "ProtocolConfiguration": {
+      "description": "Configuration of the protocol.",
+      "properties": {
+        "HTTPConfiguration": {
+          "$ref": "#/definitions/HTTPConfiguration",
+          "description": "HTTP configuration of the connectivity check."
+        }
+      }
+    },
+    "HTTPConfiguration": {
+      "properties": {
+        "method": {
+          "type": "string",
+          "description": "HTTP method.",
+          "enum": [
+            "Get"
+          ],
+          "x-ms-enum": {
+            "name": "HTTPMethod",
+            "modelAsString": true
+          }
+        },
+        "headers": {
+          "type": "array",
+          "description": "List of HTTP headers.",
+          "items": {
+            "$ref": "#/definitions/HTTPHeader"
+          }
+        },
+        "validStatusCodes": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": "Valid status codes."
+        }
+      },
+      "description": "HTTP configuration of the connectivity check."
+    },
+    "HTTPHeader": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name in HTTP header."
+        },
+        "value": {
+          "type": "string",
+          "description": "The value in HTTP header."
+        }
+      },
+      "description": "The HTTP header."
+    },
+    "AzureReachabilityReportParameters": {
+      "properties": {
+        "providerLocation": {
+          "$ref": "#/definitions/AzureReachabilityReportLocation",
+          "description": "Parameters that define a geographic location."
+        },
+        "providers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of Internet service providers."
+        },
+        "azureLocations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional Azure regions to scope the query to."
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start time for the Azure reachability report."
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end time for the Azure reachability report."
+        }
+      },
+      "required": [
+        "providerLocation",
+        "startTime",
+        "endTime"
+      ],
+      "description": "Geographic and time constraints for Azure reachability report."
+    },
+    "AzureReachabilityReportLocation": {
+      "properties": {
+        "country": {
+          "type": "string",
+          "description": "The name of the country."
+        },
+        "state": {
+          "type": "string",
+          "description": "The name of the state."
+        },
+        "city": {
+          "type": "string",
+          "description": "The name of the city or town."
+        }
+      },
+      "required": [
+        "country"
+      ],
+      "description": "Parameters that define a geographic location."
+    },
+    "AzureReachabilityReport": {
+      "properties": {
+        "aggregationLevel": {
+          "type": "string",
+          "description": "The aggregation level of Azure reachability report. Can be Country, State or City."
+        },
+        "providerLocation": {
+          "$ref": "#/definitions/AzureReachabilityReportLocation",
+          "description": "Parameters that define a geographic location."
+        },
+        "reachabilityReport": {
+          "type": "array",
+          "description": "List of Azure reachability report items.",
+          "items": {
+            "$ref": "#/definitions/AzureReachabilityReportItem"
+          }
+        }
+      },
+      "required": [
+        "aggregationLevel",
+        "providerLocation",
+        "reachabilityReport"
+      ],
+      "description": "Azure reachability report details."
+    },
+    "AzureReachabilityReportItem": {
+      "properties": {
+        "provider": {
+          "type": "string",
+          "description": "The Internet service provider."
+        },
+        "azureLocation": {
+          "type": "string",
+          "description": "The Azure region."
+        },
+        "latencies": {
+          "type": "array",
+          "description": "List of latency details for each of the time series.",
+          "items": {
+            "$ref": "#/definitions/AzureReachabilityReportLatencyInfo"
+          }
+        }
+      },
+      "description": "Azure reachability report details for a given provider location."
+    },
+    "AzureReachabilityReportLatencyInfo": {
+      "properties": {
+        "timeStamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time stamp."
+        },
+        "score": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The relative latency score between 1 and 100, higher values indicating a faster connection.",
+          "minimum": 1,
+          "maximum": 100
+        }
+      },
+      "description": "Details on latency for a time series."
+    },
+    "AvailableProvidersListParameters": {
+      "properties": {
+        "azureLocations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of Azure regions."
+        },
+        "country": {
+          "type": "string",
+          "description": "The country for available providers list."
+        },
+        "state": {
+          "type": "string",
+          "description": "The state for available providers list."
+        },
+        "city": {
+          "type": "string",
+          "description": "The city or town for available providers list."
+        }
+      },
+      "description": "Constraints that determine the list of available Internet service providers."
+    },
+    "AvailableProvidersList": {
+      "properties": {
+        "countries": {
+          "type": "array",
+          "description": "List of available countries.",
+          "items": {
+            "$ref": "#/definitions/AvailableProvidersListCountry"
+          }
+        }
+      },
+      "required": [
+        "countries"
+      ],
+      "description": "List of available countries with details."
+    },
+    "AvailableProvidersListCountry": {
+      "properties": {
+        "countryName": {
+          "type": "string",
+          "description": "The country name."
+        },
+        "providers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of Internet service providers."
+        },
+        "states": {
+          "type": "array",
+          "description": "List of available states in the country.",
+          "items": {
+            "$ref": "#/definitions/AvailableProvidersListState"
+          }
+        }
+      },
+      "description": "Country details."
+    },
+    "AvailableProvidersListState": {
+      "properties": {
+        "stateName": {
+          "type": "string",
+          "description": "The state name."
+        },
+        "providers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of Internet service providers."
+        },
+        "cities": {
+          "type": "array",
+          "description": "List of available cities or towns in the state.",
+          "items": {
+            "$ref": "#/definitions/AvailableProvidersListCity"
+          }
+        }
+      },
+      "description": "State details."
+    },
+    "AvailableProvidersListCity": {
+      "properties": {
+        "cityName": {
+          "type": "string",
+          "description": "The city or town name."
+        },
+        "providers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of Internet service providers."
+        }
+      },
+      "description": "City or town details."
+    },
+    "NetworkConfigurationDiagnosticParameters": {
+      "description": "Parameters to get network configuration diagnostic.",
+      "required": [
+        "targetResourceId",
+        "profiles"
+      ],
+      "properties": {
+        "targetResourceId": {
+          "type": "string",
+          "description": "The ID of the target resource to perform network configuration diagnostic. Valid options are VM, NetworkInterface, VMSS/NetworkInterface and Application Gateway."
+        },
+        "verbosityLevel": {
+          "type": "string",
+          "enum": [
+            "Normal",
+            "Minimum",
+            "Full"
+          ],
+          "x-ms-enum": {
+            "name": "VerbosityLevel",
+            "modelAsString": true
+          },
+          "description": "Verbosity level."
+        },
+        "profiles": {
+          "type": "array",
+          "description": "List of network configuration diagnostic profiles.",
+          "items": {
+            "$ref": "#/definitions/NetworkConfigurationDiagnosticProfile"
+          }
+        }
+      }
+    },
+    "NetworkConfigurationDiagnosticProfile": {
+      "description": "Parameters to compare with network configuration.",
+      "required": [
+        "direction",
+        "protocol",
+        "source",
+        "destination",
+        "destinationPort"
+      ],
+      "properties": {
+        "direction": {
+          "$ref": "#/definitions/Direction",
+          "description": "The direction of the traffic."
+        },
+        "protocol": {
+          "type": "string",
+          "description": "Protocol to be verified on. Accepted values are '*', TCP, UDP."
+        },
+        "source": {
+          "type": "string",
+          "description": "Traffic source. Accepted values are '*', IP Address/CIDR, Service Tag."
+        },
+        "destination": {
+          "type": "string",
+          "description": "Traffic destination. Accepted values are: '*', IP Address/CIDR, Service Tag."
+        },
+        "destinationPort": {
+          "type": "string",
+          "description": "Traffic destination port. Accepted values are '*' and a single port in the range (0 - 65535)."
+        }
+      }
+    },
+    "NetworkConfigurationDiagnosticResponse": {
+      "description": "Results of network configuration diagnostic on the target resource.",
+      "properties": {
+        "results": {
+          "readOnly": true,
+          "type": "array",
+          "description": "List of network configuration diagnostic results.",
+          "items": {
+            "$ref": "#/definitions/NetworkConfigurationDiagnosticResult"
+          }
+        }
+      }
+    },
+    "NetworkConfigurationDiagnosticResult": {
+      "description": "Network configuration diagnostic result corresponded to provided traffic query.",
+      "properties": {
+        "profile": {
+          "$ref": "#/definitions/NetworkConfigurationDiagnosticProfile",
+          "description": "Network configuration diagnostic profile."
+        },
+        "networkSecurityGroupResult": {
+          "$ref": "#/definitions/NetworkSecurityGroupResult",
+          "description": "Network security group result."
+        }
+      }
+    },
+    "NetworkSecurityGroupResult": {
+      "description": "Network configuration diagnostic result corresponded provided traffic query.",
+      "properties": {
+        "securityRuleAccessResult": {
+          "$ref": "./networkSecurityGroup.json#/definitions/SecurityRuleAccess",
+          "description": "The network traffic is allowed or denied."
+        },
+        "evaluatedNetworkSecurityGroups": {
+          "readOnly": true,
+          "type": "array",
+          "description": "List of results network security groups diagnostic.",
+          "items": {
+            "$ref": "#/definitions/EvaluatedNetworkSecurityGroup"
+          }
+        }
+      }
+    },
+    "EvaluatedNetworkSecurityGroup": {
+      "description": "Results of network security group evaluation.",
+      "properties": {
+        "networkSecurityGroupId": {
+          "type": "string",
+          "description": "Network security group ID."
+        },
+        "appliedTo": {
+          "type": "string",
+          "description": "Resource ID of nic or subnet to which network security group is applied."
+        },
+        "matchedRule": {
+          "$ref": "#/definitions/MatchedRule",
+          "description": "Matched network security rule."
+        },
+        "rulesEvaluationResult": {
+          "readOnly": true,
+          "type": "array",
+          "description": "List of network security rules evaluation results.",
+          "items": {
+            "$ref": "#/definitions/NetworkSecurityRulesEvaluationResult"
+          }
+        }
+      }
+    },
+    "MatchedRule": {
+      "description": "Matched rule.",
+      "properties": {
+        "ruleName": {
+          "type": "string",
+          "description": "Name of the matched network security rule."
+        },
+        "action": {
+          "type": "string",
+          "description": "The network traffic is allowed or denied. Possible values are 'Allow' and 'Deny'."
+        }
+      }
+    },
+    "NetworkSecurityRulesEvaluationResult": {
+      "description": "Network security rules evaluation result.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the network security rule."
+        },
+        "protocolMatched": {
+          "type": "boolean",
+          "description": "Value indicating whether protocol is matched."
+        },
+        "sourceMatched": {
+          "type": "boolean",
+          "description": "Value indicating whether source is matched."
+        },
+        "sourcePortMatched": {
+          "type": "boolean",
+          "description": "Value indicating whether source port is matched."
+        },
+        "destinationMatched": {
+          "type": "boolean",
+          "description": "Value indicating whether destination is matched."
+        },
+        "destinationPortMatched": {
+          "type": "boolean",
+          "description": "Value indicating whether destination port is matched."
+        }
+      }
+    },
+    "Direction": {
+      "type": "string",
+      "description": "The direction of the traffic.",
+      "enum": [
+        "Inbound",
+        "Outbound"
+      ],
+      "x-ms-enum": {
+        "name": "Direction",
+        "modelAsString": true
+      }
+    },
+    "ConnectionMonitor": {
+      "properties": {
+        "location": {
+          "type": "string",
+          "description": "Connection monitor location."
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Connection monitor tags."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ConnectionMonitorParameters",
+          "description": "Properties of the connection monitor."
+        }
+      },
+      "required": [
+        "properties"
+      ],
+      "description": "Parameters that define the operation to create a connection monitor."
+    },
+    "ConnectionMonitorParameters": {
+      "properties": {
+        "source": {
+          "$ref": "#/definitions/ConnectionMonitorSource",
+          "description": "Describes the source of connection monitor."
+        },
+        "destination": {
+          "$ref": "#/definitions/ConnectionMonitorDestination",
+          "description": "Describes the destination of connection monitor."
+        },
+        "autoStart": {
+          "type": "boolean",
+          "default": true,
+          "description": "Determines if the connection monitor will start automatically once created."
+        },
+        "monitoringIntervalInSeconds": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 30,
+          "maximum": 1800,
+          "default": 60,
+          "description": "Monitoring interval in seconds."
+        },
+        "endpoints": {
+          "type": "array",
+          "description": "List of connection monitor endpoints.",
+          "items": {
+            "$ref": "#/definitions/ConnectionMonitorEndpoint"
+          }
+        },
+        "testConfigurations": {
+          "type": "array",
+          "description": "List of connection monitor test configurations.",
+          "items": {
+            "$ref": "#/definitions/ConnectionMonitorTestConfiguration"
+          }
+        },
+        "testGroups": {
+          "type": "array",
+          "description": "List of connection monitor test groups.",
+          "items": {
+            "$ref": "#/definitions/ConnectionMonitorTestGroup"
+          }
+        },
+        "outputs": {
+          "type": "array",
+          "description": "List of connection monitor outputs.",
+          "items": {
+            "$ref": "#/definitions/ConnectionMonitorOutput"
+          }
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes to be associated with the connection monitor."
+        }
+      },
+      "description": "Parameters that define the operation to create a connection monitor."
+    },
+    "ConnectionMonitorSource": {
+      "properties": {
+        "resourceId": {
+          "type": "string",
+          "description": "The ID of the resource used as the source by connection monitor."
+        },
+        "port": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 65535,
+          "description": "The source port used by connection monitor."
+        }
+      },
+      "required": [
+        "resourceId"
+      ],
+      "description": "Describes the source of connection monitor."
+    },
+    "ConnectionMonitorDestination": {
+      "properties": {
+        "resourceId": {
+          "type": "string",
+          "description": "The ID of the resource used as the destination by connection monitor."
+        },
+        "address": {
+          "type": "string",
+          "description": "Address of the connection monitor destination (IP or domain name)."
+        },
+        "port": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 65535,
+          "description": "The destination port used by connection monitor."
+        }
+      },
+      "description": "Describes the destination of connection monitor."
+    },
+    "ConnectionMonitorEndpoint": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the connection monitor endpoint."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "AzureVM",
+            "AzureVNet",
+            "AzureSubnet",
+            "ExternalAddress",
+            "MMAWorkspaceMachine",
+            "MMAWorkspaceNetwork",
+            "AzureArcVM",
+            "AzureVMSS",
+            "AzureArcNetwork"
+          ],
+          "x-ms-enum": {
+            "name": "EndpointType",
+            "modelAsString": true
+          },
+          "description": "The endpoint type."
+        },
+        "resourceId": {
+          "type": "string",
+          "description": "Resource ID of the connection monitor endpoint are supported for AzureVM, AzureVMSS, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, AzureArcVM endpoint type."
+        },
+        "address": {
+          "type": "string",
+          "description": "Address of the connection monitor endpoint. Supported for AzureVM, ExternalAddress, ArcMachine, MMAWorkspaceMachine endpoint type."
+        },
+        "filter": {
+          "$ref": "#/definitions/ConnectionMonitorEndpointFilter",
+          "description": "Filter field is getting deprecated and should not be used. Instead use Include/Exclude scope fields for it."
+        },
+        "scope": {
+          "$ref": "#/definitions/ConnectionMonitorEndpointScope",
+          "description": "Endpoint scope defines which target resource to monitor in case of compound resource endpoints like VMSS, AzureSubnet, AzureVNet, MMAWorkspaceNetwork, AzureArcNetwork."
+        },
+        "coverageLevel": {
+          "type": "string",
+          "enum": [
+            "Default",
+            "Low",
+            "BelowAverage",
+            "Average",
+            "AboveAverage",
+            "Full"
+          ],
+          "x-ms-enum": {
+            "name": "CoverageLevel",
+            "modelAsString": true
+          },
+          "description": "Test coverage for the endpoint."
+        },
+        "locationDetails": {
+          "$ref": "#/definitions/ConnectionMonitorEndpointLocationDetails",
+          "description": "Location details is optional and only being used for 'AzureArcNetwork' type endpoints, which contains region details."
+        },
+        "subscriptionId": {
+          "type": "string",
+          "description": "Subscription ID for connection monitor endpoint. It's an optional parameter which is being used for 'AzureArcNetwork' type endpoint."
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "description": "Describes the connection monitor endpoint."
+    },
+    "ConnectionMonitorEndpointScope": {
+      "properties": {
+        "include": {
+          "type": "array",
+          "description": "List of items which needs to be included to the endpoint scope.",
+          "items": {
+            "$ref": "#/definitions/ConnectionMonitorEndpointScopeItem"
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "description": "List of items which needs to be excluded from the endpoint scope.",
+          "items": {
+            "$ref": "#/definitions/ConnectionMonitorEndpointScopeItem"
+          }
+        }
+      },
+      "description": "Describes the connection monitor endpoint scope."
+    },
+    "ConnectionMonitorEndpointScopeItem": {
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "The address of the endpoint item. Supported types are IPv4/IPv6 subnet mask or IPv4/IPv6 IP address."
+        }
+      },
+      "description": "Describes the connection monitor endpoint scope item."
+    },
+    "ConnectionMonitorEndpointFilter": {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Include"
+          ],
+          "x-ms-enum": {
+            "name": "ConnectionMonitorEndpointFilterType",
+            "modelAsString": true
+          },
+          "description": "The behavior of the endpoint filter. Currently only 'Include' is supported."
+        },
+        "items": {
+          "type": "array",
+          "description": "List of items in the filter.",
+          "items": {
+            "$ref": "#/definitions/ConnectionMonitorEndpointFilterItem"
+          }
+        }
+      },
+      "description": "Describes the connection monitor endpoint filter."
+    },
+    "ConnectionMonitorEndpointFilterItem": {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "AgentAddress"
+          ],
+          "x-ms-enum": {
+            "name": "ConnectionMonitorEndpointFilterItemType",
+            "modelAsString": true
+          },
+          "description": "The type of item included in the filter. Currently only 'AgentAddress' is supported."
+        },
+        "address": {
+          "type": "string",
+          "description": "The address of the filter item."
+        }
+      },
+      "description": "Describes the connection monitor endpoint filter item."
+    },
+    "ConnectionMonitorTestGroup": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the connection monitor test group."
+        },
+        "disable": {
+          "type": "boolean",
+          "description": "Value indicating whether test group is disabled."
+        },
+        "testConfigurations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of test configuration names."
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of source endpoint names."
+        },
+        "destinations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of destination endpoint names."
+        }
+      },
+      "required": [
+        "name",
+        "testConfigurations",
+        "sources",
+        "destinations"
+      ],
+      "description": "Describes the connection monitor test group."
+    },
+    "ConnectionMonitorTestConfiguration": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the connection monitor test configuration."
+        },
+        "testFrequencySec": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The frequency of test evaluation, in seconds."
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [
+            "Tcp",
+            "Http",
+            "Icmp"
+          ],
+          "x-ms-enum": {
+            "name": "ConnectionMonitorTestConfigurationProtocol",
+            "modelAsString": true
+          },
+          "description": "The protocol to use in test evaluation."
+        },
+        "preferredIPVersion": {
+          "type": "string",
+          "enum": [
+            "IPv4",
+            "IPv6"
+          ],
+          "x-ms-enum": {
+            "name": "PreferredIPVersion",
+            "modelAsString": true
+          },
+          "description": "The preferred IP version to use in test evaluation. The connection monitor may choose to use a different version depending on other parameters."
+        },
+        "httpConfiguration": {
+          "$ref": "#/definitions/ConnectionMonitorHttpConfiguration",
+          "description": "The parameters used to perform test evaluation over HTTP."
+        },
+        "tcpConfiguration": {
+          "$ref": "#/definitions/ConnectionMonitorTcpConfiguration",
+          "description": "The parameters used to perform test evaluation over TCP."
+        },
+        "icmpConfiguration": {
+          "$ref": "#/definitions/ConnectionMonitorIcmpConfiguration",
+          "description": "The parameters used to perform test evaluation over ICMP."
+        },
+        "successThreshold": {
+          "$ref": "#/definitions/ConnectionMonitorSuccessThreshold",
+          "description": "The threshold for declaring a test successful."
+        }
+      },
+      "required": [
+        "name",
+        "protocol"
+      ],
+      "description": "Describes a connection monitor test configuration."
+    },
+    "ConnectionMonitorHttpConfiguration": {
+      "properties": {
+        "port": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 65535,
+          "description": "The port to connect to."
+        },
+        "method": {
+          "type": "string",
+          "description": "The HTTP method to use.",
+          "enum": [
+            "Get",
+            "Post"
+          ],
+          "x-ms-enum": {
+            "name": "HTTPConfigurationMethod",
+            "modelAsString": true
+          }
+        },
+        "path": {
+          "type": "string",
+          "description": "The path component of the URI. For instance, \"/dir1/dir2\"."
+        },
+        "requestHeaders": {
+          "type": "array",
+          "description": "The HTTP headers to transmit with the request.",
+          "items": {
+            "$ref": "#/definitions/HTTPHeader"
+          }
+        },
+        "validStatusCodeRanges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "HTTP status codes to consider successful. For instance, \"2xx,301-304,418\"."
+        },
+        "preferHTTPS": {
+          "type": "boolean",
+          "description": "Value indicating whether HTTPS is preferred over HTTP in cases where the choice is not explicit."
+        }
+      },
+      "description": "Describes the HTTP configuration."
+    },
+    "ConnectionMonitorTcpConfiguration": {
+      "properties": {
+        "port": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 65535,
+          "description": "The port to connect to."
+        },
+        "disableTraceRoute": {
+          "type": "boolean",
+          "description": "Value indicating whether path evaluation with trace route should be disabled."
+        },
+        "destinationPortBehavior": {
+          "type": "string",
+          "description": "Destination port behavior.",
+          "enum": [
+            "None",
+            "ListenIfAvailable"
+          ],
+          "x-ms-enum": {
+            "name": "DestinationPortBehavior",
+            "modelAsString": true
+          }
+        }
+      },
+      "description": "Describes the TCP configuration."
+    },
+    "ConnectionMonitorIcmpConfiguration": {
+      "properties": {
+        "disableTraceRoute": {
+          "type": "boolean",
+          "description": "Value indicating whether path evaluation with trace route should be disabled."
+        }
+      },
+      "description": "Describes the ICMP configuration."
+    },
+    "ConnectionMonitorSuccessThreshold": {
+      "properties": {
+        "checksFailedPercent": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The maximum percentage of failed checks permitted for a test to evaluate as successful."
+        },
+        "roundTripTimeMs": {
+          "type": "number",
+          "description": "The maximum round-trip time in milliseconds permitted for a test to evaluate as successful."
+        }
+      },
+      "description": "Describes the threshold for declaring a test successful."
+    },
+    "ConnectionMonitorOutput": {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Connection monitor output destination type. Currently, only \"Workspace\" is supported.",
+          "enum": [
+            "Workspace"
+          ],
+          "x-ms-enum": {
+            "name": "OutputType",
+            "modelAsString": true
+          }
+        },
+        "workspaceSettings": {
+          "$ref": "#/definitions/ConnectionMonitorWorkspaceSettings",
+          "description": "Describes the settings for producing output into a log analytics workspace."
+        }
+      },
+      "description": "Describes a connection monitor output destination."
+    },
+    "ConnectionMonitorWorkspaceSettings": {
+      "properties": {
+        "workspaceResourceId": {
+          "type": "string",
+          "description": "Log analytics workspace resource ID."
+        }
+      },
+      "description": "Describes the settings for producing output into a log analytics workspace."
+    },
+    "ConnectionStateSnapshot": {
+      "properties": {
+        "connectionState": {
+          "type": "string",
+          "enum": [
+            "Reachable",
+            "Unreachable",
+            "Unknown"
+          ],
+          "x-ms-enum": {
+            "name": "ConnectionState",
+            "modelAsString": true
+          },
+          "description": "The connection state."
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start time of the connection snapshot."
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end time of the connection snapshot."
+        },
+        "evaluationState": {
+          "type": "string",
+          "enum": [
+            "NotStarted",
+            "InProgress",
+            "Completed"
+          ],
+          "x-ms-enum": {
+            "name": "EvaluationState",
+            "modelAsString": true
+          },
+          "description": "Connectivity analysis evaluation state."
+        },
+        "avgLatencyInMs": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "description": "Average latency in ms."
+        },
+        "minLatencyInMs": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "description": "Minimum latency in ms."
+        },
+        "maxLatencyInMs": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "description": "Maximum latency in ms."
+        },
+        "probesSent": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "description": "The number of sent probes."
+        },
+        "probesFailed": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "maximum": 4294967295,
+          "description": "The number of failed probes."
+        },
+        "hops": {
+          "readOnly": true,
+          "type": "array",
+          "description": "List of hops between the source and the destination.",
+          "items": {
+            "$ref": "./networkWatcher.json#/definitions/ConnectivityHop"
+          }
+        }
+      },
+      "description": "Connection state snapshot."
+    },
+    "ConnectionMonitorListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConnectionMonitorResult"
+          },
+          "description": "Information about connection monitors."
+        }
+      },
+      "description": "List of connection monitors."
+    },
+    "ConnectionMonitorResult": {
+      "x-ms-azure-resource": true,
+      "properties": {
+        "name": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Name of the connection monitor."
+        },
+        "id": {
+          "readOnly": true,
+          "type": "string",
+          "description": "ID of the connection monitor."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Connection monitor type."
+        },
+        "location": {
+          "type": "string",
+          "description": "Connection monitor location."
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Connection monitor tags."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/ConnectionMonitorResultProperties",
+          "description": "Properties of the connection monitor result."
+        }
+      },
+      "description": "Information about the connection monitor."
+    },
+    "ConnectionMonitorResultProperties": {
+      "properties": {
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the connection monitor."
+        },
+        "startTime": {
+          "readOnly": true,
+          "type": "string",
+          "format": "date-time",
+          "description": "The date and time when the connection monitor was started."
+        },
+        "monitoringStatus": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The monitoring status of the connection monitor."
+        },
+        "connectionMonitorType": {
+          "readOnly": true,
+          "type": "string",
+          "enum": [
+            "MultiEndpoint",
+            "SingleSourceDestination"
+          ],
+          "x-ms-enum": {
+            "name": "ConnectionMonitorType",
+            "modelAsString": true
+          },
+          "description": "Type of connection monitor."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/ConnectionMonitorParameters"
+        }
+      ],
+      "description": "Describes the properties of a connection monitor."
+    },
+    "ConnectionMonitorQueryResult": {
+      "properties": {
+        "sourceStatus": {
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "Active",
+            "Inactive"
+          ],
+          "x-ms-enum": {
+            "name": "ConnectionMonitorSourceStatus",
+            "modelAsString": true
+          },
+          "description": "Status of connection monitor source."
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConnectionStateSnapshot"
+          },
+          "description": "Information about connection states."
+        }
+      },
+      "description": "List of connection states snapshots."
+    },
+    "ConnectionMonitorEndpointLocationDetails": {
+      "type": "object",
+      "properties": {
+        "region": {
+          "type": "string",
+          "description": "Region for connection monitor endpoint."
+        }
+      },
+      "description": "Connection monitor endpoint location details only being used for 'AzureArcNetwork' type endpoints, which contains the region details."
+    }
+  }
+}
+

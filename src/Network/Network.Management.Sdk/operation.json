@@ -1,0 +1,272 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/providers/Microsoft.Network/operations": {
+      "get": {
+        "operationId": "Operations_List",
+        "description": "Lists all of the available Network Rest API operations.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. The request has succeeded.",
+            "schema": {
+              "$ref": "#/definitions/OperationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "Get a list of operations for a resource provider": {
+            "$ref": "./examples/OperationList.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "OperationListResult": {
+      "description": "Result of the request to list Network operations. It contains a list of operations and a URL link to get the next set of results.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Operation"
+          },
+          "description": "List of Network operations supported by the Network resource provider."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URL to get the next set of operation list results if there are any."
+        }
+      }
+    },
+    "Operation": {
+      "description": "Network REST API operation definition.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Operation name: {provider}/{resource}/{operation}.",
+          "type": "string"
+        },
+        "display": {
+          "description": "Display metadata associated with the operation.",
+          "properties": {
+            "provider": {
+              "description": "Service provider: Microsoft Network.",
+              "type": "string"
+            },
+            "resource": {
+              "description": "Resource on which the operation is performed.",
+              "type": "string"
+            },
+            "operation": {
+              "description": "Type of the operation: get, read, delete, etc.",
+              "type": "string"
+            },
+            "description": {
+              "description": "Description of the operation.",
+              "type": "string"
+            }
+          }
+        },
+        "origin": {
+          "description": "Origin of the operation.",
+          "type": "string"
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/OperationPropertiesFormat",
+          "description": "Operation properties format."
+        }
+      }
+    },
+    "OperationPropertiesFormat": {
+      "description": "Description of operation properties format.",
+      "properties": {
+        "serviceSpecification": {
+          "description": "Specification of the service.",
+          "properties": {
+            "metricSpecifications": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MetricSpecification"
+              },
+              "description": "Operation service specification."
+            },
+            "logSpecifications": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LogSpecification"
+              },
+              "description": "Operation log specification."
+            }
+          }
+        }
+      }
+    },
+    "LogSpecification": {
+      "description": "Description of logging specification.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the specification."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The display name of the specification."
+        },
+        "blobDuration": {
+          "type": "string",
+          "description": "Duration of the blob."
+        }
+      }
+    },
+    "MetricSpecification": {
+      "description": "Description of metrics specification.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the metric."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The display name of the metric."
+        },
+        "displayDescription": {
+          "type": "string",
+          "description": "The description of the metric."
+        },
+        "unit": {
+          "type": "string",
+          "description": "Units the metric to be displayed in."
+        },
+        "aggregationType": {
+          "type": "string",
+          "description": "The aggregation type."
+        },
+        "availabilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Availability"
+          },
+          "description": "List of availability."
+        },
+        "enableRegionalMdmAccount": {
+          "type": "boolean",
+          "description": "Whether regional MDM account enabled."
+        },
+        "fillGapWithZero": {
+          "type": "boolean",
+          "description": "Whether gaps would be filled with zeros."
+        },
+        "metricFilterPattern": {
+          "type": "string",
+          "description": "Pattern for the filter of the metric."
+        },
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Dimension"
+          },
+          "description": "List of dimensions."
+        },
+        "isInternal": {
+          "type": "boolean",
+          "description": "Whether the metric is internal."
+        },
+        "sourceMdmAccount": {
+          "type": "string",
+          "description": "The source MDM account."
+        },
+        "sourceMdmNamespace": {
+          "type": "string",
+          "description": "The source MDM namespace."
+        },
+        "resourceIdDimensionNameOverride": {
+          "type": "string",
+          "description": "The resource Id dimension name override."
+        }
+      }
+    },
+    "Dimension": {
+      "description": "Dimension of the metric.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the dimension."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The display name of the dimension."
+        },
+        "internalName": {
+          "type": "string",
+          "description": "The internal name of the dimension."
+        }
+      }
+    },
+    "Availability": {
+      "description": "Availability of the metric.",
+      "properties": {
+        "timeGrain": {
+          "type": "string",
+          "description": "The time grain of the availability."
+        },
+        "retention": {
+          "type": "string",
+          "description": "The retention of the availability."
+        },
+        "blobDuration": {
+          "type": "string",
+          "description": "Duration of the availability blob."
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,338 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagerEffectiveConfiguration",
+    "description": "The Microsoft Azure Network Manager effective configuration API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listNetworkManagerEffectiveConnectivityConfigurations": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/VirtualNetworkNameParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        },
+        {
+          "$ref": "#/parameters/ListTopParameter"
+        }
+      ],
+      "post": {
+        "tags": [
+          "NetworkManagerEffectiveConnectivityConfiguration"
+        ],
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./networkManagerGroup.json#/definitions/QueryRequestOptions"
+            },
+            "description": "Parameters supplied to list correct page."
+          }
+        ],
+        "operationId": "ListNetworkManagerEffectiveConnectivityConfigurations",
+        "description": "List all effective connectivity configurations applied on a virtual network.",
+        "responses": {
+          "200": {
+            "description": "OK - Returns information about the configurations.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerEffectiveConnectivityConfigurationListResult"
+            }
+          },
+          "default": {
+            "description": "Resource Provider error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List effective connectivity configuration": {
+            "$ref": "./examples/NetworkManagerEffectiveConnectivityConfigurationsList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listNetworkManagerEffectiveSecurityAdminRules": {
+      "parameters": [
+        {
+          "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/VirtualNetworkNameParameter"
+        },
+        {
+          "$ref": "./network.json#/parameters/ApiVersionParameter"
+        },
+        {
+          "$ref": "#/parameters/ListTopParameter"
+        }
+      ],
+      "post": {
+        "tags": [
+          "NetworkManagerEffectiveSecurityAdminRules"
+        ],
+        "parameters": [
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./networkManagerGroup.json#/definitions/QueryRequestOptions"
+            },
+            "description": "Parameters supplied to list correct page."
+          }
+        ],
+        "operationId": "ListNetworkManagerEffectiveSecurityAdminRules",
+        "description": "List all effective security admin rules applied on a virtual network.",
+        "responses": {
+          "200": {
+            "description": "OK - Returns information about the configurations.",
+            "schema": {
+              "$ref": "#/definitions/NetworkManagerEffectiveSecurityAdminRulesListResult"
+            }
+          },
+          "default": {
+            "description": "Resource Provider error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List effective security admin rules": {
+            "$ref": "./examples/NetworkManagerEffectiveSecurityAdminRulesList.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "NetworkManagerEffectiveConnectivityConfigurationListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EffectiveConnectivityConfiguration"
+          },
+          "description": "Gets a page of NetworkManagerEffectiveConnectivityConfiguration"
+        },
+        "skipToken": {
+          "description": "When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.",
+          "type": "string"
+        }
+      },
+      "description": "Result of the request to list networkManagerEffectiveConnectivityConfiguration. It contains a list of groups and a skiptoken to get the next set of results."
+    },
+    "NetworkManagerEffectiveSecurityAdminRulesListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EffectiveBaseSecurityAdminRule"
+          },
+          "description": "Gets a page of NetworkManagerEffectiveSecurityAdminRules"
+        },
+        "skipToken": {
+          "description": "When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.",
+          "type": "string"
+        }
+      },
+      "description": "Result of the request to list networkManagerEffectiveSecurityAdminRules. It contains a list of groups and a skiptoken to get the next set of results."
+    },
+    "EffectiveConnectivityConfiguration": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Connectivity configuration ID."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "./networkManagerConnectivityConfiguration.json#/definitions/ConnectivityConfigurationProperties",
+          "description": "Properties of a network manager connectivity configuration"
+        },
+        "configurationGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConfigurationGroup"
+          },
+          "description": "Effective configuration groups."
+        }
+      },
+      "description": "The network manager effective connectivity configuration"
+    },
+    "EffectiveBaseSecurityAdminRule": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Resource ID."
+        },
+        "configurationDescription": {
+          "type": "string",
+          "description": "A description of the security admin configuration."
+        },
+        "ruleCollectionDescription": {
+          "type": "string",
+          "description": "A description of the rule collection."
+        },
+        "ruleCollectionAppliesToGroups": {
+          "type": "array",
+          "x-ms-identifiers": [
+            "networkGroupId"
+          ],
+          "items": {
+            "$ref": "./networkManagerSecurityAdminConfiguration.json#/definitions/NetworkManagerSecurityGroupItem"
+          },
+          "description": "Groups for rule collection"
+        },
+        "ruleGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConfigurationGroup"
+          },
+          "description": "Effective configuration groups."
+        },
+        "kind": {
+          "type": "string",
+          "description": "Whether the rule is custom or default.",
+          "enum": [
+            "Custom",
+            "Default"
+          ],
+          "x-ms-enum": {
+            "name": "EffectiveAdminRuleKind",
+            "modelAsString": true
+          }
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "discriminator": "kind",
+      "description": "Network base admin rule."
+    },
+    "EffectiveSecurityAdminRule": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "$ref": "./networkManagerSecurityAdminConfiguration.json#/definitions/AdminPropertiesFormat",
+          "x-ms-client-flatten": true,
+          "description": "Indicates the properties of the security admin rule"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/EffectiveBaseSecurityAdminRule"
+        }
+      ],
+      "description": "Network admin rule.",
+      "x-ms-discriminator-value": "Custom"
+    },
+    "EffectiveDefaultSecurityAdminRule": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "$ref": "./networkManagerSecurityAdminConfiguration.json#/definitions/DefaultAdminPropertiesFormat",
+          "x-ms-client-flatten": true,
+          "description": "Indicates the properties of the default security admin rule"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/EffectiveBaseSecurityAdminRule"
+        }
+      ],
+      "description": "Network default admin rule.",
+      "x-ms-discriminator-value": "Default"
+    },
+    "ConfigurationGroup": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Network group ID."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "./networkManagerGroup.json#/definitions/NetworkGroupProperties",
+          "description": "The network configuration group properties"
+        }
+      },
+      "description": "The network configuration group resource"
+    }
+  },
+  "parameters": {
+    "ResourceGroupNameParameter": {
+      "name": "resourceGroupName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the resource group.",
+      "x-ms-parameter-location": "method"
+    },
+    "VirtualNetworkNameParameter": {
+      "name": "virtualNetworkName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the virtual network.",
+      "x-ms-parameter-location": "method"
+    },
+    "ListTopParameter": {
+      "name": "$top",
+      "description": "An optional query parameter which specifies the maximum number of records to be returned by the server.",
+      "in": "query",
+      "required": false,
+      "type": "integer",
+      "format": "int32",
+      "minimum": 1,
+      "maximum": 20,
+      "x-ms-parameter-location": "method"
+    }
+  }
+}
+

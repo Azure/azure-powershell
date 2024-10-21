@@ -1,0 +1,29 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "e747cc13-97d4-4a79-b463-42d7f4e558f2",
+    "resourceGroupName": "rg1",
+    "firewallPolicyName": "firewallPolicy",
+    "parameters": {}
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "id": "/subscriptions/e747cc13-97d4-4a79-b463-42d7f4e558f2/resourceGroups/rg1/providers/Microsoft.Network/firewallPolicies/firewallPolicy/signatureOverrides/default",
+            "name": "default",
+            "type": "Microsoft.Network/firewallPolicies/signatureOverrides",
+            "properties": {
+              "signatures": {
+                "2000105": "Off",
+                "2000106": "Deny"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

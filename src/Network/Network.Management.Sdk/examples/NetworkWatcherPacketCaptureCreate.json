@@ -1,0 +1,57 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1",
+    "packetCaptureName": "pc1",
+    "parameters": {
+      "properties": {
+        "target": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1",
+        "bytesToCapturePerPacket": 10000,
+        "totalBytesPerSession": 100000,
+        "timeLimitInSeconds": 100,
+        "storageLocation": {
+          "storageId": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Storage/storageAccounts/pcstore",
+          "storagePath": "https://mytestaccountname.blob.core.windows.net/capture/pc1.cap",
+          "filePath": "D:\\capture\\pc1.cap"
+        },
+        "filters": [
+          {
+            "protocol": "TCP",
+            "localIPAddress": "10.0.0.4",
+            "localPort": "80"
+          }
+        ]
+      }
+    }
+  },
+  "responses": {
+    "201": {
+      "body": {
+        "name": "pc1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/packetCaptures/pc1",
+        "properties": {
+          "provisioningState": "Updating",
+          "target": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1",
+          "bytesToCapturePerPacket": 10000,
+          "totalBytesPerSession": 100000,
+          "timeLimitInSeconds": 100,
+          "storageLocation": {
+            "storageId": "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Storage/storageAccounts/pcstore",
+            "storagePath": "https://mytestaccountname.blob.core.windows.net/capture/pc1.cap",
+            "filePath": "D:\\capture\\pc1.cap"
+          },
+          "filters": [
+            {
+              "protocol": "TCP",
+              "localIPAddress": "10.0.0.4",
+              "localPort": "80"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

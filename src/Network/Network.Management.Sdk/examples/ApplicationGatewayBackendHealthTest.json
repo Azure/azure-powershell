@@ -1,0 +1,50 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "applicationGatewayName": "appgw",
+    "probeRequest": {
+      "protocol": "Http",
+      "pickHostNameFromBackendHttpSettings": true,
+      "path": "/",
+      "timeout": 30,
+      "backendAddressPool": {
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendaddressPools/MFAnalyticsPool"
+      },
+      "backendHttpSettings": {
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendHttpSettingsCollection/MFPoolSettings"
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "backendAddressPool": {
+          "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendaddressPools/MFAnalyticsPool"
+        },
+        "backendHealthHttpSettings": {
+          "backendHttpSettings": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendHttpSettingsCollection/MFPoolSettings"
+          },
+          "servers": [
+            {
+              "address": "10.220.1.4",
+              "health": "Up"
+            },
+            {
+              "address": "10.220.1.5",
+              "health": "Up"
+            }
+          ]
+        }
+      }
+    },
+    "202": {
+      "headers": {
+        "location": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus2/operationResults/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    }
+  }
+}
+

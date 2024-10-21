@@ -1,0 +1,23 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualNetworkGatewayName": "vpngw"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "saLifeTimeSeconds": 86473,
+        "saDataSizeKilobytes": 429497,
+        "ipsecEncryption": "AES256",
+        "ipsecIntegrity": "SHA256",
+        "ikeEncryption": "AES256",
+        "ikeIntegrity": "SHA384",
+        "dhGroup": "DHGroup2",
+        "pfsGroup": "PFS2"
+      }
+    }
+  }
+}
+

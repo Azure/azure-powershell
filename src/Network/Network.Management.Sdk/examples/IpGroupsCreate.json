@@ -1,0 +1,70 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subId",
+    "resourceGroupName": "myResourceGroup",
+    "ipGroupsName": "ipGroups1",
+    "parameters": {
+      "tags": {
+        "key1": "value1"
+      },
+      "location": "West US",
+      "properties": {
+        "ipAddresses": [
+          "13.64.39.16/32",
+          "40.74.146.80/31",
+          "40.74.147.32/28"
+        ]
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "ipGroups1",
+        "id": "/subscriptions/subId/providers/Microsoft.Network/resourceGroup/myResourceGroup/ipGroups/ipGroups1",
+        "type": "Microsoft.Network/ipGroups",
+        "location": "westcentralus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "ipAddresses": [
+            "13.64.39.16/32",
+            "40.74.146.80/31",
+            "40.74.147.32/28"
+          ],
+          "firewalls": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall"
+            }
+          ],
+          "firewallPolicies": []
+        },
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\"
+      }
+    },
+    "201": {
+      "body": {
+        "name": "ipGroups1",
+        "id": "/subscriptions/subId/providers/Microsoft.Network/resourceGroup/myResourceGroup/ipGroups/ipGroups1",
+        "type": "Microsoft.Network/ipGroups",
+        "location": "westcentralus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "ipAddresses": [
+            "13.64.39.16/32",
+            "40.74.146.80/31",
+            "40.74.147.32/28"
+          ],
+          "firewalls": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall"
+            }
+          ],
+          "firewallPolicies": []
+        },
+        "etag": "w/\\00000000-0000-0000-0000-000000000000\\"
+      }
+    }
+  }
+}
+

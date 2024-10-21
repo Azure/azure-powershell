@@ -1,0 +1,48 @@
+{
+  "title": "Post Azure Virtual Network Manager Commit",
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "resoureGroupSample",
+    "networkManagerName": "testNetworkManager",
+    "parameters": {
+      "targetLocations": [
+        "useast"
+      ],
+      "configurationIds": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resoureGroupSample/providers/Microsoft.Network/networkManagers/testNetworkManager/securityAdminConfigurations/SampleSecurityAdminConfig"
+      ],
+      "commitType": "SecurityAdmin"
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "commitId": "testCommitId",
+        "targetLocations": [
+          "useast"
+        ],
+        "configurationIds": [
+          "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resoureGroupSample/providers/Microsoft.Network/networkManagers/testNetworkManager/securityAdminConfigurations/SampleSecurityAdminConfig"
+        ],
+        "commitType": "SecurityAdmin"
+      }
+    },
+    "202": {
+      "headers": {
+        "Location": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SampleRG/providers/Microsoft.Network/networkManagers/TestNM/operationResults/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      },
+      "body": {
+        "commitId": "testCommitId",
+        "targetLocations": [
+          "useast"
+        ],
+        "configurationIds": [
+          "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resoureGroupSample/providers/Microsoft.Network/networkManagers/testNetworkManager/securityAdminConfigurations/SampleSecurityAdminConfig"
+        ],
+        "commitType": "SecurityAdmin"
+      }
+    }
+  }
+}
+

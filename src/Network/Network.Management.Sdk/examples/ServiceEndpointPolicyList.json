@@ -1,0 +1,64 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "testServiceEndpointPolicy",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/serviceEndpointPolicies/testServiceEndpointPolicy",
+            "location": "westus",
+            "properties": {
+              "serviceEndpointPolicyDefinitions": [
+                {
+                  "name": "StorageServiceEndpointPolicyDefinition",
+                  "properties": {
+                    "description": "Storage Service EndpointPolicy Definition",
+                    "service": "Microsoft.Storage",
+                    "serviceResources": [
+                      "/subscriptions/subid1",
+                      "/subscriptions/subid1resourceGroups/storageRg",
+                      "/subscriptions/subid1/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount"
+                    ]
+                  }
+                }
+              ],
+              "subnets": [],
+              "provisioningState": "Succeeded",
+              "resourceGuid": "6A7C139D-8B8D-499B-B7CB-4F3F02A8A44F"
+            }
+          },
+          {
+            "name": "testServiceEndpointPolicy1",
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/serviceEndpointPolicies/testServiceEndpointPolicy1",
+            "location": "westus",
+            "properties": {
+              "serviceEndpointPolicyDefinitions": [
+                {
+                  "name": "StorageServiceEndpointPolicyDefinition1",
+                  "properties": {
+                    "description": "Storage Service EndpointPolicy Definition",
+                    "service": "Microsoft.Storage",
+                    "serviceResources": [
+                      "/subscriptions/subid1",
+                      "/subscriptions/subid1/resourceGroups/storageRg",
+                      "/subscriptions/subid1/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount"
+                    ]
+                  }
+                }
+              ],
+              "subnets": [],
+              "provisioningState": "Succeeded",
+              "resourceGuid": "6A7C139D-8B8D-499B-B7CB-4F3F02A8A44F"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+

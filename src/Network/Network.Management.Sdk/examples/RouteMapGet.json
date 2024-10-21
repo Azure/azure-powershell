@@ -1,0 +1,57 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualHubName": "virtualHub1",
+    "routeMapName": "routeMap1",
+    "api-version": "2024-05-01"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "routeMap1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1",
+        "etag": "W/\"e203e953-7ba7-4302-a246-aa2ec03f6edf\"",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "rules": [
+            {
+              "name": "rule1",
+              "matchCriteria": [
+                {
+                  "matchCondition": "Contains",
+                  "routePrefix": [
+                    "10.0.0.0/8"
+                  ],
+                  "community": [],
+                  "asPath": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": "Add",
+                  "parameters": [
+                    {
+                      "routePrefix": [],
+                      "community": [],
+                      "asPath": [
+                        "22334"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "nextStepIfMatched": "Continue"
+            }
+          ],
+          "associatedInboundConnections": [
+            "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteGateways/exrGateway1/expressRouteConnections/exrConn1"
+          ],
+          "associatedOutboundConnections": []
+        },
+        "type": "Microsoft.Network/virtualHubs/routeMaps"
+      }
+    }
+  }
+}
+

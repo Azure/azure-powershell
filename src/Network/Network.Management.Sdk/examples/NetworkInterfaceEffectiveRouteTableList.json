@@ -1,0 +1,76 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkInterfaceName": "nic1"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "source": "Default",
+            "state": "Active",
+            "addressPrefix": [
+              "172.20.2.0/24"
+            ],
+            "nextHopType": "VnetLocal",
+            "nextHopIpAddress": []
+          },
+          {
+            "source": "Default",
+            "state": "Active",
+            "addressPrefix": [
+              "0.0.0.0/0"
+            ],
+            "nextHopType": "Internet",
+            "nextHopIpAddress": []
+          },
+          {
+            "source": "Default",
+            "state": "Active",
+            "addressPrefix": [
+              "10.0.0.0/8"
+            ],
+            "nextHopType": "None",
+            "nextHopIpAddress": []
+          },
+          {
+            "source": "Default",
+            "state": "Active",
+            "addressPrefix": [
+              "100.64.0.0/10"
+            ],
+            "nextHopType": "None",
+            "nextHopIpAddress": []
+          },
+          {
+            "source": "Default",
+            "state": "Active",
+            "addressPrefix": [
+              "172.16.0.0/12"
+            ],
+            "nextHopType": "None",
+            "nextHopIpAddress": []
+          },
+          {
+            "source": "Default",
+            "state": "Active",
+            "addressPrefix": [
+              "192.168.0.0/16"
+            ],
+            "nextHopType": "None",
+            "nextHopIpAddress": []
+          }
+        ]
+      }
+    },
+    "202": {
+      "headers": {
+        "Location": "https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/nic1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2024-05-01"
+      }
+    }
+  }
+}
+

@@ -1,0 +1,15 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "peeringName": "peering1",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualRouterName": "virtualRouter"
+  },
+  "responses": {
+    "200": {},
+    "202": {},
+    "204": {}
+  }
+}
+

@@ -1,0 +1,1039 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}": {
+      "delete": {
+        "tags": [
+          "PrivateEndpoints"
+        ],
+        "operationId": "PrivateEndpoints_Delete",
+        "description": "Deletes the specified private endpoint.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "privateEndpointName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private endpoint."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Delete successful."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Delete private endpoint": {
+            "$ref": "./examples/PrivateEndpointDelete.json"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "PrivateEndpoints"
+        ],
+        "operationId": "PrivateEndpoints_Get",
+        "description": "Gets the specified private endpoint by resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "privateEndpointName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private endpoint."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expands referenced resources."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting private endpoint resource.",
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpoint"
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get private endpoint": {
+            "$ref": "./examples/PrivateEndpointGet.json"
+          },
+          "Get private endpoint with manual approval connection": {
+            "$ref": "./examples/PrivateEndpointGetForManualApproval.json"
+          },
+          "Get private endpoint with application security groups": {
+            "$ref": "./examples/PrivateEndpointGetWithASG.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PrivateEndpoints"
+        ],
+        "operationId": "PrivateEndpoints_CreateOrUpdate",
+        "description": "Creates or updates an private endpoint in the specified resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "privateEndpointName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private endpoint."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpoint"
+            },
+            "description": "Parameters supplied to the create or update private endpoint operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting private endpoint resource.",
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpoint"
+            }
+          },
+          "201": {
+            "description": "Create successful. The operation returns the resulting private endpoint resource.",
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpoint"
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "Create private endpoint": {
+            "$ref": "./examples/PrivateEndpointCreate.json"
+          },
+          "Create private endpoint with manual approval connection": {
+            "$ref": "./examples/PrivateEndpointCreateForManualApproval.json"
+          },
+          "Create private endpoint with application security groups": {
+            "$ref": "./examples/PrivateEndpointCreateWithASG.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints": {
+      "get": {
+        "tags": [
+          "PrivateEndpoints"
+        ],
+        "operationId": "PrivateEndpoints_List",
+        "description": "Gets all private endpoints in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of private endpoint resources.",
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpointListResult"
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List private endpoints in resource group": {
+            "$ref": "./examples/PrivateEndpointList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/privateEndpoints": {
+      "get": {
+        "tags": [
+          "PrivateEndpoints"
+        ],
+        "operationId": "PrivateEndpoints_ListBySubscription",
+        "description": "Gets all private endpoints in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of private endpoint resources.",
+            "schema": {
+              "$ref": "#/definitions/PrivateEndpointListResult"
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all private endpoints": {
+            "$ref": "./examples/PrivateEndpointListAll.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/availablePrivateEndpointTypes": {
+      "get": {
+        "operationId": "AvailablePrivateEndpointTypes_List",
+        "description": "Returns all of the resource types that can be linked to a Private Endpoint in this subscription in this region.",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The location of the domain name."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. Returns all of the resource types that can be linked to a Private Endpoint in this subscription in this region.",
+            "schema": {
+              "$ref": "#/definitions/AvailablePrivateEndpointTypesResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get available PrivateEndpoint types": {
+            "$ref": "./examples/AvailablePrivateEndpointTypesGet.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/locations/{location}/availablePrivateEndpointTypes": {
+      "get": {
+        "operationId": "AvailablePrivateEndpointTypes_ListByResourceGroup",
+        "description": "Returns all of the resource types that can be linked to a Private Endpoint in this subscription in this region.",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The location of the domain name."
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. Returns all of the resource types that can be linked to a Private Endpoint in this subscription in this region.",
+            "schema": {
+              "$ref": "#/definitions/AvailablePrivateEndpointTypesResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get available PrivateEndpoint types in the resource group": {
+            "$ref": "./examples/AvailablePrivateEndpointTypesResourceGroupGet.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups/{privateDnsZoneGroupName}": {
+      "delete": {
+        "tags": [
+          "PrivateDnsZoneGroups"
+        ],
+        "operationId": "PrivateDnsZoneGroups_Delete",
+        "description": "Deletes the specified private dns zone group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "privateEndpointName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private endpoint."
+          },
+          {
+            "name": "privateDnsZoneGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private dns zone group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Delete private dns zone group": {
+            "$ref": "./examples/PrivateEndpointDnsZoneGroupDelete.json"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "PrivateDnsZoneGroups"
+        ],
+        "operationId": "PrivateDnsZoneGroups_Get",
+        "description": "Gets the private dns zone group resource by specified private dns zone group name.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "privateEndpointName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private endpoint."
+          },
+          {
+            "name": "privateDnsZoneGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private dns zone group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting privateDnsZoneGroup resource.",
+            "schema": {
+              "$ref": "#/definitions/PrivateDnsZoneGroup"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get private dns zone group": {
+            "$ref": "./examples/PrivateEndpointDnsZoneGroupGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PrivateDnsZoneGroups"
+        ],
+        "operationId": "PrivateDnsZoneGroups_CreateOrUpdate",
+        "description": "Creates or updates a private dns zone group in the specified private endpoint.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "privateEndpointName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private endpoint."
+          },
+          {
+            "name": "privateDnsZoneGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private dns zone group."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PrivateDnsZoneGroup"
+            },
+            "description": "Parameters supplied to the create or update private dns zone group operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting PrivateDnsZoneGroup resource.",
+            "schema": {
+              "$ref": "#/definitions/PrivateDnsZoneGroup"
+            }
+          },
+          "201": {
+            "description": "Create successful. The operation returns the resulting PrivateDnsZoneGroup resource.",
+            "schema": {
+              "$ref": "#/definitions/PrivateDnsZoneGroup"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "x-ms-examples": {
+          "Create private dns zone group": {
+            "$ref": "./examples/PrivateEndpointDnsZoneGroupCreate.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}/privateDnsZoneGroups": {
+      "get": {
+        "tags": [
+          "PrivateDnsZoneGroups"
+        ],
+        "operationId": "PrivateDnsZoneGroups_List",
+        "description": "Gets all private dns zone groups in a private endpoint.",
+        "parameters": [
+          {
+            "name": "privateEndpointName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the private endpoint."
+          },
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of private dns zone group resources.",
+            "schema": {
+              "$ref": "#/definitions/PrivateDnsZoneGroupListResult"
+            }
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "./network.json#/definitions/Error"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List private endpoints in resource group": {
+            "$ref": "./examples/PrivateEndpointDnsZoneGroupList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PrivateEndpoint": {
+      "properties": {
+        "extendedLocation": {
+          "$ref": "./network.json#/definitions/ExtendedLocation",
+          "description": "The extended location of the load balancer."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PrivateEndpointProperties",
+          "description": "Properties of the private endpoint."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "Private endpoint resource."
+    },
+    "PrivateEndpointProperties": {
+      "properties": {
+        "subnet": {
+          "$ref": "./virtualNetwork.json#/definitions/Subnet",
+          "description": "The ID of the subnet from which the private IP will be allocated."
+        },
+        "networkInterfaces": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "./networkInterface.json#/definitions/NetworkInterface"
+          },
+          "description": "An array of references to the network interfaces created for this private endpoint."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the private endpoint resource."
+        },
+        "privateLinkServiceConnections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrivateLinkServiceConnection"
+          },
+          "description": "A grouping of information about the connection to the remote resource."
+        },
+        "manualPrivateLinkServiceConnections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrivateLinkServiceConnection"
+          },
+          "description": "A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource."
+        },
+        "customDnsConfigs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomDnsConfigPropertiesFormat"
+          },
+          "description": "An array of custom dns configurations."
+        },
+        "applicationSecurityGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "./applicationSecurityGroup.json#/definitions/ApplicationSecurityGroup"
+          },
+          "description": "Application security groups in which the private endpoint IP configuration is included."
+        },
+        "ipConfigurations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrivateEndpointIPConfiguration"
+          },
+          "description": "A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints."
+        },
+        "customNetworkInterfaceName": {
+          "type": "string",
+          "description": "The custom name of the network interface attached to the private endpoint."
+        }
+      },
+      "description": "Properties of the private endpoint."
+    },
+    "CustomDnsConfigPropertiesFormat": {
+      "properties": {
+        "fqdn": {
+          "type": "string",
+          "description": "Fqdn that resolves to private endpoint ip address."
+        },
+        "ipAddresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of private ip addresses of the private endpoint."
+        }
+      },
+      "description": "Contains custom Dns resolution configuration from customer."
+    },
+    "PrivateLinkServiceConnection": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PrivateLinkServiceConnectionProperties",
+          "description": "Properties of the private link service connection."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the resource that is unique within a resource group. This name can be used to access the resource."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The resource type."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ],
+      "description": "PrivateLinkServiceConnection resource."
+    },
+    "PrivateLinkServiceConnectionProperties": {
+      "properties": {
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the private link service connection resource."
+        },
+        "privateLinkServiceId": {
+          "type": "string",
+          "description": "The resource id of private link service."
+        },
+        "groupIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to."
+        },
+        "requestMessage": {
+          "type": "string",
+          "description": "A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars."
+        },
+        "privateLinkServiceConnectionState": {
+          "$ref": "./privateLinkService.json#/definitions/PrivateLinkServiceConnectionState",
+          "description": "A collection of read-only information about the state of the connection to the remote resource."
+        }
+      },
+      "description": "Properties of the PrivateLinkServiceConnection."
+    },
+    "PrivateEndpointListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrivateEndpoint"
+          },
+          "description": "A list of private endpoint resources in a resource group."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results.",
+          "readOnly": true
+        }
+      },
+      "description": "Response for the ListPrivateEndpoints API service call."
+    },
+    "PrivateDnsZoneGroupListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrivateDnsZoneGroup"
+          },
+          "description": "A list of private dns zone group resources in a private endpoint."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results.",
+          "readOnly": true
+        }
+      },
+      "description": "Response for the ListPrivateDnsZoneGroups API service call."
+    },
+    "AvailablePrivateEndpointTypesResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AvailablePrivateEndpointType"
+          },
+          "description": "An array of available privateEndpoint type."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "An array of available PrivateEndpoint types."
+    },
+    "AvailablePrivateEndpointType": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the service and resource."
+        },
+        "id": {
+          "type": "string",
+          "description": "A unique identifier of the AvailablePrivateEndpoint Type resource."
+        },
+        "type": {
+          "type": "string",
+          "description": "Resource type."
+        },
+        "resourceName": {
+          "type": "string",
+          "description": "The name of the service and resource."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name of the resource."
+        }
+      },
+      "description": "The information of an AvailablePrivateEndpointType."
+    },
+    "PrivateDnsZoneGroup": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the resource that is unique within a resource group. This name can be used to access the resource."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PrivateDnsZoneGroupPropertiesFormat",
+          "description": "Properties of the private dns zone group."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ],
+      "description": "Private dns zone group resource."
+    },
+    "PrivateDnsZoneGroupPropertiesFormat": {
+      "properties": {
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the private dns zone group resource."
+        },
+        "privateDnsZoneConfigs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrivateDnsZoneConfig"
+          },
+          "description": "A collection of private dns zone configurations of the private dns zone group."
+        }
+      },
+      "description": "Properties of the private dns zone group."
+    },
+    "PrivateDnsZoneConfig": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the resource that is unique within a resource group. This name can be used to access the resource."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PrivateDnsZonePropertiesFormat",
+          "description": "Properties of the private dns zone configuration."
+        }
+      },
+      "description": "PrivateDnsZoneConfig resource."
+    },
+    "PrivateDnsZonePropertiesFormat": {
+      "properties": {
+        "privateDnsZoneId": {
+          "type": "string",
+          "description": "The resource id of the private dns zone."
+        },
+        "recordSets": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/RecordSet"
+          },
+          "description": "A collection of information regarding a recordSet, holding information to identify private resources."
+        }
+      },
+      "description": "Properties of the private dns zone configuration resource."
+    },
+    "RecordSet": {
+      "properties": {
+        "recordType": {
+          "type": "string",
+          "description": "Resource record type."
+        },
+        "recordSetName": {
+          "type": "string",
+          "description": "Recordset name."
+        },
+        "fqdn": {
+          "type": "string",
+          "description": "Fqdn that resolves to private endpoint ip address."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the recordset."
+        },
+        "ttl": {
+          "type": "integer",
+          "description": "Recordset time to live."
+        },
+        "ipAddresses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The private ip address of the private endpoint."
+        }
+      },
+      "description": "A collective group of information about the record set information."
+    },
+    "PrivateEndpointIPConfiguration": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PrivateEndpointIPConfigurationProperties",
+          "description": "Properties of private endpoint IP configurations."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the resource that is unique within a resource group."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The resource type."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "description": "An IP Configuration of the private endpoint."
+    },
+    "PrivateEndpointIPConfigurationProperties": {
+      "type": "object",
+      "properties": {
+        "groupId": {
+          "type": "string",
+          "description": "The ID of a group obtained from the remote resource that this private endpoint should connect to."
+        },
+        "memberName": {
+          "type": "string",
+          "description": "The member name of a group obtained from the remote resource that this private endpoint should connect to."
+        },
+        "privateIPAddress": {
+          "type": "string",
+          "description": "A private ip address obtained from the private endpoint's subnet."
+        }
+      },
+      "description": "Properties of an IP Configuration of the private endpoint."
+    }
+  }
+}
+

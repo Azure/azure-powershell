@@ -1,0 +1,28 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "api-version": "2024-05-01",
+    "resourceGroupName": "rg1",
+    "expressRoutePortName": "portName",
+    "linkName": "linkName"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "linkName",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRoutePorts/portName/links/linkName",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "routerName": "router1",
+          "interfaceName": "Ethernet 0/0",
+          "patchPanelId": "patchPanelId1",
+          "rackId": "rackId1",
+          "coloLocation": "coloLocationName",
+          "connectorType": "LC",
+          "adminState": "Disabled"
+        }
+      }
+    }
+  }
+}
+

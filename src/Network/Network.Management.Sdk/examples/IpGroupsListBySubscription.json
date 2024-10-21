@@ -1,0 +1,57 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subId"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "name": "iptag1",
+            "id": "/subscriptions/subId/providers/Microsoft.Network/resourceGroup/myResourceGroup1/ipGroups",
+            "type": "Microsoft.Network/ipGroups",
+            "location": "westcentralus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "ipAddresses": [
+                "13.64.39.16/32",
+                "40.74.146.80/31",
+                "40.74.147.32/28"
+              ],
+              "firewalls": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall"
+                }
+              ],
+              "firewallPolicies": []
+            },
+            "etag": "w/\\00000000-0000-0000-0000-000000000000\\"
+          },
+          {
+            "name": "iptag2",
+            "id": "/subscriptions/subId/providers/Microsoft.Network/resourceGroup/myResourceGroup2/ipGroups",
+            "type": "Microsoft.Network/ipGroups",
+            "location": "centralus",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "ipAddresses": [
+                "14.64.39.16/32",
+                "41.74.146.80/31",
+                "42.74.147.32/28"
+              ],
+              "firewalls": [
+                {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall"
+                }
+              ],
+              "firewallPolicies": []
+            },
+            "etag": "w/\\00000000-0000-0000-0000-000000000000\\"
+          }
+        ]
+      }
+    }
+  }
+}
+

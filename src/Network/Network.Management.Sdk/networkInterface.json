@@ -1,0 +1,1629 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}": {
+      "delete": {
+        "tags": [
+          "NetworkInterfaces"
+        ],
+        "operationId": "NetworkInterfaces_Delete",
+        "description": "Deletes the specified network interface.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkInterfaceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network interface."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete network interface": {
+            "$ref": "./examples/NetworkInterfaceDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "NetworkInterfaces"
+        ],
+        "operationId": "NetworkInterfaces_Get",
+        "description": "Gets information about the specified network interface.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkInterfaceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network interface."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expands referenced resources."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting NetworkInterface resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkInterface"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get network interface": {
+            "$ref": "./examples/NetworkInterfaceGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NetworkInterfaces"
+        ],
+        "operationId": "NetworkInterfaces_CreateOrUpdate",
+        "description": "Creates or updates a network interface.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkInterfaceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network interface."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NetworkInterface"
+            },
+            "description": "Parameters supplied to the create or update network interface operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create successful. The operation returns the resulting NetworkInterface resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkInterface"
+            }
+          },
+          "200": {
+            "description": "Update successful. The operation returns the resulting NetworkInterface resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkInterface"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create network interface": {
+            "$ref": "./examples/NetworkInterfaceCreate.json"
+          },
+          "Create network interface with Gateway Load Balancer Consumer configured": {
+            "$ref": "./examples/NetworkInterfaceCreateGatewayLoadBalancerConsumer.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "patch": {
+        "tags": [
+          "NetworkInterfaces"
+        ],
+        "operationId": "NetworkInterfaces_UpdateTags",
+        "description": "Updates a network interface tags.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkInterfaceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network interface."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update network interface tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting NetworkInterface resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkInterface"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update network interface tags": {
+            "$ref": "./examples/NetworkInterfaceUpdateTags.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkInterfaces": {
+      "get": {
+        "tags": [
+          "NetworkInterfaces"
+        ],
+        "operationId": "NetworkInterfaces_ListAll",
+        "description": "Gets all network interfaces in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of NetworkInterface resources.",
+            "schema": {
+              "$ref": "#/definitions/NetworkInterfaceListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all network interfaces": {
+            "$ref": "./examples/NetworkInterfaceListAll.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces": {
+      "get": {
+        "tags": [
+          "NetworkInterfaces"
+        ],
+        "operationId": "NetworkInterfaces_List",
+        "description": "Gets all network interfaces in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of NetworkInterface resources.",
+            "schema": {
+              "$ref": "#/definitions/NetworkInterfaceListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List network interfaces in resource group": {
+            "$ref": "./examples/NetworkInterfaceList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveRouteTable": {
+      "post": {
+        "tags": [
+          "NetworkInterfaces"
+        ],
+        "operationId": "NetworkInterfaces_GetEffectiveRouteTable",
+        "description": "Gets all route tables applied to a network interface.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkInterfaceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network interface."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of EffectRoute resources.",
+            "schema": {
+              "$ref": "#/definitions/EffectiveRouteListResult"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Show network interface effective route tables": {
+            "$ref": "./examples/NetworkInterfaceEffectiveRouteTableList.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveNetworkSecurityGroups": {
+      "post": {
+        "tags": [
+          "NetworkInterfaces"
+        ],
+        "operationId": "NetworkInterfaces_ListEffectiveNetworkSecurityGroups",
+        "description": "Gets all network security groups applied to a network interface.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkInterfaceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network interface."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of NetworkSecurityGroup resources.",
+            "schema": {
+              "$ref": "#/definitions/EffectiveNetworkSecurityGroupListResult"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List network interface effective network security groups": {
+            "$ref": "./examples/NetworkInterfaceEffectiveNSGList.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/ipConfigurations": {
+      "get": {
+        "tags": [
+          "NetworkInterfaces"
+        ],
+        "operationId": "NetworkInterfaceIPConfigurations_List",
+        "description": "Get all ip configurations in a network interface.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkInterfaceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network interface."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of NetworkInterface IPConfiguration resources.",
+            "schema": {
+              "$ref": "#/definitions/NetworkInterfaceIPConfigurationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "NetworkInterfaceIPConfigurationList": {
+            "$ref": "./examples/NetworkInterfaceIPConfigurationList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}": {
+      "get": {
+        "tags": [
+          "NetworkInterfaces"
+        ],
+        "operationId": "NetworkInterfaceIPConfigurations_Get",
+        "description": "Gets the specified network interface ip configuration.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkInterfaceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network interface."
+          },
+          {
+            "name": "ipConfigurationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the ip configuration name."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting NetworkInterface IPConfiguration resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkInterfaceIPConfiguration"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "NetworkInterfaceIPConfigurationGet": {
+            "$ref": "./examples/NetworkInterfaceIPConfigurationGet.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/loadBalancers": {
+      "get": {
+        "tags": [
+          "NetworkInterfaces"
+        ],
+        "operationId": "NetworkInterfaceLoadBalancers_List",
+        "description": "List all load balancers in a network interface.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkInterfaceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network interface."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of NetworkInterface LoadBalancer resources.",
+            "schema": {
+              "$ref": "#/definitions/NetworkInterfaceLoadBalancerListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "NetworkInterfaceLoadBalancerList": {
+            "$ref": "./examples/NetworkInterfaceLoadBalancerList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}": {
+      "delete": {
+        "tags": [
+          "Network Interfaces"
+        ],
+        "operationId": "NetworkInterfaceTapConfigurations_Delete",
+        "description": "Deletes the specified tap configuration from the NetworkInterface.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkInterfaceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network interface."
+          },
+          {
+            "name": "tapConfigurationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the tap configuration."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete tap configuration": {
+            "$ref": "./examples/NetworkInterfaceTapConfigurationDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "NetworkInterfaces"
+        ],
+        "operationId": "NetworkInterfaceTapConfigurations_Get",
+        "description": "Get the specified tap configuration on a network interface.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkInterfaceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network interface."
+          },
+          {
+            "name": "tapConfigurationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the tap configuration."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a tap configuration.",
+            "schema": {
+              "$ref": "#/definitions/NetworkInterfaceTapConfiguration"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Network Interface Tap Configurations": {
+            "$ref": "./examples/NetworkInterfaceTapConfigurationGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Network Interfaces"
+        ],
+        "operationId": "NetworkInterfaceTapConfigurations_CreateOrUpdate",
+        "description": "Creates or updates a Tap configuration in the specified NetworkInterface.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkInterfaceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network interface."
+          },
+          {
+            "name": "tapConfigurationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the tap configuration."
+          },
+          {
+            "name": "tapConfigurationParameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NetworkInterfaceTapConfiguration"
+            },
+            "description": "Parameters supplied to the create or update tap configuration operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting Tap Configuration resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkInterfaceTapConfiguration"
+            }
+          },
+          "201": {
+            "description": "Create successful. The operation returns the resulting Tap configuration resource.",
+            "schema": {
+              "$ref": "#/definitions/NetworkInterfaceTapConfiguration"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create Network Interface Tap Configurations": {
+            "$ref": "./examples/NetworkInterfaceTapConfigurationCreate.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations": {
+      "get": {
+        "tags": [
+          "NetworkInterfaces"
+        ],
+        "operationId": "NetworkInterfaceTapConfigurations_List",
+        "description": "Get all Tap configurations in a network interface.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "networkInterfaceName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the network interface."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of NetworkInterface TapConfiguration resources.",
+            "schema": {
+              "$ref": "#/definitions/NetworkInterfaceTapConfigurationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List virtual network tap configurations": {
+            "$ref": "./examples/NetworkInterfaceTapConfigurationList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "NetworkInterfaceTapConfiguration": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/NetworkInterfaceTapConfigurationPropertiesFormat",
+          "description": "Properties of the Virtual Network Tap configuration."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the resource that is unique within a resource group. This name can be used to access the resource."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "type": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Sub Resource type."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ],
+      "description": "Tap configuration in a Network Interface."
+    },
+    "NetworkInterfaceTapConfigurationPropertiesFormat": {
+      "properties": {
+        "virtualNetworkTap": {
+          "$ref": "./virtualNetworkTap.json#/definitions/VirtualNetworkTap",
+          "description": "The reference to the Virtual Network Tap resource."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the network interface tap configuration resource."
+        }
+      },
+      "description": "Properties of Virtual Network Tap configuration."
+    },
+    "NetworkInterfaceIPConfigurationPropertiesFormat": {
+      "properties": {
+        "gatewayLoadBalancer": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The reference to gateway load balancer frontend IP."
+        },
+        "virtualNetworkTaps": {
+          "type": "array",
+          "items": {
+            "$ref": "./virtualNetworkTap.json#/definitions/VirtualNetworkTap"
+          },
+          "description": "The reference to Virtual Network Taps."
+        },
+        "applicationGatewayBackendAddressPools": {
+          "type": "array",
+          "items": {
+            "$ref": "./applicationGateway.json#/definitions/ApplicationGatewayBackendAddressPool"
+          },
+          "description": "The reference to ApplicationGatewayBackendAddressPool resource."
+        },
+        "loadBalancerBackendAddressPools": {
+          "type": "array",
+          "items": {
+            "$ref": "./loadBalancer.json#/definitions/BackendAddressPool"
+          },
+          "description": "The reference to LoadBalancerBackendAddressPool resource."
+        },
+        "loadBalancerInboundNatRules": {
+          "type": "array",
+          "items": {
+            "$ref": "./loadBalancer.json#/definitions/InboundNatRule"
+          },
+          "description": "A list of references of LoadBalancerInboundNatRules."
+        },
+        "privateIPAddress": {
+          "type": "string",
+          "description": "Private IP address of the IP configuration. It can be a single IP address or a CIDR block in the format <address>/<prefix-length>."
+        },
+        "privateIPAddressPrefixLength": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 128,
+          "x-nullable": true,
+          "description": "The private IP address prefix length. If specified and the allocation method is dynamic, the service will allocate a CIDR block instead of a single IP address."
+        },
+        "privateIPAllocationMethod": {
+          "$ref": "./network.json#/definitions/IPAllocationMethod",
+          "description": "The private IP address allocation method."
+        },
+        "privateIPAddressVersion": {
+          "$ref": "./network.json#/definitions/IPVersion",
+          "description": "Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4."
+        },
+        "subnet": {
+          "$ref": "./virtualNetwork.json#/definitions/Subnet",
+          "description": "Subnet bound to the IP configuration."
+        },
+        "primary": {
+          "type": "boolean",
+          "description": "Whether this is a primary customer address on the network interface."
+        },
+        "publicIPAddress": {
+          "$ref": "./publicIpAddress.json#/definitions/PublicIPAddress",
+          "description": "Public IP address bound to the IP configuration."
+        },
+        "applicationSecurityGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "./applicationSecurityGroup.json#/definitions/ApplicationSecurityGroup"
+          },
+          "description": "Application security groups in which the IP configuration is included."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the network interface IP configuration."
+        },
+        "privateLinkConnectionProperties": {
+          "$ref": "#/definitions/NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties",
+          "description": "PrivateLinkConnection properties for the network interface.",
+          "readOnly": true
+        }
+      },
+      "description": "Properties of IP configuration."
+    },
+    "NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties": {
+      "properties": {
+        "groupId": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The group ID for current private link connection."
+        },
+        "requiredMemberName": {
+          "type": "string",
+          "readOnly": true,
+          "description": "The required member name for current private link connection."
+        },
+        "fqdns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true,
+          "description": "List of FQDNs for current private link connection."
+        }
+      },
+      "description": "PrivateLinkConnection properties for the network interface."
+    },
+    "NetworkInterfaceIPConfiguration": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/NetworkInterfaceIPConfigurationPropertiesFormat",
+          "description": "Network interface IP configuration properties."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the resource that is unique within a resource group. This name can be used to access the resource."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "type": {
+          "type": "string",
+          "description": "Resource type."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ],
+      "description": "IPConfiguration in a network interface."
+    },
+    "NetworkInterfaceDnsSettings": {
+      "properties": {
+        "dnsServers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection."
+        },
+        "appliedDnsServers": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "If the VM that uses this NIC is part of an Availability Set, then this list will have the union of all DNS servers from all NICs that are part of the Availability Set. This property is what is configured on each of those VMs."
+        },
+        "internalDnsNameLabel": {
+          "type": "string",
+          "description": "Relative DNS name for this NIC used for internal communications between VMs in the same virtual network."
+        },
+        "internalFqdn": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Fully qualified DNS name supporting internal communications between VMs in the same virtual network."
+        },
+        "internalDomainNameSuffix": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Even if internalDnsNameLabel is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of internalDomainNameSuffix."
+        }
+      },
+      "description": "DNS settings of a network interface."
+    },
+    "NetworkInterfacePropertiesFormat": {
+      "properties": {
+        "virtualMachine": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The reference to a virtual machine.",
+          "readOnly": true
+        },
+        "networkSecurityGroup": {
+          "$ref": "./networkSecurityGroup.json#/definitions/NetworkSecurityGroup",
+          "description": "The reference to the NetworkSecurityGroup resource."
+        },
+        "privateEndpoint": {
+          "readOnly": true,
+          "$ref": "./privateEndpoint.json#/definitions/PrivateEndpoint",
+          "description": "A reference to the private endpoint to which the network interface is linked."
+        },
+        "ipConfigurations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkInterfaceIPConfiguration"
+          },
+          "description": "A list of IPConfigurations of the network interface."
+        },
+        "tapConfigurations": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkInterfaceTapConfiguration"
+          },
+          "description": "A list of TapConfigurations of the network interface."
+        },
+        "dnsSettings": {
+          "$ref": "#/definitions/NetworkInterfaceDnsSettings",
+          "description": "The DNS settings in network interface."
+        },
+        "macAddress": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The MAC address of the network interface."
+        },
+        "primary": {
+          "readOnly": true,
+          "type": "boolean",
+          "description": "Whether this is a primary network interface on a virtual machine."
+        },
+        "vnetEncryptionSupported": {
+          "readOnly": true,
+          "type": "boolean",
+          "description": "Whether the virtual machine this nic is attached to supports encryption."
+        },
+        "enableAcceleratedNetworking": {
+          "type": "boolean",
+          "description": "If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking."
+        },
+        "disableTcpStateTracking": {
+          "type": "boolean",
+          "description": "Indicates whether to disable tcp state tracking."
+        },
+        "enableIPForwarding": {
+          "type": "boolean",
+          "description": "Indicates whether IP forwarding is enabled on this network interface."
+        },
+        "hostedWorkloads": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "readOnly": true,
+          "description": "A list of references to linked BareMetal resources."
+        },
+        "dscpConfiguration": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "A reference to the dscp configuration to which the network interface is linked.",
+          "readOnly": true
+        },
+        "resourceGuid": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The resource GUID property of the network interface resource."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the network interface resource."
+        },
+        "workloadType": {
+          "type": "string",
+          "description": "WorkloadType of the NetworkInterface for BareMetal resources"
+        },
+        "nicType": {
+          "type": "string",
+          "description": "Type of Network Interface resource.",
+          "enum": [
+            "Standard",
+            "Elastic"
+          ],
+          "x-ms-enum": {
+            "name": "NetworkInterfaceNicType",
+            "modelAsString": true
+          }
+        },
+        "privateLinkService": {
+          "$ref": "./privateLinkService.json#/definitions/PrivateLinkService",
+          "description": "Privatelinkservice of the network interface resource."
+        },
+        "migrationPhase": {
+          "type": "string",
+          "description": "Migration phase of Network Interface resource.",
+          "enum": [
+            "None",
+            "Prepare",
+            "Commit",
+            "Abort",
+            "Committed"
+          ],
+          "x-ms-enum": {
+            "name": "NetworkInterfaceMigrationPhase",
+            "modelAsString": true
+          }
+        },
+        "auxiliaryMode": {
+          "type": "string",
+          "description": "Auxiliary mode of Network Interface resource.",
+          "enum": [
+            "None",
+            "MaxConnections",
+            "Floating",
+            "AcceleratedConnections"
+          ],
+          "x-ms-enum": {
+            "name": "NetworkInterfaceAuxiliaryMode",
+            "modelAsString": true
+          }
+        },
+        "auxiliarySku": {
+          "type": "string",
+          "description": "Auxiliary sku of Network Interface resource.",
+          "enum": [
+            "None",
+            "A1",
+            "A2",
+            "A4",
+            "A8"
+          ],
+          "x-ms-enum": {
+            "name": "NetworkInterfaceAuxiliarySku",
+            "modelAsString": true
+          }
+        }
+      },
+      "description": "NetworkInterface properties."
+    },
+    "NetworkInterface": {
+      "properties": {
+        "extendedLocation": {
+          "$ref": "./network.json#/definitions/ExtendedLocation",
+          "description": "The extended location of the network interface."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/NetworkInterfacePropertiesFormat",
+          "description": "Properties of the network interface."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "A network interface in a resource group."
+    },
+    "NetworkInterfaceListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkInterface"
+          },
+          "description": "A list of network interfaces in a resource group."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for the ListNetworkInterface API service call."
+    },
+    "NetworkInterfaceTapConfigurationListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkInterfaceTapConfiguration"
+          },
+          "description": "A list of tap configurations."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for list tap configurations API service call."
+    },
+    "NetworkInterfaceIPConfigurationListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkInterfaceIPConfiguration"
+          },
+          "description": "A list of ip configurations."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for list ip configurations API service call."
+    },
+    "NetworkInterfaceLoadBalancerListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "./loadBalancer.json#/definitions/LoadBalancer"
+          },
+          "description": "A list of load balancers."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for list ip configurations API service call."
+    },
+    "EffectiveNetworkSecurityGroup": {
+      "properties": {
+        "networkSecurityGroup": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The ID of network security group that is applied."
+        },
+        "association": {
+          "$ref": "#/definitions/EffectiveNetworkSecurityGroupAssociation",
+          "description": "Associated resources."
+        },
+        "effectiveSecurityRules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EffectiveNetworkSecurityRule"
+          },
+          "description": "A collection of effective security rules."
+        },
+        "tagMap": {
+          "type": "string",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of IP Addresses within the tag (key)."
+          },
+          "description": "Mapping of tags to list of IP Addresses included within the tag."
+        }
+      },
+      "description": "Effective network security group."
+    },
+    "EffectiveNetworkSecurityGroupAssociation": {
+      "properties": {
+        "networkManager": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The ID of the Azure network manager if assigned."
+        },
+        "subnet": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The ID of the subnet if assigned."
+        },
+        "networkInterface": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The ID of the network interface if assigned."
+        }
+      },
+      "description": "The effective network security group association."
+    },
+    "EffectiveNetworkSecurityRule": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the security rule specified by the user (if created by the user)."
+        },
+        "protocol": {
+          "type": "string",
+          "description": "The network protocol this rule applies to.",
+          "enum": [
+            "Tcp",
+            "Udp",
+            "All"
+          ],
+          "x-ms-enum": {
+            "name": "EffectiveSecurityRuleProtocol",
+            "modelAsString": true
+          }
+        },
+        "sourcePortRange": {
+          "type": "string",
+          "description": "The source port or range."
+        },
+        "destinationPortRange": {
+          "type": "string",
+          "description": "The destination port or range."
+        },
+        "sourcePortRanges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The source port ranges. Expected values include a single integer between 0 and 65535, a range using '-' as separator (e.g. 100-400), or an asterisk (*)."
+        },
+        "destinationPortRanges": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The destination port ranges. Expected values include a single integer between 0 and 65535, a range using '-' as separator (e.g. 100-400), or an asterisk (*)."
+        },
+        "sourceAddressPrefix": {
+          "type": "string",
+          "description": "The source address prefix."
+        },
+        "destinationAddressPrefix": {
+          "type": "string",
+          "description": "The destination address prefix."
+        },
+        "sourceAddressPrefixes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The source address prefixes. Expected values include CIDR IP ranges, Default Tags (VirtualNetwork, AzureLoadBalancer, Internet), System Tags, and the asterisk (*)."
+        },
+        "destinationAddressPrefixes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The destination address prefixes. Expected values include CIDR IP ranges, Default Tags (VirtualNetwork, AzureLoadBalancer, Internet), System Tags, and the asterisk (*)."
+        },
+        "expandedSourceAddressPrefix": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The expanded source address prefix."
+        },
+        "expandedDestinationAddressPrefix": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Expanded destination address prefix."
+        },
+        "access": {
+          "$ref": "./networkSecurityGroup.json#/definitions/SecurityRuleAccess",
+          "description": "Whether network traffic is allowed or denied."
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The priority of the rule."
+        },
+        "direction": {
+          "$ref": "./networkSecurityGroup.json#/definitions/SecurityRuleDirection",
+          "description": "The direction of the rule."
+        }
+      },
+      "description": "Effective network security rules."
+    },
+    "EffectiveNetworkSecurityGroupListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EffectiveNetworkSecurityGroup"
+          },
+          "description": "A list of effective network security groups."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for list effective network security groups API service call."
+    },
+    "EffectiveRoute": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the user defined route. This is optional."
+        },
+        "disableBgpRoutePropagation": {
+          "type": "boolean",
+          "description": "If true, on-premises routes are not propagated to the network interfaces in the subnet."
+        },
+        "source": {
+          "type": "string",
+          "description": "Who created the route.",
+          "enum": [
+            "Unknown",
+            "User",
+            "VirtualNetworkGateway",
+            "Default"
+          ],
+          "x-ms-enum": {
+            "name": "EffectiveRouteSource",
+            "modelAsString": true
+          }
+        },
+        "state": {
+          "type": "string",
+          "description": "The value of effective route.",
+          "enum": [
+            "Active",
+            "Invalid"
+          ],
+          "x-ms-enum": {
+            "name": "EffectiveRouteState",
+            "modelAsString": true
+          }
+        },
+        "addressPrefix": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The address prefixes of the effective routes in CIDR notation."
+        },
+        "nextHopIpAddress": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The IP address of the next hop of the effective route."
+        },
+        "nextHopType": {
+          "$ref": "./routeTable.json#/definitions/RouteNextHopType",
+          "description": "The type of Azure hop the packet should be sent to."
+        }
+      },
+      "description": "Effective Route."
+    },
+    "EffectiveRouteListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EffectiveRoute"
+          },
+          "description": "A list of effective routes."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for list effective route API service call."
+    },
+    "IPConfigurationPropertiesFormat": {
+      "properties": {
+        "privateIPAddress": {
+          "type": "string",
+          "description": "The private IP address of the IP configuration."
+        },
+        "privateIPAllocationMethod": {
+          "$ref": "./network.json#/definitions/IPAllocationMethod",
+          "description": "The private IP address allocation method.",
+          "default": "Dynamic"
+        },
+        "subnet": {
+          "$ref": "./virtualNetwork.json#/definitions/Subnet",
+          "description": "The reference to the subnet resource."
+        },
+        "publicIPAddress": {
+          "$ref": "./publicIpAddress.json#/definitions/PublicIPAddress",
+          "description": "The reference to the public IP resource."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the IP configuration resource."
+        }
+      },
+      "description": "Properties of IP configuration."
+    },
+    "IPConfiguration": {
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/IPConfigurationPropertiesFormat",
+          "description": "Properties of the IP configuration."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the resource that is unique within a resource group. This name can be used to access the resource."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/SubResource"
+        }
+      ],
+      "description": "IP configuration."
+    }
+  }
+}
+

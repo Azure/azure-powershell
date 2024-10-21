@@ -1,0 +1,713 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "NetworkManagementClient",
+    "description": "The Microsoft Azure Network management API provides a RESTful set of web services that interact with Microsoft Azure Networks service to manage your network resources. The API has entities that capture the relationship between an end user and the Microsoft Azure Networks service.",
+    "version": "2024-05-01"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}": {
+      "delete": {
+        "tags": [
+          "PublicIPAddresses"
+        ],
+        "operationId": "PublicIPAddresses_Delete",
+        "description": "Deletes the specified public IP address.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "publicIpAddressName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the public IP address."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Request successful. Resource does not exist."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            }
+          },
+          "200": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Delete public IP address": {
+            "$ref": "./examples/PublicIpAddressDelete.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        }
+      },
+      "get": {
+        "tags": [
+          "PublicIPAddresses"
+        ],
+        "operationId": "PublicIPAddresses_Get",
+        "description": "Gets the specified public IP address in a specified resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "publicIpAddressName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the public IP address."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "Expands referenced resources."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the resulting PublicIPAddress resource.",
+            "schema": {
+              "$ref": "#/definitions/PublicIPAddress"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get public IP address": {
+            "$ref": "./examples/PublicIpAddressGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "PublicIPAddresses"
+        ],
+        "operationId": "PublicIPAddresses_CreateOrUpdate",
+        "description": "Creates or updates a static or dynamic public IP address.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "publicIpAddressName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the public IP address."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PublicIPAddress"
+            },
+            "description": "Parameters supplied to the create or update public IP address operation."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Create successful. The operation returns the resulting PublicIPAddress resource.",
+            "schema": {
+              "$ref": "#/definitions/PublicIPAddress"
+            }
+          },
+          "200": {
+            "description": "Update successful. The operation returns the resulting PublicIPAddress resource.",
+            "schema": {
+              "$ref": "#/definitions/PublicIPAddress"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Create public IP address defaults": {
+            "$ref": "./examples/PublicIpAddressCreateDefaults.json"
+          },
+          "Create public IP address allocation method": {
+            "$ref": "./examples/PublicIpAddressCreateCustomizedValues.json"
+          },
+          "Create public IP address DNS": {
+            "$ref": "./examples/PublicIpAddressCreateDns.json"
+          },
+          "Create public IP address DNS with Domain Name Label Scope": {
+            "$ref": "./examples/PublicIpAddressCreateDnsWithDomainNameLabelScope.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        }
+      },
+      "patch": {
+        "tags": [
+          "PublicIPAddresses"
+        ],
+        "operationId": "PublicIPAddresses_UpdateTags",
+        "description": "Updates public IP address tags.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "publicIpAddressName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the public IP address."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./network.json#/definitions/TagsObject"
+            },
+            "description": "Parameters supplied to update public IP address tags."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful. The operation returns the resulting PublicIPAddress resource.",
+            "schema": {
+              "$ref": "#/definitions/PublicIPAddress"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Update public IP address tags": {
+            "$ref": "./examples/PublicIpAddressUpdateTags.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network/publicIPAddresses": {
+      "get": {
+        "tags": [
+          "PublicIPAddresses"
+        ],
+        "operationId": "PublicIPAddresses_ListAll",
+        "description": "Gets all the public IP addresses in a subscription.",
+        "parameters": [
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of PublicIPAddress resources.",
+            "schema": {
+              "$ref": "#/definitions/PublicIPAddressListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List all public IP addresses": {
+            "$ref": "./examples/PublicIpAddressListAll.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses": {
+      "get": {
+        "tags": [
+          "PublicIPAddresses"
+        ],
+        "operationId": "PublicIPAddresses_List",
+        "description": "Gets all public IP addresses in a resource group.",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns a list of PublicIPAddress resources.",
+            "schema": {
+              "$ref": "#/definitions/PublicIPAddressListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "List resource group public IP addresses": {
+            "$ref": "./examples/PublicIpAddressList.json"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}/ddosProtectionStatus": {
+      "post": {
+        "tags": [
+          "PublicIPAddresses"
+        ],
+        "operationId": "PublicIPAddresses_DdosProtectionStatus",
+        "description": "Gets the Ddos Protection Status of a Public IP Address",
+        "parameters": [
+          {
+            "name": "resourceGroupName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the resource group."
+          },
+          {
+            "name": "publicIpAddressName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the public IP address."
+          },
+          {
+            "$ref": "./network.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./network.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Request successful. The operation returns the Ddos Protection Status of this Public IP.",
+            "schema": {
+              "$ref": "#/definitions/PublicIpDdosProtectionStatusResult"
+            }
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously.",
+            "headers": {
+              "Location": {
+                "description": "The URL of the resource used to check the status of the asynchronous operation.",
+                "type": "string"
+              }
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./network.json#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location"
+        },
+        "x-ms-examples": {
+          "Get Ddos Protection Status of a Public IP Address": {
+            "$ref": "./examples/PublicIpAddressGetDdosProtectionStatus.json"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PublicIPAddressSku": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of a public IP address SKU.",
+          "enum": [
+            "Basic",
+            "Standard"
+          ],
+          "x-ms-enum": {
+            "name": "PublicIPAddressSkuName",
+            "modelAsString": true
+          }
+        },
+        "tier": {
+          "type": "string",
+          "description": "Tier of a public IP address SKU.",
+          "enum": [
+            "Regional",
+            "Global"
+          ],
+          "x-ms-enum": {
+            "name": "PublicIPAddressSkuTier",
+            "modelAsString": true
+          }
+        }
+      },
+      "description": "SKU of a public IP address."
+    },
+    "PublicIPAddressPropertiesFormat": {
+      "properties": {
+        "publicIPAllocationMethod": {
+          "$ref": "./network.json#/definitions/IPAllocationMethod",
+          "description": "The public IP address allocation method."
+        },
+        "publicIPAddressVersion": {
+          "$ref": "./network.json#/definitions/IPVersion",
+          "description": "The public IP address version."
+        },
+        "ipConfiguration": {
+          "readOnly": true,
+          "$ref": "./networkInterface.json#/definitions/IPConfiguration",
+          "description": "The IP configuration associated with the public IP address."
+        },
+        "dnsSettings": {
+          "$ref": "#/definitions/PublicIPAddressDnsSettings",
+          "description": "The FQDN of the DNS record associated with the public IP address."
+        },
+        "ddosSettings": {
+          "$ref": "#/definitions/DdosSettings",
+          "description": "The DDoS protection custom policy associated with the public IP address."
+        },
+        "ipTags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IpTag"
+          },
+          "description": "The list of tags associated with the public IP address."
+        },
+        "ipAddress": {
+          "type": "string",
+          "description": "The IP address associated with the public IP address resource."
+        },
+        "publicIPPrefix": {
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The Public IP Prefix this Public IP Address should be allocated from."
+        },
+        "idleTimeoutInMinutes": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The idle timeout of the public IP address."
+        },
+        "resourceGuid": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The resource GUID property of the public IP address resource."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "$ref": "./network.json#/definitions/ProvisioningState",
+          "description": "The provisioning state of the public IP address resource."
+        },
+        "servicePublicIPAddress": {
+          "$ref": "#/definitions/PublicIPAddress",
+          "description": "The service public IP address of the public IP address resource."
+        },
+        "natGateway": {
+          "$ref": "./natGateway.json#/definitions/NatGateway",
+          "description": "The NatGateway for the Public IP address."
+        },
+        "migrationPhase": {
+          "type": "string",
+          "description": "Migration phase of Public IP Address.",
+          "enum": [
+            "None",
+            "Prepare",
+            "Commit",
+            "Abort",
+            "Committed"
+          ],
+          "x-ms-enum": {
+            "name": "PublicIPAddressMigrationPhase",
+            "modelAsString": true
+          }
+        },
+        "linkedPublicIPAddress": {
+          "$ref": "#/definitions/PublicIPAddress",
+          "description": "The linked public IP address of the public IP address resource."
+        },
+        "deleteOption": {
+          "type": "string",
+          "description": "Specify what happens to the public IP address when the VM using it is deleted",
+          "enum": [
+            "Delete",
+            "Detach"
+          ],
+          "x-ms-enum": {
+            "name": "DeleteOptions",
+            "modelAsString": true
+          }
+        }
+      },
+      "description": "Public IP address properties."
+    },
+    "PublicIPAddress": {
+      "properties": {
+        "extendedLocation": {
+          "$ref": "./network.json#/definitions/ExtendedLocation",
+          "description": "The extended location of the public ip address."
+        },
+        "sku": {
+          "$ref": "#/definitions/PublicIPAddressSku",
+          "description": "The public IP address SKU."
+        },
+        "properties": {
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PublicIPAddressPropertiesFormat",
+          "description": "Public IP address properties."
+        },
+        "etag": {
+          "readOnly": true,
+          "type": "string",
+          "description": "A unique read-only string that changes whenever the resource is updated."
+        },
+        "zones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of availability zones denoting the IP allocated for the resource needs to come from."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "./network.json#/definitions/Resource"
+        }
+      ],
+      "description": "Public IP address resource."
+    },
+    "PublicIPAddressListResult": {
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicIPAddress"
+          },
+          "description": "A list of public IP addresses that exists in a resource group."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of results."
+        }
+      },
+      "description": "Response for ListPublicIpAddresses API service call."
+    },
+    "PublicIPAddressDnsSettings": {
+      "properties": {
+        "domainNameLabel": {
+          "type": "string",
+          "description": "The domain name label. The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system."
+        },
+        "domainNameLabelScope": {
+          "type": "string",
+          "description": "The domain name label scope. If a domain name label and a domain name label scope are specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system with a hashed value includes in FQDN.",
+          "enum": [
+            "TenantReuse",
+            "SubscriptionReuse",
+            "ResourceGroupReuse",
+            "NoReuse"
+          ],
+          "x-ms-enum": {
+            "name": "PublicIpAddressDnsSettingsDomainNameLabelScope",
+            "modelAsString": false
+          }
+        },
+        "fqdn": {
+          "type": "string",
+          "description": "The Fully Qualified Domain Name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone."
+        },
+        "reverseFqdn": {
+          "type": "string",
+          "description": "The reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN."
+        }
+      },
+      "description": "Contains FQDN of the DNS record associated with the public IP address."
+    },
+    "DdosSettings": {
+      "properties": {
+        "protectionMode": {
+          "readOnly": false,
+          "type": "string",
+          "enum": [
+            "VirtualNetworkInherited",
+            "Enabled",
+            "Disabled"
+          ],
+          "x-ms-enum": {
+            "name": "DdosSettingsProtectionMode",
+            "modelAsString": true
+          },
+          "description": "The DDoS protection mode of the public IP"
+        },
+        "ddosProtectionPlan": {
+          "readOnly": false,
+          "$ref": "./network.json#/definitions/SubResource",
+          "description": "The DDoS protection plan associated with the public IP. Can only be set if ProtectionMode is Enabled"
+        }
+      },
+      "description": "Contains the DDoS protection settings of the public IP."
+    },
+    "IpTag": {
+      "properties": {
+        "ipTagType": {
+          "type": "string",
+          "description": "The IP tag type. Example: FirstPartyUsage."
+        },
+        "tag": {
+          "type": "string",
+          "description": "The value of the IP tag associated with the public IP. Example: SQL."
+        }
+      },
+      "description": "Contains the IpTag associated with the object."
+    },
+    "PublicIpDdosProtectionStatusResult": {
+      "type": "object",
+      "properties": {
+        "publicIpAddressId": {
+          "type": "string",
+          "description": "Public IP ARM resource ID"
+        },
+        "publicIpAddress": {
+          "type": "string",
+          "description": "IP Address of the Public IP Resource"
+        },
+        "isWorkloadProtected": {
+          "type": "string",
+          "enum": [
+            "False",
+            "True"
+          ],
+          "x-ms-enum": {
+            "name": "IsWorkloadProtected",
+            "modelAsString": true
+          },
+          "description": "Value indicating whether the IP address is DDoS workload protected or not."
+        },
+        "ddosProtectionPlanId": {
+          "type": "string",
+          "description": " DDoS protection plan Resource Id of a if IP address is protected through a plan."
+        }
+      },
+      "description": "Response for GetPublicIpAddressDdosProtectionStatusOperation API service call."
+    }
+  }
+}
+

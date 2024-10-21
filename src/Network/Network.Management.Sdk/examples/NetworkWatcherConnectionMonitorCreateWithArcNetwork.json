@@ -1,0 +1,216 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1",
+    "connectionMonitorName": "cm1",
+    "location": "centraluseuap",
+    "parameters": {
+      "properties": {
+        "endpoints": [
+          {
+            "name": "vm1",
+            "resourceId": "/subscriptions/9cece3e3-0f7d-47ca-af0e-9772773f90b7/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/TESTVM",
+            "type": "AzureVM"
+          },
+          {
+            "name": "bing",
+            "address": "bing.com",
+            "type": "ExternalAddress"
+          },
+          {
+            "name": "google",
+            "address": "google.com",
+            "type": "ExternalAddress"
+          },
+          {
+            "name": "ArcBasedNetwork",
+            "type": "AzureArcNetwork",
+            "subscriptionId": "9cece3e3-0f7d-47ca-af0e-9772773f90b7",
+            "locationDetails": {
+              "region": "eastus"
+            },
+            "scope": {
+              "include": [
+                {
+                  "address": "172.21.128.0/20"
+                }
+              ]
+            }
+          }
+        ],
+        "testConfigurations": [
+          {
+            "name": "testConfig1",
+            "testFrequencySec": 60,
+            "protocol": "Tcp",
+            "tcpConfiguration": {
+              "port": 80,
+              "disableTraceRoute": false
+            }
+          }
+        ],
+        "testGroups": [
+          {
+            "name": "test1",
+            "disable": false,
+            "testConfigurations": [
+              "testConfig1"
+            ],
+            "sources": [
+              "vm1",
+              "ArcBasedNetwork"
+            ],
+            "destinations": [
+              "bing",
+              "google"
+            ]
+          }
+        ],
+        "outputs": []
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "cm1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/connectionMonitors/cm1",
+        "etag": "W/\"e7497f26-5f09-4559-900b-fe98f3dedb6f\"",
+        "properties": {
+          "endpoints": [
+            {
+              "name": "vm1",
+              "resourceId": "/subscriptions/9cece3e3-0f7d-47ca-af0e-9772773f90b7/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/TESTVM"
+            },
+            {
+              "name": "ArcBasedNetwork",
+              "type": "AzureArcNetwork",
+              "subscriptionId": "9cece3e3-0f7d-47ca-af0e-9772773f90b7",
+              "locationDetails": {
+                "region": "eastus"
+              },
+              "scope": {
+                "include": [
+                  {
+                    "address": "172.21.128.0/20"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "bing",
+              "address": "bing.com"
+            },
+            {
+              "name": "google",
+              "address": "google.com"
+            }
+          ],
+          "testConfigurations": [
+            {
+              "name": "testConfig1",
+              "testFrequencySec": 60,
+              "protocol": "Tcp",
+              "tcpConfiguration": {
+                "port": 80,
+                "disableTraceRoute": false
+              }
+            }
+          ],
+          "testGroups": [
+            {
+              "name": "test1",
+              "disable": false,
+              "testConfigurations": [
+                "testConfig1"
+              ],
+              "sources": [
+                "vm1",
+                "ArcBasedNetwork"
+              ],
+              "destinations": [
+                "bing",
+                "google"
+              ]
+            }
+          ],
+          "outputs": []
+        },
+        "location": "centraluseuap",
+        "type": "Microsoft.Network/networkWatchers/connectionMonitors"
+      }
+    },
+    "201": {
+      "body": {
+        "name": "cm1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/connectionMonitors/cm1",
+        "etag": "W/\"e7497f26-5f09-4559-900b-fe98f3dedb6f\"",
+        "properties": {
+          "endpoints": [
+            {
+              "name": "vm1",
+              "resourceId": "/subscriptions/9cece3e3-0f7d-47ca-af0e-9772773f90b7/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/TESTVM"
+            },
+            {
+              "name": "ArcBasedNetwork",
+              "type": "AzureArcNetwork",
+              "subscriptionId": "9cece3e3-0f7d-47ca-af0e-9772773f90b7",
+              "locationDetails": {
+                "region": "eastus"
+              },
+              "scope": {
+                "include": [
+                  {
+                    "address": "172.21.128.0/20"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "bing",
+              "address": "bing.com"
+            },
+            {
+              "name": "google",
+              "address": "google.com"
+            }
+          ],
+          "testConfigurations": [
+            {
+              "name": "testConfig1",
+              "testFrequencySec": 60,
+              "protocol": "Tcp",
+              "tcpConfiguration": {
+                "port": 80,
+                "disableTraceRoute": false
+              }
+            }
+          ],
+          "testGroups": [
+            {
+              "name": "test1",
+              "disable": false,
+              "testConfigurations": [
+                "testConfig1"
+              ],
+              "sources": [
+                "vm1",
+                "ArcBasedNetwork"
+              ],
+              "destinations": [
+                "bing",
+                "google"
+              ]
+            }
+          ],
+          "outputs": []
+        },
+        "location": "centraluseuap",
+        "type": "Microsoft.Network/networkWatchers/connectionMonitors"
+      }
+    }
+  }
+}
+

@@ -1,0 +1,48 @@
+{
+  "parameters": {
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualHubName": "virtualHub1",
+    "api-version": "2024-05-01",
+    "effectiveRoutesParameters": null
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "status": "Succeeded",
+        "properties": {
+          "output": {
+            "value": [
+              {
+                "addressPrefixes": [
+                  "10.147.128.0/17"
+                ],
+                "nextHops": [
+                  "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/hub0"
+                ],
+                "nextHopType": "Remote Hub",
+                "routeOrigin": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/hub0",
+                "asPath": "65520-65520"
+              },
+              {
+                "addressPrefixes": [
+                  "10.0.0.0/16"
+                ],
+                "nextHops": [
+                  "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/expressRouteGateways/ErGw1"
+                ],
+                "nextHopType": "ExpressRouteGateway",
+                "routeOrigin": "/subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/expressRouteGateways/ErGw1",
+                "asPath": "12076-12076"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "202": {
+      "description": "Accepted and the operation will complete asynchronously."
+    }
+  }
+}
+

@@ -1,0 +1,53 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "connectionName": "conn1",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualHubName": "hub1",
+    "parameters": {
+      "properties": {
+        "peerIp": "192.168.1.5",
+        "peerAsn": 20000,
+        "hubVirtualNetworkConnection": {
+          "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubVirtualNetworkConnections/hubVnetConn1"
+        }
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "conn1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/bgpConnections/conn1",
+        "etag": "W/\"72090554-7e3b-43f2-80ad-99a9020dcb11\"",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "peerIp": "192.168.1.5",
+          "peerAsn": 20000,
+          "connectionState": "Connected",
+          "hubVirtualNetworkConnection": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubVirtualNetworkConnections/hubVnetConn1"
+          }
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "conn1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/bgpConnections/conn1",
+        "etag": "W/\"72090554-7e3b-43f2-80ad-99a9020dcb11\"",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "peerIp": "192.168.1.5",
+          "peerAsn": 20000,
+          "connectionState": "Connected",
+          "hubVirtualNetworkConnection": {
+            "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubVirtualNetworkConnections/hubVnetConn1"
+          }
+        }
+      }
+    }
+  }
+}
+

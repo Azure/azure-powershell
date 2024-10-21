@@ -1,0 +1,60 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "siteName": "site1",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkVirtualApplianceName": "nva",
+    "parameters": {
+      "properties": {
+        "addressPrefix": "192.168.1.0/24",
+        "o365Policy": {
+          "breakOutCategories": {
+            "allow": true,
+            "optimize": true,
+            "default": true
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "site1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkVirtualAppliances/nva/virtualApplianceSites/site1",
+        "etag": "W/\"72090554-7e3b-43f2-80ad-99a9020dcb11\"",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "addressPrefix": "192.168.1.0/24",
+          "o365Policy": {
+            "breakOutCategories": {
+              "allow": true,
+              "optimize": true,
+              "default": true
+            }
+          }
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "site1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkVirtualAppliances/nva/virtualApplianceSites/site1",
+        "etag": "W/\"72090554-7e3b-43f2-80ad-99a9020dcb11\"",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "addressPrefix": "192.168.1.0/24",
+          "o365Policy": {
+            "breakOutCategories": {
+              "allow": true,
+              "optimize": true,
+              "default": true
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

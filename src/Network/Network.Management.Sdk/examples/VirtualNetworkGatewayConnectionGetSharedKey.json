@@ -1,0 +1,17 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "virtualNetworkGatewayConnectionName": "connS2S"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "",
+        "value": "AzureAbc123"
+      }
+    }
+  }
+}
+

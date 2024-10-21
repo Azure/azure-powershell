@@ -1,0 +1,15 @@
+{
+  "parameters": {
+    "expressRouteGatewayName": "expressRouteGatewayName",
+    "resourceGroupName": "resourceGroupName",
+    "connectionName": "connectionName",
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid"
+  },
+  "responses": {
+    "202": {},
+    "200": {},
+    "204": {}
+  }
+}
+

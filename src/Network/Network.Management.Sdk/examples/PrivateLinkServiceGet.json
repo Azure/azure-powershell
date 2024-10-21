@@ -1,0 +1,78 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subId",
+    "resourceGroupName": "rg1",
+    "serviceName": "testPls"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "testPls",
+        "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPls",
+        "type": "Microsoft.Network/privateLinkServices",
+        "location": "eastus",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "visibility": {
+            "subscriptions": [
+              "subscription1",
+              "subscription2",
+              "subscription3"
+            ]
+          },
+          "autoApproval": {
+            "subscriptions": [
+              "subscription1",
+              "subscription2"
+            ]
+          },
+          "fqdns": [
+            "fqdn1",
+            "fqdn2",
+            "fqdn3"
+          ],
+          "alias": "ContosoService.{guid}.azure.privatelinkservice",
+          "loadBalancerFrontendIpConfigurations": [
+            {
+              "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"
+            }
+          ],
+          "ipConfigurations": [
+            {
+              "name": "fe-lb",
+              "properties": {
+                "privateIPAddress": "10.0.1.4",
+                "privateIPAllocationMethod": "Static",
+                "privateIPAddressVersion": "IPv4",
+                "subnet": {
+                  "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb/subnets/subnetlb"
+                }
+              }
+            }
+          ],
+          "privateEndpointConnections": [
+            {
+              "name": "privateEndpointConnection",
+              "properties": {
+                "privateEndpoint": {
+                  "id": "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/testPe"
+                },
+                "privateLinkServiceConnectionState": {
+                  "status": "Approved",
+                  "description": "approved it for some reason."
+                }
+              }
+            }
+          ],
+          "networkInterfaces": [
+            {
+              "id": "/subscriptions/subId/resourceGroups/rg1/provders/Microsoft.Network/networkInterfaces/testPls.nic.abcd1234"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

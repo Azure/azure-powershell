@@ -1,0 +1,58 @@
+{
+  "parameters": {
+    "api-version": "2024-05-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkSecurityGroupName": "testnsg",
+    "securityRuleName": "rule1",
+    "securityRuleParameters": {
+      "properties": {
+        "protocol": "*",
+        "sourceAddressPrefix": "10.0.0.0/8",
+        "destinationAddressPrefix": "11.0.0.0/8",
+        "access": "Deny",
+        "destinationPortRange": "8080",
+        "sourcePortRange": "*",
+        "priority": 100,
+        "direction": "Outbound"
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "name": "rule1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/rule1",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "protocol": "*",
+          "sourcePortRange": "*",
+          "destinationPortRange": "8080",
+          "sourceAddressPrefix": "10.0.0.0/8",
+          "destinationAddressPrefix": "11.0.0.0/8",
+          "access": "Deny",
+          "priority": 100,
+          "direction": "Outbound"
+        }
+      }
+    },
+    "201": {
+      "body": {
+        "name": "rule1",
+        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/rule1",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "protocol": "*",
+          "sourcePortRange": "*",
+          "destinationPortRange": "8080",
+          "sourceAddressPrefix": "10.0.0.0/8",
+          "destinationAddressPrefix": "11.0.0.0/8",
+          "access": "Deny",
+          "priority": 100,
+          "direction": "Outbound"
+        }
+      }
+    }
+  }
+}
+
