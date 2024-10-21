@@ -437,7 +437,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "SecurityAdmin" 
 
         # Uncomment during Record to allow time for commit
-        Start-TestSleep -Seconds 60
+       # Start-TestSleep -Seconds 60
        
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "SecurityAdmin"
         Assert-NotNull $deploymentStatus;
@@ -487,7 +487,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "SecurityAdmin" 
 
         # Uncomment during Record to allow time for commit
-        Start-TestSleep -Seconds 60
+        # Start-TestSleep -Seconds 60
 
         $job = Remove-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
