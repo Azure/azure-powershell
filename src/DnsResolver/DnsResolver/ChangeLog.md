@@ -17,7 +17,8 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Upcoming Release
+## 2024.10.31 - Version 2.9.0
+* Public preview of DNS security policy
 
 ## Version 1.0.0
 * General availability for module Az.DnsResolver
