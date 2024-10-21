@@ -411,9 +411,7 @@ function Set-AzConnectedKubernetes {
         }
 
         # Parse value from inputObject
-        # ArcAgentryConfiguration is handled in separate block
-        # TODO XW: parse WIF from inputOjbect
-        # Distribution, DistributionVersion, Infrastructure, OidcIssuerProfileSelfHostedIssuerUrl, PrivateLinkState, Tag, ProxyCredential
+        # ArcAgentryConfiguration is handled in a separate block
         if ($null -ne $InputObject) {
             $Location = $InputObject.Location
             $PSBoundParameters.Add('Location', $Location)
@@ -424,10 +422,8 @@ function Set-AzConnectedKubernetes {
             $ResourceGroupName = $InputObject.ResourceGroupName
             $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
 
-            if (-not $PSBoundParameters.ContainsKey('DisableGateway')) {
-                if (-not $InputObject.GatewayEnabled) {
-                    $DisableGateway = -not $InputObject.GatewayEnabled
-                }
+            if (-not $PSBoundParameters.ContainsKey('DisableGateway') -and $InputObject.PSObject.Properties['GatewayEnabled']) {
+                $DisableGateway = -not $InputObject.GatewayEnabled
             }
             if ((-not $PSBoundParameters.ContainsKey('GatewayResourceId')) -and (-not [String]::IsNullOrEmpty($InputObject.GatewayResourceId))) {
                 $GatewayResourceId = $InputObject.GatewayResourceId
@@ -438,7 +434,6 @@ function Set-AzConnectedKubernetes {
                 $DisableAutoUpgrade = ($InputObject.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')
             }
 
-            # TODO XW: test provide both parameter and inputObject
             if ((-not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled')) -and (-not $PSBoundParameters.ContainsKey('WorkloadIdentityDisabled')) -and $InputObject.PSObject.Properties['WorkloadIdentityEnabled']) {
                 if ($InputObject.WorkloadIdentityEnabled) {
                     $WorkloadIdentityEnabled = $true
