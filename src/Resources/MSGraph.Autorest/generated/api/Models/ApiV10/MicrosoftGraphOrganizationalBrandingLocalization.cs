@@ -59,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// are used at the same time for high availability of read requests. Read-only.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Inherited)]
-        public string[] CdnList { get => ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)__microsoftGraphOrganizationalBrandingProperties).CdnList; set => ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)__microsoftGraphOrganizationalBrandingProperties).CdnList = value ?? null /* arrayOf */; }
+        public string[] CdnList { get => ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)__microsoftGraphOrganizationalBrandingProperties).CdnList; set => ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)__microsoftGraphOrganizationalBrandingProperties).CdnList = value ?? null /* fixedArrayOf */; }
 
         /// <summary>The unique idenfier for an entity. Read-only.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Inherited)]

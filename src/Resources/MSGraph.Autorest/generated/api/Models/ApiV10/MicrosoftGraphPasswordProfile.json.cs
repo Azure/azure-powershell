@@ -79,9 +79,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
-            {_forceChangePasswordNextSignIn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonBoolean>("forceChangePasswordNextSignIn"), out var __jsonForceChangePasswordNextSignIn) ? (bool?)__jsonForceChangePasswordNextSignIn : ForceChangePasswordNextSignIn;}
-            {_forceChangePasswordNextSignInWithMfa = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonBoolean>("forceChangePasswordNextSignInWithMfa"), out var __jsonForceChangePasswordNextSignInWithMfa) ? (bool?)__jsonForceChangePasswordNextSignInWithMfa : ForceChangePasswordNextSignInWithMfa;}
-            {_password = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("password"), out var __jsonPassword) ? (string)__jsonPassword : (string)Password;}
+            {_forceChangePasswordNextSignIn = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonBoolean>("forceChangePasswordNextSignIn"), out var __jsonForceChangePasswordNextSignIn) ? (bool?)__jsonForceChangePasswordNextSignIn : _forceChangePasswordNextSignIn;}
+            {_forceChangePasswordNextSignInWithMfa = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonBoolean>("forceChangePasswordNextSignInWithMfa"), out var __jsonForceChangePasswordNextSignInWithMfa) ? (bool?)__jsonForceChangePasswordNextSignInWithMfa : _forceChangePasswordNextSignInWithMfa;}
+            {_password = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("password"), out var __jsonPassword) ? (string)__jsonPassword : (string)_password;}
             AfterFromJson(json);
         }
 
