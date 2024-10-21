@@ -19,6 +19,7 @@ Describe 'New-AzHealthDeidService' {
         { 
             $config = New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests1 -Location $env.location
             $config.Name | Should -Be $env.deidServiceToCreateInTests1
+            $config.ProvisioningState | Should -Be "Succeeded"
         } | Should -Not -Throw
     }
 
@@ -26,6 +27,7 @@ Describe 'New-AzHealthDeidService' {
         { 
             $config = New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests2 -JsonFilePath (Join-Path $PSScriptRoot '.\jsonConfigs\deidServiceJson.json')
             $config.Name | Should -Be $env.deidServiceToCreateInTests2
+            $config.ProvisioningState | Should -Be "Succeeded"
         } | Should -Not -Throw
     }
 
@@ -34,6 +36,7 @@ Describe 'New-AzHealthDeidService' {
             $jsonString = Get-Content -Path (Join-Path $PSScriptRoot '.\jsonConfigs\deidServiceJson.json') -Raw
             $config = New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests3 -JsonString $jsonString
             $config.Name | Should -Be $env.deidServiceToCreateInTests3
+            $config.ProvisioningState | Should -Be "Succeeded"
         } | Should -Not -Throw
     }
 }

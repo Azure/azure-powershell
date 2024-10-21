@@ -11,9 +11,6 @@ Locale: en-US
 Microsoft Azure PowerShell: HealthDeid cmdlets
 
 ## Az.HealthDeid Cmdlets
-### [Get-AzHealthDeidPrivateLink](Get-AzHealthDeidPrivateLink.md)
-List private links on the given resource
-
 ### [Get-AzHealthDeidService](Get-AzHealthDeidService.md)
 Get a DeidService
 

@@ -73,8 +73,8 @@ function setupEnv() {
     Write-Output "Creating DeID services"
     New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceName -Location $env.location
     New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceName2 -Location $env.location
-    # New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceNameToDelete1 -Location $env.location
-    # New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceNameToDelete2 -Location $env.location
+    New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceNameToDelete1 -Location $env.location
+    New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceNameToDelete2 -Location $env.location
     Write-Output "Finished creating DeID services"
 
     # For any resources you created for test, you should add it to $env here.

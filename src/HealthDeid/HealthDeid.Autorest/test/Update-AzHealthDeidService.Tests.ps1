@@ -19,7 +19,6 @@ Describe 'Update-AzHealthDeidService' {
         { 
             $config = Update-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceName -EnableSystemAssignedIdentity:$true -PublicNetworkAccess "Disabled"
             $config.Name | Should -Be $env.deidServiceName
-            Write-Host $config
             $config.PublicNetworkAccess | Should -Be "Disabled"
             $config.IdentityType | Should -Be "SystemAssigned"
         } | Should -Not -Throw
@@ -32,7 +31,6 @@ Describe 'Update-AzHealthDeidService' {
                 AzPwshTestKey = "AzPwshTestValue"
             }
             $config2.Name | Should -Be $env.deidServiceName2
-            Write-Host $config2
             $config2.PublicNetworkAccess | Should -Be "Disabled"
             $config2.IdentityType | Should -Be "SystemAssigned"
         } | Should -Not -Throw
