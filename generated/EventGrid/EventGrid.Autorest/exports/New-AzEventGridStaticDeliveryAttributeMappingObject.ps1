@@ -16,33 +16,38 @@
 
 <#
 .Synopsis
-Create an in-memory object for AdvancedFilter.
+Create an in-memory object for StaticDeliveryAttributeMapping.
 .Description
-Create an in-memory object for AdvancedFilter.
+Create an in-memory object for StaticDeliveryAttributeMapping.
 .Example
-New-AzEventGridAdvancedFilterObject -OperatorType NumberIn -Key "TestKey"
+New-AzEventGridStaticDeliveryAttributeMappingObject -IsSecret:$true -Name "testName" -Value "testValue"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.AdvancedFilter
+Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StaticDeliveryAttributeMapping
 .Link
-https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridadvancedfilterobject
+https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridstaticdeliveryattributemappingobject
 #>
-function New-AzEventGridAdvancedFilterObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.AdvancedFilter])]
+function New-AzEventGridStaticDeliveryAttributeMappingObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.StaticDeliveryAttributeMapping])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.PSArgumentCompleterAttribute("NumberIn", "NumberNotIn", "NumberLessThan", "NumberGreaterThan", "NumberLessThanOrEquals", "NumberGreaterThanOrEquals", "BoolEquals", "StringIn", "StringNotIn", "StringBeginsWith", "StringEndsWith", "StringContains", "NumberInRange", "NumberNotInRange", "StringNotBeginsWith", "StringNotEndsWith", "StringNotContains", "IsNullOrUndefined", "IsNotNull")]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Category('Body')]
-    [System.String]
-    # The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
-    ${OperatorType},
+    [System.Boolean]
+    # Boolean flag to tell if the attribute contains sensitive information .
+    ${IsSecret},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Category('Body')]
     [System.String]
-    # The field/property in the event based on which you want to filter.
-    ${Key}
+    # Value of the delivery attribute.
+    ${Value},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Category('Body')]
+    [System.String]
+    # Name of the delivery attribute or header.
+    ${Name}
 )
 
 begin {
@@ -71,7 +76,7 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.EventGrid.custom\New-AzEventGridAdvancedFilterObject';
+            __AllParameterSets = 'Az.EventGrid.custom\New-AzEventGridStaticDeliveryAttributeMappingObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
