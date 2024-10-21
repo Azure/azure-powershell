@@ -447,6 +447,29 @@ function Set-AzConnectedKubernetes {
                 $OidcIssuerProfileEnabled = $true
                 $PSBoundParameters.Add('OidcIssuerProfileEnabled', $OidcIssuerProfileEnabled)
             }
+
+            if ((-not $PSBoundParameters.ContainsKey('OidcIssuerProfileSelfHostedIssuerUrl')) -and $InputObject.OidcIssuerProfileSelfHostedIssuerUrl) {
+                $OidcIssuerProfileEnabled = $true
+                $PSBoundParameters.Add('OidcIssuerProfileSelfHostedIssuerUrl', $InputObject.OidcIssuerProfileSelfHostedIssuerUrl)
+            }
+
+            if ((-not $PSBoundParameters.ContainsKey('Distribution')) -and $InputObject.PSObject.Properties['Distribution']) {
+                $PSBoundParameters.Add('Distribution', $InputObject.Distribution)
+            }
+
+            if ((-not $PSBoundParameters.ContainsKey('DistributionVersion')) -and $InputObject.PSObject.Properties['DistributionVersion']) {
+                $PSBoundParameters.Add('DistributionVersion', $InputObject.DistributionVersion)
+            }
+
+            if ((-not $PSBoundParameters.ContainsKey('Infrastructure')) -and $InputObject.PSObject.Properties['Infrastructure']) {
+                $PSBoundParameters.Add('Infrastructure', $InputObject.Infrastructure)
+            }
+
+            if ((-not $PSBoundParameters.ContainsKey('PrivateLinkState')) -and $InputObject.PSObject.Properties['PrivateLinkState']) {
+                $PSBoundParameters.Add('PrivateLinkState', $InputObject.PrivateLinkState)
+            }
+
+
         }
 
         if (-not [String]::IsNullOrEmpty($GatewayResourceId) -and -not $DisableGateway) {
