@@ -155,6 +155,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureDiskEncryptionLnxManagedDisk");
         }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCreationWithEncryptionIdentity()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineCreationWithEncryptionIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionEncryptionIdentityNonNullIdentityAndSecurityProfile()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionEncryptionIdentityNonNullIdentityAndSecurityProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionEncryptionIdentity()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionEncryptionIdentity");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

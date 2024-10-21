@@ -15,6 +15,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -71,6 +72,11 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = true)]
         public string[] IdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string EncryptionIdentity { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -244,6 +250,35 @@ namespace Microsoft.Azure.Commands.Compute
                 foreach (var id in this.IdentityId)
                 {
                     vm.Identity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
+                }
+            }
+
+            if (this.IsParameterBound(c => c.EncryptionIdentity))
+            {
+                IDictionary<string, UserAssignedIdentitiesValue> vmUserAssignedIdentities = null;
+                if (vm.Identity == null)
+                {
+                    vm.Identity = new VirtualMachineIdentity(type: ResourceIdentityType.UserAssigned);
+                }
+                if (vm.Identity.Type == ResourceIdentityType.SystemAssigned)
+                {
+                    vm.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
+                }
+                vmUserAssignedIdentities = vm.Identity.UserAssignedIdentities;
+                if (vmUserAssignedIdentities == null)
+                {
+                    vmUserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
+                }
+
+                if (vmUserAssignedIdentities.ContainsKey(this.EncryptionIdentity))
+                {
+                    this.WriteObject("Encryption Identity already assigned to the VM.");
+                }
+                else
+                {
+                    this.WriteObject("Encryption Identity assigned to the VM.");
+                    vmUserAssignedIdentities.Add(this.EncryptionIdentity, new UserAssignedIdentitiesValue());
+                    vm.Identity.UserAssignedIdentities = vmUserAssignedIdentities;
                 }
             }
 

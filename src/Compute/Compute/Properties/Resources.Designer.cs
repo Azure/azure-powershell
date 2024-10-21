@@ -122,7 +122,17 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("AzureVMDscArchiveAlreadyExists", resourceCulture);
             }
         }
-        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to update encryption identity {0} on VM {1}.
+        /// </summary>
+        internal static string EncryptionIdentityADEFailure
+        {
+            get
+            {
+                return ResourceManager.GetString("EncryptionIdentityADEFailure", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot find configuration data file: {0}.
         /// </summary>

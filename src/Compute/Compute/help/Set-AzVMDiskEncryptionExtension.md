@@ -13,15 +13,24 @@ Enables encryption on a running IaaS virtual machine in Azure.
 
 ## SYNTAX
 
-### SinglePassParameterSet (Default)
+### SinglePassParameterSet
 ```
 Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String>
- [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>]
- [[-KeyEncryptionKeyVaultId] <String>] [[-KeyEncryptionAlgorithm] <String>] [[-VolumeType] <String>]
- [[-SequenceVersion] <String>] [[-TypeHandlerVersion] <String>] [[-Name] <String>] [[-Passphrase] <String>]
- [-Force] [-DisableAutoUpgradeMinorVersion] [-SkipVmBackup] [-ExtensionType <String>]
- [-ExtensionPublisherName <String>] [-EncryptFormatAll] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String> [-EncryptionIdentity <String>]
+ [[-KeyEncryptionKeyUrl] <String>] [[-KeyEncryptionKeyVaultId] <String>] [[-KeyEncryptionAlgorithm] <String>]
+ [[-VolumeType] <String>] [[-SequenceVersion] <String>] [[-TypeHandlerVersion] <String>] [[-Name] <String>]
+ [[-Passphrase] <String>] [-Force] [-DisableAutoUpgradeMinorVersion] [-SkipVmBackup] [-ExtensionType <String>]
+ [-ExtensionPublisherName <String>] [-EncryptFormatAll] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### EncryptionIdentityParameterSet
+```
+Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String> -EncryptionIdentity <String>
+ [[-KeyEncryptionAlgorithm] <String>] [[-VolumeType] <String>] [[-SequenceVersion] <String>]
+ [[-TypeHandlerVersion] <String>] [[-Name] <String>] [[-Passphrase] <String>] [-Force]
+ [-DisableAutoUpgradeMinorVersion] [-SkipVmBackup] [-ExtensionType <String>] [-ExtensionPublisherName <String>]
+ [-EncryptFormatAll] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AADClientSecretParameterSet
