@@ -247,7 +247,7 @@ directive:
   # rename CdnProfiles_CdnMigrateToAfd to avoid conflict with Profiles_Migrate
   - from: swagger-document
     where: $.paths..operationId
-    transform: return $.replace(/^CdnProfiles_CdnMigrateToAfd$/g, "CdnProfilesToAfd_CdnMigrateToAfd")
+    transform: return $.replace(/^Profiles_CdnMigrateToAfd$/g, "CdnProfilesToAfd_CdnMigrateToAfd")
 
   - where:
       model-name: .*
@@ -400,7 +400,7 @@ directive:
       subject: AbortProfileToAFDMigration
   - where:
       verb: Invoke
-      subject: CanCdnProfile
+      subject: CanProfileMigrate
     set:
       verb: Test
       subject: ProfileMigrationCompatibility
