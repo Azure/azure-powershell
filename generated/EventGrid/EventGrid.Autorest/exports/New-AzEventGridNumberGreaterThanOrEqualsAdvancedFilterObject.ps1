@@ -16,27 +16,26 @@
 
 <#
 .Synopsis
-Create an in-memory object for Filter.
+Create an in-memory object for NumberGreaterThanOrEqualsAdvancedFilter.
 .Description
-Create an in-memory object for Filter.
+Create an in-memory object for NumberGreaterThanOrEqualsAdvancedFilter.
 .Example
-New-AzEventGridFilterObject -OperatorType NumberIn -Key "TestKey"
+New-AzEventGridNumberGreaterThanOrEqualsAdvancedFilterObject -Key "testKey" -Value 11.22
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.Filter
+Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberGreaterThanOrEqualsAdvancedFilter
 .Link
-https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridfilterobject
+https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridnumbergreaterthanorequalsadvancedfilterobject
 #>
-function New-AzEventGridFilterObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.Filter])]
+function New-AzEventGridNumberGreaterThanOrEqualsAdvancedFilterObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberGreaterThanOrEqualsAdvancedFilter])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.PSArgumentCompleterAttribute("NumberIn", "NumberNotIn", "NumberLessThan", "NumberGreaterThan", "NumberLessThanOrEquals", "NumberGreaterThanOrEquals", "BoolEquals", "StringIn", "StringNotIn", "StringBeginsWith", "StringEndsWith", "StringContains", "NumberInRange", "NumberNotInRange", "StringNotBeginsWith", "StringNotEndsWith", "StringNotContains", "IsNullOrUndefined", "IsNotNull")]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Category('Body')]
-    [System.String]
-    # The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
-    ${OperatorType},
+    [System.Double]
+    # The filter value.
+    ${Value},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Category('Body')]
@@ -71,7 +70,7 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.EventGrid.custom\New-AzEventGridFilterObject';
+            __AllParameterSets = 'Az.EventGrid.custom\New-AzEventGridNumberGreaterThanOrEqualsAdvancedFilterObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

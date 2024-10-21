@@ -16,33 +16,33 @@
 
 <#
 .Synopsis
-Create an in-memory object for DeliveryAttributeMapping.
+Create an in-memory object for NumberNotInRangeFilter.
 .Description
-Create an in-memory object for DeliveryAttributeMapping.
+Create an in-memory object for NumberNotInRangeFilter.
 .Example
-New-AzEventGridDeliveryAttributeMappingObject -Type "TestType" -Name "TestName"
+$valuesObj = @(11.11, 22.22, 33.33, 44.44)
+New-AzEventGridNumberNotInRangeFilterObject -Key "testKey" -Value @(,$valuesObj)
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.DeliveryAttributeMapping
+Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberNotInRangeFilter
 .Link
-https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgriddeliveryattributemappingobject
+https://learn.microsoft.com/powershell/module/Az.EventGrid/new-azeventgridnumbernotinrangefilterobject
 #>
-function New-AzEventGridDeliveryAttributeMappingObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.DeliveryAttributeMapping])]
+function New-AzEventGridNumberNotInRangeFilterObject {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.NumberNotInRangeFilter])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.PSArgumentCompleterAttribute("Static", "Dynamic")]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Category('Body')]
-    [System.String]
-    # Type of the delivery attribute or header name.
-    ${Type},
+    [System.Double[][]]
+    # The set of filter values.
+    ${Value},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Category('Body')]
     [System.String]
-    # Name of the delivery attribute or header.
-    ${Name}
+    # The field/property in the event based on which you want to filter.
+    ${Key}
 )
 
 begin {
@@ -71,7 +71,7 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.EventGrid.custom\New-AzEventGridDeliveryAttributeMappingObject';
+            __AllParameterSets = 'Az.EventGrid.custom\New-AzEventGridNumberNotInRangeFilterObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
