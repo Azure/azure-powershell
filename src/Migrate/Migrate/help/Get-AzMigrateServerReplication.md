@@ -15,38 +15,38 @@ Retrieves the details of the replicating server.
 ### ListByName (Default)
 ```
 Get-AzMigrateServerReplication -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetByMachineName
 ```
 Get-AzMigrateServerReplication -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- -MachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -MachineName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetBySRSID
 ```
 Get-AzMigrateServerReplication [-SubscriptionId <String>] -TargetObjectID <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetBySDSID
 ```
 Get-AzMigrateServerReplication [-SubscriptionId <String>] -DiscoveredMachineId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByInputObject
 ```
 Get-AzMigrateServerReplication [-SubscriptionId <String>] -InputObject <IMigrationItem>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListById
 ```
 Get-AzMigrateServerReplication [-SubscriptionId <String>] -ResourceGroupID <String> -ProjectID <String>
- [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
+ [-Filter <String>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -66,7 +66,7 @@ CurrentJobId                : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigrat
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
 CurrentJobName              : None
 CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : 00001111-aaaa-2222-bbbb-3333cccc4444
+EventCorrelationId          : d8b110c6-3be9-4798-b2d4-9a1cd068adfb
 Health                      : Normal
 HealthError                 : {101883a0-23f7-538a-bbd5-6d8b4fa900e2}
 Id                          : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
@@ -102,7 +102,7 @@ CurrentJobId                : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigrat
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
 CurrentJobName              : None
 CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : 00001111-aaaa-2222-bbbb-3333cccc4444
+EventCorrelationId          : d8b110c6-3be9-4798-b2d4-9a1cd068adfb
 Health                      : Normal
 HealthError                 : {101883a0-23f7-538a-bbd5-6d8b4fa900e2}
 Id                          : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
@@ -129,7 +129,7 @@ CurrentJobId                : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigrat
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
 CurrentJobName              : None
 CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : 00001111-aaaa-2222-bbbb-3333cccc4444
+EventCorrelationId          : 57b59212-6a2f-4333-8882-461647bb05f9
 Health                      : Normal
 HealthError                 : {593b735d-2a34-53b2-b8ed-e33da5650703}
 Id                          : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
@@ -165,7 +165,7 @@ CurrentJobId                : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigrat
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
 CurrentJobName              : None
 CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : 00001111-aaaa-2222-bbbb-3333cccc4444
+EventCorrelationId          : d8b110c6-3be9-4798-b2d4-9a1cd068adfb
 Health                      : Normal
 HealthError                 : {101883a0-23f7-538a-bbd5-6d8b4fa900e2}
 Id                          : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
@@ -192,7 +192,7 @@ CurrentJobId                : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigrat
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
 CurrentJobName              : None
 CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : 00001111-aaaa-2222-bbbb-3333cccc4444
+EventCorrelationId          : 57b59212-6a2f-4333-8882-461647bb05f9
 Health                      : Normal
 HealthError                 : {593b735d-2a34-53b2-b8ed-e33da5650703}
 Id                          : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
@@ -269,7 +269,7 @@ Specifies the machine object of the replicating server.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
 Parameter Sets: GetByInputObject
 Aliases:
 
@@ -289,6 +289,21 @@ Parameter Sets: GetByMachineName
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -407,7 +422,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
 
 ## NOTES
 

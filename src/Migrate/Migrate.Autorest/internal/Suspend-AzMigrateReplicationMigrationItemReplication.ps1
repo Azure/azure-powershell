@@ -25,12 +25,12 @@ The operation to initiate pause replication of the item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
 .Link
 https://learn.microsoft.com/powershell/module/az.migrate/suspend-azmigratereplicationmigrationitemreplication
 #>
 function Suspend-AzMigrateReplicationMigrationItemReplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='PauseExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
