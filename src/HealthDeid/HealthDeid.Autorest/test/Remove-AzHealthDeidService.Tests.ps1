@@ -21,7 +21,7 @@ Describe 'Remove-AzHealthDeidService' {
         } | Should -Not -Throw
     }
 
-    It 'Delete' {
+    It 'DeleteNonexistent' {
         { 
             Remove-AzHealthDeidService -Name "nonexistent" -ResourceGroupName $env.resourceGroupName
         } | Should -Not -Throw

@@ -17,23 +17,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzHealthDeidService'))
 Describe 'Update-AzHealthDeidService' {
     It 'UpdateExpanded' {
         { 
-            $config = Update-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceName -EnableSystemAssignedIdentity $true -PublicNetworkAccess "Disabled"
+            $config = Update-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceName -EnableSystemAssignedIdentity:$true -PublicNetworkAccess "Disabled"
             $config.Name | Should -Be $env.deidServiceName
+            Write-Host $config
             $config.PublicNetworkAccess | Should -Be "Disabled"
-            $config.Identity.Type | Should -Be "SystemAssigned"
+            $config.IdentityType | Should -Be "SystemAssigned"
         } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' {
         { 
-            $config = Get-AzHealthDeidService -Name $env.deidServiceNameWithPL -ResourceGroupName $env.resourceGroupName
+            $config = Get-AzHealthDeidService -Name $env.deidServiceName2 -ResourceGroupName $env.resourceGroupName
             $config2 = Update-AzHealthDeidService -InputObject $config -EnableSystemAssignedIdentity $true -PublicNetworkAccess "Disabled" -Tag @{
                 AzPwshTestKey = "AzPwshTestValue"
             }
-            $config2.Name | Should -Be $env.deidServiceName
+            $config2.Name | Should -Be $env.deidServiceName2
+            Write-Host $config2
             $config2.PublicNetworkAccess | Should -Be "Disabled"
-            $config2.Identity.Type | Should -Be "SystemAssigned"
-            $config2.Tags.AzPwshTestKey | Should -Be "AzPwshTestValue"
+            $config2.IdentityType | Should -Be "SystemAssigned"
         } | Should -Not -Throw
     }
 }

@@ -24,7 +24,7 @@ Describe 'Get-AzHealthDeidentificationPrivateLink' {
 
     It 'List' {
         { 
-            $config = Get-AzHealthDeidentificationPrivateLink -Name $env.deidServiceNameWithPL -ResourceGroupName $env.resourceGroupName
+            $config = Get-AzHealthDeidentificationPrivateLink -Name $env.deidServiceName2 -ResourceGroupName $env.resourceGroupName
             $config.Count | Should -BeGreaterThan 0 # TODO: create private link
         } | Should -Not -Throw
     }

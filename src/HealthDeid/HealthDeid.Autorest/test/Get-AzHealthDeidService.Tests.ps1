@@ -33,10 +33,12 @@ Describe 'Get-AzHealthDeidService' {
         { 
             $config = Get-AzHealthDeidService -ResourceGroupName $env.resourceGroupName
             $config.Count | Should -BeGreaterThan 0
+            $config[0].Name | Should -Not -BeNullOrEmpty
+            $config[0].ResourceGroupName | Should -Be $env.resourceGroupName
         } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         { 
             $config = Get-AzHealthDeidService -Name $env.deidServiceName -ResourceGroupName $env.resourceGroupName
             $config2 = Get-AzHealthDeidService -InputObject $config

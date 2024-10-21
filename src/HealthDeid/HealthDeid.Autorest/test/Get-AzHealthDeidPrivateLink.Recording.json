@@ -1,0 +1,90 @@
+{
+  "Get-AzHealthDeidPrivateLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azps-test-rg-eus2/providers/Microsoft.HealthDataAIServices/deidServices/byw4ek/privateLinkResources?api-version=2024-02-28-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azps-test-rg-eus2/providers/Microsoft.HealthDataAIServices/deidServices/byw4ek/privateLinkResources?api-version=2024-02-28-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "933a345d-cf3f-4329-bc9a-84509edc8e49" ],
+        "CommandName": [ "Get-AzHealthDeidPrivateLink" ],
+        "FullCommandName": [ "Get-AzHealthDeidPrivateLink_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.23", "Az.HealthDeid/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "5dc2bbaf-5c3d-435d-8a44-34ef19392b39" ],
+        "x-ms-correlation-request-id": [ "c59953a1-156b-4b3e-a59e-34ef88eea01b" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241020T222847Z:c59953a1-156b-4b3e-a59e-34ef88eea01b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: A9781504380D4864B5BA701FADD8DE5D Ref B: CO6AA3150218045 Ref C: 2024-10-20T22:28:47Z" ],
+        "Date": [ "Sun, 20 Oct 2024 22:28:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "359" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azps-test-rg-eus2/providers/Microsoft.HealthDataAIServices/deidServices/byw4ek/privateLinkResources/deid\",\"name\":\"deid\",\"type\":\"deidServices/privateLinkResources\",\"properties\":{\"groupId\":\"deid\",\"requiredMembers\":[\"deid\"],\"requiredZoneNames\":[\"privatelink.deid.azure.com\"]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzHealthDeidPrivateLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azps-test-rg-eus2/providers/Microsoft.HealthDataAIServices/deidServices/5fimjb/privateLinkResources?api-version=2024-02-28-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azps-test-rg-eus2/providers/Microsoft.HealthDataAIServices/deidServices/5fimjb/privateLinkResources?api-version=2024-02-28-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "5fb732b3-055d-4c14-9b0b-7e56bd28d94c" ],
+        "CommandName": [ "Get-AzHealthDeidPrivateLink" ],
+        "FullCommandName": [ "Get-AzHealthDeidPrivateLink_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.23", "Az.HealthDeid/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "f2bdf985-6156-4458-99f6-dfc8647f6e7d" ],
+        "x-ms-correlation-request-id": [ "866c48b1-b4f7-48e2-8bca-de141cf4ab87" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241020T222848Z:866c48b1-b4f7-48e2-8bca-de141cf4ab87" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FDABC6773F31478BAC0CE23049D0889E Ref B: CO6AA3150218045 Ref C: 2024-10-20T22:28:47Z" ],
+        "Date": [ "Sun, 20 Oct 2024 22:28:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "359" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azps-test-rg-eus2/providers/Microsoft.HealthDataAIServices/deidServices/5fimjb/privateLinkResources/deid\",\"name\":\"deid\",\"type\":\"deidServices/privateLinkResources\",\"properties\":{\"groupId\":\"deid\",\"requiredMembers\":[\"deid\"],\"requiredZoneNames\":[\"privatelink.deid.azure.com\"]}}]}",
+      "isContentBase64": false
+    }
+  }
+}

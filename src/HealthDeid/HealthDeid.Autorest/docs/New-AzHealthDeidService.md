@@ -39,20 +39,20 @@ create a DeidService
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: {{ Create a new De-identification Service resource }}
 ```powershell
-{{ Add code here }}
+New-AzHealthDeidService -Name myHealthDeidService -ResourceGroupName azpwsh-test-rg -Location eastus2 -EnableSystemAssignedIdentity $true -PublicNetworkAccess "Disabled"
 ```
 
 ```output
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+Creates a new De-identification Service resource in the specified resource group and location.
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+New-AzHealthDeidService -Name myHealthDeidService -ResourceGroupName azpwsh-test-rg -JsonFilePath path/to/json.json
 ```
 
 ```output

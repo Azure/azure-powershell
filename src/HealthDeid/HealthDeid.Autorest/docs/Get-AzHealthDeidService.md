@@ -39,27 +39,27 @@ Get a DeidService
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: {{ Get a De-identification Service resource by name }}
 ```powershell
-{{ Add code here }}
+Get-AzHealthDeidService -Name azpwshDeidService1 -ResourceGroupName azpwsh-test-rg
 ```
 
 ```output
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+Gets a De-identification Service by its name and the resource group it belongs to.
 
-### Example 2: {{ Add title here }}
+### Example 2: {{ List all De-identification Service resources in a resource group }}
 ```powershell
-{{ Add code here }}
+Get-AzHealthDeidService -ResourceGroupName azpwsh-test-rg
 ```
 
 ```output
 {{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-{{ Add description here }}
+Lists all De-identification Service resources in the specified resource group.
 
 ## PARAMETERS
 

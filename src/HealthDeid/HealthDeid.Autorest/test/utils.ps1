@@ -1,8 +1,9 @@
 function RandomString([bool]$allChars, [int32]$len) {
     if ($allChars) {
-        return -join ((33..126) | Get-Random -Count $len | % {[char]$_})
-    } else {
-        return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
+        return -join ((33..126) | Get-Random -Count $len | % { [char]$_ })
+    }
+    else {
+        return -join ((48..57) + (97..122) | Get-Random -Count $len | % { [char]$_ })
     }
 } 
 function Start-TestSleep {
@@ -53,24 +54,27 @@ function setupEnv() {
     New-AzResourceGroup -Name $env.resourceGroupName -Location $env.location
     Write-Host "Resource group created"
 
-    Write-Output "Creating DeID services"
     $deidServiceName = RandomString -allChars $false -len 6
     $env.AddWithCache("deidServiceName", $deidServiceName, $true)
-    $deidServiceNameWithPL = RandomString -allChars $false -len 6
-    $env.AddWithCache("deidServiceNameWithPL", $deidServiceNameWithPL, $true)
+    $deidServiceName2 = RandomString -allChars $false -len 6
+    $env.AddWithCache("deidServiceName2", $deidServiceName2, $true)
     $deidServiceNameToDelete1 = RandomString -allChars $false -len 6
     $env.AddWithCache("deidServiceNameToDelete1", $deidServiceNameToDelete1, $true)
     $deidServiceNameToDelete2 = RandomString -allChars $false -len 6
     $env.AddWithCache("deidServiceNameToDelete2", $deidServiceNameToDelete2, $true)
-    $deidServiceToCreateInTests = RandomString -allChars $false -len 6
-    $env.AddWithCache("deidServiceToCreateInTests", $deidServiceToCreateInTests, $true)
+    $deidServiceToCreateInTests1 = RandomString -allChars $false -len 6
+    $env.AddWithCache("deidServiceToCreateInTests1", $deidServiceToCreateInTests1, $true)
+    $deidServiceToCreateInTests2 = RandomString -allChars $false -len 6
+    $env.AddWithCache("deidServiceToCreateInTests2", $deidServiceToCreateInTests2, $true)
+    $deidServiceToCreateInTests3 = RandomString -allChars $false -len 6
+    $env.AddWithCache("deidServiceToCreateInTests3", $deidServiceToCreateInTests3, $true)
 
     # Create resources to use in tests
+    Write-Output "Creating DeID services"
     New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceName -Location $env.location
-    New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceNameWithPL -Location $env.location
-    New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceNameToDelete1 -Location $env.location
-    New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceNameToDelete2 -Location $env.location
-    # TODO: add private link
+    New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceName2 -Location $env.location
+    # New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceNameToDelete1 -Location $env.location
+    # New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceNameToDelete2 -Location $env.location
     Write-Output "Finished creating DeID services"
 
     # For any resources you created for test, you should add it to $env here.

@@ -46,8 +46,8 @@ function setupEnv() {
 
     $deidServiceName = RandomString -allChars $false -len 6
     $env.Add("deidServiceName", $deidServiceName)
-    $deidServiceNameWithPL = RandomString -allChars $false -len 6
-    $env.Add("deidServiceNameWithPL", $deidServiceNameWithPL)
+    $deidServiceName2 = RandomString -allChars $false -len 6
+    $env.Add("deidServiceName2", $deidServiceName2)
     $deidServiceToCreateInTests = RandomString -allChars $false -len 6
     $env.Add("deidServiceToCreateInTests", $deidServiceToCreateInTests)
 
@@ -62,7 +62,7 @@ function setupEnv() {
 
     # Create resources to use in tests
     New-AzHealthDeidentificationDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceName -Location $env.location
-    New-AzHealthDeidentificationDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceNameWithPL -Location $env.location
+    New-AzHealthDeidentificationDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceName2 -Location $env.location
     # TODO: add private link
 
     # For any resources you created for test, you should add it to $env here.

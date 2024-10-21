@@ -17,23 +17,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzHealthDeidService'))
 Describe 'New-AzHealthDeidService' {
     It 'CreateExpanded' {
         { 
-            $config = New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests -Location $env.location
-            $config.Name | Should -Be $env.deidServiceToCreateInTests
+            $config = New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests1 -Location $env.location
+            $config.Name | Should -Be $env.deidServiceToCreateInTests1
         } | Should -Not -Throw
     }
 
     It 'CreateViaJsonFilePath' {
         { 
-            $config = New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests -JsonFilePath (Join-Path $PSScriptRoot '.\jsonConfigs\deidServiceJson.json')
-            $config.Name | Should -Be $env.deidServiceToCreateInTests
+            $config = New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests2 -JsonFilePath (Join-Path $PSScriptRoot '.\jsonConfigs\deidServiceJson.json')
+            $config.Name | Should -Be $env.deidServiceToCreateInTests2
         } | Should -Not -Throw
     }
 
     It 'CreateViaJsonString' {
         { 
             $jsonString = Get-Content -Path (Join-Path $PSScriptRoot '.\jsonConfigs\deidServiceJson.json') -Raw
-            $config = New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests -JsonString $jsonString
-            $config.Name | Should -Be $env.deidServiceToCreateInTests
+            $config = New-AzHealthDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests3 -JsonString $jsonString
+            $config.Name | Should -Be $env.deidServiceToCreateInTests3
         } | Should -Not -Throw
     }
 }
