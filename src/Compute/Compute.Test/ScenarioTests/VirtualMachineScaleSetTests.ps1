@@ -5552,8 +5552,11 @@ function Test-SecurityPostureFeature
         Assert-AreEqual $vmss.virtualMachineProfile.SecurityPostureReference.ExcludeExtensions.count 1
 
         # Test New-AzVmssConfig 
+        $vmssConfig = New-AzVmssConfig -SecurityPostureId $SecurityPostureId -SecurityPostureExcludeExtension "SecurityPostureSecurityAgent"
 
         # Verify 
+        Assert-AreEqual $vmssConfig.VirtualMAchineProfile.SecurityPostureReference.Id $SecurityPostureId
+        Assert-AreEqual $vmssConfig.virtualMachineProfile.SecurityPostureReference.ExcludeExtensions.count 1
     }
     finally
     {
