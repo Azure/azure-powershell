@@ -440,7 +440,6 @@ function Set-AzConnectedKubernetes {
                 } else {
                     $WorkloadIdentityDisabled = $true
                 }
-                $PSBoundParameters.Add('WorkloadIdentityEnabled', $InputObject.WorkloadIdentityEnabled)
             }
 
             if ((-not $PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled')) -and $InputObject.OidcIssuerProfileEnabled) {
