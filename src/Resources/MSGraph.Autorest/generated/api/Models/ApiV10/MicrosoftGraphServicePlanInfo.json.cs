@@ -79,10 +79,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
-            {_appliesTo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("appliesTo"), out var __jsonAppliesTo) ? (string)__jsonAppliesTo : (string)AppliesTo;}
-            {_provisioningStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("provisioningStatus"), out var __jsonProvisioningStatus) ? (string)__jsonProvisioningStatus : (string)ProvisioningStatus;}
-            {_servicePlanId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("servicePlanId"), out var __jsonServicePlanId) ? (string)__jsonServicePlanId : (string)ServicePlanId;}
-            {_servicePlanName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("servicePlanName"), out var __jsonServicePlanName) ? (string)__jsonServicePlanName : (string)ServicePlanName;}
+            {_appliesTo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("appliesTo"), out var __jsonAppliesTo) ? (string)__jsonAppliesTo : (string)_appliesTo;}
+            {_provisioningStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("provisioningStatus"), out var __jsonProvisioningStatus) ? (string)__jsonProvisioningStatus : (string)_provisioningStatus;}
+            {_servicePlanId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("servicePlanId"), out var __jsonServicePlanId) ? (string)__jsonServicePlanId : (string)_servicePlanId;}
+            {_servicePlanName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("servicePlanName"), out var __jsonServicePlanName) ? (string)__jsonServicePlanName : (string)_servicePlanName;}
             AfterFromJson(json);
         }
 

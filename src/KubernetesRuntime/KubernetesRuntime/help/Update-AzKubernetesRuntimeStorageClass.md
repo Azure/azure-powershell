@@ -22,21 +22,21 @@ Update-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> -Name <St
  [-TypePropertyMountPermission <String>] [-TypePropertyOnDelete <String>]
  [-TypePropertyPassword <SecureString>] [-TypePropertyServer <String>] [-TypePropertyShare <String>]
  [-TypePropertySource <String>] [-TypePropertySubDir <String>] [-TypePropertyUsername <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> -Name <String> -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzKubernetesRuntimeStorageClass -ArcConnectedClusterId <String> -Name <String> -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ Update-AzKubernetesRuntimeStorageClass -InputObject <IKubernetesRuntimeIdentity>
  [-TypePropertyMountPermission <String>] [-TypePropertyOnDelete <String>]
  [-TypePropertyPassword <SecureString>] [-TypePropertyServer <String>] [-TypePropertyShare <String>]
  [-TypePropertySource <String>] [-TypePropertySubDir <String>] [-TypePropertyUsername <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -315,21 +315,6 @@ Selection priority when multiple storage classes meet the criteria.
 Type: System.Int64
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.2.2
 * Added breaking change messages:
   * `New-AzDataCollectionEndpoint`
   * `New-AzDataCollectionRule`

@@ -14,8 +14,8 @@ Creates a network manager group.
 
 ```
 New-AzNetworkManagerGroup -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
- [-Description <String>] [-IfMatch <String>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Description <String>] [-MemberType <String>] [-IfMatch <String>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,7 @@ New-AzNetworkManagerGroup -ResourceGroupName "psTestResourceGroup" -NetworkManag
 ```
 
 ```output
-MemberType        :
+MemberType        : VirtualNetwork
 DisplayName       :
 Description       : psDescription
 Type              : Microsoft.Network/networkManagers/networkGroups
@@ -48,7 +48,34 @@ Etag              :
 Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup
 ```
 
-Creates a network manager group.
+Creates a network manager group. Default member type is Virtual Network.
+
+### Example 2
+```powershell
+New-AzNetworkManagerGroup -ResourceGroupName "psTestResourceGroup" -NetworkManagerName "psNetworkManager" -Name psNetworkGroup -Description "psDescription" -MemberType "Subnet"
+```
+
+```output
+MemberType        : Subnet
+DisplayName       :
+Description       : psDescription
+Type              : Microsoft.Network/networkManagers/networkGroups
+ProvisioningState : Succeeded
+SystemData        : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText    : {
+                      "CreatedBy": "jaredgorthy@microsoft.com",
+                      "CreatedByType": "User",
+                      "CreatedAt": "2022-08-07T04:32:21.6585296Z",
+                      "LastModifiedBy": "jaredgorthy@microsoft.com",
+                      "LastModifiedByType": "User",
+                      "LastModifiedAt": "2022-08-07T04:32:21.6585296Z"
+                    }
+Name              : psNetworkGroup
+Etag              :
+Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup
+```
+
+Creates a network manager group of type Subnet.
 
 ## PARAMETERS
 
@@ -119,6 +146,22 @@ If match header.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MemberType
+Network Group member type. Valid values include 'VirtualNetwork' and 'Subnet'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: VirtualNetwork, Subnet
 
 Required: False
 Position: Named

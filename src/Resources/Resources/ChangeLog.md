@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Fixed customer-reported `Remove-AzPolicyAssignment` behavior.
+
+## Version 7.5.0
 * Added `ResourceSelector` and `Override` parameters to `New/Update-AzPolicyAssignment`.
 * Added `ResourceSelector` parameter to `New/Update-AzPolicyExemption`.
 * Removed `Experimental` notice from `-WithSource` parameter to `Publish-AzBicepModule`.

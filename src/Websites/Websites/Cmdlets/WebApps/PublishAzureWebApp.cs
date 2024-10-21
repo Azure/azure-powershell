@@ -119,33 +119,34 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             paramValues.Add("path", TargetPath);
 
+            // Purposely using IsParameterBound to check if the parameter is passed or not. In this case we want to return true if $false is passed. 
+            // We only want to set the parameter if a value is passed.
             // default async to true if not provided to match old behavior
-            if (Async.IsPresent)
+            if (this.IsParameterBound(c => c.Async))
             {
                 paramValues.Add("async", Async.ToString());
             }
-
             else
             {
                 paramValues.Add("async", "true");
             }
 
-            if (Restart.IsPresent)
+            if (this.IsParameterBound(c => c.Restart))
             {
                 paramValues.Add("restart", Restart.ToString());
             }
 
-            if (Clean.IsPresent)
+            if (this.IsParameterBound(c => c.Clean))
             {
                 paramValues.Add("clean", Clean.ToString());
             }
 
-            if (IgnoreStack.IsPresent)
+            if (this.IsParameterBound(c => c.IgnoreStack))
             {
                 paramValues.Add("ignorestack", IgnoreStack.ToString());
             }
 
-            if (Reset.IsPresent)
+            if (this.IsParameterBound(c => c.Reset))
             {
                 paramValues.Add("reset", Reset.ToString());
             }

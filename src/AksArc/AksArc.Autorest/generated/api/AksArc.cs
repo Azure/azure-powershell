@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
     public partial class AksArc
     {
 
-        /// <summary>Update the agent pool in the provisioned cluster</summary>
+        /// <summary>update the agent pool in the provisioned cluster</summary>
         /// <param name="connectedClusterResourceUri">The fully qualified Azure Resource Manager identifier of the connected cluster
         /// resource.</param>
         /// <param name="agentPoolName">Parameter for the name of the agent pool in the provisioned cluster.</param>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the agent pool in the provisioned cluster</summary>
+        /// <summary>update the agent pool in the provisioned cluster</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Agent Pool resource definition</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the agent pool in the provisioned cluster</summary>
+        /// <summary>update the agent pool in the provisioned cluster</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Agent Pool resource definition</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the agent pool in the provisioned cluster</summary>
+        /// <summary>update the agent pool in the provisioned cluster</summary>
         /// <param name="connectedClusterResourceUri">The fully qualified Azure Resource Manager identifier of the connected cluster
         /// resource.</param>
         /// <param name="agentPoolName">Parameter for the name of the agent pool in the provisioned cluster.</param>
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the agent pool in the provisioned cluster</summary>
+        /// <summary>update the agent pool in the provisioned cluster</summary>
         /// <param name="connectedClusterResourceUri">The fully qualified Azure Resource Manager identifier of the connected cluster
         /// resource.</param>
         /// <param name="agentPoolName">Parameter for the name of the agent pool in the provisioned cluster.</param>
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the agent pool in the provisioned cluster</summary>
+        /// <summary>update the agent pool in the provisioned cluster</summary>
         /// <param name="connectedClusterResourceUri">The fully qualified Azure Resource Manager identifier of the connected cluster
         /// resource.</param>
         /// <param name="agentPoolName">Parameter for the name of the agent pool in the provisioned cluster.</param>
@@ -2881,7 +2881,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
         }
 
         /// <summary>
-        /// Put the hybrid identity metadata proxy resource that facilitates the managed identity provisioning.
+        /// put the hybrid identity metadata proxy resource that facilitates the managed identity provisioning.
         /// </summary>
         /// <param name="connectedClusterResourceUri">The fully qualified Azure Resource Manager identifier of the connected cluster
         /// resource.</param>
@@ -2929,7 +2929,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
         }
 
         /// <summary>
-        /// Put the hybrid identity metadata proxy resource that facilitates the managed identity provisioning.
+        /// put the hybrid identity metadata proxy resource that facilitates the managed identity provisioning.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Hybrid Identity Metadata resource definition</param>
@@ -2986,7 +2986,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
         }
 
         /// <summary>
-        /// Put the hybrid identity metadata proxy resource that facilitates the managed identity provisioning.
+        /// put the hybrid identity metadata proxy resource that facilitates the managed identity provisioning.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Hybrid Identity Metadata resource definition</param>
@@ -3040,7 +3040,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
         }
 
         /// <summary>
-        /// Put the hybrid identity metadata proxy resource that facilitates the managed identity provisioning.
+        /// put the hybrid identity metadata proxy resource that facilitates the managed identity provisioning.
         /// </summary>
         /// <param name="connectedClusterResourceUri">The fully qualified Azure Resource Manager identifier of the connected cluster
         /// resource.</param>
@@ -3087,7 +3087,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
         }
 
         /// <summary>
-        /// Put the hybrid identity metadata proxy resource that facilitates the managed identity provisioning.
+        /// put the hybrid identity metadata proxy resource that facilitates the managed identity provisioning.
         /// </summary>
         /// <param name="connectedClusterResourceUri">The fully qualified Azure Resource Manager identifier of the connected cluster
         /// resource.</param>
@@ -3131,7 +3131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
         }
 
         /// <summary>
-        /// Put the hybrid identity metadata proxy resource that facilitates the managed identity provisioning.
+        /// put the hybrid identity metadata proxy resource that facilitates the managed identity provisioning.
         /// </summary>
         /// <param name="connectedClusterResourceUri">The fully qualified Azure Resource Manager identifier of the connected cluster
         /// resource.</param>
@@ -4795,7 +4795,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the provisioned cluster instance</summary>
+        /// <summary>update the provisioned cluster instance</summary>
         /// <param name="connectedClusterResourceUri">The fully qualified Azure Resource Manager identifier of the connected cluster
         /// resource.</param>
         /// <param name="body">Provisioned Cluster resource definition</param>
@@ -4840,7 +4840,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the provisioned cluster instance</summary>
+        /// <summary>update the provisioned cluster instance</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Provisioned Cluster resource definition</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4894,7 +4894,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the provisioned cluster instance</summary>
+        /// <summary>update the provisioned cluster instance</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Provisioned Cluster resource definition</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4946,7 +4946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the provisioned cluster instance</summary>
+        /// <summary>update the provisioned cluster instance</summary>
         /// <param name="connectedClusterResourceUri">The fully qualified Azure Resource Manager identifier of the connected cluster
         /// resource.</param>
         /// <param name="jsonString">Json string supplied to the ProvisionedClusterInstancesCreateOrUpdate operation</param>
@@ -4990,7 +4990,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the provisioned cluster instance</summary>
+        /// <summary>update the provisioned cluster instance</summary>
         /// <param name="connectedClusterResourceUri">The fully qualified Azure Resource Manager identifier of the connected cluster
         /// resource.</param>
         /// <param name="jsonString">Json string supplied to the ProvisionedClusterInstancesCreateOrUpdate operation</param>
@@ -5032,7 +5032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the provisioned cluster instance</summary>
+        /// <summary>update the provisioned cluster instance</summary>
         /// <param name="connectedClusterResourceUri">The fully qualified Azure Resource Manager identifier of the connected cluster
         /// resource.</param>
         /// <param name="body">Provisioned Cluster resource definition</param>
@@ -8745,7 +8745,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the virtual network resource</summary>
+        /// <summary>update the virtual network resource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="virtualNetworkName">Parameter for the name of the virtual network</param>
@@ -8794,7 +8794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the virtual network resource</summary>
+        /// <summary>update the virtual network resource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Virtual Network resource definition</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8853,7 +8853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the virtual network resource</summary>
+        /// <summary>update the virtual network resource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Virtual Network resource definition</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8910,7 +8910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the virtual network resource</summary>
+        /// <summary>update the virtual network resource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="virtualNetworkName">Parameter for the name of the virtual network</param>
@@ -8958,7 +8958,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the virtual network resource</summary>
+        /// <summary>update the virtual network resource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="virtualNetworkName">Parameter for the name of the virtual network</param>
@@ -9004,7 +9004,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc
             }
         }
 
-        /// <summary>Update the virtual network resource</summary>
+        /// <summary>update the virtual network resource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="virtualNetworkName">Parameter for the name of the virtual network</param>

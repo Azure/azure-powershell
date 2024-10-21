@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously creates a new event subscription or updates an existing event subscription based on the specified scope.
+Asynchronously create a new event subscription or create an existing event subscription based on the specified scope.
 .Description
-Asynchronously creates a new event subscription or updates an existing event subscription based on the specified scope.
+Asynchronously create a new event subscription or create an existing event subscription based on the specified scope.
 .Example
 $obj = New-AzEventGridWebHookEventSubscriptionDestinationObject -EndpointUrl "https://azpsweb.azurewebsites.net/api/updates"
 New-AzEventGridSubscription -Name azps-eventsub -Scope "subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" -Destination $obj -FilterIsSubjectCaseSensitive:$false
