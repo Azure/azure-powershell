@@ -1,44 +1,74 @@
 ---
 external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
-online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverinboundendpoint
+online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverpolicydnssecurityrule
 schema: 2.0.0
 ---
 
-# New-AzDnsResolverInboundEndpoint
+# New-AzDnsResolverPolicyDnsSecurityRule
 
 ## SYNOPSIS
-Creates or updates an inbound endpoint for a DNS resolver.
+Creates or updates a DNS security rule for a DNS resolver policy.
 
 ## SYNTAX
 
 ```
-New-AzDnsResolverInboundEndpoint -DnsResolverName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -IPConfiguration <IIPConfiguration[]>
- -Location <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ -DnsResolverDomainList <ISubResource[]> -Location <String> -Priority <Int32>
+ [-ActionBlockResponseCode <BlockResponseCode>] [-ActionType <ActionType>]
+ [-DnsSecurityRuleState <DnsSecurityRuleState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait]
+ [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates an inbound endpoint for a DNS resolver.
+Creates or updates a DNS security rule for a DNS resolver policy.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-$ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname31ur3isx/subnets/pssubnetname311tqweg
+{{ Add code here }}
 ```
-
-New-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg -IPConfiguration $ipConfiguration
 
 ### EXAMPLE 2
 ```
-New-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint1 -ResourceGroupName powershell-test-rg -IPConfiguration $ipConfiguration -Tag @{"key0" = "value0"}
+{{ Add code here }}
 ```
 
 ## PARAMETERS
+
+### -ActionBlockResponseCode
+The response code for block actions.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.BlockResponseCode
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActionType
+The type of action to take.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ActionType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -86,8 +116,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsResolverName
-The name of the DNS resolver.
+### -DnsResolverDomainList
+DNS resolver policy domains lists that the DNS security rule applies to.
+To construct, see NOTES section for DNSRESOLVERDOMAINLIST properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ISubResource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsResolverPolicyName
+The name of the DNS resolver policy.
 
 ```yaml
 Type: System.String
@@ -95,6 +141,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsSecurityRuleState
+The state of DNS security rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.DnsSecurityRuleState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -164,22 +225,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IPConfiguration
-IP configurations for the inbound endpoint.
-To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IIPConfiguration[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
 The geo-location where the resource lives
 
@@ -196,12 +241,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the inbound endpoint for the DNS resolver.
+The name of the DNS security rule.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: InboundEndpointName
+Aliases: DnsSecurityRuleName
 
 Required: True
 Position: Named
@@ -221,6 +266,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Priority
+The priority of the DNS security rule.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -370,19 +430,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IInboundEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsSecurityRule
 ## NOTES
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties.
 For information on hash tables, run Get-Help about_Hash_Tables.
 
-IPCONFIGURATION \<IIPConfiguration\[\]\>: IP configurations for the inbound endpoint.
-  SubnetId \<String\>: Resource ID.
-  \[PrivateIPAddress \<String\>\]: Private IP address of the IP configuration.
-  \[PrivateIPAllocationMethod \<IPAllocationMethod?\>\]: Private IP address allocation method.
+DNSRESOLVERDOMAINLIST \<ISubResource\[\]\>: DNS resolver policy domains lists that the DNS security rule applies to.
+  Id \<String\>: Resource ID.
 
 ## RELATED LINKS
 
-[https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverinboundendpoint](https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverinboundendpoint)
+[https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverpolicydnssecurityrule](https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverpolicydnssecurityrule)
 

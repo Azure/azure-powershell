@@ -16,8 +16,9 @@ Creates or updates a forwarding rule in a DNS forwarding ruleset.
 New-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
  -DomainName <String> -TargetDnsServer <ITargetDnsServer[]> [-ForwardingRuleState <ForwardingRuleState>]
- [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,35 +26,34 @@ Creates or updates a forwarding rule in a DNS forwarding ruleset.
 
 ## EXAMPLES
 
-### Example 1: Create a forwarding rule.
-```powershell
+### EXAMPLE 1
+```
 $targetIPConfig = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 10.0.0.3 -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c67/resourceGroups/sampleRG/providers/Microsoft.Network/virtualNetworks/vnet-hub/subnets/test-subnet
 New-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName dnsForwardingRuleset -Name sampleForwardingRule -ResourceGroupName sampleRG -TargetDnsServer $targetIPConfig
 ```
 
-```output
-Name                  Type                                            Etag
-----                  ----                                            ----
-sampleForwardingRule Microsoft.Network/dnsForwardingRuleset/forwardingRule "0b008451-0000-0800-0000-60402b960000"
+### EXAMPLE 2
 ```
-
-This cmdlet creates a forwarding rule.
-
-### Example 2: Create a forwarding rule with tag
-```powershell
 $targetIPConfig = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 10.0.0.3 -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c67/resourceGroups/sampleRG/providers/Microsoft.Network/virtualNetworks/vnet-hub/subnets/test-subnet
 New-AzDnsForwardingRulesetForwardingRule -DnsForwardingRulesetName dnsForwardingRuleset -Name sampleForwardingRule -ResourceGroupName sampleRG -TargetDnsServer $targetIPConfig -Metadata @{"key0" = "value0"}
 ```
 
-```output
-Name                  Type                                            Etag
-----                  ----                                            ----
-sampleForwardingRule Microsoft.Network/dnsForwardingRuleset/forwardingRule "0b008451-0000-0800-0000-60402b960000"
-```
-
-This cmdlet creates a forwarding rule with tag.
-
 ## PARAMETERS
+
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -106,6 +106,36 @@ The state of forwarding rule.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ForwardingRuleState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.SendAsyncStep[]
 Parameter Sets: (All)
 Aliases:
 
@@ -179,6 +209,66 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -197,6 +287,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -205,7 +296,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -265,7 +356,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IForwardingRule
-
 ## NOTES
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties.
+For information on hash tables, run Get-Help about_Hash_Tables.
+
+TARGETDNSSERVER \<ITargetDnsServer\[\]\>: DNS servers to forward the DNS query to.
+  IPAddress \<String\>: DNS server IP address.
+  \[Port \<Int32?\>\]: DNS server port.
 
 ## RELATED LINKS
+
+[https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetforwardingrule](https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetforwardingrule)
+

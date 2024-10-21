@@ -1,70 +1,59 @@
 ---
 external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
-online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverinboundendpoint
+online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverpolicyvirtualnetworklink
 schema: 2.0.0
 ---
 
-# Remove-AzDnsResolverInboundEndpoint
+# Get-AzDnsResolverPolicyVirtualNetworkLink
 
 ## SYNOPSIS
-Deletes an inbound endpoint for a DNS resolver.
-WARNING: This operation cannot be undone.
+Gets properties of a DNS resolver policy virtual network link.
 
 ## SYNTAX
 
-### Delete (Default)
+### List (Default)
 ```
-Remove-AzDnsResolverInboundEndpoint -DnsResolverName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-PassThru]
- [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzDnsResolverPolicyVirtualNetworkLink -DnsResolverPolicyName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Get
 ```
-Remove-AzDnsResolverInboundEndpoint -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-PassThru] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzDnsResolverPolicyVirtualNetworkLink -DnsResolverPolicyName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDnsResolverPolicyVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
+ [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes an inbound endpoint for a DNS resolver.
-WARNING: This operation cannot be undone.
+Gets properties of a DNS resolver policy virtual network link.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Remove-AzDnsResolverInboundEndpoint  -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
+{{ Add code here }}
 ```
 
 ### EXAMPLE 2
 ```
-$inputobject = Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
+{{ Add code here }}
 ```
-
-Remove-AzDnsResolverInboundEndpoint -InputObject $inputObject
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Break
 Wait for .NET debugger to attach
@@ -97,12 +86,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsResolverName
-The name of the DNS resolver.
+### -DnsResolverPolicyName
+The name of the DNS resolver policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -142,30 +131,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IfMatch
-ETag of the resource.
-Omit this value to always overwrite the current resource.
-Specify the last-seen ETag value to prevent accidentally overwriting any concurrent changes.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -176,46 +148,16 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the inbound endpoint for the DNS resolver.
+The name of the DNS resolver policy virtual network link for the DNS resolver policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: InboundEndpointName
+Parameter Sets: Get
+Aliases: DnsResolverPolicyVirtualNetworkLinkName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -286,7 +228,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -301,8 +243,8 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.String[]
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -312,33 +254,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Top
+The maximum number of results to return.
+If not specified, returns up to 100 results.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: System.Int32
+Parameter Sets: List
+Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -351,7 +278,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicyVirtualNetworkLink
 ## NOTES
 COMPLEX PARAMETER PROPERTIES
 
@@ -378,5 +305,5 @@ The value must be an UUID.
 
 ## RELATED LINKS
 
-[https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverinboundendpoint](https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverinboundendpoint)
+[https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverpolicyvirtualnetworklink](https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverpolicyvirtualnetworklink)
 

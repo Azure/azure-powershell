@@ -15,20 +15,25 @@ Gets properties of an outbound endpoint for a DNS resolver.
 ### List (Default)
 ```
 Get-AzDnsResolverOutboundEndpoint -DnsResolverName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDnsResolverOutboundEndpoint -DnsResolverName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDnsResolverOutboundEndpoint -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
+Get-AzDnsResolverOutboundEndpoint -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -37,34 +42,32 @@ Gets properties of an outbound endpoint for a DNS resolver.
 
 ## EXAMPLES
 
-### Example 1: List all outbound endpoints under the DNS resolver in a resource group
-```powershell
+### EXAMPLE 1
+```
 Get-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -ResourceGroupName sampleResourceGroup
 ```
 
-```output
-Name         Type                                             Etag
-----         ----                                             ----
-sampleOutbound Microsoft.Network/dnsResolvers/outboundEndpoints "0a001a28-0000-0800-0000-60e3846a0000"
-sampleOutbound2 Microsoft.Network/dnsResolvers/outboundEndpoints "0a001a27-0000-0800-0000-60e3846a0000"
+### EXAMPLE 2
 ```
-
-This command gets all outbound endpoints under the DNS resolver in a resource group.
-
-### Example 2: Get single outbound endpoint by name
-```powershell
 Get-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -Name sampleOutbound -ResourceGroupName sampleResourceGroup
 ```
 
-```output
-Name         Type                                             Etag
-----         ----                                             ----
-sampleOutbound Microsoft.Network/dnsResolvers/outboundEndpoints "0a001a28-0000-0800-0000-60e3846a0000"
-```
-
-This command gets an outbound endpoint under the DNS resolver in a resource group.
-
 ## PARAMETERS
+
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -91,6 +94,36 @@ Parameter Sets: List, Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -128,6 +161,66 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -146,6 +239,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]
@@ -154,7 +248,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -170,7 +264,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -181,11 +275,34 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IOutboundEndpoint
-
 ## NOTES
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties.
+For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT \<IDnsResolverIdentity\>: Identity Parameter
+  \[DnsForwardingRulesetName \<String\>\]: The name of the DNS forwarding ruleset.
+  \[DnsResolverDomainListName \<String\>\]: The name of the DNS resolver domain list.
+  \[DnsResolverName \<String\>\]: The name of the DNS resolver.
+  \[DnsResolverPolicyName \<String\>\]: The name of the DNS resolver policy.
+  \[DnsResolverPolicyVirtualNetworkLinkName \<String\>\]: The name of the DNS resolver policy virtual network link for the DNS resolver policy.
+  \[DnsSecurityRuleName \<String\>\]: The name of the DNS security rule.
+  \[ForwardingRuleName \<String\>\]: The name of the forwarding rule.
+  \[Id \<String\>\]: Resource identity path
+  \[InboundEndpointName \<String\>\]: The name of the inbound endpoint for the DNS resolver.
+  \[OutboundEndpointName \<String\>\]: The name of the outbound endpoint for the DNS resolver.
+  \[ResourceGroupName \<String\>\]: The name of the resource group.
+The name is case insensitive.
+  \[SubscriptionId \<String\>\]: The ID of the target subscription.
+The value must be an UUID.
+  \[VirtualNetworkLinkName \<String\>\]: The name of the virtual network link.
+  \[VirtualNetworkName \<String\>\]: The name of the virtual network.
 
 ## RELATED LINKS
+
+[https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolveroutboundendpoint](https://learn.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolveroutboundendpoint)
+

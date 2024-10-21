@@ -14,7 +14,7 @@ Create a in-memory object for IPConfiguration
 
 ```
 New-AzDnsResolverIPConfigurationObject [-PrivateIPAddress <String>]
- [-PrivateIPAllocationMethod <IPAllocationMethod>] [-SubnetId <String>]
+ [-PrivateIPAllocationMethod <IPAllocationMethod>] [-SubnetId <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -23,18 +23,10 @@ Create a in-memory object for IPConfiguration
 
 ## EXAMPLES
 
-### Example 1: Create an IPConfiguration
-```powershell
+### EXAMPLE 1
+```
 New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 1.1.2.12 -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname44yqt9mb/subnets/pssubnetname44c6v0lr
 ```
-
-```output
-PrivateIPAddress PrivateIPAllocationMethod
----------------- -------------------------
-1.1.2.12         Dynamic
-```
-
-This command creates an IPConfiguration
 
 ## PARAMETERS
 
@@ -68,6 +60,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubnetId
 Resource ID.
 
@@ -91,7 +98,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IPConfiguration
-
 ## NOTES
 
 ## RELATED LINKS
+
+[https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveripconfigurationobject](https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveripconfigurationobject)
+

@@ -1,41 +1,47 @@
 ---
 external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
-online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverinboundendpoint
+online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverpolicy
 schema: 2.0.0
 ---
 
-# New-AzDnsResolverInboundEndpoint
+# Update-AzDnsResolverPolicy
 
 ## SYNOPSIS
-Creates or updates an inbound endpoint for a DNS resolver.
+Updates a DNS resolver policy.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-New-AzDnsResolverInboundEndpoint -DnsResolverName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -IPConfiguration <IIPConfiguration[]>
- -Location <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
+Update-AzDnsResolverPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
  [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
  [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityExpanded
+```
+Update-AzDnsResolverPolicy -InputObject <IDnsResolverIdentity> [-IfMatch <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Creates or updates an inbound endpoint for a DNS resolver.
+Updates a DNS resolver policy.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-$ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname31ur3isx/subnets/pssubnetname311tqweg
+{{ Add code here }}
 ```
-
-New-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg -IPConfiguration $ipConfiguration
 
 ### EXAMPLE 2
 ```
-New-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint1 -ResourceGroupName powershell-test-rg -IPConfiguration $ipConfiguration -Tag @{"key0" = "value0"}
+{{ Add code here }}
 ```
 
 ## PARAMETERS
@@ -80,21 +86,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DnsResolverName
-The name of the DNS resolver.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -148,60 +139,29 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IfNoneMatch
-Set to '*' to allow a new resource to be created, but to prevent updating an existing resource.
-Other values will be ignored.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IPConfiguration
-IP configurations for the inbound endpoint.
-To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IIPConfiguration[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the inbound endpoint for the DNS resolver.
+The name of the DNS resolver policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: InboundEndpointName
+Parameter Sets: UpdateExpanded
+Aliases: DnsResolverPolicyName
 
 Required: True
 Position: Named
@@ -291,7 +251,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -307,7 +267,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -318,7 +278,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Tags for DNS resolver policy.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -368,21 +328,35 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IInboundEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsResolverPolicy
 ## NOTES
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties.
 For information on hash tables, run Get-Help about_Hash_Tables.
 
-IPCONFIGURATION \<IIPConfiguration\[\]\>: IP configurations for the inbound endpoint.
-  SubnetId \<String\>: Resource ID.
-  \[PrivateIPAddress \<String\>\]: Private IP address of the IP configuration.
-  \[PrivateIPAllocationMethod \<IPAllocationMethod?\>\]: Private IP address allocation method.
+INPUTOBJECT \<IDnsResolverIdentity\>: Identity Parameter
+  \[DnsForwardingRulesetName \<String\>\]: The name of the DNS forwarding ruleset.
+  \[DnsResolverDomainListName \<String\>\]: The name of the DNS resolver domain list.
+  \[DnsResolverName \<String\>\]: The name of the DNS resolver.
+  \[DnsResolverPolicyName \<String\>\]: The name of the DNS resolver policy.
+  \[DnsResolverPolicyVirtualNetworkLinkName \<String\>\]: The name of the DNS resolver policy virtual network link for the DNS resolver policy.
+  \[DnsSecurityRuleName \<String\>\]: The name of the DNS security rule.
+  \[ForwardingRuleName \<String\>\]: The name of the forwarding rule.
+  \[Id \<String\>\]: Resource identity path
+  \[InboundEndpointName \<String\>\]: The name of the inbound endpoint for the DNS resolver.
+  \[OutboundEndpointName \<String\>\]: The name of the outbound endpoint for the DNS resolver.
+  \[ResourceGroupName \<String\>\]: The name of the resource group.
+The name is case insensitive.
+  \[SubscriptionId \<String\>\]: The ID of the target subscription.
+The value must be an UUID.
+  \[VirtualNetworkLinkName \<String\>\]: The name of the virtual network link.
+  \[VirtualNetworkName \<String\>\]: The name of the virtual network.
 
 ## RELATED LINKS
 
-[https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverinboundendpoint](https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverinboundendpoint)
+[https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverpolicy](https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverpolicy)
 

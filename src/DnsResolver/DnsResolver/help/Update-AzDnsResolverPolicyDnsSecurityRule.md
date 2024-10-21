@@ -1,55 +1,84 @@
 ---
 external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
-online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverinboundendpoint
+online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverpolicydnssecurityrule
 schema: 2.0.0
 ---
 
-# Remove-AzDnsResolverInboundEndpoint
+# Update-AzDnsResolverPolicyDnsSecurityRule
 
 ## SYNOPSIS
-Deletes an inbound endpoint for a DNS resolver.
-WARNING: This operation cannot be undone.
+Updates a DNS security rule.
 
 ## SYNTAX
 
-### Delete (Default)
+### UpdateExpanded (Default)
 ```
-Remove-AzDnsResolverInboundEndpoint -DnsResolverName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-PassThru]
- [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDnsResolverPolicyDnsSecurityRule -DnsResolverPolicyName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-ActionBlockResponseCode <BlockResponseCode>] [-ActionType <ActionType>]
+ [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <DnsSecurityRuleState>] [-Priority <Int32>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Remove-AzDnsResolverInboundEndpoint -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-PassThru] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzDnsResolverPolicyDnsSecurityRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
+ [-ActionBlockResponseCode <BlockResponseCode>] [-ActionType <ActionType>]
+ [-DnsResolverDomainList <ISubResource[]>] [-DnsSecurityRuleState <DnsSecurityRuleState>] [-Priority <Int32>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
+ [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
+ [-ProxyUseDefaultCredentials] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes an inbound endpoint for a DNS resolver.
-WARNING: This operation cannot be undone.
+Updates a DNS security rule.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Remove-AzDnsResolverInboundEndpoint  -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
+{{ Add code here }}
 ```
 
 ### EXAMPLE 2
 ```
-$inputobject = Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
+{{ Add code here }}
 ```
 
-Remove-AzDnsResolverInboundEndpoint -InputObject $inputObject
-
 ## PARAMETERS
+
+### -ActionBlockResponseCode
+The response code for block actions.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.BlockResponseCode
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActionType
+The type of action to take.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ActionType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -97,15 +126,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsResolverName
-The name of the DNS resolver.
+### -DnsResolverDomainList
+DNS resolver policy domains lists that the DNS security rule applies to.
+To construct, see NOTES section for DNSRESOLVERDOMAINLIST properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.ISubResource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsResolverPolicyName
+The name of the DNS resolver policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsSecurityRuleState
+The state of DNS security rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.DnsSecurityRuleState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -165,7 +225,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -176,12 +236,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the inbound endpoint for the DNS resolver.
+The name of the DNS security rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: InboundEndpointName
+Parameter Sets: UpdateExpanded
+Aliases: DnsSecurityRuleName
 
 Required: True
 Position: Named
@@ -205,17 +265,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Priority
+The priority of the DNS security rule.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -286,7 +346,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -302,7 +362,22 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Tags for DNS security rule.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -351,12 +426,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20230701Preview.IDnsSecurityRule
 ## NOTES
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties.
 For information on hash tables, run Get-Help about_Hash_Tables.
+
+DNSRESOLVERDOMAINLIST \<ISubResource\[\]\>: DNS resolver policy domains lists that the DNS security rule applies to.
+  Id \<String\>: Resource ID.
 
 INPUTOBJECT \<IDnsResolverIdentity\>: Identity Parameter
   \[DnsForwardingRulesetName \<String\>\]: The name of the DNS forwarding ruleset.
@@ -378,5 +456,5 @@ The value must be an UUID.
 
 ## RELATED LINKS
 
-[https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverinboundendpoint](https://learn.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverinboundendpoint)
+[https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverpolicydnssecurityrule](https://learn.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverpolicydnssecurityrule)
 
