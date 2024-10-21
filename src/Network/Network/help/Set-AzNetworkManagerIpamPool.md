@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.network/set-aznetworkmanageripampool
 schema: 2.0.0
 ---
 
@@ -72,7 +72,7 @@ Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 Update the IPAM pool's addressPrefixes.
 
 
-## Example 2
+### Example 2
 ```powershell
 $ResourceGroupName = "testRG"
 $NetworkManagerName = "testNM"
