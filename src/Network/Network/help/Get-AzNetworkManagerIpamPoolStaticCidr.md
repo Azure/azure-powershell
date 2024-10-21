@@ -52,7 +52,7 @@ Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 ```
 Gets static Cidr with name 'testStaticCidr'
 
-## Example 2
+### Example 2
 ```powershell
 Get-AzNetworkManagerIpamPoolStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -PoolName testPool
 ```
