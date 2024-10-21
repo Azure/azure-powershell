@@ -161,7 +161,13 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
         }
 
         if (-not $userObject) {
-            $userObject = Get-AzADServicePrincipal -ApplicationID $context.Account.Id
+            if ($context.Account.Id.StartsWith("MSI@")) {
+                $hostname = $env:COMPUTERNAME
+                $userObject = Get-AzADServicePrincipal -DisplayName $hostname
+            }
+            else {
+                $userObject = Get-AzADServicePrincipal -ApplicationID $context.Account.Id
+            }
         }
 
         if (-not $userObject) {
