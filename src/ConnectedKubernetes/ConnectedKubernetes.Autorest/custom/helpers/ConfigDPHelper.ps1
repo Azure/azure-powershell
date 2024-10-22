@@ -123,14 +123,15 @@ function Invoke-RestMethodWithUriParameters {
     }
     catch {
         # We do not know what went wrong, but something did!
-        Write-Error "Error while issuing REST request: $_"
         $statusCode = 400
+        Write-Error "Error while issuing REST request: $_"
+    } finally {
+        # Note need to explcitly clear WhatIf for this method otherwise the value is
+        # not passed back during What-If testing.
+        Set-Variable -Name "${statusCodeVariable}" -Value $statusCode -Scope Script -WhatIf:$false
     }
 
     Write-Debug "Response: $($rsp | ConvertTo-Json -Depth 10)"
-    # Note need to explcitly clear WhatIf for this method otherwise the value is
-    # not passed back during What-If testing.
-    Set-Variable -Name "${statusCodeVariable}" -Value $statusCode -Scope Script -WhatIf:$false
     return $rsp
 }
 
