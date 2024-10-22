@@ -14,14 +14,14 @@ To get network manager verifier workspace reachability analysis intent.
 ### NoExpand (Default)
 ```
 Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent [-Name <String>] -NetworkManagerName <String>
- -ResourceGroupName <String> -WorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
+ -ResourceGroupName <String> -VerifierWorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Expand
 ```
 Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> -WorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
+ -ResourceGroupName <String> -VerifierWorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ When given a 'Name', the **Get-AzNetworkManagerVerifierWorkspaceReachabilityAnal
 
 ### Example 1
 ```powershell
-Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -NetworkManagerName "testNM" -ResourceGroupName "testRG" -WorkspaceName "testVerifierWorkspace9"
+Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVerifierWorkspace9"
 ```
 
 ```output
@@ -99,7 +99,7 @@ Gets all Verifier Workspace Reachability Analysis Intents in workspace 'testVeri
 ### Example 2
 
 ```powershell
-Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -NetworkManagerName "testNM" -ResourceGroupName "testRG" -WorkspaceName "testVerifierWorkspace9" -Name "testReachabilityAnalysisIntenant7"
+Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVerifierWorkspace9" -Name "testReachabilityAnalysisIntenant7"
 ```
 ```output
 Name                  : testReachabilityAnalysisIntenant7
@@ -213,7 +213,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -WorkspaceName
+### -VerifierWorkspaceName
 The verifier workspace name.
 
 ```yaml

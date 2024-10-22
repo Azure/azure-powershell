@@ -24,13 +24,9 @@ Set-AzNetworkManagerVerifierWorkspace -InputObject <PSVerifierWorkspace> [-AsJob
 
 ### Example 1
 ```powershell
- $verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName "testRG" -NetworkManagerName "testNM" -Name "AmeWorkspace"
->>
->> # Modify properties of the verifier workspace as needed
->> $verifierWorkspace.Properties.Description = "Updated description"
->>
->> # Update the verifier workspace using the Set-AzNetworkManagerVerifierWorkspace cmdlet
->> Set-AzNetworkManagerVerifierWorkspace -InputObject $verifierWorkspace
+$verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName "testRG" -NetworkManagerName "testNM" -Name "AmeWorkspace"
+$verifierWorkspace.Properties.Description = "Updated description"
+Set-AzNetworkManagerVerifierWorkspace -InputObject $verifierWorkspace
 ```
 
 ```output
@@ -62,18 +58,11 @@ Id                 : /subscriptions/00000000-0000-0000-0000-00000000000/resource
 Changed the description of the Verifier Workspace 'AmeWorkspace' to "Updated description"
 ### Example 2
 ```powershell
->> $verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName "testRG" -NetworkManagerName "testNM" -Name "testVerifierWorkspace5"
->>
->> # Define the tags as a dictionary
->> $tags = [System.Collections.Generic.Dictionary[string, string]]::new()
->> $tags.Add("testTag", "test")
->>
->> # Modify properties of the verifier workspace as needed
->> $verifierWorkspace.Tags = $tags
->>
->> # Update the verifier workspace using the Set-AzNetworkManagerVerifierWorkspace cmdlet
->> Set-AzNetworkManagerVerifierWorkspace -InputObject $verifierWorkspace
-
+$verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName "testRG" -NetworkManagerName "testNM" -Name "testVerifierWorkspace5"
+$tags = [System.Collections.Generic.Dictionary[string, string]]::new()
+$tags.Add("testTag", "test")
+$verifierWorkspace.Tags = $tags
+Set-AzNetworkManagerVerifierWorkspace -InputObject $verifierWorkspace
 ```
 
 ```output

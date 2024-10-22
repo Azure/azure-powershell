@@ -15,14 +15,14 @@ To get network manager verifier workspace reachability analysis run.
 ### NoExpand (Default)
 ```
 Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun [-Name <String>] -NetworkManagerName <String>
- -ResourceGroupName <String> -workspaceName <String> [-DefaultProfile <IAzureContextContainer>]
+ -ResourceGroupName <String> -VerifierWorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Expand
 ```
 Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> -workspaceName <String> [-DefaultProfile <IAzureContextContainer>]
+ -ResourceGroupName <String> -VerifierWorkspaceName <String> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ When given a 'Name', the **Get-AzNetworkManagerVerifierWorkspaceReachabilityAnal
 
 ### Example 1
 ```powershell
- Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -NetworkManagerName "testNM" -ResourceGroupName "testRG" -workspaceName "testVNV"
+ Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVNV"
 ```
 
 ```output
@@ -148,7 +148,7 @@ Gets list of network manager verifier workspace reachability analysis runs for '
 
 ### Example 2
 ```powershell
-Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -NetworkManagerName "testNM" -ResourceGroupName "testRG" -workspaceName "testVNV" -Name "testrun"
+Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVNV" -Name "testrun"
 ```
 
 ```output
@@ -262,7 +262,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -workspaceName
+### -VerifierWorkspaceName
 The verifier workspace name.
 
 ```yaml

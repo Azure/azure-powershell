@@ -14,7 +14,7 @@ To remove network manager verifier workspace reachability analysis run.
 
 ```
 Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> -WorkspaceName <String> [-Force] [-PassThru] [-AsJob]
+ -ResourceGroupName <String> -VerifierWorkspaceName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name <String> -
 
 ### Example 1
 ```powershell
- Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name TestReachabilityAnalysisRun3 -NetworkManagerName "testNM" -ResourceGroupName "testRG" -WorkspaceName "testVNV"
+ Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -Name TestReachabilityAnalysisRun3 -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVNV"
  ```
 
 ```output
@@ -159,7 +159,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WorkspaceName
+### -VerifierWorkspaceName
 The verifier workspace name.
 
 ```yaml
