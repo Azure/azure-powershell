@@ -744,9 +744,6 @@ function Set-AzConnectedKubernetes {
 
         # Convert the $Response object into a nested hashtable.
         Write-Debug "PUT response: $Response"
-        # The following parameters are not supported in Powershell 5.1
-        # -Depth 10
-        # -AsHashTable
         $Response = ConvertFrom-Json "$Response"
         $Response = ConvertTo-Hashtable $Response
 

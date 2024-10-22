@@ -230,8 +230,9 @@ function Remove-AzConnectedKubernetes {
         if (($ResourceGroupName -eq $ConfigmapRgName) -and ($ClusterName -eq $ConfigmapClusterName)) {
             if ($PSCmdlet.ShouldProcess($PSBoundParameters)) {
                 Az.ConnectedKubernetes.internal\Remove-AzConnectedKubernetes @PSBoundParameters
+                helm delete azure-arc --namespace $ReleaseInstallNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
+
             }
-            helm delete azure-arc --namespace $ReleaseInstallNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
         }
         else {
             Write-Error "The current context in the kubeconfig file does not correspond to the connected cluster resource specified. Agents installed on this cluster correspond to the resource group name '$ConfigmapRgName' and resource name '$ConfigmapClusterName'."

@@ -27,7 +27,7 @@ This command enables gateway feature of a connected kubernetes.
 
 ### Example 3: Enable gateway feature of connected kubernetes with InputObject
 ```powershell
-# Get an existing clustser first
+# Get an existing cluster first
 $inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
 # Enable gateway and set gateway resource Id 
 $outputObject.GatewayEnabled=$true
@@ -46,7 +46,7 @@ This command enables gateway feature of a connected kubernetes.
 
 ### Example 4: Enable workload identity of a connected cluster with InputObject
 ```powershell
-# Get an existing clustser first
+# Get an existing cluster first
 $inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
 # Enable workload identity and OIDC issuer profile
 $inputObject.WorkloadIdentityEnabled=$true
@@ -64,7 +64,7 @@ This command enables workload identiy and Oidc Issuer Profile of a connected kub
 
 ### Example 5: Disable workload identity of a connected cluster with InputOjbect
 ```powershell
-# Get an existing clustser first
+# Get an existing cluster first
 $inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
 # Disable workload identity 
 $inputObject.WorkloadIdentityEnabled=$falue
