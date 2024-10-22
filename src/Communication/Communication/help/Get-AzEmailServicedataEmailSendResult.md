@@ -15,13 +15,13 @@ Gets the status of the email send operation.
 ### Get (Default)
 ```
 Get-AzEmailServicedataEmailSendResult -Endpoint <String> -OperationId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzEmailServicedataEmailSendResult -Endpoint <String> -InputObject <IEmailServicedataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -Endpoint
-The communication resource, for example `https://my-resource.communication.azure.com`
+The communication resource, for example https://my-resource.communication.azure.com
 
 ```yaml
 Type: System.String
@@ -105,6 +105,21 @@ Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
