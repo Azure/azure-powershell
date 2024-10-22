@@ -2,7 +2,7 @@
 
 ## Az.DesktopVirtualization
 
-The following cmdlets were affected this release:
+The following breaking changes are caused by the generation tool (autorest.powershell) upgrading. The following cmdlets were affected this release:
 - **Get-AzWvdApplication**
 - **Get-AzWvdApplicationGroup**
 - **Get-AzWvdDesktop**
@@ -39,40 +39,43 @@ The following cmdlets were affected this release:
 - **Update-AzWvdScalingPlanPooledSchedule**
 - **Update-AzWvdSessionHost**
 - **Update-AzWvdWorkspace**
-### The following enums have been converted to strings:
-- CommandLineSetting
-- ApplicationType
-- ApplicationGroupType
-- IdentityType
-- HostPoolType
-- LoadBalancerType
-- PreferredAppGroupType
-- AgentUpdateType
-- IdentityType
-- PersonalDesktopAssignmentType
-- PublicNetworkAccess
-- RegistrationTokenOperation
-- SkuTier
-- SsoSecretType
-- ScalingHostPoolType
-- ResourceIdentityType
-- SessionHandlingOperation
-- SetStartVmOnConnect
-- StartupBehavior
-- SessionHostLoadBalancingAlogrithm
-- StopHostsWhen
-- RemoteApplicationType
-- SessionHostComponentUpdateType
-- LoadBalancerType
-- PersonalDesktopAssignmentType
-- PreferredAppGroupType
-- DaysOfWeek
-### The following properties have changed from struct to string:
-- SystemDataLastModifiedByType
-- SystemDataCreatedByType
-- SystemDataCreatedAt
-- SystemDataLastModifiedAt
-- SystemDataLastModifiedBy
-- SystemDataCreatedBy
-### Array replaced by List due to the generated tool (autorest.powershell) upgrading
-- Details can be found [Breaking Changes in Generated Modules Due to AutoRest.PowerShell Upgrade from v3 to v4](https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/breaking-changes-in-generated-modules-due-to-codegen-tool-upgrade-from-v3-to-v4.md#list-replaces-array-in-generated-c-classes)
+## The breaking Changes in details
+- Use primitive types for enum instead of struct:
+  - Details can be found [breaking-changes-generated-modules](https://learn.microsoft.com/en-us/powershell/azure/breaking-changes-generated-modules?view=azps-12.4.0#use-primitive-types-for-enum-instead-of-struct)
+    - The following enums have been converted to strings:
+    - CommandLineSetting
+    - ApplicationType
+    - ApplicationGroupType
+    - IdentityType
+    - HostPoolType
+    - LoadBalancerType
+    - PreferredAppGroupType
+    - AgentUpdateType
+    - IdentityType
+    - PersonalDesktopAssignmentType
+    - PublicNetworkAccess
+    - RegistrationTokenOperation
+    - SkuTier
+    - SsoSecretType
+    - ScalingHostPoolType
+    - ResourceIdentityType
+    - SessionHandlingOperation
+    - SetStartVmOnConnect
+    - StartupBehavior
+    - SessionHostLoadBalancingAlogrithm
+    - StopHostsWhen
+    - RemoteApplicationType
+    - SessionHostComponentUpdateType
+    - LoadBalancerType
+    - PersonalDesktopAssignmentType
+    - PreferredAppGroupType
+    - DaysOfWeek
+  - The following properties have changed from struct to string:
+    - SystemDataLastModifiedByType
+    - SystemDataCreatedByType
+    - SystemDataCreatedAt
+    - SystemDataLastModifiedAt
+    - SystemDataLastModifiedBy
+    - SystemDataCreatedBy
+- Array replaced by List
+  - Details can be found [breaking-changes-generated-modules](https://learn.microsoft.com/en-us/powershell/azure/breaking-changes-generated-modules?view=azps-12.4.0#list-replaces-array-in-generated-c-classes)
