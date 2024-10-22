@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Supported ElasticSan auto scale policy
 
 ## Version 1.1.0

@@ -67,7 +67,7 @@ pac65,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac66,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeOrder.0.1.1.zip;sourceType=sa]Az.EdgeOrder,0.1.1
 pac67,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EdgeZones.0.1.1.zip;sourceType=sa]Az.EdgeZones,0.1.1
 pac68,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Elastic.0.1.1.zip;sourceType=sa]Az.Elastic,0.1.1
-pac69,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ElasticSan.1.1.0.zip;sourceType=sa]Az.ElasticSan,1.1.0
+pac69,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ElasticSan.1.1.1.zip;sourceType=sa]Az.ElasticSan,1.1.1
 pac70,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EventGrid.2.0.0.zip;sourceType=sa]Az.EventGrid,2.0.0
 pac71,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.EventHub.5.0.0.zip;sourceType=sa]Az.EventHub,5.0.0
 pac72,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Fabric.0.1.0.zip;sourceType=sa]Az.Fabric,0.1.0
