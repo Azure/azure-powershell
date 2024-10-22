@@ -172,12 +172,15 @@ Test link creation with virtual network object
 #>
 function Test-CreateLinkWithVirtualNetworkObject
 {
-	$zoneName = Get-RandomZoneName
+	$zoneName = "linkname.com"
 	$linkName = Get-RandomLinkName
     $resourceGroup = TestSetup-CreateResourceGroup
 
 	$createdZone = New-AzPrivateDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tag @{tag1="value1"}
-	$createdVirtualNetwork = TestSetup-CreateVirtualNetwork $resourceGroup
+	$virtualNetworkName = Get-VirtualNetworkName
+	$location = "West US"  
+    $createdVirtualNetwork = New-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $location -AddressPrefix "10.0.0.0/8"
+
 	$createdLink = New-AzPrivateDnsVirtualNetworkLink -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Name $linkName -Tag @{tag1="value1"} -VirtualNetwork $createdVirtualNetwork -EnableRegistration
 
 	Assert-NotNull $createdLink
