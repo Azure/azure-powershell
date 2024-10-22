@@ -26,7 +26,7 @@ New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name <String> -
 
 ### Example 1
 ```powershell
-$ipTraffic = New-AzNetworkManagerIPTraffic -SourceIps @("192.168.1.10") -DestinationIps @("172.16.0.5") -SourcePorts @("100") -DestinationPorts @("99") -Protocols @("TCP");
+$ipTraffic = New-AzNetworkManagerIPTraffic -SourceIp @("192.168.1.10") -DestinationIp @("172.16.0.5") -SourcePort @("100") -DestinationPort @("99") -Protocol @("TCP");
 New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name "analysisIntentTest24" -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVNV" -SourceResourceId "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM" -DestinationResourceId "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/ipam-test-vm-integration-test" -IpTraffic $ipTraffic;
 ```
 
@@ -54,7 +54,7 @@ Created a new Network Manager Verifier Workspace Reachability Analysis Intent
 
 ### Example 2
 ```powershell
-New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name "analysisIntentTest23" -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVNV" -SourceResourceId "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM" -DestinationResourceId "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/ipam-test-vm-integration-test" -IpTraffic (New-AzNetworkManagerIPTraffic -SourceIps @("192.168.1.10") -DestinationIps @("172.16.0.5") -SourcePorts @("100") -DestinationPorts @("99") -Protocols @("TCP"))
+New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -Name "analysisIntentTest23" -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVNV" -SourceResourceId "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM" -DestinationResourceId "/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/ipam-test-vm-integration-test" -IpTraffic (New-AzNetworkManagerIPTraffic -SourceIp @("192.168.1.10") -DestinationIp @("172.16.0.5") -SourcePort @("100") -DestinationPort @("99") -Protocol @("TCP"))
 ```
 
 ```output
