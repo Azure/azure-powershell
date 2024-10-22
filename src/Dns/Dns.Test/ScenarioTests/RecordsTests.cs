@@ -221,6 +221,20 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetNAPTR()
+        {
+            TestRunner.RunTestScript("Test-RecordSetNAPTR");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetNAPTRNonEmpty()
+        {
+            TestRunner.RunTestScript("Test-RecordSetNAPTRNonEmpty");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetnewAlreadyExists()
         {
             TestRunner.RunTestScript("Test-RecordSetnewAlreadyExists");
