@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously creates a new partner namespace with the specified parameters.
+Asynchronously create a new partner namespace with the specified parameters.
 .Description
-Asynchronously creates a new partner namespace with the specified parameters.
+Asynchronously create a new partner namespace with the specified parameters.
 .Example
 New-AzEventGridPartnerNamespace -Name azps-partnernamespace -ResourceGroupName azps_test_group_eventgrid -Location eastus -PartnerTopicRoutingMode SourceEventAttribute -PartnerRegistrationFullyQualifiedId "/subscriptions/{subId}/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/partnerRegistrations/azps-registration"
 .Example

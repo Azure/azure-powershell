@@ -47,7 +47,7 @@ function setupEnv() {
 
     $env.location = "westus2"
     $env.userEmail = (Get-AzContext).Account.Id
-    $env.sku = "ess-monthly-consumption_Monthly"
+    $env.sku = "ess-consumption-2024_Monthly"
 
     $env.elasticName01 = 'elastic-' + (RandomString -allChars $false -len 6)
     $env.elasticName02 = 'elastic-' + (RandomString -allChars $false -len 6)

@@ -35,10 +35,11 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
+  [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
-  [ResourceGroupName <String>]: The name of the resource group to which the Elastic resource belongs.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleSetName <String>]: Tag Rule Set resource name
-  [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.elastic/update-azelasticvmcollection
 #>
@@ -55,16 +56,16 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [System.String]
-    # The name of the resource group to which the Elastic resource belongs.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The Azure subscription ID.
-    # This is a GUID-formatted string (e.g.
-    # 00000000-0000-0000-0000-000000000000)
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
