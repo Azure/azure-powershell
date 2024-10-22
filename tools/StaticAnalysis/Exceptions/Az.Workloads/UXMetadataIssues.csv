@@ -1,0 +1,4 @@
+"Module","Severity","ResourceType","SubResourceType","Command","Description"
+"Az.Workloads","1","Microsoft.Workloads","locations","Invoke-AzWorkloadsSapDiskConfiguration","Cannot find a matched parameter set for example of Invoke-AzWorkloadsSapDiskConfiguration"
+"Az.Workloads","1","Microsoft.Workloads","locations","Invoke-AzWorkloadsSapSizingRecommendation","Cannot find a matched parameter set for example of Invoke-AzWorkloadsSapSizingRecommendation"
+"Az.Workloads","1","Microsoft.Workloads","locations","Invoke-AzWorkloadsSapSupportedSku","Cannot find a matched parameter set for example of Invoke-AzWorkloadsSapSupportedSku"
