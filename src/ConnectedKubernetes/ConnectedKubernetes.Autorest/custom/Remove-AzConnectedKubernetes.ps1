@@ -231,7 +231,6 @@ function Remove-AzConnectedKubernetes {
             if ($PSCmdlet.ShouldProcess($PSBoundParameters)) {
                 Az.ConnectedKubernetes.internal\Remove-AzConnectedKubernetes @PSBoundParameters
                 helm delete azure-arc --namespace $ReleaseInstallNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
-
             }
         }
         else {

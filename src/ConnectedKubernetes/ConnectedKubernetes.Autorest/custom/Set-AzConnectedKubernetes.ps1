@@ -87,9 +87,6 @@ function Set-AzConnectedKubernetes {
         Justification = 'Code published before this issue was identified')]
     param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedEnableWorkloadIdentity', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedDisableWorkloadIdentity', Mandatory)]
         [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
@@ -97,9 +94,6 @@ function Set-AzConnectedKubernetes {
         ${ClusterName},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedEnableWorkloadIdentity', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedDisableWorkloadIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
         # The name of the resource group.
@@ -107,18 +101,12 @@ function Set-AzConnectedKubernetes {
         ${ResourceGroupName},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedEnableWorkloadIdentity', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedDisableWorkloadIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
         # The geo-location where the resource lives
         ${Location},
 
         [Parameter(ParameterSetName = 'Set', Mandatory)]
-        [Parameter(ParameterSetName = 'SetDisableGateway', Mandatory)]
-        [Parameter(ParameterSetName = 'SetEnableWorkloadIdentity', Mandatory)]
-        [Parameter(ParameterSetName = 'SetDisableWorkloadIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
         ${InputObject},
@@ -248,19 +236,10 @@ function Set-AzConnectedKubernetes {
         # The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
         ${OidcIssuerProfileSelfHostedIssuerUrl},
 
-        [Parameter(ParameterSetName = 'SetEnableWorkloadIdentity', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedEnableWorkloadIdentity', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.Management.Automation.SwitchParameter]
-        # Disable the workload identity Webhook
+        # Enable the workload identity Webhook
         ${WorkloadIdentityEnabled},
-
-        [Parameter(ParameterSetName = 'SetDisableWorkloadIdentity', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedDisableWorkloadIdentity', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # Disable the workload identity Webhook
-        ${WorkloadIdentityDisabled},
 
         [Parameter()]
         [System.Management.Automation.SwitchParameter]
@@ -338,8 +317,6 @@ function Set-AzConnectedKubernetes {
         # Arc Agentry System Protected Configuration
         ${ConfigurationProtectedSetting},
 
-        [Parameter(ParameterSetName = 'SetDisableGateway', Mandatory)]
-        [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
         [System.Management.Automation.SwitchParameter]
         ${DisableGateway},
@@ -434,12 +411,8 @@ function Set-AzConnectedKubernetes {
                 $DisableAutoUpgrade = ($InputObject.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')
             }
 
-            if ((-not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled')) -and (-not $PSBoundParameters.ContainsKey('WorkloadIdentityDisabled')) -and $InputObject.PSObject.Properties['WorkloadIdentityEnabled']) {
-                if ($InputObject.WorkloadIdentityEnabled) {
-                    $WorkloadIdentityEnabled = $true
-                } else {
-                    $WorkloadIdentityDisabled = $true
-                }
+            if ((-not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled')) -and $InputObject.PSObject.Properties['WorkloadIdentityEnabled']) {
+                $WorkloadIdentityEnabled = $InputObject.WorkloadIdentityEnabled
             }
 
             if ((-not $PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled')) -and $InputObject.OidcIssuerProfileEnabled) {
@@ -478,15 +451,6 @@ function Set-AzConnectedKubernetes {
             Write-Debug "Gateway disabled"
             $Null = $PSBoundParameters.Remove('DisableGateway')
             $PSBoundParameters.Add('GatewayEnabled', $false)
-        }
-
-        # If WorkloadIdentityDisabled is provided, then set the workload identity enabled as false
-        if ($WorkloadIdentityDisabled) {
-            Write-Debug "Workload identity disabled"
-            $PSBoundParameters.Add('WorkloadIdentityEnabled', $false)
-            if ($PSBoundParameters.ContainsKey('WorkloadIdentityDisabled')) {
-                $Null = $PSBoundParameters.Remove('WorkloadIdentityDisabled')
-            }
         }
 
         if ($WorkloadIdentityEnabled && -not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled')) {
