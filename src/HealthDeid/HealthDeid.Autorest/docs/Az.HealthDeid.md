@@ -6,20 +6,20 @@ Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.HealthDeid Module
+# Az.HealthDeidentification Module
 ## Description
-Microsoft Azure PowerShell: HealthDeid cmdlets
+Microsoft Azure PowerShell: HealthDeidentification cmdlets
 
-## Az.HealthDeid Cmdlets
+## Az.HealthDeidentification Cmdlets
 ### [Get-AzHealthDeidService](Get-AzHealthDeidService.md)
 Get a DeidService
 
 ### [New-AzHealthDeidService](New-AzHealthDeidService.md)
-create a DeidService
+Create a DeidService
 
 ### [Remove-AzHealthDeidService](Remove-AzHealthDeidService.md)
 Delete a DeidService
 
 ### [Update-AzHealthDeidService](Update-AzHealthDeidService.md)
-update a DeidService
+Update a DeidService
 

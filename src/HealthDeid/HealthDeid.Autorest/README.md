@@ -62,6 +62,10 @@ directive:
   - where:
       variant: ^CreateViaIdentity.*$
     remove: true
+  # Remove cmdlet for PrivateLink resource
+  - where:
+      subject: .*PrivateLink.*
+    remove: true
   # Follow directive is v3 specific. If you are using v3, uncomment following directive and comments out two directives above
   #- where:
   #    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
