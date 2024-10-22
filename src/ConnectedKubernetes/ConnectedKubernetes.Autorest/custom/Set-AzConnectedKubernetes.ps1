@@ -467,15 +467,13 @@ function Set-AzConnectedKubernetes {
             if ((-not $PSBoundParameters.ContainsKey('PrivateLinkState')) -and $InputObject.PSObject.Properties['PrivateLinkState']) {
                 $PSBoundParameters.Add('PrivateLinkState', $InputObject.PrivateLinkState)
             }
-
-
         }
 
         if (-not [String]::IsNullOrEmpty($GatewayResourceId) -and -not $DisableGateway) {
             Write-Debug "Gateway enabled"
             $PSBoundParameters.Add('GatewayEnabled', $true)
         }
-        # If DisableGateway is provided then set the gateway as disabled and remove gateway resourceId from parameters
+        # If DisableGateway is provided then set the gateway as disabled
         if ($DisableGateway) {
             Write-Debug "Gateway disabled"
             $Null = $PSBoundParameters.Remove('DisableGateway')
@@ -485,8 +483,15 @@ function Set-AzConnectedKubernetes {
         # If WorkloadIdentityDisabled is provided, then set the workload identity enabled as false
         if ($WorkloadIdentityDisabled) {
             Write-Debug "Workload identity disabled"
-            $Null = $PSBoundParameters.Remove('WorkloadIdentityDisabled')
             $PSBoundParameters.Add('WorkloadIdentityEnabled', $false)
+            if ($PSBoundParameters.ContainsKey('WorkloadIdentityDisabled')) {
+                $Null = $PSBoundParameters.Remove('WorkloadIdentityDisabled')
+            }
+        }
+
+        if ($WorkloadIdentityEnabled && -not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled')) {
+            Write-Debug "Workload identity enabled"
+            $PSBoundParameters.Add('WorkloadIdentityEnabled', $true)
         }
 
         $CommonPSBoundParameters = @{}
