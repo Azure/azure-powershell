@@ -28,7 +28,7 @@ function Start-TestSleep {
             }
         }
     }
-} 
+}
 
 $env = @{}
 if ($UsePreviousConfigForRecord) {
