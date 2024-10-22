@@ -57,13 +57,4 @@ Tag                          : {
 Type                         : microsoft.healthdataaiservices/deidservices
 ```
 
-Creates a new De-identification Service resource with location and properties specified in the JSON file. Sample JSON:
-```
-{
-  "location": "eastus2",
-  "name": "myHealthDeidService",
-  "properties": {
-    "publicNetworkAccess": "Disabled"
-  }
-}
-```
+Creates a new De-identification Service resource with location and properties specified in the JSON file.
