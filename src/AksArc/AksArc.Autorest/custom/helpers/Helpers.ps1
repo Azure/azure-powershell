@@ -53,7 +53,6 @@ function CreateConnectedCluster {
         $EnableAzureRbacStr = "true"
     } 
 
-    $APIVersion = "2024-01-01"
     $json = 
 @"
 {
@@ -75,7 +74,7 @@ function CreateConnectedCluster {
     }
 }
 "@  
-    $null = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$APIVersion" -Method PUT -payload $json
+    $null = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$ConnectedClusterAPIVersion" -Method PUT -payload $json
 }
 
 function UpdateConnectedCluster {
@@ -87,9 +86,7 @@ function UpdateConnectedCluster {
         [System.String[]] ${AdminGroupObjectID}
     )
 
-
-    $APIVersion = "2024-01-01"
-    $ConnectedClusterResource = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$APIVersion" -Method GET
+    $ConnectedClusterResource = Invoke-AzRestMethod -Path "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Kubernetes/connectedClusters/$ClusterName/?api-version=$ConnectedClusterAPIVersion" -Method GET
 
     $Location = ($ConnectedClusterResource.Content | ConvertFrom-Json).location
     $EnableAzureRbac = ($ConnectedClusterResource.Content | ConvertFrom-Json).properties.aadProfile.enableAzureRBAC

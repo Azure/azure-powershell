@@ -28,15 +28,20 @@ For information on how to develop for `Az.Elastic`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-commit: eee9cbba738edde2ea48ea0c826f84619e2561df
+commit: d38a2c3ce2e2dfc38053af2f6b5fc10cb6221961
+tag: package-2024-03-01
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-input-file:
-  - $(repo)/specification/elastic/resource-manager/Microsoft.Elastic/stable/2020-07-01/elastic.json
+  - $(repo)/specification/elastic/resource-manager/readme.md
+# If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
+# - (this-folder)/relative-path-to-your-local-readme.md
+
+try-require: 
+  - $(repo)/specification/elastic/resource-manager/readme.powershell.md
 
 title: Elastic
 module-version: 0.1.0
-subject-prefix: $(service-name)
+subject-prefix: $elastic
 
 identity-correction-for-post: true
 resourcegroup-append: true
@@ -107,7 +112,7 @@ directive:
       parameter-description: The SKU depends on the Elasticsearch Plans available for your account and is a combination of PlanID_Term. \<br>For instance, if the plan ID is "planXYZ" and term is "Yearly", the SKU will be "planXYZ_Yearly". \<br>You may find your eligible plans [here](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/elastic.ec-azure-pp/selectionMode~/false/resourceGroupId//resourceGroupLocation//dontDiscardJourney~/false/selectedMenuId/home/launchingContext~/%7B%22galleryItemId%22%3A%22elastic.ec-azure-ppess-consumption-2024%22%2C%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%2C%22VirtualizedTileDetails%22%5D%2C%22menuItemId%22%3A%22home%22%2C%22subMenuItemId%22%3A%22Search%20results%22%2C%22telemetryId%22%3A%2262f8ce76-e5e4-4983-9d3e-5c608a0b2bff%22%7D/searchTelemetryId/cca0a8d3-f232-4156-948f-701a5d74a729) or in the online documentation [here](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp) for more details or in case of any issues with the SKU.
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^UpgradeViaIdentityExpanded$
       subject: Monitor|VMCollection|TagRule
     remove: true
 

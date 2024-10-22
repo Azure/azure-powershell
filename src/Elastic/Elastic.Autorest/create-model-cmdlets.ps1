@@ -68,10 +68,10 @@ function CreateModelCmdlet {
         $ObjectType = $Model
         $ObjectTypeWithNamespace = "${Namespace}.${ObjectType}"
         # remove duplicated module name
-        if ($ObjectType.StartsWith('Elastic')) {
+        if ($ObjectType.StartsWith('$elastic')) {
             $ModulePrefix = ''
         } else {
-            $ModulePrefix = 'Elastic'
+            $ModulePrefix = '$elastic'
         }
         $OutputPath = Join-Path -ChildPath "New-Az${ModulePrefix}${ObjectType}Object.ps1" -Path $OutputDir
 
