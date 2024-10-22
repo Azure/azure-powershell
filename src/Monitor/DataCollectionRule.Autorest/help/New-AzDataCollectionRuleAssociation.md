@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataCollectionRuleAssociation
 
 ## SYNOPSIS
-Create an association.
+create an association.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ New-AzDataCollectionRuleAssociation -AssociationName <String> -ResourceUri <Stri
 ```
 
 ## DESCRIPTION
-Create an association.
+create an association.
 
 ## EXAMPLES
 
