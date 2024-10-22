@@ -307,3 +307,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Remove-AzNetworkManagerIpamPool](./Remove-AzNetworkManagerIpamPool.md)
+
+[Get-AzNetworkManagerIpamPool](./Get-AzNetworkManagerIpamPool.md)
+
+[Set-AzNetworkManagerIpamPool](./Set-AzNetworkManagerIpamPool.md)

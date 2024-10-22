@@ -217,3 +217,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Remove-AzNetworkManagerIpamPoolStaticCidr](./Remove-AzNetworkManagerIpamPoolStaticCidr.md)
+
+[Set-AzNetworkManagerIpamPoolStaticCidr](./Set-AzNetworkManagerIpamPoolStaticCidr.md)

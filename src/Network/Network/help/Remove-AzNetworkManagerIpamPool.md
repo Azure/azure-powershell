@@ -202,3 +202,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzNetworkManagerIpamPool](./New-AzNetworkManagerIpamPool.md)
+
+[Get-AzNetworkManagerIpamPool](./Get-AzNetworkManagerIpamPool.md)
+
+[Set-AzNetworkManagerIpamPool](./Set-AzNetworkManagerIpamPool.md)

@@ -291,3 +291,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](./New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)
+
+[Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun](./Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun.md)
