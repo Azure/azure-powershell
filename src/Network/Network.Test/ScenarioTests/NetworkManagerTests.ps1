@@ -911,7 +911,7 @@ function Test-NetworkManagerIpamPoolCRUD
         New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -Location $rglocation
 
         # Create ipam pool
-        New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefixes $addressPrefixes
+        New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefix $addressPrefixes
 
         $ipamPool = Get-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName
         Assert-NotNull $ipamPool;
@@ -983,10 +983,10 @@ function Test-NetworkManagerIpamPoolStaticCidrCRUD
         New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
 
         # Create ipam pool
-        New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefixes $addressPrefixes
+        New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefix $addressPrefixes
 
         # Create static cidr
-        New-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName -AddressPrefixes $addressPrefixes
+        New-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName -AddressPrefix $addressPrefixes
 
         # Get static cidr
         $staticCidr = Get-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName
@@ -1083,10 +1083,9 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentCRUD
         $sourceIpList = @("192.168.1.10")
         $destinationIpList = @("172.16.0.5")
 
-        $ipTraffic = New-AzNetworkManagerIPTraffic -SourceIps $sourceIpList -DestinationIps $destinationIpList -SourcePorts $sourcePortList -DestinationPorts $destinationPortList -Protocols $protocolList
+        $ipTraffic = New-AzNetworkManagerIPTraffic -SourceIp $sourceIpList -DestinationIp $destinationIpList -SourcePort $sourcePortList -DestinationPort $destinationPortList -Protocol $protocolList
 
         $analysisIntent = New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisIntentName -SourceResourceId "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ipam-test-rg/providers/Microsoft.Compute/virtualMachines/testVM" -DestinationResourceId "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ipam-test-rg/providers/Microsoft.Compute/virtualMachines/ipam-test-vm-integration-test" -IpTraffic $ipTraffic
-
 
         # Get analysis intent
         $reachabilityAnalysisIntent = Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisIntentName
@@ -1139,7 +1138,7 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         $protocolList = @("TCP")
         $sourceIpList = @("192.168.1.10")
         $destinationIpList = @("172.16.0.5")
-        $groupItem = New-AzNetworkManagerIPTraffic -SourceIps $sourceIpList -DestinationIps $destinationIpList -SourcePorts $sourcePortList -DestinationPorts $destinationPortList -Protocols $protocolList
+        $groupItem = New-AzNetworkManagerIPTraffic -SourceIp $sourceIpList -DestinationIp $destinationIpList -SourcePort $sourcePortList -DestinationPort $destinationPortList -Protocol $protocolList
 
         $analysisIntent = New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisIntentName -SourceResourceId "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ipam-test-rg/providers/Microsoft.Compute/virtualMachines/testVM" -DestinationResourceId "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourceGroups/ipam-test-rg/providers/Microsoft.Compute/virtualMachines/ipam-test-vm-integration-test" -IpTraffic $groupItem
 

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Network
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "The address prefixes to assign.")]
         [ValidateNotNullOrEmpty]
-        public virtual List<string> AddressPrefixes { get; set; }
+        public virtual List<string> AddressPrefix { get; set; }
 
         [Parameter(
          Mandatory = false,
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network
             ipamPool.Location = this.Location;
             ipamPool.Properties = new PSIpamPoolProperties();
 
-            ipamPool.Properties.AddressPrefixes = this.AddressPrefixes;
+            ipamPool.Properties.AddressPrefixes = this.AddressPrefix;
 
             if (!string.IsNullOrEmpty(this.Description))
             {

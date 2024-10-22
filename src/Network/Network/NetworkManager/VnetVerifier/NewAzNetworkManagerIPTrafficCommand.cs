@@ -36,35 +36,35 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The source IPs.")]
         [ValidateNotNullOrEmpty]
-        public List<string> SourceIps { get; set; }
+        public List<string> SourceIp { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The destination IPs.")]
         [ValidateNotNullOrEmpty]
-        public List<string> DestinationIps { get; set; }
+        public List<string> DestinationIp { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The source ports.")]
         [ValidateNotNullOrEmpty]
-        public List<string> SourcePorts { get; set; }
+        public List<string> SourcePort { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The destination ports.")]
         [ValidateNotNullOrEmpty]
-        public List<string> DestinationPorts { get; set; }
+        public List<string> DestinationPort { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The protocols (e.g., TCP, UDP).")]
         [ValidateNotNullOrEmpty]
-        public List<string> Protocols { get; set; }
+        public List<string> Protocol { get; set; }
 
         public override void Execute()
         {
@@ -72,11 +72,11 @@ namespace Microsoft.Azure.Commands.Network
 
             var ipTraffic = new PSIPTraffic
             {
-                SourceIps = this.SourceIps,
-                DestinationIps = this.DestinationIps,
-                SourcePorts = this.SourcePorts,
-                DestinationPorts = this.DestinationPorts,
-                Protocols = this.Protocols
+                SourceIps = this.SourceIp,
+                DestinationIps = this.DestinationIp,
+                SourcePorts = this.SourcePort,
+                DestinationPorts = this.DestinationPort,
+                Protocols = this.Protocol
             };
 
             WriteObject(ipTraffic);

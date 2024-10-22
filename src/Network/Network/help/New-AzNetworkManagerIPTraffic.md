@@ -12,11 +12,11 @@ Create a new instance of IP Traffic
 ## SYNTAX
 
 ```
-New-AzNetworkManagerIPTraffic -SourceIps <System.Collections.Generic.IList`1[System.String]>
- -DestinationIps <System.Collections.Generic.IList`1[System.String]>
- -SourcePorts <System.Collections.Generic.IList`1[System.String]>
- -DestinationPorts <System.Collections.Generic.IList`1[System.String]>
- -Protocols <System.Collections.Generic.IList`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
+New-AzNetworkManagerIPTraffic -SourceIp <System.Collections.Generic.IList`1[System.String]>
+ -DestinationIp <System.Collections.Generic.IList`1[System.String]>
+ -SourcePort <System.Collections.Generic.IList`1[System.String]>
+ -DestinationPort <System.Collections.Generic.IList`1[System.String]>
+ -Protocol <System.Collections.Generic.IList`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ New-AzNetworkManagerIPTraffic -SourceIps <System.Collections.Generic.IList`1[Sys
 
 ### Example 1
 ```powershell
-New-AzNetworkManagerIPTraffic -SourceIps @("192.168.1.10") -DestinationIps @("172.16.0.5") -SourcePorts @("100") -DestinationPorts @("99") -Protocols @("TCP")
+New-AzNetworkManagerIPTraffic -SourceIp @("192.168.1.10") -DestinationIp @("172.16.0.5") -SourcePort @("100") -DestinationPort @("99") -Protocol @("TCP")
 ```
 
 ```output
@@ -74,7 +74,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DestinationIps
+### -DestinationIp
 The destination IPs.
 
 ```yaml
@@ -89,7 +89,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DestinationPorts
+### -DestinationPort
 The destination ports.
 
 ```yaml
@@ -119,7 +119,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Protocols
+### -Protocol
 The protocols (e.g., TCP, UDP).
 
 ```yaml
@@ -134,7 +134,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SourceIps
+### -SourceIp
 The source IPs.
 
 ```yaml
@@ -149,7 +149,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SourcePorts
+### -SourcePort
 The source ports.
 
 ```yaml

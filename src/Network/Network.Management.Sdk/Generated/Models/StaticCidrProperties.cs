@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// addresses will be assigned based on IpamPools available space.
         /// </param>
 
-        /// <param name="addressPrefixes">List of IP address prefixes of the resource.
+        /// <param name="addressPrefix">List of IP address prefixes of the resource.
         /// </param>
 
         /// <param name="totalNumberOfIPAddresses">Total number of IP addresses allocated for the static CIDR resource.
@@ -40,12 +40,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="provisioningState">Provisioning states of a resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public StaticCidrProperties(string description = default(string), string numberOfIPAddressesToAllocate = default(string), System.Collections.Generic.IList<string> addressPrefixes = default(System.Collections.Generic.IList<string>), string totalNumberOfIPAddresses = default(string), string provisioningState = default(string))
+        public StaticCidrProperties(string description = default(string), string numberOfIPAddressesToAllocate = default(string), System.Collections.Generic.IList<string> addressPrefix = default(System.Collections.Generic.IList<string>), string totalNumberOfIPAddresses = default(string), string provisioningState = default(string))
 
         {
             this.Description = description;
             this.NumberOfIPAddressesToAllocate = numberOfIPAddressesToAllocate;
-            this.AddressPrefixes = addressPrefixes;
+            this.AddressPrefixes = addressPrefix;
             this.TotalNumberOfIPAddresses = totalNumberOfIPAddresses;
             this.ProvisioningState = provisioningState;
             CustomInit();

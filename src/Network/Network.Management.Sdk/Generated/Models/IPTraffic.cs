@@ -24,28 +24,28 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the IPTraffic class.
         /// </summary>
 
-        /// <param name="sourceIps">List of source IP addresses of the traffic..
+        /// <param name="sourceIp">List of source IP addresses of the traffic..
         /// </param>
 
-        /// <param name="destinationIps">List of destination IP addresses of the traffic..
+        /// <param name="destinationIp">List of destination IP addresses of the traffic..
         /// </param>
 
-        /// <param name="sourcePorts">The source ports of the traffic.
+        /// <param name="sourcePort">The source ports of the traffic.
         /// </param>
 
-        /// <param name="destinationPorts">The destination ports of the traffic.
+        /// <param name="destinationPort">The destination ports of the traffic.
         /// </param>
 
-        /// <param name="protocols">
+        /// <param name="protocol">
         /// </param>
-        public IPTraffic(System.Collections.Generic.IList<string> sourceIps, System.Collections.Generic.IList<string> destinationIps, System.Collections.Generic.IList<string> sourcePorts, System.Collections.Generic.IList<string> destinationPorts, System.Collections.Generic.IList<string> protocols)
+        public IPTraffic(System.Collections.Generic.IList<string> sourceIp, System.Collections.Generic.IList<string> destinationIp, System.Collections.Generic.IList<string> sourcePort, System.Collections.Generic.IList<string> destinationPort, System.Collections.Generic.IList<string> protocol)
 
         {
-            this.SourceIps = sourceIps;
-            this.DestinationIps = destinationIps;
-            this.SourcePorts = sourcePorts;
-            this.DestinationPorts = destinationPorts;
-            this.Protocols = protocols;
+            this.SourceIps = sourceIp;
+            this.DestinationIps = destinationIp;
+            this.SourcePorts = sourcePort;
+            this.DestinationPorts = destinationPort;
+            this.Protocols = protocol;
             CustomInit();
         }
 
@@ -112,11 +112,6 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Protocols");
             }
-
-
-
-
-
         }
     }
 }

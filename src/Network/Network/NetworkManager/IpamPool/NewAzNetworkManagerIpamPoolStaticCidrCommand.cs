@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "List of IP address prefixes of the resource.")]
-        public virtual List<string> AddressPrefixes { get; set; }
+        public virtual List<string> AddressPrefix { get; set; }
 
         [Parameter(
          Mandatory = false,
@@ -111,9 +111,9 @@ namespace Microsoft.Azure.Commands.Network
             staticCidr.Name = this.Name;
             staticCidr.Properties = new PSStaticCidrProperties();
 
-            if (this.AddressPrefixes != null)
+            if (this.AddressPrefix != null)
             {
-                staticCidr.Properties.AddressPrefixes = this.AddressPrefixes;
+                staticCidr.Properties.AddressPrefixes = this.AddressPrefix;
             }
 
             if (!string.IsNullOrEmpty(this.NumberOfIPAddressesToAllocate))

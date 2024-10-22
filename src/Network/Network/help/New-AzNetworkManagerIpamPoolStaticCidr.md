@@ -13,7 +13,7 @@ Creates a new Static Cidr.
 ## SYNTAX
 
 ```
-New-AzNetworkManagerIpamPoolStaticCidr -Name <String> -NetworkManagerName <String> -ResourceGroupName <String> -PoolName <String> -AddressPrefixes <System.Collections.Generic.List`1[System.String]>
+New-AzNetworkManagerIpamPoolStaticCidr -Name <String> -NetworkManagerName <String> -ResourceGroupName <String> -PoolName <String> -AddressPrefix <System.Collections.Generic.List`1[System.String]>
  [-NumberOfIPAddressesToAllocate <String>] [-Description <String>] [-Force]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -26,7 +26,7 @@ The **New-AzNetworkManagerIpamPoolStaticCidr** cmdlet creates a new Static Cidr 
 
 ### Example 1
 ```powershell
-New-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -PoolName testCmdletPool -AddressPrefixes @("10.0.0.0/28")
+New-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -PoolName testCmdletPool -AddressPrefix @("10.0.0.0/28")
 ```
 
 ```output
@@ -50,7 +50,7 @@ Created the Static Cidr 'testStaticCidr' and allocated it to the IPAM pool 'test
 
 ## PARAMETERS
 
-### -AddressPrefixes
+### -AddressPrefix
 List of IP address prefixes of the resource.
 
 ```yaml

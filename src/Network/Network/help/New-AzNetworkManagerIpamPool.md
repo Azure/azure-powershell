@@ -13,7 +13,7 @@ Creates a new IPAM pool.
 
 ```
 New-AzNetworkManagerIpamPool -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
- -Location <String> -AddressPrefixes <System.Collections.Generic.List`1[System.String]> [-Description <String>]
+ -Location <String> -AddressPrefix <System.Collections.Generic.List`1[System.String]> [-Description <String>]
  [-DisplayName <String>] [-ParentPoolName <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -26,7 +26,7 @@ The **New-AzNetworkManagerIpamPool** cmdlet creates a new IPAM pool in the given
 
 ### Example 1
 ```powershell
-New-AzNetworkManagerIpamPool -Name testCmdletPool -NetworkManagerName testNM -ResourceGroupName testRG -Location eastus -AddressPrefixes @("10.0.0.0/24")
+New-AzNetworkManagerIpamPool -Name testCmdletPool -NetworkManagerName testNM -ResourceGroupName testRG -Location eastus -AddressPrefix @("10.0.0.0/24")
 
 ```
 ```output
@@ -63,7 +63,7 @@ Id                 : /subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourc
 A new IPAM pool was created called 'testCmdletPool' in the Network Manager 'testNM'
 ## PARAMETERS
 
-### -AddressPrefixes
+### -AddressPrefix
 The address prefixes to assign.
 
 ```yaml
