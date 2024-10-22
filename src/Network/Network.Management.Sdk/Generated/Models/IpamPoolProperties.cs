@@ -38,20 +38,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// will be a root pool.
         /// </param>
 
-        /// <param name="addressPrefix">List of IP address prefixes of the resource.
+        /// <param name="addressPrefixes">List of IP address prefixes of the resource.
         /// </param>
 
         /// <param name="provisioningState">Provisioning states of a resource.
         /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
         /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
-        public IpamPoolProperties(System.Collections.Generic.IList<string> addressPrefix, string description = default(string), string displayName = default(string), System.Collections.Generic.IList<string> ipAddressType = default(System.Collections.Generic.IList<string>), string parentPoolName = default(string), string provisioningState = default(string))
+        public IpamPoolProperties(System.Collections.Generic.IList<string> addressPrefixes, string description = default(string), string displayName = default(string), System.Collections.Generic.IList<string> ipAddressType = default(System.Collections.Generic.IList<string>), string parentPoolName = default(string), string provisioningState = default(string))
 
         {
             this.Description = description;
             this.DisplayName = displayName;
             this.IPAddressType = ipAddressType;
             this.ParentPoolName = parentPoolName;
-            this.AddressPrefixes = addressPrefix;
+            this.AddressPrefixes = addressPrefixes;
             this.ProvisioningState = provisioningState;
             CustomInit();
         }
@@ -108,8 +108,14 @@ namespace Microsoft.Azure.Management.Network.Models
         {
             if (this.AddressPrefixes == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "AddressPrefix");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "AddressPrefixes");
             }
+
+
+
+
+
+
         }
     }
 }
