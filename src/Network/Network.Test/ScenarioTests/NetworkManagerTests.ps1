@@ -940,7 +940,7 @@ function Test-NetworkManagerIpamPoolCRUD
         Assert-AreEqual $poolUsage.NumberOfReservedIPAddresses "0";
         Assert-AreEqual $poolUsage.NumberOfAvailableIPAddresses "33554432";
 
-        # Get Associated Resources
+        # Get Associated Resources List
         $listAssociatedResources = Get-AzNetworkManagerAssociatedResourcesList -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName
         Assert-NotNull $listAssociatedResources;
         Assert-AreEqual $listAssociatedResources.Count 0;
