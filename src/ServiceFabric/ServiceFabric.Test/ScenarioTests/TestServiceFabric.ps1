@@ -41,6 +41,7 @@ function Test-UpdateAzureRmServiceFabricReliability
 	Assert-AreEqual $reliabilityLevel $clusters[0].ReliabilityLevel
 }
 
+
 function Test-AddAzureRmServiceFabricClientCertificate
 {
 	$clusterName = "sfmcaddcert"
