@@ -34,6 +34,7 @@ Enabling encryption on a Databricks workspace takes three steps:
    - `-EncryptionKeyVaultUri`
    - `-EncryptionKeyName`
    - `-EncryptionKeyVersion`
+5.Important! Please read the information in the following document in detail: https://learn.microsoft.com/en-us/azure/databricks/security/keys/cmk-managed-services-azure/customer-managed-key-managed-services-azure?WT.mc_id=Portal-Microsoft_Azure_Databricks#--use-the-azure-portal
 
 ### Example 3: Disable encryption on a Databricks workspace.
 ```powershell

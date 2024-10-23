@@ -48,6 +48,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserpo
 #>
 function Get-AzDevCenterUserPool {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IPool])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.OutputBreakingChangeAttribute("Pool", "13.0.0", "2.0.0", "2024/11/19", ReplacementCmdletOutputType = "Pool", DeprecatedOutputProperties = ("HardwareProfileSkuName"), NewOutputProperties = ("HardwareProfileSkuName"))]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]

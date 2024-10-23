@@ -76,25 +76,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("TargetOssVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).TargetOssVersion = (string) content.GetValueForProperty("TargetOssVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).TargetOssVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("TargetClusterVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).TargetClusterVersion = (string) content.GetValueForProperty("TargetClusterVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).TargetClusterVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("TargetBuildNumber"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).TargetBuildNumber = (string) content.GetValueForProperty("TargetBuildNumber",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).TargetBuildNumber, global::System.Convert.ToString);
-            }
-            if (content.Contains("ComponentName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).ComponentName, global::System.Convert.ToString);
-            }
             if (content.Contains("UpgradeType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradePropertiesInternal)this).UpgradeType = (string) content.GetValueForProperty("UpgradeType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradePropertiesInternal)this).UpgradeType, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetOssVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).TargetOssVersion = (string) content.GetValueForProperty("TargetOssVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).TargetOssVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetClusterVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).TargetClusterVersion = (string) content.GetValueForProperty("TargetClusterVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).TargetClusterVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetBuildNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).TargetBuildNumber = (string) content.GetValueForProperty("TargetBuildNumber",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).TargetBuildNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComponentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).ComponentName, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -113,25 +113,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("TargetOssVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).TargetOssVersion = (string) content.GetValueForProperty("TargetOssVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).TargetOssVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("TargetClusterVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).TargetClusterVersion = (string) content.GetValueForProperty("TargetClusterVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).TargetClusterVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("TargetBuildNumber"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).TargetBuildNumber = (string) content.GetValueForProperty("TargetBuildNumber",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).TargetBuildNumber, global::System.Convert.ToString);
-            }
-            if (content.Contains("ComponentName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterHotfixUpgradePropertiesInternal)this).ComponentName, global::System.Convert.ToString);
-            }
             if (content.Contains("UpgradeType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradePropertiesInternal)this).UpgradeType = (string) content.GetValueForProperty("UpgradeType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradePropertiesInternal)this).UpgradeType, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetOssVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).TargetOssVersion = (string) content.GetValueForProperty("TargetOssVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).TargetOssVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetClusterVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).TargetClusterVersion = (string) content.GetValueForProperty("TargetClusterVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).TargetClusterVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetBuildNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).TargetBuildNumber = (string) content.GetValueForProperty("TargetBuildNumber",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).TargetBuildNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComponentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInPlaceUpgradePropertiesInternal)this).ComponentName, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

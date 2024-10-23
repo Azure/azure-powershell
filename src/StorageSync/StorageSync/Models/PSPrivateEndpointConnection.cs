@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
     /// <summary>
@@ -60,5 +62,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The SystemData.</value>
         public PSSystemData SystemData { get; set; }
+
+        /// <summary>
+        /// Group Identifier list
+        /// </summary>
+        public IList<string> GroupIds { get; set; }
     }
 }

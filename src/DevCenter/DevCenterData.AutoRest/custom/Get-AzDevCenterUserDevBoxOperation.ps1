@@ -50,6 +50,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserde
 #>
 function Get-AzDevCenterUserDevBoxOperation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxOperation])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.OutputBreakingChangeAttribute("DevBoxOperation", "13.0.0", "2.0.0", "2024/11/19", ReplacementCmdletOutputType = "DevBoxOperation", DeprecatedOutputProperties = ("Detail", "Status"), NewOutputProperties = ("Detail", "Status"))]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]

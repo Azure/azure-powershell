@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceOnlineEndpoi
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMLWorkspaceOnlineEndpoint' {
-    It 'CreateExpanded' {
+Describe 'New-AzMLWorkspaceOnlineEndpoint' { #Moved
+    It 'CreateExpanded' -Skip {
         { 
             New-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-pwsh03 -Location eastus -AuthMode 'Key' -IdentityType 'SystemAssigned'
             Update-AzMLWorkspaceOnlineEndpoint -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name online-pwsh03 -Tag @{'key'='value'}

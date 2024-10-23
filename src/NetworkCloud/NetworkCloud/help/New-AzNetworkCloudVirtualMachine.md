@@ -52,7 +52,7 @@ $sshPublicKey = @{
     KeyData = "ssh-rsa aaaKyfsdx= fakekey@vm"
 }
 
-$securePassword = ConvertTo-SecureString "password" -asplaintext -force
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 New-AzNetworkCloudVirtualMachine -Name vmName  -ResourceGroupName resourceGroup -AdminUsername adminUsername -CloudServiceNetworkAttachmentAttachedNetworkId csnAttachedNetworkId -CloudServiceNetworkAttachmentIPAllocationMethod ipAllocationMethod -CpuCore cpuCore -ExtendedLocationName extendedLocationName -ExtendedLocationType "Custom" -Location location -SubscriptionId subscriptionId -MemorySizeGb memorySizeGb -OSDiskSizeGb osDiskSizeGb -VMImage vmImage -BootMethod bootMethod -CloudServiceNetworkAttachmentDefaultGateway defaultGateway -CloudServiceNetworkAttachmentName csnAttachmentName -IsolateEmulatorThread isolateEmulatorThread -NetworkAttachment $networkAttachment -NetworkData networkData -OSDiskCreateOption osDiskCreationOption -OSDiskDeleteOption osDiskDeleteOption -PlacementHint $hint -SshPublicKey $sshPublicKey -Tag @{tags = "tags"} -UserData userData -VirtioInterface virtioInterface -VMDeviceModel vmDeviceModel -VMImageRepositoryCredentialsUsername registryUsername -VMImageRepositoryCredentialsPassword $securePassword -VMImageRepositoryCredentialsRegistryUrl registryUrl
 ```

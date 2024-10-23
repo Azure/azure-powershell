@@ -14,12 +14,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigInternal
     {
 
-        /// <summary>Backing field for <see cref="Component" /> property.</summary>
-        private string _component;
+        /// <summary>Backing field for <see cref="ComponentName" /> property.</summary>
+        private string _componentName;
 
         /// <summary>Name of the component the config files should apply to.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public string Component { get => this._component; set => this._component = value; }
+        public string ComponentName { get => this._componentName; set => this._componentName = value; }
 
         /// <summary>Backing field for <see cref="File" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile> _file;
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Description = @"Name of the component the config files should apply to.",
         SerializedName = @"component",
         PossibleTypes = new [] { typeof(string) })]
-        string Component { get; set; }
+        string ComponentName { get; set; }
         /// <summary>List of Config Files.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = true,
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 
     {
         /// <summary>Name of the component the config files should apply to.</summary>
-        string Component { get; set; }
+        string ComponentName { get; set; }
         /// <summary>List of Config Files.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile> File { get; set; }
 

@@ -25,7 +25,7 @@ Create a new instance DataMigration Microsoft Entra Application details.
 
 ### Example 1
 ```powershell
-$secpasswd = ConvertTo-SecureString "Your Secret Key Here" -AsPlainText -Force
+$secpasswd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzDataMigrationAzureActiveDirectoryApp -ApplicationId "Your AppId/Service Principal ID here" -AppKey $secpasswd
 ```
 

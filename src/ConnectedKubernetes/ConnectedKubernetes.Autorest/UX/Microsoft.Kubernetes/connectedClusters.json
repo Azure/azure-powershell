@@ -1,6 +1,6 @@
 {
   "resourceType": "connectedClusters",
-  "apiVersion": "2022-10-01-preview",
+  "apiVersion": "2024-07-15-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.connectedkubernetes"
   },

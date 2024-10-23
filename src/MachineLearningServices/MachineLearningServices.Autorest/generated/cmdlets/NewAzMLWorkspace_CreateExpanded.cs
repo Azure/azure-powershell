@@ -13,9 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMLWorkspace_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspace))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Description(@"Creates or updates a workspace with the specified parameters.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}", ApiVersion = "2024-04-01")]
     public partial class NewAzMLWorkspace_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IEventListener
     {
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>An object that represents a machine learning workspace.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Workspace();
+        private Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspace _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.Workspace();
 
         /// <summary>The flag to indicate whether to allow public access when behind VNet.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The flag to indicate whether to allow public access when behind VNet.")]
@@ -63,6 +64,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
+        /// <summary>.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"associatedWorkspaces",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] AssociatedWorkspace { get => _parametersBody.AssociatedWorkspace ?? null /* arrayOf */; set => _parametersBody.AssociatedWorkspace = value; }
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Runtime)]
@@ -70,6 +83,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.MachineLearningServices Client => Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Module.Instance.ClientAPI;
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"sparkRuntimeVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ComputeRuntimeSparkRuntimeVersion { get => _parametersBody.ComputeRuntimeSparkRuntimeVersion ?? null; set => _parametersBody.ComputeRuntimeSparkRuntimeVersion = value; }
 
         /// <summary>ARM id of the container registry associated with this workspace.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ARM id of the container registry associated with this workspace.")]
@@ -94,9 +118,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         public int CosmoDbCollectionsThroughput { get => _parametersBody.CosmoDbCollectionsThroughput ?? default(int); set => _parametersBody.CosmoDbCollectionsThroughput = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Azure)]
@@ -126,6 +151,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string DiscoveryUrl { get => _parametersBody.DiscoveryUrl ?? null; set => _parametersBody.DiscoveryUrl = value; }
 
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"enableDataIsolation",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter EnableDataIsolation { get => _parametersBody.EnableDataIsolation ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EnableDataIsolation = value; }
+
         /// <summary>Indicates whether or not the encryption is enabled for the workspace.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates whether or not the encryption is enabled for the workspace.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
@@ -150,6 +186,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         SerializedName = @"userAssignedIdentity",
         PossibleTypes = new [] { typeof(string) })]
         public string EncryptionUserAssignedIdentity { get => _parametersBody.PropertiesEncryptionIdentityUserAssignedIdentity ?? null; set => _parametersBody.PropertiesEncryptionIdentityUserAssignedIdentity = value; }
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"offlineStoreConnectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string FeatureStoreSettingOfflineStoreConnectionName { get => _parametersBody.FeatureStoreSettingOfflineStoreConnectionName ?? null; set => _parametersBody.FeatureStoreSettingOfflineStoreConnectionName = value; }
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"onlineStoreConnectionName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string FeatureStoreSettingOnlineStoreConnectionName { get => _parametersBody.FeatureStoreSettingOnlineStoreConnectionName ?? null; set => _parametersBody.FeatureStoreSettingOnlineStoreConnectionName = value; }
 
         /// <summary>The friendly name for this workspace. This name in mutable</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The friendly name for this workspace. This name in mutable")]
@@ -186,6 +244,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"hubResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string HubResourceId { get => _parametersBody.HubResourceId ?? null; set => _parametersBody.HubResourceId = value; }
 
         /// <summary>
         /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -279,6 +348,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string KeyVaultKeyIdentifier { get => _parametersBody.KeyVaultPropertyKeyIdentifier ?? null; set => _parametersBody.KeyVaultPropertyKeyIdentifier = value; }
 
+        /// <summary>Type of workspace. Possible values: Default, Hub, Project, FeatureStore.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of workspace. Possible values: Default, Hub, Project, FeatureStore.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Type of workspace. Possible values: Default, Hub, Project, FeatureStore.",
+        SerializedName = @"kind",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.WorkspaceType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.WorkspaceType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.WorkspaceType Kind { get => _parametersBody.Kind ?? ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.WorkspaceType)""); set => _parametersBody.Kind = value; }
+
         /// <summary>Specifies the location of the resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the location of the resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
@@ -289,6 +370,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
+
+        /// <summary>Isolation mode for the managed network of a machine learning workspace.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Isolation mode for the managed network of a machine learning workspace.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Isolation mode for the managed network of a machine learning workspace.",
+        SerializedName = @"isolationMode",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IsolationMode) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IsolationMode))]
+        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IsolationMode ManagedNetworkIsolationMode { get => _parametersBody.ManagedNetworkIsolationMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IsolationMode)""); set => _parametersBody.ManagedNetworkIsolationMode = value; }
+
+        /// <summary>Dictionary of <OutboundRule></summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Dictionary of <OutboundRule>")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Dictionary of <OutboundRule>",
+        SerializedName = @"outboundRules",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IManagedNetworkSettingsOutboundRules) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IManagedNetworkSettingsOutboundRules ManagedNetworkOutboundRule { get => _parametersBody.ManagedNetworkOutboundRule ?? null /* object */; set => _parametersBody.ManagedNetworkOutboundRule = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -379,6 +484,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>
+        /// The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed",
+        SerializedName = @"serverlessComputeCustomSubnet",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ServerlessComputeSettingServerlessComputeCustomSubnet { get => _parametersBody.ServerlessComputeSettingServerlessComputeCustomSubnet ?? null; set => _parametersBody.ServerlessComputeSettingServerlessComputeCustomSubnet = value; }
+
+        /// <summary>
+        /// The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace
+        /// with private endpoint
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint",
+        SerializedName = @"serverlessComputeNoPublicIP",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter ServerlessComputeSettingServerlessComputeNoPublicIP { get => _parametersBody.ServerlessComputeSettingServerlessComputeNoPublicIP ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.ServerlessComputeSettingServerlessComputeNoPublicIP = value; }
+
         /// <summary>The list of shared private link resources in this workspace.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of shared private link resources in this workspace.")]
@@ -388,8 +520,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         ReadOnly = false,
         Description = @"The list of shared private link resources in this workspace.",
         SerializedName = @"sharedPrivateLinkResources",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISharedPrivateLinkResource) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISharedPrivateLinkResource[] SharedPrivateLinkResource { get => _parametersBody.SharedPrivateLinkResource ?? null /* arrayOf */; set => _parametersBody.SharedPrivateLinkResource = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISharedPrivateLinkResource) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISharedPrivateLinkResource[] SharedPrivateLinkResource { get => _parametersBody.SharedPrivateLinkResource ?? null /* arrayOf */; set => _parametersBody.SharedPrivateLinkResource = value; }
 
         /// <summary>
         /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the
@@ -457,6 +589,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier))]
         public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier SkuTier { get => _parametersBody.SkuTier ?? ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SkuTier)""); set => _parametersBody.SkuTier = value; }
 
+        /// <summary>Status for the managed network of a machine learning workspace.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Status for the managed network of a machine learning workspace.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Status for the managed network of a machine learning workspace.",
+        SerializedName = @"status",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedNetworkStatus) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedNetworkStatus))]
+        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedNetworkStatus Status { get => _parametersBody.Status ?? ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedNetworkStatus)""); set => _parametersBody.Status = value; }
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"sparkReady",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter StatusSparkReady { get => _parametersBody.StatusSparkReady ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.StatusSparkReady = value; }
+
         /// <summary>
         /// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
         /// </summary>
@@ -497,8 +652,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         ReadOnly = false,
         Description = @"Contains resource tags defined as key/value pairs.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspaceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspaceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspaceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
         /// Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
@@ -512,6 +667,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         SerializedName = @"v1LegacyMode",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter V1LegacyMode { get => _parametersBody.V1LegacyMode ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.V1LegacyMode = value; }
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"additionalWorkspaceStorageAccounts",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] WorkspaceHubConfigAdditionalWorkspaceStorageAccount { get => _parametersBody.HubConfigAdditionalWorkspaceStorageAccount ?? null /* arrayOf */; set => _parametersBody.HubConfigAdditionalWorkspaceStorageAccount = value; }
+
+        /// <summary>.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @".",
+        SerializedName = @"defaultWorkspaceResourceGroup",
+        PossibleTypes = new [] { typeof(string) })]
+        public string WorkspaceHubConfigDefaultWorkspaceResourceGroup { get => _parametersBody.HubConfigDefaultWorkspaceResourceGroup ?? null; set => _parametersBody.HubConfigDefaultWorkspaceResourceGroup = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -530,12 +708,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspace</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspace> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -582,7 +760,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -761,6 +956,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
@@ -805,12 +1015,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspace">Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspace</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspace> response)
         {
             using( NoSynchronizationContext )
             {
@@ -822,7 +1032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspace
                 WriteObject((await response));
             }
         }

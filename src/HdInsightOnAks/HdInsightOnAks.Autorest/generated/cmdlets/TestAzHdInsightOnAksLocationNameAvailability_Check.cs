@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INameAvailabilityResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"Check the availability of the resource name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/checkNameAvailability", ApiVersion = "2023-11-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/checkNameAvailability", ApiVersion = "2024-05-01-preview")]
     public partial class TestAzHdInsightOnAksLocationNameAvailability_Check : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IContext

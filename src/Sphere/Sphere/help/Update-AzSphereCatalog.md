@@ -45,15 +45,15 @@ Update a Catalog
 
 ### Example 1: Update tag
 ```powershell
-Update-AzSphereCatalog -Name test2024 -ResourceGroupName joyer-test -Tag @{"123"="abc"}
+Update-AzSphereCatalog -Name test2024 -ResourceGroupName group-test -Tag @{"123"="abc"}
 ```
 
 ```output
-Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/joyer-test/providers/Microsoft.AzureSphere/catalogs/test2024
+Id                           : /subscriptions/11111111-2222-3333-4444-123456789103/resourceGroups/group-test/providers/Microsoft.AzureSphere/catalogs/test2024
 Location                     : global
 Name                         : test2024
 ProvisioningState            : Succeeded
-ResourceGroupName            : joyer-test
+ResourceGroupName            : group-test
 SystemDataCreatedAt          : 2/1/2024 1:51:44 AM
 SystemDataCreatedBy          : example@microsoft.com
 SystemDataCreatedByType      : User

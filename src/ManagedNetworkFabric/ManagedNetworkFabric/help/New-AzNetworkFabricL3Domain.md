@@ -45,8 +45,8 @@ Create isolation domain resources for layer 3 connectivity between compute nodes
 ```powershell
 $connectedSubnetRoutePolicy = @{
     ExportRoutePolicy = @(@{
-        ExportIpv4RoutePolicyId = "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
-        ExportIpv6RoutePolicyId = "/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
+        ExportIpv4RoutePolicyId = "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
+        ExportIpv6RoutePolicyId = "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
     })
 }
 $aggregateRouteConfiguration = @{

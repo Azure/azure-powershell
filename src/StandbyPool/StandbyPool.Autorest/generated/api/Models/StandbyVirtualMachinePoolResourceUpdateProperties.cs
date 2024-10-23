@@ -30,10 +30,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         internal Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate ElasticityProfile { get => (this._elasticityProfile = this._elasticityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfileUpdate()); set => this._elasticityProfile = value; }
 
         /// <summary>
-        /// Specifies maximum number of virtual machines in the standby virtual machine pool.
+        /// Specifies the maximum number of virtual machines in the standby virtual machine pool.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Inlined)]
         public long? ElasticityProfileMaxReadyCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)ElasticityProfile).MaxReadyCapacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)ElasticityProfile).MaxReadyCapacity = value ?? default(long); }
+
+        /// <summary>
+        /// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot
+        /// exceed MaxReadyCapacity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Inlined)]
+        public long? ElasticityProfileMinReadyCapacity { get => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)ElasticityProfile).MinReadyCapacity; set => ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdateInternal)ElasticityProfile).MinReadyCapacity = value ?? default(long); }
 
         /// <summary>Internal Acessors for ElasticityProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceUpdatePropertiesInternal.ElasticityProfile { get => (this._elasticityProfile = this._elasticityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolElasticityProfileUpdate()); set { {_elasticityProfile = value;} } }
@@ -71,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         PossibleTypes = new [] { typeof(string) })]
         string AttachedVirtualMachineScaleSetId { get; set; }
         /// <summary>
-        /// Specifies maximum number of virtual machines in the standby virtual machine pool.
+        /// Specifies the maximum number of virtual machines in the standby virtual machine pool.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
         Required = false,
@@ -79,10 +86,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies maximum number of virtual machines in the standby virtual machine pool.",
+        Description = @"Specifies the maximum number of virtual machines in the standby virtual machine pool.",
         SerializedName = @"maxReadyCapacity",
         PossibleTypes = new [] { typeof(long) })]
         long? ElasticityProfileMaxReadyCapacity { get; set; }
+        /// <summary>
+        /// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot
+        /// exceed MaxReadyCapacity.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.",
+        SerializedName = @"minReadyCapacity",
+        PossibleTypes = new [] { typeof(long) })]
+        long? ElasticityProfileMinReadyCapacity { get; set; }
         /// <summary>Specifies the desired state of virtual machines in the pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
         Required = false,
@@ -108,9 +129,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         /// <summary>Specifies the elasticity profile of the standby virtual machine pools.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolElasticityProfileUpdate ElasticityProfile { get; set; }
         /// <summary>
-        /// Specifies maximum number of virtual machines in the standby virtual machine pool.
+        /// Specifies the maximum number of virtual machines in the standby virtual machine pool.
         /// </summary>
         long? ElasticityProfileMaxReadyCapacity { get; set; }
+        /// <summary>
+        /// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot
+        /// exceed MaxReadyCapacity.
+        /// </summary>
+        long? ElasticityProfileMinReadyCapacity { get; set; }
         /// <summary>Specifies the desired state of virtual machines in the pool.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PSArgumentCompleterAttribute("Running", "Deallocated")]
         string VirtualMachineState { get; set; }

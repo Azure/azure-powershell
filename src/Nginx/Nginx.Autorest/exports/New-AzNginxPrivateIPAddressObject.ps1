@@ -23,12 +23,12 @@ Create an in-memory object for NginxPrivateIPAddress.
 New-AzNginxPrivateIPAddressObject -PrivateIPAddress 10.0.0.0 -PrivateIPAllocationMethod Static -SubnetId /subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/nginx-test-rg/providers/Microsoft.Network/virtualNetworks/nginx-test-vnet/subnets/default
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPrivateIPAddress
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPrivateIPAddress
 .Link
 https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxPrivateIPAddressObject
 #>
 function New-AzNginxPrivateIPAddressObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPrivateIPAddress])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPrivateIPAddress])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]

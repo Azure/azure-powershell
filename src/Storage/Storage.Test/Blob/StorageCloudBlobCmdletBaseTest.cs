@@ -14,7 +14,7 @@
 
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Blob;
 

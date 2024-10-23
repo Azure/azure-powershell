@@ -1,0 +1,75 @@
+{
+  "resourceType": "storageClasses",
+  "apiVersion": "2024-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.kubernetesruntime"
+  },
+  "commands": [
+    {
+      "name": "Get-AzKubernetesRuntimeStorageClass",
+      "description": "Get a StorageClassResource",
+      "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kubernetesruntime/get-azkubernetesruntimestorageclass"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ArcConnectedClusterId <String>",
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a StorageClassResource",
+          "parameters": [
+            {
+              "name": "-ArcConnectedClusterId",
+              "value": "[Path.resourceUri]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.storageClassName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzKubernetesRuntimeStorageClass",
+      "description": "Delete a StorageClassResource",
+      "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kubernetesruntime/remove-azkubernetesruntimestorageclass"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ArcConnectedClusterId <String>",
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a StorageClassResource",
+          "parameters": [
+            {
+              "name": "-ArcConnectedClusterId",
+              "value": "[Path.resourceUri]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.storageClassName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

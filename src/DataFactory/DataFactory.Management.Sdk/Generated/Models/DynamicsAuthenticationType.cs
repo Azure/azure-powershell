@@ -16,5 +16,6 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public const string Office365 = "Office365";
         public const string Ifd = "Ifd";
         public const string AADServicePrincipal = "AADServicePrincipal";
+        public const string ActiveDirectory = "Active Directory";
     }
 }

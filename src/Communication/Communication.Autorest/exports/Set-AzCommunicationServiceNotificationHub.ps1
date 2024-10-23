@@ -23,7 +23,7 @@ Links an Azure Notification Hub to this communication service.
 Set-AzCommunicationServiceNotificationHub -CommunicationServiceName ContosoAcsResource2 -ResourceGroupName ContosoResourceProvider1 -ConnectionString "<notificationhub-connectionstring>" -NotificationHubResourceId "<notificationhub-resourceid>"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkNotificationHubParameters
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkNotificationHubParameters
 .Outputs
 System.String
 .Notes
@@ -59,11 +59,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='Link', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkNotificationHubParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ILinkNotificationHubParameters]
     # Description of an Azure Notification Hub to link to the communication service
     # To construct, see NOTES section for LINKNOTIFICATIONHUBPARAMETER properties and create a hash table.
     ${LinkNotificationHubParameter},

@@ -60,7 +60,6 @@ Checks if resource name is available.
 
 ### -CheckNameAvailabilityRequest
 The check availability request body.
-To construct, see NOTES section for CHECKNAMEAVAILABILITYREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICheckNameAvailabilityRequest

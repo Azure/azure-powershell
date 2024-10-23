@@ -38,9 +38,9 @@ function Start-ExtensionPopulate {
             commandToExecute = "ls"
         }
     } elseif ($IsWindows) {
-        $splat.ExtensionType = "CustomScriptExtension"
-        $splat.Publisher = "Microsoft.Compute"
-        $splat.TypeHandlerVersion = "1.10.10"
+        $splat.ExtensionType = "NetworkWatcherAgentWindows"
+        $splat.Publisher = "Microsoft.Azure.NetworkWatcher"
+        $splat.TypeHandlerVersion = "1.4.2798.3"
         $splat.Settings = @{
             CommandToExecute = "dir"
         }

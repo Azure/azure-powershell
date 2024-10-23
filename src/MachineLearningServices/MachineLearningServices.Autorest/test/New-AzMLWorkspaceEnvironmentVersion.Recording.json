@@ -1,8 +1,8 @@
 {
-  "New-AzMLWorkspaceEnvironmentVersion+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/environments/commandjobenv/versions/1?api-version=2022-05-01+1": {
+  "New-AzMLWorkspaceEnvironmentVersion+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/environments/commandjobenv/versions/1?api-version=2024-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/environments/commandjobenv/versions/1?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/environments/commandjobenv/versions/1?api-version=2024-04-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"image\": \"library/python:latest\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,41 +17,43 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/environments/commandjobenv/versions/1?api-version=2022-05-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/environments/commandjobenv/versions/1?api-version=2024-04-01" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.671" ],
-        "x-ms-request-id": [ "e1d56c32-6801-4c43-a210-67b1b6e478d8" ],
-        "x-ms-correlation-request-id": [ "e1d56c32-6801-4c43-a210-67b1b6e478d8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T124452Z:e1d56c32-6801-4c43-a210-67b1b6e478d8" ],
-        "Date": [ "Sun, 05 Jun 2022 12:44:51 GMT" ]
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.434" ],
+        "x-ms-request-id": [ "eeabe142-aebd-4fef-aea9-47b1acf583fd" ],
+        "x-ms-correlation-request-id": [ "eeabe142-aebd-4fef-aea9-47b1acf583fd" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085439Z:eeabe142-aebd-4fef-aea9-47b1acf583fd" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C141B4A2818F497CBE7BBDD29DFA4A31 Ref B: TYO201151005031 Ref C: 2024-07-24T08:54:37Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:54:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "858" ],
+        "Content-Length": [ "1012" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/environments/commandjobenv/versions/1\",\n  \"name\": \"1\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/environments/versions\",\n  \"properties\": {\n    \"description\": null,\n    \"tags\": {},\n    \"properties\": {},\n    \"isArchived\": false,\n    \"isAnonymous\": false,\n    \"environmentType\": \"UserCreated\",\n    \"image\": \"library/python:latest\",\n    \"condaFile\": \"\",\n    \"osType\": \"Linux\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-06-05T12:44:52.0279213Z\",\n    \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2022-06-05T12:44:52.0279213Z\",\n    \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"lastModifiedByType\": \"User\"\n  }\n}",
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/environments/commandjobenv/versions/1\",\n  \"name\": \"1\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/environments/versions\",\n  \"properties\": {\n    \"description\": null,\n    \"tags\": {},\n    \"properties\": {\n      \"azureml.labels\": \"latest\"\n    },\n    \"isArchived\": false,\n    \"isAnonymous\": false,\n    \"environmentType\": \"UserCreated\",\n    \"image\": \"library/python:latest\",\n    \"condaFile\": \"\",\n    \"osType\": \"Linux\",\n    \"autoRebuild\": \"Disabled\",\n    \"provisioningState\": \"Succeeded\",\n    \"stage\": \"Development\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2024-07-24T08:54:39.0038901+00:00\",\n    \"createdBy\": \"Joyer Jin (Wicresoft North America Ltd)\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2024-07-24T08:54:39.0038901+00:00\",\n    \"lastModifiedBy\": \"Joyer Jin (Wicresoft North America Ltd)\",\n    \"lastModifiedByType\": \"User\"\n  }\n}",
       "isContentBase64": false
     }
   },
-  "New-AzMLWorkspaceEnvironmentVersion+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/environments/commandjobenv/versions/1?api-version=2022-05-01+2": {
+  "New-AzMLWorkspaceEnvironmentVersion+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/environments/commandjobenv/versions/1?api-version=2024-04-01+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/environments/commandjobenv/versions/1?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/environments/commandjobenv/versions/1?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "47cd1d4c-9987-449c-ba2f-21710719c8b9" ],
+        "x-ms-unique-id": [ "127" ],
+        "x-ms-client-request-id": [ "9c5f5d5b-e4ee-4afe-86b9-793e47c482ab" ],
         "CommandName": [ "Remove-AzMLWorkspaceEnvironmentVersion" ],
         "FullCommandName": [ "Remove-AzMLWorkspaceEnvironmentVersion_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -68,11 +70,13 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.246" ],
-        "x-ms-request-id": [ "05901b2f-ec93-4d26-b225-dcef6663e821" ],
-        "x-ms-correlation-request-id": [ "05901b2f-ec93-4d26-b225-dcef6663e821" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T124454Z:05901b2f-ec93-4d26-b225-dcef6663e821" ],
-        "Date": [ "Sun, 05 Jun 2022 12:44:53 GMT" ]
+        "x-request-time": [ "0.365" ],
+        "x-ms-request-id": [ "8b192536-af43-4ea9-9cb4-0f4046541b8a" ],
+        "x-ms-correlation-request-id": [ "8b192536-af43-4ea9-9cb4-0f4046541b8a" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085440Z:8b192536-af43-4ea9-9cb4-0f4046541b8a" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5EE9DDEF41EA4BE49AE9A97EB2B2A009 Ref B: TYO201151005031 Ref C: 2024-07-24T08:54:39Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:54:40 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

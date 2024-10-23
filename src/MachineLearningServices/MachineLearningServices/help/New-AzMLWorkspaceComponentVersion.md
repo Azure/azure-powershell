@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecomponentversion
 schema: 2.0.0
@@ -16,7 +16,7 @@ Create or update version.
 New-AzMLWorkspaceComponentVersion -Name <String> -ResourceGroupName <String> -Version <String>
  -WorkspaceName <String> [-SubscriptionId <String>] [-ComponentSpec <Hashtable>] [-Description <String>]
  [-IsAnonymou] [-IsArchived] [-ResourceBaseProperty <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ New-AzMLWorkspaceComponentVersion -ResourceGroupName ml-rg-test -WorkspaceName m
 ```output
 Name SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
 ---- ------------------- -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-1    6/5/2022 2:06:37 PM Lucas Yao (Wicresoft North America) User                    6/5/2022 2:06:37 PM      Lucas Yao (Wicresoft North America) User                         ml-rg-test
+1    6/5/2022 2:06:37 PM UserName (Example)         User                    6/5/2022 2:06:37 PM      UserName (Example)         User                         ml-rg-test
 ```
 
 Create or update component version
@@ -65,7 +65,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -269,11 +270,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentVersion
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComponentVersion
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

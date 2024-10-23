@@ -271,7 +271,7 @@
     <value>The given storage account subscription {0} is in other subscription than the current azure context subscription {1}. We will try to inform Azure File Sync about the storage account subscription.</value>
   </data>
   <data name="NewCloudEndpointCrossTenantErrorFormat" xml:space="preserve">
-    <value>The given storage account tenant {0} does not match with current azure tenant. We do not support cloud endpoint creation with storage account pointing to any other tenant than itself. Please try this operation again with correct tenant.</value>
+    <value>The given storage account tenant {0} does not match with current azure tenant {1}. We do not support cloud endpoint creation with storage account pointing to any other tenant than itself. Please try this operation again with correct tenant.</value>
   </data>
   <data name="NewCloudEndpointUnableToRegisterErrorFormat" xml:space="preserve">
     <value>The given subscription {0} was unable to registered to Azure File Sync.</value>
@@ -281,5 +281,41 @@
   </data>
   <data name="MissingServicePrincipalResourceIdErrorMessage" xml:space="preserve">
     <value>Service Principal for Azure File Sync was not found. Please contact administrator for further troubleshooting.</value>
+  </data>
+  <data name="SetRegisteredServerActionMessage" xml:space="preserve">
+    <value>Set a Registered Server.</value>
+  </data>
+  <data name="MissingServerResourceIdErrorMessage" xml:space="preserve">
+    <value>The given server resource id is not in the required format. Please try again.</value>
+  </data>
+  <data name="AgentMI_ChallengeTokenNullError" xml:space="preserve">
+    <value>Secret file path content is empty. Expected to read challenge key.</value>
+  </data>
+  <data name="AgentMI_InvalidSecretFileError" xml:space="preserve">
+    <value>Secret file is invalid. It is either empty, not in the expected directory, or not of file type .key.</value>
+  </data>
+  <data name="AgentMI_MissingSecretFilePathOnServerError" xml:space="preserve">
+    <value>Secret file path does not exist on the server.</value>
+  </data>
+  <data name="AgentMI_MissingSystemAssignedIdentityError" xml:space="preserve">
+    <value>No system-assigned Managed Identity was found for this resource.</value>
+  </data>
+  <data name="AgentMI_MissingSystemIdentityWithMultipleUserAssignedError" xml:space="preserve">
+    <value>There appears to be no system-assigned managed identity and multiple user-assigned identities for this resource.</value>
+  </data>
+  <data name="AgentMI_MissingTokenClaim" xml:space="preserve">
+    <value>Unable to parse JWT token for the requested claim.</value>
+  </data>
+  <data name="AgentMI_MissingWWWAuthenticateHeaderError" xml:space="preserve">
+    <value>Unable to parse response for WWW-Authenticate header.</value>
+  </data>
+  <data name="AgentMI_MissingWWWAuthenticateValueError" xml:space="preserve">
+    <value>Value for WWW-Authenticate header is null or empty.</value>
+  </data>
+  <data name="AgentMI_TokenResponseNullError" xml:space="preserve">
+    <value>Unexpected return value: TokenResponse from GetServerManagedIdentityTokenResponseInternal is null</value>
+  </data>
+  <data name="AgentMI_UnexpectedArcChallengeResponseError" xml:space="preserve">
+    <value>Unexpected response while trying to retrieve challenge token from Hybrid IMDS. Expected Unauthorized Response.</value>
   </data>
 </root>

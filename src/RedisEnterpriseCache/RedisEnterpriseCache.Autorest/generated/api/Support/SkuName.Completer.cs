@@ -6,7 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
 {
 
-    /// <summary>Argument completer implementation for SkuName.</summary>
+    /// <summary>
+    /// The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5',
+    /// etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported
+    /// in the future.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuNameTypeConverter))]
     public partial struct SkuName :
         System.Management.Automation.IArgumentCompleter
@@ -26,6 +30,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enterprise_E1".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Enterprise_E1'", "Enterprise_E1", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E1");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enterprise_E5".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Enterprise_E5'", "Enterprise_E5", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E5");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enterprise_E10".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Enterprise_E10'", "Enterprise_E10", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E10");
@@ -42,6 +54,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Enterprise_E100'", "Enterprise_E100", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E100");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enterprise_E200".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Enterprise_E200'", "Enterprise_E200", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E200");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enterprise_E400".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Enterprise_E400'", "Enterprise_E400", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enterprise_E400");
+            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EnterpriseFlash_F300".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'EnterpriseFlash_F300'", "EnterpriseFlash_F300", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnterpriseFlash_F300");
@@ -53,6 +73,182 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "EnterpriseFlash_F1500".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'EnterpriseFlash_F1500'", "EnterpriseFlash_F1500", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnterpriseFlash_F1500");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B0".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B0'", "Balanced_B0", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B0");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B1".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B1'", "Balanced_B1", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B1");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B3'", "Balanced_B3", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B3");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B5".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B5'", "Balanced_B5", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B5");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B10".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B10'", "Balanced_B10", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B10");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B20".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B20'", "Balanced_B20", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B20");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B50".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B50'", "Balanced_B50", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B50");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B100".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B100'", "Balanced_B100", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B100");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B150".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B150'", "Balanced_B150", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B150");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B250".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B250'", "Balanced_B250", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B250");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B350".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B350'", "Balanced_B350", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B350");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B500".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B500'", "Balanced_B500", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B500");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B700".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B700'", "Balanced_B700", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B700");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Balanced_B1000".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Balanced_B1000'", "Balanced_B1000", global::System.Management.Automation.CompletionResultType.ParameterValue, "Balanced_B1000");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MemoryOptimized_M10".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MemoryOptimized_M10'", "MemoryOptimized_M10", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized_M10");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MemoryOptimized_M20".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MemoryOptimized_M20'", "MemoryOptimized_M20", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized_M20");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MemoryOptimized_M50".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MemoryOptimized_M50'", "MemoryOptimized_M50", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized_M50");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MemoryOptimized_M100".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MemoryOptimized_M100'", "MemoryOptimized_M100", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized_M100");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MemoryOptimized_M150".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MemoryOptimized_M150'", "MemoryOptimized_M150", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized_M150");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MemoryOptimized_M250".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MemoryOptimized_M250'", "MemoryOptimized_M250", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized_M250");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MemoryOptimized_M350".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MemoryOptimized_M350'", "MemoryOptimized_M350", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized_M350");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MemoryOptimized_M500".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MemoryOptimized_M500'", "MemoryOptimized_M500", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized_M500");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MemoryOptimized_M700".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MemoryOptimized_M700'", "MemoryOptimized_M700", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized_M700");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MemoryOptimized_M1000".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MemoryOptimized_M1000'", "MemoryOptimized_M1000", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized_M1000");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MemoryOptimized_M1500".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MemoryOptimized_M1500'", "MemoryOptimized_M1500", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized_M1500");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "MemoryOptimized_M2000".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'MemoryOptimized_M2000'", "MemoryOptimized_M2000", global::System.Management.Automation.CompletionResultType.ParameterValue, "MemoryOptimized_M2000");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ComputeOptimized_X3".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ComputeOptimized_X3'", "ComputeOptimized_X3", global::System.Management.Automation.CompletionResultType.ParameterValue, "ComputeOptimized_X3");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ComputeOptimized_X5".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ComputeOptimized_X5'", "ComputeOptimized_X5", global::System.Management.Automation.CompletionResultType.ParameterValue, "ComputeOptimized_X5");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ComputeOptimized_X10".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ComputeOptimized_X10'", "ComputeOptimized_X10", global::System.Management.Automation.CompletionResultType.ParameterValue, "ComputeOptimized_X10");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ComputeOptimized_X20".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ComputeOptimized_X20'", "ComputeOptimized_X20", global::System.Management.Automation.CompletionResultType.ParameterValue, "ComputeOptimized_X20");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ComputeOptimized_X50".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ComputeOptimized_X50'", "ComputeOptimized_X50", global::System.Management.Automation.CompletionResultType.ParameterValue, "ComputeOptimized_X50");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ComputeOptimized_X100".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ComputeOptimized_X100'", "ComputeOptimized_X100", global::System.Management.Automation.CompletionResultType.ParameterValue, "ComputeOptimized_X100");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ComputeOptimized_X150".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ComputeOptimized_X150'", "ComputeOptimized_X150", global::System.Management.Automation.CompletionResultType.ParameterValue, "ComputeOptimized_X150");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ComputeOptimized_X250".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ComputeOptimized_X250'", "ComputeOptimized_X250", global::System.Management.Automation.CompletionResultType.ParameterValue, "ComputeOptimized_X250");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ComputeOptimized_X350".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ComputeOptimized_X350'", "ComputeOptimized_X350", global::System.Management.Automation.CompletionResultType.ParameterValue, "ComputeOptimized_X350");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ComputeOptimized_X500".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ComputeOptimized_X500'", "ComputeOptimized_X500", global::System.Management.Automation.CompletionResultType.ParameterValue, "ComputeOptimized_X500");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ComputeOptimized_X700".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ComputeOptimized_X700'", "ComputeOptimized_X700", global::System.Management.Automation.CompletionResultType.ParameterValue, "ComputeOptimized_X700");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "FlashOptimized_A250".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'FlashOptimized_A250'", "FlashOptimized_A250", global::System.Management.Automation.CompletionResultType.ParameterValue, "FlashOptimized_A250");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "FlashOptimized_A500".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'FlashOptimized_A500'", "FlashOptimized_A500", global::System.Management.Automation.CompletionResultType.ParameterValue, "FlashOptimized_A500");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "FlashOptimized_A700".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'FlashOptimized_A700'", "FlashOptimized_A700", global::System.Management.Automation.CompletionResultType.ParameterValue, "FlashOptimized_A700");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "FlashOptimized_A1000".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'FlashOptimized_A1000'", "FlashOptimized_A1000", global::System.Management.Automation.CompletionResultType.ParameterValue, "FlashOptimized_A1000");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "FlashOptimized_A1500".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'FlashOptimized_A1500'", "FlashOptimized_A1500", global::System.Management.Automation.CompletionResultType.ParameterValue, "FlashOptimized_A1500");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "FlashOptimized_A2000".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'FlashOptimized_A2000'", "FlashOptimized_A2000", global::System.Management.Automation.CompletionResultType.ParameterValue, "FlashOptimized_A2000");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "FlashOptimized_A4500".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'FlashOptimized_A4500'", "FlashOptimized_A4500", global::System.Management.Automation.CompletionResultType.ParameterValue, "FlashOptimized_A4500");
             }
         }
     }

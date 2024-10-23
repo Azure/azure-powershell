@@ -1,0 +1,47 @@
+{
+  "Get-AzOracleDbSystemShape+[NoContext]+List+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/dbSystemShapes?api-version=2023-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/dbSystemShapes?api-version=2023-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "2c9fbcd6-9038-4acd-ab80-7cd2a1f4d41a" ],
+        "CommandName": [ "Get-AzOracleDbSystemShape" ],
+        "FullCommandName": [ "Get-AzOracleDbSystemShape_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "opc-request-id": [ "/AEE442C52FDC3EAE872850AC05F281B9/67847171CAD79D1225C920DAE90AEB2F" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "040c4ed8-f72f-45bf-90e7-09946d443788" ],
+        "x-ms-correlation-request-id": [ "5e4c3dfe-b7bf-462c-a456-a59b976b2c2a" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20240705T104334Z:5e4c3dfe-b7bf-462c-a456-a59b976b2c2a" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B4BAB1229F9E40A79C220D66449C6887 Ref B: AMS231032607045 Ref C: 2024-07-05T10:43:33Z" ],
+        "Date": [ "Fri, 05 Jul 2024 10:43:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "789" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/dbSystemShapes/Exadata.X9M\",\"name\":\"Exadata.X9M\",\"type\":\"Oracle.Database/Locations/dbSystemShapes\",\"properties\":{\"shapeFamily\":\"EXADATA\",\"availableCoreCount\":0,\"minimumCoreCount\":0,\"runtimeMinimumCoreCount\":null,\"coreCountIncrement\":null,\"minStorageCount\":null,\"maxStorageCount\":null,\"availableDataStoragePerServerInTbs\":null,\"availableMemoryPerNodeInGbs\":1390,\"availableDbNodePerNodeInGbs\":2243,\"minCoreCountPerNode\":0,\"availableMemoryInGbs\":null,\"minMemoryPerNodeInGbs\":30,\"availableDbNodeStorageInGbs\":null,\"minDbNodeStoragePerNodeInGbs\":60,\"availableDataStorageInTbs\":63,\"minDataStorageInTbs\":2,\"minimumNodeCount\":2,\"maximumNodeCount\":32,\"availableCoreCountPerNode\":126}}]}",
+      "isContentBase64": false
+    }
+  }
+}

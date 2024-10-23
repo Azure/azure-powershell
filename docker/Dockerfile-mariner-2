@@ -1,4 +1,5 @@
 FROM mcr.microsoft.com/powershell:mariner-2.0
+RUN tdnf update -y && tdnf upgrade -y && tdnf clean all
 
 ARG REPOSITORY=PSGallery
 ARG MODULE=Az
@@ -38,7 +39,9 @@ RUN if [ "${LATEST}" = True ] ; then \
         tdnf install -y tar gzip && \
         tdnf clean all && \ 
         tar -zxvf ./latest.tar.gz -C ./latest  && \
-        pwsh -Command ./latest/InstallModule.ps1 -Scope AllUsers ;\
+        pwsh -Command ./latest/InstallModule.ps1 -Scope AllUsers &&\
+        rm -fr latest &&\
+        rm -f latest.tar.gz ;\
     else \
         # install old azure-powershell from PSGallery
         pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Trusted && \

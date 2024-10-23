@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-This operation creates or updates a policy definition in the given subscription with the given name.
+This operation create a policy definition in the given subscription with the given name.
 .Description
-This operation creates or updates a policy definition in the given subscription with the given name.
+This operation create a policy definition in the given subscription with the given name.
 .Example
 {{ Add code here }}
 .Example

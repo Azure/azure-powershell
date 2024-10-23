@@ -80,6 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeProfileInternal)this).Node = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile>) content.GetValueForProperty("Node",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeProfileInternal)this).Node, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.NodeProfileTypeConverter.ConvertFrom));
             }
+            if (content.Contains("AvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeProfileInternal)this).AvailabilityZone = (System.Collections.Generic.List<string>) content.GetValueForProperty("AvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeProfileInternal)this).AvailabilityZone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -100,6 +104,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("Node"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeProfileInternal)this).Node = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile>) content.GetValueForProperty("Node",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeProfileInternal)this).Node, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.NodeProfileTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeProfileInternal)this).AvailabilityZone = (System.Collections.Generic.List<string>) content.GetValueForProperty("AvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IComputeProfileInternal)this).AvailabilityZone, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }

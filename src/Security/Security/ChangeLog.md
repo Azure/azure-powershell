@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 1.7.0
+* Added new cmdlets for defender for storage
+
 ## Version 1.6.2
 * Introduced secrets detection feature to safeguard sensitive data.
 

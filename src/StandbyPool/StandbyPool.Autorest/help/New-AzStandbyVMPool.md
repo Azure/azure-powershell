@@ -15,8 +15,8 @@ Create a StandbyVirtualMachinePoolResource
 ### CreateExpanded (Default)
 ```
 New-AzStandbyVMPool -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-MaxReadyCapacity <Int64>] [-Tag <Hashtable>] [-VMSSId <String>] [-VMState <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MaxReadyCapacity <Int64>] [-MinReadyCapacity <Int64>] [-Tag <Hashtable>] [-VMSSId <String>]
+ [-VMState <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -46,12 +46,14 @@ New-AzStandbyVMPool `
 -Location eastus `
 -VMSSId /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss `
 -MaxReadyCapacity 1 `
+-MinReadyCapacity 1 `
 -VMState Running
 ```
 
 ```output
 AttachedVirtualMachineScaleSetId  : /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss
 ElasticityProfileMaxReadyCapacity : 1
+ElasticityProfileMinReadyCapacity : 1
 Id                                : /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/testPool
 Location                          : eastus
 Name                              : testPool
@@ -150,7 +152,23 @@ Accept wildcard characters: False
 ```
 
 ### -MaxReadyCapacity
-Specifies maximum number of virtual machines in the standby virtual machine pool.
+Specifies the maximum number of virtual machines in the standby virtual machine pool.
+
+```yaml
+Type: System.Int64
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinReadyCapacity
+Specifies the desired minimum number of virtual machines in the standby virtual machine pool.
+MinReadyCapacity cannot exceed MaxReadyCapacity.
 
 ```yaml
 Type: System.Int64

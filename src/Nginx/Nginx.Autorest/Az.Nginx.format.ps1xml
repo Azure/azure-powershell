@@ -48,6 +48,40 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api40.ErrorDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api40.ErrorDetail</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20.SystemData</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20.SystemData</TypeName>
@@ -100,33 +134,21 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ErrorResponseBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.AnalysisCreateConfig</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ErrorResponseBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.AnalysisCreateConfig</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
+            <Label>RootFile</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
+                <PropertyName>RootFile</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -134,9 +156,105 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IdentityProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.AnalysisDiagnostic</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IdentityProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.AnalysisDiagnostic</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Directive</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>File</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Line</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Rule</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Directive</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>File</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Line</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Rule</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.AnalysisResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.AnalysisResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.AutoUpgradeProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.AutoUpgradeProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>UpgradeChannel</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>UpgradeChannel</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IdentityProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IdentityProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -162,9 +280,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxCertificate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxCertificate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxCertificate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxCertificate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -190,9 +308,37 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxCertificateListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxCertificateErrorResponseBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxCertificateListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxCertificateErrorResponseBody</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxCertificateListResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxCertificateListResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -212,9 +358,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxCertificateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxCertificateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxCertificateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxCertificateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -252,9 +398,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -280,9 +426,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationFile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationFile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationFile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationFile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -308,9 +454,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationListResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -330,9 +476,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationPackage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationPackage</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationPackage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationPackage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -358,9 +504,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxConfigurationProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -386,9 +532,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeployment</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeployment</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeployment</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeployment</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -414,9 +560,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentListResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -436,9 +582,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -482,9 +628,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentScalingProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentScalingProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentScalingProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentScalingProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -504,9 +650,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -526,9 +672,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentUpdateParameters</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentUpdateParameters</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentUpdateParameters</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentUpdateParameters</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -548,9 +694,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentUpdateParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentUpdateParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentUpdateParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentUpdateParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -570,9 +716,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentUpdateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -592,9 +738,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentUserProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentUserProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxDeploymentUserProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxDeploymentUserProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -614,9 +760,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxNetworkInterfaceConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxNetworkInterfaceConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxNetworkInterfaceConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxNetworkInterfaceConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -636,9 +782,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPrivateIPAddress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPrivateIPAddress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPrivateIPAddress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPrivateIPAddress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -670,9 +816,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxStorageAccount</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxStorageAccount</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxStorageAccount</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxStorageAccount</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -698,9 +844,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -738,9 +884,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.OperationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -760,9 +906,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.OperationResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.OperationResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.OperationResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.OperationResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -788,9 +934,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.ResourceSku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.ResourceSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.ResourceSku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -810,9 +956,59 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.UserIdentityProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.ScaleProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.UserIdentityProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.ScaleProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.ScaleProfileCapacity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.ScaleProfileCapacity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Max</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Min</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Max</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Min</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.UserIdentityProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.UserIdentityProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

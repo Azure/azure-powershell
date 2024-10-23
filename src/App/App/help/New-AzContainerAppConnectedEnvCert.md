@@ -15,9 +15,9 @@ Create a Certificate.
 ### CreateExpanded (Default)
 ```
 New-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String> [-InputFile <String>]
- [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-InputFile <String>] [-Location <String>]
+ [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -37,15 +37,15 @@ New-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName <String> -Name <Str
 ### CreateViaIdentityConnectedEnvironmentExpanded
 ```
 New-AzContainerAppConnectedEnvCert -Name <String> -ConnectedEnvironmentInputObject <IAppIdentity>
- -Location <String> [-InputFile <String>] [-Password <SecureString>] [-Tag <Hashtable>]
+ [-InputFile <String>] [-Location <String>] [-Password <SecureString>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzContainerAppConnectedEnvCert -InputObject <IAppIdentity> -Location <String> [-InputFile <String>]
- [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzContainerAppConnectedEnvCert -InputObject <IAppIdentity> [-InputFile <String>] [-Location <String>]
+ [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +57,7 @@ Create a Certificate.
 ```powershell
 New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
 Get-ChildItem -Path cert:\LocalMachine\My
-$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$mypwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
 
 New-AzContainerAppConnectedEnvCert -Name azps-connectedenvcert -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
@@ -75,7 +75,6 @@ Create a Certificate.
 
 ### -ConnectedEnvironmentInputObject
 Identity Parameter
-To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -137,7 +136,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -189,7 +187,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityConnectedEnvironmentExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

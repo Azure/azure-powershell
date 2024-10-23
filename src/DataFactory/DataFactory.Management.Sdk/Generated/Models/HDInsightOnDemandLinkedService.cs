@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -53,7 +56,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// value is 5 mins. Type: string (or Expression with resultType string).
         /// </param>
 
-        /// <param name="version">Version of the HDInsight cluster.  Type: string (or Expression with
+        /// <param name="typePropertiesVersion">Version of the HDInsight cluster.  Type: string (or Expression with
         /// resultType string).
         /// </param>
 
@@ -175,13 +178,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="credential">The credential reference containing authentication information.
         /// </param>
-        public HDInsightOnDemandLinkedService(object clusterSize, object timeToLive, object version, LinkedServiceReference linkedServiceName, object hostSubscriptionId, object tenant, object clusterResourceGroup, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object clusterNamePrefix = default(object), object clusterUserName = default(object), SecretBase clusterPassword = default(SecretBase), object clusterSshUserName = default(object), SecretBase clusterSshPassword = default(SecretBase), System.Collections.Generic.IList<LinkedServiceReference> additionalLinkedServiceNames = default(System.Collections.Generic.IList<LinkedServiceReference>), LinkedServiceReference hcatalogLinkedServiceName = default(LinkedServiceReference), object clusterType = default(object), object sparkVersion = default(object), object coreConfiguration = default(object), object hBaseConfiguration = default(object), object hdfsConfiguration = default(object), object hiveConfiguration = default(object), object mapReduceConfiguration = default(object), object oozieConfiguration = default(object), object stormConfiguration = default(object), object yarnConfiguration = default(object), string encryptedCredential = default(string), object headNodeSize = default(object), object dataNodeSize = default(object), object zookeeperNodeSize = default(object), System.Collections.Generic.IList<ScriptAction> scriptActions = default(System.Collections.Generic.IList<ScriptAction>), object virtualNetworkId = default(object), object subnetName = default(object), CredentialReference credential = default(CredentialReference))
+        public HDInsightOnDemandLinkedService(object clusterSize, object timeToLive, object typePropertiesVersion, LinkedServiceReference linkedServiceName, object hostSubscriptionId, object tenant, object clusterResourceGroup, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object clusterNamePrefix = default(object), object clusterUserName = default(object), SecretBase clusterPassword = default(SecretBase), object clusterSshUserName = default(object), SecretBase clusterSshPassword = default(SecretBase), System.Collections.Generic.IList<LinkedServiceReference> additionalLinkedServiceNames = default(System.Collections.Generic.IList<LinkedServiceReference>), LinkedServiceReference hcatalogLinkedServiceName = default(LinkedServiceReference), object clusterType = default(object), object sparkVersion = default(object), object coreConfiguration = default(object), object hBaseConfiguration = default(object), object hdfsConfiguration = default(object), object hiveConfiguration = default(object), object mapReduceConfiguration = default(object), object oozieConfiguration = default(object), object stormConfiguration = default(object), object yarnConfiguration = default(object), string encryptedCredential = default(string), object headNodeSize = default(object), object dataNodeSize = default(object), object zookeeperNodeSize = default(object), System.Collections.Generic.IList<ScriptAction> scriptActions = default(System.Collections.Generic.IList<ScriptAction>), object virtualNetworkId = default(object), object subnetName = default(object), CredentialReference credential = default(CredentialReference))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.ClusterSize = clusterSize;
             this.TimeToLive = timeToLive;
-            this.Version = version;
+            this.TypePropertiesVersion = typePropertiesVersion;
             this.LinkedServiceName = linkedServiceName;
             this.HostSubscriptionId = hostSubscriptionId;
             this.ServicePrincipalId = servicePrincipalId;
@@ -244,7 +247,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.version")]
-        public object Version {get; set; }
+        public object TypePropertiesVersion {get; set; }
 
         /// <summary>
         /// Gets or sets azure Storage linked service to be used by the on-demand
@@ -480,9 +483,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "TimeToLive");
             }
-            if (this.Version == null)
+            if (this.TypePropertiesVersion == null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Version");
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "TypePropertiesVersion");
             }
             if (this.LinkedServiceName == null)
             {

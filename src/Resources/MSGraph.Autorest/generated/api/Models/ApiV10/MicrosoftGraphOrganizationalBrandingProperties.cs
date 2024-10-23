@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
 
         /// <summary>
         /// Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and
-        /// not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+        /// not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
         public byte[] BackgroundImage { get => this._backgroundImage; set => this._backgroundImage = value; }
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
 
         /// <summary>
         /// A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than
-        /// 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+        /// 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
         public byte[] BannerLogo { get => this._bannerLogo; set => this._bannerLogo = value; }
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         string BackgroundColor { get; set; }
         /// <summary>
         /// Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and
-        /// not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+        /// not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.",
+        Description = @"Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.",
         SerializedName = @"backgroundImage",
         PossibleTypes = new [] { typeof(byte[]) })]
         byte[] BackgroundImage { get; set; }
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         string BackgroundImageRelativeUrl { get; set; }
         /// <summary>
         /// A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than
-        /// 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+        /// 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         Read = true,
         Create = true,
         Update = true,
-        Description = @"A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.",
+        Description = @"A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.",
         SerializedName = @"bannerLogo",
         PossibleTypes = new [] { typeof(byte[]) })]
         byte[] BannerLogo { get; set; }
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         string BackgroundColor { get; set; }
         /// <summary>
         /// Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and
-        /// not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+        /// not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
         /// </summary>
         byte[] BackgroundImage { get; set; }
         /// <summary>
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         string BackgroundImageRelativeUrl { get; set; }
         /// <summary>
         /// A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than
-        /// 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+        /// 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
         /// </summary>
         byte[] BannerLogo { get; set; }
         /// <summary>

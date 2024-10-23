@@ -1,0 +1,12 @@
+steps:
+- task: PowerShell@2
+  displayName: Get GitHub Token
+  inputs:
+    targetType: 'inline'
+    script: |
+      $httpConfigs = (git config --get-regexp "http" )
+      $authConfig = $httpConfigs | Where-Object {$_ -like "*AUTHORIZATION*"}
+      $token = ($authConfig -split ' ')[-1]
+      $ghToken = ([System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String($token)) -split ':')[1]
+      Write-Host "##vso[task.setvariable variable=GithubToken;issecret=true]$ghToken"
+

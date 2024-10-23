@@ -20,19 +20,32 @@ Creates/updates a batch inference deployment (asynchronous).
 .Description
 Creates/updates a batch inference deployment (asynchronous).
 .Example
+# The Reference Type includes Data Path, Output Path and Id.
+# You can use following command to create it then pass it as value to Property parameter of the New-AzMLWorkspaceBatchDeployment cmdlet.
+# New-AzMLWorkspaceIdAssetReferenceObject
+# New-AzMLWorkspaceDataPathAssetReferenceObject
+# New-AzMLWorkspaceOutputPathAssetReferenceObject
+$model = New-AzMLWorkspaceIdAssetReferenceObject -AssetId '/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/joyer-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test002/models/openai-embeddings/versions/1' -ReferenceType 'Id'
 New-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -EndpointName batch-pwsh03 -Name nonmlflowdp -Location "eastus" `
--CodeId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/bd430754-fba7-4a63-a6b8-8ea8635767f3/versions/1" -CodeScoringScript "digit_identification.py" `
--EnvironmentId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/environments/CliV2AnonymousEnvironment/versions/5d230430f302e7876f9b64710733f68e" `
--Compute "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/batch-cluster" `
--ModelReferenceType 'Id'
+-CodeId "/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/bd430754-fba7-4a63-a6b8-8ea8635767f3/versions/1" -CodeScoringScript "digit_identification.py" `
+-EnvironmentId "/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/environments/CliV2AnonymousEnvironment/versions/5d230430f302e7876f9b64710733f68e" `
+-Model $model `
+-ComputeId "/subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/computes/batch-cluster"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeployment
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IBatchDeployment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+MODEL <IAssetReferenceBase>: Reference to the model asset for the endpoint deployment.
+  ReferenceType <ReferenceType>: [Required] Specifies the type of asset reference.
 .Link
 https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacebatchdeployment
 #>
 function New-AzMLWorkspaceBatchDeployment {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeployment])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IBatchDeployment])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -94,6 +107,13 @@ param(
     ${ComputeId},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.BatchDeploymentConfigurationType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.BatchDeploymentConfigurationType]
+    # [Required] The type of the deployment
+    ${DeploymentConfigurationType},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [System.String]
     # Description of the endpoint deployment.
@@ -101,7 +121,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEndpointDeploymentPropertiesBaseProperties]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEndpointDeploymentPropertiesBaseProperties]))]
     [System.Collections.Hashtable]
     # Property dictionary.
     # Properties can be added, but not removed or altered.
@@ -115,7 +135,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEndpointDeploymentPropertiesBaseEnvironmentVariables]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IEndpointDeploymentPropertiesBaseEnvironmentVariables]))]
     [System.Collections.Hashtable]
     # Environment variables configuration for the deployment.
     ${EnvironmentVariable},
@@ -169,11 +189,11 @@ param(
     ${MiniBatchSize},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ReferenceType])]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ReferenceType]
-    # [Required] Specifies the type of asset reference.
-    ${ModelReferenceType},
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IAssetReferenceBase]
+    # Reference to the model asset for the endpoint deployment.
+    # To construct, see NOTES section for MODEL properties and create a hash table.
+    ${Model},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.BatchOutputAction])]
@@ -202,7 +222,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceConfigurationProperties]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceConfigurationProperties]))]
     [System.Collections.Hashtable]
     # Additional properties bag.
     ${ResourceProperty},
@@ -266,7 +286,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -330,7 +351,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -350,10 +371,20 @@ begin {
             CreateExpanded = 'Az.MachineLearningServices.private\New-AzMLWorkspaceBatchDeployment_CreateExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

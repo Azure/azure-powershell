@@ -48,8 +48,9 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// </param>
 
         /// <param name="redisConfiguration">All Redis Settings. Few possible keys:
-        /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
-        /// etc.
+        /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,
+        /// maxmemory-policy,notify-keyspace-events, aof-backup-enabled,
+        /// aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
         /// </param>
 
         /// <param name="redisVersion">Redis version. This should be in the form &#39;major[.minor]&#39; (only &#39;major&#39; is
@@ -83,6 +84,10 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// &#39;Enabled&#39;
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
+        /// <param name="disableAccessKeyAuthentication">Authentication to Redis through access keys is disabled when set as true.
+        /// Default value is false.
+        /// </param>
+
         /// <param name="subnetId">The full resource ID of a subnet in a virtual network to deploy the Redis
         /// cache in. Example format:
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
@@ -91,7 +96,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// <param name="staticIP">Static IP address. Optionally, may be specified when deploying a Redis
         /// cache inside an existing Azure Virtual Network; auto assigned by default.
         /// </param>
-        public RedisCreateParameters(string location, Sku sku, System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string updateChannel = default(string), RedisCommonPropertiesRedisConfiguration redisConfiguration = default(RedisCommonPropertiesRedisConfiguration), string redisVersion = default(string), bool? enableNonSslPort = default(bool?), int? replicasPerMaster = default(int?), int? replicasPerPrimary = default(int?), System.Collections.Generic.IDictionary<string, string> tenantSettings = default(System.Collections.Generic.IDictionary<string, string>), int? shardCount = default(int?), string minimumTlsVersion = default(string), string publicNetworkAccess = default(string), string subnetId = default(string), string staticIP = default(string))
+        public RedisCreateParameters(string location, Sku sku, System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ManagedServiceIdentity identity = default(ManagedServiceIdentity), string updateChannel = default(string), RedisCommonPropertiesRedisConfiguration redisConfiguration = default(RedisCommonPropertiesRedisConfiguration), string redisVersion = default(string), bool? enableNonSslPort = default(bool?), int? replicasPerMaster = default(int?), int? replicasPerPrimary = default(int?), System.Collections.Generic.IDictionary<string, string> tenantSettings = default(System.Collections.Generic.IDictionary<string, string>), int? shardCount = default(int?), string minimumTlsVersion = default(string), string publicNetworkAccess = default(string), bool? disableAccessKeyAuthentication = default(bool?), string subnetId = default(string), string staticIP = default(string))
 
         {
             this.Zones = zones;
@@ -109,6 +114,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
             this.ShardCount = shardCount;
             this.MinimumTlsVersion = minimumTlsVersion;
             this.PublicNetworkAccess = publicNetworkAccess;
+            this.DisableAccessKeyAuthentication = disableAccessKeyAuthentication;
             this.SubnetId = subnetId;
             this.StaticIP = staticIP;
             CustomInit();
@@ -162,8 +168,9 @@ namespace Microsoft.Azure.Management.RedisCache.Models
 
         /// <summary>
         /// Gets or sets all Redis Settings. Few possible keys:
-        /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value
-        /// etc.
+        /// rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,
+        /// maxmemory-policy,notify-keyspace-events, aof-backup-enabled,
+        /// aof-storage-connection-string-0, aof-storage-connection-string-1 etc.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.redisConfiguration")]
         public RedisCommonPropertiesRedisConfiguration RedisConfiguration {get; set; }
@@ -223,6 +230,13 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicNetworkAccess")]
         public string PublicNetworkAccess {get; set; }
+
+        /// <summary>
+        /// Gets or sets authentication to Redis through access keys is disabled when
+        /// set as true. Default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disableAccessKeyAuthentication")]
+        public bool? DisableAccessKeyAuthentication {get; set; }
 
         /// <summary>
         /// Gets or sets the full resource ID of a subnet in a virtual network to

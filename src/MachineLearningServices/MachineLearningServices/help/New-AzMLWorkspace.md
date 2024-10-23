@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspace
 schema: 2.0.0
@@ -14,16 +14,25 @@ Creates or updates a workspace with the specified parameters.
 
 ```
 New-AzMLWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AllowPublicAccessWhenBehindVnet] [-ApplicationInsightId <String>] [-ContainerRegistryId <String>]
+ [-AllowPublicAccessWhenBehindVnet] [-ApplicationInsightId <String>] [-AssociatedWorkspace <String[]>]
+ [-ComputeRuntimeSparkRuntimeVersion <String>] [-ContainerRegistryId <String>]
  [-CosmoDbCollectionsThroughput <Int32>] [-Description <String>] [-DiscoveryUrl <String>]
- [-EncryptionStatus <EncryptionStatus>] [-EncryptionUserAssignedIdentity <String>] [-FriendlyName <String>]
- [-HbiWorkspace] [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>]
+ [-EnableDataIsolation] [-EncryptionStatus <EncryptionStatus>] [-EncryptionUserAssignedIdentity <String>]
+ [-FeatureStoreSettingOfflineStoreConnectionName <String>]
+ [-FeatureStoreSettingOnlineStoreConnectionName <String>] [-FriendlyName <String>] [-HbiWorkspace]
+ [-HubResourceId <String>] [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>]
  [-ImageBuildCompute <String>] [-KeyVaultArmId <String>] [-KeyVaultId <String>]
- [-KeyVaultIdentityClientId <String>] [-KeyVaultKeyIdentifier <String>] [-Location <String>]
+ [-KeyVaultIdentityClientId <String>] [-KeyVaultKeyIdentifier <String>] [-Kind <WorkspaceType>]
+ [-Location <String>] [-ManagedNetworkIsolationMode <IsolationMode>] [-ManagedNetworkOutboundRule <Hashtable>]
  [-PrimaryUserAssignedIdentity <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-ServerlessComputeSettingServerlessComputeCustomSubnet <String>]
+ [-ServerlessComputeSettingServerlessComputeNoPublicIP]
  [-SharedPrivateLinkResource <ISharedPrivateLinkResource[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
- [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-StorageAccountId <String>] [-Tag <Hashtable>]
- [-V1LegacyMode] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Status <ManagedNetworkStatus>]
+ [-StatusSparkReady] [-StorageAccountId <String>] [-Tag <Hashtable>] [-V1LegacyMode]
+ [-WorkspaceHubConfigAdditionalWorkspaceStorageAccount <String[]>]
+ [-WorkspaceHubConfigDefaultWorkspaceResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,16 +42,16 @@ Creates or updates a workspace with the specified parameters.
 
 ### Example 1: Creates or updates a workspace with the specified parameters
 ```powershell
-New-AzMLWorkspace -ResourceGroupName ml-rg-test -Name mlworkspace-pwsh01 -Location eastus -ApplicationInsightId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.insights/components/insightsmlworkspace" -KeyVaultId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.keyvault/vaults/kmlworkspace" -StorageAccountId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.storage/storageaccounts/storagemlworkspace01" -IdentityType 'SystemAssigned'
+New-AzMLWorkspace -ResourceGroupName ml-rg-test -Name mlwork01 -Location eastus -ApplicationInsightId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.insights/components/insightsmlworkspace" -KeyVaultId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.keyvault/vaults/kmlworkspace" -StorageAccountId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test/providers/microsoft.storage/storageaccounts/storagemlworkspace01" -IdentityType 'SystemAssigned' -Kind 'Default'
 ```
 
 ```output
-Name              SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Location ResourceGroupName
-----              -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -------- -----------------
-mlworkspace-pwsh01 5/18/2022 6:33:49 AM v-diya@microsoft.com User                    5/18/2022 6:33:49 AM     v-diya@microsoft.com     User                         eastus   ml-rg-test
+Name     SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Kind    Location ResourceGroupName     
+----     ------------------- -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----    -------- -----------------     
+mlwork01 6/6/2024 9:40:20 AM user@example.com      User                    6/7/2024 3:57:23 AM      user@example.com         User                         Default eastus   ml-rg-test
 ```
 
-Creates or updates a workspace with the specified parameters
+This command creates a workspace with the specified parameters.
 
 ## PARAMETERS
 
@@ -91,6 +100,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AssociatedWorkspace
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeRuntimeSparkRuntimeVersion
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ContainerRegistryId
 ARM id of the container registry associated with this workspace.
 
@@ -122,7 +161,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -166,6 +206,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableDataIsolation
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EncryptionStatus
 Indicates whether or not the encryption is enabled for the workspace.
 
@@ -183,6 +238,36 @@ Accept wildcard characters: False
 
 ### -EncryptionUserAssignedIdentity
 The ArmId of the user assigned identity that will be used to access the customer managed key vault
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FeatureStoreSettingOfflineStoreConnectionName
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FeatureStoreSettingOnlineStoreConnectionName
+.
 
 ```yaml
 Type: System.String
@@ -217,6 +302,21 @@ The flag to signal HBI data in the workspace and reduce diagnostic data collecte
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HubResourceId
+.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -335,11 +435,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Kind
+Type of workspace.
+Possible values: Default, Hub, Project, FeatureStore.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.WorkspaceType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Specifies the location of the resource.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedNetworkIsolationMode
+Isolation mode for the managed network of a machine learning workspace.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IsolationMode
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedNetworkOutboundRule
+Dictionary of \<OutboundRule\>
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -426,12 +572,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ServerlessComputeSettingServerlessComputeCustomSubnet
+The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServerlessComputeSettingServerlessComputeNoPublicIP
+The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SharedPrivateLinkResource
 The list of shared private link resources in this workspace.
 To construct, see NOTES section for SHAREDPRIVATELINKRESOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISharedPrivateLinkResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISharedPrivateLinkResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -521,6 +697,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Status
+Status for the managed network of a machine learning workspace.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ManagedNetworkStatus
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StatusSparkReady
+.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StorageAccountId
 ARM id of the storage account associated with this workspace.
 This cannot be changed once the workspace has been created
@@ -582,6 +788,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -WorkspaceHubConfigAdditionalWorkspaceStorageAccount
+.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WorkspaceHubConfigDefaultWorkspaceResourceGroup
+.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -620,23 +856,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IWorkspace
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-SHAREDPRIVATELINKRESOURCE <ISharedPrivateLinkResource[]>: The list of shared private link resources in this workspace.
-  - `[GroupId <String>]`: The private link resource group id.
-  - `[Name <String>]`: Unique name of the private link.
-  - `[PrivateLinkResourceId <String>]`: The resource id that private link links to.
-  - `[RequestMessage <String>]`: Request message.
-  - `[Status <PrivateEndpointServiceConnectionStatus?>]`: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-
 ## RELATED LINKS
-

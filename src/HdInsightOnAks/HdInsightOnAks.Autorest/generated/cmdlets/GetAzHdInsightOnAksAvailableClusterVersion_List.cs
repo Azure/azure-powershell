@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterVersion))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"Returns a list of available cluster versions.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/availableClusterVersions", ApiVersion = "2023-11-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/availableClusterVersions", ApiVersion = "2024-05-01-preview")]
     public partial class GetAzHdInsightOnAksAvailableClusterVersion_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IContext

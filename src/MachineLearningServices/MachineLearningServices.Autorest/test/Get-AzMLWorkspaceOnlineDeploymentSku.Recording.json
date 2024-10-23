@@ -1,17 +1,17 @@
 {
-  "Get-AzMLWorkspaceOnlineDeploymentSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-cli01/deployments/blue/skus?api-version=2022-05-01+1": {
+  "Get-AzMLWorkspaceOnlineDeploymentSku+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/onlineEndpoints/online-pwsh01/deployments/online-pwsh01-blue01/skus?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/onlineEndpoints/online-cli01/deployments/blue/skus?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test2/onlineEndpoints/online-pwsh01/deployments/online-pwsh01-blue01/skus?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "46" ],
-        "x-ms-client-request-id": [ "ab974184-3e15-4e1f-b453-f7a48a6db019" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "c6caec41-ea47-4ba5-b4d3-44d5a503827b" ],
         "CommandName": [ "Get-AzMLWorkspaceOnlineDeploymentSku" ],
         "FullCommandName": [ "Get-AzMLWorkspaceOnlineDeploymentSku_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,24 +23,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "a19a7f88-a8e1-450f-aa50-ae697a10bca8" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11959" ],
+        "x-ms-request-id": [ "1ef2a888-30bb-4c5f-9e71-b0438d569796" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.047" ],
-        "x-ms-correlation-request-id": [ "a19a7f88-a8e1-450f-aa50-ae697a10bca8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094111Z:a19a7f88-a8e1-450f-aa50-ae697a10bca8" ],
-        "Date": [ "Sun, 05 Jun 2022 09:41:11 GMT" ]
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.055" ],
+        "x-ms-correlation-request-id": [ "1ef2a888-30bb-4c5f-9e71-b0438d569796" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240725T081958Z:1ef2a888-30bb-4c5f-9e71-b0438d569796" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 002733E67C5D466FA10F574C61FE4AE0 Ref B: MAA201060515047 Ref C: 2024-07-25T08:19:56Z" ],
+        "Date": [ "Thu, 25 Jul 2024 08:19:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"value\": [\n    {\n      \"resourceType\": \"Microsoft.MachineLearning.Services/endpoints/deployments\",\n      \"sku\": {\n        \"name\": \"default\",\n        \"tier\": \"Standard\"\n      },\n      \"capacity\": {\n        \"minimum\": 1,\n        \"maximum\": 20,\n        \"default\": 1,\n        \"scaleType\": \"Automatic\"\n      }\n    }\n  ]\n}",
+      "Content": "{\n  \"value\": [\n    {\n      \"resourceType\": \"Microsoft.MachineLearning.Services/endpoints/deployments\",\n      \"sku\": {\n        \"name\": \"default\",\n        \"tier\": \"Standard\"\n      },\n      \"capacity\": {\n        \"minimum\": 1,\n        \"maximum\": 50,\n        \"default\": 3,\n        \"scaleType\": \"Automatic\"\n      }\n    }\n  ]\n}",
       "isContentBase64": false
     }
   }

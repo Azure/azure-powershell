@@ -6,7 +6,7 @@ New-AzMLWorkspaceModelVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlwo
 ```output
 Name SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
 ---- ------------------- -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-1    6/1/2022 4:29:14 PM Lucas Yao (Wicresoft North America) User                    6/1/2022 4:29:14 PM      Lucas Yao (Wicresoft North America) User                         ml-rg-test
+1    6/1/2022 4:29:14 PM UserName (Example)         User                    6/1/2022 4:29:14 PM      UserName (Example)         User                         ml-rg-test
 ```
 
 Create or update model version

@@ -17,20 +17,22 @@ Updates a subnet configuration for a virtual network.
 ```
 Set-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String[]>
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>]
- [-ServiceEndpoint <String[]>]  [-NetworkIdentifier <PSResourceId>] [-ServiceEndpointConfig <PSServiceEndpoint[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
+ [-ServiceEndpoint <String[]>] [-NetworkIdentifier <PSResourceId>]
+ [-ServiceEndpointConfig <PSServiceEndpoint[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
  [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
  [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultOutboundAccess <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Set-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String[]>
  [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [-ResourceId <String>]
- [-ServiceEndpoint <String[]>] [-NetworkIdentifier <PSResourceId>] [-ServiceEndpointConfig <PSServiceEndpoint[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
+ [-ServiceEndpoint <String[]>] [-NetworkIdentifier <PSResourceId>]
+ [-ServiceEndpointConfig <PSServiceEndpoint[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
  [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
  [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultOutboundAccess <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,6 +116,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultOutboundAccess
+Default outbound connectivity for all VMs in the subnet
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -186,6 +203,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkIdentifier
+NetworkIdentifier Value for ServiceEndpoint
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -299,6 +331,21 @@ Service Endpoint Value
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceEndpointConfig
+Service Endpoint with NetworkIdentifier Value
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSServiceEndpoint[]
 Parameter Sets: (All)
 Aliases:
 

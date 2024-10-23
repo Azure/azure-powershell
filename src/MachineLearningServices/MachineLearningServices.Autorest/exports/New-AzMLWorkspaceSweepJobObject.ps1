@@ -20,7 +20,7 @@ Create an in-memory object for SweepJob.
 .Description
 Create an in-memory object for SweepJob.
 .Example
-# You can use following commands to create job input or job oupt as vaule pass to JobInput or JobOutput parameter of the  New-AzMLWorkspaceSweepJobObject
+# You can use following commands to create job input or job output as value pass to JobInput or JobOutput parameter of the New-AzMLWorkspaceSweepJobObject
 
 # New-AzMLWorkspaceCustomModelJobInputObject
 # New-AzMLWorkspaceCustomModelJobOutputObject
@@ -40,7 +40,7 @@ Create an in-memory object for SweepJob.
 New-AzMLWorkspaceSweepJobObject
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SweepJob
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SweepJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -67,10 +67,10 @@ TAG <IResourceBaseTags>: Tag dictionary. Tags can be added, removed, and updated
 TRIALENVIRONMENTVARIABLE <ITrialComponentEnvironmentVariables>: Environment variables included in the job.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSweepJobObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceSweepJobObject
 #>
 function New-AzMLWorkspaceSweepJobObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SweepJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SweepJob])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -142,7 +142,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISweepJobInputs]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISweepJobInputs]
     # Mapping of input data bindings used in the job.
     # To construct, see NOTES section for JOBINPUT properties and create a hash table.
     ${JobInput},
@@ -174,7 +174,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISweepJobOutputs]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISweepJobOutputs]
     # Mapping of output data bindings used in the job.
     # To construct, see NOTES section for JOBOUTPUT properties and create a hash table.
     ${JobOutput},
@@ -193,7 +193,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceConfigurationProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceConfigurationProperties]
     # Additional properties bag.
     # To construct, see NOTES section for RESOURCEPROPERTY properties and create a hash table.
     ${ResourceProperty},
@@ -206,7 +206,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ITrialComponentEnvironmentVariables]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ITrialComponentEnvironmentVariables]
     # Environment variables included in the job.
     # To construct, see NOTES section for TRIALENVIRONMENTVARIABLE properties and create a hash table.
     ${TrialEnvironmentVariable},
@@ -257,7 +257,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobServiceProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobServiceProperties]
     # Additional properties to set on the endpoint.
     # To construct, see NOTES section for SERVICEPROPERTY properties and create a hash table.
     ${ServiceProperty},
@@ -276,14 +276,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]
     # The asset property dictionary.
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseTags]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]
     # Tag dictionary.
     # Tags can be added, removed, and updated.
     # To construct, see NOTES section for TAG properties and create a hash table.
@@ -299,7 +299,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -320,6 +320,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

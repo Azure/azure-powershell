@@ -28,9 +28,9 @@ New-AzDataMigrationFileShare -Path $fileSharePath -Credential $fileShareCred
 ```
 
 ```output
-UserName    Password     Path
---------    --------     ----
-domain\user testadmin123 \\fileshare\folder1
+UserName    Password  Path
+--------    --------  ----
+domain\user $password \\fileshare\folder1
 ```
 
 ## PARAMETERS

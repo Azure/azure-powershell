@@ -31,6 +31,21 @@ function Get-StorageTestMode {
     return $testMode
 }
 
+# TODO : Remove this function once testfx do not mock the tenant in playback mode.
+function Get-TenantId {
+
+    $tenantId = $null
+    if ((Get-StorageTestMode) -ne 'Playback') 
+        {
+            $tenantId = (Get-Azcontext).Tenant.Id
+        }
+        else 
+        {
+            $tenantId = "0483643a-cb2f-462a-bc27-1a270e5bdc0a"
+        }
+    return $tenantId
+}
+
 <#
 .SYNOPSIS
 Cleans the created resource groups

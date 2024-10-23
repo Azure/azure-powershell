@@ -103,8 +103,8 @@ ElseOperation                : {{
                                }}
 Enabled                      : True
 Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group001/providers/Microsoft.StorageActions/storageTasks/mytask3
-IdentityPrincipalId          : 11111111-2222-3333-4444-123456789123
-IdentityTenantId             : 11111111-2222-3333-4444-987654321012
+IdentityPrincipalId          : 00001111-aaaa-2222-bbbb-3333cccc4444
+IdentityTenantId             : 00001111-aaaa-2222-bbbb-3333cccc4444
 IdentityType                 : SystemAssigned
 IdentityUserAssignedIdentity : {
                                }
@@ -147,8 +147,8 @@ ElseOperation                :
 Enabled                      : True
 Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group001/providers/Microsoft.StorageActions/storageTasks/myta 
                                sk1
-IdentityPrincipalId          : 66aefa04-060e-4eeb-9342-7228e31d1596
-IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
+IdentityPrincipalId          : 00001111-aaaa-2222-bbbb-3333cccc4444
+IdentityTenantId             : 00001111-aaaa-2222-bbbb-3333cccc4444
 IdentityType                 : SystemAssigned
 IdentityUserAssignedIdentity : {
                                }

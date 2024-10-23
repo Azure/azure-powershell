@@ -64,7 +64,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
     # Authentication secrets for the queue scale rule.
-    # To construct, see NOTES section for AZUREQUEUEAUTH properties and create a hash table.
     ${AzureQueueAuth},
 
     [Parameter()]
@@ -83,14 +82,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
     # Authentication secrets for the custom scale rule.
-    # To construct, see NOTES section for CUSTOMAUTH properties and create a hash table.
     ${CustomAuth},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICustomScaleRuleMetadata]
     # Metadata properties to describe custom scale rule.
-    # To construct, see NOTES section for CUSTOMMETADATA properties and create a hash table.
     ${CustomMetadata},
 
     [Parameter()]
@@ -104,14 +101,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
     # Authentication secrets for the custom scale rule.
-    # To construct, see NOTES section for HTTPAUTH properties and create a hash table.
     ${HttpAuth},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpScaleRuleMetadata]
     # Metadata properties to describe http scale rule.
-    # To construct, see NOTES section for HTTPMETADATA properties and create a hash table.
     ${HttpMetadata},
 
     [Parameter()]
@@ -124,14 +119,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
     # Authentication secrets for the tcp scale rule.
-    # To construct, see NOTES section for TCPAUTH properties and create a hash table.
     ${TcpAuth},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITcpScaleRuleMetadata]
     # Metadata properties to describe tcp scale rule.
-    # To construct, see NOTES section for TCPMETADATA properties and create a hash table.
     ${TcpMetadata}
 )
 

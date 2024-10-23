@@ -12,6 +12,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="CodeName" /> property.</summary>
+        private string _codeName;
+
+        /// <summary>Container name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
+        public string CodeName { get => this._codeName; set => this._codeName = value; }
+
+        /// <summary>Backing field for <see cref="ComponentName" /> property.</summary>
+        private string _componentName;
+
+        /// <summary>Container name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
+        public string ComponentName { get => this._componentName; set => this._componentName = value; }
+
         /// <summary>Backing field for <see cref="ComputeName" /> property.</summary>
         private string _computeName;
 
@@ -40,6 +54,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
         public string EndpointName { get => this._endpointName; set => this._endpointName = value; }
 
+        /// <summary>Backing field for <see cref="EnvironmentName" /> property.</summary>
+        private string _environmentName;
+
+        /// <summary>Container name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
+        public string EnvironmentName { get => this._environmentName; set => this._environmentName = value; }
+
+        /// <summary>Backing field for <see cref="FeatureName" /> property.</summary>
+        private string _featureName;
+
+        /// <summary>Feature Name. This is case-sensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
+        public string FeatureName { get => this._featureName; set => this._featureName = value; }
+
+        /// <summary>Backing field for <see cref="FeaturesetName" /> property.</summary>
+        private string _featuresetName;
+
+        /// <summary>Featureset name. This is case-sensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
+        public string FeaturesetName { get => this._featuresetName; set => this._featuresetName = value; }
+
+        /// <summary>Backing field for <see cref="FeaturesetVersion" /> property.</summary>
+        private string _featuresetVersion;
+
+        /// <summary>Featureset Version identifier. This is case-sensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
+        public string FeaturesetVersion { get => this._featuresetVersion; set => this._featuresetVersion = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -61,10 +103,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
+        /// <summary>Backing field for <see cref="ModelName" /> property.</summary>
+        private string _modelName;
+
+        /// <summary>Container name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
+        public string ModelName { get => this._modelName; set => this._modelName = value; }
+
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
-        /// <summary>Container name. This is case-sensitive.</summary>
+        /// <summary>Container name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
         public string Name { get => this._name; set => this._name = value; }
 
@@ -75,12 +124,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
         public string PrivateEndpointConnectionName { get => this._privateEndpointConnectionName; set => this._privateEndpointConnectionName = value; }
 
+        /// <summary>Backing field for <see cref="RegistryName" /> property.</summary>
+        private string _registryName;
+
+        /// <summary>Name of Azure Machine Learning registry. This is case-insensitive</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
+        public string RegistryName { get => this._registryName; set => this._registryName = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
+        /// <summary>Backing field for <see cref="RuleName" /> property.</summary>
+        private string _ruleName;
+
+        /// <summary>Name of the workspace managed network outbound rule</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
+        public string RuleName { get => this._ruleName; set => this._ruleName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -92,7 +155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         /// <summary>Backing field for <see cref="Version" /> property.</summary>
         private string _version;
 
-        /// <summary>Version identifier. This is case-sensitive.</summary>
+        /// <summary>Version identifier.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
         public string Version { get => this._version; set => this._version = value; }
 
@@ -112,6 +175,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
     public partial interface IMachineLearningServicesIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IJsonSerializable
     {
+        /// <summary>Container name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Container name.",
+        SerializedName = @"codeName",
+        PossibleTypes = new [] { typeof(string) })]
+        string CodeName { get; set; }
+        /// <summary>Container name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Container name.",
+        SerializedName = @"componentName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ComponentName { get; set; }
         /// <summary>Name of the Azure Machine Learning compute.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
@@ -144,6 +223,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         SerializedName = @"endpointName",
         PossibleTypes = new [] { typeof(string) })]
         string EndpointName { get; set; }
+        /// <summary>Container name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Container name.",
+        SerializedName = @"environmentName",
+        PossibleTypes = new [] { typeof(string) })]
+        string EnvironmentName { get; set; }
+        /// <summary>Feature Name. This is case-sensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Feature Name. This is case-sensitive.",
+        SerializedName = @"featureName",
+        PossibleTypes = new [] { typeof(string) })]
+        string FeatureName { get; set; }
+        /// <summary>Featureset name. This is case-sensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Featureset name. This is case-sensitive.",
+        SerializedName = @"featuresetName",
+        PossibleTypes = new [] { typeof(string) })]
+        string FeaturesetName { get; set; }
+        /// <summary>Featureset Version identifier. This is case-sensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Featureset Version identifier. This is case-sensitive.",
+        SerializedName = @"featuresetVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        string FeaturesetVersion { get; set; }
         /// <summary>The name and identifier for the Job. This is case-sensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
@@ -168,11 +279,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
-        /// <summary>Container name. This is case-sensitive.</summary>
+        /// <summary>Container name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Container name. This is case-sensitive.",
+        Description = @"Container name.",
+        SerializedName = @"modelName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ModelName { get; set; }
+        /// <summary>Container name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Container name.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string Name { get; set; }
@@ -184,6 +303,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         SerializedName = @"privateEndpointConnectionName",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateEndpointConnectionName { get; set; }
+        /// <summary>Name of Azure Machine Learning registry. This is case-insensitive</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of Azure Machine Learning registry. This is case-insensitive",
+        SerializedName = @"registryName",
+        PossibleTypes = new [] { typeof(string) })]
+        string RegistryName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
@@ -192,6 +319,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>Name of the workspace managed network outbound rule</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the workspace managed network outbound rule",
+        SerializedName = @"ruleName",
+        PossibleTypes = new [] { typeof(string) })]
+        string RuleName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
@@ -200,11 +335,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         string SubscriptionId { get; set; }
-        /// <summary>Version identifier. This is case-sensitive.</summary>
+        /// <summary>Version identifier.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Version identifier. This is case-sensitive.",
+        Description = @"Version identifier.",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(string) })]
         string Version { get; set; }
@@ -221,6 +356,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
     internal partial interface IMachineLearningServicesIdentityInternal
 
     {
+        /// <summary>Container name.</summary>
+        string CodeName { get; set; }
+        /// <summary>Container name.</summary>
+        string ComponentName { get; set; }
         /// <summary>Name of the Azure Machine Learning compute.</summary>
         string ComputeName { get; set; }
         /// <summary>Friendly name of the workspace connection</summary>
@@ -229,21 +368,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
         string DeploymentName { get; set; }
         /// <summary>Inference Endpoint name.</summary>
         string EndpointName { get; set; }
+        /// <summary>Container name.</summary>
+        string EnvironmentName { get; set; }
+        /// <summary>Feature Name. This is case-sensitive.</summary>
+        string FeatureName { get; set; }
+        /// <summary>Featureset name. This is case-sensitive.</summary>
+        string FeaturesetName { get; set; }
+        /// <summary>Featureset Version identifier. This is case-sensitive.</summary>
+        string FeaturesetVersion { get; set; }
         /// <summary>The name and identifier for the Job. This is case-sensitive.</summary>
         string Id { get; set; }
         /// <summary>Resource identity path</summary>
         string Id1 { get; set; }
         /// <summary>The location for which resource usage is queried.</summary>
         string Location { get; set; }
-        /// <summary>Container name. This is case-sensitive.</summary>
+        /// <summary>Container name.</summary>
+        string ModelName { get; set; }
+        /// <summary>Container name.</summary>
         string Name { get; set; }
         /// <summary>The name of the private endpoint connection associated with the workspace</summary>
         string PrivateEndpointConnectionName { get; set; }
+        /// <summary>Name of Azure Machine Learning registry. This is case-insensitive</summary>
+        string RegistryName { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>Name of the workspace managed network outbound rule</summary>
+        string RuleName { get; set; }
         /// <summary>The ID of the target subscription.</summary>
         string SubscriptionId { get; set; }
-        /// <summary>Version identifier. This is case-sensitive.</summary>
+        /// <summary>Version identifier.</summary>
         string Version { get; set; }
         /// <summary>Name of Azure Machine Learning workspace.</summary>
         string WorkspaceName { get; set; }

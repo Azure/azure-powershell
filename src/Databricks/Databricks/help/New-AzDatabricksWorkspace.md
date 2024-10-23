@@ -15,12 +15,14 @@ Creates a new workspace.
 ```
 New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> [-ManagedResourceGroupName <String>] [-AmlWorkspaceId <String>]
- [-Authorization <IWorkspaceProviderAuthorization[]>] [-EnableNoPublicIP] [-EncryptionKeyName <String>]
- [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
- [-LoadBalancerBackendPoolName <String>] [-LoadBalancerId <String>]
+ [-Authorization <IWorkspaceProviderAuthorization[]>] [-DefaultCatalogInitialType <InitialType>]
+ [-EnableNoPublicIP] [-EncryptionKeyName <String>] [-EncryptionKeySource <KeySource>]
+ [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>] [-LoadBalancerBackendPoolName <String>]
+ [-LoadBalancerId <String>] [-ManagedDiskKeySource <EncryptionKeySource>]
  [-ManagedDiskKeyVaultPropertiesKeyName <String>] [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedDiskKeyVaultPropertiesKeyVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
- [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
+ [-ManagedServiceKeySource <EncryptionKeySource>] [-ManagedServicesKeyVaultPropertiesKeyName <String>]
+ [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-NatGatewayName <String>] [-PrepareEncryption]
  [-PrivateSubnetName <String>] [-PublicIPName <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-PublicSubnetName <String>] [-RequireInfrastructureEncryption] [-RequiredNsgRule <RequiredNsgRules>]
@@ -229,6 +231,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultCatalogInitialType
+Defines the initial type of the default catalog.
+Possible values (case-insensitive): HiveMetastore, UnityCatalog
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -396,6 +414,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedDiskKeySource
+The encryption keySource (provider).
+Possible values (case-insensitive): Microsoft.Keyvault
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ManagedDiskKeyVaultPropertiesKeyName
 The name of KeyVault key.
 
@@ -461,6 +495,22 @@ The managed resource group Id.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedServiceKeySource
+The encryption keySource (provider).
+Possible values (case-insensitive): Microsoft.Keyvault
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource
 Parameter Sets: (All)
 Aliases:
 
@@ -747,6 +797,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String

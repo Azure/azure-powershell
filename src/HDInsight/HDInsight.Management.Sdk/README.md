@@ -29,18 +29,18 @@ skip-csproj: true
 
 ###
 ``` yaml
-commit: b36f75338bb933cbf23cc1daedc222f0d50855ca
+commit: f22b814a1a30517cb6612c8fe071cfbcc64e3a2c
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2023-04-15-preview/applications.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2023-04-15-preview/cluster.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2023-04-15-preview/configurations.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2023-04-15-preview/extensions.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2023-04-15-preview/locations.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2023-04-15-preview/operations.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2023-04-15-preview/privateEndpointConnections.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2023-04-15-preview/privateLinkResources.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2023-04-15-preview/scriptActions.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2023-04-15-preview/virtualMachines.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/applications.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/cluster.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/configurations.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/extensions.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/locations.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/operations.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/privateEndpointConnections.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/privateLinkResources.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/scriptActions.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/virtualMachines.json
 
 output-folder: Generated
 
@@ -50,14 +50,6 @@ directive:
       property-name: OSType
     set:
       property-name: OsType
-#   - where:
-#       property-name: VMSizes
-#     set:
-#       property-name: VmSizes
-#   - where:
-#       property-name: VMSize
-#     set:
-#       property-name: VmSize
   - where:
       property-name: OSProfile
     set:
@@ -66,6 +58,5 @@ directive:
       property-name: DiskSizeGb
     set:
       property-name: DiskSizeGB
-
 
 ```

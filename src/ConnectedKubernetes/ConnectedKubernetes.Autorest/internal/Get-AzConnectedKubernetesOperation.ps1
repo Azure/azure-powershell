@@ -25,12 +25,12 @@ Lists all of the available API operations for Connected Cluster resource.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/get-azconnectedkubernetesoperation
 #>
 function Get-AzConnectedKubernetesOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IOperation])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter()]

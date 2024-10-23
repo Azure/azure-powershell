@@ -8,10 +8,9 @@ namespace Microsoft.Azure.Management.Network.Models
     using System.Linq;
 
     /// <summary>
-    /// Azure Firewall Packet Capture Parameters resource.
+    /// Azure Firewall Packet Capture Parameters.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class FirewallPacketCaptureParameters : SubResource
+    public partial class FirewallPacketCaptureParameters
     {
         /// <summary>
         /// Initializes a new instance of the FirewallPacketCaptureParameters class.
@@ -24,9 +23,6 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Initializes a new instance of the FirewallPacketCaptureParameters class.
         /// </summary>
-
-        /// <param name="id">Resource ID.
-        /// </param>
 
         /// <param name="durationInSeconds">Duration of packet capture in seconds.
         /// </param>
@@ -48,9 +44,8 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="filters">Rules to filter packet captures.
         /// </param>
-        public FirewallPacketCaptureParameters(string id = default(string), int? durationInSeconds = default(int?), int? numberOfPacketsToCapture = default(int?), string sasUrl = default(string), string fileName = default(string), string protocol = default(string), System.Collections.Generic.IList<AzureFirewallPacketCaptureFlags> flags = default(System.Collections.Generic.IList<AzureFirewallPacketCaptureFlags>), System.Collections.Generic.IList<AzureFirewallPacketCaptureRule> filters = default(System.Collections.Generic.IList<AzureFirewallPacketCaptureRule>))
+        public FirewallPacketCaptureParameters(int? durationInSeconds = default(int?), int? numberOfPacketsToCapture = default(int?), string sasUrl = default(string), string fileName = default(string), string protocol = default(string), System.Collections.Generic.IList<AzureFirewallPacketCaptureFlags> flags = default(System.Collections.Generic.IList<AzureFirewallPacketCaptureFlags>), System.Collections.Generic.IList<AzureFirewallPacketCaptureRule> filters = default(System.Collections.Generic.IList<AzureFirewallPacketCaptureRule>))
 
-        : base(id)
         {
             this.DurationInSeconds = durationInSeconds;
             this.NumberOfPacketsToCapture = numberOfPacketsToCapture;
@@ -71,43 +66,43 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <summary>
         /// Gets or sets duration of packet capture in seconds.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.durationInSeconds")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "durationInSeconds")]
         public int? DurationInSeconds {get; set; }
 
         /// <summary>
         /// Gets or sets number of packets to be captured.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.numberOfPacketsToCapture")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "numberOfPacketsToCapture")]
         public int? NumberOfPacketsToCapture {get; set; }
 
         /// <summary>
         /// Gets or sets upload capture location
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sasUrl")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sasUrl")]
         public string SasUrl {get; set; }
 
         /// <summary>
         /// Gets or sets name of file to be uploaded to sasURL
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.fileName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "fileName")]
         public string FileName {get; set; }
 
         /// <summary>
         /// Gets or sets the protocol of packets to capture Possible values include: &#39;TCP&#39;, &#39;UDP&#39;, &#39;Any&#39;, &#39;ICMP&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.protocol")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "protocol")]
         public string Protocol {get; set; }
 
         /// <summary>
         /// Gets or sets the tcp-flag type to be captured. Used with protocol TCP
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.flags")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "flags")]
         public System.Collections.Generic.IList<AzureFirewallPacketCaptureFlags> Flags {get; set; }
 
         /// <summary>
         /// Gets or sets rules to filter packet captures.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.filters")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "filters")]
         public System.Collections.Generic.IList<AzureFirewallPacketCaptureRule> Filters {get; set; }
         /// <summary>
         /// Validate the object.

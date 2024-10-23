@@ -3,7 +3,4 @@
 New-AzMLWorkspaceDatastoreCredentialObject
 ```
 
-```output
-```
-
 Create an in-memory object for CertificateDatastoreCredential

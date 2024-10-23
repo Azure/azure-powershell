@@ -84,18 +84,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public string ClusterAccessProfilePrivateLinkServiceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAccessProfileInternal)ClusterAccessProfile).PrivateLinkServiceId; }
 
-        /// <summary>ClientId of the MSI.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string ClusterIdentityMsiClientId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ClusterIdentityMsiClientId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ClusterIdentityMsiClientId = value ?? null; }
-
-        /// <summary>ObjectId of the MSI.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string ClusterIdentityMsiObjectId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ClusterIdentityMsiObjectId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ClusterIdentityMsiObjectId = value ?? null; }
-
-        /// <summary>ResourceId of the MSI.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
-        public string ClusterIdentityMsiResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ClusterIdentityMsiResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ClusterIdentityMsiResourceId = value ?? null; }
-
         /// <summary>Backing field for <see cref="ClusterVersion" /> property.</summary>
         private string _clusterVersion;
 
@@ -224,9 +212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Backing field for <see cref="IdentityProfile" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile _identityProfile;
 
-        /// <summary>
-        /// This property is required by Trino, Spark and Flink cluster but is optional for Kafka cluster.
-        /// </summary>
+        /// <summary>This is deprecated. Please use managed identity profile instead.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile IdentityProfile { get => (this._identityProfile = this._identityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfile()); set => this._identityProfile = value; }
 
@@ -356,6 +342,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsProfile LogAnalyticsProfile { get => (this._logAnalyticsProfile = this._logAnalyticsProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLogAnalyticsProfile()); set => this._logAnalyticsProfile = value; }
 
+        /// <summary>Backing field for <see cref="ManagedIdentityProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfile _managedIdentityProfile;
+
+        /// <summary>
+        /// This property is required by Trino, Spark and Flink cluster but is optional for Kafka cluster.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfile ManagedIdentityProfile { get => (this._managedIdentityProfile = this._managedIdentityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentityProfile()); set => this._managedIdentityProfile = value; }
+
+        /// <summary>The list of managed identity.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec> ManagedIdentityProfileIdentityList { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfileInternal)ManagedIdentityProfile).IdentityList; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfileInternal)ManagedIdentityProfile).IdentityList = value ?? null /* arrayOf */; }
+
         /// <summary>
         /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
         /// </summary>
@@ -446,9 +445,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Internal Acessors for KafkaProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.KafkaProfile { get => (this._kafkaProfile = this._kafkaProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaProfile()); set { {_kafkaProfile = value;} } }
 
-        /// <summary>Internal Acessors for KafkaProfileClusterIdentity</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.KafkaProfileClusterIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ClusterIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ClusterIdentity = value; }
-
         /// <summary>Internal Acessors for KafkaProfileConnectivityEndpoint</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpoints Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.KafkaProfileConnectivityEndpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ConnectivityEndpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfileInternal)KafkaProfile).ConnectivityEndpoint = value; }
 
@@ -460,6 +456,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
 
         /// <summary>Internal Acessors for LogAnalyticsProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.LogAnalyticsProfile { get => (this._logAnalyticsProfile = this._logAnalyticsProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLogAnalyticsProfile()); set { {_logAnalyticsProfile = value;} } }
+
+        /// <summary>Internal Acessors for ManagedIdentityProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.ManagedIdentityProfile { get => (this._managedIdentityProfile = this._managedIdentityProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentityProfile()); set { {_managedIdentityProfile = value;} } }
 
         /// <summary>Internal Acessors for PrometheusProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPrometheusProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal.PrometheusProfile { get => (this._prometheusProfile = this._prometheusProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPrometheusProfile()); set { {_prometheusProfile = value;} } }
@@ -683,6 +682,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public string SshProfilePodPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)SshProfile).PodPrefix; }
 
+        /// <summary>The virtual machine SKU.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string SshProfileVMSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)SshProfile).VMSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)SshProfile).VMSize = value ?? null; }
+
         /// <summary>
         /// Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
         /// </summary>
@@ -886,39 +889,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"privateLinkServiceId",
         PossibleTypes = new [] { typeof(string) })]
         string ClusterAccessProfilePrivateLinkServiceId { get;  }
-        /// <summary>ClientId of the MSI.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"ClientId of the MSI.",
-        SerializedName = @"msiClientId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ClusterIdentityMsiClientId { get;  }
-        /// <summary>ObjectId of the MSI.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"ObjectId of the MSI.",
-        SerializedName = @"msiObjectId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ClusterIdentityMsiObjectId { get;  }
-        /// <summary>ResourceId of the MSI.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"ResourceId of the MSI.",
-        SerializedName = @"msiResourceId",
-        PossibleTypes = new [] { typeof(string) })]
-        string ClusterIdentityMsiResourceId { get;  }
         /// <summary>Version with 3/4 part.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = true,
@@ -1452,6 +1422,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"metricsEnabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? LogAnalyticProfileMetricsEnabled { get; set; }
+        /// <summary>The list of managed identity.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The list of managed identity.",
+        SerializedName = @"identityList",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec> ManagedIdentityProfileIdentityList { get; set; }
         /// <summary>
         /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
         /// </summary>
@@ -1788,6 +1769,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"podPrefix",
         PossibleTypes = new [] { typeof(string) })]
         string SshProfilePodPrefix { get;  }
+        /// <summary>The virtual machine SKU.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The virtual machine SKU.",
+        SerializedName = @"vmSize",
+        PossibleTypes = new [] { typeof(string) })]
+        string SshProfileVMSize { get; set; }
         /// <summary>
         /// Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
         /// </summary>
@@ -2022,12 +2014,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// Private link service resource ID. Only when enableInternalIngress is true, this property will be returned.
         /// </summary>
         string ClusterAccessProfilePrivateLinkServiceId { get; set; }
-        /// <summary>ClientId of the MSI.</summary>
-        string ClusterIdentityMsiClientId { get; set; }
-        /// <summary>ObjectId of the MSI.</summary>
-        string ClusterIdentityMsiObjectId { get; set; }
-        /// <summary>ResourceId of the MSI.</summary>
-        string ClusterIdentityMsiResourceId { get; set; }
         /// <summary>Version with 3/4 part.</summary>
         string ClusterVersion { get; set; }
         /// <summary>Component list of this cluster type and version.</summary>
@@ -2115,9 +2101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string HiveMetastoreDbConnectionUrl { get; set; }
         /// <summary>User name for database connection.</summary>
         string HiveMetastoreDbConnectionUserName { get; set; }
-        /// <summary>
-        /// This property is required by Trino, Spark and Flink cluster but is optional for Kafka cluster.
-        /// </summary>
+        /// <summary>This is deprecated. Please use managed identity profile instead.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile IdentityProfile { get; set; }
         /// <summary>ClientId of the MSI.</summary>
         string IdentityProfileMsiClientId { get; set; }
@@ -2152,8 +2136,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string JobSpecUpgradeMode { get; set; }
         /// <summary>The Kafka cluster profile.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaProfile KafkaProfile { get; set; }
-        /// <summary>Identity of the internal service components inside the Kafka cluster.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile KafkaProfileClusterIdentity { get; set; }
         /// <summary>Kafka bootstrap server and brokers related connectivity endpoints.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IKafkaConnectivityEndpoints KafkaProfileConnectivityEndpoint { get; set; }
         /// <summary>Kafka disk storage profile.</summary>
@@ -2197,6 +2179,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         bool? LogAnalyticProfileMetricsEnabled { get; set; }
         /// <summary>Cluster log analytics profile to enable or disable OMS agent for cluster.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsProfile LogAnalyticsProfile { get; set; }
+        /// <summary>
+        /// This property is required by Trino, Spark and Flink cluster but is optional for Kafka cluster.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfile ManagedIdentityProfile { get; set; }
+        /// <summary>The list of managed identity.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec> ManagedIdentityProfileIdentityList { get; set; }
         /// <summary>
         /// The authentication mode to connect to your Hive metastore database. More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manage?view=azuresql#authentication-and-authorization
         /// </summary>
@@ -2305,6 +2293,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <clusterFqdn>/<sshBasePath>/<prefix>-<number>
         /// </summary>
         string SshProfilePodPrefix { get; set; }
+        /// <summary>The virtual machine SKU.</summary>
+        string SshProfileVMSize { get; set; }
         /// <summary>
         /// Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
         /// </summary>

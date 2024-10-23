@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.3
+* Fixed secrets exposure in example documentation.
+
 ## Version 1.1.2
 * Refreshed module to ensure catalog file signed by Microsoft.
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlinedeployment
 schema: 2.0.0
@@ -14,9 +14,11 @@ Create or update Inference Endpoint Deployment (asynchronous).
 
 ```
 New-AzMLWorkspaceOnlineDeployment -EndpointName <String> -Name <String> -ResourceGroupName <String>
- -WorkspaceName <String> -EndpointComputeType <EndpointComputeType> -Location <String>
- [-SubscriptionId <String>] [-AppInsightsEnabled] [-CodeId <String>] [-CodeScoringScript <String>]
- [-Description <String>] [-EndpointDeploymentPropertiesBaseProperty <Hashtable>] [-EnvironmentId <String>]
+ -WorkspaceName <String> [-SubscriptionId <String>] -EndpointComputeType <EndpointComputeType>
+ -Location <String> [-AppInsightsEnabled] [-CodeId <String>] [-CodeScoringScript <String>]
+ [-DataCollectorCollection <Hashtable>] [-DataCollectorRollingRate <RollingRateType>] [-Description <String>]
+ [-EgressPublicNetworkAccess <EgressPublicNetworkAccessType>]
+ [-EndpointDeploymentPropertiesBaseProperty <Hashtable>] [-EnvironmentId <String>]
  [-EnvironmentVariable <Hashtable>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssigned <Hashtable>] [-InstanceType <String>] [-Kind <String>]
  [-LivenessProbeFailureThreshold <Int32>] [-LivenessProbeInitialDelay <TimeSpan>]
@@ -24,9 +26,10 @@ New-AzMLWorkspaceOnlineDeployment -EndpointName <String> -Name <String> -Resourc
  [-Model <String>] [-ModelMountPath <String>] [-ReadinessProbeFailureThreshold <Int32>]
  [-ReadinessProbeInitialDelay <TimeSpan>] [-ReadinessProbePeriod <TimeSpan>]
  [-ReadinessProbeSuccessThreshold <Int32>] [-ReadinessProbeTimeout <TimeSpan>]
- [-RequestMaxConcurrentPerInstance <Int32>] [-RequestMaxQueueWait <TimeSpan>] [-RequestTimeout <TimeSpan>]
- [-ScaleType <ScaleType>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>]
- [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-RequestLoggingCaptureHeader <String[]>] [-RequestMaxConcurrentPerInstance <Int32>]
+ [-RequestMaxQueueWait <TimeSpan>] [-RequestTimeout <TimeSpan>] [-ScaleType <ScaleType>] [-SkuCapacity <Int32>]
+ [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -45,9 +48,9 @@ New-AzMLWorkspaceOnlineDeployment -ResourceGroupName ml-rg-test -WorkspaceName m
 ```
 
 ```output
-Location Name SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind    ResourceGroupName
--------- ---- -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ----    -----------------
-eastus   blue 5/19/2022 2:52:06 AM Lucas Yao (Wicresoft North America)                         5/19/2022 2:52:06 AM                                                                               Managed ml-rg-test
+Location Name SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Kind    ResourceGroupName
+-------- ---- -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ----    -----------------
+eastus   blue 5/19/2022 2:52:06 AM UserName (Example)                  5/19/2022 2:52:06 AM                                                                                   Managed ml-rg-test
 ```
 
 Create or update Inference Endpoint Deployment (asynchronous)
@@ -116,8 +119,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DataCollectorCollection
+[Required] The collection configuration.
+Each collection has it own configuration to collect model data and the name of collection can be arbitrary string.Model data collector can be used for either payload logging or custom logging or both of them.
+Collection request and response are reserved for payload logging, others are for custom logging.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataCollectorRollingRate
+When model data is collected to blob storage, we need to roll the data to different path to avoid logging all of them in a single blob file.If the rolling rate is hour, all data will be collected in the blob path /yyyy/MM/dd/HH/.If it's day, all data will be collected in blob path /yyyy/MM/dd/.The other benefit of rolling path is that model monitoring ui is able to select a time range of data very quickly.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.RollingRateType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -136,6 +172,23 @@ Description of the endpoint deployment.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EgressPublicNetworkAccess
+If Enabled, allow egress public network access.
+If Disabled, this will create secure egress.
+Default: Enabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EgressPublicNetworkAccessType
 Parameter Sets: (All)
 Aliases:
 
@@ -509,6 +562,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequestLoggingCaptureHeader
+For payload logging, we only collect payload by default.
+If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RequestMaxConcurrentPerInstance
 The number of maximum concurrent requests per node allowed per deployment.
 Defaults to 1.
@@ -526,7 +595,7 @@ Accept wildcard characters: False
 ```
 
 ### -RequestMaxQueueWait
-The maximum amount of time a request will stay in the queue in ISO 8601 format.Defaults to 500ms.
+(Deprecated for Managed Online Endpoints) The maximum amount of time a request will stay in the queue in ISO 8601 format.Defaults to 500ms.(Now increase `request_timeout_ms` to account for any networking/queue delays)
 
 ```yaml
 Type: System.TimeSpan
@@ -748,11 +817,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IOnlineDeployment
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

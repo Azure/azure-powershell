@@ -14,10 +14,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceBatchDeploym
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMLWorkspaceBatchDeployment' {
+Describe 'New-AzMLWorkspaceBatchDeployment' { #Moved
     # New-AzMLWorkspaceBatchEndpoint InternalServerError
     It 'CreateExpanded' -skip {
-        { 
+        {
             New-AzMLWorkspaceBatchEndpoint -ResourceGroupName bml-rg-test0101 -WorkspaceName mlworkspacekeep -Name batchenpoint01 -AuthMode 'Key' -Location 'eastus'
             New-AzMLWorkspaceBatchDeployment -ResourceGroupName bml-rg-test01 -WorkspaceName mlworkspacekeep -EndpointName batchenpoint01 -Name debploy01 -Location "eastus" `
             -CodeId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/bml-rg-test01/providers/Microsoft.MachineLearningServices/workspaces/mlworkspacekeep/codes/bd430754-fba7-4a63-a6b8-8ea8635767f3/versions/1" -CodeScoringScript "digit_identification.py" `

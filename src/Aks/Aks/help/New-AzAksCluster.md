@@ -63,7 +63,7 @@ To create Windows Server container on an AKS, you must specify at least four fol
 `-WindowsProfileAdminUserName *** -WindowsProfileAdminUserPassword *** -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets`
 
 ```powershell
-$cred = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
+$cred = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
 New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
 ```

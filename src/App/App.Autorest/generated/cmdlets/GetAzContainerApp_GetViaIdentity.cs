@@ -96,13 +96,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
-        /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Runtime)]
-        public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
-
-        /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.HttpPipeline Pipeline { get; set; }
@@ -134,16 +127,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// return immediately (set to true to skip further processing )</param>
 
         partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
-
-        /// <summary>
-        /// <c>overrideOnNotFound</c> will be called before the regular onNotFound has been processed, allowing customization of what
-        /// happens on that response. Implement this method in a partial class to enable this behavior
-        /// </summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="returnNow">/// Determines if the rest of the onNotFound method should be processed, or if the method should
-        /// return immediately (set to true to skip further processing )</param>
-
-        partial void overrideOnNotFound(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
@@ -178,7 +161,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.ContainerAppsGetViaIdentity(InputObject.Id, onOk, onNotFound, onDefault, this, Pipeline);
+                        await this.Client.ContainerAppsGetViaIdentity(InputObject.Id, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ContainerAppName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.ContainerAppsGet(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ContainerAppName ?? null, onOk, onNotFound, onDefault, this, Pipeline);
+                        await this.Client.ContainerAppsGet(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ContainerAppName ?? null, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -367,6 +367,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>
@@ -407,30 +422,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
-                }
-            }
-        }
-
-        /// <summary>a delegate that is called when the remote service returns 404 (NotFound).</summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
-        /// </returns>
-        private async global::System.Threading.Tasks.Task onNotFound(global::System.Net.Http.HttpResponseMessage responseMessage)
-        {
-            using( NoSynchronizationContext )
-            {
-                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnNotFound(responseMessage, ref _returnNow);
-                // if overrideOnNotFound has returned true, then return right away.
-                if ((null != _returnNow && await _returnNow))
-                {
-                    return ;
-                }
-                // onNotFound - response for 404 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
-                {
-                    WriteObject(true);
                 }
             }
         }

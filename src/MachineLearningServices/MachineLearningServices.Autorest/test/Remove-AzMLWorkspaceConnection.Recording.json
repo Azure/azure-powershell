@@ -1,0 +1,47 @@
+{
+  "Remove-AzMLWorkspaceConnection+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/connections/test01?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/connections/test01?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "130" ],
+        "x-ms-client-request-id": [ "d721ec4a-a8a5-4748-a81f-1bf7e31ff0d4" ],
+        "CommandName": [ "Remove-AzMLWorkspaceConnection" ],
+        "FullCommandName": [ "Remove-AzMLWorkspaceConnection_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.178" ],
+        "x-ms-request-id": [ "072ecc0a-a5a1-43ca-be3e-adebde5d46c0" ],
+        "x-ms-correlation-request-id": [ "072ecc0a-a5a1-43ca-be3e-adebde5d46c0" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085454Z:072ecc0a-a5a1-43ca-be3e-adebde5d46c0" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B33423B146E947AEABA7F8D538391FC3 Ref B: TYO201151005031 Ref C: 2024-07-24T08:54:53Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:54:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

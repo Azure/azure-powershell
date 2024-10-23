@@ -13,9 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMLWorkspaceJob_List")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBase))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBase))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Description(@"Lists Jobs in the workspace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/jobs", ApiVersion = "2024-04-01")]
     public partial class GetAzMLWorkspaceJob_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IEventListener
     {
@@ -48,9 +49,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.MachineLearningServices Client => Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Azure)]
@@ -70,6 +72,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
+
+        /// <summary>Backing field for <see cref="Job" /> property.</summary>
+        private string _job;
+
+        /// <summary>
+        /// Comma-separated list of user property names (and optionally values). Example: prop1,prop2=value2
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Comma-separated list of user property names (and optionally values). Example: prop1,prop2=value2")]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Comma-separated list of user property names (and optionally values). Example: prop1,prop2=value2",
+        SerializedName = @"properties",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.ParameterCategory.Query)]
+        public string Job { get => this._job; set => this._job = value; }
 
         /// <summary>Backing field for <see cref="JobType" /> property.</summary>
         private string _jobType;
@@ -220,12 +238,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBaseResourceArmPaginatedResult">Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBaseResourceArmPaginatedResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBaseResourceArmPaginatedResult">Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBaseResourceArmPaginatedResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBaseResourceArmPaginatedResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBaseResourceArmPaginatedResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -248,7 +266,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -372,13 +407,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.JobsList(SubscriptionId, ResourceGroupName, WorkspaceName, this.InvocationInformation.BoundParameters.ContainsKey("Skip") ? Skip : null, this.InvocationInformation.BoundParameters.ContainsKey("JobType") ? JobType : null, this.InvocationInformation.BoundParameters.ContainsKey("Tag") ? Tag : null, this.InvocationInformation.BoundParameters.ContainsKey("ListViewType") ? ListViewType : null, onOk, onDefault, this, Pipeline);
+                        await this.Client.JobsList(SubscriptionId, ResourceGroupName, WorkspaceName, this.InvocationInformation.BoundParameters.ContainsKey("Skip") ? Skip : null, this.InvocationInformation.BoundParameters.ContainsKey("JobType") ? JobType : null, this.InvocationInformation.BoundParameters.ContainsKey("Tag") ? Tag : null, this.InvocationInformation.BoundParameters.ContainsKey("ListViewType") ? ListViewType : null, this.InvocationInformation.BoundParameters.ContainsKey("Job") ? Job : null, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,WorkspaceName=WorkspaceName,Skip=this.InvocationInformation.BoundParameters.ContainsKey("Skip") ? Skip : null,JobType=this.InvocationInformation.BoundParameters.ContainsKey("JobType") ? JobType : null,Tag=this.InvocationInformation.BoundParameters.ContainsKey("Tag") ? Tag : null,ListViewType=this.InvocationInformation.BoundParameters.ContainsKey("ListViewType") ? ListViewType : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,WorkspaceName=WorkspaceName,Skip=this.InvocationInformation.BoundParameters.ContainsKey("Skip") ? Skip : null,JobType=this.InvocationInformation.BoundParameters.ContainsKey("JobType") ? JobType : null,Tag=this.InvocationInformation.BoundParameters.ContainsKey("Tag") ? Tag : null,ListViewType=this.InvocationInformation.BoundParameters.ContainsKey("ListViewType") ? ListViewType : null,Job=this.InvocationInformation.BoundParameters.ContainsKey("Job") ? Job : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -395,6 +430,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>
@@ -424,14 +474,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, WorkspaceName=WorkspaceName, Skip=this.InvocationInformation.BoundParameters.ContainsKey("Skip") ? Skip : null, JobType=this.InvocationInformation.BoundParameters.ContainsKey("JobType") ? JobType : null, Tag=this.InvocationInformation.BoundParameters.ContainsKey("Tag") ? Tag : null, ListViewType=this.InvocationInformation.BoundParameters.ContainsKey("ListViewType") ? ListViewType : null })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, WorkspaceName=WorkspaceName, Skip=this.InvocationInformation.BoundParameters.ContainsKey("Skip") ? Skip : null, JobType=this.InvocationInformation.BoundParameters.ContainsKey("JobType") ? JobType : null, Tag=this.InvocationInformation.BoundParameters.ContainsKey("Tag") ? Tag : null, ListViewType=this.InvocationInformation.BoundParameters.ContainsKey("ListViewType") ? ListViewType : null, Job=this.InvocationInformation.BoundParameters.ContainsKey("Job") ? Job : null })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, WorkspaceName=WorkspaceName, Skip=this.InvocationInformation.BoundParameters.ContainsKey("Skip") ? Skip : null, JobType=this.InvocationInformation.BoundParameters.ContainsKey("JobType") ? JobType : null, Tag=this.InvocationInformation.BoundParameters.ContainsKey("Tag") ? Tag : null, ListViewType=this.InvocationInformation.BoundParameters.ContainsKey("ListViewType") ? ListViewType : null })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, WorkspaceName=WorkspaceName, Skip=this.InvocationInformation.BoundParameters.ContainsKey("Skip") ? Skip : null, JobType=this.InvocationInformation.BoundParameters.ContainsKey("JobType") ? JobType : null, Tag=this.InvocationInformation.BoundParameters.ContainsKey("Tag") ? Tag : null, ListViewType=this.InvocationInformation.BoundParameters.ContainsKey("ListViewType") ? ListViewType : null, Job=this.InvocationInformation.BoundParameters.ContainsKey("Job") ? Job : null })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -441,12 +491,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBaseResourceArmPaginatedResult">Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBaseResourceArmPaginatedResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBaseResourceArmPaginatedResult">Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBaseResourceArmPaginatedResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBaseResourceArmPaginatedResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBaseResourceArmPaginatedResult> response)
         {
             using( NoSynchronizationContext )
             {

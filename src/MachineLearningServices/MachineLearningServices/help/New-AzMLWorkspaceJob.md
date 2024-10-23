@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacejob
 schema: 2.0.0
@@ -8,18 +8,18 @@ schema: 2.0.0
 # New-AzMLWorkspaceJob
 
 ## SYNOPSIS
-Creates and executes a Job.
+Creates and executes a Job.\r\nFor update case, the Tags in the definition passed in will replace Tags in the existing job.
 
 ## SYNTAX
 
 ```
 New-AzMLWorkspaceJob -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -Job <IJobBaseProperties> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -Job <IJobBaseProperties> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates and executes a Job.
+Creates and executes a Job.\r\nFor update case, the Tags in the definition passed in will replace Tags in the existing job.
 
 ## EXAMPLES
 
@@ -42,7 +42,7 @@ New-AzMLWorkspaceJob -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-te
 ```output
 Name                       SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ----                       -------------------  -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-commandJob01               5/31/2022 7:58:38 AM Lucas Yao (Wicresoft North America) User                                                                                                   ml-rg-test
+commandJob01               5/31/2022 7:58:38 AM UserName (Example)         User                                                                                                   ml-rg-test
 ```
 
 Creates and executes a Job
@@ -50,7 +50,8 @@ Creates and executes a Job
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -69,7 +70,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for JOB properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBaseProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBaseProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -180,31 +181,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBase
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBase
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-JOB `<IJobBaseProperties>`: [Required] Additional attributes of the entity.
-  - `JobType <JobType>`: [Required] Specifies the type of job.
-  - `[Description <String>]`: The asset description text.
-  - `[Property <IResourceBaseProperties>]`: The asset property dictionary.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Tag <IResourceBaseTags>]`: Tag dictionary. Tags can be added, removed, and updated.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[ComputeId <String>]`: ARM resource ID of the compute resource.
-  - `[DisplayName <String>]`: Display name of job.
-  - `[ExperimentName <String>]`: The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-  - `[IdentityType <IdentityConfigurationType?>]`: [Required] Specifies the type of identity framework.
-  - `[IsArchived <Boolean?>]`: Is the asset archived?
-  - `[Service <IJobBaseServices>]`: List of JobEndpoints.         For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-    - `[(Any) <IJobService>]`: This indicates any property can be added to this object.
-
 ## RELATED LINKS
-

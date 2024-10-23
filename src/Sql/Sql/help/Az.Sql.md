@@ -455,6 +455,9 @@ Reverts Database Encryption Protector AKV key to Server level key
 ### [Invoke-AzSqlElasticPoolFailover](Invoke-AzSqlElasticPoolFailover.md)
 Failovers an elastic pool.
 
+### [Invoke-AzSqlInstanceExternalGovernanceStatusRefresh](Invoke-AzSqlInstanceExternalGovernanceStatusRefresh.md)
+Refreshes the value of external governance on the managed instance.
+
 ### [Invoke-AzSqlInstanceFailover](Invoke-AzSqlInstanceFailover.md)
 Failovers an Azure SQL Managed Instance.
 
@@ -752,6 +755,9 @@ Modifies the configuration of an Instance Failover Group.
 ### [Set-AzSqlDatabaseRecommendedActionState](Set-AzSqlDatabaseRecommendedActionState.md)
 Updates the state of an Azure SQL Database recommended action.
 
+### [Set-AzSqlDatabaseReplicationLink](Set-AzSqlDatabaseReplicationLink.md)
+Updates the Link type of a Replication Link.
+
 ### [Set-AzSqlDatabaseSecondary](Set-AzSqlDatabaseSecondary.md)
 Switches a secondary database to be primary in order to initiate failover.
 
@@ -954,3 +960,4 @@ Updates an Azure SQL Database Sync Member.
 Update the sync schema for a sync member database or a sync hub database.
 It will get the latest database schema from the real database and then use it refresh the schema cached by Sync metadata database.
 If "SyncMemberName" is specified, it will refresh the member database schema; if not, it will refresh the hub database schema.
+

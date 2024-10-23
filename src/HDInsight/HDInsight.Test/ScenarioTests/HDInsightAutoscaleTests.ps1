@@ -29,7 +29,7 @@ function Test-AutoscaleRelatedCommands{
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		Assert-NotNull $cluster
 
@@ -64,7 +64,6 @@ function Test-AutoscaleRelatedCommands{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
 		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }

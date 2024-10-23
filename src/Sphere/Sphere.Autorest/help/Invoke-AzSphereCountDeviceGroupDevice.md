@@ -46,7 +46,7 @@ Counts devices in device group.
 
 ### Example 1: Get device number
 ```powershell
-Invoke-AzSphereCountDeviceGroupDevice -CatalogName test2024 -ResourceGroupName joyer-test -DeviceGroupName testdevicegroup -ProductName product2024
+Invoke-AzSphereCountDeviceGroupDevice -CatalogName test2024 -ResourceGroupName group-test -DeviceGroupName testdevicegroup -ProductName product2024
 ```
 
 ```output

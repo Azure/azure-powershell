@@ -18,7 +18,7 @@ Describe 'New-AzNetworkCloudKubernetesCluster' {
         {
             $kubernetesClusterConfig = $global:config.AzNetworkCloudKubernetesCluster
             $common = $global:config.common
-            $password = ConvertTo-SecureString "1qaz@WSX" -AsPlainText
+            $password = ConvertTo-SecureString "*******" -AsPlainText
             $sshPublicKey = @{
                 KeyData = $kubernetesClusterConfig.sshPublicKey
             }

@@ -22,9 +22,9 @@ Get a Product.
 Get a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Example
-Get-AzSphereProduct -ResourceGroupName joyer-test -CatalogName test2024
+Get-AzSphereProduct -ResourceGroupName group-test -CatalogName test2024
 .Example
-Get-AzSphereProduct -ResourceGroupName joyer-test -CatalogName test2024 -Name product2024
+Get-AzSphereProduct -ResourceGroupName group-test -CatalogName test2024 -Name product2024
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

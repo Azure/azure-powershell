@@ -1861,6 +1861,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>BillingEndDate</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>BillingStartDate</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1879,6 +1882,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BillingEndDate</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>BillingStartDate</PropertyName>
               </TableColumnItem>
@@ -3328,6 +3334,9 @@
             <Label>AssessmentMode</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>EnableHotpatching</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>PatchMode</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -3338,7 +3347,32 @@
                 <PropertyName>AssessmentMode</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>EnableHotpatching</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>PatchMode</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsStatus#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>HotpatchEnablementStatus</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>HotpatchEnablementStatus</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -3703,6 +3737,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>BillingEndDate</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>BillingStartDate</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -3721,6 +3758,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BillingEndDate</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>BillingStartDate</PropertyName>
               </TableColumnItem>

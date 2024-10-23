@@ -1,0 +1,50 @@
+{
+  "Get-AzDevCenterAdminProjectInheritedSetting+[NoContext]+Get+$POST+https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/getInheritedSettings?api-version=2024-05-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/306bbddd-068b-4efc-a779-50342af2547a/resourceGroups/ibiza-testing/providers/Microsoft.DevCenter/projects/test-ibiza-project/getInheritedSettings?api-version=2024-05-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "93061b29-ef62-4973-8b92-2cec9202a0d0" ],
+        "CommandName": [ "Get-AzDevCenterAdminProjectInheritedSetting" ],
+        "FullCommandName": [ "Get-AzDevCenterAdminProjectInheritedSetting_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.19", "Az.DevCenter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-correlation-request-id": [ "8b9f1f22-65d3-4257-a325-69d965f96860" ],
+        "x-ms-client-request-id": [ "93061b29-ef62-4973-8b92-2cec9202a0d0" ],
+        "X-Rate-Limit-Limit": [ "1m" ],
+        "X-Rate-Limit-Remaining": [ "299" ],
+        "X-Rate-Limit-Reset": [ "2024-08-01T22:58:06.1410107Z" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "2361563f-c8a4-4b73-8a7e-7c39b096bd68" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240801T225706Z:8b9f1f22-65d3-4257-a325-69d965f96860" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C1E808F626A04EFDB5C865281453B346 Ref B: CO6AA3150218035 Ref C: 2024-08-01T22:57:04Z" ],
+        "Date": [ "Thu, 01 Aug 2024 22:57:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "68" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"projectCatalogSettings\":{\"catalogItemSyncEnableStatus\":\"Enabled\"}}",
+      "isContentBase64": false
+    }
+  }
+}

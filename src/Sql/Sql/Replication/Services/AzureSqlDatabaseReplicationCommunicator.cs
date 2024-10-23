@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,11 +67,35 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
+        /// Gets the specified Azure SQL Database replication link with new sdk
+        /// </summary>
+        public Management.Sql.Models.ReplicationLink GetLinkV2(string resourceGroupName, string serverName, string databaseName, Guid linkId)
+        {
+            return GetCurrentSqlClient().ReplicationLinks.Get(resourceGroupName, serverName, databaseName, linkId.ToString());
+        }
+
+        /// <summary>
+        /// Updates the specified Azure SQL Database replication link type with new sdk
+        /// </summary>
+        public Management.Sql.Models.ReplicationLink UpdateLinkV2(string resourceGroupName, string serverName, string databaseName, Guid linkId, ReplicationLinkUpdate parameters)
+        {
+            return GetCurrentSqlClient().ReplicationLinks.Update(resourceGroupName, serverName, databaseName, linkId.ToString(), parameters);
+        }
+
+        /// <summary>
         /// Lists Azure SQL Databases replication links with Legacy sdk
         /// </summary>
         public IList<Management.Sql.LegacySdk.Models.ReplicationLink> ListLinks(string resourceGroupName, string serverName, string databaseName)
         {
             return GetLegacySqlClient().DatabaseReplicationLinks.List(resourceGroupName, serverName, databaseName).ReplicationLinks;
+        }
+
+        /// <summary>
+        /// Lists Azure SQL Databases replication links with new sdk
+        /// </summary>
+        public IList<Management.Sql.Models.ReplicationLink> ListLinksV2(string resourceGroupName, string serverName, string databaseName)
+        {
+            return GetCurrentSqlClient().ReplicationLinks.ListByDatabase(resourceGroupName, serverName, databaseName).ToList();
         }
 
         /// <summary>

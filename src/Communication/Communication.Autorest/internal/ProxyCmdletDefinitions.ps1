@@ -25,12 +25,12 @@ Lists all of the available REST API operations of the Microsoft.Communication pr
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.communication/get-azcommunicationoperation
 #>
 function Get-AzCommunicationOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

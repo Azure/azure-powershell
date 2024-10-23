@@ -437,6 +437,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             HelpMessage = "Determines how much Storage IOps to associate with instance.",
             ParameterSetName = NewByEditionAndComputeGenerationParameterSet)]
         public int StorageIOps { get; set; }
+        
+        /// <summary>
+        /// Specifies weather or not Managed Instance is freemium
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Preferred metadata to use for authentication of synced on-prem users. Default is AzureAD.")]
+        [ValidateSet("AzureAD", "Paired", "Windows")]
+        [PSArgumentCompleter("AzureAD", "Paired", "Windows")]
+        public string AuthenticationMetadata { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -614,7 +623,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 // For non-MI database, we can just pass in 0 and the server will treat 0 as default.
                 // However this is (currently) not the case for MI. We need to convert the 0 to null
                 // here in client before sending to the server.
-                StorageIOps = SqlSkuUtils.ValueIfNonZero(this.StorageIOps)
+                StorageIOps = SqlSkuUtils.ValueIfNonZero(this.StorageIOps),
+                AuthenticationMetadata = this.AuthenticationMetadata
             });
             return newEntity;
         }

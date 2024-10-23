@@ -65,6 +65,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public int? AutoscaleProfileGracefulDecommissionTimeout { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)AutoscaleProfile).GracefulDecommissionTimeout; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)AutoscaleProfile).GracefulDecommissionTimeout = value ?? default(int); }
 
+        /// <summary>hive catalog options.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption> CatalogOptionHive { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CatalogOptionHive; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CatalogOptionHive = value ?? null /* arrayOf */; }
+
+        /// <summary>The flag that if enable debug or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public bool? CoordinatorDebugEnable { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CoordinatorDebugEnable; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CoordinatorDebugEnable = value ?? default(bool); }
+
+        /// <summary>The debug port.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public int? CoordinatorDebugPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CoordinatorDebugPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CoordinatorDebugPort = value ?? default(int); }
+
+        /// <summary>The flag that if suspend debug or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public bool? CoordinatorDebugSuspend { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CoordinatorDebugSuspend; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CoordinatorDebugSuspend = value ?? default(bool); }
+
+        /// <summary>
+        /// The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node.
+        /// Default: true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public bool? CoordinatorHighAvailabilityEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CoordinatorHighAvailabilityEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CoordinatorHighAvailabilityEnabled = value ?? default(bool); }
+
         /// <summary>The database URL</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public string DatabaseHost { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseHost; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseHost = value ?? null; }
@@ -141,6 +164,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Internal Acessors for AutoscaleProfileScheduleBasedConfig</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScheduleBasedConfig Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.AutoscaleProfileScheduleBasedConfig { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)AutoscaleProfile).ScheduleBasedConfig; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)AutoscaleProfile).ScheduleBasedConfig = value; }
 
+        /// <summary>Internal Acessors for CoordinatorDebug</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoDebugConfig Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.CoordinatorDebug { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CoordinatorDebug; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CoordinatorDebug = value; }
+
         /// <summary>Internal Acessors for LogAnalyticProfileApplicationLog</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsApplicationLogs Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.LogAnalyticProfileApplicationLog { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsProfileInternal)LogAnalyticsProfile).ApplicationLog; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLogAnalyticsProfileInternal)LogAnalyticsProfile).ApplicationLog = value; }
 
@@ -168,11 +194,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Internal Acessors for RangerProfileRangerUsersync</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerUsersyncSpec Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.RangerProfileRangerUsersync { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersync; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersync = value; }
 
+        /// <summary>Internal Acessors for SecretsProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretsProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.SecretsProfile { get => (this._secretsProfile = this._secretsProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SecretsProfile()); set { {_secretsProfile = value;} } }
+
         /// <summary>Internal Acessors for SshProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.SshProfile { get => (this._sshProfile = this._sshProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SshProfile()); set { {_sshProfile = value;} } }
 
         /// <summary>Internal Acessors for SshProfilePodPrefix</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.SshProfilePodPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)SshProfile).PodPrefix; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)SshProfile).PodPrefix = value; }
+
+        /// <summary>Internal Acessors for TrinoProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.TrinoProfile { get => (this._trinoProfile = this._trinoProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoProfile()); set { {_trinoProfile = value;} } }
+
+        /// <summary>Internal Acessors for TrinoProfileCatalogOption</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICatalogOptions Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.TrinoProfileCatalogOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CatalogOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).CatalogOption = value; }
+
+        /// <summary>Internal Acessors for TrinoProfileCoordinator</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoCoordinator Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.TrinoProfileCoordinator { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).Coordinator; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).Coordinator = value; }
+
+        /// <summary>Internal Acessors for TrinoProfileUserPluginsSpec</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugins Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.TrinoProfileUserPluginsSpec { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).UserPluginsSpec; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).UserPluginsSpec = value; }
+
+        /// <summary>Internal Acessors for TrinoProfileUserTelemetrySpec</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserTelemetry Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.TrinoProfileUserTelemetrySpec { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).UserTelemetrySpec; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).UserTelemetrySpec = value; }
+
+        /// <summary>Internal Acessors for TrinoProfileWorker</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoWorker Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.TrinoProfileWorker { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).Worker; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).Worker = value; }
+
+        /// <summary>Internal Acessors for UserTelemetrySpecStorage</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoTelemetryConfig Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.UserTelemetrySpecStorage { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).UserTelemetrySpecStorage; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).UserTelemetrySpecStorage = value; }
+
+        /// <summary>Internal Acessors for WorkerDebug</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoDebugConfig Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.WorkerDebug { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).WorkerDebug; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).WorkerDebug = value; }
 
         /// <summary>Enable Prometheus for cluster or not.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
@@ -269,6 +322,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile> ScriptActionProfile { get => this._scriptActionProfile; set => this._scriptActionProfile = value; }
 
+        /// <summary>
+        /// Name of the user Key Vault where all the cluster specific user secrets are stored.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string SecretProfileKeyVaultResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretsProfileInternal)SecretsProfile).KeyVaultResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretsProfileInternal)SecretsProfile).KeyVaultResourceId = value ?? null; }
+
+        /// <summary>Properties of Key Vault secret.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference> SecretProfileSecret { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretsProfileInternal)SecretsProfile).Secret; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretsProfileInternal)SecretsProfile).Secret = value ?? null /* arrayOf */; }
+
+        /// <summary>Backing field for <see cref="SecretsProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretsProfile _secretsProfile;
+
+        /// <summary>The cluster secret profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretsProfile SecretsProfile { get => (this._secretsProfile = this._secretsProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SecretsProfile()); set => this._secretsProfile = value; }
+
         /// <summary>Backing field for <see cref="ServiceConfigsProfile" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile> _serviceConfigsProfile;
 
@@ -293,6 +363,56 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public string SshProfilePodPrefix { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)SshProfile).PodPrefix; }
+
+        /// <summary>The virtual machine SKU.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string SshProfileVMSize { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)SshProfile).VMSize; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfileInternal)SshProfile).VMSize = value ?? null; }
+
+        /// <summary>
+        /// Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string StorageHivecatalogName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).StorageHivecatalogName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).StorageHivecatalogName = value ?? null; }
+
+        /// <summary>
+        /// Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under
+        /// schema trinologs.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string StorageHivecatalogSchema { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).StorageHivecatalogSchema; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).StorageHivecatalogSchema = value ?? null; }
+
+        /// <summary>
+        /// Retention period for query log table partitions, this doesn't have any affect on actual data.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public int? StoragePartitionRetentionInDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).StoragePartitionRetentionInDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).StoragePartitionRetentionInDay = value ?? default(int); }
+
+        /// <summary>Azure storage location of the blobs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string StoragePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).StoragePath; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).StoragePath = value ?? null; }
+
+        /// <summary>Backing field for <see cref="TrinoProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfile _trinoProfile;
+
+        /// <summary>Trino Cluster profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfile TrinoProfile { get => (this._trinoProfile = this._trinoProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoProfile()); set => this._trinoProfile = value; }
+
+        /// <summary>Trino user plugins.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugin> UserPluginSpecPlugin { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).UserPluginSpecPlugin; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).UserPluginSpecPlugin = value ?? null /* arrayOf */; }
+
+        /// <summary>The flag that if enable debug or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public bool? WorkerDebugEnable { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).WorkerDebugEnable; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).WorkerDebugEnable = value ?? default(bool); }
+
+        /// <summary>The debug port.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public int? WorkerDebugPort { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).WorkerDebugPort; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).WorkerDebugPort = value ?? default(int); }
+
+        /// <summary>The flag that if suspend debug or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public bool? WorkerDebugSuspend { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).WorkerDebugSuspend; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfileInternal)TrinoProfile).WorkerDebugSuspend = value ?? default(bool); }
 
         /// <summary>Creates an new <see cref="UpdatableClusterProfile" /> instance.</summary>
         public UpdatableClusterProfile()
@@ -388,6 +508,64 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"gracefulDecommissionTimeout",
         PossibleTypes = new [] { typeof(int) })]
         int? AutoscaleProfileGracefulDecommissionTimeout { get; set; }
+        /// <summary>hive catalog options.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"hive catalog options.",
+        SerializedName = @"hive",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption> CatalogOptionHive { get; set; }
+        /// <summary>The flag that if enable debug or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The flag that if enable debug or not.",
+        SerializedName = @"enable",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? CoordinatorDebugEnable { get; set; }
+        /// <summary>The debug port.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The debug port.",
+        SerializedName = @"port",
+        PossibleTypes = new [] { typeof(int) })]
+        int? CoordinatorDebugPort { get; set; }
+        /// <summary>The flag that if suspend debug or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The flag that if suspend debug or not.",
+        SerializedName = @"suspend",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? CoordinatorDebugSuspend { get; set; }
+        /// <summary>
+        /// The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node.
+        /// Default: true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node. Default: true.",
+        SerializedName = @"highAvailabilityEnabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? CoordinatorHighAvailabilityEnabled { get; set; }
         /// <summary>The database URL</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -685,6 +863,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"scriptActionProfiles",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile> ScriptActionProfile { get; set; }
+        /// <summary>
+        /// Name of the user Key Vault where all the cluster specific user secrets are stored.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Name of the user Key Vault where all the cluster specific user secrets are stored.",
+        SerializedName = @"keyVaultResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string SecretProfileKeyVaultResourceId { get; set; }
+        /// <summary>Properties of Key Vault secret.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Properties of Key Vault secret.",
+        SerializedName = @"secrets",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference> SecretProfileSecret { get; set; }
         /// <summary>The service configs profiles.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -721,6 +923,112 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"podPrefix",
         PossibleTypes = new [] { typeof(string) })]
         string SshProfilePodPrefix { get;  }
+        /// <summary>The virtual machine SKU.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The virtual machine SKU.",
+        SerializedName = @"vmSize",
+        PossibleTypes = new [] { typeof(string) })]
+        string SshProfileVMSize { get; set; }
+        /// <summary>
+        /// Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.",
+        SerializedName = @"hivecatalogName",
+        PossibleTypes = new [] { typeof(string) })]
+        string StorageHivecatalogName { get; set; }
+        /// <summary>
+        /// Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under
+        /// schema trinologs.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under schema trinologs.",
+        SerializedName = @"hivecatalogSchema",
+        PossibleTypes = new [] { typeof(string) })]
+        string StorageHivecatalogSchema { get; set; }
+        /// <summary>
+        /// Retention period for query log table partitions, this doesn't have any affect on actual data.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Retention period for query log table partitions, this doesn't have any affect on actual data.",
+        SerializedName = @"partitionRetentionInDays",
+        PossibleTypes = new [] { typeof(int) })]
+        int? StoragePartitionRetentionInDay { get; set; }
+        /// <summary>Azure storage location of the blobs.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Azure storage location of the blobs.",
+        SerializedName = @"path",
+        PossibleTypes = new [] { typeof(string) })]
+        string StoragePath { get; set; }
+        /// <summary>Trino user plugins.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Trino user plugins.",
+        SerializedName = @"plugins",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugin) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugin> UserPluginSpecPlugin { get; set; }
+        /// <summary>The flag that if enable debug or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The flag that if enable debug or not.",
+        SerializedName = @"enable",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? WorkerDebugEnable { get; set; }
+        /// <summary>The debug port.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The debug port.",
+        SerializedName = @"port",
+        PossibleTypes = new [] { typeof(int) })]
+        int? WorkerDebugPort { get; set; }
+        /// <summary>The flag that if suspend debug or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The flag that if suspend debug or not.",
+        SerializedName = @"suspend",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? WorkerDebugSuspend { get; set; }
 
     }
     /// Cluster resource patch properties.
@@ -760,6 +1068,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ILoadBasedConfig AutoscaleProfileLoadBasedConfig { get; set; }
         /// <summary>Profiles of schedule based Autoscale.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScheduleBasedConfig AutoscaleProfileScheduleBasedConfig { get; set; }
+        /// <summary>hive catalog options.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption> CatalogOptionHive { get; set; }
+        /// <summary>Trino debug configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoDebugConfig CoordinatorDebug { get; set; }
+        /// <summary>The flag that if enable debug or not.</summary>
+        bool? CoordinatorDebugEnable { get; set; }
+        /// <summary>The debug port.</summary>
+        int? CoordinatorDebugPort { get; set; }
+        /// <summary>The flag that if suspend debug or not.</summary>
+        bool? CoordinatorDebugSuspend { get; set; }
+        /// <summary>
+        /// The flag that if enable coordinator HA, uses multiple coordinator replicas with auto failover, one per each head node.
+        /// Default: true.
+        /// </summary>
+        bool? CoordinatorHighAvailabilityEnabled { get; set; }
         /// <summary>The database URL</summary>
         string DatabaseHost { get; set; }
         /// <summary>The database name</summary>
@@ -859,6 +1182,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         string ScheduleBasedConfigTimeZone { get; set; }
         /// <summary>The script action profile list.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile> ScriptActionProfile { get; set; }
+        /// <summary>
+        /// Name of the user Key Vault where all the cluster specific user secrets are stored.
+        /// </summary>
+        string SecretProfileKeyVaultResourceId { get; set; }
+        /// <summary>Properties of Key Vault secret.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference> SecretProfileSecret { get; set; }
+        /// <summary>The cluster secret profile.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretsProfile SecretsProfile { get; set; }
         /// <summary>The service configs profiles.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile> ServiceConfigsProfile { get; set; }
         /// <summary>Ssh profile for the cluster.</summary>
@@ -870,6 +1201,47 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <clusterFqdn>/<sshBasePath>/<prefix>-<number>
         /// </summary>
         string SshProfilePodPrefix { get; set; }
+        /// <summary>The virtual machine SKU.</summary>
+        string SshProfileVMSize { get; set; }
+        /// <summary>
+        /// Hive Catalog name used to mount external tables on the logs written by trino, if not specified there tables are not created.
+        /// </summary>
+        string StorageHivecatalogName { get; set; }
+        /// <summary>
+        /// Schema of the above catalog to use, to mount query logs as external tables, if not specified tables will be mounted under
+        /// schema trinologs.
+        /// </summary>
+        string StorageHivecatalogSchema { get; set; }
+        /// <summary>
+        /// Retention period for query log table partitions, this doesn't have any affect on actual data.
+        /// </summary>
+        int? StoragePartitionRetentionInDay { get; set; }
+        /// <summary>Azure storage location of the blobs.</summary>
+        string StoragePath { get; set; }
+        /// <summary>Trino Cluster profile.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoProfile TrinoProfile { get; set; }
+        /// <summary>Trino cluster catalog options.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICatalogOptions TrinoProfileCatalogOption { get; set; }
+        /// <summary>Trino Coordinator.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoCoordinator TrinoProfileCoordinator { get; set; }
+        /// <summary>Trino user plugins spec</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugins TrinoProfileUserPluginsSpec { get; set; }
+        /// <summary>User telemetry</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserTelemetry TrinoProfileUserTelemetrySpec { get; set; }
+        /// <summary>Trino worker.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoWorker TrinoProfileWorker { get; set; }
+        /// <summary>Trino user plugins.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugin> UserPluginSpecPlugin { get; set; }
+        /// <summary>Trino user telemetry definition.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoTelemetryConfig UserTelemetrySpecStorage { get; set; }
+        /// <summary>Trino debug configuration.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoDebugConfig WorkerDebug { get; set; }
+        /// <summary>The flag that if enable debug or not.</summary>
+        bool? WorkerDebugEnable { get; set; }
+        /// <summary>The debug port.</summary>
+        int? WorkerDebugPort { get; set; }
+        /// <summary>The flag that if suspend debug or not.</summary>
+        bool? WorkerDebugSuspend { get; set; }
 
     }
 }

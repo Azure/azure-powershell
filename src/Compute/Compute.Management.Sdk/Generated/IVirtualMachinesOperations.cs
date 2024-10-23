@@ -275,8 +275,7 @@ namespace Microsoft.Azure.Management.Compute
         /// The name of the virtual machine.
         /// </param>
         /// <param name='hibernate'>
-        /// Optional parameter to hibernate a virtual machine. (Feature in
-        /// Preview)
+        /// Optional parameter to hibernate a virtual machine.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -920,8 +919,7 @@ namespace Microsoft.Azure.Management.Compute
         /// The name of the virtual machine.
         /// </param>
         /// <param name='hibernate'>
-        /// Optional parameter to hibernate a virtual machine. (Feature in
-        /// Preview)
+        /// Optional parameter to hibernate a virtual machine.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

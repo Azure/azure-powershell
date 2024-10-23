@@ -50,6 +50,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ValidationInProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ValidationInProgress'", "ValidationInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidationInProgress");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ValidationSuccess".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ValidationSuccess'", "ValidationSuccess", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidationSuccess");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ValidationFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ValidationFailed'", "ValidationFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidationFailed");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeploymentInProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DeploymentInProgress'", "DeploymentInProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeploymentInProgress");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeploymentFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DeploymentFailed'", "DeploymentFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeploymentFailed");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeploymentSuccess".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'DeploymentSuccess'", "DeploymentSuccess", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeploymentSuccess");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Succeeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Succeeded'", "Succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Succeeded");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "InProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'InProgress'", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
+            }
         }
     }
 }

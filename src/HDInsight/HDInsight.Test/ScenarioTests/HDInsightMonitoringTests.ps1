@@ -21,16 +21,16 @@ function Test-MonitoringRelatedCommands{
 	# Create some resources that will be used throughout test 
 	try
 	{
-		$location = "West US 2"
+		$location = "EastUS"
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location $location
+		$params= Prepare-ClusterCreateParameter
 
 		# test create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		$workspaceName = Generate-Name("workspace-ps-test")
 		$resourceGroupName = $cluster.ResourceGroup
@@ -63,11 +63,11 @@ function Test-MonitoringRelatedCommands{
 		$result = Get-AzHDInsightMonitoring -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup
 		Assert-False {$result.ClusterMonitoringEnabled}
 		Assert-Null $result.WorkspaceId
+
 	}
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
 		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
 	}
 }

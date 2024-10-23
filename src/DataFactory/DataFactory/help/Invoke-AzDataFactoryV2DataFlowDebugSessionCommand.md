@@ -16,7 +16,7 @@ Invoke debug action in data flow debug session.
 ```
 Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Command] <String>
  [-StreamName] <String> [[-RowLimit] <Int32>] [[-Expression] <String>]
- [[-Columns] <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-ResourceGroupName] <String>
+ [[-Column] <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-ResourceGroupName] <String>
  [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Comman
 ```
 Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Command] <String>
  [-StreamName] <String> [[-RowLimit] <Int32>] [[-Expression] <String>]
- [[-Columns] <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-DataFactory] <PSDataFactory>
+ [[-Column] <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-DataFactory] <PSDataFactory>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Comman
 ```
 Invoke-AzDataFactoryV2DataFlowDebugSessionCommand [-SessionId] <String> [-Command] <String>
  [-StreamName] <String> [[-RowLimit] <Int32>] [[-Expression] <String>]
- [[-Columns] <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-ResourceId] <String>
+ [[-Column] <System.Collections.Generic.List`1[System.String]>] [-AsJob] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,6 +49,8 @@ The PowerShell command sequence for data flow debug workflow should be:
 
 ### Example 1
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 $result = Invoke-AzDataFactoryV2DataFlowDebugSessionCommand -ResourceGroupName adf -DataFactoryName WiKiADF -Command executePreviewQuery -SessionId fd76cd0d-8b37-4dc0-a370-3f9d43ac686d -StreamName source1 -RowLimit 100 -AsJob
 $result
@@ -73,8 +75,6 @@ $output.output
       "schema": "output(ResourceAgencyNum as string, PublicName as string)" ,
       "data": [["4445679354", "Syrian Refugee Information", 1], ["44456793", "Syrian Refugee Information", 1]]
     }
-
-
 ```
 
 This example invokes data preview command for debug session "fd76cd0d-8b37-4dc0-a370-3f9d43ac686d" in data factory "WiKiADF" and then convert the JSON output into readable string.
@@ -96,7 +96,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Columns
+### -Column
 The columns list for data flow statistics preview.
 
 ```yaml

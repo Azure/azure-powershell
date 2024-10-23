@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Maintenance
                         psObject.Add(psMaintenanceConfiguration);
                     }
 
-                    WriteObject(psObject);
+                    WriteObject(psObject, enumerateCollection: true);
                 }
             });
         }

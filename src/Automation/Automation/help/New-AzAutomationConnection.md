@@ -37,8 +37,8 @@ The command uses the connection field values in $FieldValues.
 ### Example 2: Create a connection for ConnectionTypeName=AzureServicePrincipal
 ```powershell
 $Thumbprint = "0SZTNJ34TCCMUJ5MJZGR8XQD3S0RVHJBA33Z8ZXV"
-$TenantId = "4cd76576-b611-43d0-8f2b-adcb139531bf"
-$ApplicationId = "3794a65a-e4e4-493d-ac1d-f04308d712dd"
+$TenantId = "00001111-aaaa-2222-bbbb-3333cccc4444"
+$ApplicationId = "00001111-aaaa-2222-bbbb-3333cccc4444"
 $SubscriptionId = "81b59010-dc55-45b7-89cd-5ca26db62472"
 $RunAsAccountConnectionFieldValues = @{"ApplicationId" = $ApplicationId; "TenantId" = $TenantId; "CertificateThumbprint" = $Thumbprint; "SubscriptionId" = $SubscriptionId}
 New-AzAutomationConnection -Name "Connection13" -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $RunAsAccountConnectionFieldValues -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01"

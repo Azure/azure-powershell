@@ -5,47 +5,44 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{C73E5E35-0904-421C-B129-06E433EFADF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{755CDF73-57AC-4C32-9A38-0FC3386960C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{755CDF73-57AC-4C32-9A38-0FC3386960C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{471434C6-6D79-4F80-BDF7-30E83D98CC5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{471434C6-6D79-4F80-BDF7-30E83D98CC5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{61265CC1-6C63-4A47-8454-499336280BE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{61265CC1-6C63-4A47-8454-499336280BE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{C5828588-EF7C-4E89-81E1-DA76C1F3EA84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{C5828588-EF7C-4E89-81E1-DA76C1F3EA84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{AE580AF9-12B6-4D5E-8EF9-CFEED76F80F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{AE580AF9-12B6-4D5E-8EF9-CFEED76F80F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{5CB0281B-10D7-4A24-8C7C-7BA162B48AF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{5CB0281B-10D7-4A24-8C7C-7BA162B48AF1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{6760C743-F64A-4254-B777-E9420F400AC2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependentModules", "DependentModules", "{9AF03548-A65F-4325-8C31-1711C4561F72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KeyVault", "..\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{CBD6A601-204C-4702-982C-28F8F34B16A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.KeyVault", "..\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{CBD6A601-204C-4702-982C-28F8F34B16A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVault.Sdk", "..\KeyVault\KeyVault.Sdk\KeyVault.Sdk.csproj", "{380FD597-C071-46D1-B362-102C12BEF9E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{579BA58A-4406-4D52-BAAD-2F44E6F4CE07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{579BA58A-4406-4D52-BAAD-2F44E6F4CE07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{D5C713BC-64B7-4C43-ACB2-914F326E1DB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{D5C713BC-64B7-4C43-ACB2-914F326E1DB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{A9029A09-56B7-4C93-86C2-6C87D221DB3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network", "..\Network\Network\Network.csproj", "{A9029A09-56B7-4C93-86C2-6C87D221DB3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.ServiceBus", "ServiceBus.Autorest\Az.ServiceBus.csproj", "{D3F636EA-BB01-4B1E-9DF5-B3BEE70BCE5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ServiceBus", "ServiceBus.Autorest\Az.ServiceBus.csproj", "{D3F636EA-BB01-4B1E-9DF5-B3BEE70BCE5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBus.Test", "ServiceBus.Test\ServiceBus.Test.csproj", "{5FB1D9C1-4143-439E-8090-7B8F47258629}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBus.Test", "ServiceBus.Test\ServiceBus.Test.csproj", "{5FB1D9C1-4143-439E-8090-7B8F47258629}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBus", "ServiceBus\ServiceBus.csproj", "{F1545AFE-AE51-4AD9-908B-6BEC4020551A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBus", "ServiceBus\ServiceBus.csproj", "{F1545AFE-AE51-4AD9-908B-6BEC4020551A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{6C846ED1-8B7B-4011-90EB-2D1425532E05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{6C846ED1-8B7B-4011-90EB-2D1425532E05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Management.Sdk", "..\KeyVault\KeyVault.Management.Sdk\KeyVault.Management.Sdk.csproj", "{17F2B5A3-55AA-4491-9DE3-CBD28343B972}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{755CDF73-57AC-4C32-9A38-0FC3386960C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -76,10 +73,6 @@ Global
 		{CBD6A601-204C-4702-982C-28F8F34B16A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBD6A601-204C-4702-982C-28F8F34B16A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBD6A601-204C-4702-982C-28F8F34B16A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{380FD597-C071-46D1-B362-102C12BEF9E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{380FD597-C071-46D1-B362-102C12BEF9E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{380FD597-C071-46D1-B362-102C12BEF9E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{380FD597-C071-46D1-B362-102C12BEF9E9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{579BA58A-4406-4D52-BAAD-2F44E6F4CE07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{579BA58A-4406-4D52-BAAD-2F44E6F4CE07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{579BA58A-4406-4D52-BAAD-2F44E6F4CE07}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -108,6 +101,13 @@ Global
 		{6C846ED1-8B7B-4011-90EB-2D1425532E05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C846ED1-8B7B-4011-90EB-2D1425532E05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C846ED1-8B7B-4011-90EB-2D1425532E05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17F2B5A3-55AA-4491-9DE3-CBD28343B972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17F2B5A3-55AA-4491-9DE3-CBD28343B972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17F2B5A3-55AA-4491-9DE3-CBD28343B972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17F2B5A3-55AA-4491-9DE3-CBD28343B972}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{755CDF73-57AC-4C32-9A38-0FC3386960C4} = {C73E5E35-0904-421C-B129-06E433EFADF4}
@@ -118,11 +118,11 @@ Global
 		{5CB0281B-10D7-4A24-8C7C-7BA162B48AF1} = {C73E5E35-0904-421C-B129-06E433EFADF4}
 		{9AF03548-A65F-4325-8C31-1711C4561F72} = {6760C743-F64A-4254-B777-E9420F400AC2}
 		{CBD6A601-204C-4702-982C-28F8F34B16A3} = {9AF03548-A65F-4325-8C31-1711C4561F72}
-		{380FD597-C071-46D1-B362-102C12BEF9E9} = {9AF03548-A65F-4325-8C31-1711C4561F72}
 		{579BA58A-4406-4D52-BAAD-2F44E6F4CE07} = {9AF03548-A65F-4325-8C31-1711C4561F72}
 		{D5C713BC-64B7-4C43-ACB2-914F326E1DB3} = {9AF03548-A65F-4325-8C31-1711C4561F72}
 		{A9029A09-56B7-4C93-86C2-6C87D221DB3D} = {9AF03548-A65F-4325-8C31-1711C4561F72}
 		{5FB1D9C1-4143-439E-8090-7B8F47258629} = {6760C743-F64A-4254-B777-E9420F400AC2}
 		{6C846ED1-8B7B-4011-90EB-2D1425532E05} = {6760C743-F64A-4254-B777-E9420F400AC2}
+		{17F2B5A3-55AA-4491-9DE3-CBD28343B972} = {9AF03548-A65F-4325-8C31-1711C4561F72}
 	EndGlobalSection
 EndGlobal

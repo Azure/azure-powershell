@@ -536,7 +536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501
             }
             if (content.Contains("ManagedServiceKeySource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedServiceKeySource = (string) content.GetValueForProperty("ManagedServiceKeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedServiceKeySource, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedServiceKeySource = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource?) content.GetValueForProperty("ManagedServiceKeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedServiceKeySource, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource.CreateFrom);
             }
             if (content.Contains("ManagedDiskKeyVaultProperty"))
             {
@@ -544,7 +544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501
             }
             if (content.Contains("ManagedDiskKeySource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedDiskKeySource = (string) content.GetValueForProperty("ManagedDiskKeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedDiskKeySource, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedDiskKeySource = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource?) content.GetValueForProperty("ManagedDiskKeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedDiskKeySource, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource.CreateFrom);
             }
             if (content.Contains("ManagedDiskRotationToLatestKeyVersionEnabled"))
             {
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501
             }
             if (content.Contains("ManagedServiceKeySource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedServiceKeySource = (string) content.GetValueForProperty("ManagedServiceKeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedServiceKeySource, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedServiceKeySource = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource?) content.GetValueForProperty("ManagedServiceKeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedServiceKeySource, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource.CreateFrom);
             }
             if (content.Contains("ManagedDiskKeyVaultProperty"))
             {
@@ -1009,7 +1009,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501
             }
             if (content.Contains("ManagedDiskKeySource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedDiskKeySource = (string) content.GetValueForProperty("ManagedDiskKeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedDiskKeySource, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedDiskKeySource = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource?) content.GetValueForProperty("ManagedDiskKeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspacePropertiesInternal)this).ManagedDiskKeySource, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource.CreateFrom);
             }
             if (content.Contains("ManagedDiskRotationToLatestKeyVersionEnabled"))
             {

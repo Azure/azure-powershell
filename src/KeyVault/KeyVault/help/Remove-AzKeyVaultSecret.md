@@ -87,7 +87,7 @@ Install-Module Microsoft.PowerShell.SecretManagement -Repository PSGallery -Allo
 # Register vault for Secret Management
 Register-SecretVault -Name AzKeyVault -ModuleName Az.KeyVault -VaultParameters @{ AZKVaultName = 'test-kv'; SubscriptionId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' }
 # Set secret for vault AzKeyVault
-$secure = ConvertTo-SecureString -String "Password" -AsPlainText -Force
+$secure = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Set-Secret -Vault AzKeyVault -Name secureSecret -SecureStringSecret $secure 
 Remove-Secret -Vault AzKeyVault -Name secureSecret
 ```

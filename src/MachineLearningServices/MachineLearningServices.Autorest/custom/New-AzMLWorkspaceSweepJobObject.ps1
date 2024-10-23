@@ -21,12 +21,12 @@ Create an in-memory object for SweepJob.
 Create an in-memory object for SweepJob.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SweepJob
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SweepJob
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSweepJobObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceSweepJobObject
 #>
 function New-AzMLWorkspaceSweepJobObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SweepJob')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SweepJob')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -45,7 +45,7 @@ function New-AzMLWorkspaceSweepJobObject {
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EarlyTerminationPolicyType]
         $EarlyTerminationPolicyType,
         [Parameter(HelpMessage="Mapping of input data bindings used in the job.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISweepJobInputs]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISweepJobInputs]
         $JobInput,
         [Parameter(HelpMessage="Sweep Job max concurrent trials.")]
         [int]
@@ -67,7 +67,7 @@ function New-AzMLWorkspaceSweepJobObject {
         [string]
         $ObjectivePrimaryMetric,
         [Parameter(HelpMessage="Mapping of output data bindings used in the job.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISweepJobOutputs]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISweepJobOutputs]
         $JobOutput,
         [Parameter(HelpMessage="Optional number of instances or nodes used by the compute target.")]
         [int]
@@ -76,7 +76,7 @@ function New-AzMLWorkspaceSweepJobObject {
         [string]
         $ResourceInstanceType,
         [Parameter(HelpMessage="Additional properties bag.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceConfigurationProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceConfigurationProperties]
         $ResourceProperty,
         [Parameter(Mandatory, HelpMessage="[Required] The algorithm used for generating hyperparameter values, along with configuration properties.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SamplingAlgorithmType])]
@@ -95,7 +95,7 @@ function New-AzMLWorkspaceSweepJobObject {
         [string]
         $TrialEnvironmentId,
         [Parameter(HelpMessage="Environment variables included in the job.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ITrialComponentEnvironmentVariables]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ITrialComponentEnvironmentVariables]
         $TrialEnvironmentVariable,
         [Parameter(HelpMessage="ARM resource ID of the compute resource.")]
         [string]
@@ -115,7 +115,7 @@ function New-AzMLWorkspaceSweepJobObject {
         $IsArchived,
         # [Parameter(HelpMessage="List of JobEndpoints.
         # For local jobs, a job endpoint will have an endpoint value of FileStreamObject.")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBaseServices]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBaseServices]
         # $Service,
         [Parameter(HelpMessage="Url for endpoint.")]
         [string]
@@ -124,7 +124,7 @@ function New-AzMLWorkspaceSweepJobObject {
         [int]
         $ServicePort,
         [Parameter(HelpMessage="Additional properties to set on the endpoint.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobServiceProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobServiceProperties]
         $ServiceProperty,
         [Parameter(HelpMessage="Endpoint type.")]
         [string]
@@ -134,18 +134,18 @@ function New-AzMLWorkspaceSweepJobObject {
         [string]
         $Description,
         [Parameter(HelpMessage="The asset property dictionary.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]
         $Property,
         [Parameter(HelpMessage="Tag dictionary. Tags can be added, removed, and updated.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]
         $Tag
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SweepJob]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SweepJob]::New()
         $Object.JobType = 'Sweep'
         $Object.LimitJobLimitsType = 'Sweep' # Required define in swagger.
-        $Service = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.JobBaseServices]::New()
+        $Service = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.JobBaseServices]::New()
 
         if ($PSBoundParameters.ContainsKey('DistributionType')) {
             $Object.DistributionType = $DistributionType

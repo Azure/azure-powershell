@@ -40,8 +40,8 @@ Update-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_grou
 
 ```output
 Id                           : /subscriptions/{subId}/resourceGroups/azps_test_group_chaos/providers/Microsoft.Chaos/experiments/EXPERIMENT-TEST
-IdentityPrincipalId          : 72f14040-8265-4f10-b5ea-377c6fc2671c
-IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
+IdentityPrincipalId          : 00001111-aaaa-2222-bbbb-3333cccc4444
+IdentityTenantId             : 00001111-aaaa-2222-bbbb-3333cccc4444
 IdentityType                 : SystemAssigned
 IdentityUserAssignedIdentity : {
                                }

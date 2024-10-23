@@ -128,7 +128,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             {
                 CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepparamFileBuildWithInlineOverrides);
                 writeVerbose?.Invoke($"Overriding the following parameters: {string.Join(", ", overrideParams.Keys)}");
-                envVars["BICEP_PARAMETERS_OVERRIDES"] = PSJsonSerializer.Serialize(overrideParams);
+                // As per https://github.com/Azure/bicep/issues/12481, secure string parameters must be serialized.
+                envVars["BICEP_PARAMETERS_OVERRIDES"] = PSJsonSerializer.Serialize(overrideParams, serializeSecureString: true);
             }
 
             var stdout = RunBicepCommand(

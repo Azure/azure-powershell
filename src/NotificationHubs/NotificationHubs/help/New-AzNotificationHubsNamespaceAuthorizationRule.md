@@ -37,7 +37,7 @@ Alternatively, you can create a JSON (JavaScript Object Notation) file containin
 A JSON file is a text file that uses syntax similar to the following:
 {  
     "Name": "ContosoAuthorizationRule",  
-    "PrimaryKey": "WE4qH0398AyXjlekt56gg1gMR3NHoMs29KkUnnpUk01Y=",  
+    "PrimaryKey": "W******1Y=",  
     "Rights": \[  
         "Listen",  
         "Send"  

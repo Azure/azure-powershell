@@ -21,12 +21,12 @@ Create an in-memory object for JobService.
 Create an in-memory object for JobService.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.JobService
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.JobService
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceJobServiceObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceJobServiceObject
 #>
 function New-AzMLWorkspaceJobServiceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.JobService')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.JobService')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,7 +37,7 @@ function New-AzMLWorkspaceJobServiceObject {
         [int]
         $Port,
         [Parameter(HelpMessage="Additional properties to set on the endpoint.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobServiceProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobServiceProperties]
         $Property,
         [Parameter(HelpMessage="Endpoint type.")]
         [string]
@@ -45,7 +45,7 @@ function New-AzMLWorkspaceJobServiceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.JobService]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.JobService]::New()
 
         if ($PSBoundParameters.ContainsKey('Endpoint')) {
             $Object.Endpoint = $Endpoint

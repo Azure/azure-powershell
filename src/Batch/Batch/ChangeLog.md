@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.6.3
+* Fixed secrets exposure in example documentation.
+
 ## Version 3.6.2
 * Fixed a bug where `New-AzBatchApplicationPackage` wouldn't work if the application `AllowUpdates` parameter was set to `$false`.
 

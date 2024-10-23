@@ -16,8 +16,10 @@ namespace Commands.StorageSync.Interop.Interfaces
 {
     using DataObjects;
     using Enums;
+    using Commands.StorageSync.Interop.Interfaces;
     using System;
     using System.Runtime.InteropServices;
+    using System.Runtime.InteropServices.ComTypes;
 
     /// <summary>
     /// Interface IEcsManagement
@@ -123,19 +125,34 @@ namespace Commands.StorageSync.Interop.Interfaces
         /// Recalls the file.
         /// </summary>
         /// <param name="path">The path.</param>
+        /// <param name="retryCount">Retry count</param>
+        /// <param name="retryDelaySeconds">Retry Delay seconds</param>
         /// <returns>RecallOutput.</returns>
         RecallOutput RecallFile(
             [In, MarshalAs(UnmanagedType.BStr)]
-            string path);
+            string path,
+            [In, MarshalAs(UnmanagedType.U4)]
+            uint retryCount,
+            [In, MarshalAs(UnmanagedType.U4)]
+            uint retryDelaySeconds);
 
         /// <summary>
         /// Determines whether [is path under sync share] [the specified path].
         /// </summary>
         /// <param name="path">The path.</param>
+        /// <param name="fileIdStr">File Id</param>
+        /// <param name="isPathUnderShare">Is path under share.</param>
+        /// <param name="isPathShareRoot">Is path share root.</param>
         /// <returns><c>true</c> if [is path under sync share] [the specified path]; otherwise, <c>false</c>.</returns>
-        bool IsPathUnderSyncShare(
+        void IsPathUnderSyncShare(
             [In, MarshalAs(UnmanagedType.BStr)]
-            string path);
+            string path,
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string fileIdStr,
+            [Out, MarshalAs(UnmanagedType.Bool)]
+            out bool isPathUnderShare,
+            [Out, MarshalAs(UnmanagedType.Bool)]
+            out bool isPathShareRoot);
 
         /// <summary>
         /// Persists the sync server registration.
@@ -402,5 +419,308 @@ namespace Commands.StorageSync.Interop.Interfaces
         bool DeleteOrphanedTieredFile(
             [In, MarshalAs(UnmanagedType.BStr)]
             string path);
+
+
+        void SetAutoUpdatePolicy(
+            [In, MarshalAs(UnmanagedType.Struct)]
+            AutoUpdatePolicy autoUpdatePolicy);
+
+        AutoUpdatePolicy GetAutoUpdatePolicy();
+
+        bool GetFilePathUsingId(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string volumeGuid,
+            [In, MarshalAs(UnmanagedType.U8)]
+            ulong fileId,
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string filePath);
+
+        void LogOrphanedTieredFilesTelemetry(
+            [In, MarshalAs(UnmanagedType.Struct)]
+            OrphanedTieredFilesTelemetryReport orphanedTieredFilesTelemetryReport);
+
+        void PopulateFileInfoUsingHeatOrder(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string path,
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string recallCmdletLogPath,
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string recallMountPath,
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string volumeGuid);
+
+        void LogRecallFilesTelemetry(
+            [In, MarshalAs(UnmanagedType.Struct)]
+            RecallFilesTelemetryReport recallFilesTelemetryReport);
+
+        HeatStoreSummary PopulateHeatStoreInformation(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string volumePath,
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string reportDirectoryPath,
+            [In, MarshalAs(UnmanagedType.U4)]
+            HeatStoreEnumeratorType enumeratorType,
+            [In, MarshalAs(UnmanagedType.U8)]
+            ulong maxRecordsLimit);
+
+        [return: MarshalAs(UnmanagedType.BStr)]
+        string GetFileLockIdUsingPath(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string filePath);
+
+        void SetLockBypassForSyncShare(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.Bool)]
+            bool bypassValue);
+
+        HeatStoreFileInfo GetHeatStoreFileInformation(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string filePath);
+
+        SelfServiceRestore EnableSelfServiceRestore(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string volume);
+
+        SelfServiceRestore GetSelfServiceRestore(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string volume);
+
+        void DisableSelfServiceRestore(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string volume);
+
+        void RunNetworkConnectivityCheck(
+           [In, MarshalAs(UnmanagedType.Bool)]
+            bool measureBandwidth,
+           [Out, MarshalAs(UnmanagedType.Bool)]
+            out bool testPassed,
+           [Out, MarshalAs(UnmanagedType.BStr)]
+            out string report);
+
+        void TriggerOrphanedTieredFilesCleanup(
+           [In, MarshalAs(UnmanagedType.BStr)]
+            string dataPath,
+           [In, MarshalAs(UnmanagedType.BStr)]
+            string context,
+           [In, MarshalAs(UnmanagedType.BStr)]
+            string clientCorrelationId);
+
+        [return: MarshalAs(UnmanagedType.Bool)]
+        bool DoesOrphanedTieredFilesMarkerExist(
+           [In, MarshalAs(UnmanagedType.BStr)]
+            string dataPath,
+           [In, MarshalAs(UnmanagedType.BStr)]
+            string context,
+           [In, MarshalAs(UnmanagedType.BStr)]
+            string clientCorrelationId);
+
+        void RemoveOrphanedTieredFilesMarker(
+           [In, MarshalAs(UnmanagedType.BStr)]
+            string dataPath);
+
+        [return: MarshalAs(UnmanagedType.U4)]
+        uint GetReparseTag(
+           [In, MarshalAs(UnmanagedType.BStr)]
+            string filePath);
+
+        [return: MarshalAs(UnmanagedType.Bool)]
+        bool IsPathUnderSVIOrRecycleBin(
+           [In, MarshalAs(UnmanagedType.BStr)]
+            string path);
+
+        [return: MarshalAs(UnmanagedType.Interface)]
+        IFileAccessPatternStatsEnumerator GetFileAccessPattern(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string serverEndpointPath);
+
+        TieringPolicyRecommendations GetTieringPolicyRecommendations(
+           [In, MarshalAs(UnmanagedType.BStr)]
+            string serverEndpointPath,
+           [In, MarshalAs(UnmanagedType.U4)]
+            PolicyAdvisorMode policyAdvisorMode);
+
+        LockingStateInfo GetLockingStateInformationUsingFilePath(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string filePath);
+
+        LockingStateInfo GetLockingStateInformationUsingLockId(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string lockId);
+
+        int InitializeCmdletGhosting(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string path,
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string tieringCmdletLogPath,
+            [Out, MarshalAs(UnmanagedType.U4)]
+            out uint totalFiles,
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string ghostingSessionGuid);
+
+        int GhostBatch(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string tieringCmdletLogPath,
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string ghostingSessionGuid,
+            [Out, MarshalAs(UnmanagedType.U4)]
+            out uint fileCount,
+            [In, Out, MarshalAs(UnmanagedType.Struct)]
+            ref GHOSTING_STATS ghostingStats,
+            [In, MarshalAs(UnmanagedType.U4)]
+            uint minimumFileAgeDays);
+
+        int FinalizeCmdletGhosting(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string tieringCmdletLogPath,
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string ghostingSessionGuid);
+
+        int AddAllowedServerEndpointPath(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string path);
+
+        int GetAllowedServerEndpointPaths(
+            [In, Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_BSTR)]
+            ref string[] paths);
+
+        int RemoveAllowedServerEndpointPath(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string path);
+
+        int SetIsAuthoritativeSyncEnabled(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.Bool)]
+            bool isAuthoritativeSyncEnabled);
+
+        int GetIsAuthoritativeSyncEnabled(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [Out, MarshalAs(UnmanagedType.Bool)]
+            out bool isAuthoritativeSyncEnabled);
+
+        int GetReplicaFlags(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [Out, MarshalAs(UnmanagedType.U4)]
+            out SyncFlags replicaFlags);
+
+        int SetIsSyncDisabled(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.Bool)]
+            bool isSyncDisabled);
+
+        void PopulateFileInfoUsingRPIterator(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncGroupName,
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string recallCmdletLogPath,
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string volumeGuid);
+
+        int SetMaxFileSizeLimit(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.U8)]
+            ulong maxFileSize);
+
+        int GetMaxFileSizeLimit(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [Out, MarshalAs(UnmanagedType.U8)]
+            out ulong maxFileSize);
+
+        int GetIsSyncDisabled(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [Out, MarshalAs(UnmanagedType.Bool)]
+            out bool isSyncDisabled);
+
+        int SetServiceRootCertificateThumbprint(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string serviceRootCertificateThumbprint);
+
+        int GetServiceRootCertificateThumbprint(
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string serviceRootCertificateThumbprint);
+
+        int NewSyncSession(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.U4)]
+            SyncDirection syncDirection,
+            [In, MarshalAs(UnmanagedType.U4)]
+            SyncScenario syncScenario,
+            [Out, MarshalAs(UnmanagedType.Bool)]
+            bool cancelExisting,
+            [In, Out, MarshalAs(UnmanagedType.Struct)]
+            ref NEW_SYNC_SESSION_SCHEDULE_RESULT newSyncSessionScheduleResult);
+
+        int GetSyncSessionStatuses(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string sessionId,
+            [In, MarshalAs(UnmanagedType.U4)]
+            uint limit,
+            [In, Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UI1)]
+            ref byte[] inProgressSyncSessionStatusList,
+            [In, Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UI1)]
+            ref byte[] completedSyncSessionStatusList);
+
+        int GetErrorTextDescription(
+            [In, MarshalAs(UnmanagedType.I8)]
+            long hr,
+            [Out, MarshalAs(UnmanagedType.BStr)]
+            out string errorText);
+
+        VOLUME_STATUS GetVolumeStatus(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot);
+
+        TIERING_STATUS GetTieringStatusEndpoint(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot);
+
+        void DiagnoseServerIssues(
+            [Out, MarshalAs(UnmanagedType.BStr)]
+             out string diagnosisOutputsJson);
+
+        int TriggerServerChangeDetection(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, MarshalAs(UnmanagedType.Bool)]
+            bool deepScan);
+
+        int GetServerChangeDetectionStatuses(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string syncShareRoot,
+            [In, Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UI1)]
+            ref byte[] inProgressStatus,
+            [In, Out, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UI1)]
+            ref byte[] completedStatus);
+
+        int StableVersionsDeepGC(
+            [In, MarshalAs(UnmanagedType.BStr)]
+            string Path,
+            [In, MarshalAs(UnmanagedType.U4)]
+            uint cookie,
+            [In, Out, MarshalAs(UnmanagedType.Struct)]
+            ref STABLEVERSION_DEEP_GC_STATS StableVersionDeepGCStats);
+
+         int GetMIConfigurationStatus(
+           [Out, MarshalAs(UnmanagedType.U4)]
+            out uint serverType,
+           [Out, MarshalAs(UnmanagedType.U4)]
+            out uint serverAuthType);
+
+        IConnectionPoint GetScrubbingEngineConnectionPoint();
+
+        IConnectionPoint GetStableVersionDeepGcConnectionPoint();
+
     }
 }

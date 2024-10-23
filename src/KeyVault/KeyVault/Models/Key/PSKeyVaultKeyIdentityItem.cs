@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyVaultKeyIdentityItem()
         { }
 
-        internal PSKeyVaultKeyIdentityItem(Azure.KeyVault.Models.KeyItem keyItem, VaultUriHelper vaultUriHelper, bool isHsm)
+        internal PSKeyVaultKeyIdentityItem(Track1Sdk.KeyItem keyItem, VaultUriHelper vaultUriHelper, bool isHsm)
         {
             if (keyItem == null)
                 throw new ArgumentNullException("keyItem");
@@ -103,9 +103,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Updated = keyProperties.UpdatedOn?.UtcDateTime;
             RecoveryLevel = keyProperties.RecoveryLevel;
             Tags = keyProperties.Tags.ConvertToHashtable();
-
+            
             IsHsm = isHsm;
+            HsmPlatform = keyProperties.HsmPlatform;
         }
+
+        public string HsmPlatform { get; set; }
 
         public bool? Enabled { get; set; }
 

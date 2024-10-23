@@ -22,7 +22,7 @@ Delete a Product.
 Delete a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name'
 .Example
-Remove-AzSphereProduct -CatalogName test2024 -ResourceGroupName joyer-test -Name product2024
+Remove-AzSphereProduct -CatalogName test2024 -ResourceGroupName group-test -Name product2024
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

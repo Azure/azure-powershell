@@ -20,7 +20,7 @@ Delete a Catalog
 .Description
 Delete a Catalog
 .Example
-Remove-AzSphereCatalog -Name test2024 -ResourceGroupName joyer-test
+Remove-AzSphereCatalog -Name test2024 -ResourceGroupName group-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

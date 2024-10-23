@@ -150,6 +150,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPrivateEndpointConnection>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.PrivateEndpointConnectionTypeConverter.ConvertFrom));
             }
+            if (content.Contains("EnforceDataIntegrityCheckForIscsi"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EnforceDataIntegrityCheckForIscsi = (bool?) content.GetValueForProperty("EnforceDataIntegrityCheckForIscsi",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EnforceDataIntegrityCheckForIscsi, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             if (content.Contains("EncryptionPropertyEncryptionIdentity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EncryptionPropertyEncryptionIdentity = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IEncryptionIdentity) content.GetValueForProperty("EncryptionPropertyEncryptionIdentity",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EncryptionPropertyEncryptionIdentity, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.EncryptionIdentityTypeConverter.ConvertFrom);
@@ -230,6 +234,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             if (content.Contains("PrivateEndpointConnection"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).PrivateEndpointConnection = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPrivateEndpointConnection>) content.GetValueForProperty("PrivateEndpointConnection",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).PrivateEndpointConnection, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IPrivateEndpointConnection>(__y, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.PrivateEndpointConnectionTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("EnforceDataIntegrityCheckForIscsi"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EnforceDataIntegrityCheckForIscsi = (bool?) content.GetValueForProperty("EnforceDataIntegrityCheckForIscsi",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupPropertiesInternal)this).EnforceDataIntegrityCheckForIscsi, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             if (content.Contains("EncryptionPropertyEncryptionIdentity"))
             {

@@ -90,7 +90,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         protected virtual void InitializeComponent()
         {
-            AzureContext.Tenant.Id = StorageSyncClientWrapper.StorageSyncResourceManager.GetTenantId() ?? AzureContext.Tenant.Id;
+            try
+            {
+                AzureContext.Tenant.Id = StorageSyncClientWrapper.StorageSyncResourceManager.GetTenantId() ?? AzureContext.Tenant.Id;
+            }
+            catch (Exception ex)
+            {
+                WriteVerbose(ex.Message);
+                throw;
+            }
+            
         }
 
         /// <summary>
@@ -129,7 +138,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Gets the subscription identifier.
         /// </summary>
         /// <value>The subscription identifier.</value>
-        public Guid SubscriptionId => AzureContext.Subscription.GetId();
+        public Guid SubscriptionId
+        {
+            get
+            {
+                try
+                {
+                    return AzureContext.Subscription.GetId();
+                }
+                catch(Exception ex)
+                {
+                    WriteVerbose(ex.Message);
+                    throw;
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets the storage sync client wrapper.
@@ -169,17 +192,33 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </exception>
         protected void ExecuteClientAction(Action action)
         {
+            WriteVerbose($"Executing {this.GetType().Name}....");
             try
             {
-                action();
+                try
+                {
+                    action();
+                }
+                catch (StorageSyncModels.StorageSyncErrorException ex)
+                {
+                    throw new StorageSyncCloudException(ex);
+                }
+                catch (Rest.Azure.CloudException ex)
+                {
+                    throw new StorageSyncCloudException(ex);
+                }
             }
-            catch (StorageSyncModels.StorageSyncErrorException ex)
+            catch (Exception ex)
             {
-                throw new StorageSyncCloudException(ex);
-            }
-            catch (Rest.Azure.CloudException ex)
-            {
-                throw new StorageSyncCloudException(ex);
+                WriteVerbose(ex.ToString());
+
+                var innerException = ex.InnerException;
+                while (innerException != null)
+                {
+                    WriteVerbose(innerException.ToString()); 
+                    innerException = innerException.InnerException;
+                }
+                throw ex;
             }
         }
 

@@ -13,7 +13,7 @@ Create a SSH Public Key resource.
 ## SYNTAX
 
 ```
-New-AzSshKey -ResourceGroupName <String> -Name <String> [-PublicKey <String>]
+New-AzSshKey -ResourceGroupName <String> -Name <String> [-PublicKey <String>] [-SshKeyType <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -97,6 +97,22 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -SshKeyType
+Specify the type of SSH key to generate. Allowed values are 'Ed25519' and 'RSA'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Ed25519, RSA
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -Confirm

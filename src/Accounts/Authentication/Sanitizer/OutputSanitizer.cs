@@ -19,6 +19,7 @@ using System.Diagnostics;
 using System;
 using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer
 {
@@ -36,6 +37,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer
                 return false;
             }
         }
+
+        public IEnumerable<string> IgnoredModules => Enumerable.Empty<string>();
+
+        public IEnumerable<string> IgnoredCmdlets => new[]
+        {
+            "Get-AzActivityLog",
+            "Get-AzComputeResourceSku",
+            "Get-AzConsumptionUsageDetail",
+        };
 
         public void Sanitize(object sanitizingObject, out SanitizerTelemetry telemetry)
         {

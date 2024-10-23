@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Commands.RedisCache
         [PSArgumentCompleter(TlsStrings.One0, TlsStrings.One1, TlsStrings.One2)]
         public string MinimumTlsVersion { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Authentication to Redis through access keys is disabled when set as true")]
+        public bool? DisableAccessKeyAuthentication { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "The full resource ID of a subnet in a virtual network to deploy the Azure Cache for Redis in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/{vnetName}/subnets/{subnetName}")]
         public string SubnetId { get; set; }
 
@@ -173,7 +176,7 @@ namespace Microsoft.Azure.Commands.RedisCache
               () =>
               {
                   var redisResource = CacheClient.CreateCache(ResourceGroupName, Name, Location, skuFamily, skuCapacity, Sku,
-                      RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, SubnetId, StaticIP, Tag, Zone, RedisVersion, IdentityType, UserAssignedIdentity, UpdateChannel);
+                      RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, MinimumTlsVersion, DisableAccessKeyAuthentication, SubnetId, StaticIP, Tag, Zone, RedisVersion, IdentityType, UserAssignedIdentity, UpdateChannel);
                   var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
                   WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
               });

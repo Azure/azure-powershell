@@ -27,13 +27,13 @@ For information on how to develop for `Az.Communication`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 23ff943dbe3b5ccdc63a6195daa0f30b17ed9d88
+commit: 663ea6835c33bca216b63f777227db6a459a06b3
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/communication/resource-manager/Microsoft.Communication/stable/2020-08-20/CommunicationService.json
+  - $(repo)/specification/communication/resource-manager/Microsoft.Communication/preview/2023-06-01-preview/CommunicationServices.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -97,4 +97,25 @@ directive:
       variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
       subject: CommunicationServiceNameAvailability
     remove: true
+  # Set a default value for Type parameter of Test-AzCommunicationServiceNameAvailability
+  - from: types.json
+    where: $.definitions.CheckNameAvailabilityRequest
+    transform: >
+      return {
+        "description": "The check availability request body.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name of the resource for which availability needs to be checked.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The resource type.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
 ```

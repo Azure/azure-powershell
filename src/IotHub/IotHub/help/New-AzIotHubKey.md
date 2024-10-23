@@ -37,7 +37,7 @@ New-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "
 ```output
 KeyName		PrimaryKey										SecondaryKey										Rights
 -------		----------										------------										------
-test		SXSdm31aT+i3939xSnA191f8g3uRhIUCTsO26b9s/nE=	6JqGKGUTL0mhQwvcOeIRT7OnT6noK/tie6jBY77sJTE=		ServiceConnect
+test		********************************            	********************************            		ServiceConnect
 ```
 
 Regenerated primary key for the authorization policy "testKey" of an azure iot hub.
@@ -50,7 +50,7 @@ New-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "
 ```output
 KeyName		PrimaryKey										SecondaryKey										Rights
 -------		----------										------------										------
-test		6JqGKGUTL0mhQwvcOeIRT7OnT6noK/tie6jBY77sJTE=	SXSdm31aT+i3939xSnA191f8g3uRhIUCTsO26b9s/nE=		ServiceConnect
+test		********************************            	********************************            		ServiceConnect
 ```
 
 Swapping keys for the authorization policy "testKey" of an azure iot hub.

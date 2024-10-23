@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspacebatchdeployment
 schema: 2.0.0
@@ -14,15 +14,16 @@ Gets a batch inference deployment by id.
 
 ### List (Default)
 ```
-Get-AzMLWorkspaceBatchDeployment -EndpointName <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-OrderBy <String>] [-Skip <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzMLWorkspaceBatchDeployment -EndpointName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] -WorkspaceName <String> [-OrderBy <String>] [-Skip <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMLWorkspaceBatchDeployment -EndpointName <String> -Name <String> -ResourceGroupName <String>
- -WorkspaceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] -WorkspaceName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -42,9 +43,9 @@ Get-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName ml
 ```
 
 ```output
-Location Name        SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind ResourceGroupName
--------- ----        ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ---- -----------------
-eastus   nonmlflowdp 6/1/2022 6:19:16 AM Lucas Yao (Wicresoft North America)                         6/1/2022 6:19:16 AM                                                                                     ml-rg-test
+Location Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Kind ResourceGroupName
+-------- ----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ---- -----------------
+eastus   nonmlflowdp 6/1/2022 6:19:16 AM UserName (Example)                          6/1/2022 6:19:16 AM                                                                 ml-rg-test
 ```
 
 Lists all batch inference deployment under a batch endpoint
@@ -55,9 +56,9 @@ Get-AzMLWorkspaceBatchDeployment -ResourceGroupName ml-rg-test -WorkspaceName ml
 ```
 
 ```output
-Location Name        SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType AzureAsyncOperation Kind ResourceGroupName
--------- ----        ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- ------------------- ---- -----------------
-eastus   nonmlflowdp 6/1/2022 6:19:16 AM Lucas Yao (Wicresoft North America)                         6/1/2022 6:19:16 AM                                                                                     ml-rg-test
+Location Name        SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType Kind ResourceGroupName
+-------- ----        ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- ---- -----------------
+eastus   nonmlflowdp 6/1/2022 6:19:16 AM UserName (Example)                          6/1/2022 6:19:16 AM                                                                 ml-rg-test
 ```
 
 Gets a batch inference deployment by Name
@@ -65,7 +66,8 @@ Gets a batch inference deployment by Name
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -84,7 +86,7 @@ Endpoint name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -146,25 +148,10 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Skip
-Continuation token for pagination.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,7 +163,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -206,10 +193,25 @@ Name of Azure Machine Learning workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Skip
+Continuation token for pagination.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -225,31 +227,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IBatchDeployment
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IMachineLearningServicesIdentity>`: Identity Parameter
-  - `[ComputeName <String>]`: Name of the Azure Machine Learning compute.
-  - `[ConnectionName <String>]`: Friendly name of the workspace connection
-  - `[DeploymentName <String>]`: Inference deployment identifier.
-  - `[EndpointName <String>]`: Inference Endpoint name.
-  - `[Id <String>]`: The name and identifier for the Job. This is case-sensitive.
-  - `[Id1 <String>]`: Resource identity path
-  - `[Location <String>]`: The location for which resource usage is queried.
-  - `[Name <String>]`: Container name. This is case-sensitive.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the workspace
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[Version <String>]`: Version identifier. This is case-sensitive.
-  - `[WorkspaceName <String>]`: Name of Azure Machine Learning workspace.
-
 ## RELATED LINKS
-

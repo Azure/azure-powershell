@@ -15,37 +15,38 @@ Create a Managed Certificate.
 ### CreateExpanded (Default)
 ```
 New-AzContainerAppManagedCert -EnvName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -Location <String> [-DomainControlValidation <String>] [-SubjectName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DomainControlValidation <String>] [-Location <String>] [-SubjectName <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzContainerAppManagedCert -EnvName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzContainerAppManagedCert -EnvName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityManagedEnvironmentExpanded
 ```
-New-AzContainerAppManagedCert -Name <String> -ManagedEnvironmentInputObject <IAppIdentity> -Location <String>
- [-DomainControlValidation <String>] [-SubjectName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzContainerAppManagedCert -Name <String> -ManagedEnvironmentInputObject <IAppIdentity>
+ [-DomainControlValidation <String>] [-Location <String>] [-SubjectName <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzContainerAppManagedCert -InputObject <IAppIdentity> -Location <String>
- [-DomainControlValidation <String>] [-SubjectName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzContainerAppManagedCert -InputObject <IAppIdentity> [-DomainControlValidation <String>]
+ [-Location <String>] [-SubjectName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,7 +134,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -185,7 +185,7 @@ Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityManagedEnvironmentExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,7 +194,6 @@ Accept wildcard characters: False
 
 ### -ManagedEnvironmentInputObject
 Identity Parameter
-To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -225,21 +224,6 @@ Accept wildcard characters: False
 
 ### -NoWait
 Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

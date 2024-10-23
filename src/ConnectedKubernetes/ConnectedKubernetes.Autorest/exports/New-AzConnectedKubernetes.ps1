@@ -30,7 +30,7 @@ New-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName 
 .Example
 New-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -HttpProxy "http://proxy-user:proxy-password@proxy-ip:port" -HttpsProxy "http://proxy-user:proxy-password@proxy-ip:port" -NoProxy "localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.96.0.0/12,10.244.0.0/16,10.43.0.0/24,.svc" -Proxy "http://proxy-user:proxy-password@proxy-ip:port" 
 .Example
-$pwd = ConvertTo-SecureString "proxy-password" -AsPlainText -Force
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("proxy-user", $pwd)
 New-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -HttpProxy "http://proxy-user:proxy-password@proxy-ip:port" -HttpsProxy "http://proxy-user:proxy-password@proxy-ip:port" -NoProxy "localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.96.0.0/12,10.244.0.0/16,10.43.0.0/24,.svc" -Proxy "http://proxy-ip:port" -ProxyCredential $cred
 .Example
@@ -39,12 +39,12 @@ New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps
 New-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -OnboardingTimeout 600
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/new-azconnectedkubernetes
 #>
 function New-AzConnectedKubernetes {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IConnectedCluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -189,6 +189,24 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.Management.Automation.SwitchParameter]
+    # Whether to enable oidc issuer for workload identity integration.
+    ${OidcIssuerProfileEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.String]
+    # The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
+    ${OidcIssuerProfileSelfHostedIssuerUrl},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to enable or disable the workload identity Webhook
+    ${WorkloadIdentityEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
     # Accept EULA of ConnectedKubernetes, legal term will pop up without this parameter provided
     ${AcceptEULA},
 
@@ -249,7 +267,25 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
+    ${ProxyUseDefaultCredentials},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
+    [System.Collections.Hashtable]
+    # Arc Agentry System Configuration (hash table of hash tables).
+    ${ConfigurationSetting},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
+    [System.Collections.Hashtable]
+    # Arc Agentry System Protected Configuration (hash table of hash tables).
+    ${ConfigurationProtectedSetting},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Runtime')]
+    [System.String]
+    # Arc Gateway resource Id
+    ${GatewayResourceId}
 )
 
 begin {

@@ -299,6 +299,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public int? StorageIOps { get; set; }
 
         /// <summary>
+        /// Specifies weather or not Managed Instance is freemium
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Preferred metadata to use for authentication of synced on-prem users. Default is AzureAD.")]
+        [ValidateSet("AzureAD", "Paired", "Windows")]
+        [PSArgumentCompleter("AzureAD", "Paired", "Windows")]
+        public string AuthenticationMetadata { get; set; }
+
+        /// <summary>
         /// Get the instance to update
         /// </summary>
         /// <returns>The instance being updated</returns>
@@ -394,6 +403,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             // This is due to the fact that this update might have a target edition that does not use this parameter.
             // If the target edition uses the parameter, the current value will get picked up later in the update process.
             updateData[0].StorageIOps = this.StorageIOps;
+            updateData[0].AuthenticationMetadata = this.AuthenticationMetadata ?? updateData[0].AuthenticationMetadata;
 
             return updateData;
         }

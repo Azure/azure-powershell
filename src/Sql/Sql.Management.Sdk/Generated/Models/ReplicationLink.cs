@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="partnerDatabase">Resource partner database.
         /// </param>
 
+        /// <param name="partnerDatabaseId">Resource partner database Id.
+        /// </param>
+
         /// <param name="partnerLocation">Resource partner location.
         /// </param>
 
@@ -66,15 +69,16 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="isTerminationAllowed">Whether the user is currently allowed to terminate the link.
         /// </param>
 
-        /// <param name="linkType">Link type (GEO, NAMED, STANDBY).
+        /// <param name="linkType">Link type (GEO, NAMED, STANDBY). Update operation does not support NAMED.
         /// Possible values include: &#39;GEO&#39;, &#39;NAMED&#39;, &#39;STANDBY&#39;</param>
-        public ReplicationLink(string id = default(string), string name = default(string), string type = default(string), string replicationState = default(string), string partnerServer = default(string), string partnerDatabase = default(string), string partnerLocation = default(string), ReplicationRole? role = default(ReplicationRole?), ReplicationRole? partnerRole = default(ReplicationRole?), string replicationMode = default(string), System.DateTime? startTime = default(System.DateTime?), int? percentComplete = default(int?), bool? isTerminationAllowed = default(bool?), string linkType = default(string))
+        public ReplicationLink(string id = default(string), string name = default(string), string type = default(string), string replicationState = default(string), string partnerServer = default(string), string partnerDatabase = default(string), string partnerDatabaseId = default(string), string partnerLocation = default(string), ReplicationRole? role = default(ReplicationRole?), ReplicationRole? partnerRole = default(ReplicationRole?), string replicationMode = default(string), System.DateTime? startTime = default(System.DateTime?), int? percentComplete = default(int?), bool? isTerminationAllowed = default(bool?), string linkType = default(string))
 
         : base(id, name, type)
         {
             this.ReplicationState = replicationState;
             this.PartnerServer = partnerServer;
             this.PartnerDatabase = partnerDatabase;
+            this.PartnerDatabaseId = partnerDatabaseId;
             this.PartnerLocation = partnerLocation;
             this.Role = role;
             this.PartnerRole = partnerRole;
@@ -109,6 +113,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.partnerDatabase")]
         public string PartnerDatabase {get; private set; }
+
+        /// <summary>
+        /// Gets resource partner database Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.partnerDatabaseId")]
+        public string PartnerDatabaseId {get; private set; }
 
         /// <summary>
         /// Gets resource partner location.
@@ -153,9 +163,10 @@ namespace Microsoft.Azure.Management.Sql.Models
         public bool? IsTerminationAllowed {get; private set; }
 
         /// <summary>
-        /// Gets link type (GEO, NAMED, STANDBY). Possible values include: &#39;GEO&#39;, &#39;NAMED&#39;, &#39;STANDBY&#39;
+        /// Gets or sets link type (GEO, NAMED, STANDBY). Update operation does not
+        /// support NAMED. Possible values include: &#39;GEO&#39;, &#39;NAMED&#39;, &#39;STANDBY&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.linkType")]
-        public string LinkType {get; private set; }
+        public string LinkType {get; set; }
     }
 }

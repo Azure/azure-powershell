@@ -34,9 +34,9 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
- [-EnableRequestBuffering] [-EnableResponseBuffering]
- [-ForceFirewallPolicyAssociation] [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>]
- [-Force] [-AsJob] [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
+ [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>] [-ForceFirewallPolicyAssociation]
+ [-Zone <String[]>] [-Tag <Hashtable>] [-UserAssignedIdentityId <String>] [-Force] [-AsJob]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -62,9 +62,9 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-FirewallPolicyId <String>] [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
- [-EnableHttp2] [-EnableFIPS] [-ForceFirewallPolicyAssociation] [-Zone <String[]>] [-Tag <Hashtable>] [-Force]
- [-EnableRequestBuffering] [-EnableResponseBuffering]
- [-AsJob] [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
+ [-EnableHttp2] [-EnableFIPS] [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>]
+ [-ForceFirewallPolicyAssociation] [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -91,8 +91,8 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-FirewallPolicy <PSApplicationGatewayWebApplicationFirewallPolicy>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
- [-EnableRequestBuffering] [-EnableResponseBuffering]
- [-ForceFirewallPolicyAssociation] [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>] [-ForceFirewallPolicyAssociation]
+ [-Zone <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -119,9 +119,9 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
- [-EnableRequestBuffering] [-EnableResponseBuffering]
- [-ForceFirewallPolicyAssociation] [-Zone <String[]>] [-Tag <Hashtable>] -Identity <PSManagedServiceIdentity>
- [-Force] [-AsJob] [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
+ [-EnableRequestBuffering <Boolean>] [-EnableResponseBuffering <Boolean>] [-ForceFirewallPolicyAssociation]
+ [-Zone <String[]>] [-Tag <Hashtable>] -Identity <PSManagedServiceIdentity> [-Force] [-AsJob]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>]
  [-PrivateLinkConfiguration <PSApplicationGatewayPrivateLinkConfiguration[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -362,7 +362,7 @@ Accept wildcard characters: False
 Whether Request Buffering is enabled.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -377,7 +377,7 @@ Accept wildcard characters: False
 Whether Response Buffering is enabled.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

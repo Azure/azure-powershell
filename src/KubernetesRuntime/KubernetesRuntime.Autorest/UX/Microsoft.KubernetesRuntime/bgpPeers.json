@@ -1,0 +1,75 @@
+{
+  "resourceType": "bgpPeers",
+  "apiVersion": "2024-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.kubernetesruntime"
+  },
+  "commands": [
+    {
+      "name": "Get-AzKubernetesRuntimeBgpPeer",
+      "description": "Get a BgpPeer",
+      "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers/{bgpPeerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kubernetesruntime/get-azkubernetesruntimebgppeer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ArcConnectedClusterId <String>",
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a BgpPeer",
+          "parameters": [
+            {
+              "name": "-ArcConnectedClusterId",
+              "value": "[Path.resourceUri]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.bgpPeerName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzKubernetesRuntimeBgpPeer",
+      "description": "Delete a BgpPeer",
+      "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers/{bgpPeerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.kubernetesruntime/remove-azkubernetesruntimebgppeer"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ArcConnectedClusterId <String>",
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a BgpPeer",
+          "parameters": [
+            {
+              "name": "-ArcConnectedClusterId",
+              "value": "[Path.resourceUri]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.bgpPeerName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

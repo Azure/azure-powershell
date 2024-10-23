@@ -1,0 +1,89 @@
+{
+  "Remove-AzOracleCloudVMClusterVM+[NoContext]+RemoveExpanded+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudExadataInfrastructures/OFake_PowerShellTestExaInfra/dbServers?api-version=2023-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudExadataInfrastructures/OFake_PowerShellTestExaInfra/dbServers?api-version=2023-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "e8c784b6-f9ba-480a-8600-19dc06c08ab6" ],
+        "CommandName": [ "Get-AzOracleDbServer" ],
+        "FullCommandName": [ "Get-AzOracleDbServer_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "opc-request-id": [ "/621D7DB5F45167EE74F70D2A05D2E979/F03DD3C4ABF510549FB39208BA81BB2A" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "8e8b6d39-cd38-4adb-9f6f-108f7b0577ef" ],
+        "x-ms-correlation-request-id": [ "a4ba55f3-e2ba-45d1-91ec-b168b4fe8c9b" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20240711T112553Z:a4ba55f3-e2ba-45d1-91ec-b168b4fe8c9b" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4A0C9CE926A44F5986AB5FD5A4E4CD7B Ref B: AMS231020512047 Ref C: 2024-07-11T11:25:51Z" ],
+        "Date": [ "Thu, 11 Jul 2024 11:25:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4190" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudExadataInfrastructures/OFake_PowerShellTestExaInfra/dbServers/ocid1.dbserver.oc1.iad.anuwcljrowjpydqabgfb24a7f6y6g3fgumvdu4yu2mskss7kyu7lzmbfirba\",\"name\":\"dbServer-3\",\"type\":\"Oracle.Database/cloudExadataInfrastructures/dbServers\",\"properties\":{\"ocid\":\"ocid1.dbserver.oc1.iad.anuwcljrowjpydqabgfb24a7f6y6g3fgumvdu4yu2mskss7kyu7lzmbfirba\",\"displayName\":\"dbServer-3\",\"compartmentId\":\"ocid1.compartment.oc1..aaaaaaaazcet2jt2uowjtgxsae5uositfy2thngqgokwdifyzmyygdpckeua\",\"exadataInfrastructureId\":\"ocid1.cloudexadatainfrastructure.oc1.iad.anuwcljrnirvylqakjfdf2qyze4p5leu572snxk6cbrbukejyfdtxggfquuq\",\"cpuCoreCount\":2,\"maxMemoryInGbs\":1390,\"dbNodeStorageSizeInGbs\":469,\"vmClusterIds\":[\"ocid1.cloudvmcluster.oc1.iad.anuwcljrnirvylqa2w4bxkv4t2ockflwjmwb32osa5exkeg7uitm7ympgaxa\"],\"dbNodeIds\":[\"ocid1.dbnode.oc1.iad.anuwcljrnirvylqamrsva3izm7qognghvksp2ufs2xbti6gcpz3jbcum7xka\"],\"provisioningState\":\"Available\",\"lifecycleState\":null,\"dbServerPatchingDetails\":{\"estimatedPatchDuration\":90,\"patchingStatus\":\"Scheduled\",\"timePatchingEnded\":null,\"timePatchingStarted\":null},\"maxCpuCount\":126,\"autonomousVmClusterIds\":[],\"autonomousVirtualMachineIds\":[],\"maxDbNodeStorageInGbs\":2243,\"memorySizeInGbs\":45,\"shape\":null,\"timeCreated\":\"2024-07-07T07:39:59.498Z\",\"lifecycleDetails\":null}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudExadataInfrastructures/OFake_PowerShellTestExaInfra/dbServers/ocid1.dbserver.oc1.iad.anuwcljrowjpydqajnh2fibjkgd4ehwqjscbr4shpbkzt2sqdvx3zuf77t5q\",\"name\":\"dbServer-1\",\"type\":\"Oracle.Database/cloudExadataInfrastructures/dbServers\",\"properties\":{\"ocid\":\"ocid1.dbserver.oc1.iad.anuwcljrowjpydqajnh2fibjkgd4ehwqjscbr4shpbkzt2sqdvx3zuf77t5q\",\"displayName\":\"dbServer-1\",\"compartmentId\":\"ocid1.compartment.oc1..aaaaaaaazcet2jt2uowjtgxsae5uositfy2thngqgokwdifyzmyygdpckeua\",\"exadataInfrastructureId\":\"ocid1.cloudexadatainfrastructure.oc1.iad.anuwcljrnirvylqakjfdf2qyze4p5leu572snxk6cbrbukejyfdtxggfquuq\",\"cpuCoreCount\":2,\"maxMemoryInGbs\":1390,\"dbNodeStorageSizeInGbs\":469,\"vmClusterIds\":[\"ocid1.cloudvmcluster.oc1.iad.anuwcljrnirvylqa2w4bxkv4t2ockflwjmwb32osa5exkeg7uitm7ympgaxa\"],\"dbNodeIds\":[\"ocid1.dbnode.oc1.iad.anuwcljrnirvylqaq6oz536w75cduu5aot6obj4n2miwqmso55xmmh23hwjq\"],\"provisioningState\":\"Available\",\"lifecycleState\":null,\"dbServerPatchingDetails\":{\"estimatedPatchDuration\":90,\"patchingStatus\":\"Scheduled\",\"timePatchingEnded\":null,\"timePatchingStarted\":null},\"maxCpuCount\":126,\"autonomousVmClusterIds\":[],\"autonomousVirtualMachineIds\":[],\"maxDbNodeStorageInGbs\":2243,\"memorySizeInGbs\":45,\"shape\":null,\"timeCreated\":\"2024-07-07T07:39:59.495Z\",\"lifecycleDetails\":null}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudExadataInfrastructures/OFake_PowerShellTestExaInfra/dbServers/ocid1.dbserver.oc1.iad.anuwcljrowjpydqao6qc4wjphqn3ccwd6jjqjynoexlhu23q35cwqdmedixa\",\"name\":\"dbServer-2\",\"type\":\"Oracle.Database/cloudExadataInfrastructures/dbServers\",\"properties\":{\"ocid\":\"ocid1.dbserver.oc1.iad.anuwcljrowjpydqao6qc4wjphqn3ccwd6jjqjynoexlhu23q35cwqdmedixa\",\"displayName\":\"dbServer-2\",\"compartmentId\":\"ocid1.compartment.oc1..aaaaaaaazcet2jt2uowjtgxsae5uositfy2thngqgokwdifyzmyygdpckeua\",\"exadataInfrastructureId\":\"ocid1.cloudexadatainfrastructure.oc1.iad.anuwcljrnirvylqakjfdf2qyze4p5leu572snxk6cbrbukejyfdtxggfquuq\",\"cpuCoreCount\":2,\"maxMemoryInGbs\":1390,\"dbNodeStorageSizeInGbs\":469,\"vmClusterIds\":[\"ocid1.cloudvmcluster.oc1.iad.anuwcljrnirvylqa2w4bxkv4t2ockflwjmwb32osa5exkeg7uitm7ympgaxa\"],\"dbNodeIds\":[\"ocid1.dbnode.oc1.iad.anuwcljrnirvylqa55rdowybx23nrhv3rybslcjaenofmosvwqzsokrgpzna\"],\"provisioningState\":\"Available\",\"lifecycleState\":null,\"dbServerPatchingDetails\":{\"estimatedPatchDuration\":90,\"patchingStatus\":\"Scheduled\",\"timePatchingEnded\":null,\"timePatchingStarted\":null},\"maxCpuCount\":126,\"autonomousVmClusterIds\":[],\"autonomousVirtualMachineIds\":[],\"maxDbNodeStorageInGbs\":2243,\"memorySizeInGbs\":45,\"shape\":null,\"timeCreated\":\"2024-07-07T07:39:59.496Z\",\"lifecycleDetails\":null}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzOracleCloudVMClusterVM+[NoContext]+RemoveExpanded+$POST+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudVmClusters/OFake_PowerShellTestVmCluster/removeVms?api-version=2023-09-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudVmClusters/OFake_PowerShellTestVmCluster/removeVms?api-version=2023-09-01",
+      "Content": "{\n  \"dbServers\": [ \"ocid1.dbserver.oc1.iad.anuwcljrowjpydqabgfb24a7f6y6g3fgumvdu4yu2mskss7kyu7lzmbfirba\" ]\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "108" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/EASTUS/operationStatuses/7a3fb83c-a8d9-4cdd-83d9-5018fb358289*817681FB618A6DF40A3F1658F2C75D4747E1A72F75C4EC15E2D4F9297675979E?api-version=2023-09-01\u0026t=638562939539855550\u0026c=MIIHhzCCBm-gAwIBAgITHgTGa31qslIh2UBmkAAABMZrfTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjIxMDkxMjA1WhcNMjUwNjE2MDkxMjA1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALn834uDqgCOixiO8GRfVCjdOSupM2mspf7A4DxVqhAZOL8zaMDjFkxtx33wm6cpNnNPdJtVugOQpatgZbDHp53nm17ZRJmyTZu_5z53RacbNkdHn-1M5XSVR5Gog-YVsO3all2PlVdOg1eoSOD8ITK-TstsekGcOi-2bqgxdMy4G9xiwN1uqztQs-uuOT2M0DGCBvuLm5PRftyk3A6tocQSz4e0JBhb08J-V5He6t4zq4AM6kwBE0iJR7dJEfSfDddwSZIAz6h35rU5QUFAFgtNoGNOoeq-2PAvP1ID_2_k6czxhuVUXChGs9wtj36-SmcXHwK4Di51_jZCza6EA6ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBSiHY0qE8dJDl1-fBkPIyhmBEoAXDAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAAMkBnjIQiIoLSg9zciJxXH1ylOKB4FJPrPFj52jXEgVo32cghlQhqYin74eWIrBybErBVKH1YhQnwolzlfQ2ghTU7DmQyx9TLA44sJzrc0cDQQvDaKmmJckNZtPzpYqro72RpHWATCjOWVE22NKpCRrNQKotMUbDebsE_RuzsGqcGKqaLGbwC6LP0aiK1KrOKORCDvOCtJic28Xn5HGJmYZ6U6xh6ClEm4t8nBn4CcVROGsAZ9wINYtuPZwHvI2zTH7u7kNlNWT935tT9aEKf_vyg22rc23EdwsVKQZSO42x8QVwYSwuL-2AF2Zh5SFZp1lvK5TIyNgVewww93mkdE\u0026s=L2pdjK6gjIlPoNhYSNXmvlvOxTmUixdaZZqUwdJ4g3y8jJdeb0qTp9EAdTHTkMI9sU_vdpGjiYNijClx-9LbC40px2yojn-zR3kLSUalxKmc7iwET0Qx1ZAYnoYFGdogSnRD9Ik8_frY5jH_O1cyMQGgI-vSxWXW9EJBxblk9CYOfefmTh3IotOIgg8Uq3Bb0HiUvQCX4aB-rEH9_NlHK1SvjQHocK0fUZ94W9Djb2zFZ9wORjhk-zBwTJMHBgRgOTFwCgdQ2DY4MANF2eKo4K-C9ys86jxgacZHkvLDWk4Z9FoDTOH-DZyC9ki5qI_G99EZL1ULTK8FNzhQWaZIUQ\u0026h=94ndBnMvGTQkkaoYxwYrheDybD-gsPEN8cEd-hPmYzs" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "opc-request-id": [ "/57270CB4811265E51A43DC38215F93C2/55142DAFD8626795E2A63CBAABF6F82F" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/EASTUS/operationStatuses/7a3fb83c-a8d9-4cdd-83d9-5018fb358289*817681FB618A6DF40A3F1658F2C75D4747E1A72F75C4EC15E2D4F9297675979E?api-version=2023-09-01\u0026t=638562939539855550\u0026c=MIIHhzCCBm-gAwIBAgITHgTGa31qslIh2UBmkAAABMZrfTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjIxMDkxMjA1WhcNMjUwNjE2MDkxMjA1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALn834uDqgCOixiO8GRfVCjdOSupM2mspf7A4DxVqhAZOL8zaMDjFkxtx33wm6cpNnNPdJtVugOQpatgZbDHp53nm17ZRJmyTZu_5z53RacbNkdHn-1M5XSVR5Gog-YVsO3all2PlVdOg1eoSOD8ITK-TstsekGcOi-2bqgxdMy4G9xiwN1uqztQs-uuOT2M0DGCBvuLm5PRftyk3A6tocQSz4e0JBhb08J-V5He6t4zq4AM6kwBE0iJR7dJEfSfDddwSZIAz6h35rU5QUFAFgtNoGNOoeq-2PAvP1ID_2_k6czxhuVUXChGs9wtj36-SmcXHwK4Di51_jZCza6EA6ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBSiHY0qE8dJDl1-fBkPIyhmBEoAXDAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAAMkBnjIQiIoLSg9zciJxXH1ylOKB4FJPrPFj52jXEgVo32cghlQhqYin74eWIrBybErBVKH1YhQnwolzlfQ2ghTU7DmQyx9TLA44sJzrc0cDQQvDaKmmJckNZtPzpYqro72RpHWATCjOWVE22NKpCRrNQKotMUbDebsE_RuzsGqcGKqaLGbwC6LP0aiK1KrOKORCDvOCtJic28Xn5HGJmYZ6U6xh6ClEm4t8nBn4CcVROGsAZ9wINYtuPZwHvI2zTH7u7kNlNWT935tT9aEKf_vyg22rc23EdwsVKQZSO42x8QVwYSwuL-2AF2Zh5SFZp1lvK5TIyNgVewww93mkdE\u0026s=L2pdjK6gjIlPoNhYSNXmvlvOxTmUixdaZZqUwdJ4g3y8jJdeb0qTp9EAdTHTkMI9sU_vdpGjiYNijClx-9LbC40px2yojn-zR3kLSUalxKmc7iwET0Qx1ZAYnoYFGdogSnRD9Ik8_frY5jH_O1cyMQGgI-vSxWXW9EJBxblk9CYOfefmTh3IotOIgg8Uq3Bb0HiUvQCX4aB-rEH9_NlHK1SvjQHocK0fUZ94W9Djb2zFZ9wORjhk-zBwTJMHBgRgOTFwCgdQ2DY4MANF2eKo4K-C9ys86jxgacZHkvLDWk4Z9FoDTOH-DZyC9ki5qI_G99EZL1ULTK8FNzhQWaZIUQ\u0026h=94ndBnMvGTQkkaoYxwYrheDybD-gsPEN8cEd-hPmYzs" ],
+        "x-ms-request-id": [ "7a3fb83c-a8d9-4cdd-83d9-5018fb358289" ],
+        "x-ms-correlation-request-id": [ "5ab15a21-13bd-4b35-941e-7db694a6c735" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20240711T112554Z:5ab15a21-13bd-4b35-941e-7db694a6c735" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5DC58BA140E2477E90E0AE4A050F483D Ref B: AMS231020512047 Ref C: 2024-07-11T11:25:53Z" ],
+        "Date": [ "Thu, 11 Jul 2024 11:25:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1272" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"ocid\":null,\"listenerPort\":null,\"nodeCount\":null,\"storageSizeInGbs\":null,\"dataStorageSizeInTbs\":null,\"dbNodeStorageSizeInGbs\":null,\"memorySizeInGbs\":null,\"timeCreated\":null,\"lifecycleDetails\":null,\"timeZone\":null,\"zoneId\":null,\"hostname\":null,\"domain\":null,\"cpuCoreCount\":null,\"ocpuCount\":null,\"clusterName\":\"OFake_PowerShellTestVmCluster\",\"dataStoragePercentage\":null,\"isLocalBackupEnabled\":null,\"cloudExadataInfrastructureId\":null,\"isSparseDiskgroupEnabled\":null,\"systemVersion\":null,\"sshPublicKeys\":null,\"licenseModel\":null,\"diskRedundancy\":null,\"scanIpIds\":null,\"vipIds\":null,\"scanDnsName\":null,\"scanListenerPortTcp\":null,\"scanListenerPortTcpSsl\":null,\"scanDnsRecordId\":null,\"shape\":null,\"provisioningState\":\"Succeeded\",\"lifecycleState\":null,\"vnetId\":null,\"giVersion\":null,\"ociUrl\":null,\"subnetId\":null,\"dataCollectionOptions\":null,\"displayName\":null,\"iormConfigCache\":null,\"lastUpdateHistoryEntryId\":null,\"dbServers\":null,\"compartmentId\":null,\"subnetOcid\":null,\"nsgCidrs\":null,\"nsgUrl\":null},\"location\":null,\"tags\":null,\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/cloudVmClusters/OFake_PowerShellTestVmCluster\",\"type\":null,\"name\":\"OFake_PowerShellTestVmCluster\",\"systemData\":null}",
+      "isContentBase64": false
+    }
+  }
+}

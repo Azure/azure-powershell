@@ -22,7 +22,7 @@ Use '.unassigned' or '.default' for the device group and product names to genera
 Generates the capability image for the device.
 Use '.unassigned' or '.default' for the device group and product names to generate the image for a device that does not belong to a specific device group and product.
 .Example
-New-AzSphereDeviceCapabilityImage -ResourceGroupName joyer-test -CatalogName test2024 -DeviceGroupName testdevicegroup2 -ProductName product2024 -DeviceName DBB0E0CB8BD961A6129096E1E8A1375AC1FA274F030C08161B37AE3BC5A94F443BDB628CF257BC5BC810D8768C03B6F5CA301A35CD0169F56A49624255964560 -Capability 'ApplicationDevelopment' | Format-List
+New-AzSphereDeviceCapabilityImage -ResourceGroupName group-test -CatalogName test2024 -DeviceGroupName testdevicegroup2 -ProductName product2024 -DeviceName ****** -Capability 'ApplicationDevelopment' | Format-List
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

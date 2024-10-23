@@ -40,6 +40,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
         public string DevCenterName { get => this._devCenterName; set => this._devCenterName = value; }
 
+        /// <summary>Backing field for <see cref="EncryptionSetName" /> property.</summary>
+        private string _encryptionSetName;
+
+        /// <summary>The name of the devcenter encryption set.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
+        public string EncryptionSetName { get => this._encryptionSetName; set => this._encryptionSetName = value; }
+
         /// <summary>Backing field for <see cref="EnvironmentDefinitionName" /> property.</summary>
         private string _environmentDefinitionName;
 
@@ -82,6 +89,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
+        /// <summary>Backing field for <see cref="MemberName" /> property.</summary>
+        private string _memberName;
+
+        /// <summary>The name of a devcenter plan member.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
+        public string MemberName { get => this._memberName; set => this._memberName = value; }
+
         /// <summary>Backing field for <see cref="NetworkConnectionName" /> property.</summary>
         private string _networkConnectionName;
 
@@ -95,6 +109,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         /// <summary>The ID of an ongoing async operation</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
         public string OperationId { get => this._operationId; set => this._operationId = value; }
+
+        /// <summary>Backing field for <see cref="PlanName" /> property.</summary>
+        private string _planName;
+
+        /// <summary>The name of the devcenter plan.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Origin(Microsoft.Azure.PowerShell.Cmdlets.DevCenter.PropertyOrigin.Owned)]
+        public string PlanName { get => this._planName; set => this._planName = value; }
 
         /// <summary>Backing field for <see cref="PoolName" /> property.</summary>
         private string _poolName;
@@ -186,6 +207,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         SerializedName = @"devCenterName",
         PossibleTypes = new [] { typeof(string) })]
         string DevCenterName { get; set; }
+        /// <summary>The name of the devcenter encryption set.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the devcenter encryption set.",
+        SerializedName = @"encryptionSetName",
+        PossibleTypes = new [] { typeof(string) })]
+        string EncryptionSetName { get; set; }
         /// <summary>The name of the Environment Definition.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
         Required = false,
@@ -234,6 +263,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
+        /// <summary>The name of a devcenter plan member.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of a devcenter plan member.",
+        SerializedName = @"memberName",
+        PossibleTypes = new [] { typeof(string) })]
+        string MemberName { get; set; }
         /// <summary>Name of the Network Connection that can be applied to a Pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
         Required = false,
@@ -250,6 +287,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         SerializedName = @"operationId",
         PossibleTypes = new [] { typeof(string) })]
         string OperationId { get; set; }
+        /// <summary>The name of the devcenter plan.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the devcenter plan.",
+        SerializedName = @"planName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PlanName { get; set; }
         /// <summary>Name of the pool.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.Info(
         Required = false,
@@ -319,6 +364,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         string DevBoxDefinitionName { get; set; }
         /// <summary>The name of the devcenter.</summary>
         string DevCenterName { get; set; }
+        /// <summary>The name of the devcenter encryption set.</summary>
+        string EncryptionSetName { get; set; }
         /// <summary>The name of the Environment Definition.</summary>
         string EnvironmentDefinitionName { get; set; }
         /// <summary>The name of the environment type.</summary>
@@ -331,10 +378,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
         string ImageName { get; set; }
         /// <summary>The Azure region</summary>
         string Location { get; set; }
+        /// <summary>The name of a devcenter plan member.</summary>
+        string MemberName { get; set; }
         /// <summary>Name of the Network Connection that can be applied to a Pool.</summary>
         string NetworkConnectionName { get; set; }
         /// <summary>The ID of an ongoing async operation</summary>
         string OperationId { get; set; }
+        /// <summary>The name of the devcenter plan.</summary>
+        string PlanName { get; set; }
         /// <summary>Name of the pool.</summary>
         string PoolName { get; set; }
         /// <summary>The name of the project.</summary>

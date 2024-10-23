@@ -1,0 +1,26 @@
+$schema: https://azuremlschemas.azureedge.net/latest/modelBatchDeployment.schema.json
+endpoint_name: heart-classifier-batch
+name: classifier-xgboost-custom
+description: A heart condition classifier based on XGBoost
+type: model
+model: azureml:heart-classifier-mlflow@latest
+environment:
+  name: batch-mlflow-xgboost
+  image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
+  conda_file: environment/conda.yaml
+code_configuration:
+  code: code
+  scoring_script: batch_driver.py
+compute: azureml:batch-cluster
+resources:
+  instance_count: 2
+settings:
+  max_concurrency_per_instance: 2
+  mini_batch_size: 2
+  output_action: append_row
+  output_file_name: predictions.csv
+  retry_settings:
+    max_retries: 3
+    timeout: 300
+  error_threshold: -1
+  logging_level: info

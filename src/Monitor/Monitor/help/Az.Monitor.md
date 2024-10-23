@@ -103,7 +103,7 @@ Retrieve an scheduled query rule definition.
 Gets the active subscription diagnostic settings for the specified resource.
 
 ### [New-AzActionGroup](New-AzActionGroup.md)
-Create a new action group or Create an existing one.
+Create a new action group or update an existing one.
 
 ### [New-AzActionGroupArmRoleReceiverObject](New-AzActionGroupArmRoleReceiverObject.md)
 Create an in-memory object for ArmRoleReceiver.
@@ -322,7 +322,7 @@ Deletes existing subscription diagnostic settings for the specified resource.
 Send test notifications to a set of provided receivers
 
 ### [Update-AzActionGroup](Update-AzActionGroup.md)
-Update a new action group or Update an existing one.
+Update a new action group or update an existing one.
 
 ### [Update-AzActivityLogAlert](Update-AzActivityLogAlert.md)
 Updates 'tags' and 'enabled' fields in an existing Alert rule.

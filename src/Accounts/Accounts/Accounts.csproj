@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Accounts</PsModuleName>
@@ -16,7 +16,6 @@
     <NetCore31Assemblies Include="$(RepoSrc)lib\netcoreapp3.1\*.dll" />
     <NetStandardAssemblies Include="$(RepoSrc)lib\netstandard2.0\*.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
-    <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +37,7 @@
   <ItemGroup>
     <None Update="StartupScripts\AzError.ps1" CopyToOutputDirectory="PreserveNewest" />
     <None Update="StartupScripts\InitializeAssemblyResolver.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="StartupScripts\InitializePSStyle.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
     <None Update="PostImportScripts\LoadAuthenticators.ps1" CopyToOutputDirectory="PreserveNewest" />

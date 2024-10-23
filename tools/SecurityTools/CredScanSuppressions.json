@@ -1340,6 +1340,10 @@
     {
       "file": "src\\Batch\\Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchAccountTests\\TestBatchAccountEndToEnd.json",
       "_justification": "Legitimate session record. Test resources, keys and tokens are deleted."
+    },
+    {
+      "file": "tools\\TestFx\\Live\\LiveTestUtility.psm1",
+      "_justification": "Legitimate test session record, keys are deleted."
     }
   ]
 }

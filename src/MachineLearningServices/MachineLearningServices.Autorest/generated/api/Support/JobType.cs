@@ -10,9 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
     public partial struct JobType :
         System.IEquatable<JobType>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobType AutoMl = @"AutoML";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobType Command = @"Command";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobType Pipeline = @"Pipeline";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobType Spark = @"Spark";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.JobType Sweep = @"Sweep";
 

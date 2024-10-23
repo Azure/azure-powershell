@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.2
+* Fixed secrets exposure in example documentation.
+
 ## Version 0.2.1
 * Introduced secrets detection feature to safeguard sensitive data.
 

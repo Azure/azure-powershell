@@ -22,7 +22,7 @@ Counts devices in product.
 Counts devices in product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Example
-Invoke-AzSphereCountProductDevice -CatalogName test2024 -ResourceGroupName joyer-test -ProductName product2024
+Invoke-AzSphereCountProductDevice -CatalogName test2024 -ResourceGroupName group-test -ProductName product2024
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

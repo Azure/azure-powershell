@@ -141,7 +141,7 @@ Parameters describes the request to regenerate access keys
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.IRegenerateKeyParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.IRegenerateKeyParameters
 Parameter Sets: Regenerate, RegenerateViaIdentity
 Aliases:
 
@@ -170,6 +170,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -219,13 +220,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.IRegenerateKeyParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.IRegenerateKeyParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceKeys
 
 ## NOTES
 

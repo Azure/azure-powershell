@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzConnectedPrivateLinkScope
 
 ## SYNOPSIS
-Update (or updates) a Azure Arc PrivateLinkScope.
+update (or update  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ## SYNTAX
@@ -40,7 +40,7 @@ Set-AzConnectedPrivateLinkScope -ResourceGroupName <String> -ScopeName <String> 
 ```
 
 ## DESCRIPTION
-Update (or updates) a Azure Arc PrivateLinkScope.
+update (or update  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ## EXAMPLES

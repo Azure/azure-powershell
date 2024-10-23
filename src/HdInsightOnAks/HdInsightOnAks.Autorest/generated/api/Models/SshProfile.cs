@@ -33,6 +33,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         public string PodPrefix { get => this._podPrefix; }
 
+        /// <summary>Backing field for <see cref="VMSize" /> property.</summary>
+        private string _vMSize;
+
+        /// <summary>The virtual machine SKU.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        public string VMSize { get => this._vMSize; set => this._vMSize = value; }
+
         /// <summary>Creates an new <see cref="SshProfile" /> instance.</summary>
         public SshProfile()
         {
@@ -68,6 +75,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"podPrefix",
         PossibleTypes = new [] { typeof(string) })]
         string PodPrefix { get;  }
+        /// <summary>The virtual machine SKU.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The virtual machine SKU.",
+        SerializedName = @"vmSize",
+        PossibleTypes = new [] { typeof(string) })]
+        string VMSize { get; set; }
 
     }
     /// Ssh profile for the cluster.
@@ -81,6 +99,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <clusterFqdn>/<sshBasePath>/<prefix>-<number>
         /// </summary>
         string PodPrefix { get; set; }
+        /// <summary>The virtual machine SKU.</summary>
+        string VMSize { get; set; }
 
     }
 }

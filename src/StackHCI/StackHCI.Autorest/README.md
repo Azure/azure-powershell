@@ -44,16 +44,22 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 5758cc23b0022e403d876662d9799f02c9bba3e6
+commit: 96fedf433c6c0ee9fccde4ec6698c75ac118c3d0
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2023-03-01/arcSettings.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2023-03-01/clusters.json
-  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2023-03-01/extensions.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/arcSettings.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/clusters.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/extensions.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/deploymentSettings.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/edgeDevices.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/securitySettings.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/updateRuns.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/updateSummaries.json
+  - $(repo)/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/updates.json
 
-module-version: 1.1.0
+module-version: 1.2.0
 title: StackHCI
 service-name: StackHCI
 subject-prefix: $(service-name)
@@ -86,6 +92,16 @@ directive:
       verb: Update
       subject: Extension
     remove: true
+  # Remove Start-AzStackHciClusterLogCollection
+  - where:
+      verb: Start
+      subject: ClusterLogCollection
+    remove: true
+  # Remove Set-AzStackHciClusterRemoteSupport
+  - where:
+      verb: Set
+      subject: ClusterRemoteSupport
+    remove: true
   # Remove Invoke-AzStackHciUploadClusterCertificate
   - where:
       verb: Invoke
@@ -112,6 +128,24 @@ directive:
       verb: New
       subject: ArcSetting
       parameter-name: Name
+    hide: true
+    set:
+      default:
+        script: '"default"'
+  # Hide name from edgeDevices 
+  - where:
+      verb: New
+      subject: EdgeDevice
+      parameter-name: Name
+    hide: true
+    set:
+      default:
+        script: '"default"'
+  # Hide name from securitySetting 
+  - where:
+      verb: New
+      subject: SecuritySetting
+      parameter-name: SName
     hide: true
     set:
       default:

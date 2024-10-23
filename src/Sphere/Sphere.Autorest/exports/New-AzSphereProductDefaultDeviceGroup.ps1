@@ -22,7 +22,7 @@ Generates default device groups for the product.
 Generates default device groups for the product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Example
-New-AzSphereProductDefaultDeviceGroup -CatalogName test2024 -ProductName product0207 -ResourceGroupName joyer-test
+New-AzSphereProductDefaultDeviceGroup -CatalogName test2024 -ProductName product0207 -ResourceGroupName group-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

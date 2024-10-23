@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -60,15 +63,24 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public AzureTableStorageLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object connectionString = default(object), AzureKeyVaultSecretReference accountKey = default(AzureKeyVaultSecretReference), object sasUri = default(object), AzureKeyVaultSecretReference sasToken = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        /// <param name="serviceEndpoint">Table service endpoint of the Azure Table Storage resource. It is mutually
+        /// exclusive with connectionString, sasUri property.
+        /// </param>
+
+        /// <param name="credential">The credential reference containing authentication information.
+        /// </param>
+        public AzureTableStorageLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object connectionString = default(object), AzureKeyVaultSecretReference accountKey = default(AzureKeyVaultSecretReference), object sasUri = default(object), AzureKeyVaultSecretReference sasToken = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string), object serviceEndpoint = default(object), CredentialReference credential = default(CredentialReference))
+
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.ConnectionString = connectionString;
             this.AccountKey = accountKey;
             this.SasUri = sasUri;
             this.SasToken = sasToken;
             this.EncryptedCredential = encryptedCredential;
+            this.ServiceEndpoint = serviceEndpoint;
+            this.Credential = credential;
             CustomInit();
         }
 
@@ -113,6 +125,20 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.encryptedCredential")]
         public string EncryptedCredential {get; set; }
+
+        /// <summary>
+        /// Gets or sets table service endpoint of the Azure Table Storage resource. It
+        /// is mutually exclusive with connectionString, sasUri property.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.serviceEndpoint")]
+        public object ServiceEndpoint {get; set; }
+
+        /// <summary>
+        /// Gets or sets the credential reference containing authentication
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.credential")]
+        public CredentialReference Credential {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -133,6 +159,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
                 this.SasToken.Validate();
             }
 
+
+            if (this.Credential != null)
+            {
+                this.Credential.Validate();
+            }
         }
     }
 }

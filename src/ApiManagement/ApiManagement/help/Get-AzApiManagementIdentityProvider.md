@@ -71,7 +71,7 @@ Get-AzApiManagementIdentityProvider -Context $context -Type AadB2C
 
 ```output
 Type                     : AadB2C
-ClientId                 : f02dafe2-b8b8-48ec-a38e-27e5c16c51e5
+ClientId                 : 00001111-aaaa-2222-bbbb-3333cccc4444
 ClientSecret             : xxxxxx
 AllowedTenants           : {contosoaadb2c.onmicrosoft.com}
 Authority                : login.microsoftonline.com

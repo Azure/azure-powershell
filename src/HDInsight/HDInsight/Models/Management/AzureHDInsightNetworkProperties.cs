@@ -23,16 +23,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     {
         public AzureHDInsightNetworkProperties() { }
 
-        public AzureHDInsightNetworkProperties(string resourceProviderConnection = null, string privateLink = null)
+        public AzureHDInsightNetworkProperties(string resourceProviderConnection = null, string privateLink = null, IpTag publicIPTag = null, string outboundDependenciesManagedType = null)
         {
             ResourceProviderConnection = resourceProviderConnection;
             PrivateLink = privateLink;
+            PublicIPTag = publicIPTag;
+            OutboundDependenciesManagedType = outboundDependenciesManagedType;
         }
 
         public AzureHDInsightNetworkProperties(NetworkProperties networkProperties = null)
         {
             ResourceProviderConnection = networkProperties?.ResourceProviderConnection;
             PrivateLink = networkProperties?.PrivateLink;
+            PublicIPTag = networkProperties?.PublicIPTag != null ? networkProperties?.PublicIPTag : null;
+            OutboundDependenciesManagedType = networkProperties?.OutboundDependenciesManagedType;
         }
 
         /// <summary>
@@ -44,5 +48,18 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets or sets indicates whether or not private link is enabled. Possible values include: 'Disabled', 'Enabled'
         /// </summary>
         public string PrivateLink { get; set; }
+
+        /// <summary>
+        /// A value to describe how the outbound dependencies of a HDInsight cluster are managed. 'Managed' means that the 
+        /// outbound dependencies are managed by the HDInsight service. 'External' means that the outbound dependencies are 
+        /// managed by a customer specific solution.
+        /// </summary>
+        public string OutboundDependenciesManagedType {get; set; }
+
+        /// <summary>
+        /// Gets or sets gets or sets the IP tag for the public IPs created along with
+        /// the HDInsight Clusters.
+        /// </summary>
+        public IpTag PublicIPTag {get; set; }
     }
 }

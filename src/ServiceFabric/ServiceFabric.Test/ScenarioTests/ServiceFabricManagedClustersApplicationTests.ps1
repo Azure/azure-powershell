@@ -135,7 +135,7 @@ function Test-ManagedApp
 	# Cluster Setup
 	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
 	$clusterName = "sfmcps-" + (getAssetname)
-	$location = "southcentralus"
+	$location = "westus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
 	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"

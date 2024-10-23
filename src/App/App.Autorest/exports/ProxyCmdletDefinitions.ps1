@@ -112,14 +112,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeactivateViaIdentityContainerApp', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter()]
@@ -208,7 +206,13 @@ begin {
             DeactivateViaIdentityContainerApp = 'Az.App.private\Disable-AzContainerAppRevision_DeactivateViaIdentityContainerApp';
         }
         if (('Deactivate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -358,14 +362,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='ActivateViaIdentityContainerApp', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter()]
@@ -454,7 +456,13 @@ begin {
             ActivateViaIdentityContainerApp = 'Az.App.private\Enable-AzContainerAppRevision_ActivateViaIdentityContainerApp';
         }
         if (('Activate') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -609,14 +617,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityContainerApp', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter()]
@@ -700,7 +706,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppAuthConfig_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -822,7 +834,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -853,12 +864,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Runtime')]
@@ -910,7 +915,13 @@ begin {
             GetViaIdentity = 'Az.App.private\Get-AzContainerAppAuthToken_GetViaIdentity';
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1022,7 +1033,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1104,7 +1114,13 @@ begin {
             GetViaIdentity = 'Az.App.private\Get-AzContainerAppAvailableWorkloadProfile_GetViaIdentity';
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1216,7 +1232,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1298,7 +1313,13 @@ begin {
             GetViaIdentity = 'Az.App.private\Get-AzContainerAppBillingMeter_GetViaIdentity';
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1453,14 +1474,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityConnectedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ConnectedEnvironmentInputObject},
 
     [Parameter()]
@@ -1544,7 +1563,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppConnectedEnvCert_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1717,7 +1742,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppConnectedEnvDaprSecret_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1872,14 +1903,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityConnectedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ConnectedEnvironmentInputObject},
 
     [Parameter()]
@@ -1963,7 +1992,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppConnectedEnvDapr_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2120,14 +2155,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityConnectedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ConnectedEnvironmentInputObject},
 
     [Parameter()]
@@ -2211,7 +2244,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppConnectedEnvStorage_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2338,7 +2377,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2422,7 +2460,13 @@ begin {
             List1 = 'Az.App.private\Get-AzContainerAppConnectedEnv_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2595,7 +2639,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppCustomHostName_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2744,14 +2794,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityContainerApp', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter()]
@@ -2835,7 +2883,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppDiagnosticDetector_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2986,14 +3040,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityContainerApp', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -3083,7 +3135,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppDiagnosticRevision_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3202,7 +3260,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -3233,12 +3290,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Runtime')]
@@ -3290,7 +3341,13 @@ begin {
             GetViaIdentity = 'Az.App.private\Get-AzContainerAppDiagnosticRoot_GetViaIdentity';
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3437,14 +3494,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='JobViaIdentityJob', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for JOBINPUTOBJECT properties and create a hash table.
     ${JobInputObject},
 
     [Parameter()]
@@ -3527,7 +3582,13 @@ begin {
             JobViaIdentityJob = 'Az.App.private\Get-AzContainerAppJobExecution_JobViaIdentityJob';
         }
         if (('Job') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3694,7 +3755,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppJobSecret_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3821,7 +3888,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -3905,7 +3971,13 @@ begin {
             List1 = 'Az.App.private\Get-AzContainerAppJob_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4057,14 +4129,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityManagedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter()]
@@ -4148,7 +4218,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppManagedCert_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4267,7 +4343,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4349,7 +4424,13 @@ begin {
             GetViaIdentity = 'Az.App.private\Get-AzContainerAppManagedEnvAuthToken_GetViaIdentity';
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4504,14 +4585,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityManagedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter()]
@@ -4595,7 +4674,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppManagedEnvCert_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4768,7 +4853,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppManagedEnvDaprSecret_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4923,14 +5014,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityManagedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter()]
@@ -5014,7 +5103,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppManagedEnvDapr_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5166,14 +5261,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityManagedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter()]
@@ -5257,7 +5350,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppManagedEnvDiagnosticDetector_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5376,7 +5475,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5458,7 +5556,13 @@ begin {
             GetViaIdentity = 'Az.App.private\Get-AzContainerAppManagedEnvDiagnosticRoot_GetViaIdentity';
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5615,14 +5719,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityManagedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter()]
@@ -5706,7 +5808,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppManagedEnvStorage_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5873,7 +5981,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppManagedEnvWorkloadProfileState_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6000,7 +6114,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -6084,7 +6197,13 @@ begin {
             List1 = 'Az.App.private\Get-AzContainerAppManagedEnv_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6275,21 +6394,18 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityContainerApp', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityRevision', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for REVISIONINPUTOBJECT properties and create a hash table.
     ${RevisionInputObject},
 
     [Parameter()]
@@ -6374,7 +6490,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppRevisionReplica_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6529,14 +6651,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityContainerApp', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -6626,7 +6746,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppRevision_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6793,7 +6919,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppSecret_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6948,14 +7080,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityContainerApp', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter()]
@@ -7039,7 +7169,13 @@ begin {
             List = 'Az.App.private\Get-AzContainerAppSourceControl_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7166,7 +7302,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -7197,13 +7332,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='GetViaIdentity')]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Runtime')]
@@ -7257,7 +7385,13 @@ begin {
             List1 = 'Az.App.private\Get-AzContainerApp_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7457,14 +7591,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -7549,7 +7681,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProviders]
     # The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
-    # To construct, see NOTES section for IDENTITYPROVIDER properties and create a hash table.
     ${IdentityProvider},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -7712,7 +7843,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerAppAuthConfig_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7772,7 +7909,7 @@ Create a Certificate.
 .Example
 New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
 Get-ChildItem -Path cert:\LocalMachine\My
-$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$mypwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
 
 New-AzContainerAppConnectedEnvCert -Name azps-connectedenvcert -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
@@ -7872,23 +8009,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ConnectedEnvironmentInputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityConnectedEnvironmentExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityConnectedEnvironmentExpanded')]
@@ -7897,6 +8024,14 @@ param(
     [System.String]
     # Input File for Value (PFX or PEM blob)
     ${InputFile},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityConnectedEnvironmentExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityConnectedEnvironmentExpanded')]
@@ -8009,7 +8144,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerAppConnectedEnvCert_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -8179,14 +8320,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ConnectedEnvironmentInputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -8220,7 +8359,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprMetadata[]]
     # Component metadata
-    # To construct, see NOTES section for METADATA properties and create a hash table.
     ${Metadata},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -8239,7 +8377,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]]
     # Collection of secrets used by a Dapr component
-    # To construct, see NOTES section for SECRET properties and create a hash table.
     ${Secret},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -8352,7 +8489,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerAppConnectedEnvDapr_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -8510,14 +8653,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ConnectedEnvironmentInputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -8647,7 +8788,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerAppConnectedEnvStorage_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -8774,7 +8921,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -8947,7 +9093,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerAppConnectedEnv_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -9156,7 +9308,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -9172,7 +9323,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRegistryCredentials[]]
     # Collection of private container registry credentials used by a Container apps job
-    # To construct, see NOTES section for CONFIGURATIONREGISTRY properties and create a hash table.
     ${ConfigurationRegistry},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -9195,7 +9345,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]]
     # Collection of secrets used by a Container Apps Job
-    # To construct, see NOTES section for CONFIGURATIONSECRET properties and create a hash table.
     ${ConfigurationSecret},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -9287,7 +9436,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobScaleRule[]]
     # Scaling rules.
-    # To construct, see NOTES section for SCALERULE properties and create a hash table.
     ${ScaleRule},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -9325,7 +9473,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[]]
     # List of container definitions for the Container App.
-    # To construct, see NOTES section for TEMPLATECONTAINER properties and create a hash table.
     ${TemplateContainer},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -9334,7 +9481,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer[]]
     # List of specialized containers that run before app containers.
-    # To construct, see NOTES section for TEMPLATEINITCONTAINER properties and create a hash table.
     ${TemplateInitContainer},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -9343,7 +9489,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[]]
     # List of volume definitions for the Container App.
-    # To construct, see NOTES section for TEMPLATEVOLUME properties and create a hash table.
     ${TemplateVolume},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -9458,7 +9603,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerAppJob_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -9613,23 +9764,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -9639,6 +9780,14 @@ param(
     [System.String]
     # Selected type of domain control validation for managed certificates.
     ${DomainControlValidation},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -9710,12 +9859,6 @@ param(
     # Run the command asynchronously
     ${NoWait},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Runtime')]
     [System.Uri]
@@ -9769,7 +9912,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerAppManagedCert_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -9829,7 +9978,7 @@ Create a Certificate.
 .Example
 New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
 Get-ChildItem -Path cert:\LocalMachine\My
-$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$mypwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
 
 New-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
@@ -9929,23 +10078,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
-    [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -9954,6 +10093,14 @@ param(
     [System.String]
     # Input File for Value (PFX or PEM blob)
     ${InputFile},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -10066,7 +10213,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerAppManagedEnvCert_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -10236,14 +10389,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -10277,7 +10428,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprMetadata[]]
     # Component metadata
-    # To construct, see NOTES section for METADATA properties and create a hash table.
     ${Metadata},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -10296,7 +10446,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]]
     # Collection of secrets used by a Dapr component
-    # To construct, see NOTES section for SECRET properties and create a hash table.
     ${Secret},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -10409,7 +10558,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerAppManagedEnvDapr_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -10567,14 +10722,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityManagedEnvironmentExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -10704,7 +10857,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerAppManagedEnvStorage_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -10842,7 +11001,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -10984,7 +11142,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IWorkloadProfile[]]
     # Workload profiles configured for the Managed Environment.
-    # To construct, see NOTES section for WORKLOADPROFILE properties and create a hash table.
     ${WorkloadProfile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -11099,7 +11256,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerAppManagedEnv_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -11157,9 +11320,9 @@ Create the SourceControl for a Container App.
 .Description
 Create the SourceControl for a Container App.
 .Example
-$AzureClientSecret = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$RegistryPassword = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$GithubAccessToken = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$AzureClientSecret = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$RegistryPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$GithubAccessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 New-AzContainerAppSourceControl -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name current -AzureClientId "UserObjectId" -AzureClientSecret $AzureClientSecret -AzureKind "feaderated" -AzureTenantId "UserDirectoryID" -Branch "main" -GithubContextPath "./" -GithubAccessToken $GithubAccessToken -GithubConfigurationImage "azps-containerapp-1" -RegistryPassword $RegistryPassword -RegistryUrl "azpscontainerregistry.azurecr.io" -RegistryUserName "azpscontainerregistry" -RepoUrl "https://github.com/lijinpei2008/ghatest"
 
@@ -11258,14 +11421,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -11510,7 +11671,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerAppSourceControl_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -11578,7 +11745,7 @@ $EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName azps_test_group_app -N
 
 New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
 Get-ChildItem -Path cert:\LocalMachine\My
-$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$mypwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
 New-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
 
@@ -11604,7 +11771,7 @@ $EnvId = (Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app 
 
 New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
 Get-ChildItem -Path cert:\LocalMachine\My
-$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$mypwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
 New-AzContainerAppConnectedEnvCert -Name azps-connectedenvcert -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
 
@@ -11813,7 +11980,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -11828,7 +11994,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfiguration]
     # Non versioned Container App configuration properties.
-    # To construct, see NOTES section for CONFIGURATION properties and create a hash table.
     ${Configuration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -11911,7 +12076,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule[]]
     # Scaling rules.
-    # To construct, see NOTES section for SCALERULE properties and create a hash table.
     ${ScaleRule},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -11928,7 +12092,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[]]
     # List of container definitions for the Container App.
-    # To construct, see NOTES section for TEMPLATECONTAINER properties and create a hash table.
     ${TemplateContainer},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -11937,7 +12100,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer[]]
     # List of specialized containers that run before app containers.
-    # To construct, see NOTES section for TEMPLATEINITCONTAINER properties and create a hash table.
     ${TemplateInitContainer},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -11953,7 +12115,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind[]]
     # List of container app services bound to the app
-    # To construct, see NOTES section for TEMPLATESERVICEBIND properties and create a hash table.
     ${TemplateServiceBind},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -11974,7 +12135,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[]]
     # List of volume definitions for the Container App.
-    # To construct, see NOTES section for TEMPLATEVOLUME properties and create a hash table.
     ${TemplateVolume},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -12089,7 +12249,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerApp_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -12244,14 +12410,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityContainerApp', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter()]
@@ -12340,7 +12504,13 @@ begin {
             DeleteViaIdentityContainerApp = 'Az.App.private\Remove-AzContainerAppAuthConfig_DeleteViaIdentityContainerApp';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -12495,14 +12665,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityConnectedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ConnectedEnvironmentInputObject},
 
     [Parameter()]
@@ -12591,7 +12759,13 @@ begin {
             DeleteViaIdentityConnectedEnvironment = 'Az.App.private\Remove-AzContainerAppConnectedEnvCert_DeleteViaIdentityConnectedEnvironment';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -12746,14 +12920,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityConnectedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ConnectedEnvironmentInputObject},
 
     [Parameter()]
@@ -12842,7 +13014,13 @@ begin {
             DeleteViaIdentityConnectedEnvironment = 'Az.App.private\Remove-AzContainerAppConnectedEnvDapr_DeleteViaIdentityConnectedEnvironment';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -12997,14 +13175,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityConnectedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ConnectedEnvironmentInputObject},
 
     [Parameter()]
@@ -13093,7 +13269,13 @@ begin {
             DeleteViaIdentityConnectedEnvironment = 'Az.App.private\Remove-AzContainerAppConnectedEnvStorage_DeleteViaIdentityConnectedEnvironment';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -13216,7 +13398,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -13316,7 +13497,13 @@ begin {
             DeleteViaIdentity = 'Az.App.private\Remove-AzContainerAppConnectedEnv_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -13439,7 +13626,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -13539,7 +13725,13 @@ begin {
             DeleteViaIdentity = 'Az.App.private\Remove-AzContainerAppJob_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -13690,14 +13882,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityManagedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter()]
@@ -13786,7 +13976,13 @@ begin {
             DeleteViaIdentityManagedEnvironment = 'Az.App.private\Remove-AzContainerAppManagedCert_DeleteViaIdentityManagedEnvironment';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -13941,14 +14137,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityManagedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter()]
@@ -14037,7 +14231,13 @@ begin {
             DeleteViaIdentityManagedEnvironment = 'Az.App.private\Remove-AzContainerAppManagedEnvCert_DeleteViaIdentityManagedEnvironment';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -14192,14 +14392,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityManagedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter()]
@@ -14288,7 +14486,13 @@ begin {
             DeleteViaIdentityManagedEnvironment = 'Az.App.private\Remove-AzContainerAppManagedEnvDapr_DeleteViaIdentityManagedEnvironment';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -14443,14 +14647,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityManagedEnvironment', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter()]
@@ -14539,7 +14741,13 @@ begin {
             DeleteViaIdentityManagedEnvironment = 'Az.App.private\Remove-AzContainerAppManagedEnvStorage_DeleteViaIdentityManagedEnvironment';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -14663,7 +14871,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -14763,7 +14970,13 @@ begin {
             DeleteViaIdentity = 'Az.App.private\Remove-AzContainerAppManagedEnv_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -14886,7 +15099,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -14986,7 +15198,13 @@ begin {
             DeleteViaIdentity = 'Az.App.private\Remove-AzContainerApp_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -15136,14 +15354,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='RestartViaIdentityContainerApp', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter()]
@@ -15232,7 +15448,13 @@ begin {
             RestartViaIdentityContainerApp = 'Az.App.private\Restart-AzContainerAppRevision_RestartViaIdentityContainerApp';
         }
         if (('Restart') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -15403,7 +15625,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Start', Mandatory, ValueFromPipeline)]
@@ -15411,7 +15632,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobExecutionTemplate]
     # Job's execution template, containing container configuration for a job's execution
-    # To construct, see NOTES section for TEMPLATE properties and create a hash table.
     ${Template},
 
     [Parameter(ParameterSetName='StartExpanded')]
@@ -15420,7 +15640,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobExecutionContainer[]]
     # List of container definitions for the Container Apps Job.
-    # To construct, see NOTES section for CONTAINER properties and create a hash table.
     ${Container},
 
     [Parameter(ParameterSetName='StartExpanded')]
@@ -15429,7 +15648,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobExecutionContainer[]]
     # List of specialized containers that run before job containers.
-    # To construct, see NOTES section for INITCONTAINER properties and create a hash table.
     ${InitContainer},
 
     [Parameter(ParameterSetName='StartViaJsonFilePath', Mandatory)]
@@ -15539,7 +15757,13 @@ begin {
             StartViaJsonString = 'Az.App.private\Start-AzContainerAppJob_StartViaJsonString';
         }
         if (('Start', 'StartExpanded', 'StartViaJsonFilePath', 'StartViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -15659,7 +15883,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -15753,7 +15976,13 @@ begin {
             StartViaIdentity = 'Az.App.private\Start-AzContainerApp_StartViaIdentity';
         }
         if (('Start') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -15900,14 +16129,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='StopViaIdentityJob', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for JOBINPUTOBJECT properties and create a hash table.
     ${JobInputObject},
 
     [Parameter()]
@@ -16008,7 +16235,13 @@ begin {
             StopViaIdentityJob = 'Az.App.private\Stop-AzContainerAppJobExecution_StopViaIdentityJob';
         }
         if (('Stop') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -16128,7 +16361,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -16222,7 +16454,13 @@ begin {
             StopViaIdentity = 'Az.App.private\Stop-AzContainerApp_StopViaIdentity';
         }
         if (('Stop') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -16325,7 +16563,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICheckNameAvailabilityRequest]
     # The check availability request body.
-    # To construct, see NOTES section for CHECKNAMEAVAILABILITYREQUEST properties and create a hash table.
     ${CheckNameAvailabilityRequest},
 
     [Parameter(ParameterSetName='CheckExpanded')]
@@ -16433,7 +16670,13 @@ begin {
             CheckViaJsonString = 'Az.App.private\Test-AzContainerAppConnectedEnvNameAvailability_CheckViaJsonString';
         }
         if (('Check', 'CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -16536,7 +16779,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICheckNameAvailabilityRequest]
     # The check availability request body.
-    # To construct, see NOTES section for CHECKNAMEAVAILABILITYREQUEST properties and create a hash table.
     ${CheckNameAvailabilityRequest},
 
     [Parameter(ParameterSetName='CheckExpanded')]
@@ -16644,7 +16886,13 @@ begin {
             CheckViaJsonString = 'Az.App.private\Test-AzContainerAppNamespaceAvailability_CheckViaJsonString';
         }
         if (('Check', 'CheckExpanded', 'CheckViaJsonFilePath', 'CheckViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -16698,9 +16946,9 @@ end {
 
 <#
 .Synopsis
-Create the AuthConfig for a Container App.
+Update the AuthConfig for a Container App.
 .Description
-Create the AuthConfig for a Container App.
+Update the AuthConfig for a Container App.
 .Example
 Update-AzContainerAppAuthConfig -Name current -ContainerAppName azps-containerapp-2 -ResourceGroupName azps_test_group_app -PlatformEnabled -GlobalValidationUnauthenticatedClientAction RedirectToLoginPage -IdentityProvider $identity
 .Example
@@ -16842,14 +17090,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -16914,7 +17160,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProviders]
     # The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
-    # To construct, see NOTES section for IDENTITYPROVIDER properties and create a hash table.
     ${IdentityProvider},
 
     [Parameter()]
@@ -17047,7 +17292,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.App.private\Update-AzContainerAppAuthConfig_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -17207,14 +17458,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ConnectedEnvironmentInputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -17320,7 +17569,13 @@ begin {
             UpdateViaJsonString = 'Az.App.private\Update-AzContainerAppConnectedEnvCert_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -17374,9 +17629,9 @@ end {
 
 <#
 .Synopsis
-Create a Dapr Component in a connected environment.
+Update a Dapr Component in a connected environment.
 .Description
-Create a Dapr Component in a connected environment.
+Update a Dapr Component in a connected environment.
 .Example
 $secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
 $daprMetaData = New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"
@@ -17493,14 +17748,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ConnectedEnvironmentInputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -17526,7 +17779,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprMetadata[]]
     # Component metadata
-    # To construct, see NOTES section for METADATA properties and create a hash table.
     ${Metadata},
 
     [Parameter()]
@@ -17541,7 +17793,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]]
     # Collection of secrets used by a Dapr component
-    # To construct, see NOTES section for SECRET properties and create a hash table.
     ${Secret},
 
     [Parameter()]
@@ -17636,7 +17887,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.App.private\Update-AzContainerAppConnectedEnvDapr_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -17690,9 +17947,9 @@ end {
 
 <#
 .Synopsis
-Create storage for a connectedEnvironment.
+Update storage for a connectedEnvironment.
 .Description
-Create storage for a connectedEnvironment.
+Update storage for a connectedEnvironment.
 .Example
 $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
 
@@ -17795,14 +18052,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ConnectedEnvironmentInputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -17910,7 +18165,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.App.private\Update-AzContainerAppConnectedEnvStorage_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -18119,7 +18380,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -18128,7 +18388,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRegistryCredentials[]]
     # Collection of private container registry credentials used by a Container apps job
-    # To construct, see NOTES section for CONFIGURATIONREGISTRY properties and create a hash table.
     ${ConfigurationRegistry},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -18151,7 +18410,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]]
     # Collection of secrets used by a Container Apps Job
-    # To construct, see NOTES section for CONFIGURATIONSECRET properties and create a hash table.
     ${ConfigurationSecret},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -18258,7 +18516,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobScaleRule[]]
     # Scaling rules.
-    # To construct, see NOTES section for SCALERULE properties and create a hash table.
     ${ScaleRule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -18296,7 +18553,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[]]
     # List of container definitions for the Container App.
-    # To construct, see NOTES section for TEMPLATECONTAINER properties and create a hash table.
     ${TemplateContainer},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -18305,7 +18561,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer[]]
     # List of specialized containers that run before app containers.
-    # To construct, see NOTES section for TEMPLATEINITCONTAINER properties and create a hash table.
     ${TemplateInitContainer},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -18314,7 +18569,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[]]
     # List of volume definitions for the Container App.
-    # To construct, see NOTES section for TEMPLATEVOLUME properties and create a hash table.
     ${TemplateVolume},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
@@ -18422,7 +18676,13 @@ begin {
             UpdateViaJsonString = 'Az.App.private\Update-AzContainerAppJob_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -18579,14 +18839,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityManagedEnvironmentExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -18692,7 +18950,13 @@ begin {
             UpdateViaJsonString = 'Az.App.private\Update-AzContainerAppManagedCert_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -18857,14 +19121,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityManagedEnvironmentExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -18970,7 +19232,13 @@ begin {
             UpdateViaJsonString = 'Az.App.private\Update-AzContainerAppManagedEnvCert_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -19024,9 +19292,9 @@ end {
 
 <#
 .Synopsis
-Create a Dapr Component in a Managed Environment.
+Update a Dapr Component in a Managed Environment.
 .Description
-Create a Dapr Component in a Managed Environment.
+Update a Dapr Component in a Managed Environment.
 .Example
 $scope = @("container-app-1","container-app-2")
 $secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
@@ -19146,14 +19414,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityManagedEnvironmentExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter()]
@@ -19179,7 +19445,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprMetadata[]]
     # Component metadata
-    # To construct, see NOTES section for METADATA properties and create a hash table.
     ${Metadata},
 
     [Parameter()]
@@ -19194,7 +19459,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]]
     # Collection of secrets used by a Dapr component
-    # To construct, see NOTES section for SECRET properties and create a hash table.
     ${Secret},
 
     [Parameter()]
@@ -19289,7 +19553,13 @@ begin {
             UpdateViaIdentityManagedEnvironmentExpanded = 'Az.App.private\Update-AzContainerAppManagedEnvDapr_UpdateViaIdentityManagedEnvironmentExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -19343,9 +19613,9 @@ end {
 
 <#
 .Synopsis
-Create storage for a managedEnvironment.
+Update storage for a managedEnvironment.
 .Description
-Create storage for a managedEnvironment.
+Update storage for a managedEnvironment.
 .Example
 $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
 
@@ -19448,14 +19718,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityManagedEnvironmentExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MANAGEDENVIRONMENTINPUTOBJECT properties and create a hash table.
     ${ManagedEnvironmentInputObject},
 
     [Parameter()]
@@ -19563,7 +19831,13 @@ begin {
             UpdateViaIdentityManagedEnvironmentExpanded = 'Az.App.private\Update-AzContainerAppManagedEnvStorage_UpdateViaIdentityManagedEnvironmentExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -19699,7 +19973,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -19772,7 +20045,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IWorkloadProfile[]]
     # Workload profiles configured for the Managed Environment.
-    # To construct, see NOTES section for WORKLOADPROFILE properties and create a hash table.
     ${WorkloadProfile},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
@@ -19880,7 +20152,13 @@ begin {
             UpdateViaJsonString = 'Az.App.private\Update-AzContainerAppManagedEnv_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -19934,26 +20212,26 @@ end {
 
 <#
 .Synopsis
-Create the SourceControl for a Container App.
+Update the SourceControl for a Container App.
 .Description
-Create the SourceControl for a Container App.
+Update the SourceControl for a Container App.
 .Example
-$AzureClientSecret = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$RegistryPassword = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$GithubAccessToken = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$AzureClientSecret = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$RegistryPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$GithubAccessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 Update-AzContainerAppSourceControl -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name current -AzureClientId "UserObjectId" -AzureClientSecret $AzureClientSecret -AzureKind "feaderated" -AzureTenantId "UserDirectoryID" -Branch "main" -GithubContextPath "./" -GithubAccessToken $GithubAccessToken -GithubConfigurationImage "azps-containerapp-1" -RegistryPassword $RegistryPassword -RegistryUrl "azpscontainerregistry.azurecr.io" -RegistryUserName "azpscontainerregistry" -RepoUrl "https://github.com/lijinpei2008/ghatest"
 .Example
-$AzureClientSecret = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$RegistryPassword = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$GithubAccessToken = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$AzureClientSecret = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$RegistryPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$GithubAccessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $sourcecontrol = Get-AzContainerAppSourceControl -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name current
 
 Update-AzContainerAppSourceControl -InputObject $sourcecontrol -AzureClientId "UserObjectId" -AzureClientSecret $AzureClientSecret -AzureKind "feaderated" -AzureTenantId "UserDirectoryID" -Branch "main" -GithubContextPath "./" -GithubAccessToken $GithubAccessToken -GithubConfigurationImage "azps-containerapp-1" -RegistryPassword $RegistryPassword -RegistryUrl "azpscontainerregistry.azurecr.io" -RegistryUserName "azpscontainerregistry" -RepoUrl "https://github.com/lijinpei2008/ghatest"
 .Example
-$AzureClientSecret = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$RegistryPassword = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$GithubAccessToken = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$AzureClientSecret = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$RegistryPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$GithubAccessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-1
 
 Update-AzContainerAppSourceControl -ContainerAppInputObject $containerapp -Name current -AzureClientId "UserObjectId" -AzureClientSecret $AzureClientSecret -AzureKind "feaderated" -AzureTenantId "UserDirectoryID" -Branch "main" -GithubContextPath "./" -GithubAccessToken $GithubAccessToken -GithubConfigurationImage "azps-containerapp-1" -RegistryPassword $RegistryPassword -RegistryUrl "azpscontainerregistry.azurecr.io" -RegistryUserName "azpscontainerregistry" -RepoUrl "https://github.com/lijinpei2008/ghatest"
@@ -20045,14 +20323,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -20249,7 +20525,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.App.private\Update-AzContainerAppSourceControl_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -20515,7 +20797,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -20523,7 +20804,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfiguration]
     # Non versioned Container App configuration properties.
-    # To construct, see NOTES section for CONFIGURATION properties and create a hash table.
     ${Configuration},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -20591,7 +20871,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule[]]
     # Scaling rules.
-    # To construct, see NOTES section for SCALERULE properties and create a hash table.
     ${ScaleRule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -20608,7 +20887,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[]]
     # List of container definitions for the Container App.
-    # To construct, see NOTES section for TEMPLATECONTAINER properties and create a hash table.
     ${TemplateContainer},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -20617,7 +20895,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer[]]
     # List of specialized containers that run before app containers.
-    # To construct, see NOTES section for TEMPLATEINITCONTAINER properties and create a hash table.
     ${TemplateInitContainer},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -20633,7 +20910,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind[]]
     # List of container app services bound to the app
-    # To construct, see NOTES section for TEMPLATESERVICEBIND properties and create a hash table.
     ${TemplateServiceBind},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -20654,7 +20930,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[]]
     # List of volume definitions for the Container App.
-    # To construct, see NOTES section for TEMPLATEVOLUME properties and create a hash table.
     ${TemplateVolume},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -20769,7 +21044,13 @@ begin {
             UpdateViaJsonString = 'Az.App.private\Update-AzContainerApp_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -20998,7 +21279,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICustomDomain[]]
     # custom domain bindings for Container Apps' hostnames.
-    # To construct, see NOTES section for INGRESSCUSTOMDOMAIN properties and create a hash table.
     ${IngressCustomDomain},
 
     [Parameter()]
@@ -21017,7 +21297,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIPSecurityRestrictionRule[]]
     # Rules to restrict incoming IP address.
-    # To construct, see NOTES section for INGRESSIPSECURITYRESTRICTION properties and create a hash table.
     ${IngressIPSecurityRestriction},
 
     [Parameter()]
@@ -21030,7 +21309,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrafficWeight[]]
     # Traffic weights for app's revisions.
-    # To construct, see NOTES section for INGRESSTRAFFIC properties and create a hash table.
     ${IngressTraffic},
 
     [Parameter()]
@@ -21051,14 +21329,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRegistryCredentials[]]
     # Collection of private container registry credentials for containers used by the Container app.
-    # To construct, see NOTES section for REGISTRY properties and create a hash table.
     ${Registry},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]]
     # Collection of secrets used by a Container app.
-    # To construct, see NOTES section for SECRET properties and create a hash table.
     ${Secret},
 
     [Parameter()]
@@ -21612,7 +21888,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersCustomOpenIdConnectProviders]
     # The map of the name of the alias of each custom Open ID Connect provider to the
     #         configuration settings of the custom Open ID Connect provider.
-    # To construct, see NOTES section for CUSTOMOPENIDCONNECTPROVIDER properties and create a hash table.
     ${CustomOpenIdConnectProvider},
 
     [Parameter()]
@@ -21915,7 +22190,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IEnvironmentVar[]]
     # Container environment variables.
-    # To construct, see NOTES section for ENV properties and create a hash table.
     ${Env},
 
     [Parameter()]
@@ -21948,7 +22222,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolumeMount[]]
     # Container volume mounts.
-    # To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
     ${VolumeMount}
 )
 
@@ -22195,7 +22468,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IEnvironmentVar[]]
     # Container environment variables.
-    # To construct, see NOTES section for ENV properties and create a hash table.
     ${Env},
 
     [Parameter()]
@@ -22333,7 +22605,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
     # Authentication secrets for the scale rule.
-    # To construct, see NOTES section for AUTH properties and create a hash table.
     ${Auth},
 
     [Parameter()]
@@ -22590,7 +22861,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeHttpGetHttpHeadersItem[]]
     # Custom headers to set in the request.
     # HTTP allows repeated headers.
-    # To construct, see NOTES section for HTTPGETHTTPHEADER properties and create a hash table.
     ${HttpGetHttpHeader},
 
     [Parameter()]
@@ -23045,7 +23315,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
     # Authentication secrets for the queue scale rule.
-    # To construct, see NOTES section for AZUREQUEUEAUTH properties and create a hash table.
     ${AzureQueueAuth},
 
     [Parameter()]
@@ -23064,14 +23333,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
     # Authentication secrets for the custom scale rule.
-    # To construct, see NOTES section for CUSTOMAUTH properties and create a hash table.
     ${CustomAuth},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICustomScaleRuleMetadata]
     # Metadata properties to describe custom scale rule.
-    # To construct, see NOTES section for CUSTOMMETADATA properties and create a hash table.
     ${CustomMetadata},
 
     [Parameter()]
@@ -23085,14 +23352,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
     # Authentication secrets for the custom scale rule.
-    # To construct, see NOTES section for HTTPAUTH properties and create a hash table.
     ${HttpAuth},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpScaleRuleMetadata]
     # Metadata properties to describe http scale rule.
-    # To construct, see NOTES section for HTTPMETADATA properties and create a hash table.
     ${HttpMetadata},
 
     [Parameter()]
@@ -23105,14 +23370,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
     # Authentication secrets for the tcp scale rule.
-    # To construct, see NOTES section for TCPAUTH properties and create a hash table.
     ${TcpAuth},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITcpScaleRuleMetadata]
     # Metadata properties to describe tcp scale rule.
-    # To construct, see NOTES section for TCPMETADATA properties and create a hash table.
     ${TcpMetadata}
 )
 
@@ -23587,7 +23850,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbe[]]
     # List of probes for the container.
-    # To construct, see NOTES section for PROBE properties and create a hash table.
     ${Probe},
 
     [Parameter()]
@@ -23606,7 +23868,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IEnvironmentVar[]]
     # Container environment variables.
-    # To construct, see NOTES section for ENV properties and create a hash table.
     ${Env},
 
     [Parameter()]
@@ -23639,7 +23900,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolumeMount[]]
     # Container volume mounts.
-    # To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
     ${VolumeMount}
 )
 
@@ -23999,7 +24259,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecretVolumeItem[]]
     # List of secrets to be added in volume.
     # If no secrets are provided, all secrets in collection will be added to volume.
-    # To construct, see NOTES section for SECRET properties and create a hash table.
     ${Secret},
 
     [Parameter()]

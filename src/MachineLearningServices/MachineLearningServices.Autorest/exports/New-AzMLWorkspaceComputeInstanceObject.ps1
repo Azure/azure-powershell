@@ -23,22 +23,35 @@ Create an in-memory object for ComputeInstance.
 New-AzMLWorkspaceComputeInstanceObject
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 SCHEDULECOMPUTESTARTSTOP <IComputeStartStopSchedule[]>: The list of compute start stop schedules to be applied.
-  [Action <ComputePowerAction?>]: The compute power action.
-  [ScheduleId <String>]: 
-  [ScheduleProvisioningStatus <ScheduleProvisioningState?>]: 
-  [ScheduleStatus <ScheduleStatus?>]: 
+  [Action <ComputePowerAction?>]: [Required] The compute power action.
+  [CronExpression <String>]: [Required] Specifies cron expression of schedule.         The expression should follow NCronTab format.
+  [CronStartTime <String>]: The start time in yyyy-MM-ddTHH:mm:ss format.
+  [CronTimeZone <String>]: Specifies time zone in which the schedule runs.         TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
+  [RecurrenceFrequency <ComputeRecurrenceFrequency?>]: [Required] The frequency to trigger schedule.
+  [RecurrenceInterval <Int32?>]: [Required] Specifies schedule interval in conjunction with frequency
+  [RecurrenceStartTime <String>]: The start time in yyyy-MM-ddTHH:mm:ss format.
+  [RecurrenceTimeZone <String>]: Specifies time zone in which the schedule runs.         TimeZone should follow Windows time zone format. Refer: https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-time-zones?view=windows-11
+  [ScheduleHour <Int32[]>]: [Required] List of hours for the schedule.
+  [ScheduleId <String>]: A system assigned id for the schedule.
+  [ScheduleMinute <Int32[]>]: [Required] List of minutes for the schedule.
+  [ScheduleMonthDay <Int32[]>]: List of month days for the schedule
+  [ScheduleProvisioningStatus <ScheduleProvisioningState?>]: The current deployment state of schedule.
+  [ScheduleStatus <ScheduleStatus?>]: Is the schedule enabled or disabled?
+  [ScheduleWeekDay <ComputeWeekDay[]>]: List of days for the schedule.
+  [Status <ScheduleStatus?>]: Is the schedule enabled or disabled?
+  [TriggerType <ComputeTriggerType?>]: [Required] The schedule trigger type.
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceComputeInstanceObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceComputeInstanceObject
 #>
 function New-AzMLWorkspaceComputeInstanceObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ComputeInstance])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -71,13 +84,13 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [System.String]
-    # User’s AAD Object Id.
+    # User's AAD Object Id.
     ${AssignedUserObjectId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [System.String]
-    # User’s AAD Tenant Id.
+    # User's AAD Tenant Id.
     ${AssignedUserTenantId},
 
     [Parameter()]
@@ -149,7 +162,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeStartStopSchedule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IComputeStartStopSchedule[]]
     # The list of compute start stop schedules to be applied.
     # To construct, see NOTES section for SCHEDULECOMPUTESTARTSTOP properties and create a hash table.
     ${ScheduleComputeStartStop},
@@ -222,7 +235,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -243,6 +256,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

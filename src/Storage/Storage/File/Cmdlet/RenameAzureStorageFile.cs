@@ -15,6 +15,7 @@
 using Azure.Storage.Files.Shares;
 using Azure.Storage.Files.Shares.Models;
 using Azure.Storage.Files.Shares.Specialized;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using System.Globalization;
@@ -22,6 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageFile), "13.0.0", "8.0.0", ChangeDescription = "The child property CloudFile from deprecated v11 SDK will be removed. Use child property ShareFileClient instead.")]
     [Cmdlet("Rename", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFile", SupportsShouldProcess = true, DefaultParameterSetName = ShareNameParameterSet)]
     [OutputType(typeof(AzureStorageFile))]
     public class RenameAzureStorageFile : StorageFileDataManagementCmdletBase

@@ -21,7 +21,8 @@ jobs:
   pool: pool-windows-2019
   steps:
   - checkout: self
-  - template: util/get-github-pat-steps.yml
+    persistCredentials: true
+  - template: util/get-github-token-steps.yml
   - task: NodeTool@0
     displayName: Use Node 14.15.5
     inputs:

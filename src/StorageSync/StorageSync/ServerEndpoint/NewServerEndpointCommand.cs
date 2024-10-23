@@ -23,6 +23,10 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
+using System;
+using System.Linq;
+using Microsoft.Azure.Commands.StorageSync.InternalObjects;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
@@ -276,6 +280,51 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 string resourceGroupName = ResourceGroupName ?? ParentObject?.ResourceGroupName ?? parentResourceIdentifier.ResourceGroupName;
                 string storageSyncServiceName = StorageSyncServiceName ?? ParentObject?.StorageSyncServiceName ?? parentResourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0);
                 string syncGroupName = SyncGroupName ?? ParentObject?.SyncGroupName ?? parentResourceIdentifier.ResourceName;
+
+                // Get Registered Server
+                var serverResourceIdentifier = new ResourceIdentifier(ServerResourceId);
+                StorageSyncModels.RegisteredServer registeredServer = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Get(resourceGroupName, storageSyncServiceName, serverResourceIdentifier.ResourceName);
+
+                if (registeredServer == null)
+                {
+                    throw new PSArgumentException(StorageSyncResources.MissingServerResourceIdErrorMessage);
+                }
+
+                // Handle cluster name server scenario where the rbac needs to be applied on all the nodes.
+                StorageSyncClientWrapper.VerboseLogger.Invoke($"Registered Server Auth Type : {registeredServer.ActiveAuthType} with ServerRole {registeredServer.ServerRole}");
+
+                IEnumerable<StorageSyncModels.RegisteredServer> impactedRegisteredServers;
+                if (registeredServer.ServerRole == ServerRoleType.ClusterName.ToString())
+                {
+                    impactedRegisteredServers = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers
+                    .ListByStorageSyncService(resourceGroupName, storageSyncServiceName)
+                    .Where(s => !string.IsNullOrEmpty(s.ClusterId) && s.ClusterId.Equals(registeredServer.ServerId, StringComparison.InvariantCultureIgnoreCase));
+                }
+                else
+                {
+                    impactedRegisteredServers = new List<StorageSyncModels.RegisteredServer> { registeredServer };
+                }
+
+                foreach (var impactedRegisteredServer in impactedRegisteredServers)
+                {
+                    if (impactedRegisteredServer.ActiveAuthType == StorageSyncModels.ServerAuthType.ManagedIdentity &&
+                        !String.IsNullOrEmpty(impactedRegisteredServer.ApplicationId) && Guid.TryParse(impactedRegisteredServer.ApplicationId, out Guid serverIdentityGuid)
+                        && serverIdentityGuid != Guid.Empty)
+                    {
+                        StorageSyncModels.CloudEndpoint cloudEndpoint = StorageSyncClientWrapper.StorageSyncManagementClient.CloudEndpoints.ListBySyncGroup(resourceGroupName, storageSyncServiceName, syncGroupName).FirstOrDefault();
+
+                        if (cloudEndpoint == null)
+                        {
+                            throw new PSArgumentException(StorageSyncResources.MissingParentResourceIdErrorMessage);
+                        }
+                        var storageAccountResourceIdentifier = new ResourceIdentifier(cloudEndpoint.StorageAccountResourceId);
+                        var scope = $"{cloudEndpoint.StorageAccountResourceId}/fileServices/default/fileshares/{cloudEndpoint.AzureFileShareName}";
+                        var identityRoleAssignmentForFilsShareScope = StorageSyncClientWrapper.EnsureRoleAssignmentWithIdentity(storageAccountResourceIdentifier.Subscription,
+                           serverIdentityGuid,
+                           Common.StorageSyncClientWrapper.StorageFileDataPrivilegedContributorRoleDefinitionId,
+                           scope);
+                    }
+                }
 
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, syncGroupName, Name);
                 if (ShouldProcess(Target, ActionMessage))

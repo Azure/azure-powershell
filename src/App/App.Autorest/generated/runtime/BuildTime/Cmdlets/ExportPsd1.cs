@@ -149,7 +149,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PowerShell
                 else
                 {
                     var aliasesList = functionInfos.SelectMany(fi => fi.ScriptBlock.Attributes).ToAliasNames().ToPsList();
-                    if (!String.IsNullOrEmpty(aliasesList)) {
+                    if (!String.IsNullOrEmpty(aliasesList))
+                    {
                         sb.AppendLine($@"{Indent}AliasesToExport = {aliasesList}");
                     }
                 }

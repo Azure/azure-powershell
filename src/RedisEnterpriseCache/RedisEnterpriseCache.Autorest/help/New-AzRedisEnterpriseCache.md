@@ -343,7 +343,7 @@ To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and 
 To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.ILinkedDatabase[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]
 Parameter Sets: CreateClusterWithDatabase
 Aliases:
 
@@ -390,7 +390,7 @@ Optional set of redis modules to enable in this database - modules can only be a
 To construct, see NOTES section for MODULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IModule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]
 Parameter Sets: CreateClusterWithDatabase
 Aliases:
 
@@ -499,7 +499,7 @@ Accept wildcard characters: False
 
 ### -Sku
 The type of Redis Enterprise cluster to deploy.
-Allowed values: Enterprise_E10, Enterprise_E20, Enterprise_E50, Enterprise_E100, EnterpriseFlash_F300, EnterpriseFlash_F700, EnterpriseFlash_F1500
+Allowed values: Enterprise_E1, Enterprise_E5, Enterprise_E10, Enterprise_E20, Enterprise_E50, Enterprise_E100, Enterprise_E200, Enterprise_E400,EnterpriseFlash_F300, EnterpriseFlash_F700, EnterpriseFlash_F1500
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName
@@ -596,7 +596,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ICluster
 
 ## NOTES
 

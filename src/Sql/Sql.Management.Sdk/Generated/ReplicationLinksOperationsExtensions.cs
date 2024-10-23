@@ -113,6 +113,59 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Updates the replication link type.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='linkId'>
+        /// 
+        /// </param>
+        public static ReplicationLink CreateOrUpdate(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, ReplicationLink parameters)
+        {
+                return ((IReplicationLinksOperations)operations).CreateOrUpdateAsync(resourceGroupName, serverName, databaseName, linkId, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates the replication link type.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='linkId'>
+        /// 
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationLink> CreateOrUpdateAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, ReplicationLink parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the replication link.
         /// </summary>
         /// <param name='operations'>
@@ -161,6 +214,59 @@ namespace Microsoft.Azure.Management.Sql
         public static async System.Threading.Tasks.Task DeleteAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Updates the replication link type.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='linkId'>
+        /// 
+        /// </param>
+        public static ReplicationLink Update(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, ReplicationLinkUpdate parameters)
+        {
+                return ((IReplicationLinksOperations)operations).UpdateAsync(resourceGroupName, serverName, databaseName, linkId, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates the replication link type.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='linkId'>
+        /// 
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationLink> UpdateAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, ReplicationLinkUpdate parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Fails over from the current primary server to this server.
@@ -312,6 +418,59 @@ namespace Microsoft.Azure.Management.Sql
             }
         }
         /// <summary>
+        /// Updates the replication link type.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='linkId'>
+        /// 
+        /// </param>
+        public static ReplicationLink BeginCreateOrUpdate(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, ReplicationLink parameters)
+        {
+                return ((IReplicationLinksOperations)operations).BeginCreateOrUpdateAsync(resourceGroupName, serverName, databaseName, linkId, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates the replication link type.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='linkId'>
+        /// 
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationLink> BeginCreateOrUpdateAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, ReplicationLink parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
         /// Deletes the replication link.
         /// </summary>
         /// <param name='operations'>
@@ -360,6 +519,59 @@ namespace Microsoft.Azure.Management.Sql
         public static async System.Threading.Tasks.Task BeginDeleteAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Updates the replication link type.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='linkId'>
+        /// 
+        /// </param>
+        public static ReplicationLink BeginUpdate(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, ReplicationLinkUpdate parameters)
+        {
+                return ((IReplicationLinksOperations)operations).BeginUpdateAsync(resourceGroupName, serverName, databaseName, linkId, parameters).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Updates the replication link type.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='serverName'>
+        /// The name of the server.
+        /// </param>
+        /// <param name='databaseName'>
+        /// The name of the database.
+        /// </param>
+        /// <param name='linkId'>
+        /// 
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ReplicationLink> BeginUpdateAsync(this IReplicationLinksOperations operations, string resourceGroupName, string serverName, string databaseName, string linkId, ReplicationLinkUpdate parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, linkId, parameters, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Fails over from the current primary server to this server.

@@ -20,7 +20,7 @@ Lists device insights for catalog.
 .Description
 Lists device insights for catalog.
 .Example
-Get-AzSphereCatalogDeviceInsight -CatalogName test2024 -ResourceGroupName joyer-test
+Get-AzSphereCatalogDeviceInsight -CatalogName test2024 -ResourceGroupName group-test
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeviceInsight

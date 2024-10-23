@@ -16,7 +16,7 @@ This operation updates an existing policy set definition in the given subscripti
 ```
 Update-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Update-AzPolicySetDefinition -Name <String> [-DisplayName <String>] [-Descriptio
 Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
  [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionId
@@ -33,14 +33,14 @@ Update-AzPolicySetDefinition -Name <String> -ManagementGroupName <String> [-Disp
 Update-AzPolicySetDefinition -Name <String> -SubscriptionId <String> [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>]
  [-PolicyDefinitionGroup <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Id
 ```
 Update-AzPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description <String>]
  [-PolicyDefinition <String>] [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>]
- [-BackwardCompatible] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ Update-AzPolicySetDefinition -Id <String> [-DisplayName <String>] [-Description 
 ```
 Update-AzPolicySetDefinition [-DisplayName <String>] [-Description <String>] [-PolicyDefinition <String>]
  [-Metadata <String>] [-Parameter <String>] [-PolicyDefinitionGroup <String>] [-BackwardCompatible]
- -InputObject <IPolicySetDefinition> [-DefaultProfile <PSObject>]
+ -InputObject <IPolicySetDefinition> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -273,6 +273,21 @@ To construct, see NOTES section for POLICYDEFINITIONGROUP properties and create 
 Type: System.String
 Parameter Sets: (All)
 Aliases: GroupDefinition
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

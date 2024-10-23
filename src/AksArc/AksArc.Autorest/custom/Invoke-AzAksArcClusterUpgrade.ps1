@@ -121,11 +121,9 @@ function Invoke-AzAksArcClusterUpgrade {
         if ($PSBoundParameters.ContainsKey("KubernetesVersion"))
         {   
             $Upgrades = Get-AzAksArcClusterUpgrade -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
-            if ($upgrades.ControlPlaneProfileUpgrade.KubernetesVersion -contains $KubernetesVersion) {
-                continue
-            } else {
+            if (!($upgrades.ControlPlaneProfileUpgrade.KubernetesVersion -contains $KubernetesVersion)) {
                 throw "Kubernetes Version $KubernetesVersion is not a valid upgradable version."
-            }
+            } 
         } else {
             $Upgrades = Get-AzAksArcClusterUpgrade -ClusterName $ClusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId
             $UpgradeListLength = $upgrades.ControlPlaneProfileUpgrade.KubernetesVersion.Length
@@ -137,8 +135,7 @@ function Invoke-AzAksArcClusterUpgrade {
     
             $null = $PSBoundParameters.Add("KubernetesVersion", $LatestUpgrade)
         }
-    
+        
         Az.AksArc.internal\Update-AzAksArcCluster @PSBoundParameters
     }
     }
-    

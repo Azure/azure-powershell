@@ -20,7 +20,28 @@ Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-Sub
  [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
  [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
  [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InstallViaJsonString
+```
+Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InstallViaJsonFilePath
+```
+Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Install
+```
+Install-AzConnectedMachinePatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -InstallPatchesInput <IMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InstallViaIdentityExpanded
@@ -31,7 +52,14 @@ Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity> -Maximu
  [-WindowParameterClassificationsToInclude <String[]>] [-WindowParameterExcludeKbsRequiringReboot]
  [-WindowParameterKbNumbersToExclude <String[]>] [-WindowParameterKbNumbersToInclude <String[]>]
  [-WindowParameterMaxPatchPublishDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InstallViaIdentity
+```
+Install-AzConnectedMachinePatch -InputObject <IConnectedMachineIdentity>
+ -InstallPatchesInput <IMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +122,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: InstallViaIdentityExpanded
+Parameter Sets: InstallViaIdentityExpanded, InstallViaIdentity
 Aliases:
 
 Required: True
@@ -104,12 +132,57 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -InstallPatchesInput
+Input for InstallPatches as directly received by the API
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParameters
+Parameter Sets: Install, InstallViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Install operation
+
+```yaml
+Type: System.String
+Parameter Sets: InstallViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Install operation
+
+```yaml
+Type: System.String
+Parameter Sets: InstallViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LinuxParameterClassificationsToInclude
 The update classifications to select when installing patches for Linux.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -125,7 +198,7 @@ Format: packageName_packageVersion
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -141,7 +214,7 @@ Format: packageName_packageVersion
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -157,7 +230,7 @@ It must be an ISO 8601-compliant duration string such as PT4H (4 hours)
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -172,7 +245,7 @@ The name of the hybrid machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: InstallExpanded
+Parameter Sets: InstallExpanded, InstallViaJsonString, InstallViaJsonFilePath, Install
 Aliases:
 
 Required: True
@@ -197,12 +270,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RebootSetting
 Defines when it is acceptable to reboot a VM during a software update operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -217,7 +305,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: InstallExpanded
+Parameter Sets: InstallExpanded, InstallViaJsonString, InstallViaJsonFilePath, Install
 Aliases:
 
 Required: True
@@ -232,7 +320,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: InstallExpanded
+Parameter Sets: InstallExpanded, InstallViaJsonString, InstallViaJsonFilePath, Install
 Aliases:
 
 Required: False
@@ -247,7 +335,7 @@ The update classifications to select when installing patches for Windows.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -262,7 +350,7 @@ Filters out Kbs that don't have an InstallationRebootBehavior of 'NeverReboots' 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -277,7 +365,7 @@ Kbs to exclude in the patch operation
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -292,7 +380,7 @@ Kbs to include in the patch operation
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -307,7 +395,7 @@ This is used to install patches that were published on or before this given max 
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -354,6 +442,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParameters
 
 ## OUTPUTS
 

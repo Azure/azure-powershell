@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>Storage</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+
+  <PropertyGroup>    
+	<TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.Azure.PowerShell.Storage.Common</AssemblyName>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.Storage.Common</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="D:\code\PSH_Dev\src\shared\ConfigKeys.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Storage.Files.Shares" Version="12.16.0" />
+    <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="1.0.8" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.2.3" />
+  </ItemGroup>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
+</Project>

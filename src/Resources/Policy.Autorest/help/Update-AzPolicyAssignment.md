@@ -19,15 +19,17 @@ For example, when you assign a policy at resource group scope, that policy appli
 Update-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-Description <String>]
  [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
  [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Id
 ```
 Update-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
  [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
- [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### IdParameterObject
@@ -35,7 +37,8 @@ Update-AzPolicyAssignment -Id <String> [-BackwardCompatible] [-Description <Stri
 Update-AzPolicyAssignment -Id <String> -PolicyParameterObject <PSObject> [-BackwardCompatible]
  [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
  [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
- [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NotScope <String[]>] [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### IdParameterString
@@ -43,7 +46,8 @@ Update-AzPolicyAssignment -Id <String> -PolicyParameterObject <PSObject> [-Backw
 Update-AzPolicyAssignment -Id <String> -PolicyParameter <String> [-BackwardCompatible] [-Description <String>]
  [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
  [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### InputObject
@@ -51,7 +55,8 @@ Update-AzPolicyAssignment -Id <String> -PolicyParameter <String> [-BackwardCompa
 Update-AzPolicyAssignment -InputObject <IPolicyAssignment> [-BackwardCompatible] [-Description <String>]
  [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
  [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### NameParameterObject
@@ -59,7 +64,8 @@ Update-AzPolicyAssignment -InputObject <IPolicyAssignment> [-BackwardCompatible]
 Update-AzPolicyAssignment -Name <String> -PolicyParameterObject <PSObject> [-Scope <String>]
  [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
  [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -68,7 +74,8 @@ Update-AzPolicyAssignment -Name <String> -PolicyParameterObject <PSObject> [-Sco
 Update-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>] [-BackwardCompatible]
  [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
  [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
- [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NotScope <String[]>] [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,7 +174,27 @@ Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -NonComplianceMessage
 The first command gets the policy assignment named VirtualMachinePolicy by using the Get-AzPolicyAssignment cmdlet and stores it in the $PolicyAssignment variable.
 The final command updates the non-compliance messages on the policy assignment with a new message that will be displayed if a resource is denied by the policy.
 
-### Example 8: [Backcompat] Update an enforcementMode
+### Example 8: Update resource selector
+```powershell
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -ResourceSelector $ResourceSelector
+```
+
+The first command creates a resource selector object that will be used to specify the assignment should only apply to resources not located in East US or East US 2 and stores it in the $ResourceSelector variable.
+The final command updates the policy assignment named VirtualMachinePolicyAssignment with the resource selector specified by $ResourceSelector.
+
+### Example 9: Update override
+```powershell
+$Selector = @{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")}
+$Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Override $Override
+```
+
+The first command creates a location selector specifying locations other than East US or East US 2 and stores in in the $Selector variable.
+The second command creates an override object that will be used to specify that the assigned definition should have a Disabled effect in the locations identified by $Selector.
+The final command updates the policy assignment named VirtualMachinePolicyAssignment with the override specified by $Override.
+
+### Example 10: [Backcompat] Update an enforcementMode
 ```powershell
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
@@ -400,6 +427,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Override
+The policy property value override.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PolicyParameter
 The parameter values for the assigned policy rule.
 The keys are the parameter names.
@@ -426,6 +468,21 @@ Parameter Sets: IdParameterObject, NameParameterObject
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceSelector
+The resource selector list to filter policies by resource properties.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a new action group or Update an existing one.</summary>
+    /// <summary>Update a new action group or update an existing one.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzActionGroup_UpdateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Description(@"Update a new action group or Update an existing one.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Description(@"Update a new action group or update an existing one.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}", ApiVersion = "2023-01-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.NotSuggestDefaultParameterSet]

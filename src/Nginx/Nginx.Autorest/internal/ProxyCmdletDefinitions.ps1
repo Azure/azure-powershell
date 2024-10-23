@@ -16,21 +16,21 @@
 
 <#
 .Synopsis
-List all operations provided by Nginx.NginxPlus for the 2023-04-01 api version.
+List all operations provided by Nginx.NginxPlus for the 2024-01-01-preview api version.
 .Description
-List all operations provided by Nginx.NginxPlus for the 2023-04-01 api version.
+List all operations provided by Nginx.NginxPlus for the 2024-01-01-preview api version.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IOperationResult
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IOperationResult
 .Link
 https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxoperation
 #>
 function Get-AzNginxOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.IOperationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.IOperationResult])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

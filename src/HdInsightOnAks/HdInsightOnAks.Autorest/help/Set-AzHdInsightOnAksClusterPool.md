@@ -15,8 +15,8 @@ Update a cluster pool.
 ### UpdateExpanded (Default)
 ```
 Set-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-ClusterPoolVersion <String>] [-EnableLogAnalytics]
- [-LogAnalyticWorkspaceResourceId <String>] [-ManagedResourceGroupName <String>]
+ [-SubscriptionId <String>] [-ClusterPoolVersion <String>] [-ComputeProfileAvailabilityZone <String[]>]
+ [-EnableLogAnalytics] [-LogAnalyticWorkspaceResourceId <String>] [-ManagedResourceGroupName <String>]
  [-NetworkProfileApiServerAuthorizedIPRange <String[]>] [-NetworkProfileEnablePrivateApiServer]
  [-NetworkProfileOutboundType <String>] [-SubnetId <String>] [-Tag <Hashtable>] [-VmSize <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -48,7 +48,7 @@ Update a cluster pool.
 
 ## EXAMPLES
 
-### Example 1: Update an Azure HDInsight gen2 cluster pool.
+### Example 1: Update an Azure HDInsight cluster pool.
 ```powershell
 # Cluster configuration info
 $location = "East US 2"
@@ -96,7 +96,7 @@ Tag                                            : Microsoft.Azure.PowerShell.Cmdl
 Type                                           : microsoft.hdinsight/clusterpools
 ```
 
-Update an Azure HDInsight gen2 cluster pool enableLogAnalytics.
+Update an Azure HDInsight cluster pool enableLogAnalytics.
 
 ## PARAMETERS
 
@@ -135,6 +135,21 @@ Cluster pool version is a 2-part version.
 
 ```yaml
 Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeProfileAvailabilityZone
+The list of Availability zones to use for AKS VMSS nodes.
+
+```yaml
+Type: System.String[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -273,6 +288,7 @@ IP ranges are specified in CIDR format, e.g.
 137.117.106.88/29.
 This feature is not compatible with private AKS clusters.
 So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+Currently, this property is not supported and please don't use it.
 
 ```yaml
 Type: System.String[]

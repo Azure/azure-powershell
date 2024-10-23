@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Supported `EnforceDataIntegrityCheckForIscsi` for creating and updating volume groups
+
+## Version 1.0.3
+* Added warnings for upcoming breaking changes to align the MI best practices.
+
 ## Version 1.0.2
 * Introduced secrets detection feature to safeguard sensitive data.
 

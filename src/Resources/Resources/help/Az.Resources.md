@@ -623,8 +623,17 @@ Validates a deployment.
 ### [Test-AzManagementGroupDeployment](Test-AzManagementGroupDeployment.md)
 Validates a deployment at a management group.
 
+### [Test-AzManagementGroupDeploymentStack](Test-AzManagementGroupDeploymentStack.md)
+Validates a management group scoped deployment stack.
+
 ### [Test-AzResourceGroupDeployment](Test-AzResourceGroupDeployment.md)
 Validates a resource group deployment.
+
+### [Test-AzResourceGroupDeploymentStack](Test-AzResourceGroupDeploymentStack.md)
+Validates a resource group scoped deployment stack.
+
+### [Test-AzSubscriptionDeploymentStack](Test-AzSubscriptionDeploymentStack.md)
+Validates a subscription scoped deployment stack.
 
 ### [Test-AzTenantDeployment](Test-AzTenantDeployment.md)
 Validates a deployment at tenant scope.

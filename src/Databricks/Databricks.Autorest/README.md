@@ -51,6 +51,14 @@ use-extension:
   "@autorest/powershell": "3.x"
 
 directive:
+  - from: swagger-document
+    where: $.definitions.EncryptionV2
+    transform: delete $.required
+
+  - from: swagger-document
+    where: $.definitions.ManagedDiskEncryption
+    transform: delete $.required
+
 # Worked around this issue: https://github.com/Azure/autorest.powershell/issues/1258
   - from: EncryptionEntitiesDefinition.json.cs
     where: $

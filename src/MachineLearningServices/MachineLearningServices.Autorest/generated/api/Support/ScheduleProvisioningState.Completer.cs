@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
 {
 
-    /// <summary>Argument completer implementation for ScheduleProvisioningState.</summary>
+    /// <summary>The current deployment state of schedule.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleProvisioningStateTypeConverter))]
     public partial struct ScheduleProvisioningState :
         System.Management.Automation.IArgumentCompleter

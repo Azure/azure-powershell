@@ -66,7 +66,7 @@ CurrentJobId                : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigrat
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
 CurrentJobName              : None
 CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : d8b110c6-3be9-4798-b2d4-9a1cd068adfb
+EventCorrelationId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 Health                      : Normal
 HealthError                 : {101883a0-23f7-538a-bbd5-6d8b4fa900e2}
 Id                          : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
@@ -102,7 +102,7 @@ CurrentJobId                : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigrat
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
 CurrentJobName              : None
 CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : d8b110c6-3be9-4798-b2d4-9a1cd068adfb
+EventCorrelationId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 Health                      : Normal
 HealthError                 : {101883a0-23f7-538a-bbd5-6d8b4fa900e2}
 Id                          : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
@@ -129,7 +129,7 @@ CurrentJobId                : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigrat
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
 CurrentJobName              : None
 CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : 57b59212-6a2f-4333-8882-461647bb05f9
+EventCorrelationId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 Health                      : Normal
 HealthError                 : {593b735d-2a34-53b2-b8ed-e33da5650703}
 Id                          : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
@@ -165,7 +165,7 @@ CurrentJobId                : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigrat
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
 CurrentJobName              : None
 CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : d8b110c6-3be9-4798-b2d4-9a1cd068adfb
+EventCorrelationId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 Health                      : Normal
 HealthError                 : {101883a0-23f7-538a-bbd5-6d8b4fa900e2}
 Id                          : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
@@ -192,7 +192,7 @@ CurrentJobId                : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigrat
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationJobs/None
 CurrentJobName              : None
 CurrentJobStartTime         : 1/1/53 1:01:01 AM
-EventCorrelationId          : 57b59212-6a2f-4333-8882-461647bb05f9
+EventCorrelationId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 Health                      : Normal
 HealthError                 : {593b735d-2a34-53b2-b8ed-e33da5650703}
 Id                          : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ

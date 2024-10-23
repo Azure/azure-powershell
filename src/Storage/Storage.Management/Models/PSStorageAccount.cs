@@ -13,15 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Auth;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Storage.Adapters;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
 using System;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
@@ -170,13 +172,38 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string DnsEndpointType { get; set; }
 
 
-        public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
+        public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client, IAzureContext DefaultContext)
         {
             var result = new PSStorageAccount(storageAccount);
-            result.Context = new LazyAzureStorageContext((s) =>
+
+            // If not allow Shared key, will get Oauth context
+            if (storageAccount.AllowSharedKeyAccess.HasValue && !storageAccount.AllowSharedKeyAccess.Value)
             {
-                return (new ARMStorageProvider(client)).GetCloudStorageAccount(s, result.ResourceGroupName);
-            }, result.StorageAccountName) as AzureStorageContext;
+                result.Context = new LazyAzureStorageContext((s) =>
+                {
+                    TokenCredential tokenCredential = OAuthUtil.getTokenCredential(DefaultContext, null);
+                    StorageCredentials credential = new StorageCredentials(tokenCredential);
+                    CloudStorageAccount track1Account = new CloudStorageAccount(credential,
+                        string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Blob) ? null : new Uri(storageAccount.PrimaryEndpoints.Blob),
+                        string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Queue) ? null : new Uri(storageAccount.PrimaryEndpoints.Queue),
+                        string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.Table) ? null : new Uri(storageAccount.PrimaryEndpoints.Table),
+                        string.IsNullOrEmpty(storageAccount.PrimaryEndpoints.File) ? null : new Uri(storageAccount.PrimaryEndpoints.File));
+                    return track1Account;
+                },
+                result.StorageAccountName,
+                () =>
+                {
+                    return new AzureSessionCredential(DefaultContext, null);
+                }) as AzureStorageContext;
+            }
+            // get sharedkey context
+            else
+            {
+                result.Context = new LazyAzureStorageContext((s) =>
+                {
+                    return (new ARMStorageProvider(client)).GetCloudStorageAccount(s, result.ResourceGroupName);
+                }, result.StorageAccountName) as AzureStorageContext;
+            }
 
             return result;
         }

@@ -126,9 +126,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ManagedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedBy = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedBy, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfoTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SizeGiB"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).SizeGiB = (long?) content.GetValueForProperty("SizeGiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).SizeGiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ManagedByResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedByResourceId = (string) content.GetValueForProperty("ManagedByResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedByResourceId, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -147,9 +155,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("ManagedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedBy = (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedBy, Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfoTypeConverter.ConvertFrom);
+            }
             if (content.Contains("SizeGiB"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).SizeGiB = (long?) content.GetValueForProperty("SizeGiB",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).SizeGiB, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ManagedByResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedByResourceId = (string) content.GetValueForProperty("ManagedByResourceId",((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeUpdatePropertiesInternal)this).ManagedByResourceId, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

@@ -16,14 +16,14 @@ Modifies a Template Spec.
 ```
 Set-AzTemplateSpec [-Location <String>] [-Tag <Hashtable>] [-UIFormDefinitionFile <String>]
  [-UIFormDefinitionString <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByIdParameterSet
 ```
 Set-AzTemplateSpec [-ResourceId] <String> [[-Description] <String>] [[-DisplayName] <String>]
  [-Location <String>] [-Tag <Hashtable>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Set-AzTemplateSpec [-ResourceId] <String> [[-Description] <String>] [[-DisplayNa
 Set-AzTemplateSpec [-ResourceId] <String> [-Version] <String> [[-Description] <String>]
  [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateFile <String>
  [-VersionDescription <String>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Set-AzTemplateSpec [-ResourceId] <String> [-Version] <String> [[-Description] <S
 Set-AzTemplateSpec [-ResourceId] <String> [-Version] <String> [[-Description] <String>]
  [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateJson <String>
  [-VersionDescription <String>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -50,7 +50,7 @@ Set-AzTemplateSpec [-ResourceId] <String> [-Version] <String> [[-Description] <S
 Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [[-Description] <String>]
  [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] [-UIFormDefinitionFile <String>]
  [-UIFormDefinitionString <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateVersionByNameFromJsonFileParameterSet
@@ -58,7 +58,7 @@ Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [[-Description
 Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [-Version] <String> [[-Description] <String>]
  [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateFile <String>
  [-VersionDescription <String>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -67,7 +67,7 @@ Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [-Version] <St
 Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [-Version] <String> [[-Description] <String>]
  [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateJson <String>
  [-VersionDescription <String>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -200,6 +200,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

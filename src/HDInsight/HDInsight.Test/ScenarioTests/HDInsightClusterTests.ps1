@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,13 +29,13 @@ function Test-ClusterRelatedCommands{
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
+		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential  -VirtualNetworkId $params.virtualNetworkId -SubnetName "default" `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion
 
 		Assert-NotNull $cluster
 		
 		#test Get-AzHDInsightCluster
-		$resultCluster = Get-AzHDInsightCluster -ClusterName $cluster.Name
+		$resultCluster = Get-AzHDInsightCluster -ResourceGroupName $params.resourceGroupName -ClusterName $cluster.Name
 		Assert-AreEqual $resultCluster.Name  $cluster.Name
 		
 		#test Set-AzHDInsightClusterSize
@@ -46,8 +46,7 @@ function Test-ClusterRelatedCommands{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -81,15 +80,15 @@ function Test-CmkClusterRelatedCommands{
 		#test Set-AzHDInsightClusterDiskEncryptionKey
 		$encryptionKey=Create-KeyIdentity -resourceGroupName $cluster.ResourceGroup -vaultName $vaultName -keyName $newKeyName
 		$rotateKeyCluster = Set-AzHDInsightClusterDiskEncryptionKey -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup `
-		-EncryptionKeyName $encryptionKey.Name -EncryptionKeyVersion $encryptionKey.Version -EncryptionVaultUri $encryptionKey.Vault
+		-EncryptionKeyName $encryptionKey.Name -EncryptionKeyVersion $encryptionKey.Version -EncryptionVaultUri $encryptionKey.Vault -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 		Assert-AreEqual $rotateKeyCluster.DiskEncryption.KeyVersion $encryptionKey.Version
 		Assert-AreEqual $rotateKeyCluster.DiskEncryption.KeyName $encryptionKey.Name
 	}
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -112,7 +111,7 @@ function Test-CreateClusterWithEncryptionInTransit{
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EncryptionInTransit $encryptionInTransit
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EncryptionInTransit $encryptionInTransit -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		Assert-AreEqual $cluster.EncryptionInTransit $encryptionInTransit
 		
@@ -120,8 +119,8 @@ function Test-CreateClusterWithEncryptionInTransit{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -148,7 +147,7 @@ function Test-CreateClusterWithEncryptionAtHost{
 		-WorkerNodeSize $workerNodeSize -HeadNodeSize $headNodeSize -ZookeeperNodeSize $zookeeperNodeSize `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EncryptionAtHost $encryptionAtHost
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EncryptionAtHost $encryptionAtHost -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		Assert-AreEqual $cluster.DiskEncryption.EncryptionAtHost $encryptionAtHost
 		
@@ -156,8 +155,8 @@ function Test-CreateClusterWithEncryptionAtHost{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -183,7 +182,7 @@ function Test-CreateClusterWithLoadBasedAutoscale{
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -Version 4.0 `
-		-AutoscaleConfiguration $autoscaleConfiguration
+		-AutoscaleConfiguration $autoscaleConfiguration -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		Assert-NotNull $cluster
 		Assert-AreEqual $cluster.ComputeProfile.Roles[1].AutoscaleConfiguration.Capacity.MinInstanceCount 4
@@ -192,8 +191,8 @@ function Test-CreateClusterWithLoadBasedAutoscale{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -224,7 +223,7 @@ function Test-CreateClusterWithScheduleBasedAutoscale{
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion -Version 4.0 `
-		-AutoscaleConfiguration $autoscaleConfiguration
+		-AutoscaleConfiguration $autoscaleConfiguration -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		Assert-NotNull $cluster
 		Assert-NotNull $cluster.ComputeProfile.Roles[1].AutoscaleConfiguration.Recurrence
@@ -234,8 +233,8 @@ function Test-CreateClusterWithScheduleBasedAutoscale{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -271,8 +270,8 @@ function Test-CreateClusterWithKafkaRestProxy{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -287,10 +286,11 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "Japan East"
+		$params= Prepare-ClusterCreateParameter
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
-		$vnetId= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/zzy-test-rg/providers/Microsoft.Network/virtualNetworks/zzytestvnet"#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
+		#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
+		$vnetId= "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/yuchen-ps-test/providers/Microsoft.Network/virtualNetworks/hdi-vn"
 		$subnetName="default"
 
 		# create cluster
@@ -300,7 +300,7 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
 		-MinSupportedTlsVersion $params.minSupportedTlsVersion `
 		-VirtualNetworkId $vnetId -SubnetName $subnetName -Version 4.0 `
-		-ResourceProviderConnection Outbound -PrivateLink Enabled
+		-ResourceProviderConnection Outbound -PrivateLink Enabled -PublicIpTagType FirstPartyUsage -PublicIpTag HDInsight
 
 		Assert-AreEqual $cluster.NetworkProperties.ResourceProviderConnection Outbound
 		Assert-AreEqual $cluster.NetworkProperties.PrivateLink Enabled
@@ -308,9 +308,8 @@ function Test-CreateClusterWithRelayOutoundAndPrivateLink{
 	}
 	finally
 	{
-		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -325,7 +324,7 @@ function Test-CreateClusterWithCustomAmbariDatabase{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "Japaneast"
+		$params= Prepare-ClusterCreateParameter
 
 		# prepare custom ambari database
 		$databaseUserName="yourusername"
@@ -353,8 +352,8 @@ function Test-CreateClusterWithCustomAmbariDatabase{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -380,7 +379,7 @@ function Test-CreateClusterWithComputeIsolation{
 		-WorkerNodeSize $workerNodeSize -HeadNodeSize $headNodeSize -ZookeeperNodeSize $zookeeperNodeSize `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EnableComputeIsolation
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EnableComputeIsolation -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		Assert-AreEqual $cluster.ComputeIsolationProperties.EnableComputeIsolation $true
 		
@@ -388,8 +387,8 @@ function Test-CreateClusterWithComputeIsolation{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -412,7 +411,7 @@ function Test-ClusterEnableSecureChannelCommands{
 		-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
 		-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
 		-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EnableSecureChannel $enableSecureChannel
+		-MinSupportedTlsVersion $params.minSupportedTlsVersion -EnableSecureChannel $enableSecureChannel -VirtualNetworkId $params.virtualNetworkId -SubnetName "default"
 
 		Assert-NotNull $cluster
 		Assert-AreEqual $cluster.EnableSecureChannel $enableSecureChannel
@@ -421,7 +420,7 @@ function Test-ClusterEnableSecureChannelCommands{
 	{
 		# Delete cluster and resource group
 		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		# Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -436,7 +435,7 @@ function Test-CreateClusterWithAvailabilityZones{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "Japan East"
+		$params= Prepare-ClusterCreateParameter
 
 		# prepare custom ambari database
 		$databaseUserName="yourusername"
@@ -479,8 +478,8 @@ function Test-CreateClusterWithAvailabilityZones{
 	}
 	finally
 	{
-		# Delete and resource group
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
 
@@ -495,7 +494,7 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 	try
 	{
 		# prepare parameter for creating parameter
-		$params= Prepare-ClusterCreateParameter -location "Japan East"
+		$params= Prepare-ClusterCreateParameter
 
 		# Private Link requires vnet has firewall, this is difficult to create dynamically, just hardcode here
 		$vnetId= "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/zzy-test-rg/providers/Microsoft.Network/virtualNetworks/zzytestvnet"#"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/fakevnet"
@@ -528,7 +527,39 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 	finally
 	{
 		# Delete cluster and resource group
-		Remove-AzHDInsightCluster -ClusterName $cluster.Name
-		Remove-AzResourceGroup -ResourceGroupName $cluster.ResourceGroup
+		# Remove-AzHDInsightCluster -ClusterName $cluster.Name
+		Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
+	}
+}
+
+<#
+.SYNOPSIS
+Test Update clusterIdentity
+#>
+
+function Test-UpdateClusterTagsAndIdentity{
+
+	# Create some resources that will be used throughout test
+	try
+	{
+		$location = "East US"
+
+		# create cluster that will be used throughout test
+		$cluster = Get-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51
+		Assert-NotNull $cluster
+
+		# Update cluster tags
+		#$tags = @{"tag1"="value1";"tag2"="value2"} 
+		#Update-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51 -Tag @{"Tag1"="Value1"; "Tag2"="Value2"}
+
+		# Update cluster identity
+		# Update-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51 -IdentityType SystemAssigned
+
+		# Update cluster identity
+		Update-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51 -IdentityType UserAssigned -IdentityId "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi"
+
+ 	}
+	finally
+	{
 	}
 }

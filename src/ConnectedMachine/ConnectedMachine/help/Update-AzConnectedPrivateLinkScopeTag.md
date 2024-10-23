@@ -8,8 +8,8 @@ schema: 2.0.0
 # Update-AzConnectedPrivateLinkScopeTag
 
 ## SYNOPSIS
-Update an existing PrivateLinkScope's tags.
-To update other fields use the CreateOrUpdate method.
+update an existing PrivateLinkScope's tags.
+To update other fields use the CreateOrupdate method.
 
 ## SYNTAX
 
@@ -17,46 +17,46 @@ To update other fields use the CreateOrUpdate method.
 ```
 Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName <String> -ScopeName <String>
  [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName <String> -ScopeName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName <String> -ScopeName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName <String> -ScopeName <String>
  [-SubscriptionId <String>] -PrivateLinkScopeTag <ITagsResource> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzConnectedPrivateLinkScopeTag -InputObject <IConnectedMachineIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
 Update-AzConnectedPrivateLinkScopeTag -InputObject <IConnectedMachineIdentity>
- -PrivateLinkScopeTag <ITagsResource> [-DefaultProfile <PSObject>]
+ -PrivateLinkScopeTag <ITagsResource> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update an existing PrivateLinkScope's tags.
-To update other fields use the CreateOrUpdate method.
+update an existing PrivateLinkScope's tags.
+To update other fields use the CreateOrupdate method.
 
 ## EXAMPLES
 
@@ -149,6 +149,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

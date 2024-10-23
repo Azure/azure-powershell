@@ -110,7 +110,11 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="adminState">Property to indicate if the Express Route Gateway serves traffic when there
         /// are multiple Express Route Gateways in the vnet
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
-        public VirtualNetworkGatewayPropertiesFormat(VirtualNetworkGatewayAutoScaleConfiguration autoScaleConfiguration = default(VirtualNetworkGatewayAutoScaleConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration>), string gatewayType = default(string), string vpnType = default(string), string vpnGatewayGeneration = default(string), bool? enableBgp = default(bool?), bool? enablePrivateIPAddress = default(bool?), bool? active = default(bool?), bool? disableIPSecReplayProtection = default(bool?), SubResource gatewayDefaultSite = default(SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup> virtualNetworkGatewayPolicyGroups = default(System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup>), BgpSettings bgpSettings = default(BgpSettings), AddressSpace customRoutes = default(AddressSpace), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDnsForwarding = default(bool?), string inboundDnsForwardingEndpoint = default(string), string vNetExtendedLocationResourceId = default(string), System.Collections.Generic.IList<VirtualNetworkGatewayNatRule> natRules = default(System.Collections.Generic.IList<VirtualNetworkGatewayNatRule>), bool? enableBgpRouteTranslationForNat = default(bool?), bool? allowVirtualWanTraffic = default(bool?), bool? allowRemoteVnetTraffic = default(bool?), string adminState = default(string))
+
+        /// <param name="resiliencyModel">Property to indicate if the Express Route Gateway has resiliency model of
+        /// MultiHomed or SingleHomed
+        /// Possible values include: &#39;SingleHomed&#39;, &#39;MultiHomed&#39;</param>
+        public VirtualNetworkGatewayPropertiesFormat(VirtualNetworkGatewayAutoScaleConfiguration autoScaleConfiguration = default(VirtualNetworkGatewayAutoScaleConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration> ipConfigurations = default(System.Collections.Generic.IList<VirtualNetworkGatewayIPConfiguration>), string gatewayType = default(string), string vpnType = default(string), string vpnGatewayGeneration = default(string), bool? enableBgp = default(bool?), bool? enablePrivateIPAddress = default(bool?), bool? active = default(bool?), bool? disableIPSecReplayProtection = default(bool?), SubResource gatewayDefaultSite = default(SubResource), VirtualNetworkGatewaySku sku = default(VirtualNetworkGatewaySku), VpnClientConfiguration vpnClientConfiguration = default(VpnClientConfiguration), System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup> virtualNetworkGatewayPolicyGroups = default(System.Collections.Generic.IList<VirtualNetworkGatewayPolicyGroup>), BgpSettings bgpSettings = default(BgpSettings), AddressSpace customRoutes = default(AddressSpace), string resourceGuid = default(string), string provisioningState = default(string), bool? enableDnsForwarding = default(bool?), string inboundDnsForwardingEndpoint = default(string), string vNetExtendedLocationResourceId = default(string), System.Collections.Generic.IList<VirtualNetworkGatewayNatRule> natRules = default(System.Collections.Generic.IList<VirtualNetworkGatewayNatRule>), bool? enableBgpRouteTranslationForNat = default(bool?), bool? allowVirtualWanTraffic = default(bool?), bool? allowRemoteVnetTraffic = default(bool?), string adminState = default(string), string resiliencyModel = default(string))
 
         {
             this.AutoScaleConfiguration = autoScaleConfiguration;
@@ -138,6 +142,7 @@ namespace Microsoft.Azure.Management.Network.Models
             this.AllowVirtualWanTraffic = allowVirtualWanTraffic;
             this.AllowRemoteVnetTraffic = allowRemoteVnetTraffic;
             this.AdminState = adminState;
+            this.ResiliencyModel = resiliencyModel;
             CustomInit();
         }
 
@@ -313,6 +318,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "adminState")]
         public string AdminState {get; set; }
+
+        /// <summary>
+        /// Gets or sets property to indicate if the Express Route Gateway has
+        /// resiliency model of MultiHomed or SingleHomed Possible values include: &#39;SingleHomed&#39;, &#39;MultiHomed&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resiliencyModel")]
+        public string ResiliencyModel {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -334,6 +346,7 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 this.BgpSettings.Validate();
             }
+
 
 
 

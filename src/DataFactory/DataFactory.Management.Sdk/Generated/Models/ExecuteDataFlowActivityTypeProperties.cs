@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="integrationRuntime">The integration runtime reference.
         /// </param>
 
+        /// <param name="continuationSettings">Continuation settings for execute data flow activity.
+        /// </param>
+
         /// <param name="compute">Compute properties for data flow activity.
         /// </param>
 
@@ -55,12 +58,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="sourceStagingConcurrency">Specify number of parallel staging for sources applicable to the sink.
         /// Type: integer (or Expression with resultType integer)
         /// </param>
-        public ExecuteDataFlowActivityTypeProperties(DataFlowReference dataFlow, DataFlowStagingInfo staging = default(DataFlowStagingInfo), IntegrationRuntimeReference integrationRuntime = default(IntegrationRuntimeReference), ExecuteDataFlowActivityTypePropertiesCompute compute = default(ExecuteDataFlowActivityTypePropertiesCompute), object traceLevel = default(object), object continueOnError = default(object), object runConcurrently = default(object), object sourceStagingConcurrency = default(object))
+        public ExecuteDataFlowActivityTypeProperties(DataFlowReference dataFlow, DataFlowStagingInfo staging = default(DataFlowStagingInfo), IntegrationRuntimeReference integrationRuntime = default(IntegrationRuntimeReference), ContinuationSettingsReference continuationSettings = default(ContinuationSettingsReference), ExecuteDataFlowActivityTypePropertiesCompute compute = default(ExecuteDataFlowActivityTypePropertiesCompute), object traceLevel = default(object), object continueOnError = default(object), object runConcurrently = default(object), object sourceStagingConcurrency = default(object))
 
         {
             this.DataFlow = dataFlow;
             this.Staging = staging;
             this.IntegrationRuntime = integrationRuntime;
+            this.ContinuationSettings = continuationSettings;
             this.Compute = compute;
             this.TraceLevel = traceLevel;
             this.ContinueOnError = continueOnError;
@@ -92,6 +96,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "integrationRuntime")]
         public IntegrationRuntimeReference IntegrationRuntime {get; set; }
+
+        /// <summary>
+        /// Gets or sets continuation settings for execute data flow activity.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "continuationSettings")]
+        public ContinuationSettingsReference ContinuationSettings {get; set; }
 
         /// <summary>
         /// Gets or sets compute properties for data flow activity.
@@ -153,6 +163,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 this.IntegrationRuntime.Validate();
             }
+
 
 
 

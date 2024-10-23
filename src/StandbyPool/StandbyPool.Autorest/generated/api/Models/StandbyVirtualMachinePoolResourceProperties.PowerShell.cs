@@ -134,6 +134,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourcePropertiesInternal)this).ElasticityProfileMaxReadyCapacity = (long) content.GetValueForProperty("ElasticityProfileMaxReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourcePropertiesInternal)this).ElasticityProfileMaxReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
+            if (content.Contains("ElasticityProfileMinReadyCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourcePropertiesInternal)this).ElasticityProfileMinReadyCapacity = (long?) content.GetValueForProperty("ElasticityProfileMinReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourcePropertiesInternal)this).ElasticityProfileMinReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -170,6 +174,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             if (content.Contains("ElasticityProfileMaxReadyCapacity"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourcePropertiesInternal)this).ElasticityProfileMaxReadyCapacity = (long) content.GetValueForProperty("ElasticityProfileMaxReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourcePropertiesInternal)this).ElasticityProfileMaxReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ElasticityProfileMinReadyCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourcePropertiesInternal)this).ElasticityProfileMinReadyCapacity = (long?) content.GetValueForProperty("ElasticityProfileMinReadyCapacity",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourcePropertiesInternal)this).ElasticityProfileMinReadyCapacity, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             }
             AfterDeserializePSObject(content);
         }

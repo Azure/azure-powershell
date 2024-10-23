@@ -15,7 +15,7 @@ Create an in-memory object for PrometheusHaClusterProviderInstanceProperties.
 ```
 New-AzWorkloadsProviderPrometheusHaClusterInstanceObject [-ClusterName <String>] [-Hostname <String>]
  [-PrometheusUrl <String>] [-Sid <String>] [-SslCertificateUri <String>] [-SslPreference <SslPreference>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,21 +60,6 @@ Gets or sets the target machine name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
@@ -132,7 +117,7 @@ Accept wildcard characters: False
 Gets or sets certificate preference if secure communication is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SslPreference
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference
 Parameter Sets: (All)
 Aliases:
 
@@ -150,7 +135,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusHaClusterProviderInstanceProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.PrometheusHaClusterProviderInstanceProperties
 
 ## NOTES
 

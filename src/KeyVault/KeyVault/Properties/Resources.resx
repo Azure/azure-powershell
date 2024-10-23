@@ -630,4 +630,10 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="ProcessingCertError" xml:space="preserve">
     <value>Error happens when processing certificate '{0}'. See detailed error: {1}</value>
   </data>
+  <data name="InvalidRangeDaysBeforeExpiry" xml:space="preserve">
+    <value>Value must be between 1 and int.MaxValue.</value>
+  </data>
+  <data name="InvalidRangePercentageLifetime" xml:space="preserve">
+    <value>"Value must be between 0 and 99."</value>
+  </data>
 </root>

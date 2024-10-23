@@ -14,99 +14,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeProperties"
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradeProperties"
         /// />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeProperties __clusterAvailableUpgradeProperties = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgradeProperties();
-
-        /// <summary>Backing field for <see cref="ComponentName" /> property.</summary>
-        private string _componentName;
+        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradeProperties __clusterAvailableInPlaceUpgradeProperties = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableInPlaceUpgradeProperties();
 
         /// <summary>Name of component to be upgraded.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public string ComponentName { get => this._componentName; set => this._componentName = value; }
-
-        /// <summary>Backing field for <see cref="CreatedTime" /> property.</summary>
-        private global::System.DateTime? _createdTime;
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public string ComponentName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).ComponentName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).ComponentName = value ?? null; }
 
         /// <summary>Created time of current available upgrade version</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public global::System.DateTime? CreatedTime { get => this._createdTime; set => this._createdTime = value; }
-
-        /// <summary>Backing field for <see cref="Description" /> property.</summary>
-        private string _description;
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public global::System.DateTime? CreatedTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).CreatedTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).CreatedTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Hotfix version upgrade description.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public string Description { get => this._description; set => this._description = value; }
-
-        /// <summary>Backing field for <see cref="ExtendedProperty" /> property.</summary>
-        private string _extendedProperty;
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public string Description { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).Description = value ?? null; }
 
         /// <summary>Extended properties of current available upgrade version</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public string ExtendedProperty { get => this._extendedProperty; set => this._extendedProperty = value; }
-
-        /// <summary>Backing field for <see cref="Severity" /> property.</summary>
-        private string _severity;
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public string ExtendedProperty { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).ExtendedProperty; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).ExtendedProperty = value ?? null; }
 
         /// <summary>Severity of this upgrade.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public string Severity { get => this._severity; set => this._severity = value; }
-
-        /// <summary>Backing field for <see cref="SourceBuildNumber" /> property.</summary>
-        private string _sourceBuildNumber;
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public string Severity { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).Severity; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).Severity = value ?? null; }
 
         /// <summary>Source build number of current cluster component.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public string SourceBuildNumber { get => this._sourceBuildNumber; set => this._sourceBuildNumber = value; }
-
-        /// <summary>Backing field for <see cref="SourceClusterVersion" /> property.</summary>
-        private string _sourceClusterVersion;
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public string SourceBuildNumber { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).SourceBuildNumber; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).SourceBuildNumber = value ?? null; }
 
         /// <summary>Source cluster version of current cluster component.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public string SourceClusterVersion { get => this._sourceClusterVersion; set => this._sourceClusterVersion = value; }
-
-        /// <summary>Backing field for <see cref="SourceOssVersion" /> property.</summary>
-        private string _sourceOssVersion;
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public string SourceClusterVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).SourceClusterVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).SourceClusterVersion = value ?? null; }
 
         /// <summary>Source OSS version of current cluster component.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public string SourceOssVersion { get => this._sourceOssVersion; set => this._sourceOssVersion = value; }
-
-        /// <summary>Backing field for <see cref="TargetBuildNumber" /> property.</summary>
-        private string _targetBuildNumber;
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public string SourceOssVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).SourceOssVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).SourceOssVersion = value ?? null; }
 
         /// <summary>Target build number of component to be upgraded.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public string TargetBuildNumber { get => this._targetBuildNumber; set => this._targetBuildNumber = value; }
-
-        /// <summary>Backing field for <see cref="TargetClusterVersion" /> property.</summary>
-        private string _targetClusterVersion;
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public string TargetBuildNumber { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).TargetBuildNumber; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).TargetBuildNumber = value ?? null; }
 
         /// <summary>Target cluster version of component to be upgraded.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public string TargetClusterVersion { get => this._targetClusterVersion; set => this._targetClusterVersion = value; }
-
-        /// <summary>Backing field for <see cref="TargetOssVersion" /> property.</summary>
-        private string _targetOssVersion;
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public string TargetClusterVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).TargetClusterVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).TargetClusterVersion = value ?? null; }
 
         /// <summary>Target OSS version of component to be upgraded.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public string TargetOssVersion { get => this._targetOssVersion; set => this._targetOssVersion = value; }
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public string TargetOssVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).TargetOssVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).TargetOssVersion = value ?? null; }
 
         /// <summary>Type of upgrade.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Constant]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
-        public string UpgradeType { get => "HotfixUpgrade"; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradePropertiesInternal)__clusterAvailableUpgradeProperties).UpgradeType = "HotfixUpgrade"; }
+        public string UpgradeType { get => "HotfixUpgrade"; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradePropertiesInternal)__clusterAvailableInPlaceUpgradeProperties).UpgradeType = "HotfixUpgrade"; }
 
         /// <summary>
         /// Creates an new <see cref="ClusterAvailableUpgradeHotfixUpgradeProperties" /> instance.
         /// </summary>
         public ClusterAvailableUpgradeHotfixUpgradeProperties()
         {
-            this.__clusterAvailableUpgradeProperties.UpgradeType = "HotfixUpgrade";
+            this.__clusterAvailableInPlaceUpgradeProperties.UpgradeType = "HotfixUpgrade";
         }
 
         /// <summary>Validates that this object meets the validation criteria.</summary>
@@ -117,166 +84,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__clusterAvailableUpgradeProperties), __clusterAvailableUpgradeProperties);
-            await eventListener.AssertObjectIsValid(nameof(__clusterAvailableUpgradeProperties), __clusterAvailableUpgradeProperties);
+            await eventListener.AssertNotNull(nameof(__clusterAvailableInPlaceUpgradeProperties), __clusterAvailableInPlaceUpgradeProperties);
+            await eventListener.AssertObjectIsValid(nameof(__clusterAvailableInPlaceUpgradeProperties), __clusterAvailableInPlaceUpgradeProperties);
         }
     }
     /// Cluster available hotfix version upgrade.
     public partial interface IClusterAvailableUpgradeHotfixUpgradeProperties :
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeProperties
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradeProperties
     {
-        /// <summary>Name of component to be upgraded.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Name of component to be upgraded.",
-        SerializedName = @"componentName",
-        PossibleTypes = new [] { typeof(string) })]
-        string ComponentName { get; set; }
-        /// <summary>Created time of current available upgrade version</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Created time of current available upgrade version",
-        SerializedName = @"createdTime",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? CreatedTime { get; set; }
-        /// <summary>Hotfix version upgrade description.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Hotfix version upgrade description.",
-        SerializedName = @"description",
-        PossibleTypes = new [] { typeof(string) })]
-        string Description { get; set; }
-        /// <summary>Extended properties of current available upgrade version</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Extended properties of current available upgrade version",
-        SerializedName = @"extendedProperties",
-        PossibleTypes = new [] { typeof(string) })]
-        string ExtendedProperty { get; set; }
-        /// <summary>Severity of this upgrade.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Severity of this upgrade.",
-        SerializedName = @"severity",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("low", "medium", "high", "critical")]
-        string Severity { get; set; }
-        /// <summary>Source build number of current cluster component.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Source build number of current cluster component.",
-        SerializedName = @"sourceBuildNumber",
-        PossibleTypes = new [] { typeof(string) })]
-        string SourceBuildNumber { get; set; }
-        /// <summary>Source cluster version of current cluster component.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Source cluster version of current cluster component.",
-        SerializedName = @"sourceClusterVersion",
-        PossibleTypes = new [] { typeof(string) })]
-        string SourceClusterVersion { get; set; }
-        /// <summary>Source OSS version of current cluster component.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Source OSS version of current cluster component.",
-        SerializedName = @"sourceOssVersion",
-        PossibleTypes = new [] { typeof(string) })]
-        string SourceOssVersion { get; set; }
-        /// <summary>Target build number of component to be upgraded.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Target build number of component to be upgraded.",
-        SerializedName = @"targetBuildNumber",
-        PossibleTypes = new [] { typeof(string) })]
-        string TargetBuildNumber { get; set; }
-        /// <summary>Target cluster version of component to be upgraded.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Target cluster version of component to be upgraded.",
-        SerializedName = @"targetClusterVersion",
-        PossibleTypes = new [] { typeof(string) })]
-        string TargetClusterVersion { get; set; }
-        /// <summary>Target OSS version of component to be upgraded.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Target OSS version of component to be upgraded.",
-        SerializedName = @"targetOssVersion",
-        PossibleTypes = new [] { typeof(string) })]
-        string TargetOssVersion { get; set; }
 
     }
     /// Cluster available hotfix version upgrade.
     internal partial interface IClusterAvailableUpgradeHotfixUpgradePropertiesInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradePropertiesInternal
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal
     {
-        /// <summary>Name of component to be upgraded.</summary>
-        string ComponentName { get; set; }
-        /// <summary>Created time of current available upgrade version</summary>
-        global::System.DateTime? CreatedTime { get; set; }
-        /// <summary>Hotfix version upgrade description.</summary>
-        string Description { get; set; }
-        /// <summary>Extended properties of current available upgrade version</summary>
-        string ExtendedProperty { get; set; }
-        /// <summary>Severity of this upgrade.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("low", "medium", "high", "critical")]
-        string Severity { get; set; }
-        /// <summary>Source build number of current cluster component.</summary>
-        string SourceBuildNumber { get; set; }
-        /// <summary>Source cluster version of current cluster component.</summary>
-        string SourceClusterVersion { get; set; }
-        /// <summary>Source OSS version of current cluster component.</summary>
-        string SourceOssVersion { get; set; }
-        /// <summary>Target build number of component to be upgraded.</summary>
-        string TargetBuildNumber { get; set; }
-        /// <summary>Target cluster version of component to be upgraded.</summary>
-        string TargetClusterVersion { get; set; }
-        /// <summary>Target OSS version of component to be upgraded.</summary>
-        string TargetOssVersion { get; set; }
 
     }
 }

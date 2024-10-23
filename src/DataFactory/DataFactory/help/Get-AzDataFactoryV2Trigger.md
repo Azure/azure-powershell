@@ -41,7 +41,7 @@ Get-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
 ```
 
 ```output
-    TriggerName       : ScheduledTrigger
+TriggerName       : ScheduledTrigger
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF
     Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
@@ -62,7 +62,7 @@ Get-AzDataFactoryV2Trigger -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -
 ```
 
 ```output
-    TriggerName       : ScheduledTrigger
+TriggerName       : ScheduledTrigger
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF
     Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -113,6 +113,49 @@ function Test-NewStorageSyncService
     }
 }
 
+
+<#
+.SYNOPSIS
+Test NewStorageSyncServiceWithIdentity
+.DESCRIPTION
+SmokeTest
+#>
+function Test-NewStorageSyncServiceWithIdentity
+{
+    # Setup
+    $resourceGroupName = Get-ResourceGroupName
+    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
+    try
+    {
+        # Test
+        $storageSyncServiceName = Get-ResourceName("sss")
+        $resourceGroupLocation = Get-ResourceGroupLocation
+        $resourceLocation = Get-StorageSyncLocation("Microsoft.StorageSync/storageSyncServices");
+
+        Write-Verbose "RGName: $resourceGroupName | Loc: $resourceGroupLocation | Type : ResourceGroup"
+        New-AzResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation;
+
+        Write-Verbose "Resource: $storageSyncServiceName | Loc: $resourceLocation | Type : StorageSyncService"
+        try 
+        {
+            $storageSyncService = New-AzStorageSyncService -ResourceGroupName $resourceGroupName -Location $resourceLocation -StorageSyncServiceName $storageSyncServiceName -AssignIdentity -IdentityType SystemAssigned
+        }
+        catch 
+        {
+            Write-Host $_.Exception.Message
+            Write-Host $_.Exception.InnerException.Message
+            throw $_
+        }
+
+    }
+    finally
+    {
+        # Cleanup
+        Write-Verbose "Removing ResourceGroup : $resourceGroupName"
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
 <#
 .SYNOPSIS
 Test GetStorageSyncService
@@ -123,7 +166,8 @@ function Test-GetStorageSyncService
 {
     # Setup
     $resourceGroupName = Get-ResourceGroupName
-    Write-Verbose "RecordMode : $(Get-StorageTestMode)"
+    Write-Verbose "RecordMode : $(
+)"
     try
     {
         # Test

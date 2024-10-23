@@ -146,5 +146,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Gets or sets the zone redundant option of the database.
         /// </summary>
         public bool? ZoneRedundant { get; set; }
+
+        /// <summary>
+        /// Gets or sets the link type of the replication link.
+        /// </summary>
+        public string LinkType { get; set; }
     }
 }

@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Aks.Sdk\Aks.Sdk.csproj" />
+    <ProjectReference Include="..\Aks.Management.Sdk\Aks.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>

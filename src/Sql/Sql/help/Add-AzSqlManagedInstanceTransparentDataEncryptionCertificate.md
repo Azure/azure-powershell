@@ -25,10 +25,8 @@ The Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate adds a Transpar
 
 ### Example 1
 ```powershell
-$privateBlob = "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
-$securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
-$password = "CertificatePassword"
-$securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+$securePrivateBlob = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Add-AzSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -ManagedInstanceName "YourManagedInstanceName" -PrivateBlob $securePrivateBlob -Password $securePassword
 ```
 

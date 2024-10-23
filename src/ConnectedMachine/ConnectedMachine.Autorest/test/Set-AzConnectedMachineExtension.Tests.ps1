@@ -24,12 +24,12 @@ Describe 'Set-AzConnectedMachineExtension' {
             MachineName = $env.MachineName
             ResourceGroupName = $env.ResourceGroupName
             Location = $env.Location
-            Name = "customScript"
+            Name = "networkWatcher"
         }
     
-        $customSplat.ExtensionType = "CustomScriptExtension"
-        $customSplat.Publisher = "Microsoft.Compute"
-        $customSplat.TypeHandlerVersion = "1.10.10"
+        $customSplat.ExtensionType = "NetworkWatcherAgentWindows"
+        $customSplat.Publisher = "Microsoft.Azure.NetworkWatcher"
+        $customSplat.TypeHandlerVersion = "1.4.2798.3"
         $customSplat.Settings = @{
             commandToExecute = "powershell.exe ls"
         }

@@ -368,13 +368,14 @@ namespace Microsoft.Azure.Commands.Common
         {
             if (AzureSession.Instance.TryGetComponent<IOutputSanitizer>(nameof(IOutputSanitizer), out var outputSanitizer))
             {
-                if (outputSanitizer?.RequireSecretsDetection == true)
+                _telemetry.TryGetValue(telemetryId, out var qos);
+                if (outputSanitizer != null
+                    && outputSanitizer.RequireSecretsDetection
+                    && !outputSanitizer.IgnoredModules.Contains(qos?.ModuleName)
+                    && !outputSanitizer.IgnoredCmdlets.Contains(qos?.CommandName))
                 {
                     outputSanitizer.Sanitize(sanitizingObject, out var telemetry);
-                    if (_telemetry.TryGetValue(telemetryId, out var qos))
-                    {
-                        qos?.SanitizerInfo?.Combine(telemetry);
-                    }
+                    qos?.SanitizerInfo?.Combine(telemetry);
                 }
             }
         }

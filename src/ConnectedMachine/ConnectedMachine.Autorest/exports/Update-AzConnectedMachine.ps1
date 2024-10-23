@@ -20,9 +20,7 @@ The operation to update a hybrid machine.
 .Description
 The operation to update a hybrid machine.
 .Example
-Update-AzConnectedMachine -Name surface -ResourceGroupName rg -PrivateLinkScopeResourceId privateLinkScopeId -WindowsConfigurationPatchSettingsAssessmentMode AutomaticByOS -Tag @{"key"="value"}
-.Example
-Update-AzConnectedMachine -Name surface -ResourceGroupName rg -PrivateLinkScopeResourceId $null
+Update-AzConnectedMachine -Name $env.MachineName -ResourceGroupName $env.ResourceGroupName -PrivateLinkScopeResourceId $env.PrivateLinkScopeUri
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -63,6 +61,14 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [Version <String>]: The version of the Extension being received.
 
+OSPROFILE <IOSProfile>: Specifies the operating system settings for the hybrid machine.
+  [LinuxConfigurationPatchSettingsAssessmentMode <String>]: Specifies the assessment mode.
+  [LinuxConfigurationPatchSettingsEnableHotpatching <Boolean?>]: Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
+  [LinuxConfigurationPatchSettingsPatchMode <String>]: Specifies the patch mode.
+  [WindowsConfigurationPatchSettingsAssessmentMode <String>]: Specifies the assessment mode.
+  [WindowsConfigurationPatchSettingsEnableHotpatching <Boolean?>]: Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
+  [WindowsConfigurationPatchSettingsPatchMode <String>]: Specifies the patch mode.
+
 PARAMETER <IMachineUpdate>: Describes a hybrid machine Update.
   [Tags <IResourceUpdateTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -71,16 +77,19 @@ PARAMETER <IMachineUpdate>: Describes a hybrid machine Update.
   [AgentUpgradeEnableAutomaticUpgrade <Boolean?>]: Specifies if RSM should try to upgrade this machine
   [IdentityType <String>]: The identity type.
   [Kind <String>]: Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
-  [LinuxConfigurationPatchSettingsAssessmentMode <String>]: Specifies the assessment mode.
-  [LinuxConfigurationPatchSettingsPatchMode <String>]: Specifies the patch mode.
   [LocationDataCity <String>]: The city or locality where the resource is located.
   [LocationDataCountryOrRegion <String>]: The country or region where the resource is located
   [LocationDataDistrict <String>]: The district, state, or province where the resource is located.
   [LocationDataName <String>]: A canonical name for the geographic or physical location.
+  [OSProfile <IOSProfile>]: Specifies the operating system settings for the hybrid machine.
+    [LinuxConfigurationPatchSettingsAssessmentMode <String>]: Specifies the assessment mode.
+    [LinuxConfigurationPatchSettingsEnableHotpatching <Boolean?>]: Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
+    [LinuxConfigurationPatchSettingsPatchMode <String>]: Specifies the patch mode.
+    [WindowsConfigurationPatchSettingsAssessmentMode <String>]: Specifies the assessment mode.
+    [WindowsConfigurationPatchSettingsEnableHotpatching <Boolean?>]: Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
+    [WindowsConfigurationPatchSettingsPatchMode <String>]: Specifies the patch mode.
   [ParentClusterResourceId <String>]: The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
   [PrivateLinkScopeResourceId <String>]: The resource id of the private link scope this machine is assigned to, if any.
-  [WindowsConfigurationPatchSettingsAssessmentMode <String>]: Specifies the assessment mode.
-  [WindowsConfigurationPatchSettingsPatchMode <String>]: Specifies the patch mode.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachine
 #>
@@ -88,20 +97,20 @@ function Update-AzConnectedMachine {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='Update', Mandatory)]
     [Alias('MachineName')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [System.String]
     # The name of the hybrid machine.
     ${Name},
 
-    [Parameter(ParameterSetName='Update', Mandatory)]
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='Update', Mandatory)]
     [ArgumentCompleter({Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName})]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [System.String]
@@ -109,29 +118,29 @@ param(
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Update')]
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
     [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
+    [Parameter(ParameterSetName='Update')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
     # Identity Parameter
     ${InputObject},
 
-    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdate]
-    # Describes a hybrid machine Update.
-    ${Parameter},
+    [System.Nullable[System.Boolean]]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -172,22 +181,6 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Specifies the assessment mode.
-    ${LinuxConfigurationPatchSettingsAssessmentMode},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Specifies the patch mode.
-    ${LinuxConfigurationPatchSettingsPatchMode},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # The city or locality where the resource is located.
@@ -217,6 +210,13 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile]
+    # Specifies the operating system settings for the hybrid machine.
+    ${OSProfile},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
     ${ParentClusterResourceId},
@@ -236,21 +236,11 @@ param(
     # Resource tags
     ${Tag},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
-    # Specifies the assessment mode.
-    ${WindowsConfigurationPatchSettingsAssessmentMode},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Specifies the patch mode.
-    ${WindowsConfigurationPatchSettingsPatchMode},
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
@@ -258,11 +248,12 @@ param(
     # Path of Json file supplied to the Update operation
     ${JsonFilePath},
 
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # Json string supplied to the Update operation
-    ${JsonString},
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdate]
+    # Describes a hybrid machine Update.
+    ${Parameter},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -339,14 +330,14 @@ begin {
         }
 
         $mapping = @{
-            Update = 'Az.ConnectedMachine.private\Update-AzConnectedMachine_Update';
-            UpdateExpanded = 'Az.ConnectedMachine.private\Update-AzConnectedMachine_UpdateExpanded';
-            UpdateViaIdentity = 'Az.ConnectedMachine.private\Update-AzConnectedMachine_UpdateViaIdentity';
-            UpdateViaIdentityExpanded = 'Az.ConnectedMachine.private\Update-AzConnectedMachine_UpdateViaIdentityExpanded';
-            UpdateViaJsonFilePath = 'Az.ConnectedMachine.private\Update-AzConnectedMachine_UpdateViaJsonFilePath';
-            UpdateViaJsonString = 'Az.ConnectedMachine.private\Update-AzConnectedMachine_UpdateViaJsonString';
+            UpdateExpanded = 'Az.ConnectedMachine.custom\Update-AzConnectedMachine';
+            UpdateViaJsonString = 'Az.ConnectedMachine.custom\Update-AzConnectedMachine';
+            UpdateViaJsonFilePath = 'Az.ConnectedMachine.custom\Update-AzConnectedMachine';
+            Update = 'Az.ConnectedMachine.custom\Update-AzConnectedMachine';
+            UpdateViaIdentityExpanded = 'Az.ConnectedMachine.custom\Update-AzConnectedMachine';
+            UpdateViaIdentity = 'Az.ConnectedMachine.custom\Update-AzConnectedMachine';
         }
-        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('UpdateExpanded', 'UpdateViaJsonString', 'UpdateViaJsonFilePath', 'Update') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

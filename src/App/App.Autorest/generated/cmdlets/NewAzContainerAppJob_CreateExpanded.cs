@@ -188,6 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ParameterBreakingChange("IdentityType", "13.0.0", "2.0.0", "2024/11/19", ChangeDescription="IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
         public string IdentityType { get => _jobEnvelopeBody.IdentityType ?? null; set => _jobEnvelopeBody.IdentityType = value; }
 
@@ -205,6 +206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
         SerializedName = @"userAssignedIdentities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IUserAssignedIdentities) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ParameterBreakingChange("IdentityUserAssignedIdentity", "13.0.0", "2.0.0", "2024/11/19", ChangeDescription="IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity. And its type will be simplified as string array.", OldParamaterType="Hashtable", NewParameterType="string[]")]
         public Microsoft.Azure.PowerShell.Cmdlets.App.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _jobEnvelopeBody.IdentityUserAssignedIdentity ?? null /* object */; set => _jobEnvelopeBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
@@ -534,7 +536,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -752,6 +771,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

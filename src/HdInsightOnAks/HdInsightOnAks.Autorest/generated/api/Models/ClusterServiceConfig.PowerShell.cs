@@ -76,9 +76,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Component"))
+            if (content.Contains("ComponentName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigInternal)this).Component = (string) content.GetValueForProperty("Component",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigInternal)this).Component, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigInternal)this).ComponentName, global::System.Convert.ToString);
             }
             if (content.Contains("File"))
             {
@@ -101,9 +101,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Component"))
+            if (content.Contains("ComponentName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigInternal)this).Component = (string) content.GetValueForProperty("Component",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigInternal)this).Component, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigInternal)this).ComponentName, global::System.Convert.ToString);
             }
             if (content.Contains("File"))
             {

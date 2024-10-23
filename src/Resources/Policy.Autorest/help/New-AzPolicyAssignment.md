@@ -17,7 +17,8 @@ Creates or updates a policy assignment.
 New-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-Description <String>]
  [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
  [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Override <IOverride[]>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### ParameterObject
@@ -25,8 +26,9 @@ New-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-
 New-AzPolicyAssignment -Name <String> -PolicyParameterObject <Hashtable> [-Scope <String>]
  [-BackwardCompatible] [-DefinitionVersion <String>] [-Description <String>] [-DisplayName <String>]
  [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
- [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-PolicyDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
+ [-PolicyDefinition <PSObject>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ParameterString
@@ -34,8 +36,9 @@ New-AzPolicyAssignment -Name <String> -PolicyParameterObject <Hashtable> [-Scope
 New-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>] [-BackwardCompatible]
  [-DefinitionVersion <String>] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
  [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-PolicyDefinition <PSObject>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
+ [-PolicyDefinition <PSObject>] [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PolicyDefinitionOrPolicySetDefinition
@@ -43,7 +46,8 @@ New-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>
 New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> [-Scope <String>] [-BackwardCompatible]
  [-DefinitionVersion <String>] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
  [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-Override <IOverride[]>]
+ [-ResourceSelector <IResourceSelector[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -96,7 +100,7 @@ The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 ### Example 4: Policy assignment at resource group level with policy parameter file
 ```powershell
-{
+'{
     "listOfAllowedLocations":  {
       "value": [
         "westus",
@@ -104,15 +108,16 @@ The **ResourceId** property of $ResourceGroup identifies the resource group.
         "japanwest"
       ]
     }
-}
+}' > .\AllowedLocations.json
 
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.DisplayName -eq 'Allowed locations'}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameter .\AllowedLocations.json
 ```
 
-The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
-The second command gets the built-in policy definition for allowed locations by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
+The first command creates a parameter file called _AllowedLocations.json_ in the local working directory.
+The second command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
+The third command gets the built-in policy definition for allowed locations by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
 The final command assigns the policy in $Policy at the resource group identified by the **ResourceId** property of $ResourceGroup using the policy parameter file AllowedLocations.json from the local working directory.
 
 ### Example 5: Policy assignment with a system assigned managed identity
@@ -167,7 +172,31 @@ The second command creates an array of non-compliance messages.
 One general purpose message for the entire assignment and one message specific to a SKU restriction policy within the assigned policy set definition.
 The final command assigns the policy set definition in $PolicySet to the subscription with two non-compliance messages that will be shown if a resource is denied by policy.
 
-### Example 9: [Backcompat] Policy assignment at resource group level with policy parameter object
+### Example 9: Policy assignment with resource selector
+```powershell
+$Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; In = @("eastus", "eastus2")})}
+New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -ResourceSelector $ResourceSelector
+```
+
+The first command gets the policy definition named VirtualMachinePolicy by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
+The second command creates a resource selector object that will be used to specify the assignment should only apply to resources located in East US or East US 2 and stores it in the $ResourceSelector variable.
+The final command assigns the policy definition in $Policy to the subscription with the resource selector specified by $ResourceSelector.
+
+### Example 10: Policy assignment with override
+```powershell
+$Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
+$Selector = @{Kind = "resourceLocation"; In = @("eastus", "eastus2")}
+$Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
+New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -Override $Override
+```
+
+The first command gets the policy definition named VirtualMachinePolicy by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
+The second command creates a location selector specifying East US or East US 2 locations and stores it in the $Selector variable.
+The third command creates an override object that will be used to specify that the assigned definition should have a Disabled effect in the locations identified by the $Selector object and stores it in the $Override variable.
+The final command assigns the policy definition in $Policy to the subscription with the override specified by $Override.
+
+### Example 11: [Backcompat] Policy assignment at resource group level with policy parameter object
 ```powershell
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
@@ -185,9 +214,9 @@ The commands store that object in the $AllowedLocations variable.
 The final command assigns the policy in $Policy at the level of a resource group using the policy parameter object in $AllowedLocations.
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 
-### Example 10: [Backcompat] Policy assignment at resource group level with policy parameter file
+### Example 12: [Backcompat] Policy assignment at resource group level with policy parameter file
 ```powershell
-{
+'{
     "listOfAllowedLocations":  {
       "value": [
         "westus",
@@ -195,15 +224,16 @@ The **ResourceId** property of $ResourceGroup identifies the resource group.
         "japanwest"
       ]
     }
-}
+}' > .\AllowedLocations.json
 
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameter .\AllowedLocations.json
 ```
 
-The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
-The second command gets the built-in policy definition for allowed locations by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
+The first command creates a parameter file called _AllowedLocations.json_ in the local working directory.
+The second command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.
+The third command gets the built-in policy definition for allowed locations by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
 The final command assigns the policy in $Policy at the resource group identified by the **ResourceId** property of $ResourceGroup using the policy parameter file AllowedLocations.json from the local working directory.
 
 ## PARAMETERS
@@ -410,6 +440,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Override
+The policy property value override.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PolicyDefinition
 Accept policy definition or policy set definition object
 
@@ -451,6 +496,21 @@ Parameter Sets: ParameterObject
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceSelector
+The resource selector list to filter policies by resource properties.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

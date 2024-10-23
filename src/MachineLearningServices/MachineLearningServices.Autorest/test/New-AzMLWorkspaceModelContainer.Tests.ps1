@@ -17,8 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceModelContain
 Describe 'New-AzMLWorkspaceModelContainer' {
     It 'CreateExpanded' {
         { 
-            New-AzMLWorkspaceModelContainer -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name modelcontainerpwsh01 -Description "code container for test."
-            Remove-AzMLWorkspaceModelContainer -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name modelcontainerpwsh01
+            New-AzMLWorkspaceModelContainer -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name modelcontainerpwsh01 -Description "code container for test."
+            Remove-AzMLWorkspaceModelContainer -ResourceGroupName $env.TestGroupName -WorkspaceName $env.mainWorkspace -Name modelcontainerpwsh01
         } | Should -Not -Throw
     }
 }

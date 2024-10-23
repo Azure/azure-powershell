@@ -235,9 +235,14 @@ function ConvertFrom-JsonSafe
         ConvertFrom-Json $InputObject -AsHashtable:$AsHashtable
     }
     elseif ($AsHashtable) {
-        $hashtable = @{}
-        ($InputObject | ConvertFrom-Json).psobject.properties | Foreach { $hashtable[$_.Name] = $_.Value }
-        $hashTable
+        # ConvertFrom-Json on Windows Powershell doesn't support -AsHashtable parameter
+        $converted = ConvertParameterInput ($InputObject | ConvertFrom-Json)
+        if (($converted -is [array]) -and ($converted.Count -eq 1)) {
+            return $converted[0]
+        }
+        else {
+            return $converted
+        }
     }
     else {
         ConvertFrom-Json $InputObject
@@ -327,7 +332,7 @@ function ConvertParameterInput
     {
         $returnValue = @{}
         foreach ($property in $InputObject.PSObject.Properties) {
-            $returnValue[$property.Name] = (ConvertParameterInput $property.Value).PSObject.BaseObject
+            $returnValue[$property.Name] = (ConvertParameterInput $property.Value)
         }
 
         return $returnValue

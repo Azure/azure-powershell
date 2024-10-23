@@ -42,7 +42,7 @@ $tagUpdatedHash = @{
     tag1 = "tag1"
     tag2 = "tag1Update"
 }
-$registryPassword = ConvertTo-SecureString "password" -asplaintext -force
+$registryPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 Update-AzNetworkCloudVirtualMachine -Name vmName -ResourceGroupName resourceGroup -Tag $tagUpdatedHash -VMImageRepositoryCredentialsRegistryUrl registryUrl -VMImageRepositoryCredentialsUsername registryUsername -VMImageRepositoryCredentialsPassword $registryPassword
 ```

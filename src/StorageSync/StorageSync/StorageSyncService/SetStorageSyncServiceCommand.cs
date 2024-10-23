@@ -24,6 +24,8 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
 {
@@ -106,6 +108,32 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
             IgnoreCase = true)]
         public string IncomingTrafficPolicy { get; set; }
 
+        [Parameter(
+                  Mandatory = false,
+                  HelpMessage = HelpMessages.StorageSyncServiceAssignIdentityParameter)]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.StorageSyncServiceUserAssignedIdentityIdParameter)]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = HelpMessages.StorageSyncServiceIdentityTypeParameter)]
+        [ValidateSet(StorageSyncServiceIdentityType.systemAssigned,
+            StorageSyncServiceIdentityType.userAssigned,
+            StorageSyncServiceIdentityType.systemAssignedUserAssigned,
+            StorageSyncServiceIdentityType.none,
+            IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = HelpMessages.StorageSyncServiceUseIdentityParameter)]
+        public bool UseIdentity { get; set; }
+
         /// <summary>
         /// Gets or sets the tag.
         /// </summary>
@@ -182,11 +210,43 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     incomingTrafficPolicy = StorageSyncModels.IncomingTrafficPolicy.AllowAllTraffic;
                 }
 
+                bool? useIdentity;
+                if (this.IsParameterBound(c => c.UseIdentity))
+                {
+                    useIdentity = this.UseIdentity;
+                }
+                else
+                {
+                    useIdentity = null;
+                }
+
                 var updateParameters = new StorageSyncServiceUpdateParameters()
                 {
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag ?? new Hashtable(), validate: true),
-                    IncomingTrafficPolicy = incomingTrafficPolicy
+                    IncomingTrafficPolicy = incomingTrafficPolicy,
+                    UseIdentity = useIdentity
                 };
+
+                if (AssignIdentity.IsPresent || this.UserAssignedIdentityId != null || this.IdentityType != null)
+                {
+                    updateParameters.Identity = new ManagedServiceIdentity() { Type = StorageSyncModels.ManagedServiceIdentityType.SystemAssigned };
+                    if (this.IdentityType != null)
+                    {
+                        updateParameters.Identity.Type = GetIdentityTypeString(this.IdentityType);
+                    }
+                    if (this.UserAssignedIdentityId != null)
+                    {
+                        if (updateParameters.Identity.Type != StorageSyncModels.ManagedServiceIdentityType.UserAssigned &&
+                        updateParameters.Identity.Type != StorageSyncModels.ManagedServiceIdentityType.SystemAssignedUserAssigned)
+                        {
+                            throw new ArgumentException(HelpMessages.StorageSyncServiceIdentityParameterError, "UserAssignIdentityId");
+                        }
+                        updateParameters.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>
+                        {
+                            { this.UserAssignedIdentityId, new UserAssignedIdentity() }
+                        };
+                    }
+                }
 
                 Target = string.Join("/", resourceGroupName, resourceName);
                 if (ShouldProcess(Target, ActionMessage))
@@ -196,6 +256,40 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                     WriteObject(storageSyncService);
                 }
             });
+        }
+
+        public static string GetIdentityTypeString(string inputIdentityType)
+        {
+            if (inputIdentityType == null)
+            {
+                return null;
+            }
+
+            // The parameter validate set make sure the value must be systemAssigned or userAssigned or systemAssignedUserAssigned or None
+            if (inputIdentityType.ToLower() == StorageSyncServiceIdentityType.systemAssigned.ToLower())
+            {
+                return StorageSyncModels.ManagedServiceIdentityType.SystemAssigned;
+            }
+            if (inputIdentityType.ToLower() == StorageSyncServiceIdentityType.userAssigned.ToLower())
+            {
+                return StorageSyncModels.ManagedServiceIdentityType.UserAssigned;
+            }
+            if (inputIdentityType.ToLower() == StorageSyncServiceIdentityType.systemAssignedUserAssigned.ToLower())
+            {
+                return StorageSyncModels.ManagedServiceIdentityType.SystemAssignedUserAssigned;
+            }
+            if (inputIdentityType.ToLower() == StorageSyncServiceIdentityType.none.ToLower())
+            {
+                return StorageSyncModels.ManagedServiceIdentityType.None;
+            }
+            throw new ArgumentException(HelpMessages.StorageSyncServiceManagedIdentityTypeError, "AssignIdentityType");
+        }
+        protected struct StorageSyncServiceIdentityType
+        {
+            internal const string systemAssigned = "SystemAssigned";
+            internal const string userAssigned = "UserAssigned";
+            internal const string systemAssignedUserAssigned = "SystemAssignedUserAssigned";
+            internal const string none = "None";
         }
     }
 }

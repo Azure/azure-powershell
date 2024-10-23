@@ -49,6 +49,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruseren
 #>
 function Get-AzDevCenterUserEnvironment {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.OutputBreakingChangeAttribute("Environment", "13.0.0", "2.0.0", "2024/11/19", ReplacementCmdletOutputType = "Environment", DeprecatedOutputProperties = ("Detail", "ProvisioningState"), NewOutputProperties = ("Detail", "ProvisioningState"))]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]

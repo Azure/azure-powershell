@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -110,9 +113,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public PostgreSqlV2LinkedService(object server, object username, object database, object sslMode, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object port = default(object), object schema = default(object), object pooling = default(object), object connectionTimeout = default(object), object commandTimeout = default(object), object trustServerCertificate = default(object), object sslCertificate = default(object), object sslKey = default(object), object sslPassword = default(object), object readBufferSize = default(object), object logParameters = default(object), object timezone = default(object), object encoding = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
+        public PostgreSqlV2LinkedService(object server, object username, object database, object sslMode, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object port = default(object), object schema = default(object), object pooling = default(object), object connectionTimeout = default(object), object commandTimeout = default(object), object trustServerCertificate = default(object), object sslCertificate = default(object), object sslKey = default(object), object sslPassword = default(object), object readBufferSize = default(object), object logParameters = default(object), object timezone = default(object), object encoding = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.Server = server;
             this.Port = port;

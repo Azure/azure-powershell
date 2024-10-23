@@ -1,9 +1,10 @@
 {
-  "Test-AzCommunicationServiceNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/checkNameAvailability?api-version=2020-08-20+1": {
+  "Test-AzCommunicationServiceNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/providers/Microsoft.Communication/checkNameAvailability?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/checkNameAvailability?api-version=2020-08-20",
-      "Content": "{\r\n  \"type\": \"Microsoft.Communication/CommunicationServices\",\r\n  \"name\": \"acsResource0rfyon\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/providers/Microsoft.Communication/checkNameAvailability?api-version=2023-06-01-preview",
+      "Content": "{\r\n  \"name\": \"acsResourcedsfbvr\",\r\n  \"type\": \"Microsoft.Communication/CommunicationServices\"\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -16,28 +17,32 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "401f0a21-3486-4014-bc3e-acbaebd0c077" ],
-        "x-ms-correlation-request-id": [ "5cfd6c0f-420c-409c-a21d-d3859660eab7" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211028T211923Z:5cfd6c0f-420c-409c-a21d-d3859660eab7" ],
+        "x-ms-request-id": [ "b3af82fe-cae4-480f-839e-4d2f30942726" ],
+        "x-ms-correlation-request-id": [ "2f6a4685-6584-4c0d-873b-5c3b96a53548" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240718T045132Z:2f6a4685-6584-4c0d-873b-5c3b96a53548" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 28 Oct 2021 21:19:22 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B3D4F782BE7644C9A00045B948A3A9EE Ref B: MAA201060513037 Ref C: 2024-07-18T04:51:31Z" ],
+        "Date": [ "Thu, 18 Jul 2024 04:51:31 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"nameAvailable\":true}"
+      "Content": "{\"nameAvailable\":true}",
+      "isContentBase64": false
     }
   },
-  "Test-AzCommunicationServiceNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/checkNameAvailability?api-version=2020-08-20+2": {
+  "Test-AzCommunicationServiceNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/providers/Microsoft.Communication/checkNameAvailability?api-version=2023-06-01-preview+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/73fc3588-3cef-4302-9e19-2d18b71ce0e5/providers/Microsoft.Communication/checkNameAvailability?api-version=2020-08-20",
-      "Content": "{\r\n  \"type\": \"Microsoft.Communication/CommunicationServices\",\r\n  \"name\": \"persistentResourceNameclkuy1\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/providers/Microsoft.Communication/checkNameAvailability?api-version=2023-06-01-preview",
+      "Content": "{\r\n  \"name\": \"persistentResourceNamejeq8nr\",\r\n  \"type\": \"Microsoft.Communication/CommunicationServices\"\r\n}",
+      "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
@@ -50,21 +55,24 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "3a9d92ac-e6c9-4a33-8940-b07bae2f9714" ],
-        "x-ms-correlation-request-id": [ "4556d248-cdd4-4dbf-ba61-193c8fa1145f" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211028T211923Z:4556d248-cdd4-4dbf-ba61-193c8fa1145f" ],
+        "x-ms-request-id": [ "f66ee1cf-bac6-42fd-b99c-9f05e128b9fc" ],
+        "x-ms-correlation-request-id": [ "e2ffe55a-72ae-4b57-9cdb-8c47f8f135a7" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240718T045132Z:e2ffe55a-72ae-4b57-9cdb-8c47f8f135a7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 28 Oct 2021 21:19:23 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9D01D133F1C349CC8F89612AB1CBBEFE Ref B: MAA201060513037 Ref C: 2024-07-18T04:51:32Z" ],
+        "Date": [ "Thu, 18 Jul 2024 04:51:31 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "113" ],
+        "Content-Length": [ "89" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"Requested name is unavailable for the requested type\"}"
+      "Content": "{\"nameAvailable\":false,\"reason\":\"AlreadyExists\",\"message\":\"Resource name already exists\"}",
+      "isContentBase64": false
     }
   }
 }

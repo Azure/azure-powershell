@@ -1,0 +1,131 @@
+{
+  "AzAdbsBackup+[NoContext]+CreateAdbsBackup+$PUT+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs/autonomousDatabaseBackups/testId12345?api-version=2023-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs/autonomousDatabaseBackups/testId12345?api-version=2023-09-01",
+      "Content": "{\n  \"properties\": {\n    \"retentionPeriodInDays\": 90\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "57" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1e089e05-0000-0100-0000-668faea80000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "opc-request-id": [ "/6E85E378BA1E8263F1657F7DD9200A7F/972465A8DBA92104D451D584187C8C92" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/EASTUS/operationStatuses/2c7aed69-6ea5-4476-9307-2fd88e6c93ed*50FECF178ACD34FE40AACCB411C9742F70E182BA5ED93F444FBA5C58FA650B0D?api-version=2023-09-01\u0026t=638562891930500827\u0026c=MIIHhzCCBm-gAwIBAgITHgTGa31qslIh2UBmkAAABMZrfTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDYwHhcNMjQwNjIxMDkxMjA1WhcNMjUwNjE2MDkxMjA1WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALn834uDqgCOixiO8GRfVCjdOSupM2mspf7A4DxVqhAZOL8zaMDjFkxtx33wm6cpNnNPdJtVugOQpatgZbDHp53nm17ZRJmyTZu_5z53RacbNkdHn-1M5XSVR5Gog-YVsO3all2PlVdOg1eoSOD8ITK-TstsekGcOi-2bqgxdMy4G9xiwN1uqztQs-uuOT2M0DGCBvuLm5PRftyk3A6tocQSz4e0JBhb08J-V5He6t4zq4AM6kwBE0iJR7dJEfSfDddwSZIAz6h35rU5QUFAFgtNoGNOoeq-2PAvP1ID_2_k6czxhuVUXChGs9wtj36-SmcXHwK4Di51_jZCza6EA6ECAwEAAaOCBHQwggRwMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9CTDJQS0lJTlRDQTAyLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA2LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQkwyUEtJSU5UQ0EwMi5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNi5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0JMMlBLSUlOVENBMDIuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3J0MB0GA1UdDgQWBBSiHY0qE8dJDl1-fBkPIyhmBEoAXDAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDYuY3JsMIGdBgNVHSAEgZUwgZIwDAYKKwYBBAGCN3sBATBmBgorBgEEAYI3ewICMFgwVgYIKwYBBQUHAgIwSh5IADMAMwBlADAAMQA5ADIAMQAtADQAZAA2ADQALQA0AGYAOABjAC0AYQAwADUANQAtADUAYgBkAGEAZgBmAGQANQBlADMAMwBkMAwGCisGAQQBgjd7AwEwDAYKKwYBBAGCN3sEATAfBgNVHSMEGDAWgBTxRmjG8cPwKy19i2rhsvm-NfzRQTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAAMkBnjIQiIoLSg9zciJxXH1ylOKB4FJPrPFj52jXEgVo32cghlQhqYin74eWIrBybErBVKH1YhQnwolzlfQ2ghTU7DmQyx9TLA44sJzrc0cDQQvDaKmmJckNZtPzpYqro72RpHWATCjOWVE22NKpCRrNQKotMUbDebsE_RuzsGqcGKqaLGbwC6LP0aiK1KrOKORCDvOCtJic28Xn5HGJmYZ6U6xh6ClEm4t8nBn4CcVROGsAZ9wINYtuPZwHvI2zTH7u7kNlNWT935tT9aEKf_vyg22rc23EdwsVKQZSO42x8QVwYSwuL-2AF2Zh5SFZp1lvK5TIyNgVewww93mkdE\u0026s=DShNBTuWGpEINtqFzCxsBPi7tmwKQ1PyLFTIooy_pv2DLIjlrFC6nAmpAOmBk7otUGuywmCE29r_PSl0yaY7FFXVBSFf82nQhhIBqG1Cmy2QrTL2bDFWOqNO3IpJ8bMr3YMmkov0P-rcIVf9FqVPsNZjf0u9rbMQd6-J3_PzszE0qQIZ6-A9pNuXxIrVibVACMYLOrTHsR7b1xFDHPxHxTTGYMJiSKOvnn2kGoXgYDtfZnBIzJjDj8TFaGim3fLyYAoIECXDXJZqeeMdgC_gLg1U77Zr9nfDW3lpthxJkQFmU37I5tNf1kT5LbEdD4ygitRww_ODR8K17C2gnOwkyA\u0026h=wDp0AaFzXA-QdWPGXUIBtRxl8skbxNiPIhPkRxgpdwY" ],
+        "x-ms-request-id": [ "2c7aed69-6ea5-4476-9307-2fd88e6c93ed" ],
+        "x-ms-correlation-request-id": [ "41dd0126-7aba-405c-92c3-20444164d1dd" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "2999" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20240711T100633Z:41dd0126-7aba-405c-92c3-20444164d1dd" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 294C2BC0C508468B839A435CD4AA4BC8 Ref B: AMS231032607035 Ref C: 2024-07-11T10:06:30Z" ],
+        "Date": [ "Thu, 11 Jul 2024 10:06:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "896" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs/autonomousDatabaseBackups/testId12345\",\"name\":\"testId12345\",\"type\":\"oracle.database/autonomousdatabases/autonomousdatabasebackups\",\"systemData\":{\"createdBy\":\"example@oracle.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-07-11T10:06:30.9562116Z\",\"lastModifiedBy\":\"example@oracle.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-07-11T10:06:30.9562116Z\"},\"properties\":{\"autonomousDatabaseOcid\":null,\"databaseSizeInTbs\":null,\"dbVersion\":null,\"displayName\":null,\"ocid\":null,\"isAutomatic\":null,\"isRestorable\":null,\"lifecycleDetails\":null,\"lifecycleState\":\"Creating\",\"retentionPeriodInDays\":90,\"sizeInTbs\":null,\"timeAvailableTil\":null,\"timeStarted\":null,\"timeEnded\":null,\"backupType\":null,\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzAdbsBackup+[NoContext]+ListAdbsBackups+$GET+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs/autonomousDatabaseBackups?api-version=2023-09-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs/autonomousDatabaseBackups?api-version=2023-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "94271f50-adac-47d7-90ed-6659af2f1055" ],
+        "CommandName": [ "Get-AzOracleAutonomousDatabaseBackup" ],
+        "FullCommandName": [ "Get-AzOracleAutonomousDatabaseBackup_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "249" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "opc-request-id": [ "/1ADA7F157040AF71622EBBE76571FC76/34C6F58F23B5DEC79D315263B0D7CC8F" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "eaf13c6c-6eae-4344-b1f1-592e88ca8dce" ],
+        "x-ms-correlation-request-id": [ "c005ba18-6dae-4181-9e93-05923e99db2d" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "3749" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20240711T101111Z:c005ba18-6dae-4181-9e93-05923e99db2d" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 999BE306B1CE47F8B5C99C9AC1E3A2A8 Ref B: AMS231020614047 Ref C: 2024-07-11T10:11:08Z" ],
+        "Date": [ "Thu, 11 Jul 2024 10:11:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1915" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs/autonomousDatabaseBackups/2024-07-11T10:04:35.000Z\",\"name\":\"autonomousdatabasebackup20240711100337\",\"type\":\"Longterm\",\"properties\":{\"autonomousDatabaseOcid\":\"ocid1.autonomousdatabase.oc1.iad.anuwcljtnirvylqaawhqnicickxllrvrtu4m4bzc7q5vewtvyfg55u4rlxha\",\"databaseSizeInTbs\":null,\"dbVersion\":\"19c\",\"displayName\":\"autonomousdatabasebackup20240711100337\",\"ocid\":\"ocid1.autonomousdatabasebackup.oc1.iad.anuwcljtowjpydqa7hdlpku3veh2wtc27johkbzjdpmuh4svbnk5ppjpfvnq\",\"isAutomatic\":false,\"isRestorable\":null,\"lifecycleDetails\":null,\"lifecycleState\":\"Active\",\"retentionPeriodInDays\":90,\"sizeInTbs\":0.004061222076416016,\"timeAvailableTil\":\"2024-10-09T10:03:56.000Z\",\"timeStarted\":\"2024-07-11T10:03:37.825Z\",\"timeEnded\":\"2024-07-11T10:04:35.000Z\",\"backupType\":\"LongTerm\",\"provisioningState\":\"Active\"}},{\"id\":\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs/autonomousDatabaseBackups/2024-07-11T09:59:51.000Z\",\"name\":\"autonomousdatabasebackup20240711095849\",\"type\":\"Longterm\",\"properties\":{\"autonomousDatabaseOcid\":\"ocid1.autonomousdatabase.oc1.iad.anuwcljtnirvylqaawhqnicickxllrvrtu4m4bzc7q5vewtvyfg55u4rlxha\",\"databaseSizeInTbs\":null,\"dbVersion\":\"19c\",\"displayName\":\"autonomousdatabasebackup20240711095849\",\"ocid\":\"ocid1.autonomousdatabasebackup.oc1.iad.anuwcljtowjpydqa5vnjxrsk62lfdu23latr5j7jbnaipgowfmawtcptqzea\",\"isAutomatic\":false,\"isRestorable\":null,\"lifecycleDetails\":null,\"lifecycleState\":\"Active\",\"retentionPeriodInDays\":90,\"sizeInTbs\":0.004061222076416016,\"timeAvailableTil\":\"2024-10-09T09:59:08.000Z\",\"timeStarted\":\"2024-07-11T09:58:49.310Z\",\"timeEnded\":\"2024-07-11T09:59:51.000Z\",\"backupType\":\"LongTerm\",\"provisioningState\":\"Active\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzAdbsBackup+[NoContext]+DeleteAdbsBackup+$DELETE+https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs/autonomousDatabaseBackups/testId12345?api-version=2023-09-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowerShellTestRg/providers/Oracle.Database/autonomousDatabases/OFakePowerShellTestAdbs/autonomousDatabaseBackups/testId12345?api-version=2023-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "b93599bb-90ee-49aa-a795-7e8f995b1a2c" ],
+        "CommandName": [ "Remove-AzOracleAutonomousDatabaseBackup" ],
+        "FullCommandName": [ "Remove-AzOracleAutonomousDatabaseBackup_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.0.0", "PSVersion/v7.4.2", "Az.Oracle/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-correlation-request-id": [ "59ff18b8-635a-46f2-b937-7c9915024fd7" ],
+        "x-ms-routing-request-id": [ "UKSOUTH:20240711T101004Z:59ff18b8-635a-46f2-b937-7c9915024fd7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8974FF5465714ADBA32FDF45E85FB48F Ref B: AMS231020512045 Ref C: 2024-07-11T10:10:03Z" ],
+        "Date": [ "Thu, 11 Jul 2024 10:10:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

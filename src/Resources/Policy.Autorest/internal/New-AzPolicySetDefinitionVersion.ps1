@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-This operation creates or updates a policy set definition version in the given subscription with the given name and version.
+This operation create a policy set definition version in the given subscription with the given name and version.
 .Description
-This operation creates or updates a policy set definition version in the given subscription with the given name and version.
+This operation create a policy set definition version in the given subscription with the given name and version.
 .Example
 {{ Add code here }}
 .Example

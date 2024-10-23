@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-This operation creates or updates a policy assignment with the given scope and name.
+This operation create a policy assignment with the given scope and name.
 Policy assignments apply to all resources contained within their scope.
 For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
 .Description
-This operation creates or updates a policy assignment with the given scope and name.
+This operation create a policy assignment with the given scope and name.
 Policy assignments apply to all resources contained within their scope.
 For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
 .Example
@@ -38,7 +38,7 @@ $Locations = Get-AzLocation | Where-Object displayname -like '*east*'
 $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
 .Example
-{
+'{
     "listOfAllowedLocations":  {
       "value": [
         "westus",
@@ -46,7 +46,7 @@ New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinitio
         "japanwest"
       ]
     }
-}
+}' > .\AllowedLocations.json
 
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.DisplayName -eq 'Allowed locations'}
@@ -69,13 +69,22 @@ $PolicySet = Get-AzPolicySetDefinition -Name 'VirtualMachinePolicySet'
 $NonComplianceMessages = @(@{Message="Only DsV2 SKUs are allowed."; PolicyDefinitionReferenceId="DefRef1"}, @{Message="Virtual machines must follow cost management best practices."})
 New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicySetDefinition $PolicySet -NonComplianceMessage $NonComplianceMessages
 .Example
+$Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; In = @("eastus", "eastus2")})}
+New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -ResourceSelector $ResourceSelector
+.Example
+$Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
+$Selector = @{Kind = "resourceLocation"; In = @("eastus", "eastus2")}
+$Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
+New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -Override $Override
+.Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
 $Locations = Get-AzLocation | Where-Object displayname -like '*east*'
 $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
 New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
 .Example
-{
+'{
     "listOfAllowedLocations":  {
       "value": [
         "westus",
@@ -83,7 +92,7 @@ New-AzPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinitio
         "japanwest"
       ]
     }
-}
+}' > .\AllowedLocations.json
 
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Policy = Get-AzPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
@@ -188,6 +197,20 @@ param(
     [System.String[]]
     # The policy's excluded scopes.
     ${NotScope},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]]
+    # The policy property value override.
+    ${Override},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [AllowEmptyCollection()]

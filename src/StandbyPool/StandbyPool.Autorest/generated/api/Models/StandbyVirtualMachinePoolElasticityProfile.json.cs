@@ -78,6 +78,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return;
             }
             {_maxReadyCapacity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber>("maxReadyCapacity"), out var __jsonMaxReadyCapacity) ? (long)__jsonMaxReadyCapacity : _maxReadyCapacity;}
+            {_minReadyCapacity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber>("minReadyCapacity"), out var __jsonMinReadyCapacity) ? (long?)__jsonMinReadyCapacity : _minReadyCapacity;}
             AfterFromJson(json);
         }
 
@@ -103,6 +104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
                 return container;
             }
             AddIf( (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber(this._maxReadyCapacity), "maxReadyCapacity" ,container.Add );
+            AddIf( null != this._minReadyCapacity ? (Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNumber((long)this._minReadyCapacity) : null, "minReadyCapacity" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

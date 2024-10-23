@@ -3,6 +3,8 @@ param myString string
 param myObject object
 param myInt int
 param myBool bool
+@secure()
+param mySecureString string
 
 output all object = {
   array: myArray
@@ -10,4 +12,6 @@ output all object = {
   object: myObject
   int: myInt
   bool: myBool
+#disable-next-line outputs-should-not-contain-secrets
+  secureString: mySecureString
 }

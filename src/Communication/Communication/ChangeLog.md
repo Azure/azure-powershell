@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.0
+* Added dataplane cmdlets:
+    * `Get-AzEmailServicedataEmailSendResult`
+    * `Send-AzEmailServicedataEmail`
+* Upgraded API version to 2023-06-01-preview
+
 ## Version 0.3.1
 * Introduced secrets detection feature to safeguard sensitive data.
 

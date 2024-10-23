@@ -191,7 +191,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICustomDomain[]]
     # custom domain bindings for Container Apps' hostnames.
-    # To construct, see NOTES section for INGRESSCUSTOMDOMAIN properties and create a hash table.
     ${IngressCustomDomain},
 
     [Parameter()]
@@ -210,7 +209,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIPSecurityRestrictionRule[]]
     # Rules to restrict incoming IP address.
-    # To construct, see NOTES section for INGRESSIPSECURITYRESTRICTION properties and create a hash table.
     ${IngressIPSecurityRestriction},
 
     [Parameter()]
@@ -223,7 +221,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrafficWeight[]]
     # Traffic weights for app's revisions.
-    # To construct, see NOTES section for INGRESSTRAFFIC properties and create a hash table.
     ${IngressTraffic},
 
     [Parameter()]
@@ -244,14 +241,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRegistryCredentials[]]
     # Collection of private container registry credentials for containers used by the Container app.
-    # To construct, see NOTES section for REGISTRY properties and create a hash table.
     ${Registry},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]]
     # Collection of secrets used by a Container app.
-    # To construct, see NOTES section for SECRET properties and create a hash table.
     ${Secret},
 
     [Parameter()]

@@ -21,12 +21,12 @@ Create an in-memory object for NginxPublicIPAddress.
 Create an in-memory object for NginxPublicIPAddress.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPublicIPAddress
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPublicIPAddress
 .Link
 https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxPublicIPAddressObject
 #>
 function New-AzNginxPublicIPAddressObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPublicIPAddress')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPublicIPAddress')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,7 +36,7 @@ function New-AzNginxPublicIPAddressObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxPublicIPAddress]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.NginxPublicIPAddress]::New()
 
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id

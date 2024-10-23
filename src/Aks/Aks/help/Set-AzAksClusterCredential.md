@@ -41,7 +41,7 @@ Reset the ServicePrincipal of an existing AKS cluster.
 
 ### Example 1
 ```powershell
-$SecPasswd = ConvertTo-SecureString $password -AsPlainText -Force
+$SecPasswd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $Credential = $(New-Object System.Management.Automation.PSCredential ('6f277dd3-e481-4518-8aab-35c31662bad9', $SecPasswd))
 Set-AzAksClusterCredential -ResourceGroupName $ResourceGroupName -Name $Name -ServicePrincipalIdAndSecret $Credential -force
 ```

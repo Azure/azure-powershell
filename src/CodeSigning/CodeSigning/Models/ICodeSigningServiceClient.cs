@@ -26,6 +26,10 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
 
         Stream GetCodeSigningRootCert(string metadataPath);
 
+        Stream GetCodeSigningCertChain(string accountName, string profileName, string endpoint);
+
+        Stream GetCodeSigningCertChain(string metadataPath);
+
         void SubmitCIPolicySigning(string accountName, string profileName, string endpoint,
                 string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl);
         void SubmitCIPolicySigning(string metadataPath,

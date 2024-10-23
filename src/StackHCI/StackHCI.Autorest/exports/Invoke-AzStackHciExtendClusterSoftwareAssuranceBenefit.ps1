@@ -25,11 +25,11 @@ Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "test-clus" 
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "test-clus" -ResourceGroupName "test-rg" -SoftwareAssuranceIntent "Disable"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ISoftwareAssuranceChangeRequest
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ISoftwareAssuranceChangeRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IStackHciIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,10 +38,16 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStackHciIdentity>: Identity Parameter
   [ArcSettingName <String>]: The name of the proxy resource holding details of HCI ArcSetting information.
   [ClusterName <String>]: The name of the cluster.
+  [DeploymentSettingsName <String>]: Name of Deployment Setting
+  [EdgeDeviceName <String>]: Name of Device
   [ExtensionName <String>]: The name of the machine extension.
   [Id <String>]: Resource identity path
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource.
+  [SecuritySettingsName <String>]: Name of security setting
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UpdateName <String>]: The name of the Update
+  [UpdateRunName <String>]: The name of the Update Run
 
 SOFTWAREASSURANCECHANGEREQUEST <ISoftwareAssuranceChangeRequest>: .
   [SoftwareAssuranceIntent <SoftwareAssuranceIntent?>]: Customer Intent for Software Assurance Benefit.
@@ -49,7 +55,7 @@ SOFTWAREASSURANCECHANGEREQUEST <ISoftwareAssuranceChangeRequest>: .
 https://learn.microsoft.com/powershell/module/az.stackhci/invoke-azstackhciextendclustersoftwareassurancebenefit
 #>
 function Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ICluster])]
 [CmdletBinding(DefaultParameterSetName='ExtendExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Extend', Mandatory)]
@@ -73,6 +79,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='ExtendViaIdentity', Mandatory, ValueFromPipeline)]
@@ -86,7 +93,7 @@ param(
     [Parameter(ParameterSetName='Extend', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ExtendViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20230301.ISoftwareAssuranceChangeRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.ISoftwareAssuranceChangeRequest]
     # .
     # To construct, see NOTES section for SOFTWAREASSURANCECHANGEREQUEST properties and create a hash table.
     ${SoftwareAssuranceChangeRequest},

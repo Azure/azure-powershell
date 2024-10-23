@@ -121,9 +121,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReferenceInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReferenceInternal)this).Version, global::System.Convert.ToString);
             }
-            if (content.Contains("KeyVaultObjectName"))
+            if (content.Contains("SecretName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReferenceInternal)this).KeyVaultObjectName = (string) content.GetValueForProperty("KeyVaultObjectName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReferenceInternal)this).KeyVaultObjectName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReferenceInternal)this).SecretName = (string) content.GetValueForProperty("SecretName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReferenceInternal)this).SecretName, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -154,9 +154,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReferenceInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReferenceInternal)this).Version, global::System.Convert.ToString);
             }
-            if (content.Contains("KeyVaultObjectName"))
+            if (content.Contains("SecretName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReferenceInternal)this).KeyVaultObjectName = (string) content.GetValueForProperty("KeyVaultObjectName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReferenceInternal)this).KeyVaultObjectName, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReferenceInternal)this).SecretName = (string) content.GetValueForProperty("SecretName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReferenceInternal)this).SecretName, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

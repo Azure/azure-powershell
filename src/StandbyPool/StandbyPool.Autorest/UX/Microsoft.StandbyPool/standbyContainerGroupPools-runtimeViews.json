@@ -1,0 +1,47 @@
+{
+  "resourceType": "standbyContainerGroupPools/runtimeViews",
+  "apiVersion": "2024-03-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.standbypool"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStandbyContainerGroupPoolStatus",
+      "description": "Get a StandbyContainerGroupPoolRuntimeViewResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews/{runtimeView}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbycontainergrouppoolstatus"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a StandbyContainerGroupPoolRuntimeViewResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.standbyContainerGroupPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

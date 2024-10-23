@@ -27,7 +27,7 @@ The **Set-AzAutomationCredential** cmdlet modifies a credential as a **PSCredent
 ### Example 1: Update a credential
 ```powershell
 $User = "Contoso\DChew"
-$Password = ConvertTo-SecureString "Password" -AsPlainText -Force
+$Password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $Password
 Set-AzAutomationCredential -AutomationAccountName "Contoso17" -Name "ContosoCredential" -ResourceGroupName "ResourceGroup01" -Value $Credential
 ```

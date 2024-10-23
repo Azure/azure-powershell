@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 3.0.10
+* Fixed secrets exposure in example documentation.
+
 ## Version 3.0.9
 * Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.20.
 * Fixed the issue that Azure.Core.AccessToken is used before assigned.

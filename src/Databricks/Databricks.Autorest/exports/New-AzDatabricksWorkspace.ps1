@@ -72,6 +72,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
@@ -99,6 +100,14 @@ param(
     # The workspace provider authorizations.
     # To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
     ${Authorization},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType]
+    # Defines the initial type of the default catalog.
+    # Possible values (case-insensitive): HiveMetastore, UnityCatalog
+    ${DefaultCatalogInitialType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -145,6 +154,14 @@ param(
     ${LoadBalancerId},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource]
+    # The encryption keySource (provider).
+    # Possible values (case-insensitive): Microsoft.Keyvault
+    ${ManagedDiskKeySource},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
     # The name of KeyVault key.
@@ -167,6 +184,14 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
     ${ManagedDiskRotationToLatestKeyVersionEnabled},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource]
+    # The encryption keySource (provider).
+    # Possible values (case-insensitive): Microsoft.Keyvault
+    ${ManagedServiceKeySource},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]

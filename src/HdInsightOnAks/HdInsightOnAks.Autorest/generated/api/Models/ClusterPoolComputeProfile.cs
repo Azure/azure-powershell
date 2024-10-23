@@ -13,6 +13,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolComputeProfileInternal
     {
 
+        /// <summary>Backing field for <see cref="AvailabilityZone" /> property.</summary>
+        private System.Collections.Generic.List<string> _availabilityZone;
+
+        /// <summary>The list of Availability zones to use for AKS VMSS nodes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        public System.Collections.Generic.List<string> AvailabilityZone { get => this._availabilityZone; set => this._availabilityZone = value; }
+
         /// <summary>Backing field for <see cref="Count" /> property.</summary>
         private int? _count;
 
@@ -40,6 +47,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     public partial interface IClusterPoolComputeProfile :
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IJsonSerializable
     {
+        /// <summary>The list of Availability zones to use for AKS VMSS nodes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The list of Availability zones to use for AKS VMSS nodes.",
+        SerializedName = @"availabilityZones",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> AvailabilityZone { get; set; }
         /// <summary>The number of virtual machines.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
@@ -68,6 +86,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     internal partial interface IClusterPoolComputeProfileInternal
 
     {
+        /// <summary>The list of Availability zones to use for AKS VMSS nodes.</summary>
+        System.Collections.Generic.List<string> AvailabilityZone { get; set; }
         /// <summary>The number of virtual machines.</summary>
         int? Count { get; set; }
         /// <summary>The virtual machine SKU.</summary>

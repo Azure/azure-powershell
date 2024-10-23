@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.9.0
+* Updated the API version to 2024-05-20-preview.
+
 ## Version 0.8.0
 * Updated the API version to 2024-03-31-preview.
 * Added cmdlets `Get-AzConnectedLicense`, `Get-AzConnectedNetworkSecurityPerimeterConfiguration`, `New-AzConnectedLicense`, `New-AzConnectedLicenseDetail`, `Remove-AzConnectedLicense` and `Set-AzConnectedLicense`.

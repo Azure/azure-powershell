@@ -21,7 +21,7 @@ Check the availability of the resource name.
 Check the availability of the resource name.
 .Example
 $location="west us 2"
-$name="testname"
+$name="pool/testname"
 Test-AzHdInsightOnAksLocationNameAvailability -Location $location -Name $name -Type Microsoft.HDInsight/clusterPools/clusters
 
 .Inputs

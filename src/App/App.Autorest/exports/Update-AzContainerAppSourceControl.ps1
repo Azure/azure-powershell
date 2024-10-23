@@ -16,26 +16,26 @@
 
 <#
 .Synopsis
-Create the SourceControl for a Container App.
+Update the SourceControl for a Container App.
 .Description
-Create the SourceControl for a Container App.
+Update the SourceControl for a Container App.
 .Example
-$AzureClientSecret = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$RegistryPassword = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$GithubAccessToken = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$AzureClientSecret = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$RegistryPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$GithubAccessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 Update-AzContainerAppSourceControl -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name current -AzureClientId "UserObjectId" -AzureClientSecret $AzureClientSecret -AzureKind "feaderated" -AzureTenantId "UserDirectoryID" -Branch "main" -GithubContextPath "./" -GithubAccessToken $GithubAccessToken -GithubConfigurationImage "azps-containerapp-1" -RegistryPassword $RegistryPassword -RegistryUrl "azpscontainerregistry.azurecr.io" -RegistryUserName "azpscontainerregistry" -RepoUrl "https://github.com/lijinpei2008/ghatest"
 .Example
-$AzureClientSecret = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$RegistryPassword = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$GithubAccessToken = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$AzureClientSecret = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$RegistryPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$GithubAccessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $sourcecontrol = Get-AzContainerAppSourceControl -ContainerAppName azps-containerapp-1 -ResourceGroupName azps_test_group_app -Name current
 
 Update-AzContainerAppSourceControl -InputObject $sourcecontrol -AzureClientId "UserObjectId" -AzureClientSecret $AzureClientSecret -AzureKind "feaderated" -AzureTenantId "UserDirectoryID" -Branch "main" -GithubContextPath "./" -GithubAccessToken $GithubAccessToken -GithubConfigurationImage "azps-containerapp-1" -RegistryPassword $RegistryPassword -RegistryUrl "azpscontainerregistry.azurecr.io" -RegistryUserName "azpscontainerregistry" -RepoUrl "https://github.com/lijinpei2008/ghatest"
 .Example
-$AzureClientSecret = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$RegistryPassword = ConvertTo-SecureString -String "1234" -Force -AsPlainText
-$GithubAccessToken = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$AzureClientSecret = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$RegistryPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$GithubAccessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $containerapp = Get-AzContainerApp -ResourceGroupName azps_test_group_app -Name azps-containerapp-1
 
 Update-AzContainerAppSourceControl -ContainerAppInputObject $containerapp -Name current -AzureClientId "UserObjectId" -AzureClientSecret $AzureClientSecret -AzureKind "feaderated" -AzureTenantId "UserDirectoryID" -Branch "main" -GithubContextPath "./" -GithubAccessToken $GithubAccessToken -GithubConfigurationImage "azps-containerapp-1" -RegistryPassword $RegistryPassword -RegistryUrl "azpscontainerregistry.azurecr.io" -RegistryUserName "azpscontainerregistry" -RepoUrl "https://github.com/lijinpei2008/ghatest"
@@ -127,14 +127,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
     ${ContainerAppInputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -331,7 +329,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.App.private\Update-AzContainerAppSourceControl_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

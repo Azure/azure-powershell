@@ -15,5 +15,7 @@ namespace Microsoft.Azure.Management.Network.Models
     {
         public const string SecurityAdmin = "SecurityAdmin";
         public const string Connectivity = "Connectivity";
+        public const string SecurityUser = "SecurityUser";
+        public const string Routing = "Routing";
     }
 }

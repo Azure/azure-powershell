@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceBatchEndpoin
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMLWorkspaceBatchEndpoint' {
+Describe 'New-AzMLWorkspaceBatchEndpoint' { #Moved
     # New operation InternalServerError
     It 'CreateExpanded' -skip {
         { 

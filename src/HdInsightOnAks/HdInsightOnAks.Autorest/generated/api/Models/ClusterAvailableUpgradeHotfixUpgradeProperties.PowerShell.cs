@@ -76,53 +76,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Description"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).Description, global::System.Convert.ToString);
-            }
-            if (content.Contains("SourceOssVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).SourceOssVersion = (string) content.GetValueForProperty("SourceOssVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).SourceOssVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("SourceClusterVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).SourceClusterVersion = (string) content.GetValueForProperty("SourceClusterVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).SourceClusterVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("SourceBuildNumber"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).SourceBuildNumber = (string) content.GetValueForProperty("SourceBuildNumber",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).SourceBuildNumber, global::System.Convert.ToString);
-            }
-            if (content.Contains("TargetOssVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).TargetOssVersion = (string) content.GetValueForProperty("TargetOssVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).TargetOssVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("TargetClusterVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).TargetClusterVersion = (string) content.GetValueForProperty("TargetClusterVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).TargetClusterVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("TargetBuildNumber"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).TargetBuildNumber = (string) content.GetValueForProperty("TargetBuildNumber",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).TargetBuildNumber, global::System.Convert.ToString);
-            }
-            if (content.Contains("ComponentName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).ComponentName, global::System.Convert.ToString);
-            }
-            if (content.Contains("Severity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).Severity = (string) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).Severity, global::System.Convert.ToString);
-            }
-            if (content.Contains("ExtendedProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).ExtendedProperty = (string) content.GetValueForProperty("ExtendedProperty",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).ExtendedProperty, global::System.Convert.ToString);
-            }
-            if (content.Contains("CreatedTime"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).CreatedTime = (global::System.DateTime?) content.GetValueForProperty("CreatedTime",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).CreatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
             if (content.Contains("UpgradeType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradePropertiesInternal)this).UpgradeType = (string) content.GetValueForProperty("UpgradeType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradePropertiesInternal)this).UpgradeType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceOssVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).SourceOssVersion = (string) content.GetValueForProperty("SourceOssVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).SourceOssVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceClusterVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).SourceClusterVersion = (string) content.GetValueForProperty("SourceClusterVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).SourceClusterVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceBuildNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).SourceBuildNumber = (string) content.GetValueForProperty("SourceBuildNumber",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).SourceBuildNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetOssVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).TargetOssVersion = (string) content.GetValueForProperty("TargetOssVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).TargetOssVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetClusterVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).TargetClusterVersion = (string) content.GetValueForProperty("TargetClusterVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).TargetClusterVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetBuildNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).TargetBuildNumber = (string) content.GetValueForProperty("TargetBuildNumber",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).TargetBuildNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComponentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).ComponentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Severity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).Severity = (string) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).Severity, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExtendedProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).ExtendedProperty = (string) content.GetValueForProperty("ExtendedProperty",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).ExtendedProperty, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreatedTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).CreatedTime = (global::System.DateTime?) content.GetValueForProperty("CreatedTime",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).CreatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             AfterDeserializeDictionary(content);
         }
@@ -141,53 +141,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Description"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).Description, global::System.Convert.ToString);
-            }
-            if (content.Contains("SourceOssVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).SourceOssVersion = (string) content.GetValueForProperty("SourceOssVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).SourceOssVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("SourceClusterVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).SourceClusterVersion = (string) content.GetValueForProperty("SourceClusterVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).SourceClusterVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("SourceBuildNumber"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).SourceBuildNumber = (string) content.GetValueForProperty("SourceBuildNumber",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).SourceBuildNumber, global::System.Convert.ToString);
-            }
-            if (content.Contains("TargetOssVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).TargetOssVersion = (string) content.GetValueForProperty("TargetOssVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).TargetOssVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("TargetClusterVersion"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).TargetClusterVersion = (string) content.GetValueForProperty("TargetClusterVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).TargetClusterVersion, global::System.Convert.ToString);
-            }
-            if (content.Contains("TargetBuildNumber"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).TargetBuildNumber = (string) content.GetValueForProperty("TargetBuildNumber",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).TargetBuildNumber, global::System.Convert.ToString);
-            }
-            if (content.Contains("ComponentName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).ComponentName, global::System.Convert.ToString);
-            }
-            if (content.Contains("Severity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).Severity = (string) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).Severity, global::System.Convert.ToString);
-            }
-            if (content.Contains("ExtendedProperty"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).ExtendedProperty = (string) content.GetValueForProperty("ExtendedProperty",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).ExtendedProperty, global::System.Convert.ToString);
-            }
-            if (content.Contains("CreatedTime"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).CreatedTime = (global::System.DateTime?) content.GetValueForProperty("CreatedTime",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeHotfixUpgradePropertiesInternal)this).CreatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            }
             if (content.Contains("UpgradeType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradePropertiesInternal)this).UpgradeType = (string) content.GetValueForProperty("UpgradeType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradePropertiesInternal)this).UpgradeType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceOssVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).SourceOssVersion = (string) content.GetValueForProperty("SourceOssVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).SourceOssVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceClusterVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).SourceClusterVersion = (string) content.GetValueForProperty("SourceClusterVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).SourceClusterVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceBuildNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).SourceBuildNumber = (string) content.GetValueForProperty("SourceBuildNumber",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).SourceBuildNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetOssVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).TargetOssVersion = (string) content.GetValueForProperty("TargetOssVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).TargetOssVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetClusterVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).TargetClusterVersion = (string) content.GetValueForProperty("TargetClusterVersion",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).TargetClusterVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetBuildNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).TargetBuildNumber = (string) content.GetValueForProperty("TargetBuildNumber",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).TargetBuildNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComponentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).ComponentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Severity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).Severity = (string) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).Severity, global::System.Convert.ToString);
+            }
+            if (content.Contains("ExtendedProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).ExtendedProperty = (string) content.GetValueForProperty("ExtendedProperty",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).ExtendedProperty, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreatedTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).CreatedTime = (global::System.DateTime?) content.GetValueForProperty("CreatedTime",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableInPlaceUpgradePropertiesInternal)this).CreatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
             }
             AfterDeserializePSObject(content);
         }

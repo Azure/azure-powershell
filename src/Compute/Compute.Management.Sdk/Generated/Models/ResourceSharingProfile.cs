@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         /// <param name="subscriptionIds">Specifies an array of subscription
         /// resource IDs that capacity reservation group is shared with.
-        /// **Note:** Minimum api-version: 2024-03-01. Please refer to
+        /// **Note:** Minimum api-version: 2023-09-01. Please refer to
         /// https://aka.ms/computereservationsharing for more details.</param>
         public ResourceSharingProfile(IList<SubResource> subscriptionIds = default(IList<SubResource>))
         {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Gets or sets specifies an array of subscription resource IDs that
         /// capacity reservation group is shared with. **Note:** Minimum
-        /// api-version: 2024-03-01. Please refer to
+        /// api-version: 2023-09-01. Please refer to
         /// https://aka.ms/computereservationsharing for more details.
         /// </summary>
         [JsonProperty(PropertyName = "subscriptionIds")]

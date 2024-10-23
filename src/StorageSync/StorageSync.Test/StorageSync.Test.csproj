@@ -16,7 +16,7 @@
 	
   <ItemGroup>
     <ProjectReference Include="..\..\Storage\Storage\Storage.csproj" />
-    <ProjectReference Include="..\StorageSync.Sdk\StorageSync.Sdk.csproj" />
+    <ProjectReference Include="..\StorageSync.Management.Sdk\StorageSync.Management.Sdk.csproj" />
     <ProjectReference Include="..\StorageSync\StorageSync.csproj" />
   </ItemGroup>
 

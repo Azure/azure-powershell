@@ -20,7 +20,7 @@ Retrieves cert chain.
 .Description
 Retrieves cert chain.
 .Example
-Get-AzSphereCertificateCertChain -CatalogName test2024 -ResourceGroupName joyer-test -SerialNumber 'serial number'
+Get-AzSphereCertificateCertChain -CatalogName test2024 -ResourceGroupName group-test -SerialNumber 'serial number'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

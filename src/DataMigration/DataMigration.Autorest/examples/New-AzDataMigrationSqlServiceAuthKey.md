@@ -4,9 +4,9 @@ New-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMi
 ```
 
 ```output
-AuthKey1 AuthKey2                                                   KeyName
--------- --------                                                   -------
-         IR@abcd7-efgh8-jklmn9-opqr10@mysqlms@eastus@stuv2/wxyz1=
+AuthKey1 AuthKey2                    KeyName
+-------- --------                    -------
+         IR*********************yz6=
 ```
 
 This command regenerate the AuthKeys for a given Sql Migration Service. Here we have regenerated AuthKey2.

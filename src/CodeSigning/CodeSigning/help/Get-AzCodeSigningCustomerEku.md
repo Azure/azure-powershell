@@ -138,6 +138,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzCodeSigningCustomerEku](./Get-AzCodeSigningCustomerEku.md)
+[Get-AzCodeSigningRootCert](./Get-AzCodeSigningRootCert.md)
+
+[Get-AzCodeSigningCertChain](./Get-AzCodeSigningCertChain.md)
 
 [Invoke-AzCodeSigningCIPolicySigning](./Invoke-AzCodeSigningCIPolicySigning.md)

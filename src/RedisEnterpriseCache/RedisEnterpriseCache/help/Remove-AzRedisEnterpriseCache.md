@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzRedisEnterpriseCache
 
 ## SYNOPSIS
-Deletes a RedisEnterprise cache cluster.
+Deletes a Redis Enterprise cache cluster.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Remove-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Def
 ```
 
 ## DESCRIPTION
-Deletes a RedisEnterprise cache cluster.
+Deletes a Redis Enterprise cache cluster.
 
 ## EXAMPLES
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-The name of the RedisEnterprise cluster.
+The name of the Redis Enterprise cluster.
 
 ```yaml
 Type: System.String

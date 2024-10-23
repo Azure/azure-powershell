@@ -111,5 +111,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzHDInsightCluster](./Get-AzHDInsightCluster.md)
 
 [Use-AzHDInsightCluster](./Use-AzHDInsightCluster.md)
-
-

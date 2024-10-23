@@ -9,8 +9,7 @@ Create user with password profile
 
 ### Example 2: Create user with password
 ```powershell
-$password = "xxxxxxxxxx"
-$password = ConvertTo-SecureString -AsPlainText -Force $password
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzADUser -DisplayName $uname -Password $password -AccountEnabled $true -MailNickname $nickname -UserPrincipalName $upn
 ```
 

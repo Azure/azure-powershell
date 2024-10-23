@@ -18,12 +18,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Files.Shares.Models;
     using Microsoft.Azure.Storage.File;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
 
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageFile), "13.0.0", "8.0.0", ChangeDescription = "The child property CloudFile from deprecated v11 SDK will be removed. Use child property ShareFileClient instead.")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageFileDirectory), "13.0.0", "8.0.0", ChangeDescription = "The child property CloudFileDirectory from deprecated v11 SDK will be removed. Use child property ShareDirectoryClient instead.")]
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFile", DefaultParameterSetName = Constants.ShareNameParameterSetName)]
     [OutputType(typeof(AzureStorageFile))]
     public class GetAzureStorageFile : AzureStorageFileCmdletBase
@@ -36,6 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Share", "13.0.0", "8.0.0", ChangeDescription = "The parameter Share (alias CloudFileShare) will be deprecated, and ShareClient will be mandatory.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -56,6 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public ShareClient ShareClient { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Directory", "13.0.0", "8.0.0", ChangeDescription = "The parameter Directory (alias CloudFileDirectory) will be deprecated, and ShareDirectoryClient will be mandatory.")]
         [Parameter(
             Position = 0,
             Mandatory = true,

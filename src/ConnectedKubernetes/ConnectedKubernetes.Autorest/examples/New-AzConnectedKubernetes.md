@@ -68,7 +68,7 @@ This command creates a connected kubernetes with parameters HttpProxy, HttpsProx
 
 ### Example 6: Create a connected kubernetes with parameters HttpProxy, HttpsProxy, NoProxy, Proxy and ProxyCredential.
 ```powershell
-$pwd = ConvertTo-SecureString "proxy-password" -AsPlainText -Force
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("proxy-user", $pwd)
 New-AzConnectedKubernetes -ClusterName azps_test_cluster_ahb -ResourceGroupName azps_test_group -Location eastus -KubeConfig $HOME\.kube\config -KubeContext azps_aks_t01 -HttpProxy "http://proxy-user:proxy-password@proxy-ip:port" -HttpsProxy "http://proxy-user:proxy-password@proxy-ip:port" -NoProxy "localhost,127.0.0.0/8,192.168.0.0/16,172.17.0.0/16,10.96.0.0/12,10.244.0.0/16,10.43.0.0/24,.svc" -Proxy "http://proxy-ip:port" -ProxyCredential $cred
 ```

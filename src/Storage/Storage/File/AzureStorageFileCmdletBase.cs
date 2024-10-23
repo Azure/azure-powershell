@@ -15,23 +15,19 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File
 {
     using Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using global::Azure;
+    using global::Azure.Core;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
+    using Microsoft.Azure.Storage.Blob;
+    using Microsoft.Azure.Storage.File;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.Azure.Storage.File;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
-    using global::Azure.Storage.Files.Shares;
-    using Microsoft.WindowsAzure.Commands.Common;
-    using global::Azure.Core;
-    using global::Azure;
-    using global::Azure.Storage.Files.Shares.Models;
-    using System.Linq;
-    using Microsoft.Azure.Cosmos.Table;
-    using Microsoft.Azure.Storage.Blob;
-    using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 
     public abstract class AzureStorageFileCmdletBase : StorageCloudCmdletBase<IStorageFileManagement>
     {

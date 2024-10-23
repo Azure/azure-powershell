@@ -23,13 +23,15 @@ Describe 'New-AzElasticSanVolumeGroup' {
         $volGroup.Name | Should -Be $volGroupName
         $volGroup.ProtocolType | Should -Be "Iscsi"
         $volGroup.NetworkAclsVirtualNetworkRule.Count | Should -Be 2
+        $volGroup.EnforceDataIntegrityCheckForIscsi | Should -Be $true
 
         $volGroupName2 = 'testvolgroup2' + $env.RandomString
-        $volGroup = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName2 -ProtocolType 'Iscsi' -IdentityType 'SystemAssigned' -Encryption EncryptionAtRestWithPlatformKey
+        $volGroup = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName2 -ProtocolType 'Iscsi' -IdentityType 'SystemAssigned' -Encryption EncryptionAtRestWithPlatformKey -EnforceDataIntegrityCheckForIscsi $false
         $volGroup.Name | Should -Be $volGroupName2
         $volGroup.Encryption | Should -Be "EncryptionAtRestWithPlatformKey"
         $volGroup.ProtocolType | Should -Be "Iscsi"
         $volGroup.IdentityType | Should -Be "SystemAssigned"
+        $volGroup.EnforceDataIntegrityCheckForIscsi | Should -Be $false
 
         $volGroupName3 = 'testvolgroup3' + $env.RandomString
         $volGroup = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName3 -IdentityType 'UserAssigned'-IdentityUserAssignedIdentity $env.Useridentity.Id -Encryption EncryptionAtRestWithCustomerManagedKey -KeyName $env.Keyname -KeyVaultUri $env.KeyvaultUri -EncryptionUserAssignedIdentity $env.Useridentity.Id -ProtocolType Iscsi
@@ -41,12 +43,21 @@ Describe 'New-AzElasticSanVolumeGroup' {
         $volGroup.KeyVaultPropertyKeyVaultUri | Should -Be $env.KeyvaultUri
         $volGroup.ProtocolType | Should -Be "iSCSI"
 
+        $volGroupName4 = 'testvolgroup4' + $env.RandomString
+        $volGroup = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName4 -EnforceDataIntegrityCheckForIscsi $true 
+        $volGroup.Name | Should -Be $volGroupName4
+        $volGroup.EnforceDataIntegrityCheckForIscsi | Should -Be $true
+
         $volGroup = Update-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName3 -Encryption EncryptionAtRestWithPlatformKey
         $volGroup.IdentityType | Should -Be "UserAssigned"
         $volGroup.Encryption | Should -Be "EncryptionAtRestWithPlatformKey"
         $volGroup.ProtocolType | Should -Be "Iscsi"
 
-        $volGroup = Update-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName3 -IdentityType 'SystemAssigned'
+        $volGroup = Update-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName3 -IdentityType 'SystemAssigned' -EnforceDataIntegrityCheckForIscsi $false
         $volGroup.IdentityType | Should -Be "SystemAssigned"
+        $volGroup.EnforceDataIntegrityCheckForIscsi | Should -Be $false
+
+        $volGroup = Update-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName3 -EnforceDataIntegrityCheckForIscsi $true
+        $volGroup.EnforceDataIntegrityCheckForIscsi | Should -Be $true
     }
 }

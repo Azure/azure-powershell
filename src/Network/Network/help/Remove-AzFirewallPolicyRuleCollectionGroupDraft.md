@@ -14,23 +14,23 @@ Removes an Azure Firewall Policy Rule Collection Group draft in an Azure firewal
 
 ### RemoveByNameParameterSet (Default)
 ```
-Remove-AzFirewallPolicyRuleCollectionGroupDraft AzureFirewallPolicyRuleCollectionGroupName <String> -ResourceGroupName <String>
- -AzureFirewallPolicyName <String> [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String>
+ -ResourceGroupName <String> -AzureFirewallPolicyName <String> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByParentInputObjectParameterSet
 ```
-Remove-AzFirewallPolicyRuleCollectionGroupDraft AzureFirewallPolicyRuleCollectionGroupName <String> -FirewallPolicyObject <PSAzureFirewallPolicy>
- [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzFirewallPolicyRuleCollectionGroupDraft -AzureFirewallPolicyRuleCollectionGroupName <String>
+ -FirewallPolicyObject <PSAzureFirewallPolicy> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByInputObjectParameterSet
 ```
-Remove-AzFirewallPolicyRuleCollectionGroupDraft -InputObject <PSAzureFirewallPolicyRuleCollectionGroupDraftWrapper>
- [-Force] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzFirewallPolicyRuleCollectionGroupDraft
+ -InputObject <PSAzureFirewallPolicyRuleCollectionGroupDraftWrapper> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByResourceIdParameterSet
@@ -81,6 +81,33 @@ The name of the firewall policy.
 ```yaml
 Type: System.String
 Parameter Sets: RemoveByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AzureFirewallPolicyRuleCollectionGroupName
+The name of the rule collection group associated with the draft.
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveByParentInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -147,33 +174,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### AzureFirewallPolicyRuleCollectionGroupName
-The name of the rule collection group associated with the draft.
-
-```yaml
-Type: System.String
-Parameter Sets: RemoveByNameParameterSet
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: RemoveByParentInputObjectParameterSet
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

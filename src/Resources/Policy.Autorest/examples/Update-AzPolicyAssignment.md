@@ -90,7 +90,27 @@ Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -NonComplianceMessage
 The first command gets the policy assignment named VirtualMachinePolicy by using the Get-AzPolicyAssignment cmdlet and stores it in the $PolicyAssignment variable.
 The final command updates the non-compliance messages on the policy assignment with a new message that will be displayed if a resource is denied by the policy.
 
-### Example 8: [Backcompat] Update an enforcementMode
+### Example 8: Update resource selector
+```powershell
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -ResourceSelector $ResourceSelector
+```
+
+The first command creates a resource selector object that will be used to specify the assignment should only apply to resources not located in East US or East US 2 and stores it in the $ResourceSelector variable.
+The final command updates the policy assignment named VirtualMachinePolicyAssignment with the resource selector specified by $ResourceSelector.
+
+### Example 9: Update override
+```powershell
+$Selector = @{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")}
+$Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Override $Override
+```
+
+The first command creates a location selector specifying locations other than East US or East US 2 and stores in in the $Selector variable.
+The second command creates an override object that will be used to specify that the assigned definition should have a Disabled effect in the locations identified by $Selector.
+The final command updates the policy assignment named VirtualMachinePolicyAssignment with the override specified by $Override.
+
+### Example 10: [Backcompat] Update an enforcementMode
 ```powershell
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId

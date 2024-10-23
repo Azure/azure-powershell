@@ -80,6 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).IdentityProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile) content.GetValueForProperty("IdentityProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).IdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfileTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ManagedIdentityProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ManagedIdentityProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfile) content.GetValueForProperty("ManagedIdentityProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ManagedIdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentityProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("AuthorizationProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AuthorizationProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAuthorizationProfile) content.GetValueForProperty("AuthorizationProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AuthorizationProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.AuthorizationProfileTypeConverter.ConvertFrom);
@@ -164,6 +168,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ScriptActionProfile = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile>) content.GetValueForProperty("ScriptActionProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ScriptActionProfile, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ScriptActionProfileTypeConverter.ConvertFrom));
             }
+            if (content.Contains("ManagedIdentityProfileIdentityList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ManagedIdentityProfileIdentityList = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec>) content.GetValueForProperty("ManagedIdentityProfileIdentityList",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ManagedIdentityProfileIdentityList, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentitySpecTypeConverter.ConvertFrom));
+            }
             if (content.Contains("AuthorizationProfileUserId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AuthorizationProfileUserId = (System.Collections.Generic.List<string>) content.GetValueForProperty("AuthorizationProfileUserId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AuthorizationProfileUserId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -191,6 +199,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("SshProfilePodPrefix"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfilePodPrefix = (string) content.GetValueForProperty("SshProfilePodPrefix",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfilePodPrefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("SshProfileVMSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfileVMSize = (string) content.GetValueForProperty("SshProfileVMSize",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfileVMSize, global::System.Convert.ToString);
             }
             if (content.Contains("AutoscaleProfileAutoscaleType"))
             {
@@ -303,10 +315,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("KafkaProfileDiskStorage"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileDiskStorage = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IDiskStorageProfile) content.GetValueForProperty("KafkaProfileDiskStorage",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileDiskStorage, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.DiskStorageProfileTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("KafkaProfileClusterIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileClusterIdentity = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile) content.GetValueForProperty("KafkaProfileClusterIdentity",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfileTypeConverter.ConvertFrom);
             }
             if (content.Contains("KafkaProfileConnectivityEndpoint"))
             {
@@ -423,18 +431,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("DiskStorageDataDiskType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskType = (string) content.GetValueForProperty("DiskStorageDataDiskType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskType, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClusterIdentityMsiResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiResourceId = (string) content.GetValueForProperty("ClusterIdentityMsiResourceId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiResourceId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClusterIdentityMsiClientId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiClientId = (string) content.GetValueForProperty("ClusterIdentityMsiClientId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiClientId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClusterIdentityMsiObjectId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiObjectId = (string) content.GetValueForProperty("ClusterIdentityMsiObjectId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiObjectId, global::System.Convert.ToString);
             }
             if (content.Contains("ConnectivityEndpointBootstrapServerEndpoint"))
             {
@@ -673,6 +669,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).IdentityProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile) content.GetValueForProperty("IdentityProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).IdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfileTypeConverter.ConvertFrom);
             }
+            if (content.Contains("ManagedIdentityProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ManagedIdentityProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentityProfile) content.GetValueForProperty("ManagedIdentityProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ManagedIdentityProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentityProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("AuthorizationProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AuthorizationProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAuthorizationProfile) content.GetValueForProperty("AuthorizationProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AuthorizationProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.AuthorizationProfileTypeConverter.ConvertFrom);
@@ -757,6 +757,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ScriptActionProfile = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile>) content.GetValueForProperty("ScriptActionProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ScriptActionProfile, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ScriptActionProfileTypeConverter.ConvertFrom));
             }
+            if (content.Contains("ManagedIdentityProfileIdentityList"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ManagedIdentityProfileIdentityList = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec>) content.GetValueForProperty("ManagedIdentityProfileIdentityList",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ManagedIdentityProfileIdentityList, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IManagedIdentitySpec>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentitySpecTypeConverter.ConvertFrom));
+            }
             if (content.Contains("AuthorizationProfileUserId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AuthorizationProfileUserId = (System.Collections.Generic.List<string>) content.GetValueForProperty("AuthorizationProfileUserId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).AuthorizationProfileUserId, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
@@ -784,6 +788,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("SshProfilePodPrefix"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfilePodPrefix = (string) content.GetValueForProperty("SshProfilePodPrefix",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfilePodPrefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("SshProfileVMSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfileVMSize = (string) content.GetValueForProperty("SshProfileVMSize",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).SshProfileVMSize, global::System.Convert.ToString);
             }
             if (content.Contains("AutoscaleProfileAutoscaleType"))
             {
@@ -896,10 +904,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("KafkaProfileDiskStorage"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileDiskStorage = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IDiskStorageProfile) content.GetValueForProperty("KafkaProfileDiskStorage",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileDiskStorage, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.DiskStorageProfileTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("KafkaProfileClusterIdentity"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileClusterIdentity = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IIdentityProfile) content.GetValueForProperty("KafkaProfileClusterIdentity",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).KafkaProfileClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfileTypeConverter.ConvertFrom);
             }
             if (content.Contains("KafkaProfileConnectivityEndpoint"))
             {
@@ -1016,18 +1020,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("DiskStorageDataDiskType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskType = (string) content.GetValueForProperty("DiskStorageDataDiskType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).DiskStorageDataDiskType, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClusterIdentityMsiResourceId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiResourceId = (string) content.GetValueForProperty("ClusterIdentityMsiResourceId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiResourceId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClusterIdentityMsiClientId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiClientId = (string) content.GetValueForProperty("ClusterIdentityMsiClientId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiClientId, global::System.Convert.ToString);
-            }
-            if (content.Contains("ClusterIdentityMsiObjectId"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiObjectId = (string) content.GetValueForProperty("ClusterIdentityMsiObjectId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterProfileInternal)this).ClusterIdentityMsiObjectId, global::System.Convert.ToString);
             }
             if (content.Contains("ConnectivityEndpointBootstrapServerEndpoint"))
             {

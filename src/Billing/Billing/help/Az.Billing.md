@@ -38,7 +38,7 @@ Get usage details of the subscription.
 ### [Get-AzEnrollmentAccount](Get-AzEnrollmentAccount.md)
 Get enrollment accounts.
 
-### [Get-UsageAggregates](Get-UsageAggregates.md)
+### [Get-AzUsageAggregate](Get-AzUsageAggregate.md)
 Gets the reported Azure subscription usage details.
 
 ### [New-AzConsumptionBudget](New-AzConsumptionBudget.md)

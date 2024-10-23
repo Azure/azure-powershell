@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-This operation creates or updates a policy set definition in the given management group with the given name.
+This operation update a policy set definition in the given management group with the given name.
 .Description
-This operation creates or updates a policy set definition in the given management group with the given name.
+This operation update a policy set definition in the given management group with the given name.
 .Example
 $PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
 Update-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'

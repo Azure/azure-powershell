@@ -21,12 +21,12 @@ Create an in-memory object for ServicePrincipalDatastoreCredentials.
 Create an in-memory object for ServicePrincipalDatastoreCredentials.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ServicePrincipalDatastoreCredentials
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ServicePrincipalDatastoreCredentials
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreServicePrincipalCredentialObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceDatastoreServicePrincipalCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreServicePrincipalCredentialObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ServicePrincipalDatastoreCredentials')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ServicePrincipalDatastoreCredentials')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -48,9 +48,9 @@ function New-AzMLWorkspaceDatastoreServicePrincipalCredentialObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ServicePrincipalDatastoreCredentials]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ServicePrincipalDatastoreCredentials]::New()
         $Object.CredentialsType = 'ServicePrincipal'
-        $Secret = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ServicePrincipalDatastoreSecrets]::New()
+        $Secret = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ServicePrincipalDatastoreSecrets]::New()
         $Secret.SecretsType = 'ServicePrincipal'
 
         if ($PSBoundParameters.ContainsKey('AuthorityUrl')) {

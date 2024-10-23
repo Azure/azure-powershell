@@ -23,12 +23,12 @@ Lists the current usages and limits in this location for the provided subscripti
 Get-AzDevCenterAdminUsage -Location "westus3"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IUsage
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IUsage
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminusage
 #>
 function Get-AzDevCenterAdminUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IUsage])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

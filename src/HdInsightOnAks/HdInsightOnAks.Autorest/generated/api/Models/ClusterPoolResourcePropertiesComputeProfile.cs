@@ -19,6 +19,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolComputeProfile __clusterPoolComputeProfile = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolComputeProfile();
 
+        /// <summary>The list of Availability zones to use for AKS VMSS nodes.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
+        public System.Collections.Generic.List<string> AvailabilityZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolComputeProfileInternal)__clusterPoolComputeProfile).AvailabilityZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolComputeProfileInternal)__clusterPoolComputeProfile).AvailabilityZone = value ?? null /* arrayOf */; }
+
         /// <summary>The number of virtual machines.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inherited)]
         public int? Count { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolComputeProfileInternal)__clusterPoolComputeProfile).Count; }

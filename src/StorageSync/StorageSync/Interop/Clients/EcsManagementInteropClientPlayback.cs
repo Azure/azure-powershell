@@ -15,9 +15,10 @@
 using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Enums;
 using Commands.StorageSync.Interop.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
 using System;
 using System.Runtime.InteropServices;
-
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Commands.StorageSync.Interop.Clients
 {
@@ -221,26 +222,6 @@ namespace Commands.StorageSync.Interop.Clients
         }
 
         /// <summary>
-        /// Recalls the file.
-        /// </summary>
-        /// <param name="path">The path.</param>
-        /// <returns>RecallOutput.</returns>
-        public RecallOutput RecallFile([In, MarshalAs(UnmanagedType.BStr)] string path)
-        {
-            return new RecallOutput() { };
-        }
-
-        /// <summary>
-        /// Determines whether [is path under sync share] [the specified path].
-        /// </summary>
-        /// <param name="path">The path.</param>
-        /// <returns><c>true</c> if [is path under sync share] [the specified path]; otherwise, <c>false</c>.</returns>
-        public bool IsPathUnderSyncShare([In, MarshalAs(UnmanagedType.BStr)] string path)
-        {
-            return true;
-        }
-
-        /// <summary>
         /// Persists the sync server registration.
         /// </summary>
         /// <param name="serviceUri">The service URI.</param>
@@ -427,5 +408,261 @@ namespace Commands.StorageSync.Interop.Clients
         {
             return false;
         }
+
+        public RecallOutput RecallFile([In, MarshalAs(UnmanagedType.BStr)] string path, [In, MarshalAs(UnmanagedType.U4)] uint retryCount, [In, MarshalAs(UnmanagedType.U4)] uint retryDelaySeconds)
+        {
+            return new RecallOutput() { };
+        }
+
+        public void IsPathUnderSyncShare([In, MarshalAs(UnmanagedType.BStr)] string path, [MarshalAs(UnmanagedType.BStr), Out] out string fileIdStr, [MarshalAs(UnmanagedType.Bool), Out] out bool isPathUnderShare, [MarshalAs(UnmanagedType.Bool), Out] out bool isPathShareRoot)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetAutoUpdatePolicy([In, MarshalAs(UnmanagedType.Struct)] AutoUpdatePolicy autoUpdatePolicy)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AutoUpdatePolicy GetAutoUpdatePolicy()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool GetFilePathUsingId([In, MarshalAs(UnmanagedType.BStr)] string volumeGuid, [In, MarshalAs(UnmanagedType.U8)] ulong fileId, [MarshalAs(UnmanagedType.BStr), Out] out string filePath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LogOrphanedTieredFilesTelemetry([In, MarshalAs(UnmanagedType.Struct)] OrphanedTieredFilesTelemetryReport orphanedTieredFilesTelemetryReport)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PopulateFileInfoUsingHeatOrder([In, MarshalAs(UnmanagedType.BStr)] string path, [In, MarshalAs(UnmanagedType.BStr)] string recallCmdletLogPath, [MarshalAs(UnmanagedType.BStr), Out] out string recallMountPath, [MarshalAs(UnmanagedType.BStr), Out] out string volumeGuid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LogRecallFilesTelemetry([In, MarshalAs(UnmanagedType.Struct)] RecallFilesTelemetryReport recallFilesTelemetryReport)
+        {
+            throw new NotImplementedException();
+        }
+
+        public HeatStoreSummary PopulateHeatStoreInformation([In, MarshalAs(UnmanagedType.BStr)] string volumePath, [In, MarshalAs(UnmanagedType.BStr)] string reportDirectoryPath, [In, MarshalAs(UnmanagedType.U4)] HeatStoreEnumeratorType enumeratorType, [In, MarshalAs(UnmanagedType.U8)] ulong maxRecordsLimit)
+        {
+            throw new NotImplementedException();
+        }
+
+        [return: MarshalAs(UnmanagedType.BStr)]
+        public string GetFileLockIdUsingPath([In, MarshalAs(UnmanagedType.BStr)] string filePath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetLockBypassForSyncShare([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot, [In, MarshalAs(UnmanagedType.Bool)] bool bypassValue)
+        {
+            throw new NotImplementedException();
+        }
+
+        public HeatStoreFileInfo GetHeatStoreFileInformation([In, MarshalAs(UnmanagedType.BStr)] string filePath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public SelfServiceRestore EnableSelfServiceRestore([In, MarshalAs(UnmanagedType.BStr)] string volume)
+        {
+            throw new NotImplementedException();
+        }
+
+        public SelfServiceRestore GetSelfServiceRestore([In, MarshalAs(UnmanagedType.BStr)] string volume)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DisableSelfServiceRestore([In, MarshalAs(UnmanagedType.BStr)] string volume)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RunNetworkConnectivityCheck([In, MarshalAs(UnmanagedType.Bool)] bool measureBandwidth, [MarshalAs(UnmanagedType.Bool), Out] out bool testPassed, [MarshalAs(UnmanagedType.BStr), Out] out string report)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TriggerOrphanedTieredFilesCleanup([In, MarshalAs(UnmanagedType.BStr)] string dataPath, [In, MarshalAs(UnmanagedType.BStr)] string context, [In, MarshalAs(UnmanagedType.BStr)] string clientCorrelationId)
+        {
+            throw new NotImplementedException();
+        }
+
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public bool DoesOrphanedTieredFilesMarkerExist([In, MarshalAs(UnmanagedType.BStr)] string dataPath, [In, MarshalAs(UnmanagedType.BStr)] string context, [In, MarshalAs(UnmanagedType.BStr)] string clientCorrelationId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveOrphanedTieredFilesMarker([In, MarshalAs(UnmanagedType.BStr)] string dataPath)
+        {
+            throw new NotImplementedException();
+        }
+
+        [return: MarshalAs(UnmanagedType.U4)]
+        public uint GetReparseTag([In, MarshalAs(UnmanagedType.BStr)] string filePath)
+        {
+            throw new NotImplementedException();
+        }
+
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public bool IsPathUnderSVIOrRecycleBin([In, MarshalAs(UnmanagedType.BStr)] string path)
+        {
+            throw new NotImplementedException();
+        }
+
+        [return: MarshalAs(UnmanagedType.Interface)]
+        public IFileAccessPatternStatsEnumerator GetFileAccessPattern([In, MarshalAs(UnmanagedType.BStr)] string serverEndpointPath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TieringPolicyRecommendations GetTieringPolicyRecommendations([In, MarshalAs(UnmanagedType.BStr)] string serverEndpointPath, [In, MarshalAs(UnmanagedType.U4)] PolicyAdvisorMode policyAdvisorMode)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LockingStateInfo GetLockingStateInformationUsingFilePath([In, MarshalAs(UnmanagedType.BStr)] string filePath)
+        {
+            throw new NotImplementedException();
+        }
+
+        public LockingStateInfo GetLockingStateInformationUsingLockId([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot, [In, MarshalAs(UnmanagedType.BStr)] string lockId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int InitializeCmdletGhosting([In, MarshalAs(UnmanagedType.BStr)] string path, [MarshalAs(UnmanagedType.BStr), Out] out string tieringCmdletLogPath, [MarshalAs(UnmanagedType.U4), Out] out uint totalFiles, [MarshalAs(UnmanagedType.BStr), Out] out string ghostingSessionGuid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GhostBatch([In, MarshalAs(UnmanagedType.BStr)] string tieringCmdletLogPath, [In, MarshalAs(UnmanagedType.BStr)] string ghostingSessionGuid, [MarshalAs(UnmanagedType.U4), Out] out uint fileCount, [In, MarshalAs(UnmanagedType.Struct), Out] ref GHOSTING_STATS ghostingStats, [In, MarshalAs(UnmanagedType.U4)] uint minimumFileAgeDays)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int FinalizeCmdletGhosting([In, MarshalAs(UnmanagedType.BStr)] string tieringCmdletLogPath, [In, MarshalAs(UnmanagedType.BStr)] string ghostingSessionGuid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int AddAllowedServerEndpointPath([In, MarshalAs(UnmanagedType.BStr)] string path)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetAllowedServerEndpointPaths([In, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_BSTR), Out] ref string[] paths)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int RemoveAllowedServerEndpointPath([In, MarshalAs(UnmanagedType.BStr)] string path)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int SetIsAuthoritativeSyncEnabled([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot, [In, MarshalAs(UnmanagedType.Bool)] bool isAuthoritativeSyncEnabled)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetIsAuthoritativeSyncEnabled([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot, [MarshalAs(UnmanagedType.Bool), Out] out bool isAuthoritativeSyncEnabled)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetReplicaFlags([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot, [MarshalAs(UnmanagedType.U4), Out] out SyncFlags replicaFlags)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int SetIsSyncDisabled([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot, [In, MarshalAs(UnmanagedType.Bool)] bool isSyncDisabled)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PopulateFileInfoUsingRPIterator([In, MarshalAs(UnmanagedType.BStr)] string syncGroupName, [In, MarshalAs(UnmanagedType.BStr)] string recallCmdletLogPath, [MarshalAs(UnmanagedType.BStr), Out] out string volumeGuid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int SetMaxFileSizeLimit([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot, [In, MarshalAs(UnmanagedType.U8)] ulong maxFileSize)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetMaxFileSizeLimit([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot, [MarshalAs(UnmanagedType.U8), Out] out ulong maxFileSize)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetIsSyncDisabled([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot, [MarshalAs(UnmanagedType.Bool), Out] out bool isSyncDisabled)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int SetServiceRootCertificateThumbprint([In, MarshalAs(UnmanagedType.BStr)] string serviceRootCertificateThumbprint)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetServiceRootCertificateThumbprint([MarshalAs(UnmanagedType.BStr), Out] out string serviceRootCertificateThumbprint)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int NewSyncSession([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot, [In, MarshalAs(UnmanagedType.U4)] SyncDirection syncDirection, [In, MarshalAs(UnmanagedType.U4)] SyncScenario syncScenario, [MarshalAs(UnmanagedType.Bool), Out] bool cancelExisting, [In, MarshalAs(UnmanagedType.Struct), Out] ref NEW_SYNC_SESSION_SCHEDULE_RESULT newSyncSessionScheduleResult)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetSyncSessionStatuses([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot, [In, MarshalAs(UnmanagedType.BStr)] string sessionId, [In, MarshalAs(UnmanagedType.U4)] uint limit, [In, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UI1), Out] ref byte[] inProgressSyncSessionStatusList, [In, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UI1), Out] ref byte[] completedSyncSessionStatusList)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetErrorTextDescription([In, MarshalAs(UnmanagedType.I8)] long hr, [MarshalAs(UnmanagedType.BStr), Out] out string errorText)
+        {
+            throw new NotImplementedException();
+        }
+
+        public VOLUME_STATUS GetVolumeStatus([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TIERING_STATUS GetTieringStatusEndpoint([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DiagnoseServerIssues([MarshalAs(UnmanagedType.BStr), Out] out string diagnosisOutputsJson)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int TriggerServerChangeDetection([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot, [In, MarshalAs(UnmanagedType.Bool)] bool deepScan) => 0;
+
+        public int GetServerChangeDetectionStatuses([In, MarshalAs(UnmanagedType.BStr)] string syncShareRoot, [In, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UI1), Out] ref byte[] inProgressStatus, [In, MarshalAs(UnmanagedType.SafeArray, SafeArraySubType = VarEnum.VT_UI1), Out] ref byte[] completedStatus) => 0;
+
+        public int StableVersionsDeepGC([In, MarshalAs(UnmanagedType.BStr)] string Path, [In, MarshalAs(UnmanagedType.U4)] uint cookie, [In, MarshalAs(UnmanagedType.Struct), Out] ref STABLEVERSION_DEEP_GC_STATS StableVersionDeepGCStats) => 0;
+        public int GetMIConfigurationStatus([MarshalAs(UnmanagedType.U4), Out] out uint serverType, [MarshalAs(UnmanagedType.U4), Out] out uint serverAuthType)
+        {
+            serverType = (int)LocalServerType.AzureVirtualMachineServer;
+            serverAuthType = (int)RegisteredServerAuthType.Certificate;
+            return 0;
+        }
+
+        public IConnectionPoint GetScrubbingEngineConnectionPoint() => null;
+
+        public IConnectionPoint GetStableVersionDeepGcConnectionPoint() => null;
     }
 }

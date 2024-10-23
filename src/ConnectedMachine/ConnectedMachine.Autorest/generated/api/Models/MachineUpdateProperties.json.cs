@@ -78,11 +78,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             {_locationData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("locationData"), out var __jsonLocationData) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LocationData.FromJson(__jsonLocationData) : _locationData;}
-            {_oSProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("osProfile"), out var __jsonOSProfile) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfile.FromJson(__jsonOSProfile) : _oSProfile;}
             {_cloudMetadata = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("cloudMetadata"), out var __jsonCloudMetadata) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.CloudMetadata.FromJson(__jsonCloudMetadata) : _cloudMetadata;}
             {_agentUpgrade = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("agentUpgrade"), out var __jsonAgentUpgrade) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.AgentUpgrade.FromJson(__jsonAgentUpgrade) : _agentUpgrade;}
             {_parentClusterResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("parentClusterResourceId"), out var __jsonParentClusterResourceId) ? (string)__jsonParentClusterResourceId : (string)_parentClusterResourceId;}
             {_privateLinkScopeResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("privateLinkScopeResourceId"), out var __jsonPrivateLinkScopeResourceId) ? (string)__jsonPrivateLinkScopeResourceId : (string)_privateLinkScopeResourceId;}
+            {_oSProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("osProfile"), out var __jsonOSProfile) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfile.FromJson(__jsonOSProfile) : _oSProfile;}
             AfterFromJson(json);
         }
 
@@ -106,11 +106,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return container;
             }
             AddIf( null != this._locationData ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._locationData.ToJson(null,serializationMode) : null, "locationData" ,container.Add );
-            AddIf( null != this._oSProfile ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._oSProfile.ToJson(null,serializationMode) : null, "osProfile" ,container.Add );
             AddIf( null != this._cloudMetadata ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._cloudMetadata.ToJson(null,serializationMode) : null, "cloudMetadata" ,container.Add );
             AddIf( null != this._agentUpgrade ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._agentUpgrade.ToJson(null,serializationMode) : null, "agentUpgrade" ,container.Add );
             AddIf( null != (((object)this._parentClusterResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._parentClusterResourceId.ToString()) : null, "parentClusterResourceId" ,container.Add );
             AddIf( null != (((object)this._privateLinkScopeResourceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString(this._privateLinkScopeResourceId.ToString()) : null, "privateLinkScopeResourceId" ,container.Add );
+            AddIf( null != this._oSProfile ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._oSProfile.ToJson(null,serializationMode) : null, "osProfile" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

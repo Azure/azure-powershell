@@ -73,8 +73,8 @@ HostResourceId               : /subscriptions/11111111-2222-3333-4444-1234567891
 HostType                     : Kubernetes
 Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourcegroups/group01/providers/microsoft.extendedlocation/customlocations/az 
                                ps-customlocation
-IdentityPrincipalId          : 11111111-2222-3333-4444-123456789123
-IdentityTenantId             : 11111111-2222-3333-4444-123456789876
+IdentityPrincipalId          : 00001111-aaaa-2222-bbbb-3333cccc4444
+IdentityTenantId             : 00001111-aaaa-2222-bbbb-3333cccc4444
 IdentityType                 : SystemAssigned
 Location                     : eastus
 Name                         : azps-customlocation

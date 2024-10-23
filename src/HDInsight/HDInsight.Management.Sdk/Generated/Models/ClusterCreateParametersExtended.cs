@@ -84,5 +84,22 @@ namespace Microsoft.Azure.Management.HDInsight.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
         public ClusterIdentity Identity {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+            if (this.Properties != null)
+            {
+                this.Properties.Validate();
+            }
+
+        }
     }
 }

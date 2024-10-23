@@ -20,7 +20,7 @@ Lists devices for catalog.
 .Description
 Lists devices for catalog.
 .Example
-Get-AzSphereCatalogDevice -CatalogName test2024 -ResourceGroupName joyer-test
+Get-AzSphereCatalogDevice -CatalogName test2024 -ResourceGroupName group-test
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDevice

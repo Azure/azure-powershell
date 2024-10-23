@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// capacity reservations under the capacity reservation group.</param>
         /// <param name="sharedSubscriptionIds">List of the subscriptions that
         /// the capacity reservation group is shared with. **Note:** Minimum
-        /// api-version: 2024-03-01. Please refer to
+        /// api-version: 2023-09-01. Please refer to
         /// https://aka.ms/computereservationsharing for more details.</param>
         public CapacityReservationGroupInstanceView(IList<CapacityReservationInstanceViewWithName> capacityReservations = default(IList<CapacityReservationInstanceViewWithName>), IList<SubResourceReadOnly> sharedSubscriptionIds = default(IList<SubResourceReadOnly>))
         {
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets list of the subscriptions that the capacity reservation group
-        /// is shared with. **Note:** Minimum api-version: 2024-03-01. Please
+        /// is shared with. **Note:** Minimum api-version: 2023-09-01. Please
         /// refer to https://aka.ms/computereservationsharing for more details.
         /// </summary>
         [JsonProperty(PropertyName = "sharedSubscriptionIds")]

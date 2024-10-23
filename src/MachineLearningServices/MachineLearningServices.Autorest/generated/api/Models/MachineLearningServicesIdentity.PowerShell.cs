@@ -138,6 +138,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).ConnectionName = (string) content.GetValueForProperty("ConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).ConnectionName, global::System.Convert.ToString);
             }
+            if (content.Contains("RuleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).RuleName = (string) content.GetValueForProperty("RuleName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).RuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RegistryName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).RegistryName = (string) content.GetValueForProperty("RegistryName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).RegistryName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CodeName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).CodeName = (string) content.GetValueForProperty("CodeName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).CodeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Version, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComponentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).ComponentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnvironmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).EnvironmentName = (string) content.GetValueForProperty("EnvironmentName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).EnvironmentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ModelName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).ModelName = (string) content.GetValueForProperty("ModelName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).ModelName, global::System.Convert.ToString);
+            }
             if (content.Contains("EndpointName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).EndpointName = (string) content.GetValueForProperty("EndpointName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).EndpointName, global::System.Convert.ToString);
@@ -146,13 +178,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).DeploymentName = (string) content.GetValueForProperty("DeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).DeploymentName, global::System.Convert.ToString);
             }
-            if (content.Contains("Name"))
+            if (content.Contains("FeaturesetName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).FeaturesetName = (string) content.GetValueForProperty("FeaturesetName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).FeaturesetName, global::System.Convert.ToString);
             }
-            if (content.Contains("Version"))
+            if (content.Contains("FeaturesetVersion"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Version, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).FeaturesetVersion = (string) content.GetValueForProperty("FeaturesetVersion",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).FeaturesetVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("FeatureName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).FeatureName = (string) content.GetValueForProperty("FeatureName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).FeatureName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -207,6 +243,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).ConnectionName = (string) content.GetValueForProperty("ConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).ConnectionName, global::System.Convert.ToString);
             }
+            if (content.Contains("RuleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).RuleName = (string) content.GetValueForProperty("RuleName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).RuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RegistryName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).RegistryName = (string) content.GetValueForProperty("RegistryName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).RegistryName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CodeName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).CodeName = (string) content.GetValueForProperty("CodeName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).CodeName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Version, global::System.Convert.ToString);
+            }
+            if (content.Contains("ComponentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).ComponentName = (string) content.GetValueForProperty("ComponentName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).ComponentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnvironmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).EnvironmentName = (string) content.GetValueForProperty("EnvironmentName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).EnvironmentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ModelName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).ModelName = (string) content.GetValueForProperty("ModelName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).ModelName, global::System.Convert.ToString);
+            }
             if (content.Contains("EndpointName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).EndpointName = (string) content.GetValueForProperty("EndpointName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).EndpointName, global::System.Convert.ToString);
@@ -215,13 +283,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).DeploymentName = (string) content.GetValueForProperty("DeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).DeploymentName, global::System.Convert.ToString);
             }
-            if (content.Contains("Name"))
+            if (content.Contains("FeaturesetName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Name, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).FeaturesetName = (string) content.GetValueForProperty("FeaturesetName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).FeaturesetName, global::System.Convert.ToString);
             }
-            if (content.Contains("Version"))
+            if (content.Contains("FeaturesetVersion"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).Version, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).FeaturesetVersion = (string) content.GetValueForProperty("FeaturesetVersion",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).FeaturesetVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("FeatureName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).FeatureName = (string) content.GetValueForProperty("FeatureName",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IMachineLearningServicesIdentityInternal)this).FeatureName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

@@ -1,6 +1,6 @@
 {
   "resourceType": "nginxDeployments/configurations",
-  "apiVersion": "2023-04-01",
+  "apiVersion": "2024-01-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.nginx"
   },
@@ -35,6 +35,49 @@
             {
               "name": "-Name",
               "value": "[Path.configurationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzNginxAnalysisConfiguration",
+      "description": "Analyze an NGINX configuration without applying it to the NGINXaaS deployment",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/configurations/{configurationName}/analyze",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.nginx/invoke-aznginxanalysisconfiguration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ConfigurationName <String>",
+              "-DeploymentName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Analyze an NGINX configuration without applying it to the NGINXaaS deployment",
+          "parameters": [
+            {
+              "name": "-ConfigurationName",
+              "value": "[Path.configurationName]"
+            },
+            {
+              "name": "-DeploymentName",
+              "value": "[Path.deploymentName]"
             },
             {
               "name": "-ResourceGroupName",

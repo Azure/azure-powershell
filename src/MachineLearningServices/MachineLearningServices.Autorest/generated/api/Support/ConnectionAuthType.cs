@@ -10,13 +10,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
     public partial struct ConnectionAuthType :
         System.IEquatable<ConnectionAuthType>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType Aad = @"AAD";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType AccessKey = @"AccessKey";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType AccountKey = @"AccountKey";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType ApiKey = @"ApiKey";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType CustomKeys = @"CustomKeys";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType ManagedIdentity = @"ManagedIdentity";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType None = @"None";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType OAuth2 = @"OAuth2";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType Pat = @"PAT";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType Sas = @"SAS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType ServicePrincipal = @"ServicePrincipal";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionAuthType UsernamePassword = @"UsernamePassword";
 

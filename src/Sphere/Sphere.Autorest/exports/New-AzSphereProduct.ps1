@@ -22,7 +22,7 @@ Create a Product.
 Create a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Example
-New-AzSphereProduct -CatalogName test2024 -ResourceGroupName joyer-test -Name product2024
+New-AzSphereProduct -CatalogName test2024 -ResourceGroupName group-test -Name product2024
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IProduct

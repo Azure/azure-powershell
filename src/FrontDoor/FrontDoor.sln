@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontDoor", "FrontDoor\Fron
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{CEE04FC4-EA9E-49F5-8E65-1BF927763971}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontDoor.Sdk", "FrontDoor.Sdk\FrontDoor.Sdk.csproj", "{6BF33F14-51EE-4ED4-A647-38EF4A4437CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontDoor.Management.Sdk", "FrontDoor.Management.Sdk\FrontDoor.Management.Sdk.csproj", "{F7A742DC-C643-4E1E-A58A-783B39CE58F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,10 +69,10 @@ Global
 		{CEE04FC4-EA9E-49F5-8E65-1BF927763971}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEE04FC4-EA9E-49F5-8E65-1BF927763971}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEE04FC4-EA9E-49F5-8E65-1BF927763971}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6BF33F14-51EE-4ED4-A647-38EF4A4437CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BF33F14-51EE-4ED4-A647-38EF4A4437CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6BF33F14-51EE-4ED4-A647-38EF4A4437CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6BF33F14-51EE-4ED4-A647-38EF4A4437CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A742DC-C643-4E1E-A58A-783B39CE58F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A742DC-C643-4E1E-A58A-783B39CE58F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A742DC-C643-4E1E-A58A-783B39CE58F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A742DC-C643-4E1E-A58A-783B39CE58F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,5 +86,8 @@ Global
 		{31599FB7-7929-4E92-834F-A23C603A9116} = {52103A11-029D-492B-87C7-22D39EF55958}
 		{4C8972CB-B1DD-4E1A-8766-F039AF530062} = {4A3D22CE-940D-4656-A344-7603474FB7A8}
 		{CEE04FC4-EA9E-49F5-8E65-1BF927763971} = {4A3D22CE-940D-4656-A344-7603474FB7A8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8030889A-062F-4BCC-8246-EC5BCEDCAF25}
 	EndGlobalSection
 EndGlobal

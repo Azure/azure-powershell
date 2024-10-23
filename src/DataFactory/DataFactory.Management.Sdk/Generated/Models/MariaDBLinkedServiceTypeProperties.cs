@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="driverVersion">The version of the MariaDB driver. Type: string. V1 or empty for legacy
         /// driver, V2 for new driver. V1 can support connection string and property
-        /// bag, V2 can only support connection string.
+        /// bag, V2 can only support connection string. The legacy driver is scheduled
+        /// for deprecation by October 2024.
         /// </param>
 
         /// <param name="connectionString">An ODBC connection string. Type: string, SecureString or
@@ -45,13 +46,25 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="database">Database name for connection. Type: string.
         /// </param>
 
+        /// <param name="sslMode">This option specifies whether the driver uses TLS encryption and
+        /// verification when connecting to MariaDB. E.g., SSLMode=&lt;0/1/2/3/4&gt;.
+        /// Options: DISABLED (0) / PREFERRED (1) (Default) / REQUIRED (2) / VERIFY_CA
+        /// (3) / VERIFY_IDENTITY (4), REQUIRED (2) is recommended to only allow
+        /// connections encrypted with SSL/TLS.
+        /// </param>
+
+        /// <param name="useSystemTrustStore">This option specifies whether to use a CA certificate from the system trust
+        /// store, or from a specified PEM file. E.g. UseSystemTrustStore=&lt;0/1&gt;;
+        /// Options: Enabled (1) / Disabled (0) (Default)
+        /// </param>
+
         /// <param name="password">The Azure key vault secret reference of password in connection string.
         /// </param>
 
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public MariaDBLinkedServiceTypeProperties(object driverVersion = default(object), object connectionString = default(object), object server = default(object), object port = default(object), object username = default(object), object database = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
+        public MariaDBLinkedServiceTypeProperties(object driverVersion = default(object), object connectionString = default(object), object server = default(object), object port = default(object), object username = default(object), object database = default(object), object sslMode = default(object), object useSystemTrustStore = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), string encryptedCredential = default(string))
 
         {
             this.DriverVersion = driverVersion;
@@ -60,6 +73,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.Port = port;
             this.Username = username;
             this.Database = database;
+            this.SslMode = sslMode;
+            this.UseSystemTrustStore = useSystemTrustStore;
             this.Password = password;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
@@ -74,7 +89,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <summary>
         /// Gets or sets the version of the MariaDB driver. Type: string. V1 or empty
         /// for legacy driver, V2 for new driver. V1 can support connection string and
-        /// property bag, V2 can only support connection string.
+        /// property bag, V2 can only support connection string. The legacy driver is
+        /// scheduled for deprecation by October 2024.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "driverVersion")]
         public object DriverVersion {get; set; }
@@ -111,6 +127,24 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object Database {get; set; }
 
         /// <summary>
+        /// Gets or sets this option specifies whether the driver uses TLS encryption
+        /// and verification when connecting to MariaDB. E.g., SSLMode=&lt;0/1/2/3/4&gt;.
+        /// Options: DISABLED (0) / PREFERRED (1) (Default) / REQUIRED (2) / VERIFY_CA
+        /// (3) / VERIFY_IDENTITY (4), REQUIRED (2) is recommended to only allow
+        /// connections encrypted with SSL/TLS.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sslMode")]
+        public object SslMode {get; set; }
+
+        /// <summary>
+        /// Gets or sets this option specifies whether to use a CA certificate from the
+        /// system trust store, or from a specified PEM file. E.g.
+        /// UseSystemTrustStore=&lt;0/1&gt;; Options: Enabled (1) / Disabled (0) (Default)
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "useSystemTrustStore")]
+        public object UseSystemTrustStore {get; set; }
+
+        /// <summary>
         /// Gets or sets the Azure key vault secret reference of password in connection
         /// string.
         /// </summary>
@@ -132,6 +166,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </exception>
         public virtual void Validate()
         {
+
+
 
 
 

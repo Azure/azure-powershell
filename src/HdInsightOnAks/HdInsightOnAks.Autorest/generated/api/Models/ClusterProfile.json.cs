@@ -66,6 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             {_identityProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("identityProfile"), out var __jsonIdentityProfile) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfile.FromJson(__jsonIdentityProfile) : _identityProfile;}
+            {_managedIdentityProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("managedIdentityProfile"), out var __jsonManagedIdentityProfile) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ManagedIdentityProfile.FromJson(__jsonManagedIdentityProfile) : _managedIdentityProfile;}
             {_authorizationProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("authorizationProfile"), out var __jsonAuthorizationProfile) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.AuthorizationProfile.FromJson(__jsonAuthorizationProfile) : _authorizationProfile;}
             {_secretsProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("secretsProfile"), out var __jsonSecretsProfile) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SecretsProfile.FromJson(__jsonSecretsProfile) : _secretsProfile;}
             {_connectivityProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("connectivityProfile"), out var __jsonConnectivityProfile) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ConnectivityProfile.FromJson(__jsonConnectivityProfile) : _connectivityProfile;}
@@ -122,6 +123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return container;
             }
             AddIf( null != this._identityProfile ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) this._identityProfile.ToJson(null,serializationMode) : null, "identityProfile" ,container.Add );
+            AddIf( null != this._managedIdentityProfile ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) this._managedIdentityProfile.ToJson(null,serializationMode) : null, "managedIdentityProfile" ,container.Add );
             AddIf( null != this._authorizationProfile ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) this._authorizationProfile.ToJson(null,serializationMode) : null, "authorizationProfile" ,container.Add );
             AddIf( null != this._secretsProfile ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) this._secretsProfile.ToJson(null,serializationMode) : null, "secretsProfile" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeRead))

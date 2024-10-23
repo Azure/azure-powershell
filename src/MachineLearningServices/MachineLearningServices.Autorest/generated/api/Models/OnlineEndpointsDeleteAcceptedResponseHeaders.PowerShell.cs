@@ -117,14 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpointsDeleteAcceptedResponseHeadersInternal)this).XmsAsyncOperationTimeout = (global::System.TimeSpan?) content.GetValueForProperty("XmsAsyncOperationTimeout",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpointsDeleteAcceptedResponseHeadersInternal)this).XmsAsyncOperationTimeout, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
             }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpointsDeleteAcceptedResponseHeadersInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpointsDeleteAcceptedResponseHeadersInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("RetryAfter"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpointsDeleteAcceptedResponseHeadersInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpointsDeleteAcceptedResponseHeadersInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            }
             AfterDeserializeDictionary(content);
         }
 
@@ -145,14 +137,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models
             if (content.Contains("XmsAsyncOperationTimeout"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpointsDeleteAcceptedResponseHeadersInternal)this).XmsAsyncOperationTimeout = (global::System.TimeSpan?) content.GetValueForProperty("XmsAsyncOperationTimeout",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpointsDeleteAcceptedResponseHeadersInternal)this).XmsAsyncOperationTimeout, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpointsDeleteAcceptedResponseHeadersInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpointsDeleteAcceptedResponseHeadersInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("RetryAfter"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpointsDeleteAcceptedResponseHeadersInternal)this).RetryAfter = (int?) content.GetValueForProperty("RetryAfter",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IOnlineEndpointsDeleteAcceptedResponseHeadersInternal)this).RetryAfter, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             AfterDeserializePSObject(content);
         }

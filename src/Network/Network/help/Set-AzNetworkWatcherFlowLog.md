@@ -15,33 +15,37 @@ Updates flow log resource.
 ### SetByName (Default)
 ```
 Set-AzNetworkWatcherFlowLog -NetworkWatcherName <String> -ResourceGroupName <String> -Name <String>
- -TargetResourceId <String> -StorageId <String> -Enabled <Boolean> [-EnableRetention <Boolean>]
- [-RetentionPolicyDays <Int32>] [-FormatType <String>] [-FormatVersion <Int32>] [-Tag <Hashtable>] [-Force]
+ -TargetResourceId <String> -StorageId <String> [-EnabledFilteringCriteria <String>] -Enabled <Boolean>
+ [-EnableRetention <Boolean>] [-RetentionPolicyDays <Int32>] [-FormatType <String>]
+ [-UserAssignedIdentityId <String>] [-FormatVersion <Int32>] [-Tag <Hashtable>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResource
 ```
 Set-AzNetworkWatcherFlowLog -NetworkWatcher <PSNetworkWatcher> -Name <String> -TargetResourceId <String>
- -StorageId <String> -Enabled <Boolean> [-EnableRetention <Boolean>] [-RetentionPolicyDays <Int32>]
- [-FormatType <String>] [-FormatVersion <Int32>] [-Tag <Hashtable>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -StorageId <String> [-EnabledFilteringCriteria <String>] -Enabled <Boolean> [-EnableRetention <Boolean>]
+ [-RetentionPolicyDays <Int32>] [-FormatType <String>] [-UserAssignedIdentityId <String>]
+ [-FormatVersion <Int32>] [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceWithTA
 ```
 Set-AzNetworkWatcherFlowLog -NetworkWatcher <PSNetworkWatcher> -Name <String> -TargetResourceId <String>
- -StorageId <String> -Enabled <Boolean> [-EnableRetention <Boolean>] [-RetentionPolicyDays <Int32>]
- [-FormatType <String>] [-FormatVersion <Int32>] [-EnableTrafficAnalytics]
- [-TrafficAnalyticsWorkspaceId <String>] [-TrafficAnalyticsInterval <Int32>] [-Tag <Hashtable>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -StorageId <String> [-EnabledFilteringCriteria <String>] -Enabled <Boolean> [-EnableRetention <Boolean>]
+ [-RetentionPolicyDays <Int32>] [-FormatType <String>] [-UserAssignedIdentityId <String>]
+ [-FormatVersion <Int32>] [-EnableTrafficAnalytics] [-TrafficAnalyticsWorkspaceId <String>]
+ [-TrafficAnalyticsInterval <Int32>] [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByNameWithTA
 ```
 Set-AzNetworkWatcherFlowLog -NetworkWatcherName <String> -ResourceGroupName <String> -Name <String>
- -TargetResourceId <String> -StorageId <String> -Enabled <Boolean> [-EnableRetention <Boolean>]
- [-RetentionPolicyDays <Int32>] [-FormatType <String>] [-FormatVersion <Int32>] [-EnableTrafficAnalytics]
+ -TargetResourceId <String> -StorageId <String> [-EnabledFilteringCriteria <String>] -Enabled <Boolean>
+ [-EnableRetention <Boolean>] [-RetentionPolicyDays <Int32>] [-FormatType <String>]
+ [-UserAssignedIdentityId <String>] [-FormatVersion <Int32>] [-EnableTrafficAnalytics]
  [-TrafficAnalyticsWorkspaceId <String>] [-TrafficAnalyticsInterval <Int32>] [-Tag <Hashtable>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -49,7 +53,8 @@ Set-AzNetworkWatcherFlowLog -NetworkWatcherName <String> -ResourceGroupName <Str
 ### SetByLocation
 ```
 Set-AzNetworkWatcherFlowLog -Location <String> -Name <String> -TargetResourceId <String> -StorageId <String>
- -Enabled <Boolean> [-EnableRetention <Boolean>] [-RetentionPolicyDays <Int32>] [-FormatType <String>]
+ [-EnabledFilteringCriteria <String>] -Enabled <Boolean> [-EnableRetention <Boolean>]
+ [-RetentionPolicyDays <Int32>] [-FormatType <String>] [-UserAssignedIdentityId <String>]
  [-FormatVersion <Int32>] [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -57,7 +62,8 @@ Set-AzNetworkWatcherFlowLog -Location <String> -Name <String> -TargetResourceId 
 ### SetByLocationWithTA
 ```
 Set-AzNetworkWatcherFlowLog -Location <String> -Name <String> -TargetResourceId <String> -StorageId <String>
- -Enabled <Boolean> [-EnableRetention <Boolean>] [-RetentionPolicyDays <Int32>] [-FormatType <String>]
+ [-EnabledFilteringCriteria <String>] -Enabled <Boolean> [-EnableRetention <Boolean>]
+ [-RetentionPolicyDays <Int32>] [-FormatType <String>] [-UserAssignedIdentityId <String>]
  [-FormatVersion <Int32>] [-EnableTrafficAnalytics] [-TrafficAnalyticsWorkspaceId <String>]
  [-TrafficAnalyticsInterval <Int32>] [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -66,7 +72,8 @@ Set-AzNetworkWatcherFlowLog -Location <String> -Name <String> -TargetResourceId 
 ### SetByResourceId
 ```
 Set-AzNetworkWatcherFlowLog -ResourceId <String> -TargetResourceId <String> -StorageId <String>
- -Enabled <Boolean> [-EnableRetention <Boolean>] [-RetentionPolicyDays <Int32>] [-FormatType <String>]
+ [-EnabledFilteringCriteria <String>] -Enabled <Boolean> [-EnableRetention <Boolean>]
+ [-RetentionPolicyDays <Int32>] [-FormatType <String>] [-UserAssignedIdentityId <String>]
  [-FormatVersion <Int32>] [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -74,7 +81,8 @@ Set-AzNetworkWatcherFlowLog -ResourceId <String> -TargetResourceId <String> -Sto
 ### SetByResourceIdWithTA
 ```
 Set-AzNetworkWatcherFlowLog -ResourceId <String> -TargetResourceId <String> -StorageId <String>
- -Enabled <Boolean> [-EnableRetention <Boolean>] [-RetentionPolicyDays <Int32>] [-FormatType <String>]
+ [-EnabledFilteringCriteria <String>] -Enabled <Boolean> [-EnableRetention <Boolean>]
+ [-RetentionPolicyDays <Int32>] [-FormatType <String>] [-UserAssignedIdentityId <String>]
  [-FormatVersion <Int32>] [-EnableTrafficAnalytics] [-TrafficAnalyticsWorkspaceId <String>]
  [-TrafficAnalyticsInterval <Int32>] [-Tag <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -82,7 +90,7 @@ Set-AzNetworkWatcherFlowLog -ResourceId <String> -TargetResourceId <String> -Sto
 
 ### SetByInputObject
 ```
-Set-AzNetworkWatcherFlowLog -InputObject <PSFlowLogResource> [-Force]
+Set-AzNetworkWatcherFlowLog -InputObject <PSFlowLogResource> [-UserAssignedIdentityId <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -159,6 +167,21 @@ Parameter Sets: SetByName, SetByResource, SetByResourceWithTA, SetByNameWithTA, 
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnabledFilteringCriteria
+Optional field to filter network traffic logs.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByName, SetByResource, SetByResourceWithTA, SetByNameWithTA, SetByLocation, SetByLocationWithTA, SetByResourceId, SetByResourceIdWithTA
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -427,6 +450,21 @@ Resource Id of the attached workspace.
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceWithTA, SetByNameWithTA, SetByLocationWithTA, SetByResourceIdWithTA
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+ResourceId of the user assigned identity to be assigned to Flowlog.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

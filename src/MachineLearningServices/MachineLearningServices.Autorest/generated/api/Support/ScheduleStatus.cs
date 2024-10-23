@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
 {
 
+    /// <summary>Is the schedule enabled or disabled?</summary>
     public partial struct ScheduleStatus :
         System.IEquatable<ScheduleStatus>
     {

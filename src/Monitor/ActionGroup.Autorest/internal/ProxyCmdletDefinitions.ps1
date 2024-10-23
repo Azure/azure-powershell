@@ -196,9 +196,9 @@ end {
 
 <#
 .Synopsis
-Update a new action group or Update an existing one.
+Update a new action group or update an existing one.
 .Description
-Update a new action group or Update an existing one.
+Update a new action group or update an existing one.
 .Example
 {{ Add code here }}
 .Example

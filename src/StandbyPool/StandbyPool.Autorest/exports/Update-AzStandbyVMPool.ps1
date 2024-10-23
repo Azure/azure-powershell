@@ -38,6 +38,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStandbyPoolIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuntimeView <String>]: The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.
   [StandbyContainerGroupPoolName <String>]: Name of the standby container group pool
   [StandbyVirtualMachineName <String>]: Name of the standby virtual machine
   [StandbyVirtualMachinePoolName <String>]: Name of the standby virtual machine pool
@@ -87,8 +88,16 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category('Body')]
     [System.Int64]
-    # Specifies maximum number of virtual machines in the standby virtual machine pool.
+    # Specifies the maximum number of virtual machines in the standby virtual machine pool.
     ${MaxReadyCapacity},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category('Body')]
+    [System.Int64]
+    # Specifies the desired minimum number of virtual machines in the standby virtual machine pool.
+    # MinReadyCapacity cannot exceed MaxReadyCapacity.
+    ${MinReadyCapacity},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]

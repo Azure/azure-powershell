@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="status">Status of the KeyVault connection.
         /// Possible values include: &#39;Created&#39;, &#39;InUse&#39;, &#39;Deleted&#39;, &#39;Error&#39;, &#39;Updating&#39;</param>
-        public KeyVaultProperties(string keyVaultUri, string keyName, string keyVaultResourceId, string keyVaultId = default(string), string status = default(string))
+        public KeyVaultProperties(string keyVaultUri, string keyName, string keyVaultId = default(string), string keyVaultResourceId = default(string), string status = default(string))
 
         {
             this.KeyVaultId = keyVaultId;
@@ -99,10 +99,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
             if (this.KeyName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "KeyName");
-            }
-            if (this.KeyVaultResourceId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "KeyVaultResourceId");
             }
             if (this.KeyVaultId != null)
             {

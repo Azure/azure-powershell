@@ -70,6 +70,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetReplicationLink()
+        {
+            TestRunner.RunTestScript("Test-SetReplicationLink");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveSecondaryDatabase()
         {
             TestRunner.RunTestScript("Test-RemoveSecondaryDatabase");

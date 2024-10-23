@@ -35,17 +35,26 @@ Adds an Azure Storage key to a cluster configuration object.
 ### [Disable-AzHDInsightAzureMonitor](Disable-AzHDInsightAzureMonitor.md)
 Disables Azure Monitor in a specified HDInsight cluster.
 
+### [Disable-AzHDInsightAzureMonitorAgent](Disable-AzHDInsightAzureMonitorAgent.md)
+Disables Azure Monitor Agent in a specified HDInsight cluster.
+
 ### [Disable-AzHDInsightMonitoring](Disable-AzHDInsightMonitoring.md)
 Disables the Classic Azure Monitor logs integration on an HDInsight cluster and relevant logs will stop flowing to the monitoring workspace specified during enable.
 
 ### [Enable-AzHDInsightAzureMonitor](Enable-AzHDInsightAzureMonitor.md)
 Enables Azure Monitor in a specified HDInsight cluster.
 
+### [Enable-AzHDInsightAzureMonitorAgent](Enable-AzHDInsightAzureMonitorAgent.md)
+Enables Azure Monitor Agent in a specified HDInsight cluster.
+
 ### [Enable-AzHDInsightMonitoring](Enable-AzHDInsightMonitoring.md)
 Enables the Classic Azure Monitor logs integration on an HDInsight cluster and relevant logs will be sent to the monitoring workspace specified during enable.
 
 ### [Get-AzHDInsightAzureMonitor](Get-AzHDInsightAzureMonitor.md)
 Gets the azure monitor status of a specified HDInsight cluster.
+
+### [Get-AzHDInsightAzureMonitorAgent](Get-AzHDInsightAzureMonitorAgent.md)
+Gets the azure monitor agent status of a specified HDInsight cluster.
 
 ### [Get-AzHDInsightCluster](Get-AzHDInsightCluster.md)
 Gets and lists all of the Azure HDInsight clusters associated with the current subscription or a specified resource group, or retrieves a specific cluster.
@@ -148,6 +157,9 @@ Stops a specified running job on a cluster.
 
 ### [Submit-AzHDInsightScriptAction](Submit-AzHDInsightScriptAction.md)
 Submits a new script action to an Azure HDInsight cluster.
+
+### [Update-AzHDInsightCluster](Update-AzHDInsightCluster.md)
+Update tags or managed identities for a HDInsight cluster.
 
 ### [Use-AzHDInsightCluster](Use-AzHDInsightCluster.md)
 Selects a cluster to be used with the Invoke-RmAzureHDInsightHiveJob cmdlet.

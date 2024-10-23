@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expressRoutePortName'>
         /// The name of the ExpressRoutePort resource.
         /// </param>
-        public static void Delete(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName)
+        public static ExpressRoutePortsDeleteHeaders Delete(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName)
         {
-                ((IExpressRoutePortsOperations)operations).DeleteAsync(resourceGroupName, expressRoutePortName).GetAwaiter().GetResult();
+                return ((IExpressRoutePortsOperations)operations).DeleteAsync(resourceGroupName, expressRoutePortName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -44,9 +44,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ExpressRoutePortsDeleteHeaders> DeleteAsync(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Retrieves the requested ExpressRoutePort resource.
@@ -278,9 +281,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expressRoutePortName'>
         /// The name of the ExpressRoutePort resource.
         /// </param>
-        public static void BeginDelete(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName)
+        public static ExpressRoutePortsDeleteHeaders BeginDelete(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName)
         {
-                ((IExpressRoutePortsOperations)operations).BeginDeleteAsync(resourceGroupName, expressRoutePortName).GetAwaiter().GetResult();
+                return ((IExpressRoutePortsOperations)operations).BeginDeleteAsync(resourceGroupName, expressRoutePortName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -298,9 +301,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ExpressRoutePortsDeleteHeaders> BeginDeleteAsync(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Creates or updates the specified ExpressRoutePort resource.

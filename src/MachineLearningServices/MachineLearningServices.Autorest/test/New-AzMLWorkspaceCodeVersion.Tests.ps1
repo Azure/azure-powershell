@@ -14,9 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspaceCodeVersion'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMLWorkspaceCodeVersion' {
-    It 'CreateExpanded' {
-        { 
+Describe 'New-AzMLWorkspaceCodeVersion' { #Moved
+    It 'CreateExpanded' -Skip {
+        {
             New-AzMLWorkspaceCodeVersion -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name 'test01' -Version 1 -CodeUri "https://mlworkspacekee7404291888.blob.core.windows.net/azureml-blobstore-179c53d8-ae09-4516-ac03-85af16e8848c/LocalUpload/a8da6e3978c9f8b1cb03501595a9142f/src"
             Remove-AzMLWorkspaceCodeVersion -ResourceGroupName ml-rg-test01 -WorkspaceName mlworkspacekeep -Name 'test01' -Version 1
         } | Should -Not -Throw

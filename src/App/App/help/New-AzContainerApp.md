@@ -28,13 +28,15 @@ New-AzContainerApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <
 ### CreateViaJsonString
 ```
 New-AzContainerApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzContainerApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -67,7 +69,7 @@ $EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName azps_test_group_app -N
 
 New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
 Get-ChildItem -Path cert:\LocalMachine\My
-$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$mypwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
 New-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
 
@@ -104,7 +106,7 @@ $EnvId = (Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app 
 
 New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
 Get-ChildItem -Path cert:\LocalMachine\My
-$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$mypwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
 New-AzContainerAppConnectedEnvCert -Name azps-connectedenvcert -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
 
@@ -145,7 +147,6 @@ Accept wildcard characters: False
 
 ### -Configuration
 Non versioned Container App configuration properties.
-To construct, see NOTES section for CONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfiguration
@@ -254,7 +255,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -427,7 +427,6 @@ Accept wildcard characters: False
 
 ### -ScaleRule
 Scaling rules.
-To construct, see NOTES section for SCALERULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule[]
@@ -473,7 +472,6 @@ Accept wildcard characters: False
 
 ### -TemplateContainer
 List of container definitions for the Container App.
-To construct, see NOTES section for TEMPLATECONTAINER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[]
@@ -489,7 +487,6 @@ Accept wildcard characters: False
 
 ### -TemplateInitContainer
 List of specialized containers that run before app containers.
-To construct, see NOTES section for TEMPLATEINITCONTAINER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer[]
@@ -520,7 +517,6 @@ Accept wildcard characters: False
 
 ### -TemplateServiceBind
 List of container app services bound to the app
-To construct, see NOTES section for TEMPLATESERVICEBIND properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind[]
@@ -556,7 +552,6 @@ Accept wildcard characters: False
 
 ### -TemplateVolume
 List of volume definitions for the Container App.
-To construct, see NOTES section for TEMPLATEVOLUME properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[]

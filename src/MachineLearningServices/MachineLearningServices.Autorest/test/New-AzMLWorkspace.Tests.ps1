@@ -14,9 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzMLWorkspace'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzMLWorkspace' {
-    It 'CreateExpanded' {
-        { 
+Describe 'New-AzMLWorkspace' { #Moved
+    It 'CreateExpanded' -Skip {
+        {
             New-AzMLWorkspace -ResourceGroupName ml-rg-test01 -Name mlworkspace -Location eastus `
             -ApplicationInsightId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test01/providers/microsoft.insights/components/mlworkspace7563533476" `
             -KeyVaultId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/ml-rg-test01/providers/microsoft.keyvault/vaults/mlworkspace2798527761" `

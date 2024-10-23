@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create storage for a connectedEnvironment.</summary>
+    /// <summary>Update storage for a connectedEnvironment.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/connectedEnvironments/{connectedEnvironmentName}/storages/{storageName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzContainerAppConnectedEnvStorage_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConnectedEnvironmentStorage))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Create storage for a connectedEnvironment.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Update storage for a connectedEnvironment.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
     public partial class UpdateAzContainerAppConnectedEnvStorage_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener,
@@ -263,7 +263,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -407,7 +424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     _storageEnvelopeBody = await this.Client.ConnectedEnvironmentsStoragesGetWithResult(SubscriptionId, ResourceGroupName, ConnectedEnvironmentName, Name, this, Pipeline);
                     this.Update_storageEnvelopeBody();
-                    await this.Client.ConnectedEnvironmentsStoragesCreateOrUpdate(SubscriptionId, ResourceGroupName, ConnectedEnvironmentName, Name, _storageEnvelopeBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.ConnectedEnvironmentsStoragesCreateOrUpdate(SubscriptionId, ResourceGroupName, ConnectedEnvironmentName, Name, _storageEnvelopeBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.UndeclaredResponseException urexception)
@@ -457,6 +474,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
             {
                 this.AzureFileShareName = (string)(this.MyInvocation?.BoundParameters["AzureFileShareName"]);
             }
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

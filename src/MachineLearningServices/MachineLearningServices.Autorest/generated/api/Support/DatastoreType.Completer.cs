@@ -42,6 +42,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'AzureFile'", "AzureFile", global::System.Management.Automation.CompletionResultType.ParameterValue, "AzureFile");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "OneLake".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'OneLake'", "OneLake", global::System.Management.Automation.CompletionResultType.ParameterValue, "OneLake");
+            }
         }
     }
 }

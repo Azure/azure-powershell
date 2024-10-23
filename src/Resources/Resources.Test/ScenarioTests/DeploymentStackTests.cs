@@ -40,6 +40,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTestResourceGroupDeploymentStack()
+        {
+            TestRunner.RunTestScript("Test-TestResourceGroupDeploymentStack");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewResourceGroupDeploymentStackUnmanageActions()
         {
             TestRunner.RunTestScript("Test-NewResourceGroupDeploymentStackUnmanageActions");
@@ -124,6 +131,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTestSubscriptionDeploymentStack()
+        {
+            TestRunner.RunTestScript("Test-TestSubscriptionDeploymentStack");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSubscriptionDeploymentStackUnmanageActions()
         {
             TestRunner.RunTestScript("Test-NewSubscriptionDeploymentStackUnmanageActions");
@@ -204,6 +218,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestNewManagementGroupDeploymentStack()
         {
             TestRunner.RunTestScript("Test-NewManagementGroupDeploymentStack");
+        }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTestManagementGroupDeploymentStack()
+        {
+            TestRunner.RunTestScript("Test-TestManagementGroupDeploymentStack");
         }
 
         [Fact()]

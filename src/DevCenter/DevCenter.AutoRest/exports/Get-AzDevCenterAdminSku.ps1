@@ -23,12 +23,12 @@ Lists the Microsoft.DevCenter SKUs available in a subscription
 Get-AzDevCenterAdminSku
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenterSku
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterSku
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminsku
 #>
 function Get-AzDevCenterAdminSku {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenterSku])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IDevCenterSku])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

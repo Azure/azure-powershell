@@ -6,7 +6,7 @@ New-AzMLWorkspaceDataVersion  -ResourceGroupName ml-rg-test -WorkspaceName mlwor
 ```output
 Name SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ---- ------------------- -------------------                 ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-2    6/1/2022 3:11:06 PM Lucas Yao (Wicresoft North America) User                    6/1/2022 3:11:06 PM                                                            ml-rg-test
+2    6/1/2022 3:11:06 PM UserName (Example)         User                    6/1/2022 3:11:06 PM                                                            ml-rg-test
 ```
 
 Create or update data version

@@ -20,7 +20,7 @@ Create an in-memory object for BareMetalMachineConfigurationData.
 .Description
 Create an in-memory object for BareMetalMachineConfigurationData.
 .Example
-$password = ConvertTo-SecureString "1qaz@WSX" -AsPlainText
+$password = ConvertTo-SecureString "*******" -AsPlainText
 
 New-AzNetworkCloudBareMetalMachineConfigurationDataObject -BmcCredentialsPassword $password -BmcCredentialsUsername username -BmcMacAddress "00:BB:CC:DD:EE:FF" -BootMacAddress "00:BB:CC:DD:EE:FF" -RackSlot 1 -SerialNumber serialNumber -MachineDetail machineDetail -MachineName machineName
 

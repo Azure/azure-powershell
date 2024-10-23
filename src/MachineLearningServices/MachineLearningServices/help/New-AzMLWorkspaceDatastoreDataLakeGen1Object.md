@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastoredatalakegen1object
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceDatastoreDataLakeGen1Object
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for AzureDataLakeGen1Datastore.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceDatastoreDataLakeGen1Object -Credentials <IDatastoreCredentials> -StoreName <String>
- [-Description <String>] [-Property <IResourceBaseProperties>]
- [-ServiceDataAccessAuthIdentity <ServiceDataAccessAuthIdentity>] [-Tag <IResourceBaseTags>]
+New-AzMLWorkspaceDatastoreDataLakeGen1Object -StoreName <String> -Credentials <IDatastoreCredentials>
+ [-ServiceDataAccessAuthIdentity <ServiceDataAccessAuthIdentity>] [-Description <String>]
+ [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>]
  [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Create an in-memory object for AzureDataLakeGen1Datastore
 To construct, see NOTES section for CREDENTIALS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDatastoreCredentials
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDatastoreCredentials
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +69,7 @@ The asset property dictionary.
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ Tags can be added, removed, and updated.
 To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags
 Parameter Sets: (All)
 Aliases:
 
@@ -134,25 +134,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureDataLakeGen1Datastore
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AzureDataLakeGen1Datastore
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-CREDENTIALS `<IDatastoreCredentials>`: [Required] Account credentials.
-  - `CredentialsType <CredentialsType>`: [Required] Credential type used to authentication with storage.
-
-PROPERTY `<IResourceBaseProperties>`: The asset property dictionary.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-TAG `<IResourceBaseTags>`: Tag dictionary. Tags can be added, removed, and updated.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 ## RELATED LINKS
-

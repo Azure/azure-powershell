@@ -1,0 +1,95 @@
+{
+  "resourceType": "plans/members",
+  "apiVersion": "2024-05-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.devcenter"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDevCenterAdminPlanMember",
+      "description": "Gets a devcenter plan member.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/plans/{planName}/members/{memberName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteradminplanmember"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MemberName <String>",
+              "-PlanName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a devcenter plan member.",
+          "parameters": [
+            {
+              "name": "-MemberName",
+              "value": "[Path.memberName]"
+            },
+            {
+              "name": "-PlanName",
+              "value": "[Path.planName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDevCenterAdminPlanMember",
+      "description": "Deletes a devcenter plan member",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/plans/{planName}/members/{memberName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenteradminplanmember"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-MemberName <String>",
+              "-PlanName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes a devcenter plan member",
+          "parameters": [
+            {
+              "name": "-MemberName",
+              "value": "[Path.memberName]"
+            },
+            {
+              "name": "-PlanName",
+              "value": "[Path.planName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "appLocation": "northeurope",
+  "configurationType": "DeploymentWithOSConfig",
+  "infrastructureConfiguration": {
+    "appResourceGroup": "PS_CLI_TF_RG",
+    "applicationServer": {
+      "instanceCount": 2,
+      "subnetId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/JASKIRAT-RG-NE/providers/Microsoft.Network/virtualNetworks/JAS-VNET-NE/subnets/appsubnet",
+      "virtualMachineConfiguration": {
+        "imageReference": {
+          "offer": "RHEL-SAP-HA",
+          "publisher": "RedHat",
+          "sku": "84sapha-gen2",
+          "version": "latest"
+        },
+        "osProfile": {
+          "adminUsername": "azureuser",
+          "osConfiguration": {
+            "disablePasswordAuthentication": true,
+            "osType": "Linux",
+            "sshKeyPair": {
+              "publicKey": "PublicKey",
+              "privateKey": "PrivateKey"
+            }
+          }
+        },
+        "vmSize": "Standard_D4ds_v4"
+      }
+    },
+    "centralServer": {
+      "instanceCount": 2,
+      "subnetId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/JASKIRAT-RG-NE/providers/Microsoft.Network/virtualNetworks/JAS-VNET-NE/subnets/appsubnet",
+      "virtualMachineConfiguration": {
+        "imageReference": {
+          "offer": "RHEL-SAP-HA",
+          "publisher": "RedHat",
+          "sku": "84sapha-gen2",
+          "version": "latest"
+        },
+        "osProfile": {
+          "adminUsername": "azureuser",
+          "osConfiguration": {
+            "disablePasswordAuthentication": true,
+            "osType": "Linux",
+            "sshKeyPair": {
+              "publicKey": "PublicKey",
+              "privateKey": "PrivateKey"
+            }
+          }
+        },
+        "vmSize": "Standard_D4ds_v4"
+      }
+    },
+    "customResourceNames": {
+      "applicationServer": {
+        "virtualMachines": [
+          {
+            "dataDiskNames": {
+              "default": [
+                "app0disk0"
+              ]
+            },
+            "hostName": "apphostName0",
+            "networkInterfaces": [
+              {
+                "networkInterfaceName": "appnic0"
+              }
+            ],
+            "osDiskName": "app0osdisk",
+            "vmName": "appvm0"
+          },
+          {
+            "dataDiskNames": {
+              "default": [
+                "app1disk0"
+              ]
+            },
+            "hostName": "apphostname1",
+            "networkInterfaces": [
+              {
+                "networkInterfaceName": "appnic1"
+              }
+            ],
+            "osDiskName": "app1osdisk",
+            "vmName": "appvm1"
+          }
+        ]
+      },
+      "centralServer": {
+        "loadBalancer": {
+          "backendPoolNames": [
+            "ascsBackendPool"
+          ],
+          "frontendIpConfigurationNames": [
+            "ascsip0",
+            "ersip0"
+          ],
+          "healthProbeNames": [
+            "ascsHealthProbe",
+            "ersHealthProbe"
+          ],
+          "loadBalancerName": "ascslb"
+        },
+        "virtualMachines": [
+          {
+            "hostName": "ascshostname",
+            "networkInterfaces": [
+              {
+                "networkInterfaceName": "ascsnic"
+              }
+            ],
+            "osDiskName": "ascsosdisk",
+            "vmName": "ascsvm"
+          },
+          {
+            "hostName": "ershostname",
+            "networkInterfaces": [
+              {
+                "networkInterfaceName": "ersnic"
+              }
+            ],
+            "osDiskName": "ersosdisk",
+            "vmName": "ersvm"
+          }
+        ]
+      },
+      "databaseServer": {
+        "loadBalancer": {
+          "backendPoolNames": [
+            "dbBackendPool"
+          ],
+          "frontendIpConfigurationNames": [
+            "dbip"
+          ],
+          "healthProbeNames": [
+            "dbHealthProbe"
+          ],
+          "loadBalancerName": "dblb"
+        },
+        "virtualMachines": [
+          {
+            "dataDiskNames": {
+              "hanaData": [
+                "hanadatapr0",
+                "hanadatapr1"
+              ],
+              "hanaLog": [
+                "hanalogpr0",
+                "hanalogpr1",
+                "hanalogpr2"
+              ],
+              "hanaShared": [
+                "hanasharedpr0",
+                "hanasharedpr1"
+              ],
+              "usrSap": [
+                "usrsappr0"
+              ]
+            },
+            "hostName": "dbprhostname",
+            "networkInterfaces": [
+              {
+                "networkInterfaceName": "dbprnic"
+              }
+            ],
+            "osDiskName": "dbprosdisk",
+            "vmName": "dbvmpr"
+          },
+          {
+            "dataDiskNames": {
+              "hanaData": [
+                "hanadatasr0",
+                "hanadatasr1"
+              ],
+              "hanaLog": [
+                "hanalogsr0",
+                "hanalogsr1",
+                "hanalogsr2"
+              ],
+              "hanaShared": [
+                "hanasharedsr0",
+                "hanasharedsr1"
+              ],
+              "usrSap": [
+                "usrsapsr0"
+              ]
+            },
+            "hostName": "dbsrhostname",
+            "networkInterfaces": [
+              {
+                "networkInterfaceName": "dbsrnic"
+              }
+            ],
+            "osDiskName": "dbsrosdisk",
+            "vmName": "dbvmsr"
+          }
+        ]
+      },
+      "namingPatternType": "FullResourceName",
+      "sharedStorage": {
+        "sharedStorageAccountName": "psclitfstorageacc",
+        "sharedStorageAccountPrivateEndPointName": "psclitfpeForxNFS"
+      }
+    },
+    "databaseServer": {
+      "databaseType": "HANA",
+      "instanceCount": 2,
+      "subnetId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/JASKIRAT-RG-NE/providers/Microsoft.Network/virtualNetworks/JAS-VNET-NE/subnets/dbsubnet",
+      "virtualMachineConfiguration": {
+        "imageReference": {
+          "offer": "RHEL-SAP-HA",
+          "publisher": "RedHat",
+          "sku": "84sapha-gen2",
+          "version": "latest"
+        },
+        "osProfile": {
+          "adminUsername": "azureuser",
+          "osConfiguration": {
+            "disablePasswordAuthentication": true,
+            "osType": "Linux",
+            "sshKeyPair": {
+              "publicKey": "PublicKey",
+              "privateKey": "PrivateKey"
+            }
+          }
+        },
+        "vmSize": "Standard_E32ds_v4"
+      }
+    },
+    "deploymentType": "ThreeTier",
+    "highAvailabilityConfig": {
+      "highAvailabilityType": "AvailabilityZone"
+    },
+    "storageConfiguration": {
+      "transportFileShareConfiguration": {
+        "configurationType": "Mount",
+        "id": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG/providers/Microsoft.Storage/storageAccounts/psclitfstorageaccount1/fileServices/default/shares/usrsaptransnonprod",
+        "privateEndpointId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PS_CLI_TF_RG/providers/Microsoft.Network/privateEndpoints/psclitfstorageaccount1_pe"
+      }
+    }
+  },
+  "osSapConfiguration": {
+    "sapFqdn": "sap.bpaas.com"
+  },
+  "softwareConfiguration": {
+    "softwareInstallationType": "SAPInstallWithoutOSConfig",
+    "bomUrl": "https://ybteststorageaccount.blob.core.windows.net/sapbitss4hana2022/sapfiles/boms/S42022SPS00_v0006ms/S42022SPS00_v0006ms.yaml",
+    "sapBitsStorageAccountId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/yb-SapInstall/providers/Microsoft.Storage/storageAccounts/ybteststorageaccount",
+    "softwareVersion": "SAP S/4HANA 2022 ISS 00",
+    "highAvailabilitySoftwareConfiguration": {
+      "fencingClientId": "fencingClientId",
+      "fencingClientPassword": "fencingClientPassword"
+    }
+  }
+}

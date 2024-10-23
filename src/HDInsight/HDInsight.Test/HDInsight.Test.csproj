@@ -25,6 +25,7 @@
     <ProjectReference Include="..\HDInsight.Management.Sdk\HDInsight.Management.Sdk.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="SessionRecords\Commands.HDInsight.Test.ScenarioTests.HDInsightAutoscaleTests\" />
     <Folder Include="SessionRecords\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\" />
   </ItemGroup>
 

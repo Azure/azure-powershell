@@ -203,7 +203,7 @@ To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and 
 To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.ILinkedDatabase[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.ILinkedDatabase[]
 Parameter Sets: (All)
 Aliases:
 
@@ -219,7 +219,7 @@ Optional set of redis modules to enable in this database - modules can only be a
 To construct, see NOTES section for MODULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IModule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IModule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -363,7 +363,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase
 
 ## NOTES
 

@@ -22,7 +22,7 @@ Update a Product.
 Update a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Example
-Update-AzSphereProduct -ResourceGroupName joyer-test -CatalogName test2024 -Name product2024 -Description 2222
+Update-AzSphereProduct -ResourceGroupName group-test -CatalogName test2024 -Name product2024 -Description 2222
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

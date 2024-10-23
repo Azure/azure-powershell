@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Update (or updates) a Azure Arc PrivateLinkScope.
+update (or update  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Description
-Update (or updates) a Azure Arc PrivateLinkScope.
+update (or update  a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Example
 Set-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $location

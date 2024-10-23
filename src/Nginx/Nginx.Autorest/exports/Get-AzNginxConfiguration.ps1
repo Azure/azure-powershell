@@ -25,7 +25,7 @@ Get-AzNginxConfiguration -DeploymentName nginx-test -Name default -ResourceGroup
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,7 +42,7 @@ INPUTOBJECT <INginxIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.nginx/get-aznginxconfiguration
 #>
 function Get-AzNginxConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api202401Preview.INginxConfiguration])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

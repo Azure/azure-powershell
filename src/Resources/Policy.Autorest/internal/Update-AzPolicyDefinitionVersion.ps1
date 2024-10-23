@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-This operation creates or updates a policy definition version in the given management group with the given name.
+This operation update a policy definition version in the given management group with the given name.
 .Description
-This operation creates or updates a policy definition version in the given management group with the given name.
+This operation update a policy definition version in the given management group with the given name.
 .Example
 {{ Add code here }}
 .Example

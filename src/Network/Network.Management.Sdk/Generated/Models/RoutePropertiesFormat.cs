@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this route overrides overlapping
-        /// BGP routes regardless of LPM.
+        /// Gets a value indicating whether this route overrides overlapping BGP routes
+        /// regardless of LPM.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "hasBgpOverride")]
-        public bool? HasBgpOverride {get; set; }
+        public bool? HasBgpOverride {get; private set; }
         /// <summary>
         /// Validate the object.
         /// </summary>

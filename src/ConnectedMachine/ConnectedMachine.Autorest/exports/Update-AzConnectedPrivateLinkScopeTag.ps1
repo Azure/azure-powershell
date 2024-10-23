@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-Update an existing PrivateLinkScope's tags.
-To update other fields use the CreateOrUpdate method.
+update an existing PrivateLinkScope's tags.
+To update other fields use the CreateOrupdate method.
 .Description
-Update an existing PrivateLinkScope's tags.
-To update other fields use the CreateOrUpdate method.
+update an existing PrivateLinkScope's tags.
+To update other fields use the CreateOrupdate method.
 .Example
 $tag = @{ "Tag1" = "Value1" }
 Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName "az-sdk-test" -ScopeName "scope-test" -Tag $tag

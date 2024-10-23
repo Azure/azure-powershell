@@ -27,7 +27,7 @@ The **Add-AzApplicationGatewaySslCertificate** cmdlet adds an SSL certificate to
 ### Example 1: Add an SSL certificate using pfx to an application gateway.
 ```powershell
 $AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-$password = ConvertTo-SecureString $passwordPlainString -AsPlainText -Force
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $AppGW = Add-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 

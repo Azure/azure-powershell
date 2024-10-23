@@ -32,12 +32,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: aef78a6d0f0bc49b42327621fc670200d7545816
+commit: 40923289b489ac3f2a96d274ca5fbf0e4457e5d4
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2023-03-01-preview/redisenterprise.json
+  - $(repo)/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2024-09-01-preview/redisenterprise.json
 
 module-version: 1.0.0
 title: RedisEnterpriseCache
@@ -80,6 +80,11 @@ directive:
       alias:
         - Get-AzRedisEnterpriseCacheDatabaseKey
         - Get-AzRedisEnterpriseCacheAccessKey
+  - where:
+      verb: New
+      subject: AccessPolicyAssignmentUpdate
+    set:
+      subject: AccessPolicyAssignment
   - where:
       verb: Import|Export
       subject: (^Database)(.*)
@@ -217,6 +222,13 @@ directive:
       default:
         script: '"default"'
 
+  - from: swagger-document
+    where: $.definitions.AccessPolicyAssignment
+    transform: $['required'] = ['properties']
+  - from: swagger-document
+    where: $.definitions.AccessPolicyAssignmentProperties.properties.user
+    transform: $['required'] = ['objectId']
+
   # DatabaseName parameter to have value 'default'
   - where:
       verb: Invoke
@@ -226,7 +238,6 @@ directive:
     set:
       default:
         script: '"default"'
-
   # Fix bugs in generated code from namespace conflict
   - from: source-file-csharp
     where: $

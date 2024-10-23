@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacesweepjobobject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceSweepJobObject
 schema: 2.0.0
 ---
 
@@ -15,16 +15,17 @@ Create an in-memory object for SweepJob.
 ```
 New-AzMLWorkspaceSweepJobObject -ObjectiveGoal <Goal> -ObjectivePrimaryMetric <String>
  -SamplingAlgorithmType <SamplingAlgorithmType> -SearchSpace <IAny> -TrialCommand <String>
- -TrialEnvironmentId <String> [-ComputeId <String>] [-Description <String>] [-DisplayName <String>]
- [-DistributionType <DistributionType>] [-EarlyTerminationDelayEvaluation <Int32>]
+ -TrialEnvironmentId <String> [-DistributionType <DistributionType>] [-EarlyTerminationDelayEvaluation <Int32>]
  [-EarlyTerminationEvaluationInterval <Int32>] [-EarlyTerminationPolicyType <EarlyTerminationPolicyType>]
- [-ExperimentName <String>] [-IdentityType <IdentityConfigurationType>] [-IsArchived <Boolean>]
- [-JobInput <ISweepJobInputs>] [-JobOutput <ISweepJobOutputs>] [-LimitMaxConcurrentTrial <Int32>]
- [-LimitMaxTotalTrial <Int32>] [-LimitTimeout <TimeSpan>] [-LimitTrialTimeout <TimeSpan>]
- [-Property <IResourceBaseProperties>] [-ResourceInstanceCount <Int32>] [-ResourceInstanceType <String>]
- [-ResourceProperty <IResourceConfigurationProperties>] [-ServiceEndpoint <String>] [-ServicePort <Int32>]
- [-ServiceProperty <IJobServiceProperties>] [-ServiceType <String>] [-Tag <IResourceBaseTags>]
- [-TrialCodeId <String>] [-TrialEnvironmentVariable <ITrialComponentEnvironmentVariables>]
+ [-JobInput <ISweepJobInputs>] [-LimitMaxConcurrentTrial <Int32>] [-LimitMaxTotalTrial <Int32>]
+ [-LimitTimeout <TimeSpan>] [-LimitTrialTimeout <TimeSpan>] [-JobOutput <ISweepJobOutputs>]
+ [-ResourceInstanceCount <Int32>] [-ResourceInstanceType <String>]
+ [-ResourceProperty <IResourceConfigurationProperties>] [-TrialCodeId <String>]
+ [-TrialEnvironmentVariable <ITrialComponentEnvironmentVariables>] [-ComputeId <String>]
+ [-DisplayName <String>] [-ExperimentName <String>] [-IdentityType <IdentityConfigurationType>]
+ [-IsArchived <Boolean>] [-ServiceEndpoint <String>] [-ServicePort <Int32>]
+ [-ServiceProperty <IJobServiceProperties>] [-ServiceType <String>] [-Description <String>]
+ [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>]
  [<CommonParameters>]
 ```
 
@@ -35,7 +36,7 @@ Create an in-memory object for SweepJob.
 
 ### Example 1: Create an in-memory object for SweepJob
 ```powershell
-# You can use following commands to create job input or job oupt as vaule pass to JobInput or JobOutput parameter of the  New-AzMLWorkspaceSweepJobObject
+# You can use following commands to create job input or job output as value pass to JobInput or JobOutput parameter of the New-AzMLWorkspaceSweepJobObject
 
 # New-AzMLWorkspaceCustomModelJobInputObject
 # New-AzMLWorkspaceCustomModelJobOutputObject
@@ -215,7 +216,7 @@ Mapping of input data bindings used in the job.
 To construct, see NOTES section for JOBINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISweepJobInputs
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISweepJobInputs
 Parameter Sets: (All)
 Aliases:
 
@@ -231,7 +232,7 @@ Mapping of output data bindings used in the job.
 To construct, see NOTES section for JOBOUTPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISweepJobOutputs
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ISweepJobOutputs
 Parameter Sets: (All)
 Aliases:
 
@@ -338,7 +339,7 @@ The asset property dictionary.
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -384,7 +385,7 @@ Additional properties bag.
 To construct, see NOTES section for RESOURCEPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceConfigurationProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceConfigurationProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -461,7 +462,7 @@ Additional properties to set on the endpoint.
 To construct, see NOTES section for SERVICEPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobServiceProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobServiceProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -493,7 +494,7 @@ Tags can be added, removed, and updated.
 To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags
 Parameter Sets: (All)
 Aliases:
 
@@ -556,7 +557,7 @@ Environment variables included in the job.
 To construct, see NOTES section for TRIALENVIRONMENTVARIABLE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ITrialComponentEnvironmentVariables
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ITrialComponentEnvironmentVariables
 Parameter Sets: (All)
 Aliases:
 
@@ -574,37 +575,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SweepJob
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SweepJob
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-JOBINPUT `<ISweepJobInputs>`: Mapping of input data bindings used in the job.
-  - `[(Any) <IJobInput>]`: This indicates any property can be added to this object.
-
-JOBOUTPUT `<ISweepJobOutputs>`: Mapping of output data bindings used in the job.
-  - `[(Any) <IJobOutput>]`: This indicates any property can be added to this object.
-
-PROPERTY `<IResourceBaseProperties>`: The asset property dictionary.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-RESOURCEPROPERTY `<IResourceConfigurationProperties>`: Additional properties bag.
-  - `[(Any) <Object>]`: This indicates any property can be added to this object.
-
-SERVICEPROPERTY `<IJobServiceProperties>`: Additional properties to set on the endpoint.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-TAG `<IResourceBaseTags>`: Tag dictionary. Tags can be added, removed, and updated.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-TRIALENVIRONMENTVARIABLE `<ITrialComponentEnvironmentVariables>`: Environment variables included in the job.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 ## RELATED LINKS
-

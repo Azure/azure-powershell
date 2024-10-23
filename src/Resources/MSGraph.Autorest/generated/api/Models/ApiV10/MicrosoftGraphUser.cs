@@ -286,7 +286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// <summary>Backing field for <see cref="IsResourceAccount" /> property.</summary>
         private bool? _isResourceAccount;
 
-        /// <summary>Do not use – reserved for future use.</summary>
+        /// <summary>Do not use - reserved for future use.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
         public bool? IsResourceAccount { get => this._isResourceAccount; set => this._isResourceAccount = value; }
@@ -1012,14 +1012,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         SerializedName = @"imAddresses",
         PossibleTypes = new [] { typeof(string) })]
         string[] ImAddress { get;  }
-        /// <summary>Do not use – reserved for future use.</summary>
+        /// <summary>Do not use - reserved for future use.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Do not use – reserved for future use.",
+        Description = @"Do not use - reserved for future use.",
         SerializedName = @"isResourceAccount",
         PossibleTypes = new [] { typeof(bool) })]
         bool? IsResourceAccount { get; set; }
@@ -1560,7 +1560,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// $filter (eq, NOT, ge, le, startsWith).
         /// </summary>
         string[] ImAddress { get; set; }
-        /// <summary>Do not use – reserved for future use.</summary>
+        /// <summary>Do not use - reserved for future use.</summary>
         bool? IsResourceAccount { get; set; }
         /// <summary>
         /// The user's job title. Maximum length is 128 characters. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).

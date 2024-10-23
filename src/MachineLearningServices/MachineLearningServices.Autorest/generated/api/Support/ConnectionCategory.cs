@@ -10,11 +10,209 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
     public partial struct ConnectionCategory :
         System.IEquatable<ConnectionCategory>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AdlsGen2 = @"ADLSGen2";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AiServices = @"AIServices";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AmazonMws = @"AmazonMws";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AmazonRdsForOracle = @"AmazonRdsForOracle";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AmazonRdsForSqlServer = @"AmazonRdsForSqlServer";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AmazonRedshift = @"AmazonRedshift";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AmazonS3Compatible = @"AmazonS3Compatible";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory ApiKey = @"ApiKey";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AzureBlob = @"AzureBlob";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AzureDataExplorer = @"AzureDataExplorer";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AzureDatabricksDeltaLake = @"AzureDatabricksDeltaLake";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AzureMariaDb = @"AzureMariaDb";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AzureMySqlDb = @"AzureMySqlDb";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AzureOneLake = @"AzureOneLake";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AzureOpenAi = @"AzureOpenAI";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AzurePostgresDb = @"AzurePostgresDb";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AzureSqlDb = @"AzureSqlDb";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AzureSqlMi = @"AzureSqlMi";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AzureSynapseAnalytics = @"AzureSynapseAnalytics";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory AzureTableStorage = @"AzureTableStorage";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory BingLlmSearch = @"BingLLMSearch";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Cassandra = @"Cassandra";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory CognitiveSearch = @"CognitiveSearch";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory CognitiveService = @"CognitiveService";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Concur = @"Concur";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory ContainerRegistry = @"ContainerRegistry";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory CosmosDb = @"CosmosDb";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory CosmosDbMongoDbApi = @"CosmosDbMongoDbApi";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Couchbase = @"Couchbase";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory CustomKeys = @"CustomKeys";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Db2 = @"Db2";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Drill = @"Drill";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Dynamics = @"Dynamics";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory DynamicsAx = @"DynamicsAx";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory DynamicsCrm = @"DynamicsCrm";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Eloqua = @"Eloqua";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory FileServer = @"FileServer";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory FtpServer = @"FtpServer";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory GenericContainerRegistry = @"GenericContainerRegistry";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory GenericHttp = @"GenericHttp";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory GenericRest = @"GenericRest";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Git = @"Git";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory GoogleAdWords = @"GoogleAdWords";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory GoogleBigQuery = @"GoogleBigQuery";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory GoogleCloudStorage = @"GoogleCloudStorage";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Greenplum = @"Greenplum";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Hbase = @"Hbase";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Hdfs = @"Hdfs";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Hive = @"Hive";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Hubspot = @"Hubspot";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Impala = @"Impala";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Informix = @"Informix";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Jira = @"Jira";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Magento = @"Magento";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory MariaDb = @"MariaDb";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Marketo = @"Marketo";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory MicrosoftAccess = @"MicrosoftAccess";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory MongoDbAtlas = @"MongoDbAtlas";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory MongoDbV2 = @"MongoDbV2";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory MySql = @"MySql";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Netezza = @"Netezza";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory ODataRest = @"ODataRest";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Odbc = @"Odbc";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Office365 = @"Office365";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory OpenAi = @"OpenAI";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Oracle = @"Oracle";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory OracleCloudStorage = @"OracleCloudStorage";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory OracleServiceCloud = @"OracleServiceCloud";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory PayPal = @"PayPal";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Phoenix = @"Phoenix";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory PostgreSql = @"PostgreSql";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Presto = @"Presto";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory PythonFeed = @"PythonFeed";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory QuickBooks = @"QuickBooks";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Redis = @"Redis";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Responsys = @"Responsys";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory S3 = @"S3";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Salesforce = @"Salesforce";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory SalesforceMarketingCloud = @"SalesforceMarketingCloud";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory SalesforceServiceCloud = @"SalesforceServiceCloud";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory SapBw = @"SapBw";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory SapCloudForCustomer = @"SapCloudForCustomer";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory SapEcc = @"SapEcc";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory SapHana = @"SapHana";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory SapOpenHub = @"SapOpenHub";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory SapTable = @"SapTable";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Serp = @"Serp";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Serverless = @"Serverless";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory ServiceNow = @"ServiceNow";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Sftp = @"Sftp";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory SharePointOnlineList = @"SharePointOnlineList";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Shopify = @"Shopify";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Snowflake = @"Snowflake";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Spark = @"Spark";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory SqlServer = @"SqlServer";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Square = @"Square";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Sybase = @"Sybase";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Teradata = @"Teradata";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Vertica = @"Vertica";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory WebTable = @"WebTable";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Xero = @"Xero";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ConnectionCategory Zoho = @"Zoho";
 
         /// <summary>the value for an instance of the <see cref="ConnectionCategory" /> Enum.</summary>
         private string _value { get; set; }

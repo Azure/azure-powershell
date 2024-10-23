@@ -16,7 +16,7 @@ Creates or updates a project environment type.
 ```
 New-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName <String> -ProjectName <String>
  -ResourceGroupName <String> -DeploymentTargetId <String> -Status <EnvironmentTypeEnableStatus>
- [-SubscriptionId <String>] [-CreatorRoleAssignmentRole <Hashtable>]
+ [-SubscriptionId <String>] [-CreatorRoleAssignmentRole <Hashtable>] [-DisplayName <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
  [-Tag <Hashtable>] [-UserRoleAssignment <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -25,7 +25,7 @@ New-AzDevCenterAdminProjectEnvironmentType -EnvironmentTypeName <String> -Projec
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterAdminProjectEnvironmentType -InputObject <IDevCenterIdentity> -DeploymentTargetId <String>
- -Status <EnvironmentTypeEnableStatus> [-CreatorRoleAssignmentRole <Hashtable>]
+ -Status <EnvironmentTypeEnableStatus> [-CreatorRoleAssignmentRole <Hashtable>] [-DisplayName <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
  [-Tag <Hashtable>] [-UserRoleAssignment <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -116,6 +116,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+The display name of the project environment type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -332,7 +347,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IProjectEnvironmentType
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20240501Preview.IProjectEnvironmentType
 
 ## NOTES
 

@@ -22,23 +22,6 @@ if(-not $Isolated) {
   return
 }
 
-$exportsFolder = Join-Path $PSScriptRoot 'exports'
-if(-not (Test-Path $exportsFolder)) {
-  Write-Error "Exports folder '$exportsFolder' was not found."
-}
-
-$directories = Get-ChildItem -Directory -Path $exportsFolder
-$hasProfiles = ($directories | Measure-Object).Count -gt 0
-if(-not $hasProfiles) {
-  $directories = Get-Item -Path $exportsFolder
-}
-
-$docsFolder = Join-Path $PSScriptRoot 'docs'
-if(Test-Path $docsFolder) {
-  $null = Get-ChildItem -Path $docsFolder -Recurse -Exclude 'README.md' | Remove-Item -Recurse -ErrorAction SilentlyContinue
-}
-$null = New-Item -ItemType Directory -Force -Path $docsFolder -ErrorAction SilentlyContinue
-
 $moduleName = 'Az.MSGraph'
 $rootModuleName = 'Az.Resources'
 if ($rootModuleName -eq "")

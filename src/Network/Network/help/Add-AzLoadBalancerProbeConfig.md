@@ -15,8 +15,9 @@ Adds a probe configuration to a load balancer.
 
 ```
 Add-AzLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>] -Port <Int32>
- -IntervalInSeconds <Int32> -ProbeCount <Int32> [-ProbeThreshold <Int32>] [-RequestPath <String>] [-NoHealthyBackendsBehavior <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -IntervalInSeconds <Int32> -ProbeCount <Int32> [-ProbeThreshold <Int32>] [-RequestPath <String>]
+ [-NoHealthyBackendsBehavior <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,6 +95,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoHealthyBackendsBehavior
+Determines how new connections are handled by the load balancer when all backend instances are probed down.
+The acceptable values for this parameter are: AllProbedDown or AllProbedUp.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: AllProbedDown
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Port
 Specifies the port on which probes should connect to a load-balanced service.
 
@@ -166,23 +183,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NoHealthyBackendsBehavior
-Determines how new connections are handled by the load balancer when all backend instances are probed down.
-The acceptable values for this parameter are: AllProbedDown or AllProbedUp.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: AllProbedDown, AllProbedUp
-
-Required: False
-Position: Named
-Default value: AllProbedDown
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```

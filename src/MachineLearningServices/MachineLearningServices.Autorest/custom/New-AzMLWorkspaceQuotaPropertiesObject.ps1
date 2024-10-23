@@ -21,12 +21,12 @@ Create an in-memory object for QuotaBaseProperties.
 Create an in-memory object for QuotaBaseProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.QuotaBaseProperties
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.QuotaBaseProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceQuotaPropertiesObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceQuotaPropertiesObject
 #>
 function New-AzMLWorkspaceQuotaPropertiesObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.QuotaBaseProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.QuotaBaseProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -46,7 +46,7 @@ function New-AzMLWorkspaceQuotaPropertiesObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.QuotaBaseProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.QuotaBaseProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id

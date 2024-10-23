@@ -16,27 +16,27 @@
 
 <#
 .Synopsis
-Gets the specified private endpoint connection associated with the RedisEnterprise cluster.
+Gets the specified private endpoint connection associated with the Redis Enterprise cluster.
 .Description
-Gets the specified private endpoint connection associated with the RedisEnterprise cluster.
+Gets the specified private endpoint connection associated with the Redis Enterprise cluster.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api30.IPrivateEndpointConnection
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnection
 .Link
 https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecacheprivateendpointconnection
 #>
 function Get-AzRedisEnterpriseCachePrivateEndpointConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api30.IPrivateEndpointConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IPrivateEndpointConnection])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
-    # The name of the RedisEnterprise cluster.
+    # The name of the Redis Enterprise cluster.
     ${ClusterName},
 
     [Parameter(Mandatory)]

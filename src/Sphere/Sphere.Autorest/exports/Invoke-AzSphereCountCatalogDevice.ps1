@@ -20,7 +20,7 @@ Counts devices in catalog.
 .Description
 Counts devices in catalog.
 .Example
-Invoke-AzSphereCountCatalogDevice -CatalogName test2024 -ResourceGroupName joyer-test
+Invoke-AzSphereCountCatalogDevice -CatalogName test2024 -ResourceGroupName group-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

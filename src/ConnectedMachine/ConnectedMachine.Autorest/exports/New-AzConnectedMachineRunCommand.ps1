@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to create or update a run command.
+The operation to create a run command.
 .Description
-The operation to create or update a run command.
+The operation to create a run command.
 .Example
 New-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -Location "eastus2euap" -SourceScript "Write-Host Hello World!" -RunCommandName "myRunCommand3" -MachineName "testmachine" -SubscriptionId ********-****-****-****-**********
 

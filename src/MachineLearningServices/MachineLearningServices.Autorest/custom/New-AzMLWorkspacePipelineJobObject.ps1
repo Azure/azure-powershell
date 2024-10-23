@@ -21,23 +21,23 @@ Create an in-memory object for PipelineJob.
 Create an in-memory object for PipelineJob.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.PipelineJob
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.PipelineJob
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspacePipelineJobObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspacePipelineJobObject
 #>
 function New-AzMLWorkspacePipelineJobObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.PipelineJob')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.PipelineJob')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Inputs for the pipeline job.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IPipelineJobInputs]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPipelineJobInputs]
         $JobInput,
         [Parameter(HelpMessage="Jobs construct the Pipeline Job.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IPipelineJobJobs]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPipelineJobJobs]
         $Job,
         [Parameter(HelpMessage="Outputs for the pipeline job.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IPipelineJobOutputs]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IPipelineJobOutputs]
         $JobOutput,
         [Parameter(HelpMessage="Pipeline settings, for things like ContinueRunOnStepFailure etc.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IAny]
@@ -60,7 +60,7 @@ function New-AzMLWorkspacePipelineJobObject {
         $IsArchived,
         # [Parameter(HelpMessage="List of JobEndpoints.
         # For local jobs, a job endpoint will have an endpoint value of FileStreamObject.")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBaseServices]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobBaseServices]
         # $Service,
         [Parameter(HelpMessage="Url for endpoint.")]
         [string]
@@ -69,7 +69,7 @@ function New-AzMLWorkspacePipelineJobObject {
         [int]
         $ServicePort,
         [Parameter(HelpMessage="Additional properties to set on the endpoint.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobServiceProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IJobServiceProperties]
         $ServiceProperty,
         [Parameter(HelpMessage="Endpoint type.")]
         [string]
@@ -79,17 +79,17 @@ function New-AzMLWorkspacePipelineJobObject {
         [string]
         $Description,
         [Parameter(HelpMessage="The asset property dictionary.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]
         $Property,
         [Parameter(HelpMessage="Tag dictionary. Tags can be added, removed, and updated.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]
         $Tag
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.PipelineJob]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.PipelineJob]::New()
         $Object.JobType = 'Pipeline'
-        $Service = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.JobBaseServices]::New()
+        $Service = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.JobBaseServices]::New()
 
         if ($PSBoundParameters.ContainsKey('JobInput')) {
             $Object.Input = $JobInput

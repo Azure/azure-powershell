@@ -17,6 +17,7 @@ using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
 using Microsoft.Win32;
 using System;
 
@@ -29,12 +30,24 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncResourceManager" />
     public class StorageSyncResourceManager : IStorageSyncResourceManager
     {
+        public StorageSyncResourceManager(IServerManagedIdentityProvider serverManagedIdentityProvider)
+        {
+            ServerManagedIdentityProvider = serverManagedIdentityProvider;
+        }
 
         /// <summary>
         /// Creates the ecs management.
         /// </summary>
         /// <returns>IEcsManagement.</returns>
         public IEcsManagement CreateEcsManagement() => new EcsManagementInteropClient();
+
+        public IServerManagedIdentityProvider ServerManagedIdentityProvider { get; private set; }
+
+        /// <summary>
+        /// Creates the ecs management.
+        /// </summary>
+        /// <returns>IEcsManagement.</returns>
+        public ISyncServerRegistration CreateSyncServerManagement() => new SyncServerRegistrationClient(CreateEcsManagement(), ServerManagedIdentityProvider);
 
         /// <summary>
         /// Gets the afs agent installer path.

@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -70,9 +73,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="fileSystem">Specify the FileSystem if the main storage for the HDInsight is ADLS Gen2.
         /// Type: string (or Expression with resultType string).
         /// </param>
-        public HDInsightLinkedService(object clusterUri, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object userName = default(object), SecretBase password = default(SecretBase), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), LinkedServiceReference hcatalogLinkedServiceName = default(LinkedServiceReference), string encryptedCredential = default(string), object isEspEnabled = default(object), object fileSystem = default(object))
+        public HDInsightLinkedService(object clusterUri, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object userName = default(object), SecretBase password = default(SecretBase), LinkedServiceReference linkedServiceName = default(LinkedServiceReference), LinkedServiceReference hcatalogLinkedServiceName = default(LinkedServiceReference), string encryptedCredential = default(string), object isEspEnabled = default(object), object fileSystem = default(object))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.ClusterUri = clusterUri;
             this.UserName = userName;

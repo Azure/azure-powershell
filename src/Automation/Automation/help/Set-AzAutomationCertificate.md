@@ -26,7 +26,7 @@ The **Set-AzAutomationCertificate** cmdlet modifies the configuration of a certi
 
 ### Example 1: Modify a certificate
 ```powershell
-$Password = ConvertTo-SecureString -String "Password" -AsPlainText -Force
+$Password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Set-AzAutomationCertificate -AutomationAccountName "Contos17" -Name "ContosoCertificate" -Path "./cert.pfx" -Password $Password -ResourceGroupName "ResourceGroup01"
 ```
 

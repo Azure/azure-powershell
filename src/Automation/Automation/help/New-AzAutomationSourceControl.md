@@ -29,8 +29,7 @@ Create a source control configuration to link an Azure Automation account with a
 
 ```powershell
 # VSTS Personal access token
-$token = "vppmrabbs65axamofglyo66rjg6reddaa7xxgvaddd5555aaaaddxzbmma"
-$accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
+$accessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "VSTSNative" `
@@ -52,8 +51,7 @@ Create a source control configuration to link an Azure Automation account with a
 
 ```powershell
 # VSTS Personal access token
-$token = "vppmrabbs65axamofglyo66rjg6reddaa7xxgvaddd5555aaaaddxzbmma"
-$accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
+$accessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "VSTSGit" `
@@ -76,8 +74,7 @@ Create a source control configuration to link an Azure Automation account with a
 
 ```powershell
 # GitHub access token
-$token = "68b08011223aac8bdd3388913a44rrsaa84fdf"
-$accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
+$accessToken = ConvertTo-SecureString -String "****" -AsPlainText -Force
  New-AzAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
                                            -Name  "GitHub1" `

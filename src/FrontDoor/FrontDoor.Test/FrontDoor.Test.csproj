@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    	<ProjectReference Include="..\FrontDoor.Sdk\FrontDoor.Sdk.csproj" />
+    	<ProjectReference Include="..\FrontDoor.Management.Sdk\FrontDoor.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

@@ -21,20 +21,22 @@ Update-AzContainerApp -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-TemplateContainer <IContainer[]>] [-TemplateInitContainer <IInitContainer[]>]
  [-TemplateRevisionSuffix <String>] [-TemplateServiceBind <IServiceBind[]>]
  [-TemplateTerminationGracePeriodSecond <Int64>] [-TemplateVolume <IVolume[]>] [-WorkloadProfileName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzContainerApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzContainerApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -107,7 +109,6 @@ Accept wildcard characters: False
 
 ### -Configuration
 Non versioned Container App configuration properties.
-To construct, see NOTES section for CONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfiguration
@@ -201,7 +202,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -343,7 +343,6 @@ Accept wildcard characters: False
 
 ### -ScaleRule
 Scaling rules.
-To construct, see NOTES section for SCALERULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule[]
@@ -389,7 +388,6 @@ Accept wildcard characters: False
 
 ### -TemplateContainer
 List of container definitions for the Container App.
-To construct, see NOTES section for TEMPLATECONTAINER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[]
@@ -405,7 +403,6 @@ Accept wildcard characters: False
 
 ### -TemplateInitContainer
 List of specialized containers that run before app containers.
-To construct, see NOTES section for TEMPLATEINITCONTAINER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer[]
@@ -436,7 +433,6 @@ Accept wildcard characters: False
 
 ### -TemplateServiceBind
 List of container app services bound to the app
-To construct, see NOTES section for TEMPLATESERVICEBIND properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind[]
@@ -472,7 +468,6 @@ Accept wildcard characters: False
 
 ### -TemplateVolume
 List of volume definitions for the Container App.
-To construct, see NOTES section for TEMPLATEVOLUME properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[]

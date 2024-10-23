@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 // todo: add a tool to update assembly versions after replacing the assemblies. (Can it support newly introduced assemblies?)
                 // todo: consider moving the list to a standalone config file
                 #region AssemblyList
-                CreateAssembly("netstandard2.0", "Azure.Core", "1.40.0.0"),
+                CreateAssembly("netstandard2.0", "Azure.Core", "1.41.0.0"),
                 CreateAssembly("netstandard2.0", "Azure.Identity", "1.12.0.0"),
                 CreateAssembly("netstandard2.0", "Azure.Identity.Broker", "1.1.0.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Bcl.AsyncInterfaces", "1.0.0.0"),

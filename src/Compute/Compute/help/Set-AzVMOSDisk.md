@@ -135,13 +135,13 @@ $vmSize = "Standard_DC2as_v5";
 $identityType = "SystemAssigned";
 $secureEncryptGuestState = "DiskWithVMGuestState";
 $vmSecurityType = "ConfidentialVM";
-$securePassword = "Password" | ConvertTo-SecureString -AsPlainText -Force; 
+$securePassword = ConvertTo-SecureString -String "****" -AsPlainText -Force; 
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
 # Create Key Vault
 New-AzKeyVault -Name $keyVaultName -Location $Location -ResourceGroupName $ResourceGroupName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
 
-$cvmAgent = Get-AzADServicePrincipal -ApplicationId 'bf7b6499-ff71-4aa2-97a4-f372087be7f0';
+$cvmAgent = Get-AzADServicePrincipal -ApplicationId '00001111-aaaa-2222-bbbb-3333cccc4444';
 Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $ResourceGroupName -ObjectId $cvmAgent.id -PermissionsToKeys get,release;
 
 # Add Key vault Key

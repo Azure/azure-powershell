@@ -16,6 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceOnlineDeploy
 
 Describe 'Get-AzMLWorkspaceOnlineDeploymentLog' {
     It 'Get' {
-        { Get-AzMLWorkspaceOnlineDeploymentLog -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -EndpointName online-cli01 -Name blue } | Should -Not -Throw
+        {
+            Get-AzMLWorkspaceOnlineDeploymentLog -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeworkspace -EndpointName $env.onlineEndpoint -Name $env.onlineDeployment
+        } | Should -Not -Throw
     }
 }

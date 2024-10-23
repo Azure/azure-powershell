@@ -13,19 +13,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReferenceInternal
     {
 
-        /// <summary>Backing field for <see cref="KeyVaultObjectName" /> property.</summary>
-        private string _keyVaultObjectName;
-
-        /// <summary>Object identifier name of the secret in key vault.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
-        public string KeyVaultObjectName { get => this._keyVaultObjectName; set => this._keyVaultObjectName = value; }
-
         /// <summary>Backing field for <see cref="ReferenceName" /> property.</summary>
         private string _referenceName;
 
         /// <summary>Reference name of the secret to be used in service configs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         public string ReferenceName { get => this._referenceName; set => this._referenceName = value; }
+
+        /// <summary>Backing field for <see cref="SecretName" /> property.</summary>
+        private string _secretName;
+
+        /// <summary>Object identifier name of the secret in key vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        public string SecretName { get => this._secretName; set => this._secretName = value; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
         private string _type;
@@ -51,17 +51,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     public partial interface ISecretReference :
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IJsonSerializable
     {
-        /// <summary>Object identifier name of the secret in key vault.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Object identifier name of the secret in key vault.",
-        SerializedName = @"keyVaultObjectName",
-        PossibleTypes = new [] { typeof(string) })]
-        string KeyVaultObjectName { get; set; }
         /// <summary>Reference name of the secret to be used in service configs.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = true,
@@ -73,6 +62,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"referenceName",
         PossibleTypes = new [] { typeof(string) })]
         string ReferenceName { get; set; }
+        /// <summary>Object identifier name of the secret in key vault.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Object identifier name of the secret in key vault.",
+        SerializedName = @"keyVaultObjectName",
+        PossibleTypes = new [] { typeof(string) })]
+        string SecretName { get; set; }
         /// <summary>Type of key vault object: secret, key or certificate.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = true,
@@ -102,10 +102,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     internal partial interface ISecretReferenceInternal
 
     {
-        /// <summary>Object identifier name of the secret in key vault.</summary>
-        string KeyVaultObjectName { get; set; }
         /// <summary>Reference name of the secret to be used in service configs.</summary>
         string ReferenceName { get; set; }
+        /// <summary>Object identifier name of the secret in key vault.</summary>
+        string SecretName { get; set; }
         /// <summary>Type of key vault object: secret, key or certificate.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("Key", "Secret", "Certificate")]
         string Type { get; set; }

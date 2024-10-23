@@ -43,7 +43,7 @@ You can then copy those property values to your rule by using *SASRule* paramete
 Alternatively, you can create a JSON (JavaScript Object Notation) file containing the relevant configuration values and then apply those values through the *InputFile* parameter.
 A JSON file is a text file that uses syntax similar to this:
 {      "Name": "ContosoAuthorizationRule",  
-    "PrimaryKey": "WE4qH0398AyXjlekt56gg1gMR3NHoMs29KkUnnpUk01Y=",  
+    "PrimaryKey": "W******Y=",  
     "Rights": \[  
         "Listen",  
         "Send"  

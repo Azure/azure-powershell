@@ -13,7 +13,8 @@ Create an in-memory object for ServiceBind.
 ## SYNTAX
 
 ```
-New-AzContainerAppServiceBindObject [-Name <String>] [-ServiceId <String>] [<CommonParameters>]
+New-AzContainerAppServiceBindObject [-Name <String>] [-ServiceId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

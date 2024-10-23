@@ -12,15 +12,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status ConnectedRecently = @"ConnectedRecently";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status DeploymentFailed = @"DeploymentFailed";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status DeploymentInProgress = @"DeploymentInProgress";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status DeploymentSuccess = @"DeploymentSuccess";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status Disconnected = @"Disconnected";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status Error = @"Error";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status Failed = @"Failed";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status InProgress = @"InProgress";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status NotConnectedRecently = @"NotConnectedRecently";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status NotSpecified = @"NotSpecified";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status NotYetRegistered = @"NotYetRegistered";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status Succeeded = @"Succeeded";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status ValidationFailed = @"ValidationFailed";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status ValidationInProgress = @"ValidationInProgress";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Support.Status ValidationSuccess = @"ValidationSuccess";
 
         /// <summary>the value for an instance of the <see cref="Status" /> Enum.</summary>
         private string _value { get; set; }

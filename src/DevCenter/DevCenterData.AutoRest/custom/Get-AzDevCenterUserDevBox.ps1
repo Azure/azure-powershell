@@ -49,6 +49,7 @@ https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserde
 #>
 function Get-AzDevCenterUserDevBox {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.OutputBreakingChangeAttribute("DevBox", "13.0.0", "2.0.0", "2024/11/19", ReplacementCmdletOutputType = "DevBox", DeprecatedOutputProperties = ("Detail", "ProvisioningState", "HardwareProfileSkuName"), NewOutputProperties = ("Detail", "ProvisioningState", "HardwareProfileSkuName"))]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]

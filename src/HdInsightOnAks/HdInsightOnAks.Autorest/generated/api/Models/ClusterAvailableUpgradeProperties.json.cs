@@ -92,9 +92,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 {
                     return new ClusterAvailableUpgradeAksPatchUpgradeProperties(json);
                 }
+                case "ClusterAvailableInPlaceUpgradeProperties":
+                {
+                    return new ClusterAvailableInPlaceUpgradeProperties(json);
+                }
                 case "HotfixUpgrade":
                 {
                     return new ClusterAvailableUpgradeHotfixUpgradeProperties(json);
+                }
+                case "PatchVersionUpgrade":
+                {
+                    return new ClusterAvailableUpgradePatchVersionUpgradeProperties(json);
                 }
             }
             return new ClusterAvailableUpgradeProperties(json);

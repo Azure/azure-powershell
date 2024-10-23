@@ -5,37 +5,34 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{B87E9415-9C6C-4C79-B5F2-8EFF71B3C153}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{52D2A007-3D32-4546-8B3F-1D44A7D63606}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{52D2A007-3D32-4546-8B3F-1D44A7D63606}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{DFA7759C-B0E7-4D85-9E2F-EA8E2E32D66C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{DFA7759C-B0E7-4D85-9E2F-EA8E2E32D66C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{BA05E6E9-A183-4276-85FF-19E301E9A96C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{BA05E6E9-A183-4276-85FF-19E301E9A96C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{D25B0617-E508-4444-8572-EF21AEE29F69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{D25B0617-E508-4444-8572-EF21AEE29F69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{14B1D5CD-31AE-44FC-97AF-FC1EC0A88223}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{14B1D5CD-31AE-44FC-97AF-FC1EC0A88223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{C9CA347A-4D6B-43AA-B218-AD307CA0E9EF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlertsManagement.Sdk", "AlertsManagement.Sdk\AlertsManagement.Sdk.csproj", "{C34F79A1-C3F2-43F2-8A96-375223057CEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{C9CA347A-4D6B-43AA-B218-AD307CA0E9EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{6EE86D76-00A6-456D-808E-B379025DDEF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlertsManagement.Test", "AlertsManagement.Test\AlertsManagement.Test.csproj", "{F5362E75-D986-49F2-A774-7EC6C76046D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlertsManagement.Test", "AlertsManagement.Test\AlertsManagement.Test.csproj", "{F5362E75-D986-49F2-A774-7EC6C76046D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlertsManagement", "AlertsManagement\AlertsManagement.csproj", "{43D0D91E-6F74-4259-A38A-8CEE881E5E2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlertsManagement", "AlertsManagement\AlertsManagement.csproj", "{43D0D91E-6F74-4259-A38A-8CEE881E5E2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PrometheusRuleGroups", "PrometheusRuleGroups.Autorest\Az.PrometheusRuleGroups.csproj", "{1C48E1B7-38E4-46A5-8086-DA38851E3663}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.PrometheusRuleGroups", "PrometheusRuleGroups.Autorest\Az.PrometheusRuleGroups.csproj", "{1C48E1B7-38E4-46A5-8086-DA38851E3663}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{7C710008-8CE2-478D-A8C8-66395BDAD9B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{7C710008-8CE2-478D-A8C8-66395BDAD9B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlertsManagement.Management.Sdk", "AlertsManagement.Management.Sdk\AlertsManagement.Management.Sdk.csproj", "{C806845B-B2AF-4A66-A7FB-3A013993B0DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{52D2A007-3D32-4546-8B3F-1D44A7D63606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -62,10 +59,6 @@ Global
 		{C9CA347A-4D6B-43AA-B218-AD307CA0E9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9CA347A-4D6B-43AA-B218-AD307CA0E9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9CA347A-4D6B-43AA-B218-AD307CA0E9EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C34F79A1-C3F2-43F2-8A96-375223057CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C34F79A1-C3F2-43F2-8A96-375223057CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C34F79A1-C3F2-43F2-8A96-375223057CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C34F79A1-C3F2-43F2-8A96-375223057CEF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5362E75-D986-49F2-A774-7EC6C76046D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5362E75-D986-49F2-A774-7EC6C76046D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5362E75-D986-49F2-A774-7EC6C76046D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -82,6 +75,13 @@ Global
 		{7C710008-8CE2-478D-A8C8-66395BDAD9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C710008-8CE2-478D-A8C8-66395BDAD9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C710008-8CE2-478D-A8C8-66395BDAD9B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C806845B-B2AF-4A66-A7FB-3A013993B0DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C806845B-B2AF-4A66-A7FB-3A013993B0DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C806845B-B2AF-4A66-A7FB-3A013993B0DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C806845B-B2AF-4A66-A7FB-3A013993B0DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{52D2A007-3D32-4546-8B3F-1D44A7D63606} = {B87E9415-9C6C-4C79-B5F2-8EFF71B3C153}

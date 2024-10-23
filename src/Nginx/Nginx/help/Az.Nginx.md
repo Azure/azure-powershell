@@ -12,25 +12,28 @@ Microsoft Azure PowerShell: Nginx cmdlets
 
 ## Az.Nginx Cmdlets
 ### [Get-AzNginxCertificate](Get-AzNginxCertificate.md)
-Get a certificate of given Nginx deployment
+Get a certificate of given NGINX deployment
 
 ### [Get-AzNginxConfiguration](Get-AzNginxConfiguration.md)
-Get the Nginx configuration of given Nginx deployment
+Get the NGINX configuration of given NGINX deployment
 
 ### [Get-AzNginxDeployment](Get-AzNginxDeployment.md)
-Get the Nginx deployment
+Get the NGINX deployment
+
+### [Invoke-AzNginxAnalysisConfiguration](Invoke-AzNginxAnalysisConfiguration.md)
+Analyze an NGINX configuration without applying it to the NGINXaaS deployment
 
 ### [New-AzNginxCertificate](New-AzNginxCertificate.md)
-Create or update the Nginx certificates for given Nginx deployment
+Create or update the NGINX certificates for given NGINX deployment
 
 ### [New-AzNginxConfiguration](New-AzNginxConfiguration.md)
-Create or update the Nginx configuration for given Nginx deployment
+Create or update the NGINX configuration for given NGINX deployment
 
 ### [New-AzNginxConfigurationFileObject](New-AzNginxConfigurationFileObject.md)
 Create an in-memory object for NginxConfigurationFile.
 
 ### [New-AzNginxDeployment](New-AzNginxDeployment.md)
-Create or update the Nginx deployment
+Create or update the NGINX deployment
 
 ### [New-AzNginxNetworkProfileObject](New-AzNginxNetworkProfileObject.md)
 Create an in-memory object for NginxNetworkProfile.
@@ -42,14 +45,14 @@ Create an in-memory object for NginxPrivateIPAddress.
 Create an in-memory object for NginxPublicIPAddress.
 
 ### [Remove-AzNginxCertificate](Remove-AzNginxCertificate.md)
-Deletes a certificate from the nginx deployment
+Deletes a certificate from the NGINX deployment
 
 ### [Remove-AzNginxConfiguration](Remove-AzNginxConfiguration.md)
-Reset the Nginx configuration of given Nginx deployment to default
+Reset the NGINX configuration of given NGINX deployment to default
 
 ### [Remove-AzNginxDeployment](Remove-AzNginxDeployment.md)
-Delete the Nginx deployment resource
+Delete the NGINX deployment resource
 
 ### [Update-AzNginxDeployment](Update-AzNginxDeployment.md)
-Update the Nginx deployment
+Update the NGINX deployment
 

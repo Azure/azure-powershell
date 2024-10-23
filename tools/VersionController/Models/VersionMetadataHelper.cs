@@ -26,6 +26,8 @@ using Tools.Common.Loaders;
 using Tools.Common.Loggers;
 using Tools.Common.Models;
 
+using VersionController.Netcore.Models;
+
 namespace VersionController.Models
 {
     public class VersionMetadataHelper
@@ -136,17 +138,19 @@ namespace VersionController.Models
         /// made to the common code to preserve backwards-compatibility.
         /// </summary>
         /// <returns>Version bump that should be applied to the common code library.</returns>
-        public Version GetVersionBumpForCommonCode()
+        internal Version GetVersionBumpForCommonCode(ReleaseType releaseType)
         {
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var galleryModuleDirectory = _fileHelper.GalleryModuleDirectory;
-            Console.WriteLine("Saving Az.Accounts from the PowerShell Gallery to check common code changes. This will take a few seconds.");
             Version versionBump = Version.PATCH;
             var issueLogger = _logger.CreateLogger<BreakingChangeIssue>("BreakingChangeIssues.csv");
             IEnumerable<string> commonAssemblies = null;
+
+            Console.WriteLine("Saving Az.Accounts from the PowerShell Gallery to check common code changes. This will take a few seconds.");
             using (PowerShell powershell = PowerShell.Create())
             {
-                powershell.AddScript("Save-Module -Name Az.Accounts -Repository PSGallery -Path " + outputModuleDirectory );
+                // for LTS, check latest LTS Accounts instead of STS Accounts.
+                powershell.AddScript($"Save-Module -Name Az.Accounts -Repository PSGallery -Path {outputModuleDirectory} -RequiredVersion {ModuleHelper.GetLatestVersionFromPSGallery("Az.Accounts", releaseType)}");
                 var cmdletResult = powershell.Invoke();
             }
 
@@ -155,7 +159,7 @@ namespace VersionController.Models
             {
                 powershell.AddScript("$metadata = Test-ModuleManifest -Path " + Path.Combine(galleryModuleVersionDirectory, "Az.Accounts.psd1") + ";$metadata.RequiredAssemblies");
                 var cmdletResult = powershell.Invoke();
-                commonAssemblies = cmdletResult.Select(c => c.ToString().Substring(2)).Where(s => Regex.IsMatch(s, "Microsoft.*.Commands.*"));
+                commonAssemblies = cmdletResult.Select(c => c.ToString()).Where(s => s.StartsWith("Microsoft.Azure.PowerShell"));
             }
 
             try

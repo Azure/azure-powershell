@@ -1705,7 +1705,7 @@
       "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"taskType\": \"Migrate.SqlServer.AzureSqlDb.Sync\",\r\n    \"input\": {\r\n      \"selectedDatabases\": [\r\n        {\r\n          \"name\": \"MigrateOneTime\",\r\n          \"targetDatabaseName\": \"JasmineTest\",\r\n          \"schemaName\": \"dbo\",\r\n          \"tableMap\": {\r\n            \"dbo.TestTable2\": \"dbo.TestTable2\",\r\n            \"dbo.TestTable1\": \"dbo.TestTable1\"\r\n          },\r\n          \"migrationSetting\": {},\r\n          \"sourceSetting\": {},\r\n          \"targetSetting\": {}\r\n        }\r\n      ],\r\n      \"validationOptions\": {\r\n        \"enableSchemaValidation\": false,\r\n        \"enableDataIntegrityValidation\": false,\r\n        \"enableQueryAnalysisValidation\": false\r\n      },\r\n      \"sourceConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"AALAB03-2K8.redmond.corp.microsoft.com\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\",\r\n        \"password\": \"Dr22VHg@_,P3\"\r\n      },\r\n      \"targetConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"dmstest.database.windows.net\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\",\r\n        \"password\": \"Dr22VHg@_,P3\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"taskType\": \"Migrate.SqlServer.AzureSqlDb.Sync\",\r\n    \"input\": {\r\n      \"selectedDatabases\": [\r\n        {\r\n          \"name\": \"MigrateOneTime\",\r\n          \"targetDatabaseName\": \"JasmineTest\",\r\n          \"schemaName\": \"dbo\",\r\n          \"tableMap\": {\r\n            \"dbo.TestTable2\": \"dbo.TestTable2\",\r\n            \"dbo.TestTable1\": \"dbo.TestTable1\"\r\n          },\r\n          \"migrationSetting\": {},\r\n          \"sourceSetting\": {},\r\n          \"targetSetting\": {}\r\n        }\r\n      ],\r\n      \"validationOptions\": {\r\n        \"enableSchemaValidation\": false,\r\n        \"enableDataIntegrityValidation\": false,\r\n        \"enableQueryAnalysisValidation\": false\r\n      },\r\n      \"sourceConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"AALAB03-2K8.redmond.corp.microsoft.com\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\",\r\n        \"password\": \"***\"\r\n      },\r\n      \"targetConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"dmstest.database.windows.net\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\",\r\n        \"password\": \"***\"\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "f55cb55e-df33-4584-b24a-6e902511c795"
@@ -1774,8 +1774,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1837,8 +1837,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1900,8 +1900,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1963,8 +1963,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2026,8 +2026,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2089,8 +2089,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2152,8 +2152,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2215,8 +2215,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2278,8 +2278,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2341,8 +2341,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2404,8 +2404,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2467,8 +2467,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2530,8 +2530,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2593,8 +2593,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2656,8 +2656,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2719,8 +2719,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2782,8 +2782,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2845,8 +2845,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2908,8 +2908,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2971,8 +2971,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3034,8 +3034,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3097,8 +3097,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3160,8 +3160,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3223,8 +3223,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3286,8 +3286,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3349,8 +3349,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3412,8 +3412,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3475,8 +3475,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3538,8 +3538,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3601,8 +3601,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3664,8 +3664,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3727,8 +3727,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -3790,8 +3790,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?$expand=output&api-version=2018-07-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun2252/providers/Microsoft.DataMigration/services/DmService-PsTestRun9462/projects/DmProject-PsTestRun9117/tasks/DmTask-PsTestRun3520?api-version=2018-07-15-preview&$expand=output",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0RtUmVzb3VyY2UtUHNUZXN0UnVuMjI1Mi9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFNaWdyYXRpb24vc2VydmljZXMvRG1TZXJ2aWNlLVBzVGVzdFJ1bjk0NjIvcHJvamVjdHMvRG1Qcm9qZWN0LVBzVGVzdFJ1bjkxMTcvdGFza3MvRG1UYXNrLVBzVGVzdFJ1bjM1MjA/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3JiRleHBhbmQ9b3V0cHV0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

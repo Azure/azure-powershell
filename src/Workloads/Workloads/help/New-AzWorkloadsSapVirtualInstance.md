@@ -19,7 +19,7 @@ New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-S
  [-ManagedRgStorageAccountName <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-ManagedResourceGroupName <String>] [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateWithJsonTemplatePath
@@ -28,7 +28,7 @@ New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-S
  -Environment <SapEnvironmentType> -Location <String> -SapProduct <SapProductType>
  [-IdentityType <ManagedServiceIdentityType>] [-ManagedResourceGroupName <String>]
  [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- -Configuration <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -Configuration <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 Defines the environment type - Production/Non Production.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapEnvironmentType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapEnvironmentType
 Parameter Sets: (All)
 Aliases:
 
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 Type of manage identity
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -318,21 +318,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -353,7 +338,7 @@ Accept wildcard characters: False
 Defines the SAP Product type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapProductType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Support.SapProductType
 Parameter Sets: (All)
 Aliases:
 
@@ -447,8 +432,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapVirtualInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.SapVirtualInstance.Models.Api20231001Preview.ISapVirtualInstance
 
 ## NOTES
+
+ALIASES
+
+New-AzVIS
 
 ## RELATED LINKS

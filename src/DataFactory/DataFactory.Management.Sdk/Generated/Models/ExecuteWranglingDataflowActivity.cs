@@ -63,6 +63,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="integrationRuntime">The integration runtime reference.
         /// </param>
 
+        /// <param name="continuationSettings">Continuation settings for execute data flow activity.
+        /// </param>
+
         /// <param name="compute">Compute properties for data flow activity.
         /// </param>
 
@@ -91,7 +94,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="queries">List of mapping for Power Query mashup query to sink dataset(s).
         /// </param>
-        public ExecuteWranglingDataflowActivity(string name, DataFlowReference dataFlow, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), string state = default(string), string onInactiveMarkAs = default(string), System.Collections.Generic.IList<ActivityDependency> dependsOn = default(System.Collections.Generic.IList<ActivityDependency>), System.Collections.Generic.IList<UserProperty> userProperties = default(System.Collections.Generic.IList<UserProperty>), ActivityPolicy policy = default(ActivityPolicy), DataFlowStagingInfo staging = default(DataFlowStagingInfo), IntegrationRuntimeReference integrationRuntime = default(IntegrationRuntimeReference), ExecuteDataFlowActivityTypePropertiesCompute compute = default(ExecuteDataFlowActivityTypePropertiesCompute), object traceLevel = default(object), object continueOnError = default(object), object runConcurrently = default(object), object sourceStagingConcurrency = default(object), System.Collections.Generic.IDictionary<string, PowerQuerySink> sinks = default(System.Collections.Generic.IDictionary<string, PowerQuerySink>), System.Collections.Generic.IList<PowerQuerySinkMapping> queries = default(System.Collections.Generic.IList<PowerQuerySinkMapping>))
+        public ExecuteWranglingDataflowActivity(string name, DataFlowReference dataFlow, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), string state = default(string), string onInactiveMarkAs = default(string), System.Collections.Generic.IList<ActivityDependency> dependsOn = default(System.Collections.Generic.IList<ActivityDependency>), System.Collections.Generic.IList<UserProperty> userProperties = default(System.Collections.Generic.IList<UserProperty>), ActivityPolicy policy = default(ActivityPolicy), DataFlowStagingInfo staging = default(DataFlowStagingInfo), IntegrationRuntimeReference integrationRuntime = default(IntegrationRuntimeReference), ContinuationSettingsReference continuationSettings = default(ContinuationSettingsReference), ExecuteDataFlowActivityTypePropertiesCompute compute = default(ExecuteDataFlowActivityTypePropertiesCompute), object traceLevel = default(object), object continueOnError = default(object), object runConcurrently = default(object), object sourceStagingConcurrency = default(object), System.Collections.Generic.IDictionary<string, PowerQuerySink> sinks = default(System.Collections.Generic.IDictionary<string, PowerQuerySink>), System.Collections.Generic.IList<PowerQuerySinkMapping> queries = default(System.Collections.Generic.IList<PowerQuerySinkMapping>))
 
         : base(name, additionalProperties, description, state, onInactiveMarkAs, dependsOn, userProperties)
         {
@@ -99,6 +102,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.DataFlow = dataFlow;
             this.Staging = staging;
             this.IntegrationRuntime = integrationRuntime;
+            this.ContinuationSettings = continuationSettings;
             this.Compute = compute;
             this.TraceLevel = traceLevel;
             this.ContinueOnError = continueOnError;
@@ -138,6 +142,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.integrationRuntime")]
         public IntegrationRuntimeReference IntegrationRuntime {get; set; }
+
+        /// <summary>
+        /// Gets or sets continuation settings for execute data flow activity.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.continuationSettings")]
+        public ContinuationSettingsReference ContinuationSettings {get; set; }
 
         /// <summary>
         /// Gets or sets compute properties for data flow activity.
@@ -218,6 +228,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 this.IntegrationRuntime.Validate();
             }
+
 
 
 

@@ -21,12 +21,12 @@ Create an in-memory object for AzureBlobDatastore.
 Create an in-memory object for AzureBlobDatastore.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureBlobDatastore
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AzureBlobDatastore
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreBlobObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceDatastoreBlobObject
 #>
 function New-AzMLWorkspaceDatastoreBlobObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureBlobDatastore')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AzureBlobDatastore')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -47,7 +47,7 @@ function New-AzMLWorkspaceDatastoreBlobObject {
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ServiceDataAccessAuthIdentity]
         $ServiceDataAccessAuthIdentity,
         [Parameter(Mandatory, HelpMessage="[Required] Account credentials.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDatastoreCredentials]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IDatastoreCredentials]
         $Credentials,
         # [Parameter(Mandatory, HelpMessage="[Required] Storage type backing the datastore.")]
         # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DatastoreType])]
@@ -57,15 +57,15 @@ function New-AzMLWorkspaceDatastoreBlobObject {
         [string]
         $Description,
         [Parameter(HelpMessage="The asset property dictionary.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseProperties]
         $Property,
         [Parameter(HelpMessage="Tag dictionary. Tags can be added, removed, and updated.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IResourceBaseTags]
         $Tag
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureBlobDatastore]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.AzureBlobDatastore]::New()
         $Object.DatastoreType = 'AzureBlob'
         
         if ($PSBoundParameters.ContainsKey('AccountName')) {

@@ -82,6 +82,8 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.OpenEnergyPlatform/energyServices", "2022-07-21-preview", true, true);
             RegisterConfiguration("Microsoft.DBforMySQL/flexibleServers", "2022-09-30-privatepreview", true, true);
             RegisterConfiguration("Microsoft.DBforPostgreSQL/flexibleServers", "2023-06-01-preview", true, true);
+            RegisterConfiguration("Microsoft.App/managedEnvironments", "2024-02-02-preview", true, true);
+            RegisterConfiguration("Microsoft.VideoIndexer/accounts", "2024-06-01-preview", true, true, true);
         }
         /// <summary>
         /// Register priavte endopoint connection and private link resource configuration

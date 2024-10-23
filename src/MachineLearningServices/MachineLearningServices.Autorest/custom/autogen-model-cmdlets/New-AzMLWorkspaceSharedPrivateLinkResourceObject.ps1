@@ -21,12 +21,12 @@ Create an in-memory object for SharedPrivateLinkResource.
 Create an in-memory object for SharedPrivateLinkResource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SharedPrivateLinkResource
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SharedPrivateLinkResource
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSharedPrivateLinkResourceObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceSharedPrivateLinkResourceObject
 #>
 function New-AzMLWorkspaceSharedPrivateLinkResourceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SharedPrivateLinkResource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SharedPrivateLinkResource')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -49,7 +49,7 @@ function New-AzMLWorkspaceSharedPrivateLinkResourceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SharedPrivateLinkResource]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.SharedPrivateLinkResource]::New()
 
         if ($PSBoundParameters.ContainsKey('GroupId')) {
             $Object.GroupId = $GroupId

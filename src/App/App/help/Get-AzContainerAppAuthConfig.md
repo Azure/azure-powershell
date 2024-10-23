@@ -15,13 +15,15 @@ Get a AuthConfig of a Container App.
 ### List (Default)
 ```
 Get-AzContainerAppAuthConfig -ContainerAppName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityContainerApp
@@ -32,7 +34,8 @@ Get-AzContainerAppAuthConfig -Name <String> -ContainerAppInputObject <IAppIdenti
 
 ### GetViaIdentity
 ```
-Get-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +87,6 @@ Get a AuthConfig of a Container App.
 
 ### -ContainerAppInputObject
 Identity Parameter
-To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -131,7 +133,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity

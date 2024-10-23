@@ -826,6 +826,11 @@ function TestUpdate-SnapshotPolicyId
         Assert-AreEqual $serviceLevelStandard $getRetrievedVolume.ServiceLevel
         Assert-AreEqual $retrievedSnapshotPolicy.Id $getRetrievedVolume.DataProtection.Snapshot.SnapshotPolicyId
         
+        #List volumes assigned to snapshotPolicy
+        $getVolumeList = Get-AzNetAppFilesSnapshotPolicyVolumeList -ResourceGroupName $resourceGroup -AccountName $accName -Name $snapshotPolicyName1
+        Assert-AreEqual 1 $getVolumeList.Length
+        Assert-True {"$accName/$poolName/$volName1" -eq $getVolumeList[0].Name}
+        
         # Remove snapshotpolicy to volume
         $updateRetrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -SnapshotPolicyId ""
         Assert-AreEqual "" $updateRetrievedVolume.DataProtection.Snapshot.SnapshotPolicyId

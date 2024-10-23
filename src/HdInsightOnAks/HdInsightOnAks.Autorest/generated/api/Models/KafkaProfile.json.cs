@@ -78,7 +78,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             {_diskStorage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("diskStorage"), out var __jsonDiskStorage) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.DiskStorageProfile.FromJson(__jsonDiskStorage) : _diskStorage;}
-            {_clusterIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("clusterIdentity"), out var __jsonClusterIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IdentityProfile.FromJson(__jsonClusterIdentity) : _clusterIdentity;}
             {_connectivityEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("connectivityEndpoints"), out var __jsonConnectivityEndpoints) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.KafkaConnectivityEndpoints.FromJson(__jsonConnectivityEndpoints) : _connectivityEndpoint;}
             {_enableKRaft = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("enableKRaft"), out var __jsonEnableKRaft) ? (bool?)__jsonEnableKRaft : _enableKRaft;}
             {_enablePublicEndpoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("enablePublicEndpoints"), out var __jsonEnablePublicEndpoints) ? (bool?)__jsonEnablePublicEndpoints : _enablePublicEndpoint;}
@@ -106,10 +105,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return container;
             }
             AddIf( null != this._diskStorage ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) this._diskStorage.ToJson(null,serializationMode) : null, "diskStorage" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._clusterIdentity ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) this._clusterIdentity.ToJson(null,serializationMode) : null, "clusterIdentity" ,container.Add );
-            }
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._connectivityEndpoint ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) this._connectivityEndpoint.ToJson(null,serializationMode) : null, "connectivityEndpoints" ,container.Add );

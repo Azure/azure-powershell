@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network", "..\Network\Netwo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{7DFE9EDB-9D39-4B86-91F7-F500E02EF8EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagedServiceIdentity", "..\ManagedServiceIdentity\ManagedServiceIdentity\ManagedServiceIdentity.csproj", "{84FCEB24-6A44-4DA6-BC82-9F14126E6F62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ManagedServiceIdentity", "..\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj", "{F053475B-16AE-4014-BE49-70719DB8B76F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +94,14 @@ Global
 		{7DFE9EDB-9D39-4B86-91F7-F500E02EF8EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DFE9EDB-9D39-4B86-91F7-F500E02EF8EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DFE9EDB-9D39-4B86-91F7-F500E02EF8EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84FCEB24-6A44-4DA6-BC82-9F14126E6F62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84FCEB24-6A44-4DA6-BC82-9F14126E6F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84FCEB24-6A44-4DA6-BC82-9F14126E6F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84FCEB24-6A44-4DA6-BC82-9F14126E6F62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F053475B-16AE-4014-BE49-70719DB8B76F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F053475B-16AE-4014-BE49-70719DB8B76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F053475B-16AE-4014-BE49-70719DB8B76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F053475B-16AE-4014-BE49-70719DB8B76F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5A8717FF-5C7C-45E9-9B5F-C980D1DDA076} = {70681436-2EA6-4510-A2D8-5D2F7DE4086C}

@@ -78,11 +78,11 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             if (MyInvocation.BoundParameters.ContainsKey(nameof(PartnerServerName)) && !WildcardPattern.ContainsWildcardCharacters(PartnerServerName))
             {
                 results = new List<AzureReplicationLinkModel>();
-                results.Add(ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName));
+                results.Add(ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName, true));
             }
             else
             {
-                results = ModelAdapter.ListLinks(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName);
+                results = ModelAdapter.ListLinks(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, true);
             }
 
             return SubResourceWildcardFilter(PartnerServerName, results);

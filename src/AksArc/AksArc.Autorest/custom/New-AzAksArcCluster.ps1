@@ -475,6 +475,8 @@ function New-AzAksArcCluster {
             $null = $PSBoundParameters.Add("LicenseProfileAzureHybridBenefit", $false)
         }
         $null = $PSBoundParameters.Remove("EnableAzureHybridBenefit")
+        $null = $PSBoundParameters.Remove("NodeTaint")
+        $null = $PSBoundParameters.Remove("NodeLabel")
         Az.AksArc.internal\New-AzAksArcCluster @PSBoundParameters
     }
     }

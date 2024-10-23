@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Storage;
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             internal const string Hot = "Hot";
             internal const string Cool = "Cool";
+            internal const string Cold = "Cold";
         }
         protected struct AzureBlobType
         {
@@ -149,15 +151,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
             return accountEncryption;
         }
 
-        protected void WriteStorageAccount(StorageModels.StorageAccount storageAccount)
+        protected void WriteStorageAccount(StorageModels.StorageAccount storageAccount, IAzureContext DefaultContext)
         {
-            WriteObject(PSStorageAccount.Create(storageAccount, this.StorageClient));
+            WriteObject(PSStorageAccount.Create(storageAccount, this.StorageClient, DefaultContext));
         }
 
-        protected void WriteStorageAccountList(IEnumerable<StorageModels.StorageAccount> storageAccounts)
+        protected void WriteStorageAccountList(IEnumerable<StorageModels.StorageAccount> storageAccounts, IAzureContext DefaultContext)
         {
             List<PSStorageAccount> output = new List<PSStorageAccount>();
-            storageAccounts.ForEach(storageAccount => output.Add(PSStorageAccount.Create(storageAccount, this.StorageClient)));
+            storageAccounts.ForEach(storageAccount => output.Add(PSStorageAccount.Create(storageAccount, this.StorageClient, DefaultContext)));
             WriteObject(output, true);
         }
 

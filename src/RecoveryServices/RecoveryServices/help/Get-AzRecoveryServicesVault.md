@@ -70,6 +70,30 @@ Enabled
 
 The first cmdlet gets the vault in resource group with given name. Then we access the MSI information from the vault. Third and fourth commands are used to fetch the public network access, immutability state, cross subscription restore state of the vault.
 
+### Example 4: Get Encryption properties of the vault
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+
+$vault.Properties.EncryptionProperty.KeyVaultProperties
+$vault.Properties.EncryptionProperty.KekIdentity
+$vault.Properties.EncryptionProperty.InfrastructureEncryption
+```
+
+```output
+KeyUri
+------
+https://oss-pstest-keyvault.vault.azure.net/keys/cmk-pstest-key2
+
+UseSystemAssignedIdentity UserAssignedIdentity
+------------------------- --------------------
+                    False /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-uami
+
+Enabled
+```
+
+The first cmdlet gets the vault in resource group with given name. The second, third and fourth commands are used to fetch the encryption propties (KeyUri, KekIdentity and infrastructure encryption) of the vault for CMK.
+
 ## PARAMETERS
 
 ### -DefaultProfile

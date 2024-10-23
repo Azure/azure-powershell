@@ -108,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501
             }
             if (content.Contains("KeySource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionV2Internal)this).KeySource = (string) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionV2Internal)this).KeySource, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionV2Internal)this).KeySource = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource?) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionV2Internal)this).KeySource, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource.CreateFrom);
             }
             if (content.Contains("KeyVaultPropertyKeyVaultUri"))
             {
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501
             }
             if (content.Contains("KeySource"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionV2Internal)this).KeySource = (string) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionV2Internal)this).KeySource, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionV2Internal)this).KeySource = (Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource?) content.GetValueForProperty("KeySource",((Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IEncryptionV2Internal)this).KeySource, Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource.CreateFrom);
             }
             if (content.Contains("KeyVaultPropertyKeyVaultUri"))
             {

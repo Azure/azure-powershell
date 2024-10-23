@@ -22,8 +22,8 @@ Create a Deployment.
 Create a Deployment.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 .Example
-$image1 = Get-AzSphereImage -Name '14a6729e-5819-4737-8713-37b4798533f8' -CatalogName test2024 -ResourceGroupName joyer-test
-New-AzSphereDeployment -Name .default -CatalogName test2024 -DeviceGroupName testdevicegroup -ProductName product2024 -ResourceGroupName joyer-test -DeployedImage $image1
+$image1 = Get-AzSphereImage -Name '14a6729e-5819-4737-8713-37b4798533f8' -CatalogName test2024 -ResourceGroupName group-test
+New-AzSphereDeployment -Name .default -CatalogName test2024 -DeviceGroupName testdevicegroup -ProductName product2024 -ResourceGroupName group-test -DeployedImage $image1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeployment

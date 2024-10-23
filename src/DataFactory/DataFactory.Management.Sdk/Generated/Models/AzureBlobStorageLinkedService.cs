@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -99,9 +102,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="containerUri">Container uri of the Azure Blob Storage resource only support for anonymous
         /// access. Type: string (or Expression with resultType string).
         /// </param>
-        public AzureBlobStorageLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object connectionString = default(object), AzureKeyVaultSecretReference accountKey = default(AzureKeyVaultSecretReference), object sasUri = default(object), AzureKeyVaultSecretReference sasToken = default(AzureKeyVaultSecretReference), object serviceEndpoint = default(object), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object tenant = default(object), object azureCloudType = default(object), object accountKind = default(object), string encryptedCredential = default(string), CredentialReference credential = default(CredentialReference), string authenticationType = default(string), object containerUri = default(object))
+        public AzureBlobStorageLinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object connectionString = default(object), AzureKeyVaultSecretReference accountKey = default(AzureKeyVaultSecretReference), object sasUri = default(object), AzureKeyVaultSecretReference sasToken = default(AzureKeyVaultSecretReference), object serviceEndpoint = default(object), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object tenant = default(object), object azureCloudType = default(object), object accountKind = default(object), string encryptedCredential = default(string), CredentialReference credential = default(CredentialReference), string authenticationType = default(string), object containerUri = default(object))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.ConnectionString = connectionString;
             this.AccountKey = accountKey;

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -295,7 +295,691 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyContainerGroupPoolResource</summary>
+        /// <summary>Get a StandbyContainerGroupPoolRuntimeViewResource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
+        /// <param name="runtimeView">The unique identifier for the runtime view. The input string should be the word 'latest', which
+        /// will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolRuntimeViewsGet(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, string runtimeView, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StandbyPool/standbyContainerGroupPools/"
+                        + global::System.Uri.EscapeDataString(standbyContainerGroupPoolName)
+                        + "/runtimeViews/"
+                        + global::System.Uri.EscapeDataString(runtimeView)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.StandbyContainerGroupPoolRuntimeViewsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a StandbyContainerGroupPoolRuntimeViewResource</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolRuntimeViewsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StandbyPool/standbyContainerGroupPools/(?<standbyContainerGroupPoolName>[^/]+)/runtimeViews/(?<runtimeView>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews/{runtimeView}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var standbyContainerGroupPoolName = _match.Groups["standbyContainerGroupPoolName"].Value;
+                var runtimeView = _match.Groups["runtimeView"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StandbyPool/standbyContainerGroupPools/"
+                        + standbyContainerGroupPoolName
+                        + "/runtimeViews/"
+                        + runtimeView
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.StandbyContainerGroupPoolRuntimeViewsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a StandbyContainerGroupPoolRuntimeViewResource</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResource> StandbyContainerGroupPoolRuntimeViewsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StandbyPool/standbyContainerGroupPools/(?<standbyContainerGroupPoolName>[^/]+)/runtimeViews/(?<runtimeView>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews/{runtimeView}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var standbyContainerGroupPoolName = _match.Groups["standbyContainerGroupPoolName"].Value;
+                var runtimeView = _match.Groups["runtimeView"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StandbyPool/standbyContainerGroupPools/"
+                        + standbyContainerGroupPoolName
+                        + "/runtimeViews/"
+                        + runtimeView
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.StandbyContainerGroupPoolRuntimeViewsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a StandbyContainerGroupPoolRuntimeViewResource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
+        /// <param name="runtimeView">The unique identifier for the runtime view. The input string should be the word 'latest', which
+        /// will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResource> StandbyContainerGroupPoolRuntimeViewsGetWithResult(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, string runtimeView, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StandbyPool/standbyContainerGroupPools/"
+                        + global::System.Uri.EscapeDataString(standbyContainerGroupPoolName)
+                        + "/runtimeViews/"
+                        + global::System.Uri.EscapeDataString(runtimeView)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.StandbyContainerGroupPoolRuntimeViewsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "StandbyContainerGroupPoolRuntimeViewsGetWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResource> StandbyContainerGroupPoolRuntimeViewsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolRuntimeViewResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "StandbyContainerGroupPoolRuntimeViewsGet" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task StandbyContainerGroupPoolRuntimeViewsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolRuntimeViewResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="StandbyContainerGroupPoolRuntimeViewsGet" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
+        /// <param name="runtimeView">The unique identifier for the runtime view. The input string should be the word 'latest', which
+        /// will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task StandbyContainerGroupPoolRuntimeViewsGet_Validate(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, string runtimeView, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(standbyContainerGroupPoolName),standbyContainerGroupPoolName);
+                await eventListener.AssertRegEx(nameof(standbyContainerGroupPoolName), standbyContainerGroupPoolName, @"^[a-zA-Z0-9-]{3,24}$");
+                await eventListener.AssertNotNull(nameof(runtimeView),runtimeView);
+                await eventListener.AssertRegEx(nameof(runtimeView), runtimeView, @"^[a-zA-Z0-9-]{0,24}$");
+            }
+        }
+
+        /// <summary>
+        /// List StandbyContainerGroupPoolRuntimeViewResource resources by StandbyContainerGroupPoolResource
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolRuntimeViewsListByStandbyPool(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StandbyPool/standbyContainerGroupPools/"
+                        + global::System.Uri.EscapeDataString(standbyContainerGroupPoolName)
+                        + "/runtimeViews"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.StandbyContainerGroupPoolRuntimeViewsListByStandbyPool_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List StandbyContainerGroupPoolRuntimeViewResource resources by StandbyContainerGroupPoolResource
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StandbyPool/standbyContainerGroupPools/(?<standbyContainerGroupPoolName>[^/]+)/runtimeViews$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var standbyContainerGroupPoolName = _match.Groups["standbyContainerGroupPoolName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StandbyPool/standbyContainerGroupPools/"
+                        + standbyContainerGroupPoolName
+                        + "/runtimeViews"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.StandbyContainerGroupPoolRuntimeViewsListByStandbyPool_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List StandbyContainerGroupPoolRuntimeViewResource resources by StandbyContainerGroupPoolResource
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult> StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StandbyPool/standbyContainerGroupPools/(?<standbyContainerGroupPoolName>[^/]+)/runtimeViews$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}/runtimeViews'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var standbyContainerGroupPoolName = _match.Groups["standbyContainerGroupPoolName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StandbyPool/standbyContainerGroupPools/"
+                        + standbyContainerGroupPoolName
+                        + "/runtimeViews"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List StandbyContainerGroupPoolRuntimeViewResource resources by StandbyContainerGroupPoolResource
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult> StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolWithResult(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StandbyPool/standbyContainerGroupPools/"
+                        + global::System.Uri.EscapeDataString(standbyContainerGroupPoolName)
+                        + "/runtimeViews"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult> StandbyContainerGroupPoolRuntimeViewsListByStandbyPoolWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolRuntimeViewResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "StandbyContainerGroupPoolRuntimeViewsListByStandbyPool" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task StandbyContainerGroupPoolRuntimeViewsListByStandbyPool_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolRuntimeViewResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyContainerGroupPoolRuntimeViewResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="StandbyContainerGroupPoolRuntimeViewsListByStandbyPool" /> method. Call this like the
+        /// actual call, but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task StandbyContainerGroupPoolRuntimeViewsListByStandbyPool_Validate(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(standbyContainerGroupPoolName),standbyContainerGroupPoolName);
+                await eventListener.AssertRegEx(nameof(standbyContainerGroupPoolName), standbyContainerGroupPoolName, @"^[a-zA-Z0-9-]{3,24}$");
+            }
+        }
+
+        /// <summary>Update a StandbyContainerGroupPoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
@@ -311,7 +995,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsCreateOrUpdate(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -344,7 +1028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyContainerGroupPoolResource</summary>
+        /// <summary>Update a StandbyContainerGroupPoolResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -358,7 +1042,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -403,7 +1087,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyContainerGroupPoolResource</summary>
+        /// <summary>Update a StandbyContainerGroupPoolResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -415,7 +1099,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource> StandbyContainerGroupPoolsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource body, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -460,7 +1144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyContainerGroupPoolResource</summary>
+        /// <summary>Update a StandbyContainerGroupPoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
@@ -475,7 +1159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -508,7 +1192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyContainerGroupPoolResource</summary>
+        /// <summary>Update a StandbyContainerGroupPoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
@@ -521,7 +1205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource> StandbyContainerGroupPoolsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -554,7 +1238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyContainerGroupPoolResource</summary>
+        /// <summary>Update a StandbyContainerGroupPoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
@@ -568,7 +1252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource> StandbyContainerGroupPoolsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource body, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -628,6 +1312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -640,7 +1325,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -780,6 +1468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -792,7 +1481,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -924,6 +1616,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -931,9 +1624,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsDelete(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsDelete(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -958,13 +1651,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.StandbyContainerGroupPoolsDelete_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.StandbyContainerGroupPoolsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Delete a StandbyContainerGroupPoolResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -972,9 +1666,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1011,13 +1705,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.StandbyContainerGroupPoolsDelete_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.StandbyContainerGroupPoolsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "StandbyContainerGroupPoolsDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1025,7 +1720,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1043,6 +1738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1055,7 +1751,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1130,6 +1829,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -1193,7 +1898,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsGet(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1234,7 +1939,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1285,7 +1990,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource> StandbyContainerGroupPoolsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1338,7 +2043,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource> StandbyContainerGroupPoolsGetWithResult(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1517,7 +2222,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1557,7 +2262,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1606,7 +2311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceListResult> StandbyContainerGroupPoolsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1656,7 +2361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceListResult> StandbyContainerGroupPoolsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1832,7 +2537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1870,7 +2575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1916,7 +2621,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceListResult> StandbyContainerGroupPoolsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1962,7 +2667,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceListResult> StandbyContainerGroupPoolsListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2136,7 +2841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsUpdate(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2183,7 +2888,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2240,7 +2945,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource> StandbyContainerGroupPoolsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2300,7 +3005,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyContainerGroupPoolsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2346,7 +3051,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource> StandbyContainerGroupPoolsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2393,7 +3098,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResource> StandbyContainerGroupPoolsUpdateWithResult(string subscriptionId, string resourceGroupName, string standbyContainerGroupPoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyContainerGroupPoolResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2566,7 +3271,691 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyVirtualMachinePoolResource</summary>
+        /// <summary>Get a StandbyVirtualMachinePoolRuntimeViewResource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
+        /// <param name="runtimeView">The unique identifier for the runtime view. The input string should be the word 'latest', which
+        /// will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolRuntimeViewsGet(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, string runtimeView, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/"
+                        + global::System.Uri.EscapeDataString(standbyVirtualMachinePoolName)
+                        + "/runtimeViews/"
+                        + global::System.Uri.EscapeDataString(runtimeView)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.StandbyVirtualMachinePoolRuntimeViewsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a StandbyVirtualMachinePoolRuntimeViewResource</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolRuntimeViewsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/(?<standbyVirtualMachinePoolName>[^/]+)/runtimeViews/(?<runtimeView>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews/{runtimeView}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var standbyVirtualMachinePoolName = _match.Groups["standbyVirtualMachinePoolName"].Value;
+                var runtimeView = _match.Groups["runtimeView"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/"
+                        + standbyVirtualMachinePoolName
+                        + "/runtimeViews/"
+                        + runtimeView
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.StandbyVirtualMachinePoolRuntimeViewsGet_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a StandbyVirtualMachinePoolRuntimeViewResource</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource> StandbyVirtualMachinePoolRuntimeViewsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/(?<standbyVirtualMachinePoolName>[^/]+)/runtimeViews/(?<runtimeView>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews/{runtimeView}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var standbyVirtualMachinePoolName = _match.Groups["standbyVirtualMachinePoolName"].Value;
+                var runtimeView = _match.Groups["runtimeView"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/"
+                        + standbyVirtualMachinePoolName
+                        + "/runtimeViews/"
+                        + runtimeView
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.StandbyVirtualMachinePoolRuntimeViewsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get a StandbyVirtualMachinePoolRuntimeViewResource</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
+        /// <param name="runtimeView">The unique identifier for the runtime view. The input string should be the word 'latest', which
+        /// will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource> StandbyVirtualMachinePoolRuntimeViewsGetWithResult(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, string runtimeView, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/"
+                        + global::System.Uri.EscapeDataString(standbyVirtualMachinePoolName)
+                        + "/runtimeViews/"
+                        + global::System.Uri.EscapeDataString(runtimeView)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.StandbyVirtualMachinePoolRuntimeViewsGetWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "StandbyVirtualMachinePoolRuntimeViewsGetWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource> StandbyVirtualMachinePoolRuntimeViewsGetWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolRuntimeViewResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "StandbyVirtualMachinePoolRuntimeViewsGet" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolRuntimeViewsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolRuntimeViewResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="StandbyVirtualMachinePoolRuntimeViewsGet" /> method. Call this like the actual call,
+        /// but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
+        /// <param name="runtimeView">The unique identifier for the runtime view. The input string should be the word 'latest', which
+        /// will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolRuntimeViewsGet_Validate(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, string runtimeView, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(standbyVirtualMachinePoolName),standbyVirtualMachinePoolName);
+                await eventListener.AssertRegEx(nameof(standbyVirtualMachinePoolName), standbyVirtualMachinePoolName, @"^[a-zA-Z0-9-]{3,24}$");
+                await eventListener.AssertNotNull(nameof(runtimeView),runtimeView);
+                await eventListener.AssertRegEx(nameof(runtimeView), runtimeView, @"^[a-zA-Z0-9-]{0,24}$");
+            }
+        }
+
+        /// <summary>
+        /// List StandbyVirtualMachinePoolRuntimeViewResource resources by StandbyVirtualMachinePoolResource
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolRuntimeViewsListByStandbyPool(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/"
+                        + global::System.Uri.EscapeDataString(standbyVirtualMachinePoolName)
+                        + "/runtimeViews"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.StandbyVirtualMachinePoolRuntimeViewsListByStandbyPool_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List StandbyVirtualMachinePoolRuntimeViewResource resources by StandbyVirtualMachinePoolResource
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/(?<standbyVirtualMachinePoolName>[^/]+)/runtimeViews$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var standbyVirtualMachinePoolName = _match.Groups["standbyVirtualMachinePoolName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/"
+                        + standbyVirtualMachinePoolName
+                        + "/runtimeViews"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.StandbyVirtualMachinePoolRuntimeViewsListByStandbyPool_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List StandbyVirtualMachinePoolRuntimeViewResource resources by StandbyVirtualMachinePoolResource
+        /// </summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResourceListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResourceListResult> StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/(?<standbyVirtualMachinePoolName>[^/]+)/runtimeViews$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/runtimeViews'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var standbyVirtualMachinePoolName = _match.Groups["standbyVirtualMachinePoolName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/"
+                        + standbyVirtualMachinePoolName
+                        + "/runtimeViews"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// List StandbyVirtualMachinePoolRuntimeViewResource resources by StandbyVirtualMachinePoolResource
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResourceListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResourceListResult> StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolWithResult(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-03-01";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/"
+                        + global::System.Uri.EscapeDataString(standbyVirtualMachinePoolName)
+                        + "/runtimeViews"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResourceListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResourceListResult> StandbyVirtualMachinePoolRuntimeViewsListByStandbyPoolWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolRuntimeViewResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "StandbyVirtualMachinePoolRuntimeViewsListByStandbyPool" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolRuntimeViewsListByStandbyPool_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolRuntimeViewResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.StandbyVirtualMachinePoolRuntimeViewResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="StandbyVirtualMachinePoolRuntimeViewsListByStandbyPool" /> method. Call this like the
+        /// actual call, but you will get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolRuntimeViewsListByStandbyPool_Validate(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(standbyVirtualMachinePoolName),standbyVirtualMachinePoolName);
+                await eventListener.AssertRegEx(nameof(standbyVirtualMachinePoolName), standbyVirtualMachinePoolName, @"^[a-zA-Z0-9-]{3,24}$");
+            }
+        }
+
+        /// <summary>Update a StandbyVirtualMachinePoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
@@ -2582,7 +3971,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsCreateOrUpdate(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2615,7 +4004,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyVirtualMachinePoolResource</summary>
+        /// <summary>Update a StandbyVirtualMachinePoolResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2629,7 +4018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2674,7 +4063,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyVirtualMachinePoolResource</summary>
+        /// <summary>Update a StandbyVirtualMachinePoolResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2686,7 +4075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource> StandbyVirtualMachinePoolsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource body, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2731,7 +4120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyVirtualMachinePoolResource</summary>
+        /// <summary>Update a StandbyVirtualMachinePoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
@@ -2746,7 +4135,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2779,7 +4168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyVirtualMachinePoolResource</summary>
+        /// <summary>Update a StandbyVirtualMachinePoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
@@ -2792,7 +4181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource> StandbyVirtualMachinePoolsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2825,7 +4214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyVirtualMachinePoolResource</summary>
+        /// <summary>Update a StandbyVirtualMachinePoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
@@ -2839,7 +4228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource> StandbyVirtualMachinePoolsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource body, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2899,6 +4288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2911,7 +4301,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3051,6 +4444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3063,7 +4457,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3195,6 +4592,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3202,9 +4600,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsDelete(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsDelete(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3229,13 +4627,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.StandbyVirtualMachinePoolsDelete_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.StandbyVirtualMachinePoolsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Delete a StandbyVirtualMachinePoolResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3243,9 +4642,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3282,13 +4681,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.StandbyVirtualMachinePoolsDelete_Call (request, onNoContent,onDefault,eventListener,sender);
+                await this.StandbyVirtualMachinePoolsDelete_Call (request, onNoContent,onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "StandbyVirtualMachinePoolsDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3296,7 +4696,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3314,6 +4714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3326,7 +4727,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3401,6 +4805,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -3464,7 +4874,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsGet(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3505,7 +4915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3556,7 +4966,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource> StandbyVirtualMachinePoolsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3609,7 +5019,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource> StandbyVirtualMachinePoolsGetWithResult(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3788,7 +5198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3828,7 +5238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3877,7 +5287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceListResult> StandbyVirtualMachinePoolsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3927,7 +5337,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceListResult> StandbyVirtualMachinePoolsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4103,7 +5513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4141,7 +5551,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4187,7 +5597,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceListResult> StandbyVirtualMachinePoolsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4233,7 +5643,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceListResult> StandbyVirtualMachinePoolsListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4407,7 +5817,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsUpdate(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4454,7 +5864,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4511,7 +5921,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource> StandbyVirtualMachinePoolsUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4571,7 +5981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinePoolsUpdateViaJsonString(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4617,7 +6027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource> StandbyVirtualMachinePoolsUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4664,7 +6074,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResource> StandbyVirtualMachinePoolsUpdateWithResult(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachinePoolResourceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4852,7 +6262,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinesGet(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, string standbyVirtualMachineName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4895,7 +6305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4949,7 +6359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource> StandbyVirtualMachinesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5006,7 +6416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResource> StandbyVirtualMachinesGetWithResult(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, string standbyVirtualMachineName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5193,7 +6603,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinesListByStandbyVirtualMachinePoolResource(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5237,7 +6647,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5291,7 +6701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResourceListResult> StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5347,7 +6757,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyVirtualMachineResourceListResult> StandbyVirtualMachinesListByStandbyVirtualMachinePoolResourceWithResult(string subscriptionId, string resourceGroupName, string standbyVirtualMachinePoolName, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-12-01-preview";
+            var apiVersion = @"2024-03-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

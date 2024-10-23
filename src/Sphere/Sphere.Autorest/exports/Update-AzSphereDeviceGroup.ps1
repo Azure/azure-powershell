@@ -22,7 +22,7 @@ Update a DeviceGroup.
 Update a DeviceGroup.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 .Example
-Update-AzSphereDeviceGroup -ResourceGroupName joyer-test -CatalogName test2024 -ProductName product2024 -Name testdevicegroup -Description test
+Update-AzSphereDeviceGroup -ResourceGroupName group-test -CatalogName test2024 -ProductName product2024 -Name testdevicegroup -Description test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

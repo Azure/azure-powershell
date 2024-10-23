@@ -1,17 +1,17 @@
 {
-  "Remove-AzConnectedPrivateLinkScope+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope?api-version=2024-03-31-preview+1": {
+  "Remove-AzConnectedPrivateLinkScope+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3?api-version=2024-05-20-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope?api-version=2024-03-31-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3?api-version=2024-05-20-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "df2aab01-fabb-432b-82fb-c17c2628182c" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "c179ee97-128c-4b60-8a37-61cccd09d409" ],
         "CommandName": [ "Remove-AzConnectedPrivateLinkScope" ],
         "FullCommandName": [ "Remove-AzConnectedPrivateLinkScope_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.ConnectedMachine/0.5.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.5", "Az.ConnectedMachine/0.5.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,15 +23,14 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "6fae3b45-28b4-4776-8d67-2bc3adf5084f" ],
-        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-request-id": [ "42a0935b-ffb8-4b05-a8ac-c696b44e38d2" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "3271f6a6-d58d-4729-ab94-7f77eaf06c4a" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240515T225013Z:3271f6a6-d58d-4729-ab94-7f77eaf06c4a" ],
+        "x-ms-correlation-request-id": [ "bf1e7474-ec7b-477a-a1ca-ade425356670" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240920T032322Z:bf1e7474-ec7b-477a-a1ca-ade425356670" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4824F560179545A08154BAB9FFE7FFE4 Ref B: MNZ221060619023 Ref C: 2024-05-15T22:50:12Z" ],
-        "Date": [ "Wed, 15 May 2024 22:50:13 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D90160BD057D48999453354A77F7C8A1 Ref B: MNZ221060609039 Ref C: 2024-09-20T03:23:21Z" ],
+        "Date": [ "Fri, 20 Sep 2024 03:23:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// used by ADE to get access token for keyvault operations.</param>
         /// <param name="proxyAgentSettings">Specifies ProxyAgent settings
         /// while creating the virtual machine. Minimum api-version:
-        /// 2024-03-01.</param>
+        /// 2023-09-01.</param>
         public SecurityProfile(UefiSettings uefiSettings = default(UefiSettings), bool? encryptionAtHost = default(bool?), string securityType = default(string), EncryptionIdentity encryptionIdentity = default(EncryptionIdentity), ProxyAgentSettings proxyAgentSettings = default(ProxyAgentSettings))
         {
             UefiSettings = uefiSettings;
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets specifies ProxyAgent settings while creating the
-        /// virtual machine. Minimum api-version: 2024-03-01.
+        /// virtual machine. Minimum api-version: 2023-09-01.
         /// </summary>
         [JsonProperty(PropertyName = "proxyAgentSettings")]
         public ProxyAgentSettings ProxyAgentSettings { get; set; }

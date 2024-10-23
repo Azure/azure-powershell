@@ -21,7 +21,7 @@ Describe 'Set-AzConnectedPrivateLinkScope' {
 
     It 'Update' {
         $tags = @{Tag1="tag1"; Tag2="tag2"}
-        $all = @(Set-AzConnectedPrivateLinkScope -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $env.Location)
+        $all = @(Set-AzConnectedPrivateLinkScope -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location "West Central US")
         $all.Count | Should -Not -BeNullOrEmpty
     }
 

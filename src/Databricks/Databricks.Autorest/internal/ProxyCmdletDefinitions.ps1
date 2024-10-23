@@ -528,10 +528,12 @@ PARAMETER <IWorkspace>: Information about workspace.
   [EnhancedSecurityMonitoringValue <EnhancedSecurityMonitoringValue?>]: 
   [LoadBalancerBackendPoolNameValue <String>]: The value which should be used for this field.
   [LoadBalancerIdValue <String>]: The value which should be used for this field.
+  [ManagedDiskKeySource <EncryptionKeySource?>]: The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
   [ManagedDiskKeyVaultPropertiesKeyName <String>]: The name of KeyVault key.
   [ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]: The URI of KeyVault.
   [ManagedDiskKeyVaultPropertiesKeyVersion <String>]: The version of KeyVault key.
   [ManagedDiskRotationToLatestKeyVersionEnabled <Boolean?>]: Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+  [ManagedServiceKeySource <EncryptionKeySource?>]: The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
   [ManagedServicesKeyVaultPropertiesKeyName <String>]: The name of KeyVault key.
   [ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]: The Uri of KeyVault.
   [ManagedServicesKeyVaultPropertiesKeyVersion <String>]: The version of KeyVault key.
@@ -732,6 +734,14 @@ param(
     ${LoadBalancerId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource]
+    # The encryption keySource (provider).
+    # Possible values (case-insensitive): Microsoft.Keyvault
+    ${ManagedDiskKeySource},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
     # The name of KeyVault key.
@@ -754,6 +764,14 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
     ${ManagedDiskRotationToLatestKeyVersionEnabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource]
+    # The encryption keySource (provider).
+    # Possible values (case-insensitive): Microsoft.Keyvault
+    ${ManagedServiceKeySource},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]

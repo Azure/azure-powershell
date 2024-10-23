@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Storage;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;

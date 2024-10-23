@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string AccountKeyTypeHelpMessage = "Value from: {ConnectionStrings, Keys, ReadOnlyKeys}. Default is Keys.";
         public const string DisableKeyBasedMetadataWriteAccessHelpMessage = "Disable write operations on metadata resources (databases, containers, throughput) via account keys";
         public const string PublicNetworkAccessHelpMessage = "Whether or not public endpoint access is allowed for this server. Possible values include: 'Enabled', 'Disabled'";
+        public const string DisableTtlHelpMessage = "Bool to indicate if restored account is going to have Time-To-Live disabled.";
         public const string KeyVaultUriHelpMessage = "URI of the KeyVault";
         public const string EnableFreeTierHelpMessage = "Bool to indicate if FreeTier is enabled on the account.";
         public const string EnableAnalyticalStorageHelpMessage = "Bool to indicate if AnalyticalStorage is enabled on the account.";

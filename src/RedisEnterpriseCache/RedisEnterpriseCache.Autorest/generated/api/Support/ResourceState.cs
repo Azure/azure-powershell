@@ -30,6 +30,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState Running = @"Running";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState Scaling = @"Scaling";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState ScalingFailed = @"ScalingFailed";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState UpdateFailed = @"UpdateFailed";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState Updating = @"Updating";

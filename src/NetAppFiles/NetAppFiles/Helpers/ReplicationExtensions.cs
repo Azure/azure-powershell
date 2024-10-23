@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             var psReplicaitonObject = new PSNetAppFilesReplication
             {
+                ReplicationId = replication.ReplicationId,
                 EndpointType = replication.EndpointType,
                 RemoteVolumeRegion = replication.RemoteVolumeRegion,
                 RemoteVolumeResourceId = replication.RemoteVolumeResourceId,                
@@ -33,7 +34,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             return psReplicaitonObject;
         }
 
-        public static List<PSNetAppFilesReplication> ConvertToPS(this IList<Management.NetApp.Models.Replication> replications)
+        
+        public static List<PSNetAppFilesReplication> ConvertToPs(this IEnumerable<Management.NetApp.Models.Replication> replications)
         {
             return replications.Select(e => e.ConvertToPs()).ToList();
         }

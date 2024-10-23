@@ -64,7 +64,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Models
                 ((IPolicyDefinitionReferenceInternal)this).Parameter = content.GetValueForProperty(keyValuePair.Key.ToString(), ((IPolicyDefinitionReferenceInternal)this).Parameter, ParameterValuesTypeConverter.ConvertFrom);
             }
 
-            keyValuePair = content.Cast<System.Collections.DictionaryEntry>().FirstOrDefault((kvp) => "Id".Equals(kvp.Key.ToString(), StringComparison.OrdinalIgnoreCase));
+            // Github issue: https://github.com/Azure/azure-powershell/issues/25112
+            // fix the serialization: the input property name is policyDefinitionReferenceId, but the generated model has it as Id.
+            keyValuePair = content.Cast<System.Collections.DictionaryEntry>().FirstOrDefault((kvp) => "PolicyDefinitionReferenceId".Equals(kvp.Key.ToString(), StringComparison.OrdinalIgnoreCase));
             if (keyValuePair.Key != null)
             {
                 ((IPolicyDefinitionReferenceInternal)this).Id = content.GetValueForProperty(keyValuePair.Key.ToString(), ((IPolicyDefinitionReferenceInternal)this).Id, Convert.ToString);

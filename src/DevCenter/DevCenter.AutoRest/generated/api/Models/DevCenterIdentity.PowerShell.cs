@@ -101,9 +101,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("PlanName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).PlanName = (string) content.GetValueForProperty("PlanName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).PlanName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MemberName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).MemberName = (string) content.GetValueForProperty("MemberName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).MemberName, global::System.Convert.ToString);
+            }
             if (content.Contains("DevCenterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).DevCenterName = (string) content.GetValueForProperty("DevCenterName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).DevCenterName, global::System.Convert.ToString);
+            }
+            if (content.Contains("EncryptionSetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).EncryptionSetName = (string) content.GetValueForProperty("EncryptionSetName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).EncryptionSetName, global::System.Convert.ToString);
             }
             if (content.Contains("ProjectName"))
             {
@@ -112,6 +124,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
             if (content.Contains("AttachedNetworkConnectionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).AttachedNetworkConnectionName = (string) content.GetValueForProperty("AttachedNetworkConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).AttachedNetworkConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CatalogName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).CatalogName = (string) content.GetValueForProperty("CatalogName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).CatalogName, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnvironmentDefinitionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).EnvironmentDefinitionName = (string) content.GetValueForProperty("EnvironmentDefinitionName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).EnvironmentDefinitionName, global::System.Convert.ToString);
             }
             if (content.Contains("GalleryName"))
             {
@@ -124,10 +144,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
             if (content.Contains("VersionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).VersionName = (string) content.GetValueForProperty("VersionName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).VersionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("CatalogName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).CatalogName = (string) content.GetValueForProperty("CatalogName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).CatalogName, global::System.Convert.ToString);
             }
             if (content.Contains("EnvironmentTypeName"))
             {
@@ -148,10 +164,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
             if (content.Contains("TaskName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).TaskName = (string) content.GetValueForProperty("TaskName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).TaskName, global::System.Convert.ToString);
-            }
-            if (content.Contains("EnvironmentDefinitionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).EnvironmentDefinitionName = (string) content.GetValueForProperty("EnvironmentDefinitionName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).EnvironmentDefinitionName, global::System.Convert.ToString);
             }
             if (content.Contains("PoolName"))
             {
@@ -194,9 +206,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
             }
+            if (content.Contains("PlanName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).PlanName = (string) content.GetValueForProperty("PlanName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).PlanName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MemberName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).MemberName = (string) content.GetValueForProperty("MemberName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).MemberName, global::System.Convert.ToString);
+            }
             if (content.Contains("DevCenterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).DevCenterName = (string) content.GetValueForProperty("DevCenterName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).DevCenterName, global::System.Convert.ToString);
+            }
+            if (content.Contains("EncryptionSetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).EncryptionSetName = (string) content.GetValueForProperty("EncryptionSetName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).EncryptionSetName, global::System.Convert.ToString);
             }
             if (content.Contains("ProjectName"))
             {
@@ -205,6 +229,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
             if (content.Contains("AttachedNetworkConnectionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).AttachedNetworkConnectionName = (string) content.GetValueForProperty("AttachedNetworkConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).AttachedNetworkConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CatalogName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).CatalogName = (string) content.GetValueForProperty("CatalogName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).CatalogName, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnvironmentDefinitionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).EnvironmentDefinitionName = (string) content.GetValueForProperty("EnvironmentDefinitionName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).EnvironmentDefinitionName, global::System.Convert.ToString);
             }
             if (content.Contains("GalleryName"))
             {
@@ -217,10 +249,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
             if (content.Contains("VersionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).VersionName = (string) content.GetValueForProperty("VersionName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).VersionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("CatalogName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).CatalogName = (string) content.GetValueForProperty("CatalogName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).CatalogName, global::System.Convert.ToString);
             }
             if (content.Contains("EnvironmentTypeName"))
             {
@@ -241,10 +269,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models
             if (content.Contains("TaskName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).TaskName = (string) content.GetValueForProperty("TaskName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).TaskName, global::System.Convert.ToString);
-            }
-            if (content.Contains("EnvironmentDefinitionName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).EnvironmentDefinitionName = (string) content.GetValueForProperty("EnvironmentDefinitionName",((Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentityInternal)this).EnvironmentDefinitionName, global::System.Convert.ToString);
             }
             if (content.Contains("PoolName"))
             {

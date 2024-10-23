@@ -235,7 +235,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
                 {
                     Login = displayName,
                     Sid = new Guid(app.AppId),
-                    TenantId = tenantId
+                    TenantId = tenantId,
+                    AdministratorType = ActiveDirectoryAdministratorDefaultType
                 };
             }
 
@@ -306,7 +307,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
 
                 return new ManagedInstanceAdministrator()
                 {
-                    Login = displayName,
+                    Login = obj.Mail,
                     Sid = new Guid(obj.Id),
                     TenantId = tenantId,
                     AdministratorType = ActiveDirectoryAdministratorDefaultType,

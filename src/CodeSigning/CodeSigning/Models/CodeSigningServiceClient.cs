@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Azure.CodeSigning;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System.IO;
 using Azure.Core;
 using Microsoft.Azure.Commands.CodeSigning.Helpers;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Newtonsoft.Json;
+using System;
+using System.IO;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Models
@@ -52,14 +52,6 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
         private Exception GetInnerException(Exception exception)
         {
             while (exception.InnerException != null) exception = exception.InnerException;
-            //if need modify inner exception
-            //if (exception is KeyVaultErrorException kvEx && kvEx?.Body?.Error != null)
-            //{
-            //    var detailedMsg = exception.Message;
-            //    detailedMsg += string.Format(Environment.NewLine + "Code: {0}", kvEx.Body.Error.Code);
-            //    detailedMsg += string.Format(Environment.NewLine + "Message: {0}", kvEx.Body.Error.Message);
-            //    exception = new KeyVaultErrorException(detailedMsg, kvEx);
-            //}
             return exception;
         }
 
@@ -120,11 +112,31 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
             return GetCodeSigningRootCert(accountName, profileName, endpoint);
         }
 
+        public Stream GetCodeSigningCertChain(string accountName, string profileName, string endpoint)
+        {
+            GetCertificateProfileClient(endpoint);
+
+            var certChain = CertificateProfileClient.GetSignCertificateChain(accountName, profileName);
+            return certChain;
+        }
+
+        public Stream GetCodeSigningCertChain(string metadataPath)
+        {
+            var rawMetadata = File.ReadAllText(metadataPath);
+            Metadata = JsonConvert.DeserializeObject<Metadata>(rawMetadata);
+
+            var accountName = Metadata.CodeSigningAccountName;
+            var profileName = Metadata.CertificateProfileName;
+            var endpoint = Metadata.Endpoint;
+
+            return GetCodeSigningCertChain(accountName, profileName, endpoint);
+        }
+
         public void SubmitCIPolicySigning(string accountName, string profileName, string endpoint,
             string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl = null)
         {
-           var cipolicySigner = new CmsSigner();
-           cipolicySigner.SignCIPolicy(user_creds, accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, timeStamperUrl);
+            var cipolicySigner = new CmsSigner();
+            cipolicySigner.SignCIPolicy(user_creds, accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, timeStamperUrl);
         }
 
         public void SubmitCIPolicySigning(string metadataPath, string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl)

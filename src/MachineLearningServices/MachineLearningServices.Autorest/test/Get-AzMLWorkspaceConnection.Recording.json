@@ -1,17 +1,17 @@
 {
-  "Get-AzMLWorkspaceConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/connections?api-version=2022-05-01+1": {
+  "Get-AzMLWorkspaceConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/connections?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/connections?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/connections?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "197faa30-2d12-407a-bde9-8b13d21d1c13" ],
+        "x-ms-unique-id": [ "82" ],
+        "x-ms-client-request-id": [ "840bda57-60c4-4417-81bc-dc5da7854245" ],
         "CommandName": [ "Get-AzMLWorkspaceConnection" ],
         "FullCommandName": [ "Get-AzMLWorkspaceConnection_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,40 +23,42 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "1827cdaa-320a-4217-aa76-507c70e944c7" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-request-id": [ "ae23a4e8-3aef-4c00-98e3-3237d342101c" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.023" ],
-        "x-ms-correlation-request-id": [ "1827cdaa-320a-4217-aa76-507c70e944c7" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094027Z:1827cdaa-320a-4217-aa76-507c70e944c7" ],
-        "Date": [ "Sun, 05 Jun 2022 09:40:26 GMT" ]
+        "x-request-time": [ "0.034" ],
+        "x-ms-correlation-request-id": [ "ae23a4e8-3aef-4c00-98e3-3237d342101c" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085111Z:ae23a4e8-3aef-4c00-98e3-3237d342101c" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C686EA35C0CC4862BEB746198A38C699 Ref B: TYO201151005031 Ref C: 2024-07-24T08:51:11Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:51:11 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "520" ],
+        "Content-Length": [ "1281" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"value\": [\n    {\n      \"tags\": null,\n      \"location\": null,\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/connections/test\",\n      \"name\": \"test\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/connections\",\n      \"properties\": {\n        \"authType\": \"None\",\n        \"category\": \"Git\",\n        \"target\": \"test\",\n        \"metadata\": null\n      },\n      \"systemData\": null\n    }\n  ]\n}",
+      "Content": "{\n  \"value\": [\n    {\n      \"tags\": null,\n      \"location\": null,\n      \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/connections/test01\",\n      \"name\": \"test01\",\n      \"type\": \"Microsoft.MachineLearningServices/workspaces/connections\",\n      \"properties\": {\n        \"authType\": \"None\",\n        \"group\": \"Azure\",\n        \"category\": \"ContainerRegistry\",\n        \"expiryTime\": null,\n        \"target\": \"www.facebook.com\",\n        \"createdByWorkspaceArmId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1\",\n        \"useWorkspaceManagedIdentity\": false,\n        \"isSharedToAll\": false,\n        \"sharedUserList\": [],\n        \"peRequirement\": \"NotRequired\",\n        \"peStatus\": \"NotApplicable\",\n        \"error\": null,\n        \"metadata\": {}\n      },\n      \"systemData\": {\n        \"createdAt\": \"2024-07-24T08:48:47.2679158Z\",\n        \"createdBy\": \"v-jiaji@microsoft.com\",\n        \"createdByType\": \"User\",\n        \"lastModifiedAt\": \"2024-07-24T08:48:47.2679158Z\",\n        \"lastModifiedBy\": \"v-jiaji@microsoft.com\",\n        \"lastModifiedByType\": \"User\"\n      }\n    }\n  ]\n}",
       "isContentBase64": false
     }
   },
-  "Get-AzMLWorkspaceConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/connections/test?api-version=2022-05-01+1": {
+  "Get-AzMLWorkspaceConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/connections/test01?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/connections/test?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/connections/test01?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "21" ],
-        "x-ms-client-request-id": [ "26072142-6696-45bd-8567-d142433bb99f" ],
+        "x-ms-unique-id": [ "83" ],
+        "x-ms-client-request-id": [ "6a9b7d9a-7379-43d4-a196-f514cfe2272f" ],
         "CommandName": [ "Get-AzMLWorkspaceConnection" ],
         "FullCommandName": [ "Get-AzMLWorkspaceConnection_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.3", "Az.MachineLearningServices/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -68,24 +70,26 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "2dfd181c-957f-4fe5-94a6-e03ff9a97630" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-request-id": [ "3dc8909a-acbc-4b8d-b4f1-37e4272ab5e8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
         "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
         "x-ms-response-type": [ "standard" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-aml-cluster": [ "vienna-eastus-01" ],
-        "x-request-time": [ "0.022" ],
-        "x-ms-correlation-request-id": [ "2dfd181c-957f-4fe5-94a6-e03ff9a97630" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094029Z:2dfd181c-957f-4fe5-94a6-e03ff9a97630" ],
-        "Date": [ "Sun, 05 Jun 2022 09:40:28 GMT" ]
+        "x-request-time": [ "0.028" ],
+        "x-ms-correlation-request-id": [ "3dc8909a-acbc-4b8d-b4f1-37e4272ab5e8" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240724T085112Z:3dc8909a-acbc-4b8d-b4f1-37e4272ab5e8" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8441141DD29D4F488EF1CF164FE351D6 Ref B: TYO201151005031 Ref C: 2024-07-24T08:51:12Z" ],
+        "Date": [ "Wed, 24 Jul 2024 08:51:11 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "443" ],
+        "Content-Length": [ "1140" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"tags\": null,\n  \"location\": null,\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-portal01/connections/test\",\n  \"name\": \"test\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/connections\",\n  \"properties\": {\n    \"authType\": \"None\",\n    \"category\": \"Git\",\n    \"target\": \"test\",\n    \"metadata\": null\n  },\n  \"systemData\": null\n}",
+      "Content": "{\n  \"tags\": null,\n  \"location\": null,\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1/connections/test01\",\n  \"name\": \"test01\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/connections\",\n  \"properties\": {\n    \"authType\": \"None\",\n    \"group\": \"Azure\",\n    \"category\": \"ContainerRegistry\",\n    \"expiryTime\": null,\n    \"target\": \"www.facebook.com\",\n    \"createdByWorkspaceArmId\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-psh-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-test1\",\n    \"useWorkspaceManagedIdentity\": false,\n    \"isSharedToAll\": false,\n    \"sharedUserList\": [],\n    \"peRequirement\": \"NotRequired\",\n    \"peStatus\": \"NotApplicable\",\n    \"error\": null,\n    \"metadata\": {}\n  },\n  \"systemData\": {\n    \"createdAt\": \"2024-07-24T08:48:47.2679158Z\",\n    \"createdBy\": \"v-jiaji@microsoft.com\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2024-07-24T08:48:47.2679158Z\",\n    \"lastModifiedBy\": \"v-jiaji@microsoft.com\",\n    \"lastModifiedByType\": \"User\"\n  }\n}",
       "isContentBase64": false
     }
   }

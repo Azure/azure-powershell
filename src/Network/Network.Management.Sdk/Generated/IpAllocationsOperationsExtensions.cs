@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ipAllocationName'>
         /// The name of the IpAllocation.
         /// </param>
-        public static void Delete(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName)
+        public static IPAllocationsDeleteHeaders Delete(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName)
         {
-                ((IIPAllocationsOperations)operations).DeleteAsync(resourceGroupName, ipAllocationName).GetAwaiter().GetResult();
+                return ((IIPAllocationsOperations)operations).DeleteAsync(resourceGroupName, ipAllocationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -44,9 +44,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<IPAllocationsDeleteHeaders> DeleteAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ipAllocationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, ipAllocationName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets the specified IpAllocation by resource group.
@@ -243,9 +246,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ipAllocationName'>
         /// The name of the IpAllocation.
         /// </param>
-        public static void BeginDelete(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName)
+        public static IPAllocationsDeleteHeaders BeginDelete(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName)
         {
-                ((IIPAllocationsOperations)operations).BeginDeleteAsync(resourceGroupName, ipAllocationName).GetAwaiter().GetResult();
+                return ((IIPAllocationsOperations)operations).BeginDeleteAsync(resourceGroupName, ipAllocationName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -263,9 +266,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<IPAllocationsDeleteHeaders> BeginDeleteAsync(this IIPAllocationsOperations operations, string resourceGroupName, string ipAllocationName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, ipAllocationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, ipAllocationName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Creates or updates an IpAllocation in the specified resource group.

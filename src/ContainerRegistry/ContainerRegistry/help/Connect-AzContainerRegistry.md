@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExposeToken
-{{ Fill ExposeToken Description }}
+Expose access token instead of automatically logging in through Docker CLI.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

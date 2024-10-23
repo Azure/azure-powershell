@@ -16,7 +16,7 @@ using Microsoft.Azure.Management.Resources.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentStacks
 {
-    internal class PSDeploymentStackValidationInfo
+    public class PSDeploymentStackValidationInfo
     {
         public PSDeploymentStackValidationInfo(DeploymentStackValidateResult validationResult)
         {

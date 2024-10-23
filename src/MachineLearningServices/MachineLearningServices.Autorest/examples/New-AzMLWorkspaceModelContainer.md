@@ -6,7 +6,7 @@ New-AzMLWorkspaceModelContainer -ResourceGroupName ml-rg-test -WorkspaceName mlw
 ```output
 Name                 SystemDataCreatedAt SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
 ----                 ------------------- -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-modelcontainerpwsh01 6/1/2022 4:04:12 PM Lucas Yao (Wicresoft North America) User                    6/1/2022 4:04:12 PM      Lucas Yao (Wicresoft North America) User                         ml-rg-test
+modelcontainerpwsh01 6/1/2022 4:04:12 PM UserName (Example)         User                    6/1/2022 4:04:12 PM      UserName (Example)         User                         ml-rg-test
 ```
 
 Create or update model container

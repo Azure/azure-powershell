@@ -14,8 +14,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzMLWorkspaceCompute'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Start-AzMLWorkspaceCompute' {
+Describe 'Start-AzMLWorkspaceCompute' {    
     It 'ComputeInstance' {
-        { Start-AzMLWorkspaceCompute -ResourceGroupName ml-rg-test -WorkspaceName mlworkspace-cli01 -Name v-diya1 } | Should -Not -Throw
+        {
+            Stop-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.computeinstance
+            Start-TestSleep -Seconds 60
+            Start-AzMLWorkspaceCompute -ResourceGroupName $env.DataGroupName -WorkspaceName $env.computeWorkspace -Name $env.computeinstance
+        } | Should -Not -Throw
     }
 }

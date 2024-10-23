@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.DataMigration" Version="0.7.0-preview" />
+    <ProjectReference Include="..\DataMigration.Management.Sdk\DataMigration.Management.Sdk.csproj" />
   </ItemGroup>
 
   <ItemGroup>
