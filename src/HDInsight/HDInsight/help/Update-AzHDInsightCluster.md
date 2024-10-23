@@ -69,7 +69,6 @@ Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType $identityType
 $clusterName = "your-hadoop-001"
 $identityId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi"
 $identityType = "SystemAssigned,UserAssigned"
-/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi"
 
 Update-AzHDInsightCluster -ClusterName $clusterName -IdentityType $identityType -IdentityId $identityId
 ```
