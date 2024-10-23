@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.2
 * Preannounced the breaking changes for Az.DesktopVirtualization 6.0.0
 
 ## Version 4.3.1

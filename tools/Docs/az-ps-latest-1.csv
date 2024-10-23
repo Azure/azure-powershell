@@ -54,7 +54,7 @@ pac52,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac53,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataProtection.2.4.0.zip;sourceType=sa]Az.DataProtection,2.4.0
 pac54,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataShare.1.0.2.zip;sourceType=sa]Az.DataShare,1.0.2
 pac55,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DedicatedHsm.0.3.1.zip;sourceType=sa]Az.DedicatedHsm,0.3.1
-pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DesktopVirtualization.4.3.1.zip;sourceType=sa]Az.DesktopVirtualization,4.3.1
+pac56,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DesktopVirtualization.4.3.2.zip;sourceType=sa]Az.DesktopVirtualization,4.3.2
 pac57,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DevCenter.1.2.0.zip;sourceType=sa]Az.DevCenter,1.2.0
 pac58,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceProvisioningServices.0.10.2.zip;sourceType=sa]Az.DeviceProvisioningServices,0.10.2
 pac59,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DeviceUpdate.0.1.1.zip;sourceType=sa]Az.DeviceUpdate,0.1.1
