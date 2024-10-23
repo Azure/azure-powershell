@@ -91,11 +91,8 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='invoiceSectionName'>
         /// The ID that uniquely identifies an invoice section.
         /// </param>
-        /// <param name='displayName'>
-        /// The name of the invoice section.
-        /// </param>
-        /// <param name='labels'>
-        /// Dictionary of metadata associated with the invoice section.
+        /// <param name='parameters'>
+        /// The new or updated invoice section.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -109,7 +106,7 @@ namespace Microsoft.Azure.Management.Billing
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InvoiceSection,InvoiceSectionsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string invoiceSectionName, string displayName = default(string), System.Collections.Generic.IDictionary<string, string> labels = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InvoiceSection,InvoiceSectionsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string invoiceSectionName, InvoiceSection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates an invoice section. The operation is supported only for
@@ -128,11 +125,8 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='invoiceSectionName'>
         /// The ID that uniquely identifies an invoice section.
         /// </param>
-        /// <param name='displayName'>
-        /// The name of the invoice section.
-        /// </param>
-        /// <param name='labels'>
-        /// Dictionary of metadata associated with the invoice section.
+        /// <param name='parameters'>
+        /// The new or updated invoice section.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -146,7 +140,7 @@ namespace Microsoft.Azure.Management.Billing
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InvoiceSection,InvoiceSectionsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string invoiceSectionName, string displayName = default(string), System.Collections.Generic.IDictionary<string, string> labels = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InvoiceSection,InvoiceSectionsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string invoiceSectionName, InvoiceSection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the invoice sections that a user has access to. The operation is

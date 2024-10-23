@@ -268,9 +268,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.
         /// </param>
-        public static BillingSubscription Move(this IBillingSubscriptionsOperations operations, string billingAccountName, string destinationInvoiceSectionId)
+        public static BillingSubscription Move(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters)
         {
-                return ((IBillingSubscriptionsOperations)operations).MoveAsync(billingAccountName, destinationInvoiceSectionId).GetAwaiter().GetResult();
+                return ((IBillingSubscriptionsOperations)operations).MoveAsync(billingAccountName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -288,9 +288,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BillingSubscription> MoveAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, string destinationInvoiceSectionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BillingSubscription> MoveAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.MoveWithHttpMessagesAsync(billingAccountName, destinationInvoiceSectionId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.MoveWithHttpMessagesAsync(billingAccountName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -306,9 +306,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.
         /// </param>
-        public static ValidateSubscriptionTransferEligibilityResult ValidateMove(this IBillingSubscriptionsOperations operations, string billingAccountName, string destinationInvoiceSectionId)
+        public static ValidateSubscriptionTransferEligibilityResult ValidateMove(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters)
         {
-                return ((IBillingSubscriptionsOperations)operations).ValidateMoveAsync(billingAccountName, destinationInvoiceSectionId).GetAwaiter().GetResult();
+                return ((IBillingSubscriptionsOperations)operations).ValidateMoveAsync(billingAccountName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -325,9 +325,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ValidateSubscriptionTransferEligibilityResult> ValidateMoveAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, string destinationInvoiceSectionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ValidateSubscriptionTransferEligibilityResult> ValidateMoveAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.ValidateMoveWithHttpMessagesAsync(billingAccountName, destinationInvoiceSectionId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.ValidateMoveWithHttpMessagesAsync(billingAccountName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -344,9 +344,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.
         /// </param>
-        public static BillingSubscription BeginMove(this IBillingSubscriptionsOperations operations, string billingAccountName, string destinationInvoiceSectionId)
+        public static BillingSubscription BeginMove(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters)
         {
-                return ((IBillingSubscriptionsOperations)operations).BeginMoveAsync(billingAccountName, destinationInvoiceSectionId).GetAwaiter().GetResult();
+                return ((IBillingSubscriptionsOperations)operations).BeginMoveAsync(billingAccountName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -364,9 +364,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BillingSubscription> BeginMoveAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, string destinationInvoiceSectionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BillingSubscription> BeginMoveAsync(this IBillingSubscriptionsOperations operations, string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginMoveWithHttpMessagesAsync(billingAccountName, destinationInvoiceSectionId, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginMoveWithHttpMessagesAsync(billingAccountName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

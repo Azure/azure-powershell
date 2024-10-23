@@ -232,8 +232,8 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='productName'>
         /// The ID that uniquely identifies a product.
         /// </param>
-        /// <param name='destinationInvoiceSectionId'>
-        /// The destination invoice section id.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the move product operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Management.Billing
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Product,ProductsMoveHeaders>> MoveWithHttpMessagesAsync(string billingAccountName, string productName, string destinationInvoiceSectionId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Product,ProductsMoveHeaders>> MoveWithHttpMessagesAsync(string billingAccountName, string productName, TransferProductRequestProperties parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Validates if a product&#39;s charges can be moved to a new invoice section.
@@ -267,8 +267,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='productName'>
         /// The ID that uniquely identifies a product.
         /// </param>
-        /// <param name='destinationInvoiceSectionId'>
-        /// The destination invoice section id.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the validate move eligibility
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -282,7 +283,7 @@ namespace Microsoft.Azure.Management.Billing
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ValidateProductTransferEligibilityResult>> ValidateMoveWithHttpMessagesAsync(string billingAccountName, string productName, string destinationInvoiceSectionId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ValidateProductTransferEligibilityResult>> ValidateMoveWithHttpMessagesAsync(string billingAccountName, string productName, TransferProductRequestProperties parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the products for a customer. These don&#39;t include products billed

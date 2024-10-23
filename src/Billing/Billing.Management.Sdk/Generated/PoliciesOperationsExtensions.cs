@@ -148,9 +148,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='customerName'>
         /// The ID that uniquely identifies a customer.
         /// </param>
-        public static CustomerPolicy UpdateCustomer(this IPoliciesOperations operations, string billingAccountName, string customerName, string viewCharges = default(string))
+        public static CustomerPolicy UpdateCustomer(this IPoliciesOperations operations, string billingAccountName, string customerName, CustomerPolicy parameters)
         {
-                return ((IPoliciesOperations)operations).UpdateCustomerAsync(billingAccountName, customerName, viewCharges).GetAwaiter().GetResult();
+                return ((IPoliciesOperations)operations).UpdateCustomerAsync(billingAccountName, customerName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -169,9 +169,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<CustomerPolicy> UpdateCustomerAsync(this IPoliciesOperations operations, string billingAccountName, string customerName, string viewCharges = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<CustomerPolicy> UpdateCustomerAsync(this IPoliciesOperations operations, string billingAccountName, string customerName, CustomerPolicy parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateCustomerWithHttpMessagesAsync(billingAccountName, customerName, viewCharges, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateCustomerWithHttpMessagesAsync(billingAccountName, customerName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

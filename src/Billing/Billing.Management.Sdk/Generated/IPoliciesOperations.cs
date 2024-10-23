@@ -114,9 +114,8 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='customerName'>
         /// The ID that uniquely identifies a customer.
         /// </param>
-        /// <param name='viewCharges'>
-        /// The policy that controls whether the users in customer&#39;s organization can
-        /// view charges at pay-as-you-go prices.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the update policies operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -130,7 +129,7 @@ namespace Microsoft.Azure.Management.Billing
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CustomerPolicy>> UpdateCustomerWithHttpMessagesAsync(string billingAccountName, string customerName, string viewCharges = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CustomerPolicy>> UpdateCustomerWithHttpMessagesAsync(string billingAccountName, string customerName, CustomerPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

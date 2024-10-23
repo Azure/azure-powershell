@@ -1259,8 +1259,8 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.
         /// </param>
-        /// <param name='destinationInvoiceSectionId'>
-        /// The destination invoice section id.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the move subscription operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1268,10 +1268,10 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BillingSubscription,BillingSubscriptionsMoveHeaders>> MoveWithHttpMessagesAsync(string billingAccountName, string destinationInvoiceSectionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BillingSubscription,BillingSubscriptionsMoveHeaders>> MoveWithHttpMessagesAsync(string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<BillingSubscription,BillingSubscriptionsMoveHeaders> _response = await BeginMoveWithHttpMessagesAsync(billingAccountName, destinationInvoiceSectionId, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<BillingSubscription,BillingSubscriptionsMoveHeaders> _response = await BeginMoveWithHttpMessagesAsync(billingAccountName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1283,8 +1283,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.
         /// </param>
-        /// <param name='destinationInvoiceSectionId'>
-        /// The destination invoice section id.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the validate move eligibility
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1307,12 +1308,20 @@ namespace Microsoft.Azure.Management.Billing
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ValidateSubscriptionTransferEligibilityResult>> ValidateMoveWithHttpMessagesAsync(string billingAccountName, string destinationInvoiceSectionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ValidateSubscriptionTransferEligibilityResult>> ValidateMoveWithHttpMessagesAsync(string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (parameters == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
             if (billingAccountName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "billingAccountName");
@@ -1324,11 +1333,6 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             string apiVersion = "2020-05-01";
-            TransferBillingSubscriptionRequestProperties parameters = new TransferBillingSubscriptionRequestProperties();
-            if(destinationInvoiceSectionId != null)
-            {
-                parameters.DestinationInvoiceSectionId = destinationInvoiceSectionId;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1496,8 +1500,8 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.
         /// </param>
-        /// <param name='destinationInvoiceSectionId'>
-        /// The destination invoice section id.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the move subscription operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1520,12 +1524,20 @@ namespace Microsoft.Azure.Management.Billing
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BillingSubscription,BillingSubscriptionsMoveHeaders>> BeginMoveWithHttpMessagesAsync(string billingAccountName, string destinationInvoiceSectionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BillingSubscription,BillingSubscriptionsMoveHeaders>> BeginMoveWithHttpMessagesAsync(string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (parameters == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
             if (billingAccountName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "billingAccountName");
@@ -1537,11 +1549,6 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             string apiVersion = "2020-05-01";
-            TransferBillingSubscriptionRequestProperties parameters = new TransferBillingSubscriptionRequestProperties();
-            if(destinationInvoiceSectionId != null)
-            {
-                parameters.DestinationInvoiceSectionId = destinationInvoiceSectionId;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
