@@ -441,7 +441,7 @@
           "nosniff"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11925"
         ],
         "x-ms-request-id": [
           "1f8dc277-ddac-4583-a94b-6f4091af317e"
@@ -1134,7 +1134,7 @@
           "nosniff"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11909"
         ],
         "x-ms-request-id": [
           "7946d0fa-c764-4ab2-84db-4ece74e145d1"
@@ -8076,7 +8076,7 @@
           "Wed, 09 Oct 2024 05:11:41 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -8136,7 +8136,7 @@
           "Wed, 09 Oct 2024 05:12:11 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"

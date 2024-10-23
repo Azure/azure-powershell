@@ -1671,7 +1671,7 @@
           "Tue, 08 Oct 2024 20:15:25 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2211,7 +2211,7 @@
           "Tue, 08 Oct 2024 20:19:57 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2694,7 +2694,7 @@
           "Tue, 08 Oct 2024 20:23:58 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2754,7 +2754,7 @@
           "Tue, 08 Oct 2024 20:24:29 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2814,7 +2814,7 @@
           "Tue, 08 Oct 2024 20:24:59 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2874,7 +2874,7 @@
           "Tue, 08 Oct 2024 20:25:29 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2934,7 +2934,7 @@
           "Tue, 08 Oct 2024 20:26:00 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2994,7 +2994,7 @@
           "Tue, 08 Oct 2024 20:26:30 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3054,7 +3054,7 @@
           "Tue, 08 Oct 2024 20:27:00 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3114,7 +3114,7 @@
           "Tue, 08 Oct 2024 20:27:30 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3174,7 +3174,7 @@
           "Tue, 08 Oct 2024 20:28:00 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3234,7 +3234,7 @@
           "Tue, 08 Oct 2024 20:28:31 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3294,7 +3294,7 @@
           "Tue, 08 Oct 2024 20:29:01 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3354,7 +3354,7 @@
           "Tue, 08 Oct 2024 20:29:31 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3414,7 +3414,7 @@
           "Tue, 08 Oct 2024 20:30:01 GMT"
         ],
         "Content-Length": [
-          "191"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -3474,7 +3474,7 @@
           "Tue, 08 Oct 2024 20:30:31 GMT"
         ],
         "Content-Length": [
-          "203"
+          "190"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4008,7 +4008,7 @@
           "Tue, 08 Oct 2024 20:32:24 GMT"
         ],
         "Content-Length": [
-          "203"
+          "202"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -4170,7 +4170,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "269"
+          "270"
         ]
       },
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"version\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourceGroups/sfmcps-rg-ps4358/providers/Microsoft.ServiceFabric/managedclusters/sfmcps-ps279/applicationTypes/VotingType/versions/1.0.0\"\r\n  },\r\n  \"location\": \"southcentralus\"\r\n}",
@@ -6021,7 +6021,7 @@
           "Tue, 08 Oct 2024 20:36:06 GMT"
         ],
         "Content-Length": [
-          "203"
+          "202"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -6213,7 +6213,7 @@
           "Tue, 08 Oct 2024 20:36:37 GMT"
         ],
         "Content-Length": [
-          "203"
+          "202"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
