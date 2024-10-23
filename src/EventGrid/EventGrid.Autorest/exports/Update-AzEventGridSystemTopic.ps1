@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously creates a new system topic with the specified parameters.
+Asynchronously update a new system topic with the specified parameters.
 .Description
-Asynchronously creates a new system topic with the specified parameters.
+Asynchronously update a new system topic with the specified parameters.
 .Example
 Update-AzEventGridSystemTopic -Name azps-systopic -ResourceGroupName azps_test_group_eventgrid -Tag @{"abc"="123"}
 .Example

@@ -21,7 +21,7 @@ For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayNa
 ```
 Get-AzADGroupOwner -GroupId <String> [-Count] [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>]
  [-Search <String>] [-Select <String[]>] [-ConsistencyLevel <String>] [-First <UInt64>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -143,6 +144,21 @@ Order items by property values
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -221,7 +237,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

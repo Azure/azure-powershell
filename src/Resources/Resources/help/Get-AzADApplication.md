@@ -16,44 +16,44 @@ Lists entities from applications or get entity from applications by key
 ```
 Get-AzADApplication [-Select <String[]>] [-Count] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
  [-ConsistencyLevel <String>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>]
- [-CountVariable <String>] [<CommonParameters>]
+ [-CountVariable <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdParameterSet
 ```
 Get-AzADApplication -ObjectId <String> [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### OwnedApplicationParameterSet
 ```
 Get-AzADApplication [-OwnedApplication] [-Select <String[]>] [-Orderby <String[]>] [-First <UInt64>]
- [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>]
+ [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
 Get-AzADApplication [-Select <String[]>] -DisplayNameStartWith <String> [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
 Get-AzADApplication [-Select <String[]>] -DisplayName <String> [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
 Get-AzADApplication [-Select <String[]>] -ApplicationId <Guid> [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ApplicationIdentifierUriParameterSet
 ```
 Get-AzADApplication [-Select <String[]>] -IdentifierUri <String> [-First <UInt64>] [-Skip <UInt64>]
- [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-AppendSelected] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -310,6 +310,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Search
 Search items by search phrases
 
@@ -380,7 +395,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

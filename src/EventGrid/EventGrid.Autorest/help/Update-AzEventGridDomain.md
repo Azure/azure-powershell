@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridDomain
 
 ## SYNOPSIS
-Asynchronously creates or updates a new domain with the specified parameters.
+Asynchronously update a new domain with the specified parameters.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzEventGridDomain -InputObject <IEventGridIdentity> [-AutoCreateTopicWith
 ```
 
 ## DESCRIPTION
-Asynchronously creates or updates a new domain with the specified parameters.
+Asynchronously update a new domain with the specified parameters.
 
 ## EXAMPLES
 

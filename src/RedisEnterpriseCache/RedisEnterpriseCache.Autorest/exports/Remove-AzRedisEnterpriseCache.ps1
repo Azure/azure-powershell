@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Deletes a RedisEnterprise cache cluster.
+Deletes a Redis Enterprise cache cluster.
 .Description
-Deletes a RedisEnterprise cache cluster.
+Deletes a Redis Enterprise cache cluster.
 .Example
 Remove-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -PassThru
 .Example
@@ -34,8 +34,9 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
-  [ClusterName <String>]: The name of the RedisEnterprise cluster.
-  [DatabaseName <String>]: The name of the database.
+  [AccessPolicyAssignmentName <String>]: The name of the Redis Enterprise database access policy assignment.
+  [ClusterName <String>]: The name of the Redis Enterprise cluster.
+  [DatabaseName <String>]: The name of the Redis Enterprise database.
   [Id <String>]: Resource identity path
   [Location <String>]: The name of Azure region.
   [OperationId <String>]: The ID of an ongoing async operation.
@@ -53,7 +54,7 @@ param(
     [Alias('Name')]
     [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Path')]
     [System.String]
-    # The name of the RedisEnterprise cluster.
+    # The name of the Redis Enterprise cluster.
     ${ClusterName},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]

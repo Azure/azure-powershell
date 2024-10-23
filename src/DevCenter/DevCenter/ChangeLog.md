@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Fixed secrets exposure in example documentation.
+* Updated control plane to 2024-05-01-preview and added deprecation warnings
+
 ## Version 1.1.1
 * Introduced secrets detection feature to safeguard sensitive data.
 

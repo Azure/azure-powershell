@@ -20,7 +20,7 @@ List the device groups for the catalog.
 .Description
 List the device groups for the catalog.
 .Example
-Get-AzSphereCatalogDeviceGroup -CatalogName test2024 -ResourceGroupName joyer-test
+Get-AzSphereCatalogDeviceGroup -CatalogName test2024 -ResourceGroupName group-test
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeviceGroup
@@ -223,7 +223,7 @@ Lists device insights for catalog.
 .Description
 Lists device insights for catalog.
 .Example
-Get-AzSphereCatalogDeviceInsight -CatalogName test2024 -ResourceGroupName joyer-test
+Get-AzSphereCatalogDeviceInsight -CatalogName test2024 -ResourceGroupName group-test
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeviceInsight
@@ -420,7 +420,7 @@ Lists devices for catalog.
 .Description
 Lists devices for catalog.
 .Example
-Get-AzSphereCatalogDevice -CatalogName test2024 -ResourceGroupName joyer-test
+Get-AzSphereCatalogDevice -CatalogName test2024 -ResourceGroupName group-test
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDevice
@@ -825,7 +825,7 @@ Retrieves cert chain.
 .Description
 Retrieves cert chain.
 .Example
-Get-AzSphereCertificateCertChain -CatalogName test2024 -ResourceGroupName joyer-test -SerialNumber 'serial number'
+Get-AzSphereCertificateCertChain -CatalogName test2024 -ResourceGroupName group-test -SerialNumber 'serial number'
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -1050,7 +1050,7 @@ Gets the proof of possession nonce.
 .Description
 Gets the proof of possession nonce.
 .Example
-Get-AzSphereCertificateProof -CatalogName test2024 -ResourceGroupName joyer-test -SerialNumber 'serial number' -ProofOfPossessionNonce proofOfPossessionNonce
+Get-AzSphereCertificateProof -CatalogName test2024 -ResourceGroupName group-test -SerialNumber 'serial number' -ProofOfPossessionNonce proofOfPossessionNonce
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -1281,7 +1281,7 @@ Get a Certificate
 .Description
 Get a Certificate
 .Example
-Get-AzSphereCertificate -CatalogName test2024 -ResourceGroupName joyer-test
+Get-AzSphereCertificate -CatalogName test2024 -ResourceGroupName group-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -1536,9 +1536,9 @@ Get a Deployment.
 Get a Deployment.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 .Example
-Get-AzSphereDeployment -ResourceGroupName joyer-test -DeviceGroupName testdevicegroup -ProductName product2024 -CatalogName test2024
+Get-AzSphereDeployment -ResourceGroupName group-test -DeviceGroupName testdevicegroup -ProductName product2024 -CatalogName test2024
 .Example
-Get-AzSphereDeployment -ResourceGroupName joyer-test -DeviceGroupName testdevicegroup -ProductName product2024 -CatalogName test2024 -Name 2e83ddd9-6297-48df-9c2c-2257e6b3cc71
+Get-AzSphereDeployment -ResourceGroupName group-test -DeviceGroupName testdevicegroup -ProductName product2024 -CatalogName test2024 -Name 11111111-2222-3333-4444-123456789102
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -2136,9 +2136,9 @@ Use '.unassigned' or '.default' for the device group and product names when a de
 Get a Device.
 Use '.unassigned' or '.default' for the device group and product names when a device does not belong to a device group and product.
 .Example
-Get-AzSphereDevice -CatalogName test2024 -ResourceGroupName "joyer-test" -GroupName testdevicegroup -ProductName product2024
+Get-AzSphereDevice -CatalogName test2024 -ResourceGroupName "group-test" -GroupName testdevicegroup -ProductName product2024
 .Example
-Get-AzSphereDevice -CatalogName test2024 -ResourceGroupName "joyer-test" -GroupName testdevicegroup -ProductName product2024 -Name dbb0e0cb8bd961a6129096e1e8a1375ac1fa274f030c08161b37ae3bc5a94f443bdb628cf257bc5bc810d8768c03b6f5ca301a35cd0169f56a49624255964560
+Get-AzSphereDevice -CatalogName test2024 -ResourceGroupName "group-test" -GroupName testdevicegroup -ProductName product2024 -Name device1b8bd961a6129096e1e8a1375ac1fa274f030c08161b37ae3bc5a94f443bdb628cf257bc5bc810d8768c03b6f5ca301a35cd0169f56a49624255964560
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -2427,7 +2427,7 @@ Get a Image
 .Example
 Get-AzSphereImage -CatalogName MyCatalog1 -ResourceGroupName ResourceGroup1
 .Example
-Get-AzSphereImage -CatalogName anotherCatalog -Name 14a6729e-5819-4737-8713-37b4798533f8 -ResourceGroupName Sphere-test
+Get-AzSphereImage -CatalogName anotherCatalog -Name 11111111-2222-3333-4444-123456789104 -ResourceGroupName Sphere-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -2683,9 +2683,9 @@ Get a Product.
 Get a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Example
-Get-AzSphereProduct -ResourceGroupName joyer-test -CatalogName test2024
+Get-AzSphereProduct -ResourceGroupName group-test -CatalogName test2024
 .Example
-Get-AzSphereProduct -ResourceGroupName joyer-test -CatalogName test2024 -Name product2024
+Get-AzSphereProduct -ResourceGroupName group-test -CatalogName test2024 -Name product2024
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -2914,7 +2914,7 @@ Counts devices in catalog.
 .Description
 Counts devices in catalog.
 .Example
-Invoke-AzSphereCountCatalogDevice -CatalogName test2024 -ResourceGroupName joyer-test
+Invoke-AzSphereCountCatalogDevice -CatalogName test2024 -ResourceGroupName group-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -3114,7 +3114,7 @@ Counts devices in device group.
 Counts devices in device group.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 .Example
-Invoke-AzSphereCountDeviceGroupDevice -CatalogName test2024 -ResourceGroupName joyer-test -DeviceGroupName testdevicegroup -ProductName product2024
+Invoke-AzSphereCountDeviceGroupDevice -CatalogName test2024 -ResourceGroupName group-test -DeviceGroupName testdevicegroup -ProductName product2024
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -3367,7 +3367,7 @@ Counts devices in product.
 Counts devices in product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Example
-Invoke-AzSphereCountProductDevice -CatalogName test2024 -ResourceGroupName joyer-test -ProductName product2024
+Invoke-AzSphereCountProductDevice -CatalogName test2024 -ResourceGroupName group-test -ProductName product2024
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -3591,7 +3591,7 @@ Create a Catalog
 .Description
 Create a Catalog
 .Example
-New-AzSphereCatalog -name test2024 -ResourceGroupName joyer-test -Location global
+New-AzSphereCatalog -name test2024 -ResourceGroupName group-test -Location global
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ICatalog
@@ -3806,8 +3806,8 @@ Create a Deployment.
 Create a Deployment.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 .Example
-$image1 = Get-AzSphereImage -Name '14a6729e-5819-4737-8713-37b4798533f8' -CatalogName test2024 -ResourceGroupName joyer-test
-New-AzSphereDeployment -Name .default -CatalogName test2024 -DeviceGroupName testdevicegroup -ProductName product2024 -ResourceGroupName joyer-test -DeployedImage $image1
+$image1 = Get-AzSphereImage -Name '14a6729e-5819-4737-8713-37b4798533f8' -CatalogName test2024 -ResourceGroupName group-test
+New-AzSphereDeployment -Name .default -CatalogName test2024 -DeviceGroupName testdevicegroup -ProductName product2024 -ResourceGroupName group-test -DeployedImage $image1
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeployment
@@ -4050,7 +4050,7 @@ Use '.unassigned' or '.default' for the device group and product names to genera
 Generates the capability image for the device.
 Use '.unassigned' or '.default' for the device group and product names to generate the image for a device that does not belong to a specific device group and product.
 .Example
-New-AzSphereDeviceCapabilityImage -ResourceGroupName joyer-test -CatalogName test2024 -DeviceGroupName testdevicegroup2 -ProductName product2024 -DeviceName DBB0E0CB8BD961A6129096E1E8A1375AC1FA274F030C08161B37AE3BC5A94F443BDB628CF257BC5BC810D8768C03B6F5CA301A35CD0169F56A49624255964560 -Capability 'ApplicationDevelopment' | Format-List
+New-AzSphereDeviceCapabilityImage -ResourceGroupName group-test -CatalogName test2024 -DeviceGroupName testdevicegroup2 -ProductName product2024 -DeviceName ****** -Capability 'ApplicationDevelopment' | Format-List
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -4604,7 +4604,7 @@ Use '.unassigned' or '.default' for the device group and product names to claim 
 Create a Device.
 Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog only.
 .Example
-New-AzSphereDevice -CatalogName "anotherNewOne" -GroupName ".default" -Name "45ffd2afe82d77b2b70f1daed2054abc64853a27395c6112d9adaf01047bae5a0caa72219f93db02e1a93f2c159ba2090a783077138e7fa542459621e6091e4c" -ProductName ".default" -ResourceGroupName "goyedokun"
+New-AzSphereDevice -CatalogName "anotherNewOne" -GroupName ".default" -Name "45ffd2afe82d77b2b70f1daed2054abc64853a27395c6112d9adaf01047bae5a0caa72219f93db02e1a93f2c159ba2090a783077138e7fa542459621e6091e4c" -ProductName ".default" -ResourceGroupName "testgroup"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDevice
@@ -4832,7 +4832,7 @@ Create a Image
 $imagefile1 = 'D:\GitHub\azure-powershell\src\Sphere\Sphere.Autorest\test\imagefile\AzureSphereBlink1.imagepackage'
 $encf1 = [system.io.file]::ReadAllBytes($imagefile1)
 $base64str = [system.convert]::ToBase64String($encf1)
-New-AzSphereImage -CatalogName test2024 -ResourceGroupName joyer-test -Name 14a6729e-5819-4737-8713-37b4798533f8 -Image $base64str
+New-AzSphereImage -CatalogName test2024 -ResourceGroupName group-test -Name 11111111-2222-3333-4444-123456789108 -Image $base64str
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IImage
@@ -5061,7 +5061,7 @@ Generates default device groups for the product.
 Generates default device groups for the product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Example
-New-AzSphereProductDefaultDeviceGroup -CatalogName test2024 -ProductName product0207 -ResourceGroupName joyer-test
+New-AzSphereProductDefaultDeviceGroup -CatalogName test2024 -ProductName product0207 -ResourceGroupName group-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -5287,7 +5287,7 @@ Create a Product.
 Create a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Example
-New-AzSphereProduct -CatalogName test2024 -ResourceGroupName joyer-test -Name product2024
+New-AzSphereProduct -CatalogName test2024 -ResourceGroupName group-test -Name product2024
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IProduct
@@ -5499,7 +5499,7 @@ Delete a Catalog
 .Description
 Delete a Catalog
 .Example
-Remove-AzSphereCatalog -Name test2024 -ResourceGroupName joyer-test
+Remove-AzSphereCatalog -Name test2024 -ResourceGroupName group-test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -5990,7 +5990,7 @@ Delete a Product.
 Delete a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name'
 .Example
-Remove-AzSphereProduct -CatalogName test2024 -ResourceGroupName joyer-test -Name product2024
+Remove-AzSphereProduct -CatalogName test2024 -ResourceGroupName group-test -Name product2024
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -6233,7 +6233,7 @@ Update a Catalog
 .Description
 Update a Catalog
 .Example
-Update-AzSphereCatalog -Name test2024 -ResourceGroupName joyer-test -Tag @{"123"="abc"}
+Update-AzSphereCatalog -Name test2024 -ResourceGroupName group-test -Tag @{"123"="abc"}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -6462,7 +6462,7 @@ Update a DeviceGroup.
 Update a DeviceGroup.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 .Example
-Update-AzSphereDeviceGroup -ResourceGroupName joyer-test -CatalogName test2024 -ProductName product2024 -Name testdevicegroup -Description test
+Update-AzSphereDeviceGroup -ResourceGroupName group-test -CatalogName test2024 -ProductName product2024 -Name testdevicegroup -Description test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -6801,9 +6801,9 @@ Use '.unassigned' or '.default' for the device group and product names to move a
 Update a Device.
 Use '.unassigned' or '.default' for the device group and product names to move a device to the catalog level.
 .Example
-Update-AzSphereDevice -ResourceGroupName joyer-test -CatalogName test2024 -GroupName testdevicegroup -ProductName product2024 -Name DBB0E0CB8BD961A6129096E1E8A1375AC1FA274F030C08161B37AE3BC5A94F443BDB628CF257BC5BC810D8768C03B6F5CA301A35CD0169F56A49624255964560 -DeviceGroupId /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/joyer-test/providers/Microsoft.AzureSphere/catalogs/test2024/products/product2024/deviceGroups/testdevicegroup2
+Update-AzSphereDevice -ResourceGroupName joyer-test -CatalogName test2024 -GroupName testdevicegroup -ProductName product2024 -Name ******** -DeviceGroupId /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/joyer-test/providers/Microsoft.AzureSphere/catalogs/test2024/products/product2024/deviceGroups/testdevicegroup2
 .Example
-Update-AzSphereDevice -ResourceGroupName joyer-test -CatalogName test2024 -GroupName testdevicegroup -ProductName product2024 -Name DBB0E0CB8BD961A6129096E1E8A1375AC1FA274F030C08161B37AE3BC5A94F443BDB628CF257BC5BC810D8768C03B6F5CA301A35CD0169F56A49624255964560 -DeviceGroupId /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/joyer-test/providers/Microsoft.AzureSphere/catalogs/test2024/products/.default/deviceGroups/.default
+Update-AzSphereDevice -ResourceGroupName joyer-test -CatalogName test2024 -GroupName testdevicegroup -ProductName product2024 -Name ******** -DeviceGroupId /subscriptions/11111111-2222-3333-4444-123456789103/resourceGroups/joyer-test/providers/Microsoft.AzureSphere/catalogs/test2024/products/.default/deviceGroups/.default
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -7134,7 +7134,7 @@ Update a Product.
 Update a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Example
-Update-AzSphereProduct -ResourceGroupName joyer-test -CatalogName test2024 -Name product2024 -Description 2222
+Update-AzSphereProduct -ResourceGroupName group-test -CatalogName test2024 -Name product2024 -Description 2222
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

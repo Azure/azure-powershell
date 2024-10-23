@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.1
+* Fixed the bug in server registration
+* Improved the error message for Set-AzStorageSyncServiceIdentity cmdlet
+
+## Version 2.3.0
+* Fixed the Register-AzStorageSyncServer with Azure FileSync Agent v17
+* Improved performance for Managed Identity migration cmdlet
+
 ## Version 2.2.0
 * Onboarded Service Api version 2022-09-01
 * Enabled ManagedIdentity Feature (Preview)

@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="integrationRuntime">The integration runtime reference.
         /// </param>
 
+        /// <param name="continuationSettings">Continuation settings for execute data flow activity.
+        /// </param>
+
         /// <param name="compute">Compute properties for data flow activity.
         /// </param>
 
@@ -62,9 +65,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="queries">List of mapping for Power Query mashup query to sink dataset(s).
         /// </param>
-        public ExecutePowerQueryActivityTypeProperties(DataFlowReference dataFlow, DataFlowStagingInfo staging = default(DataFlowStagingInfo), IntegrationRuntimeReference integrationRuntime = default(IntegrationRuntimeReference), ExecuteDataFlowActivityTypePropertiesCompute compute = default(ExecuteDataFlowActivityTypePropertiesCompute), object traceLevel = default(object), object continueOnError = default(object), object runConcurrently = default(object), object sourceStagingConcurrency = default(object), System.Collections.Generic.IDictionary<string, PowerQuerySink> sinks = default(System.Collections.Generic.IDictionary<string, PowerQuerySink>), System.Collections.Generic.IList<PowerQuerySinkMapping> queries = default(System.Collections.Generic.IList<PowerQuerySinkMapping>))
+        public ExecutePowerQueryActivityTypeProperties(DataFlowReference dataFlow, DataFlowStagingInfo staging = default(DataFlowStagingInfo), IntegrationRuntimeReference integrationRuntime = default(IntegrationRuntimeReference), ContinuationSettingsReference continuationSettings = default(ContinuationSettingsReference), ExecuteDataFlowActivityTypePropertiesCompute compute = default(ExecuteDataFlowActivityTypePropertiesCompute), object traceLevel = default(object), object continueOnError = default(object), object runConcurrently = default(object), object sourceStagingConcurrency = default(object), System.Collections.Generic.IDictionary<string, PowerQuerySink> sinks = default(System.Collections.Generic.IDictionary<string, PowerQuerySink>), System.Collections.Generic.IList<PowerQuerySinkMapping> queries = default(System.Collections.Generic.IList<PowerQuerySinkMapping>))
 
-        : base(dataFlow, staging, integrationRuntime, compute, traceLevel, continueOnError, runConcurrently, sourceStagingConcurrency)
+        : base(dataFlow, staging, integrationRuntime, continuationSettings, compute, traceLevel, continueOnError, runConcurrently, sourceStagingConcurrency)
         {
             this.Sinks = sinks;
             this.Queries = queries;

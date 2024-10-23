@@ -27,6 +27,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using global::Azure.Storage.Files.Shares.Models;
     using global::Azure.Storage.Files.Shares;
     using global::Azure;
+
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageFileShare), "13.0.0", "8.0.0", ChangeDescription = "The child property CloudFileShare from deprecated v11 SDK will be removed. Use child property ShareClient instead.")]
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare", DefaultParameterSetName = Constants.MatchingPrefixParameterSetName)]
     [OutputType(typeof(AzureStorageFileShare))]
     public class GetAzureStorageShare : AzureStorageFileCmdletBase
@@ -50,8 +52,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         Mandatory = false,
         ParameterSetName = Constants.SpecificParameterSetName,
         HelpMessage = "SnapshotTime of the file share snapshot to be received.")]
-                [ValidateNotNullOrEmpty]
-                public DateTimeOffset? SnapshotTime { get; set; }
+        [ValidateNotNullOrEmpty]
+        public DateTimeOffset? SnapshotTime { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Include deleted shares, by default get share won't include deleted shares",

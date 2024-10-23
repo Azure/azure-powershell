@@ -16,12 +16,15 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDeviceProvisioningService", DefaultParameterSetName = ResourceUpdateParameterSet, SupportsShouldProcess = true)]
@@ -159,8 +162,8 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     this.ResourceGroupName = IotDpsUtils.GetResourceGroupName(this.ResourceId);
                     this.Name = IotDpsUtils.GetIotDpsName(this.ResourceId);
                 }
-                
-                switch(ParameterSetName)
+
+                switch (ParameterSetName)
                 {
                     case InputObjectCreateUpdateParameterSet:
                     case ResourceIdCreateUpdateParameterSet:
@@ -199,10 +202,13 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         private void UpdateIotDps()
         {
+            Dictionary<string, string> dictionaryTag = new Dictionary<string, string>();
+
             ProvisioningServiceDescription updatedProvisioningServiceDescription = new ProvisioningServiceDescription();
             if (this.Reset.IsPresent)
             {
-                updatedProvisioningServiceDescription = this.IotDpsClient.IotDpsResource.Update(this.ResourceGroupName, this.Name, IotDpsUtils.ToTagsResource(this.Tag.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value)));
+                HashtableToDictionary<string>(this.Tag, dictionaryTag);
+                updatedProvisioningServiceDescription = this.IotDpsClient.IotDpsResource.Update(this.ResourceGroupName, this.Name, dictionaryTag);
             }
             else
             {
@@ -214,10 +220,28 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                         this.Tag.Add(tag.Key, tag.Value);
                     }
                 }
-                updatedProvisioningServiceDescription = this.IotDpsClient.IotDpsResource.Update(this.ResourceGroupName, this.Name, IotDpsUtils.ToTagsResource(this.Tag.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value)));
+                HashtableToDictionary<string>(this.Tag, dictionaryTag);
+                updatedProvisioningServiceDescription = this.IotDpsClient.IotDpsResource.Update(this.ResourceGroupName, this.Name, dictionaryTag);
             }
 
             this.WritePSObject(updatedProvisioningServiceDescription);
+        }
+
+        private void HashtableToDictionary<V>(Hashtable hashtable, IDictionary<string, V> dictionary)
+        {
+            if (null == hashtable)
+            {
+                return;
+            }
+            foreach (var each in hashtable.Keys)
+            {
+                var key = each.ToString();
+                var value = hashtable[key];
+                if (null != value)
+                {
+                    dictionary[key] = (V)value;
+                }
+            }
         }
     }
 }

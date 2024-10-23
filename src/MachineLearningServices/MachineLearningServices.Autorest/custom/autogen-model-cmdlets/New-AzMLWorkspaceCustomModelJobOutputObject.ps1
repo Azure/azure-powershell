@@ -21,12 +21,12 @@ Create an in-memory object for CustomModelJobOutput.
 Create an in-memory object for CustomModelJobOutput.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CustomModelJobOutput
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CustomModelJobOutput
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceCustomModelJobOutputObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceCustomModelJobOutputObject
 #>
 function New-AzMLWorkspaceCustomModelJobOutputObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CustomModelJobOutput')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CustomModelJobOutput')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -47,7 +47,7 @@ function New-AzMLWorkspaceCustomModelJobOutputObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CustomModelJobOutput]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.CustomModelJobOutput]::New()
 
         if ($PSBoundParameters.ContainsKey('Mode')) {
             $Object.Mode = $Mode

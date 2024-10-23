@@ -19,7 +19,6 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-ExtendedLocation <String>] [-VNetExtendedLocationResourceId <String>] [-VpnType <String>]
  [-EnableBgp <Boolean>] [-DisableIPsecProtection <Boolean>] [-EnableActiveActiveFeature]
  [-EnablePrivateIpAddress] [-GatewaySku <String>] [-GatewayDefaultSite <PSLocalNetworkGateway>]
- [-MinScaleUnit <Int32>] [-MaxScaleUnit <Int32>]
  [-VpnClientAddressPool <String[]>] [-VpnClientProtocol <String[]>] [-VpnAuthenticationType <String[]>]
  [-VpnClientRootCertificates <PSVpnClientRootCertificate[]>]
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
@@ -29,8 +28,9 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>]
  [-AadTenantUri <String>] [-AadAudienceId <String>] [-AadIssuerUri <String>] [-CustomRoute <String[]>]
  [-VpnGatewayGeneration <String>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
- [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AdminState <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AsJob] [-AdminState <String>]
+ [-MinScaleUnit <Int32>] [-MaxScaleUnit <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +73,7 @@ $ngwpip = New-AzPublicIpAddress -Name ngwpip -ResourceGroupName "vnet-gateway" -
 $vnet = New-AzVirtualNetwork -AddressPrefix "10.254.0.0/27" -Location "UK West" -Name vnet-gateway -ResourceGroupName "vnet-gateway" -Subnet $subnet
 $subnet = Get-AzVirtualNetworkSubnetConfig -name 'gatewaysubnet' -VirtualNetwork $vnet
 $ngwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name ngwipconfig -SubnetId $subnet.Id -PublicIpAddressId $ngwpip.Id
-$Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -AsPlainText -Force
+$Secure_String_Pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 New-AzVirtualNetworkGateway -Name myNGW -ResourceGroupName vnet-gateway -Location "UK West" -IpConfigurations $ngwIpConfig  -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "Basic" -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd -CustomRoute 192.168.0.0/24
 ```
@@ -111,7 +111,7 @@ $ngwpip = New-AzPublicIpAddress -Name ngwpip -ResourceGroupName "vnet-gateway" -
 $vnet = New-AzVirtualNetwork -AddressPrefix "10.254.0.0/27" -Location "UK West" -Name vnet-gateway -ResourceGroupName "vnet-gateway" -Subnet $subnet
 $subnet = Get-AzVirtualNetworkSubnetConfig -name 'gatewaysubnet' -VirtualNetwork $vnet
 $ngwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name ngwipconfig -SubnetId $subnet.Id -PublicIpAddressId $ngwpip.Id
-$Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -AsPlainText -Force
+$Secure_String_Pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 
 New-AzVirtualNetworkGateway -Name myNGW -ResourceGroupName vnet-gateway -Location "UK West" -IpConfigurations $ngwIpConfig  -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "VpnGw1" -VpnClientProtocol OpenVPN   -VpnClientAddressPool 201.169.0.0/16 -AadTenantUri "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4" -AadIssuerUri "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/" -AadAudienceId "a21fce82-76af-45e6-8583-a08cb3b956f9"
 ```
@@ -224,6 +224,22 @@ P2S AAD authentication option:AadTenantUri.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AdminState
+Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet: Enabled/Disabled
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -434,7 +450,7 @@ The Gateway Sku Tier
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, VpnGw4AZ, VpnGw5AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ
+Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, VpnGw4AZ, VpnGw5AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ, ErGwScale
 
 Required: False
 Position: Named
@@ -501,6 +517,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MaxScaleUnit
+Set max scale units for scalable gateways
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MinScaleUnit
+Set min scale units for scalable gateways
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -35,7 +35,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IResourceInternal)__proxyResource).Id; }
 
-        /// <summary>Resource ID of the resource managing the volume.</summary>
+        /// <summary>
+        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Origin(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.PropertyOrigin.Inlined)]
         public string ManagedByResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal)Property).ManagedByResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumePropertiesInternal)Property).ManagedByResourceId = value ?? null; }
 
@@ -214,14 +216,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         SerializedName = @"sourceId",
         PossibleTypes = new [] { typeof(string) })]
         string CreationDataSourceId { get; set; }
-        /// <summary>Resource ID of the resource managing the volume.</summary>
+        /// <summary>
+        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
+        /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Resource ID of the resource managing the volume.",
+        Description = @"Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.",
         SerializedName = @"resourceId",
         PossibleTypes = new [] { typeof(string) })]
         string ManagedByResourceId { get; set; }
@@ -335,7 +339,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
         string CreationDataSourceId { get; set; }
         /// <summary>Parent resource information.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IManagedByInfo ManagedBy { get; set; }
-        /// <summary>Resource ID of the resource managing the volume.</summary>
+        /// <summary>
+        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
+        /// </summary>
         string ManagedByResourceId { get; set; }
         /// <summary>Properties of Volume.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeProperties Property { get; set; }

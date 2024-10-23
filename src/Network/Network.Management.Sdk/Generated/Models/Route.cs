@@ -122,10 +122,10 @@ namespace Microsoft.Azure.Management.Network.Models
         public string NextHopIPAddress {get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this route overrides overlapping
-        /// BGP routes regardless of LPM.
+        /// Gets a value indicating whether this route overrides overlapping BGP routes
+        /// regardless of LPM.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hasBgpOverride")]
-        public bool? HasBgpOverride {get; set; }
+        public bool? HasBgpOverride {get; private set; }
     }
 }

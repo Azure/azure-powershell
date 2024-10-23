@@ -54,7 +54,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="authenticationType">The authentication type to connect to Common Data Service for Apps server.
         /// &#39;Office365&#39; for online scenario, &#39;Ifd&#39; for on-premises with Ifd scenario.
         /// &#39;AADServicePrincipal&#39; for Server-To-Server authentication in online
-        /// scenario. Type: string (or Expression with resultType string).
+        /// scenario, &#39;Active Directory&#39; for Dynamics on-premises with IFD. Type:
+        /// string (or Expression with resultType string).
+        /// </param>
+
+        /// <param name="domain">The Active Directory domain that will verify user credentials. Type: string
+        /// (or Expression with resultType string).
         /// </param>
 
         /// <param name="username">User name to access the Common Data Service for Apps instance. Type: string
@@ -86,7 +91,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public CommonDataServiceForAppsLinkedServiceTypeProperties(object deploymentType, object authenticationType, object hostName = default(object), object port = default(object), object serviceUri = default(object), object organizationName = default(object), object username = default(object), SecretBase password = default(SecretBase), object servicePrincipalId = default(object), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalCredential = default(SecretBase), string encryptedCredential = default(string))
+        public CommonDataServiceForAppsLinkedServiceTypeProperties(object deploymentType, object authenticationType, object hostName = default(object), object port = default(object), object serviceUri = default(object), object organizationName = default(object), object domain = default(object), object username = default(object), SecretBase password = default(SecretBase), object servicePrincipalId = default(object), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalCredential = default(SecretBase), string encryptedCredential = default(string))
 
         {
             this.DeploymentType = deploymentType;
@@ -95,6 +100,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.ServiceUri = serviceUri;
             this.OrganizationName = organizationName;
             this.AuthenticationType = authenticationType;
+            this.Domain = domain;
             this.Username = username;
             this.Password = password;
             this.ServicePrincipalId = servicePrincipalId;
@@ -156,10 +162,18 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Gets or sets the authentication type to connect to Common Data Service for
         /// Apps server. &#39;Office365&#39; for online scenario, &#39;Ifd&#39; for on-premises with
         /// Ifd scenario. &#39;AADServicePrincipal&#39; for Server-To-Server authentication in
-        /// online scenario. Type: string (or Expression with resultType string).
+        /// online scenario, &#39;Active Directory&#39; for Dynamics on-premises with IFD.
+        /// Type: string (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "authenticationType")]
         public object AuthenticationType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Active Directory domain that will verify user credentials.
+        /// Type: string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "domain")]
+        public object Domain {get; set; }
 
         /// <summary>
         /// Gets or sets user name to access the Common Data Service for Apps instance.
@@ -225,6 +239,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "AuthenticationType");
             }
+
 
 
 

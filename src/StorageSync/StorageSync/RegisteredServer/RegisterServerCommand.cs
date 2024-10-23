@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 ClusterName = serverRegistrationData.ClusterName,
                 AgentVersion = serverRegistrationData.AgentVersion,
                 //ApplicationId = serverRegistrationData.ApplicationId.HasValue ? serverRegistrationData.ApplicationId.Value.ToString() : null,
-                ApplicationId = null,
+                ApplicationId = Guid.Empty.ToString(),
                 ServerCertificate = serverRegistrationData.ServerCertificate != null ? Convert.ToBase64String(serverRegistrationData.ServerCertificate) : null,
                 ServerOSVersion = serverRegistrationData.ServerOSVersion,
                 ServerRole = serverRegistrationData.ServerRole.ToString(),

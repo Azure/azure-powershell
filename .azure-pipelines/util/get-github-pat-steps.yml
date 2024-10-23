@@ -1,6 +1,7 @@
 steps:
 - task: AzurePowerShell@5
   inputs:
+    pwsh: true
     azureSubscription: '$(AzureSubscription)'
     ScriptType: 'InlineScript'
     Inline: |

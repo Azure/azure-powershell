@@ -79,14 +79,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string Kind { get => this._kind; set => this._kind = value; }
 
-        /// <summary>Specifies the assessment mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public string LinuxConfigurationPatchSettingsAssessmentMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).LinuxConfigurationPatchSettingsAssessmentMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).LinuxConfigurationPatchSettingsAssessmentMode = value ?? null; }
-
-        /// <summary>Specifies the patch mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public string LinuxConfigurationPatchSettingsPatchMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).LinuxConfigurationPatchSettingsPatchMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).LinuxConfigurationPatchSettingsPatchMode = value ?? null; }
-
         /// <summary>The city or locality where the resource is located.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         public string LocationDataCity { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).LocationDataCity; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).LocationDataCity = value ?? null; }
@@ -133,33 +125,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Internal Acessors for IdentityTenantId</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal.IdentityTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIdentityInternal)Identity).TenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IIdentityInternal)Identity).TenantId = value; }
 
-        /// <summary>Internal Acessors for LinuxConfigurationPatchSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal.LinuxConfigurationPatchSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).LinuxConfigurationPatchSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).LinuxConfigurationPatchSetting = value; }
-
         /// <summary>Internal Acessors for LocationData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILocationData Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal.LocationData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).LocationData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).LocationData = value; }
-
-        /// <summary>Internal Acessors for OSProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal.OSProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).OSProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).OSProfile = value; }
-
-        /// <summary>Internal Acessors for OSProfileComputerName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal.OSProfileComputerName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).OSProfileComputerName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).OSProfileComputerName = value; }
-
-        /// <summary>Internal Acessors for OSProfileLinuxConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfiguration Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal.OSProfileLinuxConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).OSProfileLinuxConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).OSProfileLinuxConfiguration = value; }
-
-        /// <summary>Internal Acessors for OSProfileWindowsConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfiguration Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal.OSProfileWindowsConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).OSProfileWindowsConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).OSProfileWindowsConfiguration = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.MachineUpdateProperties()); set { {_property = value;} } }
 
-        /// <summary>Internal Acessors for WindowConfigurationPatchSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal.WindowConfigurationPatchSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).WindowConfigurationPatchSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).WindowConfigurationPatchSetting = value; }
-
-        /// <summary>Specifies the host OS name of the hybrid machine.</summary>
+        /// <summary>Specifies the operating system settings for the hybrid machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public string OSProfileComputerName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).OSProfileComputerName; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile OSProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).OSProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).OSProfile = value ?? null /* model class */; }
 
         /// <summary>
         /// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
@@ -181,14 +155,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Resource tags</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inherited)]
         public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateTags Tags { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateInternal)__resourceUpdate).Tags; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceUpdateInternal)__resourceUpdate).Tags = value ?? null /* model class */; }
-
-        /// <summary>Specifies the assessment mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public string WindowsConfigurationPatchSettingsAssessmentMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).WindowsConfigurationPatchSettingsAssessmentMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).WindowsConfigurationPatchSettingsAssessmentMode = value ?? null; }
-
-        /// <summary>Specifies the patch mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        public string WindowsConfigurationPatchSettingsPatchMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).WindowsConfigurationPatchSettingsPatchMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdatePropertiesInternal)Property).WindowsConfigurationPatchSettingsPatchMode = value ?? null; }
 
         /// <summary>Creates an new <see cref="MachineUpdate" /> instance.</summary>
         public MachineUpdate()
@@ -350,30 +316,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("AVS", "HCI", "SCVMM", "VMware", "EPS", "GCP", "AWS")]
         string Kind { get; set; }
-        /// <summary>Specifies the assessment mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Specifies the assessment mode.",
-        SerializedName = @"assessmentMode",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
-        string LinuxConfigurationPatchSettingsAssessmentMode { get; set; }
-        /// <summary>Specifies the patch mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Specifies the patch mode.",
-        SerializedName = @"patchMode",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-        string LinuxConfigurationPatchSettingsPatchMode { get; set; }
         /// <summary>The city or locality where the resource is located.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -418,17 +360,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string LocationDataName { get; set; }
-        /// <summary>Specifies the host OS name of the hybrid machine.</summary>
+        /// <summary>Specifies the operating system settings for the hybrid machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Specifies the host OS name of the hybrid machine.",
-        SerializedName = @"computerName",
-        PossibleTypes = new [] { typeof(string) })]
-        string OSProfileComputerName { get;  }
+        Create = true,
+        Update = true,
+        Description = @"Specifies the operating system settings for the hybrid machine.",
+        SerializedName = @"osProfile",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile OSProfile { get; set; }
         /// <summary>
         /// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
         /// </summary>
@@ -453,30 +395,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"privateLinkScopeResourceId",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateLinkScopeResourceId { get; set; }
-        /// <summary>Specifies the assessment mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Specifies the assessment mode.",
-        SerializedName = @"assessmentMode",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
-        string WindowsConfigurationPatchSettingsAssessmentMode { get; set; }
-        /// <summary>Specifies the patch mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Specifies the patch mode.",
-        SerializedName = @"patchMode",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-        string WindowsConfigurationPatchSettingsPatchMode { get; set; }
 
     }
     /// Describes a hybrid machine Update.
@@ -518,14 +436,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// </summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("AVS", "HCI", "SCVMM", "VMware", "EPS", "GCP", "AWS")]
         string Kind { get; set; }
-        /// <summary>Specifies the patch settings.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings LinuxConfigurationPatchSetting { get; set; }
-        /// <summary>Specifies the assessment mode.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
-        string LinuxConfigurationPatchSettingsAssessmentMode { get; set; }
-        /// <summary>Specifies the patch mode.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-        string LinuxConfigurationPatchSettingsPatchMode { get; set; }
         /// <summary>Metadata pertaining to the geographic location of the resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILocationData LocationData { get; set; }
         /// <summary>The city or locality where the resource is located.</summary>
@@ -538,12 +448,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string LocationDataName { get; set; }
         /// <summary>Specifies the operating system settings for the hybrid machine.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile OSProfile { get; set; }
-        /// <summary>Specifies the host OS name of the hybrid machine.</summary>
-        string OSProfileComputerName { get; set; }
-        /// <summary>Specifies the linux configuration for update management.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfiguration OSProfileLinuxConfiguration { get; set; }
-        /// <summary>Specifies the windows configuration for update management.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfiguration OSProfileWindowsConfiguration { get; set; }
         /// <summary>
         /// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
         /// </summary>
@@ -552,14 +456,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string PrivateLinkScopeResourceId { get; set; }
         /// <summary>Hybrid Compute Machine properties</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateProperties Property { get; set; }
-        /// <summary>Specifies the patch settings.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings WindowConfigurationPatchSetting { get; set; }
-        /// <summary>Specifies the assessment mode.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
-        string WindowsConfigurationPatchSettingsAssessmentMode { get; set; }
-        /// <summary>Specifies the patch mode.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-        string WindowsConfigurationPatchSettingsPatchMode { get; set; }
 
     }
 }

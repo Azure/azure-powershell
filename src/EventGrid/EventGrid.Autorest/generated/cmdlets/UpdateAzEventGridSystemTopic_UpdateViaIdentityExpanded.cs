@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Asynchronously creates a new system topic with the specified parameters.</summary>
+    /// <summary>Asynchronously update a new system topic with the specified parameters.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/systemTopics/{systemTopicName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzEventGridSystemTopic_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ISystemTopic))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"Asynchronously creates a new system topic with the specified parameters.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"Asynchronously update a new system topic with the specified parameters.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Generated]
     public partial class UpdateAzEventGridSystemTopic_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Runtime.IEventListener,

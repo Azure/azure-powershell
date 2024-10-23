@@ -15,19 +15,21 @@ Delete a Container App AuthConfig.
 ### Delete (Default)
 ```
 Remove-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityContainerApp
 ```
 Remove-AzContainerAppAuthConfig -Name <String> -ContainerAppInputObject <IAppIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +66,6 @@ Delete a Container App AuthConfig.
 
 ### -ContainerAppInputObject
 Identity Parameter
-To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -111,7 +112,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity

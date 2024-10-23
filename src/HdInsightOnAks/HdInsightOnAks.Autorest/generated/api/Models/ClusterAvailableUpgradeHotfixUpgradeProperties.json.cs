@@ -66,18 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            __clusterAvailableUpgradeProperties = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableUpgradeProperties(json);
-            {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)_description;}
-            {_sourceOssVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("sourceOssVersion"), out var __jsonSourceOssVersion) ? (string)__jsonSourceOssVersion : (string)_sourceOssVersion;}
-            {_sourceClusterVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("sourceClusterVersion"), out var __jsonSourceClusterVersion) ? (string)__jsonSourceClusterVersion : (string)_sourceClusterVersion;}
-            {_sourceBuildNumber = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("sourceBuildNumber"), out var __jsonSourceBuildNumber) ? (string)__jsonSourceBuildNumber : (string)_sourceBuildNumber;}
-            {_targetOssVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("targetOssVersion"), out var __jsonTargetOssVersion) ? (string)__jsonTargetOssVersion : (string)_targetOssVersion;}
-            {_targetClusterVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("targetClusterVersion"), out var __jsonTargetClusterVersion) ? (string)__jsonTargetClusterVersion : (string)_targetClusterVersion;}
-            {_targetBuildNumber = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("targetBuildNumber"), out var __jsonTargetBuildNumber) ? (string)__jsonTargetBuildNumber : (string)_targetBuildNumber;}
-            {_componentName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("componentName"), out var __jsonComponentName) ? (string)__jsonComponentName : (string)_componentName;}
-            {_severity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("severity"), out var __jsonSeverity) ? (string)__jsonSeverity : (string)_severity;}
-            {_extendedProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("extendedProperties"), out var __jsonExtendedProperties) ? (string)__jsonExtendedProperties : (string)_extendedProperty;}
-            {_createdTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("createdTime"), out var __jsonCreatedTime) ? global::System.DateTime.TryParse((string)__jsonCreatedTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonCreatedTimeValue) ? __jsonCreatedTimeValue : _createdTime : _createdTime;}
+            __clusterAvailableInPlaceUpgradeProperties = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterAvailableInPlaceUpgradeProperties(json);
             AfterFromJson(json);
         }
 
@@ -114,18 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return container;
             }
-            __clusterAvailableUpgradeProperties?.ToJson(container, serializationMode);
-            AddIf( null != (((object)this._description)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._description.ToString()) : null, "description" ,container.Add );
-            AddIf( null != (((object)this._sourceOssVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._sourceOssVersion.ToString()) : null, "sourceOssVersion" ,container.Add );
-            AddIf( null != (((object)this._sourceClusterVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._sourceClusterVersion.ToString()) : null, "sourceClusterVersion" ,container.Add );
-            AddIf( null != (((object)this._sourceBuildNumber)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._sourceBuildNumber.ToString()) : null, "sourceBuildNumber" ,container.Add );
-            AddIf( null != (((object)this._targetOssVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._targetOssVersion.ToString()) : null, "targetOssVersion" ,container.Add );
-            AddIf( null != (((object)this._targetClusterVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._targetClusterVersion.ToString()) : null, "targetClusterVersion" ,container.Add );
-            AddIf( null != (((object)this._targetBuildNumber)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._targetBuildNumber.ToString()) : null, "targetBuildNumber" ,container.Add );
-            AddIf( null != (((object)this._componentName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._componentName.ToString()) : null, "componentName" ,container.Add );
-            AddIf( null != (((object)this._severity)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._severity.ToString()) : null, "severity" ,container.Add );
-            AddIf( null != (((object)this._extendedProperty)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._extendedProperty.ToString()) : null, "extendedProperties" ,container.Add );
-            AddIf( null != this._createdTime ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._createdTime?.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)) : null, "createdTime" ,container.Add );
+            __clusterAvailableInPlaceUpgradeProperties?.ToJson(container, serializationMode);
             AfterToJson(ref container);
             return container;
         }

@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShell;
     using Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Cmdlets;
     using System;
 
@@ -43,6 +44,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// <summary>A dictionary to carry over additional data for pipeline.</summary>
         private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
 
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
+
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Additional Parameters")]
         public global::System.Collections.Hashtable AdditionalProperties { get; set; }
 
@@ -56,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The collection of service plans associated with the tenant. Not nullable.",
         SerializedName = @"assignedPlans",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAssignedPlan) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAssignedPlan[] AssignedPlan { get => _body.AssignedPlan ?? null /* arrayOf */; set => _body.AssignedPlan = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAssignedPlan[] AssignedPlan { get => _body.AssignedPlan ?? null /* fixedArrayOf */; set => _body.AssignedPlan = value; }
 
         /// <summary>organizationalBranding</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "organizationalBranding")]
@@ -86,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Telephone number for the organization. Although this is a string collection, only one number can be set for this property.",
         SerializedName = @"businessPhones",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] BusinessPhone { get => _body.BusinessPhone ?? null /* arrayOf */; set => _body.BusinessPhone = value; }
+        public string[] BusinessPhone { get => _body.BusinessPhone ?? null /* fixedArrayOf */; set => _body.BusinessPhone = value; }
 
         /// <summary>Accessor for cancellationTokenSource.</summary>
         public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
@@ -104,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.",
         SerializedName = @"certificateBasedAuthConfiguration",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphCertificateBasedAuthConfiguration) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphCertificateBasedAuthConfiguration[] CertificateBasedAuthConfiguration { get => _body.CertificateBasedAuthConfiguration ?? null /* arrayOf */; set => _body.CertificateBasedAuthConfiguration = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphCertificateBasedAuthConfiguration[] CertificateBasedAuthConfiguration { get => _body.CertificateBasedAuthConfiguration ?? null /* fixedArrayOf */; set => _body.CertificateBasedAuthConfiguration = value; }
 
         /// <summary>City name of the address for the organization.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "City name of the address for the organization.")]
@@ -158,9 +168,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         public global::System.DateTime CreatedDateTime { get => _body.CreatedDateTime ?? default(global::System.DateTime); set => _body.CreatedDateTime = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Azure)]
@@ -203,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The collection of open extensions defined for the organization. Read-only. Nullable.",
         SerializedName = @"extensions",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphExtension) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphExtension[] Extension { get => _body.Extension ?? null /* arrayOf */; set => _body.Extension = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphExtension[] Extension { get => _body.Extension ?? null /* fixedArrayOf */; set => _body.Extension = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -230,7 +241,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Not nullable.",
         SerializedName = @"marketingNotificationEmails",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] MarketingNotificationEmail { get => _body.MarketingNotificationEmail ?? null /* arrayOf */; set => _body.MarketingNotificationEmail = value; }
+        public string[] MarketingNotificationEmail { get => _body.MarketingNotificationEmail ?? null /* fixedArrayOf */; set => _body.MarketingNotificationEmail = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -248,9 +259,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         ReadOnly = false,
         Description = @"Mobile device management authority.",
         SerializedName = @"mobileDeviceManagementAuthority",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Support.MdmAuthority) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Support.MdmAuthority))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Support.MdmAuthority MobileDeviceManagementAuthority { get => _body.MobileDeviceManagementAuthority ?? ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Support.MdmAuthority)""); set => _body.MobileDeviceManagementAuthority = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PSArgumentCompleterAttribute("unknown", "intune", "sccm", "office365")]
+        public string MobileDeviceManagementAuthority { get => _body.MobileDeviceManagementAuthority ?? null; set => _body.MobileDeviceManagementAuthority = value; }
 
         /// <summary>
         /// The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date
@@ -331,7 +342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Not nullable.",
         SerializedName = @"provisionedPlans",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphProvisionedPlan) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphProvisionedPlan[] ProvisionedPlan { get => _body.ProvisionedPlan ?? null /* arrayOf */; set => _body.ProvisionedPlan = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphProvisionedPlan[] ProvisionedPlan { get => _body.ProvisionedPlan ?? null /* fixedArrayOf */; set => _body.ProvisionedPlan = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -359,7 +370,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @".",
         SerializedName = @"securityComplianceNotificationMails",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] SecurityComplianceNotificationMail { get => _body.SecurityComplianceNotificationMail ?? null /* arrayOf */; set => _body.SecurityComplianceNotificationMail = value; }
+        public string[] SecurityComplianceNotificationMail { get => _body.SecurityComplianceNotificationMail ?? null /* fixedArrayOf */; set => _body.SecurityComplianceNotificationMail = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -371,7 +382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @".",
         SerializedName = @"securityComplianceNotificationPhones",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] SecurityComplianceNotificationPhone { get => _body.SecurityComplianceNotificationPhone ?? null /* arrayOf */; set => _body.SecurityComplianceNotificationPhone = value; }
+        public string[] SecurityComplianceNotificationPhone { get => _body.SecurityComplianceNotificationPhone ?? null /* fixedArrayOf */; set => _body.SecurityComplianceNotificationPhone = value; }
 
         /// <summary>State name of the address for the organization.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "State name of the address for the organization.")]
@@ -405,7 +416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"Not nullable.",
         SerializedName = @"technicalNotificationMails",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] TechnicalNotificationMail { get => _body.TechnicalNotificationMail ?? null /* arrayOf */; set => _body.TechnicalNotificationMail = value; }
+        public string[] TechnicalNotificationMail { get => _body.TechnicalNotificationMail ?? null /* fixedArrayOf */; set => _body.TechnicalNotificationMail = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
@@ -428,7 +439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         Description = @"The collection of domains associated with this tenant. Not nullable.",
         SerializedName = @"verifiedDomains",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphVerifiedDomain) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphVerifiedDomain[] VerifiedDomain { get => _body.VerifiedDomain ?? null /* arrayOf */; set => _body.VerifiedDomain = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphVerifiedDomain[] VerifiedDomain { get => _body.VerifiedDomain ?? null /* fixedArrayOf */; set => _body.VerifiedDomain = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
@@ -475,7 +486,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -548,7 +581,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                         return ;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -558,7 +591,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzADOrganization_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzADOrganization_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzADOrganization_CreateExpanded()
         {
@@ -631,7 +664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_body})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -648,6 +681,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
@@ -670,7 +718,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 }
                 // onCreated - response for 201 / application/json
                 // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganization
-                WriteObject((await response));
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
 
@@ -701,14 +767,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphODataErrorsOdataError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

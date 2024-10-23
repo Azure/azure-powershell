@@ -21,14 +21,20 @@ Create a new CommunicationService or update an existing CommunicationService.
 Create a new CommunicationService or update an existing CommunicationService.
 .Example
 New-AzCommunicationService -ResourceGroupName ContosoResourceProvider1 -Name ContosoAcsResource1 -DataLocation UnitedStates -Location Global
+.Example
+$linkedDomains = @(
+	"/subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/tcsacstest/providers/Microsoft.Communication/emailServices/tcsacstestECSps/domains/AzureManagedDomain"
+)
+
+New-AzCommunicationService -ResourceGroupName ContosoResourceProvider -Name ContosoAcsResource2 -DataLocation UnitedStates -Location Global  -LinkedDomain @linkedDomains
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource
 .Link
 https://learn.microsoft.com/powershell/module/az.communication/new-azcommunicationservice
 #>
 function New-AzCommunicationService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20230601Preview.ICommunicationServiceResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -50,7 +56,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
@@ -59,16 +72,33 @@ param(
     ${DataLocation},
 
     [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ManagedServiceIdentityType])]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [System.String]
-    # The Azure location where the CommunicationService is running.
-    ${Location},
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ManagedServiceIdentityType]
+    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+    ${IdentityType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ITaggedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api50.IUserAssignedIdentities]))]
     [System.Collections.Hashtable]
-    # Tags of the service which is a list of key value pairs that describe the resource.
+    # The set of user assigned identities associated with the resource.
+    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+    # The dictionary values can be empty objects ({}) in requests.
+    ${IdentityUserAssignedIdentity},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String[]]
+    # List of email Domain resource Ids.
+    ${LinkedDomain},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api40.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
     ${Tag},
 
     [Parameter()]
