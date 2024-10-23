@@ -42,7 +42,7 @@ Set-AzConnectedKubernetes -InputObject <IConnectedCluster> [-ContainerLogPath <S
 
 ## DESCRIPTION
 API to set properties of the connected cluster resource.
-If input parameters are not provided, the corresponding properties will be replaced with empty values where possible.
+Replaces all configuration of an existing connected cluster; any properties not specified will be reset to their default values.
 
 ## EXAMPLES
 
