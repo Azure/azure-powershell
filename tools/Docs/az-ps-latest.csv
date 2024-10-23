@@ -140,7 +140,7 @@ pac138,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac139,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Quota.0.1.2.zip;sourceType=sa]Az.Quota,0.1.2
 pac140,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RecoveryServices.7.2.0.zip;sourceType=sa]Az.RecoveryServices,7.2.0
 pac141,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisCache.1.10.0.zip;sourceType=sa]Az.RedisCache,1.10.0
-pac142,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.1.2.1.zip;sourceType=sa]Az.RedisEnterpriseCache,1.2.1
+pac142,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.1.3.0.zip;sourceType=sa]Az.RedisEnterpriseCache,1.3.0
 pac143,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Relay.2.0.1.zip;sourceType=sa]Az.Relay,2.0.1
 pac144,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.13.0.zip;sourceType=sa]Az.Reservations,0.13.0
 pac145,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceGraph.1.0.0.zip;sourceType=sa]Az.ResourceGraph,1.0.0
@@ -162,7 +162,7 @@ pac160,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac161,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.4.0.zip;sourceType=sa]Az.StackHCI,2.4.0
 pac162,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCIVM.1.0.5.zip;sourceType=sa]Az.StackHCIVM,1.0.5
 pac163,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StandbyPool.0.2.0.zip;sourceType=sa]Az.StandbyPool,0.2.0
-pac164,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.7.4.0.zip;sourceType=sa]Az.Storage,7.4.0
+pac164,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.7.4.1.zip;sourceType=sa]Az.Storage,7.4.1
 pac165,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageAction.0.1.0.zip;sourceType=sa]Az.StorageAction,0.1.0
 pac166,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageCache.0.1.1.zip;sourceType=sa]Az.StorageCache,0.1.1
 pac167,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StorageMover.1.4.0.zip;sourceType=sa]Az.StorageMover,1.4.0
