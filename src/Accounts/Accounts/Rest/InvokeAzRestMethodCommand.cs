@@ -305,8 +305,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 }
             }
 
-
-            //WriteObject("Determined Header: originalUri: " + this.Path);
             return this.Path; // Default to original URI
         }
 
