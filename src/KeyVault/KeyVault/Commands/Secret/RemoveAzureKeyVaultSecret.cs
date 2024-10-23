@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Models.Secret;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
@@ -111,10 +112,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (ParameterSetName == BySecretUriParameterSet)
             {
                 var secretUri = new Uri(Id);
-                string[] splitUri = SplitSecretUri(secretUri);
+                SecretUriComponents splitUri = this.SplitSecretUri(secretUri);
 
-                VaultName = splitUri[0];
-                Name = splitUri[1];
+                VaultName = splitUri.VaultName;
+                Name = splitUri.SecretName;
             }
 
             if (InRemovedState.IsPresent)

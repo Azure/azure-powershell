@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Models.Secret;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
@@ -201,10 +202,14 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ParentResourceIdByVaultNameParameterSet,
             HelpMessage = "Specifies whether to show the previously deleted secrets in the output.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = BySecretUriParameterSet,
+            HelpMessage = "Specifies whether to show the previously deleted secrets in the output.")]
         public SwitchParameter InRemovedState { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = BySecretNameParameterSet, HelpMessage = "When set, the cmdlet will convert secret in secure string to the decrypted plaintext string as output.")]
         [Parameter(Mandatory = false, ParameterSetName = ByVaultNameParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = BySecretUriParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = InputObjectBySecretNameParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = InputObjectByVaultNameParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = ParentResourceIdBySecretNameParameterSet)]
@@ -231,11 +236,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (ParameterSetName == BySecretUriParameterSet)
             {
                 var secretUri = new Uri(Id);
-                string[] splitUri = this.SplitSecretUri(secretUri);
+                SecretUriComponents splitUri = this.SplitSecretUri(secretUri);
 
-                VaultName = splitUri[0];
-                Name = splitUri[1];
-                Version = splitUri[2];
+                VaultName = splitUri.VaultName;
+                Name = splitUri.SecretName;
+                Version = splitUri.SecretVersion;
             }
 
             // Check Version/s of Sceret to get.

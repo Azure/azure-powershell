@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Models.Secret;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
@@ -120,10 +121,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (ParameterSetName == BySecretUriParameterSet)
             {
                 var secretUri = new Uri(Id);
-                string[] splitUri = SplitSecretUri(secretUri);
+                SecretUriComponents splitUri = this.SplitSecretUri(secretUri);
 
-                VaultName = splitUri[0];
-                Name = splitUri[1];
+                VaultName = splitUri.VaultName;
+                Name = splitUri.SecretName;
             }
 
             if ( ShouldProcess( Name, Properties.Resources.BackupSecret ) )
