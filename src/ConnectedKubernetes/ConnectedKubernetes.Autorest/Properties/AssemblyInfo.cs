@@ -16,11 +16,13 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Microsoft")]
-[assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Microsoft")]
-[assembly: System.Reflection.AssemblyProductAttribute("Microsoft Azure PowerShell")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Microsoft Azure PowerShell - ConnectedKubernetes")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("0.11.0")]
-[assembly: System.Reflection.AssemblyVersionAttribute("0.11.0")]
-[assembly: System.Runtime.InteropServices.ComVisibleAttribute(false)]
-[assembly: System.CLSCompliantAttribute(false)]
+[assembly: AssemblyTitle("Microsoft Azure Powershell - ConnectedKubernetes")]
+[assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
+[assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
+[assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
+
+[assembly: ComVisible(false)]
+[assembly: CLSCompliant(false)]
+[assembly: Guid("57c436a1-0e82-42cb-a1a6-f727667af406")]
+[assembly: AssemblyVersion("0.11.1")]
+[assembly: AssemblyFileVersion("0.11.1")]
