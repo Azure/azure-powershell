@@ -5322,7 +5322,7 @@ function Test-VirtualMachineScaleSetSkuProfile
 {
     # Setup
     $rgname = Get-ComputeTestResourceName
-    $loc = Get-ComputeVMLocation;
+    $loc = "eastus2";
 
     # Basic case
     try
@@ -5434,7 +5434,7 @@ function Test-VirtualMachineScaleSetSkuProfile
         $imgRef = Get-DefaultCRPImage -loc $loc -New $True;
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId -PublicIPAddressConfigurationName $ipName -PublicIPAddressConfigurationIdleTimeoutInMinutes 10 -DnsSetting "testvmssdnscom" -PublicIPAddressVersion "IPv4";
 
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -UpgradePolicyMode 'Manual' -EncryptionAtHost -SecurityType $stnd -SkuProfileVmSize @("Standard_D4s_v3", "Standard_D4s_v4") -SkuProfileAllocationStrategy "CapacityOptimized"`
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -UpgradePolicyMode 'Manual' -EncryptionAtHost -SecurityType $stnd -SkuProfileVmSize @("Standard_D4s_v3") `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -5445,12 +5445,11 @@ function Test-VirtualMachineScaleSetSkuProfile
         $vmssResult = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
 
         Assert-AreEqual $vmssResult.Sku.Name "Mix";
-        Assert-AreEqual $vmssResult.SkuProfile.AllocationStrategy "CapacityOptimized";
+        Assert-AreEqual $vmssResult.SkuProfile.AllocationStrategy "LowestPrice";
         Assert-AreEqual $vmssResult.SkuProfile.VMSizes[0].Name "Standard_D4s_v3";
-        Assert-AreEqual $vmssResult.SkuProfile.VMSizes[1].Name "Standard_D4s_v4";
 
         # update vmss
-        $vmssUpdate = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -SkuCapacity 3 -SkuProfileVmSize @($vmSize1, $vmSize2) -SkuProfileAllocationStrategy "CapacityOptimized";
+        $vmssUpdate = $vmssResult | Update-AzVmss -SkuProfileVmSize @("Standard_D4s_v3", "Standard_D4s_v4") -SkuProfileAllocationStrategy "CapacityOptimized";
 
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 

@@ -14,7 +14,7 @@ Creates a managedRuleOverride entry for RuleGroupOverrideGroup entry.
 
 ```
 New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId <String> [-State <String>] [-Action <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Sensitivity <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +35,13 @@ $ruleOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -
 ```
 
 Creates a ruleOverride Entry with RuleId as $ruleId, State as Enabled and Action as Log.
+
+### Example 3
+```powershell
+$ruleOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId $ruleId -State Enabled -Action Log -Sensitivity Low
+```
+
+Creates a ruleOverride Entry with RuleId as $ruleId, State as Enabled, Action as Log and Sensitivity as Low.
 
 ## PARAMETERS
 
@@ -78,6 +85,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Sensitivity
+Describes the override sensitivity to be applied when rule matches.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, Low, Medium, High
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

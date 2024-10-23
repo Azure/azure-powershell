@@ -57,7 +57,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecretVolumeItem[]]
     # List of secrets to be added in volume.
     # If no secrets are provided, all secrets in collection will be added to volume.
-    # To construct, see NOTES section for SECRET properties and create a hash table.
     ${Secret},
 
     [Parameter()]

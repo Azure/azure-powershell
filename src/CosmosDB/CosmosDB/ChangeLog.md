@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure.Core to 1.44.1.
+
+## Version 1.15.0
 * Added new parameter `DisableTtl` to `Restore-AzCosmosDBAccount`.
 
 ## Version 1.14.5

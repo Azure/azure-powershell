@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded Azure.Core to 1.44.1.
+
+## Version 7.4.0
+* Added a warning for an upcoming breaking change for removing references to "Microsoft.Azure.Storage.File"
+    - `Start-AzStorageFileCopy`
 
 ## Version 7.3.1
 * Fixed issue that table cmdlet fail when execute with Storage context get from StorageAccount object and based on sharedkey authentication.

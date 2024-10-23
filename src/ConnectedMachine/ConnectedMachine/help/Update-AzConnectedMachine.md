@@ -15,54 +15,49 @@ The operation to update a hybrid machine.
 ### UpdateExpanded (Default)
 ```
 Update-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AgentUpgradeCorrelationId <String>] [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomatic]
- [-IdentityType <String>] [-Kind <String>] [-LinuxConfigurationPatchSettingsAssessmentMode <String>]
- [-LinuxConfigurationPatchSettingsPatchMode <String>] [-LocationDataCity <String>]
- [-LocationDataCountryOrRegion <String>] [-LocationDataDistrict <String>] [-LocationDataName <String>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-AgentUpgradeCorrelationId <String>]
+ [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomatic] [-IdentityType <String>]
+ [-Kind <String>] [-LocationDataCity <String>] [-LocationDataCountryOrRegion <String>]
+ [-LocationDataDistrict <String>] [-LocationDataName <String>] [-OSProfile <IOSProfile>]
  [-ParentClusterResourceId <String>] [-PrivateLinkScopeResourceId <String>] [-Tag <Hashtable>]
- [-WindowsConfigurationPatchSettingsAssessmentMode <String>]
- [-WindowsConfigurationPatchSettingsPatchMode <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Parameter <IMachineUpdate> [-DefaultProfile <PSObject>] [-WhatIf]
+ -Parameter <IMachineUpdate> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### UpdateViaJsonFilePath
 ```
-Update-AzConnectedMachine -InputObject <IConnectedMachineIdentity> [-AgentUpgradeCorrelationId <String>]
- [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomatic] [-IdentityType <String>]
- [-Kind <String>] [-LinuxConfigurationPatchSettingsAssessmentMode <String>]
- [-LinuxConfigurationPatchSettingsPatchMode <String>] [-LocationDataCity <String>]
- [-LocationDataCountryOrRegion <String>] [-LocationDataDistrict <String>] [-LocationDataName <String>]
- [-ParentClusterResourceId <String>] [-PrivateLinkScopeResourceId <String>] [-Tag <Hashtable>]
- [-WindowsConfigurationPatchSettingsAssessmentMode <String>]
- [-WindowsConfigurationPatchSettingsPatchMode <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
 Update-AzConnectedMachine -InputObject <IConnectedMachineIdentity> -Parameter <IMachineUpdate>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzConnectedMachine -InputObject <IConnectedMachineIdentity> [-EnableSystemAssignedIdentity <Boolean>]
+ [-AgentUpgradeCorrelationId <String>] [-AgentUpgradeDesiredVersion <String>] [-AgentUpgradeEnableAutomatic]
+ [-IdentityType <String>] [-Kind <String>] [-LocationDataCity <String>] [-LocationDataCountryOrRegion <String>]
+ [-LocationDataDistrict <String>] [-LocationDataName <String>] [-OSProfile <IOSProfile>]
+ [-ParentClusterResourceId <String>] [-PrivateLinkScopeResourceId <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,31 +65,140 @@ The operation to update a hybrid machine.
 
 ## EXAMPLES
 
-### Example 1: Update a machine using parameters
+### Example 1: Update a hybrid machine
 ```powershell
-Update-AzConnectedMachine -Name surface -ResourceGroupName rg -PrivateLinkScopeResourceId privateLinkScopeId -WindowsConfigurationPatchSettingsAssessmentMode AutomaticByOS -Tag @{"key"="value"}
+Update-AzConnectedMachine -Name $env.MachineName -ResourceGroupName $env.ResourceGroupName -PrivateLinkScopeResourceId $env.PrivateLinkScopeUri
 ```
 
 ```output
-ResourceGroupName Name    Location    OSType  Status    ProvisioningState
------------------ ----    --------    ------  ------    -----------------
-rg               surface    eastus2euap windows Connected Updating
+AdFqdn                                      : ********
+AgentConfigurationConfigMode                : full
+AgentConfigurationExtensionsAllowList       : {}
+AgentConfigurationExtensionsBlockList       : {}
+AgentConfigurationExtensionsEnabled         : true
+AgentConfigurationGuestConfigurationEnabled : true
+AgentConfigurationIncomingConnectionsPort   : {}
+AgentConfigurationProxyBypass               : {}
+AgentConfigurationProxyUrl                  :
+AgentUpgradeCorrelationId                   :
+AgentUpgradeDesiredVersion                  :
+AgentUpgradeEnableAutomaticUpgrade          : False
+AgentUpgradeLastAttemptDesiredVersion       :
+AgentUpgradeLastAttemptMessage              :
+AgentUpgradeLastAttemptStatus               :
+AgentUpgradeLastAttemptTimestamp            :
+AgentVersion                                : *******
+ClientPublicKey                             : ********-****-****-****-**********
+CloudMetadataProvider                       : N/A
+DetectedProperty                            : {
+                                                "cloudprovider": "N/A",
+                                                "coreCount": "4",
+                                                "logicalCoreCount": "8",
+                                                "manufacturer": "LENOVO",
+                                                "model": "*******",
+                                                "mssqldiscovered": "false",
+                                                "processorCount": "1",
+                                                "processorNames": "11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz",
+                                                "productType": "4",
+                                                "serialNumber": "********",
+                                                "smbiosAssetTag": "********",
+                                                "totalPhysicalMemoryInBytes": "********",
+                                                "totalPhysicalMemoryInGigabytes": "32",
+                                                "vmuuidEsu2012": "********-****-****-****-**********"
+                                              }
+DisplayName                                 : ********
+DnsFqdn                                     : ********
+DomainName                                  : WORKGROUP
+ErrorDetail                                 : {}
+Extension                                   :
+ExtensionServiceStartupType                 : automatic
+ExtensionServiceStatus                      : running
+Fqdn                                        : ********
+GuestConfigurationServiceStartupType        : automatic
+GuestConfigurationServiceStatus             : running
+Id                                          : /subscriptions/********-****-****-****-**********/resourceGroups/
+                                              ********/providers/Microsoft.HybridCompute/machines/********
+IdentityPrincipalId                         : ********-****-****-****-**********
+IdentityTenantId                            : ********-****-****-****-**********
+IdentityType                                : SystemAssigned
+Kind                                        :
+LastStatusChange                            : 9/20/2024 1:42:35 AM
+LicenseProfile                              : {
+                                                "esuProfile": {
+                                                  "serverType": "Unknown",
+                                                  "esuEligibility": "Ineligible",
+                                                  "esuKeyState": "Inactive",
+                                                  "licenseAssignmentState": "NotAssigned"
+                                                },
+                                                "licenseStatus": "Licensed",
+                                                "licenseChannel": "Retail"
+                                              }
+Location                                    : centraluseuap
+LocationDataCity                            :
+LocationDataCountryOrRegion                 :
+LocationDataDistrict                        :
+LocationDataName                            :
+MssqlDiscovered                             : false
+Name                                        : testmachine
+NetworkProfileNetworkInterface              : {{
+                                                "ipAddresses": [
+                                                  {
+                                                    "subnet": {
+                                                      "addressPrefix": "********"
+                                                    },
+                                                    "address": "********",
+                                                    "ipAddressVersion": "IPv4"
+                                                  }
+                                                ]
+                                              }, {
+                                                "ipAddresses": [
+                                                  {
+                                                    "subnet": {
+                                                      "addressPrefix": "********"
+                                                    },
+                                                    "address": "********",
+                                                    "ipAddressVersion": "IPv4"
+                                                  }
+                                                ]
+                                              }, {
+                                                "ipAddresses": [
+                                                  {
+                                                    "subnet": {
+                                                      "addressPrefix": "********"
+                                                    },
+                                                    "address": "********",
+                                                    "ipAddressVersion": "IPv6"
+                                                  }
+                                                ]
+                                              }}
+OSEdition                                   : enterprise
+OSName                                      : windows
+OSProfile                                   : {
+                                                "computerName": "********"
+                                              }
+OSSku                                       : Windows 10 Enterprise
+OSType                                      : windows
+OSVersion                                   : ********
+ParentClusterResourceId                     :
+PrivateLinkScopeResourceId                  :
+ProvisioningState                           : Succeeded
+Resource                                    :
+ResourceGroupName                           : ********
+Status                                      : Connected
+SystemDataCreatedAt                         :
+SystemDataCreatedBy                         :
+SystemDataCreatedByType                     :
+SystemDataLastModifiedAt                    :
+SystemDataLastModifiedBy                    :
+SystemDataLastModifiedByType                :
+Tags                                        : {
+                                              }
+Type                                        : Microsoft.HybridCompute/machines
+VMId                                        : ********-****-****-****-**********
+VMUuid                                      : ********-****-****-****-**********
 ```
 
-Update a machine
-
-### Example 2: Update a machine - cleaning a field
-```powershell
-Update-AzConnectedMachine -Name surface -ResourceGroupName rg -PrivateLinkScopeResourceId $null
-```
-
-```output
-ResourceGroupName Name    Location    OSType  Status    ProvisioningState
------------------ ----    --------    ------  ------    -----------------
-rg               surface eastus2euap windows Connected Updating
-```
-
-Update a machine to clean a field
+Update a hybrid machine
 
 ## PARAMETERS
 
@@ -159,6 +263,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 The identity type.
 
@@ -179,7 +298,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -221,36 +340,6 @@ Accept wildcard characters: False
 
 ### -Kind
 Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LinuxConfigurationPatchSettingsAssessmentMode
-Specifies the assessment mode.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LinuxConfigurationPatchSettingsPatchMode
-Specifies the patch mode.
 
 ```yaml
 Type: System.String
@@ -329,10 +418,25 @@ The name of the hybrid machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
+Parameter Sets: UpdateExpanded, Update, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: MachineName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OSProfile
+Specifies the operating system settings for the hybrid machine.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -384,13 +488,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
+Parameter Sets: UpdateExpanded, Update, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -405,7 +524,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
+Parameter Sets: UpdateExpanded, Update, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -420,36 +539,6 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WindowsConfigurationPatchSettingsAssessmentMode
-Specifies the assessment mode.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WindowsConfigurationPatchSettingsPatchMode
-Specifies the patch mode.
-
-```yaml
-Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

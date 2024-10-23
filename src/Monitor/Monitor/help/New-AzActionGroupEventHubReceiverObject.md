@@ -15,7 +15,7 @@ Create an in-memory object for EventHubReceiver.
 ```
 New-AzActionGroupEventHubReceiverObject -EventHubName <String> -EventHubNameSpace <String> -Name <String>
  -SubscriptionId <String> [-TenantId <String>] [-UseCommonAlertSchema <Boolean>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,15 +25,15 @@ Create an in-memory object for EventHubReceiver.
 
 ### Example 1: create action group event hub receiver
 ```powershell
-New-AzActionGroupEventHubReceiverObject -EventHubName "testEventHub" -EventHubNameSpace "testEventHubNameSpace" -Name "sample eventhub" -SubscriptionId "00001111-aaaa-2222-bbbb-3333cccc4444" -TenantId "00001111-aaaa-2222-bbbb-3333cccc4444"
+New-AzActionGroupEventHubReceiverObject -EventHubName "testEventHub" -EventHubNameSpace "testEventHubNameSpace" -Name "sample eventhub" -SubscriptionId "187f412d-1758-44d9-b052-169e2564721d" -TenantId "68a4459a-ccb8-493c-b9da-dd30457d1b84"
 ```
 
 ```output
 EventHubName         : testEventHub
 EventHubNameSpace    : testEventHubNameSpace
 Name                 : sample eventhub
-SubscriptionId       : 00001111-aaaa-2222-bbbb-3333cccc4444
-TenantId             : 00001111-aaaa-2222-bbbb-3333cccc4444
+SubscriptionId       : 187f412d-1758-44d9-b052-169e2564721d
+TenantId             : 68a4459a-ccb8-493c-b9da-dd30457d1b84
 UseCommonAlertSchema :
 ```
 
@@ -97,6 +97,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

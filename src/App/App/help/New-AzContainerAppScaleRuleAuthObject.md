@@ -13,7 +13,8 @@ Create an in-memory object for ScaleRuleAuth.
 ## SYNTAX
 
 ```
-New-AzContainerAppScaleRuleAuthObject [-SecretRef <String>] [-TriggerParameter <String>] [<CommonParameters>]
+New-AzContainerAppScaleRuleAuthObject [-SecretRef <String>] [-TriggerParameter <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
