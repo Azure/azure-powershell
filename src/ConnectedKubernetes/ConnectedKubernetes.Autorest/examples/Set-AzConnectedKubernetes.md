@@ -1,4 +1,4 @@
-### Example 1: Disable gateway feature of a connected kubernetes.
+### Example 1: Disable gateway for a connected Kubernetes cluster
 ```powershell
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -DisableGateway
 ```
@@ -9,9 +9,9 @@ Location Name              ResourceGroupName
 eastus   azps_test_cluster azps_test_group
 ```
 
-This command disable gateway feature of a connected kubernetes.
+This command disable gateway feature of a connected kubernete cluster.
 
-### Example 2: Enable gateway feature of connected kubernetes.
+### Example 2: Enable gateway for a connected Kubernetes cluster
 ```powershell
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -GatewayResourceId $gatewayResourceId
 
@@ -23,9 +23,9 @@ Location Name              ResourceGroupName
 eastus   azps_test_cluster azps_test_group
 ```
 
-This command enables gateway feature of a connected kubernetes.
+This command enables gateway feature of a connected kubernetes cluster.
 
-### Example 3: Enable gateway feature of connected kubernetes with InputObject
+### Example 3: Enable gateway  for a connected Kubernetes cluster with InputObject
 ```powershell
 # Get an existing cluster first
 $inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
@@ -42,9 +42,9 @@ Location Name              ResourceGroupName
 eastus   azps_test_cluster azps_test_group
 ```
 
-This command enables gateway feature of a connected kubernetes.
+This command enables gateway feature of a connected kubernetes cluster.
 
-### Example 4: Enable workload identity of a connected cluster with InputObject
+### Example 4: Enable workload identity of a connected kubernetes cluster with InputObject
 ```powershell
 # Get an existing cluster first
 $inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
@@ -60,9 +60,9 @@ Location Name              ResourceGroupName
 eastus   azps_test_cluster azps_test_group
 ```
 
-This command enables workload identiy and Oidc Issuer Profile of a connected kubernetes
+This command enables workload identiy and Oidc Issuer Profile of a connected kubernetes cluster
 
-### Example 5: Disable workload identity of a connected cluster with InputOjbect
+### Example 5: Disable workload identity of a connected kubernetes cluster with InputOjbect
 ```powershell
 # Get an existing cluster first
 $inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
@@ -77,5 +77,5 @@ Location Name              ResourceGroupName
 eastus   azps_test_cluster azps_test_group
 ```
 
-This command disables workload identity of a connected kubernetes
+This command disables workload identity of a connected kubernetes cluster
 
