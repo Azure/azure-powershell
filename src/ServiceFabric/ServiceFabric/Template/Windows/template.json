@@ -165,7 +165,8 @@
       "type": "string",
       "allowedValues": [
         "Silver",
-        "Gold"
+        "Gold",
+        "Platinum"
       ],
       "defaultValue": "Silver"
     }
