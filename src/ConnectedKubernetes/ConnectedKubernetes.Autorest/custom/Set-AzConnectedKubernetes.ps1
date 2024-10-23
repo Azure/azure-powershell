@@ -397,7 +397,8 @@ function Set-AzConnectedKubernetes {
             $KubeContext = kubectl config current-context
         }
 
-        # Parse value from inputObject
+        # The internal Set command does not support inputObject probably due to current implementation of swagger
+        # So we do it hard way and parse value from inputObject
         # ArcAgentryConfiguration is handled in a separate block
         if ($null -ne $InputObject) {
             $Location = $InputObject.Location
@@ -422,6 +423,7 @@ function Set-AzConnectedKubernetes {
 
             if ((-not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled')) -and $InputObject.PSObject.Properties['WorkloadIdentityEnabled']) {
                 $WorkloadIdentityEnabled = $InputObject.WorkloadIdentityEnabled
+                $PSBoundParameters.Add('WorkloadIdentityEnabled', $WorkloadIdentityEnabled)
             }
 
             if ((-not $PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled')) -and $InputObject.OidcIssuerProfileEnabled) {
@@ -463,11 +465,6 @@ function Set-AzConnectedKubernetes {
             if (-not [String]::IsNullOrEmpty($GatewayResourceId)) {
                 $PSBoundParameters.Add('GatewayResourceId', $GatewayResourceId)
             }
-        }
-
-        if ($WorkloadIdentityEnabled -and (-not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled'))) {
-            Write-Debug "Workload identity enabled"
-            $PSBoundParameters.Add('WorkloadIdentityEnabled', $true)
         }
 
         $CommonPSBoundParameters = @{}
