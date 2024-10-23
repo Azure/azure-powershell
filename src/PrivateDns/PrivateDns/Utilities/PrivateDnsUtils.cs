@@ -6,6 +6,8 @@
 
 namespace Microsoft.Azure.Commands.PrivateDns.Utilities
 {
+    using System;
+    using System.Collections.Generic;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
@@ -18,6 +20,12 @@ namespace Microsoft.Azure.Commands.PrivateDns.Utilities
         public const string CnameRecord = "CNAME";
         public const string MxRecord = "MX";
         public const string PtrRecord = "PTR";
+
+        private static readonly IReadOnlyCollection<string> PrivateLinkLabels = new[]
+{
+            "privatelink",
+            "privatelink-global"
+        };
 
         public static void GetResourceGroupNameAndZoneNameFromResourceId(
             string resourceId,

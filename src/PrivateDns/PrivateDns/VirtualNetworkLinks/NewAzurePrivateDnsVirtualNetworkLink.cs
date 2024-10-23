@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
     using Microsoft.Azure.Commands.PrivateDns.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Network.Common;
+    using Microsoft.Azure.Management.PrivateDns.Models;
     using ProjectResources = Microsoft.Azure.Commands.PrivateDns.Properties.Resources;
 
     /// <summary>
@@ -58,6 +59,10 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
         [ValidateNotNullOrEmpty]
         public SwitchParameter EnableRegistration { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The resolution policy on the virtual network link.Only 'NxDomainRedirect' and 'Default' options allowed. When set to 'NxDomainRedirect', Azure DNS resolver falls back to public resolution if private dns query resolution results in non-existent domain response.")]
+        [ValidateNotNullOrEmpty]
+        public string ResolutionPolicy { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -87,8 +92,10 @@ namespace Microsoft.Azure.Commands.PrivateDns.VirtualNetworkLinks
                         this.ZoneName,
                         (this.VirtualNetwork != null) ? this.VirtualNetwork.Id : (this.VirtualNetworkId != null) ? this.VirtualNetworkId : this.RemoteVirtualNetworkId,
                         this.EnableRegistration.IsPresent,
+                        this.ResolutionPolicy,
                         this.Tag,
                         auxAuthHeader);
+                    
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteVerbose(string.Format(ProjectResources.Success_NewVirtualNetworkLink, this.Name, this.ResourceGroupName));
                     this.WriteObject(result);
