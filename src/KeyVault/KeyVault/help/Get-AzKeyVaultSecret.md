@@ -16,55 +16,61 @@ Gets the secrets in a key vault.
 ### ByVaultName (Default)
 ```
 Get-AzKeyVaultSecret [-VaultName] <String> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### BySecretName
 ```
 Get-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-Version] <String> [-AsPlainText]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### BySecretVersions
 ```
 Get-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [-IncludeVersions]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVaultName
 ```
 Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByInputObjectSecretName
 ```
 Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String> [-AsPlainText]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByInputObjectSecretVersions
 ```
 Get-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### ByResourceIdVaultName
+### BySecretUri
 ```
-Get-AzKeyVaultSecret [-ResourceId] <String> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByResourceIdSecretName
-```
-Get-AzKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-Version] <String> [-AsPlainText]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzKeyVaultSecret [-Id] <String> [-InRemovedState] [-AsPlainText] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### ByResourceIdSecretVersions
+### ByParentResourceIdVaultName
 ```
-Get-AzKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-IncludeVersions]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzKeyVaultSecret [-ParentResourceId] <String> [[-Name] <String>] [-InRemovedState] [-AsPlainText]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### ByParentResourceIdSecretName
+```
+Get-AzKeyVaultSecret [-ParentResourceId] <String> [-Name] <String> [-Version] <String> [-AsPlainText]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### ByParentResourceIdSecretVersions
+```
+Get-AzKeyVaultSecret [-ParentResourceId] <String> [-Name] <String> [-IncludeVersions]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -306,8 +312,8 @@ This example Gets a secret named `secureSecret` in Azure Key Vault named `test-k
 When set, the cmdlet will convert secret in secure string to the decrypted plaintext string as output.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByVaultName, BySecretName, ByInputObjectVaultName, ByInputObjectSecretName, ByResourceIdVaultName, ByResourceIdSecretName
+Type: SwitchParameter
+Parameter Sets: ByVaultName, BySecretName, ByInputObjectVaultName, ByInputObjectSecretName, BySecretUri, ByParentResourceIdVaultName, ByParentResourceIdSecretName
 Aliases:
 
 Required: False
@@ -321,9 +327,39 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+The URI of the KeyVault Secret.
+
+```yaml
+Type: String
+Parameter Sets: BySecretUri
+Aliases: SecretId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+Specifies whether to show the previously deleted secrets in the output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ByVaultName, ByInputObjectVaultName, BySecretUri, ByParentResourceIdVaultName
+Aliases:
 
 Required: False
 Position: Named
@@ -339,8 +375,8 @@ If you specify this parameter you must also specify the *Name* and *VaultName* p
 If you do not specify the *IncludeVersions* parameter, this cmdlet gets the current version of the secret with the specified *Name*.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: BySecretVersions, ByInputObjectSecretVersions, ByResourceIdSecretVersions
+Type: SwitchParameter
+Parameter Sets: BySecretVersions, ByInputObjectSecretVersions, ByParentResourceIdSecretVersions
 Aliases:
 
 Required: True
@@ -354,7 +390,7 @@ Accept wildcard characters: False
 KeyVault Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Type: PSKeyVault
 Parameter Sets: ByInputObjectVaultName, ByInputObjectSecretName, ByInputObjectSecretVersions
 Aliases:
 
@@ -365,27 +401,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InRemovedState
-Specifies whether to show the previously deleted secrets in the output
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Specifies the name of the secret to get.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
+Type: String
+Parameter Sets: ByVaultName, ByInputObjectVaultName, ByParentResourceIdVaultName
 Aliases: SecretName
 
 Required: False
@@ -396,8 +417,8 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: System.String
-Parameter Sets: BySecretName, BySecretVersions, ByInputObjectSecretName, ByInputObjectSecretVersions, ByResourceIdSecretName, ByResourceIdSecretVersions
+Type: String
+Parameter Sets: BySecretName, BySecretVersions, ByInputObjectSecretName, ByInputObjectSecretVersions, ByParentResourceIdSecretName, ByParentResourceIdSecretVersions
 Aliases: SecretName
 
 Required: True
@@ -407,13 +428,13 @@ Accept pipeline input: False
 Accept wildcard characters: True
 ```
 
-### -ResourceId
+### -ParentResourceId
 KeyVault Resource Id.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceIdVaultName, ByResourceIdSecretName, ByResourceIdSecretVersions
-Aliases:
+Type: String
+Parameter Sets: ByParentResourceIdVaultName, ByParentResourceIdSecretName, ByParentResourceIdSecretVersions
+Aliases: ResourceId
 
 Required: True
 Position: 0
@@ -427,7 +448,7 @@ Specifies the name of the key vault to which the secret belongs.
 This cmdlet constructs the fully qualified domain name (FQDN) of a key vault based on the name that this parameter specifies and your current environment.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVaultName, BySecretName, BySecretVersions
 Aliases:
 
@@ -443,12 +464,27 @@ Specifies the secret version.
 This cmdlet constructs the FQDN of a secret based on the key vault name, your currently selected environment, the secret name, and the secret version.
 
 ```yaml
-Type: System.String
-Parameter Sets: BySecretName, ByInputObjectSecretName, ByResourceIdSecretName
+Type: String
+Parameter Sets: BySecretName, ByInputObjectSecretName, ByParentResourceIdSecretName
 Aliases: SecretVersion
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

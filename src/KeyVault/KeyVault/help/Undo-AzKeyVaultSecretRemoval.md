@@ -15,13 +15,19 @@ Recovers a deleted secret in a key vault into an active state.
 ### Default (Default)
 ```
 Undo-AzKeyVaultSecretRemoval [-VaultName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### BySecretUri
+```
+Undo-AzKeyVaultSecretRemoval [-Id] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Undo-AzKeyVaultSecretRemoval [-InputObject] <PSDeletedKeyVaultSecretIdentityItem>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -55,11 +61,26 @@ This command will recover the secret 'MySecret' that was previously deleted, int
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -70,11 +91,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+The URI of the KeyVault Secret.
+
+```yaml
+Type: String
+Parameter Sets: BySecretUri
+Aliases: SecretId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Deleted secret object
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem
+Type: PSDeletedKeyVaultSecretIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -90,7 +126,7 @@ Secret name.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Default
 Aliases: SecretName
 
@@ -106,7 +142,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Default
 Aliases:
 
@@ -117,13 +153,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: cf
+Aliases: wi
 
 Required: False
 Position: Named
@@ -132,14 +169,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: ActionPreference
 Parameter Sets: (All)
-Aliases: wi
+Aliases: proga
 
 Required: False
 Position: Named

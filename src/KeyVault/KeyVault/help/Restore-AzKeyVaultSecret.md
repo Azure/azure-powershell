@@ -16,20 +16,26 @@ Creates a secret in a key vault from a backed-up secret.
 ### ByVaultName (Default)
 ```
 Restore-AzKeyVaultSecret [-VaultName] <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### BySecretUri
+```
+Restore-AzKeyVaultSecret [-Id] <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Restore-AzKeyVaultSecret [-InputObject] <PSKeyVault> [-InputFile] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ByResourceId
+### ByParentResourceId
 ```
-Restore-AzKeyVaultSecret [-ResourceId] <String> [-InputFile] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Restore-AzKeyVaultSecret [-ParentResourceId] <String> [-InputFile] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -67,11 +73,26 @@ This command restores a secret, including all of its versions, from the backup f
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -82,11 +103,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+The URI of the KeyVault Secret.
+
+```yaml
+Type: String
+Parameter Sets: BySecretUri
+Aliases: SecretId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputFile
 Specifies the input file that contains the backup of the secret to restore.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +137,7 @@ Accept wildcard characters: False
 KeyVault object
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Type: PSKeyVault
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -112,13 +148,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceId
+### -ParentResourceId
 KeyVault Resource Id
 
 ```yaml
-Type: System.String
-Parameter Sets: ByResourceId
-Aliases:
+Type: String
+Parameter Sets: ByParentResourceId
+Aliases: ResourceId
 
 Required: True
 Position: 0
@@ -131,7 +167,7 @@ Accept wildcard characters: False
 Specifies the name of the key vault into which to restore the secret.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVaultName
 Aliases:
 
@@ -142,13 +178,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: cf
+Aliases: wi
 
 Required: False
 Position: Named
@@ -157,18 +194,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: ActionPreference
 Parameter Sets: (All)
-Aliases: wi
+Aliases: proga
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
