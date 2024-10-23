@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.4'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.ApiManagement.dll', 
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.ApiManagement.Management.Sdk.dll', 
                'Microsoft.Azure.PowerShell.AutoMapper.dll', 
                'Microsoft.WindowsAzure.Storage.dll'
 
