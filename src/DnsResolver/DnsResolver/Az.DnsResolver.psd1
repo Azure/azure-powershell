@@ -71,14 +71,11 @@ NestedModules = @('DnsResolver.Autorest/Az.DnsResolver.psm1')
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Get-AzDnsForwardingRuleset', 
                'Get-AzDnsForwardingRulesetForwardingRule', 
-               'Get-AzDnsForwardingRulesetVirtualNetworkLink', 
-               'Get-AzDnsResolver', 
+               'Get-AzDnsForwardingRulesetVirtualNetworkLink', 'Get-AzDnsResolver', 
                'Get-AzDnsResolverInboundEndpoint', 
-               'Get-AzDnsResolverOutboundEndpoint', 
-               'New-AzDnsForwardingRuleset', 
+               'Get-AzDnsResolverOutboundEndpoint', 'New-AzDnsForwardingRuleset', 
                'New-AzDnsForwardingRulesetForwardingRule', 
-               'New-AzDnsForwardingRulesetVirtualNetworkLink', 
-               'New-AzDnsResolver', 
+               'New-AzDnsForwardingRulesetVirtualNetworkLink', 'New-AzDnsResolver', 
                'New-AzDnsResolverInboundEndpoint', 
                'New-AzDnsResolverIPConfigurationObject', 
                'New-AzDnsResolverOutboundEndpoint', 
@@ -86,33 +83,13 @@ FunctionsToExport = 'Get-AzDnsForwardingRuleset',
                'Remove-AzDnsForwardingRuleset', 
                'Remove-AzDnsForwardingRulesetForwardingRule', 
                'Remove-AzDnsForwardingRulesetVirtualNetworkLink', 
-               'Remove-AzDnsResolver', 
-               'Remove-AzDnsResolverInboundEndpoint', 
+               'Remove-AzDnsResolver', 'Remove-AzDnsResolverInboundEndpoint', 
                'Remove-AzDnsResolverOutboundEndpoint', 
                'Update-AzDnsForwardingRuleset', 
                'Update-AzDnsForwardingRulesetForwardingRule', 
                'Update-AzDnsForwardingRulesetVirtualNetworkLink', 
-               'Update-AzDnsResolver', 
-               'Update-AzDnsResolverInboundEndpoint', 
-               'Update-AzDnsResolverOutboundEndpoint',
-
-               # DNS Security Policy
-               'Get-AzDnsResolverDomainList',
-               'Get-AzDnsResolverPolicy', 
-               'Get-AzDnsResolverPolicyDnsSecurityRule', 
-               'Get-AzDnsResolverPolicyVirtualNetworkLink', 
-               'New-AzDnsResolverDomainList',
-               'New-AzDnsResolverPolicy', 
-               'New-AzDnsResolverPolicyDnsSecurityRule', 
-               'New-AzDnsResolverPolicyVirtualNetworkLink',
-               'Remove-AzDnsResolverDomainList',
-               'Remove-AzDnsResolverPolicy', 
-               'Remove-AzDnsResolverPolicyDnsSecurityRule', 
-               'Remove-AzDnsResolverPolicyVirtualNetworkLink', 
-               'Update-AzDnsResolverDomainList', 
-               'Update-AzDnsResolverPolicy', 
-               'Update-AzDnsResolverPolicyDnsSecurityRule', 
-               'Update-AzDnsResolverPolicyVirtualNetworkLink'
+               'Update-AzDnsResolver', 'Update-AzDnsResolverInboundEndpoint', 
+               'Update-AzDnsResolverOutboundEndpoint'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -153,7 +130,7 @@ PrivateData = @{
         ReleaseNotes = '* General availability for module Az.DnsResolver'
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

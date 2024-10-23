@@ -1,139 +1,98 @@
 ---
 Module Name: Az.DnsResolver
 Module Guid: 88e239b3-f615-4018-adf3-f0952a0f46a8
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Please enter version of help manually (X.X.X.X) format }}
+Download Help Link: https://learn.microsoft.com/powershell/module/az.dnsresolver
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # Az.DnsResolver Module
 ## Description
-{{ Fill in the Description }}
+Microsoft Azure PowerShell: DnsResolver cmdlets
 
 ## Az.DnsResolver Cmdlets
 ### [Get-AzDnsForwardingRuleset](Get-AzDnsForwardingRuleset.md)
-{{ Fill in the Description }}
+Gets a DNS forwarding ruleset properties.
 
 ### [Get-AzDnsForwardingRulesetForwardingRule](Get-AzDnsForwardingRulesetForwardingRule.md)
-{{ Fill in the Description }}
+Gets properties of a forwarding rule in a DNS forwarding ruleset.
 
 ### [Get-AzDnsForwardingRulesetVirtualNetworkLink](Get-AzDnsForwardingRulesetVirtualNetworkLink.md)
-{{ Fill in the Description }}
+Gets properties of a virtual network link to a DNS forwarding ruleset.
 
 ### [Get-AzDnsResolver](Get-AzDnsResolver.md)
-{{ Fill in the Description }}
-
-### [Get-AzDnsResolverDomainList](Get-AzDnsResolverDomainList.md)
-{{ Fill in the Description }}
+Gets properties of a DNS resolver.
 
 ### [Get-AzDnsResolverInboundEndpoint](Get-AzDnsResolverInboundEndpoint.md)
-{{ Fill in the Description }}
+Gets properties of an inbound endpoint for a DNS resolver.
 
 ### [Get-AzDnsResolverOutboundEndpoint](Get-AzDnsResolverOutboundEndpoint.md)
-{{ Fill in the Description }}
-
-### [Get-AzDnsResolverPolicy](Get-AzDnsResolverPolicy.md)
-{{ Fill in the Description }}
-
-### [Get-AzDnsResolverPolicyDnsSecurityRule](Get-AzDnsResolverPolicyDnsSecurityRule.md)
-{{ Fill in the Description }}
-
-### [Get-AzDnsResolverPolicyVirtualNetworkLink](Get-AzDnsResolverPolicyVirtualNetworkLink.md)
-{{ Fill in the Description }}
+Gets properties of an outbound endpoint for a DNS resolver.
 
 ### [New-AzDnsForwardingRuleset](New-AzDnsForwardingRuleset.md)
-{{ Fill in the Description }}
+Creates or updates a DNS forwarding ruleset.
 
 ### [New-AzDnsForwardingRulesetForwardingRule](New-AzDnsForwardingRulesetForwardingRule.md)
-{{ Fill in the Description }}
+Creates or updates a forwarding rule in a DNS forwarding ruleset.
 
 ### [New-AzDnsForwardingRulesetVirtualNetworkLink](New-AzDnsForwardingRulesetVirtualNetworkLink.md)
-{{ Fill in the Description }}
+Creates or updates a virtual network link to a DNS forwarding ruleset.
 
 ### [New-AzDnsResolver](New-AzDnsResolver.md)
-{{ Fill in the Description }}
-
-### [New-AzDnsResolverDomainList](New-AzDnsResolverDomainList.md)
-{{ Fill in the Description }}
+Creates or updates a DNS resolver.
 
 ### [New-AzDnsResolverInboundEndpoint](New-AzDnsResolverInboundEndpoint.md)
-{{ Fill in the Description }}
+Creates or updates an inbound endpoint for a DNS resolver.
 
 ### [New-AzDnsResolverIPConfigurationObject](New-AzDnsResolverIPConfigurationObject.md)
-{{ Fill in the Description }}
+Create a in-memory object for IPConfiguration
 
 ### [New-AzDnsResolverOutboundEndpoint](New-AzDnsResolverOutboundEndpoint.md)
-{{ Fill in the Description }}
-
-### [New-AzDnsResolverPolicy](New-AzDnsResolverPolicy.md)
-{{ Fill in the Description }}
-
-### [New-AzDnsResolverPolicyDnsSecurityRule](New-AzDnsResolverPolicyDnsSecurityRule.md)
-{{ Fill in the Description }}
-
-### [New-AzDnsResolverPolicyVirtualNetworkLink](New-AzDnsResolverPolicyVirtualNetworkLink.md)
-{{ Fill in the Description }}
+Creates or updates an outbound endpoint for a DNS resolver.
 
 ### [New-AzDnsResolverTargetDnsServerObject](New-AzDnsResolverTargetDnsServerObject.md)
-{{ Fill in the Description }}
+Create a in-memory object for Target DNS server
 
 ### [Remove-AzDnsForwardingRuleset](Remove-AzDnsForwardingRuleset.md)
-{{ Fill in the Description }}
+Deletes a DNS forwarding ruleset.
+WARNING: This operation cannot be undone.
+All forwarding rules within the ruleset will be deleted.
 
 ### [Remove-AzDnsForwardingRulesetForwardingRule](Remove-AzDnsForwardingRulesetForwardingRule.md)
-{{ Fill in the Description }}
+Deletes a forwarding rule in a DNS forwarding ruleset.
+WARNING: This operation cannot be undone.
 
 ### [Remove-AzDnsForwardingRulesetVirtualNetworkLink](Remove-AzDnsForwardingRulesetVirtualNetworkLink.md)
-{{ Fill in the Description }}
+Deletes a virtual network link to a DNS forwarding ruleset.
+WARNING: This operation cannot be undone.
 
 ### [Remove-AzDnsResolver](Remove-AzDnsResolver.md)
-{{ Fill in the Description }}
-
-### [Remove-AzDnsResolverDomainList](Remove-AzDnsResolverDomainList.md)
-{{ Fill in the Description }}
+Deletes a DNS resolver.
+WARNING: This operation cannot be undone.
 
 ### [Remove-AzDnsResolverInboundEndpoint](Remove-AzDnsResolverInboundEndpoint.md)
-{{ Fill in the Description }}
+Deletes an inbound endpoint for a DNS resolver.
+WARNING: This operation cannot be undone.
 
 ### [Remove-AzDnsResolverOutboundEndpoint](Remove-AzDnsResolverOutboundEndpoint.md)
-{{ Fill in the Description }}
-
-### [Remove-AzDnsResolverPolicy](Remove-AzDnsResolverPolicy.md)
-{{ Fill in the Description }}
-
-### [Remove-AzDnsResolverPolicyDnsSecurityRule](Remove-AzDnsResolverPolicyDnsSecurityRule.md)
-{{ Fill in the Description }}
-
-### [Remove-AzDnsResolverPolicyVirtualNetworkLink](Remove-AzDnsResolverPolicyVirtualNetworkLink.md)
-{{ Fill in the Description }}
+Deletes an outbound endpoint for a DNS resolver.
+WARNING: This operation cannot be undone.
 
 ### [Update-AzDnsForwardingRuleset](Update-AzDnsForwardingRuleset.md)
-{{ Fill in the Description }}
+Updates a DNS forwarding ruleset.
 
 ### [Update-AzDnsForwardingRulesetForwardingRule](Update-AzDnsForwardingRulesetForwardingRule.md)
-{{ Fill in the Description }}
+Updates a forwarding rule in a DNS forwarding ruleset.
 
 ### [Update-AzDnsForwardingRulesetVirtualNetworkLink](Update-AzDnsForwardingRulesetVirtualNetworkLink.md)
-{{ Fill in the Description }}
+Updates a virtual network link to a DNS forwarding ruleset.
 
 ### [Update-AzDnsResolver](Update-AzDnsResolver.md)
-{{ Fill in the Description }}
-
-### [Update-AzDnsResolverDomainList](Update-AzDnsResolverDomainList.md)
-{{ Fill in the Description }}
+Updates a DNS resolver.
 
 ### [Update-AzDnsResolverInboundEndpoint](Update-AzDnsResolverInboundEndpoint.md)
-{{ Fill in the Description }}
+Updates an inbound endpoint for a DNS resolver.
 
 ### [Update-AzDnsResolverOutboundEndpoint](Update-AzDnsResolverOutboundEndpoint.md)
-{{ Fill in the Description }}
-
-### [Update-AzDnsResolverPolicy](Update-AzDnsResolverPolicy.md)
-{{ Fill in the Description }}
-
-### [Update-AzDnsResolverPolicyDnsSecurityRule](Update-AzDnsResolverPolicyDnsSecurityRule.md)
-{{ Fill in the Description }}
-
-### [Update-AzDnsResolverPolicyVirtualNetworkLink](Update-AzDnsResolverPolicyVirtualNetworkLink.md)
-{{ Fill in the Description }}
+Updates an outbound endpoint for a DNS resolver.
 
