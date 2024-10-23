@@ -85,6 +85,8 @@ function Set-AzConnectedKubernetes {
         Justification = 'Code published before this issue was identified')]
     param(
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
         [Alias('Name')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
@@ -92,6 +94,8 @@ function Set-AzConnectedKubernetes {
         ${ClusterName},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
         [System.String]
         # The name of the resource group.
@@ -99,12 +103,16 @@ function Set-AzConnectedKubernetes {
         ${ResourceGroupName},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.String]
         # The geo-location where the resource lives
         ${Location},
 
-        [Parameter(ParameterSetName = 'Set', Mandatory)]
+        [Parameter(ParameterSetName = 'Set', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'SetDisableGateway', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'SetEnableGateway', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
         ${InputObject},
@@ -234,6 +242,7 @@ function Set-AzConnectedKubernetes {
         # The issuer url for public cloud clusters - AKS, EKS, GKE - used for the workload identity feature.
         ${OidcIssuerProfileSelfHostedIssuerUrl},
 
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Enable the workload identity Webhook
@@ -315,11 +324,14 @@ function Set-AzConnectedKubernetes {
         # Arc Agentry System Protected Configuration
         ${ConfigurationProtectedSetting},
 
+        [Parameter(ParameterSetName = 'SetDisableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedDisableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
         [System.Management.Automation.SwitchParameter]
         ${DisableGateway},
 
-        [Parameter()]
+        [Parameter(ParameterSetName = 'SetEnableGateway', Mandatory)]
+        [Parameter(ParameterSetName = 'SetExpandedEnableGateway', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('body')]
         [System.String]
         # Arc Gateway resource Id, providing this will enable the gateway

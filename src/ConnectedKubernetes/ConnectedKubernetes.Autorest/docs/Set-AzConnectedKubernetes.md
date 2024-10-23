@@ -18,12 +18,12 @@ Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Loc
  [-ContainerLogPath <String>] [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>]
  [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-CustomLocationsOid <String>] [-DisableGateway] [-Distribution <String>] [-DistributionVersion <String>]
- [-GatewayResourceId <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
- [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
- [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
- [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
+ [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>] [-OidcIssuerProfileEnabled]
+ [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-PrivateLinkScopeResourceId <String>]
+ [-PrivateLinkState <PrivateLinkState>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
+ [-WorkloadIdentityEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Set
@@ -31,13 +31,68 @@ Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -Loc
 Set-AzConnectedKubernetes -InputObject <IConnectedCluster> [-ContainerLogPath <String>] [-DisableAutoUpgrade]
  [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>] [-ProxyCert <String>] [-SubscriptionId <String>]
  [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>] [-ConfigurationProtectedSetting <Hashtable>]
- [-ConfigurationSetting <Hashtable>] [-CustomLocationsOid <String>] [-DisableGateway] [-Distribution <String>]
- [-DistributionVersion <String>] [-GatewayResourceId <String>] [-Infrastructure <String>]
- [-KubeConfig <String>] [-KubeContext <String>] [-OidcIssuerProfileEnabled]
+ [-ConfigurationSetting <Hashtable>] [-CustomLocationsOid <String>] [-Distribution <String>]
+ [-DistributionVersion <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
+ [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SetDisableGateway
+```
+Set-AzConnectedKubernetes -DisableGateway -InputObject <IConnectedCluster> [-ContainerLogPath <String>]
+ [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>] [-ProxyCert <String>]
+ [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
+ [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
+ [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>] [-OidcIssuerProfileEnabled]
  [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-PrivateLinkScopeResourceId <String>]
  [-PrivateLinkState <PrivateLinkState>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
  [-WorkloadIdentityEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### SetEnableGateway
+```
+Set-AzConnectedKubernetes -GatewayResourceId <String> -InputObject <IConnectedCluster>
+ [-ContainerLogPath <String>] [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>]
+ [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
+ [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
+ [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>] [-OidcIssuerProfileEnabled]
+ [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-PrivateLinkScopeResourceId <String>]
+ [-PrivateLinkState <PrivateLinkState>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
+ [-WorkloadIdentityEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### SetExpandedDisableGateway
+```
+Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -DisableGateway -Location <String>
+ [-ContainerLogPath <String>] [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>]
+ [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA] [-AzureHybridBenefit <AzureHybridBenefit>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
+ [-CustomLocationsOid <String>] [-Distribution <String>] [-DistributionVersion <String>]
+ [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>] [-OidcIssuerProfileEnabled]
+ [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-PrivateLinkScopeResourceId <String>]
+ [-PrivateLinkState <PrivateLinkState>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
+ [-WorkloadIdentityEnabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### SetExpandedEnableGateway
+```
+Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> -GatewayResourceId <String>
+ -Location <String> [-ContainerLogPath <String>] [-DisableAutoUpgrade] [-HttpProxy <Uri>] [-HttpsProxy <Uri>]
+ [-NoProxy <String>] [-ProxyCert <String>] [-SubscriptionId <String>] [-AcceptEULA]
+ [-AzureHybridBenefit <AzureHybridBenefit>] [-ConfigurationProtectedSetting <Hashtable>]
+ [-ConfigurationSetting <Hashtable>] [-CustomLocationsOid <String>] [-Distribution <String>]
+ [-DistributionVersion <String>] [-Infrastructure <String>] [-KubeConfig <String>] [-KubeContext <String>]
+ [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
+ [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-WorkloadIdentityEnabled]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -179,7 +234,7 @@ The name of the Kubernetes cluster on which get is called.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, SetExpandedDisableGateway, SetExpandedEnableGateway
 Aliases: Name
 
 Required: True
@@ -284,10 +339,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: SetDisableGateway, SetExpandedDisableGateway
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -329,10 +384,10 @@ Arc Gateway resource Id, providing this will enable the gateway
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetEnableGateway, SetExpandedEnableGateway
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -389,13 +444,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
-Parameter Sets: Set
+Parameter Sets: Set, SetDisableGateway, SetEnableGateway
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -434,7 +489,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, SetExpandedDisableGateway, SetExpandedEnableGateway
 Aliases:
 
 Required: True
@@ -570,7 +625,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: SetExpanded, SetExpandedDisableGateway, SetExpandedEnableGateway
 Aliases:
 
 Required: True
@@ -660,6 +715,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
 
 ## OUTPUTS
 

@@ -27,8 +27,6 @@ function Invoke-ConfigDPHealthCheck {
         -Uri $chartLocationUrl `
         -Headers $headers `
         -UriParameters $uriParameters `
-        -MaximumRetryCount 5 `
-        -RetryIntervalSec 3 `
         -StatusCodeVariable statusCode `
         -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
         -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
@@ -86,8 +84,6 @@ function Invoke-RestMethodWithUriParameters {
         [Hashtable]$headers,
         [System.Collections.Specialized.OrderedDictionary]$uriParameters,
         [String]$requestBody,
-        [Int]$maximumRetryCount,
-        [Int]$retryIntervalSec,
         [String]$statusCodeVariable
     )
 
@@ -107,10 +103,6 @@ function Invoke-RestMethodWithUriParameters {
     # }
     Write-Debug "Issue REST request to ${uri} with method ${method} and headers ${headers} and body ${requestBody}"
     try {
-        # These parameters are not supported in PowerShell 5.1
-        # -MaximumRetryCount $maximumRetryCount `
-        # -RetryIntervalSec $retryintervalSec `
-        # -StatusCodeVariable statusCode `
         $rsp = Invoke-RestMethod `
             -Method $method `
             -Uri $uri `
@@ -175,8 +167,6 @@ function Get-HelmValuesFromConfigDP {
             -Headers $headers `
             -UriParameters $uriParameters `
             -RequestBody $RequestBody `
-            -MaximumRetryCount 5 `
-            -RetryIntervalSec 3 `
             -StatusCodeVariable StatusCode `
             -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
             -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)

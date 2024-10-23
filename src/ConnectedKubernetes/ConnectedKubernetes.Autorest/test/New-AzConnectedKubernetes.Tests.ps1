@@ -76,8 +76,6 @@ Describe 'Invoke-RestMethodWithUriParameters' {
                 -Headers @{} `
                 -UriParameters $uriParameters `
                 -RequestBody @{} `
-                -MaximumRetryCount 5 `
-                -RetryIntervalSec 2 `
                 -StatusCodeVariable YesOrNo
         } | Should -Not -Throw
         Assert-MockCalled "Invoke-RestMethod" -Times 1 -ParameterFilter { $Uri.AbsoluteUri -eq "https://invalid.invalid/some/page/nowhere" }
@@ -101,8 +99,6 @@ Describe 'Invoke-RestMethodWithUriParameters' {
                 -Headers @{} `
                 -UriParameters $uriParameters `
                 -RequestBody @{} `
-                -MaximumRetryCount 5 `
-                -RetryIntervalSec 2 `
                 -StatusCodeVariable YesOrNo
         } | Should -Not -Throw
         Assert-MockCalled "Invoke-RestMethod" -Times 1 -ParameterFilter { $Uri.AbsoluteUri -eq "https://invalid.invalid/some/page/nowhere?key1=value1&key2=value2" }
@@ -121,8 +117,6 @@ Describe 'Invoke-RestMethodWithUriParameters' {
                 -Headers @{} `
                 -UriParameters @{} `
                 -RequestBody @{} `
-                -MaximumRetryCount 5 `
-                -RetryIntervalSec 2 `
                 -StatusCodeVariable YesOrNo
         } | Should -Throw "Error while issuing REST request: Some Error!"
         Assert-VerifiableMock
