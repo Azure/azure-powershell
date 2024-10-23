@@ -24,12 +24,12 @@ $ft = New-AzElasticFilteringTagObject -Action Include -Name key -Value '1'
 New-AzElasticTagRule -ResourceGroupName azure-elastic-test -MonitorName elastic-pwsh02 -LogRuleFilteringTag $ft
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.FilteringTag
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.FilteringTag
 .Link
 https://learn.microsoft.com/powershell/module/az.Elastic/new-AzElasticFilteringTagObject
 #>
 function New-AzElasticFilteringTagObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.FilteringTag])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.FilteringTag])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]

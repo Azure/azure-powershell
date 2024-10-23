@@ -17,28 +17,28 @@ This operation is only supported for Email or SMS receivers.
 ### EnableExpanded (Default)
 ```
 Enable-AzActionGroupReceiver -ActionGroupName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -ReceiverName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ -ReceiverName <String> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### EnableViaJsonString
 ```
 Enable-AzActionGroupReceiver -ActionGroupName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### EnableViaJsonFilePath
 ```
 Enable-AzActionGroupReceiver -ActionGroupName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### EnableViaIdentityExpanded
 ```
 Enable-AzActionGroupReceiver -InputObject <IActionGroupIdentity> -ReceiverName <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -145,6 +145,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

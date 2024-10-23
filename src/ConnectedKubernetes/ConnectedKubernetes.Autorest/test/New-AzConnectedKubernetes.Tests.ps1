@@ -174,7 +174,7 @@ Describe 'Get-AzCloudMetadata' {
     # For some reason Pester fails to "see" Get-AzureEnvirnomment so we create
     # and empty instance here that we can the mock.
     BeforeEach {
-        Function Get-AzureEnvironment {
+        Function Get-AzEnvironment {
         }
     }
 
@@ -186,7 +186,7 @@ Describe 'Get-AzCloudMetadata' {
                 }
             }
         }
-        Mock Get-AzureEnvironment {
+        Mock Get-AzEnvironment {
             $context = [PSCustomObject]@{
                 Name = "AzureCloud"
             }
@@ -194,9 +194,9 @@ Describe 'Get-AzCloudMetadata' {
         }
         { $Script:cloud = Get-AzCloudMetadata } | Should -Not -Throw
         Assert-MockCalled "Get-AzContext" -Times 1
-        Assert-MockCalled "Get-AzureEnvironment" -Times 1
+        Assert-MockCalled "Get-AzEnvironment" -Times 1
         # Ref: https://github.com/pester/Pester/issues/2556
-        # Assert-MockCalled "Get-AzureEnvironment" -Times 1 -ParameterFilter { $Local:Name -eq "SovereignAzureCloud" }
+        # Assert-MockCalled "Get-AzEnvironment" -Times 1 -ParameterFilter { $Local:Name -eq "SovereignAzureCloud" }
         Assert-VerifiableMock
         $cloud.name | Should -Be "AzureCloud"
     }
@@ -210,7 +210,7 @@ Describe 'Get-AzCloudMetadata' {
         Assert-VerifiableMock
     }
 
-    It 'Get-AzureEnvironment fails' {
+    It 'Get-AzEnvironment fails' {
         Mock Get-AzContext {
             return [PSCustomObject]@{
                 Environment = [PSCustomObject]@{
@@ -218,7 +218,7 @@ Describe 'Get-AzCloudMetadata' {
                 }
             }
         }
-        Mock Get-AzureEnvironment {
+        Mock Get-AzEnvironment {
             throw "Some error!"
         }
         { Get-AzCloudMetadata } | Should -Throw "Failed to request ARM metadata. Error: Some error!"

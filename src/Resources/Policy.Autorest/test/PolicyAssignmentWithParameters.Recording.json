@@ -19,20 +19,20 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-request-id": [ "a5486c86-30f5-40ec-aff9-4659aafc3085" ],
-        "x-ms-correlation-request-id": [ "a5486c86-30f5-40ec-aff9-4659aafc3085" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202420Z:a5486c86-30f5-40ec-aff9-4659aafc3085" ],
+        "x-ms-request-id": [ "00d8838d-748c-465e-924d-722949f09154" ],
+        "x-ms-correlation-request-id": [ "00d8838d-748c-465e-924d-722949f09154" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001917Z:00d8838d-748c-465e-924d-722949f09154" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A785DF98F180485FAEFC63D0898EA205 Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:20Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:20 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D65CADFDA1F14F62BACCE136B86456A3 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:17Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1294" ],
+        "Content-Length": [ "1295" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:20.694625Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"}},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psPolicyAssignmentWithParameters01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:20.6622083Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:20.6622083Z\"}}",
+      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:17.4878648Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"}},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psPolicyAssignmentWithParameters01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:17.4451141Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:17.4451141Z\"}}",
       "isContentBase64": false
     }
   },
@@ -56,20 +56,20 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-request-id": [ "f2600cd2-7b1d-41bb-88f5-4b4eb8446404" ],
-        "x-ms-correlation-request-id": [ "f2600cd2-7b1d-41bb-88f5-4b4eb8446404" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202421Z:f2600cd2-7b1d-41bb-88f5-4b4eb8446404" ],
+        "x-ms-request-id": [ "096bd28e-4688-4b29-b3d8-2201db49ca8f" ],
+        "x-ms-correlation-request-id": [ "096bd28e-4688-4b29-b3d8-2201db49ca8f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001918Z:096bd28e-4688-4b29-b3d8-2201db49ca8f" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 23CC1E27499D4A2CBF99BF5BA93B2C2D Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:21Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:21 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8FAEE3148C8C4F5198F32F8DAE8872BF Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:17Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1105" ],
+        "Content-Length": [ "1107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:21.2381064Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:21.187485Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:21.187485Z\"}}",
+      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:18.0114662Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:17.9405868Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:17.9405868Z\"}}",
       "isContentBase64": false
     }
   },
@@ -80,8 +80,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "631" ],
-        "x-ms-client-request-id": [ "e7e9d643-cbf4-440a-9a6b-30ec5b149f53" ],
+        "x-ms-unique-id": [ "620" ],
+        "x-ms-client-request-id": [ "5289704c-234c-4f56-9018-e3dcbe0e49ab" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -97,21 +97,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-request-id": [ "842e2b36-8808-406a-82e6-1fe18fb0f443" ],
-        "x-ms-correlation-request-id": [ "842e2b36-8808-406a-82e6-1fe18fb0f443" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202421Z:842e2b36-8808-406a-82e6-1fe18fb0f443" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "ef46f135-9b4a-4b52-8a47-02a52e296f06" ],
+        "x-ms-correlation-request-id": [ "ef46f135-9b4a-4b52-8a47-02a52e296f06" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001918Z:ef46f135-9b4a-4b52-8a47-02a52e296f06" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4984234325C049FAA98BE1AECF62A6EA Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:21Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:21 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FF4E8D34ECEE4B5DA13F0B9971133197 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:18Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1105" ],
+        "Content-Length": [ "1107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:21.2381064Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:21.187485Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:21.187485Z\"}}",
+      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:18.0114662Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:17.9405868Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:17.9405868Z\"}}",
       "isContentBase64": false
     }
   },
@@ -122,8 +122,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "632" ],
-        "x-ms-client-request-id": [ "cc4c4c80-edf5-4d47-9637-6fdb63194f06" ],
+        "x-ms-unique-id": [ "621" ],
+        "x-ms-client-request-id": [ "55e32dcb-89eb-4ba4-9631-54d6b173b57f" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicyAssignment_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -140,20 +140,20 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-request-id": [ "ba73470c-1b46-4038-a00a-855c150bd7cb" ],
-        "x-ms-correlation-request-id": [ "ba73470c-1b46-4038-a00a-855c150bd7cb" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202422Z:ba73470c-1b46-4038-a00a-855c150bd7cb" ],
+        "x-ms-request-id": [ "f1187f6e-20ea-43b3-871d-662c67ddb6db" ],
+        "x-ms-correlation-request-id": [ "f1187f6e-20ea-43b3-871d-662c67ddb6db" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001918Z:f1187f6e-20ea-43b3-871d-662c67ddb6db" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3227011AF42243B8A85272E95D019CDC Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:21Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:21 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 87FA7790F74945779201603BBBBD295A Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:18Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1105" ],
+        "Content-Length": [ "1107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:21.2381064Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:21.187485Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:21.187485Z\"}}",
+      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:18.0114662Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:17.9405868Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:17.9405868Z\"}}",
       "isContentBase64": false
     }
   },
@@ -177,20 +177,20 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-request-id": [ "36423749-8be1-40fc-b88c-966460a62d13" ],
-        "x-ms-correlation-request-id": [ "36423749-8be1-40fc-b88c-966460a62d13" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202423Z:36423749-8be1-40fc-b88c-966460a62d13" ],
+        "x-ms-request-id": [ "462a367f-c7cc-4b89-a255-90232084e33f" ],
+        "x-ms-correlation-request-id": [ "462a367f-c7cc-4b89-a255-90232084e33f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001919Z:462a367f-c7cc-4b89-a255-90232084e33f" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5B27206962DA4DDC99576CEF153D1CC1 Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:22Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:22 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 004EA7F837E44049AE5AED677E4111DC Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:19Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:22.8200567Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:22.6771183Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:22.6771183Z\"}}",
+      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:19.2338634Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:19.1874834Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:19.1874834Z\"}}",
       "isContentBase64": false
     }
   },
@@ -201,8 +201,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "634" ],
-        "x-ms-client-request-id": [ "55372d5f-621f-4e1a-8a34-a439addb7da3" ],
+        "x-ms-unique-id": [ "623" ],
+        "x-ms-client-request-id": [ "cd266981-399d-466f-8f87-26d28b81864a" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -218,21 +218,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "cfbdb56d-d457-429f-9452-243e7031da45" ],
-        "x-ms-correlation-request-id": [ "cfbdb56d-d457-429f-9452-243e7031da45" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202423Z:cfbdb56d-d457-429f-9452-243e7031da45" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "6a9027b8-54a2-4a59-b4e6-bafdd4753102" ],
+        "x-ms-correlation-request-id": [ "6a9027b8-54a2-4a59-b4e6-bafdd4753102" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001919Z:6a9027b8-54a2-4a59-b4e6-bafdd4753102" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 202007E8BCFC46AFA3930966AE024B9C Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:23Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:22 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: F8486F57DE6D4A14A3C7FA6A222AA8A4 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:19Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:18 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:22.8200567Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:22.6771183Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:22.6771183Z\"}}",
+      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:19.2338634Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:19.1874834Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:19.1874834Z\"}}",
       "isContentBase64": false
     }
   },
@@ -243,8 +243,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "635" ],
-        "x-ms-client-request-id": [ "5255da6a-b15f-43bd-9ee1-9195f1d98be6" ],
+        "x-ms-unique-id": [ "624" ],
+        "x-ms-client-request-id": [ "7ef0346e-34de-4e83-a7b5-e422516cb429" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -260,21 +260,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
-        "x-ms-request-id": [ "e5c33273-ad00-47a2-92bc-30591a2c0c72" ],
-        "x-ms-correlation-request-id": [ "e5c33273-ad00-47a2-92bc-30591a2c0c72" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202423Z:e5c33273-ad00-47a2-92bc-30591a2c0c72" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "0211446e-07fc-4483-8cb4-ed8c14ff4bdc" ],
+        "x-ms-correlation-request-id": [ "0211446e-07fc-4483-8cb4-ed8c14ff4bdc" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001919Z:0211446e-07fc-4483-8cb4-ed8c14ff4bdc" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0D1A1681916C4A908BBEEDCFDC198B82 Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:23Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:22 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8C56831E352A401F85A4D15BBF9D7E5C Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:19Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:19 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1107" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:22.8200567Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:22.6771183Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:22.6771183Z\"}}",
+      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:19.2338634Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:19.1874834Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:19.1874834Z\"}}",
       "isContentBase64": false
     }
   },
@@ -282,7 +282,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02?api-version=2023-04-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"\",\r\n    \"policyDefinitionId\": \"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"value\": [ \"something\", \"something else\" ]\r\n      }\r\n    },\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n      \"createdOn\": \"09/05/2024 20:24:22\"\r\n    }\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"\",\r\n    \"policyDefinitionId\": \"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"value\": [ \"something\", \"something else\" ]\r\n      }\r\n    },\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"createdBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n      \"createdOn\": \"10/04/2024 00:19:19\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -297,21 +297,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-request-id": [ "55477093-65ef-4fec-a5b1-6570f21fb28e" ],
-        "x-ms-correlation-request-id": [ "55477093-65ef-4fec-a5b1-6570f21fb28e" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202424Z:55477093-65ef-4fec-a5b1-6570f21fb28e" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "a06c96dd-296a-4ea3-a454-9fe984dc589f" ],
+        "x-ms-correlation-request-id": [ "a06c96dd-296a-4ea3-a454-9fe984dc589f" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001920Z:a06c96dd-296a-4ea3-a454-9fe984dc589f" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E19D6D16C0034F09B4D9A6EE5F98013E Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:23Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:23 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 48A987D02DF640F0B1D258345C8707D3 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:19Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1191" ],
+        "Content-Length": [ "1190" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"something\",\"something else\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:22.8200567Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-09-05T20:24:23.7914454Z\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:22.6771183Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:23.6907569Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"something\",\"something else\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:19.2338634Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-10-04T00:19:20.013125Z\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:19.1874834Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:19.9634674Z\"}}",
       "isContentBase64": false
     }
   },
@@ -322,8 +322,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "637" ],
-        "x-ms-client-request-id": [ "1a3f50a2-834a-4690-a592-25af3a377897" ],
+        "x-ms-unique-id": [ "626" ],
+        "x-ms-client-request-id": [ "e272bf58-47b7-4cfd-86a1-819a8dbcdecd" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -339,21 +339,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-request-id": [ "1320f1ca-1ccd-4fd6-be41-3a77da74526a" ],
-        "x-ms-correlation-request-id": [ "1320f1ca-1ccd-4fd6-be41-3a77da74526a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202424Z:1320f1ca-1ccd-4fd6-be41-3a77da74526a" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "f5124651-d0f2-4c49-bb45-47e0c2393c70" ],
+        "x-ms-correlation-request-id": [ "f5124651-d0f2-4c49-bb45-47e0c2393c70" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001920Z:f5124651-d0f2-4c49-bb45-47e0c2393c70" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 74650A5B81734DFD8CD8843A4D527BCA Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:24Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:23 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 64D761F0361848139A031170B7E62627 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:20Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1191" ],
+        "Content-Length": [ "1190" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"something\",\"something else\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:22.8200567Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-09-05T20:24:23.7914454Z\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:22.6771183Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:23.6907569Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"something\",\"something else\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:19.2338634Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-10-04T00:19:20.013125Z\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:19.1874834Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:19.9634674Z\"}}",
       "isContentBase64": false
     }
   },
@@ -364,8 +364,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "638" ],
-        "x-ms-client-request-id": [ "d4c0f783-2781-493e-9030-3f181b9ffe78" ],
+        "x-ms-unique-id": [ "627" ],
+        "x-ms-client-request-id": [ "5cdef03a-81ba-40fe-a8e8-bf2dd6bed4ac" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicyAssignment_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -381,21 +381,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-request-id": [ "51d45c28-8a23-4a21-95d7-5509845d2d60" ],
-        "x-ms-correlation-request-id": [ "51d45c28-8a23-4a21-95d7-5509845d2d60" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202424Z:51d45c28-8a23-4a21-95d7-5509845d2d60" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "23f82333-a465-4e67-9dc1-196e98608468" ],
+        "x-ms-correlation-request-id": [ "23f82333-a465-4e67-9dc1-196e98608468" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001920Z:23f82333-a465-4e67-9dc1-196e98608468" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9200F6055AF64D9FB2C3F19CDE293758 Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:24Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:24 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FBFD5A8C96BD49DFBFCB45E2CF23D608 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:20Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:20 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1191" ],
+        "Content-Length": [ "1190" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"something\",\"something else\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:22.8200567Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-09-05T20:24:23.7914454Z\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:22.6771183Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:23.6907569Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"something\",\"something else\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:19.2338634Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-10-04T00:19:20.013125Z\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:19.1874834Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:19.9634674Z\"}}",
       "isContentBase64": false
     }
   },
@@ -418,21 +418,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-request-id": [ "c458f02b-5ad3-47ea-b546-05efc9e1c529" ],
-        "x-ms-correlation-request-id": [ "c458f02b-5ad3-47ea-b546-05efc9e1c529" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202425Z:c458f02b-5ad3-47ea-b546-05efc9e1c529" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "0c29ff80-269a-4100-8b41-0e6b0e0899c7" ],
+        "x-ms-correlation-request-id": [ "0c29ff80-269a-4100-8b41-0e6b0e0899c7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001921Z:0c29ff80-269a-4100-8b41-0e6b0e0899c7" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F2149BD83CEA4096AC5DA3FE29E48BD3 Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:24Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:25 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 9D3DB4D34EB9409B9F7212B0AD272D2E Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:20Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1130" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"testName\":\"testValue\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:25.2742635Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:25.0873595Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:25.0873595Z\"}}",
+      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"testName\":\"testValue\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:21.1971535Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:21.0898806Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:21.0898806Z\"}}",
       "isContentBase64": false
     }
   },
@@ -443,8 +443,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "640" ],
-        "x-ms-client-request-id": [ "8705442d-b82e-4086-ab02-05dfc823ccfa" ],
+        "x-ms-unique-id": [ "629" ],
+        "x-ms-client-request-id": [ "99d85584-cf23-4a3d-837e-1473820d2c9d" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -460,21 +460,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "0e1830ab-5977-4b50-9a2f-6d77f727b8e7" ],
-        "x-ms-correlation-request-id": [ "0e1830ab-5977-4b50-9a2f-6d77f727b8e7" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202425Z:0e1830ab-5977-4b50-9a2f-6d77f727b8e7" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "267b2f26-c2e8-42dc-bd1c-3dfae45084c1" ],
+        "x-ms-correlation-request-id": [ "267b2f26-c2e8-42dc-bd1c-3dfae45084c1" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001921Z:267b2f26-c2e8-42dc-bd1c-3dfae45084c1" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1F1EFA2D155447FD9241F9805DE8A692 Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:25Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:25 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D412AC0B36DF4DC290CF329628814879 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:21Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1130" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"testName\":\"testValue\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:25.2742635Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:25.0873595Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:25.0873595Z\"}}",
+      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"testName\":\"testValue\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:21.1971535Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:21.0898806Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:21.0898806Z\"}}",
       "isContentBase64": false
     }
   },
@@ -485,8 +485,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "641" ],
-        "x-ms-client-request-id": [ "28601075-0de5-4848-af7a-620add8e5cdf" ],
+        "x-ms-unique-id": [ "630" ],
+        "x-ms-client-request-id": [ "7708c37d-4217-4781-8c53-2d6eed7a9035" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -502,21 +502,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-request-id": [ "7dcccbbf-9f04-4f5f-9c26-2a3ac313fe77" ],
-        "x-ms-correlation-request-id": [ "7dcccbbf-9f04-4f5f-9c26-2a3ac313fe77" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202425Z:7dcccbbf-9f04-4f5f-9c26-2a3ac313fe77" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "9050b2f5-3163-412d-957a-9e35c67f237a" ],
+        "x-ms-correlation-request-id": [ "9050b2f5-3163-412d-957a-9e35c67f237a" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001921Z:9050b2f5-3163-412d-957a-9e35c67f237a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 46F9AF11E82942F9939087596E33F21B Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:25Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:25 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C606171F4F3947A19DE37391DAAF9B0D Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:21Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:21 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1130" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"testName\":\"testValue\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:25.2742635Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:25.0873595Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:25.0873595Z\"}}",
+      "Content": "{\"properties\":{\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"testName\":\"testValue\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:21.1971535Z\",\"updatedBy\":null,\"updatedOn\":null},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:21.0898806Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:21.0898806Z\"}}",
       "isContentBase64": false
     }
   },
@@ -539,21 +539,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "01ad804f-f44b-4553-b8a7-05cc0b7caeec" ],
-        "x-ms-correlation-request-id": [ "01ad804f-f44b-4553-b8a7-05cc0b7caeec" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202427Z:01ad804f-f44b-4553-b8a7-05cc0b7caeec" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "69c6d7f3-5a97-44f0-ba1c-fcb292afd65e" ],
+        "x-ms-correlation-request-id": [ "69c6d7f3-5a97-44f0-ba1c-fcb292afd65e" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001922Z:69c6d7f3-5a97-44f0-ba1c-fcb292afd65e" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 490FCE00E81E48BB8BCBB682D6ED413B Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:25Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D71B35E0C7584AA2B64EBD2EFC107AB9 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:21Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1239" ],
+        "Content-Length": [ "1240" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me! - Updated\",\"metadata\":{\"Meta1\":\"Value1\",\"Meta2\":{\"Meta22\":\"Value22\"},\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:25.2742635Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-09-05T20:24:27.4161611Z\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:25.0873595Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:27.287026Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me! - Updated\",\"metadata\":{\"Meta1\":\"Value1\",\"Meta2\":{\"Meta22\":\"Value22\"},\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:21.1971535Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-10-04T00:19:21.9422899Z\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:21.0898806Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:21.8928761Z\"}}",
       "isContentBase64": false
     }
   },
@@ -564,8 +564,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "643" ],
-        "x-ms-client-request-id": [ "e2f30f49-15fc-42d5-b417-25412b491293" ],
+        "x-ms-unique-id": [ "632" ],
+        "x-ms-client-request-id": [ "646e980d-0369-4c7c-9660-076cff3973a6" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -581,21 +581,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-request-id": [ "13414b87-1827-4d15-9018-20e564bfa6cf" ],
-        "x-ms-correlation-request-id": [ "13414b87-1827-4d15-9018-20e564bfa6cf" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202427Z:13414b87-1827-4d15-9018-20e564bfa6cf" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "71888440-aea3-4467-a55b-77ac392cafc6" ],
+        "x-ms-correlation-request-id": [ "71888440-aea3-4467-a55b-77ac392cafc6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001922Z:71888440-aea3-4467-a55b-77ac392cafc6" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 59FDDE09B84D438990419B456126D4A8 Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:27Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 815AE3E147984DEEB20523E10C15D4CD Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:22Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1239" ],
+        "Content-Length": [ "1240" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me! - Updated\",\"metadata\":{\"Meta1\":\"Value1\",\"Meta2\":{\"Meta22\":\"Value22\"},\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:25.2742635Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-09-05T20:24:27.4161611Z\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:25.0873595Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:27.287026Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me! - Updated\",\"metadata\":{\"Meta1\":\"Value1\",\"Meta2\":{\"Meta22\":\"Value22\"},\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:21.1971535Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-10-04T00:19:21.9422899Z\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:21.0898806Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:21.8928761Z\"}}",
       "isContentBase64": false
     }
   },
@@ -606,8 +606,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "644" ],
-        "x-ms-client-request-id": [ "75bee435-3055-45d1-9b13-4fa1287021a9" ],
+        "x-ms-unique-id": [ "633" ],
+        "x-ms-client-request-id": [ "ed274cab-4933-4054-8754-c8ebf9361a2e" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -623,21 +623,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "0b8c0b7e-c1a0-471a-9645-597eb584707e" ],
-        "x-ms-correlation-request-id": [ "0b8c0b7e-c1a0-471a-9645-597eb584707e" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202428Z:0b8c0b7e-c1a0-471a-9645-597eb584707e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "8e734e1d-9fdd-4c95-beef-d997d65c7cfe" ],
+        "x-ms-correlation-request-id": [ "8e734e1d-9fdd-4c95-beef-d997d65c7cfe" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001922Z:8e734e1d-9fdd-4c95-beef-d997d65c7cfe" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 303C9C853EF342FEAAEC9B15B52AB8D2 Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:27Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:27 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 863C94D7F7504CF8AF80DB66C3C3EE4C Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:22Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1239" ],
+        "Content-Length": [ "1240" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me! - Updated\",\"metadata\":{\"Meta1\":\"Value1\",\"Meta2\":{\"Meta22\":\"Value22\"},\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:25.2742635Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-09-05T20:24:27.4161611Z\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:25.0873595Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:27.287026Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West US\",\"West US 2\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me! - Updated\",\"metadata\":{\"Meta1\":\"Value1\",\"Meta2\":{\"Meta22\":\"Value22\"},\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:21.1971535Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"updatedOn\":\"2024-10-04T00:19:21.9422899Z\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:21.0898806Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:21.8928761Z\"}}",
       "isContentBase64": false
     }
   },
@@ -645,7 +645,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02?api-version=2023-04-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"\",\r\n    \"policyDefinitionId\": \"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"value\": [ \"West2 US2\", \"West2 US22\" ]\r\n      }\r\n    },\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me! - Updated\",\r\n    \"metadata\": {\r\n      \"createdOn\": \"09/05/2024 20:24:25\",\r\n      \"Meta2\": \"\",\r\n      \"updatedOn\": \"09/05/2024 20:24:27\",\r\n      \"updatedBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n      \"Meta1\": \"Value1\",\r\n      \"createdBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\"\r\n    }\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"displayName\": \"\",\r\n    \"policyDefinitionId\": \"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"value\": [ \"West2 US2\", \"West2 US22\" ]\r\n      }\r\n    },\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me! - Updated\",\r\n    \"metadata\": {\r\n      \"updatedBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\",\r\n      \"createdOn\": \"10/04/2024 00:19:21\",\r\n      \"Meta1\": \"Value1\",\r\n      \"updatedOn\": \"10/04/2024 00:19:21\",\r\n      \"Meta2\": \"\",\r\n      \"createdBy\": \"3d826307-2481-45a0-a271-bcf9333f914a\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -660,21 +660,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "f7337a5c-6d60-4012-9375-514bec224f86" ],
-        "x-ms-correlation-request-id": [ "f7337a5c-6d60-4012-9375-514bec224f86" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202428Z:f7337a5c-6d60-4012-9375-514bec224f86" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "cbb21b6a-68c9-4caf-9769-7e4cae8ad4d7" ],
+        "x-ms-correlation-request-id": [ "cbb21b6a-68c9-4caf-9769-7e4cae8ad4d7" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001923Z:cbb21b6a-68c9-4caf-9769-7e4cae8ad4d7" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D517DA4FA1CC4FD1A08AB89C1C3F0BA4 Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:28Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DC088DDA91D04EDEB4CCFCDC7D96225A Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:22Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1225" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West2 US2\",\"West2 US22\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me! - Updated\",\"metadata\":{\"createdOn\":\"2024-09-05T20:24:25.2742635Z\",\"Meta2\":\"\",\"updatedOn\":\"2024-09-05T20:24:28.4971695Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"Meta1\":\"Value1\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:25.0873595Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:28.4088547Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West2 US2\",\"West2 US22\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me! - Updated\",\"metadata\":{\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:21.1971535Z\",\"Meta1\":\"Value1\",\"updatedOn\":\"2024-10-04T00:19:22.6645178Z\",\"Meta2\":\"\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:21.0898806Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:22.6023966Z\"}}",
       "isContentBase64": false
     }
   },
@@ -685,8 +685,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "646" ],
-        "x-ms-client-request-id": [ "ef0fa8f9-1938-4dc4-a85e-43fdadc0679e" ],
+        "x-ms-unique-id": [ "635" ],
+        "x-ms-client-request-id": [ "06c087f3-0598-440a-9f75-d50a5ba0a969" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Get-AzPolicyAssignment_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -702,21 +702,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
-        "x-ms-request-id": [ "2fdd97ea-3b4b-4090-ab0c-69785b0210f9" ],
-        "x-ms-correlation-request-id": [ "2fdd97ea-3b4b-4090-ab0c-69785b0210f9" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202428Z:2fdd97ea-3b4b-4090-ab0c-69785b0210f9" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "ffe5cc71-989a-454a-8394-4e382bde9e96" ],
+        "x-ms-correlation-request-id": [ "ffe5cc71-989a-454a-8394-4e382bde9e96" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001923Z:ffe5cc71-989a-454a-8394-4e382bde9e96" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A9AC1192D702414892F1879245CF1CDD Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:28Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C648F4E5EFD441548B4D724F0A23FD9D Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:23Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1225" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West2 US2\",\"West2 US22\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me! - Updated\",\"metadata\":{\"createdOn\":\"2024-09-05T20:24:25.2742635Z\",\"Meta2\":\"\",\"updatedOn\":\"2024-09-05T20:24:28.4971695Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"Meta1\":\"Value1\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:25.0873595Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:28.4088547Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West2 US2\",\"West2 US22\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me! - Updated\",\"metadata\":{\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:21.1971535Z\",\"Meta1\":\"Value1\",\"updatedOn\":\"2024-10-04T00:19:22.6645178Z\",\"Meta2\":\"\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:21.0898806Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:22.6023966Z\"}}",
       "isContentBase64": false
     }
   },
@@ -727,8 +727,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "647" ],
-        "x-ms-client-request-id": [ "96fa609a-5086-40e4-a0cf-231671e4aa0a" ],
+        "x-ms-unique-id": [ "636" ],
+        "x-ms-client-request-id": [ "9b9bc18f-8f44-4b61-8047-298b6462016d" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicyAssignment_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -744,21 +744,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-request-id": [ "59de1c0f-497e-44fc-b069-492bc2ccfd57" ],
-        "x-ms-correlation-request-id": [ "59de1c0f-497e-44fc-b069-492bc2ccfd57" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202429Z:59de1c0f-497e-44fc-b069-492bc2ccfd57" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "b6a6cdf8-8d18-4eb3-9178-0dffb2b80be2" ],
+        "x-ms-correlation-request-id": [ "b6a6cdf8-8d18-4eb3-9178-0dffb2b80be2" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001923Z:b6a6cdf8-8d18-4eb3-9178-0dffb2b80be2" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: FB6E30CFD3A242DDB904E0F0CC9A3A62 Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:29Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: E7AB489D92FD403997A9B59C10E11A4C Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:23Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:22 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1225" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West2 US2\",\"West2 US22\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me! - Updated\",\"metadata\":{\"createdOn\":\"2024-09-05T20:24:25.2742635Z\",\"Meta2\":\"\",\"updatedOn\":\"2024-09-05T20:24:28.4971695Z\",\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"Meta1\":\"Value1\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:25.0873595Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:28.4088547Z\"}}",
+      "Content": "{\"properties\":{\"displayName\":\"\",\"policyDefinitionId\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"definitionVersion\":\"1.*.*\",\"scope\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01\",\"parameters\":{\"listOfAllowedLocations\":{\"value\":[\"West2 US2\",\"West2 US22\"]}},\"description\":\"Unit test junk: sorry for littering. Please delete me! - Updated\",\"metadata\":{\"updatedBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:21.1971535Z\",\"Meta1\":\"Value1\",\"updatedOn\":\"2024-10-04T00:19:22.6645178Z\",\"Meta2\":\"\",\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\"},\"enforcementMode\":\"Default\"},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/resourceGroups/rg01/providers/Microsoft.Authorization/policyAssignments/psPolicyAssignmentWithParameters02\",\"type\":\"Microsoft.Authorization/policyAssignments\",\"name\":\"psPolicyAssignmentWithParameters02\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:21.0898806Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:22.6023966Z\"}}",
       "isContentBase64": false
     }
   },
@@ -769,8 +769,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "648" ],
-        "x-ms-client-request-id": [ "7963f98e-3447-461a-b6b9-9a61a0d22024" ],
+        "x-ms-unique-id": [ "637" ],
+        "x-ms-client-request-id": [ "663b5edf-e77d-478a-b991-53b3ddc76d10" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicyDefinition_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -786,21 +786,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-request-id": [ "b2619f27-fe43-4e7c-a59f-9186d8a960d6" ],
-        "x-ms-correlation-request-id": [ "b2619f27-fe43-4e7c-a59f-9186d8a960d6" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240905T202430Z:b2619f27-fe43-4e7c-a59f-9186d8a960d6" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "99be89e9-cbc6-46a0-a3a7-33286eba3155" ],
+        "x-ms-correlation-request-id": [ "99be89e9-cbc6-46a0-a3a7-33286eba3155" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20241004T001924Z:99be89e9-cbc6-46a0-a3a7-33286eba3155" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C751A35CACE24558913EB47A7FF322E5 Ref B: CO6AA3150220047 Ref C: 2024-09-05T20:24:29Z" ],
-        "Date": [ "Thu, 05 Sep 2024 20:24:29 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D16D9B424FCF4A66848104DC8C338642 Ref B: CO6AA3150217019 Ref C: 2024-10-04T00:19:23Z" ],
+        "Date": [ "Fri, 04 Oct 2024 00:19:23 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1294" ],
+        "Content-Length": [ "1295" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-09-05T20:24:20.694625Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"}},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psPolicyAssignmentWithParameters01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-09-05T20:24:20.6622083Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-09-05T20:24:20.6622083Z\"}}",
+      "Content": "{\"properties\":{\"policyType\":\"Custom\",\"mode\":\"All\",\"description\":\"Unit test junk: sorry for littering. Please delete me!\",\"metadata\":{\"createdBy\":\"3d826307-2481-45a0-a271-bcf9333f914a\",\"createdOn\":\"2024-10-04T00:19:17.4878648Z\",\"updatedBy\":null,\"updatedOn\":null},\"version\":\"1.0.0\",\"parameters\":{\"listOfAllowedLocations\":{\"type\":\"array\",\"metadata\":{\"description\":\"An array of permitted locations for resources.\",\"strongType\":\"location\",\"displayName\":\"List of locations\"}},\"effectParam\":{\"type\":\"string\",\"metadata\":{\"description\":\"The effect of the policy\",\"displayName\":\"Policy Effect\"},\"allowedValues\":[\"Deny\",\"Disabled\"],\"defaultValue\":\"Deny\"}},\"policyRule\":{\"if\":{\"not\":{\"field\":\"location\",\"in\":\"[parameters(\u0027listOfAllowedLocations\u0027)]\"}},\"then\":{\"effect\":\"[parameters(\u0027effectParam\u0027)]\"}},\"versions\":[\"1.0.0\"]},\"id\":\"/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyDefinitions/psPolicyAssignmentWithParameters01\",\"type\":\"Microsoft.Authorization/policyDefinitions\",\"name\":\"psPolicyAssignmentWithParameters01\",\"systemData\":{\"createdBy\":\"cstack@ntdev.microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-10-04T00:19:17.4451141Z\",\"lastModifiedBy\":\"cstack@ntdev.microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-10-04T00:19:17.4451141Z\"}}",
       "isContentBase64": false
     }
   }

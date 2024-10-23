@@ -108,7 +108,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.4'; },
                @{ModuleName = 'Az.Migrate'; RequiredVersion = '2.4.0'; }, 
                @{ModuleName = 'Az.Monitor'; RequiredVersion = '5.2.2'; }, 
                @{ModuleName = 'Az.MySql'; RequiredVersion = '1.2.1'; }, 
-               @{ModuleName = 'Az.Network'; RequiredVersion = '7.9.0'; }, 
+               @{ModuleName = 'Az.Network'; RequiredVersion = '7.10.0'; }, 
                @{ModuleName = 'Az.NetworkCloud'; RequiredVersion = '1.0.2'; }, 
                @{ModuleName = 'Az.Nginx'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.NotificationHubs'; RequiredVersion = '1.1.3'; }, 
@@ -120,7 +120,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.4'; },
                @{ModuleName = 'Az.PrivateDns'; RequiredVersion = '1.0.5'; }, 
                @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '7.2.0'; }, 
                @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.10.0'; }, 
-               @{ModuleName = 'Az.RedisEnterpriseCache'; RequiredVersion = '1.3.0'; }, 
+               @{ModuleName = 'Az.RedisEnterpriseCache'; RequiredVersion = '1.2.1'; },
                @{ModuleName = 'Az.Relay'; RequiredVersion = '2.0.1'; }, 
                @{ModuleName = 'Az.ResourceGraph'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'Az.ResourceMover'; RequiredVersion = '1.2.1'; }, 
@@ -132,7 +132,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.4'; },
                @{ModuleName = 'Az.SignalR'; RequiredVersion = '2.0.2'; }, 
                @{ModuleName = 'Az.Sql'; RequiredVersion = '5.3.0'; }, 
                @{ModuleName = 'Az.SqlVirtualMachine'; RequiredVersion = '2.3.1'; }, 
-               @{ModuleName = 'Az.StackHCI'; RequiredVersion = '2.4.0'; }, 
+               @{ModuleName = 'Az.StackHCI'; RequiredVersion = '2.4.1'; }, 
                @{ModuleName = 'Az.StackHCIVM'; RequiredVersion = '1.0.5'; }, 
                @{ModuleName = 'Az.Storage'; RequiredVersion = '7.4.0'; }, 
                @{ModuleName = 'Az.StorageMover'; RequiredVersion = '1.4.0'; }, 
@@ -261,14 +261,6 @@ Az.Network
 
 Az.RecoveryServices
 * Fixed bug for making RecoveryAzureStorageAccountId parameter optional in ''New-ASRReplicationProtectedItem'' cmdlet of H2A.
-
-Az.RedisEnterpriseCache
-* Added support for using Microsoft Entra token-based authentication.
-* Added the new properties of Cluster: highAvailability and redundancyMode.
-* Added new product SKUs.
-* Added the new properties of Database: accessKeysAuthentication.
-* Added Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup to force link geo replicated caches.
-* Added Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion to upgrade the redis database version directly.
 
 Az.Resources
 * Added ''ResourceSelector'' and ''Override'' parameters to ''New/Update-AzPolicyAssignment''.
