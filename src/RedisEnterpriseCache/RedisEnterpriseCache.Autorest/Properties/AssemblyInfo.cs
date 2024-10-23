@@ -16,11 +16,13 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Microsoft")]
-[assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Microsoft")]
-[assembly: System.Reflection.AssemblyProductAttribute("Microsoft Azure PowerShell")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Microsoft Azure PowerShell - RedisEnterpriseCache")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.3.0")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.3.0")]
-[assembly: System.Runtime.InteropServices.ComVisibleAttribute(false)]
-[assembly: System.CLSCompliantAttribute(false)]
+[assembly: AssemblyTitle("Microsoft Azure Powershell - RedisEnterpriseCache")]
+[assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
+[assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
+[assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
+
+[assembly: ComVisible(false)]
+[assembly: CLSCompliant(false)]
+[assembly: Guid("f28a193d-f71c-4fc8-89bf-70c8cfe9981f")]
+[assembly: AssemblyVersion("1.4.0")]
+[assembly: AssemblyFileVersion("1.4.0")]
