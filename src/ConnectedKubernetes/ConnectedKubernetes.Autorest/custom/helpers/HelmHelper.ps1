@@ -155,8 +155,7 @@ function Get-HelmChartPath {
         throw "No environment to use as root."
     }
     Write-Verbose "Using 'helm' to add Azure Arc resources to Kubernetes cluster"
-    $ChartExportPath = Join-Path -Path $root -ChildPath '.azure'
-    $ChartExportPath = Join-Path -Path $ChartExportPath -ChildPath $ChartFolderName
+    $ChartExportPath = $root | Join-Path -ChildPath '.azure' | Join-Path -ChildPath $ChartFolderName
     try {
         if (Test-Path $ChartExportPath) {
             Write-Debug "Cleaning up existing Helm chart folder at: $ChartExportPath"
