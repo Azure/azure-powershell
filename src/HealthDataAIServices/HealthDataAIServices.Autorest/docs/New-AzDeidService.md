@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.HealthDeid
-online version: https://learn.microsoft.com/powershell/module/az.healthdeid/new-azhealthdeidservice
+Module Name: Az.Deid
+online version: https://learn.microsoft.com/powershell/module/az.deid/new-azdeidservice
 schema: 2.0.0
 ---
 
-# New-AzHealthDeidService
+# New-AzDeidService
 
 ## SYNOPSIS
 create a DeidService
@@ -14,24 +14,22 @@ create a DeidService
 
 ### CreateExpanded (Default)
 ```
-New-AzHealthDeidService -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-EnableSystemAssignedIdentity] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
+New-AzDeidService -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-EnableSystemAssignedIdentity] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzHealthDeidService -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDeidService -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzHealthDeidService -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzDeidService -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,66 +37,27 @@ create a DeidService
 
 ## EXAMPLES
 
-### Example 1: Create a new De-identification Service resource
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzHealthDeidService -Name myHealthDeidService -ResourceGroupName azpwsh-test-rg -Location eastus2 -EnableSystemAssignedIdentity -PublicNetworkAccess "Disabled"
+{{ Add code here }}
 ```
 
 ```output
-Id                           : /subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azpwsh-test-rg/providers/Microsoft.HealthDataAIServices/deidServices/myHealthDeidService
-IdentityPrincipalId          : efab95dd-6969-4c43-bd96-4126dc372bfa
-IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
-IdentityType                 : SystemAssigned
-IdentityUserAssignedIdentity : {
-                               }
-Location                     : eastus2
-Name                         : myHealthDeidService
-PrivateEndpointConnection    :
-ProvisioningState            : Succeeded
-PublicNetworkAccess          : Disabled
-ResourceGroupName            : azpwsh-test-rg
-ServiceUrl                   : https://h8bxaqamerbxd9a7.api.eus2001.deid.azure.com
-SystemDataCreatedAt          : 10/21/2024 5:26:15 AM
-SystemDataCreatedBy          : contoso@microsoft.com
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 10/21/2024 5:26:15 AM
-SystemDataLastModifiedBy     : contoso@microsoft.com
-SystemDataLastModifiedByType : User
-Tag                          : {
-                               }
-Type                         : microsoft.healthdataaiservices/deidservices
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Creates a new De-identification Service resource in the specified resource group and location.
+{{ Add description here }}
 
-### Example 2: Create a new De-identification Service resource from a JSON file
+### Example 2: {{ Add title here }}
 ```powershell
-New-AzHealthDeidService -Name myHealthDeidService -ResourceGroupName azpwsh-test-rg -JsonFilePath path/to/json.json
+{{ Add code here }}
 ```
 
 ```output
-Id                           : /subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azpwsh-test-rg/providers/Microsoft.HealthDataAIServices/deidServices/myHealthDeidService
-IdentityUserAssignedIdentity : {
-                               }
-Location                     : eastus2
-Name                         : myHealthDeidService
-PrivateEndpointConnection    :
-ProvisioningState            : Succeeded
-PublicNetworkAccess          : Disabled
-ResourceGroupName            : azpwsh-test-rg
-ServiceUrl                   : https://h8bxaqamerbxd9a7.api.eus2001.deid.azure.com
-SystemDataCreatedAt          : 10/21/2024 5:26:15 AM
-SystemDataCreatedBy          : contoso@microsoft.com
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 10/21/2024 5:26:15 AM
-SystemDataLastModifiedBy     : contoso@microsoft.com
-SystemDataLastModifiedByType : User
-Tag                          : {
-                               }
-Type                         : microsoft.healthdataaiservices/deidservices
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Creates a new De-identification Service resource with location and properties specified in the JSON file.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -339,7 +298,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthDeid.Models.IDeidService
+### Microsoft.Azure.PowerShell.Cmdlets.Deid.Models.IDeidService
 
 ## NOTES
 

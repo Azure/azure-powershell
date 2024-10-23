@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.HealthDeid
-online version: https://learn.microsoft.com/powershell/module/az.healthdeid/update-azhealthdeidservice
+Module Name: Az.Deid
+online version: https://learn.microsoft.com/powershell/module/az.deid/update-azdeidservice
 schema: 2.0.0
 ---
 
-# Update-AzHealthDeidService
+# Update-AzDeidService
 
 ## SYNOPSIS
 update a DeidService
@@ -14,7 +14,7 @@ update a DeidService
 
 ### UpdateExpanded (Default)
 ```
-Update-AzHealthDeidService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzDeidService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-EnableSystemAssignedIdentity <Boolean?>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -22,7 +22,7 @@ Update-AzHealthDeidService -Name <String> -ResourceGroupName <String> [-Subscrip
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzHealthDeidService -InputObject <IHealthDeidIdentity> [-EnableSystemAssignedIdentity <Boolean?>]
+Update-AzDeidService -InputObject <IDeidIdentity> [-EnableSystemAssignedIdentity <Boolean?>]
  [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -32,70 +32,27 @@ update a DeidService
 
 ## EXAMPLES
 
-### Example 1: Update a De-identification service to create a System Assigned Managed Identity
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzHealthDeidService -Name myHealthDeidService -ResourceGroupName azpwsh-test-rg -EnableSystemAssignedIdentity $true
+{{ Add code here }}
 ```
 
 ```output
-Id                           : /subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azpwsh-test-rg/providers/Microsoft.HealthDataAIServices/deidServices/myHealthDeidService
-IdentityPrincipalId          : efab95dd-6969-4c43-bd96-4126dc372bfa
-IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
-IdentityType                 : SystemAssigned
-IdentityUserAssignedIdentity : {
-                               }
-Location                     : eastus2
-Name                         : myHealthDeidService
-PrivateEndpointConnection    :
-ProvisioningState            : Succeeded
-PublicNetworkAccess          : Disabled
-ResourceGroupName            : azpwsh-test-rg
-ServiceUrl                   : https://h8bxaqamerbxd9a7.api.eus2001.deid.azure.com
-SystemDataCreatedAt          : 10/21/2024 5:26:15 AM
-SystemDataCreatedBy          : contoso@microsoft.com
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 10/21/2024 6:56:12 PM
-SystemDataLastModifiedBy     : contoso@microsoft.com
-SystemDataLastModifiedByType : User
-Tag                          : {
-                               }
-Type                         : microsoft.healthdataaiservices/deidservices
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Updates an existing De-identification service to create a System Assigned Managed Identity.
+{{ Add description here }}
 
-### Example 2: Update the public network access and tags of a De-identification service
+### Example 2: {{ Add title here }}
 ```powershell
-Update-AzHealthDeidService -Name azpwshDeidService2 -ResourceGroupName azpwsh-test-rg -EnableSystemAssignedIdentity $false -PublicNetworkAccess "Enabled" -Tag @{ AzPwshTestKey = "AzPwshTestValue" }
+{{ Add code here }}
 ```
 
 ```output
-Id                           : /subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azpwsh-test-rg/providers/Microsoft.HealthDataAIServices/DeidServices/azpwshDeidService2
-IdentityPrincipalId          :
-IdentityTenantId             :
-IdentityType                 : None
-IdentityUserAssignedIdentity : {
-                               }
-Location                     : eastus2
-Name                         : azpwshDeidService2
-PrivateEndpointConnection    :
-ProvisioningState            : Succeeded
-PublicNetworkAccess          : Enabled
-ResourceGroupName            : azpwsh-test-rg
-ServiceUrl                   : https://f4cag7feawaubgbv.api.eus2001.deid.azure.com
-SystemDataCreatedAt          : 10/21/2024 12:01:06 AM
-SystemDataCreatedBy          : contoso@microsoft.com
-SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 10/21/2024 5:43:35 AM
-SystemDataLastModifiedBy     : contoso@microsoft.com
-SystemDataLastModifiedByType : User
-Tag                          : {
-                                 "AzPwshTestKey": "AzPwshTestValue"
-                               }
-Type                         : microsoft.healthdataaiservices/deidservices
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-Update a De-identification Service by enabling public network access, removing the System Assigned Managed Identity and adding tags.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -149,7 +106,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthDeid.Models.IHealthDeidIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Deid.Models.IDeidIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -304,11 +261,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthDeid.Models.IHealthDeidIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Deid.Models.IDeidIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthDeid.Models.IDeidService
+### Microsoft.Azure.PowerShell.Cmdlets.Deid.Models.IDeidService
 
 ## NOTES
 
