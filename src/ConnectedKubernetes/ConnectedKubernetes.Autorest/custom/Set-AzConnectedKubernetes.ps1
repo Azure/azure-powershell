@@ -465,7 +465,7 @@ function Set-AzConnectedKubernetes {
             }
         }
 
-        if ($WorkloadIdentityEnabled && -not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled')) {
+        if ($WorkloadIdentityEnabled -and (-not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled'))) {
             Write-Debug "Workload identity enabled"
             $PSBoundParameters.Add('WorkloadIdentityEnabled', $true)
         }
