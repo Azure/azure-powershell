@@ -5,33 +5,32 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{52103A11-029D-492B-87C7-22D39EF55958}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{21F331EC-F4F6-4B7C-9FB9-E6FE9246053D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{21F331EC-F4F6-4B7C-9FB9-E6FE9246053D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{2E0191FB-6DCE-45C1-8916-C409895396DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{2E0191FB-6DCE-45C1-8916-C409895396DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{B35A1F36-3572-4DD0-BA90-2AE6D3882801}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{B35A1F36-3572-4DD0-BA90-2AE6D3882801}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{4A06E6FB-D5E9-48DF-9BFB-867FE814F47E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{4A06E6FB-D5E9-48DF-9BFB-867FE814F47E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{671E6476-CDED-43A3-AB46-1338DAB61409}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{671E6476-CDED-43A3-AB46-1338DAB61409}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{31599FB7-7929-4E92-834F-A23C603A9116}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{31599FB7-7929-4E92-834F-A23C603A9116}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4A3D22CE-940D-4656-A344-7603474FB7A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontDoor.Test", "FrontDoor.Test\FrontDoor.Test.csproj", "{4C8972CB-B1DD-4E1A-8766-F039AF530062}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontDoor.Test", "FrontDoor.Test\FrontDoor.Test.csproj", "{4C8972CB-B1DD-4E1A-8766-F039AF530062}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontDoor", "FrontDoor\FrontDoor.csproj", "{2C629B31-196A-4BE6-B8DA-AC80FCCE16BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontDoor", "FrontDoor\FrontDoor.csproj", "{2C629B31-196A-4BE6-B8DA-AC80FCCE16BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{CEE04FC4-EA9E-49F5-8E65-1BF927763971}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{CEE04FC4-EA9E-49F5-8E65-1BF927763971}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontDoor.Management.Sdk", "FrontDoor.Management.Sdk\FrontDoor.Management.Sdk.csproj", "{F7A742DC-C643-4E1E-A58A-783B39CE58F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{21F331EC-F4F6-4B7C-9FB9-E6FE9246053D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -70,6 +69,13 @@ Global
 		{CEE04FC4-EA9E-49F5-8E65-1BF927763971}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEE04FC4-EA9E-49F5-8E65-1BF927763971}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEE04FC4-EA9E-49F5-8E65-1BF927763971}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A742DC-C643-4E1E-A58A-783B39CE58F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A742DC-C643-4E1E-A58A-783B39CE58F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A742DC-C643-4E1E-A58A-783B39CE58F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A742DC-C643-4E1E-A58A-783B39CE58F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{21F331EC-F4F6-4B7C-9FB9-E6FE9246053D} = {52103A11-029D-492B-87C7-22D39EF55958}
@@ -80,5 +86,8 @@ Global
 		{31599FB7-7929-4E92-834F-A23C603A9116} = {52103A11-029D-492B-87C7-22D39EF55958}
 		{4C8972CB-B1DD-4E1A-8766-F039AF530062} = {4A3D22CE-940D-4656-A344-7603474FB7A8}
 		{CEE04FC4-EA9E-49F5-8E65-1BF927763971} = {4A3D22CE-940D-4656-A344-7603474FB7A8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8030889A-062F-4BCC-8246-EC5BCEDCAF25}
 	EndGlobalSection
 EndGlobal

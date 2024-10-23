@@ -109,7 +109,7 @@ if ($PublishLocal) {
 $null = New-Item -ItemType Directory -Force -Path $tempRepoPath
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()
 $repo = Get-PSRepository | Where-Object { $_.SourceLocation -eq $tempRepoPath }
-if ($repo -ne $null) {
+if ($null -ne $repo) {
     $tempRepoName = $repo.Name
 } else {
     Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet

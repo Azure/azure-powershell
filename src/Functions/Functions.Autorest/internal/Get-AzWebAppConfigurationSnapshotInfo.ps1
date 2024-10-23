@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Gets a list of web app configuration snapshots identifiers.
+Description for Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Description
-Gets a list of web app configuration snapshots identifiers.
+Description for Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Example
 {{ Add code here }}
@@ -27,12 +27,12 @@ Each element of the list contains a timestamp and the ID of the snapshot.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigurationSnapshotInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfo
 #>
 function Get-AzWebAppConfigurationSnapshotInfo {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISiteConfigurationSnapshotInfo])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -117,7 +117,13 @@ begin {
             List = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotInfo_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

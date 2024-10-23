@@ -40,10 +40,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
                         var dicItemValueType = dictItemValue.GetType();
                         if (dicItemValueType == typeof(string))
                         {
-                            if (Service.TrySanitizeData(dictItemValue as string, out string sanitizedData))
+                            if (Service.TrySanitizeData(dictItemValue as string, out var detections, out _))
                             {
                                 // Sanitize dictionary item value
-                                telemetry.DetectedProperties.Add(ResolvePropertyPath(property));
+                                telemetry.SecretsDetected = true;
+                                var propertyPath = ResolvePropertyPath(property);
+                                if (!string.IsNullOrEmpty(propertyPath))
+                                {
+                                    foreach (var detection in detections)
+                                    {
+                                        telemetry.DetectedProperties.AddPropertyInfo(propertyPath, detection.Moniker);
+                                    }
+                                }
                             }
                         }
                         else

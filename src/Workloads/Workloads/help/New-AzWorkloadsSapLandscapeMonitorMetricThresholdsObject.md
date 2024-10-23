@@ -104,10 +104,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapLandscapeMonitorMetricThresholds
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapLandscapeMonitorMetricThresholds
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

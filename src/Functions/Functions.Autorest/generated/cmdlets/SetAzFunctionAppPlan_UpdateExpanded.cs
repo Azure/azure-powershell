@@ -8,16 +8,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
     using System;
 
-    /// <summary>Creates or updates an App Service Plan.</summary>
+    /// <summary>Description for Creates or updates an App Service Plan.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzFunctionAppPlan_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Creates or updates an App Service Plan.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Description for Creates or updates an App Service Plan.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}", ApiVersion = "2019-08-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}", ApiVersion = "2023-12-01")]
     public partial class SetAzFunctionAppPlan_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener
     {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         private string __processRecordId;
 
         /// <summary>App Service plan.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan _appServicePlanBody = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServicePlan();
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan _appServicePlanBody = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.AppServicePlan();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -71,6 +71,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>
+        /// ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku",
+        SerializedName = @"elasticScaleEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter ElasticScaleEnabled { get => _appServicePlanBody.ElasticScaleEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _appServicePlanBody.ElasticScaleEnabled = value; }
+
+        /// <summary>Name of extended location.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of extended location.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of extended location.",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ExtendedLocationName { get => _appServicePlanBody.ExtendedLocationName ?? null; set => _appServicePlanBody.ExtendedLocationName = value; }
 
         /// <summary>The time when the server farm free offer expires.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The time when the server farm free offer expires.")]
@@ -156,6 +180,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"kind",
         PossibleTypes = new [] { typeof(string) })]
         public string Kind { get => _appServicePlanBody.Kind ?? null; set => _appServicePlanBody.Kind = value; }
+
+        /// <summary>Resource ID of the Kubernetes Environment.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID of the Kubernetes Environment.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource ID of the Kubernetes Environment.",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        public string KubeEnvironmentProfileId { get => _appServicePlanBody.KubeEnvironmentProfileId ?? null; set => _appServicePlanBody.KubeEnvironmentProfileId = value; }
 
         /// <summary>Resource Location.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource Location.")]
@@ -280,8 +315,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Capabilities of the SKU, e.g., is traffic manager enabled",
         SerializedName = @"capabilities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[] SkuCapability { get => _appServicePlanBody.SkuCapability ?? null /* arrayOf */; set => _appServicePlanBody.SkuCapability = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICapability) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ICapability[] SkuCapability { get => _appServicePlanBody.SkuCapability ?? null /* arrayOf */; set => _appServicePlanBody.SkuCapability = value; }
 
         /// <summary>Default number of workers for this App Service plan SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Default number of workers for this App Service plan SKU.")]
@@ -293,6 +328,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"default",
         PossibleTypes = new [] { typeof(int) })]
         public int SkuCapacityDefault { get => _appServicePlanBody.SkuCapacityDefault ?? default(int); set => _appServicePlanBody.SkuCapacityDefault = value; }
+
+        /// <summary>Maximum number of Elastic workers for this App Service plan SKU.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Maximum number of Elastic workers for this App Service plan SKU.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Maximum number of Elastic workers for this App Service plan SKU.",
+        SerializedName = @"elasticMaximum",
+        PossibleTypes = new [] { typeof(int) })]
+        public int SkuCapacityElasticMaximum { get => _appServicePlanBody.SkuCapacityElasticMaximum ?? default(int); set => _appServicePlanBody.SkuCapacityElasticMaximum = value; }
 
         /// <summary>Maximum number of workers for this App Service plan SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Maximum number of workers for this App Service plan SKU.")]
@@ -423,8 +469,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags Tag { get => _appServicePlanBody.Tag ?? null /* object */; set => _appServicePlanBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags Tag { get => _appServicePlanBody.Tag ?? null /* object */; set => _appServicePlanBody.Tag = value; }
 
         /// <summary>Scaling worker count.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Scaling worker count.")]
@@ -460,28 +506,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         public string WorkerTierName { get => _appServicePlanBody.WorkerTierName ?? null; set => _appServicePlanBody.WorkerTierName = value; }
 
         /// <summary>
+        /// If <code>true</code>, this App Service Plan will perform availability zone balancing.If <code>false</code>, this App Service
+        /// Plan will not perform availability zone balancing.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "If <code>true</code>, this App Service Plan will perform availability zone balancing.If <code>false</code>, this App Service Plan will not perform availability zone balancing.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"If <code>true</code>, this App Service Plan will perform availability zone balancing.If <code>false</code>, this App Service Plan will not perform availability zone balancing.",
+        SerializedName = @"zoneRedundant",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter ZoneRedundant { get => _appServicePlanBody.ZoneRedundant ?? default(global::System.Management.Automation.SwitchParameter); set => _appServicePlanBody.ZoneRedundant = value; }
+
+        /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -528,7 +588,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -707,16 +784,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -733,7 +825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IDefaultErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_appServicePlanBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -751,12 +843,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan">Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan> response)
         {
             using( NoSynchronizationContext )
             {
@@ -768,7 +860,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
                 WriteObject((await response));
             }
         }

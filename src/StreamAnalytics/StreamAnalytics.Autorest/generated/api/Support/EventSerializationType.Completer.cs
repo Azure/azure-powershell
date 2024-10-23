@@ -30,23 +30,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Csv".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Csv", "Csv", global::System.Management.Automation.CompletionResultType.ParameterValue, "Csv");
+                yield return new global::System.Management.Automation.CompletionResult("'Csv'", "Csv", global::System.Management.Automation.CompletionResultType.ParameterValue, "Csv");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Avro".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Avro", "Avro", global::System.Management.Automation.CompletionResultType.ParameterValue, "Avro");
+                yield return new global::System.Management.Automation.CompletionResult("'Avro'", "Avro", global::System.Management.Automation.CompletionResultType.ParameterValue, "Avro");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Json".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Json", "Json", global::System.Management.Automation.CompletionResultType.ParameterValue, "Json");
+                yield return new global::System.Management.Automation.CompletionResult("'Json'", "Json", global::System.Management.Automation.CompletionResultType.ParameterValue, "Json");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CustomClr".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CustomClr", "CustomClr", global::System.Management.Automation.CompletionResultType.ParameterValue, "CustomClr");
+                yield return new global::System.Management.Automation.CompletionResult("'CustomClr'", "CustomClr", global::System.Management.Automation.CompletionResultType.ParameterValue, "CustomClr");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Parquet".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Parquet", "Parquet", global::System.Management.Automation.CompletionResultType.ParameterValue, "Parquet");
+                yield return new global::System.Management.Automation.CompletionResult("'Parquet'", "Parquet", global::System.Management.Automation.CompletionResultType.ParameterValue, "Parquet");
             }
         }
     }

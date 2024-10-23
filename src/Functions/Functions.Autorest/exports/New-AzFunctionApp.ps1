@@ -37,14 +37,20 @@ New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -PlanName MyPlanName `
                   -StorageAccountName MyStorageAccountName `
                   -DockerImageName myacr.azurecr.io/myimage:tag
+.Example
+New-AzFunctionApp -Name MyUniqueFunctionAppName `
+                  -ResourceGroupName MyResourceGroupName `
+                  -StorageAccountName MyStorageAccountName `
+                  -Environment MyEnvironment `
+                  -WorkloadProfileName MyWorkloadProfileName
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/new-azfunctionapp
 #>
 function New-AzFunctionApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite])]
 [CmdletBinding(DefaultParameterSetName='Consumption', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -138,7 +144,7 @@ param(
     [Parameter()]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -168,27 +174,74 @@ param(
     #             '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
     ${IdentityID},
 
+    [Parameter(ParameterSetName='EnvironmentForContainerApp', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Name of the container app environment.
+    ${Environment},
+
+    [Parameter(ParameterSetName='EnvironmentForContainerApp')]
+    [Parameter(ParameterSetName='CustomDockerImage', Mandatory)]
+    [Alias('DockerImageName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # Container image name, e.g., publisher/image-name:tag.
+    ${Image},
+
+    [Parameter(ParameterSetName='EnvironmentForContainerApp')]
+    [Parameter(ParameterSetName='CustomDockerImage')]
+    [Alias('DockerRegistryCredential')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.PSCredential]
+    # The container registry username and password.
+    # Required for private registries.
+    ${RegistryCredential},
+
+    [Parameter(ParameterSetName='EnvironmentForContainerApp')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # The workload profile name to run the container app on.
+    ${WorkloadProfileName},
+
+    [Parameter(ParameterSetName='EnvironmentForContainerApp')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Double]
+    # The CPU in cores of the container app.
+    # e.g., 0.75.
+    ${ResourceCpu},
+
+    [Parameter(ParameterSetName='EnvironmentForContainerApp')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # The memory size of the container app.
+    # e.g., 1.0Gi.
+    ${ResourceMemory},
+
+    [Parameter(ParameterSetName='EnvironmentForContainerApp')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Int32]
+    # The maximum number of replicas when creating a function app on container app.
+    ${ScaleMaxReplica},
+
+    [Parameter(ParameterSetName='EnvironmentForContainerApp')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Int32]
+    # The minimum number of replicas when create function app on container app.
+    ${ScaleMinReplica},
+
+    [Parameter(ParameterSetName='EnvironmentForContainerApp')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # The container registry server hostname, e.g.
+    # myregistry.azurecr.io.
+    ${RegistryServer},
+
     [Parameter(ParameterSetName='CustomDockerImage', Mandatory)]
     [Parameter(ParameterSetName='ByAppServicePlan', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # The name of the service plan.
     ${PlanName},
-
-    [Parameter(ParameterSetName='CustomDockerImage', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Linux only.
-    # Container image name from Docker Registry, e.g.
-    # publisher/image-name:tag.
-    ${DockerImageName},
-
-    [Parameter(ParameterSetName='CustomDockerImage')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.Management.Automation.PSCredential]
-    # The container registry user name and password.
-    # Required for private registries.
-    ${DockerRegistryCredential},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -271,11 +324,18 @@ begin {
 
         $mapping = @{
             Consumption = 'Az.Functions.custom\New-AzFunctionApp';
+            EnvironmentForContainerApp = 'Az.Functions.custom\New-AzFunctionApp';
             CustomDockerImage = 'Az.Functions.custom\New-AzFunctionApp';
             ByAppServicePlan = 'Az.Functions.custom\New-AzFunctionApp';
         }
-        if (('Consumption', 'CustomDockerImage', 'ByAppServicePlan') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('Consumption', 'EnvironmentForContainerApp', 'CustomDockerImage', 'ByAppServicePlan') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

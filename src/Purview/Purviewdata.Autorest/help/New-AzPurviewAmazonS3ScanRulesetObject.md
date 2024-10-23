@@ -26,7 +26,7 @@ Create an in-memory object for AmazonS3ScanRuleset.
 
 ### Example 1: Create AmazonS3 custom scanruleset object
 ```powershell
- New-AzPurviewAmazonS3ScanRulesetObject -Kind 'AmazonS3' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
+New-AzPurviewAmazonS3ScanRulesetObject -Kind 'AmazonS3' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -ScanningRuleFileExtension @("CSV","JSON","PSV","SSV","TSV","TXT","XML","PARQUET","AVRO","ORC","Documents","GZ","DOC","DOCM","DOCX","DOT","ODP","ODS","ODT","PDF","POT","PPS","PPSX","PPT","PPTM","PPTX","XLC","XLS","XLSB","XLSM","XLSX","XLT") -Type 'Custom'
 ```
 
 ```output
@@ -164,20 +164,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonS3ScanRuleset
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-SCANNINGRULECUSTOMFILEEXTENSION <ICustomFileExtension[]>: 
-  - `[CustomFileTypeBuiltInType <FileExtensionsType?>]`: 
-  - `[CustomFileTypeCustomDelimiter <String>]`: 
-  - `[Description <String>]`: 
-  - `[Enabled <Boolean?>]`: 
-  - `[FileExtension <String>]`: 
 
 ## RELATED LINKS
 

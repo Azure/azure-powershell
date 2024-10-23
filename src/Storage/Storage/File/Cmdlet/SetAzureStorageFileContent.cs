@@ -36,6 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Threading.Tasks;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
 
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageFile), "13.0.0", "8.0.0", ChangeDescription = "The child property CloudFile from deprecated v11 SDK will be removed. Use child property ShareFileClient instead.")]
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFile))]
     public class SetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
     {
@@ -47,6 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Share", "13.0.0", "8.0.0", ChangeDescription = "The parameter Share (alias CloudFileShare) will be deprecated, and ShareClient will be mandatory.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -67,6 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public ShareClient ShareClient { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Directory", "13.0.0", "8.0.0", ChangeDescription = "The parameter Directory (alias CloudFileDirectory) will be deprecated, and ShareDirectoryClient will be mandatory.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -96,7 +99,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Source { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("Path", "12.0.0", "7.0.0", ChangeDescription = "When uploading using SAS token without Read permission, the destination path will be taken as a file path, instead of a directory path previously.")]
         [Parameter(
             Position = 2,
             HelpMessage = "Path to the cloud file which would be uploaded to.")]
@@ -393,9 +395,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     e.RequestInformation.HttpStatusCode == (int)HttpStatusCode.Forbidden)
                 {
                     //Forbidden to check directory existence, might caused by a write only SAS
-                    //Don't report error here since should not block upload with write only SAS
-                    //If the directory not exist, Error will be reported when upload with DMlib later
-                    directoryExists = true;
+                    //Don't report error here since should not block upload with write only SAS,
+                    //Will take as directory not exist here, and take the path as file path (instead of parent dir path), to allow upload file with specific file name and write only sas
+                    //If the dir already exist, will get error later, and customer can set the path to file path to unblock it.
+                    directoryExists = false;
                 }
                 else
                 {
@@ -488,9 +491,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 if (e.Status == 403)
                 {
                     //Forbidden to check directory existence, might caused by a write only SAS
-                    //Don't report error here since should not block upload with write only SAS
-                    //If the directory not exist, Error will be reported when upload with DMlib later
-                    directoryExists = true;
+                    //Don't report error here since should not block upload with write only SAS,
+                    //Will take as directory not exist here, and take the path as file path (instead of parent dir path), to allow upload file with specific file name and write only sas
+                    //If the dir already exist, will get error later, and customer can set the path to file path to unblock it.
+                    directoryExists = false;
                 }
                 else
                 {

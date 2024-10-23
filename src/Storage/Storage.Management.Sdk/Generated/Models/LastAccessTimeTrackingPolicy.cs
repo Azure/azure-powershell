@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Storage.Models
 
         /// <param name="name">Name of the policy. The valid value is AccessTimeTracking. This field is
         /// currently read only
-        /// Possible values include: 'AccessTimeTracking'</param>
+        /// Possible values include: &#39;AccessTimeTracking&#39;</param>
 
         /// <param name="trackingGranularityInDays">The field specifies blob object tracking granularity in days, typically how
         /// often the blob object should be tracked.This field is currently read only

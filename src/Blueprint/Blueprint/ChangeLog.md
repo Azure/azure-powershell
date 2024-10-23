@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.4
+* Removed Microsoft.Azure.Management.Blueprint 0.20.7-preview dependencies
+* Added Microsoft.Azure.PowerShell.Blueprint.Management.Sdk
+
+## Version 0.4.3
+* Removed the outdated deps.json file.
+
 ## Version 0.4.2
 * Fixed cannot returning more than 100 artifacts of the `Get-AzBlueprintArtifact`. [#20112]
 
@@ -39,7 +46,7 @@
 
 ## Version 0.2.11
 * Showed DependsOn property value in the table view
-* Added support to accept PolicyDefinitionParameter empty 
+* Added support to accept PolicyDefinitionParameter empty
 
 ## Version 0.2.10
 * Added support to include subfolders when deploying blueprints with artifacts

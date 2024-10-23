@@ -23,7 +23,7 @@ Create an in-memory object for AzureSqlDatabaseManagedInstanceMsiScan.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceMsiScan
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceMsiScanObject
 #>
 function New-AzPurviewAzureSqlDatabaseManagedInstanceMsiScanObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceMsiScan')]

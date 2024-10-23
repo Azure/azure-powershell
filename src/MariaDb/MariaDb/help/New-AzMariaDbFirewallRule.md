@@ -22,15 +22,15 @@ New-AzMariaDbFirewallRule -ResourceGroupName <String> -ServerName <String> [-Nam
 ### ClientIPAddress
 ```
 New-AzMariaDbFirewallRule -ResourceGroupName <String> -ServerName <String> [-Name <String>]
- [-SubscriptionId <String>] -ClientIPAddress <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -ClientIPAddress <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AllowAll
 ```
 New-AzMariaDbFirewallRule -ResourceGroupName <String> -ServerName <String> [-Name <String>]
- [-SubscriptionId <String>] [-AllowAll] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-AllowAll] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -291,7 +291,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

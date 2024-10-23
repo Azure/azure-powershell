@@ -25,6 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.Azure.Documents.Partitioning;
     using Microsoft.Azure.Storage.DataMovement;
     using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -34,6 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
 
+    [CmdletOutputBreakingChangeWithVersion(typeof(AzureStorageFile), "13.0.0", "8.0.0", ChangeDescription = "The child property CloudFile from deprecated v11 SDK will be removed when -PassThru is specified. Use child property ShareFileClient instead.")]
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
     [OutputType(typeof(AzureStorageFile))]
     public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
@@ -46,6 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Share", "13.0.0", "8.0.0", ChangeDescription = "The parameter Share (alias CloudFileShare) will be deprecated, and ShareClient will be mandatory.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -65,6 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public ShareClient ShareClient { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Directory", "13.0.0", "8.0.0", ChangeDescription = "The parameter Directory (alias CloudFileDirectory) will be deprecated, and ShareDirectoryClient will be mandatory.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -85,6 +89,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public ShareDirectoryClient ShareDirectoryClient { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("File", "13.0.0", "8.0.0", ChangeDescription = "The parameter File (alias CloudFile) will be deprecated, and ShareFileClient will be mandatory.")]
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -340,8 +345,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                                     downloadOptions.Range = new HttpRange(downloadOffset, contentSize);
                                     ShareFileDownloadInfo download = fileClientToBeDownloaded.Download(downloadOptions, cancellationToken: this.CmdletCancellationToken);
                                     download.Content.CopyTo(stream);
-                                    downloadOffset += contentSize;
-                                    contentLenLeft -= contentSize;
+                                    downloadOffset += download.ContentLength;
+                                    contentLenLeft -= download.ContentLength;
                                     progressHandler.Report(downloadOffset);
                                 }
                             }

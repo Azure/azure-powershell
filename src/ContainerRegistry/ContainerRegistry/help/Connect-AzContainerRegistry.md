@@ -14,12 +14,13 @@ Login to an azure container registry.
 
 ### WithoutNameAndPasswordParameterSet (Default)
 ```
-Connect-AzContainerRegistry -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Connect-AzContainerRegistry -Name <String> [-ExposeToken] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### WithNameAndPasswordParameterSet
 ```
-Connect-AzContainerRegistry -Name <String> -UserName <String> -Password <String>
+Connect-AzContainerRegistry -Name <String> -UserName <String> -Password <String> [-ExposeToken]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -58,6 +59,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExposeToken
+Expose access token instead of automatically logging in through Docker CLI.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

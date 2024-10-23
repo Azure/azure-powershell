@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Kusto-help.xml
 Module Name: Az.Kusto
 online version: https://learn.microsoft.com/powershell/module/az.kusto/get-azkustocluster
 schema: 2.0.0
@@ -14,7 +14,8 @@ Gets a Kusto cluster.
 
 ### List1 (Default)
 ```
-Get-AzKustoCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzKustoCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -23,14 +24,15 @@ Get-AzKustoCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzKustoCluster -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List
 ```
 Get-AzKustoCluster -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzKustoCluster -InputObject <IKustoIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -55,7 +57,7 @@ The above command lists all Kusto clusters in the resource group "testrg".
 
 ### Example 2: Get a specific Kusto cluster by name
 ```powershell
- Get-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster
+Get-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster
 ```
 
 ```output
@@ -136,7 +138,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: False
@@ -160,4 +162,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

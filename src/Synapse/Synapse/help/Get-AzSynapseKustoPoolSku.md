@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Synapse-help.xml
 Module Name: Az.Synapse
 online version: https://learn.microsoft.com/powershell/module/az.synapse/get-azsynapsekustopoolsku
 schema: 2.0.0
@@ -14,13 +14,14 @@ Lists eligible SKUs for Kusto Pool resource.
 
 ### List (Default)
 ```
-Get-AzSynapseKustoPoolSku [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSynapseKustoPoolSku [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzSynapseKustoPoolSku -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSynapseKustoPoolSku [-SubscriptionId <String[]>] -KustoPoolName <String> -ResourceGroupName <String>
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +68,8 @@ The above command lists eligible SKUs for specific kusto pool.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -155,7 +157,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

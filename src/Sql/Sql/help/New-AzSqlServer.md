@@ -74,7 +74,7 @@ AdministratorType         : ActiveDirectory
 PrincipalType             : Group
 Login                     : DummyLogin
 Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
-TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+TenantId                  : 00001111-aaaa-2222-bbbb-3333cccc4444
 AzureADOnlyAuthentication : True
 ```
 
@@ -263,7 +263,7 @@ Accepted values: None, 1.0, 1.1, 1.2
 
 Required: False
 Position: Named
-Default value: None
+Default value: 1.2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -23,7 +23,7 @@ Create an in-memory object for AzureStorageMsiScan.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageMsiScan
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureStorageMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureStorageMsiScanObject
 #>
 function New-AzPurviewAzureStorageMsiScanObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageMsiScan')]

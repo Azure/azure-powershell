@@ -15,7 +15,8 @@ Restart a SignalR service.
 ### ResourceGroupParameterSet (Default)
 ```
 Restart-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -27,7 +28,8 @@ Restart-AzSignalR -ResourceId <String> [-AsJob] [-PassThru] [-DefaultProfile <IA
 ### InputObjectParameterSet
 ```
 Restart-AzSignalR -InputObject <PSSignalRResource> [-AsJob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +37,7 @@ Restart a SignalR service.
 
 ## EXAMPLES
 
-### Restart a specific SignalR service
+### Example 1: Restart a specific SignalR service
 ```powershell
 Restart-AzSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
 ```

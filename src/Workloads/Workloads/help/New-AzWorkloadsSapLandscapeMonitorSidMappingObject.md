@@ -13,7 +13,8 @@ Create an in-memory object for SapLandscapeMonitorSidMapping.
 ## SYNTAX
 
 ```
-New-AzWorkloadsSapLandscapeMonitorSidMappingObject [-Name <String>] [-TopSid <String[]>] [<CommonParameters>]
+New-AzWorkloadsSapLandscapeMonitorSidMappingObject [-Name <String>] [-TopSid <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,10 +74,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapLandscapeMonitorSidMapping
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.SapLandscapeMonitorSidMapping
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -14,7 +14,8 @@ Delete repository from ACR.
 
 ```
 Remove-AzContainerRegistryRepository -Name <String> -RegistryName <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

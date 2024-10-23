@@ -1,17 +1,16 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Approve-AzEventHubPrivateEndpointConnection'))
-{
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Approve-AzEventHubPrivateEndpointConnection.Recording.json'
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
+if (($null -eq $TestName) -or ($TestName -contains 'Approve-AzEventHubPrivateEndpointConnection')) {
+    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+    if (-Not (Test-Path -Path $loadEnvPath)) {
+        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+    }
+    . ($loadEnvPath)
+    $TestRecordingFile = Join-Path $PSScriptRoot 'Approve-AzEventHubPrivateEndpointConnection.Recording.json'
+    $currentPath = $PSScriptRoot
+    while (-not $mockingPath) {
+        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+        $currentPath = Split-Path -Path $currentPath -Parent
+    }
+    . ($mockingPath | Select-Object -First 1).FullName
 }
 
 Describe 'Approve-AzEventHubPrivateEndpointConnection' {
@@ -25,7 +24,7 @@ Describe 'Approve-AzEventHubPrivateEndpointConnection' {
         $firstPrivateEndpoint.ConnectionState | Should -Be "Approved"
         $firstPrivateEndpoint.Description | Should -Be ""
 
-        while($firstPrivateEndpoint.ProvisioningState -ne "Succeeded"){
+        while ($firstPrivateEndpoint.ProvisioningState -ne "Succeeded") {
             $firstPrivateEndpoint = Get-AzEventHubPrivateEndpointConnection -Name $privateEndpoint[0].Name -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
             Start-TestSleep 10
         }
@@ -38,7 +37,7 @@ Describe 'Approve-AzEventHubPrivateEndpointConnection' {
         $secondPrivateEndpoint.ConnectionState | Should -Be "Approved"
         $secondPrivateEndpoint.Description | Should -Be "Bye"
 
-        while($secondPrivateEndpoint.ProvisioningState -ne "Succeeded"){
+        while ($secondPrivateEndpoint.ProvisioningState -ne "Succeeded") {
             $secondPrivateEndpoint = Get-AzEventHubPrivateEndpointConnection -Name $privateEndpoint[1].Name -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
             Start-TestSleep 10
         }

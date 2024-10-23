@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A list of workload networks</summary>
+    /// <summary>The response of a WorkloadNetwork list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkListTypeConverter))]
     public partial class WorkloadNetworkList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// A list of workload networks
+    /// The response of a WorkloadNetwork list operation.
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkListTypeConverter))]
     public partial interface IWorkloadNetworkList
 

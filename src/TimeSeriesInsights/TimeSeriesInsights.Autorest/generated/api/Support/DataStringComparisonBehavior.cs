@@ -6,6 +6,11 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
 {
 
+    /// <summary>
+    /// The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which
+    /// means case sensitive key comparison will be performed while joining reference data with events or while adding new reference
+    /// data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
+    /// </summary>
     public partial struct DataStringComparisonBehavior :
         System.IEquatable<DataStringComparisonBehavior>
     {
@@ -22,11 +27,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         /// <param name="value">the value to convert to an instance of <see cref="DataStringComparisonBehavior" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new DataStringComparisonBehavior(System.Convert.ToString(value));
+            return new DataStringComparisonBehavior(global::System.Convert.ToString(value));
         }
 
         /// <summary>
-        /// Creates an instance of the <see cref="DataStringComparisonBehavior" Enum class./>
+        /// Creates an instance of the <see cref="DataStringComparisonBehavior"/> Enum class.
         /// </summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private DataStringComparisonBehavior(string underlyingValue)
@@ -81,8 +86,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         }
 
         /// <summary>Overriding != operator for enum DataStringComparisonBehavior</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior e1, Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior e2)
         {
@@ -90,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         }
 
         /// <summary>Overriding == operator for enum DataStringComparisonBehavior</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior e1, Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior e2)
         {

@@ -16,14 +16,14 @@
 
 <#
 .Synopsis
-Create a in-memory object for Acl
+Create an in-memory object for Acl.
 .Description
-Create a in-memory object for Acl
+Create an in-memory object for Acl.
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Acl
 .Link
-https://learn.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolAclObject
+https://learn.microsoft.com/powershell/module/Az.DiskPool/new-AzDiskPoolAclObject
 #>
 function New-AzDiskPoolAclObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Acl')]
@@ -41,8 +41,12 @@ function New-AzDiskPoolAclObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Acl]::New()
 
-        $Object.InitiatorIqn = $InitiatorIqn
-        $Object.MappedLun = $MappedLun
+        if ($PSBoundParameters.ContainsKey('InitiatorIqn')) {
+            $Object.InitiatorIqn = $InitiatorIqn
+        }
+        if ($PSBoundParameters.ContainsKey('MappedLun')) {
+            $Object.MappedLun = $MappedLun
+        }
         return $Object
     }
 }

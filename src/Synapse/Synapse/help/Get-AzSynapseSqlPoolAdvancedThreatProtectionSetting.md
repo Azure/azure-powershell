@@ -15,7 +15,8 @@ Gets the advanced threat protection settings for a SQL pool.
 ### GetByNameParameterSet (Default)
 ```
 Get-AzSynapseSqlPoolAdvancedThreatProtectionSetting [-ResourceGroupName <String>] -WorkspaceName <String>
- -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByParentObjectParameterSet

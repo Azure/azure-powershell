@@ -109,17 +109,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Sku"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SkuTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PrivateCloudPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SkuTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Identity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PrivateCloudIdentityTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemAssignedServiceIdentityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -133,17 +161,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("Tag"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ResourceTagsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SkuName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuName, global::System.Convert.ToString);
             }
             if (content.Contains("ManagementCluster"))
             {
@@ -161,13 +185,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpoints) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Endpoint, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EndpointsTypeConverter.ConvertFrom);
             }
-            if (content.Contains("AvailabilityStrategy"))
+            if (content.Contains("SkuName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).AvailabilityStrategy = (string) content.GetValueForProperty("AvailabilityStrategy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).AvailabilityStrategy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuTier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuTier, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuSize = (string) content.GetValueForProperty("SkuSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("Availability"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Availability = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAvailabilityProperties) content.GetValueForProperty("Availability",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Availability, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AvailabilityPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SecondaryCircuit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SecondaryCircuit = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit) content.GetValueForProperty("SecondaryCircuit",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SecondaryCircuit, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.CircuitTypeConverter.ConvertFrom);
             }
             if (content.Contains("Internet"))
             {
@@ -180,10 +224,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("ExtendedNetworkBlock"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ExtendedNetworkBlock = (System.Collections.Generic.List<string>) content.GetValueForProperty("ExtendedNetworkBlock",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ExtendedNetworkBlock, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("SecondaryCircuit"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SecondaryCircuit = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit) content.GetValueForProperty("SecondaryCircuit",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SecondaryCircuit, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.CircuitTypeConverter.ConvertFrom);
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -207,11 +247,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             if (content.Contains("VcenterPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcenterPassword = (string) content.GetValueForProperty("VcenterPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcenterPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcenterPassword = (System.Security.SecureString) content.GetValueForProperty("VcenterPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcenterPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("NsxtPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).NsxtPassword = (string) content.GetValueForProperty("NsxtPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).NsxtPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).NsxtPassword = (System.Security.SecureString) content.GetValueForProperty("NsxtPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).NsxtPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("VcenterCertificateThumbprint"))
             {
@@ -229,6 +269,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).NsxPublicIPQuotaRaised = (string) content.GetValueForProperty("NsxPublicIPQuotaRaised",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).NsxPublicIPQuotaRaised, global::System.Convert.ToString);
             }
+            if (content.Contains("VirtualNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VirtualNetworkId = (string) content.GetValueForProperty("VirtualNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VirtualNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DnsZoneType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).DnsZoneType = (string) content.GetValueForProperty("DnsZoneType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).DnsZoneType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagementClusterHost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterHost = (System.Collections.Generic.List<string>) content.GetValueForProperty("ManagementClusterHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterHost, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AvailabilityStrategy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).AvailabilityStrategy = (string) content.GetValueForProperty("AvailabilityStrategy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).AvailabilityStrategy, global::System.Convert.ToString);
+            }
             if (content.Contains("CircuitPrimarySubnet"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).CircuitPrimarySubnet = (string) content.GetValueForProperty("CircuitPrimarySubnet",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).CircuitPrimarySubnet, global::System.Convert.ToString);
@@ -244,6 +300,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("EndpointVcsa"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointVcsa = (string) content.GetValueForProperty("EndpointVcsa",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointVcsa, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointVcenterIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointVcenterIP = (string) content.GetValueForProperty("EndpointVcenterIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointVcenterIP, global::System.Convert.ToString);
             }
             if (content.Contains("IdentityPrincipalId"))
             {
@@ -269,9 +329,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterId = (int?) content.GetValueForProperty("ManagementClusterId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("ManagementClusterHost"))
+            if (content.Contains("ManagementClusterVsanDatastoreName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterHost = (System.Collections.Generic.List<string>) content.GetValueForProperty("ManagementClusterHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterHost, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterVsanDatastoreName = (string) content.GetValueForProperty("ManagementClusterVsanDatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterVsanDatastoreName, global::System.Convert.ToString);
             }
             if (content.Contains("AvailabilityZone"))
             {
@@ -308,6 +368,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("EndpointHcxCloudManager"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointHcxCloudManager = (string) content.GetValueForProperty("EndpointHcxCloudManager",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointHcxCloudManager, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointNsxtManagerIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointNsxtManagerIP = (string) content.GetValueForProperty("EndpointNsxtManagerIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointNsxtManagerIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointHcxCloudManagerIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointHcxCloudManagerIP = (string) content.GetValueForProperty("EndpointHcxCloudManagerIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointHcxCloudManagerIP, global::System.Convert.ToString);
             }
             if (content.Contains("SecondaryCircuitPrimarySubnet"))
             {
@@ -358,17 +426,45 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
                 return;
             }
             // actually deserialize
-            if (content.Contains("Sku"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SkuTypeConverter.ConvertFrom);
-            }
             if (content.Contains("Property"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PrivateCloudPropertiesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SkuTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Identity"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PrivateCloudIdentityTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemAssignedServiceIdentity) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemAssignedServiceIdentityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedByType = (string) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataCreatedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedByType = (string) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedByType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.SystemDataTypeConverter.ConvertFrom);
             }
             if (content.Contains("Id"))
             {
@@ -382,17 +478,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceInternal)this).Type, global::System.Convert.ToString);
             }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.TrackedResourceTagsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Location"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)this).Location, global::System.Convert.ToString);
-            }
-            if (content.Contains("Tag"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrackedResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ResourceTagsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("SkuName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuName, global::System.Convert.ToString);
             }
             if (content.Contains("ManagementCluster"))
             {
@@ -410,13 +502,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Endpoint = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IEndpoints) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Endpoint, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.EndpointsTypeConverter.ConvertFrom);
             }
-            if (content.Contains("AvailabilityStrategy"))
+            if (content.Contains("SkuName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).AvailabilityStrategy = (string) content.GetValueForProperty("AvailabilityStrategy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).AvailabilityStrategy, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuTier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuTier = (string) content.GetValueForProperty("SkuTier",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuTier, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuSize = (string) content.GetValueForProperty("SkuSize",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuFamily"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuFamily = (string) content.GetValueForProperty("SkuFamily",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuFamily, global::System.Convert.ToString);
+            }
+            if (content.Contains("SkuCapacity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuCapacity = (int?) content.GetValueForProperty("SkuCapacity",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SkuCapacity, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("Availability"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Availability = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAvailabilityProperties) content.GetValueForProperty("Availability",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).Availability, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AvailabilityPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SecondaryCircuit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SecondaryCircuit = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit) content.GetValueForProperty("SecondaryCircuit",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SecondaryCircuit, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.CircuitTypeConverter.ConvertFrom);
             }
             if (content.Contains("Internet"))
             {
@@ -429,10 +541,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("ExtendedNetworkBlock"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ExtendedNetworkBlock = (System.Collections.Generic.List<string>) content.GetValueForProperty("ExtendedNetworkBlock",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ExtendedNetworkBlock, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
-            }
-            if (content.Contains("SecondaryCircuit"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SecondaryCircuit = (Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ICircuit) content.GetValueForProperty("SecondaryCircuit",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).SecondaryCircuit, Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.CircuitTypeConverter.ConvertFrom);
             }
             if (content.Contains("ProvisioningState"))
             {
@@ -456,11 +564,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             }
             if (content.Contains("VcenterPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcenterPassword = (string) content.GetValueForProperty("VcenterPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcenterPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcenterPassword = (System.Security.SecureString) content.GetValueForProperty("VcenterPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VcenterPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("NsxtPassword"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).NsxtPassword = (string) content.GetValueForProperty("NsxtPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).NsxtPassword, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).NsxtPassword = (System.Security.SecureString) content.GetValueForProperty("NsxtPassword",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).NsxtPassword, (object ss) => (System.Security.SecureString)ss);
             }
             if (content.Contains("VcenterCertificateThumbprint"))
             {
@@ -478,6 +586,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).NsxPublicIPQuotaRaised = (string) content.GetValueForProperty("NsxPublicIPQuotaRaised",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).NsxPublicIPQuotaRaised, global::System.Convert.ToString);
             }
+            if (content.Contains("VirtualNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VirtualNetworkId = (string) content.GetValueForProperty("VirtualNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).VirtualNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DnsZoneType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).DnsZoneType = (string) content.GetValueForProperty("DnsZoneType",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).DnsZoneType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagementClusterHost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterHost = (System.Collections.Generic.List<string>) content.GetValueForProperty("ManagementClusterHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterHost, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("AvailabilityStrategy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).AvailabilityStrategy = (string) content.GetValueForProperty("AvailabilityStrategy",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).AvailabilityStrategy, global::System.Convert.ToString);
+            }
             if (content.Contains("CircuitPrimarySubnet"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).CircuitPrimarySubnet = (string) content.GetValueForProperty("CircuitPrimarySubnet",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).CircuitPrimarySubnet, global::System.Convert.ToString);
@@ -493,6 +617,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("EndpointVcsa"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointVcsa = (string) content.GetValueForProperty("EndpointVcsa",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointVcsa, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointVcenterIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointVcenterIP = (string) content.GetValueForProperty("EndpointVcenterIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointVcenterIP, global::System.Convert.ToString);
             }
             if (content.Contains("IdentityPrincipalId"))
             {
@@ -518,9 +646,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterId = (int?) content.GetValueForProperty("ManagementClusterId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterId, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
-            if (content.Contains("ManagementClusterHost"))
+            if (content.Contains("ManagementClusterVsanDatastoreName"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterHost = (System.Collections.Generic.List<string>) content.GetValueForProperty("ManagementClusterHost",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterHost, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterVsanDatastoreName = (string) content.GetValueForProperty("ManagementClusterVsanDatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).ManagementClusterVsanDatastoreName, global::System.Convert.ToString);
             }
             if (content.Contains("AvailabilityZone"))
             {
@@ -557,6 +685,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("EndpointHcxCloudManager"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointHcxCloudManager = (string) content.GetValueForProperty("EndpointHcxCloudManager",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointHcxCloudManager, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointNsxtManagerIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointNsxtManagerIP = (string) content.GetValueForProperty("EndpointNsxtManagerIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointNsxtManagerIP, global::System.Convert.ToString);
+            }
+            if (content.Contains("EndpointHcxCloudManagerIP"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointHcxCloudManagerIP = (string) content.GetValueForProperty("EndpointHcxCloudManagerIP",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloudInternal)this).EndpointHcxCloudManagerIP, global::System.Convert.ToString);
             }
             if (content.Contains("SecondaryCircuitPrimarySubnet"))
             {

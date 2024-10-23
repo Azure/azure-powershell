@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>Pageable list of scripts/cmdlets</summary>
+    /// <summary>The response of a ScriptCmdlet list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(ScriptCmdletsListTypeConverter))]
     public partial class ScriptCmdletsList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             return ToJsonString();
         }
     }
-    /// Pageable list of scripts/cmdlets
+    /// The response of a ScriptCmdlet list operation.
     [System.ComponentModel.TypeConverter(typeof(ScriptCmdletsListTypeConverter))]
     public partial interface IScriptCmdletsList
 

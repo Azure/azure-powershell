@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the Datadog service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -15,7 +14,7 @@ This directory contains the PowerShell module for the Datadog service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -28,9 +27,9 @@ For information on how to develop for `Az.Datadog`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 2e3f1e0c67ee7da1d681a26b6b23b888ce856695
+commit: 2e3f1e0c67ee7da1d681a26b6b23b888ce856695
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file: 
   - $(repo)/specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json
   
@@ -39,6 +38,10 @@ module-version: 0.1.0
 subject-prefix: Datadog
 nested-object-to-string: true
 identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Remove cmdlet.

@@ -256,7 +256,7 @@ $vmssSize = 'Standard_D4s_v3';
 $vmssName1 = 'vmss1' + $rgname;
 $imageName = "Win2019Datacenter";
 $adminUsername = <Username>;
-$adminPassword = <Password> | ConvertTo-SecureString -AsPlainText -Force;
+$adminPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force;
 $cred = New-Object System.Management.Automation.PSCredential($adminUsername, $adminPassword);
 
 $result = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName1 -ImageName $imageName;

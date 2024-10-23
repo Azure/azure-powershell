@@ -18,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Logz.Description(@"Create sub account under a given monitor resource. This create operation can take upto 10 minutes to complete.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Logz.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Logz.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logz/monitors/{monitorName}/accounts/{subAccountName}", ApiVersion = "2020-10-01-preview")]
     public partial class NewAzLogzSubAccount_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener
     {
@@ -30,6 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
+        private Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource _body = new Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.LogzMonitorResource();
+
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
@@ -39,11 +42,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Logz.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Logz.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
-
-        /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource _body= new Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.LogzMonitorResource();
-
-        private Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource Body { get => this._body; set => this._body = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -62,12 +60,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         Description = @"Name of the Logz organization.",
         SerializedName = @"companyName",
         PossibleTypes = new [] { typeof(string) })]
-        public string CompanyName { get => Body.LogzOrganizationPropertyCompanyName ?? null; set => Body.LogzOrganizationPropertyCompanyName = value; }
+        public string CompanyName { get => _body.LogzOrganizationPropertyCompanyName ?? null; set => _body.LogzOrganizationPropertyCompanyName = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Logz.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Logz.ParameterCategory.Azure)]
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         Description = @"The Id of the Enterprise App used for Single sign on.",
         SerializedName = @"enterpriseAppId",
         PossibleTypes = new [] { typeof(string) })]
-        public string EnterpriseAppId { get => Body.LogzOrganizationPropertyEnterpriseAppId ?? null; set => Body.LogzOrganizationPropertyEnterpriseAppId = value; }
+        public string EnterpriseAppId { get => _body.LogzOrganizationPropertyEnterpriseAppId ?? null; set => _body.LogzOrganizationPropertyEnterpriseAppId = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -106,7 +105,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes IdentityType { get => Body.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes)""); set => Body.IdentityType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes IdentityType { get => _body.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes)""); set => _body.IdentityType = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -120,7 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         Description = @".",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => Body.Location ?? null; set => Body.Location = value; }
+        public string Location { get => _body.Location ?? null; set => _body.Location = value; }
 
         /// <summary>
         /// Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will
@@ -135,14 +134,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         SerializedName = @"marketplaceSubscriptionStatus",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MarketplaceSubscriptionStatus) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MarketplaceSubscriptionStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MarketplaceSubscriptionStatus MarketplaceSubscriptionStatus { get => Body.MarketplaceSubscriptionStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MarketplaceSubscriptionStatus)""); set => Body.MarketplaceSubscriptionStatus = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MarketplaceSubscriptionStatus MarketplaceSubscriptionStatus { get => _body.MarketplaceSubscriptionStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MarketplaceSubscriptionStatus)""); set => _body.MarketplaceSubscriptionStatus = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="MonitorName" /> property.</summary>
@@ -169,7 +168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         SerializedName = @"monitoringStatus",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus MonitoringStatus { get => Body.MonitoringStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus)""); set => Body.MonitoringStatus = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus MonitoringStatus { get => _body.MonitoringStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus)""); set => _body.MonitoringStatus = value; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -208,7 +207,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         Description = @"different billing cycles like MONTHLY/WEEKLY. this could be enum",
         SerializedName = @"billingCycle",
         PossibleTypes = new [] { typeof(string) })]
-        public string PlanBillingCycle { get => Body.PlanDataBillingCycle ?? null; set => Body.PlanDataBillingCycle = value; }
+        public string PlanBillingCycle { get => _body.PlanDataBillingCycle ?? null; set => _body.PlanDataBillingCycle = value; }
 
         /// <summary>plan id as published by Logz</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "plan id as published by Logz")]
@@ -219,7 +218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         Description = @"plan id as published by Logz",
         SerializedName = @"planDetails",
         PossibleTypes = new [] { typeof(string) })]
-        public string PlanDetail { get => Body.PlanDataPlanDetail ?? null; set => Body.PlanDataPlanDetail = value; }
+        public string PlanDetail { get => _body.PlanDataPlanDetail ?? null; set => _body.PlanDataPlanDetail = value; }
 
         /// <summary>date when plan was applied</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "date when plan was applied")]
@@ -230,7 +229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         Description = @"date when plan was applied",
         SerializedName = @"effectiveDate",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime PlanEffectiveDate { get => Body.PlanDataEffectiveDate ?? default(global::System.DateTime); set => Body.PlanDataEffectiveDate = value; }
+        public global::System.DateTime PlanEffectiveDate { get => _body.PlanDataEffectiveDate ?? default(global::System.DateTime); set => _body.PlanDataEffectiveDate = value; }
 
         /// <summary>different usage type like PAYG/COMMITTED. this could be enum</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "different usage type like PAYG/COMMITTED. this could be enum")]
@@ -241,7 +240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         Description = @"different usage type like PAYG/COMMITTED. this could be enum",
         SerializedName = @"usageType",
         PossibleTypes = new [] { typeof(string) })]
-        public string PlanUsageType { get => Body.PlanDataUsageType ?? null; set => Body.PlanDataUsageType = value; }
+        public string PlanUsageType { get => _body.PlanDataUsageType ?? null; set => _body.PlanDataUsageType = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -282,7 +281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         Description = @"The login URL specific to this Logz Organization.",
         SerializedName = @"singleSignOnUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string SingleSignOnUrl { get => Body.LogzOrganizationPropertySingleSignOnUrl ?? null; set => Body.LogzOrganizationPropertySingleSignOnUrl = value; }
+        public string SingleSignOnUrl { get => _body.LogzOrganizationPropertySingleSignOnUrl ?? null; set => _body.LogzOrganizationPropertySingleSignOnUrl = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -312,7 +311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         Description = @"Dictionary of <string>",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceTags Tag { get => Body.Tag ?? null /* object */; set => Body.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
 
         /// <summary>Email of the user used by Logz for contacting them if needed</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Email of the user used by Logz for contacting them if needed")]
@@ -323,7 +322,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         Description = @"Email of the user used by Logz for contacting them if needed",
         SerializedName = @"emailAddress",
         PossibleTypes = new [] { typeof(string) })]
-        public string UserInfoEmailAddress { get => Body.UserInfoEmailAddress ?? null; set => Body.UserInfoEmailAddress = value; }
+        public string UserInfoEmailAddress { get => _body.UserInfoEmailAddress ?? null; set => _body.UserInfoEmailAddress = value; }
 
         /// <summary>First Name of the user</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "First Name of the user")]
@@ -334,7 +333,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         Description = @"First Name of the user",
         SerializedName = @"firstName",
         PossibleTypes = new [] { typeof(string) })]
-        public string UserInfoFirstName { get => Body.UserInfoFirstName ?? null; set => Body.UserInfoFirstName = value; }
+        public string UserInfoFirstName { get => _body.UserInfoFirstName ?? null; set => _body.UserInfoFirstName = value; }
 
         /// <summary>Last Name of the user</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Last Name of the user")]
@@ -345,7 +344,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         Description = @"Last Name of the user",
         SerializedName = @"lastName",
         PossibleTypes = new [] { typeof(string) })]
-        public string UserInfoLastName { get => Body.UserInfoLastName ?? null; set => Body.UserInfoLastName = value; }
+        public string UserInfoLastName { get => _body.UserInfoLastName ?? null; set => _body.UserInfoLastName = value; }
 
         /// <summary>Phone number of the user used by Logz for contacting them if needed</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Phone number of the user used by Logz for contacting them if needed")]
@@ -356,15 +355,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         Description = @"Phone number of the user used by Logz for contacting them if needed",
         SerializedName = @"phoneNumber",
         PossibleTypes = new [] { typeof(string) })]
-        public string UserInfoPhoneNumber { get => Body.UserInfoPhoneNumber ?? null; set => Body.UserInfoPhoneNumber = value; }
+        public string UserInfoPhoneNumber { get => _body.UserInfoPhoneNumber ?? null; set => _body.UserInfoPhoneNumber = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -375,8 +374,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -387,6 +386,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Logz.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -412,7 +416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.Body = this.Body;
+            clone._body = this._body;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.MonitorName = this.MonitorName;
@@ -423,7 +427,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Logz.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -564,7 +585,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Logz.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -579,12 +599,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.SubAccountCreate(SubscriptionId, ResourceGroupName, MonitorName, Name, Body, onOk, onDefault, this, Pipeline);
+                    await this.Client.SubAccountCreate(SubscriptionId, ResourceGroupName, MonitorName, Name, _body, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,MonitorName=MonitorName,Name=Name,body=Body})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,MonitorName=MonitorName,Name=Name,body=_body})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -603,12 +623,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Logz.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Logz.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -630,14 +665,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MonitorName=MonitorName, Name=Name, body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MonitorName=MonitorName, Name=Name, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MonitorName=MonitorName, Name=Name, body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MonitorName=MonitorName, Name=Name, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -647,8 +682,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

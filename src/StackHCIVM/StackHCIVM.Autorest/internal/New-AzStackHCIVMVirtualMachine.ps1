@@ -16,15 +16,15 @@
 
 <#
 .Synopsis
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Example
 New-AzStackHCIVMVirtualMachine -Name "testVm" -OsType "Linux"  -ImageName "testImage" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm"  -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus"
 .Example
-New-AzStackHCIVMVirtualMachine -Name "testVm" -OsType "Linux" -OsDiskName "testOsDisk" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus"
+New-AzStackHCIVMVirtualMachine -Name "testVm" -OsType "Linux" -OsDiskName "testOsDisk10" -VmSize "Standard_K8S_v1"  -AdminUsername "localadmin" -ComputerName "testVm" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}" -Location "eastus"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance

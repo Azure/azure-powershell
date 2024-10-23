@@ -6,18 +6,23 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Extensions;
+    using Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PowerShell;
+    using Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Cmdlets;
     using System;
 
     /// <summary>Create a NewRelicMonitorResource</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzNewRelicMonitor_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Description(@"Create a NewRelicMonitorResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/NewRelic.Observability/monitors/{monitorName}", ApiVersion = "2024-01-01")]
     public partial class NewAzNewRelicMonitor_CreateExpanded : global::System.Management.Automation.PSCmdlet,
-        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener,
+        Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IContext
     {
         /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
         private string __correlationId = System.Guid.NewGuid().ToString();
@@ -33,8 +38,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>A dictionary to carry over additional data for pipeline.</summary>
+        private global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> _extensibleParameters = new System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>A buffer to record first returned object in response.</summary>
+        private object _firstResponse = null;
+
         /// <summary>A Monitor Resource by NewRelic</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.NewRelicMonitorResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.NewRelicMonitorResource();
+
+        /// <summary>
+        /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
+        /// Two means multiple returned objects in response.
+        /// </summary>
+        private int _responseSize = 0;
 
         /// <summary>Source of account creation</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Source of account creation")]
@@ -44,9 +61,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         ReadOnly = false,
         Description = @"Source of account creation",
         SerializedName = @"accountCreationSource",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.AccountCreationSource) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.AccountCreationSource))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.AccountCreationSource AccountCreationSource { get => _resourceBody.AccountCreationSource ?? ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.AccountCreationSource)""); set => _resourceBody.AccountCreationSource = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("LIFTR", "NEWRELIC")]
+        public string AccountCreationSource { get => _resourceBody.AccountCreationSource ?? null; set => _resourceBody.AccountCreationSource = value; }
 
         /// <summary>Account id</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Account id")]
@@ -70,13 +87,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         PossibleTypes = new [] { typeof(System.Security.SecureString) })]
         public System.Security.SecureString AccountInfoIngestionKey { get => _resourceBody.AccountInfoIngestionKey ?? null; set => _resourceBody.AccountInfoIngestionKey = value; }
 
-        /// <summary>NewRelic account region</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "NewRelic account region")]
+        /// <summary>Region where New Relic account is present</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Region where New Relic account is present")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"NewRelic account region",
+        Description = @"Region where New Relic account is present",
         SerializedName = @"region",
         PossibleTypes = new [] { typeof(string) })]
         public string AccountInfoRegion { get => _resourceBody.AccountInfoRegion ?? null; set => _resourceBody.AccountInfoRegion = value; }
@@ -91,6 +108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter Break { get; set; }
 
+        /// <summary>Accessor for cancellationTokenSource.</summary>
+        public global::System.Threading.CancellationTokenSource CancellationTokenSource { get => _cancellationTokenSource ; set { _cancellationTokenSource = value; } }
+
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.NewRelic Client => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Module.Instance.ClientAPI;
 
@@ -104,6 +124,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _resourceBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
+
+        /// <summary>Accessor for extensibleParameters.</summary>
+        public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
+
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -115,20 +142,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
-
-        /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ManagedServiceIdentityType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ManagedServiceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ManagedServiceIdentityType IdentityType { get => _resourceBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ManagedServiceIdentityType)""); set => _resourceBody.IdentityType = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -194,9 +207,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         ReadOnly = false,
         Description = @"Source of org creation",
         SerializedName = @"orgCreationSource",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.OrgCreationSource) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.OrgCreationSource))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.OrgCreationSource OrgCreationSource { get => _resourceBody.OrgCreationSource ?? ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.OrgCreationSource)""); set => _resourceBody.OrgCreationSource = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("LIFTR", "NEWRELIC")]
+        public string OrgCreationSource { get => _resourceBody.OrgCreationSource ?? null; set => _resourceBody.OrgCreationSource = value; }
 
         /// <summary>Organization id</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Organization id")]
@@ -212,7 +225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.HttpPipeline Pipeline { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.HttpPipeline Pipeline { get; set; }
 
         /// <summary>Different billing cycles like MONTHLY/WEEKLY. this could be enum</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Different billing cycles like MONTHLY/WEEKLY. this could be enum")]
@@ -222,9 +235,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         ReadOnly = false,
         Description = @"Different billing cycles like MONTHLY/WEEKLY. this could be enum",
         SerializedName = @"billingCycle",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.BillingCycle) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.BillingCycle))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.BillingCycle PlanDataBillingCycle { get => _resourceBody.PlanDataBillingCycle ?? ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.BillingCycle)""); set => _resourceBody.PlanDataBillingCycle = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("YEARLY", "MONTHLY", "WEEKLY")]
+        public string PlanDataBillingCycle { get => _resourceBody.PlanDataBillingCycle ?? null; set => _resourceBody.PlanDataBillingCycle = value; }
 
         /// <summary>date when plan was applied</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "date when plan was applied")]
@@ -256,9 +269,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         ReadOnly = false,
         Description = @"Different usage type like PAYG/COMMITTED. this could be enum",
         SerializedName = @"usageType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.UsageType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.UsageType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.UsageType PlanDataUsageType { get => _resourceBody.PlanDataUsageType ?? ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.UsageType)""); set => _resourceBody.PlanDataUsageType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("PAYG", "COMMITTED")]
+        public string PlanDataUsageType { get => _resourceBody.PlanDataUsageType ?? null; set => _resourceBody.PlanDataUsageType = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -290,6 +303,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>Status of Azure Subscription where Marketplace SaaS is located.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Status of Azure Subscription where Marketplace SaaS is located.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Status of Azure Subscription where Marketplace SaaS is located.",
+        SerializedName = @"saaSAzureSubscriptionStatus",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SaaSAzureSubscriptionStatus { get => _resourceBody.SaaSAzureSubscriptionStatus ?? null; set => _resourceBody.SaaSAzureSubscriptionStatus = value; }
+
         /// <summary>The Id of the Enterprise App used for Single sign-on.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Id of the Enterprise App used for Single sign-on.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ParameterCategory.Body)]
@@ -309,9 +333,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         ReadOnly = false,
         Description = @"Provisioning state",
         SerializedName = @"provisioningState",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ProvisioningState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ProvisioningState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ProvisioningState SingleSignOnPropertyProvisioningState { get => _resourceBody.SingleSignOnPropertyProvisioningState ?? ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ProvisioningState)""); set => _resourceBody.SingleSignOnPropertyProvisioningState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("Accepted", "Creating", "Updating", "Deleting", "Succeeded", "Failed", "Canceled", "Deleted", "NotSpecified")]
+        public string SingleSignOnPropertyProvisioningState { get => _resourceBody.SingleSignOnPropertyProvisioningState ?? null; set => _resourceBody.SingleSignOnPropertyProvisioningState = value; }
 
         /// <summary>Single sign-on state</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Single sign-on state")]
@@ -321,9 +345,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         ReadOnly = false,
         Description = @"Single sign-on state",
         SerializedName = @"singleSignOnState",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SingleSignOnStates) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SingleSignOnStates))]
-        public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SingleSignOnStates SingleSignOnPropertySingleSignOnState { get => _resourceBody.SingleSignOnPropertySingleSignOnState ?? ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SingleSignOnStates)""); set => _resourceBody.SingleSignOnPropertySingleSignOnState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("Initial", "Enable", "Disable", "Existing")]
+        public string SingleSignOnPropertySingleSignOnState { get => _resourceBody.SingleSignOnPropertySingleSignOnState ?? null; set => _resourceBody.SingleSignOnPropertySingleSignOnState = value; }
 
         /// <summary>The login URL specific to this NewRelic Organization</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The login URL specific to this NewRelic Organization")]
@@ -350,9 +374,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.DefaultInfo(
         Name = @"",
         Description =@"",
-        Script = @"(Get-AzContext).Subscription.Id")]
+        Script = @"(Get-AzContext).Subscription.Id",
+        SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>State of the Azure Subscription containing the monitor resource</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "State of the Azure Subscription containing the monitor resource")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"State of the Azure Subscription containing the monitor resource",
+        SerializedName = @"subscriptionState",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SubscriptionState { get => _resourceBody.SubscriptionState ?? null; set => _resourceBody.SubscriptionState = value; }
 
         /// <summary>Resource tags.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -363,24 +399,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api30.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api30.ITrackedResourceTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITrackedResourceTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
 
         /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.NewRelic.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api40.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api40.IUserAssignedIdentities UserAssignedIdentity { get => _resourceBody.IdentityUserAssignedIdentity ?? null /* object */; set => _resourceBody.IdentityUserAssignedIdentity = value; }
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>country if user</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "country if user")]
@@ -442,24 +470,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api30.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -506,7 +534,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            if (1 ==_responseSize)
+            {
+                // Flush buffer
+                WriteObject(_firstResponse);
+            }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -553,11 +603,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
                     }
+                    case Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.Progress:
+                    {
+                        var data = messageData();
+                        int progress = (int)data.Value;
+                        string activityMessage, statusDescription;
+                        global::System.Management.Automation.ProgressRecordType recordType;
+                        if (progress < 100)
+                        {
+                            activityMessage = "In progress";
+                            statusDescription = "Checking operation status";
+                            recordType = System.Management.Automation.ProgressRecordType.Processing;
+                        }
+                        else
+                        {
+                            activityMessage = "Completed";
+                            statusDescription = "Completed";
+                            recordType = System.Management.Automation.ProgressRecordType.Completed;
+                        }
+                        WriteProgress(new global::System.Management.Automation.ProgressRecord(1, activityMessage, statusDescription)
+                        {
+                            PercentComplete = progress,
+                        RecordType = recordType
+                        });
+                        return ;
+                    }
                     case Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.DelayBeforePolling:
                     {
+                        var data = messageData();
                         if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
                         {
-                            var data = messageData();
                             if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
                             {
                                 var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
@@ -569,10 +644,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
                                 return;
                             }
                         }
+                        else
+                        {
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                int delay = (int)(response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                                WriteDebug($"Delaying {delay} seconds before polling.");
+                                for (var now = 0; now < delay; ++now)
+                                {
+                                    WriteProgress(new global::System.Management.Automation.ProgressRecord(1, "In progress", "Checking operation status")
+                                    {
+                                        PercentComplete = now * 100 / delay
+                                    });
+                                    await global::System.Threading.Tasks.Task.Delay(1000, token);
+                                }
+                            }
+                        }
                         break;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Module.Instance.Signal(id, token, messageData, (i, t, m) => ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener)this).Signal(i, t, () => Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.EventDataConverter.ConvertFrom(m()) as Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.EventData), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -582,11 +673,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
         }
 
         /// <summary>
-        /// Intializes a new instance of the <see cref="NewAzNewRelicMonitor_CreateExpanded" /> cmdlet class.
+        /// Initializes a new instance of the <see cref="NewAzNewRelicMonitor_CreateExpanded" /> cmdlet class.
         /// </summary>
         public NewAzNewRelicMonitor_CreateExpanded()
         {
 
+        }
+
+        private void PreProcessManagedIdentityParameters()
+        {
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _resourceBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.UserAssignedIdentity());
+                }
+            }
+            // calculate IdentityType
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                if ("SystemAssigned".Equals(_resourceBody.IdentityType, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    _resourceBody.IdentityType = "SystemAssigned,UserAssigned";
+                }
+                else
+                {
+                    _resourceBody.IdentityType = "UserAssigned";
+                }
+            }
         }
 
         /// <summary>Performs execution of the command.</summary>
@@ -648,7 +764,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
             using( NoSynchronizationContext )
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName, this.ExtensibleParameters);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);
@@ -661,12 +777,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.MonitorsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _resourceBody, onOk, onDefault, this, Pipeline);
+                    this.PreProcessManagedIdentityParameters();
+                    await this.Client.MonitorsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_resourceBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -685,16 +802,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api30.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api30.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api30.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -711,15 +843,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api30.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_resourceBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_resourceBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -729,12 +861,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -746,8 +878,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource
-                WriteObject((await response));
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource
+                var result = (await response);
+                if (null != result)
+                {
+                    if (0 == _responseSize)
+                    {
+                        _firstResponse = result;
+                        _responseSize = 1;
+                    }
+                    else
+                    {
+                        if (1 ==_responseSize)
+                        {
+                            // Flush buffer
+                            WriteObject(_firstResponse.AddMultipleTypeNameIntoPSObject());
+                        }
+                        WriteObject(result.AddMultipleTypeNameIntoPSObject());
+                        _responseSize = 2;
+                    }
+                }
             }
         }
     }

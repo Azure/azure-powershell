@@ -20,7 +20,7 @@ Updates the authorization rule of a ServiceBus namespace, queue or topic.
 #>
 
 function Set-AzServiceBusAuthorizationRule{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpandedTopic', Mandatory, HelpMessage = "The name of the Authorization Rule")]
@@ -79,9 +79,8 @@ function Set-AzServiceBusAuthorizationRule{
 
         [Parameter(Mandatory, HelpMessage = "The rights associated with the rule.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]]
+        [System.String[]]
         # The rights associated with the rule.
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ParameterBreakingChangeAttribute("Rights","12.0.0", "4.0.0","2024-05-21" )]
         ${Rights},
 		
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]

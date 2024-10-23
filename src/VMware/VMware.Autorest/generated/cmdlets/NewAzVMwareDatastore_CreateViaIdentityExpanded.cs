@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a datastore in a private cloud cluster</summary>
+    /// <summary>Create a Datastore</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzVMwareDatastore_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Create a datastore in a private cloud cluster")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Create a Datastore")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}", ApiVersion = "2023-03-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}", ApiVersion = "2023-09-01")]
     public partial class NewAzVMwareDatastore_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IContext
@@ -90,14 +90,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         public string DiskPoolVolumeLunName { get => _datastoreBody.DiskPoolVolumeLunName ?? null; set => _datastoreBody.DiskPoolVolumeLunName = value; }
 
         /// <summary>
-        /// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+        /// Mode that describes whether the LUN has to be mounted as a datastore orattached as a LUN
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Mode that describes whether the LUN has to be mounted as a datastore orattached as a LUN")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN",
+        Description = @"Mode that describes whether the LUN has to be mounted as a datastore orattached as a LUN",
         SerializedName = @"mountOption",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("MOUNT", "ATTACH")]
@@ -113,6 +113,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         SerializedName = @"targetId",
         PossibleTypes = new [] { typeof(string) })]
         public string DiskPoolVolumeTargetId { get => _datastoreBody.DiskPoolVolumeTargetId ?? null; set => _datastoreBody.DiskPoolVolumeTargetId = value; }
+
+        /// <summary>Azure resource ID of the Elastic SAN Volume</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Azure resource ID of the Elastic SAN Volume")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Azure resource ID of the Elastic SAN Volume",
+        SerializedName = @"targetId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ElasticSanVolumeTargetId { get => _datastoreBody.ElasticSanVolumeTargetId ?? null; set => _datastoreBody.ElasticSanVolumeTargetId = value; }
 
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
@@ -262,11 +273,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
                 telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
                 telemetryInfo.TryGetValue("InvocationName", out var invocationName);
-                if (!string.IsNullOrEmpty(sanitizedProperties))
+                if (showSecretsWarning == "true")
                 {
-                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
                 }
             }
         }

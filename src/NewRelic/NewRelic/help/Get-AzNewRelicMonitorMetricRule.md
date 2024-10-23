@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NewRelic-help.xml
 Module Name: Az.NewRelic
 online version: https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitormetricrule
 schema: 2.0.0
@@ -14,14 +14,29 @@ Get metric rules
 
 ### GetExpanded (Default)
 ```
-Get-AzNewRelicMonitorMetricRule -MonitorName <String> -ResourceGroupName <String> -UserEmail <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzNewRelicMonitorMetricRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -UserEmail <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### GetViaJsonString
+```
+Get-AzNewRelicMonitorMetricRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### GetViaJsonFilePath
+```
+Get-AzNewRelicMonitorMetricRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
 Get-AzNewRelicMonitorMetricRule -InputObject <INewRelicIdentity> -UserEmail <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +46,7 @@ Get metric rules
 
 ### Example 1: Get specific monitor metric rule with specified resource group
 ```powershell
-Get-AzNewRelicMonitorMetricRule -MonitorName test-01 -ResourceGroupName ps-test -UserEmail v-jiaji@outlook.com
+Get-AzNewRelicMonitorMetricRule -MonitorName test-01 -ResourceGroupName ps-test -UserEmail user1@outlook.com
 ```
 
 ```output
@@ -62,7 +77,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
@@ -76,12 +90,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Get operation
+
+```yaml
+Type: System.String
+Parameter Sets: GetViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Get operation
+
+```yaml
+Type: System.String
+Parameter Sets: GetViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MonitorName
 Name of the Monitors resource
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath
 Aliases:
 
 Required: True
@@ -97,7 +141,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpanded
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath
 Aliases:
 
 Required: True
@@ -112,7 +156,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GetExpanded
+Parameter Sets: GetExpanded, GetViaJsonString, GetViaJsonFilePath
 Aliases:
 
 Required: False
@@ -127,7 +171,7 @@ User Email
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetExpanded, GetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -177,23 +221,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IMetricRules
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IMetricRules
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <INewRelicIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Name of the Monitors resource
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: Name of the TagRule
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

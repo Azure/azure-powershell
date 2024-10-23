@@ -15,7 +15,8 @@ Gets the policy from a tenant in Azure Attestation.
 ### NameParameterSet
 ```
 Get-AzAttestationPolicy [-Name] <String> [-ResourceGroupName] <String> -Tee <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -27,7 +28,8 @@ Get-AzAttestationPolicy [-ResourceId] <String> -Tee <String> [-DefaultProfile <I
 ### DefaultProviderParameterSet
 ```
 Get-AzAttestationPolicy [-Location] <String> [-DefaultProvider] -Tee <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

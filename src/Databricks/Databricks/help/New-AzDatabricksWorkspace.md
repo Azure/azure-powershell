@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Databricks-help.xml
 Module Name: Az.Databricks
 online version: https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
 schema: 2.0.0
@@ -13,20 +13,28 @@ Creates a new workspace.
 ## SYNTAX
 
 ```
-New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AmlWorkspaceId <String>] [-Authorization <IWorkspaceProviderAuthorization[]>]
+New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-ManagedResourceGroupName <String>] [-AmlWorkspaceId <String>]
+ [-Authorization <IWorkspaceProviderAuthorization[]>] [-DefaultCatalogInitialType <InitialType>]
  [-EnableNoPublicIP] [-EncryptionKeyName <String>] [-EncryptionKeySource <KeySource>]
  [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>] [-LoadBalancerBackendPoolName <String>]
- [-LoadBalancerId <String>] [-ManagedDiskKeyVaultPropertiesKeyName <String>]
- [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>] [-ManagedDiskKeyVaultPropertiesKeyVersion <String>]
- [-ManagedDiskRotationToLatestKeyVersionEnabled] [-ManagedResourceGroupName <String>]
- [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
+ [-LoadBalancerId <String>] [-ManagedDiskKeySource <EncryptionKeySource>]
+ [-ManagedDiskKeyVaultPropertiesKeyName <String>] [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]
+ [-ManagedDiskKeyVaultPropertiesKeyVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
+ [-ManagedServiceKeySource <EncryptionKeySource>] [-ManagedServicesKeyVaultPropertiesKeyName <String>]
+ [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-NatGatewayName <String>] [-PrepareEncryption]
  [-PrivateSubnetName <String>] [-PublicIPName <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-PublicSubnetName <String>] [-RequiredNsgRule <RequiredNsgRules>] [-RequireInfrastructureEncryption]
+ [-PublicSubnetName <String>] [-RequireInfrastructureEncryption] [-RequiredNsgRule <RequiredNsgRules>]
  [-Sku <String>] [-SkuTier <String>] [-StorageAccountName <String>] [-StorageAccountSku <String>]
  [-Tag <Hashtable>] [-UiDefinitionUri <String>] [-VirtualNetworkId <String>] [-VnetAddressPrefix <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnhancedSecurityMonitoringValue <EnhancedSecurityMonitoringValue>]
+ [-AutomaticClusterUpdateValue <AutomaticClusterUpdateValue>]
+ [-ComplianceSecurityProfileComplianceStandard <ComplianceStandard[]>]
+ [-ComplianceSecurityProfileValue <ComplianceSecurityProfileValue>] [-AccessConnectorId <String>]
+ [-AccessConnectorIdentityType <IdentityType>] [-AccessConnectorUserAssignedIdentityId <String>]
+ [-DefaultStorageFirewall <DefaultStorageFirewall>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,6 +94,52 @@ Please refer to the examples of Update-AzDatabricksWorkspace for more settings t
 
 ## PARAMETERS
 
+### -AccessConnectorId
+The resource ID of Azure Databricks Access Connector Resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AccessConnectorIdentityType
+The identity type of the Access Connector Resource.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AccessConnectorUserAssignedIdentityId
+The resource ID of the User Assigned Identity associated with the Access Connector Resource.
+This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AmlWorkspaceId
 The value which should be used for this field.
 
@@ -121,7 +175,68 @@ The workspace provider authorizations.
 To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutomaticClusterUpdateValue
+Status of automated cluster updates feature.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComplianceSecurityProfileComplianceStandard
+Compliance standards associated with the workspace.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComplianceSecurityProfileValue
+Status of Compliance Security Profile feature.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultCatalogInitialType
+Defines the initial type of the default catalog.
+Possible values (case-insensitive): HiveMetastore, UnityCatalog
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType
 Parameter Sets: (All)
 Aliases:
 
@@ -140,6 +255,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultStorageFirewall
+Gets or Sets Default Storage Firewall configuration information
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -224,6 +354,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnhancedSecurityMonitoringValue
+Status of Enhanced Security Monitoring feature.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LoadBalancerBackendPoolName
 The value which should be used for this field.
 
@@ -263,6 +408,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedDiskKeySource
+The encryption keySource (provider).
+Possible values (case-insensitive): Microsoft.Keyvault
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -334,6 +495,22 @@ The managed resource group Id.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedServiceKeySource
+The encryption keySource (provider).
+Possible values (case-insensitive): Microsoft.Keyvault
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource
 Parameter Sets: (All)
 Aliases:
 
@@ -620,6 +797,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -731,20 +909,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`AUTHORIZATION <IWorkspaceProviderAuthorization[]>`: The workspace provider authorizations.
-  - `PrincipalId <String>`: The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the workspace resources.
-  - `RoleDefinitionId <String>`: The provider's role definition identifier. This role will define all the permissions that the provider must have on the workspace's container resource group. This role definition cannot have permission to delete the resource group.
-
 ## RELATED LINKS
-

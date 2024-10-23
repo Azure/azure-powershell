@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Pre
         private string _action;
 
         /// <summary>
-        /// The action defined by RBAC, refer https://learn.microsoft.com/azure/role-based-access-control/role-definitions#actions-format
+        /// The action defined by RBAC, refer https://docs.microsoft.com/azure/role-based-access-control/role-definitions#actions-format
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PropertyOrigin.Owned)]
         public string Action { get => this._action; set => this._action = value; }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Pre
         private string _scope;
 
         /// <summary>
-        /// The scope of the operation, refer https://learn.microsoft.com/azure/role-based-access-control/scope-overview
+        /// The scope of the operation, refer https://docs.microsoft.com/azure/role-based-access-control/scope-overview
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PropertyOrigin.Owned)]
         public string Scope { get => this._scope; set => this._scope = value; }
@@ -63,12 +63,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Pre
         Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// The action defined by RBAC, refer https://learn.microsoft.com/azure/role-based-access-control/role-definitions#actions-format
+        /// The action defined by RBAC, refer https://docs.microsoft.com/azure/role-based-access-control/role-definitions#actions-format
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The action defined by RBAC, refer https://learn.microsoft.com/azure/role-based-access-control/role-definitions#actions-format",
+        Description = @"The action defined by RBAC, refer https://docs.microsoft.com/azure/role-based-access-control/role-definitions#actions-format",
         SerializedName = @"action",
         PossibleTypes = new [] { typeof(string) })]
         string Action { get; set; }
@@ -97,12 +97,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Pre
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DryrunPreviewOperationType) })]
         Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DryrunPreviewOperationType? OperationType { get; set; }
         /// <summary>
-        /// The scope of the operation, refer https://learn.microsoft.com/azure/role-based-access-control/scope-overview
+        /// The scope of the operation, refer https://docs.microsoft.com/azure/role-based-access-control/scope-overview
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The scope of the operation, refer https://learn.microsoft.com/azure/role-based-access-control/scope-overview",
+        Description = @"The scope of the operation, refer https://docs.microsoft.com/azure/role-based-access-control/scope-overview",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
         string Scope { get; set; }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Pre
 
     {
         /// <summary>
-        /// The action defined by RBAC, refer https://learn.microsoft.com/azure/role-based-access-control/role-definitions#actions-format
+        /// The action defined by RBAC, refer https://docs.microsoft.com/azure/role-based-access-control/role-definitions#actions-format
         /// </summary>
         string Action { get; set; }
         /// <summary>The description of the operation</summary>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Pre
         /// <summary>The operation type</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.DryrunPreviewOperationType? OperationType { get; set; }
         /// <summary>
-        /// The scope of the operation, refer https://learn.microsoft.com/azure/role-based-access-control/scope-overview
+        /// The scope of the operation, refer https://docs.microsoft.com/azure/role-based-access-control/scope-overview
         /// </summary>
         string Scope { get; set; }
 

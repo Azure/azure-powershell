@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
     public partial class Alb
     {
 
-        /// <summary>Create a Association</summary>
+        /// <summary>Update a Association</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="trafficControllerName">traffic controller name for path</param>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a Association</summary>
+        /// <summary>Update a Association</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a Association</summary>
+        /// <summary>Update a Association</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a Association</summary>
+        /// <summary>Update a Association</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="trafficControllerName">traffic controller name for path</param>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a Association</summary>
+        /// <summary>Update a Association</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="trafficControllerName">traffic controller name for path</param>
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a Association</summary>
+        /// <summary>Update a Association</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="trafficControllerName">traffic controller name for path</param>
@@ -2073,7 +2073,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a Frontend</summary>
+        /// <summary>Update a Frontend</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="trafficControllerName">traffic controller name for path</param>
@@ -2125,7 +2125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a Frontend</summary>
+        /// <summary>Update a Frontend</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2187,7 +2187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a Frontend</summary>
+        /// <summary>Update a Frontend</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2247,7 +2247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a Frontend</summary>
+        /// <summary>Update a Frontend</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="trafficControllerName">traffic controller name for path</param>
@@ -2298,7 +2298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a Frontend</summary>
+        /// <summary>Update a Frontend</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="trafficControllerName">traffic controller name for path</param>
@@ -2347,7 +2347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a Frontend</summary>
+        /// <summary>Update a Frontend</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="trafficControllerName">traffic controller name for path</param>
@@ -4410,7 +4410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a TrafficController</summary>
+        /// <summary>Update a TrafficController</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="trafficControllerName">traffic controller name for path</param>
@@ -4459,7 +4459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a TrafficController</summary>
+        /// <summary>Update a TrafficController</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4518,7 +4518,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a TrafficController</summary>
+        /// <summary>Update a TrafficController</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4575,7 +4575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a TrafficController</summary>
+        /// <summary>Update a TrafficController</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="trafficControllerName">traffic controller name for path</param>
@@ -4623,7 +4623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a TrafficController</summary>
+        /// <summary>Update a TrafficController</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="trafficControllerName">traffic controller name for path</param>
@@ -4669,7 +4669,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Alb
             }
         }
 
-        /// <summary>Create a TrafficController</summary>
+        /// <summary>Update a TrafficController</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="trafficControllerName">traffic controller name for path</param>

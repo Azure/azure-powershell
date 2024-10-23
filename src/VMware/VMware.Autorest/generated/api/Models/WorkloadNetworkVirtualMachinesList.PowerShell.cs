@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A list of NSX Virtual Machines</summary>
+    /// <summary>The response of a WorkloadNetworkVirtualMachine list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkVirtualMachinesListTypeConverter))]
     public partial class WorkloadNetworkVirtualMachinesList
     {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// A list of NSX Virtual Machines
+    /// The response of a WorkloadNetworkVirtualMachine list operation.
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkVirtualMachinesListTypeConverter))]
     public partial interface IWorkloadNetworkVirtualMachinesList
 

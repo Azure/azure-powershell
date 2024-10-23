@@ -76,9 +76,9 @@ CLAIMSMAPPINGPOLICY <IMicrosoftGraphClaimsMappingPolicy[]>: The claimsMappingPol
     [Branding <IMicrosoftGraphOrganizationalBranding>]: organizationalBranding
       [(Any) <Object>]: This indicates any property can be added to this object.
       [BackgroundColor <String>]: Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
-      [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+      [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
       [BackgroundImageRelativeUrl <String>]: A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
-      [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+      [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
       [BannerLogoRelativeUrl <String>]: A relative url for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
       [CdnList <String[]>]: A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
       [SignInPageText <String>]: Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
@@ -88,9 +88,9 @@ CLAIMSMAPPINGPOLICY <IMicrosoftGraphClaimsMappingPolicy[]>: The claimsMappingPol
       [Id <String>]: The unique idenfier for an entity. Read-only.
       [Localization <IMicrosoftGraphOrganizationalBrandingLocalization[]>]: Add different branding based on a locale.
         [BackgroundColor <String>]: Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
-        [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+        [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
         [BackgroundImageRelativeUrl <String>]: A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
-        [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+        [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
         [BannerLogoRelativeUrl <String>]: A relative url for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
         [CdnList <String[]>]: A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
         [SignInPageText <String>]: Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
@@ -115,7 +115,7 @@ CLAIMSMAPPINGPOLICY <IMicrosoftGraphClaimsMappingPolicy[]>: The claimsMappingPol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -238,6 +238,7 @@ CLAIMSMAPPINGPOLICY <IMicrosoftGraphClaimsMappingPolicy[]>: The claimsMappingPol
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -308,9 +309,9 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRe
     [Branding <IMicrosoftGraphOrganizationalBranding>]: organizationalBranding
       [(Any) <Object>]: This indicates any property can be added to this object.
       [BackgroundColor <String>]: Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
-      [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+      [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
       [BackgroundImageRelativeUrl <String>]: A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
-      [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+      [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
       [BannerLogoRelativeUrl <String>]: A relative url for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
       [CdnList <String[]>]: A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
       [SignInPageText <String>]: Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
@@ -320,9 +321,9 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRe
       [Id <String>]: The unique idenfier for an entity. Read-only.
       [Localization <IMicrosoftGraphOrganizationalBrandingLocalization[]>]: Add different branding based on a locale.
         [BackgroundColor <String>]: Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
-        [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+        [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
         [BackgroundImageRelativeUrl <String>]: A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
-        [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+        [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
         [BannerLogoRelativeUrl <String>]: A relative url for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
         [CdnList <String[]>]: A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
         [SignInPageText <String>]: Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
@@ -347,7 +348,7 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRe
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -464,6 +465,7 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRe
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -557,9 +559,9 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: The tokenIssuancePol
     [Branding <IMicrosoftGraphOrganizationalBranding>]: organizationalBranding
       [(Any) <Object>]: This indicates any property can be added to this object.
       [BackgroundColor <String>]: Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
-      [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+      [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
       [BackgroundImageRelativeUrl <String>]: A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
-      [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+      [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
       [BannerLogoRelativeUrl <String>]: A relative url for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
       [CdnList <String[]>]: A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
       [SignInPageText <String>]: Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
@@ -569,9 +571,9 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: The tokenIssuancePol
       [Id <String>]: The unique idenfier for an entity. Read-only.
       [Localization <IMicrosoftGraphOrganizationalBrandingLocalization[]>]: Add different branding based on a locale.
         [BackgroundColor <String>]: Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
-        [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+        [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
         [BackgroundImageRelativeUrl <String>]: A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
-        [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+        [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
         [BannerLogoRelativeUrl <String>]: A relative url for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
         [CdnList <String[]>]: A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
         [SignInPageText <String>]: Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
@@ -596,7 +598,7 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: The tokenIssuancePol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -719,6 +721,7 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: The tokenIssuancePol
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -767,9 +770,9 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
     [Branding <IMicrosoftGraphOrganizationalBranding>]: organizationalBranding
       [(Any) <Object>]: This indicates any property can be added to this object.
       [BackgroundColor <String>]: Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
-      [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+      [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
       [BackgroundImageRelativeUrl <String>]: A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
-      [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+      [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
       [BannerLogoRelativeUrl <String>]: A relative url for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
       [CdnList <String[]>]: A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
       [SignInPageText <String>]: Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
@@ -779,9 +782,9 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
       [Id <String>]: The unique idenfier for an entity. Read-only.
       [Localization <IMicrosoftGraphOrganizationalBrandingLocalization[]>]: Add different branding based on a locale.
         [BackgroundColor <String>]: Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
-        [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+        [BackgroundImage <Byte[]>]: Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 * 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
         [BackgroundImageRelativeUrl <String>]: A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
-        [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+        [BannerLogo <Byte[]>]: A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 * 245 pixels. We recommend using a transparent image with no padding around the logo.
         [BannerLogoRelativeUrl <String>]: A relative url for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
         [CdnList <String[]>]: A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
         [SignInPageText <String>]: Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
@@ -806,7 +809,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -929,6 +932,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
         [Id <String>]: The unique identifier for one of the oauth2PermissionScopes or appRole instances that the resource application exposes.
         [Type <String>]: Specifies whether the id property references an oauth2PermissionScopes or an appRole. Possible values are Scope or Role.
       [ResourceAppId <String>]: The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.
+    [ServiceManagementReference <String>]: References application or service contact information from a Service or Asset Management database. Nullable.
     [SignInAudience <String>]: Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).
     [Spa <IMicrosoftGraphSpaApplication>]: spaApplication
       [(Any) <Object>]: This indicates any property can be added to this object.
@@ -976,36 +980,34 @@ function Update-AzADServicePrincipal {
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [Alias('ServicePrincipalId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of servicePrincipal
-    ${Id},
+    ${ServicePrincipalId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # true if the service principal account is enabled; otherwise, false.
     # Supports $filter (eq, ne, NOT, in).
     ${AccountEnabled},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn[]]
     # Defines custom behavior that a consuming service can use to call an app in specific contexts.
     # For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality.
     # This will let services like Microsoft 365 call the application in the context of a document the user is working on.
-    # To construct, see NOTES section for ADDIN properties and create a hash table.
     ${AddIn},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Collections.Hashtable]
     # Additional Parameters
     ${AdditionalProperties},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -1013,59 +1015,56 @@ param(
     # Supports $filter (eq, NOT, ge, le, startsWith).
     ${AlternativeName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The description exposed by the associated application.
     ${AppDescription},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The display name exposed by the associated application.
     ${AppDisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The unique identifier for the associated application (its appId property).
     ${AppId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Contains the tenant id where the application is registered.
     # This is applicable only to service principals backed by applications.Supports $filter (eq, ne, NOT, ge, le).
     ${AppOwnerOrganizationId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRole[]]
     # The roles exposed by the application which this service principal represents.
     # For more information see the appRoles property definition on the application entity.
     # Not nullable.
-    # To construct, see NOTES section for APPROLE properties and create a hash table.
     ${AppRole},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[]]
     # App role assignments for this app or service, granted to users, groups, and other service principals.Supports $expand.
-    # To construct, see NOTES section for APPROLEASSIGNEDTO properties and create a hash table.
     ${AppRoleAssignedTo},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[]]
     # App role assignment for another app or service, granted to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for APPROLEASSIGNMENT properties and create a hash table.
     ${AppRoleAssignment},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Specifies whether users or other service principals need to be granted an app role assignment for this service principal before users can sign in or apps can get tokens.
@@ -1074,31 +1073,29 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${AppRoleAssignmentRequired},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphClaimsMappingPolicy[]]
     # The claimsMappingPolicies assigned to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for CLAIMSMAPPINGPOLICY properties and create a hash table.
     ${ClaimsMappingPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDelegatedPermissionClassification[]]
     # The permission classifications for delegated permissions exposed by the app that this service principal represents.
     # Supports $expand.
-    # To construct, see NOTES section for DELEGATEDPERMISSIONCLASSIFICATION properties and create a hash table.
     ${DelegatedPermissionClassification},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.DateTime]
     # .
     ${DeletedDateTime},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Free text field to provide an internal end-user facing description of the service principal.
@@ -1107,7 +1104,7 @@ param(
     # Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
     ${Description},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies whether Microsoft has disabled the registered application.
@@ -1115,62 +1112,57 @@ param(
     # Supports $filter (eq, ne, NOT).
     ${DisabledByMicrosoftStatus},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name displayed in directory
     ${DisplayName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint[]]
     # Endpoints available for discovery.
     # Services like Sharepoint populate this property with a tenant specific SharePoint endpoints that other applications can discover and use in their experiences.
-    # To construct, see NOTES section for ENDPOINT properties and create a hash table.
     ${Endpoint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[]]
     # .
-    # To construct, see NOTES section for FEDERATEDIDENTITYCREDENTIALS properties and create a hash table.
     ${FederatedIdentityCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[]]
     # The homeRealmDiscoveryPolicies assigned to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
     ${HomeRealmDiscoveryPolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Home page or landing page of the application.
     ${Homepage},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl]
     # informationalUrl
-    # To construct, see NOTES section for INFO properties and create a hash table.
     ${Info},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
     # The collection of key credentials associated with the service principal.
     # Not nullable.
     # Supports $filter (eq, NOT, ge, le).
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
     ${KeyCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the URL where the service provider redirects the user to Azure AD to authenticate.
@@ -1179,20 +1171,20 @@ param(
     # The user launches the application from Microsoft 365, the Azure AD My Apps, or the Azure AD SSO URL.
     ${LoginUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols.
     ${LogoutUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Free text field to capture information about the service principal, typically used for operational purposes.
     # Maximum allowed size is 1024 characters.
     ${Note},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -1200,26 +1192,24 @@ param(
     # This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
     ${NotificationEmailAddress},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPermissionScope[]]
     # The delegated permissions exposed by the application.
     # For more information see the oauth2PermissionScopes property on the application entity's api property.
     # Not nullable.
-    # To construct, see NOTES section for OAUTH2PERMISSIONSCOPE properties and create a hash table.
     ${Oauth2PermissionScope},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
     # The collection of password credentials associated with the service principal.
     # Not nullable.
-    # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
     ${PasswordCredentials},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the single sign-on mode configured for this application.
@@ -1227,7 +1217,7 @@ param(
     # The supported values are password, saml, notSupported, and oidc.
     ${PreferredSingleSignOnMode},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Reserved for internal use only.
@@ -1235,7 +1225,7 @@ param(
     # May be removed in future versions.
     ${PreferredTokenSigningKeyThumbprint},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -1243,14 +1233,13 @@ param(
     # Not nullable.
     ${ReplyUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSamlSingleSignOnSettings]
     # samlSingleSignOnSettings
-    # To construct, see NOTES section for SAMLSINGLESIGNONSETTING properties and create a hash table.
     ${SamlSingleSignOnSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -1262,7 +1251,7 @@ param(
     # Supports $filter (eq, NOT, ge, le, startsWith).
     ${ServicePrincipalName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Identifies if the service principal represents an application or a managed identity.
@@ -1271,7 +1260,7 @@ param(
     # For a service principal that represent a managed identity this is set as ManagedIdentity.
     ${ServicePrincipalType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String[]]
@@ -1280,7 +1269,7 @@ param(
     # Supports $filter (eq, NOT, ge, le, startsWith).
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # Specifies the keyId of a public key from the keyCredentials collection.
@@ -1288,38 +1277,48 @@ param(
     # The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
     ${TokenEncryptionKeyId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy[]]
     # The tokenIssuancePolicies assigned to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for TOKENISSUANCEPOLICY properties and create a hash table.
     ${TokenIssuancePolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[]]
     # The tokenLifetimePolicies assigned to this service principal.
     # Supports $expand.
-    # To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
     ${TokenLifetimePolicy},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject[]]
     # .
-    # To construct, see NOTES section for TRANSITIVEMEMBEROF properties and create a hash table.
     ${TransitiveMemberOf},
+
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Update operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Update operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1378,6 +1377,8 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.MSGraph.private\Update-AzADServicePrincipal_UpdateExpanded';
+            UpdateViaJsonFilePath = 'Az.MSGraph.private\Update-AzADServicePrincipal_UpdateViaJsonFilePath';
+            UpdateViaJsonString = 'Az.MSGraph.private\Update-AzADServicePrincipal_UpdateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

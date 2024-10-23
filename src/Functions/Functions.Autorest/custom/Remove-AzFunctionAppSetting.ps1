@@ -1,5 +1,5 @@
 function Remove-AzFunctionAppSetting {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IStringDictionary])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Removes app settings from a function app.')]
     [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param(
@@ -23,7 +23,7 @@ function Remove-AzFunctionAppSetting {
         ${SubscriptionId},
 
         [Parameter(ParameterSetName='ByObjectInput', Mandatory=$true, ValueFromPipeline=$true)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite]
         [ValidateNotNull()]
         ${InputObject},
 
@@ -85,6 +85,8 @@ function Remove-AzFunctionAppSetting {
         ${ProxyUseDefaultCredentials}
     )
     process {
+
+        RegisterFunctionsTabCompleters
 
         # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
         $paramsToRemove = @(

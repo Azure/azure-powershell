@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 {
 
-    /// <summary>SSL type.</summary>
+    /// <summary>SSL type</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SslStateTypeConverter))]
     public partial struct SslState :
         System.Management.Automation.IArgumentCompleter

@@ -23,7 +23,7 @@ The **Set-AzVirtualNetwork** cmdlet updates a virtual network.
 
 ## EXAMPLES
 
-### 1: Creates a virtual network and removes one of its subnets
+### Example 1: Creates a virtual network and removes one of its subnets
 ```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus ## Create resource group 
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" ## Create frontend subnet 

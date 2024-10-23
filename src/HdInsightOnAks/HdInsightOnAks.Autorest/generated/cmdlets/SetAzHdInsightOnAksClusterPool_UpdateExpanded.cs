@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a cluster pool.</summary>
+    /// <summary>Update a cluster pool.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzHdInsightOnAksClusterPool_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"Create a cluster pool.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Description(@"Update a cluster pool.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}", ApiVersion = "2023-11-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}", ApiVersion = "2024-05-01-preview")]
     public partial class SetAzHdInsightOnAksClusterPool_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IContext
@@ -78,6 +78,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
         SerializedName = @"clusterPoolVersion",
         PossibleTypes = new [] { typeof(string) })]
         public string ClusterPoolVersion { get => _clusterPoolBody.ProfileClusterPoolVersion ?? null; set => _clusterPoolBody.ProfileClusterPoolVersion = value; }
+
+        /// <summary>The list of Availability zones to use for AKS VMSS nodes.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of Availability zones to use for AKS VMSS nodes.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of Availability zones to use for AKS VMSS nodes.",
+        SerializedName = @"availabilityZones",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] ComputeProfileAvailabilityZone { get => _clusterPoolBody.ComputeProfileAvailabilityZone?.ToArray() ?? null /* fixedArrayOf */; set => _clusterPoolBody.ComputeProfileAvailabilityZone = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -180,15 +192,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
 
         /// <summary>
         /// IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters.
-        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+        /// So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property
+        /// is not supported and please don't use it.
         /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.",
+        Description = @"IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with private AKS clusters. So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time. Currently, this property is not supported and please don't use it.",
         SerializedName = @"apiServerAuthorizedIpRanges",
         PossibleTypes = new [] { typeof(string) })]
         public string[] NetworkProfileApiServerAuthorizedIPRange { get => _clusterPoolBody.NetworkProfileApiServerAuthorizedIPRange?.ToArray() ?? null /* fixedArrayOf */; set => _clusterPoolBody.NetworkProfileApiServerAuthorizedIPRange = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
@@ -395,11 +408,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Cmdlets
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
                 telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
                 telemetryInfo.TryGetValue("InvocationName", out var invocationName);
-                if (!string.IsNullOrEmpty(sanitizedProperties))
+                if (showSecretsWarning == "true")
                 {
-                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
                 }
             }
         }

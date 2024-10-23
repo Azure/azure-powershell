@@ -30,8 +30,7 @@ Test-AzPurviewAccountNameAvailability -Name test-pa -Type Tenant
 ```output
 Message                                                 NameAvailable Reason
 -------                                                 ------------- ------
-The name test-pa is invalid, please use another name.
-False         Invalid
+The name test-pa is invalid, please use another name.   False         Invalid
 ```
 
 Check if account name 'test-pa' is available.
@@ -139,8 +138,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ICheckNameAvailabilityResult
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

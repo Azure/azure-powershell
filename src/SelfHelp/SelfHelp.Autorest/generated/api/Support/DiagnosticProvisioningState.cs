@@ -19,6 +19,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support
         /// <summary>Some Diagnostics are still running or failed.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.DiagnosticProvisioningState PartialComplete = @"PartialComplete";
 
+        /// <summary>All Diagnostics are still running.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.DiagnosticProvisioningState Running = @"Running";
+
         /// <summary>All Diagnostics in the Batch succeeded.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.DiagnosticProvisioningState Succeeded = @"Succeeded";
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecodeversion
 schema: 2.0.0
@@ -15,8 +15,8 @@ Create or update version.
 ```
 New-AzMLWorkspaceCodeVersion -Name <String> -ResourceGroupName <String> -Version <String>
  -WorkspaceName <String> [-SubscriptionId <String>] [-CodeUri <String>] [-Description <String>] [-IsAnonymou]
- [-IsArchived] [-ResourceBaseProperty <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-IsArchived] [-ResourceBaseProperty <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,7 @@ New-AzMLWorkspaceCodeVersion -ResourceGroupName ml-rg-test -WorkspaceName mlwork
 ```output
 Name SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
 ---- -------------------  -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-1    5/24/2022 7:14:05 AM Lucas Yao (Wicresoft North America) User                    5/24/2022 7:14:05 AM     Lucas Yao (Wicresoft North America) User                         ml-rg-test
+1    5/24/2022 7:14:05 AM UserName (Example)         User                    5/24/2022 7:14:05 AM     UserName (Example)         User                         ml-rg-test
 ```
 
 Create or update code version
@@ -55,7 +55,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -261,11 +262,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICodeVersion
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.ICodeVersion
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

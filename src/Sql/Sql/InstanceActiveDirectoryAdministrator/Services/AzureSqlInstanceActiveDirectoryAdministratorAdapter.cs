@@ -47,6 +47,11 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         private MicrosoftGraphClient _microsoftGraphClient;
 
         /// <summary>
+        /// The Sql client default type for the active directory admin
+        /// </summary>
+        private static readonly string ActiveDirectoryAdministratorDefaultType = "ActiveDirectory";
+
+        /// <summary>
         /// Gets or sets the Azure MicrosoftGraphClient instance
         /// </summary>
         public MicrosoftGraphClient MicrosoftGraphClient
@@ -230,7 +235,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
                 {
                     Login = displayName,
                     Sid = new Guid(app.AppId),
-                    TenantId = tenantId
+                    TenantId = tenantId,
+                    AdministratorType = ActiveDirectoryAdministratorDefaultType
                 };
             }
 
@@ -240,7 +246,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
                 {
                     Login = group.DisplayName,
                     Sid = new Guid(group.Id),
-                    TenantId = tenantId
+                    TenantId = tenantId,
+                    AdministratorType = ActiveDirectoryAdministratorDefaultType
                 };
             }
 
@@ -300,9 +307,10 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
 
                 return new ManagedInstanceAdministrator()
                 {
-                    Login = displayName,
+                    Login = obj.Mail,
                     Sid = new Guid(obj.Id),
-                    TenantId = tenantId
+                    TenantId = tenantId,
+                    AdministratorType = ActiveDirectoryAdministratorDefaultType,
                 };
             }
         }

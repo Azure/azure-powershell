@@ -14,7 +14,8 @@ Creates a rewrite rule header configuration for an application gateway.
 
 ```
 New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName <String> [-HeaderValue <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-HeaderValueMatcher <PSApplicationGatewayHeaderValueMatcher>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,6 +78,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HeaderValueMatcher
+An optional field under 'Rewrite Action'. It lets you capture and modify the value(s) of a specific header when multiple headers with the same name exist. Currently supported for Set-Cookie Response header only. For more details, visit https://aka.ms/appgwheadercrud
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderValueMatcher
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -105,3 +121,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzApplicationGatewayRewriteRule](./New-AzApplicationGatewayRewriteRule.md)
 
 [New-AzApplicationGatewayRewriteRuleActionSet](./New-AzApplicationGatewayRewriteRuleActionSet.md)
+
+[New-AzApplicationGatewayHeaderValueMatcher](./New-AzApplicationGatewayHeaderValueMatcher.md)

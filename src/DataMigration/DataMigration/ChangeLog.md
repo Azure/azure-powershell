@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.14.8
+* Removed Microsoft.Azure.Management.DataMigration 0.7.0-preview dependencies
+* Added Microsoft.Azure.PowerShell.DataMigration.Management.Sdk
+
+## Version 0.14.7
+* Fixed secrets exposure in example documentation.
+
+## Version 0.14.6
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.14.5
 * Changed the Login Migration Console App source to NuGet.org and added versioning support for updating the console app.
 
 ## Version 0.14.4

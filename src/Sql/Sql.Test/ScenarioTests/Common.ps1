@@ -1009,6 +1009,24 @@ function Get-DefaultManagedInstanceParametersV2()
 	}
 }
 
+function Get-DefaultManagedInstanceNameAndRgForAADAdmin()
+{
+	return @{
+		rg = "CustomerExperienceTeam_RG";
+		name = "brka0190";
+	}
+}
+
+function Get-DefaultManagedInstanceParametersHermesTesting()
+{
+	return @{
+		rg = "hermes-powershell-testing-resourcegroup-wcus";
+		location = "westcentralus";
+		subnet = "/subscriptions/62e48210-5e43-423e-889b-c277f3e08c39/resourceGroups/hermes-powershell-testing-resourcegroup-wcus/providers/Microsoft.Network/virtualNetworks/hermes-powershell-testing-virtualnetwork-wcus/subnets/hermes-powershell-testing-subnet-wcus";
+		subscriptionId = "62e48210-5e43-423e-889b-c277f3e08c39";
+	}
+}
+
 <#
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql managed instance CRUD tests

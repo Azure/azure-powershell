@@ -8,11 +8,11 @@ schema: 2.0.0
 # Get-AzVMwarePrivateCloud
 
 ## SYNOPSIS
-Get a private cloud
+Get a PrivateCloud
 
 ## SYNTAX
 
-### List1 (Default)
+### List (Default)
 ```
 Get-AzVMwarePrivateCloud [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -28,14 +28,14 @@ Get-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-Subscripti
 Get-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### List
+### List1
 ```
 Get-AzVMwarePrivateCloud -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a private cloud
+Get a PrivateCloud
 
 ## EXAMPLES
 
@@ -132,7 +132,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -144,6 +144,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

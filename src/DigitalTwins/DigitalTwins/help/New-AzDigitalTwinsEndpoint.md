@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DigitalTwins-help.xml
 Module Name: Az.DigitalTwins
 online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsendpoint
 schema: 2.0.0
@@ -15,28 +15,29 @@ Create or update DigitalTwinsInstance endpoint.
 ### EventHub (Default)
 ```
 New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- -ConnectionStringPrimaryKey <String> -EndpointType <EndpointType> [-SubscriptionId <String>]
- [-AuthenticationType <AuthenticationType>] [-ConnectionStringSecondaryKey <String>]
- [-DeadLetterSecret <String>] [-DeadLetterUri <String>] [-EndpointDescription <IDigitalTwinsEndpointResource>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### EventGrid
-```
-New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- -AccessKey1 <String> -EndpointType <EndpointType> -TopicEndpoint <String> [-SubscriptionId <String>]
- [-AuthenticationType <AuthenticationType>] [-DeadLetterSecret <String>] [-DeadLetterUri <String>]
- [-EndpointDescription <IDigitalTwinsEndpointResource>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -EndpointType <EndpointType> -ConnectionStringPrimaryKey <String>
+ [-EndpointDescription <IDigitalTwinsEndpointResource>] [-AuthenticationType <AuthenticationType>]
+ [-ConnectionStringSecondaryKey <String>] [-DeadLetterSecret <String>] [-DeadLetterUri <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ServiceBus
 ```
 New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
- -EndpointType <EndpointType> -PrimaryConnectionString <String> [-SubscriptionId <String>]
+ [-SubscriptionId <String>] -EndpointType <EndpointType> [-EndpointDescription <IDigitalTwinsEndpointResource>]
  [-AuthenticationType <AuthenticationType>] [-DeadLetterSecret <String>] [-DeadLetterUri <String>]
- [-EndpointDescription <IDigitalTwinsEndpointResource>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -PrimaryConnectionString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EventGrid
+```
+New-AzDigitalTwinsEndpoint -EndpointName <String> -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String>] -EndpointType <EndpointType> [-EndpointDescription <IDigitalTwinsEndpointResource>]
+ [-AuthenticationType <AuthenticationType>] [-DeadLetterSecret <String>] [-DeadLetterUri <String>]
+ -TopicEndpoint <String> -AccessKey1 <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -389,24 +390,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ENDPOINTDESCRIPTION <IDigitalTwinsEndpointResource>`: DigitalTwinsInstance endpoint resource.
-  - `EndpointType <EndpointType>`: The type of Digital Twins endpoint
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[AuthenticationType <AuthenticationType?>]`: Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified.
-  - `[DeadLetterSecret <String>]`: Dead letter storage secret for key-based authentication. Will be obfuscated during read.
-  - `[DeadLetterUri <String>]`: Dead letter storage URL for identity-based authentication.
-
 ## RELATED LINKS
-

@@ -13,8 +13,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support
         /// <summary>Diagnostics resource type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionType Diagnostics = @"Diagnostics";
 
+        /// <summary>SelfHelp resource type.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionType SelfHelp = @"SelfHelp";
+
         /// <summary>Solutions resource type.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionType Solutions = @"Solutions";
+
+        /// <summary>Troubleshooters resource type.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionType Troubleshooters = @"Troubleshooters";
 
         /// <summary>the value for an instance of the <see cref="SolutionType" /> Enum.</summary>
         private string _value { get; set; }

@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ruleName'>
         /// The name of the rule.
         /// </param>
-        public static void Delete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
+        public static RouteFilterRulesDeleteHeaders Delete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
         {
-                ((IRouteFilterRulesOperations)operations).DeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
+                return ((IRouteFilterRulesOperations)operations).DeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -50,9 +50,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RouteFilterRulesDeleteHeaders> DeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets the specified rule from a route filter.
@@ -198,9 +201,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ruleName'>
         /// The name of the rule.
         /// </param>
-        public static void BeginDelete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
+        public static RouteFilterRulesDeleteHeaders BeginDelete(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName)
         {
-                ((IRouteFilterRulesOperations)operations).BeginDeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
+                return ((IRouteFilterRulesOperations)operations).BeginDeleteAsync(resourceGroupName, routeFilterName, ruleName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -221,9 +224,12 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<RouteFilterRulesDeleteHeaders> BeginDeleteAsync(this IRouteFilterRulesOperations operations, string resourceGroupName, string routeFilterName, string ruleName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, routeFilterName, ruleName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Creates or updates a route in the specified route filter.

@@ -1,0 +1,81 @@
+{
+  "Set-AzConnectedLicense+[NoContext]+Update+$PUT+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2?api-version=2024-07-10+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2?api-version=2024-07-10",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"licenseDetails\": {\r\n      \"state\": \"Deactivated\",\r\n      \"target\": \"Windows Server 2012\",\r\n      \"edition\": \"Datacenter\",\r\n      \"type\": \"pCore\",\r\n      \"processors\": 16\r\n    },\r\n    \"licenseType\": \"ESU\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "263" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "476eb719-b34f-460e-ae46-ae919b5a50a3" ],
+        "x-ms-correlation-request-id": [ "ec3e36df-7329-4d09-aedd-8b46e7c36ca7" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20241003T202318Z:ec3e36df-7329-4d09-aedd-8b46e7c36ca7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 63CD4618C0774DF088424DB638F1F4BE Ref B: MNZ221060610039 Ref C: 2024-10-03T20:23:18Z" ],
+        "Date": [ "Thu, 03 Oct 2024 20:23:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "512" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2\",\"name\":\"myEsuLicense2\",\"location\":\"eastus\",\"type\":\"Microsoft.HybridCompute/licenses\",\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"licenseType\":\"ESU\",\"licenseDetails\":{\"state\":\"Deactivated\",\"target\":\"Windows Server 2012\",\"edition\":\"Datacenter\",\"type\":\"pCore\",\"processors\":16,\"assignedLicenses\":8,\"immutableId\":\"ddd0d283-d0d0-4aa2-89c6-d8d4a2189909\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzConnectedLicense+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2?api-version=2024-07-10+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2?api-version=2024-07-10",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "e1f11a85-bb30-445b-baa8-3f74229f6be5" ],
+        "CommandName": [ "Set-AzConnectedLicense" ],
+        "FullCommandName": [ "Set-AzConnectedLicense_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.5", "Az.ConnectedMachine/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "548e5409-2211-47e7-80ea-6d804f9a7e0a" ],
+        "x-ms-correlation-request-id": [ "db283c30-bf9d-493a-8b1d-b17fa8669628" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20241003T202349Z:db283c30-bf9d-493a-8b1d-b17fa8669628" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 42760EB8F54A4B10AE797E66953B02D7 Ref B: MNZ221060610039 Ref C: 2024-10-03T20:23:48Z" ],
+        "Date": [ "Thu, 03 Oct 2024 20:23:48 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "512" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myEsuLicense2\",\"name\":\"myEsuLicense2\",\"location\":\"eastus\",\"type\":\"Microsoft.HybridCompute/licenses\",\"properties\":{\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"licenseType\":\"ESU\",\"licenseDetails\":{\"state\":\"Deactivated\",\"target\":\"Windows Server 2012\",\"edition\":\"Datacenter\",\"type\":\"pCore\",\"processors\":16,\"assignedLicenses\":8,\"immutableId\":\"ddd0d283-d0d0-4aa2-89c6-d8d4a2189909\"}}}",
+      "isContentBase64": false
+    }
+  }
+}

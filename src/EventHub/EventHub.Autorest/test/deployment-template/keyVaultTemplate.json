@@ -2,44 +2,40 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "key_Vault_Name": {
-      "defaultValue": "PS-Test-kv1",
-      "type": "String"
-    },
-    "tenant_id": {
-      "defaultValue": "00000-0000",
+    "location": {
+      "defaultValue": "[resourceGroup().location]",
       "type": "string"
     },
-    "object_id_msi1": {
-      "defaultValue": "00000-0000",
+    "resource_name_prefix": {
+      "defaultValue": "ps-testing",
       "type": "string"
     },
-    "object_id_msi2": {
-      "defaultValue": "00000-0000",
-      "type": "string"
-    },
-    "object_id": {
-      "defaultValue": "00000-0000",
+    "system_assigned_namespace_name": {
+      "defaultValue": "AutomatedPSTesting",
       "type": "string"
     }
   },
-  "variables": {},
+  "variables": {
+    "keyVaultName": "[concat(parameters('resource_name_prefix'), '-kv1')]",
+    "msi1Name": "[concat(parameters('resource_name_prefix'), '-msi1')]",
+    "msi2Name": "[concat(parameters('resource_name_prefix'), '-msi2')]"
+  },
   "resources": [
     {
       "type": "Microsoft.KeyVault/vaults",
       "apiVersion": "2022-07-01",
-      "name": "[parameters('key_Vault_Name')]",
-      "location": "eastus",
+      "name": "[variables('keyVaultName')]",
+      "location": "[parameters('location')]",
       "properties": {
         "sku": {
           "family": "A",
           "name": "standard"
         },
-        "tenantId": "[parameters('tenant_id')]",
+        "tenantId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('msi1Name')), '2023-01-31').tenantId]",
         "accessPolicies": [
           {
-            "tenantId": "[parameters('tenant_id')]",
-            "objectId": "[parameters('object_id')]",
+            "tenantId": "[reference(resourceId('Microsoft.EventHub/namespaces', parameters('system_assigned_namespace_name')), '2022-01-01-preview', 'Full').identity.tenantId]",
+            "objectId": "[reference(resourceId('Microsoft.EventHub/namespaces', parameters('system_assigned_namespace_name')), '2022-01-01-preview', 'Full').identity.principalId]",
             "permissions": {
               "keys": [
                 "WrapKey",
@@ -52,8 +48,8 @@
             }
           },
           {
-            "tenantId": "[parameters('tenant_id')]",
-            "objectId": "[parameters('object_id_msi1')]",
+            "tenantId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('msi1Name')), '2023-01-31').tenantId]",
+            "objectId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('msi1Name')), '2023-01-31').principalId]",
             "permissions": {
               "keys": [
                 "WrapKey",
@@ -66,8 +62,8 @@
             }
           },
           {
-            "tenantId": "[parameters('tenant_id')]",
-            "objectId": "[parameters('object_id_msi1')]",
+            "tenantId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('msi2Name')), '2023-01-31').tenantId]",
+            "objectId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('msi2Name')), '2023-01-31').principalId]",
             "permissions": {
               "keys": [
                 "WrapKey",
@@ -87,10 +83,10 @@
     {
       "type": "Microsoft.KeyVault/vaults/keys",
       "apiVersion": "2022-07-01",
-      "name": "[concat(parameters('key_Vault_Name'), '/key1')]",
-      "location": "eastus",
+      "name": "[concat(variables('keyVaultName'), '/key1')]",
+      "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('key_Vault_Name'))]"
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
       ],
       "properties": {
         "attributes": {
@@ -102,10 +98,10 @@
     {
       "type": "Microsoft.KeyVault/vaults/keys",
       "apiVersion": "2022-07-01",
-      "name": "[concat(parameters('key_Vault_Name'), '/key2')]",
-      "location": "eastus",
+      "name": "[concat(variables('keyVaultName'), '/key2')]",
+      "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('key_Vault_Name'))]"
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
       ],
       "properties": {
         "attributes": {
@@ -117,10 +113,10 @@
     {
       "type": "Microsoft.KeyVault/vaults/keys",
       "apiVersion": "2022-07-01",
-      "name": "[concat(parameters('key_Vault_Name'), '/key3')]",
-      "location": "eastus",
+      "name": "[concat(variables('keyVaultName'), '/key3')]",
+      "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('key_Vault_Name'))]"
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
       ],
       "properties": {
         "attributes": {
@@ -132,25 +128,10 @@
     {
       "type": "Microsoft.KeyVault/vaults/keys",
       "apiVersion": "2022-07-01",
-      "name": "[concat(parameters('key_Vault_Name'), '/key4')]",
-      "location": "eastus",
+      "name": "[concat(variables('keyVaultName'), '/key4')]",
+      "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('key_Vault_Name'))]"
-      ],
-      "properties": {
-        "attributes": {
-          "enabled": true
-        },
-        "kty":  "RSA"
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults/keys",
-      "apiVersion": "2022-07-01",
-      "name": "[concat(parameters('key_Vault_Name'), '/key5')]",
-      "location": "eastus",
-      "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('key_Vault_Name'))]"
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
       ],
       "properties": {
         "attributes": {
@@ -162,10 +143,25 @@
     {
       "type": "Microsoft.KeyVault/vaults/keys",
       "apiVersion": "2022-07-01",
-      "name": "[concat(parameters('key_Vault_Name'), '/key6')]",
-      "location": "eastus",
+      "name": "[concat(variables('keyVaultName'), '/key5')]",
+      "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.KeyVault/vaults', parameters('key_Vault_Name'))]"
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+      ],
+      "properties": {
+        "attributes": {
+          "enabled": true
+        },
+        "kty": "RSA"
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/keys",
+      "apiVersion": "2022-07-01",
+      "name": "[concat(variables('keyVaultName'), '/key6')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
       ],
       "properties": {
         "attributes": {

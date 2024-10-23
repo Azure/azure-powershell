@@ -57,7 +57,7 @@ $fileNamePrefix = "oss-pstest-crrasfiles"
 $OssRestoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPostgreSQL -SourceDataStore VaultStore -RestoreLocation $vault.ReplicatedRegion[0] -RestoreType RestoreAsFiles -RecoveryPoint $recoveryPointsCrr[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI -FileNamePrefix $fileNamePrefix
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRestoreRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -96,6 +96,7 @@ BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger origi
     [IdentityDetail <IIdentityDetails>]: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
       [UseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
       [UserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
+    [ResourceGuardOperationRequest <String[]>]: ResourceGuardOperationRequests on which LAC check will be performed
     [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
   [Tag <IDppProxyResourceTags>]: Proxy Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -121,7 +122,7 @@ RESTORECONFIGURATION <KubernetesClusterRestoreCriteria>: Restore configuration f
 https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionrestorerequest
 #>
 function Initialize-AzDataProtectionRestoreRequest {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRestoreRequest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest])]
 [CmdletBinding(DefaultParameterSetName='AlternateLocationFullRecovery', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -194,7 +195,7 @@ param(
     [Parameter(ParameterSetName='OriginalLocationILR')]
     [Parameter(ParameterSetName='OriginalLocationFullRecovery')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.KubernetesClusterRestoreCriteria]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.KubernetesClusterRestoreCriteria]
     # Restore configuration for restore.
     # Use this parameter to restore with AzureKubernetesService.
     # To construct, see NOTES section for RESTORECONFIGURATION properties and create a hash table.
@@ -234,6 +235,14 @@ param(
     # Container names for Item Level Recovery.
     ${ContainersList},
 
+    [Parameter(ParameterSetName='AlternateLocationILR')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Collections.Hashtable]
+    # Use this parameter to filter block blobs by prefix in a container for alternate location ILR.
+    # When you specify a prefix, only blobs matching that prefix in the container will be restored.
+    # Input for this parameter is a hashtable where each key is a container name and each value is an array of string prefixes for that container.
+    ${PrefixMatch},
+
     [Parameter(ParameterSetName='RestoreAsFiles', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
@@ -256,7 +265,7 @@ param(
     [Parameter(ParameterSetName='OriginalLocationILR', Mandatory)]
     [Parameter(ParameterSetName='OriginalLocationFullRecovery', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.BackupInstanceResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.BackupInstanceResource]
     # Backup Instance object to trigger original localtion restore.
     # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},
@@ -264,13 +273,17 @@ param(
     [Parameter(ParameterSetName='OriginalLocationILR')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
-    # Minimum matching value for Item Level Recovery.
+    # Specify the blob restore start range for PITR.
+    # You can use this option to specify the starting range for a subset of blobs in each container to restore.
+    # use a forward slash (/) to separate the container name from the blob prefix pattern.
     ${FromPrefixPattern},
 
     [Parameter(ParameterSetName='OriginalLocationILR')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
-    # Maximum matching value for Item Level Recovery.
+    # Specify the blob restore end range for PITR.
+    # You can use this option to specify the ending range for a subset of blobs in each container to restore.
+    # use a forward slash (/) to separate the container name from the blob prefix pattern.
     ${ToPrefixPattern}
 )
 

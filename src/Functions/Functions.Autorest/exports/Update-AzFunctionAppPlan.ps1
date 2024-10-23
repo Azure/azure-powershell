@@ -27,9 +27,9 @@ Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                          -Force
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -41,11 +41,14 @@ INPUTOBJECT <IAppServicePlan>:
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Capacity <Int32?>]: Current number of instances assigned to the resource.
+  [ElasticScaleEnabled <Boolean?>]: ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
+  [ExtendedLocationName <String>]: Name of extended location.
   [FreeOfferExpirationTime <DateTime?>]: The time when the server farm free offer expires.
   [HostingEnvironmentProfileId <String>]: Resource ID of the App Service Environment.
   [HyperV <Boolean?>]: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
   [IsSpot <Boolean?>]: If <code>true</code>, this App Service Plan owns spot instances.
   [IsXenon <Boolean?>]: Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
+  [KubeEnvironmentProfileId <String>]: Resource ID of the Kubernetes Environment.
   [MaximumElasticWorkerCount <Int32?>]: Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
   [PerSiteScaling <Boolean?>]: If <code>true</code>, apps assigned to this App Service plan can be scaled independently.         If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
   [Reserved <Boolean?>]: If Linux app service plan <code>true</code>, <code>false</code> otherwise.
@@ -54,6 +57,7 @@ INPUTOBJECT <IAppServicePlan>:
     [Reason <String>]: Reason of the SKU capability.
     [Value <String>]: Value of the SKU capability.
   [SkuCapacityDefault <Int32?>]: Default number of workers for this App Service plan SKU.
+  [SkuCapacityElasticMaximum <Int32?>]: Maximum number of Elastic workers for this App Service plan SKU.
   [SkuCapacityMaximum <Int32?>]: Maximum number of workers for this App Service plan SKU.
   [SkuCapacityMinimum <Int32?>]: Minimum number of workers for this App Service plan SKU.
   [SkuCapacityScaleType <String>]: Available scale configurations for an App Service plan.
@@ -66,11 +70,12 @@ INPUTOBJECT <IAppServicePlan>:
   [TargetWorkerCount <Int32?>]: Scaling worker count.
   [TargetWorkerSizeId <Int32?>]: Scaling worker size ID.
   [WorkerTierName <String>]: Target worker tier assigned to the App Service plan.
+  [ZoneRedundant <Boolean?>]: If <code>true</code>, this App Service Plan will perform availability zone balancing.         If <code>false</code>, this App Service Plan will not perform availability zone balancing.
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/update-azfunctionappplan
 #>
 function Update-AzFunctionAppPlan {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan])]
 [CmdletBinding(DefaultParameterSetName='ByName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ByName', Mandatory)]
@@ -123,7 +128,7 @@ param(
     [Parameter()]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -131,7 +136,7 @@ param(
     [Parameter(ParameterSetName='ByObjectInput', Mandatory, ValueFromPipeline)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IAppServicePlan]
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
@@ -218,7 +223,13 @@ begin {
             ByObjectInput = 'Az.Functions.custom\Update-AzFunctionAppPlan';
         }
         if (('ByName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

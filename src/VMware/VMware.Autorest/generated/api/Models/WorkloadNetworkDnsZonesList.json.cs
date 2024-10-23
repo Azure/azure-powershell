@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Extensions;
 
-    /// <summary>A list of NSX DNS Zones</summary>
+    /// <summary>The response of a WorkloadNetworkDnsZone list operation.</summary>
     public partial class WorkloadNetworkDnsZonesList
     {
 
@@ -84,22 +84,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
+            if (null != this._value)
             {
-                if (null != this._value)
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.XNodeArray();
+                foreach( var __x in this._value )
                 {
-                    var __w = new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.XNodeArray();
-                    foreach( var __x in this._value )
-                    {
-                        AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
-                    }
-                    container.Add("value",__w);
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
                 }
+                container.Add("value",__w);
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
-            }
+            AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

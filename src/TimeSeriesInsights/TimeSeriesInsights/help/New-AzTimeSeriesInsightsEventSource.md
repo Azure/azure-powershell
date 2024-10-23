@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.TimeSeriesInsights-help.xml
 Module Name: Az.TimeSeriesInsights
 online version: https://learn.microsoft.com/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightseventsource
 schema: 2.0.0
@@ -15,18 +15,19 @@ Create an event source under the specified environment.
 ### eventhub (Default)
 ```
 New-AzTimeSeriesInsightsEventSource -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
- -ConsumerGroupName <String> -EventHubName <String> -EventSourceResourceId <String> -KeyName <String>
- -Kind <Kind> -Location <String> -ServiceBusNameSpace <String> -SharedAccessKey <SecureString>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-TimeStampPropertyName <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -Kind <Kind> -Location <String> -ConsumerGroupName <String> -KeyName <String>
+ -EventSourceResourceId <String> -SharedAccessKey <SecureString> -EventHubName <String>
+ -ServiceBusNameSpace <String> [-Tag <Hashtable>] [-TimeStampPropertyName <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### iothub
 ```
 New-AzTimeSeriesInsightsEventSource -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
- -ConsumerGroupName <String> -EventSourceResourceId <String> -IoTHubName <String> -KeyName <String>
- -Kind <Kind> -Location <String> -SharedAccessKey <SecureString> [-SubscriptionId <String>] [-Tag <Hashtable>]
- [-TimeStampPropertyName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -Kind <Kind> -Location <String> -ConsumerGroupName <String> -KeyName <String>
+ -EventSourceResourceId <String> -SharedAccessKey <SecureString> [-Tag <Hashtable>]
+ [-TimeStampPropertyName <String>] -IoTHubName <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,15 +38,16 @@ Create an event source under the specified environment.
 ### Example 1: Create an eventhub event source under the specified environment
 ```powershell
 New-AzEventHubNamespace -Name spacename002 -ResourceGroupName testgroup -Location eastus
-$ev = New-AzEventHub -ResourceGroupName testgroup -NamespaceName spacename002 -Name hubname001 -RetentionTimeInHour 72 -PartitionCount 2
+$ev = New-AzEventHub -ResourceGroupName testgroup -NamespaceName spacename002 -Name hubname001 -MessageRetentionInDays 3 -PartitionCount 2
 $ks = Get-AzEventHubKey -ResourceGroupName testgroup -NamespaceName spacename002 -AuthorizationRuleName RootManageSharedAccessKey
-$k  = $ks.PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
+$k  = ConvertTo-SecureString -String $ks.PrimaryKey -AsPlainText -Force
 New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name estest001 -EnvironmentName tsitest001 -Kind Microsoft.EventHub -ConsumerGroupName testgroup -Location eastus -KeyName RootManageSharedAccessKey -ServiceBusNameSpace spacename002 -EventHubName hubname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
 ```
+
 ```output
-Kind               Location   Name      Type
-----               --------   ----      ----
-Microsoft.EventHub  eastus   estest001  Microsoft.TimeSeriesInsights/Environments/EventSources
+Kind               Location Name      Type
+----               -------- ----      ----
+Microsoft.EventHub eastus   estest001 Microsoft.TimeSeriesInsights/Environments/EventSources
 ```
 
 This command creates an eventhub event source under the specified environment.
@@ -54,13 +56,14 @@ This command creates an eventhub event source under the specified environment.
 ```powershell
 $ev = New-AzIotHub -ResourceGroupName testgroup -Location eastus -Name iotname001 -SkuName S1 -Units 100
 $ks = Get-AzIotHubKey -ResourceGroupName testgroup -Name iotname001
-$k  = $ks[0].PrimaryKey | ConvertTo-SecureString -AsPlainText -Force
+$k  = ConvertTo-SecureString -String $ks[0].PrimaryKey -AsPlainText -Force
 New-AzTimeSeriesInsightsEventSource -ResourceGroupName testgroup -Name iots001 -EnvironmentName tsitest001 -Kind Microsoft.IoTHub -ConsumerGroupName testgroup -Location eastus -KeyName RootManageSharedAccessKey -IoTHubName iotname001 -EventSourceResourceId $ev.id -SharedAccessKey $k
 ```
+
 ```output
-Location  Name    Type                                                    Kind
---------  ----    ----                                                    ----
-eastus   iots001  Microsoft.TimeSeriesInsights/Environments/EventSources  Microsoft.IoTHub
+Location Name    Type                                                   Kind
+-------- ----    ----                                                   ----
+eastus   iots001 Microsoft.TimeSeriesInsights/Environments/EventSources Microsoft.IoTHub
 ```
 
 This command creates an iothub event source under the specified environment.
@@ -349,7 +352,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

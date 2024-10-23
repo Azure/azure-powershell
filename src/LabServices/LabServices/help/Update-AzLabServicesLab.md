@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.LabServices-help.xml
 Module Name: Az.LabServices
 online version: https://learn.microsoft.com/powershell/module/az.labservices/update-azlabserviceslab
 schema: 2.0.0
@@ -31,7 +31,8 @@ Update-AzLabServicesLab -Name <String> -ResourceGroupName <String> [-Subscriptio
  [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <String[]>]
  [-Title <String>] [-VirtualMachineProfileCreateOption <CreateOption>]
  [-VirtualMachineProfileUsageQuota <TimeSpan>] [-VirtualMachineProfileUseSharedPassword <EnableState>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -768,7 +769,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

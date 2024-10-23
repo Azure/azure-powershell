@@ -135,7 +135,7 @@ Accepted values: P-256, P-384, P-521, P-256K, SECP256K1
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -293,7 +293,7 @@ Accepted values: 2048, 3072, 4096, 256, 384, 521
 Required: False
 Position: Named
 Default value: 2048
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

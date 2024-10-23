@@ -15,15 +15,15 @@ Delete a managed Kubernetes cluster.
 ### GroupNameParameterSet (Default)
 ```
 Remove-AzAksCluster [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Remove-AzAksCluster -InputObject <PSKubernetesCluster> [-PassThru] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
@@ -37,7 +37,7 @@ Delete a managed Kubernetes cluster.
 
 ## EXAMPLES
 
-### Delete an existing managed Kubernetes cluster
+### Example 1: Delete an existing managed Kubernetes cluster
 ```powershell
 Remove-AzAksCluster -ResourceGroupName group -Name myCluster
 ```

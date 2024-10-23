@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Include".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Include", "Include", global::System.Management.Automation.CompletionResultType.ParameterValue, "Include");
+                yield return new global::System.Management.Automation.CompletionResult("'Include'", "Include", global::System.Management.Automation.CompletionResultType.ParameterValue, "Include");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Exclude".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Exclude", "Exclude", global::System.Management.Automation.CompletionResultType.ParameterValue, "Exclude");
+                yield return new global::System.Management.Automation.CompletionResult("'Exclude'", "Exclude", global::System.Management.Automation.CompletionResultType.ParameterValue, "Exclude");
             }
         }
     }

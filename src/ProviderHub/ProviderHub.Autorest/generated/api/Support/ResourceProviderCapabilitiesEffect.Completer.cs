@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Allow".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Allow", "Allow", global::System.Management.Automation.CompletionResultType.ParameterValue, "Allow");
+                yield return new global::System.Management.Automation.CompletionResult("'Allow'", "Allow", global::System.Management.Automation.CompletionResultType.ParameterValue, "Allow");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disallow".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Disallow", "Disallow", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disallow");
+                yield return new global::System.Management.Automation.CompletionResult("'Disallow'", "Disallow", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disallow");
             }
         }
     }

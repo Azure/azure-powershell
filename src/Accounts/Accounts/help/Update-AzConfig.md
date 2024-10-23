@@ -15,9 +15,9 @@ Updates the configs of Azure PowerShell.
 ```
 Update-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-CheckForUpgrade <Boolean>] [-DefaultSubscriptionForLogin <String>]
- [-DisableErrorRecordsPersistence <Boolean>] [-DisableInstanceDiscovery <Boolean>]
- [-DisplayBreakingChangeWarning <Boolean>] [-DisplayRegionIdentified <Boolean>]
- [-DisplaySurveyMessage <Boolean>] [-EnableDataCollection <Boolean>] [-EnableLoginByWam <Boolean>]
+ [-DisableInstanceDiscovery <Boolean>] [-DisplayBreakingChangeWarning <Boolean>]
+ [-DisplayRegionIdentified <Boolean>] [-DisplaySecretsWarning <Boolean>] [-DisplaySurveyMessage <Boolean>]
+ [-EnableDataCollection <Boolean>] [-EnableErrorRecordsPersistence <Boolean>] [-EnableLoginByWam <Boolean>]
  [<CommonParameters>]
 ```
 
@@ -153,21 +153,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DisableErrorRecordsPersistence
-When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in in the next major release of Az around November 2023.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DisableInstanceDiscovery
 Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. The process of instance discovery entails retrieving authority metadata from https://login.microsoft.com/ to validate the authority. By setting this to true, the validation of the authority is disabled. As a result, it is crucial to ensure that the configured authority host is valid and trustworthy.
 
@@ -259,6 +244,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EnableErrorRecordsPersistence
+When enabled, error records will be written to ~/.Azure/ErrorRecords.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableLoginByWam
 \[Preview\] When enabled, Web Account Manager (WAM) will be the default interactive login experience.
 It will fall back to using the browser if the platform does not support WAM.
@@ -269,6 +269,22 @@ Feel free to reach out to Azure PowerShell team if you have any feedbacks: https
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LoginExperienceV2
+Only active when authenticating interactively, allows the user to choose the subscription and tenant used in subsequent commands. Possible values ad 'On' (Default) and 'Off'. 'On' requires user's input. 'Off' will use the first tenant and subscription returned by Azure, can change without notice and lead to command execution in an unwanted context (not recommended).
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Config.Models.LoginExperienceConfig
+Parameter Sets: (All)
+Aliases:
+Accepted values: On, Off
 
 Required: False
 Position: Named

@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
         /// Creates a new instance of <see cref="ProviderHubIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ProviderHubIdentity" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -98,16 +100,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ProviderNamespace = (string) content.GetValueForProperty("ProviderNamespace",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ProviderNamespace, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).RolloutName = (string) content.GetValueForProperty("RolloutName",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).RolloutName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NotificationRegistrationName = (string) content.GetValueForProperty("NotificationRegistrationName",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NotificationRegistrationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ResourceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Sku, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeFirst = (string) content.GetValueForProperty("NestedResourceTypeFirst",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeFirst, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeSecond = (string) content.GetValueForProperty("NestedResourceTypeSecond",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeSecond, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeThird = (string) content.GetValueForProperty("NestedResourceTypeThird",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeThird, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderNamespace"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ProviderNamespace = (string) content.GetValueForProperty("ProviderNamespace",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ProviderNamespace, global::System.Convert.ToString);
+            }
+            if (content.Contains("RolloutName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).RolloutName = (string) content.GetValueForProperty("RolloutName",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).RolloutName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NotificationRegistrationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NotificationRegistrationName = (string) content.GetValueForProperty("NotificationRegistrationName",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NotificationRegistrationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ResourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Sku, global::System.Convert.ToString);
+            }
+            if (content.Contains("NestedResourceTypeFirst"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeFirst = (string) content.GetValueForProperty("NestedResourceTypeFirst",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeFirst, global::System.Convert.ToString);
+            }
+            if (content.Contains("NestedResourceTypeSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeSecond = (string) content.GetValueForProperty("NestedResourceTypeSecond",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeSecond, global::System.Convert.ToString);
+            }
+            if (content.Contains("NestedResourceTypeThird"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeThird = (string) content.GetValueForProperty("NestedResourceTypeThird",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeThird, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,16 +157,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ProviderNamespace = (string) content.GetValueForProperty("ProviderNamespace",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ProviderNamespace, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).RolloutName = (string) content.GetValueForProperty("RolloutName",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).RolloutName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NotificationRegistrationName = (string) content.GetValueForProperty("NotificationRegistrationName",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NotificationRegistrationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ResourceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Sku, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeFirst = (string) content.GetValueForProperty("NestedResourceTypeFirst",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeFirst, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeSecond = (string) content.GetValueForProperty("NestedResourceTypeSecond",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeSecond, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeThird = (string) content.GetValueForProperty("NestedResourceTypeThird",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeThird, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderNamespace"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ProviderNamespace = (string) content.GetValueForProperty("ProviderNamespace",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ProviderNamespace, global::System.Convert.ToString);
+            }
+            if (content.Contains("RolloutName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).RolloutName = (string) content.GetValueForProperty("RolloutName",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).RolloutName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NotificationRegistrationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NotificationRegistrationName = (string) content.GetValueForProperty("NotificationRegistrationName",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NotificationRegistrationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ResourceType = (string) content.GetValueForProperty("ResourceType",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).ResourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Sku = (string) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Sku, global::System.Convert.ToString);
+            }
+            if (content.Contains("NestedResourceTypeFirst"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeFirst = (string) content.GetValueForProperty("NestedResourceTypeFirst",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeFirst, global::System.Convert.ToString);
+            }
+            if (content.Contains("NestedResourceTypeSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeSecond = (string) content.GetValueForProperty("NestedResourceTypeSecond",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeSecond, global::System.Convert.ToString);
+            }
+            if (content.Contains("NestedResourceTypeThird"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeThird = (string) content.GetValueForProperty("NestedResourceTypeThird",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).NestedResourceTypeThird, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

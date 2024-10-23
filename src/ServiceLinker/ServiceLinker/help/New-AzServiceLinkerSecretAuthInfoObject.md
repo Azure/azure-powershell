@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ServiceLinker-help.xml
 Module Name: Az.ServiceLinker
 online version: https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkersecretauthinfoobject
 schema: 2.0.0
@@ -13,8 +13,8 @@ Create an in-memory object for SecretAuthInfo.
 ## SYNTAX
 
 ```
-New-AzServiceLinkerSecretAuthInfoObject [-Name <String>] [-SecretKeyVaultUri <String>]
- [-SecretNameInKeyVault <String>] [-SecretValue <String>] [<CommonParameters>]
+New-AzServiceLinkerSecretAuthInfoObject [-Name <String>] [-SecretValue <String>] [-SecretKeyVaultUri <String>]
+ [-SecretNameInKeyVault <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ Create Secret Auth info with raw value
 
 ### Example 2: Create Secret Auth info with keyvault secret uri
 ```powershell
-New-AzServiceLinkerSecretAuthInfoObject -Name user -SecretKeyVaultUri "https://servicelinker-kv-ref.vault.azure.net/secrets/test-secret/cc5d8095a54f4755b342f4e7884b5c84" 
+New-AzServiceLinkerSecretAuthInfoObject -Name user -SecretKeyVaultUri "https://servicelinker-kv-ref.vault.azure.net/secrets/test-secret/cc5d8095a54f4755b342f4e7884b5c84"
 ```
 
 ```output
@@ -135,7 +135,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

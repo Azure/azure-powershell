@@ -99,6 +99,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RecoveryPointId, global::System.Convert.ToString);
             }
+            if (content.Contains("ResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceId, global::System.Convert.ToString);
+            }
             if (content.Contains("JobId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).JobId, global::System.Convert.ToString);
@@ -167,6 +171,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
             if (content.Contains("RecoveryPointId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).RecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceId = (string) content.GetValueForProperty("ResourceId",((Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentityInternal)this).ResourceId, global::System.Convert.ToString);
             }
             if (content.Contains("JobId"))
             {

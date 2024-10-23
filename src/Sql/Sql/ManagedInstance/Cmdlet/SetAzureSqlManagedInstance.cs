@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The compute generation for the instance.")]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter(Constants.ComputeGenerationGen5)]
+        [PSArgumentCompleter(Constants.ComputeGenerationGen5, Constants.ComputeGenerationG8IH, Constants.ComputeGenerationG8IM)]
         public string ComputeGeneration { get; set; }
 
         /// <summary>
@@ -283,6 +283,29 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Weather or not Managed Instance is freemium")]
         [PSArgumentCompleter("Regular", "Freemium")]
         public string PricingModel { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not this is a GPv2 variant of General Purpose edition.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Whether or not this is a GPv2 variant of General Purpose edition.")]
+        public bool? IsGeneralPurposeV2 { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Storage IOps for instance
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Determines how much Storage IOps to associate with instance.")]
+        public int? StorageIOps { get; set; }
+
+        /// <summary>
+        /// Specifies weather or not Managed Instance is freemium
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Preferred metadata to use for authentication of synced on-prem users. Default is AzureAD.")]
+        [ValidateSet("AzureAD", "Paired", "Windows")]
+        [PSArgumentCompleter("AzureAD", "Paired", "Windows")]
+        public string AuthenticationMetadata { get; set; }
 
         /// <summary>
         /// Get the instance to update
@@ -373,6 +396,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData[0].ServicePrincipal = ResourceServicePrincipalHelper.GetServicePrincipalObjectFromType(this.ServicePrincipalType ?? null);
             updateData[0].DatabaseFormat = this.DatabaseFormat?? updateData[0].DatabaseFormat;
             updateData[0].PricingModel = this.PricingModel ?? updateData[0].PricingModel;
+            // If this parameter was not set by the user, we do not want to pick up its current value.
+            // This is due to the fact that this update might have a target edition that does not use this parameter.
+            updateData[0].IsGeneralPurposeV2 = this.IsGeneralPurposeV2;
+            // If this parameter was not set by the user, we do not want to pick up its current value.
+            // This is due to the fact that this update might have a target edition that does not use this parameter.
+            // If the target edition uses the parameter, the current value will get picked up later in the update process.
+            updateData[0].StorageIOps = this.StorageIOps;
+            updateData[0].AuthenticationMetadata = this.AuthenticationMetadata ?? updateData[0].AuthenticationMetadata;
 
             return updateData;
         }

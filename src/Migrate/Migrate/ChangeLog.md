@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 2.4.0
+* Removed "at lease one NIC needs to be user selected" constrain when creating/updating server replication (protected item)
+* Added retries for calls to internal Get commands
+
+## Version 2.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 2.3.0
 * Added support for `Data.Replication`
 

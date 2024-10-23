@@ -20,15 +20,15 @@ Create a NewRelicMonitorResource
 .Description
 Create a NewRelicMonitorResource
 .Example
-New-AzNewRelicMonitor -Name test-01 -ResourceGroupName ps-test -Location eastus -PlanDataPlanDetail "newrelic-pay-as-you-go-free-live@TIDgmz7xq9ge3py@PUBIDnewrelicinc1635200720692.newrelic_liftr_payg"-PlanDataBillingCycle 'MONTHLY' -PlanDataUsageType 'PAYG' -PlanDataEffectiveDate (Get-Date -DisplayHint DateTime) -UserInfoEmailAddress v-jiaji@outlook.com -UserInfoFirstName "Joyer" -UserInfoLastName "Jin"
+New-AzNewRelicMonitor -Name test-01 -ResourceGroupName ps-test -Location eastus -PlanDataPlanDetail "newrelicpaygtestplan2@123456789123456@PUBIDnewrelicinc1234567891234.newrelic_liftr_payg"-PlanDataBillingCycle 'MONTHLY' -PlanDataUsageType 'PAYG' -PlanDataEffectiveDate (Get-Date -DisplayHint DateTime) -UserInfoEmailAddress user1@outlook.com -UserInfoFirstName "group" -UserInfoLastName "test"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource
+Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource
 .Link
 https://learn.microsoft.com/powershell/module/az.newrelic/new-aznewrelicmonitor
 #>
 function New-AzNewRelicMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -52,162 +52,184 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # The geo-location where the resource lives
     ${Location},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.AccountCreationSource])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("LIFTR", "NEWRELIC")]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.AccountCreationSource]
+    [System.String]
     # Source of account creation
     ${AccountCreationSource},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # Account id
     ${AccountInfoAccountId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.Security.SecureString]
     # ingestion key of account
     ${AccountInfoIngestionKey},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
-    # NewRelic account region
+    # Region where New Relic account is present
     ${AccountInfoRegion},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ManagedServiceIdentityType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # User id
     ${NewRelicAccountPropertyUserId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.OrgCreationSource])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("LIFTR", "NEWRELIC")]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.OrgCreationSource]
+    [System.String]
     # Source of org creation
     ${OrgCreationSource},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # Organization id
     ${OrganizationInfoOrganizationId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.BillingCycle])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("YEARLY", "MONTHLY", "WEEKLY")]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.BillingCycle]
+    [System.String]
     # Different billing cycles like MONTHLY/WEEKLY.
     # this could be enum
     ${PlanDataBillingCycle},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.DateTime]
     # date when plan was applied
     ${PlanDataEffectiveDate},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # plan id as published by NewRelic
     ${PlanDataPlanDetail},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.UsageType])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("PAYG", "COMMITTED")]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.UsageType]
+    [System.String]
     # Different usage type like PAYG/COMMITTED.
     # this could be enum
     ${PlanDataUsageType},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
+    [System.String]
+    # Status of Azure Subscription where Marketplace SaaS is located.
+    ${SaaSAzureSubscriptionStatus},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # The Id of the Enterprise App used for Single sign-on.
     ${SingleSignOnPropertyEnterpriseAppId},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ProvisioningState])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("Accepted", "Creating", "Updating", "Deleting", "Succeeded", "Failed", "Canceled", "Deleted", "NotSpecified")]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.ProvisioningState]
+    [System.String]
     # Provisioning state
     ${SingleSignOnPropertyProvisioningState},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SingleSignOnStates])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.PSArgumentCompleterAttribute("Initial", "Enable", "Disable", "Existing")]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SingleSignOnStates]
+    [System.String]
     # Single sign-on state
     ${SingleSignOnPropertySingleSignOnState},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # The login URL specific to this NewRelic Organization
     ${SingleSignOnPropertySingleSignOnUrl},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api30.ITrackedResourceTags]))]
+    [System.String]
+    # State of the Azure Subscription containing the monitor resource
+    ${SubscriptionState},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api40.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # country if user
     ${UserInfoCountry},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # User Email
     ${UserInfoEmailAddress},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # First name
     ${UserInfoFirstName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # Last name
     ${UserInfoLastName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
     [System.String]
     # Contact phone number
     ${UserInfoPhoneNumber},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -296,13 +318,25 @@ begin {
         }
 
         $mapping = @{
-            CreateExpanded = 'Az.NewRelic.private\New-AzNewRelicMonitor_CreateExpanded';
+            CreateExpanded = 'Az.NewRelic.custom\New-AzNewRelicMonitor';
+            CreateViaJsonFilePath = 'Az.NewRelic.custom\New-AzNewRelicMonitor';
+            CreateViaJsonString = 'Az.NewRelic.custom\New-AzNewRelicMonitor';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

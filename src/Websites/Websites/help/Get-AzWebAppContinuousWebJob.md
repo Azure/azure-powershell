@@ -21,7 +21,8 @@ Get-AzWebAppContinuousWebJob -AppName <String> -ResourceGroupName <String> [-Sub
 ### Get
 ```
 Get-AzWebAppContinuousWebJob -AppName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity

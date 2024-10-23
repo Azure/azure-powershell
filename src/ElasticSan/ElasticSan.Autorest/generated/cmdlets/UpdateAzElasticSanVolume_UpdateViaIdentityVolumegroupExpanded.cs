@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolume))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"Update an Volume.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}", ApiVersion = "2023-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}", ApiVersion = "2024-05-01")]
     public partial class UpdateAzElasticSanVolume_UpdateViaIdentityVolumegroupExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IContext
@@ -95,6 +95,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
+
+        /// <summary>
+        /// Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use.",
+        SerializedName = @"resourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.DoNotExport]
+        public string ManagedByResourceId { get => _parametersBody.ManagedByResourceId ?? null; set => _parametersBody.ManagedByResourceId = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -244,11 +258,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
                 telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
                 telemetryInfo.TryGetValue("InvocationName", out var invocationName);
-                if (!string.IsNullOrEmpty(sanitizedProperties))
+                if (showSecretsWarning == "true")
                 {
-                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
                 }
             }
         }
@@ -435,6 +457,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
                     Pipeline.Append((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelineAppend) ?? HttpPipelineAppend);
                 }
                 // get the client instance
+                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("ManagedByResourceId"))
+                {
+                    ManagedByResourceId = (string)this.MyInvocation.BoundParameters["ManagedByResourceId"];
+                }
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }

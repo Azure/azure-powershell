@@ -15,7 +15,8 @@ Gets a Synapse Analytics Spark statement.
 ### GetSparkStatementsByIdParameterSet (Default)
 ```
 Get-AzSynapseSparkStatement -WorkspaceName <String> -SparkPoolName <String> [-LivyId <Int32>]
- -SessionId <Int32> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -SessionId <Int32> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetSparkStatementsByParentObjectParameterSet

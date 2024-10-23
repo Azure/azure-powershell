@@ -19,7 +19,22 @@
 -->
 
 ## Upcoming Release
-* [Breaking Change] Output type for -Type ConnectionStrings is changed to List<DatabaseAccountConnectionString> to expose keyKind and type fields
+* Upgraded Azure.Core to 1.44.1.
+* Updated Get-AzCosmosDBAccountKey to return keyKind and type fields when getting ConnectionStrings
+
+## Version 1.15.0
+* Added new parameter `DisableTtl` to `Restore-AzCosmosDBAccount`.
+
+## Version 1.14.5
+* Fixed secrets exposure in example documentation.
+
+## Version 1.14.4
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+
+## Version 1.14.3
+* Removed the out-of-date breaking change message for `Get-AzCosmosDBAccountKey`.
+
+## Version 1.14.2
 * Upgraded Azure.Core to 1.37.0.
 
 ## Version 1.14.1

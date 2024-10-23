@@ -20,7 +20,8 @@ New-AzSynapseWorkspace -ResourceGroupName <String> -Name <String> -Location <Str
  [-UseSystemAssignedIdentityInEncryption <Object>] [-AsJob] [-ManagedResourceGroupName <String>]
  [-GitRepository <PSWorkspaceRepositoryConfiguration>] [-EnablePublicNetworkAccess <Boolean>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +31,7 @@ The **New-AzSynapseWorkspace** cmdlet creates an Azure Synapse Analytics workspa
 
 ### Example 1
 ```powershell
-$password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
 New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds
 ```
@@ -40,7 +41,7 @@ This command creates a Synapse Analytics workspace named ContosoWorkspace that u
 ### Example 2
 ```powershell
 $config = New-AzSynapseManagedVirtualNetworkConfig -PreventDataExfiltration -AllowedAadTenantIdsForLinking ContosoTenantId
-$password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
 New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -ManagedVirtualNetwork $config
 ```
@@ -50,7 +51,7 @@ The first command creates a managed virtual network configuration. Then the rest
 ### Example 3
 ```powershell
 $config = New-AzSynapseManagedVirtualNetworkConfig -PreventDataExfiltration -AllowedAadTenantIdsForLinking ContosoTenantId
-$password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
 New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -ManagedVirtualNetwork $config -EnablePublicNetworkAccess $True
 ```
@@ -59,7 +60,7 @@ The first command creates a managed virtual network configuration. Then the rest
 
 ### Example 4
 ```powershell
-$password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
 $config = New-AzSynapseGitRepositoryConfig -RepositoryType GitHub -AccountName ContosoAccount -RepositoryName ContosoRepo -CollaborationBranch main
 New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -GitRepository $config
@@ -69,7 +70,7 @@ This command creates a Synapse Analytics workspace named ContosoWorkspace that u
 
 ### Example 5
 ```powershell
-$password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
 $uamis = Get-AzUserAssignedIdentity -ResourceGroupName ContosoResourceGroup
 $uamilist = New-Object System.Collections.Generic.List[string]

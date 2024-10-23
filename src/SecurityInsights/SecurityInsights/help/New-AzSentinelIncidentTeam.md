@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincidentteam
 schema: 2.0.0
@@ -15,15 +15,16 @@ Creates a Microsoft team to investigate the incident by sharing information and 
 ### CreateExpanded (Default)
 ```
 New-AzSentinelIncidentTeam -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
- -TeamName <String> [-SubscriptionId <String>] [-GroupId <String[]>] [-MemberId <String[]>]
- [-TeamDescription <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -TeamName <String> [-GroupId <String[]>] [-MemberId <String[]>]
+ [-TeamDescription <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzSentinelIncidentTeam -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
- -TeamProperty <ITeamProperties> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -TeamProperty <ITeamProperties> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +34,7 @@ Creates a Microsoft team to investigate the incident by sharing information and 
 
 ### Example 1: Create an Incident Teams Room
 ```powershell
- $incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id "myIncidentId"
+$incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id "myIncidentId"
  New-AzSentinelIncidentTeam -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId ($incident.Name) -TeamName ("Incident "+$incident.incidentNumber+": "+$incident.title)
 ```
 
@@ -41,7 +42,7 @@ Creates a Microsoft team to investigate the incident by sharing information and 
 Description         :
 Name                : Incident : NewIncident3
 PrimaryChannelUrl   : https://teams.microsoft.com/l/team/19:vYoGjeGlZmTEDmu0gTbrk9T_eDS4pKIkEU7UuM1IyZk1%40thread.tacv2/conversations?groupId=3c637cc5-caf1-46c7-93ac-069c6
-                      4b05395&tenantId=8f21ced5-2eff-4f8d-aff1-4dbb4cee8e3d
+                      4b05395&tenantId=00001111-aaaa-2222-bbbb-3333cccc4444
 TeamCreationTimeUtc : 2/4/2022 3:02:03 PM
 TeamId              : 3c637cc5-caf1-46c7-93ac-069c64b05395
 ```
@@ -247,18 +248,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`TEAMPROPERTY <ITeamProperties>`: Describes team properties
-  - `TeamName <String>`: The name of the team
-  - `[GroupId <String[]>]`: List of group IDs to add their members to the team
-  - `[MemberId <String[]>]`: List of member IDs to add to the team
-  - `[TeamDescription <String>]`: The description of the team
-
 ## RELATED LINKS
-

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareCluster
 
 ## SYNOPSIS
-Create a cluster in a private cloud
+Create a Cluster
 
 ## SYNTAX
 
@@ -16,26 +16,29 @@ Create a cluster in a private cloud
 ```
 New-AzVMwareCluster -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -SkuName <String> [-ClusterSize <Int32>] [-PropertiesHost <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-VsanDatastoreName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPrivateCloudExpanded
 ```
 New-AzVMwareCluster -Name <String> -PrivateCloudInputObject <IVMwareIdentity> -SkuName <String>
- [-ClusterSize <Int32>] [-PropertiesHost <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClusterSize <Int32>] [-PropertiesHost <String[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
+ [-SkuSize <String>] [-SkuTier <String>] [-VsanDatastoreName <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzVMwareCluster -InputObject <IVMwareIdentity> -SkuName <String> [-ClusterSize <Int32>]
- [-PropertiesHost <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PropertiesHost <String[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuSize <String>]
+ [-SkuTier <String>] [-VsanDatastoreName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a cluster in a private cloud
+Create a Cluster
 
 ## EXAMPLES
 
@@ -116,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the cluster in the private cloud
+Name of the cluster
 
 ```yaml
 Type: System.String
@@ -161,7 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-The name of the private cloud.
+Name of the private cloud
 
 ```yaml
 Type: System.String
@@ -206,8 +209,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkuCapacity
+If the SKU supports scale out/in then the capacity integer should be included.
+If scale out/in is not possible for the resource this may be omitted.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuFamily
+If the service has different generations of hardware, for the same SKU, then that can be captured here.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SkuName
 The name of the SKU.
+E.g.
+P3.
+It is typically a letter+number code
 
 ```yaml
 Type: System.String
@@ -221,8 +258,40 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkuSize
+The SKU size.
+When the name field is the combination of tier and some other value, this would be the standalone code.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuTier
+This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -232,6 +301,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VsanDatastoreName
+Name of the vsan datastore associated with the cluster
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -19,6 +19,12 @@ Get-AzServiceBusPrivateEndpointConnection -NamespaceName <String> -ResourceGroup
  [<CommonParameters>]
 ```
 
+### GetViaIdentityNamespace
+```
+Get-AzServiceBusPrivateEndpointConnection -Name <String> -NamespaceInputObject <IServiceBusIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzServiceBusPrivateEndpointConnection -Name <String> -NamespaceName <String> -ResourceGroupName <String>
@@ -83,7 +89,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -102,13 +107,28 @@ The PrivateEndpointConnection name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityNamespace, Get
 Aliases: PrivateEndpointConnectionName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: GetViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -167,8 +187,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IPrivateEndpointConnection
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection
 
 ## NOTES
 
 ## RELATED LINKS
+
+[https://msdn.microsoft.com/en-us/library/azure/mt639379.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639379.aspx)
+
+[https://msdn.microsoft.com/en-us/library/azure/mt639412.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639412.aspx)

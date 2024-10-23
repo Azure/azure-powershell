@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MySql-help.xml
 Module Name: Az.MySql
 online version: https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlflexibleserver
 schema: 2.0.0
@@ -14,12 +14,12 @@ Creates a new MySQL flexible server.
 
 ```
 New-AzMySqlFlexibleServer [-Name <String>] [-ResourceGroupName <String>] [-SubscriptionId <String>]
- [-AdministratorLoginPassword <SecureString>] [-AdministratorUserName <String>] [-BackupRetentionDay <Int32>]
- [-HighAvailability <String>] [-Iops <Int32>] [-Location <String>] [-PrivateDnsZone <String>]
- [-PublicAccess <String>] [-Sku <String>] [-SkuTier <String>] [-StorageAutogrow <StorageAutogrow>]
- [-StorageInMb <Int32>] [-Subnet <String>] [-SubnetPrefix <String>] [-Tag <Hashtable>]
- [-Version <ServerVersion>] [-Vnet <String>] [-VnetPrefix <String>] [-Zone <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Location <String>] [-Zone <String>] [-AdministratorUserName <String>]
+ [-AdministratorLoginPassword <SecureString>] [-Sku <String>] [-SkuTier <String>] [-BackupRetentionDay <Int32>]
+ [-StorageInMb <Int32>] [-StorageAutogrow <StorageAutogrow>] [-Iops <Int32>] [-Tag <Hashtable>]
+ [-Version <ServerVersion>] [-SubnetPrefix <String>] [-Subnet <String>] [-VnetPrefix <String>] [-Vnet <String>]
+ [-PrivateDnsZone <String>] [-PublicAccess <String>] [-HighAvailability <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +29,7 @@ Creates a new MySQL flexible server.
 
 ### Example 1: Create a new MySql flexible server with arguments
 ```powershell
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_D2ds_v4 -SkuTier Burstable -Version 12 -StorageInMb 20480 -PublicAccess none -Zone 1 -BackupRetentionDay 10 -StorageAutogrow Enabled -Iops 500 -HighAvailability ZoneRedundant
 ```
 
@@ -41,10 +42,7 @@ Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to h
 Name         Location  SkuName             SkuTier           AdministratorLogin  Version StorageSizeGb
 ----         --------  -------             -------           ------------------  ------- -------------
 mysql-test   East US   Standard_D2ds_v4    GeneralPurpose    admin                5.7     20
-
 ```
-
-
 
 ### Example 2: Create a new MySql flexible server with default setting
 ```powershell
@@ -89,7 +87,6 @@ Creating database flexibleserverdb...
 Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
 ----         --------  -------          -------        ------------------ ------- -------------
 mysql-test   West US 2 Standard_B1ms    Burstable      admin              5.7     32
-
 ```
 
 This cmdlet creates PostgreSql flexible server with an existing Subnet Id provided by a user.
@@ -113,7 +110,6 @@ Creating database flexibleserverdb...
 Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
 ----         --------  -------          -------        ------------------ ------- -------------
 mysql-test   West US 2 Standard_B1ms    Burstable      admin              5.7     32
-
 ```
 
 This cmdlet creates MySql flexible server with vnet name, subnet name, vnet prefix, and subnet prefix.
@@ -143,7 +139,6 @@ Creating database flexibleserverdb...
 Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
 ----         --------  -------          -------        ------------------ ------- -------------
 mysql-test   West US 2 Standard_B1ms    Burstable      admin              5.7     32
-
 ```
 
 This cmdlet creates MySql flexible server with vnet id or vnet name provided by a user.
@@ -183,7 +178,6 @@ Configuring server firewall rule to accept connections from 10.10.10.10 to 10.10
 Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
 ----         --------  -------          -------        ------------------ ------- -------------
 mysql-test   West US 2 Standard_B1ms    Burstable      admin              5.7     32
-
 ```
 
 This cmdlet creates MySql flexible server open to specified IP addresses.
@@ -629,7 +623,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

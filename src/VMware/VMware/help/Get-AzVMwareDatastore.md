@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVMwareDatastore
 
 ## SYNOPSIS
-Get a datastore in a private cloud cluster
+Get a Datastore
 
 ## SYNTAX
 
@@ -45,7 +45,7 @@ Get-AzVMwareDatastore -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>
 ```
 
 ## DESCRIPTION
-Get a datastore in a private cloud cluster
+Get a Datastore
 
 ## EXAMPLES
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-Name of the cluster in the private cloud
+Name of the cluster
 
 ```yaml
 Type: System.String
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the datastore in the private cloud cluster
+Name of the datastore
 
 ```yaml
 Type: System.String
@@ -202,6 +202,7 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String[]

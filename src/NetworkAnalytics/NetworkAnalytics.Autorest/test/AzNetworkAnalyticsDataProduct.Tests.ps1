@@ -75,6 +75,8 @@ Describe 'New-AzNetworkAnalyticsDataProduct' {
     It 'Remove Data Product User Role' {
         {
             Remove-AzNetworkAnalyticsDataProductUserRole -ResourceGroupName $env.ResourceGroupName -DataProductName $env.DataProductName -Role $env.Role -PrincipalType $env.PrincipalType -RoleId $env.RoleId -PrincipalId $env.UserOnePrincipalId -DataTypeScope $env.DataTypeScope -RoleAssignmentId $env.RoleAssignmentId -UserName $env.UserOneName
+            #Write-Host "Sleeping for 1 minutes"
+            #Start-TestSleep -Seconds 60
             $GetDataProductUserRole = Get-AzNetworkAnalyticsDataProductRoleAssignment -ResourceGroupName $env.ResourceGroupName -DataProductName $env.DataProductName
             $GetDataProductUserRole.RoleAssignmentResponse.PrincipalId.Contains($env.UserOnePrincipalId)| Should -Be $false
         } | Should -Not -Throw

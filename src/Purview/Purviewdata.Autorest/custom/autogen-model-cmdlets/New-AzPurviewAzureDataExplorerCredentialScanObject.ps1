@@ -23,7 +23,7 @@ Create an in-memory object for AzureDataExplorerCredentialScan.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureDataExplorerCredentialScanObject
 #>
 function New-AzPurviewAzureDataExplorerCredentialScanObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerCredentialScan')]

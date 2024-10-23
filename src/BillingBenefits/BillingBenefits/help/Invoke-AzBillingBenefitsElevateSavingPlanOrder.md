@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.BillingBenefits-help.xml
 Module Name: Az.BillingBenefits
 online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/invoke-azbillingbenefitselevatesavingplanorder
 schema: 2.0.0
@@ -15,13 +15,13 @@ Elevate as owner on savings plan order based on billing permissions.
 ### Elevate (Default)
 ```
 Invoke-AzBillingBenefitsElevateSavingPlanOrder -SavingsPlanOrderId <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ElevateViaIdentity
 ```
 Invoke-AzBillingBenefitsElevateSavingPlanOrder -InputObject <IBillingBenefitsIdentity>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ Invoke-AzBillingBenefitsElevateSavingPlanOrder -SavingsPlanOrderId "e0b1f446-568
 ```output
 Name                                 PrincipalId                          RoleDefinitionId                                                                        Scope
 ----                                 -----------                          ----------------                                                                        -----
-5c545baf-2ef5-4016-9c31-6e0e23c397a0 067e7443-3a55-40b6-a2d8-0a7a12a9da2d /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635 /providers/Microsoft.BillingBenefits/savingsplanorders/e45905d2-9207-4f24-8549-f615c203b49b
+00001111-aaaa-2222-bbbb-3333cccc4444 067e7443-3a55-40b6-a2d8-0a7a12a9da2d /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635 /providers/Microsoft.BillingBenefits/savingsplanorders/e45905d2-9207-4f24-8549-f615c203b49b
 ```
 
 Elevate savings plan order
@@ -54,7 +54,7 @@ $response = Invoke-AzBillingBenefitsElevateSavingPlanOrder -InputObject $identit
 ```output
 Name                                 PrincipalId                          RoleDefinitionId                                                                        Scope
 ----                                 -----------                          ----------------                                                                        -----
-5c545baf-2ef5-4016-9c31-6e0e23c397a0 067e7443-3a55-40b6-a2d8-0a7a12a9da2d /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635 /providers/Microsoft.BillingBenefits/savingsplanorders/e45905d2-9207-4f24-8549-f615c203b49b
+00001111-aaaa-2222-bbbb-3333cccc4444 067e7443-3a55-40b6-a2d8-0a7a12a9da2d /providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635 /providers/Microsoft.BillingBenefits/savingsplanorders/e45905d2-9207-4f24-8549-f615c203b49b
 ```
 
 Elevate savings plan order
@@ -62,7 +62,8 @@ Elevate savings plan order
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -151,19 +152,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IBillingBenefitsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ReservationOrderAliasName <String>]`: Name of the reservation order alias
-  - `[SavingsPlanId <String>]`: ID of the savings plan
-  - `[SavingsPlanOrderAliasName <String>]`: Name of the savings plan order alias
-  - `[SavingsPlanOrderId <String>]`: Order ID of the savings plan
-
 ## RELATED LINKS
-

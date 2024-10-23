@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
-    /// <summary>A list of NSX DNS Zones</summary>
+    /// <summary>The response of a WorkloadNetworkDnsZone list operation.</summary>
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkDnsZonesListTypeConverter))]
     public partial class WorkloadNetworkDnsZonesList
     {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// A list of NSX DNS Zones
+    /// The response of a WorkloadNetworkDnsZone list operation.
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkDnsZonesListTypeConverter))]
     public partial interface IWorkloadNetworkDnsZonesList
 

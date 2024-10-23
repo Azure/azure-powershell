@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Elastic-help.xml
 Module Name: Az.Elastic
 online version: https://learn.microsoft.com/powershell/module/az.elastic/new-azelasticmonitor
 schema: 2.0.0
@@ -13,12 +13,16 @@ Create a monitor resource.
 ## SYNTAX
 
 ```
-New-AzElasticMonitor -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-CompanyInfoBusiness <String>] [-CompanyInfoCountry <String>] [-CompanyInfoDomain <String>]
- [-CompanyInfoEmployeesNumber <String>] [-CompanyInfoState <String>] [-IdentityType <ManagedIdentityTypes>]
- [-MonitoringStatus <MonitoringStatus>] [-Sku <String>] [-Tag <Hashtable>] [-UserInfoCompanyName <String>]
- [-UserInfoEmailAddress <String>] [-UserInfoFirstName <String>] [-UserInfoLastName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CompanyInfoEmployeesNumber <String>] [-CompanyInfoState <String>] [-GenerateApiKey]
+ [-IdentityType <ManagedIdentityTypes>] [-MonitoringStatus <MonitoringStatus>] [-PlanDetailOfferId <String>]
+ [-PlanDetailPlanId <String>] [-PlanDetailPlanName <String>] [-PlanDetailPublisherId <String>]
+ [-PlanDetailTermId <String>] [-SaaSAzureSubscriptionStatus <String>] [-Sku <String>]
+ [-SourceCampaignId <String>] [-SourceCampaignName <String>] [-SubscriptionState <String>] [-Tag <Hashtable>]
+ [-UserInfoCompanyName <String>] [-UserInfoEmailAddress <String>] [-UserInfoFirstName <String>]
+ [-UserInfoLastName <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,13 +32,13 @@ Create a monitor resource.
 
 ### Example 1: Create a monitor resource
 ```powershell
-New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -Sku "ess-monthly-consumption_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com'
+New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -Sku "ess-consumption-2024_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com'
 ```
 
 ```output
 Name           SkuName                         MonitoringStatus Location ResourceGroupName
 ----           -------                         ---------------- -------- -----------------
-elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
+elastic-pwsh02 ess-consumption-2024_Monthly Enabled          westus2  azure-elastic-test
 ```
 
 This command creates a monitor resource.
@@ -132,12 +136,28 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GenerateApiKey
+Flag to determine if User API Key has to be generated and shared.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -221,8 +241,99 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PlanDetailOfferId
+Offer ID of the plan
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanDetailPlanId
+Plan ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanDetailPlanName
+Plan Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanDetailPublisherId
+Publisher ID of the plan
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PlanDetailTermId
+Term ID of the plan
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-The name of the resource group to which the Elastic resource belongs.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -236,8 +347,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SaaSAzureSubscriptionStatus
+Status of Azure Subscription where Marketplace SaaS is located.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Sku
-Name of the SKU.
+The SKU depends on the Elasticsearch Plans available for your account and is a combination of PlanID_Term.
+\
+For instance, if the plan ID is "planXYZ" and term is "Yearly", the SKU will be "planXYZ_Yearly".
+\
+You may find your eligible plans [here](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/elastic.ec-azure-pp/selectionMode~/false/resourceGroupId//resourceGroupLocation//dontDiscardJourney~/false/selectedMenuId/home/launchingContext~/%7B%22galleryItemId%22%3A%22elastic.ec-azure-ppess-consumption-2024%22%2C%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%2C%22VirtualizedTileDetails%22%5D%2C%22menuItemId%22%3A%22home%22%2C%22subMenuItemId%22%3A%22Search%20results%22%2C%22telemetryId%22%3A%2262f8ce76-e5e4-4983-9d3e-5c608a0b2bff%22%7D/searchTelemetryId/cca0a8d3-f232-4156-948f-701a5d74a729) or in the online documentation [here](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp) for more details or in case of any issues with the SKU.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceCampaignId
+A unique identifier associated with the campaign.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceCampaignName
+Name of the marketing campaign.
 
 ```yaml
 Type: System.String
@@ -252,9 +412,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Azure subscription ID.
-This is a GUID-formatted string (e.g.
-00000000-0000-0000-0000-000000000000)
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
@@ -264,6 +423,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionState
+State of the Azure Subscription containing the monitor resource
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -343,6 +517,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Version
+Version of elastic of the monitor resource
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -381,11 +570,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResource
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

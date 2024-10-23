@@ -80,7 +80,7 @@ function setupEnv() {
     $env.AddWithCache("role", $role, $UsePreviousConfigForRecord)
 
     # 4. Grant role definition above to the user assigned identity
-    Start-TestSleep -Seconds 60 # Sleep to allow get-azserviceprincipal work
+    Start-Sleep -Seconds 60 # Sleep to allow get-azserviceprincipal work
     Write-Host -ForegroundColor Green "Assigning a role to the user identity..."
     New-AzRoleAssignment -ObjectId $identity.PrincipalId -RoleDefinitionId $role.Id -Scope "/subscriptions/$($env.SubscriptionId)/resourceGroups/$rg"
 
@@ -118,7 +118,7 @@ function setupEnv() {
     # Need to record start image builder separetely.
     # Only below lines are not needed in recording stop test cases
     # Write-Host -ForegroundColor Green "Starting the image builder template..."
-    # Start-TestSleep -Seconds 25
+    # Start-Sleep -Seconds 25
     # Start-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg -NoWait
 
     # Prepare some variables for test usage

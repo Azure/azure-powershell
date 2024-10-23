@@ -67,7 +67,16 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 this.BackendHttpSettings.Validate();
             }
-
+            if (this.Servers != null)
+            {
+                foreach (var element in this.Servers)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
         }
     }
 }

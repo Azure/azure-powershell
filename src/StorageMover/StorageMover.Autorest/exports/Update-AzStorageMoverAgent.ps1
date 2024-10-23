@@ -20,14 +20,15 @@ Creates or updates an Agent resource.
 .Description
 Creates or updates an Agent resource.
 .Example
-Update-AzStorageMoverAgent -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myAgent -Description "Update description"
+$recurrence = New-AzStorageMoverUploadLimitWeeklyRecurrenceObject -Day 'Monday','Tuesday','Friday' -LimitInMbps 100 -EndTimeHour 5 -StartTimeHour 1 -StartTimeMinute 30 -EndTimeMinute 0
+Update-AzStorageMoverAgent -ResourceGroupName myresourcegroup -StorageMoverName mystoragemover -Name myagent -Description "Update description" -UploadLimitScheduleWeeklyRecurrence $recurrence
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgentUpdateParameters
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -35,6 +36,13 @@ To create the parameters described below, construct a hash table containing the 
 
 AGENT <IAgentUpdateParameters>: The Agent resource.
   [Description <String>]: A description for the Agent.
+  [UploadLimitScheduleWeeklyRecurrence <IUploadLimitWeeklyRecurrence[]>]: The set of weekly repeating recurrences of the WAN-link upload limit schedule.
+    Day <DayOfWeek[]>: The set of days of week for the schedule recurrence. A day must not be specified more than once in a recurrence.
+    EndTimeHour <Int32>: The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.
+    StartTimeHour <Int32>: The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.
+    LimitInMbps <Int32>: The WAN-link upload bandwidth (maximum data transfer rate) in megabits per second. Value of 0 indicates no throughput is allowed and any running migration job is effectively paused for the duration of this recurrence. Only data plane operations are governed by this limit. Control plane operations ensure seamless functionality. The agent may exceed this limit with control messages, if necessary.
+    [EndTimeMinute <Int32?>]: The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
+    [StartTimeMinute <Int32?>]: The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
 
 INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [AgentName <String>]: The name of the Agent resource.
@@ -46,11 +54,19 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
+
+UPLOADLIMITSCHEDULEWEEKLYRECURRENCE <IUploadLimitWeeklyRecurrence[]>: The set of weekly repeating recurrences of the WAN-link upload limit schedule.
+  Day <DayOfWeek[]>: The set of days of week for the schedule recurrence. A day must not be specified more than once in a recurrence.
+  EndTimeHour <Int32>: The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.
+  StartTimeHour <Int32>: The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0.
+  LimitInMbps <Int32>: The WAN-link upload bandwidth (maximum data transfer rate) in megabits per second. Value of 0 indicates no throughput is allowed and any running migration job is effectively paused for the duration of this recurrence. Only data plane operations are governed by this limit. Control plane operations ensure seamless functionality. The agent may exceed this limit with control messages, if necessary.
+  [EndTimeMinute <Int32?>]: The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
+  [StartTimeMinute <Int32?>]: The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0.
 .Link
 https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoveragent
 #>
 function Update-AzStorageMoverAgent {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgent])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -95,7 +111,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IAgentUpdateParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IAgentUpdateParameters]
     # The Agent resource.
     # To construct, see NOTES section for AGENT properties and create a hash table.
     ${Agent},
@@ -106,6 +122,15 @@ param(
     [System.String]
     # A description for the Agent.
     ${Description},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20240701.IUploadLimitWeeklyRecurrence[]]
+    # The set of weekly repeating recurrences of the WAN-link upload limit schedule.
+    # To construct, see NOTES section for UPLOADLIMITSCHEDULEWEEKLYRECURRENCE properties and create a hash table.
+    ${UploadLimitScheduleWeeklyRecurrence},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -188,7 +213,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.StorageMover.private\Update-AzStorageMoverAgent_UpdateViaIdentityExpanded';
         }
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

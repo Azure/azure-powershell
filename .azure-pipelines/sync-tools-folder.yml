@@ -11,7 +11,7 @@ trigger:
   paths:
     include:
       - .azure-pipelines
-      - .github
+      - .devcontainer
       - tools
       - src/lib
       - .ci-config.json

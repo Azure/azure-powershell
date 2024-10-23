@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PostgreSql-help.xml
 Module Name: Az.PostgreSql
 online version: https://learn.microsoft.com/powershell/module/az.postgresql/test-azpostgresqlflexibleserverconnect
 schema: 2.0.0
@@ -14,30 +14,31 @@ Test out the connection to the database server
 
 ### Test (Default)
 ```
-Test-AzPostgreSqlFlexibleServerConnect -Name <String> -ResourceGroupName <String>
- -AdministratorLoginPassword <SecureString> [-DatabaseName <String>] [-AdministratorUserName <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Test-AzPostgreSqlFlexibleServerConnect -Name <String> -ResourceGroupName <String> [-DatabaseName <String>]
+ -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### TestAndQuery
 ```
-Test-AzPostgreSqlFlexibleServerConnect -Name <String> -QueryText <String> -ResourceGroupName <String>
- -AdministratorLoginPassword <SecureString> [-DatabaseName <String>] [-AdministratorUserName <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### TestViaIdentity
-```
-Test-AzPostgreSqlFlexibleServerConnect -AdministratorLoginPassword <SecureString>
- -InputObject <IPostgreSqlIdentity> [-DatabaseName <String>] [-AdministratorUserName <String>]
+Test-AzPostgreSqlFlexibleServerConnect -Name <String> -ResourceGroupName <String> [-DatabaseName <String>]
+ -QueryText <String> -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### TestViaIdentityAndQuery
 ```
-Test-AzPostgreSqlFlexibleServerConnect -QueryText <String> -AdministratorLoginPassword <SecureString>
- -InputObject <IPostgreSqlIdentity> [-DatabaseName <String>] [-AdministratorUserName <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Test-AzPostgreSqlFlexibleServerConnect [-DatabaseName <String>] -QueryText <String>
+ -AdministratorLoginPassword <SecureString> [-AdministratorUserName <String>]
+ -InputObject <IPostgreSqlIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### TestViaIdentity
+```
+Test-AzPostgreSqlFlexibleServerConnect [-DatabaseName <String>] -AdministratorLoginPassword <SecureString>
+ [-AdministratorUserName <String>] -InputObject <IPostgreSqlIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +48,7 @@ Test out the connection to the database server
 
 ### Example 1: Test connection by name
 ```powershell
-$password = ConvertTo-SecureString <YourPassword> -AsPlainText
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Test-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password
 ```
 
@@ -59,7 +60,7 @@ Test connection by the resource group and the server name
 
 ### Example 2: Test connection by identity
 ```powershell
-$password = ConvertTo-SecureString <YourPassword> -AsPlainText
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -AdministratorLoginPassword $password
 ```
 
@@ -71,7 +72,7 @@ Test connection by the identity
 
 ### Example 3: Test query by name
 ```powershell
-$password = ConvertTo-SecureString <YourPassword> -AsPlainText
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Test-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password -QueryText "SELECT * FROM test"
 ```
 
@@ -171,7 +172,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity
-Parameter Sets: TestViaIdentity, TestViaIdentityAndQuery
+Parameter Sets: TestViaIdentityAndQuery, TestViaIdentity
 Aliases:
 
 Required: True
@@ -239,24 +240,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IPostgreSqlIdentity>`: The server to connect.
-  - `[ConfigurationName <String>]`: The name of the server configuration.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[FirewallRuleName <String>]`: The name of the server firewall rule.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The name of the location.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
-  - `[ServerName <String>]`: The name of the server.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
-
 ## RELATED LINKS
-

@@ -13,7 +13,8 @@ Create an in-memory object for TimeInWeek.
 ## SYNTAX
 
 ```
-New-AzAksTimeInWeekObject [-Day <WeekDay>] [-HourSlot <Int32[]>] [<CommonParameters>]
+New-AzAksTimeInWeekObject [-Day <WeekDay>] [-HourSlot <Int32[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,7 +81,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeInWeek
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

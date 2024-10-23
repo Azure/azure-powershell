@@ -20,7 +20,7 @@ Creates an EventHub Authorization Rule
 #>
 
 function New-AzEventHubAuthorizationRule{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule])]
     [CmdletBinding(DefaultParameterSetName = 'NewExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'NewExpandedEntity', Mandatory, HelpMessage = "The name of the Authorization Rule")]
@@ -62,9 +62,8 @@ function New-AzEventHubAuthorizationRule{
 
         [Parameter(HelpMessage = "The rights associated with the rule.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.AccessRights[]]
+        [System.String[]]
         # The rights associated with the rule.
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("Rights","12.0.0", "5.0.0","2024-05-21" )]
         ${Rights},
 		
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
@@ -131,7 +130,7 @@ function New-AzEventHubAuthorizationRule{
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $authRule = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule]@{
+            $authRule = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule]@{
                 Rights = $Rights
             }
 

@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -41,10 +44,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="annotations">List of tags that can be used for describing the linked service.
         /// </param>
-        public LinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>))
+        public LinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>))
 
         {
             this.AdditionalProperties = additionalProperties;
+            this.Version = version;
             this.ConnectVia = connectVia;
             this.Description = description;
             this.Parameters = parameters;
@@ -65,6 +69,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonExtensionData]
         public System.Collections.Generic.IDictionary<string, object> AdditionalProperties {get; set; }
+
+        /// <summary>
+        /// Gets or sets version of the linked service.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "version")]
+        public string Version {get; set; }
 
         /// <summary>
         /// Gets or sets the integration runtime reference.
@@ -98,6 +108,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </exception>
         public virtual void Validate()
         {
+
 
             if (this.ConnectVia != null)
             {

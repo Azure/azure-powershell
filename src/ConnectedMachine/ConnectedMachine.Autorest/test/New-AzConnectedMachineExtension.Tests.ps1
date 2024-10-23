@@ -14,5 +14,22 @@ while(-not $mockingPath) {
 Import-Module "$PSScriptRoot/helper.psm1" -Force
 
 Describe 'New-AzConnectedMachineExtension' {
-   #Tested in Remove-AzConnectedMachineExtension
+
+    It 'Create' {
+        $customSplat = @{
+            MachineName = $env.MachineName
+            ResourceGroupName = $env.ResourceGroupName
+            Location = $env.Location
+            Name = "networkWatcher"
+        }
+    
+        $customSplat.ExtensionType = "NetworkWatcherAgentWindows"
+        $customSplat.Publisher = "Microsoft.Azure.NetworkWatcher"
+        $customSplat.TypeHandlerVersion = "1.4.2798.3"
+        $customSplat.Settings = @{
+            CommandToExecute = "dir"
+        }
+        $all = (New-AzConnectedMachineExtension @customSplat)
+        $all | Should -Not -BeNullOrEmpty
+    }
 }

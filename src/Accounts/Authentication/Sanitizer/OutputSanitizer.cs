@@ -19,6 +19,7 @@ using System.Diagnostics;
 using System;
 using Microsoft.Azure.Commands.Shared.Config;
 using Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer
 {
@@ -37,19 +38,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer
             }
         }
 
+        public IEnumerable<string> IgnoredModules => Enumerable.Empty<string>();
+
+        public IEnumerable<string> IgnoredCmdlets => new[]
+        {
+            "Get-AzActivityLog",
+            "Get-AzComputeResourceSku",
+            "Get-AzConsumptionUsageDetail",
+        };
+
         public void Sanitize(object sanitizingObject, out SanitizerTelemetry telemetry)
         {
             var watch = Stopwatch.StartNew();
 
             var sanitizingStack = new Stack<object>();
-            telemetry = new SanitizerTelemetry
-            {
-                /*
-                 * QosEvent has the initial value of ShowSecretsWarning as FALSE.
-                 * If this method gets invoked, it means RequireSecretsDetection is TRUE.
-                */
-                ShowSecretsWarning = true
-            };
+            telemetry = new SanitizerTelemetry(showSecretsWarning: true);
 
             if (sanitizingObject != null)
             {

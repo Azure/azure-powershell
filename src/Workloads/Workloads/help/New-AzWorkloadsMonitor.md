@@ -17,7 +17,8 @@ New-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> [-Subscription
  [-AppLocation <String>] [-IdentityType <ManagedServiceIdentityType>] [-LogAnalyticsWorkspaceArmId <String>]
  [-ManagedResourceGroupName <String>] [-MonitorSubnet <String>] [-RoutingPreference <RoutingPreference>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-ZoneRedundancyPreference <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +92,7 @@ Accept wildcard characters: False
 Type of manage identity
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.ManagedServiceIdentityType
 Parameter Sets: (All)
 Aliases:
 
@@ -213,7 +214,7 @@ Sets the routing preference of the SAP monitor.
 By default only RFC1918 traffic is routed to the customer VNET.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.RoutingPreference
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.RoutingPreference
 Parameter Sets: (All)
 Aliases:
 
@@ -323,10 +324,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IMonitor
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.IMonitor
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

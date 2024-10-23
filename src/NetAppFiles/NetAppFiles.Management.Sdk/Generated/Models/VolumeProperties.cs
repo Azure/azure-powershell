@@ -34,9 +34,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Possible values include: &#39;Standard&#39;, &#39;Premium&#39;, &#39;Ultra&#39;, &#39;StandardZRS&#39;</param>
 
         /// <param name="usageThreshold">Maximum storage quota allowed for a file system in bytes. This is a soft
-        /// quota used for alerting only. Minimum size is 100 GiB. Upper limit is
-        /// 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on exceptional
-        /// basis. Specified in bytes.
+        /// quota used for alerting only. For regular volumes, valid values are in the
+        /// range 50GiB to 100TiB. For large volumes, valid values are in the range
+        /// 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB.
+        /// Values expressed in bytes as multiples of 1 GiB.
         /// </param>
 
         /// <param name="exportPolicy">Set of export policy rules
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="provisioningState">Azure lifecycle management
         /// </param>
 
-        /// <param name="snapshotId">UUID v4 or resource identifier used to identify the Snapshot.
+        /// <param name="snapshotId">Resource identifier used to identify the Snapshot.
         /// </param>
 
         /// <param name="deleteBaseSnapshot">If enabled (true) the snapshot the volume was created from will be
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Defaults to false
         /// </param>
 
-        /// <param name="backupId">UUID v4 or resource identifier used to identify the Backup.
+        /// <param name="backupId">Resource identifier used to identify the Backup.
         /// </param>
 
         /// <param name="baremetalTenantId">Unique Baremetal Tenant Identifier.
@@ -321,9 +322,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <summary>
         /// Gets or sets maximum storage quota allowed for a file system in bytes. This
-        /// is a soft quota used for alerting only. Minimum size is 100 GiB. Upper
-        /// limit is 100TiB, 500Tib for LargeVolume or 2400Tib for LargeVolume on
-        /// exceptional basis. Specified in bytes.
+        /// is a soft quota used for alerting only. For regular volumes, valid values
+        /// are in the range 50GiB to 100TiB. For large volumes, valid values are in
+        /// the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to
+        /// 2400TiB. Values expressed in bytes as multiples of 1 GiB.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "usageThreshold")]
         public long UsageThreshold {get; set; }
@@ -347,7 +349,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string ProvisioningState {get; private set; }
 
         /// <summary>
-        /// Gets or sets uUID v4 or resource identifier used to identify the Snapshot.
+        /// Gets or sets resource identifier used to identify the Snapshot.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "snapshotId")]
         public string SnapshotId {get; set; }
@@ -361,7 +363,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public bool? DeleteBaseSnapshot {get; set; }
 
         /// <summary>
-        /// Gets or sets uUID v4 or resource identifier used to identify the Backup.
+        /// Gets or sets resource identifier used to identify the Backup.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "backupId")]
         public string BackupId {get; set; }
@@ -729,9 +731,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "UsageThreshold", 2638827906662400);
             }
-            if (this.UsageThreshold < 107374182400)
+            if (this.UsageThreshold < 53687091200)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "UsageThreshold", 107374182400);
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "UsageThreshold", 53687091200);
             }
 
 
@@ -783,9 +785,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
                 {
                     throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMaximum, "CoolnessPeriod", 183);
                 }
-                if (this.CoolnessPeriod < 7)
+                if (this.CoolnessPeriod < 2)
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "CoolnessPeriod", 7);
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.InclusiveMinimum, "CoolnessPeriod", 2);
                 }
             }
 

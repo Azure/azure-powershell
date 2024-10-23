@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Preannounced the breaking changes for Az.DesktopVirtualization 6.0.0
+
+## Version 4.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 4.3.0
 * Removed AppAttach Cmdlets and ResetIcon parameter to Update-AzWvdApplication

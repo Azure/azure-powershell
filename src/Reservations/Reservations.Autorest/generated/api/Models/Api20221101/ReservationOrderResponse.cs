@@ -10,8 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
     /// <summary>Details of a reservation order being returned.</summary>
     public partial class ReservationOrderResponse :
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse,
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponseInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponseInternal
     {
 
         /// <summary>This is the DateTime when the reservation benefit started.</summary>
@@ -58,13 +57,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Origin(Microsoft.Azure.PowerShell.Cmdlets.Reservations.PropertyOrigin.Owned)]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.DoNotFormat]
         public string Id { get => this._id; }
-
-        /// <summary>Backing field for <see cref="Location" /> property.</summary>
-        private string _location;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Origin(Microsoft.Azure.PowerShell.Cmdlets.Reservations.PropertyOrigin.Owned)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.DoNotFormat]
-        public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponseInternal.Id { get => this._id; set { {_id = value;} } }
@@ -145,13 +137,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.DoNotFormat]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
-        /// <summary>Backing field for <see cref="RetryAfter" /> property.</summary>
-        private int? _retryAfter;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Origin(Microsoft.Azure.PowerShell.Cmdlets.Reservations.PropertyOrigin.Owned)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.DoNotFormat]
-        public int? RetryAfter { get => this._retryAfter; set => this._retryAfter = value; }
-
         /// <summary>This is the date-time when the Azure Hybrid Benefit needs to be reviewed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Origin(Microsoft.Azure.PowerShell.Cmdlets.Reservations.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.DoNotFormat]
@@ -207,19 +192,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Origin(Microsoft.Azure.PowerShell.Cmdlets.Reservations.PropertyOrigin.Owned)]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.DoNotFormat]
         public string Type { get => this._type; }
-
-        /// <param name="headers"></param>
-        void Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
-        {
-            if (headers.TryGetValues("Location", out var __locationHeader0))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponseInternal)this).Location = System.Linq.Enumerable.FirstOrDefault(__locationHeader0) is string __headerLocationHeader0 ? __headerLocationHeader0 : (string)null;
-            }
-            if (headers.TryGetValues("Retry-After", out var __retryAfterHeader1))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponseInternal)this).RetryAfter = System.Linq.Enumerable.FirstOrDefault(__retryAfterHeader1) is string __headerRetryAfterHeader1 ? int.TryParse( __headerRetryAfterHeader1, out int __headerRetryAfterHeader1Value ) ? __headerRetryAfterHeader1Value : default(int?) : default(int?);
-            }
-        }
 
         /// <summary>Creates an new <see cref="ReservationOrderResponse" /> instance.</summary>
         public ReservationOrderResponse()
@@ -295,14 +267,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get;  }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Location",
-        PossibleTypes = new [] { typeof(string) })]
-        string Location { get; set; }
         /// <summary>Name of the reservation</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
@@ -377,14 +341,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         SerializedName = @"reservations",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse) })]
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse[] Reservations { get; set; }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Retry-After",
-        PossibleTypes = new [] { typeof(int) })]
-        int? RetryAfter { get; set; }
         /// <summary>This is the date-time when the Azure Hybrid Benefit needs to be reviewed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
@@ -479,8 +435,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         global::System.DateTime? ExpiryDateTime { get; set; }
         /// <summary>Identifier of the reservation</summary>
         string Id { get; set; }
-
-        string Location { get; set; }
         /// <summary>Name of the reservation</summary>
         string Name { get; set; }
         /// <summary>Total Quantity of the skus purchased in the reservation.</summary>
@@ -505,8 +459,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
         global::System.DateTime? RequestDateTime { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse[] Reservations { get; set; }
-
-        int? RetryAfter { get; set; }
         /// <summary>This is the date-time when the Azure Hybrid Benefit needs to be reviewed.</summary>
         global::System.DateTime? ReviewDateTime { get; set; }
         /// <summary>Metadata pertaining to creation and last modification of the resource.</summary>

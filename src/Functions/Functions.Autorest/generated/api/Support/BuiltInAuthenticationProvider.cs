@@ -18,6 +18,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BuiltInAuthenticationProvider Facebook = @"Facebook";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BuiltInAuthenticationProvider Github = @"Github";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BuiltInAuthenticationProvider Google = @"Google";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.BuiltInAuthenticationProvider MicrosoftAccount = @"MicrosoftAccount";

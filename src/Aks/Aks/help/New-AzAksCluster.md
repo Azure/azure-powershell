@@ -52,23 +52,23 @@ Create a new Azure Kubernetes Service(AKS) cluster.
 
 ## EXAMPLES
 
-### Create an AKS with default params.
+### Example 1: Create an AKS with default params.
 
 ```powershell
 New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster
 ```
 
-### Create Windows Server container on an AKS.
+### Example 2: Create Windows Server container on an AKS.
 To create Windows Server container on an AKS, you must specify at least four following parameters when creating the AKS, and the value for `NetworkPlugin` and `NodeVmSetType` must be `azure` and `VirtualMachineScaleSets` respectively.
 `-WindowsProfileAdminUserName *** -WindowsProfileAdminUserPassword *** -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets`
 
 ```powershell
-$cred = ConvertTo-SecureString -AsPlainText "Password!!123" -Force
+$cred = ConvertTo-SecureString -String "****" -AsPlainText -Force
 New-AzAksCluster -ResourceGroupName myResourceGroup -Name myCluster -WindowsProfileAdminUserName azureuser -WindowsProfileAdminUserPassword $cred -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets
 New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name win1 -OsType Windows -VmSetType VirtualMachineScaleSets
 ```
 
-### Create an AKS cluster with LinuxOSConfig and KubeletConfig.
+### Example 3: Create an AKS cluster with LinuxOSConfig and KubeletConfig.
 When you create an AKS cluster, you can specify the kubelet and OS configurations. The type of `NodeLinuxOSConfig` and `NodeKubeletConfig` must be `Microsoft.Azure.Management.ContainerService.Models.LinuxOSConfig` and `Microsoft.Azure.Management.ContainerService.Models.KubeletConfig` respectively.
 
 
@@ -96,7 +96,7 @@ $kubeletConfig = [Microsoft.Azure.Management.ContainerService.Models.KubeletConf
 New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeLinuxOSConfig $linuxOsConfig -NodeKubeletConfig $kubeletConfig
 ```
 
-### Create an AKS cluster with AutoScalerProfile.
+### Example 4: Create an AKS cluster with AutoScalerProfile.
 When you create an AKS cluster, you can configure granular details of the cluster autoscaler by changing the default values in the cluster-wide autoscaler profile.
 
 ```powershell
@@ -109,7 +109,7 @@ $AutoScalerProfile=[Microsoft.Azure.Management.ContainerService.Models.ManagedCl
 New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -AutoScalerProfile $AutoScalerProfile
 ```
 
-### Create an AKS cluster with AadProfile.
+### Example 5: Create an AKS cluster with AadProfile.
 When you create an AKS cluster, you can configure the AAD profile.
 
 ```powershell

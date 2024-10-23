@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.GraphServices-help.xml
 Module Name: Az.GraphServices
 online version: https://learn.microsoft.com/powershell/module/az.graphservices/new-azgraphservicesaccount
 schema: 2.0.0
@@ -13,9 +13,9 @@ Create or update account resource.
 ## SYNTAX
 
 ```
-New-AzGraphServicesAccount -Name <String> -ResourceGroupName <String> -AppId <String>
- [-SubscriptionId <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzGraphServicesAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -AppId <String> [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,7 +217,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

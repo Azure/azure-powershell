@@ -19,8 +19,15 @@
 -->
 ## Upcoming Release
 
+## Version 0.10.2
+* Removed Microsoft.Azure.Management.IotCentral 4.0.0 dependencies
+* Added Microsoft.Azure.PowerShell.IotCentral.Management.Sdk
+
+## Version 0.10.1
+* Removed the outdated deps.json file.
+
 ## Version 0.10.0
-* Stable release version, updated to IoT Central .NET Management Plane SDK version 4.0.0. 
+* Stable release version, updated to IoT Central .NET Management Plane SDK version 4.0.0.
 * This change introduces support for System-Assigned Managed Identities, removes support for geographic locations (e.g., 'unitedstates'), and removes support for legacy S1 sku.
 
 ## Version 0.9.0

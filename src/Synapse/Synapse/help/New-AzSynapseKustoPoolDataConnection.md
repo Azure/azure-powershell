@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Synapse-help.xml
 Module Name: Az.Synapse
 online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldataconnection
 schema: 2.0.0
@@ -14,52 +14,52 @@ Creates or updates a data connection.
 
 ### CreateExpandedEventHub (Default)
 ```
-New-AzSynapseKustoPoolDataConnection -DatabaseName <String> -DataConnectionName <String>
- -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> -ConsumerGroup <String>
- -EventHubResourceId <String> -Kind <DataConnectionKind> -Location <String> [-SubscriptionId <String>]
- [-Compression <Compression>] [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>]
- [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzSynapseKustoPoolDataConnection -DataConnectionName <String> -DatabaseName <String>
+ -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
+ -Kind <DataConnectionKind> -ConsumerGroup <String> -Location <String> -EventHubResourceId <String>
+ [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
+ [-TableName <String>] [-Compression <Compression>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpandedEventGrid
 ```
-New-AzSynapseKustoPoolDataConnection -DatabaseName <String> -DataConnectionName <String>
- -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> -ConsumerGroup <String>
- -EventHubResourceId <String> -Kind <DataConnectionKind> -Location <String> -StorageAccountResourceId <String>
- [-SubscriptionId <String>] [-DataFormat <EventGridDataFormat>] [-MappingRuleName <String>]
- [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzSynapseKustoPoolDataConnection -DataConnectionName <String> -DatabaseName <String>
+ -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
+ -Kind <DataConnectionKind> -ConsumerGroup <String> -Location <String> -EventHubResourceId <String>
+ [-DataFormat <EventGridDataFormat>] [-MappingRuleName <String>] [-TableName <String>]
+ -StorageAccountResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpandedIotHub
 ```
-New-AzSynapseKustoPoolDataConnection -DatabaseName <String> -DataConnectionName <String>
- -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> -ConsumerGroup <String>
- -IotHubResourceId <String> -Kind <DataConnectionKind> -Location <String> -SharedAccessPolicyName <String>
- [-SubscriptionId <String>] [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>]
- [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzSynapseKustoPoolDataConnection -DataConnectionName <String> -DatabaseName <String>
+ -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
+ -Kind <DataConnectionKind> -ConsumerGroup <String> -Location <String> [-DataFormat <EventGridDataFormat>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-TableName <String>] -IotHubResourceId <String>
+ -SharedAccessPolicyName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpandedEventGrid
 ```
-New-AzSynapseKustoPoolDataConnection -DatabaseName <String> -DataConnectionName <String>
- -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> -ConsumerGroup <String>
- -Kind <DataConnectionKind> -Location <String> [-SubscriptionId <String>]
- [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <EventGridDataFormat>] [-IgnoreFirstRecord]
- [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzSynapseKustoPoolDataConnection -DataConnectionName <String> -DatabaseName <String>
+ -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
+ -Kind <DataConnectionKind> -ConsumerGroup <String> -Location <String> [-DataFormat <EventGridDataFormat>]
+ [-MappingRuleName <String>] [-TableName <String>] [-BlobStorageEventType <BlobStorageEventType>]
+ [-IgnoreFirstRecord] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedEventGrid
 ```
-New-AzSynapseKustoPoolDataConnection -DatabaseName <String> -DataConnectionName <String>
- -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> -ConsumerGroup <String>
- -Kind <DataConnectionKind> -Location <String> [-SubscriptionId <String>]
- [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <EventGridDataFormat>] [-IgnoreFirstRecord]
- [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzSynapseKustoPoolDataConnection -DataConnectionName <String> -DatabaseName <String>
+ -KustoPoolName <String> -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
+ -Kind <DataConnectionKind> -ConsumerGroup <String> -Location <String> [-DataFormat <EventGridDataFormat>]
+ [-MappingRuleName <String>] [-TableName <String>] [-BlobStorageEventType <BlobStorageEventType>]
+ [-IgnoreFirstRecord] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -234,7 +234,7 @@ The resource ID of the event hub to be used to create a data connection / event 
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpandedEventGrid, CreateExpandedEventHub
+Parameter Sets: CreateExpandedEventHub, CreateExpandedEventGrid
 Aliases:
 
 Required: True
@@ -501,7 +501,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

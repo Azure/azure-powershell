@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the VoiceServices service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -33,9 +32,9 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 78ec1b99699a4bf44869bd13f1b0ed7d92a99c27
+commit: 78ec1b99699a4bf44869bd13f1b0ed7d92a99c27
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/voiceservices/resource-manager/readme.md
 try-require:
   - $(repo)/specification/voiceservices/resource-manager/readme.powershell.md
@@ -45,6 +44,10 @@ subject-prefix: $(service-name)
 inlining-threshold: 100
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document

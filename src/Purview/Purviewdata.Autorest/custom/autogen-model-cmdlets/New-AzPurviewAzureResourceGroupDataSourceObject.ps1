@@ -23,7 +23,7 @@ Create an in-memory object for AzureResourceGroupDataSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupDataSource
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureResourceGroupDataSourceObject
 #>
 function New-AzPurviewAzureResourceGroupDataSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupDataSource')]

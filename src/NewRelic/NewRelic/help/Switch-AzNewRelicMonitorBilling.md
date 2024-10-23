@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NewRelic-help.xml
 Module Name: Az.NewRelic
 online version: https://learn.microsoft.com/powershell/module/az.newrelic/switch-aznewrelicmonitorbilling
 schema: 2.0.0
@@ -14,19 +14,34 @@ Switches the billing for NewRelic monitor resource.
 
 ### SwitchExpanded (Default)
 ```
-Switch-AzNewRelicMonitorBilling -MonitorName <String> -ResourceGroupName <String> -UserEmail <String>
- [-SubscriptionId <String>] [-AzureResourceId <String>] [-OrganizationId <String>]
- [-PlanDataBillingCycle <BillingCycle>] [-PlanDataEffectiveDate <DateTime>] [-PlanDataPlanDetail <String>]
- [-PlanDataUsageType <UsageType>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+Switch-AzNewRelicMonitorBilling -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -UserEmail <String> [-AzureResourceId <String>] [-OrganizationId <String>] [-PlanDataBillingCycle <String>]
+ [-PlanDataEffectiveDate <DateTime>] [-PlanDataPlanDetail <String>] [-PlanDataUsageType <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### SwitchViaJsonString
+```
+Switch-AzNewRelicMonitorBilling -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### SwitchViaJsonFilePath
+```
+Switch-AzNewRelicMonitorBilling -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SwitchViaIdentityExpanded
 ```
 Switch-AzNewRelicMonitorBilling -InputObject <INewRelicIdentity> -UserEmail <String>
- [-AzureResourceId <String>] [-OrganizationId <String>] [-PlanDataBillingCycle <BillingCycle>]
- [-PlanDataEffectiveDate <DateTime>] [-PlanDataPlanDetail <String>] [-PlanDataUsageType <UsageType>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AzureResourceId <String>] [-OrganizationId <String>] [-PlanDataBillingCycle <String>]
+ [-PlanDataEffectiveDate <DateTime>] [-PlanDataPlanDetail <String>] [-PlanDataUsageType <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +51,7 @@ Switches the billing for NewRelic monitor resource.
 
 ### Example 1: Switches the billing for NewRelic monitor resource.
 ```powershell
-Switch-AzNewRelicMonitorBilling -MonitorName test-03 -ResourceGroupName ps-test -UserEmail v-jiaji@microsoft.com -PlanDataBillingCycle 'WEEKLY'
+Switch-AzNewRelicMonitorBilling -MonitorName test-03 -ResourceGroupName ps-test -UserEmail user1@outlook.com -PlanDataBillingCycle 'WEEKLY'
 ```
 
 Switches the billing for NewRelic monitor resource.
@@ -48,7 +63,7 @@ Azure resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SwitchExpanded, SwitchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -76,7 +91,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
@@ -90,12 +104,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Switch operation
+
+```yaml
+Type: System.String
+Parameter Sets: SwitchViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Switch operation
+
+```yaml
+Type: System.String
+Parameter Sets: SwitchViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MonitorName
 Name of the Monitors resource
 
 ```yaml
 Type: System.String
-Parameter Sets: SwitchExpanded
+Parameter Sets: SwitchExpanded, SwitchViaJsonString, SwitchViaJsonFilePath
 Aliases:
 
 Required: True
@@ -110,7 +154,7 @@ Organization id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SwitchExpanded, SwitchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -140,8 +184,8 @@ Different billing cycles like MONTHLY/WEEKLY.
 this could be enum
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.BillingCycle
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: SwitchExpanded, SwitchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -156,7 +200,7 @@ date when plan was applied
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: SwitchExpanded, SwitchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -171,7 +215,7 @@ plan id as published by NewRelic
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SwitchExpanded, SwitchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -186,8 +230,8 @@ Different usage type like PAYG/COMMITTED.
 this could be enum
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.UsageType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: SwitchExpanded, SwitchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -203,7 +247,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: SwitchExpanded
+Parameter Sets: SwitchExpanded, SwitchViaJsonString, SwitchViaJsonFilePath
 Aliases:
 
 Required: True
@@ -218,7 +262,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: SwitchExpanded
+Parameter Sets: SwitchExpanded, SwitchViaJsonString, SwitchViaJsonFilePath
 Aliases:
 
 Required: False
@@ -233,7 +277,7 @@ User Email
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SwitchExpanded, SwitchViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -283,23 +327,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.INewRelicMonitorResource
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicMonitorResource
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <INewRelicIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Name of the Monitors resource
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: Name of the TagRule
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

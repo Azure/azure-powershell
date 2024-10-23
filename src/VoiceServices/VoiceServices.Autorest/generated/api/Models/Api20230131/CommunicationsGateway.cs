@@ -11,8 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131
     public partial class CommunicationsGateway :
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway,
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IValidates,
-        Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IValidates
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.ITrackedResource"
@@ -114,12 +113,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131
         [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
-        /// <summary>Backing field for <see cref="RetryAfter" /> property.</summary>
-        private int? _retryAfter;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PropertyOrigin.Owned)]
-        public int? RetryAfter { get => this._retryAfter; set => this._retryAfter = value; }
-
         /// <summary>The regions in which to deploy the resources needed for Teams Calling</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.IServiceRegionProperties[] ServiceLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayPropertiesInternal)Property).ServiceLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayPropertiesInternal)Property).ServiceLocation = value ?? null /* arrayOf */; }
@@ -178,15 +171,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131
         public CommunicationsGateway()
         {
 
-        }
-
-        /// <param name="headers"></param>
-        void Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
-        {
-            if (headers.TryGetValues("Retry-After", out var __retryAfterHeader0))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayInternal)this).RetryAfter = System.Linq.Enumerable.FirstOrDefault(__retryAfterHeader0) is string __headerRetryAfterHeader0 ? int.TryParse( __headerRetryAfterHeader0, out int __headerRetryAfterHeader0Value ) ? __headerRetryAfterHeader0Value : default(int?) : default(int?);
-            }
         }
 
         /// <summary>Validates that this object meets the validation criteria.</summary>
@@ -288,14 +272,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.ProvisioningState) })]
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.ProvisioningState? ProvisioningState { get;  }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Retry-After",
-        PossibleTypes = new [] { typeof(int) })]
-        int? RetryAfter { get; set; }
         /// <summary>The regions in which to deploy the resources needed for Teams Calling</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(
         Required = false,
@@ -352,8 +328,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGatewayProperties Property { get; set; }
         /// <summary>Resource provisioning state.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.ProvisioningState? ProvisioningState { get; set; }
-
-        int? RetryAfter { get; set; }
         /// <summary>The regions in which to deploy the resources needed for Teams Calling</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.IServiceRegionProperties[] ServiceLocation { get; set; }
         /// <summary>The current status of the deployment.</summary>

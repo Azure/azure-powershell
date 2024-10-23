@@ -58,6 +58,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Succeeded'", "Succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Succeeded");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "PausedByBandwidthManagement".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'PausedByBandwidthManagement'", "PausedByBandwidthManagement", global::System.Management.Automation.CompletionResultType.ParameterValue, "PausedByBandwidthManagement");
+            }
         }
     }
 }

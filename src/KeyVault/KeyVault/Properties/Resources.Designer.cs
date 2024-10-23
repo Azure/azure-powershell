@@ -442,15 +442,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fetching default CVM policy from remote failed because {0}. Trying to fetch default CVM policy from local backup copy..
-        /// </summary>
-        internal static string FetchDefaultCVMPolicyFromLocal {
-            get {
-                return ResourceManager.GetString("FetchDefaultCVMPolicyFromLocal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Can not find file &apos;{0}&apos;..
         /// </summary>
         internal static string FileNotFound {
@@ -712,6 +703,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value must be between 1 and int.MaxValue..
+        /// </summary>
+        internal static string InvalidRangeDaysBeforeExpiry {
+            get {
+                return ResourceManager.GetString("InvalidRangeDaysBeforeExpiry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Value must be between 0 and 99.&quot;.
+        /// </summary>
+        internal static string InvalidRangePercentageLifetime {
+            get {
+                return ResourceManager.GetString("InvalidRangePercentageLifetime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Sas permission &apos;{0}&apos;..
         /// </summary>
         internal static string InvalidSasPermission {
@@ -856,6 +865,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vault &apos;{0}&apos; does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription..
+        /// </summary>
+        internal static string NoVaultWithGivenNameFound {
+            get {
+                return ResourceManager.GetString("NoVaultWithGivenNameFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid permissions to {0}. The list contains &quot;all&quot; along with other permissions. Please remove &quot;all&quot; from the list or include only &quot;all&quot; in the list..
         /// </summary>
         internal static string PermissionSetIncludesAllPlusOthers {
@@ -870,6 +888,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string PermissionsNotSpecified {
             get {
                 return ResourceManager.GetString("PermissionsNotSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error happens when processing certificate &apos;{0}&apos;. See detailed error: {1}.
+        /// </summary>
+        internal static string ProcessingCertError {
+            get {
+                return ResourceManager.GetString("ProcessingCertError", resourceCulture);
             }
         }
         

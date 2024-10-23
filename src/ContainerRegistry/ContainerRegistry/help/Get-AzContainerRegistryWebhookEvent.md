@@ -15,7 +15,8 @@ Lists recent events for the specified webhook.
 ### List (Default)
 ```
 Get-AzContainerRegistryWebhookEvent -RegistryName <String> -ResourceGroupName <String> -WebhookName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### GetByWebhook
@@ -185,26 +186,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IEvent
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`WEBHOOK <IWebhook>`: The Webhook Object.
-  - `Location <String>`: The location of the resource. This cannot be changed after the resource is created.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource modification (UTC).
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <LastModifiedByType?>]`: The type of identity that last modified the resource.
-  - `[Tag <IResourceTags>]`: The tags of the resource.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Action <WebhookAction[]>]`: The list of actions that trigger the webhook to post notifications.
-  - `[Scope <String>]`: The scope of repositories where the event can be triggered. For example, 'foo:*' means events for all tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to 'foo:latest'. Empty means all events.
-  - `[Status <WebhookStatus?>]`: The status of the webhook at the time the operation was called.
 
 ## RELATED LINKS

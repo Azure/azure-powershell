@@ -23,7 +23,7 @@ Create an in-memory object for RegexClassificationRulePattern.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewRegexClassificationRulePatternObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewRegexClassificationRulePatternObject
 #>
 function New-AzPurviewRegexClassificationRulePatternObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern')]

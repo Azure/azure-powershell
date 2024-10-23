@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecachedatabase
 schema: 2.0.0
@@ -15,18 +15,19 @@ Updates an existing Redis Enterprise database
 ### UpdateExpanded (Default)
 ```
 Update-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AofPersistenceEnabled] [-AofPersistenceFrequency <AofFrequency>]
- [-ClientProtocol <Protocol>] [-EvictionPolicy <EvictionPolicy>] [-RdbPersistenceEnabled]
- [-RdbPersistenceFrequency <RdbFrequency>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AccessKeysAuthentication <AccessKeysAuthentication>] [-ClientProtocol <Protocol>]
+ [-EvictionPolicy <EvictionPolicy>] [-AofPersistenceEnabled] [-AofPersistenceFrequency <AofFrequency>]
+ [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzRedisEnterpriseCacheDatabase -InputObject <IRedisEnterpriseCacheIdentity> [-AofPersistenceEnabled]
- [-AofPersistenceFrequency <AofFrequency>] [-ClientProtocol <Protocol>] [-EvictionPolicy <EvictionPolicy>]
+Update-AzRedisEnterpriseCacheDatabase -InputObject <IRedisEnterpriseCacheIdentity>
+ [-AccessKeysAuthentication <AccessKeysAuthentication>] [-ClientProtocol <Protocol>]
+ [-EvictionPolicy <EvictionPolicy>] [-AofPersistenceEnabled] [-AofPersistenceFrequency <AofFrequency>]
  [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +44,6 @@ Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGrou
 Name    Type
 ----    ----
 default Microsoft.Cache/redisEnterprise/databases
-
 ```
 
 This command updates the client protocol of the database for the Redis Enterprise cache named MyCache.
@@ -57,12 +57,27 @@ Update-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGrou
 Name    Type
 ----    ----
 default Microsoft.Cache/redisEnterprise/databases
-
 ```
 
 This command updates the client protocol and eviction policy of the database for the Redis Enterprise cache named MyCache.
 
 ## PARAMETERS
+
+### -AccessKeysAuthentication
+This property can be Enabled/Disabled to allow or deny access with the current access keys.
+Can be updated even after database is created.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeysAuthentication
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AofPersistenceEnabled
 [Preview] Sets whether AOF persistence is enabled.
@@ -205,6 +220,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RdbPersistenceEnabled
 [Preview] Sets whether RDB persistence is enabled.
 After enabling RDB persistence, you will be unable to disable it.
@@ -309,26 +339,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20240901Preview.IDatabase
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IRedisEnterpriseCacheIdentity>`: Identity Parameter
-  - `[ClusterName <String>]`: The name of the RedisEnterprise cluster.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[OperationId <String>]`: The ID of an ongoing async operation.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

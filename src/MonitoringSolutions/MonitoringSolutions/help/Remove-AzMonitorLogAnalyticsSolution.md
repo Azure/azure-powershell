@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MonitoringSolutions-help.xml
 Module Name: Az.MonitoringSolutions
 online version: https://learn.microsoft.com/powershell/module/az.monitoringsolutions/remove-azmonitorloganalyticssolution
 schema: 2.0.0
@@ -15,13 +15,14 @@ Deletes the solution in the subscription.
 ### Delete (Default)
 ```
 Remove-AzMonitorLogAnalyticsSolution -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzMonitorLogAnalyticsSolution -InputObject <IMonitoringSolutionsIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,7 +55,8 @@ This command removes a monitor log analytics solution by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -190,23 +192,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IMonitoringSolutionsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ManagementAssociationName <String>]`: User ManagementAssociation Name.
-  - `[ManagementConfigurationName <String>]`: User Management Configuration Name.
-  - `[ProviderName <String>]`: Provider name for the parent resource.
-  - `[ResourceGroupName <String>]`: The name of the resource group to get. The name is case insensitive.
-  - `[ResourceName <String>]`: Parent resource name.
-  - `[ResourceType <String>]`: Resource type for the parent resource
-  - `[SolutionName <String>]`: User Solution Name.
-  - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
 ## RELATED LINKS
-

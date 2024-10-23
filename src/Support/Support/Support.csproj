@@ -1,15 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\psm1.props" />
+
   <PropertyGroup>
     <PsModuleName>Support</PsModuleName>
-    <RootNamespace>Microsoft.Azure.Commands.Support</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Support" Version="1.0.0" />
-  </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName)</AssemblyName>
+    <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)</RootNamespace>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\</OutputPath>
+    <PublishDir>$(OutputPath)</PublishDir>
+  </PropertyGroup>
 
-  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+  <!-- Assets -->
+  <ItemGroup>
+    <None Update="Az.$(PsModuleName).psd1" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="help\*.md" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 

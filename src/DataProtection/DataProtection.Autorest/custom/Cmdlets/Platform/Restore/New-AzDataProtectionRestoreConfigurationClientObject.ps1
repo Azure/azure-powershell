@@ -40,7 +40,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
         ${ConflictPolicy},
 
         [Parameter(Mandatory=$false, HelpMessage='Namespaces mapping from source namespaces to target namespaces to resolve namespace naming conflicts in the target cluster.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.KubernetesClusterRestoreCriteriaNamespaceMappings]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.KubernetesClusterRestoreCriteriaNamespaceMappings]
         ${NamespaceMapping},
 
         [Parameter(Mandatory=$false, HelpMessage='Restore mode for persistent volumes. Allowed values are RestoreWithVolumeData, RestoreWithoutVolumeData. Default value is RestoreWithVolumeData')]
@@ -49,12 +49,12 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
         ${PersistentVolumeRestoreMode},
         
         [Parameter(Mandatory=$false, HelpMessage='Hook reference to be executed during restore.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.NamespacedNameResource[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource[]]
         ${RestoreHookReference}        
     )
 
     process {
-        $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.KubernetesClusterRestoreCriteria]::new()
+        $restoreCriteria =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.KubernetesClusterRestoreCriteria]::new()
         $restoreCriteria.ObjectType = "KubernetesClusterRestoreCriteria"
 
         $restoreCriteria.ExcludedResourceType = $ExcludedResourceType

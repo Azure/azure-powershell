@@ -2,7 +2,9 @@
 ```powershell
 $provider = Get-AzCustomProvider -ResourceGroupName myRg -Name Namespace.Type
 New-AzCustomProviderAssociation -Scope $resourceId -Name MyAssoc -TargetResourceId $provider.Id
+```
 
+```output
 Location  Name     Type
 --------  ----     ----
 East US 2 MyAssoc  Microsoft.CustomProviders/associations

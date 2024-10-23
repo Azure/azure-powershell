@@ -296,7 +296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PowerShell
                 {
                     sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}'){setCondition}) {{");
                     sb.AppendLine($"{Indent}{Indent}{Indent}$testPlayback = $false");
-                    sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object {{ $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }}");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object {{ if ($_) {{ $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }} }}");
                     sb.AppendLine($"{Indent}{Indent}{Indent}if ($testPlayback) {{");
                     sb.AppendLine($"{Indent}{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')");
                     sb.AppendLine($"{Indent}{Indent}{Indent}}} else {{");

@@ -8,7 +8,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PowerShell;
 
     /// <summary>
-    /// Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to inherit from
+    /// Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to
+    /// inherit from
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkDhcpEntityTypeConverter))]
     public partial class WorkloadNetworkDhcpEntity
@@ -188,7 +189,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             AfterDeserializePSObject(content);
         }
     }
-    /// Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to inherit from
+    /// Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to
+    /// inherit from
     [System.ComponentModel.TypeConverter(typeof(WorkloadNetworkDhcpEntityTypeConverter))]
     public partial interface IWorkloadNetworkDhcpEntity
 

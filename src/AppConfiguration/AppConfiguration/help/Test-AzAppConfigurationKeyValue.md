@@ -16,7 +16,8 @@ Requests the headers and status of the given resource.
 ```
 Test-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> [-Label <String>]
  [-Select <System.Collections.Generic.List`1[System.String]>] [-AcceptDatetime <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-IfNoneMatch <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
@@ -137,7 +138,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IAppConfigurationdataIdentity

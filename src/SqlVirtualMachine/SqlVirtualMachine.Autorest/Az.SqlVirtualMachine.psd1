@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.SqlVirtualMachine.private.dll'
   FormatsToProcess = './Az.SqlVirtualMachine.format.ps1xml'
-  FunctionsToExport = 'Get-AzAvailabilityGroupListener', 'Get-AzSqlVM', 'Get-AzSqlVMGroup', 'Invoke-AzRedeploySqlVM', 'Invoke-AzSqlVMTroubleshoot', 'New-AzAvailabilityGroupListener', 'New-AzSqlVirtualMachineAgReplicaObject', 'New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject', 'New-AzSqlVM', 'New-AzSqlVMGroup', 'Remove-AzAvailabilityGroupListener', 'Remove-AzSqlVM', 'Remove-AzSqlVMGroup', 'Start-AzSqlVMAssessment', 'Update-AzSqlVM', 'Update-AzSqlVMGroup', '*'
+  FunctionsToExport = 'Assert-AzSqlVMEntraAuth', 'Get-AzAvailabilityGroupListener', 'Get-AzSqlVM', 'Get-AzSqlVMGroup', 'Invoke-AzRedeploySqlVM', 'Invoke-AzSqlVMTroubleshoot', 'New-AzAvailabilityGroupListener', 'New-AzSqlVirtualMachineAgReplicaObject', 'New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject', 'New-AzSqlVM', 'New-AzSqlVMGroup', 'Remove-AzAvailabilityGroupListener', 'Remove-AzSqlVM', 'Remove-AzSqlVMGroup', 'Start-AzSqlVMAssessment', 'Update-AzSqlVM', 'Update-AzSqlVMGroup', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

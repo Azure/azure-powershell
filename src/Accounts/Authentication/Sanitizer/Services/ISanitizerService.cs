@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Security.Utilities;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
 {
     public interface ISanitizerService
     {
-        string SanitizedValue { get; }
+        IReadOnlyDictionary<string, IEnumerable<string>> IgnoredProperties { get; }
 
-        Dictionary<string, IEnumerable<string>> IgnoredProperties { get; }
-
-        bool TrySanitizeData(string data, out string sanitizedData);
+        bool TrySanitizeData(string data, out IEnumerable<Detection> detections, out string sanitizedData);
     }
 }

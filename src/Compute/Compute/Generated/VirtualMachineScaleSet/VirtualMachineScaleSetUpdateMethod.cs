@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     public partial class UpdateAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         protected const string ExplicitIdentityParameterSet = "ExplicitIdentityParameterSet";
-    
+
         public override void ExecuteCmdlet()
         {
-            
+
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
@@ -81,8 +81,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
 
                     var result = (this.VirtualMachineScaleSetUpdate == null)
-                                 ? VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters)
-                                 : VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate);
+                                 ? VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters, this.IfMatch, this.IfNoneMatch)
+                                 : VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate, this.IfMatch, this.IfNoneMatch);
                     var psObject = new PSVirtualMachineScaleSet();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
                     WriteObject(psObject);
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         public bool EncryptionAtHost { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "UserData for the Vmss, which will be Base64 encoded. Customer should not pass any secrets in here.",
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string SharedGalleryImageId { get; set; }
 
         [Parameter(
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = "Specifies whether the OS Image Scheduled event is enabled or disabled.")]
         public SwitchParameter OSImageScheduledEventEnabled { get; set; }
 
@@ -408,6 +408,41 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "used to make a request conditional for the PUT and other non-safe methods. The server will only return the requested resources if the resource matches one of the listed ETag values. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.")]
+        public string IfMatch { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Used to make a request conditional for the GET and HEAD methods. The server will only return the requested resources if none of the listed ETag values match the current entity. Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.")]
+        public string IfNoneMatch { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Array of VM sizes for the scale set.",
+            ValueFromPipelineByPropertyName = true)]
+        public string[] SkuProfileVmSize { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Allocation strategy for the SKU profile.",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateSet("LowestPrice", "CapacityOptimized")]
+        public string SkuProfileAllocationStrategy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether resilient VM creation should be enabled on the virtual machine scale set. The default value is false.")]
+        public bool EnableResilientVMCreate { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether resilient VM deletion should be enabled on the virtual machine scale set. The default value is false.")]
+        public bool EnableResilientVMDelete { get; set; }
 
         private void BuildPatchObject()
         {
@@ -1257,7 +1292,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.VirtualMachineScaleSetUpdate.ProximityPlacementGroup.Id = null;
             }
-            
+
             if (this.IsParameterBound(c => c.UserData))
             {
                 if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
@@ -1290,7 +1325,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
                 {
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
-                }                
+                }
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable = this.OSImageScheduledEventEnabled;
             }
 
@@ -1392,6 +1427,33 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
+
+            // New Feature Implementation
+            if (this.IsParameterBound(c => c.EnableResilientVMCreate))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate);
+            }
+
+            if (this.IsParameterBound(c => c.EnableResilientVMDelete))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.ResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete);
+            }
         }
 
         private void BuildPutObject()
@@ -1443,7 +1505,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.StorageUri = this.BootDiagnosticsStorageUri;
             }
 
-            if (this.IsParameterBound(c=> c.CapacityReservationGroupId))
+            if (this.IsParameterBound(c => c.CapacityReservationGroupId))
             {
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -2062,7 +2124,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.VirtualMachineScaleSet.ProximityPlacementGroup.Id = null;
             }
-            
+
             if (this.IsParameterBound(c => c.UserData))
             {
                 if (!ValidateBase64EncodedString.ValidateStringIsBase64Encoded(this.UserData))
@@ -2094,6 +2156,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.PriorityMixPolicy = new PriorityMixPolicy();
                 }
                 this.VirtualMachineScaleSet.PriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
+            }
+
+            if (this.IsParameterBound(c => c.SkuProfileVmSize))
+            {
+                if (this.VirtualMachineScaleSet.SkuProfile == null)
+                {
+                    this.VirtualMachineScaleSet.SkuProfile = new SkuProfile();
+                }
+                this.VirtualMachineScaleSet.SkuProfile.VmSizes = new List<SkuProfileVMSize>();
+                foreach (string vmSize in this.SkuProfileVmSize)
+                {
+                    this.VirtualMachineScaleSet.SkuProfile.VmSizes.Add(new SkuProfileVMSize()
+                    {
+                        Name = vmSize,
+                    });
+                }
+
+                if (this.IsParameterBound(c => c.SkuProfileAllocationStrategy))
+                {
+                    this.VirtualMachineScaleSet.SkuProfile.AllocationStrategy = this.SkuProfileAllocationStrategy;
+                }
+                else if (this.VirtualMachineScaleSet.SkuProfile.AllocationStrategy == null)
+                {
+                    this.VirtualMachineScaleSet.SkuProfile.AllocationStrategy = "LowestPrice";
+                }
             }
 
             if (this.IsParameterBound(c => c.SecurityType))
@@ -2161,6 +2248,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
 
+            if (this.IsParameterBound(c => c.EnableResilientVMCreate))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMCreationPolicy = new ResilientVMCreationPolicy(this.EnableResilientVMCreate);
+            }
+
+            if (this.IsParameterBound(c => c.EnableResilientVMDelete))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.ResiliencyPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ResiliencyPolicy = new ResiliencyPolicy();
+                }
+                this.VirtualMachineScaleSet.ResiliencyPolicy.ResilientVMDeletionPolicy = new ResilientVMDeletionPolicy(this.EnableResilientVMDelete);
+            }
         }
     }
 }

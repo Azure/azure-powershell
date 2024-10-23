@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Relay-help.xml
 Module Name: Az.Relay
 online version: https://learn.microsoft.com/powershell/module/az.relay/set-azrelayauthorizationrule
 schema: 2.0.0
@@ -15,43 +15,43 @@ Creates or updates an authorization rule for a namespace.
 ### UpdateExpanded (Default)
 ```
 Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Update1
+```
+Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -HybridConnection <String> -InputObject <IAuthorizationRule>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateExpanded1
+```
+Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -HybridConnection <String> [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Update2
+```
+Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -WcfRelay <String> -InputObject <IAuthorizationRule> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateExpanded2
+```
+Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -WcfRelay <String> [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String>
- -InputObject <IAuthorizationRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### Update1
-```
-Set-AzRelayAuthorizationRule -HybridConnection <String> -Name <String> -Namespace <String>
- -ResourceGroupName <String> -InputObject <IAuthorizationRule> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update2
-```
-Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
- -InputObject <IAuthorizationRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded1
-```
-Set-AzRelayAuthorizationRule -HybridConnection <String> -Name <String> -Namespace <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Rights <AccessRights[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateExpanded2
-```
-Set-AzRelayAuthorizationRule -Name <String> -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
- [-SubscriptionId <String>] [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -InputObject <IAuthorizationRule> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -242,7 +242,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.IAuthorizationRule
-Parameter Sets: Update, Update1, Update2
+Parameter Sets: Update1, Update2, Update
 Aliases:
 
 Required: True
@@ -387,21 +387,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAuthorizationRule>`: Single item in a List or Get AuthorizationRule operation
-  - `[Rights <AccessRights[]>]`: The rights associated with the rule.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-
 ## RELATED LINKS
-

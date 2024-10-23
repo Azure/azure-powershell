@@ -13,9 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzElasticTagRule_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"Create or update a tag rule set for a given monitor resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}", ApiVersion = "2024-03-01")]
     public partial class NewAzElasticTagRule_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener
     {
@@ -28,16 +29,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
+        /// <summary>Capture logs and metrics of Azure resources based on ARM tags.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules _body = new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoringTagRules();
+
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
-
-        /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules _body= new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitoringTagRules();
-
-        /// <summary>Capture logs and metrics of Azure resources based on ARM tags.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules Body { get => this._body; set => this._body = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -48,9 +46,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Elastic.Elastic Client => Microsoft.Azure.PowerShell.Cmdlets.Elastic.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Azure)]
@@ -84,8 +83,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         ReadOnly = false,
         Description = @"List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.",
         SerializedName = @"filteringTags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IFilteringTag) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IFilteringTag[] LogRuleFilteringTag { get => Body.LogRuleFilteringTag ?? null /* arrayOf */; set => Body.LogRuleFilteringTag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IFilteringTag) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IFilteringTag[] LogRuleFilteringTag { get => _body.LogRuleFilteringTag ?? null /* arrayOf */; set => _body.LogRuleFilteringTag = value; }
 
         /// <summary>Flag specifying if AAD logs should be sent for the Monitor resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Flag specifying if AAD logs should be sent for the Monitor resource.")]
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Description = @"Flag specifying if AAD logs should be sent for the Monitor resource.",
         SerializedName = @"sendAadLogs",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter LogRuleSendAadLog { get => Body.LogRuleSendAadLog ?? default(global::System.Management.Automation.SwitchParameter); set => Body.LogRuleSendAadLog = value; }
+        public global::System.Management.Automation.SwitchParameter LogRuleSendAadLog { get => _body.LogRuleSendAadLog ?? default(global::System.Management.Automation.SwitchParameter); set => _body.LogRuleSendAadLog = value; }
 
         /// <summary>
         /// Flag specifying if activity logs from Azure resources should be sent for the Monitor resource.
@@ -109,7 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Description = @"Flag specifying if activity logs from Azure resources should be sent for the Monitor resource.",
         SerializedName = @"sendActivityLogs",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter LogRuleSendActivityLog { get => Body.LogRuleSendActivityLog ?? default(global::System.Management.Automation.SwitchParameter); set => Body.LogRuleSendActivityLog = value; }
+        public global::System.Management.Automation.SwitchParameter LogRuleSendActivityLog { get => _body.LogRuleSendActivityLog ?? default(global::System.Management.Automation.SwitchParameter); set => _body.LogRuleSendActivityLog = value; }
 
         /// <summary>Flag specifying if subscription logs should be sent for the Monitor resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Flag specifying if subscription logs should be sent for the Monitor resource.")]
@@ -120,14 +119,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Description = @"Flag specifying if subscription logs should be sent for the Monitor resource.",
         SerializedName = @"sendSubscriptionLogs",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter LogRuleSendSubscriptionLog { get => Body.LogRuleSendSubscriptionLog ?? default(global::System.Management.Automation.SwitchParameter); set => Body.LogRuleSendSubscriptionLog = value; }
+        public global::System.Management.Automation.SwitchParameter LogRuleSendSubscriptionLog { get => _body.LogRuleSendSubscriptionLog ?? default(global::System.Management.Automation.SwitchParameter); set => _body.LogRuleSendSubscriptionLog = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="MonitorName" /> property.</summary>
@@ -168,12 +167,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the resource group to which the Elastic resource belongs.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group to which the Elastic resource belongs.")]
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of the resource group to which the Elastic resource belongs.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Path)]
@@ -201,14 +200,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.DefaultInfo(
@@ -223,30 +220,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceProviderDefaultErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceProviderDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules">Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -258,7 +260,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -369,7 +388,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -384,12 +402,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.TagRulesCreateOrUpdate(SubscriptionId, ResourceGroupName, MonitorName, RuleSetName, Body, onOk, onDefault, this, Pipeline);
+                    await this.Client.TagRulesCreateOrUpdate(SubscriptionId, ResourceGroupName, MonitorName, RuleSetName, _body, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,MonitorName=MonitorName,RuleSetName=RuleSetName,body=Body})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,MonitorName=MonitorName,RuleSetName=RuleSetName,body=_body})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -408,16 +426,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Elastic.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Elastic.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceProviderDefaultErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceProviderDefaultErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -434,15 +467,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceProviderDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MonitorName=MonitorName, RuleSetName=RuleSetName, body=Body })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MonitorName=MonitorName, RuleSetName=RuleSetName, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MonitorName=MonitorName, RuleSetName=RuleSetName, body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MonitorName=MonitorName, RuleSetName=RuleSetName, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -452,12 +485,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules">Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules> response)
         {
             using( NoSynchronizationContext )
             {
@@ -469,7 +502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IMonitoringTagRules
                 WriteObject((await response));
             }
         }

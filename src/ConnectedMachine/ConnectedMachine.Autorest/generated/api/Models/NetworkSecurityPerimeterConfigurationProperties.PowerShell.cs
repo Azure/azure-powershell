@@ -160,7 +160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("ProfileAccessRulesVersion"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileAccessRulesVersion = (string) content.GetValueForProperty("ProfileAccessRulesVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileAccessRulesVersion, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileAccessRulesVersion = (int?) content.GetValueForProperty("ProfileAccessRulesVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileAccessRulesVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ProfileAccessRule"))
             {
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("ProfileDiagnosticSettingsVersion"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileDiagnosticSettingsVersion = (string) content.GetValueForProperty("ProfileDiagnosticSettingsVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileDiagnosticSettingsVersion, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileDiagnosticSettingsVersion = (int?) content.GetValueForProperty("ProfileDiagnosticSettingsVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileDiagnosticSettingsVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ProfileEnabledLogCategory"))
             {
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("ProfileAccessRulesVersion"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileAccessRulesVersion = (string) content.GetValueForProperty("ProfileAccessRulesVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileAccessRulesVersion, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileAccessRulesVersion = (int?) content.GetValueForProperty("ProfileAccessRulesVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileAccessRulesVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ProfileAccessRule"))
             {
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             }
             if (content.Contains("ProfileDiagnosticSettingsVersion"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileDiagnosticSettingsVersion = (string) content.GetValueForProperty("ProfileDiagnosticSettingsVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileDiagnosticSettingsVersion, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileDiagnosticSettingsVersion = (int?) content.GetValueForProperty("ProfileDiagnosticSettingsVersion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.INetworkSecurityPerimeterConfigurationPropertiesInternal)this).ProfileDiagnosticSettingsVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("ProfileEnabledLogCategory"))
             {

@@ -37,11 +37,11 @@ New-AzDatabricksWorkspace -Name azps-databricks-workspace-t2 -ResourceGroupName 
 New-AzDatabricksWorkspace -Name azps-databricks-workspace-t3 -ResourceGroupName azps_test_gp_db -Location eastus -PrepareEncryption -ManagedResourceGroupName azps_test_gp_kv_t3 -Sku premium
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,13 +52,13 @@ AUTHORIZATION <IWorkspaceProviderAuthorization[]>: The workspace provider author
   RoleDefinitionId <String>: The provider's role definition identifier. This role will define all the permissions that the provider must have on the workspace's container resource group. This role definition cannot have permission to delete the resource group.
 
 INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
-  [ConnectorName <String>]: The name of the azure databricks accessConnector.
+  [ConnectorName <String>]: The name of the Azure Databricks Access Connector.
   [GroupId <String>]: The name of the private link resource
   [Id <String>]: Resource identity path
   [PeeringName <String>]: The name of the workspace vNet peering.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [WorkspaceName <String>]: The name of the workspace.
 
 PARAMETER <IWorkspace>: Information about workspace.
@@ -66,24 +66,36 @@ PARAMETER <IWorkspace>: Information about workspace.
   ManagedResourceGroupId <String>: The managed resource group Id.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [AccessConnectorId <String>]: The resource ID of Azure Databricks Access Connector Resource.
+  [AccessConnectorIdentityType <IdentityType?>]: The identity type of the Access Connector Resource.
+  [AccessConnectorUserAssignedIdentityId <String>]: The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
   [AmlWorkspaceIdValue <String>]: The value which should be used for this field.
   [Authorization <IWorkspaceProviderAuthorization[]>]: The workspace provider authorizations.
     PrincipalId <String>: The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the workspace resources.
     RoleDefinitionId <String>: The provider's role definition identifier. This role will define all the permissions that the provider must have on the workspace's container resource group. This role definition cannot have permission to delete the resource group.
+  [AutomaticClusterUpdateValue <AutomaticClusterUpdateValue?>]: 
+  [ComplianceSecurityProfileComplianceStandard <ComplianceStandard[]>]: Compliance standards associated with the workspace.
+  [ComplianceSecurityProfileValue <ComplianceSecurityProfileValue?>]: 
   [CustomPrivateSubnetNameValue <String>]: The value which should be used for this field.
   [CustomPublicSubnetNameValue <String>]: The value which should be used for this field.
   [CustomVirtualNetworkIdValue <String>]: The value which should be used for this field.
+  [DefaultCatalogInitialName <String>]: Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
+  [DefaultCatalogInitialType <InitialType?>]: Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
+  [DefaultStorageFirewall <DefaultStorageFirewall?>]: Gets or Sets Default Storage Firewall configuration information
   [EnableNoPublicIP <Boolean?>]: The value which should be used for this field.
   [EncryptionKeyName <String>]: The name of KeyVault key.
   [EncryptionKeySource <KeySource?>]: The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault
   [EncryptionKeyVaultUri <String>]: The Uri of KeyVault.
   [EncryptionKeyVersion <String>]: The version of KeyVault key.
+  [EnhancedSecurityMonitoringValue <EnhancedSecurityMonitoringValue?>]: 
   [LoadBalancerBackendPoolNameValue <String>]: The value which should be used for this field.
   [LoadBalancerIdValue <String>]: The value which should be used for this field.
+  [ManagedDiskKeySource <EncryptionKeySource?>]: The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
   [ManagedDiskKeyVaultPropertiesKeyName <String>]: The name of KeyVault key.
   [ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]: The URI of KeyVault.
   [ManagedDiskKeyVaultPropertiesKeyVersion <String>]: The version of KeyVault key.
   [ManagedDiskRotationToLatestKeyVersionEnabled <Boolean?>]: Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
+  [ManagedServiceKeySource <EncryptionKeySource?>]: The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
   [ManagedServicesKeyVaultPropertiesKeyName <String>]: The name of KeyVault key.
   [ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]: The Uri of KeyVault.
   [ManagedServicesKeyVaultPropertiesKeyVersion <String>]: The version of KeyVault key.
@@ -110,7 +122,7 @@ PARAMETER <IWorkspace>: Information about workspace.
 https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
 #>
 function New-AzDatabricksWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -132,6 +144,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -156,16 +169,80 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
+    # The resource ID of Azure Databricks Access Connector Resource.
+    ${AccessConnectorId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.IdentityType]
+    # The identity type of the Access Connector Resource.
+    ${AccessConnectorIdentityType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # The resource ID of the User Assigned Identity associated with the Access Connector Resource.
+    # This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
+    ${AccessConnectorUserAssignedIdentityId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
     # The value which should be used for this field.
     ${AmlWorkspaceId},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspaceProviderAuthorization[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspaceProviderAuthorization[]]
     # The workspace provider authorizations.
     # To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
     ${Authorization},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.AutomaticClusterUpdateValue]
+    # .
+    ${AutomaticClusterUpdateValue},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceStandard[]]
+    # Compliance standards associated with the workspace.
+    ${ComplianceSecurityProfileComplianceStandard},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ComplianceSecurityProfileValue]
+    # .
+    ${ComplianceSecurityProfileValue},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [System.String]
+    # Specifies the initial Name of default catalog.
+    # If not specified, the name of the workspace will be used.
+    ${DefaultCatalogInitialName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.InitialType]
+    # Defines the initial type of the default catalog.
+    # Possible values (case-insensitive): HiveMetastore, UnityCatalog
+    ${DefaultCatalogInitialType},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.DefaultStorageFirewall]
+    # Gets or Sets Default Storage Firewall configuration information
+    ${DefaultStorageFirewall},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -200,6 +277,13 @@ param(
     ${EncryptionKeyVersion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EnhancedSecurityMonitoringValue]
+    # .
+    ${EnhancedSecurityMonitoringValue},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.String]
     # The value which should be used for this field.
@@ -210,6 +294,14 @@ param(
     [System.String]
     # The value which should be used for this field.
     ${LoadBalancerId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource]
+    # The encryption keySource (provider).
+    # Possible values (case-insensitive): Microsoft.Keyvault
+    ${ManagedDiskKeySource},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -234,6 +326,14 @@ param(
     [System.Management.Automation.SwitchParameter]
     # Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
     ${ManagedDiskRotationToLatestKeyVersionEnabled},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.EncryptionKeySource]
+    # The encryption keySource (provider).
+    # Possible values (case-insensitive): Microsoft.Keyvault
+    ${ManagedServiceKeySource},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
@@ -357,7 +457,7 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20240501.IWorkspace]
     # Information about workspace.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -436,7 +536,13 @@ begin {
             CreateViaIdentity = 'Az.Databricks.private\New-AzDatabricksWorkspace_CreateViaIdentity';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

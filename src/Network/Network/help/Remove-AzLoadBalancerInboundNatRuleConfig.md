@@ -23,7 +23,7 @@ The **Remove-AzLoadBalancerInboundNatRuleConfig** cmdlet removes an inbound netw
 
 ## EXAMPLES
 
-### 1: Delete an inbound NAT rule from an Azure load balancer
+### Example 1: Delete an inbound NAT rule from an Azure load balancer
 ```powershell
 $loadbalancer = Get-AzLoadBalancer -Name mylb -ResourceGroupName myrg
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.TimeSeriesInsights-help.xml
 Module Name: Az.TimeSeriesInsights
 online version: https://learn.microsoft.com/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsenvironment
 schema: 2.0.0
@@ -24,15 +24,15 @@ Get-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> [
  [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzTimeSeriesInsightsEnvironment -InputObject <ITimeSeriesInsightsIdentity> [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List
 ```
 Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzTimeSeriesInsightsEnvironment -InputObject <ITimeSeriesInsightsIdentity> [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -45,6 +45,7 @@ Gets the environment with the specified name in the specified subscription and r
 ```powershell
 Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001
 ```
+
 ```output
 DataAccessFqdn               : b6d113a4-0865-405f-b09e-ad4355b5d046.env.timeseries.azure.com
 DataAccessId                 : b6d113a4-0865-405f-b09e-ad4355b5d046
@@ -75,6 +76,7 @@ This command gets a time series insights environment.
 ```powershell
 Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup
 ```
+
 ```output
 DataAccessFqdn                      : 3de1d1e1-4f9b-4bc6-aad3-a835597dcd86.env.timeseries.azure.com
 DataAccessId                        : 3de1d1e1-4f9b-4bc6-aad3-a835597dcd86
@@ -128,6 +130,7 @@ This command lists all time series insights environments in a resource group.
 $env = Get-AzTimeSeriesInsightsEnvironment -ResourceGroupName tsi-test-i01k5l -Name tsi-envv8u56x 
 Get-AzTimeSeriesInsightsEnvironment -InputObject $env
 ```
+
 ```output
 DataAccessFqdn               : d76a61f2-8a30-41a5-9587-f241eb9b48d9.env.timeseries.azure.com
 DataAccessId                 : d76a61f2-8a30-41a5-9587-f241eb9b48d9
@@ -156,7 +159,8 @@ This command gets a time series insights environments.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -236,7 +240,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: False
@@ -259,21 +263,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<ITimeSeriesInsightsIdentity>`: Identity Parameter
-  - `[AccessPolicyName <String>]`: Name of the access policy.
-  - `[EnvironmentName <String>]`: Name of the environment
-  - `[EventSourceName <String>]`: The name of the Time Series Insights event source associated with the specified environment.
-  - `[Id <String>]`: Resource identity path
-  - `[ReferenceDataSetName <String>]`: Name of the reference data set.
-  - `[ResourceGroupName <String>]`: Name of an Azure Resource group.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
-
 ## RELATED LINKS
-

@@ -18,16 +18,16 @@ Get-AzNetAppFilesVolumeGroup -ResourceGroupName <String> -AccountName <String> [
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByResourceIdParameterSet
-```
-Get-AzNetAppFilesVolumeGroup [-Name <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
 ### ByParentObjectParameterSet
 ```
 Get-AzNetAppFilesVolumeGroup [-Name <String>] -AccountObject <PSNetAppFilesAccount>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceIdParameterSet
+```
+Get-AzNetAppFilesVolumeGroup [-Name <String>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

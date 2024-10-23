@@ -9,8 +9,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime
     {
         None = 0,
         IncludeHeaders = 1 << 0,
-        IncludeReadOnly = 1 << 1,
-
-        IncludeAll = IncludeHeaders | IncludeReadOnly
+        IncludeRead = 1 << 1,
+        IncludeCreate = 1 << 2,
+        IncludeUpdate = 1 << 3,
+        IncludeAll = IncludeHeaders | IncludeRead | IncludeCreate | IncludeUpdate,
+        IncludeCreateOrUpdate = IncludeCreate | IncludeUpdate
     }
 }

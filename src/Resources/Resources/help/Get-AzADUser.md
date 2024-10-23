@@ -16,44 +16,44 @@ Lists entities from users or get entity from users by key
 ```
 Get-AzADUser [-Count] [-Expand <String[]>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>]
  [-AppendSelected] [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-ConsistencyLevel <String>]
- [-DefaultProfile <PSObject>] [-CountVariable <String>]
+ [-DefaultProfile <PSObject>] [-CountVariable <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### MailParameterSet
 ```
 Get-AzADUser [-Expand <String[]>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected]
- [-DefaultProfile <PSObject>] -Mail <String> [<CommonParameters>]
+ [-DefaultProfile <PSObject>] -Mail <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
 Get-AzADUser [-Expand <String[]>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected]
- [-DefaultProfile <PSObject>] -DisplayName <String> [<CommonParameters>]
+ [-DefaultProfile <PSObject>] -DisplayName <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### StartsWithParameterSet
 ```
 Get-AzADUser [-Expand <String[]>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected]
- [-DefaultProfile <PSObject>] -StartsWith <String> [<CommonParameters>]
+ [-DefaultProfile <PSObject>] -StartsWith <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
 Get-AzADUser [-Expand <String[]>] [-Select <String[]>] [-AppendSelected] [-DefaultProfile <PSObject>]
- -ObjectId <String> [<CommonParameters>]
+ -ObjectId <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### UPNParameterSet
 ```
 Get-AzADUser [-Expand <String[]>] [-Select <String[]>] [-AppendSelected] [-DefaultProfile <PSObject>]
- -UserPrincipalName <String> [<CommonParameters>]
+ -UserPrincipalName <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SignedInUser
 ```
 Get-AzADUser [-Expand <String[]>] [-Select <String[]>] [-AppendSelected] [-DefaultProfile <PSObject>]
- [-SignedIn] [<CommonParameters>]
+ [-SignedIn] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -266,6 +266,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Search
 Search items by search phrases
 
@@ -381,7 +396,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get a list of available geographical regions.
+Description for Get a list of available geographical regions.
 .Description
-Get a list of available geographical regions.
+Description for Get a list of available geographical regions.
 .Example
 Get-AzFunctionAppAvailableLocation
 .Example
@@ -27,12 +27,12 @@ Get-AzFunctionAppAvailableLocation -PlanType Premium -OSType Linux
 Get-AzFunctionAppAvailableLocation -PlanType Consumption -OSType Windows
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion
 .Link
 https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
 #>
 function Get-AzFunctionAppAvailableLocation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.IGeoRegion])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -130,7 +130,13 @@ begin {
             List = 'Az.Functions.private\Get-AzFunctionAppAvailableLocation_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

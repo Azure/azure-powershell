@@ -6,7 +6,7 @@ Get-AzMLWorkspaceComponentContainer -ResourceGroupName ml-rg-test -WorkspaceName
 ```output
 Name                 SystemDataCreatedAt  SystemDataCreatedBy                 SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy            SystemDataLastModifiedByType ResourceGroupName
 ----                 -------------------  -------------------                 ----------------------- ------------------------ ------------------------            ---------------------------- -----------------
-train_data_component 5/24/2022 7:23:25 AM Lucas Yao (Wicresoft North America) User                    5/24/2022 7:23:25 AM     Lucas Yao (Wicresoft North America) User                         ml-rg-test
+train_data_component 5/24/2022 7:23:25 AM UserName (Example)         User                    5/24/2022 7:23:25 AM     UserName (Example)         User                         ml-rg-test
 ```
 
 Lists all containers under a workspace

@@ -17,8 +17,8 @@ Update node pool in a managed cluster.
 Update-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <String> [-NodeCount <Int32>]
  [-NodeImageOnly] [-AsJob] [-Force] [-MaxSurge <String>] [-KubernetesVersion <String>] [-MinCount <Int32>]
  [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>]
- [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
@@ -26,8 +26,8 @@ Update-AzAksNodePool -ResourceGroupName <String> -ClusterName <String> -Name <St
 Update-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-NodeCount <Int32>] [-NodeImageOnly]
  [-AsJob] [-Force] [-MaxSurge <String>] [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>]
  [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>] [-NodeTaint <String[]>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -35,8 +35,8 @@ Update-AzAksNodePool -Name <String> -ClusterObject <PSKubernetesCluster> [-NodeC
 Update-AzAksNodePool -InputObject <PSNodePool> [-NodeCount <Int32>] [-NodeImageOnly] [-AsJob] [-Force]
  [-MaxSurge <String>] [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>]
  [-EnableAutoScaling] [-Mode <String>] [-NodeLabel <Hashtable>] [-Tag <Hashtable>] [-NodeTaint <String[]>]
- [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-AksCustomHeader <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
@@ -44,8 +44,8 @@ Update-AzAksNodePool -InputObject <PSNodePool> [-NodeCount <Int32>] [-NodeImageO
 Update-AzAksNodePool -Id <String> [-NodeCount <Int32>] [-NodeImageOnly] [-AsJob] [-Force] [-MaxSurge <String>]
  [-KubernetesVersion <String>] [-MinCount <Int32>] [-MaxCount <Int32>] [-EnableAutoScaling] [-Mode <String>]
  [-NodeLabel <Hashtable>] [-Tag <Hashtable>] [-NodeTaint <String[]>] [-AksCustomHeader <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +53,7 @@ Update node pool in a managed cluster.
 
 ## EXAMPLES
 
-### Change minimun count to 5 for specified node pool
+### Example 1: Change minimun count to 5 for specified node pool
 ```powershell
 Update-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name linuxpool -MinCount 5
 ```

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2MsiScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAdlsGen2MsiScanObject
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Create an in-memory object for AdlsGen2MsiScan.
 ```
 New-AzPurviewAdlsGen2MsiScanObject -Kind <ScanAuthorizationType> [-CollectionReferenceName <String>]
  [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-ScanRulesetName <String>]
- [-ScanRulesetType <ScanRulesetType>] [-Worker <Int32>] [<CommonParameters>]
+ [-ScanRulesetType <ScanRulesetType>] [-Worker <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,7 +157,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2MsiScan
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

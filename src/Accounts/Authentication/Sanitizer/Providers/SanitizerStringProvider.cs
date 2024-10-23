@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services;
 using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 {
@@ -26,12 +26,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 
         public override void SanitizeValue(object sanitizingObject, Stack<object> sanitizingStack, ISanitizerProviderResolver resolver, SanitizerProperty property, SanitizerTelemetry telemetry)
         {
-            var propertyValue = property.GetValue(sanitizingObject);
+            var propertyValue = property?.GetValue(sanitizingObject) ?? sanitizingObject;
             if (propertyValue is string data)
             {
-                if (Service.TrySanitizeData(data, out string sanitizedData))
+                if (Service.TrySanitizeData(data, out var detections, out _))
                 {
-                    telemetry.DetectedProperties.Add(ResolvePropertyPath(property));
+                    telemetry.SecretsDetected = true;
+                    var propertyPath = ResolvePropertyPath(property);
+                    if (!string.IsNullOrEmpty(propertyPath))
+                    {
+                        foreach (var detection in detections)
+                        {
+                            telemetry.DetectedProperties.AddPropertyInfo(propertyPath, detection.Moniker);
+                        }
+                    }
                 }
             }
         }

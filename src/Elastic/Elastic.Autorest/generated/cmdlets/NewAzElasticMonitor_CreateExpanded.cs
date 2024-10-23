@@ -13,9 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzElasticMonitor_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Description(@"Create a monitor resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}", ApiVersion = "2024-03-01")]
     public partial class NewAzElasticMonitor_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener
     {
@@ -28,6 +29,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
+        /// <summary>Monitor resource.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResource _body = new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResource();
+
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
@@ -37,12 +41,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
-
-        /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource _body= new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticMonitorResource();
-
-        /// <summary>Monitor resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource Body { get => this._body; set => this._body = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -61,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Description = @"Business of the company",
         SerializedName = @"business",
         PossibleTypes = new [] { typeof(string) })]
-        public string CompanyInfoBusiness { get => Body.CompanyInfoBusiness ?? null; set => Body.CompanyInfoBusiness = value; }
+        public string CompanyInfoBusiness { get => _body.CompanyInfoBusiness ?? null; set => _body.CompanyInfoBusiness = value; }
 
         /// <summary>Country of the company location.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Country of the company location.")]
@@ -72,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Description = @"Country of the company location.",
         SerializedName = @"country",
         PossibleTypes = new [] { typeof(string) })]
-        public string CompanyInfoCountry { get => Body.CompanyInfoCountry ?? null; set => Body.CompanyInfoCountry = value; }
+        public string CompanyInfoCountry { get => _body.CompanyInfoCountry ?? null; set => _body.CompanyInfoCountry = value; }
 
         /// <summary>Domain of the company</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Domain of the company")]
@@ -83,7 +81,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Description = @"Domain of the company",
         SerializedName = @"domain",
         PossibleTypes = new [] { typeof(string) })]
-        public string CompanyInfoDomain { get => Body.CompanyInfoDomain ?? null; set => Body.CompanyInfoDomain = value; }
+        public string CompanyInfoDomain { get => _body.CompanyInfoDomain ?? null; set => _body.CompanyInfoDomain = value; }
 
         /// <summary>Number of employees in the company</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Number of employees in the company")]
@@ -94,7 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Description = @"Number of employees in the company",
         SerializedName = @"employeesNumber",
         PossibleTypes = new [] { typeof(string) })]
-        public string CompanyInfoEmployeesNumber { get => Body.CompanyInfoEmployeesNumber ?? null; set => Body.CompanyInfoEmployeesNumber = value; }
+        public string CompanyInfoEmployeesNumber { get => _body.CompanyInfoEmployeesNumber ?? null; set => _body.CompanyInfoEmployeesNumber = value; }
 
         /// <summary>State of the company location.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "State of the company location.")]
@@ -105,16 +103,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Description = @"State of the company location.",
         SerializedName = @"state",
         PossibleTypes = new [] { typeof(string) })]
-        public string CompanyInfoState { get => Body.CompanyInfoState ?? null; set => Body.CompanyInfoState = value; }
+        public string CompanyInfoState { get => _body.CompanyInfoState ?? null; set => _body.CompanyInfoState = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Flag to determine if User API Key has to be generated and shared.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Flag to determine if User API Key has to be generated and shared.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Flag to determine if User API Key has to be generated and shared.",
+        SerializedName = @"generateApiKey",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter GenerateApiKey { get => _body.GenerateApiKey ?? default(global::System.Management.Automation.SwitchParameter); set => _body.GenerateApiKey = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -138,7 +148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes IdentityType { get => Body.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes)""); set => Body.IdentityType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes IdentityType { get => _body.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes)""); set => _body.IdentityType = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -152,14 +162,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Description = @"The location of the monitor resource",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => Body.Location ?? null; set => Body.Location = value; }
+        public string Location { get => _body.Location ?? null; set => _body.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Flag specifying if the resource monitoring is enabled or disabled.</summary>
@@ -172,7 +182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         SerializedName = @"monitoringStatus",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus MonitoringStatus { get => Body.MonitoringStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus)""); set => Body.MonitoringStatus = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus MonitoringStatus { get => _body.MonitoringStatus ?? ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus)""); set => _body.MonitoringStatus = value; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -202,6 +212,61 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.HttpPipeline Pipeline { get; set; }
 
+        /// <summary>Offer ID of the plan</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Offer ID of the plan")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Offer ID of the plan",
+        SerializedName = @"offerID",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanDetailOfferId { get => _body.PlanDetailOfferId ?? null; set => _body.PlanDetailOfferId = value; }
+
+        /// <summary>Plan ID</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Plan ID")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Plan ID",
+        SerializedName = @"planID",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanDetailPlanId { get => _body.PlanDetailPlanId ?? null; set => _body.PlanDetailPlanId = value; }
+
+        /// <summary>Plan Name</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Plan Name")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Plan Name",
+        SerializedName = @"planName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanDetailPlanName { get => _body.PlanDetailPlanName ?? null; set => _body.PlanDetailPlanName = value; }
+
+        /// <summary>Publisher ID of the plan</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Publisher ID of the plan")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Publisher ID of the plan",
+        SerializedName = @"publisherID",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanDetailPublisherId { get => _body.PlanDetailPublisherId ?? null; set => _body.PlanDetailPublisherId = value; }
+
+        /// <summary>Term ID of the plan</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Term ID of the plan")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Term ID of the plan",
+        SerializedName = @"termID",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PlanDetailTermId { get => _body.PlanDetailTermId ?? null; set => _body.PlanDetailTermId = value; }
+
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Runtime)]
@@ -221,39 +286,76 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the resource group to which the Elastic resource belongs.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group to which the Elastic resource belongs.")]
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of the resource group to which the Elastic resource belongs.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>Name of the SKU.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the SKU.")]
+        /// <summary>Status of Azure Subscription where Marketplace SaaS is located.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Status of Azure Subscription where Marketplace SaaS is located.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Name of the SKU.",
+        Description = @"Status of Azure Subscription where Marketplace SaaS is located.",
+        SerializedName = @"saaSAzureSubscriptionStatus",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SaaSAzureSubscriptionStatus { get => _body.SaaSAzureSubscriptionStatus ?? null; set => _body.SaaSAzureSubscriptionStatus = value; }
+
+        /// <summary>
+        /// The SKU depends on the Elasticsearch Plans available for your account and is a combination of PlanID_Term. \<br>For instance,
+        /// if the plan ID is "planXYZ" and term is "Yearly", the SKU will be "planXYZ_Yearly". \<br>You may find your eligible plans
+        /// [here](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/elastic.ec-azure-pp/selectionMode~/false/resourceGroupId//resourceGroupLocation//dontDiscardJourney~/false/selectedMenuId/home/launchingContext~/%7B%22galleryItemId%22%3A%22elastic.ec-azure-ppess-consumption-2024%22%2C%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%2C%22VirtualizedTileDetails%22%5D%2C%22menuItemId%22%3A%22home%22%2C%22subMenuItemId%22%3A%22Search%20results%22%2C%22telemetryId%22%3A%2262f8ce76-e5e4-4983-9d3e-5c608a0b2bff%22%7D/searchTelemetryId/cca0a8d3-f232-4156-948f-701a5d74a729)
+        /// or in the online documentation [here](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp)
+        /// for more details or in case of any issues with the SKU.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The SKU depends on the Elasticsearch Plans available for your account and is a combination of PlanID_Term. \\<br>For instance, if the plan ID is \"planXYZ\" and term is \"Yearly\", the SKU will be \"planXYZ_Yearly\". \\<br>You may find your eligible plans [here](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/elastic.ec-azure-pp/selectionMode~/false/resourceGroupId//resourceGroupLocation//dontDiscardJourney~/false/selectedMenuId/home/launchingContext~/%7B%22galleryItemId%22%3A%22elastic.ec-azure-ppess-consumption-2024%22%2C%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%2C%22VirtualizedTileDetails%22%5D%2C%22menuItemId%22%3A%22home%22%2C%22subMenuItemId%22%3A%22Search%20results%22%2C%22telemetryId%22%3A%2262f8ce76-e5e4-4983-9d3e-5c608a0b2bff%22%7D/searchTelemetryId/cca0a8d3-f232-4156-948f-701a5d74a729) or in the online documentation [here](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp) for more details or in case of any issues with the SKU.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The SKU depends on the Elasticsearch Plans available for your account and is a combination of PlanID_Term. \<br>For instance, if the plan ID is ""planXYZ"" and term is ""Yearly"", the SKU will be ""planXYZ_Yearly"". \<br>You may find your eligible plans [here](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/elastic.ec-azure-pp/selectionMode~/false/resourceGroupId//resourceGroupLocation//dontDiscardJourney~/false/selectedMenuId/home/launchingContext~/%7B%22galleryItemId%22%3A%22elastic.ec-azure-ppess-consumption-2024%22%2C%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%2C%22VirtualizedTileDetails%22%5D%2C%22menuItemId%22%3A%22home%22%2C%22subMenuItemId%22%3A%22Search%20results%22%2C%22telemetryId%22%3A%2262f8ce76-e5e4-4983-9d3e-5c608a0b2bff%22%7D/searchTelemetryId/cca0a8d3-f232-4156-948f-701a5d74a729) or in the online documentation [here](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp) for more details or in case of any issues with the SKU.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string Sku { get => Body.SkuName ?? null; set => Body.SkuName = value; }
+        public string Sku { get => _body.SkuName ?? null; set => _body.SkuName = value; }
+
+        /// <summary>A unique identifier associated with the campaign.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A unique identifier associated with the campaign.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A unique identifier associated with the campaign.",
+        SerializedName = @"sourceCampaignId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SourceCampaignId { get => _body.SourceCampaignId ?? null; set => _body.SourceCampaignId = value; }
+
+        /// <summary>Name of the marketing campaign.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the marketing campaign.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Name of the marketing campaign.",
+        SerializedName = @"sourceCampaignName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SourceCampaignName { get => _body.SourceCampaignName ?? null; set => _body.SourceCampaignName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)")]
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription. The value must be an UUID.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)",
+        Description = @"The ID of the target subscription. The value must be an UUID.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.DefaultInfo(
@@ -262,6 +364,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Script = @"(Get-AzContext).Subscription.Id")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
+
+        /// <summary>State of the Azure Subscription containing the monitor resource</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "State of the Azure Subscription containing the monitor resource")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"State of the Azure Subscription containing the monitor resource",
+        SerializedName = @"subscriptionState",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SubscriptionState { get => _body.SubscriptionState ?? null; set => _body.SubscriptionState = value; }
 
         /// <summary>The tags of the monitor resource.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -272,8 +385,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         ReadOnly = false,
         Description = @"The tags of the monitor resource.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceTags Tag { get => Body.Tag ?? null /* object */; set => Body.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResourceTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
 
         /// <summary>Company name of the user</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Company name of the user")]
@@ -284,7 +397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Description = @"Company name of the user",
         SerializedName = @"companyName",
         PossibleTypes = new [] { typeof(string) })]
-        public string UserInfoCompanyName { get => Body.UserInfoCompanyName ?? null; set => Body.UserInfoCompanyName = value; }
+        public string UserInfoCompanyName { get => _body.UserInfoCompanyName ?? null; set => _body.UserInfoCompanyName = value; }
 
         /// <summary>Email of the user used by Elastic for contacting them if needed</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Email of the user used by Elastic for contacting them if needed")]
@@ -295,7 +408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Description = @"Email of the user used by Elastic for contacting them if needed",
         SerializedName = @"emailAddress",
         PossibleTypes = new [] { typeof(string) })]
-        public string UserInfoEmailAddress { get => Body.UserInfoEmailAddress ?? null; set => Body.UserInfoEmailAddress = value; }
+        public string UserInfoEmailAddress { get => _body.UserInfoEmailAddress ?? null; set => _body.UserInfoEmailAddress = value; }
 
         /// <summary>First name of the user</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "First name of the user")]
@@ -306,7 +419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Description = @"First name of the user",
         SerializedName = @"firstName",
         PossibleTypes = new [] { typeof(string) })]
-        public string UserInfoFirstName { get => Body.UserInfoFirstName ?? null; set => Body.UserInfoFirstName = value; }
+        public string UserInfoFirstName { get => _body.UserInfoFirstName ?? null; set => _body.UserInfoFirstName = value; }
 
         /// <summary>Last name of the user</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Last name of the user")]
@@ -317,37 +430,53 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         Description = @"Last name of the user",
         SerializedName = @"lastName",
         PossibleTypes = new [] { typeof(string) })]
-        public string UserInfoLastName { get => Body.UserInfoLastName ?? null; set => Body.UserInfoLastName = value; }
+        public string UserInfoLastName { get => _body.UserInfoLastName ?? null; set => _body.UserInfoLastName = value; }
+
+        /// <summary>Version of elastic of the monitor resource</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Version of elastic of the monitor resource")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Elastic.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Version of elastic of the monitor resource",
+        SerializedName = @"version",
+        PossibleTypes = new [] { typeof(string) })]
+        public string Version { get => _body.Version ?? null; set => _body.Version = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceProviderDefaultErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceProviderDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResource</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -373,7 +502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.Body = this.Body;
+            clone._body = this._body;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
@@ -383,7 +512,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -524,7 +670,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Elastic.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -539,12 +684,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.MonitorsCreate(SubscriptionId, ResourceGroupName, Name, Body, onOk, onDefault, this, Pipeline);
+                    await this.Client.MonitorsCreate(SubscriptionId, ResourceGroupName, Name, _body, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=Body})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_body})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -563,16 +708,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Elastic.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Elastic.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceProviderDefaultErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceProviderDefaultErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -589,15 +749,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceProviderDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=Body })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IResourceProviderDefaultErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -607,12 +767,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResource">Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResource</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -624,7 +784,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResource
                 WriteObject((await response));
             }
         }

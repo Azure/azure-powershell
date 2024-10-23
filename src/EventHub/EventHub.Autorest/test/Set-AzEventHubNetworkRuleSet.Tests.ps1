@@ -56,7 +56,7 @@ Describe 'Set-AzEventHubNetworkRuleSet' {
     It 'SetViaIdentityExpanded'  {
         $networkRuleSet = Get-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         
-        { Set-AzEventHubNetworkRuleSet -InputObject $networkRuleSet } | Should -Throw 'Please specify the property you want to update on the -InputObject'
+        { Set-AzEventHubNetworkRuleSet -InputObject $networkRuleSet -ErrorAction Stop } | Should -Throw 'Please specify the property you want to update on the -InputObject'
         
         $networkRuleSet = Set-AzEventHubNetworkRuleSet -InputObject $networkRuleSet -TrustedServiceAccessEnabled:$false
         $networkRuleSet.DefaultAction | Should -Be "Deny"

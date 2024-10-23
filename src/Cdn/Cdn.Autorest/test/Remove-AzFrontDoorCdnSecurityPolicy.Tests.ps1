@@ -18,7 +18,7 @@ Describe 'Remove-AzFrontDoorCdnSecurityPolicy'  {
     It 'Delete'  {
         $subId = $env.SubscriptionId
 
-        $endpointName = 'end-pstest080'
+        $endpointName = 'e-clipstest120'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
@@ -38,7 +38,7 @@ Describe 'Remove-AzFrontDoorCdnSecurityPolicy'  {
     It 'DeleteViaIdentity' {
         $subId = $env.SubscriptionId
 
-        $endpointName = 'end-pstest081'
+        $endpointName = 'e-clipstest121'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 

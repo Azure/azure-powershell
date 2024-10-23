@@ -19,7 +19,7 @@ Set-AzServiceBusRule -Name <String> -TopicName <String> -SubscriptionName <Strin
  [-SqlFilterRequiresPreprocessing] [-ContentType <String>] [-CorrelationId <String>] [-Label <String>]
  [-MessageId <String>] [-CorrelationFilterProperty <Hashtable>] [-ReplyTo <String>]
  [-ReplyToSessionId <String>] [-CorrelationFilterRequiresPreprocessing] [-SessionId <String>] [-To <String>]
- [-FilterType <FilterType>] [-ActionRequiresPreprocessing] [-ActionSqlExpression <String>]
+ [-FilterType <String>] [-ActionRequiresPreprocessing] [-ActionSqlExpression <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -30,7 +30,7 @@ Set-AzServiceBusRule -InputObject <IServiceBusIdentity> [-SqlExpression <String>
  [-SqlFilterRequiresPreprocessing] [-ContentType <String>] [-CorrelationId <String>] [-Label <String>]
  [-MessageId <String>] [-CorrelationFilterProperty <Hashtable>] [-ReplyTo <String>]
  [-ReplyToSessionId <String>] [-CorrelationFilterRequiresPreprocessing] [-SessionId <String>] [-To <String>]
- [-FilterType <FilterType>] [-ActionRequiresPreprocessing] [-ActionSqlExpression <String>]
+ [-FilterType <String>] [-ActionRequiresPreprocessing] [-ActionSqlExpression <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -232,7 +232,7 @@ Accept wildcard characters: False
 Filter type that is evaluated against a BrokeredMessage.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.FilterType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -527,7 +527,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule
 
 ## NOTES
 

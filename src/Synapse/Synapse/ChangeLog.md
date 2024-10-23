@@ -19,6 +19,22 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure.Core to 1.44.1.
+
+## Version 3.0.10
+* Fixed secrets exposure in example documentation.
+
+## Version 3.0.9
+* Updated Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.20.
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
+
+## Version 3.0.8
+* Upgraded `Microsoft.DataTransfer.Gateway.Encryption` to `5.29.8499.2`
+
+## Version 3.0.7
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 3.0.6
 * Upgraded Azure.Core to 1.37.0.
 * Fixed vulnerability https://github.com/advisories/GHSA-98g6-xh36-x2p7
 

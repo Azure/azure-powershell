@@ -23,7 +23,7 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 New-AzCdnResponseBasedOriginErrorDetectionParametersObject -ResponseBasedDetectedErrorType testDetctedError -ResponseBasedFailoverThresholdPercentage 6 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResponseBasedOriginErrorDetectionParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResponseBasedOriginErrorDetectionParameters
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,12 +36,12 @@ HTTPERRORRANGE <IHttpErrorRangeParameters[]>: The list of Http status code range
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
 #>
 function New-AzCdnResponseBasedOriginErrorDetectionParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResponseBasedOriginErrorDetectionParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResponseBasedOriginErrorDetectionParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IHttpErrorRangeParameters[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IHttpErrorRangeParameters[]]
     # The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
     # To construct, see NOTES section for HTTPERRORRANGE properties and create a hash table.
     ${HttpErrorRange},

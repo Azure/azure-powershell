@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.ConfidentialLedger-help.xml
 Module Name: Az.ConfidentialLedger
-online version: https://learn.microsoft.com/powershell/module/az.ConfidentialLedger/new-AzConfidentialLedgerAADBasedSecurityPrincipalObject
+online version: https://learn.microsoft.com/powershell/module/Az.ConfidentialLedger/new-AzConfidentialLedgerAADBasedSecurityPrincipalObject
 schema: 2.0.0
 ---
 
@@ -26,14 +26,14 @@ Create an in-memory object for AADBasedSecurityPrincipal.
 ```powershell
 New-AzConfidentialLedgerAADBasedSecurityPrincipalObject `
   -LedgerRoleName "Administrator" `
-  -PrincipalId "34621747-6fc8-4771-a2eb-72f31c461f2e" `
-  -TenantId "bce123b9-2b7b-4975-8360-5ca0b9b1cd08"
+  -PrincipalId "00001111-aaaa-2222-bbbb-3333cccc4444" `
+  -TenantId "00001111-aaaa-2222-bbbb-3333cccc4444"
 ```
 
 ```output
 LedgerRoleName PrincipalId                          TenantId
 -------------- -----------                          --------
-Administrator  34621747-6fc8-4771-a2eb-72f31c461f2e bce123b9-2b7b-4975-8360-5ca0b9b1cd08
+Administrator  00001111-aaaa-2222-bbbb-3333cccc4444 00001111-aaaa-2222-bbbb-3333cccc4444
 ```
 
 Creates an AadBasedSecurityPrincipalObject that may be used for `Az.ConfidentialLedger` commands.
@@ -96,7 +96,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

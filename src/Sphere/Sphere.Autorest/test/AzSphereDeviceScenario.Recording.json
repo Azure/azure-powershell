@@ -1,0 +1,876 @@
+{
+  "AzSphereDeviceScenario+[NoContext]+CreateProduct+$PUT+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1?api-version=2024-04-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "2c8ab3da-74a8-4b54-9acb-8e7c8697bb0d" ],
+        "x-ms-request-id": [ "5d18b94f-2da6-4324-88fa-89e5986f7f7d" ],
+        "x-ms-correlation-request-id": [ "d537770b-3cb1-41aa-af0f-b30fec8ad5f8" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T082909Z:d537770b-3cb1-41aa-af0f-b30fec8ad5f8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 07D122748EF3464899AF2DBD43FC23E9 Ref B: MAA201060515051 Ref C: 2024-04-01T08:28:59Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:29:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "527" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1\",\"name\":\"Product1\",\"type\":\"microsoft.azuresphere/catalogs/products\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-04-01T08:29:00.3694924Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-04-01T08:29:00.3694924Z\"},\"properties\":{\"description\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+CreateProduct+$GET+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1?api-version=2024-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "c165e3a5-c2af-4888-ad64-0d5bb368f466" ],
+        "CommandName": [ "New-AzSphereProduct" ],
+        "FullCommandName": [ "New-AzSphereProduct_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "be30dd29-6b70-4bb8-922c-3cc17ea1086f" ],
+        "x-ms-request-id": [ "be3fb2fa-3058-4b3c-8f59-0e41c6d78abe" ],
+        "x-ms-correlation-request-id": [ "de5f9c99-9acc-41ac-b22a-f96bafab7beb" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T082943Z:de5f9c99-9acc-41ac-b22a-f96bafab7beb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B3F571693E5A4EA9AFAEC33B428E4D3E Ref B: MAA201060515051 Ref C: 2024-04-01T08:29:39Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:29:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "293" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1\",\"name\":\"Product1\",\"type\":\"Microsoft.AzureSphere/catalogs/products\",\"properties\":{\"description\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+CreateProduct+$GET+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1?api-version=2024-04-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "c165e3a5-c2af-4888-ad64-0d5bb368f466" ],
+        "CommandName": [ "New-AzSphereProduct" ],
+        "FullCommandName": [ "New-AzSphereProduct_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "a963fc55-3e6a-4640-81db-56009c81024a" ],
+        "x-ms-request-id": [ "c2cddcf2-0a7c-452f-9422-2052f30afa5f" ],
+        "x-ms-correlation-request-id": [ "1fea06d7-2188-48d4-b536-34e9c42ed3fe" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T082944Z:1fea06d7-2188-48d4-b536-34e9c42ed3fe" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 08A814A4B2194377B9C98F7BC9620F33 Ref B: MAA201060515051 Ref C: 2024-04-01T08:29:43Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:29:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "293" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1\",\"name\":\"Product1\",\"type\":\"Microsoft.AzureSphere/catalogs/products\",\"properties\":{\"description\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+CreateProduct+$GET+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1?api-version=2024-04-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "676cdc22-4f40-498b-9d9f-9c3c160dc269" ],
+        "CommandName": [ "Get-AzSphereProduct" ],
+        "FullCommandName": [ "Get-AzSphereProduct_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "cc00417d-a0cb-4e0e-a444-0e22f05077e7" ],
+        "x-ms-request-id": [ "f0aae51f-5f55-4980-9962-a1a3e4b15085" ],
+        "x-ms-correlation-request-id": [ "e924a9d3-048b-4a81-a043-718f4291351c" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T082944Z:e924a9d3-048b-4a81-a043-718f4291351c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AE343E6CCFC4469B901215FF7FB9730B Ref B: MAA201060515051 Ref C: 2024-04-01T08:29:44Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:29:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "293" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1\",\"name\":\"Product1\",\"type\":\"Microsoft.AzureSphere/catalogs/products\",\"properties\":{\"description\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+CreateProduct+$PUT+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product2?api-version=2024-04-01+5": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product2?api-version=2024-04-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "481465ef-22b9-427e-9f12-411e8df1356c" ],
+        "x-ms-request-id": [ "1e6a2662-e36f-41ad-b703-c4b5168f8840" ],
+        "x-ms-correlation-request-id": [ "ee8de47a-499a-4acd-a4fd-a5c461541709" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T082950Z:ee8de47a-499a-4acd-a4fd-a5c461541709" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 4FD2F5B0C9DB455F9547348C03FE6242 Ref B: MAA201060515051 Ref C: 2024-04-01T08:29:45Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:29:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "527" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product2\",\"name\":\"Product2\",\"type\":\"microsoft.azuresphere/catalogs/products\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-04-01T08:29:45.7122465Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-04-01T08:29:45.7122465Z\"},\"properties\":{\"description\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+CreateProduct+$GET+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product2?api-version=2024-04-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product2?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "2b67abf5-6ebc-4efe-835d-deb818b3d52a" ],
+        "CommandName": [ "New-AzSphereProduct" ],
+        "FullCommandName": [ "New-AzSphereProduct_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "0880aa5d-10eb-4be9-9a8b-cb8dbdfdb7c8" ],
+        "x-ms-request-id": [ "4bf30b67-5dd6-4759-8303-b8c1912050e8" ],
+        "x-ms-correlation-request-id": [ "9b032a47-2917-4698-ad42-fa5662995ebc" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083022Z:9b032a47-2917-4698-ad42-fa5662995ebc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C4734812D0594CE092E7C34B2CCC0C51 Ref B: MAA201060515051 Ref C: 2024-04-01T08:30:20Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:30:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "293" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product2\",\"name\":\"Product2\",\"type\":\"Microsoft.AzureSphere/catalogs/products\",\"properties\":{\"description\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+CreateProduct+$GET+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product2?api-version=2024-04-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product2?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "2b67abf5-6ebc-4efe-835d-deb818b3d52a" ],
+        "CommandName": [ "New-AzSphereProduct" ],
+        "FullCommandName": [ "New-AzSphereProduct_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "dfaa8db3-a475-4521-9fe8-4a9b98aa02b1" ],
+        "x-ms-request-id": [ "8636a977-cb7e-4e3b-8f01-5b73f4b12f74" ],
+        "x-ms-correlation-request-id": [ "d5bd966b-b068-403c-bbff-6edf35167e26" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083025Z:d5bd966b-b068-403c-bbff-6edf35167e26" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F9DCC968BE8C4EBDB8B8393F05DFFCF4 Ref B: MAA201060515051 Ref C: 2024-04-01T08:30:22Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:30:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "293" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product2\",\"name\":\"Product2\",\"type\":\"Microsoft.AzureSphere/catalogs/products\",\"properties\":{\"description\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+ListProduct+$GET+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "f30c5362-fd32-4c24-98aa-375d026a61da" ],
+        "CommandName": [ "Get-AzSphereProduct" ],
+        "FullCommandName": [ "Get-AzSphereProduct_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "92f6d190-0bc3-44bf-b224-6de97824cf97" ],
+        "x-ms-request-id": [ "c890f23d-3e1f-4d89-a6da-e24ba2ae5c57" ],
+        "x-ms-correlation-request-id": [ "5ccd401b-01c3-420e-9325-c6f39dcb9126" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083028Z:5ccd401b-01c3-420e-9325-c6f39dcb9126" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 513AA4873F79496B86478B6B424CFFD9 Ref B: MAA201060515051 Ref C: 2024-04-01T08:30:25Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:30:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "883" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/test\",\"name\":\"test\",\"type\":\"Microsoft.AzureSphere/catalogs/products\",\"properties\":{\"description\":\"test\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1\",\"name\":\"Product1\",\"type\":\"Microsoft.AzureSphere/catalogs/products\",\"properties\":{\"description\":\"\",\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product2\",\"name\":\"Product2\",\"type\":\"Microsoft.AzureSphere/catalogs/products\",\"properties\":{\"description\":\"\",\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+GetProduct+$GET+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "1fd81787-b891-403b-a9e8-c1832f9ec213" ],
+        "CommandName": [ "Get-AzSphereProduct" ],
+        "FullCommandName": [ "Get-AzSphereProduct_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "8bc4b50e-22ee-4269-9a6e-8f94902f5528" ],
+        "x-ms-request-id": [ "eae2fdf7-9a98-4529-b837-7d58d762036c" ],
+        "x-ms-correlation-request-id": [ "f1bd7d56-df16-4b58-842e-1a0f1f1419db" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083033Z:f1bd7d56-df16-4b58-842e-1a0f1f1419db" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 08C6D21ED4C54C318181F92F1921F314 Ref B: MAA201060515051 Ref C: 2024-04-01T08:30:28Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:30:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "293" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1\",\"name\":\"Product1\",\"type\":\"Microsoft.AzureSphere/catalogs/products\",\"properties\":{\"description\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+GenerateDefaultAndListDeviceGroup+$POST+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/generateDefaultDeviceGroups?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/generateDefaultDeviceGroups?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "c5ff986b-bb21-4a53-9724-3300a9269a68" ],
+        "CommandName": [ "New-AzSphereProductDefaultDeviceGroup" ],
+        "FullCommandName": [ "New-AzSphereProductDefaultDeviceGroup_Generate" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "b86b1efd-8be9-461f-96c2-4b8df9db94cb" ],
+        "x-ms-request-id": [ "db191f89-9929-48c9-a6e2-b6a354b52d08" ],
+        "x-ms-correlation-request-id": [ "0cbc4dc4-e071-48dd-b4d1-acf16c5c54b7" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083036Z:0cbc4dc4-e071-48dd-b4d1-acf16c5c54b7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3257B834FF714A92A66B5B8F799A6DB4 Ref B: MAA201060515051 Ref C: 2024-04-01T08:30:34Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:30:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2727" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"description\":\"Default development device group\",\"osFeedType\":\"Retail\",\"updatePolicy\":\"No3rdPartyAppUpdates\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development\",\"name\":\"Development\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"systemData\":null},{\"properties\":{\"description\":\"Default test device group\",\"osFeedType\":\"Retail\",\"updatePolicy\":\"UpdateAll\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Field Test\",\"name\":\"Field Test\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"systemData\":null},{\"properties\":{\"description\":\"Default production device group\",\"osFeedType\":\"Retail\",\"updatePolicy\":\"UpdateAll\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Production\",\"name\":\"Production\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"systemData\":null},{\"properties\":{\"description\":\"Default Production OS Evaluation device group\",\"osFeedType\":\"RetailEval\",\"updatePolicy\":\"UpdateAll\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Production OS Evaluation\",\"name\":\"Production OS Evaluation\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"systemData\":null},{\"properties\":{\"description\":\"Default Field Test OS Evaluation device group\",\"osFeedType\":\"RetailEval\",\"updatePolicy\":\"UpdateAll\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Field Test OS Evaluation\",\"name\":\"Field Test OS Evaluation\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"systemData\":null}],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+GenerateDefaultAndListDeviceGroup+$GET+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups?api-version=2024-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "9d781565-3451-440f-a85d-1372c6b0f78a" ],
+        "CommandName": [ "Get-AzSphereDeviceGroup" ],
+        "FullCommandName": [ "Get-AzSphereDeviceGroup_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "29ebd3ec-ebbd-40b6-b8ab-f0229d304436" ],
+        "x-ms-request-id": [ "9590e4db-10e9-4c7a-8215-27d53eea4919" ],
+        "x-ms-correlation-request-id": [ "e3e85a88-71b1-40ea-b5be-6c9d57a27436" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083038Z:e3e85a88-71b1-40ea-b5be-6c9d57a27436" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0C70E603D9954083BBA068F3513966AB Ref B: MAA201060515051 Ref C: 2024-04-01T08:30:36Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:30:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2621" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development\",\"name\":\"Development\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"properties\":{\"description\":\"Default development device group\",\"osFeedType\":\"Retail\",\"updatePolicy\":\"No3rdPartyAppUpdates\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Field Test\",\"name\":\"Field Test\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"properties\":{\"description\":\"Default test device group\",\"osFeedType\":\"Retail\",\"updatePolicy\":\"UpdateAll\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Production\",\"name\":\"Production\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"properties\":{\"description\":\"Default production device group\",\"osFeedType\":\"Retail\",\"updatePolicy\":\"UpdateAll\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Production OS Evaluation\",\"name\":\"Production OS Evaluation\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"properties\":{\"description\":\"Default Production OS Evaluation device group\",\"osFeedType\":\"RetailEval\",\"updatePolicy\":\"UpdateAll\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Field Test OS Evaluation\",\"name\":\"Field Test OS Evaluation\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"properties\":{\"description\":\"Default Field Test OS Evaluation device group\",\"osFeedType\":\"RetailEval\",\"updatePolicy\":\"UpdateAll\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+ListGroupInCatalog+$POST+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/listDeviceGroups?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/listDeviceGroups?api-version=2024-04-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "f1fb90dc-7c56-42f3-841d-1e890330563c" ],
+        "x-ms-request-id": [ "8ac7e0c2-59e5-4111-9212-c5da6420d86d" ],
+        "x-ms-correlation-request-id": [ "30b44e9f-53b9-4c99-bd8d-7306f19f7a40" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083042Z:30b44e9f-53b9-4c99-bd8d-7306f19f7a40" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3252ABB322BA41218034C38211B413A5 Ref B: MAA201060515051 Ref C: 2024-04-01T08:30:38Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:30:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3204" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"description\":\"test\",\"osFeedType\":\"Retail\",\"updatePolicy\":\"UpdateAll\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/test/deviceGroups/test\",\"name\":\"test\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"systemData\":null},{\"properties\":{\"description\":\"Default development device group\",\"osFeedType\":\"Retail\",\"updatePolicy\":\"No3rdPartyAppUpdates\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development\",\"name\":\"Development\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"systemData\":null},{\"properties\":{\"description\":\"Default test device group\",\"osFeedType\":\"Retail\",\"updatePolicy\":\"UpdateAll\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Field Test\",\"name\":\"Field Test\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"systemData\":null},{\"properties\":{\"description\":\"Default production device group\",\"osFeedType\":\"Retail\",\"updatePolicy\":\"UpdateAll\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Production\",\"name\":\"Production\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"systemData\":null},{\"properties\":{\"description\":\"Default Production OS Evaluation device group\",\"osFeedType\":\"RetailEval\",\"updatePolicy\":\"UpdateAll\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Production OS Evaluation\",\"name\":\"Production OS Evaluation\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"systemData\":null},{\"properties\":{\"description\":\"Default Field Test OS Evaluation device group\",\"osFeedType\":\"RetailEval\",\"updatePolicy\":\"UpdateAll\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":false,\"provisioningState\":\"Succeeded\"},\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Field Test OS Evaluation\",\"name\":\"Field Test OS Evaluation\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"systemData\":null}],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+GetDevDeviceGroup+$GET+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "9fbda02a-db1e-44c8-9dc6-11a57b8d750b" ],
+        "CommandName": [ "Get-AzSphereDeviceGroup" ],
+        "FullCommandName": [ "Get-AzSphereDeviceGroup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "f7102875-7a42-479b-8492-c4b28c0f9155" ],
+        "x-ms-request-id": [ "32d4e098-1cfc-4e9e-9f24-26aee588d1e7" ],
+        "x-ms-correlation-request-id": [ "d82d63b8-fca4-441a-b45d-45d7327eab41" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083044Z:d82d63b8-fca4-441a-b45d-45d7327eab41" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6D76987D0D4E42F88ED42B875A515144 Ref B: MAA201060515051 Ref C: 2024-04-01T08:30:42Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:30:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "514" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development\",\"name\":\"Development\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups\",\"properties\":{\"description\":\"Default development device group\",\"osFeedType\":\"Retail\",\"updatePolicy\":\"No3rdPartyAppUpdates\",\"allowCrashDumpsCollection\":\"Disabled\",\"regionalDataBoundary\":\"None\",\"hasDeployment\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+GetCreateDevice-GenerateDeviceImage+$PUT+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices/0B3703164F0F4F20AAD0A2CEE26E2CBE0095B423A67C999B288410A2159EB7138FD6813438D765B5DE1C3F4C314E49B74A1D82714DDD7B8BA6F369C8D89A2BB2?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices/0B3703164F0F4F20AAD0A2CEE26E2CBE0095B423A67C999B288410A2159EB7138FD6813438D765B5DE1C3F4C314E49B74A1D82714DDD7B8BA6F369C8D89A2BB2?api-version=2024-04-01",
+      "Content": "{\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "4" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "3b1226d9-c404-444c-900c-0b0e87afaaaa" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/providers/Microsoft.AzureSphere/locations/WESTCENTRALUS/operationStatuses/cd96e9f2-4987-482d-b2b5-3a98e2d3a793*9AA710C3CB839F28E65651FCEA61E88C5CFD991E3A0E88256C38AEDD3126613E?api-version=2024-04-01\u0026t=638475570472965461\u0026c=MIIHADCCBeigAwIBAgITfARk1TE_ZglsTRafPwAABGTVMTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjQwMTMwMTUwODE5WhcNMjUwMTI0MTUwODE5WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK902W8oGHqHsYxfQcAXt6Ljumrh6DLgGihvCAJqh_U0j8R4Jupt1lXUnhMY-cA7JAT9q7SEoTZskdrko1uzzlaykxYQUacRB8irTYwbgK6DCIqWuOd2G-W2g3eWAyxRb-Dffjnsz-vBsjd1fyP0MvIXDSDMzp2oK65BSxTbBiStV3YxtKZ3eONvKga4d77iEw0zAZHIFkt0PSHzHO7kk-b_trhadwDxPYnjrQOGmouEj7HuNoC8H7-vKZvgbeplfrHtJO9vq0TOUUqIGlT236cbPe62XQNJRim_aa3chEFUmacjUnjEZtgJjup_tDQ0iV_Oe0ZqRBBGzpjoK23Wch0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBSnxeoeDA6bR-Af5MXqnvahGPcbyTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGj6QqaLOPa3RZUHMPeeSymifn86nh52yaIojZbdHUiE_o0iWzV-2ZRZOxE2IgkOrAeMYXIUhMoqV7XxTwfpi6zGwrzIeuTWMbNjgzbIZGIMJCbUyNbvEkGqxvBpcwzATT8KQYU2-J2iL5slKYZIACN6THLJn5BI6dAecS1X4PJ5vNAgI8qlsYmnafZSCIrWLUQQUsZeLUaxy3t-hozvyfVe-B-nktPdgNv3-iCsI0AtlvezwfFcJXQHQeNByXg5oxXPIe02On7O1u8swvMta16Va5_kDzD80TS3LYzVk2nzUVxEqPaGhpA-vs_ttjm7hDhYk80OIsQ_YZd286sA58Q\u0026s=pL6hhb3SxpzAldlPg4Nm6ATvUDckLQPZW_aucmtnIRdJxFhilX1v4f0QivpcAFSsd29EOMSqh45B9MApEPfPvvr9XmqG9prhfyRdZCHfsGB12DiCwdox0tSCKEqlrsDRJQzFoNbLcy3P4grKDlpVlG5pJWvKiuDzkymqBT_q7jjt0rdj8lnVZt5ETxMxQmRnYFYXS-aLKCvuRTawn8FIwrepHEp0-arpIwcgwgupNr28G3myV3WrHnrIk2cFuvqFou1YOtFxYEwPaZ4-cdr3BMvnunDXFoxJebhQmDhefp30_gK_1BSAAJFHG7I1cKsrbhVWNwrH3IjkhSjDfU73lA\u0026h=g1_o8mvTaotbeG9iLRiYyp0h5wMFtJUMbvm17zgvp-o" ],
+        "x-ms-request-id": [ "cd96e9f2-4987-482d-b2b5-3a98e2d3a793" ],
+        "x-ms-correlation-request-id": [ "65846c2d-6469-4b85-a755-6f169fc0decb" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083047Z:65846c2d-6469-4b85-a755-6f169fc0decb" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E7265F648EE24702AFF101562B64B0C4 Ref B: MAA201060515051 Ref C: 2024-04-01T08:30:44Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:30:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "810" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices/0B3703164F0F4F20AAD0A2CEE26E2CBE0095B423A67C999B288410A2159EB7138FD6813438D765B5DE1C3F4C314E49B74A1D82714DDD7B8BA6F369C8D89A2BB2\",\"name\":\"0B3703164F0F4F20AAD0A2CEE26E2CBE0095B423A67C999B288410A2159EB7138FD6813438D765B5DE1C3F4C314E49B74A1D82714DDD7B8BA6F369C8D89A2BB2\",\"type\":\"microsoft.azuresphere/catalogs/products/devicegroups/devices\",\"systemData\":{\"createdBy\":\"v-jiaji@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-04-01T08:30:45.0152904Z\",\"lastModifiedBy\":\"v-jiaji@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-04-01T08:30:45.0152904Z\"},\"properties\":{\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+GetCreateDevice-GenerateDeviceImage+$GET+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/providers/Microsoft.AzureSphere/locations/WESTCENTRALUS/operationStatuses/cd96e9f2-4987-482d-b2b5-3a98e2d3a793*9AA710C3CB839F28E65651FCEA61E88C5CFD991E3A0E88256C38AEDD3126613E?api-version=2024-04-01\u0026t=638475570472965461\u0026c=MIIHADCCBeigAwIBAgITfARk1TE_ZglsTRafPwAABGTVMTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjQwMTMwMTUwODE5WhcNMjUwMTI0MTUwODE5WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK902W8oGHqHsYxfQcAXt6Ljumrh6DLgGihvCAJqh_U0j8R4Jupt1lXUnhMY-cA7JAT9q7SEoTZskdrko1uzzlaykxYQUacRB8irTYwbgK6DCIqWuOd2G-W2g3eWAyxRb-Dffjnsz-vBsjd1fyP0MvIXDSDMzp2oK65BSxTbBiStV3YxtKZ3eONvKga4d77iEw0zAZHIFkt0PSHzHO7kk-b_trhadwDxPYnjrQOGmouEj7HuNoC8H7-vKZvgbeplfrHtJO9vq0TOUUqIGlT236cbPe62XQNJRim_aa3chEFUmacjUnjEZtgJjup_tDQ0iV_Oe0ZqRBBGzpjoK23Wch0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBSnxeoeDA6bR-Af5MXqnvahGPcbyTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGj6QqaLOPa3RZUHMPeeSymifn86nh52yaIojZbdHUiE_o0iWzV-2ZRZOxE2IgkOrAeMYXIUhMoqV7XxTwfpi6zGwrzIeuTWMbNjgzbIZGIMJCbUyNbvEkGqxvBpcwzATT8KQYU2-J2iL5slKYZIACN6THLJn5BI6dAecS1X4PJ5vNAgI8qlsYmnafZSCIrWLUQQUsZeLUaxy3t-hozvyfVe-B-nktPdgNv3-iCsI0AtlvezwfFcJXQHQeNByXg5oxXPIe02On7O1u8swvMta16Va5_kDzD80TS3LYzVk2nzUVxEqPaGhpA-vs_ttjm7hDhYk80OIsQ_YZd286sA58Q\u0026s=pL6hhb3SxpzAldlPg4Nm6ATvUDckLQPZW_aucmtnIRdJxFhilX1v4f0QivpcAFSsd29EOMSqh45B9MApEPfPvvr9XmqG9prhfyRdZCHfsGB12DiCwdox0tSCKEqlrsDRJQzFoNbLcy3P4grKDlpVlG5pJWvKiuDzkymqBT_q7jjt0rdj8lnVZt5ETxMxQmRnYFYXS-aLKCvuRTawn8FIwrepHEp0-arpIwcgwgupNr28G3myV3WrHnrIk2cFuvqFou1YOtFxYEwPaZ4-cdr3BMvnunDXFoxJebhQmDhefp30_gK_1BSAAJFHG7I1cKsrbhVWNwrH3IjkhSjDfU73lA\u0026h=g1_o8mvTaotbeG9iLRiYyp0h5wMFtJUMbvm17zgvp-o+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/providers/Microsoft.AzureSphere/locations/WESTCENTRALUS/operationStatuses/cd96e9f2-4987-482d-b2b5-3a98e2d3a793*9AA710C3CB839F28E65651FCEA61E88C5CFD991E3A0E88256C38AEDD3126613E?api-version=2024-04-01\u0026t=638475570472965461\u0026c=MIIHADCCBeigAwIBAgITfARk1TE_ZglsTRafPwAABGTVMTANBgkqhkiG9w0BAQsFADBEMRMwEQYKCZImiZPyLGQBGRYDR0JMMRMwEQYKCZImiZPyLGQBGRYDQU1FMRgwFgYDVQQDEw9BTUUgSW5mcmEgQ0EgMDUwHhcNMjQwMTMwMTUwODE5WhcNMjUwMTI0MTUwODE5WjBAMT4wPAYDVQQDEzVhc3luY29wZXJhdGlvbnNpZ25pbmdjZXJ0aWZpY2F0ZS5tYW5hZ2VtZW50LmF6dXJlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK902W8oGHqHsYxfQcAXt6Ljumrh6DLgGihvCAJqh_U0j8R4Jupt1lXUnhMY-cA7JAT9q7SEoTZskdrko1uzzlaykxYQUacRB8irTYwbgK6DCIqWuOd2G-W2g3eWAyxRb-Dffjnsz-vBsjd1fyP0MvIXDSDMzp2oK65BSxTbBiStV3YxtKZ3eONvKga4d77iEw0zAZHIFkt0PSHzHO7kk-b_trhadwDxPYnjrQOGmouEj7HuNoC8H7-vKZvgbeplfrHtJO9vq0TOUUqIGlT236cbPe62XQNJRim_aa3chEFUmacjUnjEZtgJjup_tDQ0iV_Oe0ZqRBBGzpjoK23Wch0CAwEAAaOCA-0wggPpMCcGCSsGAQQBgjcVCgQaMBgwCgYIKwYBBQUHAwEwCgYIKwYBBQUHAwIwPQYJKwYBBAGCNxUHBDAwLgYmKwYBBAGCNxUIhpDjDYTVtHiE8Ys-hZvdFs6dEoFggvX2K4Py0SACAWQCAQowggHLBggrBgEFBQcBAQSCAb0wggG5MGMGCCsGAQUFBzAChldodHRwOi8vY3JsLm1pY3Jvc29mdC5jb20vcGtpaW5mcmEvQ2VydHMvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmwxLmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MFMGCCsGAQUFBzAChkdodHRwOi8vY3JsMi5hbWUuZ2JsL2FpYS9DTzFQS0lJTlRDQTAxLkFNRS5HQkxfQU1FJTIwSW5mcmElMjBDQSUyMDA1LmNydDBTBggrBgEFBQcwAoZHaHR0cDovL2NybDMuYW1lLmdibC9haWEvQ08xUEtJSU5UQ0EwMS5BTUUuR0JMX0FNRSUyMEluZnJhJTIwQ0ElMjAwNS5jcnQwUwYIKwYBBQUHMAKGR2h0dHA6Ly9jcmw0LmFtZS5nYmwvYWlhL0NPMVBLSUlOVENBMDEuQU1FLkdCTF9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3J0MB0GA1UdDgQWBBSnxeoeDA6bR-Af5MXqnvahGPcbyTAOBgNVHQ8BAf8EBAMCBaAwggEmBgNVHR8EggEdMIIBGTCCARWgggERoIIBDYY_aHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraWluZnJhL0NSTC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMS5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMi5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsMy5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JshjFodHRwOi8vY3JsNC5hbWUuZ2JsL2NybC9BTUUlMjBJbmZyYSUyMENBJTIwMDUuY3JsMBcGA1UdIAQQMA4wDAYKKwYBBAGCN3sBATAfBgNVHSMEGDAWgBR61hmFKHlscXYeYPjzS--iBUIWHTAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDQYJKoZIhvcNAQELBQADggEBAGj6QqaLOPa3RZUHMPeeSymifn86nh52yaIojZbdHUiE_o0iWzV-2ZRZOxE2IgkOrAeMYXIUhMoqV7XxTwfpi6zGwrzIeuTWMbNjgzbIZGIMJCbUyNbvEkGqxvBpcwzATT8KQYU2-J2iL5slKYZIACN6THLJn5BI6dAecS1X4PJ5vNAgI8qlsYmnafZSCIrWLUQQUsZeLUaxy3t-hozvyfVe-B-nktPdgNv3-iCsI0AtlvezwfFcJXQHQeNByXg5oxXPIe02On7O1u8swvMta16Va5_kDzD80TS3LYzVk2nzUVxEqPaGhpA-vs_ttjm7hDhYk80OIsQ_YZd286sA58Q\u0026s=pL6hhb3SxpzAldlPg4Nm6ATvUDckLQPZW_aucmtnIRdJxFhilX1v4f0QivpcAFSsd29EOMSqh45B9MApEPfPvvr9XmqG9prhfyRdZCHfsGB12DiCwdox0tSCKEqlrsDRJQzFoNbLcy3P4grKDlpVlG5pJWvKiuDzkymqBT_q7jjt0rdj8lnVZt5ETxMxQmRnYFYXS-aLKCvuRTawn8FIwrepHEp0-arpIwcgwgupNr28G3myV3WrHnrIk2cFuvqFou1YOtFxYEwPaZ4-cdr3BMvnunDXFoxJebhQmDhefp30_gK_1BSAAJFHG7I1cKsrbhVWNwrH3IjkhSjDfU73lA\u0026h=g1_o8mvTaotbeG9iLRiYyp0h5wMFtJUMbvm17zgvp-o",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "90d982a8-dea0-4456-8f1d-fd9ab3d7691e" ],
+        "CommandName": [ "New-AzSphereDevice" ],
+        "FullCommandName": [ "New-AzSphereDevice_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"68003ba2-0000-0600-0000-660a70b90000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "3743e8df-07f3-4b54-b9e5-4e0974d6cb26" ],
+        "x-ms-correlation-request-id": [ "ff6ac575-0c76-4da3-a7e2-f29fec144a9d" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083118Z:ff6ac575-0c76-4da3-a7e2-f29fec144a9d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 9C8B1841D56748799AE3860C9B85B776 Ref B: MAA201060515051 Ref C: 2024-04-01T08:31:17Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:31:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "866" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/providers/Microsoft.AzureSphere/locations/WESTCENTRALUS/operationStatuses/cd96e9f2-4987-482d-b2b5-3a98e2d3a793*9AA710C3CB839F28E65651FCEA61E88C5CFD991E3A0E88256C38AEDD3126613E\",\"name\":\"cd96e9f2-4987-482d-b2b5-3a98e2d3a793*9AA710C3CB839F28E65651FCEA61E88C5CFD991E3A0E88256C38AEDD3126613E\",\"resourceId\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices/0B3703164F0F4F20AAD0A2CEE26E2CBE0095B423A67C999B288410A2159EB7138FD6813438D765B5DE1C3F4C314E49B74A1D82714DDD7B8BA6F369C8D89A2BB2\",\"status\":\"Succeeded\",\"startTime\":\"2024-04-01T08:30:45.1682167Z\",\"endTime\":\"2024-04-01T08:30:49.7914267Z\",\"error\":{\"target\":\"DeviceClaim\",\"details\":[]},\"properties\":{\"targetResourceId\":null}}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+GetCreateDevice-GenerateDeviceImage+$GET+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices/0B3703164F0F4F20AAD0A2CEE26E2CBE0095B423A67C999B288410A2159EB7138FD6813438D765B5DE1C3F4C314E49B74A1D82714DDD7B8BA6F369C8D89A2BB2?api-version=2024-04-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices/0B3703164F0F4F20AAD0A2CEE26E2CBE0095B423A67C999B288410A2159EB7138FD6813438D765B5DE1C3F4C314E49B74A1D82714DDD7B8BA6F369C8D89A2BB2?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "90d982a8-dea0-4456-8f1d-fd9ab3d7691e" ],
+        "CommandName": [ "New-AzSphereDevice" ],
+        "FullCommandName": [ "New-AzSphereDevice_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "229c4f92-0e6d-4de2-a399-7134e8ef382b" ],
+        "x-ms-request-id": [ "80a61501-eb58-445b-86a2-e543ecbac55e" ],
+        "x-ms-correlation-request-id": [ "d8d88aae-38be-4380-879d-caa76459699a" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083119Z:d8d88aae-38be-4380-879d-caa76459699a" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1B137F950CE34720931661DB1447A2A2 Ref B: MAA201060515051 Ref C: 2024-04-01T08:31:18Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:31:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "847" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices/0B3703164F0F4F20AAD0A2CEE26E2CBE0095B423A67C999B288410A2159EB7138FD6813438D765B5DE1C3F4C314E49B74A1D82714DDD7B8BA6F369C8D89A2BB2\",\"name\":\"0b3703164f0f4f20aad0a2cee26e2cbe0095b423a67c999b288410a2159eb7138fd6813438d765b5de1c3f4c314e49b74a1d82714ddd7b8ba6f369c8d89a2bb2\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups/devices\",\"properties\":{\"chipSku\":\"MT3620AN\",\"deviceId\":\"0b3703164f0f4f20aad0a2cee26e2cbe0095b423a67c999b288410a2159eb7138fd6813438d765b5de1c3f4c314e49b74a1d82714ddd7b8ba6f369c8d89a2bb2\",\"lastAvailableOsVersion\":\"\",\"lastInstalledOsVersion\":\"\",\"lastOsUpdateUtc\":null,\"lastUpdateRequestUtc\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+GetCreateDevice-GenerateDeviceImage+$GET+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices/0B3703164F0F4F20AAD0A2CEE26E2CBE0095B423A67C999B288410A2159EB7138FD6813438D765B5DE1C3F4C314E49B74A1D82714DDD7B8BA6F369C8D89A2BB2?api-version=2024-04-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices/0B3703164F0F4F20AAD0A2CEE26E2CBE0095B423A67C999B288410A2159EB7138FD6813438D765B5DE1C3F4C314E49B74A1D82714DDD7B8BA6F369C8D89A2BB2?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "dea7e88e-5095-4895-b026-b391d4e72397" ],
+        "CommandName": [ "Get-AzSphereDevice" ],
+        "FullCommandName": [ "Get-AzSphereDevice_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "19928e2f-c727-4bfd-9d72-56916bc359cb" ],
+        "x-ms-request-id": [ "0c199ddf-b574-4466-8a43-70aa8ee208d9" ],
+        "x-ms-correlation-request-id": [ "be1ea311-a399-4e1e-8101-c2a9af7345cc" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083122Z:be1ea311-a399-4e1e-8101-c2a9af7345cc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 17B716648D874CF89847FC78B30A3C24 Ref B: MAA201060515051 Ref C: 2024-04-01T08:31:19Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:31:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "847" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices/0B3703164F0F4F20AAD0A2CEE26E2CBE0095B423A67C999B288410A2159EB7138FD6813438D765B5DE1C3F4C314E49B74A1D82714DDD7B8BA6F369C8D89A2BB2\",\"name\":\"0b3703164f0f4f20aad0a2cee26e2cbe0095b423a67c999b288410a2159eb7138fd6813438d765b5de1c3f4c314e49b74a1d82714ddd7b8ba6f369c8d89a2bb2\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups/devices\",\"properties\":{\"chipSku\":\"MT3620AN\",\"deviceId\":\"0b3703164f0f4f20aad0a2cee26e2cbe0095b423a67c999b288410a2159eb7138fd6813438d765b5de1c3f4c314e49b74a1d82714ddd7b8ba6f369c8d89a2bb2\",\"lastAvailableOsVersion\":\"\",\"lastInstalledOsVersion\":\"\",\"lastOsUpdateUtc\":null,\"lastUpdateRequestUtc\":null,\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+GetCreateDevice-GenerateDeviceImage+$POST+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices/0B3703164F0F4F20AAD0A2CEE26E2CBE0095B423A67C999B288410A2159EB7138FD6813438D765B5DE1C3F4C314E49B74A1D82714DDD7B8BA6F369C8D89A2BB2/generateCapabilityImage?api-version=2024-04-01+5": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices/0B3703164F0F4F20AAD0A2CEE26E2CBE0095B423A67C999B288410A2159EB7138FD6813438D765B5DE1C3F4C314E49B74A1D82714DDD7B8BA6F369C8D89A2BB2/generateCapabilityImage?api-version=2024-04-01",
+      "Content": "{\r\n  \"capabilities\": [ \"ApplicationDevelopment\" ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "52" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "dca51d97-ad35-45ab-b1f0-6ad150c3583c" ],
+        "x-ms-request-id": [ "64ec2079-b431-4b69-ae96-54a5b73b0c41" ],
+        "x-ms-correlation-request-id": [ "0b574340-6b7a-4ecd-84c2-5152763239dd" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083125Z:0b574340-6b7a-4ecd-84c2-5152763239dd" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3F58C6BF35F24E2197163FA5EDA6BE85 Ref B: MAA201060515051 Ref C: 2024-04-01T08:31:22Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:31:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "536" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"image\":\"/Vz9XAEAAADMAAAACzcDFk8PTyCq0KLO4m4svgCVtCOmfJmbKIQQohWetxOP1oE0ONdltd4cP0wxTkm3Sh2CcU3de4um82nI2JorsgsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANFg0TQMAAABJRCQADQAAANi1KEHCq1VBmjOKHzHtZ+xFLLCmm4ReRac0rqIbbs8yU0cYABiq2C12Mi0VNH7cC2Ro/4DLfLCNAQAAAERCKAAAAAAAAAAAAGZ3X2NvbmZpZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfAAAAOBgwdLx0S6EG3knEppZiI622THikhofVhieT6teCsr1l0StfzLqN0CBvYBdIjEaPgr7hJLYzJeyAE9xdYqs5Xk=\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+ListDeviceInsight+$POST+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/listDeviceInsights?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/listDeviceInsights?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "dcf3dfae-5b18-4a09-b6b4-a794a9ed0ee0" ],
+        "CommandName": [ "Get-AzSphereCatalogDeviceInsight" ],
+        "FullCommandName": [ "Get-AzSphereCatalogDeviceInsight_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "b0e48bfa-7ac4-435a-96f9-33bd337a6283" ],
+        "x-ms-request-id": [ "5c2ab830-392e-4035-9bfc-4401dfacd67f" ],
+        "x-ms-correlation-request-id": [ "8f934f71-b8e1-4173-b106-18c41d4b58ff" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083210Z:8f934f71-b8e1-4173-b106-18c41d4b58ff" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1CC3A83A7C134AB79805C307711578C7 Ref B: MAA201060515051 Ref C: 2024-04-01T08:32:08Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:32:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "28" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzSphereDeviceScenario+[NoContext]+ListDeviceByGroup+$GET+https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "62395319-6851-4c91-bdc2-5dacbbd6e619" ],
+        "CommandName": [ "Get-AzSphereDevice" ],
+        "FullCommandName": [ "Get-AzSphereDevice_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.1.0", "PSVersion/v7.4.1", "Az.Sphere/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "4becfa39-949e-461d-85f6-f61c284653bd" ],
+        "x-ms-request-id": [ "801b033e-eacd-4d83-835e-63c2bc2b7b04" ],
+        "x-ms-correlation-request-id": [ "066bfb2c-548b-4700-b430-0047616a2607" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20240401T083214Z:066bfb2c-548b-4700-b430-0047616a2607" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 0B29D95A811D4258A2FAB6CF9572D9F1 Ref B: MAA201060515051 Ref C: 2024-04-01T08:32:13Z" ],
+        "Date": [ "Mon, 01 Apr 2024 08:32:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "733" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/82f138e0-1c79-4708-bda1-5e224cd688b2/resourceGroups/v-jiajiCEVRG/providers/Microsoft.AzureSphere/catalogs/firstCatalog/products/Product1/deviceGroups/Development/devices/0b3703164f0f4f20aad0a2cee26e2cbe0095b423a67c999b288410a2159eb7138fd6813438d765b5de1c3f4c314e49b74a1d82714ddd7b8ba6f369c8d89a2bb2\",\"name\":\"0b3703164f0f4f20aad0a2cee26e2cbe0095b423a67c999b288410a2159eb7138fd6813438d765b5de1c3f4c314e49b74a1d82714ddd7b8ba6f369c8d89a2bb2\",\"type\":\"Microsoft.AzureSphere/catalogs/products/deviceGroups/devices\",\"properties\":{\"chipSku\":\"MT3620AN\",\"deviceId\":null,\"lastAvailableOsVersion\":\"\",\"lastInstalledOsVersion\":\"\",\"lastOsUpdateUtc\":null,\"lastUpdateRequestUtc\":null,\"provisioningState\":\"Succeeded\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

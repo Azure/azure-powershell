@@ -14,7 +14,8 @@ Removes an App service managed certificate for an Azure Web App.
 
 ```
 Remove-AzWebAppCertificate [-ResourceGroupName] <String> [-ThumbPrint] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

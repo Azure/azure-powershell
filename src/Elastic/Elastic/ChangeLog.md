@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the api version to "2024-03-01" (Stable Version)
+
+## Version 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 0.1.0
 * First preview release for module Az.Elastic

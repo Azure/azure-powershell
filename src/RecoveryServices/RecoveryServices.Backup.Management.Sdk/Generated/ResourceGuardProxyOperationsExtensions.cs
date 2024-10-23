@@ -62,8 +62,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             }
         }
         /// <summary>
-        /// Add or Update ResourceGuardProxy under vault
-        /// Secures vault critical operations
+        /// Add or Update ResourceGuardProxy under vault Secures vault critical
+        /// operations
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -84,8 +84,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Add or Update ResourceGuardProxy under vault
-        /// Secures vault critical operations
+        /// Add or Update ResourceGuardProxy under vault Secures vault critical
+        /// operations
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

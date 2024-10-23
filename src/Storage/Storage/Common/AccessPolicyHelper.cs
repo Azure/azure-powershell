@@ -17,7 +17,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Storage.Blob;
     using Microsoft.Azure.Storage.File;
-    using Microsoft.Azure.Storage.Queue;
     using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
@@ -43,8 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||
                 typeof(T) == typeof(SharedAccessFilePolicy) ||
-                typeof(T) == typeof(SharedAccessBlobPolicy) ||
-                (typeof(T) == typeof(SharedAccessQueuePolicy))))
+                typeof(T) == typeof(SharedAccessBlobPolicy)))
             {
                 throw new ArgumentException(Resources.InvalidAccessPolicyType);
             }
@@ -127,10 +125,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 {
                     ((SharedAccessBlobPolicy)(Object)policy).Permissions = SharedAccessBlobPermissions.None;
                 }
-                else if ((typeof(T) == typeof(SharedAccessQueuePolicy)))
-                {
-                    ((SharedAccessQueuePolicy)(Object)policy).Permissions = SharedAccessQueuePermissions.None;
-                }
                 else
                 {
                     throw new ArgumentException(Resources.InvalidAccessPolicyType);
@@ -154,10 +148,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 {
                     ((SharedAccessBlobPolicy)(Object)policy).Permissions = SharedAccessBlobPolicy.PermissionsFromString(permission);
                 }
-                else if ((typeof(T) == typeof(SharedAccessQueuePolicy)))
-                {
-                    ((SharedAccessQueuePolicy)(Object)policy).Permissions = SharedAccessQueuePolicy.PermissionsFromString(permission);
-                }
                 else
                 {
                     throw new ArgumentException(Resources.InvalidAccessPolicyType);
@@ -173,7 +163,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||
                typeof(T) == typeof(SharedAccessBlobPolicy) ||
-               (typeof(T) == typeof(SharedAccessQueuePolicy)) ||
                (typeof(T) == typeof(SharedAccessFilePolicy))))
             {
                 throw new ArgumentException(Resources.InvalidAccessPolicyType);

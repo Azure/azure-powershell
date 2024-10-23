@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestPool(this, context, poolId, targetDedicated: 0, targetLowPriority: 0);
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId, targetDedicated: 0, targetLowPriority: 0);
                 },
                 () =>
                 {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestPool(this, context, poolId, targetDedicated: 0, targetLowPriority: 0);
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId, targetDedicated: 0, targetLowPriority: 0);
                 },
                 () =>
                 {

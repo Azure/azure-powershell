@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.FluidRelay-help.xml
 Module Name: Az.FluidRelay
 online version: https://learn.microsoft.com/powershell/module/az.fluidrelay/new-azfluidrelayserver
 schema: 2.0.0
@@ -13,12 +13,12 @@ Create or Update a Fluid Relay server.
 ## SYNTAX
 
 ```
-New-AzFluidRelayServer -Name <String> -ResourceGroup <String> -Location <String> [-SubscriptionId <String>]
+New-AzFluidRelayServer -Name <String> -ResourceGroup <String> [-SubscriptionId <String>] -Location <String>
  [-CustomerManagedKeyEncryptionKeyUrl <String>] [-IdentityType <ResourceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-KeyEncryptionKeyIdentityType <CmkIdentityType>]
  [-KeyEncryptionKeyIdentityUserAssignedIdentityResourceId <String>] [-ProvisioningState <ProvisioningState>]
- [-Storagesku <StorageSku>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Storagesku <StorageSku>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ Create or Update a Fluid Relay server.
 
 ### Example 1: Create or Update a Fluid Relay server.
 ```powershell
-New-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -Location westus2 -Storagesku 'basic' -ProvisioningState 'Succeeded' -IdentityUserAssignedIdentity @{"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" = @{};} -IdentityType 'UserAssigned' -KeyEncryptionKeyIdentityUserAssignedIdentityResourceId "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" -KeyEncryptionKeyIdentityType 'SystemAssigned'
+New-AzFluidRelayServer -Name azps-fluidrelay -ResourceGroup azpstest-gp -Location westus2 -Storagesku 'basic' -ProvisioningState 'Succeeded' -IdentityUserAssignedIdentity @{"/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" = @{};} -IdentityType 'UserAssigned' -KeyEncryptionKeyIdentityUserAssignedIdentityResourceId "/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/azpstest-gp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azpstest-uami" -KeyEncryptionKeyIdentityType 'SystemAssigned'
 ```
 
 ```output
@@ -61,7 +61,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -284,7 +285,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

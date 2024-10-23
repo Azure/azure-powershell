@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                             break;
                         }
 
-                    case RecordType.AAAA:
+                    case RecordType.Aaaa:
                         {
                             result.Records.RemoveAll(record =>
                                 record is Models.AaaaRecord
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                             break;
                         }
 
-                    case RecordType.CNAME:
+                    case RecordType.Cname:
                         {
                             result.Records.RemoveAll(record =>
                                 record is Models.CnameRecord

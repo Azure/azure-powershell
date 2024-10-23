@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
         }
     }
 
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
     public class DoNotExportAttribute : Attribute
     {
     }
@@ -46,6 +46,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal
         {
             Profiles = profiles;
         }
+    }
+
+    [AttributeUsage(AttributeTargets.Class)]
+    public class HttpPathAttribute : Attribute
+    {
+        public string Path { get; set; }
+        public string ApiVersion { get; set; }
     }
 
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]

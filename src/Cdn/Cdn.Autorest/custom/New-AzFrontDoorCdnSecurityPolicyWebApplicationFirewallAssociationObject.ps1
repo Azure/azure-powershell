@@ -21,17 +21,17 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
 Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicyWebApplicationFirewallAssociation
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallAssociation
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
 #>
 function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicyWebApplicationFirewallAssociation')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallAssociation')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="List of domains.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IActivatedResourceReference[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IActivatedResourceReference[]]
         $Domain,
         [Parameter(HelpMessage="List of paths.")]
         [string[]]
@@ -39,7 +39,7 @@ function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicyWebApplicationFirewallAssociation]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallAssociation]::New()
 
         if ($PSBoundParameters.ContainsKey('Domain')) {
             $Object.Domain = $Domain

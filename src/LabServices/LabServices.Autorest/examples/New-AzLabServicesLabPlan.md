@@ -16,7 +16,9 @@ New-AzLabServicesLabPlan `
 	-SupportInfoUrl 'https:\\test.com' `
 	-DefaultConnectionProfileWebRdpAccess None `
 	-DefaultConnectionProfileWebSshAccess None
+```
 
+```output
 Location Name
 -------- ----
 westus2  testplan

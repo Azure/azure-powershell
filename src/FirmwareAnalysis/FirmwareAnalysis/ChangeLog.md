@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.3
+* Fixed the placeholder in psd1 file.
+
+## Version 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.1.1
 * Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 0.1.0

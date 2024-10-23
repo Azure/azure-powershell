@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "F0".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("F0", "F0", global::System.Management.Automation.CompletionResultType.ParameterValue, "F0");
+                yield return new global::System.Management.Automation.CompletionResult("'F0'", "F0", global::System.Management.Automation.CompletionResultType.ParameterValue, "F0");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "S1".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("S1", "S1", global::System.Management.Automation.CompletionResultType.ParameterValue, "S1");
+                yield return new global::System.Management.Automation.CompletionResult("'S1'", "S1", global::System.Management.Automation.CompletionResultType.ParameterValue, "S1");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "C0".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("C0", "C0", global::System.Management.Automation.CompletionResultType.ParameterValue, "C0");
+                yield return new global::System.Management.Automation.CompletionResult("'C0'", "C0", global::System.Management.Automation.CompletionResultType.ParameterValue, "C0");
             }
         }
     }

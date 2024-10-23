@@ -156,5 +156,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Runtime.PowerShell
 
         public static void RunScript(this EngineIntrinsics engineIntrinsics, ScriptBlock block)
             => engineIntrinsics.RunScript<PSObject>(block.ToString());
+
+        /// <summary>
+        /// Returns if a parameter should be hidden by checking for <see cref="DoNotExportAttribute" />.
+        /// </summary>
+        /// <param name="parameter">A PowerShell parameter.</param>
+        public static bool IsHidden(this Parameter parameter)
+        {
+            return parameter.Attributes.Any(attr => attr is DoNotExportAttribute);
+        }
     }
 }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
 online version: https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationcatalog
 schema: 2.0.0
@@ -16,14 +16,16 @@ Get the regions and skus that are available for RI purchase for the specified Az
 ```
 Get-AzReservationCatalog [-SubscriptionId <String[]>] [-Filter <String>] [-Location <String>]
  [-OfferId <String>] [-PlanId <String>] [-PublisherId <String>] [-ReservedResourceType <String>]
- [-Skip <Single>] [-Take <Single>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Skip <Single>] [-Take <Single>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzReservationCatalog -InputObject <IReservationsIdentity> [-Filter <String>] [-Location <String>]
  [-OfferId <String>] [-PlanId <String>] [-PublisherId <String>] [-ReservedResourceType <String>]
- [-Skip <Single>] [-Take <Single>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Skip <Single>] [-Take <Single>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +77,7 @@ SuseLinux    {P1Y, P3Y, P5Y} sles_priority_1_vcpu_vm
 SuseLinux    {P1Y, P3Y, P5Y} sles_priority_8plus_vcpu_vm     
 SuseLinux    {P1Y, P3Y, P5Y} sles_sap_priority_5plus_vcpu_vm 
 SuseLinux    {P1Y, P3Y, P5Y} sles_sap_priority_1-2_vcpu_vm   
-SuseLinux    {P1Y, P3Y, P5Y} sles_sap_priority_3-4_vcpu_vm 
+SuseLinux    {P1Y, P3Y, P5Y} sles_sap_priority_3-4_vcpu_vm
 ```
 
 This command gets a catlog of reserved resource type skus without location
@@ -229,21 +231,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Skip
-The number of reservations to skip from the list before returning results
-
-```yaml
-Type: System.Single
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 Id of the subscription
 
@@ -274,6 +261,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Skip
+The number of reservations to skip from the list before returning results
+
+```yaml
+Type: System.Single
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -287,18 +289,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the reservation item
-  - `[ReservationOrderId <String>]`: Order Id of the reservation
-  - `[SubscriptionId <String>]`: Id of the subscription
-
 ## RELATED LINKS
-

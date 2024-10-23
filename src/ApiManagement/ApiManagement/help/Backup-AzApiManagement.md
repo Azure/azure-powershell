@@ -44,7 +44,7 @@ $resourceGroupName="contosogroup2";
 $apiManagementName="contosoapi";
 $containerName="apimbackupcontainer";
 $backupName="test-sdk-backup-1";
-$msiClientId="a6270d0c-7d86-478b-8cbe-dc9047ba54f7"
+$msiClientId="00001111-aaaa-2222-bbbb-3333cccc4444"
 Backup-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -TargetContainerName $containerName -TargetBlobName $backupName -AccessType "UserAssignedManagedIdentity" -IdentityClientId $msiClientId -PassThru
 ```
 

@@ -56,10 +56,6 @@
             <Alignment>Left</Alignment>
             <Label>ApproximateMessageCount</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>EncodeMessage</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -76,17 +72,13 @@
                 <Alignment>Left</Alignment>
                 <ScriptBlock>$_.ApproximateMessageCount</ScriptBlock>
               </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <ScriptBlock>$_.EncodeMessage</ScriptBlock>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
       <GroupBy>
-        <ScriptBlock>$_.CloudQueue.ServiceClient.BaseUri</ScriptBlock>
-        <Label>Queue End Point</Label>
+        <ScriptBlock>$_.QueueClient.AccountName</ScriptBlock>
+        <Label>Storage Account Name</Label>
       </GroupBy>
     </View>
     <View>
@@ -383,8 +375,8 @@
         <TypeName>Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileShare</TypeName>
       </ViewSelectedBy>      
       <GroupBy>
-        <ScriptBlock>$_.ShareClient.AccountName</ScriptBlock>
-        <Label>Storage Account Name</Label>
+        <ScriptBlock>$_.Context.FileEndPoint</ScriptBlock>
+        <Label>File End Point</Label>
       </GroupBy>
       <TableControl>
         <TableHeaders>

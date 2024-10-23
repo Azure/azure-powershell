@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabricExternalNetwork
 
 ## SYNOPSIS
-Creates ExternalNetwork PUT method.
+Create ExternalNetwork PUT method.
 
 ## SYNTAX
 
@@ -61,7 +61,7 @@ New-AzNetworkFabricExternalNetwork -L3IsolationDomainName <String> -Name <String
 ```
 
 ## DESCRIPTION
-Creates ExternalNetwork PUT method.
+Create ExternalNetwork PUT method.
 
 ## EXAMPLES
 

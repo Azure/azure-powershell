@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -42,8 +45,117 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="annotations">List of tags that can be used for describing the linked service.
         /// </param>
 
+        /// <param name="server">The name or network address of the instance of SQL Server to which to
+        /// connect, used by recommended version. Type: string (or Expression with
+        /// resultType string).
+        /// </param>
+
+        /// <param name="database">The name of the database, used by recommended version. Type: string (or
+        /// Expression with resultType string).
+        /// </param>
+
+        /// <param name="encrypt">Indicate whether TLS encryption is required for all data sent between the
+        /// client and server, used by recommended version. Possible values are
+        /// true/yes/mandatory, false/no/optional and strict. Type: string (or
+        /// Expression with resultType string).
+        /// </param>
+
+        /// <param name="trustServerCertificate">Indicate whether the channel will be encrypted while bypassing walking the
+        /// certificate chain to validate trust, used by recommended version. Type:
+        /// Boolean (or Expression with resultType boolean).
+        /// </param>
+
+        /// <param name="hostNameInCertificate">The host name to use when validating the server certificate for the
+        /// connection. When not specified, the server name from the Data Source is
+        /// used for certificate validation, used by recommended version. Type: string
+        /// (or Expression with resultType string).
+        /// </param>
+
+        /// <param name="applicationIntent">The application workload type when connecting to a server, used by
+        /// recommended version. Possible values are ReadOnly and ReadWrite. Type:
+        /// string (or Expression with resultType string).
+        /// </param>
+
+        /// <param name="connectTimeout">The length of time (in seconds) to wait for a connection to the server
+        /// before terminating the attempt and generating an error, used by recommended
+        /// version. Type: integer (or Expression with resultType integer).
+        /// </param>
+
+        /// <param name="connectRetryCount">The number of re-connections attempted after identifying that there was an
+        /// idle connection failure, used by recommended version. This must be an
+        /// integer between 0 and 255. Type: integer (or Expression with resultType
+        /// integer).
+        /// </param>
+
+        /// <param name="connectRetryInterval">The amount of time (in seconds) between each re-connection attempt after
+        /// identifying that there was an idle connection failure, used by recommended
+        /// version. This must be an integer between 1 and 60. Type: integer (or
+        /// Expression with resultType integer).
+        /// </param>
+
+        /// <param name="loadBalanceTimeout">The minimum time, in seconds, for the connection to live in the connection
+        /// pool before being destroyed, used by recommended version. Type: integer (or
+        /// Expression with resultType integer).
+        /// </param>
+
+        /// <param name="commandTimeout">The default wait time (in seconds) before terminating the attempt to
+        /// execute a command and generating an error, used by recommended version.
+        /// Type: integer (or Expression with resultType integer).
+        /// </param>
+
+        /// <param name="integratedSecurity">Indicate whether User ID and Password are specified in the connection (when
+        /// false) or whether the current Windows account credentials are used for
+        /// authentication (when true), used by recommended version. Type: Boolean (or
+        /// Expression with resultType boolean).
+        /// </param>
+
+        /// <param name="failoverPartner">The name or address of the partner server to connect to if the primary
+        /// server is down, used by recommended version. Type: string (or Expression
+        /// with resultType string).
+        /// </param>
+
+        /// <param name="maxPoolSize">The maximum number of connections allowed in the connection pool for this
+        /// specific connection string, used by recommended version. Type: integer (or
+        /// Expression with resultType integer).
+        /// </param>
+
+        /// <param name="minPoolSize">The minimum number of connections allowed in the connection pool for this
+        /// specific connection string, used by recommended version. Type: integer (or
+        /// Expression with resultType integer).
+        /// </param>
+
+        /// <param name="multipleActiveResultSets">When true, an application can maintain multiple active result sets (MARS).
+        /// When false, an application must process or cancel all result sets from one
+        /// batch before it can execute any other batch on that connection, used by
+        /// recommended version. Type: Boolean (or Expression with resultType boolean).
+        /// </param>
+
+        /// <param name="multiSubnetFailover">If your application is connecting to an AlwaysOn availability group (AG) on
+        /// different subnets, setting MultiSubnetFailover=true provides faster
+        /// detection of and connection to the (currently) active server, used by
+        /// recommended version. Type: Boolean (or Expression with resultType boolean).
+        /// </param>
+
+        /// <param name="packetSize">The size in bytes of the network packets used to communicate with an
+        /// instance of server, used by recommended version. Type: integer (or
+        /// Expression with resultType integer).
+        /// </param>
+
+        /// <param name="pooling">Indicate whether the connection will be pooled or explicitly opened every
+        /// time that the connection is requested, used by recommended version. Type:
+        /// Boolean (or Expression with resultType boolean).
+        /// </param>
+
         /// <param name="connectionString">The connection string. Type: string, SecureString or
         /// AzureKeyVaultSecretReference.
+        /// </param>
+
+        /// <param name="authenticationType">The type used for authentication. Type: string.
+        /// Possible values include: &#39;SQL&#39;, &#39;ServicePrincipal&#39;,
+        /// &#39;SystemAssignedManagedIdentity&#39;, &#39;UserAssignedManagedIdentity&#39;</param>
+
+        /// <param name="userName">The user name to be used when connecting to server. Type: string (or
+        /// Expression with resultType string).
         /// </param>
 
         /// <param name="password">The Azure key vault secret reference of password in connection string.
@@ -55,6 +167,20 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="servicePrincipalKey">The key of the service principal used to authenticate against Azure SQL
         /// Managed Instance.
+        /// </param>
+
+        /// <param name="servicePrincipalCredentialType">The service principal credential type to use in Server-To-Server
+        /// authentication. &#39;ServicePrincipalKey&#39; for key/secret,
+        /// &#39;ServicePrincipalCert&#39; for certificate. Type: string (or Expression with
+        /// resultType string).
+        /// </param>
+
+        /// <param name="servicePrincipalCredential">The credential of the service principal object in Azure Active Directory.
+        /// If servicePrincipalCredentialType is &#39;ServicePrincipalKey&#39;,
+        /// servicePrincipalCredential can be SecureString or
+        /// AzureKeyVaultSecretReference. If servicePrincipalCredentialType is
+        /// &#39;ServicePrincipalCert&#39;, servicePrincipalCredential can only be
+        /// AzureKeyVaultSecretReference.
         /// </param>
 
         /// <param name="tenant">The name or ID of the tenant to which the service principal belongs. Type:
@@ -76,14 +202,37 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="credential">The credential reference containing authentication information.
         /// </param>
-        public AzureSqlMILinkedService(object connectionString, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object tenant = default(object), object azureCloudType = default(object), string encryptedCredential = default(string), SqlAlwaysEncryptedProperties alwaysEncryptedSettings = default(SqlAlwaysEncryptedProperties), CredentialReference credential = default(CredentialReference))
+        public AzureSqlMILinkedService(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object server = default(object), object database = default(object), object encrypt = default(object), object trustServerCertificate = default(object), object hostNameInCertificate = default(object), object applicationIntent = default(object), object connectTimeout = default(object), object connectRetryCount = default(object), object connectRetryInterval = default(object), object loadBalanceTimeout = default(object), object commandTimeout = default(object), object integratedSecurity = default(object), object failoverPartner = default(object), object maxPoolSize = default(object), object minPoolSize = default(object), object multipleActiveResultSets = default(object), object multiSubnetFailover = default(object), object packetSize = default(object), object pooling = default(object), object connectionString = default(object), string authenticationType = default(string), object userName = default(object), AzureKeyVaultSecretReference password = default(AzureKeyVaultSecretReference), object servicePrincipalId = default(object), SecretBase servicePrincipalKey = default(SecretBase), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalCredential = default(SecretBase), object tenant = default(object), object azureCloudType = default(object), string encryptedCredential = default(string), SqlAlwaysEncryptedProperties alwaysEncryptedSettings = default(SqlAlwaysEncryptedProperties), CredentialReference credential = default(CredentialReference))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
+            this.Server = server;
+            this.Database = database;
+            this.Encrypt = encrypt;
+            this.TrustServerCertificate = trustServerCertificate;
+            this.HostNameInCertificate = hostNameInCertificate;
+            this.ApplicationIntent = applicationIntent;
+            this.ConnectTimeout = connectTimeout;
+            this.ConnectRetryCount = connectRetryCount;
+            this.ConnectRetryInterval = connectRetryInterval;
+            this.LoadBalanceTimeout = loadBalanceTimeout;
+            this.CommandTimeout = commandTimeout;
+            this.IntegratedSecurity = integratedSecurity;
+            this.FailoverPartner = failoverPartner;
+            this.MaxPoolSize = maxPoolSize;
+            this.MinPoolSize = minPoolSize;
+            this.MultipleActiveResultSets = multipleActiveResultSets;
+            this.MultiSubnetFailover = multiSubnetFailover;
+            this.PacketSize = packetSize;
+            this.Pooling = pooling;
             this.ConnectionString = connectionString;
+            this.AuthenticationType = authenticationType;
+            this.UserName = userName;
             this.Password = password;
             this.ServicePrincipalId = servicePrincipalId;
             this.ServicePrincipalKey = servicePrincipalKey;
+            this.ServicePrincipalCredentialType = servicePrincipalCredentialType;
+            this.ServicePrincipalCredential = servicePrincipalCredential;
             this.Tenant = tenant;
             this.AzureCloudType = azureCloudType;
             this.EncryptedCredential = encryptedCredential;
@@ -99,11 +248,184 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
         /// <summary>
+        /// Gets or sets the name or network address of the instance of SQL Server to
+        /// which to connect, used by recommended version. Type: string (or Expression
+        /// with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.server")]
+        public object Server {get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the database, used by recommended version. Type:
+        /// string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.database")]
+        public object Database {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicate whether TLS encryption is required for all data sent
+        /// between the client and server, used by recommended version. Possible values
+        /// are true/yes/mandatory, false/no/optional and strict. Type: string (or
+        /// Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.encrypt")]
+        public object Encrypt {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicate whether the channel will be encrypted while bypassing
+        /// walking the certificate chain to validate trust, used by recommended
+        /// version. Type: Boolean (or Expression with resultType boolean).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.trustServerCertificate")]
+        public object TrustServerCertificate {get; set; }
+
+        /// <summary>
+        /// Gets or sets the host name to use when validating the server certificate
+        /// for the connection. When not specified, the server name from the Data
+        /// Source is used for certificate validation, used by recommended version.
+        /// Type: string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.hostNameInCertificate")]
+        public object HostNameInCertificate {get; set; }
+
+        /// <summary>
+        /// Gets or sets the application workload type when connecting to a server,
+        /// used by recommended version. Possible values are ReadOnly and ReadWrite.
+        /// Type: string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.applicationIntent")]
+        public object ApplicationIntent {get; set; }
+
+        /// <summary>
+        /// Gets or sets the length of time (in seconds) to wait for a connection to
+        /// the server before terminating the attempt and generating an error, used by
+        /// recommended version. Type: integer (or Expression with resultType integer).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.connectTimeout")]
+        public object ConnectTimeout {get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of re-connections attempted after identifying that
+        /// there was an idle connection failure, used by recommended version. This
+        /// must be an integer between 0 and 255. Type: integer (or Expression with
+        /// resultType integer).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.connectRetryCount")]
+        public object ConnectRetryCount {get; set; }
+
+        /// <summary>
+        /// Gets or sets the amount of time (in seconds) between each re-connection
+        /// attempt after identifying that there was an idle connection failure, used
+        /// by recommended version. This must be an integer between 1 and 60. Type:
+        /// integer (or Expression with resultType integer).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.connectRetryInterval")]
+        public object ConnectRetryInterval {get; set; }
+
+        /// <summary>
+        /// Gets or sets the minimum time, in seconds, for the connection to live in
+        /// the connection pool before being destroyed, used by recommended version.
+        /// Type: integer (or Expression with resultType integer).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.loadBalanceTimeout")]
+        public object LoadBalanceTimeout {get; set; }
+
+        /// <summary>
+        /// Gets or sets the default wait time (in seconds) before terminating the
+        /// attempt to execute a command and generating an error, used by recommended
+        /// version. Type: integer (or Expression with resultType integer).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.commandTimeout")]
+        public object CommandTimeout {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicate whether User ID and Password are specified in the
+        /// connection (when false) or whether the current Windows account credentials
+        /// are used for authentication (when true), used by recommended version. Type:
+        /// Boolean (or Expression with resultType boolean).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.integratedSecurity")]
+        public object IntegratedSecurity {get; set; }
+
+        /// <summary>
+        /// Gets or sets the name or address of the partner server to connect to if the
+        /// primary server is down, used by recommended version. Type: string (or
+        /// Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.failoverPartner")]
+        public object FailoverPartner {get; set; }
+
+        /// <summary>
+        /// Gets or sets the maximum number of connections allowed in the connection
+        /// pool for this specific connection string, used by recommended version.
+        /// Type: integer (or Expression with resultType integer).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.maxPoolSize")]
+        public object MaxPoolSize {get; set; }
+
+        /// <summary>
+        /// Gets or sets the minimum number of connections allowed in the connection
+        /// pool for this specific connection string, used by recommended version.
+        /// Type: integer (or Expression with resultType integer).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.minPoolSize")]
+        public object MinPoolSize {get; set; }
+
+        /// <summary>
+        /// Gets or sets when true, an application can maintain multiple active result
+        /// sets (MARS). When false, an application must process or cancel all result
+        /// sets from one batch before it can execute any other batch on that
+        /// connection, used by recommended version. Type: Boolean (or Expression with
+        /// resultType boolean).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.multipleActiveResultSets")]
+        public object MultipleActiveResultSets {get; set; }
+
+        /// <summary>
+        /// Gets or sets if your application is connecting to an AlwaysOn availability
+        /// group (AG) on different subnets, setting MultiSubnetFailover=true provides
+        /// faster detection of and connection to the (currently) active server, used
+        /// by recommended version. Type: Boolean (or Expression with resultType
+        /// boolean).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.multiSubnetFailover")]
+        public object MultiSubnetFailover {get; set; }
+
+        /// <summary>
+        /// Gets or sets the size in bytes of the network packets used to communicate
+        /// with an instance of server, used by recommended version. Type: integer (or
+        /// Expression with resultType integer).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.packetSize")]
+        public object PacketSize {get; set; }
+
+        /// <summary>
+        /// Gets or sets indicate whether the connection will be pooled or explicitly
+        /// opened every time that the connection is requested, used by recommended
+        /// version. Type: Boolean (or Expression with resultType boolean).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.pooling")]
+        public object Pooling {get; set; }
+
+        /// <summary>
         /// Gets or sets the connection string. Type: string, SecureString or
         /// AzureKeyVaultSecretReference.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.connectionString")]
         public object ConnectionString {get; set; }
+
+        /// <summary>
+        /// Gets or sets the type used for authentication. Type: string. Possible values include: &#39;SQL&#39;, &#39;ServicePrincipal&#39;, &#39;SystemAssignedManagedIdentity&#39;, &#39;UserAssignedManagedIdentity&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.authenticationType")]
+        public string AuthenticationType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the user name to be used when connecting to server. Type:
+        /// string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.userName")]
+        public object UserName {get; set; }
 
         /// <summary>
         /// Gets or sets the Azure key vault secret reference of password in connection
@@ -126,6 +448,26 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.servicePrincipalKey")]
         public SecretBase ServicePrincipalKey {get; set; }
+
+        /// <summary>
+        /// Gets or sets the service principal credential type to use in
+        /// Server-To-Server authentication. &#39;ServicePrincipalKey&#39; for key/secret,
+        /// &#39;ServicePrincipalCert&#39; for certificate. Type: string (or Expression with
+        /// resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.servicePrincipalCredentialType")]
+        public object ServicePrincipalCredentialType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the credential of the service principal object in Azure Active
+        /// Directory. If servicePrincipalCredentialType is &#39;ServicePrincipalKey&#39;,
+        /// servicePrincipalCredential can be SecureString or
+        /// AzureKeyVaultSecretReference. If servicePrincipalCredentialType is
+        /// &#39;ServicePrincipalCert&#39;, servicePrincipalCredential can only be
+        /// AzureKeyVaultSecretReference.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.servicePrincipalCredential")]
+        public SecretBase ServicePrincipalCredential {get; set; }
 
         /// <summary>
         /// Gets or sets the name or ID of the tenant to which the service principal
@@ -172,15 +514,34 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public override void Validate()
         {
             base.Validate();
-            if (this.ConnectionString == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "ConnectionString");
-            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             if (this.Password != null)
             {
                 this.Password.Validate();
             }
+
+
 
 
 

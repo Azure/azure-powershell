@@ -16,6 +16,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions One2 = @"1.2";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.SupportedTlsVersions One3 = @"1.3";
+
         /// <summary>the value for an instance of the <see cref="SupportedTlsVersions" /> Enum.</summary>
         private string _value { get; set; }
 

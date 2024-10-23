@@ -23,7 +23,7 @@ The **Remove-AzVirtualNetwork** cmdlet removes an Azure virtual network.
 
 ## EXAMPLES
 
-### 1: Create and delete a virtual network
+### Example 1: Create and delete a virtual network
 ```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"

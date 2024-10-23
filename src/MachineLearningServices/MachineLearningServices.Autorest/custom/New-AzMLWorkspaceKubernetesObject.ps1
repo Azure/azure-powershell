@@ -21,12 +21,12 @@ Create an in-memory object for Kubernetes.
 Create an in-memory object for Kubernetes.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Kubernetes
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.Kubernetes
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceKubernetesObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceKubernetesObject
 #>
 function New-AzMLWorkspaceKubernetesObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Kubernetes')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.Kubernetes')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -49,7 +49,7 @@ function New-AzMLWorkspaceKubernetesObject {
         [string]
         $ExtensionPrincipalId,
         # [Parameter(HelpMessage="Instance Type Schema.")]
-        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IKubernetesPropertiesInstanceTypes]
+        # [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.IKubernetesPropertiesInstanceTypes]
         # $InstanceType,
         [Parameter(HelpMessage="Node Selector.")]
         [hashtable]
@@ -75,7 +75,7 @@ function New-AzMLWorkspaceKubernetesObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Kubernetes]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.Kubernetes]::New()
         $Object.Type = 'Kubernetes'
 
         if ($PSBoundParameters.ContainsKey('Description')) {
@@ -101,23 +101,23 @@ function New-AzMLWorkspaceKubernetesObject {
         # }
         if ($PSBoundParameters.ContainsKey('InstanceNodeSelector'))
         {
-            $NodeSelectorObj = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.InstanceTypeSchemaNodeSelector]::New()
+            $NodeSelectorObj = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.InstanceTypeSchemaNodeSelector]::New()
             $NodeSelectorObj.CopyFrom($InstanceNodeSelector)
         }
         if ($PSBoundParameters.ContainsKey('InstanceLimit'))
         {
-            $ResourceLimitObj = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.InstanceResourceSchema]::New()
+            $ResourceLimitObj = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.InstanceResourceSchema]::New()
             $ResourceLimitObj.CopyFrom($InstanceLimit)
         }
         if ($PSBoundParameters.ContainsKey('InstanceRequest'))
         {
-            $ResourceRequestObj = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.InstanceResourceSchema]::New()
+            $ResourceRequestObj = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.InstanceResourceSchema]::New()
             $ResourceRequestObj.CopyFrom($InstanceRequest)
         }
         if ($PSBoundParameters.ContainsKey('InstanceNodeSelector') -or $PSBoundParameters.ContainsKey('InstanceLimit') -or $PSBoundParameters.ContainsKey('InstanceRequest'))
         {
-            $InstanceType = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.InstanceTypeSchema]::New() 
-            $KubInstance = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.KubernetesPropertiesInstanceTypes]::New()
+            $InstanceType = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.InstanceTypeSchema]::New() 
+            $KubInstance = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20240401.KubernetesPropertiesInstanceTypes]::New()
             $InstanceType.NodeSelector = $NodeSelectorObj
             $InstanceType.ResourceLimit = $ResourceLimitObj
             $InstanceType.ResourceRequest = $ResourceRequestObj

@@ -1,6 +1,6 @@
 {
   "resourceType": "resourceGuards",
-  "apiVersion": "2023-12-01",
+  "apiVersion": "2024-04-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.dataprotection"
   },

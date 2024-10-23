@@ -184,14 +184,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 
         private bool IsIgnoredProperty(string typeName, string propertyName)
         {
-            bool ignored = false;
-
-            if (Service.IgnoredProperties.ContainsKey(typeName))
-            {
-                ignored = Service.IgnoredProperties[typeName].Contains(propertyName);
-            }
-
-            return ignored;
+            return Service.IgnoredProperties.TryGetValue(typeName, out var propertyNames) && propertyNames.Contains(propertyName);
         }
 
         private SanitizerProviderBase CreateCustomObjectProvider(Type objType)
@@ -199,7 +192,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
             var objProvider = new SanitizerCustomObjectProvider(Service);
             foreach (var property in objType.GetRuntimeProperties())
             {
-                if (property.CanRead && !property.PropertyType.IsValueType && property.GetMethod != null && !property.GetMethod.IsStatic
+                if (property.CanRead && !property.PropertyType.IsValueType && property.GetMethod != null && property.GetMethod.IsPublic && !property.GetMethod.IsStatic
                     && property.GetIndexParameters().Length == 0
                     && !IsIgnoredProperty(objType.FullName, property.Name))
                 {

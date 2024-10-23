@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a global reach connection in a private cloud</summary>
+    /// <summary>Update a GlobalReachConnection</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/globalReachConnections/{globalReachConnectionName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzVMwareGlobalReachConnection_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IGlobalReachConnection))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Create a global reach connection in a private cloud")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a GlobalReachConnection")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     public partial class UpdateAzVMwareGlobalReachConnection_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
@@ -58,14 +58,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
         /// <summary>
-        /// Authorization key from the peer express route used for the global reach connection
+        /// Authorization key from the peer express route used for the global reachconnection
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Authorization key from the peer express route used for the global reach connection")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Authorization key from the peer express route used for the global reachconnection")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Authorization key from the peer express route used for the global reach connection",
+        Description = @"Authorization key from the peer express route used for the global reachconnection",
         SerializedName = @"authorizationKey",
         PossibleTypes = new [] { typeof(string) })]
         public string AuthorizationKey { get => _globalReachConnectionBody.AuthorizationKey ?? null; set => _globalReachConnectionBody.AuthorizationKey = value; }
@@ -92,14 +92,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
         /// <summary>
-        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+        /// The ID of the Private Cloud's ExpressRoute Circuit that is participating in theglobal reach connection
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ID of the Private Cloud's ExpressRoute Circuit that is participating in theglobal reach connection")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection",
+        Description = @"The ID of the Private Cloud's ExpressRoute Circuit that is participating in theglobal reach connection",
         SerializedName = @"expressRouteId",
         PossibleTypes = new [] { typeof(string) })]
         public string ExpressRouteId { get => _globalReachConnectionBody.ExpressRouteId ?? null; set => _globalReachConnectionBody.ExpressRouteId = value; }
@@ -147,14 +147,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>
-        /// Identifier of the ExpressRoute Circuit to peer with in the global reach connection
+        /// Identifier of the ExpressRoute Circuit to peer with in the global reachconnection
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Identifier of the ExpressRoute Circuit to peer with in the global reach connection")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Identifier of the ExpressRoute Circuit to peer with in the global reachconnection")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Identifier of the ExpressRoute Circuit to peer with in the global reach connection",
+        Description = @"Identifier of the ExpressRoute Circuit to peer with in the global reachconnection",
         SerializedName = @"peerExpressRouteCircuit",
         PossibleTypes = new [] { typeof(string) })]
         public string PeerExpressRouteCircuit { get => _globalReachConnectionBody.PeerExpressRouteCircuit ?? null; set => _globalReachConnectionBody.PeerExpressRouteCircuit = value; }
@@ -256,11 +256,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
                 telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
                 telemetryInfo.TryGetValue("InvocationName", out var invocationName);
-                if (!string.IsNullOrEmpty(sanitizedProperties))
+                if (showSecretsWarning == "true")
                 {
-                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
                 }
             }
         }
@@ -454,7 +462,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                     {
                         _globalReachConnectionBody = await this.Client.GlobalReachConnectionsGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
                         this.Update_globalReachConnectionBody();
-                        await this.Client.GlobalReachConnectionsCreateOrUpdateViaIdentity(InputObject.Id, _globalReachConnectionBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.GlobalReachConnectionsCreateOrUpdateViaIdentity(InputObject.Id, _globalReachConnectionBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -477,7 +485,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                         }
                         _globalReachConnectionBody = await this.Client.GlobalReachConnectionsGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.PrivateCloudName ?? null, InputObject.GlobalReachConnectionName ?? null, this, Pipeline);
                         this.Update_globalReachConnectionBody();
-                        await this.Client.GlobalReachConnectionsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.PrivateCloudName ?? null, InputObject.GlobalReachConnectionName ?? null, _globalReachConnectionBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.GlobalReachConnectionsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.PrivateCloudName ?? null, InputObject.GlobalReachConnectionName ?? null, _globalReachConnectionBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

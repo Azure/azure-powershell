@@ -16,6 +16,7 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Shared.Config;
@@ -24,6 +25,7 @@ using Microsoft.Identity.Client;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
@@ -184,28 +186,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 if (exception is MsalUiRequiredException msalUiRequiredException)
                 {
-                    //There's no official error message for requiring MFA permission, so have to compare UGLY error message
-                    if (msalUiRequiredException.ErrorCode == "invalid_grant" &&
-                        msalUiRequiredException.Message.Contains("you must use multi-factor authentication to access"))
+                    string errorMessage;
+                    string desensitizedMessage;
+                    if (NeedTenantArmPermission(environment, tenantId, resourceId))
                     {
-                        string errorMessage;
-                        string desensitizedMessage;
-                        if (NeedTenantArmPermission(environment, tenantId, resourceId))
-                        {
-                            errorMessage = $"You must use multi-factor authentication to access tenant {tenantId}, please rerun 'Connect-AzAccount' with additional parameter '-TenantId {tenantId}'.";
-                            desensitizedMessage = "MFA is required to access tenant";
-                        }
-                        else
-                        {
-                            errorMessage = $"You must use multi-factor authentication to access resource {resourceId}, please rerun 'Connect-AzAccount' with additional parameter '-AuthScope {resourceId}'.";
-                            desensitizedMessage = "MFA is required to access resource";
-                        }
-                        return new AzPSAuthenticationFailedException(
-                            errorMessage,
-                            msalUiRequiredException.ErrorCode,
-                            originalException,
-                            desensitizedMessage: desensitizedMessage);
+                        errorMessage = string.Format(Resources.ErrorMessageMsalInteractionRequiredWithTid, tenantId);
+                        desensitizedMessage = "MFA is required to access tenant";
                     }
+                    else
+                    {
+                        errorMessage = string.Format(Resources.ErrorMsgMsalInteractionRequiredWithResourceID, resourceId);
+                        desensitizedMessage = "MFA is required to access resource";
+                    }
+                    return new AzPSAuthenticationFailedException(
+                        errorMessage,
+                        msalUiRequiredException.ErrorCode,
+                        originalException,
+                        desensitizedMessage: desensitizedMessage);
                 }
                 exception = exception.InnerException;
             }
@@ -615,7 +612,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         private static AuthenticationParameters GetInteractiveParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, Action<string> promptAction, IAzureTokenCache tokenCache, string resourceId, string homeAccountId)
         {
-            return IsWamEnabled()
+            return AzConfigReader.IsWamEnabled(environment.ActiveDirectoryAuthority)
                 ? new InteractiveWamParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction) as AuthenticationParameters
                 : new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction);
         }
@@ -623,12 +620,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private static AuthenticationParameters GetSilentParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, IAzureTokenCache tokenCache, string resourceId, string homeAccountId)
         {
             return new SilentParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
-        }
-
-        private static bool IsWamEnabled()
-        {
-            return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config)
-                && config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam);
         }
     }
 }

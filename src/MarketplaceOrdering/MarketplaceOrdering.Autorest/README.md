@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the MarketplaceOrdering service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -28,9 +27,9 @@ For information on how to develop for `Az.MarketplaceOrdering`, see [how-to.md](
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: ee9fe9888e8d4e5a583e275c4c35deff6c6f96e0
+commit: ee9fe9888e8d4e5a583e275c4c35deff6c6f96e0
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/marketplaceordering/resource-manager/Microsoft.MarketplaceOrdering/stable/2021-01-01/Agreements.json
 
@@ -40,6 +39,10 @@ subject-prefix: Marketplace
 identity-correction-for-post: true
 nested-object-to-string: true
 inlining-threshold: 50
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

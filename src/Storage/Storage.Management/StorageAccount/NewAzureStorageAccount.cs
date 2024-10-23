@@ -116,6 +116,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Storage Account Access Tier.")]
         [ValidateSet(AccountAccessTier.Hot,
             AccountAccessTier.Cool,
+            AccountAccessTier.Cold,
             IgnoreCase = true)]
         public string AccessTier { get; set; }
 
@@ -496,6 +497,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateSet(StorageModels.MinimumTlsVersion.TLS10,
             StorageModels.MinimumTlsVersion.TLS11,
             StorageModels.MinimumTlsVersion.TLS12,
+            StorageModels.MinimumTlsVersion.TLS13,
             IgnoreCase = true)]
         public string MinimumTlsVersion
         {
@@ -857,7 +859,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             if (sasExpirationPeriod != null)
             {
-                createParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"));
+                createParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"), "Log");
             }
             if (keyExpirationPeriodInDay != null)
             {
@@ -910,7 +912,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
 
-            this.WriteStorageAccount(storageAccount);
+            this.WriteStorageAccount(storageAccount, DefaultContext);
         }
     }
 }

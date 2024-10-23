@@ -14,7 +14,8 @@ Get the status of Attestation Provider.
 
 ### List (Default)
 ```
-Get-AzAttestationProvider [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAttestationProvider [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzAttestationProvider -ResourceGroupName <String> [-SubscriptionId <String[]
 
 ### GetViaIdentity
 ```
-Get-AzAttestationProvider -InputObject <IAttestationIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAttestationProvider -InputObject <IAttestationIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -180,7 +182,8 @@ This command lists statuses of all Attestation Providers in a resource group.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -270,20 +273,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProviderListResult
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAttestationIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location of the default provider.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[ProviderName <String>]`: Name of the attestation provider.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

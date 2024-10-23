@@ -42,8 +42,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime
                 // try to parse the body as JSON, and see if a code and message are in there.
                 var json = Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode.Parse(ResponseBody) as Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonObject;
 
+                // error message could be in properties.statusMessage
+                { message = If(json?.Property("properties"), out var p)
+                    && If(p?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("statusMessage"), out var sm)
+                    ? (string)sm : (string)Message; }
+
                 // see if there is an error block in the body
-                json = json.Property("error") ?? json;
+                json = json?.Property("error") ?? json;
 
                 { Code = If(json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("code"), out var c) ? (string)c : (string)StatusCode.ToString(); }
                 { message = If(json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("message"), out var m) ? (string)m : (string)Message; }
@@ -58,7 +63,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime
             catch
             {
                 // couldn't get the code/message from the body response. 
-                // we'll create one below.
+                // In this case, we will assume the response is the expected error message
+                if(!string.IsNullOrEmpty(ResponseBody)) {
+                    message = ResponseBody;
+                }
             }
 #endif
             if (string.IsNullOrEmpty(message))

@@ -23,7 +23,7 @@ Create an in-memory object for AzurePostgreSqlDataSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlDataSource
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzurePostgreSqlDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzurePostgreSqlDataSourceObject
 #>
 function New-AzPurviewAzurePostgreSqlDataSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzurePostgreSqlDataSource')]

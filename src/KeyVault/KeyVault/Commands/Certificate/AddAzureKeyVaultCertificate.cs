@@ -16,16 +16,26 @@ using System.Collections;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.IO;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Starts the process for enrolling for a certificate in Azure Key Vault
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificate",SupportsShouldProcess = true)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificate", SupportsShouldProcess = true, DefaultParameterSetName = EnrollCertWithPolicyPath)]
     [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class AddAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
+        #region ParameterSet definitions
+        const string EnrollCertWithPolicyObject = "EnrollCertWithPolicyObject";
+        const string EnrollCertWithPolicyPath = "EnrollCertWithPolicyPath";
+
+        #endregion
+
         #region Input Parameter Definitions
 
         /// <summary>
@@ -52,11 +62,23 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// CertificatePolicy
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = EnrollCertWithPolicyObject,
             ValueFromPipeline = true,
             Position = 2,
             HelpMessage = "Specifies the certificate policy.")]
         [ValidateNotNull]
         public PSKeyVaultCertificatePolicy CertificatePolicy { get; set; }
+
+        /// <summary>
+        /// PolicyPath
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = EnrollCertWithPolicyPath,
+            ValueFromPipeline = true,
+            Position = 2,
+            HelpMessage = "A file path to specify management policy for the certificate that contains JSON encoded policy definition.")]
+        [ValidateNotNull]
+        public string PolicyPath { get; set; }
 
         /// <summary>
         /// Certificate tags
@@ -67,9 +89,27 @@ namespace Microsoft.Azure.Commands.KeyVault
         public Hashtable Tag { get; set; }
         #endregion
 
+        protected override void BeginProcessing()
+        {
+            PolicyPath = this.TryResolvePath(PolicyPath);
+            base.BeginProcessing();
+        }
+
+        private void ValidateParameters()
+        {   if (this.IsParameterBound(c => c.PolicyPath))
+            {
+                if (!File.Exists(PolicyPath))
+                {
+                    throw new AzPSArgumentException(string.Format(Resources.FileNotFound, this.PolicyPath), nameof(PolicyPath));
+                }
+                CertificatePolicy = new PSKeyVaultCertificatePolicy(PolicyPath);
+            }
+        }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Properties.Resources.AddCertificate)) {
+                ValidateParameters();
                 var certificateOperation = this.DataServiceClient.EnrollCertificate(VaultName, Name, CertificatePolicy == null ? null : CertificatePolicy.ToCertificatePolicy(), Tag == null ? null : Tag.ConvertToDictionary());
                 this.WriteObject(certificateOperation);
             }

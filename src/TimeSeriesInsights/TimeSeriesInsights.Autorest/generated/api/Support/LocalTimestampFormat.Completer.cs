@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
 {
 
-    /// <summary>Argument completer implementation for LocalTimestampFormat.</summary>
+    /// <summary>
+    /// An enum that represents the format of the local timestamp property that needs to be set.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.LocalTimestampFormatTypeConverter))]
     public partial struct LocalTimestampFormat :
         System.Management.Automation.IArgumentCompleter
@@ -28,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Embedded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Embedded", "Embedded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Embedded");
+                yield return new global::System.Management.Automation.CompletionResult("'Embedded'", "Embedded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Embedded");
             }
         }
     }

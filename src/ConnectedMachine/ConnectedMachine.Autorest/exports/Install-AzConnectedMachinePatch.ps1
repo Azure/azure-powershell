@@ -24,6 +24,8 @@ Install-AzConnectedMachinePatch -ResourceGroupName az-sdk-test -Name testMachine
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParameters
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesResult
 .Notes
@@ -40,19 +42,27 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [LicenseProfileName <String>]: The name of the license profile.
   [Location <String>]: The location of the Extension being received.
   [MachineName <String>]: The name of the hybrid machine.
-  [MetadataName <String>]: Name of the HybridIdentityMetadata.
   [Name <String>]: The name of the hybrid machine.
-  [OSType <String>]: Defines the os type.
   [PerimeterName <String>]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
-  [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SubscriptionId <String>]: The ID of the target subscription.
   [Version <String>]: The version of the Extension being received.
+
+INSTALLPATCHESINPUT <IMachineInstallPatchesParameters>: Input for InstallPatches as directly received by the API
+  MaximumDuration <String>: Specifies the maximum amount of time that the operation will run. It must be an ISO 8601-compliant duration string such as PT4H (4 hours)
+  RebootSetting <String>: Defines when it is acceptable to reboot a VM during a software update operation.
+  [LinuxParameterClassificationsToInclude <List<String>>]: The update classifications to select when installing patches for Linux.
+  [LinuxParameterPackageNameMasksToExclude <List<String>>]: packages to exclude in the patch operation. Format: packageName_packageVersion
+  [LinuxParameterPackageNameMasksToInclude <List<String>>]: packages to include in the patch operation. Format: packageName_packageVersion
+  [WindowParameterClassificationsToInclude <List<String>>]: The update classifications to select when installing patches for Windows.
+  [WindowParameterExcludeKbsRequiringReboot <Boolean?>]: Filters out Kbs that don't have an InstallationRebootBehavior of 'NeverReboots' when this is set to true.
+  [WindowParameterKbNumbersToExclude <List<String>>]: Kbs to exclude in the patch operation
+  [WindowParameterKbNumbersToInclude <List<String>>]: Kbs to include in the patch operation
+  [WindowParameterMaxPatchPublishDate <DateTime?>]: This is used to install patches that were published on or before this given max published date.
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedmachine/install-azconnectedmachinepatch
 #>
@@ -60,47 +70,67 @@ function Install-AzConnectedMachinePatch {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesResult])]
 [CmdletBinding(DefaultParameterSetName='InstallExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
+    [Parameter(ParameterSetName='Install', Mandatory)]
     [Parameter(ParameterSetName='InstallExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InstallViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InstallViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [System.String]
     # The name of the hybrid machine.
     ${Name},
 
+    [Parameter(ParameterSetName='Install', Mandatory)]
     [Parameter(ParameterSetName='InstallExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InstallViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='InstallViaJsonString', Mandatory)]
     [ArgumentCompleter({Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName})]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [System.String]
     # The name of the resource group.
     ${ResourceGroupName},
 
+    [Parameter(ParameterSetName='Install')]
     [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaJsonFilePath')]
+    [Parameter(ParameterSetName='InstallViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='InstallViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='InstallViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
     # Identity Parameter
     ${InputObject},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='Install', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='InstallViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInstallPatchesParameters]
+    # Input for InstallPatches as directly received by the API
+    ${InstallPatchesInput},
+
+    [Parameter(ParameterSetName='InstallExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Specifies the maximum amount of time that the operation will run.
     # It must be an ISO 8601-compliant duration string such as PT4H (4 hours)
     ${MaximumDuration},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='InstallExpanded', Mandatory)]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("IfRequired", "Never", "Always")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Defines when it is acceptable to reboot a VM during a software update operation.
     ${RebootSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Critical", "Security", "Other")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
@@ -108,7 +138,8 @@ param(
     # The update classifications to select when installing patches for Linux.
     ${LinuxParameterClassificationsToInclude},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String[]]
@@ -116,7 +147,8 @@ param(
     # Format: packageName_packageVersion
     ${LinuxParameterPackageNameMasksToExclude},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String[]]
@@ -124,7 +156,8 @@ param(
     # Format: packageName_packageVersion
     ${LinuxParameterPackageNameMasksToInclude},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Critical", "Security", "UpdateRollUp", "FeaturePack", "ServicePack", "Definition", "Tools", "Updates")]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
@@ -132,31 +165,47 @@ param(
     # The update classifications to select when installing patches for Windows.
     ${WindowParameterClassificationsToInclude},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Filters out Kbs that don't have an InstallationRebootBehavior of 'NeverReboots' when this is set to true.
     ${WindowParameterExcludeKbsRequiringReboot},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String[]]
     # Kbs to exclude in the patch operation
     ${WindowParameterKbNumbersToExclude},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String[]]
     # Kbs to include in the patch operation
     ${WindowParameterKbNumbersToInclude},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='InstallExpanded')]
+    [Parameter(ParameterSetName='InstallViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.DateTime]
     # This is used to install patches that were published on or before this given max published date.
     ${WindowParameterMaxPatchPublishDate},
+
+    [Parameter(ParameterSetName='InstallViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Install operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='InstallViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Json string supplied to the Install operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -245,12 +294,16 @@ begin {
         }
 
         $mapping = @{
+            Install = 'Az.ConnectedMachine.private\Install-AzConnectedMachinePatch_Install';
             InstallExpanded = 'Az.ConnectedMachine.private\Install-AzConnectedMachinePatch_InstallExpanded';
+            InstallViaIdentity = 'Az.ConnectedMachine.private\Install-AzConnectedMachinePatch_InstallViaIdentity';
             InstallViaIdentityExpanded = 'Az.ConnectedMachine.private\Install-AzConnectedMachinePatch_InstallViaIdentityExpanded';
+            InstallViaJsonFilePath = 'Az.ConnectedMachine.private\Install-AzConnectedMachinePatch_InstallViaJsonFilePath';
+            InstallViaJsonString = 'Az.ConnectedMachine.private\Install-AzConnectedMachinePatch_InstallViaJsonString';
         }
-        if (('InstallExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('Install', 'InstallExpanded', 'InstallViaJsonFilePath', 'InstallViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// be used to connect with related store or compute resource.
         /// </param>
 
+        /// <param name="version">Version of the linked service.
+        /// </param>
+
         /// <param name="connectVia">The integration runtime reference.
         /// </param>
 
@@ -71,7 +74,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="authenticationType">The authentication type to connect to Dynamics CRM server. &#39;Office365&#39; for
         /// online scenario, &#39;Ifd&#39; for on-premises with Ifd scenario,
         /// &#39;AADServicePrincipal&#39; for Server-To-Server authentication in online
-        /// scenario. Type: string (or Expression with resultType string).
+        /// scenario, &#39;Active Directory&#39; for Dynamics on-premises with IFD. Type:
+        /// string (or Expression with resultType string).
+        /// </param>
+
+        /// <param name="domain">The Active Directory domain that will verify user credentials. Type: string
+        /// (or Expression with resultType string).
         /// </param>
 
         /// <param name="username">User name to access the Dynamics CRM instance. Type: string (or Expression
@@ -100,12 +108,15 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// AzureKeyVaultSecretReference.
         /// </param>
 
+        /// <param name="credential">The credential reference containing authentication information.
+        /// </param>
+
         /// <param name="encryptedCredential">The encrypted credential used for authentication. Credentials are encrypted
         /// using the integration runtime credential manager. Type: string.
         /// </param>
-        public DynamicsCrmLinkedService(object deploymentType, object authenticationType, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object hostName = default(object), object port = default(object), object serviceUri = default(object), object organizationName = default(object), object username = default(object), SecretBase password = default(SecretBase), object servicePrincipalId = default(object), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalCredential = default(SecretBase), string encryptedCredential = default(string))
+        public DynamicsCrmLinkedService(object deploymentType, object authenticationType, System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string version = default(string), IntegrationRuntimeReference connectVia = default(IntegrationRuntimeReference), string description = default(string), System.Collections.Generic.IDictionary<string, ParameterSpecification> parameters = default(System.Collections.Generic.IDictionary<string, ParameterSpecification>), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object hostName = default(object), object port = default(object), object serviceUri = default(object), object organizationName = default(object), object domain = default(object), object username = default(object), SecretBase password = default(SecretBase), object servicePrincipalId = default(object), object servicePrincipalCredentialType = default(object), SecretBase servicePrincipalCredential = default(SecretBase), CredentialReference credential = default(CredentialReference), string encryptedCredential = default(string))
 
-        : base(additionalProperties, connectVia, description, parameters, annotations)
+        : base(additionalProperties, version, connectVia, description, parameters, annotations)
         {
             this.DeploymentType = deploymentType;
             this.HostName = hostName;
@@ -113,11 +124,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             this.ServiceUri = serviceUri;
             this.OrganizationName = organizationName;
             this.AuthenticationType = authenticationType;
+            this.Domain = domain;
             this.Username = username;
             this.Password = password;
             this.ServicePrincipalId = servicePrincipalId;
             this.ServicePrincipalCredentialType = servicePrincipalCredentialType;
             this.ServicePrincipalCredential = servicePrincipalCredential;
+            this.Credential = credential;
             this.EncryptedCredential = encryptedCredential;
             CustomInit();
         }
@@ -173,10 +186,18 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Gets or sets the authentication type to connect to Dynamics CRM server.
         /// &#39;Office365&#39; for online scenario, &#39;Ifd&#39; for on-premises with Ifd scenario,
         /// &#39;AADServicePrincipal&#39; for Server-To-Server authentication in online
-        /// scenario. Type: string (or Expression with resultType string).
+        /// scenario, &#39;Active Directory&#39; for Dynamics on-premises with IFD. Type:
+        /// string (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.authenticationType")]
         public object AuthenticationType {get; set; }
+
+        /// <summary>
+        /// Gets or sets the Active Directory domain that will verify user credentials.
+        /// Type: string (or Expression with resultType string).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.domain")]
+        public object Domain {get; set; }
 
         /// <summary>
         /// Gets or sets user name to access the Dynamics CRM instance. Type: string
@@ -220,6 +241,13 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public SecretBase ServicePrincipalCredential {get; set; }
 
         /// <summary>
+        /// Gets or sets the credential reference containing authentication
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "typeProperties.credential")]
+        public CredentialReference Credential {get; set; }
+
+        /// <summary>
         /// Gets or sets the encrypted credential used for authentication. Credentials
         /// are encrypted using the integration runtime credential manager. Type:
         /// string.
@@ -254,6 +282,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
 
+
+            if (this.Credential != null)
+            {
+                this.Credential.Validate();
+            }
 
         }
     }

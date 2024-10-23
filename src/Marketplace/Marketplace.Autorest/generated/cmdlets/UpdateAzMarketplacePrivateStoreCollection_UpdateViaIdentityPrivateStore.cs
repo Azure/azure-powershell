@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create private store collection</summary>
+    /// <summary>Update private store collection</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzMarketplacePrivateStoreCollection_UpdateViaIdentityPrivateStore", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"Create private store collection")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Description(@"Update private store collection")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Generated]
     public partial class UpdateAzMarketplacePrivateStoreCollection_UpdateViaIdentityPrivateStore : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener,
@@ -203,6 +203,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                 // Flush buffer
                 WriteObject(_firstResponse);
             }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -349,7 +367,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                         this.PrivateStoreInputObject.Id += $"/collections/{(global::System.Uri.EscapeDataString(this.CollectionId.ToString()))}";
                         Payload = await this.Client.PrivateStoreCollectionGetViaIdentityWithResult(PrivateStoreInputObject.Id, this, Pipeline);
                         this.UpdatePayload();
-                        await this.Client.PrivateStoreCollectionCreateOrUpdateViaIdentity(PrivateStoreInputObject.Id, Payload, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.PrivateStoreCollectionCreateOrUpdateViaIdentity(PrivateStoreInputObject.Id, Payload, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -360,7 +378,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                         }
                         Payload = await this.Client.PrivateStoreCollectionGetWithResult(PrivateStoreInputObject.PrivateStoreId ?? null, CollectionId, this, Pipeline);
                         this.UpdatePayload();
-                        await this.Client.PrivateStoreCollectionCreateOrUpdate(PrivateStoreInputObject.PrivateStoreId ?? null, CollectionId, Payload, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.PrivateStoreCollectionCreateOrUpdate(PrivateStoreInputObject.PrivateStoreId ?? null, CollectionId, Payload, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -400,6 +418,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
             {
                 this.Payload = (Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection)(this.MyInvocation?.BoundParameters["Payload"]);
             }
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

@@ -25,8 +25,8 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: Guid("FE330703-623A-4C08-9DA7-1C63B4058034")]
-[assembly: AssemblyVersion("4.1.3")]
-[assembly: AssemblyFileVersion("4.1.3")]
+[assembly: AssemblyVersion("4.2.1")]
+[assembly: AssemblyFileVersion("4.2.1")]
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Test")]
 #endif

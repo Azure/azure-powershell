@@ -14,14 +14,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IFetchTieringCostOperations
     {
         /// <summary>
-        /// Provides the details of the tiering related sizes and cost.
-        /// Status of the operation can be fetched using GetTieringCostOperationStatus
-        /// API and result using GetTieringCostOperationResult API.
+        /// Provides the details of the tiering related sizes and cost. Status of the
+        /// operation can be fetched using GetTieringCostOperationStatus API and result
+        /// using GetTieringCostOperationResult API.
         /// </summary>
         /// <remarks>
-        /// Provides the details of the tiering related sizes and cost.
-        /// Status of the operation can be fetched using GetTieringCostOperationStatus
-        /// API and result using GetTieringCostOperationResult API.
+        /// Provides the details of the tiering related sizes and cost. Status of the
+        /// operation can be fetched using GetTieringCostOperationStatus API and result
+        /// using GetTieringCostOperationResult API.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group where the recovery services vault is
@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<TieringCostInfo,FetchTieringCostPostHeaders>> PostWithHttpMessagesAsync(string resourceGroupName, string vaultName, FetchTieringCostInfoRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Provides the details of the tiering related sizes and cost.
-        /// Status of the operation can be fetched using GetTieringCostOperationStatus
-        /// API and result using GetTieringCostOperationResult API.
+        /// Provides the details of the tiering related sizes and cost. Status of the
+        /// operation can be fetched using GetTieringCostOperationStatus API and result
+        /// using GetTieringCostOperationResult API.
         /// </summary>
         /// <remarks>
-        /// Provides the details of the tiering related sizes and cost.
-        /// Status of the operation can be fetched using GetTieringCostOperationStatus
-        /// API and result using GetTieringCostOperationResult API.
+        /// Provides the details of the tiering related sizes and cost. Status of the
+        /// operation can be fetched using GetTieringCostOperationStatus API and result
+        /// using GetTieringCostOperationResult API.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group where the recovery services vault is

@@ -26,7 +26,7 @@ The **Import-AzRedisCache** cmdlet imports data from blobs into Azure Redis Cach
 
 ### Example 1: Import data
 ```powershell
-Import-AzRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -Files @("https://mystorageaccount.blob.core.windows.net/container22/blobname?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd") -Force
+Import-AzRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -Files @("https://mystorageaccount.blob.core.windows.net/container22/blobname") -Force
 ```
 
 This command imports data from the blob that is specified by the SAS URL into Azure Redis Cache.

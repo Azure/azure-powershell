@@ -206,7 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAuthorizationRule
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAuthorizationRule
 
 ## NOTES
 

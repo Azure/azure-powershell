@@ -22,7 +22,7 @@ The **Set-AzPrivateEndpoint** cmdlet updates a private endpoint.
 
 ## EXAMPLES
 
-### 1: Creates a private endpoint and replace one of its subnets to another
+### Example 1: Creates a private endpoint and replace one of its subnets to another
 ```powershell
 $virtualNetwork = Get-AzVirtualNetwork -ResourceName MyVirtualNetwork -ResourceGroupName TestResourceGroup
 $plsConnection= New-AzPrivateLinkServiceConnection -Name MyPLSConnections -PrivateLinkServiceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Network/privateLinkServices/privateLinkService" -RequestMessage "Please Approve my request"

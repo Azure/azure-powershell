@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.WebSites
+Module Name: Az.Websites
 ms.assetid: 297071E5-FC06-4493-BCC2-37D4929E4025
 online version: https://learn.microsoft.com/powershell/module/az.websites/restart-azwebapp
 schema: 2.0.0
@@ -142,5 +142,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Start-AzWebApp](./Start-AzWebApp.md)
 
 [Stop-AzWebApp](./Stop-AzWebApp.md)
-
-

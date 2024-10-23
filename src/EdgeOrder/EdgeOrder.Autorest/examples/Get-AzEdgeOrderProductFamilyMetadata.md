@@ -2,7 +2,9 @@
 ```powershell
 $productFamilyMeta = Get-AzEdgeOrderProductFamilyMetadata -SubscriptionId SubscriptionId
 $productFamilyMeta.HierarchyInformation
+```
 
+```output
 ConfigurationName ProductFamilyName ProductLineName ProductName
 ----------------- ----------------- --------------- -----------
                   azurestackedge

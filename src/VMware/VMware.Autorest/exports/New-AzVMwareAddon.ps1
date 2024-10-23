@@ -20,7 +20,7 @@ Create or update a addon in a private cloud
 .Description
 Create or update a addon in a private cloud
 .Example
-$data = New-AzVMwareAddonVrPropertiesObject -VrsCount 2
+$data = New-AzVMwareAddonVrPropertyObject -VrsCount 2
 New-AzVMwareAddon -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Property $data
 
 .Outputs
@@ -31,7 +31,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 PROPERTY <IAddonProperties>: The properties of an addon resource To construct, see NOTES section for PROPERTY properties and create a hash table.
-  AddonType <String>: The type of private cloud addon
+  AddonType <String>: Addon type
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareaddon
 #>
@@ -156,7 +156,7 @@ begin {
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

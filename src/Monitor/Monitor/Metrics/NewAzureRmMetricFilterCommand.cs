@@ -18,7 +18,6 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// <summary>
     /// Create a metric dimension filter
     /// </summary>
-    [Microsoft.WindowsAzure.Commands.Common.CustomAttributes.GenericBreakingChangeWithVersion("Parameter DefaultProfile will be removed", "12.0.0", "6.0.0", "2024/05/21")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricFilter"), OutputType(typeof(string))]
     public class NewAzureRmMetricFilterCommand : MonitorCmdletBase
     {

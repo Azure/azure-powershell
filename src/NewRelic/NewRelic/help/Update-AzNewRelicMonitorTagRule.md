@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NewRelic-help.xml
 Module Name: Az.NewRelic
 online version: https://learn.microsoft.com/powershell/module/az.newrelic/update-aznewrelicmonitortagrule
 schema: 2.0.0
@@ -15,19 +15,41 @@ Update a TagRule
 ### UpdateExpanded (Default)
 ```
 Update-AzNewRelicMonitorTagRule -MonitorName <String> -ResourceGroupName <String> -RuleSetName <String>
- [-SubscriptionId <String>] [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <SendAadLogsStatus>]
- [-LogRuleSendActivityLog <SendActivityLogsStatus>] [-LogRuleSendSubscriptionLog <SendSubscriptionLogsStatus>]
- [-MetricRuleFilteringTag <IFilteringTag[]>] [-MetricRuleSendMetric <SendMetricsStatus>]
- [-MetricRuleUserEmail <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <String>]
+ [-LogRuleSendActivityLog <String>] [-LogRuleSendSubscriptionLog <String>]
+ [-MetricRuleFilteringTag <IFilteringTag[]>] [-MetricRuleSendMetric <String>] [-MetricRuleUserEmail <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzNewRelicMonitorTagRule -MonitorName <String> -ResourceGroupName <String> -RuleSetName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzNewRelicMonitorTagRule -MonitorName <String> -ResourceGroupName <String> -RuleSetName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityMonitorExpanded
+```
+Update-AzNewRelicMonitorTagRule -RuleSetName <String> -MonitorInputObject <INewRelicIdentity>
+ [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <String>] [-LogRuleSendActivityLog <String>]
+ [-LogRuleSendSubscriptionLog <String>] [-MetricRuleFilteringTag <IFilteringTag[]>]
+ [-MetricRuleSendMetric <String>] [-MetricRuleUserEmail <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNewRelicMonitorTagRule -InputObject <INewRelicIdentity> [-LogRuleFilteringTag <IFilteringTag[]>]
- [-LogRuleSendAadLog <SendAadLogsStatus>] [-LogRuleSendActivityLog <SendActivityLogsStatus>]
- [-LogRuleSendSubscriptionLog <SendSubscriptionLogsStatus>] [-MetricRuleFilteringTag <IFilteringTag[]>]
- [-MetricRuleSendMetric <SendMetricsStatus>] [-MetricRuleUserEmail <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LogRuleSendAadLog <String>] [-LogRuleSendActivityLog <String>] [-LogRuleSendSubscriptionLog <String>]
+ [-MetricRuleFilteringTag <IFilteringTag[]>] [-MetricRuleSendMetric <String>] [-MetricRuleUserEmail <String>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +65,7 @@ Update-AzNewRelicMonitorTagRule -MonitorName test-03 -ResourceGroupName ps-test 
 ```output
 Name    SystemDataCreatedAt  SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName RetryAfter
 ----    -------------------  -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----------------- ----------
-default 6/28/2023 9:29:45 AM v-jiaji@microsoft.com User                    6/29/2023 8:12:51 AM     v-jiaji@microsoft.com    User                         ps-test
+default 6/28/2023 9:29:45 AM user1@outlook.com User                    6/29/2023 8:12:51 AM     user1@outlook.com    User                         ps-test
 ```
 
 Update specific TagRule with specified monitor resource
@@ -68,7 +90,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
@@ -82,16 +103,45 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LogRuleFilteringTag
 List of filtering tags to be used for capturing logs.
 This only takes effect if SendActivityLogs flag is enabled.
 If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources.
 If Include actions are specified, the rules will only include resources with the associated tags.
-To construct, see NOTES section for LOGRULEFILTERINGTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IFilteringTag[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IFilteringTag[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMonitorExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -105,8 +155,8 @@ Accept wildcard characters: False
 Flag specifying if AAD logs should be sent for the Monitor resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SendAadLogsStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMonitorExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -120,8 +170,8 @@ Accept wildcard characters: False
 Flag specifying if activity logs from Azure resources should be sent for the Monitor resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SendActivityLogsStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMonitorExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -135,8 +185,8 @@ Accept wildcard characters: False
 Flag specifying if subscription logs should be sent for the Monitor resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SendSubscriptionLogsStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMonitorExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -148,11 +198,10 @@ Accept wildcard characters: False
 
 ### -MetricRuleFilteringTag
 List of filtering tags to be used for capturing metrics.
-To construct, see NOTES section for METRICRULEFILTERINGTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.IFilteringTag[]
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.IFilteringTag[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMonitorExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -166,8 +215,8 @@ Accept wildcard characters: False
 Flag specifying if metrics should be sent for the Monitor resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.SendMetricsStatus
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMonitorExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -182,7 +231,7 @@ User Email
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMonitorExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -192,12 +241,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MonitorInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
+Parameter Sets: UpdateViaIdentityMonitorExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MonitorName
 Name of the Monitors resource
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -213,7 +277,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -228,7 +292,7 @@ Name of the TagRule
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityMonitorExpanded
 Aliases:
 
 Required: True
@@ -243,7 +307,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
@@ -293,33 +357,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.ITagRule
+### Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <INewRelicIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Name of the Monitors resource
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: Name of the TagRule
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`LOGRULEFILTERINGTAG <IFilteringTag[]>`: List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
-  - `[Action <TagAction?>]`: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
-  - `[Name <String>]`: The name (also known as the key) of the tag.
-  - `[Value <String>]`: The value of the tag.
-
-`METRICRULEFILTERINGTAG <IFilteringTag[]>`: List of filtering tags to be used for capturing metrics.
-  - `[Action <TagAction?>]`: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
-  - `[Name <String>]`: The name (also known as the key) of the tag.
-  - `[Value <String>]`: The value of the tag.
-
 ## RELATED LINKS
-

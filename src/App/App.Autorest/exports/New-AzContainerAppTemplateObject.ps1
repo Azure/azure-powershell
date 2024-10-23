@@ -70,7 +70,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbe[]]
     # List of probes for the container.
-    # To construct, see NOTES section for PROBE properties and create a hash table.
     ${Probe},
 
     [Parameter()]
@@ -89,7 +88,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IEnvironmentVar[]]
     # Container environment variables.
-    # To construct, see NOTES section for ENV properties and create a hash table.
     ${Env},
 
     [Parameter()]
@@ -122,7 +120,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolumeMount[]]
     # Container volume mounts.
-    # To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
     ${VolumeMount}
 )
 

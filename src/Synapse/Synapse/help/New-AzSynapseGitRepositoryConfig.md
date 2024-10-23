@@ -15,7 +15,8 @@ Creates Git repository configuration.
 ```
 New-AzSynapseGitRepositoryConfig -RepositoryType <String> [-HostName <String>] -AccountName <String>
  [-ProjectName <String>] -RepositoryName <String> -CollaborationBranch <String> [-RootFolder <String>]
- [-TenantId <Guid>] [-LastCommitId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-TenantId <Guid>] [-LastCommitId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +27,7 @@ This **New-AzSynapseGitRepositoryConfig** cmdlets creates a Git repository confi
 ### Example 1
 ```powershell
 $config = New-AzSynapseGitRepositoryConfig -RepositoryType GitHub -AccountName ContosoAccount -RepositoryName ContosoRepo -CollaborationBranch main
-$password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+$password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
 New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -AsJob -GitRepository $config
 ```

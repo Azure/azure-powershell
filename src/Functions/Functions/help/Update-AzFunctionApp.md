@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Functions-help.xml
 Module Name: Az.Functions
 online version: https://learn.microsoft.com/powershell/module/az.functions/update-azfunctionapp
 schema: 2.0.0
@@ -14,18 +14,18 @@ Updates a function app.
 
 ### ByName (Default)
 ```
-Update-AzFunctionApp -Name <String> -ResourceGroupName <String> [-ApplicationInsightsKey <String>]
- [-ApplicationInsightsName <String>] [-Force] [-IdentityID <String[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-PlanName <String>] [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFunctionApp -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>] [-PlanName <String>]
+ [-Force] [-ApplicationInsightsName <String>] [-ApplicationInsightsKey <String>] [-Tag <Hashtable>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityID <String[]>] [-DefaultProfile <PSObject>] [-NoWait]
+ [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Update-AzFunctionApp -InputObject <ISite> [-ApplicationInsightsKey <String>]
- [-ApplicationInsightsName <String>] [-Force] [-IdentityID <String[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-PlanName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFunctionApp [-PlanName <String>] [-Force] [-ApplicationInsightsName <String>]
+ [-ApplicationInsightsKey <String>] [-Tag <Hashtable>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityID <String[]>] -InputObject <ISite> [-DefaultProfile <PSObject>] [-NoWait] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,7 +110,6 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 
-
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -179,7 +178,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -317,13 +316,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20231201.ISite
 
 ## NOTES
 
 ## RELATED LINKS
-

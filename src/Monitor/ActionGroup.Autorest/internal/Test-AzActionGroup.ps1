@@ -146,7 +146,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -164,7 +163,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IArmRoleReceiver[]]
     # The list of ARM role receivers that are part of this action group.
     # Roles are Azure RBAC roles and only built-in roles are supported.
-    # To construct, see NOTES section for ARMROLERECEIVER properties and create a hash table.
     ${ArmRoleReceiver},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -173,7 +171,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAutomationRunbookReceiver[]]
     # The list of AutomationRunbook receivers that are part of this action group.
-    # To construct, see NOTES section for AUTOMATIONRUNBOOKRECEIVER properties and create a hash table.
     ${AutomationRunbookReceiver},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -182,7 +179,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureAppPushReceiver[]]
     # The list of AzureAppPush receivers that are part of this action group.
-    # To construct, see NOTES section for AZUREAPPPUSHRECEIVER properties and create a hash table.
     ${AzureAppPushReceiver},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -191,7 +187,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureFunctionReceiver[]]
     # The list of azure function receivers that are part of this action group.
-    # To construct, see NOTES section for AZUREFUNCTIONRECEIVER properties and create a hash table.
     ${AzureFunctionReceiver},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -200,7 +195,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEmailReceiver[]]
     # The list of email receivers that are part of this action group.
-    # To construct, see NOTES section for EMAILRECEIVER properties and create a hash table.
     ${EmailReceiver},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -209,7 +203,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEventHubReceiver[]]
     # The list of event hub receivers that are part of this action group.
-    # To construct, see NOTES section for EVENTHUBRECEIVER properties and create a hash table.
     ${EventHubReceiver},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -218,7 +211,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IItsmReceiver[]]
     # The list of ITSM receivers that are part of this action group.
-    # To construct, see NOTES section for ITSMRECEIVER properties and create a hash table.
     ${ItsmReceiver},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -227,7 +219,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ILogicAppReceiver[]]
     # The list of logic app receivers that are part of this action group.
-    # To construct, see NOTES section for LOGICAPPRECEIVER properties and create a hash table.
     ${LogicAppReceiver},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -236,7 +227,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.ISmsReceiver[]]
     # The list of SMS receivers that are part of this action group.
-    # To construct, see NOTES section for SMSRECEIVER properties and create a hash table.
     ${SmsReceiver},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -245,7 +235,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IVoiceReceiver[]]
     # The list of voice receivers that are part of this action group.
-    # To construct, see NOTES section for VOICERECEIVER properties and create a hash table.
     ${VoiceReceiver},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -254,7 +243,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IWebhookReceiver[]]
     # The list of webhook receivers that are part of this action group.
-    # To construct, see NOTES section for WEBHOOKRECEIVER properties and create a hash table.
     ${WebhookReceiver},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -345,7 +333,13 @@ begin {
             CreateViaJsonString = 'Az.ActionGroup.private\Test-AzActionGroup_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

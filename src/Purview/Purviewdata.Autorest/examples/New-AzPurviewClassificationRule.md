@@ -5,7 +5,9 @@ $reg2 = New-AzPurviewRegexClassificationRulePatternObject -Pattern '^col2$'
 $regexarr = @($reg1, $reg2)
 $obj = New-AzPurviewCustomClassificationRuleObject -Kind 'Custom' -ClassificationName ClassificationRule4 -RuleStatus 'Enabled' -Description 'This is a rule2' -ColumnPattern $regexarr
 New-AzPurviewClassificationRule -Endpoint https://parv-brs-2.purview.azure.com -ClassificationRuleName ClassificationRule5 -Body $obj
+```
 
+```output
 ClassificationAction   : Keep
 ClassificationName     : ClassificationRule4
 ColumnPattern          : {{

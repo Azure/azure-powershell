@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
 
         /// <param name="unit">Unit of the usage.
-        /// Possible values include: 'Count', 'Bytes', 'Seconds', 'Percent',
-        /// 'CountPerSecond', 'BytesPerSecond'</param>
+        /// Possible values include: &#39;Count&#39;, &#39;Bytes&#39;, &#39;Seconds&#39;, &#39;Percent&#39;,
+        /// &#39;CountPerSecond&#39;, &#39;BytesPerSecond&#39;</param>
 
         /// <param name="quotaPeriod">Quota period of usage.
         /// </param>

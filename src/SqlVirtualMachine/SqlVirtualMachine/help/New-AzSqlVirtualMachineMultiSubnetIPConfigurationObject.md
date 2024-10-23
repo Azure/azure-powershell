@@ -14,7 +14,8 @@ Create an in-memory object for MultiSubnetIPConfiguration.
 
 ```
 New-AzSqlVirtualMachineMultiSubnetIPConfigurationObject -SqlVirtualMachineInstance <String>
- [-PrivateIPAddressIpaddress <String>] [-PrivateIPAddressSubnetResourceId <String>] [<CommonParameters>]
+ [-PrivateIPAddressIpaddress <String>] [-PrivateIPAddressSubnetResourceId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +96,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.MultiSubnetIPConfiguration
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

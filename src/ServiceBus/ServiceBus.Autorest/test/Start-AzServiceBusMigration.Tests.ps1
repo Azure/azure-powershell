@@ -1,21 +1,20 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Start-AzServiceBusMigration'))
-{
-  $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-  if (-Not (Test-Path -Path $loadEnvPath)) {
-      $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
-  }
-  . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Start-AzServiceBusMigration.Recording.json'
-  $currentPath = $PSScriptRoot
-  while(-not $mockingPath) {
-      $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
-      $currentPath = Split-Path -Path $currentPath -Parent
-  }
-  . ($mockingPath | Select-Object -First 1).FullName
+if (($null -eq $TestName) -or ($TestName -contains 'Start-AzServiceBusMigration')) {
+    $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
+    if (-Not (Test-Path -Path $loadEnvPath)) {
+        $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+    }
+    . ($loadEnvPath)
+    $TestRecordingFile = Join-Path $PSScriptRoot 'Start-AzServiceBusMigration.Recording.json'
+    $currentPath = $PSScriptRoot
+    while (-not $mockingPath) {
+        $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
+        $currentPath = Split-Path -Path $currentPath -Parent
+    }
+    . ($mockingPath | Select-Object -First 1).FullName
 }
 
 Describe 'Start-AzServiceBusMigration' {
-    It 'CreateExpanded'  {
+    It 'CreateExpanded' -skip:$($env.secondaryLocation -eq '') {
         $migrationConfig = Start-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace -PostMigrationName $env.postMigrationName -TargetNamespace $env.migrationSecondaryNamespaceResourceId
         $migrationConfig.Name | Should -Be $env.migrationPrimaryNamespace
         $migrationConfig.PostMigrationName | Should -Be $env.postMigrationName
@@ -24,18 +23,18 @@ Describe 'Start-AzServiceBusMigration' {
         do {
             $migrationConfig = Get-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace
             Start-TestSleep 10
-        } while($migrationConfig.ProvisioningState -ne 'Succeeded')
+        } while ($migrationConfig.ProvisioningState -ne 'Succeeded')
 
         Stop-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace
 
         do {
             $migrationConfig = Get-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace
             Start-TestSleep 10
-        } while($migrationConfig.ProvisioningState -ne 'Succeeded')
+        } while ($migrationConfig.ProvisioningState -ne 'Succeeded')
 
         $migrationConfig.TargetNamespace | Should -Be ""
 
-        { Remove-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace } | Should -Throw
+        { Remove-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace -ErrorAction Stop } | Should -Throw
 
         $migrationConfig = Start-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace -PostMigrationName $env.postMigrationName -TargetNamespace $env.migrationSecondaryNamespaceResourceId
         $migrationConfig.Name | Should -Be $env.migrationPrimaryNamespace
@@ -45,7 +44,7 @@ Describe 'Start-AzServiceBusMigration' {
         do {
             $migrationConfig = Get-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace
             Start-TestSleep 10
-        } while($migrationConfig.ProvisioningState -ne 'Succeeded')
+        } while ($migrationConfig.ProvisioningState -ne 'Succeeded')
 
         Complete-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace
 

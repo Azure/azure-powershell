@@ -1382,7 +1382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to create a firmware.</summary>
+        /// <summary>The operation to Create a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -1435,7 +1435,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to create a firmware.</summary>
+        /// <summary>The operation to Create a firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Details of the firmware being created or updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1498,7 +1498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to create a firmware.</summary>
+        /// <summary>The operation to Create a firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Details of the firmware being created or updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1558,7 +1558,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to create a firmware.</summary>
+        /// <summary>The operation to Create a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -1610,7 +1610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to create a firmware.</summary>
+        /// <summary>The operation to Create a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -1659,7 +1659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to create a firmware.</summary>
+        /// <summary>The operation to Create a firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -3402,7 +3402,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to update firmware.</summary>
+        /// <summary>The operation to Update firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -3454,7 +3454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to update firmware.</summary>
+        /// <summary>The operation to Update firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Details of the firmware being created or updated.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3516,7 +3516,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to update firmware.</summary>
+        /// <summary>The operation to Update firmware.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Details of the firmware being created or updated.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3576,7 +3576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to update firmware.</summary>
+        /// <summary>The operation to Update firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -3627,7 +3627,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to update firmware.</summary>
+        /// <summary>The operation to Update firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -3676,7 +3676,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to update firmware.</summary>
+        /// <summary>The operation to Update firmware.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -7561,7 +7561,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to update a firmware analysis workspaces.</summary>
+        /// <summary>The operation to Update a firmware analysis workspaces.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -7610,7 +7610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to update a firmware analysis workspaces.</summary>
+        /// <summary>The operation to Update a firmware analysis workspaces.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters when updating a firmware analysis workspace.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7669,7 +7669,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to update a firmware analysis workspaces.</summary>
+        /// <summary>The operation to Update a firmware analysis workspaces.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters when updating a firmware analysis workspace.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7726,7 +7726,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to update a firmware analysis workspaces.</summary>
+        /// <summary>The operation to Update a firmware analysis workspaces.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -7774,7 +7774,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to update a firmware analysis workspaces.</summary>
+        /// <summary>The operation to Update a firmware analysis workspaces.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>
@@ -7820,7 +7820,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis
             }
         }
 
-        /// <summary>The operation to update a firmware analysis workspaces.</summary>
+        /// <summary>The operation to Update a firmware analysis workspaces.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">The name of the firmware analysis workspace.</param>

@@ -14,7 +14,8 @@ Create an in-memory object for PrometheusOSProviderInstanceProperties.
 
 ```
 New-AzWorkloadsProviderPrometheusOSInstanceObject [-PrometheusUrl <String>] [-SapSid <String>]
- [-SslCertificateUri <String>] [-SslPreference <SslPreference>] [<CommonParameters>]
+ [-SslCertificateUri <String>] [-SslPreference <SslPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,7 +87,7 @@ Accept wildcard characters: False
 Gets or sets certificate preference if secure communication is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SslPreference
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference
 Parameter Sets: (All)
 Aliases:
 
@@ -104,10 +105,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusOSProviderInstanceProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.PrometheusOSProviderInstanceProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

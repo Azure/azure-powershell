@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// Creates a new instance of <see cref="IdentityProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="IdentityProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -98,9 +100,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).PrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).TenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes.CreateFrom);
+            if (content.Contains("PrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).PrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).TenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -118,9 +129,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).PrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).TenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes.CreateFrom);
+            if (content.Contains("PrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).PrincipalId = (string) content.GetValueForProperty("PrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).PrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).TenantId = (string) content.GetValueForProperty("TenantId",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).TenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IIdentityPropertiesInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.ManagedIdentityTypes.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

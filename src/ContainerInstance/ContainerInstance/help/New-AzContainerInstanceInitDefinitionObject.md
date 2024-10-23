@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ContainerInstance-help.xml
 Module Name: Az.ContainerInstance
 online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceInitDefinitionObject
 schema: 2.0.0
@@ -126,22 +126,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ENVIRONMENTVARIABLE <IEnvironmentVariable[]>`: The environment variables to set in the init container.
-  - `Name <String>`: The name of the environment variable.
-  - `[SecureValue <String>]`: The value of the secure environment variable.
-  - `[Value <String>]`: The value of the environment variable.
-
-`VOLUMEMOUNT <IVolumeMount[]>`: The volume mounts available to the init container.
-  - `MountPath <String>`: The path within the container where the volume should be mounted. Must not contain colon (:).
-  - `Name <String>`: The name of the volume mount.
-  - `[ReadOnly <Boolean?>]`: The flag indicating whether the volume mount is read-only.
-
 ## RELATED LINKS
-
