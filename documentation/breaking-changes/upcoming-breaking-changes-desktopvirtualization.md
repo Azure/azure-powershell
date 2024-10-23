@@ -2,7 +2,7 @@
 
 ## Az.DesktopVirtualization
 
-The following breaking changes are caused by the generation tool (autorest.powershell) upgrading. The following cmdlets were affected this release:
+The following breaking changes are caused by the generation tool (autorest.powershell) upgrading. The affected cmdlets are listed below:
 - **Get-AzWvdApplication**
 - **Get-AzWvdApplicationGroup**
 - **Get-AzWvdDesktop**
