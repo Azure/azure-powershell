@@ -218,9 +218,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        public static DataBoxEdgeDevice Update(this IDevicesOperations operations, string deviceName, string resourceGroupName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>))
+        public static DataBoxEdgeDevice Update(this IDevicesOperations operations, string deviceName, string resourceGroupName, DataBoxEdgeDevicePatch parameters)
         {
-                return ((IDevicesOperations)operations).UpdateAsync(deviceName, resourceGroupName, tags).GetAwaiter().GetResult();
+                return ((IDevicesOperations)operations).UpdateAsync(deviceName, resourceGroupName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -238,9 +238,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<DataBoxEdgeDevice> UpdateAsync(this IDevicesOperations operations, string deviceName, string resourceGroupName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<DataBoxEdgeDevice> UpdateAsync(this IDevicesOperations operations, string deviceName, string resourceGroupName, DataBoxEdgeDevicePatch parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(deviceName, resourceGroupName, tags, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(deviceName, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -447,9 +447,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        public static void CreateOrUpdateSecuritySettings(this IDevicesOperations operations, string deviceName, string resourceGroupName, AsymmetricEncryptedSecret deviceAdminPassword)
+        public static void CreateOrUpdateSecuritySettings(this IDevicesOperations operations, string deviceName, string resourceGroupName, SecuritySettings securitySettings)
         {
-                ((IDevicesOperations)operations).CreateOrUpdateSecuritySettingsAsync(deviceName, resourceGroupName, deviceAdminPassword).GetAwaiter().GetResult();
+                ((IDevicesOperations)operations).CreateOrUpdateSecuritySettingsAsync(deviceName, resourceGroupName, securitySettings).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -467,9 +467,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task CreateOrUpdateSecuritySettingsAsync(this IDevicesOperations operations, string deviceName, string resourceGroupName, AsymmetricEncryptedSecret deviceAdminPassword, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task CreateOrUpdateSecuritySettingsAsync(this IDevicesOperations operations, string deviceName, string resourceGroupName, SecuritySettings securitySettings, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.CreateOrUpdateSecuritySettingsWithHttpMessagesAsync(deviceName, resourceGroupName, deviceAdminPassword, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.CreateOrUpdateSecuritySettingsWithHttpMessagesAsync(deviceName, resourceGroupName, securitySettings, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets information about the availability of updates based on the last scan
@@ -526,9 +526,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        public static UploadCertificateResponse UploadCertificate(this IDevicesOperations operations, string deviceName, string resourceGroupName, string certificate, string authenticationType = default(string))
+        public static UploadCertificateResponse UploadCertificate(this IDevicesOperations operations, string deviceName, string resourceGroupName, UploadCertificateRequest parameters)
         {
-                return ((IDevicesOperations)operations).UploadCertificateAsync(deviceName, resourceGroupName, certificate, authenticationType).GetAwaiter().GetResult();
+                return ((IDevicesOperations)operations).UploadCertificateAsync(deviceName, resourceGroupName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -546,9 +546,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<UploadCertificateResponse> UploadCertificateAsync(this IDevicesOperations operations, string deviceName, string resourceGroupName, string certificate, string authenticationType = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<UploadCertificateResponse> UploadCertificateAsync(this IDevicesOperations operations, string deviceName, string resourceGroupName, UploadCertificateRequest parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UploadCertificateWithHttpMessagesAsync(deviceName, resourceGroupName, certificate, authenticationType, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UploadCertificateWithHttpMessagesAsync(deviceName, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -748,9 +748,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        public static void BeginCreateOrUpdateSecuritySettings(this IDevicesOperations operations, string deviceName, string resourceGroupName, AsymmetricEncryptedSecret deviceAdminPassword)
+        public static void BeginCreateOrUpdateSecuritySettings(this IDevicesOperations operations, string deviceName, string resourceGroupName, SecuritySettings securitySettings)
         {
-                ((IDevicesOperations)operations).BeginCreateOrUpdateSecuritySettingsAsync(deviceName, resourceGroupName, deviceAdminPassword).GetAwaiter().GetResult();
+                ((IDevicesOperations)operations).BeginCreateOrUpdateSecuritySettingsAsync(deviceName, resourceGroupName, securitySettings).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -768,9 +768,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginCreateOrUpdateSecuritySettingsAsync(this IDevicesOperations operations, string deviceName, string resourceGroupName, AsymmetricEncryptedSecret deviceAdminPassword, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task BeginCreateOrUpdateSecuritySettingsAsync(this IDevicesOperations operations, string deviceName, string resourceGroupName, SecuritySettings securitySettings, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginCreateOrUpdateSecuritySettingsWithHttpMessagesAsync(deviceName, resourceGroupName, deviceAdminPassword, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            (await operations.BeginCreateOrUpdateSecuritySettingsWithHttpMessagesAsync(deviceName, resourceGroupName, securitySettings, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
         /// Gets all the Data Box Edge/Data Box Gateway devices in a subscription.

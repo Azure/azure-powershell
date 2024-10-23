@@ -725,8 +725,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='tags'>
-        /// The tags attached to the Data Box Edge/Gateway resource.
+        /// <param name='parameters'>
+        /// The resource parameters.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -749,12 +749,16 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataBoxEdgeDevice>> UpdateWithHttpMessagesAsync(string deviceName, string resourceGroupName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataBoxEdgeDevice>> UpdateWithHttpMessagesAsync(string deviceName, string resourceGroupName, DataBoxEdgeDevicePatch parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (parameters == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+            }
             if (deviceName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "deviceName");
@@ -775,11 +779,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            DataBoxEdgeDevicePatch parameters = new DataBoxEdgeDevicePatch();
-            if(tags != null)
-            {
-                parameters.Tags = tags;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1447,11 +1446,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='deviceAdminPassword'>
-        /// Device administrator password as an encrypted string (encrypted using RSA
-        /// PKCS #1) is used to sign into the  local web UI of the device. The Actual
-        /// password should have at least 8 characters that are a combination of 
-        /// uppercase, lowercase, numeric, and special characters.
+        /// <param name='securitySettings'>
+        /// The security settings.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1459,10 +1455,10 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> CreateOrUpdateSecuritySettingsWithHttpMessagesAsync(string deviceName, string resourceGroupName, AsymmetricEncryptedSecret deviceAdminPassword, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> CreateOrUpdateSecuritySettingsWithHttpMessagesAsync(string deviceName, string resourceGroupName, SecuritySettings securitySettings, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginCreateOrUpdateSecuritySettingsWithHttpMessagesAsync(deviceName, resourceGroupName, deviceAdminPassword, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse _response = await BeginCreateOrUpdateSecuritySettingsWithHttpMessagesAsync(deviceName, resourceGroupName, securitySettings, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1690,11 +1686,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='authenticationType'>
-        /// The authentication type.
-        /// </param>
-        /// <param name='certificate'>
-        /// The base64 encoded certificate raw data.
+        /// <param name='parameters'>
+        /// The upload certificate request.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1717,12 +1710,20 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<UploadCertificateResponse>> UploadCertificateWithHttpMessagesAsync(string deviceName, string resourceGroupName, string certificate, string authenticationType = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<UploadCertificateResponse>> UploadCertificateWithHttpMessagesAsync(string deviceName, string resourceGroupName, UploadCertificateRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (parameters == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
             if (deviceName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "deviceName");
@@ -1743,12 +1744,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            UploadCertificateRequest parameters = new UploadCertificateRequest();
-            if(authenticationType != null||certificate != null)
-            {
-                parameters.AuthenticationType = authenticationType;
-                parameters.Certificate = certificate;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2921,11 +2916,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='deviceAdminPassword'>
-        /// Device administrator password as an encrypted string (encrypted using RSA
-        /// PKCS #1) is used to sign into the  local web UI of the device. The Actual
-        /// password should have at least 8 characters that are a combination of 
-        /// uppercase, lowercase, numeric, and special characters.
+        /// <param name='securitySettings'>
+        /// The security settings.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2945,12 +2937,20 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginCreateOrUpdateSecuritySettingsWithHttpMessagesAsync(string deviceName, string resourceGroupName, AsymmetricEncryptedSecret deviceAdminPassword, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginCreateOrUpdateSecuritySettingsWithHttpMessagesAsync(string deviceName, string resourceGroupName, SecuritySettings securitySettings, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (securitySettings == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "securitySettings");
+            }
+            if (securitySettings != null)
+            {
+                securitySettings.Validate();
+            }
             if (deviceName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "deviceName");
@@ -2971,11 +2971,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            SecuritySettings securitySettings = new SecuritySettings();
-            if(deviceAdminPassword != null)
-            {
-                securitySettings.DeviceAdminPassword = deviceAdminPassword;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

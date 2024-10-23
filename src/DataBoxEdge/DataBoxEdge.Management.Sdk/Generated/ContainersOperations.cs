@@ -510,8 +510,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='dataFormat'>
-        /// DataFormat for Container
+        /// <param name='container'>
+        /// The container properties.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -519,10 +519,10 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Container>> CreateOrUpdateWithHttpMessagesAsync(string deviceName, string storageAccountName, string containerName, string resourceGroupName, string dataFormat, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Container>> CreateOrUpdateWithHttpMessagesAsync(string deviceName, string storageAccountName, string containerName, string resourceGroupName, Container container, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<Container> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(deviceName, storageAccountName, containerName, resourceGroupName, dataFormat, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<Container> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(deviceName, storageAccountName, containerName, resourceGroupName, container, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -597,8 +597,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='dataFormat'>
-        /// DataFormat for Container
+        /// <param name='container'>
+        /// The container properties.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -621,12 +621,20 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Container>> BeginCreateOrUpdateWithHttpMessagesAsync(string deviceName, string storageAccountName, string containerName, string resourceGroupName, string dataFormat, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Container>> BeginCreateOrUpdateWithHttpMessagesAsync(string deviceName, string storageAccountName, string containerName, string resourceGroupName, Container container, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (container == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "container");
+            }
+            if (container != null)
+            {
+                container.Validate();
+            }
             if (deviceName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "deviceName");
@@ -657,11 +665,6 @@ namespace Microsoft.Azure.Management.DataBoxEdge
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
 
-            Container container = new Container();
-            if(dataFormat != null)
-            {
-                container.DataFormat = dataFormat;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

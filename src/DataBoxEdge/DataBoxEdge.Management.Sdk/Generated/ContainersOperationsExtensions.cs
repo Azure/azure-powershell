@@ -128,9 +128,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        public static Container CreateOrUpdate(this IContainersOperations operations, string deviceName, string storageAccountName, string containerName, string resourceGroupName, string dataFormat)
+        public static Container CreateOrUpdate(this IContainersOperations operations, string deviceName, string storageAccountName, string containerName, string resourceGroupName, Container container)
         {
-                return ((IContainersOperations)operations).CreateOrUpdateAsync(deviceName, storageAccountName, containerName, resourceGroupName, dataFormat).GetAwaiter().GetResult();
+                return ((IContainersOperations)operations).CreateOrUpdateAsync(deviceName, storageAccountName, containerName, resourceGroupName, container).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -154,9 +154,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Container> CreateOrUpdateAsync(this IContainersOperations operations, string deviceName, string storageAccountName, string containerName, string resourceGroupName, string dataFormat, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Container> CreateOrUpdateAsync(this IContainersOperations operations, string deviceName, string storageAccountName, string containerName, string resourceGroupName, Container container, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(deviceName, storageAccountName, containerName, resourceGroupName, dataFormat, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(deviceName, storageAccountName, containerName, resourceGroupName, container, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -275,9 +275,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        public static Container BeginCreateOrUpdate(this IContainersOperations operations, string deviceName, string storageAccountName, string containerName, string resourceGroupName, string dataFormat)
+        public static Container BeginCreateOrUpdate(this IContainersOperations operations, string deviceName, string storageAccountName, string containerName, string resourceGroupName, Container container)
         {
-                return ((IContainersOperations)operations).BeginCreateOrUpdateAsync(deviceName, storageAccountName, containerName, resourceGroupName, dataFormat).GetAwaiter().GetResult();
+                return ((IContainersOperations)operations).BeginCreateOrUpdateAsync(deviceName, storageAccountName, containerName, resourceGroupName, container).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -301,9 +301,9 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<Container> BeginCreateOrUpdateAsync(this IContainersOperations operations, string deviceName, string storageAccountName, string containerName, string resourceGroupName, string dataFormat, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<Container> BeginCreateOrUpdateAsync(this IContainersOperations operations, string deviceName, string storageAccountName, string containerName, string resourceGroupName, Container container, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(deviceName, storageAccountName, containerName, resourceGroupName, dataFormat, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(deviceName, storageAccountName, containerName, resourceGroupName, container, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

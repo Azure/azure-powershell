@@ -94,8 +94,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='dataFormat'>
-        /// DataFormat for Container
+        /// <param name='container'>
+        /// The container properties.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Container>> CreateOrUpdateWithHttpMessagesAsync(string deviceName, string storageAccountName, string containerName, string resourceGroupName, string dataFormat, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Container>> CreateOrUpdateWithHttpMessagesAsync(string deviceName, string storageAccountName, string containerName, string resourceGroupName, Container container, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the container on the Data Box Edge/Data Box Gateway device.
@@ -187,8 +187,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='dataFormat'>
-        /// DataFormat for Container
+        /// <param name='container'>
+        /// The container properties.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Container>> BeginCreateOrUpdateWithHttpMessagesAsync(string deviceName, string storageAccountName, string containerName, string resourceGroupName, string dataFormat, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Container>> BeginCreateOrUpdateWithHttpMessagesAsync(string deviceName, string storageAccountName, string containerName, string resourceGroupName, Container container, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes the container on the Data Box Edge/Data Box Gateway device.
