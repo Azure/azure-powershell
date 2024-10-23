@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Added breaking change preannouncement for the removal of alias `Resolve-Error`. #26189
+* Integrated new detection library to expand the scope of secrets.
+* Upgraded Azure.Core to 1.44.1.
 
 ## Version 3.0.4
 * Added customized UserAgent for ARM telemetry.
