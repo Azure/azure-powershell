@@ -48,6 +48,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class LongTermRetentionPolicy : RetentionPolicyBase
     {
         /// <summary>
+        /// Specifies if vault standard tier is enabled.
+        /// </summary>
+        public bool IsVaultTierEnabled { get; set; }
+
+        /// <summary>
         /// Specifies if daily schedule is enabled.
         /// </summary>
         public bool IsDailyScheduleEnabled { get; set; }
@@ -66,6 +71,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Specifies if yearly schedule is enabled.
         /// </summary>
         public bool IsYearlyScheduleEnabled { get; set; }
+
+        /// <summary>
+        /// Specifies the snapshot schedule object
+        /// </summary>
+        public int SnapshotRetentionInDays { get; set; }
 
         /// <summary>
         /// Specifies the daily schedule object
@@ -94,6 +104,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public LongTermRetentionPolicy(string backupManagementType = "")
         {
+            IsVaultTierEnabled = false;
             IsDailyScheduleEnabled = false;
             IsWeeklyScheduleEnabled = false;
             IsMonthlyScheduleEnabled = false;
@@ -242,7 +253,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Daily rentention schedule.
+    /// Snapshot retention schedule.
+    /// </summary>
+    public class SnapshotRetentionSchedule : RetentionScheduleBase
+    {
+        /// <summary>
+        /// Length of duration in days.
+        /// </summary>
+        public int DurationCountInDays { get; set; }
+
+        // no extra fields
+        public override void Validate(ScheduleRunType ScheduleRunFrequency = 0)
+        {
+            int MinDurationCountInDays = 1, MaxDurationCountInDays = PolicyConstants.AfsSnapshotRetentionDaysMax;
+            if (BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
+            {
+                MinDurationCountInDays = PolicyConstants.AfsDailyRetentionDaysMin;
+                MaxDurationCountInDays = PolicyConstants.AfsSnapshotRetentionDaysMax;
+            }
+            if (DurationCountInDays < MinDurationCountInDays || DurationCountInDays > MaxDurationCountInDays)
+            {
+                throw new ArgumentException(Resources.RetentionDurationCountInDaysInvalidException);
+            }
+
+            base.Validate(ScheduleRunFrequency);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("DurationCountInDays: {0}, {1}", DurationCountInDays, base.ToString());
+        }
+    }
+
+    /// <summary>
+    /// Daily retention schedule.
     /// </summary>
     public class DailyRetentionSchedule : RetentionScheduleBase
     {

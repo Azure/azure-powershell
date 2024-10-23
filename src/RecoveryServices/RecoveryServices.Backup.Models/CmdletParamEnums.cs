@@ -137,7 +137,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         IsSmartTieringEnabled,
         BackupSnapshotResourceGroup,
         BackupSnapshotResourceGroupSuffix,
-        SnapshotConsistencyType
+        SnapshotConsistencyType,
+        BackupTier
     }
 
     public enum ItemParams
