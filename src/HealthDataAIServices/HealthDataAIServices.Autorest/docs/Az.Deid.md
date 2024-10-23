@@ -6,11 +6,11 @@ Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.DeidService Module
+# Az.Deid Module
 ## Description
 Microsoft Azure PowerShell: Deid cmdlets
 
-## Az.DeidService Cmdlets
+## Az.Deid Cmdlets
 ### [Get-AzDeidService](Get-AzDeidService.md)
 Get a DeidService
 
