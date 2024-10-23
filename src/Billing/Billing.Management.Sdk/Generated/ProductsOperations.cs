@@ -1306,8 +1306,8 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='productName'>
         /// The ID that uniquely identifies a product.
         /// </param>
-        /// <param name='destinationInvoiceSectionId'>
-        /// The destination invoice section id.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the move product operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1330,12 +1330,17 @@ namespace Microsoft.Azure.Management.Billing
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Product,ProductsMoveHeaders>> MoveWithHttpMessagesAsync(string billingAccountName, string productName, string destinationInvoiceSectionId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Product,ProductsMoveHeaders>> MoveWithHttpMessagesAsync(string billingAccountName, string productName, TransferProductRequestProperties parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (parameters == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+            }
+
             if (billingAccountName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "billingAccountName");
@@ -1347,11 +1352,6 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             string apiVersion = "2020-05-01";
-            TransferProductRequestProperties parameters = new TransferProductRequestProperties();
-            if(destinationInvoiceSectionId != null)
-            {
-                parameters.DestinationInvoiceSectionId = destinationInvoiceSectionId;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1536,8 +1536,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='productName'>
         /// The ID that uniquely identifies a product.
         /// </param>
-        /// <param name='destinationInvoiceSectionId'>
-        /// The destination invoice section id.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the validate move eligibility
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1560,12 +1561,17 @@ namespace Microsoft.Azure.Management.Billing
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ValidateProductTransferEligibilityResult>> ValidateMoveWithHttpMessagesAsync(string billingAccountName, string productName, string destinationInvoiceSectionId = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ValidateProductTransferEligibilityResult>> ValidateMoveWithHttpMessagesAsync(string billingAccountName, string productName, TransferProductRequestProperties parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (parameters == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+            }
+
             if (billingAccountName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "billingAccountName");
@@ -1577,11 +1583,6 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             string apiVersion = "2020-05-01";
-            TransferProductRequestProperties parameters = new TransferProductRequestProperties();
-            if(destinationInvoiceSectionId != null)
-            {
-                parameters.DestinationInvoiceSectionId = destinationInvoiceSectionId;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

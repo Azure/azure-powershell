@@ -118,9 +118,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='invoiceSectionName'>
         /// The ID that uniquely identifies an invoice section.
         /// </param>
-        public static InvoiceSection CreateOrUpdate(this IInvoiceSectionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, string displayName = default(string), System.Collections.Generic.IDictionary<string, string> labels = default(System.Collections.Generic.IDictionary<string, string>))
+        public static InvoiceSection CreateOrUpdate(this IInvoiceSectionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, InvoiceSection parameters)
         {
-                return ((IInvoiceSectionsOperations)operations).CreateOrUpdateAsync(billingAccountName, billingProfileName, invoiceSectionName, displayName, labels).GetAwaiter().GetResult();
+                return ((IInvoiceSectionsOperations)operations).CreateOrUpdateAsync(billingAccountName, billingProfileName, invoiceSectionName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -142,9 +142,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<InvoiceSection> CreateOrUpdateAsync(this IInvoiceSectionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, string displayName = default(string), System.Collections.Generic.IDictionary<string, string> labels = default(System.Collections.Generic.IDictionary<string, string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<InvoiceSection> CreateOrUpdateAsync(this IInvoiceSectionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, InvoiceSection parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(billingAccountName, billingProfileName, invoiceSectionName, displayName, labels, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(billingAccountName, billingProfileName, invoiceSectionName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -165,9 +165,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='invoiceSectionName'>
         /// The ID that uniquely identifies an invoice section.
         /// </param>
-        public static InvoiceSection BeginCreateOrUpdate(this IInvoiceSectionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, string displayName = default(string), System.Collections.Generic.IDictionary<string, string> labels = default(System.Collections.Generic.IDictionary<string, string>))
+        public static InvoiceSection BeginCreateOrUpdate(this IInvoiceSectionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, InvoiceSection parameters)
         {
-                return ((IInvoiceSectionsOperations)operations).BeginCreateOrUpdateAsync(billingAccountName, billingProfileName, invoiceSectionName, displayName, labels).GetAwaiter().GetResult();
+                return ((IInvoiceSectionsOperations)operations).BeginCreateOrUpdateAsync(billingAccountName, billingProfileName, invoiceSectionName, parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -189,9 +189,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<InvoiceSection> BeginCreateOrUpdateAsync(this IInvoiceSectionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, string displayName = default(string), System.Collections.Generic.IDictionary<string, string> labels = default(System.Collections.Generic.IDictionary<string, string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<InvoiceSection> BeginCreateOrUpdateAsync(this IInvoiceSectionsOperations operations, string billingAccountName, string billingProfileName, string invoiceSectionName, InvoiceSection parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(billingAccountName, billingProfileName, invoiceSectionName, displayName, labels, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(billingAccountName, billingProfileName, invoiceSectionName, parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

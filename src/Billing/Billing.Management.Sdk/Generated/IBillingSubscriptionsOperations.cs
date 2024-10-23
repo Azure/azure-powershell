@@ -204,8 +204,8 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.
         /// </param>
-        /// <param name='destinationInvoiceSectionId'>
-        /// The destination invoice section id.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the move subscription operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Management.Billing
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BillingSubscription,BillingSubscriptionsMoveHeaders>> MoveWithHttpMessagesAsync(string billingAccountName, string destinationInvoiceSectionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BillingSubscription,BillingSubscriptionsMoveHeaders>> MoveWithHttpMessagesAsync(string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Validates if a subscription&#39;s charges can be moved to a new invoice
@@ -234,8 +234,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.
         /// </param>
-        /// <param name='destinationInvoiceSectionId'>
-        /// The destination invoice section id.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the validate move eligibility
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -249,7 +250,7 @@ namespace Microsoft.Azure.Management.Billing
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ValidateSubscriptionTransferEligibilityResult>> ValidateMoveWithHttpMessagesAsync(string billingAccountName, string destinationInvoiceSectionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ValidateSubscriptionTransferEligibilityResult>> ValidateMoveWithHttpMessagesAsync(string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Moves a subscription&#39;s charges to a new invoice section. The new invoice
@@ -266,8 +267,8 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='billingAccountName'>
         /// The ID that uniquely identifies a billing account.
         /// </param>
-        /// <param name='destinationInvoiceSectionId'>
-        /// The destination invoice section id.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the move subscription operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -281,7 +282,7 @@ namespace Microsoft.Azure.Management.Billing
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BillingSubscription,BillingSubscriptionsMoveHeaders>> BeginMoveWithHttpMessagesAsync(string billingAccountName, string destinationInvoiceSectionId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BillingSubscription,BillingSubscriptionsMoveHeaders>> BeginMoveWithHttpMessagesAsync(string billingAccountName, TransferBillingSubscriptionRequestProperties parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the subscriptions for a customer. The operation is supported only for

@@ -663,9 +663,8 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='customerName'>
         /// The ID that uniquely identifies a customer.
         /// </param>
-        /// <param name='viewCharges'>
-        /// The policy that controls whether the users in customer&#39;s organization can
-        /// view charges at pay-as-you-go prices.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the update policies operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -688,12 +687,17 @@ namespace Microsoft.Azure.Management.Billing
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CustomerPolicy>> UpdateCustomerWithHttpMessagesAsync(string billingAccountName, string customerName, string viewCharges = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<CustomerPolicy>> UpdateCustomerWithHttpMessagesAsync(string billingAccountName, string customerName, CustomerPolicy parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (parameters == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+            }
+
             if (billingAccountName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "billingAccountName");
@@ -705,11 +709,6 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             string apiVersion = "2020-05-01";
-            CustomerPolicy parameters = new CustomerPolicy();
-            if(viewCharges != null)
-            {
-                parameters.ViewCharges = viewCharges;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

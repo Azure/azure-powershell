@@ -229,8 +229,9 @@ namespace Microsoft.Azure.Management.Billing
         /// be updated. The operation is supported only for billing accounts with
         /// agreement type Microsoft Customer Agreement.
         /// </summary>
-        /// <param name='costCenter'>
-        /// The cost center applied to the subscription.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the update billing property
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -253,23 +254,22 @@ namespace Microsoft.Azure.Management.Billing
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BillingProperty>> UpdateWithHttpMessagesAsync(string costCenter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BillingProperty>> UpdateWithHttpMessagesAsync(BillingProperty parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (parameters == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+            }
             if (this.Client.SubscriptionId == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
 
             string apiVersion = "2020-05-01";
-            BillingProperty parameters = new BillingProperty();
-            if(costCenter != null)
-            {
-                parameters.CostCenter = costCenter;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

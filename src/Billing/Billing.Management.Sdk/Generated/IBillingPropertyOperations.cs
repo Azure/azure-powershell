@@ -45,8 +45,9 @@ namespace Microsoft.Azure.Management.Billing
         /// be updated. The operation is supported only for billing accounts with
         /// agreement type Microsoft Customer Agreement.
         /// </remarks>
-        /// <param name='costCenter'>
-        /// The cost center applied to the subscription.
+        /// <param name='parameters'>
+        /// Request parameters that are provided to the update billing property
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Management.Billing
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BillingProperty>> UpdateWithHttpMessagesAsync(string costCenter = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BillingProperty>> UpdateWithHttpMessagesAsync(BillingProperty parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
     }
 }

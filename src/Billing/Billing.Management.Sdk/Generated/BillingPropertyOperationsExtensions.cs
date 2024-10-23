@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
-        public static BillingProperty Update(this IBillingPropertyOperations operations, string costCenter = default(string))
+        public static BillingProperty Update(this IBillingPropertyOperations operations, BillingProperty parameters)
         {
-                return ((IBillingPropertyOperations)operations).UpdateAsync(costCenter).GetAwaiter().GetResult();
+                return ((IBillingPropertyOperations)operations).UpdateAsync(parameters).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BillingProperty> UpdateAsync(this IBillingPropertyOperations operations, string costCenter = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BillingProperty> UpdateAsync(this IBillingPropertyOperations operations, BillingProperty parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(costCenter, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(parameters, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

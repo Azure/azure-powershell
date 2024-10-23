@@ -462,11 +462,8 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='invoiceSectionName'>
         /// The ID that uniquely identifies an invoice section.
         /// </param>
-        /// <param name='displayName'>
-        /// The name of the invoice section.
-        /// </param>
-        /// <param name='labels'>
-        /// Dictionary of metadata associated with the invoice section.
+        /// <param name='parameters'>
+        /// The new or updated invoice section.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -474,10 +471,10 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InvoiceSection,InvoiceSectionsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string invoiceSectionName, string displayName = default(string), System.Collections.Generic.IDictionary<string, string> labels = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InvoiceSection,InvoiceSectionsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string invoiceSectionName, InvoiceSection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<InvoiceSection,InvoiceSectionsCreateOrUpdateHeaders> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(billingAccountName, billingProfileName, invoiceSectionName, displayName, labels, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<InvoiceSection,InvoiceSectionsCreateOrUpdateHeaders> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(billingAccountName, billingProfileName, invoiceSectionName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -494,11 +491,8 @@ namespace Microsoft.Azure.Management.Billing
         /// <param name='invoiceSectionName'>
         /// The ID that uniquely identifies an invoice section.
         /// </param>
-        /// <param name='displayName'>
-        /// The name of the invoice section.
-        /// </param>
-        /// <param name='labels'>
-        /// Dictionary of metadata associated with the invoice section.
+        /// <param name='parameters'>
+        /// The new or updated invoice section.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -521,12 +515,17 @@ namespace Microsoft.Azure.Management.Billing
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InvoiceSection,InvoiceSectionsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string invoiceSectionName, string displayName = default(string), System.Collections.Generic.IDictionary<string, string> labels = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<InvoiceSection,InvoiceSectionsCreateOrUpdateHeaders>> BeginCreateOrUpdateWithHttpMessagesAsync(string billingAccountName, string billingProfileName, string invoiceSectionName, InvoiceSection parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+            if (parameters == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "parameters");
+            }
+
             if (billingAccountName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "billingAccountName");
@@ -543,12 +542,6 @@ namespace Microsoft.Azure.Management.Billing
             }
 
             string apiVersion = "2020-05-01";
-            InvoiceSection parameters = new InvoiceSection();
-            if(displayName != null||labels != null)
-            {
-                parameters.DisplayName = displayName;
-                parameters.Labels = labels;
-            }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;

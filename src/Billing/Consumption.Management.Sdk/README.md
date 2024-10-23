@@ -18,7 +18,6 @@ reflect-api-versions: true
 openapi-type: arm
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
-payload-flattening-threshold: 2
 
 commit: 73046cd2b58bc600245958e40e03bd0c78379957
 input-file:
