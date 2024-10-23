@@ -127,11 +127,8 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
             IAzureRestClient serviceClient = this.InitializeServiceClient();
 
-            //WriteObject("Executing rest requst");
             AzureOperationResponse<string> response = ExecuteRestRequest(serviceClient);
-            //WriteObject(new PSHttpResponse(response));
-            //WriteObject("PUT Request Complete!");
-            //WriteObject("PollFrom:" + PollFrom);
+            WriteObject(new PSHttpResponse(response));
 
             if (WaitTillCompletion.IsPresent && IsRequestLRO(response))
             {
@@ -358,7 +355,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 case "PUT":
                     if (this.ShouldProcess(Path, "PUT"))
                     {
-                        WriteObject("Sending put req");
                         response = serviceClient
                         .Operations
                         .PutResourceWithFullResponse(Path, ApiVersion, Payload);
