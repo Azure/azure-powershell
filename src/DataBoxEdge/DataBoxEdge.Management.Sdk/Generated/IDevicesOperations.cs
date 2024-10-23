@@ -156,8 +156,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='tags'>
-        /// The tags attached to the Data Box Edge/Gateway resource.
+        /// <param name='parameters'>
+        /// The resource parameters.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataBoxEdgeDevice>> UpdateWithHttpMessagesAsync(string deviceName, string resourceGroupName, System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DataBoxEdgeDevice>> UpdateWithHttpMessagesAsync(string deviceName, string resourceGroupName, DataBoxEdgeDevicePatch parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Downloads the updates on a Data Box Edge/Data Box Gateway device.
@@ -310,11 +310,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='deviceAdminPassword'>
-        /// Device administrator password as an encrypted string (encrypted using RSA
-        /// PKCS #1) is used to sign into the  local web UI of the device. The Actual
-        /// password should have at least 8 characters that are a combination of 
-        /// uppercase, lowercase, numeric, and special characters.
+        /// <param name='securitySettings'>
+        /// The security settings.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -325,7 +322,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> CreateOrUpdateSecuritySettingsWithHttpMessagesAsync(string deviceName, string resourceGroupName, AsymmetricEncryptedSecret deviceAdminPassword, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> CreateOrUpdateSecuritySettingsWithHttpMessagesAsync(string deviceName, string resourceGroupName, SecuritySettings securitySettings, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets information about the availability of updates based on the last scan
@@ -369,11 +366,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='authenticationType'>
-        /// The authentication type.
-        /// </param>
-        /// <param name='certificate'>
-        /// The base64 encoded certificate raw data.
+        /// <param name='parameters'>
+        /// The upload certificate request.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -387,7 +381,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<UploadCertificateResponse>> UploadCertificateWithHttpMessagesAsync(string deviceName, string resourceGroupName, string certificate, string authenticationType = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<UploadCertificateResponse>> UploadCertificateWithHttpMessagesAsync(string deviceName, string resourceGroupName, UploadCertificateRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates a Data Box Edge/Data Box Gateway resource.
@@ -522,11 +516,8 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <param name='resourceGroupName'>
         /// The resource group name.
         /// </param>
-        /// <param name='deviceAdminPassword'>
-        /// Device administrator password as an encrypted string (encrypted using RSA
-        /// PKCS #1) is used to sign into the  local web UI of the device. The Actual
-        /// password should have at least 8 characters that are a combination of 
-        /// uppercase, lowercase, numeric, and special characters.
+        /// <param name='securitySettings'>
+        /// The security settings.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -537,7 +528,7 @@ namespace Microsoft.Azure.Management.DataBoxEdge
         /// <exception cref="Microsoft.Rest.Azure.CloudException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginCreateOrUpdateSecuritySettingsWithHttpMessagesAsync(string deviceName, string resourceGroupName, AsymmetricEncryptedSecret deviceAdminPassword, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginCreateOrUpdateSecuritySettingsWithHttpMessagesAsync(string deviceName, string resourceGroupName, SecuritySettings securitySettings, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets all the Data Box Edge/Data Box Gateway devices in a subscription.
