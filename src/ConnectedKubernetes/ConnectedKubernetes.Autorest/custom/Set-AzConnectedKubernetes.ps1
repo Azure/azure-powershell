@@ -414,7 +414,6 @@ function Set-AzConnectedKubernetes {
             }
             if ((-not $PSBoundParameters.ContainsKey('GatewayResourceId')) -and (-not [String]::IsNullOrEmpty($InputObject.GatewayResourceId))) {
                 $GatewayResourceId = $InputObject.GatewayResourceId
-                $PSBoundParameters.Add('GatewayResourceId', $GatewayResourceId)
             }
 
             if (-not $PSBoundParameters.ContainsKey('DisableAutoUpgrade')) {
@@ -452,15 +451,18 @@ function Set-AzConnectedKubernetes {
             }
         }
 
-        if (-not [String]::IsNullOrEmpty($GatewayResourceId) -and -not $DisableGateway) {
+        if ($PSBoundParameters.ContainsKey('GatewayResourceId')) {
             Write-Debug "Gateway enabled"
             $PSBoundParameters.Add('GatewayEnabled', $true)
-        }
-        # If DisableGateway is provided then set the gateway as disabled
-        if ($DisableGateway) {
+        } elseif ($PSBoundParameters.ContainsKey('DisableGateway')) {
             Write-Debug "Gateway disabled"
             $Null = $PSBoundParameters.Remove('DisableGateway')
             $PSBoundParameters.Add('GatewayEnabled', $false)
+        } else {
+            $PSBoundParameters.Add('GatewayEnabled', -not $DisableGateway)
+            if (-not [String]::IsNullOrEmpty($GatewayResourceId)) {
+                $PSBoundParameters.Add('GatewayResourceId', $GatewayResourceId)
+            }
         }
 
         if ($WorkloadIdentityEnabled && -not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled')) {
