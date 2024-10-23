@@ -98,27 +98,5 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "remoteVolumeRegion")]
         public string RemoteVolumeRegion {get; set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (this.RemoteVolumeResourceId == null)
-            {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "RemoteVolumeResourceId");
-            }
-
-
-
-
-            if (this.RemotePath != null)
-            {
-                this.RemotePath.Validate();
-            }
-
-        }
     }
 }

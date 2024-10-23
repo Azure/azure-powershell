@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdLets `Start-AnfPeerExternalCluster`, `Start-AnfFinalizeExternalReplication`, `Start-AnfPerformExternalReplicationv, `Authorize-AnfExternalReplication` 
+* Added `RemotePath` to `PSNetAppFilesReplicationObject`
+* Added `EffectiveNetworkFeatures` to `PSNetAppFilesVolume`
 
 ## Version 0.18.0
 * Fixed some minor issues
