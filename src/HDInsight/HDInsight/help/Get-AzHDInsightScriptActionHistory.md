@@ -15,7 +15,7 @@ Gets the script action history for a cluster and lists it in reverse chronologic
 
 ```
 Get-AzHDInsightScriptActionHistory [-ClusterName] <String> [[-ScriptExecutionId] <Int64>]
- [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -55,6 +55,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+Specifies how the cmdlet should handle progress updates.
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

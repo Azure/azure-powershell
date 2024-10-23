@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(
             HelpMessage = "Gets or sets the list of user identities associated with the cluster.")]
-        public string IdentityId { get; set; }
+        public string[] IdentityId { get; set; }
 
         [Parameter(
             HelpMessage = "The resource tags.")]
@@ -71,7 +71,13 @@ namespace Microsoft.Azure.Commands.HDInsight
             if (IdentityId != null)
             {
                 clusterIdentity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
-                clusterIdentity.UserAssignedIdentities[IdentityId] = new UserAssignedIdentity();
+                for (int i = 0; i < IdentityId.Length; i++)
+                {
+                    if (!clusterIdentity.UserAssignedIdentities.ContainsKey(IdentityId[i]))
+                    {
+                        clusterIdentity.UserAssignedIdentities.Add(IdentityId[i], new UserAssignedIdentity());
+                    }
+                }
             }
 
             HDInsightManagementClient.UpdateCluster(ResourceGroupName, ClusterName, Tag, clusterIdentity);
