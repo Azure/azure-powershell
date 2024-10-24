@@ -20,6 +20,7 @@ using System.Linq;
 using System.Management.Automation;
 using Azure.Core.Diagnostics;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.KeyVault.Models.Secret;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.KeyVault.Track2Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -84,6 +85,22 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             return filename;
         }
+
+        /// <summary>
+        /// Utility function that will split the Vault secret uri into
+        /// `vaultName`, `secretName`, `Version`
+        /// </summary>
+        /// <param name="secretUri">The user's input unique resource identifier</param>
+        /// <returns>An instance of SecretUriComponents</returns>
+        protected SecretUriComponents SplitSecretUri(Uri secretUri)
+        {
+            var vaultName = secretUri.Host.Split('.')[0]; // Extract vault name from the URI
+            var secretName = secretUri.Segments.Length > 2 ? secretUri.Segments[2].TrimEnd('/') : string.Empty; // Extract secret name from the URI
+            var secretVersion = secretUri.Segments.Length > 3 ? secretUri.Segments[3] : string.Empty; // Extract secret version (if present)
+
+            return new SecretUriComponents(vaultName, secretName, secretVersion);
+        }
+
 
         /// <summary>
         /// Utility function that will continually iterate over the updated KeyVaultObjectFilterOptions until the options

@@ -16,7 +16,15 @@ Updates attributes of a secret in a key vault.
 ```
 Update-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### BySecretUri
+```
+Update-AzKeyVaultSecret [-Id] <String> [[-Version] <String>] [-Enable <Boolean>] [-Expires <DateTime>]
+ [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +32,7 @@ Update-AzKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-Version] <Stri
 ```
 Update-AzKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-Version] <String>] [-Enable <Boolean>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -100,13 +108,28 @@ content type to XML.
 
 ## PARAMETERS
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ContentType
 Secret's content type.
 If not specified, the existing value of the secret's content type remains unchanged.
 Remove the existing content type value by specifying an empty string.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +144,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -138,7 +161,7 @@ Disable a secret if value is false.
 If not specified, the existing value of the secret's enabled/disabled state remains unchanged.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +177,7 @@ The expiration time of a secret in UTC time.
 If not specified, the existing value of the secret's expiration time remains unchanged.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -165,11 +188,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+The URI of the KeyVault Secret.
+
+```yaml
+Type: String
+Parameter Sets: BySecretUri
+Aliases: SecretId
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Secret object
 
 ```yaml
-Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
+Type: PSKeyVaultSecretIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -185,7 +223,7 @@ Secret name.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Default
 Aliases: SecretName
 
@@ -201,7 +239,7 @@ The UTC time before which secret can't be used.
 If not specified, the existing value of the secret's NotBefore attribute remains unchanged.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +255,7 @@ Cmdlet does not return object by default.
 If this switch is specified, return Secret object.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -234,7 +272,7 @@ If not specified, the existing tags of the secret remain unchanged.
 Remove a tag by specifying an empty Hashtable.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -250,7 +288,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Default
 Aliases:
 
@@ -266,7 +304,7 @@ Secret version.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: SecretVersion
 
@@ -277,13 +315,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: cf
+Aliases: wi
 
 Required: False
 Position: Named
@@ -292,14 +331,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: ActionPreference
 Parameter Sets: (All)
-Aliases: wi
+Aliases: proga
 
 Required: False
 Position: Named
