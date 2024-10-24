@@ -35,7 +35,8 @@
 * Added support of `DestinationIPAddress` property in `New-AzPrivateLinkService` command
     - `LoadBalancerFrontendIpConfiguration` is not a mandatory parameter anymore.
     - The user can provide either `LoadBalancerFrontendIpConfiguration` or `DestinationIPAddress`.
-
+* Added optional parameter 'ResiliencyModel' to Express Route Virtual Network Gateway
+    
 ## Version 7.8.1
 * Fixed secrets exposure in example documentation.
 * Onboarded `Microsoft.App/managedEnvironments` to private link cmdlets

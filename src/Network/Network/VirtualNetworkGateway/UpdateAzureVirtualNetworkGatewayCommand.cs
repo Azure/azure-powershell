@@ -237,10 +237,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet: Enabled/Disabled")]
-        [ValidateSet(
-            "Enabled",
-            "Disabled",
-            IgnoreCase = true)]
         [PSArgumentCompleter(
             "Enabled",
             "Disabled")]
@@ -248,9 +244,18 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = true,									   
             HelpMessage = "Determines whether this gateway should accept traffic from other VNets.")]
         public bool? AllowRemoteVnetTraffic { get; set; }
+		
+		[Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Property to indicate the resiliency model of Express Route Gateway: SingleHomed/MultiHomed")]
+        [PSArgumentCompleter(
+            "SingleHomed",
+            "MultiHomed")]
+        public string ResiliencyModel { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -566,6 +571,11 @@ namespace Microsoft.Azure.Commands.Network
             if (AdminState != null)
             {
                 this.VirtualNetworkGateway.AdminState = AdminState;
+            }
+
+			if (ResiliencyModel != null)
+            {
+                this.VirtualNetworkGateway.ResiliencyModel = ResiliencyModel;
             }
 
             if (AllowRemoteVnetTraffic.HasValue)
