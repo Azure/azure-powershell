@@ -46,6 +46,26 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Flag to indicate whether this is a Vnet peering or subnet peering")]
+        public SwitchParameter PeerCompleteVnets { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of local subnets to be peered")]
+        public string[] LocalSubnetNames { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of remote subnets to be peered")]
+        public string[] RemoteSubnetNames { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to determine whether this IPv6 only peering")]
+        public SwitchParameter EnableOnlyIPv6Peering  { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Flag to block the VMs in the linked virtual network space to access all the VMs in local Virtual network space")]
         public SwitchParameter BlockVirtualNetworkAccess { get; set; }
 
@@ -103,6 +123,10 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            vnetPeering.PeerCompleteVnets = this.PeerCompleteVnets;
+            vnetPeering.LocalSubnetNames = this.LocalSubnetNames;
+            vnetPeering.RemoteSubnetNames = this.RemoteSubnetNames;
+            vnetPeering.EnableOnlyIPv6Peering = this.EnableOnlyIPv6Peering;
             vnetPeering.AllowVirtualNetworkAccess = !this.BlockVirtualNetworkAccess.IsPresent;
             vnetPeering.AllowGatewayTransit = this.AllowGatewayTransit;
             vnetPeering.AllowForwardedTraffic = this.AllowForwardedTraffic;
