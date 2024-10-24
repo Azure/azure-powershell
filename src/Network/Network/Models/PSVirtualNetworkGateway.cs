@@ -73,6 +73,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string AdminState { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
+		public string ResiliencyModel { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]										   
         public bool AllowRemoteVnetTraffic { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
