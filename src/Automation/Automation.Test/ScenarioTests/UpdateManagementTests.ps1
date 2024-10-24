@@ -1,13 +1,13 @@
-$rg = "mo-resources-eus"
-$aa = "mo-aaa-eus2"
+$rg = "powershell-record-tests"
+$aa = "record-tests-aa"
 $azureVMIdsW = @(
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01",
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-win-1",
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-win-2"
     )
 
 $azureVMIdsL = @(
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01",
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-linux-1",
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-linux-2"
     )
 
 $nonAzurecomputers = @("server-01")
@@ -266,7 +266,7 @@ function Test-GetAllSoftwareUpdateRuns {
     $runs = Get-AzAutomationSoftwareUpdateRun  -ResourceGroupName $rg `
                                                     -AutomationAccountName $aa
     
-    Assert-AreEqual $runs.Count 13 "Get software update configurations runs didn't return expected number of items"
+    Assert-AreEqual $runs.Count 3 "Get software update configurations runs didn't return expected number of items $($runs.Count)"
 }
 
 
@@ -277,10 +277,10 @@ function Test-GetAllSoftwareUpdateRunsWithFilters {
     $runs = Get-AzAutomationSoftwareUpdateRun  -ResourceGroupName $rg `
                                                     -AutomationAccountName $aa `
                                                     -OperatingSystem Windows `
-                                                    -StartTime ([DateTime]::Parse("2021-04-04T20:40:00+05:30")) `
+                                                    -StartTime ([DateTime]::Parse("2023-11-26T20:40:00+05:30")) `
                                                     -Status Succeeded
 
-    Assert-AreEqual $runs.Count 0 "Get software update configurations runs with filters didn't return expected number of items"
+    Assert-AreEqual $runs.Count 0 "Get software update configurations runs with filters didn't return expected number of items $($runs.Count)"
 }
 
 <#
@@ -313,7 +313,7 @@ Test-GetAllSoftwareUpdateMachineRunsWithFilters
 function Test-GetAllSoftwareUpdateMachineRunsWithFilters {
     $runs = Get-AzAutomationSoftwareUpdateMachineRun  -ResourceGroupName $rg `
                                                            -AutomationAccountName $aa `
-                                                           -SoftwareUpdateRunId 7f077575-3905-4608-843e-5651884ffea1 `
+                                                           -SoftwareUpdateRunId c782f1dc-11f5-47df-9b70-feeb0719c732 `
                                                            -Status Succeeded `
                                                            -TargetComputer $azureVMIdsW[0]
 
@@ -430,10 +430,10 @@ Test-CreateWindowsIncludeKbNumbersSoftwareUpdateConfiguration
 #>
 function Test-CreateWindowsIncludeKbNumbersSoftwareUpdateConfiguration() {
 
-    $aa = "mo-aaa-eus2"
-	$rg = "mo-resources-eus"
+    $aa = "record-tests-aa"
+	$rg = "powershell-record-tests"
     $azureVMIdsW = @(
-	   "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-win-1"
 	)
 
     $name = "mo-monthly-01"
@@ -479,10 +479,11 @@ Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration
 #>
 function Test-CreateLinuxIncludedPackageNameMasksSoftwareUpdateConfiguration() {
 
-    $aa = "mo-aaa-eus2"
-	$rg = "mo-resources-eus"
+    $aa = "record-tests-aa"
+	$rg = "powershell-record-tests"
+
     $azureVMIdsL = @(
-	   "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-linux-1"
 	)
 
     $name = "mo-monthly-02"
@@ -528,8 +529,8 @@ Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithAllOption
 #>
 function Test-CreateLinuxSoftwareUpdateConfigurationWithRebootSetting {
 	$azureVMIdsLinux = @(
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01",
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-02"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-linux-1",
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-linux-2"
     )
 
     $name = "linx-suc-reboot"

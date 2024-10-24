@@ -34,15 +34,15 @@
  #      WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/mo-resources-eus/providers/microsoft.operationalinsights/workspaces/mo-la-eus2"
 #   }
 
-$rg = "mo-resources-eus"
-$aa = "mo-aaa-eus2"
+$rg = "powershell-record-tests"
+$aa = "record-tests-aa"
 $azureVMIdsW = @(
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-01",
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-w-02"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-win-1",
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-win-2"
     )
 
 $azureVMIdsL = @(
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/mo-resources-eus/providers/Microsoft.Compute/virtualMachines/mo-vm-l-01"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests/providers/Microsoft.Compute/virtualMachines/record-test-linux-1"
     )
 
 $nonAzurecomputers = @("server-01")
@@ -65,7 +65,7 @@ $nonAzurecomputers = @("server-01")
                                                              -AutomationAccountName $aa `
                                                              -Schedule $s `
                                                              -Window `
-                                                             -AzureVMResourceId $azureVMIdsL `
+                                                             -AzureVMResourceId $azureVMIdsW `
                                                              -Duration (New-TimeSpan -Hours 2) `
                                                              -IncludedUpdateClassification Security,Critical `
                                                              -PreTaskRunbookName "preTask" `
@@ -127,7 +127,7 @@ function Test-CreateAndGetSoftwareUpdateConfigurationWithRebootOnly
 function Test-GetSoftwareUpdateConfigurationRunWithPrePost
 {
     $sucName = 'mo-onetime-01'
-    $sucrId = '7f077575-3905-4608-843e-5651884ffea1'
+    $sucrId = 'c782f1dc-11f5-47df-9b70-feeb0719c732'
 
     $sucr = Get-AzAutomationSoftwareUpdateRun  -ResourceGroupName $rg `
                                                              -AutomationAccountName $aa `
@@ -164,7 +164,7 @@ function Test-CreateAndGetSoftwareUpdateConfigurationWithDynamicGroups
                                        -ForUpdate
 
 $query1Scope = @(
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/sdk-tests-UM-rg"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests"
     )
 
     $query1Location =@("Japan East", "UK South")
@@ -183,12 +183,12 @@ $query1Scope = @(
 
     $nonAzureQuery1 = @{
         FunctionAlias = "SavedSearch1";
-       WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/mo-resources-eus/providers/microsoft.operationalinsights/workspaces/mo-la-eus2"
+       WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/powershell-record-tests/providers/microsoft.operationalinsights/workspaces/record-tests-ws"
     }
 
     $nonAzureQuery2 = @{
         FunctionAlias = "SavedSearch2";
-       WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/mo-resources-eus/providers/microsoft.operationalinsights/workspaces/mo-la-eus2"
+       WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/powershell-record-tests/providers/microsoft.operationalinsights/workspaces/record-tests-ws"
     }
 
     $NonAzureQueries = @($nonAzureQuery1, $nonAzureQuery2)
@@ -237,7 +237,7 @@ function Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnly
                                        -ForUpdate
 
 $query1Scope = @(
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/sdk-tests-UM-rg"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests"
     )
 
     $query1Location =@("Japan East", "UK South")
@@ -296,7 +296,7 @@ Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutTag
                                        -ForUpdate
 
 $query1Scope = @(
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/sdk-tests-UM-rg"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests"
     )
 
     $query1Location =@("Japan East", "UK South")
@@ -352,7 +352,7 @@ Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutTag
                                        -ForUpdate
 
 $query1Scope = @(
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/sdk-tests-UM-rg"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests"
     )
 
     $query1Location =@("Japan East", "UK South")
@@ -408,7 +408,7 @@ Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutLoc
                                        -ForUpdate
 
 $query1Scope = @(
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/sdk-tests-UM-rg"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests"
     )
 
     $query1FilterOperator = "All"
@@ -464,7 +464,7 @@ Test-CreateAndGetSoftwareUpdateConfigurationWithAzureDynamicGroupsOnlyWithOutLoc
                                        -ForUpdate
 
 $query1Scope = @(
-        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/sdk-tests-UM-rg"
+        "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourceGroups/powershell-record-tests"
     )
     $azq = New-AzAutomationUpdateManagementAzureQuery -ResourceGroupName $rg `
                                        -AutomationAccountName $aa `
@@ -515,12 +515,12 @@ function Test-CreateAndGetSoftwareUpdateConfigurationWithNonAzureDynamicGroupsOn
 
     $nonAzureQuery1 = @{
         FunctionAlias = "SavedSearch1";
-       WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/mo-resources-eus/providers/microsoft.operationalinsights/workspaces/mo-la-eus2"
+       WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/powershell-record-tests/providers/microsoft.operationalinsights/workspaces/record-tests-ws"
     }
 
     $nonAzureQuery2 = @{
         FunctionAlias = "SavedSearch2";
-       WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/mo-resources-eus/providers/microsoft.operationalinsights/workspaces/mo-la-eus2"
+       WorkspaceResourceId = "/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/powershell-record-tests/providers/microsoft.operationalinsights/workspaces/record-tests-ws"
     }
 
     $NonAzureQueries = @($nonAzureQuery1, $nonAzureQuery2)
