@@ -207,8 +207,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share
                     DataBoxEdgeManagementClient.Shares,
                     this.DeviceName,
                     this.Name,
-                    share,
-                    this.ResourceGroupName);
+                    this.ResourceGroupName,
+                    share);
                 var results = new List<PSResourceModel>()
                 {
                     new PSResourceModel(share)
