@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="replicationSchedule">Schedule
         /// Possible values include: &#39;_10minutely&#39;, &#39;hourly&#39;, &#39;daily&#39;</param>
 
-        /// <param name="remoteVolumeResourceId">The resource ID of the remote volume.
+        /// <param name="remoteVolumeResourceId">The resource ID of the remote volume. Required for cross region and cross
+        /// zone replication
         /// </param>
 
         /// <param name="remotePath">The full path to a volume that is to be migrated into ANF. Required for
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
         /// <param name="remoteVolumeRegion">The remote region for the other end of the Volume Replication.
         /// </param>
-        public ReplicationObject(string remoteVolumeResourceId, string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), RemotePath remotePath = default(RemotePath), string remoteVolumeRegion = default(string))
+        public ReplicationObject(string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeResourceId = default(string), RemotePath remotePath = default(RemotePath), string remoteVolumeRegion = default(string))
 
         {
             this.ReplicationId = replicationId;
@@ -81,7 +82,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string ReplicationSchedule {get; set; }
 
         /// <summary>
-        /// Gets or sets the resource ID of the remote volume.
+        /// Gets or sets the resource ID of the remote volume. Required for cross
+        /// region and cross zone replication
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "remoteVolumeResourceId")]
         public string RemoteVolumeResourceId {get; set; }
@@ -98,5 +100,23 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "remoteVolumeRegion")]
         public string RemoteVolumeRegion {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+            if (this.RemotePath != null)
+            {
+                this.RemotePath.Validate();
+            }
+
+        }
     }
 }
