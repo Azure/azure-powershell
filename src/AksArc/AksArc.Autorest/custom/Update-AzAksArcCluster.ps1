@@ -309,6 +309,7 @@ process {
 
     if ($ShouldUpdateConnectedCluster) {
         UpdateConnectedCluster -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName -AdminGroupObjectID $AdminGroupObjectID
+        $null = $PSBoundParameters.Remove("AdminGroupObjectID")
     }
 
     # Update Default Nodepool

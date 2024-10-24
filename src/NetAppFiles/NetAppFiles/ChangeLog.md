@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded Azure.Core to 1.44.1.
 * Added new cmdLets `Start-AnfPeerExternalCluster`, `Start-AnfFinalizeExternalReplication`, `Start-AnfPerformExternalReplication`, `Start-AnfAuthorizeExternalReplication`
 * Added `RemotePath` to `PSNetAppFilesReplicationObject`
 * Added `EffectiveNetworkFeatures` to `PSNetAppFilesVolume`

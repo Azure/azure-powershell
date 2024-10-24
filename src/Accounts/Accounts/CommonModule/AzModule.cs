@@ -385,10 +385,10 @@ namespace Microsoft.Azure.Commands.Common
             Dictionary<string, string> telemetryInfo = null;
             if (_telemetry.TryGetValue(telemetryId, out var qos))
             {
-                if (qos?.SanitizerInfo?.DetectedProperties?.Count > 0)
+                if (qos?.SanitizerInfo?.DetectedProperties.IsEmpty == false)
                 {
                     var showSecretsWarning = qos.SanitizerInfo.ShowSecretsWarning && qos.SanitizerInfo.SecretsDetected;
-                    var sanitizedProperties = string.Join(", ", qos.SanitizerInfo.DetectedProperties);
+                    var sanitizedProperties = string.Join(", ", qos.SanitizerInfo.DetectedProperties.PropertyNames);
                     var invocationName = qos.InvocationName;
                     telemetryInfo = new Dictionary<string, string>
                     {
