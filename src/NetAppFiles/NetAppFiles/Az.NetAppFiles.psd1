@@ -124,7 +124,8 @@ CmdletsToExport = 'Approve-AzNetAppFilesReplication', 'Get-AzNetAppFilesAccount'
                'Update-AzNetAppFilesBackupVault', 
                'Remove-AzNetAppFilesBackupVault', 'Set-AzNetAppFilesBackupVault', 
                'Get-AzNetAppFilesSnapshotPolicyVolumeList',
-               'Start-AzNetAppFilesPeerExternalCluster', 'Start-AzNetAppFilesFinalizeExternalReplication',  'Start-AzNetAppFilesPerformExternalReplication', 'Start-AzNetAppFilesAuthorizeExternalReplication'
+               'Start-AzNetAppFilesPeerExternalCluster', 'Start-AzNetAppFilesFinalizeExternalReplication',  'Start-AzNetAppFilesPerformExternalReplication', 'Start-AzNetAppFilesAuthorizeExternalReplication',
+               'Get-AzNetAppFilesFilePathAvailability', 'Get-AzNetAppFilesQuotaAvailability', 'Get-AzNetAppFilesNameAvailability'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -159,7 +160,8 @@ AliasesToExport = 'Approve-AnfReplication', 'Get-AnfAccount', 'Get-AnfBackup',
                'Get-AnfBackupVault', 'Update-AnfBackupVault', 
                'Remove-AnfBackupVault', 'Set-AnfBackupVault', 
                'Get-AnfSnapshotPolicyVolumeList',
-               'Start-AnfPeerExternalCluster', 'Start-AnfFinalizeExternalReplication',  'Start-AnfPerformExternalReplication', 'Start-AnfAuthorizeExternalReplication'
+               'Start-AnfPeerExternalCluster', 'Start-AnfFinalizeExternalReplication',  'Start-AnfPerformExternalReplication', 'Start-AnfAuthorizeExternalReplication',
+               'Get-AnfFilePathAvailability', 'Get-AnfQuotaAvailability', 'Get-AnfNameAvailability'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

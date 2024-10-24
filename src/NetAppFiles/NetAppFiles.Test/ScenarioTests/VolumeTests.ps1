@@ -1288,7 +1288,7 @@ function Test-ExtenalReplicationFails
         $peerIpAddresses = '0.0.0.1', '0.0.0.2','0.0.0.3', '0.0.0.4', '0.0.0.5', '0.0.0.6'
 
         # Peer external replication 
-        Assert-Throws{Start-AzNetAppFilesPeerExternalReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -PeerIpAddresses $peerIpAddresses}
+        Assert-Throws{Start-AzNetAppFilesPeerExternalReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -PeerIpAddress $peerIpAddresses}
 
         # authorize external replication
         Assert-Throws{$svmPeeringCommand = Start-AzNetAppFilesAuthorizeReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1}

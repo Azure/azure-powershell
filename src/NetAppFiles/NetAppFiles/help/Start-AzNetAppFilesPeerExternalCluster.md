@@ -15,7 +15,7 @@ Start Cluster peering
 ### ByFieldsParameterSet (Default)
 ```
 Start-AzNetAppFilesPeerExternalCluster -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- -Name <String> -PeerIpAddresse <String[]> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ -Name <String> -PeerIPAddress <String[]> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ Starts peering the external cluster for this migration volume
 ### Example 1
 ```powershell
 $peerIpAddresses = '0.0.0.1', '0.0.0.2','0.0.0.3', '0.0.0.4', '0.0.0.5', '0.0.0.6'
-Start-AzNetAppFilesFinalizeExternalReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume" -PeerIpAddresses  $peerIpAddresses
+Start-AzNetAppFilesFinalizeExternalReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume" -PeerIPAddress  $peerIpAddresses
 ```
 
 Starts peering the external cluster for "MyDestinationAnfVolume" migration volume
@@ -123,7 +123,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeerIpAddresse
+### -PeerIPAddress
 A list of IC-LIF IPs that can be used to connect to the On-prem cluster
 
 ```yaml

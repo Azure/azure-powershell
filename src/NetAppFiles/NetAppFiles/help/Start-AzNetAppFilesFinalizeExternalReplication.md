@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:https://learn.microsoft.com/powershell/module/az.netappfiles/start-aznetAppfilesfinalizeexternalreplication
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/start-aznetAppfilesfinalizeexternalreplication
 schema: 2.0.0
 ---
 
