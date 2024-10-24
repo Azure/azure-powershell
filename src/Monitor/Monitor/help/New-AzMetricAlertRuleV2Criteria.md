@@ -17,7 +17,7 @@ Creates a local criteria object that can be used to create a new metric alert
 New-AzMetricAlertRuleV2Criteria -MetricName <String> [-MetricNamespace <String>]
  [-SkipMetricValidation <Boolean>] [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String>
  -Operator <String> -Threshold <Double> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### DynamicThresholdParameterSet
@@ -26,13 +26,13 @@ New-AzMetricAlertRuleV2Criteria [-DynamicThreshold] -MetricName <String> [-Metri
  [-SkipMetricValidation <Boolean>] [-DimensionSelection <PSMetricDimension[]>] -TimeAggregation <String>
  -Operator <String> [-ThresholdSensitivity <String>] [-ViolationCount <Int32>]
  [-ExaminedAggregatedPointCount <Int32>] [-IgnoreDataBefore <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### WebtestParameterSet
 ```
 New-AzMetricAlertRuleV2Criteria [-WebTest] -WebTestId <String> -ApplicationInsightsId <String>
- [-FailedLocationCount <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-FailedLocationCount <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -265,6 +265,21 @@ Parameter Sets: StaticThresholdParameterSet, DynamicThresholdParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

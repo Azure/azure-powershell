@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded Azure.Core to 1.44.1.
 
 ## Version 0.18.0
 * Fixed some minor issues
