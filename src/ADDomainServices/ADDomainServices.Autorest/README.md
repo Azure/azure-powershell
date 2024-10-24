@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the AdDomainServices service.
 
 ---
-## Status
-[![Az.ADDomainServices](https://img.shields.io/powershellgallery/v/Az.ADDomainServices.svg?style=flat-square&label=Az.ADDomainServices "Az.ADDomainServices")](https://www.powershellgallery.com/packages/Az.ADDomainServices/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -47,14 +44,16 @@ title: ADDomainServices
 service-name: ADDomainServices
 subject-prefix: ADDomainService
 
+add-api-version-in-model-namespace: true
+
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
 resourcegroup-append: true
 
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+# use-extension:
+#   "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document
@@ -137,9 +136,12 @@ directive:
       parameter-name: ResourceForestSettingResourceForest
     set:
       parameter-name: ResourceForest
+  # - model-cmdlet:
+  #   - ForestTrust
+  #   - ReplicaSet
   - model-cmdlet:
-    - ForestTrust
-    - ReplicaSet
+    - model-name: ForestTrust
+    - model-name: ReplicaSet
   - where:
       model-name: DomainService
     set:

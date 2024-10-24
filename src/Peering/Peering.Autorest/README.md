@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Peering service.
 
 ---
-## Status
-[![Az.Peering](https://img.shields.io/powershellgallery/v/Az.Peering.svg?style=flat-square&label=Az.Peering "Az.Peering")](https://www.powershellgallery.com/packages/Az.Peering/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -53,16 +50,20 @@ resourcegroup-append: true
 identity-correction-for-post: true
 nested-object-to-string: true
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+add-api-version-in-model-namespace: true
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^CreateViaIdentity.*$
+    remove: true
+
+  - where:
+      variant: ^(Create|Update)(?!.*?Expanded)
     remove: true
 
   # Remove the set-* cmdlet
@@ -110,10 +111,10 @@ directive:
   # $directConnection = New-AzPeeringDirectConnectionObject ......
   # New-AzPeering -DirectConnection $directConnection ......
   - model-cmdlet:
-      - ExchangeConnection
-      - DirectConnection
-      - ContactDetail
-      - CheckServiceProviderAvailabilityInput
+      - model-name: ExchangeConnection
+      - model-name: DirectConnection
+      - model-name: ContactDetail
+      - model-name: CheckServiceProviderAvailabilityInput
 
   # Change all parameters named SkuName(SkuName -> Sku) and add the alias SkuName to Sku
   - where:
