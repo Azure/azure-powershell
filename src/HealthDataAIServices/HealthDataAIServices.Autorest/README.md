@@ -1,3 +1,28 @@
+<!-- region Generated -->
+# Az.HealthDeidentification
+This directory contains the PowerShell module for the HealthDeidentification service.
+
+---
+## Info
+- Modifiable: yes
+- Generated: all
+- Committed: yes
+- Packaged: yes
+
+---
+## Detail
+This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
+
+## Module Requirements
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
+
+## Authentication
+AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
+
+## Development
+For information on how to develop for `Az.HealthDeidentification`, see [how-to.md](how-to.md).
+<!-- endregion -->
+
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
@@ -18,7 +43,7 @@ try-require:
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
 # Normally, title is the service name
-title: HealthDataAIServices
+title: HealthDeidentification
 subject-prefix: Deid
 
 # The next three configurations are exclusive to v3, and in v4, they are activated by default. If you are still using v3, please uncomment them.
@@ -41,11 +66,6 @@ directive:
   - where:
       subject: .*PrivateLink.*
     remove: true
-  # Reset subject-prefix as AI as previous setting by subject-prefix tag converts AI to Ai
-  - where:
-      subject-prefix: Ai(.*)
-    set: 
-      subject-prefix: AI$1
   # Follow directive is v3 specific. If you are using v3, uncomment following directive and comments out two directives above
   #- where:
   #    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$

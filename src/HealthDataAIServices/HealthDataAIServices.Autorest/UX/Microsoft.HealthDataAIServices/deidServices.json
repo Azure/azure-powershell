@@ -2,7 +2,7 @@
   "resourceType": "deidServices",
   "apiVersion": "2024-02-28-preview",
   "learnMore": {
-    "url": "https://learn.microsoft.com/powershell/module/az.healthdataaiservices"
+    "url": "https://learn.microsoft.com/powershell/module/az.healthdeidentification"
   },
   "commands": [
     {
@@ -11,7 +11,7 @@
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.healthdataaiservices/get-azdeidservice"
+          "url": "https://learn.microsoft.com/powershell/module/az.healthdeidentification/get-azdeidservice"
         },
         "parameterSets": [
           {
@@ -49,7 +49,7 @@
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.healthdataaiservices/remove-azdeidservice"
+          "url": "https://learn.microsoft.com/powershell/module/az.healthdeidentification/remove-azdeidservice"
         },
         "parameterSets": [
           {
