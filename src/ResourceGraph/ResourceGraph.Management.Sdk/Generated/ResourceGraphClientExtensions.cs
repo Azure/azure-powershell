@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Management.ResourceGraph
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for AzureResourceGraphClient.
+    /// Extension methods for ResourceGraphClient.
     /// </summary>
-    public static partial class AzureResourceGraphClientExtensions
+    public static partial class ResourceGraphClientExtensions
     {
             /// <summary>
             /// Queries the resources managed by Azure Resource Manager for scopes
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
             /// <param name='query'>
             /// Request specifying query and its options.
             /// </param>
-            public static QueryResponse Resources(this IAzureResourceGraphClient operations, QueryRequest query)
+            public static QueryResponse Resources(this IResourceGraphClient operations, QueryRequest query)
             {
                 return operations.ResourcesAsync(query).GetAwaiter().GetResult();
             }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<QueryResponse> ResourcesAsync(this IAzureResourceGraphClient operations, QueryRequest query, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<QueryResponse> ResourcesAsync(this IResourceGraphClient operations, QueryRequest query, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ResourcesWithHttpMessagesAsync(query, null, cancellationToken).ConfigureAwait(false))
                 {

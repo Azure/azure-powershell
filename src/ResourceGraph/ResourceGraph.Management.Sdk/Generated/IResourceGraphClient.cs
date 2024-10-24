@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
     /// <summary>
     /// Azure Resource Graph API Reference
     /// </summary>
-    public partial interface IAzureResourceGraphClient : System.IDisposable
+    public partial interface IResourceGraphClient : System.IDisposable
     {
         /// <summary>
         /// The base URI of the service.

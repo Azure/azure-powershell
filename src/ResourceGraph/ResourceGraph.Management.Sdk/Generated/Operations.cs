@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
     /// <summary>
     /// Operations operations.
     /// </summary>
-    internal partial class Operations : IServiceOperations<AzureResourceGraphClient>, IOperations
+    internal partial class Operations : IServiceOperations<ResourceGraphClient>, IOperations
     {
         /// <summary>
         /// Initializes a new instance of the Operations class.
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal Operations(AzureResourceGraphClient client)
+        internal Operations(ResourceGraphClient client)
         {
             if (client == null)
             {
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Management.ResourceGraph
         }
 
         /// <summary>
-        /// Gets a reference to the AzureResourceGraphClient
+        /// Gets a reference to the ResourceGraphClient
         /// </summary>
-        public AzureResourceGraphClient Client { get; private set; }
+        public ResourceGraphClient Client { get; private set; }
 
         /// <summary>
         /// Lists all of the available REST API operations.

@@ -19,8 +19,18 @@ openapi-type: arm
 azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
 payload-flattening-threshold: 0
+title: ResourceGraphClient
 ```
+### Validations
 
+Run validations when `--validate` is specified on command line
+
+``` yaml $(validate)
+azure-validator: true
+semantic-validator: true
+model-validator: true
+message-format: json
+```
 
 
 ###

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
     /// <summary>
     /// Azure Resource Graph API Reference
     /// </summary>
-    public partial class AzureResourceGraphClient : ServiceClient<AzureResourceGraphClient>, IAzureResourceGraphClient, IAzureClient
+    public partial class ResourceGraphClient : ServiceClient<ResourceGraphClient>, IResourceGraphClient, IAzureClient
     {
         /// <summary>
         /// The base URI of the service.
@@ -77,31 +77,31 @@ namespace Microsoft.Azure.Management.ResourceGraph
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the AzureResourceGraphClient class.
+        /// Initializes a new instance of the ResourceGraphClient class.
         /// </summary>
         /// <param name='httpClient'>
         /// HttpClient to be used
         /// </param>
         /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling AzureResourceGraphClient.Dispose(). False: will not dispose provided httpClient</param>
-        protected AzureResourceGraphClient(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
+        /// True: will dispose the provided httpClient on calling ResourceGraphClient.Dispose(). False: will not dispose provided httpClient</param>
+        protected ResourceGraphClient(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AzureResourceGraphClient class.
+        /// Initializes a new instance of the ResourceGraphClient class.
         /// </summary>
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected AzureResourceGraphClient(params DelegatingHandler[] handlers) : base(handlers)
+        protected ResourceGraphClient(params DelegatingHandler[] handlers) : base(handlers)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AzureResourceGraphClient class.
+        /// Initializes a new instance of the ResourceGraphClient class.
         /// </summary>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -109,13 +109,13 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected AzureResourceGraphClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
+        protected ResourceGraphClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AzureResourceGraphClient class.
+        /// Initializes a new instance of the ResourceGraphClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected AzureResourceGraphClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        protected ResourceGraphClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         }
 
         /// <summary>
-        /// Initializes a new instance of the AzureResourceGraphClient class.
+        /// Initializes a new instance of the ResourceGraphClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected AzureResourceGraphClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        protected ResourceGraphClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         }
 
         /// <summary>
-        /// Initializes a new instance of the AzureResourceGraphClient class.
+        /// Initializes a new instance of the ResourceGraphClient class.
         /// </summary>
         /// <param name='credentials'>
         /// Required. Credentials needed for the client to connect to Azure.
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public AzureResourceGraphClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        public ResourceGraphClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (credentials == null)
             {
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         }
 
         /// <summary>
-        /// Initializes a new instance of the AzureResourceGraphClient class.
+        /// Initializes a new instance of the ResourceGraphClient class.
         /// </summary>
         /// <param name='credentials'>
         /// Required. Credentials needed for the client to connect to Azure.
@@ -194,11 +194,11 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// HttpClient to be used
         /// </param>
         /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling AzureResourceGraphClient.Dispose(). False: will not dispose provided httpClient</param>
+        /// True: will dispose the provided httpClient on calling ResourceGraphClient.Dispose(). False: will not dispose provided httpClient</param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public AzureResourceGraphClient(ServiceClientCredentials credentials, HttpClient httpClient, bool disposeHttpClient) : this(httpClient, disposeHttpClient)
+        public ResourceGraphClient(ServiceClientCredentials credentials, HttpClient httpClient, bool disposeHttpClient) : this(httpClient, disposeHttpClient)
         {
             if (credentials == null)
             {
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         }
 
         /// <summary>
-        /// Initializes a new instance of the AzureResourceGraphClient class.
+        /// Initializes a new instance of the ResourceGraphClient class.
         /// </summary>
         /// <param name='credentials'>
         /// Required. Credentials needed for the client to connect to Azure.
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public AzureResourceGraphClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public ResourceGraphClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (credentials == null)
             {
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         }
 
         /// <summary>
-        /// Initializes a new instance of the AzureResourceGraphClient class.
+        /// Initializes a new instance of the ResourceGraphClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public AzureResourceGraphClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        public ResourceGraphClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         }
 
         /// <summary>
-        /// Initializes a new instance of the AzureResourceGraphClient class.
+        /// Initializes a new instance of the ResourceGraphClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public AzureResourceGraphClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public ResourceGraphClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {

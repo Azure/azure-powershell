@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.ResourceGraph
 
   internal static partial class SdkInfo
   {
-      public static IEnumerable<Tuple<string, string, string>> ApiInfo_AzureResourceGraph
+      public static IEnumerable<Tuple<string, string, string>> ApiInfo_ResourceGraphClient
       {
           get
           {
