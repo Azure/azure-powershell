@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
             ParameterSetName = FieldsParameterSet,
             HelpMessage = "A list of IC-LIF IPs that can be used to connect to the On-prem cluster")]
         [ValidateNotNullOrEmpty]
-        public string[] PeerIpAddresses { get; set; }        
+        public string[] PeerIpAddresse { get; set; }        
 
         [Parameter(
             Mandatory = true,
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Replication
 
             var peerRequest = new PeerClusterForVolumeMigrationRequest
             {
-                PeerIPAddresses = PeerIpAddresses
+                PeerIPAddresse = PeerIpAddresses
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.ApproveVolumeReplicationMessage, Name)))
