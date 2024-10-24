@@ -5993,6 +5993,32 @@
         </TableRowEntries>
       </TableControl>
     </View>
+	<View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSLoadBalancerHealthPerRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSLoadBalancerHealthPerRule</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>   
+			  <ListItem>
+                <Label>Up</Label>
+                <PropertyName>Up</PropertyName>
+              </ListItem>  
+			  <ListItem>
+                <Label>Down</Label>
+                <PropertyName>Down</PropertyName>
+              </ListItem> 
+			  <ListItem>
+                <Label>LoadBalancerBackendAddresses</Label>
+                <PropertyName>LoadBalancerBackendAddressesText</PropertyName>
+              </ListItem>  
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
     <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSLoadBalancerBackendAddress</Name>
       <ViewSelectedBy>
