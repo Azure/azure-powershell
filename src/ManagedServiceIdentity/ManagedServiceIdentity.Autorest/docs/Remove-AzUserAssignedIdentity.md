@@ -18,7 +18,19 @@ Remove-AzUserAssignedIdentity -Name <String> -ResourceGroupName <String> [-Subsc
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### Delete2
+```
+Remove-AzUserAssignedIdentity -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### DeleteViaIdentity
+```
+Remove-AzUserAssignedIdentity -InputObject <IManagedServiceIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DeleteViaIdentity2
 ```
 Remove-AzUserAssignedIdentity -InputObject <IManagedServiceIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -67,7 +79,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: DeleteViaIdentity, DeleteViaIdentity2
 Aliases:
 
 Required: True
@@ -82,7 +94,7 @@ The name of the identity resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, Delete2
 Aliases:
 
 Required: True
@@ -112,7 +124,7 @@ The name of the Resource Group to which the identity belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, Delete2
 Aliases:
 
 Required: True
@@ -127,7 +139,7 @@ The Id of the Subscription to which the identity belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Delete, Delete2
 Aliases:
 
 Required: False
