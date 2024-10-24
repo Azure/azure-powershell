@@ -6,15 +6,23 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>The DiskType.</summary>
+    /// <summary>The disk type.</summary>
     public partial struct DiskAccountType :
         System.IEquatable<DiskAccountType>
     {
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType PremiumLrs = @"Premium_LRS";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType PremiumV2Lrs = @"PremiumV2_LRS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType PremiumZrs = @"Premium_ZRS";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType StandardLrs = @"Standard_LRS";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType StandardSsdLrs = @"StandardSSD_LRS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType StandardSsdZrs = @"StandardSSD_ZRS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountType UltraSsdLrs = @"UltraSSD_LRS";
 
         /// <summary>the value for an instance of the <see cref="DiskAccountType" /> Enum.</summary>
         private string _value { get; set; }

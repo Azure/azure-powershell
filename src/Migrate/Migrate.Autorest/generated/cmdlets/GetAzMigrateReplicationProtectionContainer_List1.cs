@@ -13,10 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionContainers"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzMigrateReplicationProtectionContainer_List1")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainer))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"Lists the protection containers in a vault.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionContainers", ApiVersion = "2023-01-01")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionContainers", ApiVersion = "2024-01-01")]
     public partial class GetAzMigrateReplicationProtectionContainer_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener
     {
@@ -153,12 +153,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerCollection">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerCollection</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainerCollection">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainerCollection</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerCollection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainerCollection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -364,12 +364,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerCollection">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerCollection</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainerCollection">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainerCollection</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerCollection> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainerCollection> response)
         {
             using( NoSynchronizationContext )
             {

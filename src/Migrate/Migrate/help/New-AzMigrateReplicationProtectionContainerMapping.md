@@ -18,7 +18,7 @@ New-AzMigrateReplicationProtectionContainerMapping -FabricName <String> -Mapping
  [-SubscriptionId <String>] [-PolicyId <String>]
  [-ProviderSpecificInput <IReplicationProviderSpecificContainerMappingInput>]
  [-TargetProtectionContainerId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,6 +141,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProtectionContainerName
 Protection container name.
 
@@ -161,7 +176,7 @@ Provider specific input for pairing.
 To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IReplicationProviderSpecificContainerMappingInput
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IReplicationProviderSpecificContainerMappingInput
 Parameter Sets: (All)
 Aliases:
 
@@ -270,7 +285,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainerMapping
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IProtectionContainerMapping
 
 ## NOTES
 

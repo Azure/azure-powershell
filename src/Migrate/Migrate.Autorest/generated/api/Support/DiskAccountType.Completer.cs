@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>The DiskType.</summary>
+    /// <summary>The disk type.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskAccountTypeTypeConverter))]
     public partial struct DiskAccountType :
         System.Management.Automation.IArgumentCompleter
@@ -37,6 +37,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "StandardSSD_LRS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'StandardSSD_LRS'", "StandardSSD_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "StandardSSD_LRS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "PremiumV2_LRS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'PremiumV2_LRS'", "PremiumV2_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "PremiumV2_LRS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "UltraSSD_LRS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'UltraSSD_LRS'", "UltraSSD_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "UltraSSD_LRS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "StandardSSD_ZRS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'StandardSSD_ZRS'", "StandardSSD_ZRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "StandardSSD_ZRS");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Premium_ZRS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Premium_ZRS'", "Premium_ZRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Premium_ZRS");
             }
         }
     }

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 {
 
-    /// <summary>The DiskType.</summary>
+    /// <summary>The disk type.</summary>
     public partial class DiskAccountTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

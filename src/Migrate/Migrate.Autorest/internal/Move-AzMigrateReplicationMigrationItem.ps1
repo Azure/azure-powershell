@@ -25,7 +25,7 @@ The operation to initiate migration of the item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,7 +37,7 @@ PROVIDERSPECIFICDETAIL <IMigrateProviderSpecificInput>: The provider specific de
 https://learn.microsoft.com/powershell/module/az.migrate/move-azmigratereplicationmigrationitem
 #>
 function Move-AzMigrateReplicationMigrationItem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem])]
 [CmdletBinding(DefaultParameterSetName='MigrateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -79,7 +79,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrateProviderSpecificInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrateProviderSpecificInput]
     # The provider specific details.
     # To construct, see NOTES section for PROVIDERSPECIFICDETAIL properties and create a hash table.
     ${ProviderSpecificDetail},

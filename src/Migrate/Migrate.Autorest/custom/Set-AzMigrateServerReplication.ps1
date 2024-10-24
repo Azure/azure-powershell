@@ -22,7 +22,7 @@ The Set-AzMigrateServerReplication cmdlet updates the target properties for the 
 https://learn.microsoft.com/powershell/module/az.migrate/set-azmigrateserverreplication
 #>
 function Set-AzMigrateServerReplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
@@ -33,7 +33,7 @@ function Set-AzMigrateServerReplication {
 
         [Parameter(ParameterSetName = 'ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem]
         # Specifies the replicating server for which the properties need to be updated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${InputObject},
 
@@ -75,13 +75,13 @@ function Set-AzMigrateServerReplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtNicInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtNicInput[]]
         # Updates the NIC for the Azure VM to be created.
         ${NicToUpdate},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtUpdateDiskInput[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtUpdateDiskInput[]]
         # Updates the disk for the Azure VM to be created.
         ${DiskToUpdate},
 
@@ -106,6 +106,14 @@ function Set-AzMigrateServerReplication {
         ${SqlServerLicenseType},
 
         [Parameter()]
+        [ValidateSet( "NotSpecified", "NoLicenseType", "LinuxServer")]
+        [ArgumentCompleter( { "NotSpecified", "NoLicenseType", "LinuxServer" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies if Azure Hybrid benefit is applicable for the source linux server to be migrated.
+        ${LinuxLicenseType},
+
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.Collections.Hashtable]
         # Specifies the tag to be used for Resource creation.
@@ -121,7 +129,7 @@ function Set-AzMigrateServerReplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetVmtags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetVmtags]
         # Specifies the tag to be used for VM creation.
         ${UpdateVMTag},
 
@@ -135,7 +143,7 @@ function Set-AzMigrateServerReplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetNicTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetNicTags]
         # Specifies the tag to be used for NIC creation.
         ${UpdateNicTag},
 
@@ -149,7 +157,7 @@ function Set-AzMigrateServerReplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtEnableMigrationInputTargetDiskTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtEnableMigrationInputTargetDiskTags]
         # Specifies the tag to be used for disk creation.
         ${UpdateDiskTag},
 
@@ -235,6 +243,7 @@ function Set-AzMigrateServerReplication {
         $HasTargetAvailabilitySet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
         $HasTargetAvailabilityZone = $PSBoundParameters.ContainsKey('TargetAvailabilityZone')
         $HasSqlServerLicenseType = $PSBoundParameters.ContainsKey('SqlServerLicenseType')
+        $HasLinuxLicenseType = $PSBoundParameters.ContainsKey('LinuxLicenseType')
         $HasUpdateTag = $PSBoundParameters.ContainsKey('UpdateTag')
         $HasUpdateTagOperation = $PSBoundParameters.ContainsKey('UpdateTagOperation')
         $HasUpdateVMTag = $PSBoundParameters.ContainsKey('UpdateVMTag')
@@ -257,6 +266,7 @@ function Set-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('TargetAvailabilitySet')
         $null = $PSBoundParameters.Remove('TargetAvailabilityZone')
         $null = $PSBoundParameters.Remove('SqlServerLicenseType')
+        $null = $PSBoundParameters.Remove('LinuxLicenseType')
         $null = $PSBoundParameters.Remove('UpdateTag')
         $null = $PSBoundParameters.Remove('UpdateTagOperation')
         $null = $PSBoundParameters.Remove('UpdateVMTag')
@@ -288,7 +298,7 @@ function Set-AzMigrateServerReplication {
             
         $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
         if ($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt')) {
-            $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtUpdateMigrationItemInput]::new()
+            $ProviderSpecificDetails = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtUpdateMigrationItemInput]::new()
                 
             # Auto fill unchanged parameters
             $ProviderSpecificDetails.InstanceType = 'VMwareCbt'
@@ -320,6 +330,19 @@ function Set-AzMigrateServerReplication {
             }
             else {
                 $ProviderSpecificDetails.SqlServerLicenseType = $ReplicationMigrationItem.ProviderSpecificDetail.SqlServerLicenseType
+            }
+
+            if ($HasLinuxLicenseType) {
+                $validLinuxLicenseSpellings = @{ 
+                    NotSpecified  = "NotSpecified";
+                    NoLicenseType = "NoLicenseType";
+                    LinuxServer   = "LinuxServer";
+                }
+                $LinuxLicenseType = $validLinuxLicenseSpellings[$LinuxLicenseType]
+                $ProviderSpecificDetails.LinuxLicenseType = $LinuxLicenseType
+            }
+            else {
+                $ProviderSpecificDetails.LinuxLicenseType = $ReplicationMigrationItem.ProviderSpecificDetail.LinuxLicenseType
             }
 
             $UserProvidedTag = $null
@@ -619,7 +642,7 @@ function Set-AzMigrateServerReplication {
                         }
                     }
                     else {
-                        $updateDisk = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtUpdateDiskInput]::new()
+                        $updateDisk = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtUpdateDiskInput]::new()
                         $updateDisk.DiskId = $previousOsDiskId
                         $updateDisk.IsOSDisk = "False"
                         $originalDisks = $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk
@@ -672,11 +695,11 @@ function Set-AzMigrateServerReplication {
                     throw "A disk with name $($TargetDiskName)' already exists in the target resource group."
                 }
 
-                [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtUpdateDiskInput[]]$updateDisksArray = @()
+                [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtUpdateDiskInput[]]$updateDisksArray = @()
                 $originalDisks = $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk
                 foreach ($DiskObject in $originalDisks) {
                     if ( $DiskObject.IsOSDisk) {
-                        $updateDisk = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtUpdateDiskInput]::new()
+                        $updateDisk = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtUpdateDiskInput]::new()
                         $updateDisk.DiskId = $DiskObject.DiskId
                         $updateDisk.TargetDiskName = $TargetDiskName
                         $updateDisksArray += $updateDisk
@@ -687,12 +710,12 @@ function Set-AzMigrateServerReplication {
             }
 
             $originalNics = $ReplicationMigrationItem.ProviderSpecificDetail.VMNic
-            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtNicInput[]]$updateNicsArray = @()
+            [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IVMwareCbtNicInput[]]$updateNicsArray = @()
             $nicNamePresentinRg = New-Object Collections.Generic.List[String]
             $duplicateNicName = New-Object System.Collections.Generic.HashSet[String]
 
             foreach ($storedNic in $originalNics) {
-                $updateNic = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtNicInput]::new()
+                $updateNic = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.VMwareCbtNicInput]::new()
                 $updateNic.IsPrimaryNic = $storedNic.IsPrimaryNic
                 $updateNic.IsSelectedForMigration = $storedNic.IsSelectedForMigration
                 $updateNic.NicId = $storedNic.NicId
