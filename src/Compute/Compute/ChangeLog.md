@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added optional parameters `-SecurityPostureId` and `-SecurityPostureExcludeExtension` to cmdlets `New-AzVmss` and `New-AzVmssConfig`.
 * Updated image aliases to be up-to-date in the azure-powershell\src\Compute\Strategies\ComputeRp\Images.json file.
 * Upgraded Azure.Core to 1.44.1.
 
