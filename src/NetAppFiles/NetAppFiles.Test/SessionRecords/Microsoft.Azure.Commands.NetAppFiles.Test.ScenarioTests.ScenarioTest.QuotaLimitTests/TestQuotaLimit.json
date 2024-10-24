@@ -1,18 +1,18 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits?api-version=2024-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHM/YXBpLXZlcnNpb249MjAyNC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits?api-version=2024-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHM/YXBpLXZlcnNpb249MjAyNC0wNy0wMQ==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ddc01cad-c413-47f0-a127-97a31490a57b"
+          "bf7ba6e8-47ea-4a1e-9972-f9b7366d233b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3024.21525",
+          "FxVersion/6.0.3324.36610",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
           "Microsoft.Azure.Management.NetApp.NetAppManagementClient/0.0.0.0"
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "7523031b-2847-4281-8923-d97ea96214fb"
+          "1a074fdc-015f-4d28-9f08-70d488023441"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -36,13 +36,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-correlation-request-id": [
-          "2e4f5c28-e0b8-427f-800d-1dbf517c866e"
+          "5073baf8-a938-47b5-a5a2-7b13e17fb775"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20240723T171336Z:2e4f5c28-e0b8-427f-800d-1dbf517c866e"
+          "NORTHEUROPE:20241022T134734Z:5073baf8-a938-47b5-a5a2-7b13e17fb775"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -51,10 +54,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: D5925A30FFAB477497AC7847F17FAEBB Ref B: AMS231020615009 Ref C: 2024-07-23T17:13:36Z"
+          "Ref A: A8C485B614F9432A8FA3373B5E3B3C28 Ref B: AMS231032607025 Ref C: 2024-10-22T13:47:33Z"
         ],
         "Date": [
-          "Tue, 23 Jul 2024 17:13:36 GMT"
+          "Tue, 22 Oct 2024 13:47:33 GMT"
         ],
         "Content-Length": [
           "2499"
@@ -70,18 +73,18 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalTiBsPerSubscription?api-version=2024-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHMvdG90YWxUaUJzUGVyU3Vic2NyaXB0aW9uP2FwaS12ZXJzaW9uPTIwMjQtMDMtMDE=",
+      "RequestUri": "/subscriptions/0661b131-4a11-479b-96bf-2f95acca2f73/providers/Microsoft.NetApp/locations/eastus/quotaLimits/totalTiBsPerSubscription?api-version=2024-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDY2MWIxMzEtNGExMS00NzliLTk2YmYtMmY5NWFjY2EyZjczL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0QXBwL2xvY2F0aW9ucy9lYXN0dXMvcXVvdGFMaW1pdHMvdG90YWxUaUJzUGVyU3Vic2NyaXB0aW9uP2FwaS12ZXJzaW9uPTIwMjQtMDctMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d8931e57-0d14-41ab-90e1-ea55826828dd"
+          "263cd481-fe43-496f-8e58-0c7de43f08a8"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.3024.21525",
+          "FxVersion/6.0.3324.36610",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22631",
           "Microsoft.Azure.Management.NetApp.NetAppManagementClient/0.0.0.0"
@@ -96,7 +99,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "025bc35d-f1b2-416a-b72f-76b2c42e1d62"
+          "cc808441-ae5d-4dd1-aed1-e947fdef68a6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -105,13 +108,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "1099"
+        ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [
+          "16499"
         ],
         "x-ms-correlation-request-id": [
-          "18d129c5-3ebc-40c1-bbcd-09b74e227b8a"
+          "e01c4758-2c2b-43c8-bf7c-3c9f3d0964d5"
         ],
         "x-ms-routing-request-id": [
-          "UKWEST:20240723T171337Z:18d129c5-3ebc-40c1-bbcd-09b74e227b8a"
+          "NORTHEUROPE:20241022T134735Z:e01c4758-2c2b-43c8-bf7c-3c9f3d0964d5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -120,10 +126,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 0F9A645BD73949F6BDD506E52EC5D999 Ref B: AMS231032608025 Ref C: 2024-07-23T17:13:36Z"
+          "Ref A: 5A3E8FE5198B4378BBB22B9224FA416A Ref B: AMS231032608045 Ref C: 2024-10-22T13:47:34Z"
         ],
         "Date": [
-          "Tue, 23 Jul 2024 17:13:37 GMT"
+          "Tue, 22 Oct 2024 13:47:34 GMT"
         ],
         "Content-Length": [
           "273"

@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.")]
+            HelpMessage = "kdc server IP address for the active directory machine. This optional parameter is used only while creating kerberos volume.")]
         [ValidateNotNullOrEmpty]
         public string KdcIP { get; set; }
         

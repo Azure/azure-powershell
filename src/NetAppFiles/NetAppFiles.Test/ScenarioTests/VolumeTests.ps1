@@ -1191,3 +1191,118 @@ function Test-ResetCifsOnNfsVolume
         Clean-ResourceGroup $resourceGroup
     }
 }
+
+<#
+.SYNOPSIS
+Test Volume External Migration replciation operation, expecting error repsonse from service,
+Expects error since ExtenalReplication does not exist
+#>
+function Test-ExtenalReplicationFails
+{
+    $currentSub = (Get-AzureRmContext).Subscription
+    $subsid = $currentSub.SubscriptionId
+
+    $resourceGroup = Get-ResourceGroupName
+    $accName = Get-ResourceName
+    $poolName = Get-ResourceName
+    $volName1 = Get-ResourceName
+    $gibibyte = 1024 * 1024 * 1024
+    $usageThreshold = 100 * $gibibyte
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    $resourceLocation = "westus2"
+    $subnetName = "default"
+    $poolSize = 4398046511104
+    $serviceLevel = "Premium"
+    $vnetName = $resourceGroup + "-vnet"
+
+    $subnetId = "/subscriptions/$subsId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
+
+    $rule1 = @{
+        RuleIndex = 1
+        UnixReadOnly = $false
+        UnixReadWrite = $true
+        Cifs = $false
+        Nfsv3 = $true
+        Nfsv41 = $false
+        AllowedClients = '0.0.0.0/0'
+    }
+
+    $exportPolicy = @{
+		Rules = (
+			$rule1
+		)
+	}
+
+    # create the list of protocol types
+    $protocolTypes = New-Object string[] 1
+    $protocolTypes[0] = "NFSv3"
+
+    try
+    {
+        # create the resource group
+        New-AzResourceGroup -Name $resourceGroup -Location $resourceLocation -Tags @{Owner = 'b-aubald'}
+
+        # create virtual network
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $resourceLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
+        $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
+        Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
+
+        # create account
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName
+
+        # create pools
+        $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -PoolSize $poolSize -ServiceLevel $serviceLevel
+
+        # create  volume and check
+        $newTagName = "tag1"
+        $newTagValue = "tagValue1"
+
+        $remotePath = @{
+            externalHostName = "hostName"
+            serverName = "serverName"
+            volumeName = "volumeName"
+        }
+                
+        # create data protection volume
+        $externalReplication = @{
+            RemotePath = $remotePath
+        }
+        $volumeType = "Migration"
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ExportPolicy $exportPolicy -ProtocolType $protocolTypes -VolumeType $volumeType -ReplicationObject $externalReplication
+        Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
+        Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
+        Assert-AreEqual True $retrievedVolume.Tags.ContainsKey($newTagName)
+        Assert-AreEqual "tagValue1" $retrievedVolume.Tags[$newTagName].ToString()
+        Assert-NotNull $retrievedVolume.ExportPolicy
+        Assert-AreEqual '0.0.0.0/0' $retrievedVolume.ExportPolicy.Rules[0].AllowedClients
+        Assert-AreEqual "$volumeType" $retrievedVolume.VolumeType
+        Assert-AreEqual $remotePath.externalHostName $retrievedVolume.DataProtection.Replication.RemotePath.ExternalHostName
+
+        Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
+        Assert-NotNull $retrievedVolume.MountTargets
+
+        # get and check the volume by name
+        $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
+        Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
+        
+        $peerIpAddresses = '0.0.0.1', '0.0.0.2','0.0.0.3', '0.0.0.4', '0.0.0.5', '0.0.0.6'
+
+        # Peer external replication 
+        Assert-Throws{Start-AzNetAppFilesPeerExternalReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -PeerIpAddress $peerIpAddresses}
+
+        # authorize external replication
+        Assert-Throws{$svmPeeringCommand = Start-AzNetAppFilesAuthorizeReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1}
+
+        # perform external replication transfer
+        Assert-Throws{Start-AzNetAppFilesPerformExternalReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1}
+        
+        # Finalize external replication transfer
+        Assert-Throws{Start-AzNetAppFilesFinalizeExternalReplication -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1}
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroup
+    }
+}
