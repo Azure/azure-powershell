@@ -117,7 +117,8 @@ function Invoke-RestMethodWithUriParameters {
         # We do not know what went wrong, but something did!
         $statusCode = 400
         Write-Error "Error while issuing REST request: $_"
-    } finally {
+    } 
+    finally {
         # Note need to explcitly clear WhatIf for this method otherwise the value is
         # not passed back during What-If testing.
         Set-Variable -Name "${statusCodeVariable}" -Value $statusCode -Scope Script -WhatIf:$false
