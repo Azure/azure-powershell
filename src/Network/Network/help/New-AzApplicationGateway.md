@@ -139,6 +139,9 @@ An application gateway requires the following:
 A listener has a front-end port, front-end IP address, protocol (HTTP or HTTPS) and Secure Sockets
 Layer (SSL) certificate name (if configuring SSL offload).
 
+> [!NOTE]
+> There is a limitation that does not allow users to deploy a V2 application gateway that utilizes customer key vault for certificate storage and has a WAF policy associated to it. In the four parameter sets provided by the New-AzApplicationGateway cmdlet, the `-Identity` switch never coincides with the `-FirewallPolicy` or `-FirewallPolicyID` switch. Therefore, this cannot be done in one operation. The workaround is to have this done in multiple operations. Users must deploy a standard V2 Application Gateway with the managed identity, then change the sku to WAF_v2 and add the WAF policy.
+
 ## EXAMPLES
 
 ### Example 1: Create an application gateway
