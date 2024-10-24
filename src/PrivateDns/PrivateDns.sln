@@ -5,39 +5,38 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{83ADB803-F441-45A2-830A-63190AD17B60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{3EA743A1-7709-4C7C-9C08-994FE433BD13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{3EA743A1-7709-4C7C-9C08-994FE433BD13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{6DEFBC0B-C22B-4401-B487-4AFFD265D8E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{6DEFBC0B-C22B-4401-B487-4AFFD265D8E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{2FC29FED-57E5-48CE-9294-1D51C8D20D4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{2FC29FED-57E5-48CE-9294-1D51C8D20D4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{756EB32F-69DE-42E6-B034-8052898868C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{756EB32F-69DE-42E6-B034-8052898868C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{4FBFE741-88DB-464E-82F6-9B7222EE8716}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{4FBFE741-88DB-464E-82F6-9B7222EE8716}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{15E6132D-9430-41FD-BCDF-6BA85B457040}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{15E6132D-9430-41FD-BCDF-6BA85B457040}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{FC157C42-301E-4712-B329-ED55103281AA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependentModules", "DependentModules", "{7F8C0E5E-3C73-4994-881B-15576F58E683}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{31219230-D61C-4E2F-9B0C-A30ADF926B98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network.Management.Sdk", "..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj", "{31219230-D61C-4E2F-9B0C-A30ADF926B98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Network", "..\Network\Network\Network.csproj", "{AEB67470-0DCD-4782-BC16-BDE808D4FA87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{AEB67470-0DCD-4782-BC16-BDE808D4FA87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateDns.Test", "PrivateDns.Test\PrivateDns.Test.csproj", "{359C898F-F0B1-4C1F-9E95-D3CFF698D6C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivateDns.Test", "PrivateDns.Test\PrivateDns.Test.csproj", "{359C898F-F0B1-4C1F-9E95-D3CFF698D6C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateDns", "PrivateDns\PrivateDns.csproj", "{0956AA36-E48B-4343-A70D-E398EF4CEFCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivateDns", "PrivateDns\PrivateDns.csproj", "{0956AA36-E48B-4343-A70D-E398EF4CEFCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{05779DD4-E797-4973-AD03-766D296EFC4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{05779DD4-E797-4973-AD03-766D296EFC4A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivateDns.Management.Sdk", "PrivateDns.Management.Sdk\PrivateDns.Management.Sdk.csproj", "{B809A284-6FCC-4556-A2A5-26CE4906050B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3EA743A1-7709-4C7C-9C08-994FE433BD13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -84,6 +83,13 @@ Global
 		{05779DD4-E797-4973-AD03-766D296EFC4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05779DD4-E797-4973-AD03-766D296EFC4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05779DD4-E797-4973-AD03-766D296EFC4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B809A284-6FCC-4556-A2A5-26CE4906050B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B809A284-6FCC-4556-A2A5-26CE4906050B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B809A284-6FCC-4556-A2A5-26CE4906050B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B809A284-6FCC-4556-A2A5-26CE4906050B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3EA743A1-7709-4C7C-9C08-994FE433BD13} = {83ADB803-F441-45A2-830A-63190AD17B60}
@@ -97,5 +103,9 @@ Global
 		{AEB67470-0DCD-4782-BC16-BDE808D4FA87} = {7F8C0E5E-3C73-4994-881B-15576F58E683}
 		{359C898F-F0B1-4C1F-9E95-D3CFF698D6C1} = {FC157C42-301E-4712-B329-ED55103281AA}
 		{05779DD4-E797-4973-AD03-766D296EFC4A} = {FC157C42-301E-4712-B329-ED55103281AA}
+		{B809A284-6FCC-4556-A2A5-26CE4906050B} = {7F8C0E5E-3C73-4994-881B-15576F58E683}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2BA5D77-31E7-485F-9BD4-1F103676806F}
 	EndGlobalSection
 EndGlobal

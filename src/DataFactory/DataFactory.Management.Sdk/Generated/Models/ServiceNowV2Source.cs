@@ -51,11 +51,16 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="expression">Expression to filter data from source.
         /// </param>
-        public ServiceNowV2Source(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), ExpressionV2 expression = default(ExpressionV2))
+
+        /// <param name="pageSize">Page size of the result. Type: integer (or Expression with resultType
+        /// integer).
+        /// </param>
+        public ServiceNowV2Source(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), ExpressionV2 expression = default(ExpressionV2), object pageSize = default(object))
 
         : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
         {
             this.Expression = expression;
+            this.PageSize = pageSize;
             CustomInit();
         }
 
@@ -70,5 +75,12 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "expression")]
         public ExpressionV2 Expression {get; set; }
+
+        /// <summary>
+        /// Gets or sets page size of the result. Type: integer (or Expression with
+        /// resultType integer).
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "pageSize")]
+        public object PageSize {get; set; }
     }
 }

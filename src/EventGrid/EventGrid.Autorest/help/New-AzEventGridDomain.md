@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridDomain
 
 ## SYNOPSIS
-Asynchronously creates or updates a new domain with the specified parameters.
+Asynchronously create a new domain with the specified parameters.
 
 ## SYNTAX
 
@@ -51,7 +51,7 @@ New-AzEventGridDomain -Name <String> -ResourceGroupName <String> -JsonString <St
 ```
 
 ## DESCRIPTION
-Asynchronously creates or updates a new domain with the specified parameters.
+Asynchronously create a new domain with the specified parameters.
 
 ## EXAMPLES
 

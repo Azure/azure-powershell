@@ -652,7 +652,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
             }
         }
 
-        /// <summary>Update a new action group or update an existing one.</summary>
+        /// <summary>update a new action group or update an existing one.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="actionGroupName">The name of the action group.</param>
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
             }
         }
 
-        /// <summary>Update a new action group or update an existing one.</summary>
+        /// <summary>update a new action group or update an existing one.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The action group to create or use for the update.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -762,7 +762,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
             }
         }
 
-        /// <summary>Update a new action group or update an existing one.</summary>
+        /// <summary>update a new action group or update an existing one.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The action group to create or use for the update.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -819,7 +819,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
             }
         }
 
-        /// <summary>Update a new action group or update an existing one.</summary>
+        /// <summary>update a new action group or update an existing one.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="actionGroupName">The name of the action group.</param>
@@ -868,7 +868,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
             }
         }
 
-        /// <summary>Update a new action group or update an existing one.</summary>
+        /// <summary>update a new action group or update an existing one.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="actionGroupName">The name of the action group.</param>
@@ -914,7 +914,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
             }
         }
 
-        /// <summary>Update a new action group or update an existing one.</summary>
+        /// <summary>update a new action group or update an existing one.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="actionGroupName">The name of the action group.</param>

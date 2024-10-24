@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new partner registration with the specified parameters.
+create a new partner registration with the specified parameters.
 .Description
-Create a new partner registration with the specified parameters.
+create a new partner registration with the specified parameters.
 .Example
 New-AzEventGridPartnerRegistration -Name azps-registration -ResourceGroupName azps_test_group_eventgrid -Location global
 

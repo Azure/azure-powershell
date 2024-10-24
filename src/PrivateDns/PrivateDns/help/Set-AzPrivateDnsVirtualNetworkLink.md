@@ -16,20 +16,20 @@ Updates/Sets a virtual network link associated with a private zone and a resourc
 ### Fields (Default)
 ```
 Set-AzPrivateDnsVirtualNetworkLink -ResourceGroupName <String> -ZoneName <String> -Name <String>
- [-IsRegistrationEnabled <Boolean>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-IsRegistrationEnabled <Boolean>] [-ResolutionPolicy <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### Object
 ```
 Set-AzPrivateDnsVirtualNetworkLink -InputObject <PSPrivateDnsVirtualNetworkLink>
- [-IsRegistrationEnabled <Boolean>] [-Tag <Hashtable>] [-Overwrite] [-DefaultProfile <IAzureContextContainer>]
+ [-IsRegistrationEnabled <Boolean>] [-ResolutionPolicy <String>] [-Tag <Hashtable>] [-Overwrite] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Set-AzPrivateDnsVirtualNetworkLink -ResourceId <String> [-IsRegistrationEnabled <Boolean>] [-Tag <Hashtable>]
+Set-AzPrivateDnsVirtualNetworkLink -ResourceId <String> [-IsRegistrationEnabled <Boolean>] [-ResolutionPolicy <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,6 +58,7 @@ Location                :
 Etag                    : "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 Tags                    : {}
 RegistrationEnabled     : True
+ResolutionPolicy        : Default
 VirtualNetworkLinkState : Completed
 ProvisioningState       : Succeeded
 ```
@@ -107,6 +108,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResolutionPolicy
+Speficies the resolution policy of the virtual network link
+
+```yaml
+Type: Azure.ResourceManager.PrivateDns.Models.PrivateDnsResolutionPolicy
+Parameter Sets: (All)
+Aliases:
+Accepted values: Default, NxDomainRedirect
+
+Required: False
+Position: Named
+Default value: Default
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

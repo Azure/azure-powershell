@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a data collection rule.
+create a data collection rule.
 .Description
-Create a data collection rule.
+create a data collection rule.
 .Example
 New-AzDataCollectionRule -Name myCollectionRule1 -ResourceGroupName AMCS-TEST -JsonFilePath .\test\jsonfile\ruleTest1.json
 # Note: content of .\test\jsonfile\ruleTest1.json

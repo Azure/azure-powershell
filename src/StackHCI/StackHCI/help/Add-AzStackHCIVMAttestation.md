@@ -14,19 +14,19 @@ Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestatio
 
 ### VMName (Default)
 ```
-Add-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-WhatIf]
+Add-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### VMObject
 ```
-Add-AzStackHCIVMAttestation [-Force] [-VM] <Object[]> [-WhatIf] [-Confirm]
+Add-AzStackHCIVMAttestation [-Force] [-VM] <Object[]> [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### AddAll
 ```
-Add-AzStackHCIVMAttestation [-Force] [-AddAll] [-WhatIf] [-Confirm]
+Add-AzStackHCIVMAttestation [-Force] [-AddAll] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -99,6 +99,21 @@ No confirmations.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

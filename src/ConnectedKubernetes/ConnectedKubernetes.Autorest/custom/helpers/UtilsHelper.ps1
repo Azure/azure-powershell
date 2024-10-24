@@ -67,8 +67,8 @@ function ConvertTo-ArcAgentryConfiguration {
         else {
             $protectedSettings = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
             $ArcAgentryConfiguration = @{
-                Feature  = $feature
-                Settings = $settings
+                Feature           = $feature
+                Settings          = $settings
                 ProtectedSettings = $protectedSettings
             }
         }

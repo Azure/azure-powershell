@@ -151,12 +151,16 @@ $AzureGermanCloudPortalDomain = "https://portal.microsoftazure.de/"
 $AzurePPEPortalDomain = "https://df.onecloud.azure-test.net/"
 $AzureCanaryPortalDomain = "https://portal.azure.com/"
 
+$DOMAINFQDNMACRO = "{DomainFqdn}"
+$AzureLocalPortalDomain = "https://portal.$DOMAINFQDNMACRO"
+
 $AzureCloud = "AzureCloud"
 $AzureChinaCloud = "AzureChinaCloud"
 $AzureUSGovernment = "AzureUSGovernment"
 $AzureGermanCloud = "AzureGermanCloud"
 $AzurePPE = "AzurePPE"
 $AzureCanary = "AzureCanary"
+$AzureLocal = "Azure.local"
 
 $PortalCanarySuffix = '?feature.armendpointprefix={0}'
 $PortalHCIResourceUrl = '#@{0}/resource/subscriptions/{1}/resourceGroups/{2}/providers/Microsoft.AzureStackHCI/clusters/{3}/overview'
@@ -195,6 +199,11 @@ $ServiceEndpointAzureGermanCloud = "https://azurestackhci-usage.trafficmanager.d
 $AuthorityAzureGermanCloud = "https://login.microsoftonline.de"
 $BillingServiceApiScopeAzureGermanCloud = "https://azurestackhci-usage.azurewebsites.de/.default"
 $GraphServiceApiScopeAzureGermanCloud = "https://graph.cloudapi.de/.default"
+
+$ServiceEndpointAzureLocal = "https://dp.aszrp.$DOMAINFQDNMACRO"
+$AuthorityAzureLocal = "https://login.$DOMAINFQDNMACRO"
+$BillingServiceApiScopeAzureLocal = "https://dp.aszrp.$DOMAINFQDNMACRO/.default"
+$GraphServiceApiScopeAzureLocal = "https://graph.$DOMAINFQDNMACRO"
 
 $RPAPIVersion = "2022-12-01";
 $HCIArcAPIVersion = "2023-03-01"
@@ -1029,6 +1038,10 @@ param(
         $PortalCanarySuffixWithRegion = $PortalCanarySuffix -f $Region
         return ($AzureCanaryPortalDomain + $PortalCanarySuffixWithRegion);
     }
+    elseif($EnvironmentName -eq $AzureLocal)
+    {
+        return $AzureLocalPortalDomain;
+    }
 }
 
 function Get-DefaultRegion{
@@ -1062,6 +1075,10 @@ param(
     elseif($EnvironmentName -eq $AzureCanary)
     {
         $defaultRegion = "eastus2euap"
+    }
+    elseif($EnvironmentName -eq $AzureLocal)
+    {
+        $defaultRegion = "autonomous"
     }
 
     return $defaultRegion
@@ -1129,6 +1146,13 @@ param(
         $Authority.Value = $AuthorityAzurePPE
         $BillingServiceApiScope.Value = $BillingServiceApiScopeAzurePPE
         $GraphServiceApiScope.Value = $GraphServiceApiScopeAzurePPE
+    }
+    elseif($EnvironmentName -eq $AzureLocal)
+    {
+        $ServiceEndpoint.Value = $ServiceEndpointAzureLocal
+        $Authority.Value = $AuthorityAzureLocal
+        $BillingServiceApiScope.Value = $BillingServiceApiScopeAzureLocal
+        $GraphServiceApiScope.Value = $GraphServiceApiScopeAzureLocal
     }
 }
 
@@ -1407,6 +1431,39 @@ param(
     $regionName = $Region -replace '\s',''
     $regionName = $regionName.ToLower()
     return $regionName
+}
+
+function Initialize-AzureLocalConfig {
+    $endpoints = Retry-Command -ScriptBlock { (Invoke-WebRequest -Uri "http://localhost:40342/metadata/endpoints?api-version=2020-06-01" -Headers @{"metadata"="true"; "UseDefaultCredentials"="true" } -UseBasicParsing).Content | ConvertFrom-Json}
+
+    # Extract domain FQDN from storage suffix.
+    $domainFQDN=$endpoints.Suffixes.Storage
+
+    # Update default configurations based on the domain FQDN.
+    $script:AzureLocalPortalDomain = $script:AzureLocalPortalDomain.Replace($DOMAINFQDNMACRO, $domainFQDN)
+    $script:ServiceEndpointAzureLocal = $script:ServiceEndpointAzureLocal.Replace($DOMAINFQDNMACRO, $domainFQDN)
+    $script:AuthorityAzureLocal = $script:AuthorityAzureLocal.Replace($DOMAINFQDNMACRO, $domainFQDN)
+    $script:BillingServiceApiScopeAzureLocal = $script:BillingServiceApiScopeAzureLocal.Replace($DOMAINFQDNMACRO, $domainFQDN)
+    $script:GraphServiceApiScopeAzureLocal = $script:GraphServiceApiScopeAzureLocal.Replace($DOMAINFQDNMACRO, $domainFQDN)
+
+    Write-VerboseLog "Default Azure Local configurations - Portal: $AzureLocalPortalDomain, ServiceEndpoint: $ServiceEndpointAzureLocal, Authority: $AuthorityAzureLocal, BillingServiceApiScope: $BillingServiceApiScopeAzureLocal, GraphServiceApiScope: $GraphServiceApiScopeAzureLocal"
+
+    # Over write the default configurations if the endpoint is available as part of the metadata.
+    if ($endpoints.portal) {
+        $script:AzureLocalPortal = $endpoints.portal
+    }
+    if ($endpoints.dataplaneEndpoints.hciDataplaneServiceEndpoint) {
+        $script:ServiceEndpointAzureLocal = $endpoints.dataplaneEndpoints.hciDataplaneServiceEndpoint
+        $script:BillingServiceApiScopeAzureLocal = "$($endpoints.dataplaneEndpoints.hciDataplaneServiceEndpoint)/.default"
+    }
+    if ($endpoints.authentication.loginEndpoint) {
+        $script:AuthorityAzureLocal = $endpoints.authentication.loginEndpoint
+    }
+    if ($endpoints.graph) {
+        $script:GraphServiceApiScopeAzureLocal = $endpoints.graph
+    }
+
+    Write-VerboseLog "Azure Local configurations after override - Portal: $AzureLocalPortalDomain, ServiceEndpoint: $ServiceEndpointAzureLocal, Authority: $AuthorityAzureLocal, BillingServiceApiScope: $BillingServiceApiScopeAzureLocal, GraphServiceApiScope: $GraphServiceApiScopeAzureLocal"
 }
 
 function Validate-RegionName{
@@ -2895,6 +2952,12 @@ param(
         Write-VerboseLog ("Cloud Management Infra supported: {0}" -f $isCloudManagementInfraSupported)
         Write-VerboseLog ("Installing Mandatory extensions supported: {0}" -f $isDefaultExtensionSupported)
 
+        if ($EnvironmentName -eq $AzureLocal) 
+        {
+            Write-VerboseLog ("Registering in Azure Local. Initiliazing Azure.local configurations")
+            Initialize-AzureLocalConfig
+        }
+
             if(-Not ([string]::IsNullOrEmpty($RegContext.AzureResourceUri)))
             {
                 if([string]::IsNullOrEmpty($ResourceName))
@@ -4181,30 +4244,33 @@ param(
             $TenantId = Azure-Login -SubscriptionId $SubscriptionId -TenantId $TenantId -ArmAccessToken $ArmAccessToken -GraphAccessToken $GraphAccessToken -AccountId $AccountId -EnvironmentName $EnvironmentName -ProgressActivityName $UnregisterProgressActivityName -UseDeviceAuthentication $UseDeviceAuthentication -Region $Region
 
             Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $UnregisterArcMessage -percentcomplete 40
-
-            $arcUnregisterRes = Unregister-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -ResourceId $resourceId -Force:$Force -ClusterDNSSuffix $clusterDNSSuffix
-
-            if($arcUnregisterRes -eq $false)
+            
+            if ($EnvironmentName -ne $AzureLocal)
             {
-                $resultValue = [OperationStatus]::Failed
-                $unregisterArcForServersWacErrorCode = 9117
-                $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $unregistrationOutput
-                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $unregisterArcForServersWacErrorCode -Output $unregistrationOutput
-                Write-Output $unregistrationOutput | Format-List
-                Write-NodeEventLog -Message "ARC unregistration failed" -EventID 9117 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
-                return
-            }
-            else
-            {
-                if ($DisableOnlyAzureArcServer -eq $true)
+                $arcUnregisterRes = Unregister-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -ResourceId $resourceId -Force:$Force -ClusterDNSSuffix $clusterDNSSuffix
+
+                if($arcUnregisterRes -eq $false)
                 {
-                    $resultValue = [OperationStatus]::Success
+                    $resultValue = [OperationStatus]::Failed
+                    $unregisterArcForServersWacErrorCode = 9117
                     $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
                     Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $unregistrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $unregisterArcForServersWacErrorCode -Output $unregistrationOutput
                     Write-Output $unregistrationOutput | Format-List
-                    Write-NodeEventLog -Message "Disabling only ARC for Servers. UnRegistration completed successfully" -EventID 9008 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+                    Write-NodeEventLog -Message "ARC unregistration failed" -EventID 9117 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                     return
+                }
+                else
+                {
+                    if ($DisableOnlyAzureArcServer -eq $true)
+                    {
+                        $resultValue = [OperationStatus]::Success
+                        $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $unregistrationOutput
+                        Write-Output $unregistrationOutput | Format-List
+                        Write-NodeEventLog -Message "Disabling only ARC for Servers. UnRegistration completed successfully" -EventID 9008 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+                        return
+                    }
                 }
             }
 

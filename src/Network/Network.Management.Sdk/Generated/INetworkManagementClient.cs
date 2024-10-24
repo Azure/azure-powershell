@@ -408,6 +408,36 @@ namespace Microsoft.Azure.Management.Network
         IAdminRulesOperations AdminRules { get; }
 
         /// <summary>
+        /// Gets the INetworkManagerRoutingConfigurationsOperations
+        /// </summary>
+        INetworkManagerRoutingConfigurationsOperations NetworkManagerRoutingConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IRoutingRuleCollectionsOperations
+        /// </summary>
+        IRoutingRuleCollectionsOperations RoutingRuleCollections { get; }
+
+        /// <summary>
+        /// Gets the IRoutingRulesOperations
+        /// </summary>
+        IRoutingRulesOperations RoutingRules { get; }
+
+        /// <summary>
+        /// Gets the ISecurityUserConfigurationsOperations
+        /// </summary>
+        ISecurityUserConfigurationsOperations SecurityUserConfigurations { get; }
+
+        /// <summary>
+        /// Gets the ISecurityUserRuleCollectionsOperations
+        /// </summary>
+        ISecurityUserRuleCollectionsOperations SecurityUserRuleCollections { get; }
+
+        /// <summary>
+        /// Gets the ISecurityUserRulesOperations
+        /// </summary>
+        ISecurityUserRulesOperations SecurityUserRules { get; }
+
+        /// <summary>
         /// Gets the INetworkProfilesOperations
         /// </summary>
         INetworkProfilesOperations NetworkProfiles { get; }

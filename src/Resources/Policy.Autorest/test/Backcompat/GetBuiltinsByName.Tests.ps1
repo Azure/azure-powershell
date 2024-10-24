@@ -19,7 +19,7 @@ Describe 'Backcompat-GetBuiltinsByName' -Tag 'LiveOnly' {
                     catch {
                         if ($_.Exception.Message -like '`[ResourceRequestsThrottled`] : *') {
                             Write-Host -NoNewline -ForegroundColor DarkYellow 'Waiting 5 seconds to allow throttling limit to reset...'
-                            Start-Sleep -Seconds 5
+                            Start-TestSleep -Seconds 5
                             Write-Host -ForegroundColor DarkYellow 'resuming.'
                         }
                         else {
@@ -47,7 +47,7 @@ Describe 'Backcompat-GetBuiltinsByName' -Tag 'LiveOnly' {
                     catch {
                         if ($_.Exception.Message -like '`[ResourceRequestsThrottled`] : *') {
                             Write-Host -NoNewline -ForegroundColor DarkYellow 'Waiting 5 seconds to allow throttling limit to reset...'
-                            Start-Sleep -Seconds 5
+                            Start-TestSleep -Seconds 5
                             Write-Host -ForegroundColor DarkYellow 'resuming.'
                         }
                         else {

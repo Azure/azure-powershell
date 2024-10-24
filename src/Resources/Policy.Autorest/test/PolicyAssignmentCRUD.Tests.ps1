@@ -202,6 +202,21 @@ Describe 'PolicyAssignmentCRUD' {
         $list3.Count | Should -Be 0
     }
 
+    # This test verifies the change for IcM: https://portal.microsofticm.com/imp/v5/incidents/details/546429959/summary
+    It 'Remove of input object with scope parameter removes by name, not id' {
+        # list existing assignments at upper scopes
+        $expected = Get-AzPolicyAssignment
+
+        # remove with invalid scope should fail
+        { $expected | Remove-AzPolicyAssignment -Scope $someScope } | Should -Throw $missingSubscription
+
+        # remove at different-but-valid scope just succeeds
+        $expected | Remove-AzPolicyAssignment -Scope "/subscriptions/$($subscriptionId)" -PassThru | %{ $_ | Should -Be $true }
+
+        # confirm nothing was removed
+        (Get-AzPolicyAssignment).Count | Should -Be $expected.Count
+    }
+
     AfterAll {
         # clean up
         $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $rgScope -PassThru

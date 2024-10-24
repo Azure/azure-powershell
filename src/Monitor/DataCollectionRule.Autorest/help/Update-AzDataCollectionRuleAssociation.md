@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDataCollectionRuleAssociation
 
 ## SYNOPSIS
-Update an association.
+update an association.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Update-AzDataCollectionRuleAssociation -InputObject <IDataCollectionRuleIdentity
 ```
 
 ## DESCRIPTION
-Update an association.
+update an association.
 
 ## EXAMPLES
 

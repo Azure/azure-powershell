@@ -19,13 +19,13 @@ Set-AzStackHciUpdateSummary -ClusterName <String> -ResourceGroupName <String> [-
  [-HealthCheckDate <DateTime>] [-HealthCheckResult <IPrecheckResult[]>] [-HealthState <HealthState>]
  [-LastChecked <DateTime>] [-LastUpdated <DateTime>] [-Location <String>] [-OemFamily <String>]
  [-PackageVersion <IPackageVersionInfo[]>] [-State <UpdateSummariesPropertiesState>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Put
 ```
 Set-AzStackHciUpdateSummary -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -UpdateLocationProperty <IUpdateSummaries> [-DefaultProfile <PSObject>]
+ -UpdateLocationProperty <IUpdateSummaries> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -233,6 +233,21 @@ To construct, see NOTES section for PACKAGEVERSION properties and create a hash 
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20240401.IPackageVersionInfo[]
 Parameter Sets: PutExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

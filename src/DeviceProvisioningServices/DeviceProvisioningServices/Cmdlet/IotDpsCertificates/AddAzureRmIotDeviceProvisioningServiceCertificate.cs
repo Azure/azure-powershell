@@ -167,14 +167,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             certificateBodyDescription.Certificate = certificate;
 
             CertificateResponse certificateResponse;
-            if (this.Etag != null)
-            {
-                certificateResponse = this.IotDpsClient.DpsCertificate.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription, this.Etag);
-            }
-            else
-            {
-                certificateResponse = this.IotDpsClient.DpsCertificate.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription);
-            }
+            certificateResponse = this.IotDpsClient.DpsCertificate.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, this.Etag, certificateBodyDescription.Certificate);
 
             this.WriteObject(IotDpsUtils.ToPSCertificateResponse(certificateResponse));
         }

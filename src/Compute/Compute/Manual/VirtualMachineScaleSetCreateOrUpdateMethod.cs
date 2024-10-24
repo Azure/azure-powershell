@@ -260,6 +260,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest")]
+        public string SecurityPostureId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "List of virtual machine extensions to exclude when applying the security posture.")]
+        public string[] SecurityPostureExcludeExtension { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Array of VM sizes for the scale set.")]
         public string[] SkuProfileVmSize { get; set; }
 
@@ -497,7 +511,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     skuProfileVmSize: skuProfileVmSizes,
                     skuProfileAllocationStrategy: _cmdlet.SkuProfileAllocationStrategy,
                     ifMatch: _cmdlet.IfMatch,
-                    ifNoneMatch: _cmdlet.IfNoneMatch
+                    ifNoneMatch: _cmdlet.IfNoneMatch,
+                    securityPostureId: _cmdlet.SecurityPostureId,
+                    securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension
                     );
             }
 
@@ -666,7 +682,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     skuProfileAllocationStrategy: _cmdlet.SkuProfileAllocationStrategy,
                     auxAuthHeader: auxAuthHeader,
                     ifMatch: _cmdlet.IfMatch,
-                    ifNoneMatch: _cmdlet.IfNoneMatch
+                    ifNoneMatch: _cmdlet.IfNoneMatch,
+                    securityPostureId: _cmdlet.SecurityPostureId,
+                    securityPostureExcludeExtension: _cmdlet.SecurityPostureExcludeExtension
                     );
             }
         }

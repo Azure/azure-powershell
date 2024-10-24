@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDataCollectionRuleAssociation
 
 ## SYNOPSIS
-Update an association.
+update an association.
 
 ## SYNTAX
 
@@ -16,18 +16,18 @@ Update an association.
 ```
 Update-AzDataCollectionRuleAssociation -AssociationName <String> -ResourceUri <String>
  [-DataCollectionEndpointId <String>] [-DataCollectionRuleId <String>] [-Description <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDataCollectionRuleAssociation -InputObject <IDataCollectionRuleIdentity>
  [-DataCollectionEndpointId <String>] [-DataCollectionRuleId <String>] [-Description <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update an association.
+update an association.
 
 ## EXAMPLES
 
@@ -177,6 +177,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
