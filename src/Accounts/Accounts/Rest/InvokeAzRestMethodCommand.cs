@@ -195,7 +195,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
                     if (error)
                     {
-                        //WriteObject(new PSHttpResponse(response));
                         throw new AzPSException("Azure Service operation failed.", Commands.Common.ErrorKind.ServiceError);
                     }
 
@@ -307,7 +306,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
 
         private string GetUriFromHeader(AzureOperationResponse<string> response, string chosenHeader)
         {
-            //WriteObject($"Determined Header: {chosenHeader}");
             if (!response.Response.Headers.Contains(chosenHeader))
             {
                 throw new AzPSInvalidOperationException($"Polling header `{chosenHeader}` is not present in the response.");
