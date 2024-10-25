@@ -21,7 +21,7 @@ Get data boundary of tenant.
 
 ## EXAMPLES
 
-### Example 1: {{ Get Data Boundary (Tenant) }}
+### Example 1: Get Data Boundary (Tenant)
 ```powershell
 Get-AzDataBoundaryTenant
 ```
