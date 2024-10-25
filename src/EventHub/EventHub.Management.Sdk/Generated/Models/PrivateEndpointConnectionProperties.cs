@@ -8,39 +8,21 @@ namespace Microsoft.Azure.Management.EventHub.Models
     using System.Linq;
 
     /// <summary>
-    /// Properties of the PrivateEndpointConnection.
+    /// Properties of the private endpoint connection resource.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateEndpointConnection : ProxyResource
+    public partial class PrivateEndpointConnectionProperties
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpointConnection class.
+        /// Initializes a new instance of the PrivateEndpointConnectionProperties class.
         /// </summary>
-        public PrivateEndpointConnection()
+        public PrivateEndpointConnectionProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpointConnection class.
+        /// Initializes a new instance of the PrivateEndpointConnectionProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </param>
-
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.EventHub/Namespaces&#34; or
-        /// &#34;Microsoft.EventHub/Namespaces/EventHubs&#34;
-        /// </param>
-
-        /// <param name="location">The geo-location where the resource lives
-        /// </param>
-
-        /// <param name="systemData">The system meta data relating to this resource.
-        /// </param>
 
         /// <param name="privateEndpoint">The Private Endpoint resource for this Connection.
         /// </param>
@@ -51,11 +33,9 @@ namespace Microsoft.Azure.Management.EventHub.Models
         /// <param name="provisioningState">Provisioning state of the Private Endpoint Connection.
         /// Possible values include: &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Succeeded&#39;,
         /// &#39;Canceled&#39;, &#39;Failed&#39;</param>
-        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), string location = default(string), SystemData systemData = default(SystemData), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), ConnectionState privateLinkServiceConnectionState = default(ConnectionState), string provisioningState = default(string))
+        public PrivateEndpointConnectionProperties(PrivateEndpoint privateEndpoint = default(PrivateEndpoint), ConnectionState privateLinkServiceConnectionState = default(ConnectionState), string provisioningState = default(string))
 
-        : base(id, name, type, location)
         {
-            this.SystemData = systemData;
             this.PrivateEndpoint = privateEndpoint;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             this.ProvisioningState = provisioningState;
@@ -69,27 +49,21 @@ namespace Microsoft.Azure.Management.EventHub.Models
 
 
         /// <summary>
-        /// Gets the system meta data relating to this resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
         /// Gets or sets the Private Endpoint resource for this Connection.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateEndpoint")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateEndpoint")]
         public PrivateEndpoint PrivateEndpoint {get; set; }
 
         /// <summary>
         /// Gets or sets details about the state of the connection.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateLinkServiceConnectionState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkServiceConnectionState")]
         public ConnectionState PrivateLinkServiceConnectionState {get; set; }
 
         /// <summary>
         /// Gets or sets provisioning state of the Private Endpoint Connection. Possible values include: &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Failed&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; set; }
     }
 }

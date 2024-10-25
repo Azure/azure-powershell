@@ -7,17 +7,12 @@ namespace Microsoft.Azure.Management.EventHub.Models
 {
 
     /// <summary>
-    /// Defines values for EndPointProvisioningState.
+    /// Defines values for ApplicationGroupPolicyType.
     /// </summary>
 
 
-    public static class EndPointProvisioningState
+    public static class ApplicationGroupPolicyType
     {
-        public const string Creating = "Creating";
-        public const string Updating = "Updating";
-        public const string Deleting = "Deleting";
-        public const string Succeeded = "Succeeded";
-        public const string Canceled = "Canceled";
-        public const string Failed = "Failed";
+        public const string ThrottlingPolicy = "ThrottlingPolicy";
     }
 }
