@@ -1,4 +1,5 @@
 ### Example 1: Get Data Boundary (Tenant)
+
 ```powershell
 Get-AzDataBoundaryTenant
 ```
