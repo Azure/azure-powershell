@@ -15,7 +15,7 @@ Creates a virtual network.
 
 ```
 New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String> -AddressPrefix <String[]>
- [-DnsServer <String[]>] [-FlowTimeout <Int32>] [-Subnet <PSSubnet[]>] [-BgpCommunity <String>]
+ [-IpamPoolPrefixAllocation <PSIpamPoolPrefixAllocation[]>] [-DnsServer <String[]>] [-FlowTimeout <Int32>] [-Subnet <PSSubnet[]>] [-BgpCommunity <String>]
  [-EnableEncryption <String>] [-EncryptionEnforcementPolicy <String>] [-Tag <Hashtable>]
  [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>]
  [-EdgeZone <String>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -84,6 +84,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IpamPoolPrefixAllocation
+Specifies a list of PSIpamPoolPrefixAllocation objects to auto allocate from for virtual network address prefixes.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSIpamPoolPrefixAllocation[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
