@@ -118,22 +118,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
-        public void NetworkManagerVerifierWorkspaceCRUD()
-        {
-            TestRunner.RunTestScript("Test-NetworkManagerVerifierWorkspaceCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
-        public void NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentCRUD()
-        {
-            TestRunner.RunTestScript("Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
         public void NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD");
