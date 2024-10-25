@@ -15,7 +15,7 @@ Creates a security admin configuration.
 ```
 New-AzNetworkManagerSecurityAdminConfiguration -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> [-Description <String>]
- [-ApplyOnNetworkIntentPolicyBasedService <NetworkIntentPolicyBasedServiceType[]>] [-DeleteExistingNSG]
+ [-ApplyOnNetworkIntentPolicyBasedService <NetworkIntentPolicyBasedServiceType[]>] [-NetworkGroupAddressSpaceAggregationOption <String>][-DeleteExistingNSG]
  [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ The **New-AzNetworkManagerSecurityAdminConfiguration** cmdlet creates a security
 ### Example 1
 ```powershell
 $ApplyOnNetworkIntentPolicyBasedService = @("None")
-New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psSecurityAdminConfig" -Description "TestDescription" -DeleteExistingNSG  -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedService
+New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psSecurityAdminConfig" -Description "TestDescription" -DeleteExistingNSG  -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedService -NetworkGroupAddressSpaceAggregationOption $NetworkGroupAddressSpaceAggregationOption
 ```
 
 ```output

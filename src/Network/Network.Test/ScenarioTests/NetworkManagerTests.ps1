@@ -1635,7 +1635,7 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         Assert-AreEqual $reachabilityAnalysisRunList.Count 1
 
        Start-TestSleep -Seconds 300
-
+       Assert-NotNull $reachabilityAnalysisRun
        Assert-AreEqual "DESCription" $reachabilityAnalysisRun.Properties.Description;
        Assert-AreEqual $intentId  $reachabilityAnalysisRun.Properties.IntentId;
 
