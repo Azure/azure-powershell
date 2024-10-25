@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a permission binding with the specified parameters.
+create a permission binding with the specified parameters.
 .Description
-Create a permission binding with the specified parameters.
+create a permission binding with the specified parameters.
 .Example
 New-AzEventGridPermissionBinding -Name azps-pb -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -ClientGroupName "azps-clientgroup" -Permission Publisher -TopicSpaceName "azps-topicspace"
 

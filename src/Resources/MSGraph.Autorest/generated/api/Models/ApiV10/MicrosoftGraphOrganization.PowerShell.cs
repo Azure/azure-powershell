@@ -189,7 +189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             }
             if (content.Contains("MobileDeviceManagementAuthority"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationInternal)this).MobileDeviceManagementAuthority = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Support.MdmAuthority?) content.GetValueForProperty("MobileDeviceManagementAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationInternal)this).MobileDeviceManagementAuthority, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Support.MdmAuthority.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationInternal)this).MobileDeviceManagementAuthority = (string) content.GetValueForProperty("MobileDeviceManagementAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationInternal)this).MobileDeviceManagementAuthority, global::System.Convert.ToString);
             }
             if (content.Contains("CertificateBasedAuthConfiguration"))
             {
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             }
             if (content.Contains("MobileDeviceManagementAuthority"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationInternal)this).MobileDeviceManagementAuthority = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Support.MdmAuthority?) content.GetValueForProperty("MobileDeviceManagementAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationInternal)this).MobileDeviceManagementAuthority, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Support.MdmAuthority.CreateFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationInternal)this).MobileDeviceManagementAuthority = (string) content.GetValueForProperty("MobileDeviceManagementAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationInternal)this).MobileDeviceManagementAuthority, global::System.Convert.ToString);
             }
             if (content.Contains("CertificateBasedAuthConfiguration"))
             {

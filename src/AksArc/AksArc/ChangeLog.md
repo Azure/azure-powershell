@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bug where Remove-AzAksArcCluster would take a very long time to complete.
+* Fixed issue where Update-AzAksArcCluster would error out when passing AdminGroupObjectID parameter.
 
 ## Version 0.1.1
 * Fixed bug where `Invoke-AzAksArcClusterUpgrade` would throw false exception when kubernetes version is passed as a parameter. 

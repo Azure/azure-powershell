@@ -93,6 +93,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-05-01/vmssPublicIpAddress.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/network/resource-manager/Microsoft.Network/stable/2024-05-01/webapplicationfirewall.json
 
+
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.Network

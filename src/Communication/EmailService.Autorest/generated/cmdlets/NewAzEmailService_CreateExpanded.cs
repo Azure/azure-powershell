@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a new EmailService or update an existing EmailService.</summary>
+    /// <summary>create a new EmailService or create an existing EmailService.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEmailService_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"Create a new EmailService or update an existing EmailService.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"create a new EmailService or create an existing EmailService.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}", ApiVersion = "2023-06-01-preview")]
     public partial class NewAzEmailService_CreateExpanded : global::System.Management.Automation.PSCmdlet,

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously creates a new system topic with the specified parameters.
+Asynchronously create a new system topic with the specified parameters.
 .Description
-Asynchronously creates a new system topic with the specified parameters.
+Asynchronously create a new system topic with the specified parameters.
 .Example
 New-AzEventGridSystemTopic -Name azps-systopic -ResourceGroupName azps_test_group_eventgrid -Location eastus -Source "/subscriptions/{subId}/resourcegroups/azps_test_group_eventgrid/providers/Microsoft.Storage/storageAccounts/azpssa" -TopicType "microsoft.storage.storageaccounts"
 

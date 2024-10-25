@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         public IList<CertificateResponse> GetIotDpsCertificates(string resourceGroupName, string provisioningServiceName)
         {
-            CertificateListDescription certificates = this.IotDpsClient.DpsCertificates.List(resourceGroupName, provisioningServiceName);
+            CertificateListDescription certificates = this.IotDpsClient.DpsCertificate.List(resourceGroupName, provisioningServiceName);
             return certificates.Value;
         }
 
