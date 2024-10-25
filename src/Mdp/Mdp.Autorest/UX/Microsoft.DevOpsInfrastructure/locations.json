@@ -1,0 +1,42 @@
+{
+  "resourceType": "locations",
+  "apiVersion": "2024-10-19",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mdp"
+  },
+  "commands": [
+    {
+      "name": "Invoke-AzMdpUsageSubscriptionUsage",
+      "description": "List Quota resources by subscription ID",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.DevOpsInfrastructure/locations/{location}/usages",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mdp/invoke-azmdpusagesubscriptionusage"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "List Quota resources by subscription ID",
+          "parameters": [
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
