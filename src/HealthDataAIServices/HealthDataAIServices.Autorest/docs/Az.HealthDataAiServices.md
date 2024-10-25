@@ -15,11 +15,11 @@ Microsoft Azure PowerShell: HealthDataAiServices cmdlets
 Get a DeidService
 
 ### [New-AzDeidService](New-AzDeidService.md)
-create a DeidService
+Create a DeidService
 
 ### [Remove-AzDeidService](Remove-AzDeidService.md)
 Delete a DeidService
 
 ### [Update-AzDeidService](Update-AzDeidService.md)
-update a DeidService
+Update a DeidService
 

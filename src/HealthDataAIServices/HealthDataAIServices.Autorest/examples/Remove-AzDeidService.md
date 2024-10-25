@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example: Remove a De-identification Service resource by name
 ```powershell
-{{ Add code here }}
+Remove-AzDeidService -Name azpwshDeidService1 -ResourceGroupName azpwsh-test-rg
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Deletes the specifies De-identification Service resource.
