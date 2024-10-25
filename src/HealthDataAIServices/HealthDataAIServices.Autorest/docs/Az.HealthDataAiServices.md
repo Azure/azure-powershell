@@ -1,6 +1,6 @@
 ---
 Module Name: Az.HealthDataAiServices
-Module Guid: a95d8b8e-fdb0-479a-a1ff-0799c65db9cd
+Module Guid: 5b538ba6-6f2d-4837-8c04-437d50415350
 Download Help Link: https://learn.microsoft.com/powershell/module/az.healthdataaiservices
 Help Version: 1.0.0.0
 Locale: en-US
@@ -15,11 +15,11 @@ Microsoft Azure PowerShell: HealthDataAiServices cmdlets
 Get a DeidService
 
 ### [New-AzDeidService](New-AzDeidService.md)
-Create a DeidService
+create a DeidService
 
 ### [Remove-AzDeidService](Remove-AzDeidService.md)
 Delete a DeidService
 
 ### [Update-AzDeidService](Update-AzDeidService.md)
-Update a DeidService
+update a DeidService
 
