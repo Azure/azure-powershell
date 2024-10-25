@@ -1034,13 +1034,14 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -Location $rglocation
 
         # Create verifier workspace
-        New-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName -Location $rglocation -Description "Sample description" 
+        New-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName -Location $rglocation -Description "Sample description" -Tag @{ testtag = "testval" }
 
          #Get verifier workspace
-        $verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName
+        $verifierWorkspace = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName 
         Assert-NotNull $verifierWorkspace;
         Assert-AreEqual $verifierWorkspaceName $verifierWorkspace.Name;
         Assert-AreEqual $rglocation $verifierWorkspace.Location;
+        Assert-AreEqual $verifierWorkspace.Tags.Count 1;
 
         # Get verifier workspace list
         $verifierWorkspaceList = Get-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName 
@@ -1088,10 +1089,15 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         Assert-NotNull $reachabilityAnalysisRun
         Assert-AreEqual $reachabilityAnalysisRunName $reachabilityAnalysisRun.Name
 
-       # Start-TestSleep -Seconds 300
+         # Get  analysis run list
+        $reachabilityAnalysisRunList = Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName
+        Assert-NotNull $reachabilityAnalysisRunList;
+        Assert-AreEqual $reachabilityAnalysisRunList.Count 1
 
-        Assert-AreEqual "DESCription" $reachabilityAnalysisRun.Properties.Description;
-        Assert-AreEqual $intentId  $reachabilityAnalysisRun.Properties.IntentId;
+       Start-TestSleep -Seconds 300
+
+       Assert-AreEqual "DESCription" $reachabilityAnalysisRun.Properties.Description;
+       Assert-AreEqual $intentId  $reachabilityAnalysisRun.Properties.IntentId;
 
         # Delete analysis run
         $job = Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $reachabilityAnalysisRunName -VerifierWorkspaceName $verifierWorkspaceName -PassThru -Force -AsJob;
