@@ -1,4 +1,4 @@
-### Example 1: {{ Set Data Boundary (Tenant) }}
+### Example 1: Set Data Boundary (Tenant)
 ```powershell
 $dataBoundary = "EU"
 Set-AzDataBoundary -DataBoundary $dataBoundary
