@@ -90,7 +90,7 @@ BODY <IMicrosoftGraphOrganization>: organization
   [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
     [Id <String>]: The unique idenfier for an entity. Read-only.
   [MarketingNotificationEmail <String[]>]: Not nullable.
-  [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+  [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
   [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
   [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
   [PostalCode <String>]: Postal code of the address for the organization.
@@ -182,7 +182,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganization]
     # organization
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -197,14 +196,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAssignedPlan[]]
     # The collection of service plans associated with the tenant.
     # Not nullable.
-    # To construct, see NOTES section for ASSIGNEDPLAN properties and create a hash table.
     ${AssignedPlan},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBranding]
     # organizationalBranding
-    # To construct, see NOTES section for BRANDING properties and create a hash table.
     ${Branding},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -221,7 +218,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphCertificateBasedAuthConfiguration[]]
     # Navigation property to manage certificate-based authentication configuration.
     # Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
-    # To construct, see NOTES section for CERTIFICATEBASEDAUTHCONFIGURATION properties and create a hash table.
     ${CertificateBasedAuthConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -271,7 +267,6 @@ param(
     # The collection of open extensions defined for the organization.
     # Read-only.
     # Nullable.
-    # To construct, see NOTES section for EXTENSION properties and create a hash table.
     ${Extension},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -282,9 +277,9 @@ param(
     ${MarketingNotificationEmail},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Support.MdmAuthority])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PSArgumentCompleterAttribute("unknown", "intune", "sccm", "office365")]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Support.MdmAuthority]
+    [System.String]
     # Mobile device management authority.
     ${MobileDeviceManagementAuthority},
 
@@ -322,7 +317,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPrivacyProfile]
     # privacyProfile
-    # To construct, see NOTES section for PRIVACYPROFILE properties and create a hash table.
     ${PrivacyProfile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -330,7 +324,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphProvisionedPlan[]]
     # Not nullable.
-    # To construct, see NOTES section for PROVISIONEDPLAN properties and create a hash table.
     ${ProvisionedPlan},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -378,15 +371,27 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphVerifiedDomain[]]
     # The collection of domains associated with this tenant.
     # Not nullable.
-    # To construct, see NOTES section for VERIFIEDDOMAIN properties and create a hash table.
     ${VerifiedDomain},
+
+    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Create operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Json string supplied to the Create operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -440,6 +445,8 @@ begin {
         $mapping = @{
             Create = 'Az.MSGraph.private\New-AzADOrganization_Create';
             CreateExpanded = 'Az.MSGraph.private\New-AzADOrganization_CreateExpanded';
+            CreateViaJsonFilePath = 'Az.MSGraph.private\New-AzADOrganization_CreateViaJsonFilePath';
+            CreateViaJsonString = 'Az.MSGraph.private\New-AzADOrganization_CreateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

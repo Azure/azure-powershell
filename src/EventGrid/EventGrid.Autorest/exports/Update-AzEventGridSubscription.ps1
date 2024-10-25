@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously updates an existing event subscription.
+Asynchronously update an existing event subscription.
 .Description
-Asynchronously updates an existing event subscription.
+Asynchronously update an existing event subscription.
 .Example
 $obj = New-AzEventGridWebHookEventSubscriptionDestinationObject -EndpointUrl "https://azpsweb.azurewebsites.net/api/updates"
 Update-AzEventGridSubscription -Name azps-eventsub -Scope "subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" -Destination $obj -FilterIsSubjectCaseSensitive:$false

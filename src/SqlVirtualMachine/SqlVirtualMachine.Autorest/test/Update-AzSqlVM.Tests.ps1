@@ -58,18 +58,18 @@ Describe 'Update-AzSqlVM' {
 
         Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
     }
-    
+
     It 'Update-AutopatchingEnable' {
         $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
 
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -AutoPatchingSettingDayOfWeek Thursday -AutoPatchingSettingMaintenanceWindowDuration 120 -AutoPatchingSettingMaintenanceWindowStartingHour 3 -AutoPatchingSettingEnable
-                
+
         $sqlVM.Name | Should -Be $env.SqlVMName
         $sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
         $sqlVM.SqlImageSku | Should -Be 'Standard'
         $sqlVM.SqlManagement | Should -Be 'Full'
         $sqlVM.SqlServerLicenseType | Should -Be 'PAYG'
-        
+
         $sqlVM1 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Expand *
         $sqlVM1.AutoPatchingSettingDayOfWeek | Should -Be 'Thursday'
         $sqlVM1.AutoPatchingSettingMaintenanceWindowDuration | Should -Be 120
@@ -81,16 +81,16 @@ Describe 'Update-AzSqlVM' {
 
     It 'Update-AssessmentSchedule' {
         # $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location -SqlManagementType 'Full'
-       
+
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -AssessmentSettingEnable `
-        -ScheduleEnable -ScheduleDayOfWeek Sunday -ScheduleMonthlyOccurrence 2 -ScheduleStartTime "23:00"
-                
+            -ScheduleEnable -ScheduleDayOfWeek Sunday -ScheduleMonthlyOccurrence 2 -ScheduleStartTime "23:00"
+
         $sqlVM.Name | Should -Be $env.SqlVMName
         $sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
         $sqlVM.SqlImageSku | Should -Be 'Standard'
         $sqlVM.SqlManagement | Should -Be 'Full'
         $sqlVM.SqlServerLicenseType | Should -Be 'PAYG'
-        
+
         $sqlVM1 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Expand *
         $sqlVM1.AssessmentSettingEnable | Should -Be $true
         $sqlVM1.ScheduleEnable | Should -Be $true
@@ -100,20 +100,20 @@ Describe 'Update-AzSqlVM' {
 
         # Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
     }
-    
+
     It 'Update-AutobackupEnable' {
-        # $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location -SqlManagementType 'Full'       
+        # $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location -SqlManagementType 'Full'
         $StorageAccountUrl = "https://veppalastorageacc.blob.core.windows.net/"
         $storageAccountPrimaryKey = "anaccesskey"
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -AutoBackupSettingEnable `
-        -AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 -AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey $storageAccountPrimaryKey -AutoBackupSettingStorageAccountUrl $StorageAccountUrl -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60
-                
+            -AutoBackupSettingBackupScheduleType manual -AutoBackupSettingFullBackupFrequency Weekly -AutoBackupSettingFullBackupStartTime 5 -AutoBackupSettingFullBackupWindowHour 2 -AutoBackupSettingStorageAccessKey $storageAccountPrimaryKey -AutoBackupSettingStorageAccountUrl $StorageAccountUrl -AutoBackupSettingRetentionPeriod 10 -AutoBackupSettingLogBackupFrequency 60
+
         $sqlVM.Name | Should -Be $env.SqlVMName
         $sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'
         $sqlVM.SqlImageSku | Should -Be 'Standard'
         $sqlVM.SqlManagement | Should -Be 'Full'
         $sqlVM.SqlServerLicenseType | Should -Be 'PAYG'
-        
+
         $sqlVM1 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Expand *
         $sqlVM1.AutoBackupSettingEnable | Should -Be $true
         $sqlVM1.AutoBackupSettingBackupScheduleType | Should -Be manual
@@ -125,34 +125,34 @@ Describe 'Update-AzSqlVM' {
         Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
     }
 
-        It 'Update-AddSqlVMtoGroup' {
+    It 'Update-AddSqlVMtoGroup' {
         # Assuming Group $env.SqlVMGroupId exists at this time and $env.SqlVMName_HA2 is created
-        $pwd = 'P@ssw0rd!' # Replace with the original password
+        $pwd = 'xxxxxx' # Replace with the original password
         $securepwd = ConvertTo-SecureString -String $pwd -AsPlainText -Force
 
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName_HA2 `
-        -SqlVirtualMachineGroupResourceId  $env.SqlVMGroupId `
-        -WsfcDomainCredentialsClusterBootstrapAccountPassword $securepwd `
-        -WsfcDomainCredentialsClusterOperatorAccountPassword $securepwd `
-        -WsfcDomainCredentialsSqlServiceAccountPassword $securepwd      
-        
+            -SqlVirtualMachineGroupResourceId $env.SqlVMGroupId `
+            -WsfcDomainCredentialsClusterBootstrapAccountPassword $securepwd `
+            -WsfcDomainCredentialsClusterOperatorAccountPassword $securepwd `
+            -WsfcDomainCredentialsSqlServiceAccountPassword $securepwd
+
         $sqlVM2 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName_HA2 -Expand *
         $sqlVM2.GroupResourceId | Should -Be $env.SqlVMGroupId
     }
-        
-    It 'Update-RemoveSqlVMfromGroup' {                
-        # Assuming $env.SqlVMName_HA2 is created already and added to Group $env.SqlVMGroupId 
+
+    It 'Update-RemoveSqlVMfromGroup' {
+        # Assuming $env.SqlVMName_HA2 is created already and added to Group $env.SqlVMGroupId
         # If the test case fails, make sure Sql server is running before running test case
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName_HA2 `
-        -SqlVirtualMachineGroupResourceId  ''
-        
+            -SqlVirtualMachineGroupResourceId ''
+
         $sqlVM2 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName_HA2 -Expand *
         $sqlVM2.GroupResourceId | Should -Be $null
-        }
+    }
 }
 
 Describe 'Update-AzSqlVM-EntraAuth' -Tag 'LiveOnly' {
-	It 'Update-AdAuthenticationEnable1' {
+    It 'Update-AdAuthenticationEnable1' {
         $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
 
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -IdentityType 'UserAssigned' -ManagedIdentityClientId '6d81e2bc-dcc5-45c9-9327-1cfee9612933'
@@ -160,15 +160,15 @@ Describe 'Update-AzSqlVM-EntraAuth' -Tag 'LiveOnly' {
         $sqlVM.Name | Should -Be $env.SqlVMName
         $sqlVM.SqlImageOffer | Should -Be 'SQL2022-WS2022'
         $sqlVM.SqlManagement | Should -Be 'Full'
-        
-		Start-Sleep -Seconds 60
+
+        Start-TestSleep -Seconds 60
         $sqlVM1 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Expand *
         $sqlVM1.AzureAdAuthenticationSettingClientId | Should -Be '6d81e2bc-dcc5-45c9-9327-1cfee9612933'
-        
+
         # Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
     }
-		
-	It 'Update-AdAuthenticationEnable2' {
+
+    It 'Update-AdAuthenticationEnable2' {
         $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
 
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -IdentityType 'SystemAssigned'
@@ -176,23 +176,23 @@ Describe 'Update-AzSqlVM-EntraAuth' -Tag 'LiveOnly' {
         $sqlVM.Name | Should -Be $env.SqlVMName
         $sqlVM.SqlImageOffer | Should -Be 'SQL2022-WS2022'
         $sqlVM.SqlManagement | Should -Be 'Full'
-        
-		Start-Sleep -Seconds 60
-        $sqlVM2 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Expand *		
+
+        Start-TestSleep -Seconds 60
+        $sqlVM2 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Expand *
         $sqlVM2.AzureAdAuthenticationSettingClientId | Should -Be ''
-        
+
         # Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
     }
-		
-	It 'AdAuthenticationFailurescenario1' {
-		$sqlVM = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
-		# note: id 'random value' is not associated to sql vm so it throws the error
-		{$sqlVM | Update-AzSqlVMADAuth -IdentityType 'UserAssigned' -ManagedIdentityClientId 'random value'} | Should -Throw		
-	}
-		
-	It 'AdAuthenticationFailurescenario2' {
-		$sqlVM = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
-		# note: id '47c329a2-0bb1-48c5-9966-b84b957c6a77' is associated to sql vm but doesn't have required permissions. so it throws the error
-		{$sqlVM | Update-AzSqlVMADAuth -IdentityType 'UserAssigned' -ManagedIdentityClientId '47c329a2-0bb1-48c5-9966-b84b957c6a77'} | Should -Throw		
-	}
+
+    It 'AdAuthenticationFailurescenario1' {
+        $sqlVM = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+        # note: id 'random value' is not associated to sql vm so it throws the error
+        { $sqlVM | Update-AzSqlVMADAuth -IdentityType 'UserAssigned' -ManagedIdentityClientId 'random value' } | Should -Throw
+    }
+
+    It 'AdAuthenticationFailurescenario2' {
+        $sqlVM = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+        # note: id '47c329a2-0bb1-48c5-9966-b84b957c6a77' is associated to sql vm but doesn't have required permissions. so it throws the error
+        { $sqlVM | Update-AzSqlVMADAuth -IdentityType 'UserAssigned' -ManagedIdentityClientId '47c329a2-0bb1-48c5-9966-b84b957c6a77' } | Should -Throw
+    }
 }

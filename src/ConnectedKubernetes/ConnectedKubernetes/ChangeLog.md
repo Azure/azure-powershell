@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 0.11.1
+* Fixed environment variable usage
+* Got rid of deprecated module and improved logging
+
 ## Version 0.11.0
 * Added support for Workload Identity Federation and OIDC Issuer features to the ConnectedKubernetes cmdlets.
 * Added support for arc gateway feature in cmdlet New-AzConnectedKubernetes.

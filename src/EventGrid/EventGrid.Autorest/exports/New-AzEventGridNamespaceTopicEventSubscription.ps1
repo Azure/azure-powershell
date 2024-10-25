@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Asynchronously creates or updates an event subscription of a namespace topic with the specified parameters.
+Asynchronously create an event subscription of a namespace topic with the specified parameters.
 Existing event subscriptions will be updated with this API.
 .Description
-Asynchronously creates or updates an event subscription of a namespace topic with the specified parameters.
+Asynchronously create an event subscription of a namespace topic with the specified parameters.
 Existing event subscriptions will be updated with this API.
 .Example
 $TimeSpan = New-TimeSpan -Hours 1 -Minutes 25

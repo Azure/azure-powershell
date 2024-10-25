@@ -137,7 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShel
                 }
                 else
                 {
-                    var cmdletsList = functionInfos.Select(fi => fi.Name).Distinct().Append("*").ToPsList();
+                    var cmdletsList = functionInfos.Select(fi => fi.Name).Distinct().ToPsList();
                     sb.AppendLine($@"{Indent}FunctionsToExport = {cmdletsList}");
                 }
 
@@ -148,8 +148,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShel
                 }
                 else
                 {
-                    var aliasesList = functionInfos.SelectMany(fi => fi.ScriptBlock.Attributes).ToAliasNames().Append("*").ToPsList();
-                    sb.AppendLine($@"{Indent}AliasesToExport = {aliasesList}");
+                    var aliasesList = functionInfos.SelectMany(fi => fi.ScriptBlock.Attributes).ToAliasNames().ToPsList();
+                    if (!String.IsNullOrEmpty(aliasesList)) {
+                        sb.AppendLine($@"{Indent}AliasesToExport = {aliasesList}");
+                    }
                 }
 
                 // CmdletsToExport
@@ -163,7 +165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShel
 
                 if (previewVersion != null)
                 {
-                    sb.AppendLine($@"{Indent}{Indent}{Indent}Prerelease = {previewVersion}");
+                    sb.AppendLine($@"{Indent}{Indent}{Indent}Prerelease = '{previewVersion}'");
                 }
                 sb.AppendLine($@"{Indent}{Indent}{Indent}Tags = {"Azure ResourceManager ARM PSModule MSGraph".Split(' ').ToPsList().NullIfEmpty() ?? "''"}");
                 sb.AppendLine($@"{Indent}{Indent}{Indent}LicenseUri = '{"https://aka.ms/azps-license"}'");

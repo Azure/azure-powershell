@@ -79,9 +79,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             __microsoftGraphEntity = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphEntity(json,new global::System.Collections.Generic.HashSet<string>(){ @"id",@"administrativeUnitId",@"roleId",@"roleMemberInfo" });
-            {_administrativeUnitId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("administrativeUnitId"), out var __jsonAdministrativeUnitId) ? (string)__jsonAdministrativeUnitId : (string)AdministrativeUnitId;}
-            {_roleId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("roleId"), out var __jsonRoleId) ? (string)__jsonRoleId : (string)RoleId;}
-            {_roleMemberInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject>("roleMemberInfo"), out var __jsonRoleMemberInfo) ? Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphIdentity.FromJson(__jsonRoleMemberInfo) : RoleMemberInfo;}
+            {_administrativeUnitId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("administrativeUnitId"), out var __jsonAdministrativeUnitId) ? (string)__jsonAdministrativeUnitId : (string)_administrativeUnitId;}
+            {_roleId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("roleId"), out var __jsonRoleId) ? (string)__jsonRoleId : (string)_roleId;}
+            {_roleMemberInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject>("roleMemberInfo"), out var __jsonRoleMemberInfo) ? Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphIdentity.FromJson(__jsonRoleMemberInfo) : _roleMemberInfo;}
             AfterFromJson(json);
         }
 
