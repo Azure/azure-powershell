@@ -695,8 +695,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (getVirtualNetworkGateway.ResiliencyModel != null && getVirtualNetworkGateway.ResiliencyModel.Equals("MultiHomed", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    WriteWarning("ExpressRoute Virtual Network Gateway is required to have connections from two ExpressRoute circuits in different peering locations. " +
-                        "Connectivity will be disabled until a second ExpressRoute circuit in a different peering location is connected to your ExpressRoute Virtual Network Gateway.");
+                    WriteWarning("The ExpressRoute Virtual Network Gateway with Resiliency Model as Multi-Homed is required to have connections from two ExpressRoute circuits in different peering locations or " +
+                        "a single connection with a circuit in metro location. Connectivity on the Virtual Network Gateway will be disabled until the required number of connections are created.");
                 }
             }
             return getVirtualNetworkGateway;
