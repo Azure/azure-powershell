@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 using Microsoft.WindowsAzure.Commands.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Linq;	
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {

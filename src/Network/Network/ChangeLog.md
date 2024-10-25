@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added support for `ResiliencyModel` property in `New-AzVirtualNetworkGateway` and `Set-AzVirtualNetworkGateway` command for ExpressRoute
 
 ## Version 7.10.0
 * Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management
@@ -50,7 +51,6 @@
     - `LoadBalancerFrontendIpConfiguration` is not a mandatory parameter anymore.
     - The user can provide either `LoadBalancerFrontendIpConfiguration` or `DestinationIPAddress`.
 * Added support for `PrivateEndpointVNetPolicies` property in `New-AzVirtualNetwork`
-* Added support for `ResiliencyModel` property in `New-AzVirtualNetworkGateway`
 
 ## Version 7.8.1
 * Fixed secrets exposure in example documentation.

@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,									   
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Determines whether this gateway should accept traffic from other VNets.")]
         public bool? AllowRemoteVnetTraffic { get; set; }
 		
