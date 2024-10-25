@@ -898,6 +898,7 @@ function Test-NetworkManagerIpamPoolCRUD
     $rglocation = "eastus2euap"
     $subscriptionId = "/subscriptions/dfa8d777-26f3-4e5e-be19-d6d5fa3176fc"
     $addressPrefixes  = @("10.0.0.0/8")
+    $tags = @{ testtag = "testval" }
 
     try{
         #Create the resource group
@@ -911,13 +912,14 @@ function Test-NetworkManagerIpamPoolCRUD
         New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -Location $rglocation
 
         # Create ipam pool
-        New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefix $addressPrefixes
+        New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefix $addressPrefixes -Tag $tags
 
         $ipamPool = Get-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName
         Assert-NotNull $ipamPool;
         Assert-AreEqual $ipamPoolName $ipamPool.Name;
         Assert-AreEqual $rglocation $ipamPool.Location;
         Assert-AreEqual $ipamPool.Properties.AddressPrefixes[0] $addressPrefixes[0];
+        Assert-AreEqual $ipamPool.Tags.Count 1;
 
         # Update access
         $ipamPool.Properties.AddressPrefixes.Add("11.0.0.0/8");
