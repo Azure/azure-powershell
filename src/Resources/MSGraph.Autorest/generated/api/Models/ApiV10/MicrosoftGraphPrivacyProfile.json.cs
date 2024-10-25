@@ -79,8 +79,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
-            {_contactEmail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("contactEmail"), out var __jsonContactEmail) ? (string)__jsonContactEmail : (string)ContactEmail;}
-            {_statementUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("statementUrl"), out var __jsonStatementUrl) ? (string)__jsonStatementUrl : (string)StatementUrl;}
+            {_contactEmail = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("contactEmail"), out var __jsonContactEmail) ? (string)__jsonContactEmail : (string)_contactEmail;}
+            {_statementUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("statementUrl"), out var __jsonStatementUrl) ? (string)__jsonStatementUrl : (string)_statementUrl;}
             AfterFromJson(json);
         }
 

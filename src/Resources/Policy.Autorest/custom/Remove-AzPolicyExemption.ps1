@@ -157,7 +157,8 @@ process {
     # Id can be a parameter or from the input object
     if ($Id) {
         $thisId = $Id
-    } else {
+    }
+    elseif (!$Scope) {
         $thisId = $_.Id
     }
 

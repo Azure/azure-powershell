@@ -55,6 +55,22 @@ Describe 'PolicyExemptionCRUDAtManagementGroup' {
         $list | Should -HaveCount 2
     }
 
+    # This test verifies the change for IcM: https://portal.microsofticm.com/imp/v5/incidents/details/546429959/summary
+    # This test depends on tests running earlier
+    It 'Remove of input object with scope parameter removes by name, not id' {
+        # list existing assignments at upper scopes
+        $expected = Get-AzPolicyExemption
+
+        # remove with invalid scope should fail
+        { $expected | Remove-AzPolicyExemption -Scope $someScope -Force } | Should -Throw $missingSubscription
+
+        # remove at different-but-valid scope just succeeds
+        $expected | Remove-AzPolicyExemption -Scope "/subscriptions/$($subscriptionId)" -Force -PassThru | %{ $_ | Should -Be $true }
+
+        # confirm nothing was removed
+        (Get-AzPolicyExemption).Count | Should -Be $expected.Count
+    }
+
     AfterAll {
         # clean up
         $remove = Remove-AzPolicyExemption -Name $testExemption -Scope $managementGroupScope -Force -PassThru

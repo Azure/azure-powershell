@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridNamespaceTopic
 
 ## SYNOPSIS
-Asynchronously creates a new namespace topic with the specified parameters.
+Asynchronously create a new namespace topic with the specified parameters.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzEventGridNamespaceTopic -NamespaceName <String> -ResourceGroupName <String
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new namespace topic with the specified parameters.
+Asynchronously create a new namespace topic with the specified parameters.
 
 ## EXAMPLES
 

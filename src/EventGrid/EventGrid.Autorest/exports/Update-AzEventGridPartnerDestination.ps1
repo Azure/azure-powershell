@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously updates a partner destination with the specified parameters.
+Asynchronously update a partner destination with the specified parameters.
 .Description
-Asynchronously updates a partner destination with the specified parameters.
+Asynchronously update a partner destination with the specified parameters.
 .Example
 Update-AzEventGridPartnerDestination -Name azps-destin -ResourceGroupName azps_test_group_eventgrid -Tag @{"123"="abc"} -DefaultProfile "test default"
 

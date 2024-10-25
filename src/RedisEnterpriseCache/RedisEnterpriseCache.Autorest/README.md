@@ -172,6 +172,11 @@ directive:
       variant: ^Import$|^ImportViaIdentity
     remove: true
   - where:
+      verb: Update
+      subject: ^$|Database
+      variant: ^Update$|ViaIdentity$
+    remove: true
+  - where:
       verb: Get
       subject: OperationStatus
       variant: ViaIdentity$

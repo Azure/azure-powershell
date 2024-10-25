@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridSubscription
 
 ## SYNOPSIS
-Asynchronously updates an existing event subscription.
+Asynchronously update an existing event subscription.
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ Update-AzEventGridSubscription -Name <String> -Scope <String> -JsonString <Strin
 ```
 
 ## DESCRIPTION
-Asynchronously updates an existing event subscription.
+Asynchronously update an existing event subscription.
 
 ## EXAMPLES
 
