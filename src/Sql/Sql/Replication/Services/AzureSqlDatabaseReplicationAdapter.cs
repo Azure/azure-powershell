@@ -70,11 +70,12 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// </summary>
         /// <param name="resourceGroupName">The resource group the Azure SQL Server is in</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="serverSubcriptionId">The subscription of the Azure SQL Server</param>
         /// <returns>The region hosting the Azure SQL Server</returns>
-        internal string GetServerLocation(string resourceGroupName, string serverName)
+        internal string GetServerLocation(string resourceGroupName, string serverName, string serverSubcriptionId = null)
         {
             AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Context);
-            var server = serverAdapter.GetServer(resourceGroupName, serverName);
+            var server = serverAdapter.GetServer(resourceGroupName, serverName, subscriptionId: serverSubcriptionId);
             return server.Location;
         }
 
@@ -84,10 +85,11 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <param name="subscriptionId">The subscription id of the Auzre SQL Database</param>
         /// <returns>The Azure SQL Database object</returns>
-        internal AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName)
+        internal AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName, string subscriptionId = null)
         {
-            var resp = DatabaseCommunicator.Get(resourceGroupName, serverName, databaseName);
+            var resp = DatabaseCommunicator.Get(resourceGroupName, serverName, databaseName, subscriptionId: subscriptionId);
             return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -258,8 +260,9 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <param name="resourceGroupName">The name of the Resource Group containing the primary database</param>
         /// <param name="serverName">The name of the Azure SQL Server containing the primary database</param>
         /// <param name="model">The input parameters for the create operation</param>
+        /// <param name="partnerSubscriptionId">The subscription id of the partner to create for cross-subscription scenarios</param>
         /// <returns>The Azure SQL Database ReplicationLink object</returns>
-        internal AzureReplicationLinkModel CreateLinkWithNewSdk(string resourceGroupName, string serverName, AzureReplicationLinkModel model)
+        internal AzureReplicationLinkModel CreateLinkWithNewSdk(string resourceGroupName, string serverName, AzureReplicationLinkModel model, string partnerSubscriptionId = null)
         {
             // Construct the ARM resource Id of the pool
             string elasticPoolId = string.IsNullOrWhiteSpace(model.SecondaryElasticPoolName) ? null : AzureSqlDatabaseModel.PoolIdTemplate.FormatInvariant(
@@ -268,7 +271,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                         serverName,
                         model.SecondaryElasticPoolName);
 
-            var resp = ReplicationCommunicator.CreateCopy(resourceGroupName, serverName, model.PartnerDatabaseName, new Management.Sql.Models.Database
+            var databaseParams = new Management.Sql.Models.Database()
             {
                 Location = model.PartnerLocation,
                 SourceDatabaseId = string.Format(AzureReplicationLinkModel.SourceIdTemplate, _subscription.Id.ToString(),
@@ -294,7 +297,9 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                 EncryptionProtector = model.EncryptionProtector,
                 FederatedClientId = model.FederatedClientId,
                 EncryptionProtectorAutoRotation = model.EncryptionProtectorAutoRotation
-            });
+            };
+
+            var resp = ReplicationCommunicator.CreateCopy(resourceGroupName, serverName, model.PartnerDatabaseName, databaseParams, partnerSubscriptionId);
 
             return GetLink(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);
         }

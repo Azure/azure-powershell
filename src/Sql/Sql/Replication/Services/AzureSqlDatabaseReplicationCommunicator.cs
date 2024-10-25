@@ -109,9 +109,9 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <summary>
         /// Creates a copy of a Azure SQL Database with new Autorest SDK
         /// </summary>
-        public Management.Sql.Models.Database CreateCopy(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.Database parameters)
+        public Management.Sql.Models.Database CreateCopy(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.Database parameters, string partnerSubscriptionId = null)
         {
-            return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
+            return GetCurrentSqlClient(partnerSubscriptionId).Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>
@@ -143,12 +143,15 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private Management.Sql.SqlManagementClient GetCurrentSqlClient()
+        private Management.Sql.SqlManagementClient GetCurrentSqlClient(string subscriptionId = null)
         {
             // Get the SQL management client for the current subscription
             // Note: client is not cached in static field because that causes ObjectDisposedException in functional tests
             var sqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-
+            if (subscriptionId != null)
+            {
+                sqlClient.SubscriptionId = subscriptionId;
+            }
             return sqlClient;
         }
 

@@ -84,10 +84,11 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The name of the server</param>
         /// <param name="expand">The child resources to include in the response.</param>
+        /// <param name="subscriptionId">The subscription id of the server.</param>
         /// <returns>The server</returns>
-        public AzureSqlServerModel GetServer(string resourceGroupName, string serverName, string expand = null)
+        public AzureSqlServerModel GetServer(string resourceGroupName, string serverName, string expand = null, string subscriptionId = null)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, expand);
+            var resp = Communicator.Get(resourceGroupName, serverName, expand, subscriptionId);
             return CreateServerModelFromResponse(resp);
         }
 

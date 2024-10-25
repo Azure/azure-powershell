@@ -70,9 +70,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Gets the Azure Sql Database
         /// </summary>
-        public Management.Sql.Models.Database Get(string resourceGroupName, string serverName, string databaseName, ODataQuery<Management.Sql.Models.Database> oDataQuery = null)
+        public Management.Sql.Models.Database Get(string resourceGroupName, string serverName, string databaseName, ODataQuery<Management.Sql.Models.Database> oDataQuery = null, string subscriptionId = null)
         {
-            return GetCurrentSqlClient().Databases.Get(resourceGroupName, serverName, databaseName, oDataQuery);
+            return GetCurrentSqlClient(subscriptionId).Databases.Get(resourceGroupName, serverName, databaseName, oDataQuery);
         }
 
         /// <summary>
@@ -199,11 +199,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private Management.Sql.SqlManagementClient GetCurrentSqlClient()
+        private Management.Sql.SqlManagementClient GetCurrentSqlClient(string subscriptionId = null)
         {
             // Get the SQL management client for the current subscription
             // Note: client is not cached in static field because that causes ObjectDisposedException in functional tests.
             var sqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            if (subscriptionId != null)
+            {
+                sqlClient.SubscriptionId = subscriptionId;
+            }
             return sqlClient;
         }
 
