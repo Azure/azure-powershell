@@ -73,6 +73,26 @@ default network security group rules. The New-AzVirtualNetworkSubnetConfig cmdle
 in-memory representations of two subnets that both reference the network security group that was
 created. The New-AzVirtualNetwork command then creates the virtual network.
 
+### Example 4: Create a virtual network with an IPAM Pool to auto allocate from for address prefixes
+```powershell
+New-AzNetworkManagerIpamPool -ResourceGroupName "testRG" -NetworkManagerName "testNM" -Name "testIpamPool" -Location "centralus" -AddressPrefix @("10.0.0.0/16")
+$ipamPool = Get-AzNetworkManagerIpamPool -ResourceGroupName "testRG" -NetworkManagerName "testNM" -Name "testIpamPool"
+$ipamPoolPrefixAllocation = [PSCustomObject]@{
+     Id = $ipamPool.Id
+     NumberOfIpAddresses = "256"
+ }
+$subnet = New-AzVirtualNetworkSubnetConfig -Name "testSubnet" -IpamPoolPrefixAllocation $ipamPoolPrefixAllocation
+New-AzVirtualNetwork -Name "testVnet" -ResourceGroupName "testRG" -Location "centralus" -Subnet $subnet -IpamPoolPrefixAllocation $ipamPoolPrefixAllocation
+```
+
+This example creates a virtual network with an IPAM (IP Address Management) pool to automatically allocate address prefixes. 
+First, an IPAM pool named testIpamPool is created in the testRG resource group and testNM network manager in the centralus region with the address prefix 10.0.0.0/16.
+The Get-AzNetworkManagerIpamPool cmdlet retrieves the IPAM pool that was just created.
+Next, a custom object representing the IPAM pool prefix allocation is created. This object includes the Id of the IPAM pool and the NumberOfIpAddresses to allocate. 
+The New-AzVirtualNetworkSubnetConfig cmdlet creates a subnet named testSubnet configured to use the IPAM pool prefix allocation object.
+Finally, the New-AzVirtualNetwork cmdlet creates a virtual network named testVnet in the testRG resource group and centralus location. 
+The virtual network includes the subnet created in the previous step and uses the IPAM pool prefix allocation for address prefix allocation.
+
 ## PARAMETERS
 
 ### -AddressPrefix
