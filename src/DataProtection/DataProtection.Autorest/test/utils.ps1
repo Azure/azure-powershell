@@ -149,7 +149,8 @@ function setupEnv() {
         SubscriptionId = "f0c630e0-2995-4853-b056-0b3c09cb673f"
         ResourceGroupName = "AKS-ps-shasha-test-source"
         VaultName = "ps-vault"
-        NewPolicyName = "pstest-aks-policy"       
+        NewPolicyName = "pstest-aks-policy"
+        NewVaultedPolicyName = "vaulted-aks-pspol"
     }
 
     $AksVariables = @{
