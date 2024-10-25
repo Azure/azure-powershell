@@ -1012,7 +1012,7 @@
                 <Label>AdminState</Label>
                 <PropertyName>AdminState</PropertyName>
               </ListItem>
-			        <ListItem>
+			  <ListItem>
                 <Label>ResiliencyModel</Label>
                 <PropertyName>ResiliencyModel</PropertyName>
               </ListItem>		 
