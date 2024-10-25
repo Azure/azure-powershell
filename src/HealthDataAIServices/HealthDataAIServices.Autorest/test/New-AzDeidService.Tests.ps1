@@ -15,15 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDeidService'))
 }
 
 Describe 'New-AzDeidService' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { 
+            $config = New-AzDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests1 -Location $env.location
+            $config.Name | Should -Be $env.deidServiceToCreateInTests1
+            $config.ProvisioningState | Should -Be "Succeeded"
+        } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaJsonFilePath' {
+        { 
+            $config = New-AzDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests2 -JsonFilePath (Join-Path $PSScriptRoot '.\jsonConfigs\deidServiceJson.json')
+            $config.Name | Should -Be $env.deidServiceToCreateInTests2
+            $config.ProvisioningState | Should -Be "Succeeded"
+        } | Should -Not -Throw
     }
 
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaJsonString' {
+        { 
+            $jsonString = Get-Content -Path (Join-Path $PSScriptRoot '.\jsonConfigs\deidServiceJson.json') -Raw
+            $config = New-AzDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceToCreateInTests3 -JsonString $jsonString
+            $config.Name | Should -Be $env.deidServiceToCreateInTests3
+            $config.ProvisioningState | Should -Be "Succeeded"
+        } | Should -Not -Throw
     }
 }

@@ -15,11 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDeidService'))
 }
 
 Describe 'Update-AzDeidService' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { 
+            $config = Update-AzDeidService -ResourceGroupName $env.resourceGroupName -Name $env.deidServiceName -EnableSystemAssignedIdentity:$true -PublicNetworkAccess "Disabled"
+            $config.Name | Should -Be $env.deidServiceName
+            $config.PublicNetworkAccess | Should -Be "Disabled"
+            $config.IdentityType | Should -Be "SystemAssigned"
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        { 
+            $config = Get-AzDeidService -Name $env.deidServiceName2 -ResourceGroupName $env.resourceGroupName
+            $config2 = Update-AzDeidService -InputObject $config -EnableSystemAssignedIdentity $true -PublicNetworkAccess "Disabled" -Tag @{
+                AzPwshTestKey = "AzPwshTestValue"
+            }
+            $config2.Name | Should -Be $env.deidServiceName2
+            $config2.PublicNetworkAccess | Should -Be "Disabled"
+            $config2.IdentityType | Should -Be "SystemAssigned"
+        } | Should -Not -Throw
     }
 }

@@ -15,11 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDeidService'))
 }
 
 Describe 'Remove-AzDeidService' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { 
+            Remove-AzDeidService -Name $env.deidServiceNameToDelete1 -ResourceGroupName $env.resourceGroupName
+        } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteNonexistent' {
+        { 
+            Remove-AzDeidService -Name "nonexistent" -ResourceGroupName $env.resourceGroupName
+        } | Should -Not -Throw
+    }
+
+    It 'DeleteViaIdentity' {
+        { 
+            $config = Get-AzDeidService -Name $env.deidServiceNameToDelete2 -ResourceGroupName $env.resourceGroupName
+            Remove-AzDeidService -InputObject $config
+        } | Should -Not -Throw
     }
 }
