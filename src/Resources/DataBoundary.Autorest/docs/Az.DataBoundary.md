@@ -20,6 +20,3 @@ Get data boundary of tenant.
 ### [Set-AzDataBoundary](Set-AzDataBoundary.md)
 Opt-in tenant to data boundary.
 
-### [Update-AzDataBoundary](Update-AzDataBoundary.md)
-Opt-in tenant to data boundary.
-

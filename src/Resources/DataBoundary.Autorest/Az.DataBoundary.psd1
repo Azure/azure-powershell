@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DataBoundary.private.dll'
   FormatsToProcess = './Az.DataBoundary.format.ps1xml'
-  FunctionsToExport = 'Get-AzDataBoundaryScope', 'Get-AzDataBoundaryTenant', 'Set-AzDataBoundary', 'Update-AzDataBoundary'
+  FunctionsToExport = 'Get-AzDataBoundaryScope', 'Get-AzDataBoundaryTenant', 'Set-AzDataBoundary'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'DataBoundary'

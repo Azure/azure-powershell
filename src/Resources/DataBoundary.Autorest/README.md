@@ -55,5 +55,8 @@ directive:
 - where:
     variant: ^CreateViaIdentity.*$
   remove: true
+- where:
+    verb: Update
+  remove: true
 
   ```
