@@ -5,6 +5,9 @@
 #
 # Generated on: 10/18/2024
 #
+
+@{
+
 # Script module or binary module file associated with this manifest.
 # RootModule = ''
 
@@ -791,3 +794,5 @@ PrivateData = @{
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
 # DefaultCommandPrefix = ''
+
+}
