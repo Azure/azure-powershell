@@ -27,14 +27,23 @@ $feedDir = (Get-Item $FeedPsd1FullPath).Directory
 $feedName = (Get-Item $FeedPsd1FullPath).Name
 Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $feedDir -FileName $feedName
 $modules = $ModuleMetadata.RequiredModules
+# the hardline is calculated by the number of cmdlet, may adjust if one of two repos is out-of-memory
+$hardlineForSplittingRepo = "Az.MobileNetwork"
+$dotnetCsv1 = New-Item -Path "$PSScriptRoot\" -Name "az-ps-latest-1.csv" -ItemType "file" -Force
+$dotnetCsv2 = New-Item -Path "$PSScriptRoot\" -Name "az-ps-latest-2.csv" -ItemType "file" -Force
+$dotnetCsvContent1 = ""
+$dotnetCsvContent2 = ""
+$index1 = 0
+$index2 = 1
 
-$dotnetCsv = New-Item -Path "$PSScriptRoot\" -Name "az-ps-latest.csv" -ItemType "file" -Force
-$dotnetCsvContent = ""
-
-for ($index = 0; $index -lt $modules.Count; $index++){
-    $moduleName = $modules[$index].ModuleName
-    $moduleVersion = [string]::IsNullOrEmpty($modules[$index].RequiredVersion) ? $modules[$index].ModuleVersion : $modules[$index].RequiredVersion
-    $dotnetCsvLine = ""
+foreach($module in $modules){
+    $moduleName = $module.ModuleName
+    $moduleVersion = [string]::IsNullOrEmpty($module.RequiredVersion) ? $module.ModuleVersion : $module.RequiredVersion
+    # Az.Accounts should be included in repo2 as well
+    if($moduleName -eq "Az.Accounts"){
+        $dotnetCsvContent2 = "pac0,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.zip;sourceType=$SourceType]$moduleName,$moduleVersion`n"
+    }
+    $index = ($moduleName -le $hardlineForSplittingRepo) ? $index1 : $index2
     switch ($SourceType) {
         "sa" { 
             $dotnetCsvLine = "pac$index,[ps=true;customSource=$CustomSource/$moduleName.$moduleVersion.zip;sourceType=$SourceType]$moduleName,$moduleVersion`n"
@@ -44,10 +53,14 @@ for ($index = 0; $index -lt $modules.Count; $index++){
             $dotnetCsvLine = "pac$index,[ps=true;customSource=$CustomSource]$moduleName,$moduleVersion`n"
         }
     }
-    $dotnetCsvContent += $dotnetCsvLine
+    if($moduleName -le $hardlineForSplittingRepo){
+        $dotnetCsvContent1 += $dotnetCsvLine
+        $index1 =  $index1 + 1
+    }else{
+        $dotnetCsvContent2 += $dotnetCsvLine
+        $index2 =  $index2 + 1
+    }    
 }
-Set-Content -Path $dotnetCsv.FullName -Value $dotnetCsvContent -Encoding UTF8
 
-
-
-
+Set-Content -Path $dotnetCsv1.FullName -Value $dotnetCsvContent1 -Encoding UTF8
+Set-Content -Path $dotnetCsv2.FullName -Value $dotnetCsvContent2 -Encoding UTF8

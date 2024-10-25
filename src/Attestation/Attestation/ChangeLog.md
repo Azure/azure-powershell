@@ -20,6 +20,9 @@
 
 
 ## Upcoming Release
+* Migrated Attestation SDK to generated SDK
+    - Removed "Microsoft.Azure.Management.Attestation" Version "0.12.0-preview" PackageReference
+    - Added Attestation.Management.Sdk ProjectReference
 
 ## Version 2.0.2
 * Introduced secrets detection feature to safeguard sensitive data.

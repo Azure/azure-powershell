@@ -22,6 +22,20 @@
 
 * Added support for `AutoscaleConfiguration` property in `AzureFirewall` model for `New-AzFirewall` and `Set-AzFirewall` commands
 
+## Version 7.10.0
+* Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management
+    - `New/Get/Remove/Set-AzNetworkManagerRoutingConfiguration`
+    - `New/Get/Remove/Set-AzNetworkManagerRoutingRuleCollection`
+    - `New/Get/Remove/Set-AzNetworkManagerRoutingRule`
+    - `New-AzNetworkManagerRoutingGroupItem`
+    - `New-AzNetworkManagerRoutingRuleDestination`
+    - `New-AzNetworkManagerRoutingRuleNextHop`
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityUserConfiguration`
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityUserRuleCollection`
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityUserRule`
+    - `New-AzNetworkManagerSecurityUserGroupItem`
+* Added support for `MemberType` property in `New-AzNetworkManagerSecurityUserGroupItem` command
+
 ## Version 7.9.0
 * Onboarded `Microsoft.VideoIndexer/accounts` to private link cmdlets
 * Added support to create, get and delete Bastion shareable links
@@ -37,6 +51,7 @@
 * Added support of `DestinationIPAddress` property in `New-AzPrivateLinkService` command
     - `LoadBalancerFrontendIpConfiguration` is not a mandatory parameter anymore.
     - The user can provide either `LoadBalancerFrontendIpConfiguration` or `DestinationIPAddress`.
+* Added support for `PrivateEndpointVNetPolicies` property in `New-AzVirtualNetwork`
 
 ## Version 7.8.1
 * Fixed secrets exposure in example documentation.

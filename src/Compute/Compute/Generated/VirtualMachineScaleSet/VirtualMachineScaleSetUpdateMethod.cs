@@ -2163,8 +2163,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (this.VirtualMachineScaleSet.SkuProfile == null)
                 {
                     this.VirtualMachineScaleSet.SkuProfile = new SkuProfile();
-                    this.VirtualMachineScaleSet.SkuProfile.VmSizes = new List<SkuProfileVMSize>();
                 }
+                this.VirtualMachineScaleSet.SkuProfile.VmSizes = new List<SkuProfileVMSize>();
                 foreach (string vmSize in this.SkuProfileVmSize)
                 {
                     this.VirtualMachineScaleSet.SkuProfile.VmSizes.Add(new SkuProfileVMSize()

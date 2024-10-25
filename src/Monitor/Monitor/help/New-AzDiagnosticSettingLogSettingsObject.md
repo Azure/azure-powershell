@@ -14,7 +14,7 @@ Create an in-memory object for LogSettings.
 
 ```
 New-AzDiagnosticSettingLogSettingsObject -Enabled <Boolean> [-Category <String>] [-CategoryGroup <String>]
- [-RetentionPolicyDay <Int32>] [-RetentionPolicyEnabled <Boolean>]
+ [-RetentionPolicyDay <Int32>] [-RetentionPolicyEnabled <Boolean>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -73,6 +73,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

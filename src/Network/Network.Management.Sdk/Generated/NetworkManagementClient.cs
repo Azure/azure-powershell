@@ -333,6 +333,30 @@ namespace Microsoft.Azure.Management.Network
         /// </summary>
         public virtual IAdminRulesOperations AdminRules { get; private set; }
         /// <summary>
+        /// Gets the INetworkManagerRoutingConfigurationsOperations
+        /// </summary>
+        public virtual INetworkManagerRoutingConfigurationsOperations NetworkManagerRoutingConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the IRoutingRuleCollectionsOperations
+        /// </summary>
+        public virtual IRoutingRuleCollectionsOperations RoutingRuleCollections { get; private set; }
+        /// <summary>
+        /// Gets the IRoutingRulesOperations
+        /// </summary>
+        public virtual IRoutingRulesOperations RoutingRules { get; private set; }
+        /// <summary>
+        /// Gets the ISecurityUserConfigurationsOperations
+        /// </summary>
+        public virtual ISecurityUserConfigurationsOperations SecurityUserConfigurations { get; private set; }
+        /// <summary>
+        /// Gets the ISecurityUserRuleCollectionsOperations
+        /// </summary>
+        public virtual ISecurityUserRuleCollectionsOperations SecurityUserRuleCollections { get; private set; }
+        /// <summary>
+        /// Gets the ISecurityUserRulesOperations
+        /// </summary>
+        public virtual ISecurityUserRulesOperations SecurityUserRules { get; private set; }
+        /// <summary>
         /// Gets the INetworkProfilesOperations
         /// </summary>
         public virtual INetworkProfilesOperations NetworkProfiles { get; private set; }
@@ -903,6 +927,12 @@ namespace Microsoft.Azure.Management.Network
             this.SecurityAdminConfigurations = new SecurityAdminConfigurationsOperations(this);
             this.AdminRuleCollections = new AdminRuleCollectionsOperations(this);
             this.AdminRules = new AdminRulesOperations(this);
+            this.NetworkManagerRoutingConfigurations = new NetworkManagerRoutingConfigurationsOperations(this);
+            this.RoutingRuleCollections = new RoutingRuleCollectionsOperations(this);
+            this.RoutingRules = new RoutingRulesOperations(this);
+            this.SecurityUserConfigurations = new SecurityUserConfigurationsOperations(this);
+            this.SecurityUserRuleCollections = new SecurityUserRuleCollectionsOperations(this);
+            this.SecurityUserRules = new SecurityUserRulesOperations(this);
             this.NetworkProfiles = new NetworkProfilesOperations(this);
             this.NetworkSecurityGroups = new NetworkSecurityGroupsOperations(this);
             this.SecurityRules = new SecurityRulesOperations(this);

@@ -103,19 +103,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._oSType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonString(this._oSType.ToString()) : null, "osType" ,container.Add );
-            }
+            AddIf( null != (((object)this._oSType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonString(this._oSType.ToString()) : null, "osType" ,container.Add );
             AddIf( null != (((object)this._oSSku)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonString(this._oSSku.ToString()) : null, "osSku" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != this._ready ? (Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonBoolean((bool)this._ready) : null, "ready" ,container.Add );
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._errorMessage)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonString(this._errorMessage.ToString()) : null, "errorMessage" ,container.Add );
-            }
+            AddIf( null != this._ready ? (Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonBoolean((bool)this._ready) : null, "ready" ,container.Add );
+            AddIf( null != (((object)this._errorMessage)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Json.JsonString(this._errorMessage.ToString()) : null, "errorMessage" ,container.Add );
             AfterToJson(ref container);
             return container;
         }
