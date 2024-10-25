@@ -1,4 +1,4 @@
-### Example 1: Set Data Boundary (Tenant)
+### Example 1: Set Tenant Level Data Boundary
 
 ```powershell
 $dataBoundary = "EU"
