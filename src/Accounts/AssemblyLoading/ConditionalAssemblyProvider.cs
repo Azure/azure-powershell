@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 // todo: consider moving the list to a standalone config file
                 #region AssemblyList
                 CreateAssembly("netstandard2.0", "Azure.Core", "1.44.1.0"),
-                CreateAssembly("netstandard2.0", "Azure.Identity", "1.13.0.0"),
+                CreateAssembly("netstandard2.0", "Azure.Identity", "1.12.0.0"),
                 CreateAssembly("netstandard2.0", "Azure.Identity.Broker", "1.1.0.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Bcl.AsyncInterfaces", "6.0.0.0"),
                 CreateAssembly("netstandard2.0", "Microsoft.Identity.Client", "4.65.0.0"),
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netstandard2.0", "System.Memory.Data", "6.0.0.0"),
                 CreateAssembly("netstandard2.0", "System.Text.Json", "6.0.0.0"),
                 CreateAssembly("netstandard2.0", "System.Buffers", "4.0.3.0").WithWindowsPowerShell(),
-                CreateAssembly("netstandard2.0", "System.Memory", "4.0.1.2").WithWindowsPowerShell(),
+                CreateAssembly("netstandard2.0", "System.Memory", "4.0.1.1").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Net.Http.WinHttpHandler", "4.0.4.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Private.ServiceModel", "4.7.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netstandard2.0", "System.Security.AccessControl", "4.1.3.0").WithWindowsPowerShell(),
