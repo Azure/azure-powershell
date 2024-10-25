@@ -1,18 +1,20 @@
 ---
 external help file:
 Module Name: Az.HealthDeidentification
-online version: https://learn.microsoft.com/powershell/module/az.healthdeidentification/new-azdeidservice
+online version: https://learn.microsoft.com/powershell/module/az.healthdataaiservices/new-azdeidservice
 schema: 2.0.0
 ---
 
 # New-AzDeidService
 
 ## SYNOPSIS
+
 create a DeidService
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
+
 ```
 New-AzDeidService -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-EnableSystemAssignedIdentity] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
@@ -21,23 +23,27 @@ New-AzDeidService -Name <String> -ResourceGroupName <String> -Location <String> 
 ```
 
 ### CreateViaJsonFilePath
+
 ```
 New-AzDeidService -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
+
 ```
 New-AzDeidService -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 create a DeidService
 
 ## EXAMPLES
 
 ### Example 1: Create a new De-identification Service resource
+
 ```powershell
 New-AzDeidService -Name myHealthDeidService -ResourceGroupName azpwsh-test-rg -Location eastus2 -EnableSystemAssignedIdentity -PublicNetworkAccess "Disabled"
 ```
@@ -70,6 +76,7 @@ Type                         : microsoft.healthdataaiservices/deidservices
 Creates a new De-identification Service resource in the specified resource group and location.
 
 ### Example 2: Create a new De-identification Service resource from a JSON file
+
 ```powershell
 New-AzDeidService -Name myHealthDeidService -ResourceGroupName azpwsh-test-rg -JsonFilePath path/to/json.json
 ```
@@ -101,6 +108,7 @@ Creates a new De-identification Service resource with location and properties sp
 ## PARAMETERS
 
 ### -AsJob
+
 Run the command as a job
 
 ```yaml
@@ -116,6 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
+
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -132,6 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
+
 Decides if enable a system assigned identity for the resource.
 
 ```yaml
@@ -147,6 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
+
 Path of Json file supplied to the Create operation
 
 ```yaml
@@ -162,6 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
+
 Json string supplied to the Create operation
 
 ```yaml
@@ -177,6 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
+
 The geo-location where the resource lives
 
 ```yaml
@@ -192,6 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 The name of the deid service
 
 ```yaml
@@ -207,6 +221,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
+
 Run the command asynchronously
 
 ```yaml
@@ -222,6 +237,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicNetworkAccess
+
 Gets or sets allow or disallow public network access to resource
 
 ```yaml
@@ -237,6 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 The name of the resource group.
 The name is case insensitive.
 
@@ -253,6 +270,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
+
 The ID of the target subscription.
 The value must be an UUID.
 
@@ -269,6 +287,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
+
 Resource tags.
 
 ```yaml
@@ -284,6 +303,7 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
+
 The array of user assigned identities associated with the resource.
 The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
@@ -300,6 +320,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -315,6 +336,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
@@ -331,6 +353,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -342,4 +365,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

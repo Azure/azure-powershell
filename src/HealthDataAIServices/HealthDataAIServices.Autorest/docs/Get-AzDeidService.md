@@ -1,46 +1,53 @@
 ---
 external help file:
 Module Name: Az.HealthDeidentification
-online version: https://learn.microsoft.com/powershell/module/az.healthdeidentification/get-azdeidservice
+online version: https://learn.microsoft.com/powershell/module/az.healthdataaiservices/get-azdeidservice
 schema: 2.0.0
 ---
 
 # Get-AzDeidService
 
 ## SYNOPSIS
+
 Get a DeidService
 
 ## SYNTAX
 
 ### List (Default)
+
 ```
 Get-AzDeidService [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
+
 ```
 Get-AzDeidService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
+
 ```
 Get-AzDeidService -InputObject <IHealthDeidentificationIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List1
+
 ```
 Get-AzDeidService -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 Get a DeidService
 
 ## EXAMPLES
 
 ### Example 1: Get a De-identification Service resource by name
+
 ```powershell
 Get-AzDeidService -Name azpwshDeidService1 -ResourceGroupName azpwsh-test-rg
 ```
@@ -73,6 +80,7 @@ Type                         : microsoft.healthdataaiservices/deidservices
 Gets a De-identification Service by its name and the resource group it belongs to.
 
 ### Example 2: List all De-identification Service resources in a resource group
+
 ```powershell
 Get-AzDeidService -ResourceGroupName azpwsh-test-rg
 ```
@@ -89,6 +97,7 @@ Lists all De-identification Service resources in the specified resource group.
 ## PARAMETERS
 
 ### -DefaultProfile
+
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
@@ -105,6 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+
 Identity Parameter
 
 ```yaml
@@ -120,6 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 The name of the deid service
 
 ```yaml
@@ -135,6 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 The name of the resource group.
 The name is case insensitive.
 
@@ -151,6 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
+
 The ID of the target subscription.
 The value must be an UUID.
 
@@ -167,6 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -180,4 +194,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
