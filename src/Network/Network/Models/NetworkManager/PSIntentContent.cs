@@ -12,20 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Network.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
-    public class PSReachabilityAnalysisRunProperties
+    public class PSIntentContent
     {
-        public string Description { get; set; }
+        public string SourceResourceId { get; }
+        public string DestinationResourceId { get; }
+        public PSIPTraffic IpTraffic { get; }
 
-        public string IntentId { get; set; }
-        public PSIntentContent IntentContent { get; }
-        public string AnalysisResult { get; }
-        public string ErrorMessage { get; }
-
+        [JsonIgnore]
+        public string IntentContentText
+        {
+            get
+            {
+                var contentDetails = new
+                {
+                    SourceResourceId,
+                    DestinationResourceId,
+                    IpTraffic
+                };
+                return JsonConvert.SerializeObject(contentDetails, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+            }
+        }
     }
 }
