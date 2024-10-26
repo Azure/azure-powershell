@@ -66,19 +66,7 @@ directive:
   - where:
       subject: .*PrivateLink.*
     remove: true
-  # Try to replace any occurrence of Ai with AI
-  - where:
-      subject-prefix: HealthDataAiServices
-    set:
-      subject-prefix: HealthDataAIServices
-  - where:
-      title: HealthDataAiServices
-    set:
-      title: HealthDataAIServices
-  - where:
-      subject: HealthDataAiServices
-    set:
-      subject: HealthDataAIServices
+  
   # Follow directive is v3 specific. If you are using v3, uncomment following directive and comments out two directives above
   #- where:
   #    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
