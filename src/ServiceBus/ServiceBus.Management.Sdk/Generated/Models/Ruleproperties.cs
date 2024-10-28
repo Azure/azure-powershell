@@ -10,37 +10,19 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
     /// <summary>
     /// Description of Rule Resource.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class Rule : ProxyResource
+    public partial class Ruleproperties
     {
         /// <summary>
-        /// Initializes a new instance of the Rule class.
+        /// Initializes a new instance of the Ruleproperties class.
         /// </summary>
-        public Rule()
+        public Ruleproperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the Rule class.
+        /// Initializes a new instance of the Ruleproperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </param>
-
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.EventHub/Namespaces&#34; or
-        /// &#34;Microsoft.EventHub/Namespaces/EventHubs&#34;
-        /// </param>
-
-        /// <param name="location">The geo-location where the resource lives
-        /// </param>
-
-        /// <param name="systemData">The system meta data relating to this resource.
-        /// </param>
 
         /// <param name="action">Represents the filter actions which are allowed for the transformation of a
         /// message that have been matched by a filter expression.
@@ -54,11 +36,9 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
 
         /// <param name="correlationFilter">Properties of correlationFilter
         /// </param>
-        public Rule(string id = default(string), string name = default(string), string type = default(string), string location = default(string), SystemData systemData = default(SystemData), Action action = default(Action), string filterType = default(string), SqlFilter sqlFilter = default(SqlFilter), CorrelationFilter correlationFilter = default(CorrelationFilter))
+        public Ruleproperties(Action action = default(Action), string filterType = default(string), SqlFilter sqlFilter = default(SqlFilter), CorrelationFilter correlationFilter = default(CorrelationFilter))
 
-        : base(id, name, type, location)
         {
-            this.SystemData = systemData;
             this.Action = action;
             this.FilterType = filterType;
             this.SqlFilter = sqlFilter;
@@ -73,34 +53,28 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
 
 
         /// <summary>
-        /// Gets the system meta data relating to this resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
         /// Gets or sets represents the filter actions which are allowed for the
         /// transformation of a message that have been matched by a filter expression.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.action")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "action")]
         public Action Action {get; set; }
 
         /// <summary>
         /// Gets or sets filter type that is evaluated against a BrokeredMessage. Possible values include: &#39;SqlFilter&#39;, &#39;CorrelationFilter&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.filterType")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "filterType")]
         public string FilterType {get; set; }
 
         /// <summary>
         /// Gets or sets properties of sqlFilter
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sqlFilter")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sqlFilter")]
         public SqlFilter SqlFilter {get; set; }
 
         /// <summary>
         /// Gets or sets properties of correlationFilter
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.correlationFilter")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "correlationFilter")]
         public CorrelationFilter CorrelationFilter {get; set; }
     }
 }

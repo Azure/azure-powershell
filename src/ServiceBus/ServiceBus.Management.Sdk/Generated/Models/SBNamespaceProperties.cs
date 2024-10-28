@@ -8,49 +8,21 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
     using System.Linq;
 
     /// <summary>
-    /// Description of a namespace resource.
+    /// Properties of the namespace.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SBNamespace : TrackedResource
+    public partial class SBNamespaceProperties
     {
         /// <summary>
-        /// Initializes a new instance of the SBNamespace class.
+        /// Initializes a new instance of the SBNamespaceProperties class.
         /// </summary>
-        public SBNamespace()
+        public SBNamespaceProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SBNamespace class.
+        /// Initializes a new instance of the SBNamespaceProperties class.
         /// </summary>
-
-        /// <param name="id">Resource Id
-        /// </param>
-
-        /// <param name="name">Resource name
-        /// </param>
-
-        /// <param name="type">Resource type
-        /// </param>
-
-        /// <param name="location">The Geo-location where the resource lives
-        /// </param>
-
-        /// <param name="tags">Resource tags
-        /// </param>
-
-        /// <param name="sku">Properties of SKU
-        /// </param>
-
-        /// <param name="identity">Properties of BYOK Identity description
-        /// </param>
-
-        /// <param name="systemData">The system meta data relating to this resource.
-        /// </param>
-
-        /// <param name="encryption">Properties of BYOK Encryption description
-        /// </param>
 
         /// <param name="minimumTlsVersion">The minimum TLS version for the cluster to support, e.g. &#39;1.2&#39;
         /// Possible values include: &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;</param>
@@ -77,6 +49,9 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
         /// supported availability zones.
         /// </param>
 
+        /// <param name="encryption">Properties of BYOK Encryption description
+        /// </param>
+
         /// <param name="privateEndpointConnections">List of private endpoint connections.
         /// </param>
 
@@ -89,14 +64,9 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
         /// <param name="publicNetworkAccess">This determines if traffic is allowed over public network. By default it is
         /// enabled.
         /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;</param>
-        public SBNamespace(string location, string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SBSku sku = default(SBSku), Identity identity = default(Identity), SystemData systemData = default(SystemData), Encryption encryption = default(Encryption), string minimumTlsVersion = default(string), string provisioningState = default(string), string status = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string metricId = default(string), bool? zoneRedundant = default(bool?), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), bool? disableLocalAuth = default(bool?), string alternateName = default(string), string publicNetworkAccess = default(string))
+        public SBNamespaceProperties(string minimumTlsVersion = default(string), string provisioningState = default(string), string status = default(string), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), string serviceBusEndpoint = default(string), string metricId = default(string), bool? zoneRedundant = default(bool?), Encryption encryption = default(Encryption), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), bool? disableLocalAuth = default(bool?), string alternateName = default(string), string publicNetworkAccess = default(string))
 
-        : base(location, id, name, type, tags)
         {
-            this.Sku = sku;
-            this.Identity = identity;
-            this.SystemData = systemData;
-            this.Encryption = encryption;
             this.MinimumTlsVersion = minimumTlsVersion;
             this.ProvisioningState = provisioningState;
             this.Status = status;
@@ -105,6 +75,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
             this.ServiceBusEndpoint = serviceBusEndpoint;
             this.MetricId = metricId;
             this.ZoneRedundant = zoneRedundant;
+            this.Encryption = encryption;
             this.PrivateEndpointConnections = privateEndpointConnections;
             this.DisableLocalAuth = disableLocalAuth;
             this.AlternateName = alternateName;
@@ -119,127 +90,84 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
 
 
         /// <summary>
-        /// Gets or sets properties of SKU
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
-        public SBSku Sku {get; set; }
-
-        /// <summary>
-        /// Gets or sets properties of BYOK Identity description
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
-        public Identity Identity {get; set; }
-
-        /// <summary>
-        /// Gets the system meta data relating to this resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
-        /// Gets or sets properties of BYOK Encryption description
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.encryption")]
-        public Encryption Encryption {get; set; }
-
-        /// <summary>
         /// Gets or sets the minimum TLS version for the cluster to support, e.g. &#39;1.2&#39; Possible values include: &#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.minimumTlsVersion")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "minimumTlsVersion")]
         public string MinimumTlsVersion {get; set; }
 
         /// <summary>
         /// Gets provisioning state of the namespace.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
 
         /// <summary>
         /// Gets status of the namespace.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.status")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public string Status {get; private set; }
 
         /// <summary>
         /// Gets the time the namespace was created
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createdAt")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "createdAt")]
         public System.DateTime? CreatedAt {get; private set; }
 
         /// <summary>
         /// Gets the time the namespace was updated.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.updatedAt")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "updatedAt")]
         public System.DateTime? UpdatedAt {get; private set; }
 
         /// <summary>
         /// Gets endpoint you can use to perform Service Bus operations.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serviceBusEndpoint")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "serviceBusEndpoint")]
         public string ServiceBusEndpoint {get; private set; }
 
         /// <summary>
         /// Gets identifier for Azure Insights metrics
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.metricId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "metricId")]
         public string MetricId {get; private set; }
 
         /// <summary>
         /// Gets or sets enabling this property creates a Premium Service Bus Namespace
         /// in regions supported availability zones.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.zoneRedundant")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "zoneRedundant")]
         public bool? ZoneRedundant {get; set; }
+
+        /// <summary>
+        /// Gets or sets properties of BYOK Encryption description
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "encryption")]
+        public Encryption Encryption {get; set; }
 
         /// <summary>
         /// Gets or sets list of private endpoint connections.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateEndpointConnections")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateEndpointConnections")]
         public System.Collections.Generic.IList<PrivateEndpointConnection> PrivateEndpointConnections {get; set; }
 
         /// <summary>
         /// Gets or sets this property disables SAS authentication for the Service Bus
         /// namespace.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.disableLocalAuth")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "disableLocalAuth")]
         public bool? DisableLocalAuth {get; set; }
 
         /// <summary>
         /// Gets or sets alternate name for namespace
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.alternateName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "alternateName")]
         public string AlternateName {get; set; }
 
         /// <summary>
         /// Gets or sets this determines if traffic is allowed over public network. By
         /// default it is enabled. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;SecuredByPerimeter&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicNetworkAccess")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "publicNetworkAccess")]
         public string PublicNetworkAccess {get; set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-            if (this.Sku != null)
-            {
-                this.Sku.Validate();
-            }
-
-
-
-
-
-
-
-
-
-
-
-        }
     }
 }

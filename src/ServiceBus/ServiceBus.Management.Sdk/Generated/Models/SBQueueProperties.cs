@@ -8,39 +8,21 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
     using System.Linq;
 
     /// <summary>
-    /// Description of queue Resource.
+    /// The Queue Properties definition.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SBQueue : ProxyResource
+    public partial class SBQueueProperties
     {
         /// <summary>
-        /// Initializes a new instance of the SBQueue class.
+        /// Initializes a new instance of the SBQueueProperties class.
         /// </summary>
-        public SBQueue()
+        public SBQueueProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SBQueue class.
+        /// Initializes a new instance of the SBQueueProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </param>
-
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.EventHub/Namespaces&#34; or
-        /// &#34;Microsoft.EventHub/Namespaces/EventHubs&#34;
-        /// </param>
-
-        /// <param name="location">The geo-location where the resource lives
-        /// </param>
-
-        /// <param name="systemData">The system meta data relating to this resource.
-        /// </param>
 
         /// <param name="countDetails">Message Count Details.
         /// </param>
@@ -123,11 +105,9 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
 
         /// <param name="forwardDeadLetteredMessagesTo">Queue/Topic name to forward the Dead Letter message
         /// </param>
-        public SBQueue(string id = default(string), string name = default(string), string type = default(string), string location = default(string), SystemData systemData = default(SystemData), MessageCountDetails countDetails = default(MessageCountDetails), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), System.DateTime? accessedAt = default(System.DateTime?), long? sizeInBytes = default(long?), long? messageCount = default(long?), System.TimeSpan? lockDuration = default(System.TimeSpan?), int? maxSizeInMegabytes = default(int?), long? maxMessageSizeInKilobytes = default(long?), bool? requiresDuplicateDetection = default(bool?), bool? requiresSession = default(bool?), System.TimeSpan? defaultMessageTimeToLive = default(System.TimeSpan?), bool? deadLetteringOnMessageExpiration = default(bool?), System.TimeSpan? duplicateDetectionHistoryTimeWindow = default(System.TimeSpan?), int? maxDeliveryCount = default(int?), EntityStatus? status = default(EntityStatus?), bool? enableBatchedOperations = default(bool?), System.TimeSpan? autoDeleteOnIdle = default(System.TimeSpan?), bool? enablePartitioning = default(bool?), bool? enableExpress = default(bool?), string forwardTo = default(string), string forwardDeadLetteredMessagesTo = default(string))
+        public SBQueueProperties(MessageCountDetails countDetails = default(MessageCountDetails), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), System.DateTime? accessedAt = default(System.DateTime?), long? sizeInBytes = default(long?), long? messageCount = default(long?), System.TimeSpan? lockDuration = default(System.TimeSpan?), int? maxSizeInMegabytes = default(int?), long? maxMessageSizeInKilobytes = default(long?), bool? requiresDuplicateDetection = default(bool?), bool? requiresSession = default(bool?), System.TimeSpan? defaultMessageTimeToLive = default(System.TimeSpan?), bool? deadLetteringOnMessageExpiration = default(bool?), System.TimeSpan? duplicateDetectionHistoryTimeWindow = default(System.TimeSpan?), int? maxDeliveryCount = default(int?), EntityStatus? status = default(EntityStatus?), bool? enableBatchedOperations = default(bool?), System.TimeSpan? autoDeleteOnIdle = default(System.TimeSpan?), bool? enablePartitioning = default(bool?), bool? enableExpress = default(bool?), string forwardTo = default(string), string forwardDeadLetteredMessagesTo = default(string))
 
-        : base(id, name, type, location)
         {
-            this.SystemData = systemData;
             this.CountDetails = countDetails;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
@@ -160,46 +140,40 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
 
 
         /// <summary>
-        /// Gets the system meta data relating to this resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
         /// Gets message Count Details.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.countDetails")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "countDetails")]
         public MessageCountDetails CountDetails {get; private set; }
 
         /// <summary>
         /// Gets the exact time the message was created.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createdAt")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "createdAt")]
         public System.DateTime? CreatedAt {get; private set; }
 
         /// <summary>
         /// Gets the exact time the message was updated.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.updatedAt")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "updatedAt")]
         public System.DateTime? UpdatedAt {get; private set; }
 
         /// <summary>
         /// Gets last time a message was sent, or the last time there was a receive
         /// request to this queue.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.accessedAt")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "accessedAt")]
         public System.DateTime? AccessedAt {get; private set; }
 
         /// <summary>
         /// Gets the size of the queue, in bytes.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sizeInBytes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sizeInBytes")]
         public long? SizeInBytes {get; private set; }
 
         /// <summary>
         /// Gets the number of messages in the queue.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.messageCount")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "messageCount")]
         public long? MessageCount {get; private set; }
 
         /// <summary>
@@ -207,14 +181,14 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
         /// of time that the message is locked for other receivers. The maximum value
         /// for LockDuration is 5 minutes; the default value is 1 minute.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lockDuration")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "lockDuration")]
         public System.TimeSpan? LockDuration {get; set; }
 
         /// <summary>
         /// Gets or sets the maximum size of the queue in megabytes, which is the size
         /// of memory allocated for the queue. Default is 1024.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maxSizeInMegabytes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxSizeInMegabytes")]
         public int? MaxSizeInMegabytes {get; set; }
 
         /// <summary>
@@ -222,20 +196,20 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
         /// accepted by the queue. This property is only used in Premium today and
         /// default is 1024.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maxMessageSizeInKilobytes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxMessageSizeInKilobytes")]
         public long? MaxMessageSizeInKilobytes {get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating if this queue requires duplicate detection.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requiresDuplicateDetection")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requiresDuplicateDetection")]
         public bool? RequiresDuplicateDetection {get; set; }
 
         /// <summary>
         /// Gets or sets a value that indicates whether the queue supports the concept
         /// of sessions.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requiresSession")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requiresSession")]
         public bool? RequiresSession {get; set; }
 
         /// <summary>
@@ -244,56 +218,56 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
         /// sent to Service Bus. This is the default value used when TimeToLive is not
         /// set on a message itself.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultMessageTimeToLive")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "defaultMessageTimeToLive")]
         public System.TimeSpan? DefaultMessageTimeToLive {get; set; }
 
         /// <summary>
         /// Gets or sets a value that indicates whether this queue has dead letter
         /// support when a message expires.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.deadLetteringOnMessageExpiration")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "deadLetteringOnMessageExpiration")]
         public bool? DeadLetteringOnMessageExpiration {get; set; }
 
         /// <summary>
         /// Gets or sets iSO 8601 timeSpan structure that defines the duration of the
         /// duplicate detection history. The default value is 10 minutes.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.duplicateDetectionHistoryTimeWindow")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "duplicateDetectionHistoryTimeWindow")]
         public System.TimeSpan? DuplicateDetectionHistoryTimeWindow {get; set; }
 
         /// <summary>
         /// Gets or sets the maximum delivery count. A message is automatically
         /// deadlettered after this number of deliveries. default value is 10.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maxDeliveryCount")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxDeliveryCount")]
         public int? MaxDeliveryCount {get; set; }
 
         /// <summary>
         /// Gets or sets enumerates the possible values for the status of a messaging
         /// entity. Possible values include: &#39;Active&#39;, &#39;Disabled&#39;, &#39;Restoring&#39;, &#39;SendDisabled&#39;, &#39;ReceiveDisabled&#39;, &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Renaming&#39;, &#39;Unknown&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.status")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public EntityStatus? Status {get; set; }
 
         /// <summary>
         /// Gets or sets value that indicates whether server-side batched operations
         /// are enabled.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableBatchedOperations")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableBatchedOperations")]
         public bool? EnableBatchedOperations {get; set; }
 
         /// <summary>
         /// Gets or sets iSO 8061 timeSpan idle interval after which the queue is
         /// automatically deleted. The minimum duration is 5 minutes.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.autoDeleteOnIdle")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "autoDeleteOnIdle")]
         public System.TimeSpan? AutoDeleteOnIdle {get; set; }
 
         /// <summary>
         /// Gets or sets a value that indicates whether the queue is to be partitioned
         /// across multiple message brokers.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enablePartitioning")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enablePartitioning")]
         public bool? EnablePartitioning {get; set; }
 
         /// <summary>
@@ -301,19 +275,19 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
         /// An express queue holds a message in memory temporarily before writing it to
         /// persistent storage.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableExpress")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableExpress")]
         public bool? EnableExpress {get; set; }
 
         /// <summary>
         /// Gets or sets queue/Topic name to forward the messages
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.forwardTo")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "forwardTo")]
         public string ForwardTo {get; set; }
 
         /// <summary>
         /// Gets or sets queue/Topic name to forward the Dead Letter message
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.forwardDeadLetteredMessagesTo")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "forwardDeadLetteredMessagesTo")]
         public string ForwardDeadLetteredMessagesTo {get; set; }
     }
 }

@@ -8,39 +8,21 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
     using System.Linq;
 
     /// <summary>
-    /// Description of topic resource.
+    /// The Topic Properties definition.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SBTopic : ProxyResource
+    public partial class SBTopicProperties
     {
         /// <summary>
-        /// Initializes a new instance of the SBTopic class.
+        /// Initializes a new instance of the SBTopicProperties class.
         /// </summary>
-        public SBTopic()
+        public SBTopicProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SBTopic class.
+        /// Initializes a new instance of the SBTopicProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </param>
-
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.EventHub/Namespaces&#34; or
-        /// &#34;Microsoft.EventHub/Namespaces/EventHubs&#34;
-        /// </param>
-
-        /// <param name="location">The geo-location where the resource lives
-        /// </param>
-
-        /// <param name="systemData">The system meta data relating to this resource.
-        /// </param>
 
         /// <param name="sizeInBytes">Size of the topic, in bytes.
         /// </param>
@@ -103,11 +85,9 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
         /// holds a message in memory temporarily before writing it to persistent
         /// storage.
         /// </param>
-        public SBTopic(string id = default(string), string name = default(string), string type = default(string), string location = default(string), SystemData systemData = default(SystemData), long? sizeInBytes = default(long?), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), System.DateTime? accessedAt = default(System.DateTime?), int? subscriptionCount = default(int?), MessageCountDetails countDetails = default(MessageCountDetails), System.TimeSpan? defaultMessageTimeToLive = default(System.TimeSpan?), int? maxSizeInMegabytes = default(int?), long? maxMessageSizeInKilobytes = default(long?), bool? requiresDuplicateDetection = default(bool?), System.TimeSpan? duplicateDetectionHistoryTimeWindow = default(System.TimeSpan?), bool? enableBatchedOperations = default(bool?), EntityStatus? status = default(EntityStatus?), bool? supportOrdering = default(bool?), System.TimeSpan? autoDeleteOnIdle = default(System.TimeSpan?), bool? enablePartitioning = default(bool?), bool? enableExpress = default(bool?))
+        public SBTopicProperties(long? sizeInBytes = default(long?), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), System.DateTime? accessedAt = default(System.DateTime?), int? subscriptionCount = default(int?), MessageCountDetails countDetails = default(MessageCountDetails), System.TimeSpan? defaultMessageTimeToLive = default(System.TimeSpan?), int? maxSizeInMegabytes = default(int?), long? maxMessageSizeInKilobytes = default(long?), bool? requiresDuplicateDetection = default(bool?), System.TimeSpan? duplicateDetectionHistoryTimeWindow = default(System.TimeSpan?), bool? enableBatchedOperations = default(bool?), EntityStatus? status = default(EntityStatus?), bool? supportOrdering = default(bool?), System.TimeSpan? autoDeleteOnIdle = default(System.TimeSpan?), bool? enablePartitioning = default(bool?), bool? enableExpress = default(bool?))
 
-        : base(id, name, type, location)
         {
-            this.SystemData = systemData;
             this.SizeInBytes = sizeInBytes;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
@@ -135,46 +115,40 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
 
 
         /// <summary>
-        /// Gets the system meta data relating to this resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
         /// Gets size of the topic, in bytes.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sizeInBytes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sizeInBytes")]
         public long? SizeInBytes {get; private set; }
 
         /// <summary>
         /// Gets exact time the message was created.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createdAt")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "createdAt")]
         public System.DateTime? CreatedAt {get; private set; }
 
         /// <summary>
         /// Gets the exact time the message was updated.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.updatedAt")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "updatedAt")]
         public System.DateTime? UpdatedAt {get; private set; }
 
         /// <summary>
         /// Gets last time the message was sent, or a request was received, for this
         /// topic.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.accessedAt")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "accessedAt")]
         public System.DateTime? AccessedAt {get; private set; }
 
         /// <summary>
         /// Gets number of subscriptions.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subscriptionCount")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "subscriptionCount")]
         public int? SubscriptionCount {get; private set; }
 
         /// <summary>
         /// Gets message count details
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.countDetails")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "countDetails")]
         public MessageCountDetails CountDetails {get; private set; }
 
         /// <summary>
@@ -183,14 +157,14 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
         /// sent to Service Bus. This is the default value used when TimeToLive is not
         /// set on a message itself.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultMessageTimeToLive")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "defaultMessageTimeToLive")]
         public System.TimeSpan? DefaultMessageTimeToLive {get; set; }
 
         /// <summary>
         /// Gets or sets maximum size of the topic in megabytes, which is the size of
         /// the memory allocated for the topic. Default is 1024.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maxSizeInMegabytes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxSizeInMegabytes")]
         public int? MaxSizeInMegabytes {get; set; }
 
         /// <summary>
@@ -198,54 +172,54 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
         /// accepted by the topic. This property is only used in Premium today and
         /// default is 1024.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maxMessageSizeInKilobytes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxMessageSizeInKilobytes")]
         public long? MaxMessageSizeInKilobytes {get; set; }
 
         /// <summary>
         /// Gets or sets value indicating if this topic requires duplicate detection.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requiresDuplicateDetection")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requiresDuplicateDetection")]
         public bool? RequiresDuplicateDetection {get; set; }
 
         /// <summary>
         /// Gets or sets iSO8601 timespan structure that defines the duration of the
         /// duplicate detection history. The default value is 10 minutes.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.duplicateDetectionHistoryTimeWindow")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "duplicateDetectionHistoryTimeWindow")]
         public System.TimeSpan? DuplicateDetectionHistoryTimeWindow {get; set; }
 
         /// <summary>
         /// Gets or sets value that indicates whether server-side batched operations
         /// are enabled.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableBatchedOperations")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableBatchedOperations")]
         public bool? EnableBatchedOperations {get; set; }
 
         /// <summary>
         /// Gets or sets enumerates the possible values for the status of a messaging
         /// entity. Possible values include: &#39;Active&#39;, &#39;Disabled&#39;, &#39;Restoring&#39;, &#39;SendDisabled&#39;, &#39;ReceiveDisabled&#39;, &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Renaming&#39;, &#39;Unknown&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.status")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public EntityStatus? Status {get; set; }
 
         /// <summary>
         /// Gets or sets value that indicates whether the topic supports ordering.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.supportOrdering")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "supportOrdering")]
         public bool? SupportOrdering {get; set; }
 
         /// <summary>
         /// Gets or sets iSO 8601 timespan idle interval after which the topic is
         /// automatically deleted. The minimum duration is 5 minutes.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.autoDeleteOnIdle")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "autoDeleteOnIdle")]
         public System.TimeSpan? AutoDeleteOnIdle {get; set; }
 
         /// <summary>
         /// Gets or sets value that indicates whether the topic to be partitioned
         /// across multiple message brokers is enabled.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enablePartitioning")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enablePartitioning")]
         public bool? EnablePartitioning {get; set; }
 
         /// <summary>
@@ -253,7 +227,7 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
         /// express topic holds a message in memory temporarily before writing it to
         /// persistent storage.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableExpress")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableExpress")]
         public bool? EnableExpress {get; set; }
     }
 }

@@ -8,39 +8,21 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
     using System.Linq;
 
     /// <summary>
-    /// Description of subscription resource.
+    /// Description of Subscription Resource.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SBSubscription : ProxyResource
+    public partial class SBSubscriptionProperties
     {
         /// <summary>
-        /// Initializes a new instance of the SBSubscription class.
+        /// Initializes a new instance of the SBSubscriptionProperties class.
         /// </summary>
-        public SBSubscription()
+        public SBSubscriptionProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SBSubscription class.
+        /// Initializes a new instance of the SBSubscriptionProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource ID for the resource. Ex -
-        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-        /// </param>
-
-        /// <param name="name">The name of the resource
-        /// </param>
-
-        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.EventHub/Namespaces&#34; or
-        /// &#34;Microsoft.EventHub/Namespaces/EventHubs&#34;
-        /// </param>
-
-        /// <param name="location">The geo-location where the resource lives
-        /// </param>
-
-        /// <param name="systemData">The system meta data relating to this resource.
-        /// </param>
 
         /// <param name="messageCount">Number of messages.
         /// </param>
@@ -108,11 +90,9 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
 
         /// <param name="clientAffineProperties">Properties specific to client affine subscriptions.
         /// </param>
-        public SBSubscription(string id = default(string), string name = default(string), string type = default(string), string location = default(string), SystemData systemData = default(SystemData), long? messageCount = default(long?), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? accessedAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), MessageCountDetails countDetails = default(MessageCountDetails), System.TimeSpan? lockDuration = default(System.TimeSpan?), bool? requiresSession = default(bool?), System.TimeSpan? defaultMessageTimeToLive = default(System.TimeSpan?), bool? deadLetteringOnFilterEvaluationExceptions = default(bool?), bool? deadLetteringOnMessageExpiration = default(bool?), System.TimeSpan? duplicateDetectionHistoryTimeWindow = default(System.TimeSpan?), int? maxDeliveryCount = default(int?), EntityStatus? status = default(EntityStatus?), bool? enableBatchedOperations = default(bool?), System.TimeSpan? autoDeleteOnIdle = default(System.TimeSpan?), string forwardTo = default(string), string forwardDeadLetteredMessagesTo = default(string), bool? isClientAffine = default(bool?), SBClientAffineProperties clientAffineProperties = default(SBClientAffineProperties))
+        public SBSubscriptionProperties(long? messageCount = default(long?), System.DateTime? createdAt = default(System.DateTime?), System.DateTime? accessedAt = default(System.DateTime?), System.DateTime? updatedAt = default(System.DateTime?), MessageCountDetails countDetails = default(MessageCountDetails), System.TimeSpan? lockDuration = default(System.TimeSpan?), bool? requiresSession = default(bool?), System.TimeSpan? defaultMessageTimeToLive = default(System.TimeSpan?), bool? deadLetteringOnFilterEvaluationExceptions = default(bool?), bool? deadLetteringOnMessageExpiration = default(bool?), System.TimeSpan? duplicateDetectionHistoryTimeWindow = default(System.TimeSpan?), int? maxDeliveryCount = default(int?), EntityStatus? status = default(EntityStatus?), bool? enableBatchedOperations = default(bool?), System.TimeSpan? autoDeleteOnIdle = default(System.TimeSpan?), string forwardTo = default(string), string forwardDeadLetteredMessagesTo = default(string), bool? isClientAffine = default(bool?), SBClientAffineProperties clientAffineProperties = default(SBClientAffineProperties))
 
-        : base(id, name, type, location)
         {
-            this.SystemData = systemData;
             this.MessageCount = messageCount;
             this.CreatedAt = createdAt;
             this.AccessedAt = accessedAt;
@@ -142,53 +122,47 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
 
 
         /// <summary>
-        /// Gets the system meta data relating to this resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
         /// Gets number of messages.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.messageCount")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "messageCount")]
         public long? MessageCount {get; private set; }
 
         /// <summary>
         /// Gets exact time the message was created.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createdAt")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "createdAt")]
         public System.DateTime? CreatedAt {get; private set; }
 
         /// <summary>
         /// Gets last time there was a receive request to this subscription.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.accessedAt")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "accessedAt")]
         public System.DateTime? AccessedAt {get; private set; }
 
         /// <summary>
         /// Gets the exact time the message was updated.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.updatedAt")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "updatedAt")]
         public System.DateTime? UpdatedAt {get; private set; }
 
         /// <summary>
         /// Gets message count details
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.countDetails")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "countDetails")]
         public MessageCountDetails CountDetails {get; private set; }
 
         /// <summary>
         /// Gets or sets iSO 8061 lock duration timespan for the subscription. The
         /// default value is 1 minute.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.lockDuration")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "lockDuration")]
         public System.TimeSpan? LockDuration {get; set; }
 
         /// <summary>
         /// Gets or sets value indicating if a subscription supports the concept of
         /// sessions.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requiresSession")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requiresSession")]
         public bool? RequiresSession {get; set; }
 
         /// <summary>
@@ -197,80 +171,80 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
         /// sent to Service Bus. This is the default value used when TimeToLive is not
         /// set on a message itself.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.defaultMessageTimeToLive")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "defaultMessageTimeToLive")]
         public System.TimeSpan? DefaultMessageTimeToLive {get; set; }
 
         /// <summary>
         /// Gets or sets value that indicates whether a subscription has dead letter
         /// support on filter evaluation exceptions.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.deadLetteringOnFilterEvaluationExceptions")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "deadLetteringOnFilterEvaluationExceptions")]
         public bool? DeadLetteringOnFilterEvaluationExceptions {get; set; }
 
         /// <summary>
         /// Gets or sets value that indicates whether a subscription has dead letter
         /// support when a message expires.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.deadLetteringOnMessageExpiration")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "deadLetteringOnMessageExpiration")]
         public bool? DeadLetteringOnMessageExpiration {get; set; }
 
         /// <summary>
         /// Gets or sets iSO 8601 timeSpan structure that defines the duration of the
         /// duplicate detection history. The default value is 10 minutes.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.duplicateDetectionHistoryTimeWindow")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "duplicateDetectionHistoryTimeWindow")]
         public System.TimeSpan? DuplicateDetectionHistoryTimeWindow {get; set; }
 
         /// <summary>
         /// Gets or sets number of maximum deliveries.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.maxDeliveryCount")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "maxDeliveryCount")]
         public int? MaxDeliveryCount {get; set; }
 
         /// <summary>
         /// Gets or sets enumerates the possible values for the status of a messaging
         /// entity. Possible values include: &#39;Active&#39;, &#39;Disabled&#39;, &#39;Restoring&#39;, &#39;SendDisabled&#39;, &#39;ReceiveDisabled&#39;, &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Renaming&#39;, &#39;Unknown&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.status")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public EntityStatus? Status {get; set; }
 
         /// <summary>
         /// Gets or sets value that indicates whether server-side batched operations
         /// are enabled.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.enableBatchedOperations")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableBatchedOperations")]
         public bool? EnableBatchedOperations {get; set; }
 
         /// <summary>
         /// Gets or sets iSO 8061 timeSpan idle interval after which the topic is
         /// automatically deleted. The minimum duration is 5 minutes.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.autoDeleteOnIdle")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "autoDeleteOnIdle")]
         public System.TimeSpan? AutoDeleteOnIdle {get; set; }
 
         /// <summary>
         /// Gets or sets queue/Topic name to forward the messages
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.forwardTo")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "forwardTo")]
         public string ForwardTo {get; set; }
 
         /// <summary>
         /// Gets or sets queue/Topic name to forward the Dead Letter message
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.forwardDeadLetteredMessagesTo")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "forwardDeadLetteredMessagesTo")]
         public string ForwardDeadLetteredMessagesTo {get; set; }
 
         /// <summary>
         /// Gets or sets value that indicates whether the subscription has an affinity
         /// to the client id.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isClientAffine")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "isClientAffine")]
         public bool? IsClientAffine {get; set; }
 
         /// <summary>
         /// Gets or sets properties specific to client affine subscriptions.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.clientAffineProperties")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "clientAffineProperties")]
         public SBClientAffineProperties ClientAffineProperties {get; set; }
     }
 }

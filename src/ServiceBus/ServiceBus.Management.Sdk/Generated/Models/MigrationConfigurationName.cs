@@ -7,14 +7,12 @@ namespace Microsoft.Azure.Management.ServiceBus.Models
 {
 
     /// <summary>
-    /// Defines values for SkuTier.
+    /// Defines values for MigrationConfigurationName.
     /// </summary>
 
 
-    public static class SkuTier
+    public static class MigrationConfigurationName
     {
-        public const string Basic = "Basic";
-        public const string Standard = "Standard";
-        public const string Premium = "Premium";
+        public const string Default = "$default";
     }
 }
