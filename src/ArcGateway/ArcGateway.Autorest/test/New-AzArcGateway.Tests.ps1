@@ -28,6 +28,7 @@ Describe 'New-AzArcGateway' {
     }
 
     It 'Create' -skip {
+        # AllowedFeature is optional and set to '*'
         $gateway = New-AzArcGateway -Name $env.Name -ResourceGroupName $env.ResourceGroupName -Location $env.Location -SubscriptionId $env.SubscriptionId
         $gateway | Should -Not -Be $null
     }

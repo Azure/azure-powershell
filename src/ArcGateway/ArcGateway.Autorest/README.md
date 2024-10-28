@@ -135,29 +135,20 @@ directive:
       subject: Setting
       verb: Get
     remove: true
-  # Remove PUT and keep Update-AzArcSettings (PATCH)
+  # Remove PUT and keep Update-AzArcSetting (PATCH)
   - where:
       subject: Setting
       verb: Set
     remove: true
 
-  # Rename parameter names in Update-AzArcSettings
+  # Rename parameter names in Update-AzArcSetting
   - where:
       subject: Setting
       parameter-name: GatewayPropertyGatewayResourceId
     set:
       parameter-name: GatewayResourceId
-  # - where:
-  #     subject: Setting
-  #     parameter-name: SResourceName
-  #   set:
-  #     parameter-name: SettingsResourceName
 
-  # Rename Setting to Settings (ps cmdlet requires single noun)
-  # - where:
-  #     subject: Setting
-  #   set:
-  #     subject: Settings
+  # Hide cmdlet for customization
   - where:
       subject: Gateway
       verb: New
@@ -166,4 +157,5 @@ directive:
       subject: Setting
       verb: Update
     hide: true
+
 ```

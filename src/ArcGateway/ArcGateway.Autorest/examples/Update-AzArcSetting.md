@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Patch the base Settings of the target resource
 ```powershell
-{{ Add code here }}
+Update-AzArcSetting -ResourceGroupName "ytongtest" -SubscriptionId "00000000-0000-0000-0000-000000000000" -BaseProvider "Microsoft.HybridCompute" -BaseResourceName "testmachine" -BaseResourceType "machines" -GatewayResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/gateways/myArcGateway"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Patch the base Settings of the target resource
