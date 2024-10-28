@@ -14,23 +14,17 @@ Microsoft Azure PowerShell: Mdp cmdlets
 ### [Get-AzMdpPool](Get-AzMdpPool.md)
 Get a Pool
 
-### [Get-AzMdpResourceDetail](Get-AzMdpResourceDetail.md)
+### [Get-AzMdpPoolAgent](Get-AzMdpPoolAgent.md)
 List ResourceDetailsObject resources by Pool
 
 ### [Get-AzMdpSku](Get-AzMdpSku.md)
 List ResourceSku resources by subscription ID
-
-### [Invoke-AzMdpUsageSubscriptionUsage](Invoke-AzMdpUsageSubscriptionUsage.md)
-List Quota resources by subscription ID
 
 ### [New-AzMdpPool](New-AzMdpPool.md)
 create a Pool
 
 ### [Remove-AzMdpPool](Remove-AzMdpPool.md)
 Delete a Pool
-
-### [Set-AzMdpPool](Set-AzMdpPool.md)
-update a Pool
 
 ### [Update-AzMdpPool](Update-AzMdpPool.md)
 update a Pool

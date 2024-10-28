@@ -45,4 +45,13 @@ subject-prefix: $(service-name)
 
 directive:
   - remove-operation: ImageVersions_ListByImage
+  - remove-operation: SubscriptionUsages_Usages
+  - where:
+      verb: Set
+    hide: true
+  - where:
+      verb: Get
+      subject: ResourceDetail
+    set:
+      subject: PoolAgent
 ```

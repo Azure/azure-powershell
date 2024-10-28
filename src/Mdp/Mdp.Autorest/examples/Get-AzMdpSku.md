@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: List skus in location
 ```powershell
-{{ Add code here }}
+Get-AzMdpSku -LocationName westus
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+List all skus in the location "westus" in the current subscription

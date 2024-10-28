@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Mdp
-online version: https://learn.microsoft.com/powershell/module/az.mdp/get-azmdpresourcedetail
+online version: https://learn.microsoft.com/powershell/module/az.mdp/get-azmdppoolagent
 schema: 2.0.0
 ---
 
-# Get-AzMdpResourceDetail
+# Get-AzMdpPoolAgent
 
 ## SYNOPSIS
 List ResourceDetailsObject resources by Pool
@@ -13,7 +13,7 @@ List ResourceDetailsObject resources by Pool
 ## SYNTAX
 
 ```
-Get-AzMdpResourceDetail -PoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzMdpPoolAgent -PoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -22,27 +22,12 @@ List ResourceDetailsObject resources by Pool
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List agents for a pool in a resource group  
 ```powershell
-{{ Add code here }}
+Get-AzMdpPoolAgent -ResourceGroupName testRg -PoolName Contoso
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command gets the agents for Managed DevOps Pool named "Contoso" under the resource group "testRg".
 
 ## PARAMETERS
 
