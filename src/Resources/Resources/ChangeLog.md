@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.6.0
 * Fixed customer-reported `Remove-AzPolicyAssignment` behavior.
 
 ## Version 7.5.0
