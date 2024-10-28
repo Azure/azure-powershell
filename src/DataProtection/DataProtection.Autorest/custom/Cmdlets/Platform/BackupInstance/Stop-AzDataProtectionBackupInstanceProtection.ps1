@@ -120,7 +120,7 @@ function Stop-AzDataProtectionBackupInstanceProtection
                 $null = $PSBoundParameters.Add("Token", "Bearer $Token")
             }
             else{
-                $plainToken = ConvertFrom-SecureString $secureToken -AsPlainText
+                $plainToken = UnprotectSecureString -SecureString $SecureToken
                 $null = $PSBoundParameters.Add("Token", "Bearer $plainToken")
             }
         }
