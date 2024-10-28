@@ -27,7 +27,7 @@ Describe 'New-AzArcGateway' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Create' -skip {
+    It 'Create' {
         # AllowedFeature is optional and set to '*'
         $gateway = New-AzArcGateway -Name $env.Name -ResourceGroupName $env.ResourceGroupName -Location $env.Location -SubscriptionId $env.SubscriptionId
         $gateway | Should -Not -Be $null

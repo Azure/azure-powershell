@@ -48,7 +48,7 @@ function setupEnv() {
     $env.Name = 'MyArcgateway'
     $env.BaseProvider = 'Microsoft.HybridCompute'
     $env.BaseProviderType = 'machines'
-    $env.GatewayResourceId = '/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/HCRPSynthetics/providers/Microsoft.HybridCompute/gateways/MyArcgateway'
+    $env.GatewayResourceId = '/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/gateways/MyArcgateway'
 
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'

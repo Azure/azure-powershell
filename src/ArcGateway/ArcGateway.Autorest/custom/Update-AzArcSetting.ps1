@@ -201,7 +201,7 @@ function Update-AzArcSetting {
     process {
         # customize Update-AzArcSettings so that SettingsResourceName is hidden from user with default value 'default'
         $null = $PSBoundParameters.Add("SettingsResourceName", "default")
-        Az.ArcGateway.internal\Update-AzArcSettings @PSBoundParameters
+        Az.ArcGateway.internal\Update-AzArcSetting @PSBoundParameters
     }
     }
     

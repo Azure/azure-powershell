@@ -15,12 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzArcGateway'))
 }
 
 Describe 'Get-AzArcGateway' {
-    It 'List1' -skip {
+    It 'List1' {
         $gateway = Get-AzArcGateway -SubscriptionId $env.SubscriptionId
         $gateway | Should -Not -Be $null
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $gateway = Get-AzArcGateway -Name $env.Name -ResourceGroupName $env.ResourceGroupName
         $gateway | Should -Not -Be $null
     }

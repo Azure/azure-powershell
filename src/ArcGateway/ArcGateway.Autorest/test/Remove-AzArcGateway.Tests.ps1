@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzArcGateway'))
 }
 
 Describe 'Remove-AzArcGateway' {
-    It 'Delete' -skip {
+    It 'Delete'  {
         Remove-AzArcGateway -Name $env.Name -ResourceGroupName $env.ResourceGroupName
     }
 

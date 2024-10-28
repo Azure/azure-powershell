@@ -27,10 +27,10 @@ Describe 'Update-AzArcSetting' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Patch' -skip {
-         # SettingsResourceName is optional and set to 'default'
-         $settings = Update-AzArcSetting -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.subscriptionId -BaseProvider $env.BaseProvider -BaseResourceName $env.BaseProviderName -BaseResourceType $env.BaseProviderType -GatewayResourceId $env.GatewayResourceId 
-         $settings | Should -Not -Be $null
+    It 'Patch' {
+        # SettingsResourceName is optional and set to 'default'
+        $settings = Update-AzArcSetting -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.subscriptionId -BaseProvider $env.BaseProvider -BaseResourceName $env.MachineName -BaseResourceType $env.BaseProviderType -GatewayResourceId $env.GatewayResourceId 
+        $settings | Should -Not -Be $null
     }
 
     It 'PatchViaIdentityExpanded' -skip {
