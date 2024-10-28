@@ -100,4 +100,46 @@ directive:
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
+  - where:
+      verb: Register
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://go.microsoft.com/fwlink/?linkid=2292409)
+        estimated-ga-date: 2024-11-19
+  - where:
+      verb: Unregister
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://go.microsoft.com/fwlink/?linkid=2292409)
+        estimated-ga-date: 2024-11-19
+  - where:
+      verb: Send
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://go.microsoft.com/fwlink/?linkid=2292409)
+        estimated-ga-date: 2024-11-19
+  - where:
+      verb: Expand
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://go.microsoft.com/fwlink/?linkid=2292409)
+        estimated-ga-date: 2024-11-19
+  - where:
+      verb: Get
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://go.microsoft.com/fwlink/?linkid=2292409)
+        estimated-ga-date: 2024-11-19
+  - where:
+      verb: New
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://go.microsoft.com/fwlink/?linkid=2292409)
+        estimated-ga-date: 2024-11-19
+  - where:
+      verb: Update
+    set:
+      preview-announcement:
+        preview-message: This release will contain numerous breaking changes, please view the preannouncement here (https://go.microsoft.com/fwlink/?linkid=2292409)
+        estimated-ga-date: 2024-11-19
 ```

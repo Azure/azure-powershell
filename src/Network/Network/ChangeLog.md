@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.10.0
 * Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management
     - `New/Get/Remove/Set-AzNetworkManagerRoutingConfiguration`
     - `New/Get/Remove/Set-AzNetworkManagerRoutingRuleCollection`
