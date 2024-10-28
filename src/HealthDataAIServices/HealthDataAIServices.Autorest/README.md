@@ -1,5 +1,5 @@
 <!-- region Generated -->
-# Az.HealthDataAiServices
+# Az.HealthDataAIServices
 This directory contains the PowerShell module for the HealthDataAiServices service.
 
 ---
@@ -20,7 +20,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.HealthDataAiServices`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.HealthDataAIServices`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ### AutoRest Configuration
@@ -45,6 +45,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: HealthDataAIServices
 subject-prefix: Deid
+service-name: HealthDataAIServices
  
 # The next three configurations are exclusive to v3, and in v4, they are activated by default. If you are still using v3, please uncomment them.
 # identity-correction-for-post: true

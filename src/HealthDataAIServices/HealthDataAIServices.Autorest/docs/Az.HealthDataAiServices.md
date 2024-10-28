@@ -1,16 +1,16 @@
 ---
-Module Name: Az.HealthDataAiServices
-Module Guid: 5b538ba6-6f2d-4837-8c04-437d50415350
+Module Name: Az.HealthDataAIServices
+Module Guid: 8bb9685c-14b3-42f7-8d1d-26a6fe1d48a0
 Download Help Link: https://learn.microsoft.com/powershell/module/az.healthdataaiservices
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.HealthDataAiServices Module
+# Az.HealthDataAIServices Module
 ## Description
 Microsoft Azure PowerShell: HealthDataAiServices cmdlets
 
-## Az.HealthDataAiServices Cmdlets
+## Az.HealthDataAIServices Cmdlets
 ### [Get-AzDeidService](Get-AzDeidService.md)
 Get a DeidService
 

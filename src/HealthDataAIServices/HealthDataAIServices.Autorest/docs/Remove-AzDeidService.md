@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.HealthDataAiServices
+Module Name: Az.HealthDataAIServices
 online version: https://learn.microsoft.com/powershell/module/az.healthdataaiservices/remove-azdeidservice
 schema: 2.0.0
 ---
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthDataAiServices.Models.IHealthDataAiServicesIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IHealthDataAiServicesIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -197,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthDataAiServices.Models.IHealthDataAiServicesIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IHealthDataAiServicesIdentity
 
 ## OUTPUTS
 

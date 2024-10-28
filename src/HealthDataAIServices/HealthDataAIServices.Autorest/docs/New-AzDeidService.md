@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: Az.HealthDataAiServices
+Module Name: Az.HealthDataAIServices
 online version: https://learn.microsoft.com/powershell/module/az.healthdataaiservices/new-azdeidservice
 schema: 2.0.0
 ---
@@ -337,7 +337,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthDataAiServices.Models.IDeidService
+### Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService
 
 ## NOTES
 
