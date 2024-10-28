@@ -69,7 +69,7 @@ In this directory, run AutoRest:
 ``` yaml
 commit: 6286ea80b3ac7eecfc2f230d65b2034a656f10bf
 require:
-  - $(this-folder)/../../../tools/SwaggerCI/readme.azure.noprofile.md
+  - $(this-folder)/../../SwaggerCI/readme.azure.noprofile.md
 input-file:
   - $(repo)\specification\dnsresolver\resource-manager\Microsoft.Network\preview\2023-07-01-preview\dnsresolver.json
   - $(repo)\specification\dnsresolver\resource-manager\Microsoft.Network\preview\2023-07-01-preview\dnsresolverpolicy.json
