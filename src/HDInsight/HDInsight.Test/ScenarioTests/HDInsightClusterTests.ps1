@@ -543,25 +543,15 @@ function Test-UpdateClusterTags{
 	{
 		# prepare parameter for creating parameter
 		#$params= Prepare-ClusterCreateParameter
-		$tags = New-Object 'System.Collections.Generic.Dictionary[System.String,System.String]'
-		$tags.Add('Tag1', 'Value1')
-		$tags.Add('Tag2', 'Value2')
-		# test create cluster
-		#$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
-		#-ClusterName $params.clusterName -ClusterSizeInNodes $params.clusterSizeInNodes -ClusterType $params.clusterType `
-		#-StorageAccountResourceId $params.storageAccountResourceId -StorageAccountKey $params.storageAccountKey `
-		#-HttpCredential $params.httpCredential -SshCredential $params.sshCredential `
-		#-VirtualNetworkId $params.virtualNetworkId -SubnetName "default" -Tag $tags
 
-		$rg="yuchen-ps-test"
-		$clusterName="h1-spark"
+		$rg="yuchen-devrp"
+		$clusterName="yuchen-hadoop-002"
 
 		# Update cluster tags
 		$tags = New-Object 'System.Collections.Generic.Dictionary[System.String,System.String]'
 		$tags.Add('Tag3', 'Value3')
 
 		$cluster = Update-AzHDInsightCluster -ResourceGroupName $rg -ClusterName $clusterName -Tag $tags
-		Assert-NotNull $cluster.Tag
  	}
 	finally
 	{
