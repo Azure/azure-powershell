@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Upgraded Azure.Core to 1.44.1.
 
 ## Version 4.2.1
 * Introduced secrets detection feature to safeguard sensitive data.
