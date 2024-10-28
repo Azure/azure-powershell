@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             Id = cluster.Id;
             Name = cluster.Name;
             Location = cluster.Location;
-            Tag = cluster.Tags != null ? new Dictionary<string, string>(cluster.Tags) : null;
             ClusterId = cluster.Properties.ClusterId;
             ClusterVersion = cluster.Properties.ClusterVersion;
             OperatingSystemType = cluster.Properties.OsType;
@@ -141,11 +140,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// The location of the resource.
         /// </summary>
         public string Location { get; set; }
-
-        /// <summary>
-        /// The tags of the resource.
-        /// </summary>
-        public Dictionary<string,string> Tag { get; set; }
 
         /// <summary>
         /// The ClusterId of the cluster.

@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* Added parameter `-Tag` to cmdlet `New-AzHDInsightCluster` to set cluster tags.
 * Changed the type of parameter `-IdentityId` in command `Update-AzHDInsightCluster` from `string`  to `string[]`.
 
 ## Version 6.2.1
