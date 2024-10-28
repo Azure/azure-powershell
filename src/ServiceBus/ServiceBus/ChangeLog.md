@@ -21,7 +21,7 @@
 ## Upcoming Release
 * Migrated ServiceBus SDK to generated SDK
     - Removed "Microsoft.Azure.Management.ServiceBus" Version "5.0.0" PackageReference
-    - Added ServiceBus.Management.Sdk ProjectReference
+    - Added ServiceBus.Management.Sdk ProjectReference 
 
 ## Version 4.0.0
 * Moved cmdlets to V4.
