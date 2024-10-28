@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+Add a new line.
+
 ## Version 6.0.4
 * Fixed secrets exposure in example documentation.
 
