@@ -153,9 +153,19 @@ directive:
   #   set:
   #     parameter-name: SettingsResourceName
 
-  # Rename Setting to Settings
+  # Rename Setting to Settings (ps cmdlet requires single noun)
+  # - where:
+  #     subject: Setting
+  #   set:
+  #     subject: Settings
   - where:
+      verb: New
+      subject: Gateway
+    set:
+      hide: true
+  - where:
+      verb: Update
       subject: Setting
     set:
-      subject: Settings
+      hide: true
 ```

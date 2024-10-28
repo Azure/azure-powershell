@@ -64,9 +64,9 @@ INPUTOBJECT <IArcGatewayIdentity>: Identity Parameter
 PARAMETER <ISettings>: .
   [GatewayPropertyGatewayResourceId <String>]: Associated Gateway Resource Id
 .Link
-https://learn.microsoft.com/powershell/module/az.arcgateway/update-azarcsettings
+https://learn.microsoft.com/powershell/module/az.arcgateway/update-azarcsetting
 #>
-function Update-AzArcSettings {
+function Update-AzArcSetting {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISettings])]
     [CmdletBinding(DefaultParameterSetName='PatchExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
@@ -74,10 +74,6 @@ function Update-AzArcSettings {
         [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
         [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
         [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
-        [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
-        [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
-        [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='Patch', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Path')]
         [System.String]
         # The name of the base Resource Provider.
@@ -87,10 +83,6 @@ function Update-AzArcSettings {
         [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
         [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
         [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
-        [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
-        [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
-        [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='Patch', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Path')]
         [System.String]
         # The name of the base resource.
@@ -100,10 +92,6 @@ function Update-AzArcSettings {
         [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
         [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
         [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
-        [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
-        [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
-        [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='Patch', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Path')]
         [System.String]
         # The name of the base Resource Type.
@@ -113,10 +101,6 @@ function Update-AzArcSettings {
         [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
         [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
         [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
-        [Parameter(ParameterSetName='PatchExpanded', Mandatory)]
-        [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
-        [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='Patch', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Path')]
         [System.String]
         # The name of the resource group.
@@ -127,10 +111,6 @@ function Update-AzArcSettings {
         [Parameter(ParameterSetName='PatchExpanded')]
         [Parameter(ParameterSetName='PatchViaJsonFilePath')]
         [Parameter(ParameterSetName='PatchViaJsonString')]
-        [Parameter(ParameterSetName='PatchExpanded')]
-        [Parameter(ParameterSetName='PatchViaJsonString')]
-        [Parameter(ParameterSetName='PatchViaJsonFilePath')]
-        [Parameter(ParameterSetName='Patch')]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -139,15 +119,11 @@ function Update-AzArcSettings {
     
         [Parameter(ParameterSetName='PatchViaIdentity', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='PatchViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName='PatchViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName='PatchViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IArcGatewayIdentity]
         # Identity Parameter
         ${InputObject},
     
-        [Parameter(ParameterSetName='Patch', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName='PatchViaIdentity', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='Patch', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='PatchViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Body')]
@@ -163,25 +139,16 @@ function Update-AzArcSettings {
         ${GatewayResourceId},
     
         [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='PatchViaJsonFilePath', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Body')]
         [System.String]
         # Path of Json file supplied to the Patch operation
         ${JsonFilePath},
     
         [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
-        [Parameter(ParameterSetName='PatchViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Body')]
         [System.String]
         # Json string supplied to the Patch operation
         ${JsonString},
-    
-        [Parameter(ParameterSetName='PatchExpanded')]
-        [Parameter(ParameterSetName='PatchViaIdentityExpanded')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Body')]
-        [System.String]
-        # Associated Gateway Resource Id
-        ${GatewayPropertyGatewayResourceId},
     
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -231,7 +198,6 @@ function Update-AzArcSettings {
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
-    
     process {
         # customize Update-AzArcSettings so that SettingsResourceName is hidden from user with default value 'default'
         $null = $PSBoundParameters.Add("SettingsResourceName", "default")

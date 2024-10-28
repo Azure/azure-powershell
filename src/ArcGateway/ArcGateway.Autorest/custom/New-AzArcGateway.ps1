@@ -1,4 +1,3 @@
-
 # ----------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -78,10 +77,6 @@ function New-AzArcGateway {
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
         [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='Create', Mandatory)]
         [Alias('GatewayName')]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Path')]
         [System.String]
@@ -92,10 +87,6 @@ function New-AzArcGateway {
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
         [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='Create', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Path')]
         [System.String]
         # The name of the resource group.
@@ -106,10 +97,6 @@ function New-AzArcGateway {
         [Parameter(ParameterSetName='CreateExpanded')]
         [Parameter(ParameterSetName='CreateViaJsonFilePath')]
         [Parameter(ParameterSetName='CreateViaJsonString')]
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='CreateViaJsonString')]
-        [Parameter(ParameterSetName='CreateViaJsonFilePath')]
-        [Parameter(ParameterSetName='Create')]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -118,15 +105,11 @@ function New-AzArcGateway {
     
         [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IArcGatewayIdentity]
         # Identity Parameter
         ${InputObject},
     
-        [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
-        [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Body')]
@@ -136,15 +119,11 @@ function New-AzArcGateway {
     
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
-        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Body')]
         [System.String]
         # The geo-location where the resource lives
         ${Location},
     
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
         [Parameter(ParameterSetName='CreateExpanded')]
         [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.PSArgumentCompleterAttribute("Public")]
@@ -155,8 +134,6 @@ function New-AzArcGateway {
     
         [Parameter(ParameterSetName='CreateExpanded')]
         [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-        [Parameter(ParameterSetName='CreateExpanded')]
-        [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
@@ -164,13 +141,11 @@ function New-AzArcGateway {
         ${Tag},
     
         [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
-        [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Body')]
         [System.String]
         # Path of Json file supplied to the Create operation
         ${JsonFilePath},
     
-        [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Category('Body')]
         [System.String]
