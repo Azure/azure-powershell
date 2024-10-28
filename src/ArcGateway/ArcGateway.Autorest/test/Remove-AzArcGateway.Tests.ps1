@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzArcGateway'))
 
 Describe 'Remove-AzArcGateway' {
     It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        Remove-AzArcGateway -Name $env.Name -ResourceGroupName $env.ResourceGroupName
     }
 
     It 'DeleteViaIdentity' -skip {

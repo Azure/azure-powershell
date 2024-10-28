@@ -28,7 +28,8 @@ Describe 'New-AzArcGateway' {
     }
 
     It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $gateway = New-AzArcGateway -Name $env.Name -ResourceGroupName $env.ResourceGroupName -Location $env.Location -SubscriptionId $env.SubscriptionId
+        $gateway | Should -Not -Be $null
     }
 
     It 'CreateViaIdentityExpanded' -skip {

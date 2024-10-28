@@ -41,8 +41,15 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
-    $env.Tenant = (Get-AzContext).Tenant.Id
+    $env.SubscriptionId = 'b24cc8ee-df4f-48ac-94cf-46edf36b0fae'
+    $env.ResourceGroupName = 'ytongtest'
+    $env.Location = 'eastus'
+    $env.MachineName = 'testmachine'
+    $env.Name = 'MyArcgateway'
+    $env.BaseProvider = 'Microsoft.HybridCompute'
+    $env.BaseProviderType = 'machines'
+    $env.GatewayResourceId = '/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/HCRPSynthetics/providers/Microsoft.HybridCompute/gateways/MyArcgateway'
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

@@ -20,9 +20,6 @@ The operation to create or update a gateway.
 ### [Remove-AzArcGateway](Remove-AzArcGateway.md)
 The operation to delete a gateway.
 
-### [Set-AzArcSettings](Set-AzArcSettings.md)
-Update the base Settings of the target resource.
-
 ### [Update-AzArcSettings](Update-AzArcSettings.md)
 Patch the base Settings of the target resource.
 

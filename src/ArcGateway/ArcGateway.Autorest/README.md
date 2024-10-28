@@ -54,7 +54,7 @@ disable-transform-identity-type-for-operation:
   - Machines_Update
 
 directive:
-  # Removing all cmlets and except gateway/settings related cmdlets
+  # Removing all cmlets except gateway/settings related cmdlets
   - where:
       subject: PrivateEndpointConnection
     remove: true
@@ -123,7 +123,6 @@ directive:
   - where:
       subject: PrivateLinkScopeTag
     remove: true
-  # We change properties on a gateway via POST rather than PUT, so removing this cmdlet and keep Update-AzArcGateway
   - where:
       subject: Gateway
       verb: Set
@@ -136,8 +135,25 @@ directive:
       subject: Setting
       verb: Get
     remove: true
+  # Remove PUT and keep Update-AzArcSettings (PATCH)
+  - where:
+      subject: Setting
+      verb: Set
+    remove: true
 
-  # Rename Settings
+  # Rename parameter names in Update-AzArcSettings
+  - where:
+      subject: Setting
+      parameter-name: GatewayPropertyGatewayResourceId
+    set:
+      parameter-name: GatewayResourceId
+  # - where:
+  #     subject: Setting
+  #     parameter-name: SResourceName
+  #   set:
+  #     parameter-name: SettingsResourceName
+
+  # Rename Setting to Settings
   - where:
       subject: Setting
     set:

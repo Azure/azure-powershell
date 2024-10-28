@@ -15,9 +15,8 @@ Patch the base Settings of the target resource.
 ### PatchExpanded (Default)
 ```
 Update-AzArcSettings -BaseProvider <String> -BaseResourceName <String> -BaseResourceType <String>
- -ResourceGroupName <String> -SResourceName <String> [-SubscriptionId <String>]
- [-GatewayPropertyGatewayResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ResourceGroupName <String> -SResourceName <String> [-SubscriptionId <String>] [-GatewayResourceId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Patch
@@ -35,7 +34,7 @@ Update-AzArcSettings -InputObject <IArcGatewayIdentity> -Parameter <ISettings> [
 
 ### PatchViaIdentityExpanded
 ```
-Update-AzArcSettings -InputObject <IArcGatewayIdentity> [-GatewayPropertyGatewayResourceId <String>]
+Update-AzArcSettings -InputObject <IArcGatewayIdentity> [-GatewayResourceId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -143,7 +142,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GatewayPropertyGatewayResourceId
+### -GatewayResourceId
 Associated Gateway Resource Id
 
 ```yaml
