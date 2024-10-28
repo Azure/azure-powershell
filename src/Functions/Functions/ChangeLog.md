@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Used `Get-AzAccessToken -AsSecureString` inside the `Functions` for the plain text version is going to be deprecate in the next release.
 
 ## Version 4.1.0
 * Upgraded to Microsoft.Web API version 2023-12-01 [#25347]
