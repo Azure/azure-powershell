@@ -59,19 +59,6 @@ namespace Microsoft.Azure.Management.Resources.Utility
                         throw new SerializationException("Unable to serialize template.", ex);
                     }
                 }
-
-                if (properties.Parameters is string parametersContent)
-                {
-                    try
-                    {
-                        JObject templateParameters = JObject.Parse(parametersContent);
-                        properties.Parameters = templateParameters["parameters"] ?? templateParameters;
-                    }
-                    catch (JsonException ex)
-                    {
-                        throw new SerializationException("Unable to serialize template parameters.", ex);
-                    }
-                }
             }
         }
     }

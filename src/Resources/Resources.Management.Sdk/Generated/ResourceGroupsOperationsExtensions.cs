@@ -98,9 +98,9 @@ namespace Microsoft.Azure.Management.Resources
         /// is supported:
         /// forceDeletionTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
         /// </param>
-        public static void Delete(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string))
+        public static ResourceGroupsDeleteHeaders Delete(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string))
         {
-                ((IResourceGroupsOperations)operations).DeleteAsync(resourceGroupName, forceDeletionTypes).GetAwaiter().GetResult();
+                return ((IResourceGroupsOperations)operations).DeleteAsync(resourceGroupName, forceDeletionTypes).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -122,9 +122,12 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ResourceGroupsDeleteHeaders> DeleteAsync(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, forceDeletionTypes, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, forceDeletionTypes, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Gets a resource group.
@@ -278,9 +281,9 @@ namespace Microsoft.Azure.Management.Resources
         /// is supported:
         /// forceDeletionTypes=Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets
         /// </param>
-        public static void BeginDelete(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string))
+        public static ResourceGroupsDeleteHeaders BeginDelete(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string))
         {
-                ((IResourceGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, forceDeletionTypes).GetAwaiter().GetResult();
+                return ((IResourceGroupsOperations)operations).BeginDeleteAsync(resourceGroupName, forceDeletionTypes).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -302,9 +305,12 @@ namespace Microsoft.Azure.Management.Resources
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ResourceGroupsDeleteHeaders> BeginDeleteAsync(this IResourceGroupsOperations operations, string resourceGroupName, string forceDeletionTypes = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, forceDeletionTypes, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, forceDeletionTypes, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Captures the specified resource group as a template.

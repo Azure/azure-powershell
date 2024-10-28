@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// Initializes a new instance of the KeyVaultReference class.
         /// </summary>
 
-        /// <param name="id">Azure Key Vault resourceId.
+        /// <param name="id">Azure Key Vault resource id.
         /// </param>
         public KeyVaultReference(string id)
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Resources.Models
 
 
         /// <summary>
-        /// Gets or sets azure Key Vault resourceId.
+        /// Gets or sets azure Key Vault resource id.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
         public string Id {get; set; }

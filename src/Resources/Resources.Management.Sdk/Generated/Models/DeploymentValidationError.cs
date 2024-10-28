@@ -8,28 +8,28 @@ namespace Microsoft.Azure.Management.Resources.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource Id model.
+    /// The template deployment validation detected failures.
     /// </summary>
-    public partial class ResourceReference
+    public partial class DeploymentValidationError
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceReference class.
+        /// Initializes a new instance of the DeploymentValidationError class.
         /// </summary>
-        public ResourceReference()
+        public DeploymentValidationError()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceReference class.
+        /// Initializes a new instance of the DeploymentValidationError class.
         /// </summary>
 
-        /// <param name="id">The fully qualified resource Id.
+        /// <param name="error">The error detail.
         /// </param>
-        public ResourceReference(string id = default(string))
+        public DeploymentValidationError(ErrorDetail error = default(ErrorDetail))
 
         {
-            this.Id = id;
+            this.Error = error;
             CustomInit();
         }
 
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.Resources.Models
 
 
         /// <summary>
-        /// Gets the fully qualified resource Id.
+        /// Gets or sets the error detail.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
+        public ErrorDetail Error {get; set; }
     }
 }

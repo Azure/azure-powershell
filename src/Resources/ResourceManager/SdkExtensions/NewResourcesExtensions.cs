@@ -111,6 +111,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.NewSdkExtensions
             return rmError;
         }
 
+        public static PSResourceManagerError ToPSResourceManagerError(this ErrorDetail error)
+        {
+            PSResourceManagerError rmError = new PSResourceManagerError
+            {
+                Code = error.Code,
+                Message = error.Message,
+                Target = string.IsNullOrEmpty(error.Target) ? null : error.Target
+            };
+
+            if (error.Details != null)
+            {
+                List<PSResourceManagerError> innerRMError = new List<PSResourceManagerError>();
+                error.Details.ForEach(detail => innerRMError.Add(detail.ToPSResourceManagerError()));
+                rmError.Details = innerRMError;
+            }
+
+            return rmError;
+        }
+
         public static string ToFormattedString(this ErrorResponse error, int level = 0)
         {
             if (error.Details == null)

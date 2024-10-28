@@ -7,29 +7,26 @@ namespace Microsoft.Azure.Management.Resources.Models
 {
     using System.Linq;
 
-    /// <summary>
-    /// The resource Id model.
-    /// </summary>
-    public partial class ResourceReference
+    public partial class TagsCreateOrUpdateAtScopeHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceReference class.
+        /// Initializes a new instance of the TagsCreateOrUpdateAtScopeHeaders class.
         /// </summary>
-        public ResourceReference()
+        public TagsCreateOrUpdateAtScopeHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceReference class.
+        /// Initializes a new instance of the TagsCreateOrUpdateAtScopeHeaders class.
         /// </summary>
 
-        /// <param name="id">The fully qualified resource Id.
+        /// <param name="location">
         /// </param>
-        public ResourceReference(string id = default(string))
+        public TagsCreateOrUpdateAtScopeHeaders(string location = default(string))
 
         {
-            this.Id = id;
+            this.Location = location;
             CustomInit();
         }
 
@@ -40,9 +37,9 @@ namespace Microsoft.Azure.Management.Resources.Models
 
 
         /// <summary>
-        /// Gets the fully qualified resource Id.
+        /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
-        public string Id {get; private set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
+        public string Location {get; set; }
     }
 }
