@@ -1,22 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: List pools in a subscription
 ```powershell
-{{ Add code here }}
+Get-AMdpPool
 ```
+This command lists the Managed DevOps Pools in the current subscription.
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List pools in a resource group
 ```powershell
-{{ Add code here }}
+Get-AzMdpPool -ResourceGroupName testRg
 ```
+This command lists the Managed DevOps Pools under the resource group "testRg".
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+### Example 3: Get a pool
+```powershell
+Get-AzMdpPool -ResourceGroupName testRg -Name Contoso
 ```
+This command gets the Managed DevOps Pool named "Contoso" under the resource group "testRg". 
 
-{{ Add description here }}
-
+### Example 4: Get a pool using InputObject
+```powershell
+$pool = @{"ResourceGroupName" = "testRg"; "PoolName" = "Contoso"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+Get-AzMdpPool -InputObject $pool
+```
+This command gets the Managed DevOps Pool named "Contoso" under the resource group "testRg".
