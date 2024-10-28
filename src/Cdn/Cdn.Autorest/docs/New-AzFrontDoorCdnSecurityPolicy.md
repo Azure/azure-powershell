@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnSecurityPolicy
 
 ## SYNOPSIS
-Create a new security policy within the specified profile.
+create a new security policy within the specified profile.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzFrontDoorCdnSecurityPolicy -Name <String> -ProfileName <String> -ResourceG
 ```
 
 ## DESCRIPTION
-Create a new security policy within the specified profile.
+create a new security policy within the specified profile.
 
 ## EXAMPLES
 

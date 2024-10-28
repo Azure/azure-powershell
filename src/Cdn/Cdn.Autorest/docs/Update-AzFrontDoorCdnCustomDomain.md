@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFrontDoorCdnCustomDomain
 
 ## SYNOPSIS
-Update an existing domain within a profile.
+update an existing domain within a profile.
 
 ## SYNTAX
 
@@ -57,7 +57,7 @@ Update-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <Strin
 ```
 
 ## DESCRIPTION
-Update an existing domain within a profile.
+update an existing domain within a profile.
 
 ## EXAMPLES
 

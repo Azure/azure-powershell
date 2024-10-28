@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCdnCustomDomain
 
 ## SYNOPSIS
-Create a new custom domain within an endpoint.
+create a new custom domain within an endpoint.
 
 ## SYNTAX
 
@@ -61,7 +61,7 @@ New-AzCdnCustomDomain -EndpointName <String> -Name <String> -ProfileName <String
 ```
 
 ## DESCRIPTION
-Create a new custom domain within an endpoint.
+create a new custom domain within an endpoint.
 
 ## EXAMPLES
 

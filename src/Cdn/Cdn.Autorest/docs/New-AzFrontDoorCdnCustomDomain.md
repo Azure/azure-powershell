@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnCustomDomain
 
 ## SYNOPSIS
-Create a new domain within the specified profile.
+create a new domain within the specified profile.
 
 ## SYNTAX
 
@@ -50,7 +50,7 @@ New-AzFrontDoorCdnCustomDomain -CustomDomainName <String> -ProfileName <String> 
 ```
 
 ## DESCRIPTION
-Create a new domain within the specified profile.
+create a new domain within the specified profile.
 
 ## EXAMPLES
 

@@ -8,11 +8,11 @@ schema: 2.0.0
 # Update-AzCdnEndpoint
 
 ## SYNOPSIS
-Update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
-To update origins, use the Update Origin operation.
-To update origin groups, use the Update Origin group operation.
-To update custom domains, use the Update Custom Domain operation.
+To update origins, use the update Origin operation.
+To update origin groups, use the update Origin group operation.
+To update custom domains, use the update Custom Domain operation.
 
 ## SYNTAX
 
@@ -72,11 +72,11 @@ Update-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <St
 ```
 
 ## DESCRIPTION
-Update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
+update an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 Only tags can be updated after creating an endpoint.
-To update origins, use the Update Origin operation.
-To update origin groups, use the Update Origin group operation.
-To update custom domains, use the Update Custom Domain operation.
+To update origins, use the update Origin operation.
+To update origin groups, use the update Origin group operation.
+To update custom domains, use the update Custom Domain operation.
 
 ## EXAMPLES
 

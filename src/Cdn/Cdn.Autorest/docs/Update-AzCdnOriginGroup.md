@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCdnOriginGroup
 
 ## SYNOPSIS
-Update an existing origin group within an endpoint.
+update an existing origin group within an endpoint.
 
 ## SYNTAX
 
@@ -78,7 +78,7 @@ Update-AzCdnOriginGroup -EndpointName <String> -Name <String> -ProfileName <Stri
 ```
 
 ## DESCRIPTION
-Update an existing origin group within an endpoint.
+update an existing origin group within an endpoint.
 
 ## EXAMPLES
 
