@@ -1,5 +1,5 @@
 @{
-  GUID = '5e3caafa-65ee-4b05-9e97-1e186b6a5f6a'
+  GUID = 'efbb1325-5081-4947-8508-ab47abbf6e76'
   RootModule = './Az.ConnectedKubernetes.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
