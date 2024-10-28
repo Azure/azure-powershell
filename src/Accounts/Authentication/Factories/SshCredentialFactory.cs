@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Identity.Client.SSHCertificates;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new NullReferenceException(Resources.AuthenticationClientFactoryNotRegistered);
             }
 
-            var publicClient = tokenCacheProvider.CreatePublicClient();
+            var publicClient = tokenCacheProvider.CreatePublicClient(context.Environment.ActiveDirectoryAuthority, context.Tenant.Id);
             string cloudName = context.Environment.Name.ToLower();
             string scope = CloudToScope.GetValueOrDefault(cloudName, null);
             if (scope == null)

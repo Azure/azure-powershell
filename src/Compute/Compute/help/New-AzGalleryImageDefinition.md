@@ -322,7 +322,7 @@ Accept wildcard characters: False
 ### -Feature
 
 A list of gallery image features.
-For SecurityType, acceptable inputs are: None, TrustedlaunchSupported, Trustedlaunch, ConfidentialVM, ConfidentialVMSupported, TrustedandConfidentialVMSupported
+For SecurityType, acceptable inputs are: None, TrustedlaunchSupported, Trustedlaunch, ConfidentialVM, ConfidentialVMSupported, TrustedLaunchAndConfidentialVmSupported
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.GalleryImageFeature[]
