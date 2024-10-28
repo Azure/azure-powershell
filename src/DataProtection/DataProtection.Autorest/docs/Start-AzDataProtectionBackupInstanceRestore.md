@@ -17,8 +17,8 @@ Triggers restore for a BackupInstance
 Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String>
  -Parameter <IAzureBackupRestoreRequest> -ResourceGroupName <String> -VaultName <String> [-AsJob]
  [-DefaultProfile <PSObject>] [-NoWait] [-ResourceGuardOperationRequest <String[]>]
- [-RestoreToSecondaryRegion] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-RestoreToSecondaryRegion] [-SecureToken <SecureString>] [-SubscriptionId <String>] [-Token <String>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### TriggerExpanded
@@ -27,8 +27,9 @@ Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName <String> -Object
  -ResourceGroupName <String> -RestoreTargetInfo <IRestoreTargetInfoBase>
  -SourceDataStoreType <SourceDataStoreType> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
  [-IdentityDetailUserAssignedIdentityArmUrl <String>] [-IdentityDetailUseSystemAssignedIdentity] [-NoWait]
- [-ResourceGuardOperationRequest <String[]>] [-RestoreToSecondaryRegion] [-SourceResourceId <String>]
- [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ResourceGuardOperationRequest <String[]>] [-RestoreToSecondaryRegion] [-SecureToken <SecureString>]
+ [-SourceResourceId <String>] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -235,7 +236,7 @@ The sixth command initializes the restore request object for AzureBlob restore w
 The seventh command triggers validate before restore.
 The last command triggers prefix match Item level restore for vaulted blob containers.
 
-### Example 11: Trigger alternate location vaulted restore for protected AzureKubernetesService
+### Example 11: Trigger alternate location vaulted restore for AzureKubernetesService
 ```powershell
 
 $subId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -459,6 +460,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SourceDataStoreType
 Type of the source data store
 
@@ -506,7 +523,7 @@ Accept wildcard characters: False
 
 ### -Token
 Parameter to authorize operations protected by cross tenant resource guard.
-Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
 
 ```yaml
 Type: System.String

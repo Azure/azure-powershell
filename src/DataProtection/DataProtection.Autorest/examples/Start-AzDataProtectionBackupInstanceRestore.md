@@ -192,7 +192,7 @@ The sixth command initializes the restore request object for AzureBlob restore w
 The seventh command triggers validate before restore.
 The last command triggers prefix match Item level restore for vaulted blob containers.
 
-### Example 11: Trigger alternate location vaulted restore for protected AzureKubernetesService
+### Example 11: Trigger alternate location vaulted restore for AzureKubernetesService
 ```powershell
 
 $subId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"

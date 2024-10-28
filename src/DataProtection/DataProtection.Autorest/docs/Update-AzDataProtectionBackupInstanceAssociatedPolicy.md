@@ -15,8 +15,8 @@ Updates associated policy for a given backup instance
 ```
 Update-AzDataProtectionBackupInstanceAssociatedPolicy -BackupInstanceName <String> -PolicyId <String>
  -ResourceGroupName <String> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait]
- [-ResourceGuardOperationRequest <String[]>] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>] [-SubscriptionId <String>]
+ [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,6 +148,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription Id of the vault
 
@@ -165,7 +181,7 @@ Accept wildcard characters: False
 
 ### -Token
 Parameter to authorize operations protected by cross tenant resource guard.
-Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
 
 ```yaml
 Type: System.String
