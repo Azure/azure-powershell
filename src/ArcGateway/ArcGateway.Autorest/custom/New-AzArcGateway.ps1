@@ -216,7 +216,6 @@ function New-AzArcGateway {
     process {
         # customize New-AzArcGateway so that AllowedFeature is hidden from user with default value '*'
         $null = $PSBoundParameters.Add("AllowedFeature", "*")
-
         Az.ArcGateway.internal\New-AzArcGateway @PSBoundParameters
     }
     }

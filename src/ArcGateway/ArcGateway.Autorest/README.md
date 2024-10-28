@@ -159,13 +159,11 @@ directive:
   #   set:
   #     subject: Settings
   - where:
-      verb: New
       subject: Gateway
-    set:
-      hide: true
+      verb: New
+    hide: true
   - where:
-      verb: Update
       subject: Setting
-    set:
-      hide: true
+      verb: Update
+    hide: true
 ```

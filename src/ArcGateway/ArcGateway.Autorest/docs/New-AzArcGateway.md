@@ -15,21 +15,8 @@ The operation to create or update a gateway.
 ### CreateExpanded (Default)
 ```
 New-AzArcGateway -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-AllowedFeature <String[]>] [-GatewayType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded (Default)
-```
-New-AzArcGateway -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-AllowedFeature <String[]>] [-GatewayType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzArcGateway -Name <String> -ResourceGroupName <String> -Parameter <IGateway> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GatewayType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -44,41 +31,15 @@ New-AzArcGateway -InputObject <IArcGatewayIdentity> -Parameter <IGateway> [-Defa
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentity
-```
-New-AzArcGateway -InputObject <IArcGatewayIdentity> -Parameter <IGateway> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### CreateViaIdentityExpanded
 ```
-New-AzArcGateway -InputObject <IArcGatewayIdentity> -Location <String> [-AllowedFeature <String[]>]
- [-GatewayType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzArcGateway -InputObject <IArcGatewayIdentity> -Location <String> [-AllowedFeature <String[]>]
- [-GatewayType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzArcGateway -InputObject <IArcGatewayIdentity> -Location <String> [-GatewayType <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzArcGateway -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzArcGateway -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzArcGateway -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -93,44 +54,21 @@ The operation to create or update a gateway.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
 
-{{ Add description here }}
 
 ## PARAMETERS
-
-### -AllowedFeature
-Specifies the list of features that are enabled for this Gateway.
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateExpanded, CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -168,7 +106,7 @@ The type of the Gateway resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -183,7 +121,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IArcGatewayIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentity, CreateViaIdentityExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -198,7 +136,7 @@ Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath, CreateViaJsonFilePath
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -213,7 +151,7 @@ Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString, CreateViaJsonString
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -228,7 +166,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -243,7 +181,7 @@ The name of the Gateway.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, Create, CreateExpanded, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonFilePath, CreateViaJsonString, CreateViaJsonString
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: GatewayName
 
 Required: True
@@ -273,7 +211,7 @@ Describes an Arc Gateway.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IGateway
-Parameter Sets: Create, Create, CreateViaIdentity, CreateViaIdentity
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -289,7 +227,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, Create, CreateExpanded, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonFilePath, CreateViaJsonString, CreateViaJsonString
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -304,7 +242,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, Create, CreateExpanded, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonFilePath, CreateViaJsonString, CreateViaJsonString
+Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -319,7 +257,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

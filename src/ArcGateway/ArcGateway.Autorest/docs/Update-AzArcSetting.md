@@ -15,34 +15,14 @@ Patch the base Settings of the target resource.
 ### PatchExpanded (Default)
 ```
 Update-AzArcSetting -BaseProvider <String> -BaseResourceName <String> -BaseResourceType <String>
- -ResourceGroupName <String> -SResourceName <String> [-SubscriptionId <String>] [-GatewayResourceId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PatchExpanded (Default)
-```
-Update-AzArcSetting -BaseProvider <String> -BaseResourceName <String> -BaseResourceType <String>
- -ResourceGroupName <String> -SResourceName <String> [-SubscriptionId <String>] [-GatewayResourceId <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-GatewayResourceId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Patch
 ```
 Update-AzArcSetting -BaseProvider <String> -BaseResourceName <String> -BaseResourceType <String>
- -ResourceGroupName <String> -SResourceName <String> -Parameter <ISettings> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Patch
-```
-Update-AzArcSetting -BaseProvider <String> -BaseResourceName <String> -BaseResourceType <String>
- -ResourceGroupName <String> -SResourceName <String> -Parameter <ISettings> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PatchViaIdentity
-```
-Update-AzArcSetting -InputObject <IArcGatewayIdentity> -Parameter <ISettings> [-DefaultProfile <PSObject>]
+ -ResourceGroupName <String> -Parameter <ISettings> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -58,38 +38,18 @@ Update-AzArcSetting -InputObject <IArcGatewayIdentity> [-GatewayResourceId <Stri
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### PatchViaIdentityExpanded
-```
-Update-AzArcSetting -InputObject <IArcGatewayIdentity> [-GatewayResourceId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### PatchViaJsonFilePath
 ```
 Update-AzArcSetting -BaseProvider <String> -BaseResourceName <String> -BaseResourceType <String>
- -ResourceGroupName <String> -SResourceName <String> -JsonFilePath <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PatchViaJsonFilePath
-```
-Update-AzArcSetting -BaseProvider <String> -BaseResourceName <String> -BaseResourceType <String>
- -ResourceGroupName <String> -SResourceName <String> -JsonFilePath <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PatchViaJsonString
 ```
 Update-AzArcSetting -BaseProvider <String> -BaseResourceName <String> -BaseResourceType <String>
- -ResourceGroupName <String> -SResourceName <String> -JsonString <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PatchViaJsonString
-```
-Update-AzArcSetting -BaseProvider <String> -BaseResourceName <String> -BaseResourceType <String>
- -ResourceGroupName <String> -SResourceName <String> -JsonString <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,27 +57,19 @@ Patch the base Settings of the target resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
 
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -126,7 +78,7 @@ The name of the base Resource Provider.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, Patch, PatchExpanded, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonFilePath, PatchViaJsonString, PatchViaJsonString
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases:
 
 Required: True
@@ -141,7 +93,7 @@ The name of the base resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, Patch, PatchExpanded, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonFilePath, PatchViaJsonString, PatchViaJsonString
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases:
 
 Required: True
@@ -156,7 +108,7 @@ The name of the base Resource Type.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, Patch, PatchExpanded, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonFilePath, PatchViaJsonString, PatchViaJsonString
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases:
 
 Required: True
@@ -187,7 +139,7 @@ Associated Gateway Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchExpanded, PatchExpanded, PatchViaIdentityExpanded, PatchViaIdentityExpanded
+Parameter Sets: PatchExpanded, PatchViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -202,7 +154,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.IArcGatewayIdentity
-Parameter Sets: PatchViaIdentity, PatchViaIdentity, PatchViaIdentityExpanded, PatchViaIdentityExpanded
+Parameter Sets: PatchViaIdentity, PatchViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -217,7 +169,7 @@ Path of Json file supplied to the Patch operation
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchViaJsonFilePath, PatchViaJsonFilePath
+Parameter Sets: PatchViaJsonFilePath
 Aliases:
 
 Required: True
@@ -232,7 +184,7 @@ Json string supplied to the Patch operation
 
 ```yaml
 Type: System.String
-Parameter Sets: PatchViaJsonString, PatchViaJsonString
+Parameter Sets: PatchViaJsonString
 Aliases:
 
 Required: True
@@ -247,7 +199,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ArcGateway.Models.ISettings
-Parameter Sets: Patch, Patch, PatchViaIdentity, PatchViaIdentity
+Parameter Sets: Patch, PatchViaIdentity
 Aliases:
 
 Required: True
@@ -263,23 +215,8 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, Patch, PatchExpanded, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonFilePath, PatchViaJsonString, PatchViaJsonString
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SResourceName
-The name of the settings resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Patch, Patch, PatchExpanded, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonFilePath, PatchViaJsonString, PatchViaJsonString
-Aliases: SettingsResourceName
 
 Required: True
 Position: Named
@@ -293,7 +230,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Patch, Patch, PatchExpanded, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonFilePath, PatchViaJsonString, PatchViaJsonString
+Parameter Sets: Patch, PatchExpanded, PatchViaJsonFilePath, PatchViaJsonString
 Aliases:
 
 Required: False
