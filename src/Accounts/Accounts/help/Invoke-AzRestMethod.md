@@ -294,7 +294,7 @@ Accept wildcard characters: False
 ```
 
 ### -FinalResultFrom
-Specifies where to get the final result after the long-running operation completes.
+Specifies the header for final GET result after the long-running operation completes.
 
 ```yaml
 Type: System.String
@@ -371,7 +371,7 @@ Accept wildcard characters: False
 ```
 
 ### -PollFrom
-Specifies where to poll for long-running operation status.
+Specifies the polling header (to fetch from) for long-running operation status.
 
 ```yaml
 Type: System.String
