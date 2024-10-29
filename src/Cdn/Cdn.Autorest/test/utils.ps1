@@ -55,6 +55,7 @@ function setupEnv() {
     $resourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 4)
     Write-Host -ForegroundColor Green "Start to create test group $($resourceGroupName)"
     New-AzResourceGroup -Name $resourceGroupName -Location $env.location
+    Write-Host -ForegroundColor Green "test group $($resourceGroupName) created"
 
     $env.Add("ResourceGroupName", $resourceGroupName)
 
