@@ -3,7 +3,7 @@ pac1,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-releas
 pac2,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MonitoringSolutions.0.1.1.zip;sourceType=sa]Az.MonitoringSolutions,0.1.1
 pac3,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MySql.1.2.1.zip;sourceType=sa]Az.MySql,1.2.1
 pac4,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetAppFiles.0.18.0.zip;sourceType=sa]Az.NetAppFiles,0.18.0
-pac5,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Network.7.9.0.zip;sourceType=sa]Az.Network,7.9.0
+pac5,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Network.7.10.0.zip;sourceType=sa]Az.Network,7.10.0
 pac6,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetworkAnalytics.0.1.1.zip;sourceType=sa]Az.NetworkAnalytics,0.1.1
 pac7,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetworkCloud.1.0.2.zip;sourceType=sa]Az.NetworkCloud,1.0.2
 pac8,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.NetworkFunction.0.1.4.zip;sourceType=sa]Az.NetworkFunction,0.1.4
@@ -27,7 +27,7 @@ pac25,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Quota.0.1.2.zip;sourceType=sa]Az.Quota,0.1.2
 pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RecoveryServices.7.2.0.zip;sourceType=sa]Az.RecoveryServices,7.2.0
 pac28,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisCache.1.10.0.zip;sourceType=sa]Az.RedisCache,1.10.0
-pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.1.2.1.zip;sourceType=sa]Az.RedisEnterpriseCache,1.2.1
+pac29,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.RedisEnterpriseCache.1.4.0.zip;sourceType=sa]Az.RedisEnterpriseCache,1.4.0
 pac30,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Relay.2.0.1.zip;sourceType=sa]Az.Relay,2.0.1
 pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Reservations.0.13.0.zip;sourceType=sa]Az.Reservations,0.13.0
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ResourceGraph.1.0.0.zip;sourceType=sa]Az.ResourceGraph,1.0.0
@@ -46,7 +46,7 @@ pac44,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac45,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Sql.5.3.0.zip;sourceType=sa]Az.Sql,5.3.0
 pac46,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.SqlVirtualMachine.2.3.1.zip;sourceType=sa]Az.SqlVirtualMachine,2.3.1
 pac47,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Ssh.0.2.1.zip;sourceType=sa]Az.Ssh,0.2.1
-pac48,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.4.0.zip;sourceType=sa]Az.StackHCI,2.4.0
+pac48,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCI.2.4.1.zip;sourceType=sa]Az.StackHCI,2.4.1
 pac49,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StackHCIVM.1.0.5.zip;sourceType=sa]Az.StackHCIVM,1.0.5
 pac50,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.StandbyPool.0.2.0.zip;sourceType=sa]Az.StandbyPool,0.2.0
 pac51,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Storage.7.4.0.zip;sourceType=sa]Az.Storage,7.4.0
