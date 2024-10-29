@@ -5,17 +5,20 @@
     "location": {
       "value": "westus"
     },
+    "devCenterLocation": {
+      "value": "australiaeast"
+    },
     "devCenterName": {
-      "value": "azmdp-2gvw84"
+      "value": "azmdp-rpy8k2"
     },
     "devCenterProjectName": {
-      "value": "azmdp-sufoz7"
+      "value": "azmdp-yx16u4"
     },
     "mdpPoolNameGet": {
-      "value": "azmdp-kna6u4"
+      "value": "azmdp-pows3j"
     },
     "mdpPoolNameDelete": {
-      "value": "azmdp-79uidh"
+      "value": "azmdp-2t0rvw"
     },
     "maximumConcurrency": {
       "value": 1

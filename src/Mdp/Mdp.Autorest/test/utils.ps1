@@ -41,7 +41,6 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    echo "Get-AzContext"
     Get-AzContext
     
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
@@ -52,6 +51,7 @@ function setupEnv() {
     $location = "westus"
     New-AzResourceGroup -Name $resourceGroup -Location $location
 
+    $devCenterLocation = "australiaeast"
     $devCenterName = "azmdp-" + (RandomString -allChars $false -len 6)
     $devCenterProjectName = "azmdp-" + (RandomString -allChars $false -len 6)
     $mdpPoolNameGet = "azmdp-" + (RandomString -allChars $false -len 6)
@@ -62,6 +62,7 @@ function setupEnv() {
     $env.Add("ResourceGroup", $resourceGroup)
     $env.Add("DevCenterName", $devCenterName)
     $env.Add("DevCenterProjectName", $devCenterProjectName)
+    $env.Add("DevCenterLocation", $devCenterLocation)
     $env.Add("MdpPoolNameGet", $mdpPoolNameGet)
     $env.Add("MdpPoolNameDelete", $mdpPoolNameDelete)
     $env.Add("MdpPoolNameNew", $mdpPoolNameNew)
@@ -71,6 +72,7 @@ function setupEnv() {
     $template.parameters.location.value = $location
     $template.parameters.devCenterName.value = $devCenterName
     $template.parameters.devCenterProjectName.value = $devCenterProjectName
+    $template.parameters.devCenterLocation.value = $devCenterLocation
     $template.parameters.mdpPoolNameGet.value = $mdpPoolNameGet
     $template.parameters.mdpPoolNameDelete.value = $mdpPoolNameDelete
 

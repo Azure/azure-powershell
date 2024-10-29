@@ -5,6 +5,9 @@
         "location": {
             "type": "string"
         },
+        "devCenterLocation": {
+            "type": "string"
+        },
         "devCenterName": {
             "type": "string"
         },
@@ -40,13 +43,13 @@
             "type": "Microsoft.DevCenter/devcenters",
             "name": "[parameters('devCenterName')]",
             "apiVersion": "2024-05-01-preview",
-            "location": "[parameters('location')]"
+            "location": "[parameters('devCenterLocation')]"
         },
         {
             "type": "Microsoft.DevCenter/projects",
             "name": "[parameters('devCenterProjectName')]",
             "apiVersion": "2024-05-01-preview",
-            "location": "[parameters('location')]",
+            "location": "[parameters('devCenterLocation')]",
             "properties": {
                 "devCenterId": "[resourceId('Microsoft.DevCenter/devcenters', parameters('devCenterName'))]",
                 "maxDevBoxesPerUser": 3
@@ -75,7 +78,7 @@
         },
         {
             "apiVersion": "2024-04-04-preview",
-            "name": "[parameters('mdpPoolNameDelete)]",
+            "name": "[parameters('mdpPoolNameDelete')]",
             "location": "[parameters('location')]",
             "type": "Microsoft.DevOpsInfrastructure/pools",
             "properties": {
