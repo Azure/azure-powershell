@@ -95,14 +95,14 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Wait till the long-running operation completes before returning the result.")]
-        public SwitchParameter WaitTillCompletion { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Waits for the long-running operation completes before returning the result.")]
+        public SwitchParameter WaitForCompletion { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specifies where to poll for long-running operation status.")]
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the polling header (to fetch from) for long-running operation status.")]
         [ValidateSet("AzureAsyncLocation", "Location", "OriginalUri", "Operation-Location", IgnoreCase = true)]
         public string PollFrom { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Specifies where to get the final result after the long-running operation completes.")]
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the header for final GET result after the long-running operation completes.")]
         [ValidateSet("FinalStateVia", "Location", "OriginalUri", "Operation-Location", IgnoreCase = true)]
         public string FinalResultFrom { get; set; }
 
@@ -128,11 +128,22 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             IAzureRestClient serviceClient = this.InitializeServiceClient();
 
             AzureOperationResponse<string> response = ExecuteRestRequest(serviceClient);
-            WriteObject(new PSHttpResponse(response));
 
-            if (WaitTillCompletion.IsPresent && IsRequestLRO(response))
+            if(WaitForCompletion.IsPresent)
             {
-                response = ExecuteLRORequest(serviceClient, response);
+                if (IsRequestLRO(response))
+                {
+                    response = ExecuteLRORequest(serviceClient, response);
+                }
+                else
+                {
+                    WriteObject(new PSHttpResponse(response));
+                    WriteWarning("The -WaitForCompletion flag was specified, but the request does not appear to be a long-running operation.");
+                }
+            }
+            else
+            {
+                WriteObject(new PSHttpResponse(response));
             }
 
         }
@@ -152,9 +163,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                 // Polling logic; uses GET method to check operation status
                 string pollingUri = DeterminePollingUri(response);
                 response = serviceClient.Operations.GetResourceWithFullResponse(pollingUri, this.ApiVersion);
-                //WriteObject("New Response Received:" + ": " + response.Response.StatusCode);
-
-                WriteObject(new PSHttpResponse(response));
+                
 
                 if (response.Response.StatusCode == System.Net.HttpStatusCode.Created ||
                     response.Response.StatusCode == System.Net.HttpStatusCode.Accepted)
@@ -203,9 +212,9 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                     // Retrieve final resource state based on FinalResultFrom
                     if (!Method.ToUpper().Equals("DELETE"))
                     {
-                        //WriteObject("Fetching for Final Response.");
                         string finalUri = DetermineFinalUri(response);
                         response = serviceClient.Operations.GetResourceWithFullResponse(finalUri, this.ApiVersion);
+                        
                         WriteObject(new PSHttpResponse(response));
                     }
                     break;
@@ -217,8 +226,6 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             return response;
         }
 
-        
-        // ============================================================================================================
         public string DetermineFinalUri(AzureOperationResponse<string> response)
         {
             /*
