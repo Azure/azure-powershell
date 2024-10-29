@@ -3,7 +3,7 @@
 param()
 
 function Get-AZCloudMetadataResourceId {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory = $true)]
         [PSCustomObject]$cloudMetadata
