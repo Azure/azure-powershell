@@ -22,8 +22,8 @@ Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> [-Su
  [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-CustomLocationsOid <String>]
  [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-WorkloadIdentityEnabled]
  [-AcceptEULA] [-ConfigurationSetting <Hashtable>] [-ConfigurationProtectedSetting <Hashtable>]
- [-GatewayResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetExpandedDisableGateway
@@ -36,8 +36,36 @@ Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> [-Su
  [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-CustomLocationsOid <String>]
  [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-WorkloadIdentityEnabled]
  [-AcceptEULA] [-ConfigurationSetting <Hashtable>] [-ConfigurationProtectedSetting <Hashtable>]
- [-GatewayResourceId <String>] [-DisableGateway] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-DisableGateway] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetExpandedEnableGateway
+```
+Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>] [-ProxyCert <String>] [-DisableAutoUpgrade]
+ [-ContainerLogPath <String>] -Location <String> [-KubeConfig <String>] [-KubeContext <String>]
+ [-AzureHybridBenefit <AzureHybridBenefit>] [-Distribution <String>] [-DistributionVersion <String>]
+ [-Infrastructure <String>] [-PrivateLinkScopeResourceId <String>] [-PrivateLinkState <PrivateLinkState>]
+ [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>] [-CustomLocationsOid <String>]
+ [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-WorkloadIdentityEnabled]
+ [-AcceptEULA] [-ConfigurationSetting <Hashtable>] [-ConfigurationProtectedSetting <Hashtable>]
+ -GatewayResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetEnableGateway
+```
+Set-AzConnectedKubernetes [-SubscriptionId <String>] [-HttpProxy <Uri>] [-HttpsProxy <Uri>] [-NoProxy <String>]
+ [-ProxyCert <String>] [-DisableAutoUpgrade] [-ContainerLogPath <String>] [-KubeConfig <String>]
+ [-KubeContext <String>] [-AzureHybridBenefit <AzureHybridBenefit>] [-Distribution <String>]
+ [-DistributionVersion <String>] [-Infrastructure <String>] [-PrivateLinkScopeResourceId <String>]
+ [-PrivateLinkState <PrivateLinkState>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
+ [-CustomLocationsOid <String>] [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
+ [-WorkloadIdentityEnabled] [-AcceptEULA] [-ConfigurationSetting <Hashtable>]
+ [-ConfigurationProtectedSetting <Hashtable>] -GatewayResourceId <String> -InputObject <IConnectedCluster>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetDisableGateway
@@ -49,9 +77,9 @@ Set-AzConnectedKubernetes [-SubscriptionId <String>] [-HttpProxy <Uri>] [-HttpsP
  [-PrivateLinkState <PrivateLinkState>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
  [-CustomLocationsOid <String>] [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
  [-WorkloadIdentityEnabled] [-AcceptEULA] [-ConfigurationSetting <Hashtable>]
- [-ConfigurationProtectedSetting <Hashtable>] [-GatewayResourceId <String>] [-DisableGateway]
- -InputObject <IConnectedCluster> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-DisableGateway] -InputObject <IConnectedCluster>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Set
@@ -63,17 +91,17 @@ Set-AzConnectedKubernetes [-SubscriptionId <String>] [-HttpProxy <Uri>] [-HttpsP
  [-PrivateLinkState <PrivateLinkState>] [-ProvisioningState <ProvisioningState>] [-Tag <Hashtable>]
  [-CustomLocationsOid <String>] [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
  [-WorkloadIdentityEnabled] [-AcceptEULA] [-ConfigurationSetting <Hashtable>]
- [-ConfigurationProtectedSetting <Hashtable>] [-GatewayResourceId <String>] -InputObject <IConnectedCluster>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ConfigurationProtectedSetting <Hashtable>] -InputObject <IConnectedCluster> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-API to set properties of the connected cluster resource
+API to set properties of the connected cluster resource.
+Replaces all configuration of an existing connected cluster; any properties not specified will be reset to their default values.
 
 ## EXAMPLES
 
-### Example 1: Disable gateway feature of a connected kubernetes.
+### Example 1: Disable gateway for a connected Kubernetes cluster
 ```powershell
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -DisableGateway
 ```
@@ -84,11 +112,11 @@ Location Name              ResourceGroupName
 eastus   azps_test_cluster azps_test_group
 ```
 
-This command disable gateway feature of a connected kubernetes.
+This command disable gateway feature of a connected kubernete cluster.
 
-### Example 2: Enable gateway feature of connected kubernetes.
+### Example 2: Enable gateway for a connected Kubernetes cluster
 ```powershell
-Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -GatewayResourceId gatewayResourceId
+Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -GatewayResourceId $gatewayResourceId
 ```
 
 ```output
@@ -97,7 +125,73 @@ Location Name              ResourceGroupName
 eastus   azps_test_cluster azps_test_group
 ```
 
-This command disable gateway feature of a connected kubernetes.
+This command enables gateway feature of a connected kubernetes cluster.
+
+### Example 3: Enable gateway for a connected Kubernetes cluster with InputObject
+```powershell
+# Get an existing cluster first
+$inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
+# Enable gateway and set gateway resource Id 
+$inputObject.GatewayEnabled=$true
+$inputObject.GatewayResourceId=$gatewayResourceId
+Set-AzConnectedKubernetes -InputObject $inputObject
+```
+
+```output
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps_test_cluster azps_test_group
+```
+
+This command enables gateway feature of a connected kubernetes cluster.
+
+### Example 4: Enable workload identity of a connected kubernetes cluster with InputObject
+```powershell
+# Get an existing cluster first
+$inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
+# Enable workload identity and OIDC issuer profile
+$inputObject.WorkloadIdentityEnabled=$true
+$inputObject.OidcIssuerProfileEnabled=$true
+Set-AzConnectedKubernetes -InputObject $inputObject
+```
+
+```output
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps_test_cluster azps_test_group
+```
+
+This command enables workload identity and OIDC Issuer Profile for a connected Kubernetes cluster
+
+### Example 5: Disable workload identity of a connected kubernetes cluster with InputOjbect
+```powershell
+# Get an existing cluster first
+$inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
+# Disable workload identity 
+$inputObject.WorkloadIdentityEnabled=$falue
+Set-AzConnectedKubernetes -InputObject $inputObject
+```
+
+```output
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps_test_cluster azps_test_group
+```
+
+This command disables workload identity of a connected kubernetes cluster
+
+### Example 6: Disable workload identity of a connected kubernetes cluster
+```powershell
+Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId | Set-AzConnectedKubernetes -WorkloadIdentityEnabled:$false
+```
+
+```output
+Location Name              ResourceGroupName
+-------- ----              -----------------
+eastus   azps_test_cluster azps_test_group
+```
+
+This command disables workload identity of a connected kubernetes cluster
 
 ## PARAMETERS
 
@@ -151,7 +245,7 @@ The name of the Kubernetes cluster on which get is called.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetExpandedDisableGateway
+Parameter Sets: SetExpanded, SetExpandedDisableGateway, SetExpandedEnableGateway
 Aliases: Name
 
 Required: True
@@ -300,10 +394,10 @@ Arc Gateway resource Id, providing this will enable the gateway
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpandedEnableGateway, SetEnableGateway
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -360,13 +454,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
-Parameter Sets: SetDisableGateway, Set
+Parameter Sets: SetEnableGateway, SetDisableGateway, Set
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -405,7 +499,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetExpandedDisableGateway
+Parameter Sets: SetExpanded, SetExpandedDisableGateway, SetExpandedEnableGateway
 Aliases:
 
 Required: True
@@ -556,7 +650,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded, SetExpandedDisableGateway
+Parameter Sets: SetExpanded, SetExpandedDisableGateway, SetExpandedEnableGateway
 Aliases:
 
 Required: True
@@ -597,7 +691,7 @@ Accept wildcard characters: False
 ```
 
 ### -WorkloadIdentityEnabled
-Whether to enable or disable the workload identity Webhook
+Enable the workload identity Webhook
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -646,6 +740,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
 
 ## OUTPUTS
 
