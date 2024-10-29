@@ -13,11 +13,14 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
-    <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="SessionRecords\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceBus.Management.Sdk\ServiceBus.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>
