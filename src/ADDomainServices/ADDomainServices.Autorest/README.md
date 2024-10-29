@@ -145,7 +145,7 @@ directive:
           - Name
           - DomainName
           - Location
-          - Sku
+          - Sku 
         labels:
           DomainName: Domain Name
 ```
