@@ -3,6 +3,7 @@ param()
 
 function Set-HelmClientLocation {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param(
     )
     process {
@@ -18,7 +19,9 @@ function Set-HelmClientLocation {
         if (!($env:Path.contains($HelmLocation)) -and (Test-Path $HelmLocation)) {
             Write-Debug "Updating PATH environment variable with Helm location."
             $PathStr = $HelmLocation + ";$env:Path"
-            Set-Item -Path Env:Path -Value $PathStr
+            if ($PSCmdlet.ShouldProcess($Env:Path)) {
+                Set-Item -Path Env:Path -Value $PathStr
+            }
         }
     }
 }
@@ -124,7 +127,7 @@ function IsAmd64 {
 }
 
 function Get-HelmChartPath {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory)]
         [string]$RegistryPath,
@@ -152,7 +155,7 @@ function Get-HelmChartPath {
         throw "No environment to use as root."
     }
     Write-Verbose "Using 'helm' to add Azure Arc resources to Kubernetes cluster"
-    $ChartExportPath = Join-Path -Path $root -ChildPath '.azure' -AdditionalChildPath $ChartFolderName
+    $ChartExportPath = $root | Join-Path -ChildPath '.azure' | Join-Path -ChildPath $ChartFolderName
     try {
         if (Test-Path $ChartExportPath) {
             Write-Debug "Cleaning up existing Helm chart folder at: $ChartExportPath"
@@ -187,7 +190,7 @@ function Get-HelmChartPath {
 }
 
 function Get-HelmChart {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory)]
         [string]$RegistryPath,
@@ -249,7 +252,7 @@ function Get-HelmChart {
 # This method exists to allow us to effectively Mock the call operator (&).
 # We cannnot do that directly so instead we have this wrapper, which we can mock!
 function Invoke-ExternalCommand {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory = $true)]
         [string]$Command,
@@ -258,16 +261,13 @@ function Invoke-ExternalCommand {
     & $Command $Arguments
 }
 
-
-function Set-HelmRepositoryAndModules {
+function Set-HelmModulesAndRepository {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param (
         [string]$KubeConfig,
         [string]$KubeContext,
-        [string]$Location,
-        [string]$ProxyCert,
-        [bool]$DisableAutoUpgrade,
-        [string]$ContainerLogPath,
-        [string]$CustomLocationsOid
+        [string]$Location
     )
     Write-Debug "Setting Helm repository and checking for required modules."
     if ((Test-Path Env:HELMREPONAME) -and (Test-Path Env:HELMREPOURL)) {
@@ -325,11 +325,13 @@ function Set-HelmRepositoryAndModules {
             return
         }
     }
-    Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
+    if ($PSCmdlet.ShouldProcess($Env:HEML_EXPERIMENAL_OCI)) {
+        Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
+    }
     return $RegistryPath
 }
 
-function Get-HelmReleaseNamespaces {
+function Get-HelmReleaseNamespace {
     param (
         [string]$KubeConfig,
         [string]$KubeContext

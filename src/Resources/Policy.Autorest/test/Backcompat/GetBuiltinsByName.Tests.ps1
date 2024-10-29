@@ -7,8 +7,7 @@ Describe 'Backcompat-GetBuiltinsByName' -Tag 'LiveOnly' {
         {
             # policy definitions
             $builtins = Get-AzPolicyDefinition -Builtin -BackwardCompatible | Select-Object -First 100
-            foreach ($builtin in $builtins)
-            {
+            foreach ($builtin in $builtins) {
                 $done = $false
                 do {
                     try {
@@ -19,7 +18,7 @@ Describe 'Backcompat-GetBuiltinsByName' -Tag 'LiveOnly' {
                     catch {
                         if ($_.Exception.Message -like '`[ResourceRequestsThrottled`] : *') {
                             Write-Host -NoNewline -ForegroundColor DarkYellow 'Waiting 5 seconds to allow throttling limit to reset...'
-                            Start-Sleep -Seconds 5
+                            Start-TestSleep -Seconds 5
                             Write-Host -ForegroundColor DarkYellow 'resuming.'
                         }
                         else {
@@ -35,8 +34,7 @@ Describe 'Backcompat-GetBuiltinsByName' -Tag 'LiveOnly' {
         {
             # policy set definitions
             $builtins = Get-AzPolicySetDefinition -Builtin -BackwardCompatible | Select-Object -First 100
-            foreach ($builtin in $builtins)
-            {
+            foreach ($builtin in $builtins) {
                 $done = $false
                 do {
                     try {
@@ -47,7 +45,7 @@ Describe 'Backcompat-GetBuiltinsByName' -Tag 'LiveOnly' {
                     catch {
                         if ($_.Exception.Message -like '`[ResourceRequestsThrottled`] : *') {
                             Write-Host -NoNewline -ForegroundColor DarkYellow 'Waiting 5 seconds to allow throttling limit to reset...'
-                            Start-Sleep -Seconds 5
+                            Start-TestSleep -Seconds 5
                             Write-Host -ForegroundColor DarkYellow 'resuming.'
                         }
                         else {
