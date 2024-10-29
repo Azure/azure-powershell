@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added `DefaultOutboundConnectivityEnabled` property in PSNetworkInterface
 
 ## Version 7.10.0
 * Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management
