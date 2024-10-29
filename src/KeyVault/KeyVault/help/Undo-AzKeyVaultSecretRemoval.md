@@ -59,6 +59,27 @@ Tags         :
 
 This command will recover the secret 'MySecret' that was previously deleted, into an active and usable state.
 
+### Example 2
+```powershell
+Undo-AzKeyVaultSecretRemoval -Id "https://mykeyvault.vault.azure.net:443/secrets/mysecret/"
+```
+
+```output
+Vault Name   : MyKeyVault
+Name         : MySecret
+Version      : f622abc7b1394092812f1eb0f85dc91c
+Id           : https://mykeyvault.vault.azure.net:443/secrets/mysecret/f622abc7b1394092812f1eb0f85dc91c
+Enabled      : True
+Expires      :
+Not Before   :
+Created      : 4/19/2018 5:56:02 PM
+Updated      : 4/26/2018 7:48:40 PM
+Content Type :
+Tags         :
+```
+
+This command will recover the secret 'MySecret' that was previously deleted, into an active and usable state.
+
 ## PARAMETERS
 
 ### -Confirm

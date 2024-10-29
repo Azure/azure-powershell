@@ -106,6 +106,14 @@ The first three commands define string variables to use for the *VaultName*, *Na
 specified keys, and pipes the keys to the Update-AzKeyVaultSecret cmdlet to set their
 content type to XML.
 
+### Example 5: Delete the tags and content type for a secret (using Uri)
+```powershell
+Update-AzKeyVaultSecret -Id 'https://ContosoVault.vault.azure.net:443/secrets/HR/9EEA45C6EE50490B9C3176A80AC1A0DF'  -ContentType '' -Tag @{}
+```
+
+This command deletes the tags and the content type for the specified version of the secret named HR
+in the key vault named Contoso.
+
 ## PARAMETERS
 
 ### -Confirm

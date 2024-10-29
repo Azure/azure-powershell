@@ -79,6 +79,11 @@ C:\Backup.blob
 
 This command uses the $secret object's vault name and name to retrieves the secret and saves its backup to a file named Backup.blob.
 
+### Example 4: Back up a secret with an automatically generated file name (using Uri)
+```powershell
+Backup-AzKeyVaultSecret -Id 'https://MyKeyVault.vault.azure.net:443/secrets/MySecret'
+```
+
 ## PARAMETERS
 
 ### -Confirm

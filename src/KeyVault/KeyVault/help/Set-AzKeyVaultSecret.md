@@ -103,7 +103,29 @@ the attributes in variables.
 The final command modifies values of the secret named ITSecret in the key vault named Contoso, by
 using the values specified previously as variables.
 
-### Example 3: Create a secret in azure key vault by command Set-Secret in module Microsoft.PowerShell.SecretManagement
+### Example 3: Modify the value of a secret using default attributes (using Uri)
+```powershell
+$Secret = ConvertTo-SecureString -String "****" -AsPlainText -Force
+Set-AzKeyVaultSecret -Id 'https://contoso.vault.azure.net/secrets/ITSecret' -SecretValue $Secret
+```
+
+```output
+Vault Name   : Contoso
+Name         : ITSecret
+Version      : 8b5c0cb0326e4350bd78200fac932b51
+Id           : https://contoso.vault.azure.net:443/secrets/ITSecret/8b5c0cb0326e4350bd78200fac932b51
+Enabled      : True
+Expires      :
+Not Before   :
+Created      : 5/25/2018 6:39:30 PM
+Updated      : 5/25/2018 6:39:30 PM
+Content Type :
+Tags         :
+```
+
+This command sets or updates the value of the secret named secret1 in the Key Vault named Contoso using the secret’s URI.
+
+### Example 4: Create a secret in azure key vault by command Set-Secret in module Microsoft.PowerShell.SecretManagement
 ```powershell
 # Install module Microsoft.PowerShell.SecretManagement
 Install-Module Microsoft.PowerShell.SecretManagement -Repository PSGallery -AllowPrerelease
