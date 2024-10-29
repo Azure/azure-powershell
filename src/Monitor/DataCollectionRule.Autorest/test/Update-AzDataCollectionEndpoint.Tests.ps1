@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDataCollectionEndpoi
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzDataCollectionEndpoint' -skpi {
-    It 'UpdateExpanded' {
+Describe 'Update-AzDataCollectionEndpoint' {
+    It 'UpdateExpanded' -skip {
         {
             Update-AzDataCollectionEndpoint -Name $env.testCollectionEndpoint -ResourceGroupName $env.resourceGroup -Tag @{"123"="abc"}
         } | Should -Not -Throw
