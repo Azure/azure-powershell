@@ -26,12 +26,12 @@ Describe 'Get-AzCdnEndpointResourceUsage'  {
         $geofilters = @(
             @{
                 RelativePath = "/mycar" 
-                Action =  [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.GeoFilterActions]::Allow
+                Action =  "Allow"
                 CountryCode = "AU"
             },
             @{
                 RelativePath = "/mycars" 
-                Action =  [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.GeoFilterActions]::Allow
+                Action =  "Allow"
                 CountryCode = "AU"
             })
         Update-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName -GeoFilter $geofilters
