@@ -41,7 +41,7 @@ Get a Pool
 
 ### Example 1: List pools in a subscription
 ```powershell
-Get-AMdpPool
+Get-AzMdpPool
 ```
 
 This command lists the Managed DevOps Pools in the current subscription.
