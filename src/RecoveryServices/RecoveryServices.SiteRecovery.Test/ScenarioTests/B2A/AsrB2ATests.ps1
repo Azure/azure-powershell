@@ -949,4 +949,21 @@ function Test-CreateRPIWithMangedDisksForReplication
     WaitForJobCompletion -JobId $EnableDRjob.Name
     $Job = Get-AzRecoveryServicesAsrJob -Name $EnableDRjob.Name
     Assert-True { $Job.State -eq "Succeeded" }
+
+    # Import Azure RecoveryServices Vault Settings File
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $RecoveryVault='h2atestsignoffvault'
+    $RecoveryVaultResourceGroup='h2asignoff'
+    $RecoveryVaultFabricName='B2A'
+    $VMFriendlyName='testvmgen1-3'
+    $SqlServerLicenceType='AHUB'
+
+    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $VMName
+    $Updatejob = Set-AzRecoveryServicesAsrReplicationProtectedItem `
+    -InputObject $rpi `
+    -SqlServerLicenseType AHUB
+
+    WaitForJobCompletion -JobId $Updatejob.Name
+    $Job = Get-AzRecoveryServicesAsrJob -Name $Updatejob.Name
+    Assert-True { $Job.State -eq "Succeeded" }
 }

@@ -513,19 +513,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                       useManagedDisk));
                     }
 
-                    var deploymentType = Utilities.GetValueFromArmId(
-                        providerSpecificDetails.RecoveryAzureStorageAccount,
-                        ARMResourceTypeConstants.Providers);
-                    if (deploymentType.ToLower()
-                        .Contains(Constants.Classic.ToLower()))
+                    string deploymentType = null;
+
+                    if (!string.IsNullOrEmpty(providerSpecificDetails.RecoveryAzureStorageAccount))
                     {
-                        providerSpecificInput =
-                            new HyperVReplicaAzureUpdateReplicationProtectedItemInput
-                            {
-                                RecoveryAzureV1ResourceGroupId = recoveryResourceGroupId,
-                                RecoveryAzureV2ResourceGroupId = null
-                            };
+                        deploymentType = Utilities.GetValueFromArmId(
+                            providerSpecificDetails.RecoveryAzureStorageAccount,
+                            ARMResourceTypeConstants.Providers);
                     }
+
+                    if (!string.IsNullOrEmpty(deploymentType) && deploymentType.ToLower()
+                            .Contains(Constants.Classic.ToLower()))
+                        {
+                            providerSpecificInput =
+                                new HyperVReplicaAzureUpdateReplicationProtectedItemInput
+                                {
+                                    RecoveryAzureV1ResourceGroupId = recoveryResourceGroupId,
+                                    RecoveryAzureV2ResourceGroupId = null
+                                };
+                        }
                     else
                     {
                         providerSpecificInput =
