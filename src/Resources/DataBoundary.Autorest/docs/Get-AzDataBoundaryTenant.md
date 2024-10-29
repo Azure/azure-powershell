@@ -23,7 +23,6 @@ Get data boundary of tenant.
 
 ### Example 1: Get Tenant Level Data Boundary
 ```powershell
-$default = "default"
 Get-AzDataBoundaryTenant
 ```
 
