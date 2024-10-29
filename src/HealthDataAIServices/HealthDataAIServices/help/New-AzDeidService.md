@@ -1,40 +1,47 @@
 ---
-external help file:
+external help file: Az.HealthDataAiServices-help.xml
 Module Name: Az.HealthDataAIServices
-online version: https://learn.microsoft.com/powershell/module/az.healthdataaiservices/update-azdeidservice
+online version: https://learn.microsoft.com/powershell/module/az.healthdataaiservices/new-azdeidservice
 schema: 2.0.0
 ---
 
-# Update-AzDeidService
+# New-AzDeidService
 
 ## SYNOPSIS
-update a DeidService
+create a DeidService
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### CreateExpanded (Default)
 ```
-Update-AzDeidService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzDeidService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ [-EnableSystemAssignedIdentity] [-PublicNetworkAccess <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzDeidService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### CreateViaJsonString
 ```
-Update-AzDeidService -InputObject <IHealthDataAiServicesIdentity> [-EnableSystemAssignedIdentity <Boolean?>]
- [-PublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDeidService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update a DeidService
+create a DeidService
 
 ## EXAMPLES
 
-### Example 1: Update a De-identification service to create a System Assigned Managed Identity
+### Example 1: Create a new De-identification Service resource
 ```powershell
-Update-AzDeidService -Name myHealthDeidService -ResourceGroupName azpwsh-test-rg -EnableSystemAssignedIdentity $true
+New-AzDeidService -Name myHealthDeidService -ResourceGroupName azpwsh-test-rg -Location eastus2 -EnableSystemAssignedIdentity -PublicNetworkAccess "Disabled"
 ```
 
 ```output
@@ -54,7 +61,7 @@ ServiceUrl                   : https://h8bxaqamerbxd9a7.api.eus2001.deid.azure.c
 SystemDataCreatedAt          : 10/21/2024 5:26:15 AM
 SystemDataCreatedBy          : contoso@microsoft.com
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 10/21/2024 6:56:12 PM
+SystemDataLastModifiedAt     : 10/21/2024 5:26:15 AM
 SystemDataLastModifiedBy     : contoso@microsoft.com
 SystemDataLastModifiedByType : User
 Tag                          : {
@@ -62,40 +69,36 @@ Tag                          : {
 Type                         : microsoft.healthdataaiservices/deidservices
 ```
 
-Updates an existing De-identification service to create a System Assigned Managed Identity.
+Creates a new De-identification Service resource in the specified resource group and location.
 
-### Example 2: Update the public network access and tags of a De-identification service
+### Example 2: Create a new De-identification Service resource from a JSON file
 ```powershell
-Update-AzDeidService -Name azpwshDeidService2 -ResourceGroupName azpwsh-test-rg -EnableSystemAssignedIdentity $false -PublicNetworkAccess "Enabled" -Tag @{ AzPwshTestKey = "AzPwshTestValue" }
+New-AzDeidService -Name myHealthDeidService -ResourceGroupName azpwsh-test-rg -JsonFilePath path/to/json.json
 ```
 
 ```output
-Id                           : /subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azpwsh-test-rg/providers/Microsoft.HealthDataAIServices/DeidServices/azpwshDeidService2
-IdentityPrincipalId          :
-IdentityTenantId             :
-IdentityType                 : None
+Id                           : /subscriptions/a49b70b4-60ee-4422-a7e2-3a5223f5fae4/resourceGroups/azpwsh-test-rg/providers/Microsoft.HealthDataAIServices/deidServices/myHealthDeidService
 IdentityUserAssignedIdentity : {
                                }
 Location                     : eastus2
-Name                         : azpwshDeidService2
+Name                         : myHealthDeidService
 PrivateEndpointConnection    :
 ProvisioningState            : Succeeded
-PublicNetworkAccess          : Enabled
+PublicNetworkAccess          : Disabled
 ResourceGroupName            : azpwsh-test-rg
-ServiceUrl                   : https://f4cag7feawaubgbv.api.eus2001.deid.azure.com
-SystemDataCreatedAt          : 10/21/2024 12:01:06 AM
+ServiceUrl                   : https://h8bxaqamerbxd9a7.api.eus2001.deid.azure.com
+SystemDataCreatedAt          : 10/21/2024 5:26:15 AM
 SystemDataCreatedBy          : contoso@microsoft.com
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 10/21/2024 5:43:35 AM
+SystemDataLastModifiedAt     : 10/21/2024 5:26:15 AM
 SystemDataLastModifiedBy     : contoso@microsoft.com
 SystemDataLastModifiedByType : User
 Tag                          : {
-                                 "AzPwshTestKey": "AzPwshTestValue"
                                }
 Type                         : microsoft.healthdataaiservices/deidservices
 ```
 
-Update a De-identification Service by enabling public network access, removing the System Assigned Managed Identity and adding tags.
+Creates a new De-identification Service resource with location and properties specified in the JSON file.
 
 ## PARAMETERS
 
@@ -134,8 +137,8 @@ Accept wildcard characters: False
 Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -145,18 +148,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IHealthDataAiServicesIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -165,7 +198,7 @@ The name of the deid service
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases: DeidServiceName
 
 Required: True
@@ -190,12 +223,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Gets or sets allow or disallow public network access to resource
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -211,7 +259,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -227,7 +275,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -242,7 +290,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -258,7 +306,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -304,8 +352,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IHealthDataAiServicesIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Models.IDeidService
@@ -313,4 +359,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
