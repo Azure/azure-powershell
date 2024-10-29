@@ -2,7 +2,7 @@
 
 ```powershell
 $default = "default"
-Get-AzDataBoundaryTenant -Default $default
+Get-AzDataBoundaryTenant -DefaultProfile $default
 ```
 
 ```output

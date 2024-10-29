@@ -19,7 +19,7 @@ Describe 'Set-AzDataBoundary' {
         { 
             $dataBoundary = "EU"
             $default = "default"
-            $exception = Set-AzDataBoundary -DataBoundary $dataBoundary -Default $default
+            $exception = Set-AzDataBoundary -DataBoundary $dataBoundary -DefaultProfile $default
             $exception -contains "does not have authorization to perform action" | Should -Be True
             $exception -contains "or the scope is invalid. If access was recently granted, please refresh your credentials." | Should -Be True
         } | Should -Throw 

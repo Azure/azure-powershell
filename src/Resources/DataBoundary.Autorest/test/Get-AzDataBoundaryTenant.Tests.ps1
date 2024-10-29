@@ -18,7 +18,7 @@ Describe 'Get-AzDataBoundaryTenant' {
     It 'Get' {
         {
             $default = "default"
-            $boundaryData = Get-AzDataBoundaryTenant -Default $default
+            $boundaryData = Get-AzDataBoundaryTenant -DefaultProfile $default
             $boundaryData.DataBoundary | Should -Be "Global"
             $boundaryData.ProvisioningState | Should -Be "Succeeded"
         } | Should -Not -Throw
