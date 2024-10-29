@@ -2,7 +2,8 @@
 
 ```powershell
 $dataBoundary = "EU"
-Set-AzDataBoundary -DataBoundary $dataBoundary
+$default = "default"
+Set-AzDataBoundary -DataBoundary $dataBoundary -Default $default
 ```
 
 ```output

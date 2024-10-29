@@ -17,9 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDataBoundaryTenant'))
 Describe 'Get-AzDataBoundaryTenant' {
     It 'Get' {
         {
-            $boundaryData = Get-AzDataBoundaryTenant
-            $boundaryData.DataBoundary | Should -Be "EU"
-            $boundaryData.ProvisioningState | Should -Be "Created"
+            $default = "default"
+            $boundaryData = Get-AzDataBoundaryTenant -Default $default
+            $boundaryData.DataBoundary | Should -Be "Global"
+            $boundaryData.ProvisioningState | Should -Be "Succeeded"
         } | Should -Not -Throw
     }
 }

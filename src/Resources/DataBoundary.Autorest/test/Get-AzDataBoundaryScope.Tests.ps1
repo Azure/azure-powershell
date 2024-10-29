@@ -18,8 +18,9 @@ Describe 'Get-AzDataBoundaryScope' {
     It 'Get' {
         { 
             $scope = "/subscriptions/" + $env.SubscriptionId
-            $boundaryData = Get-AzDataBoundaryScope -Scope $scope
-            $boundaryData.DataBoundary | Should -Be "EU"
+            $default = "default"
+            $boundaryData = Get-AzDataBoundaryScope -Scope $scope -Default $default
+            $boundaryData.DataBoundary | Should -Be "Global"
             $boundaryData.ProvisioningState | Should -Be "Succeeded"
         } | Should -Not -Throw
     }
