@@ -923,5 +923,9 @@
   {
     "module": "Terraform",
     "alias": "Terraform"
+  },
+  {
+    "alias": "HealthDeidentification",
+    "module": "HealthDeidentification"
   }
 ]
