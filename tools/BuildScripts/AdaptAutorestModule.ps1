@@ -22,6 +22,10 @@ param (
 $BuildScriptsModulePath = Join-Path $PSScriptRoot "BuildScripts.psm1"
 Import-Module $BuildScriptsModulePath
 
+if ($SubModuleName -match "^Az\.(?<SubModuleName>\w+)") {
+    $SubModuleName = $Matches["SubModuleName"]
+}
+
 if (($null -eq $ModuleRootName) -or ('' -eq $ModuleRootName) -or ('$(root-module-name)' -eq $ModuleRootName)) {
     $ModuleRootName = $SubModuleName    
 } elseif ($ModuleRootName -match "^Az\.(?<ModuleRootName>\w+)") {

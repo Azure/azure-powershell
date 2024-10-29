@@ -87,7 +87,7 @@ directive:
 ``` yaml
 after-build-tasks-path: '../../../tools/BuildScripts/AdaptAutorestModule.ps1'
 after-build-tasks-args:
-  SubModuleName: $(service-name)
+  SubModuleName: $(module-name)
   ModuleRootName: $(root-module-name)
 ```
 
