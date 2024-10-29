@@ -62,8 +62,10 @@ identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
 auto-switch-view: false
+# Disable transform IdentityType as GET+PUT can not replace patch
+# 1. Organizations_CreateOrUpdate can not update resources
+# 2. the input schemas of PUT and PATCH are different
 disable-transform-identity-type: true
-flatten-userassignedidentity: false
 
 use-extension: 
   "@autorest/powershell": "4.x"
@@ -675,21 +677,29 @@ directive:
 
 ##### announce upcoming MI-related breaking changes
   - where:
-      parameter-name: IdentityType
-    set:
-      breaking-change:
-        change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
-        deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 13.0.0
-        change-effective-date: 2024/11/19
+      verb: New|Update
+      subject: ContainerApp
+    hide: true
   - where:
-      parameter-name: IdentityUserAssignedIdentity
-    set:
-      breaking-change:
-        old-parameter-type: Hashtable
-        new-parameter-type: string[]
-        change-description: IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity. And its type will be simplified as string array.
-        deprecated-by-version: 2.0.0
-        deprecated-by-azversion: 13.0.0
-        change-effective-date: 2024/11/19
+      verb: New|Update
+      subject: ContainerAppJob
+    hide: true
+  # - where:
+  #     parameter-name: IdentityType
+  #   set:
+  #     breaking-change:
+  #       change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
+  #       deprecated-by-version: 2.0.0
+  #       deprecated-by-azversion: 13.0.0
+  #       change-effective-date: 2024/11/19
+  # - where:
+  #     parameter-name: IdentityUserAssignedIdentity
+  #   set:
+  #     breaking-change:
+  #       old-parameter-type: Hashtable
+  #       new-parameter-type: string[]
+  #       change-description: IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity. And its type will be simplified as string array.
+  #       deprecated-by-version: 2.0.0
+  #       deprecated-by-azversion: 13.0.0
+  #       change-effective-date: 2024/11/19
 ```

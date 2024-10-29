@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerAppAuthConfig
 
 ## SYNOPSIS
-Update the AuthConfig for a Container App.
+update the AuthConfig for a Container App.
 
 ## SYNTAX
 
@@ -54,7 +54,7 @@ Update-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-CookieExpirationCo
 ```
 
 ## DESCRIPTION
-Update the AuthConfig for a Container App.
+update the AuthConfig for a Container App.
 
 ## EXAMPLES
 
