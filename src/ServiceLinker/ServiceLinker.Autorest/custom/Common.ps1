@@ -56,7 +56,7 @@ function Set-Header {
         if($PSBoundParameters.ContainsKey("VNetSolutionType") -Or $PSBoundParameters.ContainsKey("SecretStoreKeyVaultId") `
             -Or $provider -eq "microsoft.keyvault" -Or $resourceType -eq "flexibleservers") {
             if(-Not $PSBoundParameters.ContainsKey('XmsServiceconnectorUserToken')){
-                $PSBoundParameters['XmsServiceconnectorUserToken'] = (Get-AzAccessToken).Token
+                $PSBoundParameters['XmsServiceconnectorUserToken'] = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" (Get-AzAccessToken -AsSecureString).Token
             }
         }
     } 
