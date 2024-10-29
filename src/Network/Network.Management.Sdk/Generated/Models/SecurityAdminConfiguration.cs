@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Management.Network.Models
     /// Defines the security admin configuration
     /// </summary>
     [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SecurityAdminConfiguration : ChildResource
+    public partial class SecurityAdminConfiguration : CommonProxyResource
     {
         /// <summary>
         /// Initializes a new instance of the SecurityAdminConfiguration class.
@@ -25,23 +25,24 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the SecurityAdminConfiguration class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="systemData">The system metadata related to this resource.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="description">A description of the security configuration.
         /// </param>
@@ -49,16 +50,20 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="applyOnNetworkIntentPolicyBasedServices">Enum list of network intent policy based services.
         /// </param>
 
+        /// <param name="networkGroupAddressSpaceAggregationOption">Determine update behavior for changes to network groups referenced within
+        /// the rules in this configuration.
+        /// Possible values include: &#39;None&#39;, &#39;Manual&#39;</param>
+
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public SecurityAdminConfiguration(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string description = default(string), System.Collections.Generic.IList<string> applyOnNetworkIntentPolicyBasedServices = default(System.Collections.Generic.IList<string>), string resourceGuid = default(string))
+        public SecurityAdminConfiguration(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string description = default(string), System.Collections.Generic.IList<string> applyOnNetworkIntentPolicyBasedServices = default(System.Collections.Generic.IList<string>), string networkGroupAddressSpaceAggregationOption = default(string), string resourceGuid = default(string))
 
-        : base(id, name, type, etag)
+        : base(id, name, type, systemData)
         {
-            this.SystemData = systemData;
             this.ProvisioningState = provisioningState;
             this.Description = description;
             this.ApplyOnNetworkIntentPolicyBasedServices = applyOnNetworkIntentPolicyBasedServices;
+            this.NetworkGroupAddressSpaceAggregationOption = networkGroupAddressSpaceAggregationOption;
             this.ResourceGuid = resourceGuid;
             CustomInit();
         }
@@ -70,13 +75,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets the system metadata related to this resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
-        /// Gets the provisioning state of the resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
@@ -92,6 +91,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.applyOnNetworkIntentPolicyBasedServices")]
         public System.Collections.Generic.IList<string> ApplyOnNetworkIntentPolicyBasedServices {get; set; }
+
+        /// <summary>
+        /// Gets or sets determine update behavior for changes to network groups
+        /// referenced within the rules in this configuration. Possible values include: &#39;None&#39;, &#39;Manual&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.networkGroupAddressSpaceAggregationOption")]
+        public string NetworkGroupAddressSpaceAggregationOption {get; set; }
 
         /// <summary>
         /// Gets unique identifier for this resource.

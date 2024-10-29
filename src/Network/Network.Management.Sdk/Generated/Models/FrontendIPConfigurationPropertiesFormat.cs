@@ -59,7 +59,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the frontend IP configuration resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public FrontendIPConfigurationPropertiesFormat(System.Collections.Generic.IList<SubResource> inboundNatRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> inboundNatPools = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> outboundRules = default(System.Collections.Generic.IList<SubResource>), System.Collections.Generic.IList<SubResource> loadBalancingRules = default(System.Collections.Generic.IList<SubResource>), string privateIPAddress = default(string), string privateIPAllocationMethod = default(string), string privateIPAddressVersion = default(string), Subnet subnet = default(Subnet), PublicIPAddress publicIPAddress = default(PublicIPAddress), SubResource publicIPPrefix = default(SubResource), SubResource gatewayLoadBalancer = default(SubResource), string provisioningState = default(string))
 
         {
@@ -153,7 +154,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public SubResource GatewayLoadBalancer {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the frontend IP configuration resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the frontend IP configuration resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

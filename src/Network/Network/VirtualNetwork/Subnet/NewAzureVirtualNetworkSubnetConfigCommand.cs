@@ -54,6 +54,12 @@ namespace Microsoft.Azure.Commands.Network
             var subnet = new PSSubnet();
             subnet.Name = this.Name;
             subnet.AddressPrefix = this.AddressPrefix?.ToList();
+
+            if (IpamPoolPrefixAllocation?.Length > 0)
+            {
+                subnet.IpamPoolPrefixAllocations = IpamPoolPrefixAllocation.ToList();
+            }
+
             subnet.IpAllocations = new List<PSResourceId>();
             subnet.DefaultOutboundAccess = this.DefaultOutboundAccess;
 
