@@ -44,7 +44,7 @@ function ConvertTo-ArcAgentryConfiguration {
         # This ensures that when a new feature is implemented, only the ConfigDP
         # needs to change and not the Powershell script (or az CLI).
         $arcAgentryConfigs = New-Object System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]
-        $combinedKeys = $ConfigurationSetting.Keys 
+        $combinedKeys = $ConfigurationSetting.Keys
     }
     else {
         $arcAgentryConfigs = New-Object System.Collections.ArrayList
@@ -57,7 +57,12 @@ function ConvertTo-ArcAgentryConfiguration {
     # Do not send protected settings to CCRP
     foreach ($feature in $combinedKeys) {
 
-        $settings = ($ConfigurationSetting.ContainsKey($feature) ? $ConfigurationSetting[$feature] : @{})
+        if ($ConfigurationSetting.ContainsKey($feature)) {
+            $settings = $ConfigurationSetting[$feature]
+        }
+        else {
+            $settings = @{}
+        }
         if ($CCRP) {
             $ArcAgentryConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.ArcAgentryConfigurations]@{
                 Feature = $feature
@@ -65,7 +70,12 @@ function ConvertTo-ArcAgentryConfiguration {
             }
         }
         else {
-            $protectedSettings = ($RedactedProtectedConfiguration.ContainsKey($feature) ? $RedactedProtectedConfiguration[$feature] : @{})
+            if ($RedactedProtectedConfiguration.ContainsKey($feature)) {
+                $protectedSettings = $RedactedProtectedConfiguration[$feature]
+            }
+            else {
+                $protectedSettings = @{}
+            }
             $ArcAgentryConfiguration = @{
                 Feature           = $feature
                 Settings          = $settings
@@ -104,3 +114,34 @@ function Convert-ProxySetting {
     }
     return $ConfigurationProtectedSetting
 }
+
+# This function exists because in Powershell 5.1 there is no -AsHashTable
+# argument available for ConvertFrom-Json.
+function ConvertTo-HashTable {
+    param(
+        [PSCustomObject]$object
+    )
+    $HashTable = @{}
+    foreach ($property in $object.psobject.properties) {
+        $Value = $property.Value
+        $Key = $property.Name
+        if ($Value -is [System.Management.Automation.PSCustomObject]) {
+            $HashTable[$Key] = ConvertTo-HashTable $Value
+        }
+        elseif ($Value -is [System.Array]) {
+            $AnArray = @()
+            foreach ($Element in $Value) {
+                $AnArray += ConvertTo-HashTable $Element
+            }
+            $HashTable[$Key] = $AnArray
+        }
+        elseif ($Value -is [Hashtable]) {
+            $HashTable[$Key] = $Value
+        }
+        else {
+            $HashTable[$Key] = $Value
+        }
+    }
+    $HashTable
+}
+
