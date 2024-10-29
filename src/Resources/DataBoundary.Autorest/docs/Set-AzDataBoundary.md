@@ -43,7 +43,8 @@ Opt-in tenant to data boundary.
 ### Example 1: Set Tenant Level Data Boundary
 ```powershell
 $dataBoundary = "EU"
-Set-AzDataBoundary -DataBoundary $dataBoundary
+$default = "default"
+Set-AzDataBoundary -DataBoundary $dataBoundary -Default $default
 ```
 
 ```output
