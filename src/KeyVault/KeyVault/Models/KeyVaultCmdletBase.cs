@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="secretUri">The user's input unique resource identifier</param>
         /// <returns>An instance of SecretUriComponents</returns>
-        protected SecretUriComponents SplitSecretUri(Uri secretUri)
+        internal SecretUriComponents SplitSecretUri(Uri secretUri)
         {
             string vaultName = secretUri.Host.Split('.')[0]; // Extract vault name from the URI
             string secretName = secretUri.Segments.Length > 2 ? secretUri.Segments[2].TrimEnd('/') : string.Empty; // Extract secret name from the URI

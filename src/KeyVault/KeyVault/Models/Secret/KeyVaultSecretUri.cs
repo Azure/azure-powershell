@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models.Secret
     /// <summary>
     /// A data class to hold components of a KeyVault Secret URI: VaultName, SecretName, and SecretVersion.
     /// </summary>
-    public class SecretUriComponents
+    internal class SecretUriComponents
     {
         /// <summary>
         /// The name of the Key Vault.
