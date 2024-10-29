@@ -41,9 +41,44 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
+    echo "Get-AzContext"
+    Get-AzContext
+    
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    
+    $resourceGroup = "azmdppwsh" + (RandomString -allChars $false -len 6)
+    $location = "westus"
+    New-AzResourceGroup -Name $resourceGroup -Location $location
+
+    $devCenterName = "azmdp-" + (RandomString -allChars $false -len 6)
+    $devCenterProjectName = "azmdp-" + (RandomString -allChars $false -len 6)
+    $mdpPoolNameGet = "azmdp-" + (RandomString -allChars $false -len 6)
+    $mdpPoolNameDelete = "azmdp-" + (RandomString -allChars $false -len 6)
+    $mdpPoolNameNew = "azmdp-" + (RandomString -allChars $false -len 6)
+
+    $env.Add("Location", $location)
+    $env.Add("ResourceGroup", $resourceGroup)
+    $env.Add("DevCenterName", $devCenterName)
+    $env.Add("DevCenterProjectName", $devCenterProjectName)
+    $env.Add("MdpPoolNameGet", $mdpPoolNameGet)
+    $env.Add("MdpPoolNameDelete", $mdpPoolNameDelete)
+    $env.Add("MdpPoolNameNew", $mdpPoolNameNew)
+
+    $template = Get-Content .\test\deploymentTemplates\parameter.json | ConvertFrom-Json
+
+    $template.parameters.location.value = $location
+    $template.parameters.devCenterName.value = $devCenterName
+    $template.parameters.devCenterProjectName.value = $devCenterProjectName
+    $template.parameters.mdpPoolNameGet.value = $mdpPoolNameGet
+    $template.parameters.mdpPoolNameDelete.value = $mdpPoolNameDelete
+
+    Write-Host -ForegroundColor Magenta "Deploying test setup resources"
+    Set-Content -Path .\test\deploymentTemplates\parameter.json -Value (ConvertTo-Json $template -depth 10)
+    New-AzResourceGroupDeployment -TemplateFile .\test\deploymentTemplates\template.json -TemplateParameterFile .\test\deploymentTemplates\parameter.json -Name azMdpInitTestTemplate -ResourceGroupName $resourceGroup
+    Write-Host -ForegroundColor Magenta "Deployed test setup resources"
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -52,5 +87,5 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
-

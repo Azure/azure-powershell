@@ -15,19 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMdpPool'))
 }
 
 Describe 'Get-AzMdpPool' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfPools = Get-AzMdpPool
+        $listOfPools.Count | Should -BeGreaterOrEqual 0
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+     It 'Get' {
+        $pool = Get-AzMdpPool -ResourceGroupName $env.ResourceGroup -Name $env.MdpPoolNameGet
+        $pool.Name | Should -Be $env.MdpPoolNameGet
+        $pool.MaximumConcurrency | Should -Be 1
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $listOfPools = Get-AzMdpPool -ResourceGroupName $env.ResourceGroup
+        $listOfPools.Count | Should -BeGreaterOrEqual 2
     }
 }

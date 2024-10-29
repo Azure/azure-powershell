@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMdpSku'))
 }
 
 Describe 'Get-AzMdpSku' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfPools = Get-AzMdpSku -Location $env.Location
+        $listOfPools.Count | Should -BeGreaterOrEqual 1
     }
 }

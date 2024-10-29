@@ -15,11 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzMdpPool'))
 }
 
 Describe 'Remove-AzMdpPool' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzMdpPool -Name $env.MdpPoolNameDelete -ResourceGroupName $env.ResourceGroup
+        { Get-AzMdpPool -Name $env.MdpPoolNameDelete -ResourceGroupName $env.ResourceGroup } | Should -Throw
     }
 }

@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMdpPoolAgent'))
 }
 
 Describe 'Get-AzMdpPoolAgent' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $listOfPoolAgents = Get-AzMdpPoolAgent -ResourceGroupName $env.ResourceGroup -PoolName $env.MdpPoolNameGet
+        $listOfPoolAgents.Count | Should -BeGreaterOrEqual 0
     }
 }

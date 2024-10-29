@@ -15,19 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzMdpPool'))
 }
 
 Describe 'Update-AzMdpPool' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $pool = Update-AzMdpPool -ResourceGroupName $env.ResourceGroup -Name $env.MdpPoolNameGet -Tag @{"tag1"= "update1"}
+        $pool.Name | Should -Be $env.MdpPoolNameGet
+        $pool.Tag["tag1"] | Should -Be "update1"
     }
 }
