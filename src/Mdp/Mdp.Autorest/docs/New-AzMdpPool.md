@@ -15,11 +15,10 @@ create a Pool
 ### CreateExpanded (Default)
 ```
 New-AzMdpPool -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-AgentProfileKind <String>] [-AgentProfileResourcePrediction <IAny>] [-DevCenterProjectResourceId <String>]
- [-EnableSystemAssignedIdentity] [-FabricProfileKind <String>] [-MaximumConcurrency <Int32>]
- [-OrganizationProfileKind <String>] [-ProvisioningState <String>] [-ResourcePredictionProfileKind <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity]
+ [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>]
+ [-ProvisioningState <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -36,10 +35,9 @@ New-AzMdpPool -InputObject <IMdpIdentity> -Resource <IPool> [-DefaultProfile <PS
 
 ### CreateViaIdentityExpanded
 ```
-New-AzMdpPool -InputObject <IMdpIdentity> -Location <String> [-AgentProfileKind <String>]
- [-AgentProfileResourcePrediction <IAny>] [-DevCenterProjectResourceId <String>]
- [-EnableSystemAssignedIdentity] [-FabricProfileKind <String>] [-MaximumConcurrency <Int32>]
- [-OrganizationProfileKind <String>] [-ProvisioningState <String>] [-ResourcePredictionProfileKind <String>]
+New-AzMdpPool -InputObject <IMdpIdentity> -Location <String> [-AgentProfile <IAgentProfile>]
+ [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity] [-FabricProfile <IFabricProfile>]
+ [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -61,50 +59,30 @@ create a Pool
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a Managed DevOps Pool
 ```powershell
-{{ Add code here }}
+New-AzMdpPool -Name Contoso -ResourceGroupName testRG - Location westus
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command creates a Managed DevOps Pool named "Contoso" under the resource group "testRG"
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create a Managed DevOps Pool using InputObject
 ```powershell
-{{ Add code here }}
+$pool = @{"ResourceGroupName" = "testRg"; "PoolName" = "Contoso"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+ $pool = @{"ResourceGroupName" = "ajaykn"; "PoolName" = "Contoso"; "SubscriptionId" = "21af6cf1-77ad-42cd-ad19-e193de033071"}
+$agentProfile=@{"kind" = "stateless"}
+New-AzMdpPool -InputObject $pool -Location westus -AgentProfileKind stateless -MaximumConcurrency 2 -DevCenterProjectResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example/providers/Microsoft.DevCenter/projects/contoso-proj" 
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command creates a Managed DevOps Pool named "Contoso" under the resource group "testRG"
 
 ## PARAMETERS
 
-### -AgentProfileKind
-Discriminator property for AgentProfile.
+### -AgentProfile
+Defines how the machine will be handled once it executed a job.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AgentProfileResourcePrediction
-Defines pool buffer/stand-by agents.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IAny
+Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IAgentProfile
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -176,11 +154,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FabricProfileKind
-Discriminator property for FabricProfile.
+### -FabricProfile
+Defines the type of fabric the agent will run on.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IFabricProfile
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -297,11 +275,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OrganizationProfileKind
-Discriminator property for OrganizationProfile.
+### -OrganizationProfile
+Defines the organization in which the pool will be used.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOrganizationProfile
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -352,21 +330,6 @@ Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonStri
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourcePredictionProfileKind
-Determines how the stand-by scheme should be provided.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

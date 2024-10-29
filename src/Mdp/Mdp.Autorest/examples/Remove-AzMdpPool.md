@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Managed DevOps Pool 
 ```powershell
-{{ Add code here }}
+Remove-AzMdpPool -Name Contoso -ResourceGroupName testRg
 ```
+This command deletes the Managed DevOps Pool named "Contoso" in the resource group "testRg".
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a Managed DevOps Pool using InputObject
 ```powershell
-{{ Add code here }}
+$pool = Get-AzMdpPool -ResourceGroupName testRg -Name Contoso
+
+Remove-AzMdpPool -InputObject $pool
 ```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command deletes the Managed DevOps Pool named "Contoso" in the resource group "testRg".

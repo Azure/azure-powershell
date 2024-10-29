@@ -44,14 +44,22 @@ service-name: Mdp
 subject-prefix: $(service-name)
 
 directive:
+# Dont expose images and usages endpoints
   - remove-operation: ImageVersions_ListByImage
   - remove-operation: SubscriptionUsages_Usages
+# Hide set cmdlets
   - where:
       verb: Set
     hide: true
+# Rename to pool agents
   - where:
       verb: Get
       subject: ResourceDetail
     set:
       subject: PoolAgent
+# Dont flatten hash objects
+  - no-inline:
+    - AgentProfile
+    - OrganizationProfile
+    - FabricProfile
 ```

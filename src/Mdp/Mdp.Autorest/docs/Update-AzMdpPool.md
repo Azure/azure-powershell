@@ -15,11 +15,11 @@ update a Pool
 ### UpdateExpanded (Default)
 ```
 Update-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AgentProfileKind <String>] [-AgentProfileResourcePrediction <IAny>] [-DevCenterProjectResourceId <String>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-FabricProfileKind <String>] [-MaximumConcurrency <Int32>]
- [-OrganizationProfileKind <String>] [-ProvisioningState <String>] [-ResourcePredictionProfileKind <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>]
+ [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Update
@@ -36,12 +36,11 @@ Update-AzMdpPool -InputObject <IMdpIdentity> -Resource <IPool> [-DefaultProfile 
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMdpPool -InputObject <IMdpIdentity> [-AgentProfileKind <String>]
- [-AgentProfileResourcePrediction <IAny>] [-DevCenterProjectResourceId <String>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-FabricProfileKind <String>] [-MaximumConcurrency <Int32>]
- [-OrganizationProfileKind <String>] [-ProvisioningState <String>] [-ResourcePredictionProfileKind <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMdpPool -InputObject <IMdpIdentity> [-AgentProfile <IAgentProfile>]
+ [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>]
+ [-ProvisioningState <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,26 +72,11 @@ update a Pool
 
 ## PARAMETERS
 
-### -AgentProfileKind
-Discriminator property for AgentProfile.
+### -AgentProfile
+Defines how the machine will be handled once it executed a job.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AgentProfileResourcePrediction
-Defines pool buffer/stand-by agents.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IAny
+Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IAgentProfile
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -153,7 +137,7 @@ Accept wildcard characters: False
 Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -164,11 +148,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FabricProfileKind
-Discriminator property for FabricProfile.
+### -FabricProfile
+Defines the type of fabric the agent will run on.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IFabricProfile
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -240,11 +224,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OrganizationProfileKind
-Discriminator property for OrganizationProfile.
+### -OrganizationProfile
+Defines the organization in which the pool will be used.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOrganizationProfile
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -295,21 +279,6 @@ Parameter Sets: Update, UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourcePredictionProfileKind
-Determines how the stand-by scheme should be provided.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

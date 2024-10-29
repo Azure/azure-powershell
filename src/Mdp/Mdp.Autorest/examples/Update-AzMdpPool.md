@@ -1,22 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a Managed DevOps Pool
 ```powershell
-{{ Add code here }}
+Update-AzMdpPool -Name Contoso -ResourceGroupName testRg -MaximumConcurrency 2 -Tag @{"tag1"= "value1"}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+This command updates a Managed DevOps Pool named "Contoso" under the resource group "testRG"
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update a Managed DevOps Pool using InputObject
 ```powershell
-{{ Add code here }}
+$pool = @{"ResourceGroupName" = "testRg"; "PoolName" = "Contoso"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
+
+Update-AzMdpPool -InputObject $pool -MaximumConcurrency 2 -Tag @{"tag1"= "value1"}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command updates a Managed DevOps Pool named "Contoso" under the resource group "testRG"
+ 
