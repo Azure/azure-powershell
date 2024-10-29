@@ -94,9 +94,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <returns>An instance of SecretUriComponents</returns>
         protected SecretUriComponents SplitSecretUri(Uri secretUri)
         {
-            var vaultName = secretUri.Host.Split('.')[0]; // Extract vault name from the URI
-            var secretName = secretUri.Segments.Length > 2 ? secretUri.Segments[2].TrimEnd('/') : string.Empty; // Extract secret name from the URI
-            var secretVersion = secretUri.Segments.Length > 3 ? secretUri.Segments[3] : string.Empty; // Extract secret version (if present)
+            string vaultName = secretUri.Host.Split('.')[0]; // Extract vault name from the URI
+            string secretName = secretUri.Segments.Length > 2 ? secretUri.Segments[2].TrimEnd('/') : string.Empty; // Extract secret name from the URI
+            string secretVersion = secretUri.Segments.Length > 3 ? secretUri.Segments[3] : string.Empty; // Extract secret version (if present)
 
             return new SecretUriComponents(vaultName, secretName, secretVersion);
         }
