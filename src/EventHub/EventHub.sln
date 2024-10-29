@@ -35,9 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Management.Sdk", "..\KeyVault\KeyVault.Management.Sdk\KeyVault.Management.Sdk.csproj", "{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventHub", "..\..\generated\EventHub\EventHub.Autorest\Az.EventHub.csproj", "{4B342491-7EA2-4E3E-A63F-E09961723335}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KeyVault", "..\..\generated\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{5C75DBAB-FFE9-4EB1-95D6-C97B179C0A7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHub.Management.Sdk", "EventHub.Management.Sdk\EventHub.Management.Sdk.csproj", "{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,14 +95,10 @@ Global
 		{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B342491-7EA2-4E3E-A63F-E09961723335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B342491-7EA2-4E3E-A63F-E09961723335}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B342491-7EA2-4E3E-A63F-E09961723335}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B342491-7EA2-4E3E-A63F-E09961723335}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C75DBAB-FFE9-4EB1-95D6-C97B179C0A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C75DBAB-FFE9-4EB1-95D6-C97B179C0A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C75DBAB-FFE9-4EB1-95D6-C97B179C0A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C75DBAB-FFE9-4EB1-95D6-C97B179C0A7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
