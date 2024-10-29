@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Resolved syntax issue when running command in Powershell 5.1
+* Parsed and used value from InputObject. Set- command will perform a full replacement.
+* Allowed inputObject piping in Set command
+* Added more examples and improve description
 
 ## Version 0.11.1
 * Fixed environment variable usage
