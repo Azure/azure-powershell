@@ -44,6 +44,8 @@
 * Updated cmdlet to add the property of `NetworkGroupAddressSpaceAggregationOption`, and updated corresponding cmdlets.
     - `New-AzNetworkManagerSecurityAdminConfiguration`
     - `New-AzNetworkManagerAddressPrefixItemCommand`
+* Added `DefaultOutboundConnectivityEnabled` property in PSNetworkInterface
+
 
 ## Version 7.10.0
 * Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management
