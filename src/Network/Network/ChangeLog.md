@@ -21,6 +21,8 @@
 ## Upcoming Release
 * Added `DefaultOutboundConnectivityEnabled` property in PSNetworkInterface
 
+* Added support for `AutoscaleConfiguration` property in `AzureFirewall` model for `New-AzFirewall` and `Set-AzFirewall` commands
+
 ## Version 7.10.0
 * Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management
     - `New/Get/Remove/Set-AzNetworkManagerRoutingConfiguration`
