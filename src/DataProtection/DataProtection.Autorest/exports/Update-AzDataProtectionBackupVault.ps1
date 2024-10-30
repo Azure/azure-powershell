@@ -276,7 +276,14 @@ param(
     [System.String]
     # The Key URI of the CMK key to be used for encryption.
     # To enable auto-rotation of keys, exclude the version component from the Key URI.
-    ${CmkEncryptionKeyUri}
+    ${CmkEncryptionKeyUri},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Security.SecureString]
+    # Parameter to authorize operations protected by cross tenant resource guard.
+    # Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+    ${SecureToken}
 )
 
 begin {
