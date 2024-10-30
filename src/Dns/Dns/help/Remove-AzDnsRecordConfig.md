@@ -85,7 +85,7 @@ Remove-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Usage <Int32> -Selector <Int
 ### NAPTR
 ```
 Remove-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Order <UInt16> -Preference <UInt16> -Flags <String>
- -Service <String> -Regexp <String> -Replacement <String> [-DefaultProfile <IAzureContextContainer>]
+ -Services <String> -Regexp <String> -Replacement <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -252,12 +252,12 @@ To remove a record set entirely, see Remove-AzDnsRecordSet.
 ### Example 11: Remove an NAPTR record from a record set
 ```powershell
 $RecordSet = Get-AzDnsRecordSet -Name "www" -RecordType NAPTR -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
-Remove-AzDnsRecordConfig -Order 100 -Preference 100 -Flags "s" -Service "http" -Regexp "" -Replacement "www.contoso.com"
+Remove-AzDnsRecordConfig -Order 100 -Preference 100 -Flags "s" -Services "http" -Regexp "" -Replacement "www.contoso.com"
 Set-AzDnsRecordSet -RecordSet $RecordSet
 
 # The above sequence can also be piped:
 
-Get-AzDnsRecordSet -Name "www" -RecordType NAPTR -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" | Remove-AzDnsRecordConfig -Order 100 -Preference 100 -Flags "s" -Service "http" -Regexp "" -Replacement "www.contoso.com"  | Set-AzDnsRecordSet
+Get-AzDnsRecordSet -Name "www" -RecordType NAPTR -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" | Remove-AzDnsRecordConfig -Order 100 -Preference 100 -Flags "s" -Services "http" -Regexp "" -Replacement "www.contoso.com"  | Set-AzDnsRecordSet
 ```
 
 ## PARAMETERS

@@ -82,7 +82,7 @@ New-AzDnsRecordConfig -Usage <Int32> -Selector <Int32> -MatchingType <Int32>
 
 ### Naptr
 ```
-New-AzDnsRecordConfig -Flags <UInt16> -Order <UInt16> -Preference <UInt16> -Service <String>
+New-AzDnsRecordConfig -Flags <UInt16> -Order <UInt16> -Preference <UInt16> -Services <String>
  -Regexp <String> -Replacement <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
@@ -230,7 +230,7 @@ To create a **RecordSet** using only one line of pn_PowerShell_short, or to crea
 ### Example 11: Create a RecordSet of type NAPTR
 ```powershell
 $Records = @()
-$Records += New-AzDnsRecordConfig -Flags 0 -Order 100 -Preference 100 -Service "SIP+D2U" -Regexp "" -Replacement "example.com"
+$Records += New-AzDnsRecordConfig -Flags 0 -Order 100 -Preference 100 -Services "SIP+D2U" -Regexp "" -Replacement "example.com"
 $RecordSet = New-AzDnsRecordSet -Name "naptr123" -RecordType NAPTR -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" -DnsRecords $Records
 ```
 
