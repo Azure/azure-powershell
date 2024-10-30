@@ -295,7 +295,9 @@ Function Copy-Template {
             $TemplateContent = $TemplateContent -replace '{LowCaseModuleNamePlaceHolder}', $ModuleName.ToLower()
             $TemplateContent = $TemplateContent -replace '{ModuleFolderPlaceHolder}', $ModuleFolder
             $TemplateContent -replace '{RootModuleNamePlaceHolder}', $RootModuleName | Set-Content -Path $DestPath
-
+            if ($SourceName -eq "Module.psd1") {
+                Write-Host $TemplateContent 
+            }
         }
     }
 }
