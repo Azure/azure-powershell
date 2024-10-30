@@ -30,7 +30,7 @@ New-AzSqlInstanceLink [-Name] <String> -PartnerAvailabilityGroupName <String>
 ```
 
 ## DESCRIPTION
-The **New-AzSqlInstanceLink** cmdlet creates an Azure SQL Managed Instance link by joining distributed availability group on SQL Server based on the parameters passed.
+The **New-AzSqlInstanceLink** cmdlet creates an Managed Instance link by joining distributed availability group on SQL Server based on the parameters passed.
 
 ## EXAMPLES
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -FailoverMode
-Link failover mode.
+The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.
 
 ```yaml
 Type: System.String
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceAvailabilityGroupName
-Name of the managed instance availability group.
+Managed instance side availability group name.
 
 ```yaml
 Type: System.String
@@ -207,7 +207,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-Name of Azure SQL Managed Instance.
+Name of the managed instance.
 
 ```yaml
 Type: System.String
@@ -237,7 +237,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the instance link.
+Managed Instance link name.
 
 ```yaml
 Type: System.String
@@ -252,7 +252,7 @@ Accept wildcard characters: False
 ```
 
 ### -PartnerAvailabilityGroupName
-Name of the partner availability group.
+SQL server side availability group name.
 
 ```yaml
 Type: System.String
@@ -267,7 +267,7 @@ Accept wildcard characters: False
 ```
 
 ### -PartnerEndpoint
-SQL server side endpoint - IP or DNS resolvable name
+SQL server side endpoint - IP or DNS resolvable name.
 
 ```yaml
 Type: System.String
@@ -297,7 +297,7 @@ Accept wildcard characters: False
 ```
 
 ### -SeedingMode
-Database seeding mode.
+Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
 
 ```yaml
 Type: System.String

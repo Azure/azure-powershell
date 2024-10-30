@@ -178,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-Name of Azure SQL Managed Instance.
+Name of the managed instance.
 
 ```yaml
 Type: System.String
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the instance link.
+Managed Instance link name.
 
 ```yaml
 Type: System.String

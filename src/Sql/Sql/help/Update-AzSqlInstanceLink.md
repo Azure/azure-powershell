@@ -236,7 +236,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-Name of Azure SQL Managed Instance.
+Name of the managed instance.
 
 ```yaml
 Type: System.String
@@ -266,7 +266,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the instance link.
+Managed Instance link name.
 
 ```yaml
 Type: System.String
@@ -281,8 +281,8 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationMode
-Replication mode value.
-Possible values include 'Sync' and 'Async'.
+Replication mode of a Managed Instance link.
+Parameter will be ignored during link creation.
 
 ```yaml
 Type: System.String

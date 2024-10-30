@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 1, HelpMessage = "Name of Azure SQL Managed Instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 1, HelpMessage = "Name of the managed instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the link name
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 2, HelpMessage = "Name of the instance link.")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByParentObjectParameterSet, Position = 1, HelpMessage = "Name of the instance link.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 2, HelpMessage = "Managed Instance link name.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByParentObjectParameterSet, Position = 1, HelpMessage = "Managed Instance link name.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/distributedAvailabilityGroups", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
         [Alias("LinkName")]
@@ -69,10 +69,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the replication mode
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 3, HelpMessage = "Replication mode value. Possible values include 'Sync' and 'Async'.")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByParentObjectParameterSet, Position = 2, HelpMessage = "Replication mode value. Possible values include 'Sync' and 'Async'.")]
-        [Parameter(Mandatory = false, ParameterSetName = UpdateByInputObjectParameterSet, Position = 1, HelpMessage = "Replication mode value. Possible values include 'Sync' and 'Async'.")]
-        [Parameter(Mandatory = true, ParameterSetName = UpdateByResourceIdParameterSet, Position = 1, HelpMessage = "Replication mode value. Possible values include 'Sync' and 'Async'.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet, Position = 3, HelpMessage = "Replication mode of a Managed Instance link. Parameter will be ignored during link creation.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByParentObjectParameterSet, Position = 2, HelpMessage = "Replication mode of a Managed Instance link. Parameter will be ignored during link creation.")]
+        [Parameter(Mandatory = false, ParameterSetName = UpdateByInputObjectParameterSet, Position = 1, HelpMessage = "Replication mode of a Managed Instance link. Parameter will be ignored during link creation.")]
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByResourceIdParameterSet, Position = 1, HelpMessage = "Replication mode of a Managed Instance link. Parameter will be ignored during link creation.")]
         [PSArgumentCompleter("Sync", "Async")]
         [ValidateNotNullOrEmpty]
         public string ReplicationMode { get; set; }

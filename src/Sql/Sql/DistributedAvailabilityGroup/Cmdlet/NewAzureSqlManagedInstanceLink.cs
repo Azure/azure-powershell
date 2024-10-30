@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the name of target managed instance
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 1, HelpMessage = "Name of Azure SQL Managed Instance.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 1, HelpMessage = "Name of the managed instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
@@ -56,8 +56,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the link name
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 2, HelpMessage = "Name of the instance link.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 1, HelpMessage = "Name of the instance link.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, Position = 2, HelpMessage = "Managed Instance link name.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, Position = 1, HelpMessage = "Managed Instance link name.")]
         [ValidateNotNullOrEmpty]
         [Alias("LinkName")]
         public string Name { get; set; }
@@ -65,16 +65,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// <summary>
         /// Gets or sets the partner availability group name
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the partner availability group.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the partner availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "SQL server side availability group name.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "SQL server side availability group name.")]
         [ValidateNotNullOrEmpty]
         public string PartnerAvailabilityGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the managed instance availability group name
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Name of the managed instance availability group.")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Name of the managed instance availability group.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Managed instance side availability group name.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Managed instance side availability group name.")]
         [ValidateNotNullOrEmpty]
         public string InstanceAvailabilityGroupName { get; set; }
 
@@ -84,13 +84,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Database names in the distributed availability group.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Database names in the distributed availability group.")]
         [ValidateNotNullOrEmpty]
-        public List<string> Databases { get; set; }
+        public string[] Databases { get; set; }
 
         /// <summary>
         /// Gets or sets the partner endpoint
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "SQL server side endpoint - IP or DNS resolvable name")]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "SQL server side endpoint - IP or DNS resolvable name")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "SQL server side endpoint - IP or DNS resolvable name.")]
+        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "SQL server side endpoint - IP or DNS resolvable name.")]
         [ValidateNotNullOrEmpty]
         public string PartnerEndpoint { get; set; }
 
@@ -100,8 +100,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// for one-way failover to Azure. Possible values include: 'None',
         /// 'Manual'
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Link failover mode.")]
-        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Link failover mode.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSet, HelpMessage = "The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Manual", "None")]
         public string FailoverMode { get; set; }
@@ -121,8 +121,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// Manual for supported scenarios. Possible values include:
         /// 'Automatic', 'Manual'
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Database seeding mode.")]
-        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Database seeding mode.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Database seeding mode – can be Automatic (default), or Manual for supported scenarios.")]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Database seeding mode – can be Automatic (default), or Manual for supported scenarios.")]
         [ValidateNotNullOrEmpty]
         [PSDefaultValue(Value = "Automatic")]
         [PSArgumentCompleter("Automatic", "Manual")]
