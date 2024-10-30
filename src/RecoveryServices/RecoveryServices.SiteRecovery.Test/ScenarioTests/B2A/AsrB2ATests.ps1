@@ -950,3 +950,29 @@ function Test-CreateRPIWithMangedDisksForReplication
     $Job = Get-AzRecoveryServicesAsrJob -Name $EnableDRjob.Name
     Assert-True { $Job.State -eq "Succeeded" }
 }
+
+<#
+.SYNOPSIS
+Site Recovery Update RPI with managed disks for replication
+#>
+function Test-UpdateRPIWithMangedDisksForReplication
+{
+    param([string] $vaultSettingsFilePath)
+
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $PrimaryFabricName = "powershelltest"
+    $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+    $pc =  Get-ASRProtectionContainer -Fabric $fabric
+    $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $pc
+    $policy = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName
+    $VMName = "powershellvm2"
+
+    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $VMName
+    $Updatejob = Set-AzRecoveryServicesAsrReplicationProtectedItem `
+    -InputObject $rpi `
+    -SqlServerLicenseType AHUB
+
+    WaitForJobCompletion -JobId $Updatejob.Name
+    $Job = Get-AzRecoveryServicesAsrJob -Name $Updatejob.Name
+    Assert-True { $Job.State -eq "Succeeded" }
+}

@@ -513,11 +513,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                       useManagedDisk));
                     }
 
-                    var deploymentType = Utilities.GetValueFromArmId(
-                        providerSpecificDetails.RecoveryAzureStorageAccount,
-                        ARMResourceTypeConstants.Providers);
-                    if (deploymentType.ToLower()
-                        .Contains(Constants.Classic.ToLower()))
+                    string deploymentType = Constants.ResourceManager;
+
+                    if (!string.IsNullOrEmpty(providerSpecificDetails.RecoveryAzureStorageAccount))
+                    {
+                        deploymentType = Utilities.GetValueFromArmId(
+                            providerSpecificDetails.RecoveryAzureStorageAccount,
+                            ARMResourceTypeConstants.Providers);
+                    }
+
+                    if (!string.IsNullOrEmpty(deploymentType) && deploymentType.ToLower()
+                            .Contains(Constants.Classic.ToLower()))
                     {
                         providerSpecificInput =
                             new HyperVReplicaAzureUpdateReplicationProtectedItemInput
