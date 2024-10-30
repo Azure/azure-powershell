@@ -244,6 +244,19 @@ namespace Microsoft.Azure.Commands.Dns
                     Selector = mamlRecord.Selector.GetValueOrDefault(),
                 };
             }
+            else if (record is Management.Dns.Models.NaptrRecord)
+            {
+                var mamlRecord = (Management.Dns.Models.NaptrRecord)record;
+                return new NaptrRecord
+                {
+                    Flags = mamlRecord.Flags,
+                    Order = (ushort) mamlRecord.Order,
+                    Preference = (ushort) mamlRecord.Preference,
+                    Regexp = mamlRecord.Regexp,
+                    Replacement = mamlRecord.Replacement,
+                    Services = mamlRecord.Services,
+                };
+            }
 
             return null;
         }

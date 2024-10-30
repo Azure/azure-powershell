@@ -548,10 +548,10 @@ function Test-RecordSetNAPTR
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType NAPTR
 
 	# add two records, remove one, remove another no-op
-	$record = $record | Add-AzDnsRecordConfig -Order 10 -Preference 20 -Flags "U" -Services "SIP+D2U" -Regexp "" -Replacement "sip:customer-service.example.com"
-	$record = $record | Add-AzDnsRecordConfig -Order 20 -Preference 30 -Flags "A" -Services "EAU+SIP" -Regexp "!^(\\+441632960083)$!sip:\\1@example.com!" -Replacement "."
-	$record = $record | Remove-AzDnsRecordConfig -Order 10 -Preference 20 -Flags "U" -Services "SIP+D2U" -Regexp "" -Replacement "sip:customer-service.example.com"
-	$record = $record | Remove-AzDnsRecordConfig -Order 30 -Preference 30 -Flags "A" -Services "EAU+SIP" -Regexp "!^(\\+441632960083)$!sip:\\1@example.com!" -Replacement "."
+	$record = $record | Add-AzDnsRecordConfig -Order 10 -Preference 20 -Flags "U" -Services "SIP+D2U" -Regexp "" -Replacement "_sip._udp.example.com."
+	$record = $record | Add-AzDnsRecordConfig -Order 20 -Preference 30 -Flags "A" -Services "EAU+SIP" -Regexp "!^.*$!mailto:info@example.com!" -Replacement "."
+	$record = $record | Remove-AzDnsRecordConfig -Order 10 -Preference 20 -Flags "U" -Services "SIP+D2U" -Regexp "" -Replacement "_sip._udp.example.com."
+	$record = $record | Remove-AzDnsRecordConfig -Order 30 -Preference 30 -Flags "A" -Services "EAU+SIP" -Regexp "!^.*$!mailto:info@example.com!" -Replacement "."
 
 	$record | Set-AzDnsRecordSet
 	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NAPTR
@@ -561,7 +561,7 @@ function Test-RecordSetNAPTR
 	Assert-AreEqual 30 $getResult.Records[0].Preference
 	Assert-AreEqual "A" $getResult.Records[0].Flags
 	Assert-AreEqual "EAU+SIP" $getResult.Records[0].Services
-	Assert-AreEqual "!^(\\+441632960083)$!sip:\\1@example.com" $getResult.Records[0].Regexp
+	Assert-AreEqual "!^.*$!mailto:info@example.com!" $getResult.Records[0].Regexp
 	Assert-AreEqual "." $getResult.Records[0].Replacement
 
 	$listResult = Get-AzDnsRecordSet -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NAPTR
@@ -571,7 +571,7 @@ function Test-RecordSetNAPTR
 	Assert-AreEqual 30 $getResult.Records[0].Preference
 	Assert-AreEqual "A" $getResult.Records[0].Flags
 	Assert-AreEqual "EAU+SIP" $getResult.Records[0].Services
-	Assert-AreEqual "!^(\\+441632960083)$!sip:\\1@example.com" $getResult.Records[0].Regexp
+	Assert-AreEqual "!^.*$!mailto:info@example.com!" $getResult.Records[0].Regexp
 	Assert-AreEqual "." $getResult.Records[0].Replacement
 
 	$removed = $listResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
@@ -594,7 +594,7 @@ function Test-RecordSetNAPTRNonEmpty
 	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
 
 	$records = @();
-	$records += New-AzDnsRecordConfig -Order 10 -Preference 20 -Flags "U" -Services "SIP+D2U" -Regexp "" -Replacement "sip:customer-service.example.com"
+	$records += New-AzDnsRecordConfig -Order 10 -Preference 20 -Flags "U" -Services "SIP+D2U" -Regexp "" -Replacement "_sip._udp.example.com."
 	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType NAPTR -DnsRecords $records
 
 	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NAPTR
@@ -605,7 +605,7 @@ function Test-RecordSetNAPTRNonEmpty
 	Assert-AreEqual "U" $getResult.Records[0].Flags
 	Assert-AreEqual "SIP+D2U" $getResult.Records[0].Services
 	Assert-AreEqual "" $getResult.Records[0].Regexp
-	Assert-AreEqual "sip:customer-service.example.com" $getResult.Records[0].Replacement
+	Assert-AreEqual "_sip._udp.example.com." $getResult.Records[0].Replacement
 
 	$removed = $getResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
 
