@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added DefaultApiVersion to the returned properties of the `Get-AzResourceProvider` cmdlet's Resource Type array
 * Fixed customer-reported `Remove-AzPolicyAssignment` behavior.
 
 ## Version 7.5.0
