@@ -46,7 +46,9 @@ module-version: 0.1.0
 title: HealthDataAIServices
 subject-prefix: Deid
 service-name: HealthDataAIServices
- 
+
+use-extension:
+  "@autorest/powershell": "3.x"
 # The next three configurations are exclusive to v3, and in v4, they are activated by default. If you are still using v3, please uncomment them.
 # identity-correction-for-post: true
 # resourcegroup-append: true
