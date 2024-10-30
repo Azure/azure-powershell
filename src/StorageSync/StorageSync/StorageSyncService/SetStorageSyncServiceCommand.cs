@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         [Parameter(
            Mandatory = false,
            HelpMessage = HelpMessages.StorageSyncServiceUseIdentityParameter)]
-        public bool UseIdentity { get; set; }
+        public SwitchParameter UseIdentity { get; set; }
 
         /// <summary>
         /// Gets or sets the tag.
@@ -211,9 +211,9 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                 }
 
                 bool? useIdentity;
-                if (this.IsParameterBound(c => c.UseIdentity))
+                if (this.UseIdentity.IsPresent)
                 {
-                    useIdentity = this.UseIdentity;
+                    useIdentity = true;
                 }
                 else
                 {
@@ -246,6 +246,11 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                             { this.UserAssignedIdentityId, new UserAssignedIdentity() }
                         };
                     }
+                }
+                else
+                {
+                    // Set Default
+                    updateParameters.Identity = new ManagedServiceIdentity() { Type = StorageSyncModels.ManagedServiceIdentityType.SystemAssigned };
                 }
 
                 Target = string.Join("/", resourceGroupName, resourceName);
