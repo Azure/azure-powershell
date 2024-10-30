@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// list of unique usernames without domain specifier
         /// </param>
 
-        /// <param name="kdcIP">kdc server IP addresses for the active directory machine. This optional
+        /// <param name="kdcIP">kdc server IP address for the active directory machine. This optional
         /// parameter is used only while creating kerberos volume.
         /// </param>
 
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public System.Collections.Generic.IList<string> Administrators {get; set; }
 
         /// <summary>
-        /// Gets or sets kdc server IP addresses for the active directory machine. This
+        /// Gets or sets kdc server IP address for the active directory machine. This
         /// optional parameter is used only while creating kerberos volume.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "kdcIP")]
@@ -334,9 +334,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
 
             if (this.KdcIP != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(this.KdcIP, "^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)((, ?)(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(this.KdcIP, "^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "KdcIP", "^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)((, ?)(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "KdcIP", "^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
                 }
             }
             if (this.AdName != null)

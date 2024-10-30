@@ -87,5 +87,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("TestUpdate-ProtocolType");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExtenalReplicationFails()
+        {
+            TestRunner.RunTestScript("Test-ExtenalReplicationFails");
+        }
     }
 }

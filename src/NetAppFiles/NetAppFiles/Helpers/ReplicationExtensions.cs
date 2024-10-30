@@ -39,5 +39,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             return replications.Select(e => e.ConvertToPs()).ToList();
         }
+
+        public static PSSvmPeerCommandResponse ConvertToPs(this Management.NetApp.Models.SvmPeerCommandResponse svmPeerCommandResponse)
+        {
+            var psSvmPeerCommandResponse = new PSSvmPeerCommandResponse
+            {
+                SvmPeeringCommand = svmPeerCommandResponse.SvmPeeringCommand
+            };
+            return psSvmPeerCommandResponse;
+        }
+
     }
 }
