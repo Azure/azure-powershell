@@ -62,8 +62,8 @@ identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
 auto-switch-view: false
-# Disable transform IdentityType as GET+PUT can not replace patch
-# 1. Organizations_CreateOrUpdate can not update resources
+# Disable transform IdentityType as GET+PUT can not replace patch(https://github.com/Azure/autorest.powershell/blob/main/docs/migration-from-v3-to-v4.md#managed-identity-best-practice-alignment)
+# 1. ContainerApp_CreateOrUpdate and ContainerAppJob_CreateOrUpdate can not update resources
 # 2. the input schemas of PUT and PATCH are different
 disable-transform-identity-type: true
 
@@ -675,7 +675,6 @@ directive:
       subject: ContainerAppSourceControl
     remove: true
 
-##### announce upcoming MI-related breaking changes
   - where:
       verb: New|Update
       subject: ContainerApp
