@@ -1,14 +1,14 @@
 ---
 Module Name: Az.ArcGateway
-Module Guid: b891e08f-3eaa-4ac5-bb08-d7daf1eb69a6
-Download Help Link: https://learn.microsoft.com/powershell/module/az.arcgateway
-Help Version: 1.0.0.0
-Locale: en-US
+Module Guid: {{ Update Module Guid }}
+Download Help Link: {{ Update Download Link }}
+Help Version: {{ Update Help Version }}
+Locale: {{ Update Locale }}
 ---
 
 # Az.ArcGateway Module
 ## Description
-Microsoft Azure PowerShell: ArcGateway cmdlets
+{{ Fill in the Description }}
 
 ## Az.ArcGateway Cmdlets
 ### [Get-AzArcGateway](Get-AzArcGateway.md)
