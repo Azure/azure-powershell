@@ -100,14 +100,6 @@
 #### Az.RecoveryServices 7.2.0
 * Fixed bug for making RecoveryAzureStorageAccountId parameter optional in 'New-ASRReplicationProtectedItem' cmdlet of H2A.
 
-#### Az.RedisEnterpriseCache 1.3.0
-* Added support for using Microsoft Entra token-based authentication.
-* Added the new properties of Cluster: highAvailability and redundancyMode.
-* Added new product SKUs.
-* Added the new properties of Database: accessKeysAuthentication.
-* Added Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup to force link geo replicated caches.
-* Added Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion to upgrade the redis database version directly.
-
 #### Az.Resources 7.5.0
 * Added 'ResourceSelector' and 'Override' parameters to 'New/Update-AzPolicyAssignment'.
 * Added 'ResourceSelector' parameter to 'New/Update-AzPolicyExemption'.
