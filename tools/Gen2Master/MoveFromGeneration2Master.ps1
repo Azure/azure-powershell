@@ -73,6 +73,8 @@ Function Move-Generation2Master {
         else {
             Copy-Template -SourceName Module.psd1 -DestPath $DestPath\$ModuleName -DestName "Az.$ModuleName.psd1" -ModuleName $ModuleName
             $Psd1Metadata = Import-LocalizedData -BaseDirectory "$PSScriptRoot/Templates" -FileName "Module.psd1"
+            Write-Host $TemplateContent 
+
         }
         $moduleVersion = $Psd1Metadata.ModuleVersion
         foreach ($submoduleDir in $submoduleDirs) {
