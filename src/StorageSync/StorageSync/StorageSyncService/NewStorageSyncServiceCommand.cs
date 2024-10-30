@@ -206,6 +206,11 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                         };
                     }
                 }
+                else
+                {
+                    // Set Default
+                    createParameters.Identity = new ManagedServiceIdentity() { Type = StorageSyncModels.ManagedServiceIdentityType.SystemAssigned };
+                }
 
                 Target = string.Join("/", ResourceGroupName, Name);
                 if (ShouldProcess(Target, ActionMessage))
