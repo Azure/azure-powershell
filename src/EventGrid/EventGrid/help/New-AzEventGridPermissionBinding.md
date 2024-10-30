@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPermissionBinding
 
 ## SYNOPSIS
-Create a permission binding with the specified parameters.
+create a permission binding with the specified parameters.
 
 ## SYNTAX
 
@@ -17,28 +17,28 @@ Create a permission binding with the specified parameters.
 New-AzEventGridPermissionBinding -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ClientGroupName <String>] [-Description <String>] [-Permission <String>]
  [-TopicSpaceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzEventGridPermissionBinding -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzEventGridPermissionBinding -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
 ```
 New-AzEventGridPermissionBinding -Name <String> -NamespaceInputObject <IEventGridIdentity>
  [-ClientGroupName <String>] [-Description <String>] [-Permission <String>] [-TopicSpaceName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -46,11 +46,11 @@ New-AzEventGridPermissionBinding -Name <String> -NamespaceInputObject <IEventGri
 ```
 New-AzEventGridPermissionBinding -InputObject <IEventGridIdentity> [-ClientGroupName <String>]
  [-Description <String>] [-Permission <String>] [-TopicSpaceName <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a permission binding with the specified parameters.
+create a permission binding with the specified parameters.
 
 ## EXAMPLES
 
@@ -242,6 +242,21 @@ The allowed permission.
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

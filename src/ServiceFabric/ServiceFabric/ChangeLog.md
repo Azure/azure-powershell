@@ -21,6 +21,9 @@
 * Updated ServiceFabric.Management.Sdk to 2023-11-01-preview
 * Updated ServiceFabricManagedClusters.Sdk to 2024-04-01
 
+## Version 3.3.4
+* Fixed secrets exposure in example documentation.
+
 ## Version 3.3.3
 * Updated location of nodeType to use cluster location in stead of resource group location
 

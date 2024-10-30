@@ -23,7 +23,7 @@ Create a Image
 $imagefile1 = 'D:\GitHub\azure-powershell\src\Sphere\Sphere.Autorest\test\imagefile\AzureSphereBlink1.imagepackage'
 $encf1 = [system.io.file]::ReadAllBytes($imagefile1)
 $base64str = [system.convert]::ToBase64String($encf1)
-New-AzSphereImage -CatalogName test2024 -ResourceGroupName joyer-test -Name 14a6729e-5819-4737-8713-37b4798533f8 -Image $base64str
+New-AzSphereImage -CatalogName test2024 -ResourceGroupName group-test -Name 11111111-2222-3333-4444-123456789108 -Image $base64str
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IImage

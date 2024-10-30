@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-This operation creates or updates a policy definition in the given subscription with the given name.
+This operation create a policy definition in the given subscription with the given name.
 .Description
-This operation creates or updates a policy definition in the given subscription with the given name.
+This operation create a policy definition in the given subscription with the given name.
 .Example
 {{ Add code here }}
 .Example
@@ -75,7 +75,8 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IAny]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinitionVersionPropertiesPolicyRule]))]
+    [System.Collections.Hashtable]
     # The policy rule.
     ${PolicyRule},
 

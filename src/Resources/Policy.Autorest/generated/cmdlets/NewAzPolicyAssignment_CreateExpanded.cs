@@ -11,9 +11,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     using System;
 
     /// <summary>
-    /// This operation creates or updates a policy assignment with the given scope and name. Policy assignments apply to all resources
-    /// contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all
-    /// resources in the group.
+    /// This operation create a policy assignment with the given scope and name. Policy assignments apply to all resources contained
+    /// within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources
+    /// in the group.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}"
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzPolicyAssignment_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@" This operation creates or updates a policy assignment with the given scope and name. Policy assignments apply to all resources contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@" This operation create a policy assignment with the given scope and name. Policy assignments apply to all resources contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}", ApiVersion = "2023-04-01")]
     public partial class NewAzPolicyAssignment_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -77,6 +77,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>The version of the policy definition to use.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of the policy definition to use.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Policy.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The version of the policy definition to use.",
+        SerializedName = @"definitionVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        public string DefinitionVersion { get => _parametersBody.DefinitionVersion ?? null; set => _parametersBody.DefinitionVersion = value; }
 
         /// <summary>This message will be part of response in case of policy violation.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "This message will be part of response in case of policy violation.")]
@@ -222,7 +233,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         Description = @"The policy property value override.",
         SerializedName = @"overrides",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExport]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[] Override { get => _parametersBody.Override?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.Override = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride>(value) : null); }
 
         /// <summary>
@@ -283,7 +293,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         Description = @"The resource selector list to filter policies by resource properties.",
         SerializedName = @"resourceSelectors",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExport]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[] ResourceSelector { get => _parametersBody.ResourceSelector?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ResourceSelector = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector>(value) : null); }
 
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
@@ -566,14 +575,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                 if (true == this.MyInvocation?.BoundParameters?.ContainsKey("NonComplianceMessageTable"))
                 {
                     NonComplianceMessageTable = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.INonComplianceMessage[])this.MyInvocation.BoundParameters["NonComplianceMessageTable"];
-                }
-                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("ResourceSelector"))
-                {
-                    ResourceSelector = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[])this.MyInvocation.BoundParameters["ResourceSelector"];
-                }
-                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("Override"))
-                {
-                    Override = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[])this.MyInvocation.BoundParameters["Override"];
                 }
                 try
                 {

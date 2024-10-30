@@ -17,20 +17,22 @@ Updates a subnet configuration for a virtual network.
 ```
 Set-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String[]>
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>]
- [-ServiceEndpoint <String[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
+ [-ServiceEndpoint <String[]>] [-NetworkIdentifier <PSResourceId>]
+ [-ServiceEndpointConfig <PSServiceEndpoint[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
  [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
  [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultOutboundAccess <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Set-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String[]>
  [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [-ResourceId <String>]
- [-ServiceEndpoint <String[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
+ [-ServiceEndpoint <String[]>] [-NetworkIdentifier <PSResourceId>]
+ [-ServiceEndpointConfig <PSServiceEndpoint[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
  [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
  [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultOutboundAccess <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +40,7 @@ The **Set-AzVirtualNetworkSubnetConfig** cmdlet updates a subnet configuration f
 
 ## EXAMPLES
 
-### 1: Modify the address prefix of a subnet
+### Example 1: Modify the address prefix of a subnet
 ```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 
@@ -56,7 +58,7 @@ This example creates a virtual network with one subnet. Then is calls
     only impacts the in-memory representation of the virtual network. 
     Set-AzVirtualNetwork is then called to modify the virtual network in Azure.
 
-### 2: Add a network security group to a subnet
+### Example 2: Add a network security group to a subnet
 ```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 
@@ -80,7 +82,7 @@ This example creates a resource group with one virtual network containing just o
     security group. The Set-AzVirtualNetwork cmdlet is then called to write the modified 
     state back to the service.
 
-### 3: Attach a Nat Gateway to a subnet
+### Example 3: Attach a Nat Gateway to a subnet
 ```powershell
 $pip = New-AzPublicIpAddress -Name "pip" -ResourceGroupName "natgateway_test" `
    -Location "eastus2" -Sku "Standard" -IdleTimeoutInMinutes 4 -AllocationMethod "static"
@@ -111,6 +113,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultOutboundAccess
+Default outbound connectivity for all VMs in the subnet
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -186,6 +203,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkIdentifier
+NetworkIdentifier Value for ServiceEndpoint
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -299,6 +331,21 @@ Service Endpoint Value
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceEndpointConfig
+Service Endpoint with NetworkIdentifier Value
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSServiceEndpoint[]
 Parameter Sets: (All)
 Aliases:
 

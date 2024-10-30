@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-This operation creates or updates a policy set definition in the given subscription with the given name.
+This operation create a policy set definition in the given subscription with the given name.
 .Description
-This operation creates or updates a policy set definition in the given subscription with the given name.
+This operation create a policy set definition in the given subscription with the given name.
 .Example
 [
    {
@@ -88,6 +88,7 @@ POLICYDEFINITIONGROUPTABLE <IPolicyDefinitionGroup[]>: The metadata describing g
 
 POLICYDEFINITIONTABLE <IPolicyDefinitionReference[]>: An array of policy definition references.
   PolicyDefinitionId <String>: The ID of the policy definition or policy set definition.
+  [DefinitionVersion <String>]: The version of the policy definition to use.
   [GroupName <List<String>>]: The name of the groups that this policy definition reference belongs to.
   [Id <String>]: A unique id (within the policy set definition) for this policy definition reference.
   [Parameter <IParameterValues>]: The parameter values for the referenced policy rule. The keys are the parameter names.

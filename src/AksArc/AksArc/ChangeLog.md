@@ -18,7 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bug where Remove-AzAksArcCluster would take a very long time to complete.
+* Fixed issue where Update-AzAksArcCluster would error out when passing AdminGroupObjectID parameter.
+
+## Version 0.1.1
+* Fixed bug where `Invoke-AzAksArcClusterUpgrade` would throw false exception when kubernetes version is passed as a parameter. 
+* Fixed bug where default nodepool labels and taints parameters would not work for `New-AzAksArcCluster` command. 
 
 ## Version 0.1.0
+* Added cmdlets for virtual networks
+* Improved Error Checking
+* Renamed Parameters to make more consistent with Azure CLI
+* Added new cmdlet for upgrading clusters
 * First preview release for module Az.AksArc
 

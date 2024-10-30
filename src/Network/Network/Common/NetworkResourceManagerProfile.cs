@@ -2030,6 +2030,14 @@ namespace Microsoft.Azure.Commands.Network
                     dst.AutoLearnPrivateRanges = string.IsNullOrEmpty(src.AutoLearnPrivateRanges) ? "Disabled" : src.AutoLearnPrivateRanges;
                 });
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleCollectionGroup>();
+                cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroupDraft, MNM.FirewallPolicyRuleCollectionGroupDraft>();
+                cfg.CreateMap<CNM.PSAzureFirewallPolicyDraft, MNM.FirewallPolicyDraft>().ForCtorParam("dnsSettings", opt =>
+                {
+                    opt.MapFrom(src => src.DnsSettings == null ? null : new MNM.DnsSettings(src.DnsSettings.Servers, src.DnsSettings.EnableProxy, null));
+                }).AfterMap((src, dst) =>
+                {
+                    dst.Sql = src.SqlSetting == null ? null : new MNM.FirewallPolicySQL(src.SqlSetting.AllowSqlRedirect);
+                });
                 cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>().ForCtorParam("dnsSettings", opt =>
                 {
                     opt.MapFrom(src => src.DnsSettings == null ? null : new MNM.DnsSettings(src.DnsSettings.Servers, src.DnsSettings.EnableProxy, null));
@@ -2045,7 +2053,12 @@ namespace Microsoft.Azure.Commands.Network
                     dst.AutoLearnPrivateRanges = string.IsNullOrEmpty(src.AutoLearnPrivateRanges) ? "Disabled" : src.AutoLearnPrivateRanges;
                 });
                 cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
+                cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroupDraft, CNM.PSAzureFirewallPolicyRuleCollectionGroupDraft>();
                 cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>().AfterMap((src, dst) =>
+                {
+                    dst.SqlSetting = src.Sql == null ? null : new CNM.PSAzureFirewallPolicySqlSetting { AllowSqlRedirect = src.Sql.AllowSqlRedirect };
+                });
+                cfg.CreateMap<MNM.FirewallPolicyDraft, CNM.PSAzureFirewallPolicyDraft>().AfterMap((src, dst) =>
                 {
                     dst.SqlSetting = src.Sql == null ? null : new CNM.PSAzureFirewallPolicySqlSetting { AllowSqlRedirect = src.Sql.AllowSqlRedirect };
                 });
@@ -2292,6 +2305,16 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityAdminRuleCollection, MNM.AdminRuleCollection>();
                 cfg.CreateMap<ANM.PSNetworkManagerScopeConnection, MNM.ScopeConnection>();
                 cfg.CreateMap<ANM.PSNetworkManagerConnection, MNM.NetworkManagerConnection>();
+                cfg.CreateMap<ANM.PSNetworkManagerRoutingRule, MNM.RoutingRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerRoutingRuleCollection, MNM.RoutingRuleCollection>();
+                cfg.CreateMap<ANM.PSNetworkManagerRoutingConfiguration, MNM.NetworkManagerRoutingConfiguration>();
+                cfg.CreateMap<ANM.PSNetworkManagerRoutingGroupItem, MNM.NetworkManagerRoutingGroupItem>();
+                cfg.CreateMap<ANM.PSNetworkManagerRoutingRuleDestination, MNM.RoutingRuleRouteDestination>();
+                cfg.CreateMap<ANM.PSNetworkManagerRoutingRuleNextHop, MNM.RoutingRuleNextHop>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityUserRule, MNM.SecurityUserRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityUserRuleCollection, MNM.SecurityUserRuleCollection>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityUserConfiguration, MNM.SecurityUserConfiguration>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityUserGroupItem, MNM.SecurityUserGroupItem>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkManager, ANM.PSNetworkManager>();
@@ -2331,6 +2354,16 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.AdminRuleCollection, ANM.PSNetworkManagerSecurityAdminRuleCollection>();
                 cfg.CreateMap<MNM.ScopeConnection, ANM.PSNetworkManagerScopeConnection>();
                 cfg.CreateMap<MNM.NetworkManagerConnection, ANM.PSNetworkManagerConnection>();
+                cfg.CreateMap<MNM.RoutingRule, ANM.PSNetworkManagerRoutingRule>();
+                cfg.CreateMap<MNM.RoutingRuleCollection, ANM.PSNetworkManagerRoutingRuleCollection>();
+                cfg.CreateMap<MNM.NetworkManagerRoutingConfiguration, ANM.PSNetworkManagerRoutingConfiguration>();
+                cfg.CreateMap<MNM.RoutingRuleRouteDestination, ANM.PSNetworkManagerRoutingRuleDestination>();
+                cfg.CreateMap<MNM.RoutingRuleNextHop, ANM.PSNetworkManagerRoutingRuleNextHop>();
+                cfg.CreateMap<MNM.NetworkManagerRoutingGroupItem, ANM.PSNetworkManagerRoutingGroupItem>();
+                cfg.CreateMap<MNM.SecurityUserRule, ANM.PSNetworkManagerSecurityUserRule>();
+                cfg.CreateMap<MNM.SecurityUserRuleCollection, ANM.PSNetworkManagerSecurityUserRuleCollection>();
+                cfg.CreateMap<MNM.SecurityUserConfiguration, ANM.PSNetworkManagerSecurityUserConfiguration>();
+                cfg.CreateMap<MNM.SecurityUserGroupItem, ANM.PSNetworkManagerSecurityUserGroupItem>();
 
             });
             _mapper = config.CreateMapper();

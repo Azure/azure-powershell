@@ -19,6 +19,46 @@
 -->
 
 ## Upcoming Release
+* Fixed customer-reported `Remove-AzPolicyAssignment` behavior.
+
+## Version 7.5.0
+* Added `ResourceSelector` and `Override` parameters to `New/Update-AzPolicyAssignment`.
+* Added `ResourceSelector` parameter to `New/Update-AzPolicyExemption`.
+* Removed `Experimental` notice from `-WithSource` parameter to `Publish-AzBicepModule`.
+
+## Version 7.4.0
+* Fixed secrets exposure in example documentation.
+* `Remove-AzResourceGroup` - support parameter "[-ForceDeletionType]".
+* Removed specific characters from the codebase to unblock digital signature verification.
+
+## Version 7.3.0
+* Added null check and empty list check to the permissions object in the ToPSRoleDefinition method.
+* Added argument completer for `EnforcementMode`, `IdentityType`
+    * `New-AzPolicyAssignment`
+    * `New-AzPolicyExemption`
+    * `Update-AzPolicyAssignment`
+    * `Update-AzPolicyExemption`
+* Fixed bug deserializing property: `policyDefinitionReferenceId` [#25112] 
+* Fixed overriding of Bicep parameters in Deployment cmdlets to support `SecureString` parameters.
+* Added Test cmdlets for Deployment Stacks.
+
+## Version 7.2.0
+* Fixed `Set-AzPolicyAssignment` loses description and Display Name [#25362]
+* Fixed `New-AzPolicyAssignment` string ID value handling for parameter '-PolicyDefinition'
+* Fixed policy import issue with OP (requires serialization of null values)
+* Fixed '-Scope' parameter handling at resource instance level
+* Fixed error `Get-AzPolicySetDefinition`cannot find matched parameter '-Name' [#25334]
+* Fixed serialization issue with empty arrays in PolicyParameterObject
+* Addressed a rare case where a service principal does not have AppId
+* Introduced validation of MG scoped deployment stack during New/Set cmdlet execution.
+* Updated Remove/New stack cmdlets with warnings for management groups ActionOnUnmanage and removed DeleteResourcesAndResourceGroups as valid ActionOnUnmanage value.
+* Supported get and assign versioned policy definitions and sets
+* Fixed syntax incompatible with windows powershell [#24971]
+* Fixed bug with `Get-AzPolicyExemption` requesting 'ParentResourcePath'
+* Supported `ServiceManagementReference` of Entra App
+    * `Get-AzADApplication`
+    * `New-AzADApplication`
+    * `Update-AzADApplication`
 * Fixed deployment stack validation error surfacing.
 * Fixed default formatting for output objects
 * Removed '-InputObject' for

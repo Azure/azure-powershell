@@ -25,13 +25,22 @@ Get-AzNewRelicMonitorTagRule -MonitorName test-03 -ResourceGroupName ps-test
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.ITagRule
+Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <INewRelicIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
+  [Id <String>]: Resource identity path
+  [MonitorName <String>]: Name of the Monitors resource
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuleSetName <String>]: Name of the TagRule
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+MONITORINPUTOBJECT <INewRelicIdentity>: Identity Parameter
+  [ConfigurationName <String>]: The configuration name. Only 'default' value is supported.
   [Id <String>]: Resource identity path
   [MonitorName <String>]: Name of the Monitors resource
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
@@ -41,7 +50,7 @@ INPUTOBJECT <INewRelicIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitortagrule
 #>
 function Get-AzNewRelicMonitorTagRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.Api20220701.ITagRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.ITagRule])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -60,6 +69,7 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityMonitor', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
     [System.String]
     # Name of the TagRule
@@ -77,8 +87,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='GetViaIdentityMonitor', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Models.INewRelicIdentity]
+    # Identity Parameter
+    ${MonitorInputObject},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -157,9 +172,10 @@ begin {
         $mapping = @{
             Get = 'Az.NewRelic.private\Get-AzNewRelicMonitorTagRule_Get';
             GetViaIdentity = 'Az.NewRelic.private\Get-AzNewRelicMonitorTagRule_GetViaIdentity';
+            GetViaIdentityMonitor = 'Az.NewRelic.private\Get-AzNewRelicMonitorTagRule_GetViaIdentityMonitor';
             List = 'Az.NewRelic.private\Get-AzNewRelicMonitorTagRule_List';
         }
-        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

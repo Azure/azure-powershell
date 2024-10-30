@@ -163,10 +163,8 @@ namespace Microsoft.Azure.Commands.Network
         /// <returns></returns>
         private static bool isIpAddressCorrectlyMaskByNetworkPrefixLength(uint ipAddress, int networkPrefixLength)
         {
-            const uint fullMask = UInt32.MaxValue;
             if (!isValidHostIdentifier(networkPrefixLength)) return false;
-            if (networkPrefixLength == 32 && ipAddress != fullMask) return false;
-            if (networkPrefixLength == 32 && ipAddress == fullMask) return true;
+            if (networkPrefixLength == 32) return true; // Accept /32 in all cases
 
             return (ipAddress << networkPrefixLength) == 0;
         }

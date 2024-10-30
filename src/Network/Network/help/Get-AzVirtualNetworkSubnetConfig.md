@@ -30,7 +30,7 @@ The **Get-AzVirtualNetworkSubnetConfig** cmdlet gets one or more subnet configur
 
 ## EXAMPLES
 
-### 1: Get a subnet in a virtual network
+### Example 1: Get a subnet in a virtual network
 ```powershell
 New-AzResourceGroup -Name TestResourceGroup -Location centralus
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"

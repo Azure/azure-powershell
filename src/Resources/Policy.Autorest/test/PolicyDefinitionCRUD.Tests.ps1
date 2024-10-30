@@ -28,7 +28,26 @@ Describe 'PolicyDefinitionCRUD' -Tag 'LiveOnly' {
         $expected.DisplayName | Should -Be $actual.DisplayName
         $expected.Description | Should -Be $actual.Description
         $actual.Metadata | Should -Not -BeNullOrEmpty
-        $actual.Metadata.$metadataName| Should -Be $metadataValue
+        $actual.Metadata.$metadataName | Should -Be $metadataValue
+    }
+
+    It 'Validate parameter round-trip' {
+        # get the definition, do an update with no changes, validate nothing is changed in response or backend
+        $expected = Get-AzPolicyDefinition -Name $policyName
+        $response = Update-AzPolicyDefinition -Name $policyName
+        $response.DisplayName | Should -Be $expected.DisplayName
+        $response.Description | Should -Be $expected.Description
+        $response.Metadata.$metadataName | Should -Be $expected.Metadata.$metadataName
+        $response.PolicyDefinition | Should -BeLike $expected.PolicyDefinition
+        $response.Parameter | Should -BeLike $expected.Parameter
+        $response.Mode | Should -BeLike $expected.Mode
+        $actual = Get-AzPolicyDefinition -Name $policyName
+        $actual.DisplayName | Should -Be $expected.DisplayName
+        $actual.Description | Should -Be $expected.Description
+        $actual.Metadata.$metadataName | Should -Be $expected.Metadata.$metadataName
+        $actual.PolicyDefinition | Should -BeLike $expected.PolicyDefinition
+        $actual.Parameter | Should -BeLike $expected.Parameter
+        $actual.Mode | Should -BeLike $expected.Mode
     }
 
     It 'Make policy definition from command line rule' {

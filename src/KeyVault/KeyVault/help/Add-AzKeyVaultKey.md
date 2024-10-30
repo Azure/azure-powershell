@@ -278,7 +278,7 @@ For more information, see
 
 ### Example 6: Import a software-protected key
 ```powershell
-$Password = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
+$Password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITPfx' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password
 ```
 
@@ -304,7 +304,7 @@ location for the key and the password stored in $Password.
 
 ### Example 7: Import a key and assign attributes
 ```powershell
-$Password = ConvertTo-SecureString -String 'password' -AsPlainText -Force
+$Password = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 $Tags = @{ 'Severity' = 'high'; 'Accounting' = "true" }
 Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITPfxToHSM' -Destination 'HSM' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password -Expires $Expires -Tag $Tags
@@ -395,7 +395,7 @@ Create a secure key in managed hsm named testmhsm. Its name is test-key and type
 ### Example 10: Add a key for a Confidential VM to a key vault.
 ```powershell
 New-AzKeyVault -Name $keyVaultName -Location $location -ResourceGroupName $resourceGroupName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
-$cvmAgent = Get-AzADServicePrincipal -ApplicationId 'bf7b6499-ff71-4aa2-97a4-f372087be7f0';
+$cvmAgent = Get-AzADServicePrincipal -ApplicationId '00001111-aaaa-2222-bbbb-3333cccc4444';
 Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -ObjectId $cvmAgent.id -PermissionsToKeys get,release;
 
 $keySize = 3072;

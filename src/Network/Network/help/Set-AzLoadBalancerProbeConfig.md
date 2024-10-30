@@ -16,7 +16,8 @@ Updates a probe configuration for a load balancer.
 ```
 Set-AzLoadBalancerProbeConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Protocol <String>] -Port <Int32>
  -IntervalInSeconds <Int32> -ProbeCount <Int32> [-ProbeThreshold <Int32>] [-RequestPath <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoHealthyBackendsBehavior <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +29,7 @@ The **Set-AzLoadBalancerProbeConfig** cmdlet updates a probe configuration for a
 ```powershell
 $slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
 $slb | Add-AzLoadBalancerProbeConfig -Name "NewProbe" -Protocol "http" -Port 80 -IntervalInSeconds 15 -ProbeCount 2 -ProbeThreshold 2 -RequestPath "healthcheck.aspx" 
-$slb | Set-AzLoadBalancerProbeConfig -Name "NewProbe" -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+$slb | Set-AzLoadBalancerProbeConfig -Name "NewProbe" -Port 80 -IntervalInSeconds 15 -ProbeCount 2 -NoHealthyBackendsBehavior "AllProbedUp"
 ```
 
 The first command gets the loadbalancer named MyLoadBalancer, and then stores it in the $slb variable.
@@ -107,6 +108,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoHealthyBackendsBehavior
+Determines how new connections are handled by the load balancer when all backend instances are probed down.
+The acceptable values for this parameter are: AllProbedDown or AllProbedUp.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: AllProbedDown
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

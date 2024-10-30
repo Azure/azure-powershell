@@ -84,8 +84,8 @@ New-AzFleet -Name testfleet02 -ResourceGroupName joyer-test -Location eastus -Ta
 ```output
 ETag                         : "0a006dc9-0000-0100-0000-661cd4f70000"
 Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.ContainerService/fleets/testfleet02
-IdentityPrincipalId          : 978528a9-fa0f-4cdb-8282-95b3b30bb883
-IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
+IdentityPrincipalId          : 00001111-aaaa-2222-bbbb-3333cccc4444
+IdentityTenantId             : 00001111-aaaa-2222-bbbb-3333cccc4444
 IdentityType                 : SystemAssigned
 IdentityUserAssignedIdentity : {
                                }

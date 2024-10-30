@@ -18,16 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
 
         /// <summary>The error message for version not being ready</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Owned)]
-        public string ErrorMessage { get => this._errorMessage; }
-
-        /// <summary>Internal Acessors for ErrorMessage</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IKubernetesVersionReadinessInternal.ErrorMessage { get => this._errorMessage; set { {_errorMessage = value;} } }
-
-        /// <summary>Internal Acessors for OSType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IKubernetesVersionReadinessInternal.OSType { get => this._oSType; set { {_oSType = value;} } }
-
-        /// <summary>Internal Acessors for Ready</summary>
-        bool? Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IKubernetesVersionReadinessInternal.Ready { get => this._ready; set { {_ready = value;} } }
+        public string ErrorMessage { get => this._errorMessage; set => this._errorMessage = value; }
 
         /// <summary>Backing field for <see cref="OSSku" /> property.</summary>
         private string _oSSku;
@@ -44,14 +35,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
 
         /// <summary>The particular KubernetesVersion Image OS Type (Linux, Windows)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Owned)]
-        public string OSType { get => this._oSType; }
+        public string OSType { get => this._oSType; set => this._oSType = value; }
 
         /// <summary>Backing field for <see cref="Ready" /> property.</summary>
         private bool? _ready;
 
         /// <summary>Whether the kubernetes version image is ready or not</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Origin(Microsoft.Azure.PowerShell.Cmdlets.AksArc.PropertyOrigin.Owned)]
-        public bool? Ready { get => this._ready; }
+        public bool? Ready { get => this._ready; set => this._ready = value; }
 
         /// <summary>Creates an new <see cref="KubernetesVersionReadiness" /> instance.</summary>
         public KubernetesVersionReadiness()
@@ -66,14 +57,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         /// <summary>The error message for version not being ready</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The error message for version not being ready",
         SerializedName = @"errorMessage",
         PossibleTypes = new [] { typeof(string) })]
-        string ErrorMessage { get;  }
+        string ErrorMessage { get; set; }
         /// <summary>
         /// Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019
         /// when OSType is Windows.
@@ -92,26 +83,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models
         /// <summary>The particular KubernetesVersion Image OS Type (Linux, Windows)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"The particular KubernetesVersion Image OS Type (Linux, Windows)",
         SerializedName = @"osType",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("Windows", "Linux")]
-        string OSType { get;  }
+        string OSType { get; set; }
         /// <summary>Whether the kubernetes version image is ready or not</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
+        Create = true,
+        Update = true,
         Description = @"Whether the kubernetes version image is ready or not",
         SerializedName = @"ready",
         PossibleTypes = new [] { typeof(bool) })]
-        bool? Ready { get;  }
+        bool? Ready { get; set; }
 
     }
     /// Indicates whether the kubernetes version image is ready or not

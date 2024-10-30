@@ -23,9 +23,9 @@ payload-flattening-threshold: 2
 
 ###
 ``` yaml
-commit: fa64058384cb457552f54428f32667d384b794d4
+commit: ab064e0047ec560a700d6b501097d99471ad817b
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/redis/resource-manager/Microsoft.Cache/stable/2023-08-01/redis.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/redis/resource-manager/Microsoft.Cache/stable/2024-03-01/redis.json
 
 output-folder: Generated
 

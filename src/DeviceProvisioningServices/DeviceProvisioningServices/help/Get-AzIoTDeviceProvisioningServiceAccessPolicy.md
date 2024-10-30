@@ -15,19 +15,21 @@ List all or show details of shared access policies in an Azure IoT Hub device pr
 ### ResourceSet (Default)
 ```
 Get-AzIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String> [-Name] <String>
- [-KeyName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-KeyName <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
 Get-AzIoTDeviceProvisioningServiceAccessPolicy [-DpsObject] <PSProvisioningServiceDescription>
- [-KeyName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-KeyName <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
 Get-AzIoTDeviceProvisioningServiceAccessPolicy [-ResourceId] <String> [-KeyName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,8 +60,8 @@ Get-AzIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegro
 ResourceGroupName	: myresourcegroup
 Name				: myiotdps
 KeyName				: mypolicy
-PrimaryKey			: hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
-SecondaryKey		: vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
+PrimaryKey			: hy******vg=
+SecondaryKey		: vb******pY=
 Rights				: ServiceConfig, DeviceConnect, EnrollmentWrite
 ```
 
@@ -127,6 +129,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of the Resource Group
 
@@ -158,7 +175,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

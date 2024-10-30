@@ -160,7 +160,8 @@ process {
     # Id can be a parameter or from the input object
     if ($Id) {
         $thisId = $Id
-    } else {
+    }
+    elseif (!$Scope) {
         $thisId = $_.Id
     }
 
@@ -198,7 +199,7 @@ process {
     if ($resolved.Scope -and $PSCmdlet.ShouldProcess($target)) {
         if ($Name) {
             $PSBoundParameters['Name'] = $Name
-            $PSBoundParameters['Scope'] = $resolved.FullScope
+            $PSBoundParameters['Scope'] = $resolved.Scope
             $calledParameterSet = 'Delete'
         }
         elseif ($Id) {

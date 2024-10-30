@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.1
+* Fixed secrets exposure in example documentation.
+
 ## Version 0.1.0
 * First preview release for module Az.AppComplianceAutomation
 

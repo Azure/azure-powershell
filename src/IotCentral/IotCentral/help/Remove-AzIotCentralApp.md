@@ -21,13 +21,15 @@ Remove-AzIotCentralApp [-PassThru] -ResourceId <String> [-AsJob] [-DefaultProfil
 ### InputObjectParameterSet
 ```
 Remove-AzIotCentralApp [-PassThru] -InputObject <PSIotCentralApp> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InteractiveIotCentralParameterSet
 ```
 Remove-AzIotCentralApp [-PassThru] [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task AvailableClusterPoolVersionsListByLocation(string subscriptionId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolVersionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task AvailableClusterPoolVersionsListByLocationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolVersionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolVersionsListResult> AvailableClusterPoolVersionsListByLocationViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolVersionsListResult> AvailableClusterPoolVersionsListByLocationWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task AvailableClusterVersionsListByLocation(string subscriptionId, string location, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterVersionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task AvailableClusterVersionsListByLocationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterVersionsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterVersionsListResult> AvailableClusterVersionsListByLocationViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterVersionsListResult> AvailableClusterVersionsListByLocationWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterAvailableUpgradesList(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -703,7 +703,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterAvailableUpgradesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -758,7 +758,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeList> ClusterAvailableUpgradesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -816,7 +816,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterAvailableUpgradeList> ClusterAvailableUpgradesListWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1003,7 +1003,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterJobsList(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJobList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1051,7 +1051,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterJobsListViaIdentity(global::System.String viaIdentity, string Filter, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJobList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1110,7 +1110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJobList> ClusterJobsListViaIdentityWithResult(global::System.String viaIdentity, string Filter, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1172,7 +1172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJobList> ClusterJobsListWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, string Filter, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1362,7 +1362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterJobsRunJob(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1412,7 +1412,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterJobsRunJobViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1473,7 +1473,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob> ClusterJobsRunJobViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1538,7 +1538,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterJobsRunJobViaJsonString(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1588,7 +1588,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob> ClusterJobsRunJobViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1639,7 +1639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob> ClusterJobsRunJobWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1701,6 +1701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1713,7 +1714,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1852,6 +1856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1864,7 +1869,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1992,6 +2000,695 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
+        /// <summary>Get all libraries of HDInsight on AKS cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="Category">The system query option to filter libraries returned in the response. Allowed value is 'custom'
+        /// or 'predefined'.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClusterLibrariesList(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, string Category, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + global::System.Uri.EscapeDataString(clusterPoolName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/libraries"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + "$category=" + global::System.Uri.EscapeDataString(Category)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClusterLibrariesList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get all libraries of HDInsight on AKS cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Category">The system query option to filter libraries returned in the response. Allowed value is 'custom'
+        /// or 'predefined'.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClusterLibrariesListViaIdentity(global::System.String viaIdentity, string Category, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.HDInsight/clusterpools/(?<clusterPoolName>[^/]+)/clusters/(?<clusterName>[^/]+)/libraries$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}/libraries'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterPoolName = _match.Groups["clusterPoolName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + clusterPoolName
+                        + "/clusters/"
+                        + clusterName
+                        + "/libraries"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + "$category=" + global::System.Uri.EscapeDataString(Category)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClusterLibrariesList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Get all libraries of HDInsight on AKS cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="Category">The system query option to filter libraries returned in the response. Allowed value is 'custom'
+        /// or 'predefined'.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryList> ClusterLibrariesListViaIdentityWithResult(global::System.String viaIdentity, string Category, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.HDInsight/clusterpools/(?<clusterPoolName>[^/]+)/clusters/(?<clusterName>[^/]+)/libraries$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}/libraries'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterPoolName = _match.Groups["clusterPoolName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + clusterPoolName
+                        + "/clusters/"
+                        + clusterName
+                        + "/libraries"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + "$category=" + global::System.Uri.EscapeDataString(Category)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClusterLibrariesListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Get all libraries of HDInsight on AKS cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="Category">The system query option to filter libraries returned in the response. Allowed value is 'custom'
+        /// or 'predefined'.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryList> ClusterLibrariesListWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, string Category, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + global::System.Uri.EscapeDataString(clusterPoolName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/libraries"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        + "&"
+                        + "$category=" + global::System.Uri.EscapeDataString(Category)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClusterLibrariesListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClusterLibrariesListWithResult" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryList>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryList> ClusterLibrariesListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLibraryList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClusterLibrariesList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClusterLibrariesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLibraryList.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClusterLibrariesList" /> method. Call this like the actual call, but you will get validation
+        /// events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="Category">The system query option to filter libraries returned in the response. Allowed value is 'custom'
+        /// or 'predefined'.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClusterLibrariesList_Validate(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, string Category, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterPoolName),clusterPoolName);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertNotNull(nameof(Category),Category);
+            }
+        }
+
+        /// <summary>Library management operations on HDInsight on AKS cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="body">The library management operation.</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClusterLibrariesManageLibraries(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryManagementOperation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + global::System.Uri.EscapeDataString(clusterPoolName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/manageLibraries"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClusterLibrariesManageLibraries_Call (request, onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Library management operations on HDInsight on AKS cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">The library management operation.</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClusterLibrariesManageLibrariesViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryManagementOperation body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.HDInsight/clusterpools/(?<clusterPoolName>[^/]+)/clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterPoolName = _match.Groups["clusterPoolName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + clusterPoolName
+                        + "/clusters/"
+                        + clusterName
+                        + "/manageLibraries"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClusterLibrariesManageLibraries_Call (request, onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Library management operations on HDInsight on AKS cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="jsonString">Json string supplied to the ClusterLibrariesManageLibraries operation</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClusterLibrariesManageLibrariesViaJsonString(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + global::System.Uri.EscapeDataString(clusterPoolName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/manageLibraries"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClusterLibrariesManageLibraries_Call (request, onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClusterLibrariesManageLibraries" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClusterLibrariesManageLibraries_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClusterLibrariesManageLibraries" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="body">The library management operation.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClusterLibrariesManageLibraries_Validate(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterLibraryManagementOperation body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterPoolName),clusterPoolName);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>List a cluster pool available upgrade.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -2006,7 +2703,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolAvailableUpgradesList(string subscriptionId, string resourceGroupName, string clusterPoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolAvailableUpgradeList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2048,7 +2745,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolAvailableUpgradesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolAvailableUpgradeList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2100,7 +2797,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolAvailableUpgradeList> ClusterPoolAvailableUpgradesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2154,7 +2851,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolAvailableUpgradeList> ClusterPoolAvailableUpgradesListWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2320,6 +3017,334 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
+        /// <summary>Returns a list of upgrade history.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClusterPoolUpgradeHistoriesList(string subscriptionId, string resourceGroupName, string clusterPoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgradeHistoryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + global::System.Uri.EscapeDataString(clusterPoolName)
+                        + "/upgradeHistories"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClusterPoolUpgradeHistoriesList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns a list of upgrade history.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClusterPoolUpgradeHistoriesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgradeHistoryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.HDInsight/clusterpools/(?<clusterPoolName>[^/]+)/upgradeHistories$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/upgradeHistories'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterPoolName = _match.Groups["clusterPoolName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + clusterPoolName
+                        + "/upgradeHistories"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClusterPoolUpgradeHistoriesList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns a list of upgrade history.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgradeHistoryListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgradeHistoryListResult> ClusterPoolUpgradeHistoriesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.HDInsight/clusterpools/(?<clusterPoolName>[^/]+)/upgradeHistories$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/upgradeHistories'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterPoolName = _match.Groups["clusterPoolName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + clusterPoolName
+                        + "/upgradeHistories"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClusterPoolUpgradeHistoriesListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns a list of upgrade history.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgradeHistoryListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgradeHistoryListResult> ClusterPoolUpgradeHistoriesListWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + global::System.Uri.EscapeDataString(clusterPoolName)
+                        + "/upgradeHistories"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClusterPoolUpgradeHistoriesListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ClusterPoolUpgradeHistoriesListWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgradeHistoryListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgradeHistoryListResult> ClusterPoolUpgradeHistoriesListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolUpgradeHistoryListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClusterPoolUpgradeHistoriesList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClusterPoolUpgradeHistoriesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgradeHistoryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolUpgradeHistoryListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClusterPoolUpgradeHistoriesList" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClusterPoolUpgradeHistoriesList_Validate(string subscriptionId, string resourceGroupName, string clusterPoolName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterPoolName),clusterPoolName);
+            }
+        }
+
         /// <summary>Update a cluster pool.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -2336,7 +3361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsCreateOrUpdate(string subscriptionId, string resourceGroupName, string clusterPoolName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2383,7 +3408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2440,7 +3465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool> ClusterPoolsCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2500,7 +3525,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string clusterPoolName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2546,7 +3571,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool> ClusterPoolsCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2593,7 +3618,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool> ClusterPoolsCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2653,6 +3678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2665,7 +3691,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -2803,6 +3832,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -2815,7 +3845,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -2956,7 +3989,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsDelete(string subscriptionId, string resourceGroupName, string clusterPoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2998,7 +4031,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3068,6 +4101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3080,7 +4114,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3226,7 +4263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsGet(string subscriptionId, string resourceGroupName, string clusterPoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3267,7 +4304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3318,7 +4355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool> ClusterPoolsGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3371,7 +4408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool> ClusterPoolsGetWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3547,7 +4584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3587,7 +4624,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3636,7 +4673,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolListResult> ClusterPoolsListByResourceGroupViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3686,7 +4723,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolListResult> ClusterPoolsListByResourceGroupWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3860,7 +4897,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3898,7 +4935,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3944,7 +4981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolListResult> ClusterPoolsListBySubscriptionViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3990,7 +5027,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolListResult> ClusterPoolsListBySubscriptionWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4162,7 +5199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsUpdateTags(string subscriptionId, string resourceGroupName, string clusterPoolName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITagsObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4209,7 +5246,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsUpdateTagsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITagsObject body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4266,7 +5303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool> ClusterPoolsUpdateTagsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITagsObject body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4326,7 +5363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsUpdateTagsViaJsonString(string subscriptionId, string resourceGroupName, string clusterPoolName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4372,7 +5409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool> ClusterPoolsUpdateTagsViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4419,7 +5456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool> ClusterPoolsUpdateTagsWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITagsObject body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4477,6 +5514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4489,7 +5527,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4627,6 +5668,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4639,7 +5681,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4781,7 +5826,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsUpgrade(string subscriptionId, string resourceGroupName, string clusterPoolName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgrade body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4829,7 +5874,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsUpgradeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgrade body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4887,7 +5932,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool> ClusterPoolsUpgradeViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgrade body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4948,7 +5993,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClusterPoolsUpgradeViaJsonString(string subscriptionId, string resourceGroupName, string clusterPoolName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4995,7 +6040,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool> ClusterPoolsUpgradeViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5043,7 +6088,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool> ClusterPoolsUpgradeWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgrade body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5103,6 +6148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -5115,7 +6161,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -5254,6 +6303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -5266,7 +6316,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -5392,6 +6445,348 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
+        /// <summary>Returns a list of upgrade history.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClusterUpgradeHistoriesList(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeHistoryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + global::System.Uri.EscapeDataString(clusterPoolName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/upgradeHistories"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClusterUpgradeHistoriesList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns a list of upgrade history.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClusterUpgradeHistoriesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeHistoryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.HDInsight/clusterpools/(?<clusterPoolName>[^/]+)/clusters/(?<clusterName>[^/]+)/upgradeHistories$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}/upgradeHistories'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterPoolName = _match.Groups["clusterPoolName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + clusterPoolName
+                        + "/clusters/"
+                        + clusterName
+                        + "/upgradeHistories"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClusterUpgradeHistoriesList_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns a list of upgrade history.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeHistoryListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeHistoryListResult> ClusterUpgradeHistoriesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.HDInsight/clusterpools/(?<clusterPoolName>[^/]+)/clusters/(?<clusterName>[^/]+)/upgradeHistories$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}/upgradeHistories'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterPoolName = _match.Groups["clusterPoolName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + clusterPoolName
+                        + "/clusters/"
+                        + clusterName
+                        + "/upgradeHistories"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClusterUpgradeHistoriesListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Returns a list of upgrade history.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeHistoryListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeHistoryListResult> ClusterUpgradeHistoriesListWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + global::System.Uri.EscapeDataString(clusterPoolName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/upgradeHistories"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClusterUpgradeHistoriesListWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ClusterUpgradeHistoriesListWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeHistoryListResult>"
+        /// /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeHistoryListResult> ClusterUpgradeHistoriesListWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgradeHistoryListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClusterUpgradeHistoriesList" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClusterUpgradeHistoriesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeHistoryListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgradeHistoryListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClusterUpgradeHistoriesList" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClusterUpgradeHistoriesList_Validate(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterPoolName),clusterPoolName);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+            }
+        }
+
         /// <summary>Create a cluster.</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -5409,7 +6804,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersCreate(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5458,7 +6853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5518,7 +6913,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5582,7 +6977,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersCreateViaJsonString(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5631,7 +7026,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersCreateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5681,7 +7076,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersCreateWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5741,6 +7136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -5753,7 +7149,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -5891,6 +7290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -5903,7 +7303,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -6047,7 +7450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersDelete(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6091,7 +7494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6164,6 +7567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     var _finalUri = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -6176,7 +7580,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -6322,7 +7729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersGet(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6368,7 +7775,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersGetInstanceView(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6412,7 +7819,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersGetInstanceViewViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6467,7 +7874,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewResult> ClustersGetInstanceViewViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6525,7 +7932,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewResult> ClustersGetInstanceViewWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6705,7 +8112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6759,7 +8166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6816,7 +8223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersGetWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6997,7 +8404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersListByClusterPoolName(string subscriptionId, string resourceGroupName, string clusterPoolName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7039,7 +8446,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersListByClusterPoolNameViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7091,7 +8498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterListResult> ClustersListByClusterPoolNameViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7145,7 +8552,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterListResult> ClustersListByClusterPoolNameWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7326,7 +8733,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersListInstanceViews(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewsResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7370,7 +8777,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersListInstanceViewsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewsResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7425,7 +8832,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewsResult> ClustersListInstanceViewsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7483,7 +8890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterInstanceViewsResult> ClustersListInstanceViewsWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7668,7 +9075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersListServiceConfigs(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceConfigListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7712,7 +9119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersListServiceConfigsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceConfigListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7767,7 +9174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceConfigListResult> ClustersListServiceConfigsViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7825,7 +9232,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IServiceConfigListResult> ClustersListServiceConfigsWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8012,7 +9419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersResize(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterResizeData body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8062,7 +9469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersResizeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterResizeData body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8123,7 +9530,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersResizeViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterResizeData body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8188,7 +9595,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersResizeViaJsonString(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8238,7 +9645,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersResizeViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8289,7 +9696,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersResizeWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterResizeData body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8351,6 +9758,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -8363,7 +9771,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -8502,6 +9913,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -8514,7 +9926,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -8659,7 +10074,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersUpdate(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8708,7 +10123,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8768,7 +10183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatch body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8832,7 +10247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersUpdateViaJsonString(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8881,7 +10296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8931,7 +10346,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersUpdateWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatch body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8991,6 +10406,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9003,7 +10419,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9141,6 +10560,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     // declared final-state-via: azure-async-operation
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9153,7 +10573,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9298,7 +10721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersUpgrade(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9334,6 +10757,663 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
             }
         }
 
+        /// <summary>Manual rollback upgrade for a cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="body">Manual rollback upgrade for a cluster.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersUpgradeManualRollback(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeRollback body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + global::System.Uri.EscapeDataString(clusterPoolName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/rollback"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersUpgradeManualRollback_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Manual rollback upgrade for a cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Manual rollback upgrade for a cluster.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersUpgradeManualRollbackViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeRollback body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.HDInsight/clusterpools/(?<clusterPoolName>[^/]+)/clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterPoolName = _match.Groups["clusterPoolName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + clusterPoolName
+                        + "/clusters/"
+                        + clusterName
+                        + "/rollback"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersUpgradeManualRollback_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Manual rollback upgrade for a cluster.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Manual rollback upgrade for a cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersUpgradeManualRollbackViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeRollback body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.HDInsight/clusterpools/(?<clusterPoolName>[^/]+)/clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusterpools/{clusterPoolName}/clusters/{clusterName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var clusterPoolName = _match.Groups["clusterPoolName"].Value;
+                var clusterName = _match.Groups["clusterName"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + clusterPoolName
+                        + "/clusters/"
+                        + clusterName
+                        + "/rollback"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersUpgradeManualRollbackWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Manual rollback upgrade for a cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="jsonString">Json string supplied to the ClustersUpgradeManualRollback operation</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task ClustersUpgradeManualRollbackViaJsonString(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + global::System.Uri.EscapeDataString(clusterPoolName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/rollback"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.ClustersUpgradeManualRollback_Call (request, onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Manual rollback upgrade for a cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="jsonString">Json string supplied to the ClustersUpgradeManualRollback operation</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersUpgradeManualRollbackViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + global::System.Uri.EscapeDataString(clusterPoolName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/rollback"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(jsonString, global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersUpgradeManualRollbackWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>Manual rollback upgrade for a cluster.</summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="body">Manual rollback upgrade for a cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode"/>.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersUpgradeManualRollbackWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeRollback body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
+        {
+            var apiVersion = @"2024-05-01-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.HDInsight/clusterpools/"
+                        + global::System.Uri.EscapeDataString(clusterPoolName)
+                        + "/clusters/"
+                        + global::System.Uri.EscapeDataString(clusterName)
+                        + "/rollback"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null, serializationMode).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                // make the call
+                return await this.ClustersUpgradeManualRollbackWithResult_Call (request, eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref= "ClustersUpgradeManualRollbackWithResult" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>" />
+        /// that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersUpgradeManualRollbackWithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            return await _result;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
+                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) );
+                            // Error Response : default
+                            var code = (await _result)?.Code;
+                            var message = (await _result)?.Message;
+                            if ((null == code || null == message))
+                            {
+                                // Unrecognized Response. Create an error record based on what we have.
+                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>(_response, await _result);
+                                throw ex;
+                            }
+                            else
+                            {
+                                throw new global::System.Exception($"[{code}] : {message}");
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref= "ClustersUpgradeManualRollback" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersUpgradeManualRollback_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Progress, "intentional placeholder", 0); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: location
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+                        // delay before making the next polling request
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.DelayBeforePolling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                          // if we got back an OK, take a peek inside and see if it's done
+                          if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                          {
+                              var error = false;
+                              try {
+                                  if( Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject json)
+                                  {
+                                      var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("status");
+                                      if( state is null )
+                                      {
+                                          // the body doesn't contain any information that has the state of the LRO
+                                          // we're going to just get out, and let the consumer have the result
+                                          break;
+                                      }
+
+                                      switch( state?.ToString()?.ToLower() )
+                                      {
+                                        case "failed":
+                                            error = true;
+                                            break;
+                                        case "succeeded":
+                                        case "canceled":
+                                          // we're done polling.
+                                          break;
+
+                                        default:
+                                          // need to keep polling!
+                                          _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                          continue;
+                                      }
+                                  }
+                              } catch {
+                                  // if we run into a problem peeking into the result,
+                                  // we really don't want to do anything special.
+                              }
+                              if (error) {
+                                  throw new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.UndeclaredResponseException(_response);
+                              }
+                          }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        // create a new request with the final uri
+                        request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the final call
+                        _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                        break;
+                    }
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.Cluster.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="ClustersUpgradeManualRollback" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
+        /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
+        /// <param name="clusterPoolName">The name of the cluster pool.</param>
+        /// <param name="clusterName">The name of the HDInsight cluster.</param>
+        /// <param name="body">Manual rollback upgrade for a cluster.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task ClustersUpgradeManualRollback_Validate(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgradeRollback body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertRegEx(nameof(subscriptionId),subscriptionId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertMinimumLength(nameof(resourceGroupName),resourceGroupName,1);
+                await eventListener.AssertMaximumLength(nameof(resourceGroupName),resourceGroupName,90);
+                await eventListener.AssertNotNull(nameof(clusterPoolName),clusterPoolName);
+                await eventListener.AssertNotNull(nameof(clusterName),clusterName);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
         /// <summary>Upgrade a cluster.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Upgrade a cluster.</param>
@@ -9348,7 +11428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersUpgradeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9409,7 +11489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersUpgradeViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9474,7 +11554,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task ClustersUpgradeViaJsonString(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9524,7 +11604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersUpgradeViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9575,7 +11655,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster> ClustersUpgradeWithResult(string subscriptionId, string resourceGroupName, string clusterPoolName, string clusterName, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9637,6 +11717,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9649,7 +11730,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9788,6 +11872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9800,7 +11885,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9943,7 +12031,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocationsCheckNameAvailability(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INameAvailabilityParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9989,7 +12077,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocationsCheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INameAvailabilityParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10044,7 +12132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INameAvailabilityResult> LocationsCheckNameAvailabilityViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INameAvailabilityParameters body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10101,7 +12189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task LocationsCheckNameAvailabilityViaJsonString(string subscriptionId, string location, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INameAvailabilityResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10145,7 +12233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INameAvailabilityResult> LocationsCheckNameAvailabilityViaJsonStringWithResult(string subscriptionId, string location, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10190,7 +12278,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INameAvailabilityResult> LocationsCheckNameAvailabilityWithResult(string subscriptionId, string location, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INameAvailabilityParameters body, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10369,7 +12457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10405,7 +12493,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10448,7 +12536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10490,7 +12578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-11-01-preview";
+            var apiVersion = @"2024-05-01-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {

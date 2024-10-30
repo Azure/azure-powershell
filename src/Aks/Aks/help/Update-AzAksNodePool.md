@@ -53,7 +53,7 @@ Update node pool in a managed cluster.
 
 ## EXAMPLES
 
-### Change minimun count to 5 for specified node pool
+### Example 1: Change minimun count to 5 for specified node pool
 ```powershell
 Update-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myCluster -Name linuxpool -MinCount 5
 ```

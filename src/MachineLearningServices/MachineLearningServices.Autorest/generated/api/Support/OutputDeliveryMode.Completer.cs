@@ -34,6 +34,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Upload'", "Upload", global::System.Management.Automation.CompletionResultType.ParameterValue, "Upload");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Direct".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Direct'", "Direct", global::System.Management.Automation.CompletionResultType.ParameterValue, "Direct");
+            }
         }
     }
 }

@@ -17,6 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMLWorkspaceStorageAccou
 Describe 'Get-AzMLWorkspaceStorageAccountKey' {
      # Include secrets 
     It 'List' -skip {
-        { Get-AzMLWorkspaceStorageAccountKey -ResourceGroupName ml-rg-test -Name mlworkspace-cli01 } | Should -Not -Throw
+        { Get-AzMLWorkspaceStorageAccountKey -ResourceGroupName $env.TestGroupName -Name mlworkspace-cli01 } | Should -Not -Throw
     }
 }

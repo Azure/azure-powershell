@@ -196,7 +196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The hosts",
         SerializedName = @"hosts",
         PossibleTypes = new [] { typeof(string) })]
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The cluster size",
         SerializedName = @"clusterSize",
         PossibleTypes = new [] { typeof(int) })]
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Name of the vsan datastore associated with the cluster",
         SerializedName = @"vsanDatastoreName",
         PossibleTypes = new [] { typeof(string) })]

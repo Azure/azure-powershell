@@ -27,6 +27,18 @@ New-AzPolicyExemption -Name 'VirtualMachinePolicyExemption' -PolicyAssignment $A
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
 New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $ResourceGroup.ResourceId -ExemptionCategory Mitigated
+.Example
+$ManagementGroup = Get-AzManagementGroup -GroupName 'AManagementGroup'
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
+New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $ManagementGroup.Id -ExemptionCategory Mitigated
+.Example
+$VM = Get-AzVM -Name 'SpecialVM'
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
+New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $SpecialVM.Id -ExemptionCategory Waiver
+.Example
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachineAssignment'
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; In = @("eastus", "eastus2")})}
+New-AzPolicyExemption -Name 'VirtualMachinePolicyExemption' -PolicyAssignment $Assignment -ResourceSelector $ResourceSelector
 
 .Inputs
 System.Management.Automation.PSObject
@@ -44,6 +56,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 POLICYASSIGNMENT <PSObject>: The policy assignment id filter.
+  [DefinitionVersion <String>]: The version of the policy definition to use.
   [Description <String>]: This message will be part of response in case of policy violation.
   [DisplayName <String>]: The display name of the policy assignment.
   [EnforcementMode <String>]: The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
@@ -70,6 +83,13 @@ POLICYASSIGNMENT <PSObject>: The policy assignment id filter.
   [ResourceSelector <List<IResourceSelector>>]: The resource selector list to filter policies by resource properties.
     [Name <String>]: The name of the resource selector.
     [Selector <List<ISelector>>]: The list of the selector expressions.
+
+RESOURCESELECTOR <IResourceSelector[]>: The resource selector list to filter policies by resource properties.
+  [Name <String>]: The name of the resource selector.
+  [Selector <List<ISelector>>]: The list of the selector expressions.
+    [In <List<String>>]: The list of values to filter in.
+    [Kind <String>]: The selector kind.
+    [NotIn <List<String>>]: The list of values to filter out.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/new-azpolicyexemption
 #>
@@ -85,6 +105,7 @@ param(
     ${Name},
 
     [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Waiver", "Mitigated")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The policy exemption category
@@ -111,6 +132,7 @@ param(
     ${PolicyDefinitionReferenceId},
 
     [Parameter(ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute("Default", "DoNotValidate")]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # Whether to validate the exemption is at or under the assignment scope.
@@ -141,6 +163,13 @@ param(
     # The policy assignment metadata.
     # Metadata is an open ended object and is typically a collection of key value pairs.
     ${Metadata},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Linq;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
@@ -48,6 +49,9 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The resource types you want to force delete.Currently, only the following is supported: forceDeletionTypes=Microsoft.Compute/virtualMachineScaleSets,Microsoft.Compute/virtualMachines,Microsoft.Databricks/workspaces")]
+        public string ForceDeletionType { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -58,12 +62,24 @@ namespace Microsoft.Azure.Commands.Resources
         {
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
 
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(ProjectResources.RemovingResourceGroup, Name),
-                ProjectResources.RemoveResourceGroupMessage,
-                Name,
-                () => ResourceManagerSdkClient.DeleteResourceGroup(Name));
+            if (string.IsNullOrWhiteSpace(ForceDeletionType))
+            {
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(ProjectResources.RemovingResourceGroup, Name),
+                    ProjectResources.RemoveResourceGroupMessage,
+                    Name,
+                    () => ResourceManagerSdkClient.DeleteResourceGroup(Name));
+            }
+            else
+            {
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(ProjectResources.RemovingResourceGroup, Name),
+                    ProjectResources.RemoveResourceGroupMessage,
+                    Name,
+                    () => NewResourceManagerSdkClient.DeleteResourceGroup(Name, ForceDeletionType));
+            }
 
             WriteObject(true);
         }

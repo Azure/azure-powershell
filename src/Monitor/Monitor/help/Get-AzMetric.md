@@ -17,7 +17,7 @@ Gets the metric values of a resource.
 ```
 Get-AzMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTime>] [-EndTime <DateTime>]
  [-MetricFilter <String>] [-Dimension <String[]>] [[-MetricName] <String[]>] [-DetailedOutput]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetWithFullParameters
@@ -25,7 +25,7 @@ Get-AzMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTim
 Get-AzMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>]
  [-StartTime <DateTime>] [-EndTime <DateTime>] [-Top <Int32>] [-OrderBy <String>] [-MetricNamespace <String>]
  [-ResultType <ResultType>] [-MetricFilter <String>] [-Dimension <String[]>] [-MetricName] <String[]>
- [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>]
+ [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -40,28 +40,16 @@ Get-AzMetric -ResourceId "/subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/re
 ```
 
 ```output
-DimensionName  :
-DimensionValue :
-Name           : AverageResponseTime
-EndTime        : 3/20/2015 6:40:46 PM
-MetricValues   : {Microsoft.Azure.Insights.Models.MetricValue, Microsoft.Azure.Insights.Models.MetricValue,
-                 Microsoft.Azure.Insights.Models.MetricValue, Microsoft.Azure.Insights.Models.MetricValue...}
-Properties     : {}
-ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
-StartTime      : 3/20/2015 5:40:00 PM
-TimeGrain      : 00:01:00
-Unit           : Seconds
-DimensionName  :
-DimensionValue :
-Name           : AverageMemoryWorkingSet
-EndTime        : 3/20/2015 6:40:46 PM
-MetricValues   : {Microsoft.Azure.Insights.Models.MetricValue, Microsoft.Azure.Insights.Models.MetricValue,
-                 Microsoft.Azure.Insights.Models.MetricValue, Microsoft.Azure.Insights.Models.MetricValue...}
-Properties     : {}
-ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
-StartTime      : 3/20/2015 5:40:00 PM
-TimeGrain      : 00:01:00
-Unit           : Bytes
+Id         : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3/providers/Microsoft.Insights/metrics/Requests
+Name       : 
+                LocalizedValue : Requests
+                Value          : Requests
+
+Type       : Microsoft.Insights/metrics
+Unit       : Count
+Data       : {Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricValue, Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricValue, 
+             Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricValue, Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricValue…}
+Timeseries : {Microsoft.Azure.Management.Monitor.Models.TimeSeriesElement}
 ```
 
 This command gets the metric values for website3 with a time grain of 1 minute.
@@ -72,101 +60,35 @@ Get-AzMetric -ResourceId "/subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/re
 ```
 
 ```output
-MetricValues   :
-                     Average    : 0
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:37:00 PM
-                     Total      : 0
-                     Average    : 0.106
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:39:00 PM
-                     Total      : 0.106
-                     Average    : 0.064
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:41:00 PM
-                     Total      : 0.064
-Properties     :
-DimensionName  :
-DimensionValue :
-Name           : AverageResponseTime
-EndTime        : 3/20/2015 6:43:33 PM
-ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
-StartTime      : 3/20/2015 5:43:00 PM
-TimeGrain      : 00:01:00
-Unit           : Seconds
+Id         : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3/providers/Microsoft.Insights/metrics/Requests
+Name       : Microsoft.Azure.Management.Monitor.Models.LocalizableString
+
+Type       : Microsoft.Insights/metrics
+Unit       : Count
+Data       : {Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricValue, Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricValue,
+             Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricValue, Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricValue…}
+Timeseries : {Microsoft.Azure.Management.Monitor.Models.TimeSeriesElement}
 ```
 
 This command gets the metric values for website3 with a time grain of 1 minute.
 The output is detailed.
 
-### Example 3: Get detailed output for a specified metric
+### Example 3: Get a specified metric
 ```powershell
-Get-AzMetric -ResourceId "/subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3" -MetricName "Requests" -TimeGrain 00:01:00 -DetailedOutput
+Get-AzMetric -ResourceId "/subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3" -MetricName "Requests" -TimeGrain 00:01:00
 ```
 
 ```output
-MetricValues   :
-                     Average    : 1
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:39:00 PM
-                     Total      : 1
-                     Average    : 1
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:41:00 PM
-                     Total      : 1
-                     Average    : 0
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:43:00 PM
-                     Total      : 0
-                     Average    : 1
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:44:00 PM
-                     Total      : 1
-                     Average    : 0
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:45:00 PM
-                     Total      : 0
-Properties     :
-DimensionName  :
-DimensionValue :
-Name           : Requests
-EndTime        : 3/20/2015 6:47:56 PM
-ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
-StartTime      : 3/20/2015 5:47:00 PM
-TimeGrain      : 00:01:00
-Unit           : Count
+Id         : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3/providers/Microsoft.Insights/metrics/Requests
+Name       : 
+                LocalizedValue : Requests
+                Value          : Requests
+
+Type       : Microsoft.Insights/metrics
+Unit       : Count
+Data       : {Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricValue, Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricValue,
+             Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricValue, Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricValue…}
+Timeseries : {Microsoft.Azure.Management.Monitor.Models.TimeSeriesElement}
 ```
 
 This command gets detailed output for the Requests metric.
@@ -175,34 +97,19 @@ This command gets detailed output for the Requests metric.
 ```powershell
 $dimFilter = "$(New-AzMetricFilter -Dimension City -Operator eq -Value "Seattle","Toronto") and $(New-AzMetricFilter -Dimension AuthenticationType -Operator eq -Value User)"
 
-Get-AzMetric -ResourceId <resourceId> -MetricName PageViews -TimeGrain 00:05:00 -MetricFilter $dimFilter -StartTime 2018-02-01T12:00:00Z -EndTime 2018-02-01T12:10:00Z -AggregationType Average
+Get-AzMetric -ResourceId <ResourceId> -MetricName availabilityResults/availabilityPercentage -TimeGrain 00:05:00 -MetricFilter $dimFilter -StartTime 2024-07-02T00:00:00Z -EndTime 2024-07-02T00:10:00Z -AggregationType Average
 ```
 
 ```output
-ResourceId	: [ResourceId]
-MetricNamespace	: Microsoft.Insights/ApplicationInsights
-Metric Name	:
-LocalizedValue	: Page Views
-Value		: PageViews
-Unit		: Seconds
-Timeseries	:
-City 		: Seattle
-AuthenticationType 	: User
+Id         : [ResourceId]/providers/Microsoft.Insights/metrics/availabilityResults/availabilityPercentage
+Name       : 
+                LocalizedValue : Availability
+                Value          : availabilityResults/availabilityPercentage
 
-Timestamp	: 2018-02-01 12:00:00 PM
-Average		: 3518
-
-Timestamp	: 2018-02-01 12:05:00 PM
-Average		: 1984
-
-City 		: Toronto
-AuthenticationType 	: User
-
-Timestamp	: 2018-02-01 12:00:00 PM
-Average		: 894
-
-Timestamp	: 2018-02-01 12:05:00 PM
-Average		: 967
+Type       : Microsoft.Insights/metrics
+Unit       : Percent
+Data       : 
+Timeseries : {}
 ```
 
 This command gets summarized output for the PageViews metric with specified dimension filter and aggregation type.
@@ -356,6 +263,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
 
         /// <summary>Number of DNS Services using the DNS zone.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
-        public int? DnsService { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonePropertiesInternal)Property).DnsService; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonePropertiesInternal)Property).DnsService = value ?? default(int); }
+        public long? DnsService { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonePropertiesInternal)Property).DnsService; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsZonePropertiesInternal)Property).DnsService = value ?? default(long); }
 
         /// <summary>Domain names of the DNS Zone.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Display name of the DNS Zone.",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"DNS Server IP array of the DNS Zone.",
         SerializedName = @"dnsServerIps",
         PossibleTypes = new [] { typeof(string) })]
@@ -172,18 +172,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Number of DNS Services using the DNS zone.",
         SerializedName = @"dnsServices",
-        PossibleTypes = new [] { typeof(int) })]
-        int? DnsService { get; set; }
+        PossibleTypes = new [] { typeof(long) })]
+        long? DnsService { get; set; }
         /// <summary>Domain names of the DNS Zone.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Domain names of the DNS Zone.",
         SerializedName = @"domain",
         PossibleTypes = new [] { typeof(string) })]
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"NSX revision number.",
         SerializedName = @"revision",
         PossibleTypes = new [] { typeof(long) })]
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"Source IP of the DNS Zone.",
         SerializedName = @"sourceIp",
         PossibleTypes = new [] { typeof(string) })]
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
         /// <summary>DNS Server IP array of the DNS Zone.</summary>
         System.Collections.Generic.List<string> DnsServerIP { get; set; }
         /// <summary>Number of DNS Services using the DNS zone.</summary>
-        int? DnsService { get; set; }
+        long? DnsService { get; set; }
         /// <summary>Domain names of the DNS Zone.</summary>
         System.Collections.Generic.List<string> Domain { get; set; }
         /// <summary>The resource-specific properties for this resource.</summary>

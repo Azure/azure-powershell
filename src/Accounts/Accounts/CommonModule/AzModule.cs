@@ -368,13 +368,14 @@ namespace Microsoft.Azure.Commands.Common
         {
             if (AzureSession.Instance.TryGetComponent<IOutputSanitizer>(nameof(IOutputSanitizer), out var outputSanitizer))
             {
-                if (outputSanitizer?.RequireSecretsDetection == true)
+                _telemetry.TryGetValue(telemetryId, out var qos);
+                if (outputSanitizer != null
+                    && outputSanitizer.RequireSecretsDetection
+                    && !outputSanitizer.IgnoredModules.Contains(qos?.ModuleName)
+                    && !outputSanitizer.IgnoredCmdlets.Contains(qos?.CommandName))
                 {
                     outputSanitizer.Sanitize(sanitizingObject, out var telemetry);
-                    if (_telemetry.TryGetValue(telemetryId, out var qos))
-                    {
-                        qos?.SanitizerInfo?.Combine(telemetry);
-                    }
+                    qos?.SanitizerInfo?.Combine(telemetry);
                 }
             }
         }
@@ -384,10 +385,10 @@ namespace Microsoft.Azure.Commands.Common
             Dictionary<string, string> telemetryInfo = null;
             if (_telemetry.TryGetValue(telemetryId, out var qos))
             {
-                if (qos?.SanitizerInfo?.DetectedProperties?.Count > 0)
+                if (qos?.SanitizerInfo?.DetectedProperties.IsEmpty == false)
                 {
                     var showSecretsWarning = qos.SanitizerInfo.ShowSecretsWarning && qos.SanitizerInfo.SecretsDetected;
-                    var sanitizedProperties = string.Join(", ", qos.SanitizerInfo.DetectedProperties);
+                    var sanitizedProperties = string.Join(", ", qos.SanitizerInfo.DetectedProperties.PropertyNames);
                     var invocationName = qos.InvocationName;
                     telemetryInfo = new Dictionary<string, string>
                     {

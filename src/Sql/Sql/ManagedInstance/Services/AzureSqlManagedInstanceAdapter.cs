@@ -43,6 +43,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         private AzureSqlManagedInstanceCommunicator Communicator { get; set; }
 
         /// <summary>
+        /// The Sql client default type for the active directory admin
+        /// </summary>
+        private static readonly string ActiveDirectoryAdministratorDefaultType = "ActiveDirectory";
+
+        /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
         public IAzureContext Context { get; set; }
@@ -175,7 +180,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 ZoneRedundant = model.ZoneRedundant,
                 ServicePrincipal = ResourceServicePrincipalHelper.UnwrapServicePrincipalObject(model.ServicePrincipal),
                 DatabaseFormat = model.DatabaseFormat,
-                PricingModel = model.PricingModel
+                PricingModel = model.PricingModel,
+                IsGeneralPurposeV2 = model.IsGeneralPurposeV2,
+                StorageIOps = model.StorageIOps,
+                AuthenticationMetadata = model.AuthenticationMetadata
             });
 
             return CreateManagedInstanceModelFromResponse(resp);
@@ -262,6 +270,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.LicenseType = resp.LicenseType;
             managedInstance.VCores = resp.VCores;
             managedInstance.StorageSizeInGB = resp.StorageSizeInGb;
+            managedInstance.StorageIOps = resp.StorageIOps;
             managedInstance.Collation = resp.Collation;
             managedInstance.PublicDataEndpointEnabled = resp.PublicDataEndpointEnabled;
             managedInstance.ProxyOverride = resp.ProxyOverride;
@@ -284,6 +293,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.Sku = sku;
             managedInstance.Administrators = resp.Administrators;
 
+            managedInstance.IsGeneralPurposeV2 = resp.IsGeneralPurposeV2;
+
             if (managedInstance.Administrators != null && managedInstance.Administrators.AdministratorType == null)
             {
                 managedInstance.Administrators.AdministratorType = "ActiveDirectory";
@@ -294,6 +305,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.DatabaseFormat = resp.DatabaseFormat;
             managedInstance.PricingModel = resp.PricingModel;
             managedInstance.ExternalGovernanceStatus = resp.ExternalGovernanceStatus;
+            managedInstance.AuthenticationMetadata = resp.AuthenticationMetadata;
 
             return managedInstance;
         }
@@ -407,7 +419,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                     Sid = new Guid(app.AppId),
                     TenantId = tenantId,
                     PrincipalType = "Application",
-                    AzureAdOnlyAuthentication = adOnlyAuth
+                    AzureAdOnlyAuthentication = adOnlyAuth,
+                    AdministratorType = ActiveDirectoryAdministratorDefaultType
                 };
             }
 
@@ -419,7 +432,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                     Sid = new Guid(group.Id),
                     TenantId = tenantId,
                     PrincipalType = "Group",
-                    AzureAdOnlyAuthentication = adOnlyAuth
+                    AzureAdOnlyAuthentication = adOnlyAuth,
+                    AdministratorType = ActiveDirectoryAdministratorDefaultType
                 };
             }
 
@@ -479,11 +493,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
 
                 return new ManagedInstanceExternalAdministrator()
                 {
-                    Login = displayName,
+                    Login = obj.Mail,
                     Sid = new Guid(obj.Id),
                     TenantId = tenantId,
                     PrincipalType = "User",
-                    AzureAdOnlyAuthentication = adOnlyAuth
+                    AzureAdOnlyAuthentication = adOnlyAuth,
+                    AdministratorType = ActiveDirectoryAdministratorDefaultType
                 };
             }
         }

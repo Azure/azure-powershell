@@ -19,9 +19,69 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.10.0
+* Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management
+    - `New/Get/Remove/Set-AzNetworkManagerRoutingConfiguration`
+    - `New/Get/Remove/Set-AzNetworkManagerRoutingRuleCollection`
+    - `New/Get/Remove/Set-AzNetworkManagerRoutingRule`
+    - `New-AzNetworkManagerRoutingGroupItem`
+    - `New-AzNetworkManagerRoutingRuleDestination`
+    - `New-AzNetworkManagerRoutingRuleNextHop`
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityUserConfiguration`
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityUserRuleCollection`
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityUserRule`
+    - `New-AzNetworkManagerSecurityUserGroupItem`
+* Added support for `MemberType` property in `New-AzNetworkManagerSecurityUserGroupItem` command
+
+## Version 7.9.0
+* Onboarded `Microsoft.VideoIndexer/accounts` to private link cmdlets
+* Added support to create, get and delete Bastion shareable links
+    - `New-AzBastionShareableLink`
+    - `Get-AzBastionShareableLink`
+    - `Remove-AzBastionShareableLink`
+* Fixed a bug in cmdlet `Invoke-AzFirewallPacketCapture` which caused the packet capture request to be stuck in a waiting for activation state. 
+* Updated cmdlet to add the property of `Sensitivity`, and updated corresponding cmdlets.
+    - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
+* Added support for `DefaultOutboundAccess` property in `Set-AzVirtualNetworkSubnetConfig` command
+* Added support for `EnabledFilteringCriteria` property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
+* Added support of `UserAssignedIdentityId` Property in `New-AzNetworkWatcherFlowLog` and `Set-AzNetworkWatcherFlowLog` commands
+* Added support of `DestinationIPAddress` property in `New-AzPrivateLinkService` command
+    - `LoadBalancerFrontendIpConfiguration` is not a mandatory parameter anymore.
+    - The user can provide either `LoadBalancerFrontendIpConfiguration` or `DestinationIPAddress`.
+* Added support for `PrivateEndpointVNetPolicies` property in `New-AzVirtualNetwork`
+
+## Version 7.8.1
+* Fixed secrets exposure in example documentation.
+* Onboarded `Microsoft.App/managedEnvironments` to private link cmdlets
+
+## Version 7.8.0
+* Added new cmdlets to support Save & Commit (AzureFirewallPolicy draft)
+    - `New-AzFirewallPolicyDraft`
+    - `New-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Get-AzFirewallPolicyDraft`
+    - `Get-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Set-AzFirewallPolicyDraft`
+    - `Set-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Remove-AzFirewallPolicyDraft`
+    - `Remove-AzFirewallPolicyRuleCollectionGroupDraft`
+    - `Deploy-AzFirewallPolicy`
+* Added 'NoHealthyBackendsBehavior' to 'PSProbe', and updated corresponding cmdlets.
+    - `New-AzLoadBalancerProbeConfig`
+    - `Add-AzLoadBalancerProbeConfig`
+    - `Set-AzLoadBalancerProbeConfig`
+* Upgraded API version to `2024-01-01`
+* Updated cmdlet to add 'Premium' as a valid value for 'Sku' parameter and 'enableSessionRecording' feature for Bastion resources
+    - `New-AzBastion`
+    - `Set-AzBastion`
+* Updated cmdlet `Add-AzVirtualNetworkSubnetConfig`, `Set-AzVirtualNetworkSubnetConfig` and `New-AzVirtualNetworkSubnetConfig` to support Network Identifier for Subnet Service Endpoint.
+* Added cmdlet `Restart-AzNetworkVirtualAppliance` for allowing a restart of Network Virtual Appliance instances from the customer subscription.
+* Fixed a bug in `Update-AzNetworkVirtualApplianceConnection`
 * Updated the Azure Firewall and Azure Firewall Policy setter for their respective Private Range properties
   - Fixed a bug that prevented using /32 in private ranges on classic Azure Firewalls
   - Updated the error message to provide a suggested private range when the supplied range is not correctly masked by the host identifier
+  - Added a new Allocate function for Azure Firewall that allows allocating customer public ip address to the firewall
+  - Fixed a bug that caused firewalls and policies to lose their private range property value when using their 'Get' cmdlets
 
 ## Version 7.6.0
 * Added cmdlet `New-AzVirtualApplianceNetworkProfile` to build network profile for network virtual appliance and pass as a parameter.

@@ -90,7 +90,11 @@ function New-ResourceGroup
         [string] $Name,
 
         [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
-        [string]$Location
+        [string]$Location,
+
+        [string]$TagName,
+
+        [string]$TagValue
     )
 
     begin {
@@ -106,7 +110,14 @@ function New-ResourceGroup
     }
 
     process {
-        $response = Invoke-AzRestMethod -Uri $uri -Method PUT -Payload "{ ""location"": ""$Location"" }"
+        if ($tagName) {
+            $payload = "{ ""location"": ""$Location"", ""tags"": ""[{""$TagName"": ""$TagValue""}]"" }"
+        }
+        else {
+            $payload = "{ ""location"": ""$Location"" }"
+        }
+
+        $response = Invoke-AzRestMethod -Uri $uri -Method PUT -Payload $payload
         if ($response.StatusCode -eq 201 -or ($response.StatusCode -eq 200)) {
             $result = Get-ResourceGroup -Name $Name
             while ($result.ProvisioningState -ne 'Succeeded' -and $result.ProvisioningState -ne 'Failed' -and $result.ProvisioningState -ne 'Canceled') {
@@ -251,6 +262,7 @@ if ($UsePreviousConfigForRecord) {
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
+    Write-Host -ForegroundColor Magenta "Setting up globals"
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = Get-SubscriptionId
@@ -260,15 +272,6 @@ function setupEnv() {
     # ----------------------------------------------------+
     # set up common variables used in policy legacy tests |
     # ----------------------------------------------------+
-    $env['rgName'] = Get-ResourceGroupName
-    $rg = New-ResourceGroup -Name $env.rgName -Location "west us"
-    $env['rgScope'] = $rg.ResourceId
-    $env['location'] = $rg.Location
-
-    $env['userAssignedIdentityName'] = "test-user-msi"
-    $userAssignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userAssignedIdentityName -Location $env.location
-    $env['userAssignedIdentityId'] = $userAssignedIdentity.Id
-
     $env['managementGroup'] = 'AzGovPerfTest'
     $env['managementGroupScope'] = '/providers/Microsoft.Management/managementGroups/AzGovPerfTest'
     $env['description'] = 'Unit test junk: sorry for littering. Please delete me!'
@@ -331,10 +334,22 @@ function setupEnv() {
     $env['multiplePolicyDefinitionParams'] = "Cannot bind parameter because parameter 'PolicyDefinition' is specified more than once"
     $env['versionRequiresNameOrId'] = 'Version is only allowed if Name or Id  are provided.'
     $env['listVersionsRequiresNameOrId'] = 'ListVersions is only allowed if Name or Id  are provided.'
+    $env['disallowedByPolicy'] = "was disallowed by policy."
 
-    # get some test objects
-    $env['customSubDefinition'] = Get-AzPolicyDefinition -Custom | ?{ $_.Id -like '/sub*' } | select -Last 1
-    $env['customSubSetDefinition'] = Get-AzPolicySetDefinition -SubscriptionId $env.subscriptionId -Custom | select -Last 1
+    $env['rgName'] = Get-ResourceGroupName
+    $rg = New-ResourceGroup -Name $env.rgName -Location "west us"
+    $env['rgScope'] = $rg.ResourceId
+    $env['location'] = $rg.Location
+
+    $env['userAssignedIdentityName'] = "test-user-msi"
+    $userAssignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userAssignedIdentityName -Location $env.location
+    $env['userAssignedIdentityId'] = $userAssignedIdentity.Id
+
+    # create a couple of test objects
+    $env['customSubDefName'] = Get-ResourceName
+    $env['customSubDefinition'] = New-AzPolicyDefinition -Name $env.customSubDefName -Policy '{ "if": { "field": "location", "equals": "westus" }, "then": { "effect": "audit" } }'
+    $env['customSubSetDefName'] = Get-ResourceName
+    $env['customSubSetDefinition'] = New-AzPolicySetDefinition -Name $env.customSubSetDefName -PolicyDefinition ("[{""policyDefinitionId"":""" + $($env.customSubDefinition).Id + """}]")
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -345,7 +360,12 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env -Depth 100)
 }
 function cleanupEnv() {
+
+    Write-Host -ForegroundColor Magenta "Cleaning up globals"
     # Clean resources you create for testing
+    $null = Remove-AzPolicySetDefinition -Name $env.customSubSetDefName -Confirm:$false
+    $null = Remove-AzPolicyDefinition -Name $env.customSubDefName -Confirm:$false
     $null = Remove-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userAssignedIdentityName
     $null = Remove-ResourceGroup -Name $env.rgName
+    Write-Host -ForegroundColor Magenta "Finished cleaning up globals"
 }

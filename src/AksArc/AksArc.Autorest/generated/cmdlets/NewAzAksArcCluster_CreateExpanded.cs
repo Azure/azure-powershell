@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create the provisioned cluster instance</summary>
+    /// <summary>create the provisioned cluster instance</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAksArcCluster_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IProvisionedCluster))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"Create the provisioned cluster instance")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"create the provisioned cluster instance")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.HttpPath(Path = "/{connectedClusterResourceUri}/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default", ApiVersion = "2024-01-01")]
     public partial class NewAzAksArcCluster_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -289,17 +289,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.AksArc.AksArc Client => Microsoft.Azure.PowerShell.Cmdlets.AksArc.Module.Instance.ClientAPI;
 
-        /// <summary>IP Address or CIDR for SSH access to VMs in the provisioned cluster</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "IP Address or CIDR for SSH access to VMs in the provisioned cluster")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"IP Address or CIDR for SSH access to VMs in the provisioned cluster",
-        SerializedName = @"authorizedIPRanges",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ClusterVMAccessProfileAuthorizedIprange { get => _provisionedClusterInstanceBody.ClusterVMAccessProfileAuthorizedIprange ?? null; set => _provisionedClusterInstanceBody.ClusterVMAccessProfileAuthorizedIprange = value; }
-
         /// <summary>Backing field for <see cref="ConnectedClusterResourceUri" /> property.</summary>
         private string _connectedClusterResourceUri;
 
@@ -338,7 +327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         Description = @"IP address of the Kubernetes API server",
         SerializedName = @"hostIP",
         PossibleTypes = new [] { typeof(string) })]
-        public string ControlPlaneEndpointHostIP { get => _provisionedClusterInstanceBody.ControlPlaneEndpointHostIP ?? null; set => _provisionedClusterInstanceBody.ControlPlaneEndpointHostIP = value; }
+        public string ControlPlaneIP { get => _provisionedClusterInstanceBody.ControlPlaneEndpointHostIP ?? null; set => _provisionedClusterInstanceBody.ControlPlaneEndpointHostIP = value; }
 
         /// <summary>VM sku size of the control plane nodes</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "VM sku size of the control plane nodes")]
@@ -448,7 +437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         Description = @"Number of HA Proxy load balancer VMs. The default value is 0.",
         SerializedName = @"count",
         PossibleTypes = new [] { typeof(int) })]
-        public int LoadBalancerProfileCount { get => _provisionedClusterInstanceBody.LoadBalancerProfileCount ?? default(int); set => _provisionedClusterInstanceBody.LoadBalancerProfileCount = value; }
+        public int LoadBalancerCount { get => _provisionedClusterInstanceBody.LoadBalancerProfileCount ?? default(int); set => _provisionedClusterInstanceBody.LoadBalancerProfileCount = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -471,17 +460,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.PSArgumentCompleterAttribute("calico")]
         public string NetworkProfileNetworkPolicy { get => _provisionedClusterInstanceBody.NetworkProfileNetworkPolicy ?? null; set => _provisionedClusterInstanceBody.NetworkProfileNetworkPolicy = value; }
-
-        /// <summary>A CIDR notation IP Address range from which to assign pod IPs.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A CIDR notation IP Address range from which to assign pod IPs.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"A CIDR notation IP Address range from which to assign pod IPs.",
-        SerializedName = @"podCidr",
-        PossibleTypes = new [] { typeof(string) })]
-        public string NetworkProfilePodCidr { get => _provisionedClusterInstanceBody.NetworkProfilePodCidr ?? null; set => _provisionedClusterInstanceBody.NetworkProfilePodCidr = value; }
 
         /// <summary>Indicates whether to enable NFS CSI Driver. The default value is true.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Indicates whether to enable NFS CSI Driver. The default value is true.")]
@@ -506,6 +484,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         public Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.HttpPipeline Pipeline { get; set; }
+
+        /// <summary>A CIDR notation IP Address range from which to assign pod IPs.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A CIDR notation IP Address range from which to assign pod IPs.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"A CIDR notation IP Address range from which to assign pod IPs.",
+        SerializedName = @"podCidr",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PodCidr { get => _provisionedClusterInstanceBody.NetworkProfilePodCidr ?? null; set => _provisionedClusterInstanceBody.NetworkProfilePodCidr = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -533,6 +522,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter SmbCsiDriverEnabled { get => _provisionedClusterInstanceBody.SmbCsiDriverEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _provisionedClusterInstanceBody.SmbCsiDriverEnabled = value; }
+
+        /// <summary>IP Address or CIDR for SSH access to VMs in the provisioned cluster</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "IP Address or CIDR for SSH access to VMs in the provisioned cluster")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Category(global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"IP Address or CIDR for SSH access to VMs in the provisioned cluster",
+        SerializedName = @"authorizedIPRanges",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SshAuthIp { get => _provisionedClusterInstanceBody.ClusterVMAccessProfileAuthorizedIprange ?? null; set => _provisionedClusterInstanceBody.ClusterVMAccessProfileAuthorizedIprange = value; }
 
         /// <summary>
         /// The list of SSH public keys used to authenticate with VMs. A maximum of 1 key may be specified.

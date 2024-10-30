@@ -15,7 +15,7 @@ Create an in-memory object for MsSqlServerProviderInstanceProperties.
 ```
 New-AzWorkloadsProviderSqlServerInstanceObject [-Password <String>] [-PasswordUri <String>] [-Port <String>]
  [-Username <String>] [-Hostname <String>] [-SapSid <String>] [-SslCertificateUri <String>]
- [-SslPreference <SslPreference>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-SslPreference <SslPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,13 +25,13 @@ Create an in-memory object for MsSqlServerProviderInstanceProperties.
 
 ### Example 1: Create Microsoft SQL server provider
 ```powershell
-New-AzWorkloadsProviderSqlServerInstanceObject -Password 'Password@123' -Port 1433 -Username ams -Hostname 10.1.14.5 -SapSid X00 -SslPreference Disabled
+New-AzWorkloadsProviderSqlServerInstanceObject -Password $password -Port 1433 -Username ams -Hostname 10.1.14.5 -SapSid X00 -SslPreference Disabled
 ```
 
 ```output
 ProviderType DbPassword   DbPasswordUri DbPort DbUsername Hostname  SapSid SslCertificateUri SslPreference
 ------------ ----------   ------------- ------ ---------- --------  ------ ----------------- -------------
-MsSqlServer  Password@123               1433   ams        10.1.14.5 X00                      Disabled
+MsSqlServer  $password                  1433   ams        10.1.14.5 X00                      Disabled
 ```
 
 Create Microsoft SQL server provider for an AMS instance
@@ -98,21 +98,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SapSid
 Gets or sets the SAP System Identifier.
 
@@ -147,7 +132,7 @@ Accept wildcard characters: False
 Gets or sets certificate preference if secure communication is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SslPreference
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Support.SslPreference
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.MSSqlServerProviderInstanceProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Monitors.Models.Api20230401.MSSqlServerProviderInstanceProperties
 
 ## NOTES
 

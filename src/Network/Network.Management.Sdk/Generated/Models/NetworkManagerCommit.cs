@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="commitType">Commit Type.
-        /// Possible values include: &#39;SecurityAdmin&#39;, &#39;Connectivity&#39;</param>
+        /// Possible values include: &#39;SecurityAdmin&#39;, &#39;Connectivity&#39;, &#39;SecurityUser&#39;,
+        /// &#39;Routing&#39;</param>
         public NetworkManagerCommit(System.Collections.Generic.IList<string> targetLocations, string commitType, string commitId = default(string), System.Collections.Generic.IList<string> configurationIds = default(System.Collections.Generic.IList<string>))
 
         {
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<string> ConfigurationIds {get; set; }
 
         /// <summary>
-        /// Gets or sets commit Type. Possible values include: &#39;SecurityAdmin&#39;, &#39;Connectivity&#39;
+        /// Gets or sets commit Type. Possible values include: &#39;SecurityAdmin&#39;, &#39;Connectivity&#39;, &#39;SecurityUser&#39;, &#39;Routing&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "commitType")]
         public string CommitType {get; set; }

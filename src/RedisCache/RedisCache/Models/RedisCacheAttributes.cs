@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             TenantSettings = cache.TenantSettings;
             ShardCount = cache.ShardCount;
             MinimumTlsVersion = cache.MinimumTlsVersion;
+            DisableAccessKeyAuthentication = cache.DisableAccessKeyAuthentication;
+
             Tag = cache.Tags;
             Zone = cache.Zones;
             RedisConfiguration = new Dictionary<string, string>();
@@ -159,6 +161,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public int? ShardCount { get; protected set; }
 
         public string MinimumTlsVersion { get; protected set; }
+
+        public bool? DisableAccessKeyAuthentication { get; protected set; }
 
         public string SubnetId { get; protected set; }
 

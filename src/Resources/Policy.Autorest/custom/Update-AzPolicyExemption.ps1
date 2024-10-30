@@ -74,6 +74,7 @@ param(
 
     [Parameter(ValueFromPipelineByPropertyName)]
     [ValidateSet('Waiver', 'Mitigated')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Waiver', 'Mitigated')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The policy exemption category
@@ -108,17 +109,25 @@ param(
     ${InputObject},
 
     [Parameter()]
-    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
-    [System.Management.Automation.SwitchParameter]
-    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
-    ${BackwardCompatible} = $false,
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [ValidateSet('Default', 'DoNotValidate')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.PSArgumentCompleterAttribute('Default', 'DoNotValidate')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
     # The option whether validate the exemption is at or under the assignment scope.
     ${AssignmentScopeValidation},
+
+    [Parameter()]
+    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
+    [System.Management.Automation.SwitchParameter]
+    # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
+    ${BackwardCompatible} = $false,
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -219,7 +228,7 @@ process {
     if ($InputObject) {
         foreach ($parameterName in $InputObject.Keys) {
             $value = $InputObject.($parameterName)
-            if ($value -or ($value -is [array])) {
+            if ($value -or ($value -is [array]) -or ($value -is [switch])) {
                 $calledParameters.($parameterName) = $value
             }
         }
@@ -228,14 +237,14 @@ process {
     # skip $null and empty values to avoid validation failures on pipeline input
     foreach ($parameterName in $PSBoundParameters.Keys) {
         $value = $PSBoundParameters.($parameterName)
-        if ($value -or ($value -is [array])) {
+        if ($value -or ($value -is [array]) -or ($value -is [switch])) {
             $calledParameters.($parameterName) = $value
         }
     }
 
     # supply required parameters and remove custom parameters
     $calledParameters.Name = $resolved.Name
-    $calledParameters.Scope = $resolved.FullScope
+    $calledParameters.Scope = $resolved.Scope
     $null = $calledParameters.Remove('Id')
     $null = $calledParameters.Remove('InputObject')
 
@@ -252,6 +261,26 @@ process {
     if ($ClearExpiration) {
         $calledParameters.ExpiresOn = $null
         $null = $calledParameters.Remove('ClearExpiration')
+    }
+
+    if (!$calledParameters.DisplayName) {
+        $calledParameters.DisplayName = $existing.DisplayName
+    }
+
+    if (!$calledParameters.Description) {
+        $calledParameters.Description = $existing.Description
+    }
+
+    if (!$calledParameters.PolicyDefinitionReferenceId -and !($calledParameters.PolicyDefinitionReferenceId -is [array])) {
+        $calledParameters.PolicyDefinitionReferenceId = $existing.PolicyDefinitionReferenceId
+    }
+
+    if (!$calledParameters.Metadata) {
+        $calledParameters.Metadata = $existing.Metadata
+    }
+
+    if (!$calledParameters.AssignmentScopeValidation -and $existing.AssignmentScopeValidation) {
+        $calledParameters.AssignmentScopeValidation = $existing.AssignmentScopeValidation
     }
 
     if ($BackwardCompatible) {

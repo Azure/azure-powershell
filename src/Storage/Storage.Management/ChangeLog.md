@@ -18,12 +18,62 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added a warning for an upcoming breaking change for download blob will block input parameter -AbsoluteUri and -Context together.
+    - `Get-AzStorageBlobContent`
+* Revised AzureStorageBlob construct logic to make it more stable.
+
+## Version 7.4.0
+* Added a warning for an upcoming breaking change for removing references to "Microsoft.Azure.Storage.File"
+    - `Start-AzStorageFileCopy`
+
+## Version 7.3.1
+* Fixed issue that table cmdlet fail when execute with Storage context get from StorageAccount object and based on sharedkey authentication.
+* Refined Storage account cmdlet output context generation function based on OAuth token 
+
+## Version 7.3.0
+* Supported account tier Cold
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Updated Storage account cmdlet output properties Context to be based on OAuth token when the storage account has AllowSharedKeyAccess as false 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+    - `Get-AzStorageAccount`
+* Updated list share output display format 
+    - `Get-AzStorageShare`
+* Added warnings for upcoming breaking changes in File cmdlets for removing references to "Microsoft.Azure.Storage.File"
+    - `Close-AzStorageFileHandle`
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `Get-AzStorageFileCopyState`
+    - `Get-AzStorageFileHandle`
+    - `Get-AzStorageShare`
+    - `New-AzStorageDirectory`
+    - `New-AzStorageFileSASToken`
+    - `New-AzStorageShare`
+    - `New-AzStorageShareSASToken`
+    - `Remove-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Remove-AzStorageShare`
+    - `Rename-AzStorageDirectory`
+    - `Rename-AzStorageFile`
+    - `Set-AzStorageFileContent`
+    - `Set-AzStorageShareQuota`
+    - `Start-AzStorageFileCopy`
+    - `Stop-AzStorageFileCopy`
+
+## Version 7.2.0
+* Upgraded Microsoft.Azure.Storage.DataMovement to 2.0.5
+
+## Version 7.1.0
+* Fixed the issue that Azure.Core.AccessToken is used before assigned.
 * Supported TLS1_3 when creating and updating a storage account 
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
 * Fixed sync copy blob issue with -AsJob is specified [#25105]
     - `Copy-AzStorageBlob`
 * Updated Storage.Management.Sdk to support API version 2023-05-01
+* Updated 2 help examples of create storage account cmdlet, with MinimumTlsVersion as TLS1_2.
+    - `New-AzStorageAccount`
 
 ## Version 7.0.0
 * Added a prompt that needs confirmation when upgrading a storage account from StorageV1 or BlobStorage to StorageV2. Can be suppressed with -Force.
