@@ -1,23 +1,22 @@
 {
-  "resourceType": "machines/extensions",
+  "resourceType": "machines/licenseProfiles",
   "apiVersion": "2024-07-31-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine"
   },
   "commands": [
     {
-      "name": "Get-AzConnectedMachineExtension",
-      "description": "The operation to get the extension.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
+      "name": "Get-AzConnectedLicenseProfile",
+      "description": "Retrieves information about the view of a license profile.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles/{licenseProfileName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachineextension"
+          "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedlicenseprofile"
         },
         "parameterSets": [
           {
             "parameters": [
               "-MachineName <String>",
-              "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -26,15 +25,11 @@
       },
       "examples": [
         {
-          "description": "The operation to get the extension.",
+          "description": "Retrieves information about the view of a license profile.",
           "parameters": [
             {
               "name": "-MachineName",
               "value": "[Path.machineName]"
-            },
-            {
-              "name": "-Name",
-              "value": "[Path.extensionName]"
             },
             {
               "name": "-ResourceGroupName",
@@ -49,18 +44,17 @@
       ]
     },
     {
-      "name": "Remove-AzConnectedMachineExtension",
-      "description": "The operation to delete the extension.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
+      "name": "Remove-AzConnectedLicenseProfile",
+      "description": "The operation to delete a license profile.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/licenseProfiles/{licenseProfileName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachineextension"
+          "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedlicenseprofile"
         },
         "parameterSets": [
           {
             "parameters": [
               "-MachineName <String>",
-              "-Name <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
@@ -69,15 +63,11 @@
       },
       "examples": [
         {
-          "description": "The operation to delete the extension.",
+          "description": "The operation to delete a license profile.",
           "parameters": [
             {
               "name": "-MachineName",
               "value": "[Path.machineName]"
-            },
-            {
-              "name": "-Name",
-              "value": "[Path.extensionName]"
             },
             {
               "name": "-ResourceGroupName",
