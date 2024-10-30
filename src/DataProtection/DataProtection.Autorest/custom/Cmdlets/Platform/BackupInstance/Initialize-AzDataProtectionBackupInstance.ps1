@@ -1,7 +1,4 @@
-﻿
-
-
-function Initialize-AzDataProtectionBackupInstance {
+﻿function Initialize-AzDataProtectionBackupInstance {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Initializes Backup instance Request object for configuring backup')]
@@ -156,7 +153,7 @@ function Initialize-AzDataProtectionBackupInstance {
 
             if($BackupConfiguration -ne $null){
                 $backupInstanceResource.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList += @($BackupConfiguration)
-            }            
+            }
         }
         elseif($ExcludedResourceType -ne $null -or $IncludedResourceType -ne $null -or $ExcludedNamespace -ne $null -or $IncludedNamespace -ne $null -or $LabelSelector -ne $null -or $SnapshotVolume -ne $null -or $IncludeClusterScopeResource -ne $null){
             $errormsg = "ExcludedResourceType, IncludedResourceType, ExcludedNamespace, IncludedNamespace, LabelSelector, SnapshotVolume, IncludeClusterScopeResource parameters are not applicable for given DatasourceType. Please ensure to remove them"

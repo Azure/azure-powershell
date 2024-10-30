@@ -21,9 +21,9 @@ Update-AzDataProtectionBackupVault -ResourceGroupName <String> -VaultName <Strin
  [-CmkUserAssignedIdentityId <String>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
  [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
  [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
- [-NoWait] [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
- [-SoftDeleteState <SoftDeleteState>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-NoWait] [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>]
+ [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -377,6 +377,22 @@ ResourceGuardOperationRequests on which LAC check will be performed
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
