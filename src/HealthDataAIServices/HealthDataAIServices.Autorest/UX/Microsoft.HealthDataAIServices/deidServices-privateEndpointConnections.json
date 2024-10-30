@@ -1,0 +1,95 @@
+{
+  "resourceType": "deidServices/privateEndpointConnections",
+  "apiVersion": "2024-02-28-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.healthdataaiservices"
+  },
+  "commands": [
+    {
+      "name": "Get-AzDeidPrivateEndpointConnection",
+      "description": "Get a specific private connection",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.healthdataaiservices/get-azdeidprivateendpointconnection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DeidServiceName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a specific private connection",
+          "parameters": [
+            {
+              "name": "-DeidServiceName",
+              "value": "[Path.deidServiceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.privateEndpointConnectionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzDeidPrivateEndpointConnection",
+      "description": "Delete the private endpoint connection",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.healthdataaiservices/remove-azdeidprivateendpointconnection"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-DeidServiceName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete the private endpoint connection",
+          "parameters": [
+            {
+              "name": "-DeidServiceName",
+              "value": "[Path.deidServiceName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.privateEndpointConnectionName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
