@@ -1,0 +1,42 @@
+{
+  "New-AzContainerGroupReuseFromStandbyPool+[NoContext]+Reuses a container group from a standby pool+$PUT+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rg9iwau/providers/Microsoft.ContainerInstance/containerGroups/pool-reused-containergroup?api-version=2024-05-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rg9iwau/providers/Microsoft.ContainerInstance/containerGroups/pool-reused-containergroup?api-version=2024-05-01-preview",
+      "Content": "{\n  \"location\": \"eastus\",\n  \"properties\": {\n    \"containerGroupProfile\": {\n      \"id\": \"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/azcliresources/providers/Microsoft.ContainerInstance/containerGroupProfiles/testcg\",\n      \"revision\": 1\n    },\n    \"standbyPoolProfile\": {\n      \"id\": \"/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/azcliresources/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testpool\"\n    },\n    \"containers\": [\n      {\n        \"properties\": {\n          \"resources\": {\n            \"requests\": {\n              \"memoryInGB\": 0,\n              \"cpu\": 0\n            }\n          },\n          \"configMap\": {\n            \"keyValuePairs\": {\n              \"key1\": \"value1\"\n            }\n          },\n          \"image\": \"\"\n        },\n        \"name\": \"testcg\"\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "841" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests-pt5m": [ "1499" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests-pt1h": [ "14999" ],
+        "x-ms-request-id": [ "eastus:06c3aff2-eb80-445c-ae3b-9387b640892c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "0d0e1ce4-e47d-474e-a45c-40a79b68bcab" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241031T050625Z:0d0e1ce4-e47d-474e-a45c-40a79b68bcab" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 5D7613896EE04F078D9F8CF7CADEC90E Ref B: MAA201060514031 Ref C: 2024-10-31T05:06:22Z" ],
+        "Date": [ "Thu, 31 Oct 2024 05:06:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "107" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"ContainerGroup properties other than config map are not allowed\"}}",
+      "isContentBase64": false
+    }
+  }
+}
