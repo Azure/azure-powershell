@@ -63,7 +63,7 @@ resourcegroup-append: true
 nested-object-to-string: true
 auto-switch-view: false
 # Disable transform IdentityType as GET+PUT can not replace patch(https://github.com/Azure/autorest.powershell/blob/main/docs/migration-from-v3-to-v4.md#managed-identity-best-practice-alignment)
-# 1. ContainerApp_CreateOrUpdate and ContainerAppJob_CreateOrUpdate can not update resources
+# 1. ContainerApps_CreateOrUpdate and Jobs_CreateOrUpdate can not update resources
 # 2. the input schemas of PUT and PATCH are different
 disable-transform-identity-type: true
 
@@ -668,13 +668,6 @@ directive:
           - ResourceGroupName
           - DomainControlValidation
 
-  # This command requires the user to provide the github token, but the command is missing this parameter, 
-  # so the command cannot be used normally. Wait for the next version to fix the problem
-  - where:
-      verb: Remove
-      subject: ContainerAppSourceControl
-    remove: true
-
   - where:
       verb: New|Update
       subject: ContainerApp
@@ -683,4 +676,11 @@ directive:
       verb: New|Update
       subject: ContainerAppJob
     hide: true
+
+  # This command requires the user to provide the github token, but the command is missing this parameter, 
+  # so the command cannot be used normally. Wait for the next version to fix the problem
+  - where:
+      verb: Remove
+      subject: ContainerAppSourceControl
+    remove: true
 ```

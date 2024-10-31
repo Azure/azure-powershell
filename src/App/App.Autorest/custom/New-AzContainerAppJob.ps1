@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a Container Apps Job.
+Create a Container Apps Job.
 .Description
-create a Container Apps Job.
+Create a Container Apps Job.
 .Example
 {{ Add code here }}
 .Example
@@ -240,7 +240,7 @@ function New-AzContainerAppJob {
     [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Decides if enable a system assigned identity for the resource.
+    # Determines whether to enable a system-assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName = 'CreateExpanded')]

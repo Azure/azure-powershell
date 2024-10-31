@@ -111,7 +111,7 @@ List secrets for a container app
 Get a SourceControl of a Container App.
 
 ### [New-AzContainerApp](New-AzContainerApp.md)
-create a Container App.
+Create a Container App.
 
 ### [New-AzContainerAppAuthConfig](New-AzContainerAppAuthConfig.md)
 create the AuthConfig for a Container App.
@@ -150,7 +150,7 @@ Create an in-memory object for InitContainer.
 Create an in-memory object for IPSecurityRestrictionRule.
 
 ### [New-AzContainerAppJob](New-AzContainerAppJob.md)
-create a Container Apps Job.
+Create a Container Apps Job.
 
 ### [New-AzContainerAppJobExecutionContainerObject](New-AzContainerAppJobExecutionContainerObject.md)
 Create an in-memory object for JobExecutionContainer.

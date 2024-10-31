@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppJob
 
 ## SYNOPSIS
-create a Container Apps Job.
+Create a Container Apps Job.
 
 ## SYNTAX
 
@@ -59,7 +59,7 @@ New-AzContainerAppJob -Name <String> -ResourceGroupName <String> -JsonString <St
 ```
 
 ## DESCRIPTION
-create a Container Apps Job.
+Create a Container Apps Job.
 
 ## EXAMPLES
 
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

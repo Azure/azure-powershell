@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerApp
 
 ## SYNOPSIS
-create a Container App.
+Create a Container App.
 
 ## SYNTAX
 
@@ -52,7 +52,7 @@ New-AzContainerApp -Name <String> -ResourceGroupName <String> -JsonString <Strin
 ```
 
 ## DESCRIPTION
-create a Container App.
+Create a Container App.
 
 ## EXAMPLES
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
+Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

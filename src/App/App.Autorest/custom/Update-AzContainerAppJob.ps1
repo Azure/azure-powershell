@@ -240,7 +240,7 @@ function Update-AzContainerAppJob {
     [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.Nullable[System.Boolean]]
-    # Decides if enable a system assigned identity for the resource.
+    # Determines whether to enable a system-assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName = 'UpdateExpanded')]

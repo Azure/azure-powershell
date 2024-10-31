@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a Container App.
+Create a Container App.
 .Description
-create a Container App.
+Create a Container App.
 .Example
 {{ Add code here }}
 .Example
@@ -262,7 +262,7 @@ function New-AzContainerApp {
     [Parameter(ParameterSetName = 'CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Decides if enable a system assigned identity for the resource.
+    # Determines whether to enable a system-assigned identity for the resource.
     ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName = 'CreateExpanded')]
