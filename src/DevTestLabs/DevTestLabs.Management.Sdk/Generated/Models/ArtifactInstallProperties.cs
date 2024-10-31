@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// Initializes a new instance of the ArtifactInstallProperties class.
         /// </summary>
         /// <param name="artifactId">The artifact's identifier.</param>
-        /// <param name="artifactTitle">The artifact's title.</param>
         /// <param name="parameters">The parameters of the artifact.</param>
         /// <param name="status">The status of the artifact.</param>
         /// <param name="deploymentStatusMessage">The status message from the
@@ -41,10 +40,9 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// virtual machine extension.</param>
         /// <param name="installTime">The time that the artifact starts to
         /// install on the virtual machine.</param>
-        public ArtifactInstallProperties(string artifactId = default(string), string artifactTitle = default(string), IList<ArtifactParameterProperties> parameters = default(IList<ArtifactParameterProperties>), string status = default(string), string deploymentStatusMessage = default(string), string vmExtensionStatusMessage = default(string), System.DateTime? installTime = default(System.DateTime?))
+        public ArtifactInstallProperties(string artifactId = default(string), IList<ArtifactParameterProperties> parameters = default(IList<ArtifactParameterProperties>), string status = default(string), string deploymentStatusMessage = default(string), string vmExtensionStatusMessage = default(string), System.DateTime? installTime = default(System.DateTime?))
         {
             ArtifactId = artifactId;
-            ArtifactTitle = artifactTitle;
             Parameters = parameters;
             Status = status;
             DeploymentStatusMessage = deploymentStatusMessage;
@@ -63,12 +61,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         [JsonProperty(PropertyName = "artifactId")]
         public string ArtifactId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the artifact's title.
-        /// </summary>
-        [JsonProperty(PropertyName = "artifactTitle")]
-        public string ArtifactTitle { get; set; }
 
         /// <summary>
         /// Gets or sets the parameters of the artifact.

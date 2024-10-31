@@ -28,18 +28,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
-            public static IPage<Formula> List(this IFormulasOperations operations, string resourceGroupName, string labName, ODataQuery<Formula> odataQuery = default(ODataQuery<Formula>))
+            public static IPage<Formula> List(this IFormulasOperations operations, string labName, ODataQuery<Formula> odataQuery = default(ODataQuery<Formula>))
             {
-                return operations.ListAsync(resourceGroupName, labName, odataQuery).GetAwaiter().GetResult();
+                return operations.ListAsync(labName, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -48,9 +45,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -60,9 +54,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Formula>> ListAsync(this IFormulasOperations operations, string resourceGroupName, string labName, ODataQuery<Formula> odataQuery = default(ODataQuery<Formula>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Formula>> ListAsync(this IFormulasOperations operations, string labName, ODataQuery<Formula> odataQuery = default(ODataQuery<Formula>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, labName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(labName, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -74,9 +68,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -86,9 +77,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='expand'>
             /// Specify the $expand query. Example: 'properties($select=description)'
             /// </param>
-            public static Formula Get(this IFormulasOperations operations, string resourceGroupName, string labName, string name, string expand = default(string))
+            public static Formula Get(this IFormulasOperations operations, string labName, string name, string expand = default(string))
             {
-                return operations.GetAsync(resourceGroupName, labName, name, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(labName, name, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -96,9 +87,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -112,9 +100,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Formula> GetAsync(this IFormulasOperations operations, string resourceGroupName, string labName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Formula> GetAsync(this IFormulasOperations operations, string labName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, labName, name, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(labName, name, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -127,9 +115,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -139,9 +124,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='formula'>
             /// A formula for creating a VM, specifying an image base and other parameters
             /// </param>
-            public static Formula CreateOrUpdate(this IFormulasOperations operations, string resourceGroupName, string labName, string name, Formula formula)
+            public static Formula CreateOrUpdate(this IFormulasOperations operations, string labName, string name, Formula formula)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, labName, name, formula).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(labName, name, formula).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -150,9 +135,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -166,9 +148,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Formula> CreateOrUpdateAsync(this IFormulasOperations operations, string resourceGroupName, string labName, string name, Formula formula, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Formula> CreateOrUpdateAsync(this IFormulasOperations operations, string labName, string name, Formula formula, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, name, formula, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(labName, name, formula, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -180,18 +162,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='name'>
             /// The name of the formula.
             /// </param>
-            public static void Delete(this IFormulasOperations operations, string resourceGroupName, string labName, string name)
+            public static void Delete(this IFormulasOperations operations, string labName, string name)
             {
-                operations.DeleteAsync(resourceGroupName, labName, name).GetAwaiter().GetResult();
+                operations.DeleteAsync(labName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -200,9 +179,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -212,61 +188,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IFormulasOperations operations, string resourceGroupName, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IFormulasOperations operations, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Modify properties of formulas.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='labName'>
-            /// The name of the lab.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the formula.
-            /// </param>
-            /// <param name='formula'>
-            /// A formula for creating a VM, specifying an image base and other parameters
-            /// </param>
-            public static Formula Update(this IFormulasOperations operations, string resourceGroupName, string labName, string name, FormulaFragment formula)
-            {
-                return operations.UpdateAsync(resourceGroupName, labName, name, formula).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Modify properties of formulas.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='labName'>
-            /// The name of the lab.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the formula.
-            /// </param>
-            /// <param name='formula'>
-            /// A formula for creating a VM, specifying an image base and other parameters
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<Formula> UpdateAsync(this IFormulasOperations operations, string resourceGroupName, string labName, string name, FormulaFragment formula, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, labName, name, formula, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.DeleteWithHttpMessagesAsync(labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -276,9 +200,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -288,9 +209,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='formula'>
             /// A formula for creating a VM, specifying an image base and other parameters
             /// </param>
-            public static Formula BeginCreateOrUpdate(this IFormulasOperations operations, string resourceGroupName, string labName, string name, Formula formula)
+            public static Formula BeginCreateOrUpdate(this IFormulasOperations operations, string labName, string name, Formula formula)
             {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, labName, name, formula).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(labName, name, formula).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -299,9 +220,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -315,9 +233,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Formula> BeginCreateOrUpdateAsync(this IFormulasOperations operations, string resourceGroupName, string labName, string name, Formula formula, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Formula> BeginCreateOrUpdateAsync(this IFormulasOperations operations, string labName, string name, Formula formula, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, name, formula, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(labName, name, formula, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

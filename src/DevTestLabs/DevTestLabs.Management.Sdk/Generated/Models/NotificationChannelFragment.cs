@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
     /// A notification.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class NotificationChannelFragment : UpdateResource
+    public partial class NotificationChannelFragment : Resource
     {
         /// <summary>
         /// Initializes a new instance of the NotificationChannelFragment
@@ -36,25 +36,28 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// Initializes a new instance of the NotificationChannelFragment
         /// class.
         /// </summary>
+        /// <param name="id">The identifier of the resource.</param>
+        /// <param name="name">The name of the resource.</param>
+        /// <param name="type">The type of the resource.</param>
+        /// <param name="location">The location of the resource.</param>
         /// <param name="tags">The tags of the resource.</param>
         /// <param name="webHookUrl">The webhook URL to send notifications
         /// to.</param>
-        /// <param name="emailRecipient">The email recipient to send
-        /// notifications to (can be a list of semi-colon seperated email
-        /// addresses).</param>
-        /// <param name="notificationLocale">The locale to use when sending a
-        /// notification (fallback for unsupported languages is EN).</param>
         /// <param name="description">Description of notification.</param>
         /// <param name="events">The list of event for which this notification
         /// is enabled.</param>
-        public NotificationChannelFragment(IDictionary<string, string> tags = default(IDictionary<string, string>), string webHookUrl = default(string), string emailRecipient = default(string), string notificationLocale = default(string), string description = default(string), IList<EventFragment> events = default(IList<EventFragment>))
-            : base(tags)
+        /// <param name="provisioningState">The provisioning status of the
+        /// resource.</param>
+        /// <param name="uniqueIdentifier">The unique immutable identifier of a
+        /// resource (Guid).</param>
+        public NotificationChannelFragment(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string webHookUrl = default(string), string description = default(string), IList<EventFragment> events = default(IList<EventFragment>), string provisioningState = default(string), string uniqueIdentifier = default(string))
+            : base(id, name, type, location, tags)
         {
             WebHookUrl = webHookUrl;
-            EmailRecipient = emailRecipient;
-            NotificationLocale = notificationLocale;
             Description = description;
             Events = events;
+            ProvisioningState = provisioningState;
+            UniqueIdentifier = uniqueIdentifier;
             CustomInit();
         }
 
@@ -70,20 +73,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         public string WebHookUrl { get; set; }
 
         /// <summary>
-        /// Gets or sets the email recipient to send notifications to (can be a
-        /// list of semi-colon seperated email addresses).
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.emailRecipient")]
-        public string EmailRecipient { get; set; }
-
-        /// <summary>
-        /// Gets or sets the locale to use when sending a notification
-        /// (fallback for unsupported languages is EN).
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.notificationLocale")]
-        public string NotificationLocale { get; set; }
-
-        /// <summary>
         /// Gets or sets description of notification.
         /// </summary>
         [JsonProperty(PropertyName = "properties.description")]
@@ -95,6 +84,18 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.events")]
         public IList<EventFragment> Events { get; set; }
+
+        /// <summary>
+        /// Gets or sets the provisioning status of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.provisioningState")]
+        public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the unique immutable identifier of a resource (Guid).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.uniqueIdentifier")]
+        public string UniqueIdentifier { get; set; }
 
     }
 }

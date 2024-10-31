@@ -24,11 +24,23 @@ license-header: MICROSOFT_MIT_NO_VERSION
 
 ###
 ``` yaml
-commit: d4365e634050481a5d6966cd6dd2e4a361d519dd
+commit: d8a796d42bbe9456e3de85c37d3e1a38f4026d01
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/DTL.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2016-05-15/DTL.json
 
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.DevTestLabs
+
+directive:
+  - from: swagger-document
+    where: $.parameters.resourceGroupName
+    transform: >-
+      return {
+            "name": "resourceGroupName",
+            "in": "path",
+            "description": "The name of the resource group.",
+            "required": true,
+            "type": "string"
+        }
 ```

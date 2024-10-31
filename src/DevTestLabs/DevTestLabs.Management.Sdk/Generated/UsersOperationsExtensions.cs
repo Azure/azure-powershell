@@ -28,18 +28,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
-            public static IPage<User> List(this IUsersOperations operations, string resourceGroupName, string labName, ODataQuery<User> odataQuery = default(ODataQuery<User>))
+            public static IPage<User> List(this IUsersOperations operations, string labName, ODataQuery<User> odataQuery = default(ODataQuery<User>))
             {
-                return operations.ListAsync(resourceGroupName, labName, odataQuery).GetAwaiter().GetResult();
+                return operations.ListAsync(labName, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -48,9 +45,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -60,9 +54,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<User>> ListAsync(this IUsersOperations operations, string resourceGroupName, string labName, ODataQuery<User> odataQuery = default(ODataQuery<User>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<User>> ListAsync(this IUsersOperations operations, string labName, ODataQuery<User> odataQuery = default(ODataQuery<User>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, labName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(labName, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -74,9 +68,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -86,9 +77,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='expand'>
             /// Specify the $expand query. Example: 'properties($select=identity)'
             /// </param>
-            public static User Get(this IUsersOperations operations, string resourceGroupName, string labName, string name, string expand = default(string))
+            public static User Get(this IUsersOperations operations, string labName, string name, string expand = default(string))
             {
-                return operations.GetAsync(resourceGroupName, labName, name, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(labName, name, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -96,9 +87,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -112,23 +100,19 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<User> GetAsync(this IUsersOperations operations, string resourceGroupName, string labName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<User> GetAsync(this IUsersOperations operations, string labName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, labName, name, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(labName, name, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Create or replace an existing user profile. This operation can take a while
-            /// to complete.
+            /// Create or replace an existing user profile.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -139,20 +123,16 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='user'>
             /// Profile of a lab user.
             /// </param>
-            public static User CreateOrUpdate(this IUsersOperations operations, string resourceGroupName, string labName, string name, User user)
+            public static User CreateOrUpdate(this IUsersOperations operations, string labName, string name, User user)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, labName, name, user).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(labName, name, user).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Create or replace an existing user profile. This operation can take a while
-            /// to complete.
+            /// Create or replace an existing user profile.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -166,9 +146,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<User> CreateOrUpdateAsync(this IUsersOperations operations, string resourceGroupName, string labName, string name, User user, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<User> CreateOrUpdateAsync(this IUsersOperations operations, string labName, string name, User user, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, name, user, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(labName, name, user, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -180,18 +160,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='name'>
             /// The name of the user profile.
             /// </param>
-            public static void Delete(this IUsersOperations operations, string resourceGroupName, string labName, string name)
+            public static void Delete(this IUsersOperations operations, string labName, string name)
             {
-                operations.DeleteAsync(resourceGroupName, labName, name).GetAwaiter().GetResult();
+                operations.DeleteAsync(labName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -199,9 +176,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -212,9 +186,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IUsersOperations operations, string resourceGroupName, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IUsersOperations operations, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -223,9 +197,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -235,9 +206,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='user'>
             /// Profile of a lab user.
             /// </param>
-            public static User Update(this IUsersOperations operations, string resourceGroupName, string labName, string name, UserFragment user)
+            public static User Update(this IUsersOperations operations, string labName, string name, UserFragment user)
             {
-                return operations.UpdateAsync(resourceGroupName, labName, name, user).GetAwaiter().GetResult();
+                return operations.UpdateAsync(labName, name, user).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -246,9 +217,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -261,63 +229,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<User> UpdateAsync(this IUsersOperations operations, string resourceGroupName, string labName, string name, UserFragment user, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<User> UpdateAsync(this IUsersOperations operations, string labName, string name, UserFragment user, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, labName, name, user, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
-            /// Create or replace an existing user profile. This operation can take a while
-            /// to complete.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='labName'>
-            /// The name of the lab.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the user profile.
-            /// </param>
-            /// <param name='user'>
-            /// Profile of a lab user.
-            /// </param>
-            public static User BeginCreateOrUpdate(this IUsersOperations operations, string resourceGroupName, string labName, string name, User user)
-            {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, labName, name, user).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Create or replace an existing user profile. This operation can take a while
-            /// to complete.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='labName'>
-            /// The name of the lab.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the user profile.
-            /// </param>
-            /// <param name='user'>
-            /// Profile of a lab user.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<User> BeginCreateOrUpdateAsync(this IUsersOperations operations, string resourceGroupName, string labName, string name, User user, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, name, user, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(labName, name, user, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -329,18 +243,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='name'>
             /// The name of the user profile.
             /// </param>
-            public static void BeginDelete(this IUsersOperations operations, string resourceGroupName, string labName, string name)
+            public static void BeginDelete(this IUsersOperations operations, string labName, string name)
             {
-                operations.BeginDeleteAsync(resourceGroupName, labName, name).GetAwaiter().GetResult();
+                operations.BeginDeleteAsync(labName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -348,9 +259,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -361,9 +269,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IUsersOperations operations, string resourceGroupName, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteAsync(this IUsersOperations operations, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteWithHttpMessagesAsync(labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

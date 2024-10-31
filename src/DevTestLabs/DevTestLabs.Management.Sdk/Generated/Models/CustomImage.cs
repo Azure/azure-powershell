@@ -50,20 +50,11 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// image.</param>
         /// <param name="managedImageId">The Managed Image Id backing the
         /// custom image.</param>
-        /// <param name="managedSnapshotId">The Managed Snapshot Id backing the
-        /// custom image.</param>
-        /// <param name="dataDiskStorageInfo">Storage information about the
-        /// data disks present in the custom image</param>
-        /// <param name="customImagePlan">Storage information about the plan
-        /// related to this custom image</param>
-        /// <param name="isPlanAuthorized">Whether or not the custom images
-        /// underlying offer/plan has been enabled for programmatic
-        /// deployment</param>
         /// <param name="provisioningState">The provisioning status of the
         /// resource.</param>
         /// <param name="uniqueIdentifier">The unique immutable identifier of a
         /// resource (Guid).</param>
-        public CustomImage(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), CustomImagePropertiesFromVm vm = default(CustomImagePropertiesFromVm), CustomImagePropertiesCustom vhd = default(CustomImagePropertiesCustom), string description = default(string), string author = default(string), System.DateTime? creationDate = default(System.DateTime?), string managedImageId = default(string), string managedSnapshotId = default(string), IList<DataDiskStorageTypeInfo> dataDiskStorageInfo = default(IList<DataDiskStorageTypeInfo>), CustomImagePropertiesFromPlan customImagePlan = default(CustomImagePropertiesFromPlan), bool? isPlanAuthorized = default(bool?), string provisioningState = default(string), string uniqueIdentifier = default(string))
+        public CustomImage(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), CustomImagePropertiesFromVm vm = default(CustomImagePropertiesFromVm), CustomImagePropertiesCustom vhd = default(CustomImagePropertiesCustom), string description = default(string), string author = default(string), System.DateTime? creationDate = default(System.DateTime?), string managedImageId = default(string), string provisioningState = default(string), string uniqueIdentifier = default(string))
             : base(id, name, type, location, tags)
         {
             Vm = vm;
@@ -72,10 +63,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
             Author = author;
             CreationDate = creationDate;
             ManagedImageId = managedImageId;
-            ManagedSnapshotId = managedSnapshotId;
-            DataDiskStorageInfo = dataDiskStorageInfo;
-            CustomImagePlan = customImagePlan;
-            IsPlanAuthorized = isPlanAuthorized;
             ProvisioningState = provisioningState;
             UniqueIdentifier = uniqueIdentifier;
             CustomInit();
@@ -124,43 +111,16 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         public string ManagedImageId { get; set; }
 
         /// <summary>
-        /// Gets or sets the Managed Snapshot Id backing the custom image.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.managedSnapshotId")]
-        public string ManagedSnapshotId { get; set; }
-
-        /// <summary>
-        /// Gets or sets storage information about the data disks present in
-        /// the custom image
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.dataDiskStorageInfo")]
-        public IList<DataDiskStorageTypeInfo> DataDiskStorageInfo { get; set; }
-
-        /// <summary>
-        /// Gets or sets storage information about the plan related to this
-        /// custom image
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.customImagePlan")]
-        public CustomImagePropertiesFromPlan CustomImagePlan { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether or not the custom images underlying offer/plan
-        /// has been enabled for programmatic deployment
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.isPlanAuthorized")]
-        public bool? IsPlanAuthorized { get; set; }
-
-        /// <summary>
-        /// Gets the provisioning status of the resource.
+        /// Gets or sets the provisioning status of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets the unique immutable identifier of a resource (Guid).
+        /// Gets or sets the unique immutable identifier of a resource (Guid).
         /// </summary>
         [JsonProperty(PropertyName = "properties.uniqueIdentifier")]
-        public string UniqueIdentifier { get; private set; }
+        public string UniqueIdentifier { get; set; }
 
         /// <summary>
         /// Validate the object.

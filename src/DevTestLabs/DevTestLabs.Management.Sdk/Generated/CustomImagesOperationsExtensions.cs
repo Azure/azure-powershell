@@ -28,18 +28,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
-            public static IPage<CustomImage> List(this ICustomImagesOperations operations, string resourceGroupName, string labName, ODataQuery<CustomImage> odataQuery = default(ODataQuery<CustomImage>))
+            public static IPage<CustomImage> List(this ICustomImagesOperations operations, string labName, ODataQuery<CustomImage> odataQuery = default(ODataQuery<CustomImage>))
             {
-                return operations.ListAsync(resourceGroupName, labName, odataQuery).GetAwaiter().GetResult();
+                return operations.ListAsync(labName, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -48,9 +45,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -60,9 +54,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<CustomImage>> ListAsync(this ICustomImagesOperations operations, string resourceGroupName, string labName, ODataQuery<CustomImage> odataQuery = default(ODataQuery<CustomImage>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<CustomImage>> ListAsync(this ICustomImagesOperations operations, string labName, ODataQuery<CustomImage> odataQuery = default(ODataQuery<CustomImage>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, labName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(labName, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -74,9 +68,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -86,9 +77,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='expand'>
             /// Specify the $expand query. Example: 'properties($select=vm)'
             /// </param>
-            public static CustomImage Get(this ICustomImagesOperations operations, string resourceGroupName, string labName, string name, string expand = default(string))
+            public static CustomImage Get(this ICustomImagesOperations operations, string labName, string name, string expand = default(string))
             {
-                return operations.GetAsync(resourceGroupName, labName, name, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(labName, name, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -96,9 +87,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -112,9 +100,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CustomImage> GetAsync(this ICustomImagesOperations operations, string resourceGroupName, string labName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CustomImage> GetAsync(this ICustomImagesOperations operations, string labName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, labName, name, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(labName, name, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -127,9 +115,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -139,9 +124,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='customImage'>
             /// A custom image.
             /// </param>
-            public static CustomImage CreateOrUpdate(this ICustomImagesOperations operations, string resourceGroupName, string labName, string name, CustomImage customImage)
+            public static CustomImage CreateOrUpdate(this ICustomImagesOperations operations, string labName, string name, CustomImage customImage)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, labName, name, customImage).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(labName, name, customImage).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -150,9 +135,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -166,9 +148,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CustomImage> CreateOrUpdateAsync(this ICustomImagesOperations operations, string resourceGroupName, string labName, string name, CustomImage customImage, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CustomImage> CreateOrUpdateAsync(this ICustomImagesOperations operations, string labName, string name, CustomImage customImage, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, name, customImage, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(labName, name, customImage, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -180,18 +162,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='name'>
             /// The name of the custom image.
             /// </param>
-            public static void Delete(this ICustomImagesOperations operations, string resourceGroupName, string labName, string name)
+            public static void Delete(this ICustomImagesOperations operations, string labName, string name)
             {
-                operations.DeleteAsync(resourceGroupName, labName, name).GetAwaiter().GetResult();
+                operations.DeleteAsync(labName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -200,9 +179,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -212,61 +188,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this ICustomImagesOperations operations, string resourceGroupName, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this ICustomImagesOperations operations, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Modify properties of custom images.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='labName'>
-            /// The name of the lab.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the custom image.
-            /// </param>
-            /// <param name='customImage'>
-            /// A custom image.
-            /// </param>
-            public static CustomImage Update(this ICustomImagesOperations operations, string resourceGroupName, string labName, string name, CustomImageFragment customImage)
-            {
-                return operations.UpdateAsync(resourceGroupName, labName, name, customImage).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Modify properties of custom images.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='labName'>
-            /// The name of the lab.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the custom image.
-            /// </param>
-            /// <param name='customImage'>
-            /// A custom image.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<CustomImage> UpdateAsync(this ICustomImagesOperations operations, string resourceGroupName, string labName, string name, CustomImageFragment customImage, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, labName, name, customImage, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.DeleteWithHttpMessagesAsync(labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -276,9 +200,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -288,9 +209,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='customImage'>
             /// A custom image.
             /// </param>
-            public static CustomImage BeginCreateOrUpdate(this ICustomImagesOperations operations, string resourceGroupName, string labName, string name, CustomImage customImage)
+            public static CustomImage BeginCreateOrUpdate(this ICustomImagesOperations operations, string labName, string name, CustomImage customImage)
             {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, labName, name, customImage).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(labName, name, customImage).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -299,9 +220,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -315,9 +233,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CustomImage> BeginCreateOrUpdateAsync(this ICustomImagesOperations operations, string resourceGroupName, string labName, string name, CustomImage customImage, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CustomImage> BeginCreateOrUpdateAsync(this ICustomImagesOperations operations, string labName, string name, CustomImage customImage, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, name, customImage, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(labName, name, customImage, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -329,18 +247,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='name'>
             /// The name of the custom image.
             /// </param>
-            public static void BeginDelete(this ICustomImagesOperations operations, string resourceGroupName, string labName, string name)
+            public static void BeginDelete(this ICustomImagesOperations operations, string labName, string name)
             {
-                operations.BeginDeleteAsync(resourceGroupName, labName, name).GetAwaiter().GetResult();
+                operations.BeginDeleteAsync(labName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -348,9 +263,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -361,9 +273,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this ICustomImagesOperations operations, string resourceGroupName, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteAsync(this ICustomImagesOperations operations, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteWithHttpMessagesAsync(labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

@@ -49,11 +49,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <param name="icon">The icon of the gallery image.</param>
         /// <param name="enabled">Indicates whether this gallery image is
         /// enabled.</param>
-        /// <param name="planId">The third party plan that applies to this
-        /// image</param>
-        /// <param name="isPlanAuthorized">Indicates if the plan has been
-        /// authorized for programmatic deployment.</param>
-        public GalleryImage(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string author = default(string), System.DateTime? createdDate = default(System.DateTime?), string description = default(string), GalleryImageReference imageReference = default(GalleryImageReference), string icon = default(string), bool? enabled = default(bool?), string planId = default(string), bool? isPlanAuthorized = default(bool?))
+        public GalleryImage(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string author = default(string), System.DateTime? createdDate = default(System.DateTime?), string description = default(string), GalleryImageReference imageReference = default(GalleryImageReference), string icon = default(string), bool? enabled = default(bool?))
             : base(id, name, type, location, tags)
         {
             Author = author;
@@ -62,8 +58,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
             ImageReference = imageReference;
             Icon = icon;
             Enabled = enabled;
-            PlanId = planId;
-            IsPlanAuthorized = isPlanAuthorized;
             CustomInit();
         }
 
@@ -107,19 +101,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.enabled")]
         public bool? Enabled { get; set; }
-
-        /// <summary>
-        /// Gets or sets the third party plan that applies to this image
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.planId")]
-        public string PlanId { get; set; }
-
-        /// <summary>
-        /// Gets or sets indicates if the plan has been authorized for
-        /// programmatic deployment.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.isPlanAuthorized")]
-        public bool? IsPlanAuthorized { get; set; }
 
     }
 }

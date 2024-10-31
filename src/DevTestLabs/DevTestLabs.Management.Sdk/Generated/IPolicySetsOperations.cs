@@ -26,9 +26,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// <summary>
         /// Evaluates lab policy.
         /// </summary>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group.
-        /// </param>
         /// <param name='labName'>
         /// The name of the lab.
         /// </param>
@@ -53,6 +50,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<EvaluatePoliciesResponse>> EvaluatePoliciesWithHttpMessagesAsync(string resourceGroupName, string labName, string name, EvaluatePoliciesRequest evaluatePoliciesRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<EvaluatePoliciesResponse>> EvaluatePoliciesWithHttpMessagesAsync(string labName, string name, EvaluatePoliciesRequest evaluatePoliciesRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

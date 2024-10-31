@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
 {
 
     /// <summary>
-    /// Defines values for EnvironmentPermission.
+    /// Defines values for NotificationStatus.
     /// </summary>
-    public static class EnvironmentPermission
+    public static class NotificationStatus
     {
-        public const string Reader = "Reader";
-        public const string Contributor = "Contributor";
+        public const string Disabled = "Disabled";
+        public const string Enabled = "Enabled";
     }
 }

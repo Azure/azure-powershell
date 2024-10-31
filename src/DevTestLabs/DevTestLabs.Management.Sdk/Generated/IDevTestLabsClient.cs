@@ -46,6 +46,11 @@ namespace Microsoft.Azure.Management.DevTestLabs
         string ApiVersion { get; }
 
         /// <summary>
+        /// The name of the resource group.
+        /// </summary>
+        string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// The subscription ID.
         /// </summary>
         string SubscriptionId { get; set; }
@@ -168,16 +173,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// Gets the ISecretsOperations.
         /// </summary>
         ISecretsOperations Secrets { get; }
-
-        /// <summary>
-        /// Gets the IServiceFabricsOperations.
-        /// </summary>
-        IServiceFabricsOperations ServiceFabrics { get; }
-
-        /// <summary>
-        /// Gets the IServiceFabricSchedulesOperations.
-        /// </summary>
-        IServiceFabricSchedulesOperations ServiceFabricSchedules { get; }
 
         /// <summary>
         /// Gets the IVirtualMachinesOperations.

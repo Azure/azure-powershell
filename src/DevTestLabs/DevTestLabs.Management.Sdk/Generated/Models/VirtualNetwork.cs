@@ -94,10 +94,10 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         public string ExternalProviderResourceId { get; set; }
 
         /// <summary>
-        /// Gets the external subnet properties.
+        /// Gets or sets the external subnet properties.
         /// </summary>
         [JsonProperty(PropertyName = "properties.externalSubnets")]
-        public IList<ExternalSubnet> ExternalSubnets { get; private set; }
+        public IList<ExternalSubnet> ExternalSubnets { get; set; }
 
         /// <summary>
         /// Gets or sets the subnet overrides of the virtual network.
@@ -112,16 +112,16 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         public System.DateTime? CreatedDate { get; private set; }
 
         /// <summary>
-        /// Gets the provisioning status of the resource.
+        /// Gets or sets the provisioning status of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets the unique immutable identifier of a resource (Guid).
+        /// Gets or sets the unique immutable identifier of a resource (Guid).
         /// </summary>
         [JsonProperty(PropertyName = "properties.uniqueIdentifier")]
-        public string UniqueIdentifier { get; private set; }
+        public string UniqueIdentifier { get; set; }
 
     }
 }

@@ -52,6 +52,11 @@ namespace Microsoft.Azure.Management.DevTestLabs
         public string ApiVersion { get; private set; }
 
         /// <summary>
+        /// The name of the resource group.
+        /// </summary>
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// The subscription ID.
         /// </summary>
         public string SubscriptionId { get; set; }
@@ -173,16 +178,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
         /// Gets the ISecretsOperations.
         /// </summary>
         public virtual ISecretsOperations Secrets { get; private set; }
-
-        /// <summary>
-        /// Gets the IServiceFabricsOperations.
-        /// </summary>
-        public virtual IServiceFabricsOperations ServiceFabrics { get; private set; }
-
-        /// <summary>
-        /// Gets the IServiceFabricSchedulesOperations.
-        /// </summary>
-        public virtual IServiceFabricSchedulesOperations ServiceFabricSchedules { get; private set; }
 
         /// <summary>
         /// Gets the IVirtualMachinesOperations.
@@ -460,13 +455,11 @@ namespace Microsoft.Azure.Management.DevTestLabs
             Disks = new DisksOperations(this);
             Environments = new EnvironmentsOperations(this);
             Secrets = new SecretsOperations(this);
-            ServiceFabrics = new ServiceFabricsOperations(this);
-            ServiceFabricSchedules = new ServiceFabricSchedulesOperations(this);
             VirtualMachines = new VirtualMachinesOperations(this);
             VirtualMachineSchedules = new VirtualMachineSchedulesOperations(this);
             VirtualNetworks = new VirtualNetworksOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2018-09-15";
+            ApiVersion = "2016-05-15";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

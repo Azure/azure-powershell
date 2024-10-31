@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
     /// defined on a VM or on lab level.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ApplicableScheduleFragment : UpdateResource
+    public partial class ApplicableScheduleFragment : Resource
     {
         /// <summary>
         /// Initializes a new instance of the ApplicableScheduleFragment class.
@@ -35,13 +35,17 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <summary>
         /// Initializes a new instance of the ApplicableScheduleFragment class.
         /// </summary>
+        /// <param name="id">The identifier of the resource.</param>
+        /// <param name="name">The name of the resource.</param>
+        /// <param name="type">The type of the resource.</param>
+        /// <param name="location">The location of the resource.</param>
         /// <param name="tags">The tags of the resource.</param>
         /// <param name="labVmsShutdown">The auto-shutdown schedule, if one has
         /// been set at the lab or lab resource level.</param>
         /// <param name="labVmsStartup">The auto-startup schedule, if one has
         /// been set at the lab or lab resource level.</param>
-        public ApplicableScheduleFragment(IDictionary<string, string> tags = default(IDictionary<string, string>), ScheduleFragment labVmsShutdown = default(ScheduleFragment), ScheduleFragment labVmsStartup = default(ScheduleFragment))
-            : base(tags)
+        public ApplicableScheduleFragment(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ScheduleFragment labVmsShutdown = default(ScheduleFragment), ScheduleFragment labVmsStartup = default(ScheduleFragment))
+            : base(id, name, type, location, tags)
         {
             LabVmsShutdown = labVmsShutdown;
             LabVmsStartup = labVmsStartup;

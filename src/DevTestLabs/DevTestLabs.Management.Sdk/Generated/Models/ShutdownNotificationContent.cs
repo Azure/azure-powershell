@@ -42,9 +42,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <param name="guid">The GUID for the virtual machine to be shut
         /// down.</param>
         /// <param name="owner">The owner of the virtual machine.</param>
-        /// <param name="vmUrl">The URL of the virtual machine.</param>
-        /// <param name="minutesUntilShutdown">Minutes remaining until
-        /// shutdown</param>
         /// <param name="eventType">The event for which a notification will be
         /// sent.</param>
         /// <param name="text">The text for the notification.</param>
@@ -53,7 +50,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <param name="resourceGroupName">The resource group name for the
         /// schedule.</param>
         /// <param name="labName">The lab for the schedule.</param>
-        public ShutdownNotificationContent(string skipUrl = default(string), string delayUrl60 = default(string), string delayUrl120 = default(string), string vmName = default(string), string guid = default(string), string owner = default(string), string vmUrl = default(string), string minutesUntilShutdown = default(string), string eventType = default(string), string text = default(string), string subscriptionId = default(string), string resourceGroupName = default(string), string labName = default(string))
+        public ShutdownNotificationContent(string skipUrl = default(string), string delayUrl60 = default(string), string delayUrl120 = default(string), string vmName = default(string), string guid = default(string), string owner = default(string), string eventType = default(string), string text = default(string), string subscriptionId = default(string), string resourceGroupName = default(string), string labName = default(string))
         {
             SkipUrl = skipUrl;
             DelayUrl60 = delayUrl60;
@@ -61,8 +58,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
             VmName = vmName;
             Guid = guid;
             Owner = owner;
-            VmUrl = vmUrl;
-            MinutesUntilShutdown = minutesUntilShutdown;
             EventType = eventType;
             Text = text;
             SubscriptionId = subscriptionId;
@@ -111,18 +106,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         [JsonProperty(PropertyName = "owner")]
         public string Owner { get; set; }
-
-        /// <summary>
-        /// Gets or sets the URL of the virtual machine.
-        /// </summary>
-        [JsonProperty(PropertyName = "vmUrl")]
-        public string VmUrl { get; set; }
-
-        /// <summary>
-        /// Gets or sets minutes remaining until shutdown
-        /// </summary>
-        [JsonProperty(PropertyName = "minutesUntilShutdown")]
-        public string MinutesUntilShutdown { get; set; }
 
         /// <summary>
         /// Gets or sets the event for which a notification will be sent.

@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -40,9 +37,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
-            public static IPage<DtlEnvironment> List(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, ODataQuery<DtlEnvironment> odataQuery = default(ODataQuery<DtlEnvironment>))
+            public static IPage<DtlEnvironment> List(this IEnvironmentsOperations operations, string labName, string userName, ODataQuery<DtlEnvironment> odataQuery = default(ODataQuery<DtlEnvironment>))
             {
-                return operations.ListAsync(resourceGroupName, labName, userName, odataQuery).GetAwaiter().GetResult();
+                return operations.ListAsync(labName, userName, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -51,9 +48,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -66,9 +60,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DtlEnvironment>> ListAsync(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, ODataQuery<DtlEnvironment> odataQuery = default(ODataQuery<DtlEnvironment>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DtlEnvironment>> ListAsync(this IEnvironmentsOperations operations, string labName, string userName, ODataQuery<DtlEnvironment> odataQuery = default(ODataQuery<DtlEnvironment>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, labName, userName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(labName, userName, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -79,9 +73,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -96,9 +87,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// Specify the $expand query. Example:
             /// 'properties($select=deploymentProperties)'
             /// </param>
-            public static DtlEnvironment Get(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, string name, string expand = default(string))
+            public static DtlEnvironment Get(this IEnvironmentsOperations operations, string labName, string userName, string name, string expand = default(string))
             {
-                return operations.GetAsync(resourceGroupName, labName, userName, name, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(labName, userName, name, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -106,9 +97,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -126,9 +114,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DtlEnvironment> GetAsync(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DtlEnvironment> GetAsync(this IEnvironmentsOperations operations, string labName, string userName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, labName, userName, name, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(labName, userName, name, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -141,9 +129,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -156,9 +141,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='dtlEnvironment'>
             /// An environment, which is essentially an ARM template deployment.
             /// </param>
-            public static DtlEnvironment CreateOrUpdate(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, string name, DtlEnvironment dtlEnvironment)
+            public static DtlEnvironment CreateOrUpdate(this IEnvironmentsOperations operations, string labName, string userName, string name, DtlEnvironment dtlEnvironment)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, labName, userName, name, dtlEnvironment).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(labName, userName, name, dtlEnvironment).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -167,9 +152,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -186,9 +168,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DtlEnvironment> CreateOrUpdateAsync(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, string name, DtlEnvironment dtlEnvironment, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DtlEnvironment> CreateOrUpdateAsync(this IEnvironmentsOperations operations, string labName, string userName, string name, DtlEnvironment dtlEnvironment, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, userName, name, dtlEnvironment, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(labName, userName, name, dtlEnvironment, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -200,9 +182,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -212,9 +191,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='name'>
             /// The name of the environment.
             /// </param>
-            public static void Delete(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, string name)
+            public static void Delete(this IEnvironmentsOperations operations, string labName, string userName, string name)
             {
-                operations.DeleteAsync(resourceGroupName, labName, userName, name).GetAwaiter().GetResult();
+                operations.DeleteAsync(labName, userName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -223,9 +202,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -238,67 +214,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IEnvironmentsOperations operations, string labName, string userName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, labName, userName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Modify properties of environments.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='labName'>
-            /// The name of the lab.
-            /// </param>
-            /// <param name='userName'>
-            /// The name of the user profile.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the environment.
-            /// </param>
-            /// <param name='dtlEnvironment'>
-            /// An environment, which is essentially an ARM template deployment.
-            /// </param>
-            public static DtlEnvironment Update(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, string name, DtlEnvironmentFragment dtlEnvironment)
-            {
-                return operations.UpdateAsync(resourceGroupName, labName, userName, name, dtlEnvironment).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Modify properties of environments.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='labName'>
-            /// The name of the lab.
-            /// </param>
-            /// <param name='userName'>
-            /// The name of the user profile.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the environment.
-            /// </param>
-            /// <param name='dtlEnvironment'>
-            /// An environment, which is essentially an ARM template deployment.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DtlEnvironment> UpdateAsync(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, string name, DtlEnvironmentFragment dtlEnvironment, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, labName, userName, name, dtlEnvironment, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.DeleteWithHttpMessagesAsync(labName, userName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -308,9 +226,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -323,9 +238,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='dtlEnvironment'>
             /// An environment, which is essentially an ARM template deployment.
             /// </param>
-            public static DtlEnvironment BeginCreateOrUpdate(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, string name, DtlEnvironment dtlEnvironment)
+            public static DtlEnvironment BeginCreateOrUpdate(this IEnvironmentsOperations operations, string labName, string userName, string name, DtlEnvironment dtlEnvironment)
             {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, labName, userName, name, dtlEnvironment).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(labName, userName, name, dtlEnvironment).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -334,9 +249,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -353,9 +265,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DtlEnvironment> BeginCreateOrUpdateAsync(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, string name, DtlEnvironment dtlEnvironment, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DtlEnvironment> BeginCreateOrUpdateAsync(this IEnvironmentsOperations operations, string labName, string userName, string name, DtlEnvironment dtlEnvironment, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, userName, name, dtlEnvironment, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(labName, userName, name, dtlEnvironment, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -367,9 +279,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -379,9 +288,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='name'>
             /// The name of the environment.
             /// </param>
-            public static void BeginDelete(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, string name)
+            public static void BeginDelete(this IEnvironmentsOperations operations, string labName, string userName, string name)
             {
-                operations.BeginDeleteAsync(resourceGroupName, labName, userName, name).GetAwaiter().GetResult();
+                operations.BeginDeleteAsync(labName, userName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -389,9 +298,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -405,9 +311,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IEnvironmentsOperations operations, string resourceGroupName, string labName, string userName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteAsync(this IEnvironmentsOperations operations, string labName, string userName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, labName, userName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteWithHttpMessagesAsync(labName, userName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

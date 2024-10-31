@@ -134,16 +134,16 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         public string ManagedDiskId { get; set; }
 
         /// <summary>
-        /// Gets the provisioning status of the resource.
+        /// Gets or sets the provisioning status of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets the unique immutable identifier of a resource (Guid).
+        /// Gets or sets the unique immutable identifier of a resource (Guid).
         /// </summary>
         [JsonProperty(PropertyName = "properties.uniqueIdentifier")]
-        public string UniqueIdentifier { get; private set; }
+        public string UniqueIdentifier { get; set; }
 
     }
 }

@@ -49,8 +49,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// virtual machine.</param>
         /// <param name="createdDate">The creation date of the virtual
         /// machine.</param>
-        /// <param name="computeId">The resource identifier (Microsoft.Compute)
-        /// of the virtual machine.</param>
         /// <param name="customImageId">The custom image identifier of the
         /// virtual machine.</param>
         /// <param name="osType">The OS type of the virtual machine.</param>
@@ -77,10 +75,12 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// status for the virtual machine.</param>
         /// <param name="galleryImageReference">The Microsoft Azure Marketplace
         /// image reference of the virtual machine.</param>
-        /// <param name="planId">The id of the plan associated with the virtual
-        /// machine image</param>
+        /// <param name="computeVm">The compute virtual machine
+        /// properties.</param>
         /// <param name="networkInterface">The network interface
         /// properties.</param>
+        /// <param name="applicableSchedule">The applicable schedule for the
+        /// virtual machine.</param>
         /// <param name="expirationDate">The expiration date for VM.</param>
         /// <param name="allowClaim">Indicates whether another user can take
         /// ownership of the virtual machine</param>
@@ -91,18 +91,16 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// include: 'FromCustomImage', 'FromGalleryImage'</param>
         /// <param name="environmentId">The resource ID of the environment that
         /// contains this virtual machine, if any.</param>
-        /// <param name="dataDiskParameters">New or existing data disks to
-        /// attach to the virtual machine after creation</param>
-        /// <param name="scheduleParameters">Virtual Machine schedules to be
-        /// created</param>
-        /// <param name="lastKnownPowerState">Last known compute power state
-        /// captured in DTL</param>
+        /// <param name="provisioningState">The provisioning status of the
+        /// resource.</param>
+        /// <param name="uniqueIdentifier">The unique immutable identifier of a
+        /// resource (Guid).</param>
         /// <param name="name">The name of the virtual machine or
         /// environment</param>
         /// <param name="location">The location of the new virtual machine or
         /// environment</param>
         /// <param name="tags">The tags of the resource.</param>
-        public LabVirtualMachineCreationParameter(BulkCreationParameters bulkCreationParameters = default(BulkCreationParameters), string notes = default(string), string ownerObjectId = default(string), string ownerUserPrincipalName = default(string), string createdByUserId = default(string), string createdByUser = default(string), System.DateTime? createdDate = default(System.DateTime?), string computeId = default(string), string customImageId = default(string), string osType = default(string), string size = default(string), string userName = default(string), string password = default(string), string sshKey = default(string), bool? isAuthenticationWithSshKey = default(bool?), string fqdn = default(string), string labSubnetName = default(string), string labVirtualNetworkId = default(string), bool? disallowPublicIpAddress = default(bool?), IList<ArtifactInstallProperties> artifacts = default(IList<ArtifactInstallProperties>), ArtifactDeploymentStatusProperties artifactDeploymentStatus = default(ArtifactDeploymentStatusProperties), GalleryImageReference galleryImageReference = default(GalleryImageReference), string planId = default(string), NetworkInterfaceProperties networkInterface = default(NetworkInterfaceProperties), System.DateTime? expirationDate = default(System.DateTime?), bool? allowClaim = default(bool?), string storageType = default(string), string virtualMachineCreationSource = default(string), string environmentId = default(string), IList<DataDiskProperties> dataDiskParameters = default(IList<DataDiskProperties>), IList<ScheduleCreationParameter> scheduleParameters = default(IList<ScheduleCreationParameter>), string lastKnownPowerState = default(string), string name = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public LabVirtualMachineCreationParameter(BulkCreationParameters bulkCreationParameters = default(BulkCreationParameters), string notes = default(string), string ownerObjectId = default(string), string ownerUserPrincipalName = default(string), string createdByUserId = default(string), string createdByUser = default(string), System.DateTime? createdDate = default(System.DateTime?), string customImageId = default(string), string osType = default(string), string size = default(string), string userName = default(string), string password = default(string), string sshKey = default(string), bool? isAuthenticationWithSshKey = default(bool?), string fqdn = default(string), string labSubnetName = default(string), string labVirtualNetworkId = default(string), bool? disallowPublicIpAddress = default(bool?), IList<ArtifactInstallProperties> artifacts = default(IList<ArtifactInstallProperties>), ArtifactDeploymentStatusProperties artifactDeploymentStatus = default(ArtifactDeploymentStatusProperties), GalleryImageReference galleryImageReference = default(GalleryImageReference), ComputeVmProperties computeVm = default(ComputeVmProperties), NetworkInterfaceProperties networkInterface = default(NetworkInterfaceProperties), ApplicableSchedule applicableSchedule = default(ApplicableSchedule), System.DateTime? expirationDate = default(System.DateTime?), bool? allowClaim = default(bool?), string storageType = default(string), string virtualMachineCreationSource = default(string), string environmentId = default(string), string provisioningState = default(string), string uniqueIdentifier = default(string), string name = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             BulkCreationParameters = bulkCreationParameters;
             Notes = notes;
@@ -111,7 +109,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
             CreatedByUserId = createdByUserId;
             CreatedByUser = createdByUser;
             CreatedDate = createdDate;
-            ComputeId = computeId;
             CustomImageId = customImageId;
             OsType = osType;
             Size = size;
@@ -126,16 +123,16 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
             Artifacts = artifacts;
             ArtifactDeploymentStatus = artifactDeploymentStatus;
             GalleryImageReference = galleryImageReference;
-            PlanId = planId;
+            ComputeVm = computeVm;
             NetworkInterface = networkInterface;
+            ApplicableSchedule = applicableSchedule;
             ExpirationDate = expirationDate;
             AllowClaim = allowClaim;
             StorageType = storageType;
             VirtualMachineCreationSource = virtualMachineCreationSource;
             EnvironmentId = environmentId;
-            DataDiskParameters = dataDiskParameters;
-            ScheduleParameters = scheduleParameters;
-            LastKnownPowerState = lastKnownPowerState;
+            ProvisioningState = provisioningState;
+            UniqueIdentifier = uniqueIdentifier;
             Name = name;
             Location = location;
             Tags = tags;
@@ -190,13 +187,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.createdDate")]
         public System.DateTime? CreatedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource identifier (Microsoft.Compute) of the
-        /// virtual machine.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.computeId")]
-        public string ComputeId { get; set; }
 
         /// <summary>
         /// Gets or sets the custom image identifier of the virtual machine.
@@ -289,17 +279,22 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         public GalleryImageReference GalleryImageReference { get; set; }
 
         /// <summary>
-        /// Gets or sets the id of the plan associated with the virtual machine
-        /// image
+        /// Gets or sets the compute virtual machine properties.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.planId")]
-        public string PlanId { get; set; }
+        [JsonProperty(PropertyName = "properties.computeVm")]
+        public ComputeVmProperties ComputeVm { get; set; }
 
         /// <summary>
         /// Gets or sets the network interface properties.
         /// </summary>
         [JsonProperty(PropertyName = "properties.networkInterface")]
         public NetworkInterfaceProperties NetworkInterface { get; set; }
+
+        /// <summary>
+        /// Gets or sets the applicable schedule for the virtual machine.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.applicableSchedule")]
+        public ApplicableSchedule ApplicableSchedule { get; set; }
 
         /// <summary>
         /// Gets or sets the expiration date for VM.
@@ -337,23 +332,16 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         public string EnvironmentId { get; set; }
 
         /// <summary>
-        /// Gets or sets new or existing data disks to attach to the virtual
-        /// machine after creation
+        /// Gets or sets the provisioning status of the resource.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.dataDiskParameters")]
-        public IList<DataDiskProperties> DataDiskParameters { get; set; }
+        [JsonProperty(PropertyName = "properties.provisioningState")]
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets or sets virtual Machine schedules to be created
+        /// Gets or sets the unique immutable identifier of a resource (Guid).
         /// </summary>
-        [JsonProperty(PropertyName = "properties.scheduleParameters")]
-        public IList<ScheduleCreationParameter> ScheduleParameters { get; set; }
-
-        /// <summary>
-        /// Gets or sets last known compute power state captured in DTL
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.lastKnownPowerState")]
-        public string LastKnownPowerState { get; set; }
+        [JsonProperty(PropertyName = "properties.uniqueIdentifier")]
+        public string UniqueIdentifier { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the virtual machine or environment

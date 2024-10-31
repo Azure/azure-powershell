@@ -30,24 +30,17 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// Initializes a new instance of the NotificationSettings class.
         /// </summary>
         /// <param name="status">If notifications are enabled for this schedule
-        /// (i.e. Enabled, Disabled). Possible values include: 'Enabled',
-        /// 'Disabled'</param>
+        /// (i.e. Enabled, Disabled). Possible values include: 'Disabled',
+        /// 'Enabled'</param>
         /// <param name="timeInMinutes">Time in minutes before event at which
         /// notification will be sent.</param>
         /// <param name="webhookUrl">The webhook URL to which the notification
         /// will be sent.</param>
-        /// <param name="emailRecipient">The email recipient to send
-        /// notifications to (can be a list of semi-colon seperated email
-        /// addresses).</param>
-        /// <param name="notificationLocale">The locale to use when sending a
-        /// notification (fallback for unsupported languages is EN).</param>
-        public NotificationSettings(string status = default(string), int? timeInMinutes = default(int?), string webhookUrl = default(string), string emailRecipient = default(string), string notificationLocale = default(string))
+        public NotificationSettings(string status = default(string), int? timeInMinutes = default(int?), string webhookUrl = default(string))
         {
             Status = status;
             TimeInMinutes = timeInMinutes;
             WebhookUrl = webhookUrl;
-            EmailRecipient = emailRecipient;
-            NotificationLocale = notificationLocale;
             CustomInit();
         }
 
@@ -58,7 +51,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
 
         /// <summary>
         /// Gets or sets if notifications are enabled for this schedule (i.e.
-        /// Enabled, Disabled). Possible values include: 'Enabled', 'Disabled'
+        /// Enabled, Disabled). Possible values include: 'Disabled', 'Enabled'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
@@ -76,20 +69,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         [JsonProperty(PropertyName = "webhookUrl")]
         public string WebhookUrl { get; set; }
-
-        /// <summary>
-        /// Gets or sets the email recipient to send notifications to (can be a
-        /// list of semi-colon seperated email addresses).
-        /// </summary>
-        [JsonProperty(PropertyName = "emailRecipient")]
-        public string EmailRecipient { get; set; }
-
-        /// <summary>
-        /// Gets or sets the locale to use when sending a notification
-        /// (fallback for unsupported languages is EN).
-        /// </summary>
-        [JsonProperty(PropertyName = "notificationLocale")]
-        public string NotificationLocale { get; set; }
 
     }
 }

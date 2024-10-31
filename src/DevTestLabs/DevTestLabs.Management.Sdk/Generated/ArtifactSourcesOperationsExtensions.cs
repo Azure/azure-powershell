@@ -28,18 +28,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
-            public static IPage<ArtifactSource> List(this IArtifactSourcesOperations operations, string resourceGroupName, string labName, ODataQuery<ArtifactSource> odataQuery = default(ODataQuery<ArtifactSource>))
+            public static IPage<ArtifactSource> List(this IArtifactSourcesOperations operations, string labName, ODataQuery<ArtifactSource> odataQuery = default(ODataQuery<ArtifactSource>))
             {
-                return operations.ListAsync(resourceGroupName, labName, odataQuery).GetAwaiter().GetResult();
+                return operations.ListAsync(labName, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -48,9 +45,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -60,9 +54,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ArtifactSource>> ListAsync(this IArtifactSourcesOperations operations, string resourceGroupName, string labName, ODataQuery<ArtifactSource> odataQuery = default(ODataQuery<ArtifactSource>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ArtifactSource>> ListAsync(this IArtifactSourcesOperations operations, string labName, ODataQuery<ArtifactSource> odataQuery = default(ODataQuery<ArtifactSource>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, labName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(labName, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -74,9 +68,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -86,9 +77,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='expand'>
             /// Specify the $expand query. Example: 'properties($select=displayName)'
             /// </param>
-            public static ArtifactSource Get(this IArtifactSourcesOperations operations, string resourceGroupName, string labName, string name, string expand = default(string))
+            public static ArtifactSource Get(this IArtifactSourcesOperations operations, string labName, string name, string expand = default(string))
             {
-                return operations.GetAsync(resourceGroupName, labName, name, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(labName, name, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -96,9 +87,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -112,9 +100,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ArtifactSource> GetAsync(this IArtifactSourcesOperations operations, string resourceGroupName, string labName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ArtifactSource> GetAsync(this IArtifactSourcesOperations operations, string labName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, labName, name, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(labName, name, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -126,9 +114,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -138,9 +123,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='artifactSource'>
             /// Properties of an artifact source.
             /// </param>
-            public static ArtifactSource CreateOrUpdate(this IArtifactSourcesOperations operations, string resourceGroupName, string labName, string name, ArtifactSource artifactSource)
+            public static ArtifactSource CreateOrUpdate(this IArtifactSourcesOperations operations, string labName, string name, ArtifactSource artifactSource)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, labName, name, artifactSource).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(labName, name, artifactSource).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -148,9 +133,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -164,9 +146,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ArtifactSource> CreateOrUpdateAsync(this IArtifactSourcesOperations operations, string resourceGroupName, string labName, string name, ArtifactSource artifactSource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ArtifactSource> CreateOrUpdateAsync(this IArtifactSourcesOperations operations, string labName, string name, ArtifactSource artifactSource, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, name, artifactSource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(labName, name, artifactSource, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -178,18 +160,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='name'>
             /// The name of the artifact source.
             /// </param>
-            public static void Delete(this IArtifactSourcesOperations operations, string resourceGroupName, string labName, string name)
+            public static void Delete(this IArtifactSourcesOperations operations, string labName, string name)
             {
-                operations.DeleteAsync(resourceGroupName, labName, name).GetAwaiter().GetResult();
+                operations.DeleteAsync(labName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -198,9 +177,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -210,9 +186,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IArtifactSourcesOperations operations, string resourceGroupName, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IArtifactSourcesOperations operations, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -220,9 +196,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -233,9 +206,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='artifactSource'>
             /// Properties of an artifact source.
             /// </param>
-            public static ArtifactSource Update(this IArtifactSourcesOperations operations, string resourceGroupName, string labName, string name, ArtifactSourceFragment artifactSource)
+            public static ArtifactSource Update(this IArtifactSourcesOperations operations, string labName, string name, ArtifactSourceFragment artifactSource)
             {
-                return operations.UpdateAsync(resourceGroupName, labName, name, artifactSource).GetAwaiter().GetResult();
+                return operations.UpdateAsync(labName, name, artifactSource).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -243,9 +216,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -259,9 +229,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ArtifactSource> UpdateAsync(this IArtifactSourcesOperations operations, string resourceGroupName, string labName, string name, ArtifactSourceFragment artifactSource, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ArtifactSource> UpdateAsync(this IArtifactSourcesOperations operations, string labName, string name, ArtifactSourceFragment artifactSource, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, labName, name, artifactSource, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(labName, name, artifactSource, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

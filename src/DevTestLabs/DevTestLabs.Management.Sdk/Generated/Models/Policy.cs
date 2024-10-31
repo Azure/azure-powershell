@@ -46,8 +46,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc. Possible values
         /// include: 'UserOwnedLabVmCount', 'UserOwnedLabPremiumVmCount',
         /// 'LabVmCount', 'LabPremiumVmCount', 'LabVmSize', 'GalleryImage',
-        /// 'UserOwnedLabVmCountInSubnet', 'LabTargetCost',
-        /// 'EnvironmentTemplate', 'ScheduleEditPermission'</param>
+        /// 'UserOwnedLabVmCountInSubnet', 'LabTargetCost'</param>
         /// <param name="factData">The fact data of the policy.</param>
         /// <param name="threshold">The threshold of the policy (i.e. a number
         /// for MaxValuePolicy, and a JSON array of values for
@@ -98,8 +97,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// LabVmSize, MaxVmsAllowedPerLab, etc. Possible values include:
         /// 'UserOwnedLabVmCount', 'UserOwnedLabPremiumVmCount', 'LabVmCount',
         /// 'LabPremiumVmCount', 'LabVmSize', 'GalleryImage',
-        /// 'UserOwnedLabVmCountInSubnet', 'LabTargetCost',
-        /// 'EnvironmentTemplate', 'ScheduleEditPermission'
+        /// 'UserOwnedLabVmCountInSubnet', 'LabTargetCost'
         /// </summary>
         [JsonProperty(PropertyName = "properties.factName")]
         public string FactName { get; set; }
@@ -133,16 +131,16 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         public System.DateTime? CreatedDate { get; private set; }
 
         /// <summary>
-        /// Gets the provisioning status of the resource.
+        /// Gets or sets the provisioning status of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets the unique immutable identifier of a resource (Guid).
+        /// Gets or sets the unique immutable identifier of a resource (Guid).
         /// </summary>
         [JsonProperty(PropertyName = "properties.uniqueIdentifier")]
-        public string UniqueIdentifier { get; private set; }
+        public string UniqueIdentifier { get; set; }
 
     }
 }

@@ -27,9 +27,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -39,9 +36,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='expand'>
             /// Specify the $expand query. Example: 'properties($expand=labCostDetails)'
             /// </param>
-            public static LabCost Get(this ICostsOperations operations, string resourceGroupName, string labName, string name, string expand = default(string))
+            public static LabCost Get(this ICostsOperations operations, string labName, string name, string expand = default(string))
             {
-                return operations.GetAsync(resourceGroupName, labName, name, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(labName, name, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -49,9 +46,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -65,9 +59,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LabCost> GetAsync(this ICostsOperations operations, string resourceGroupName, string labName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LabCost> GetAsync(this ICostsOperations operations, string labName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, labName, name, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(labName, name, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -79,9 +73,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -91,9 +82,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='labCost'>
             /// A cost item.
             /// </param>
-            public static LabCost CreateOrUpdate(this ICostsOperations operations, string resourceGroupName, string labName, string name, LabCost labCost)
+            public static LabCost CreateOrUpdate(this ICostsOperations operations, string labName, string name, LabCost labCost)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, labName, name, labCost).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(labName, name, labCost).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -101,9 +92,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -117,9 +105,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LabCost> CreateOrUpdateAsync(this ICostsOperations operations, string resourceGroupName, string labName, string name, LabCost labCost, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LabCost> CreateOrUpdateAsync(this ICostsOperations operations, string labName, string name, LabCost labCost, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, name, labCost, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(labName, name, labCost, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

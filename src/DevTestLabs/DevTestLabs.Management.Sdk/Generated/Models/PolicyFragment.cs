@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
     /// A Policy.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class PolicyFragment : UpdateResource
+    public partial class PolicyFragment : Resource
     {
         /// <summary>
         /// Initializes a new instance of the PolicyFragment class.
@@ -34,6 +34,10 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <summary>
         /// Initializes a new instance of the PolicyFragment class.
         /// </summary>
+        /// <param name="id">The identifier of the resource.</param>
+        /// <param name="name">The name of the resource.</param>
+        /// <param name="type">The type of the resource.</param>
+        /// <param name="location">The location of the resource.</param>
         /// <param name="tags">The tags of the resource.</param>
         /// <param name="description">The description of the policy.</param>
         /// <param name="status">The status of the policy. Possible values
@@ -42,8 +46,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc. Possible values
         /// include: 'UserOwnedLabVmCount', 'UserOwnedLabPremiumVmCount',
         /// 'LabVmCount', 'LabPremiumVmCount', 'LabVmSize', 'GalleryImage',
-        /// 'UserOwnedLabVmCountInSubnet', 'LabTargetCost',
-        /// 'EnvironmentTemplate', 'ScheduleEditPermission'</param>
+        /// 'UserOwnedLabVmCountInSubnet', 'LabTargetCost'</param>
         /// <param name="factData">The fact data of the policy.</param>
         /// <param name="threshold">The threshold of the policy (i.e. a number
         /// for MaxValuePolicy, and a JSON array of values for
@@ -51,8 +54,12 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <param name="evaluatorType">The evaluator type of the policy (i.e.
         /// AllowedValuesPolicy, MaxValuePolicy). Possible values include:
         /// 'AllowedValuesPolicy', 'MaxValuePolicy'</param>
-        public PolicyFragment(IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string status = default(string), string factName = default(string), string factData = default(string), string threshold = default(string), string evaluatorType = default(string))
-            : base(tags)
+        /// <param name="provisioningState">The provisioning status of the
+        /// resource.</param>
+        /// <param name="uniqueIdentifier">The unique immutable identifier of a
+        /// resource (Guid).</param>
+        public PolicyFragment(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string description = default(string), string status = default(string), string factName = default(string), string factData = default(string), string threshold = default(string), string evaluatorType = default(string), string provisioningState = default(string), string uniqueIdentifier = default(string))
+            : base(id, name, type, location, tags)
         {
             Description = description;
             Status = status;
@@ -60,6 +67,8 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
             FactData = factData;
             Threshold = threshold;
             EvaluatorType = evaluatorType;
+            ProvisioningState = provisioningState;
+            UniqueIdentifier = uniqueIdentifier;
             CustomInit();
         }
 
@@ -86,8 +95,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// LabVmSize, MaxVmsAllowedPerLab, etc. Possible values include:
         /// 'UserOwnedLabVmCount', 'UserOwnedLabPremiumVmCount', 'LabVmCount',
         /// 'LabPremiumVmCount', 'LabVmSize', 'GalleryImage',
-        /// 'UserOwnedLabVmCountInSubnet', 'LabTargetCost',
-        /// 'EnvironmentTemplate', 'ScheduleEditPermission'
+        /// 'UserOwnedLabVmCountInSubnet', 'LabTargetCost'
         /// </summary>
         [JsonProperty(PropertyName = "properties.factName")]
         public string FactName { get; set; }
@@ -113,6 +121,18 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.evaluatorType")]
         public string EvaluatorType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the provisioning status of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.provisioningState")]
+        public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the unique immutable identifier of a resource (Guid).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.uniqueIdentifier")]
+        public string UniqueIdentifier { get; set; }
 
     }
 }

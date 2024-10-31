@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
     /// Properties of an artifact source.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ArtifactSourceFragment : UpdateResource
+    public partial class ArtifactSourceFragment : Resource
     {
         /// <summary>
         /// Initializes a new instance of the ArtifactSourceFragment class.
@@ -34,6 +34,10 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <summary>
         /// Initializes a new instance of the ArtifactSourceFragment class.
         /// </summary>
+        /// <param name="id">The identifier of the resource.</param>
+        /// <param name="name">The name of the resource.</param>
+        /// <param name="type">The type of the resource.</param>
+        /// <param name="location">The location of the resource.</param>
         /// <param name="tags">The tags of the resource.</param>
         /// <param name="displayName">The artifact source's display
         /// name.</param>
@@ -50,8 +54,12 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <param name="status">Indicates if the artifact source is enabled
         /// (values: Enabled, Disabled). Possible values include: 'Enabled',
         /// 'Disabled'</param>
-        public ArtifactSourceFragment(IDictionary<string, string> tags = default(IDictionary<string, string>), string displayName = default(string), string uri = default(string), string sourceType = default(string), string folderPath = default(string), string armTemplateFolderPath = default(string), string branchRef = default(string), string securityToken = default(string), string status = default(string))
-            : base(tags)
+        /// <param name="provisioningState">The provisioning status of the
+        /// resource.</param>
+        /// <param name="uniqueIdentifier">The unique immutable identifier of a
+        /// resource (Guid).</param>
+        public ArtifactSourceFragment(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string displayName = default(string), string uri = default(string), string sourceType = default(string), string folderPath = default(string), string armTemplateFolderPath = default(string), string branchRef = default(string), string securityToken = default(string), string status = default(string), string provisioningState = default(string), string uniqueIdentifier = default(string))
+            : base(id, name, type, location, tags)
         {
             DisplayName = displayName;
             Uri = uri;
@@ -61,6 +69,8 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
             BranchRef = branchRef;
             SecurityToken = securityToken;
             Status = status;
+            ProvisioningState = provisioningState;
+            UniqueIdentifier = uniqueIdentifier;
             CustomInit();
         }
 
@@ -120,6 +130,18 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.status")]
         public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the provisioning status of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.provisioningState")]
+        public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the unique immutable identifier of a resource (Guid).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.uniqueIdentifier")]
+        public string UniqueIdentifier { get; set; }
 
     }
 }

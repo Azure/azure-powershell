@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
     /// A schedule.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class ScheduleFragment : UpdateResource
+    public partial class ScheduleFragment : Resource
     {
         /// <summary>
         /// Initializes a new instance of the ScheduleFragment class.
@@ -34,6 +34,10 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <summary>
         /// Initializes a new instance of the ScheduleFragment class.
         /// </summary>
+        /// <param name="id">The identifier of the resource.</param>
+        /// <param name="name">The name of the resource.</param>
+        /// <param name="type">The type of the resource.</param>
+        /// <param name="location">The location of the resource.</param>
         /// <param name="tags">The tags of the resource.</param>
         /// <param name="status">The status of the schedule (i.e. Enabled,
         /// Disabled). Possible values include: 'Enabled', 'Disabled'</param>
@@ -50,8 +54,12 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <param name="notificationSettings">Notification settings.</param>
         /// <param name="targetResourceId">The resource ID to which the
         /// schedule belongs</param>
-        public ScheduleFragment(IDictionary<string, string> tags = default(IDictionary<string, string>), string status = default(string), string taskType = default(string), WeekDetailsFragment weeklyRecurrence = default(WeekDetailsFragment), DayDetailsFragment dailyRecurrence = default(DayDetailsFragment), HourDetailsFragment hourlyRecurrence = default(HourDetailsFragment), string timeZoneId = default(string), NotificationSettingsFragment notificationSettings = default(NotificationSettingsFragment), string targetResourceId = default(string))
-            : base(tags)
+        /// <param name="provisioningState">The provisioning status of the
+        /// resource.</param>
+        /// <param name="uniqueIdentifier">The unique immutable identifier of a
+        /// resource (Guid).</param>
+        public ScheduleFragment(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string status = default(string), string taskType = default(string), WeekDetailsFragment weeklyRecurrence = default(WeekDetailsFragment), DayDetailsFragment dailyRecurrence = default(DayDetailsFragment), HourDetailsFragment hourlyRecurrence = default(HourDetailsFragment), string timeZoneId = default(string), NotificationSettingsFragment notificationSettings = default(NotificationSettingsFragment), string targetResourceId = default(string), string provisioningState = default(string), string uniqueIdentifier = default(string))
+            : base(id, name, type, location, tags)
         {
             Status = status;
             TaskType = taskType;
@@ -61,6 +69,8 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
             TimeZoneId = timeZoneId;
             NotificationSettings = notificationSettings;
             TargetResourceId = targetResourceId;
+            ProvisioningState = provisioningState;
+            UniqueIdentifier = uniqueIdentifier;
             CustomInit();
         }
 
@@ -121,6 +131,18 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.targetResourceId")]
         public string TargetResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the provisioning status of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.provisioningState")]
+        public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the unique immutable identifier of a resource (Guid).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.uniqueIdentifier")]
+        public string UniqueIdentifier { get; set; }
 
     }
 }

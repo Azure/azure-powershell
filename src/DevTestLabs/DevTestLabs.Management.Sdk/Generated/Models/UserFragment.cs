@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
     /// Profile of a lab user.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class UserFragment : UpdateResource
+    public partial class UserFragment : Resource
     {
         /// <summary>
         /// Initializes a new instance of the UserFragment class.
@@ -34,14 +34,24 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <summary>
         /// Initializes a new instance of the UserFragment class.
         /// </summary>
+        /// <param name="id">The identifier of the resource.</param>
+        /// <param name="name">The name of the resource.</param>
+        /// <param name="type">The type of the resource.</param>
+        /// <param name="location">The location of the resource.</param>
         /// <param name="tags">The tags of the resource.</param>
         /// <param name="identity">The identity of the user.</param>
         /// <param name="secretStore">The secret store of the user.</param>
-        public UserFragment(IDictionary<string, string> tags = default(IDictionary<string, string>), UserIdentityFragment identity = default(UserIdentityFragment), UserSecretStoreFragment secretStore = default(UserSecretStoreFragment))
-            : base(tags)
+        /// <param name="provisioningState">The provisioning status of the
+        /// resource.</param>
+        /// <param name="uniqueIdentifier">The unique immutable identifier of a
+        /// resource (Guid).</param>
+        public UserFragment(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), UserIdentityFragment identity = default(UserIdentityFragment), UserSecretStoreFragment secretStore = default(UserSecretStoreFragment), string provisioningState = default(string), string uniqueIdentifier = default(string))
+            : base(id, name, type, location, tags)
         {
             Identity = identity;
             SecretStore = secretStore;
+            ProvisioningState = provisioningState;
+            UniqueIdentifier = uniqueIdentifier;
             CustomInit();
         }
 
@@ -61,6 +71,18 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.secretStore")]
         public UserSecretStoreFragment SecretStore { get; set; }
+
+        /// <summary>
+        /// Gets or sets the provisioning status of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.provisioningState")]
+        public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the unique immutable identifier of a resource (Guid).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.uniqueIdentifier")]
+        public string UniqueIdentifier { get; set; }
 
     }
 }

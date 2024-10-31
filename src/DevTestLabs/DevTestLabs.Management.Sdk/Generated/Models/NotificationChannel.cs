@@ -41,11 +41,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <param name="tags">The tags of the resource.</param>
         /// <param name="webHookUrl">The webhook URL to send notifications
         /// to.</param>
-        /// <param name="emailRecipient">The email recipient to send
-        /// notifications to (can be a list of semi-colon seperated email
-        /// addresses).</param>
-        /// <param name="notificationLocale">The locale to use when sending a
-        /// notification (fallback for unsupported languages is EN).</param>
         /// <param name="description">Description of notification.</param>
         /// <param name="events">The list of event for which this notification
         /// is enabled.</param>
@@ -55,12 +50,10 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// resource.</param>
         /// <param name="uniqueIdentifier">The unique immutable identifier of a
         /// resource (Guid).</param>
-        public NotificationChannel(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string webHookUrl = default(string), string emailRecipient = default(string), string notificationLocale = default(string), string description = default(string), IList<EventModel> events = default(IList<EventModel>), System.DateTime? createdDate = default(System.DateTime?), string provisioningState = default(string), string uniqueIdentifier = default(string))
+        public NotificationChannel(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string webHookUrl = default(string), string description = default(string), IList<EventModel> events = default(IList<EventModel>), System.DateTime? createdDate = default(System.DateTime?), string provisioningState = default(string), string uniqueIdentifier = default(string))
             : base(id, name, type, location, tags)
         {
             WebHookUrl = webHookUrl;
-            EmailRecipient = emailRecipient;
-            NotificationLocale = notificationLocale;
             Description = description;
             Events = events;
             CreatedDate = createdDate;
@@ -79,20 +72,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.webHookUrl")]
         public string WebHookUrl { get; set; }
-
-        /// <summary>
-        /// Gets or sets the email recipient to send notifications to (can be a
-        /// list of semi-colon seperated email addresses).
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.emailRecipient")]
-        public string EmailRecipient { get; set; }
-
-        /// <summary>
-        /// Gets or sets the locale to use when sending a notification
-        /// (fallback for unsupported languages is EN).
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.notificationLocale")]
-        public string NotificationLocale { get; set; }
 
         /// <summary>
         /// Gets or sets description of notification.
@@ -114,16 +93,16 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         public System.DateTime? CreatedDate { get; private set; }
 
         /// <summary>
-        /// Gets the provisioning status of the resource.
+        /// Gets or sets the provisioning status of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets the unique immutable identifier of a resource (Guid).
+        /// Gets or sets the unique immutable identifier of a resource (Guid).
         /// </summary>
         [JsonProperty(PropertyName = "properties.uniqueIdentifier")]
-        public string UniqueIdentifier { get; private set; }
+        public string UniqueIdentifier { get; set; }
 
     }
 }

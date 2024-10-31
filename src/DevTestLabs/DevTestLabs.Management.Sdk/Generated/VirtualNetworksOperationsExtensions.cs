@@ -28,18 +28,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
-            public static IPage<VirtualNetwork> List(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, ODataQuery<VirtualNetwork> odataQuery = default(ODataQuery<VirtualNetwork>))
+            public static IPage<VirtualNetwork> List(this IVirtualNetworksOperations operations, string labName, ODataQuery<VirtualNetwork> odataQuery = default(ODataQuery<VirtualNetwork>))
             {
-                return operations.ListAsync(resourceGroupName, labName, odataQuery).GetAwaiter().GetResult();
+                return operations.ListAsync(labName, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -48,9 +45,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -60,9 +54,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<VirtualNetwork>> ListAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, ODataQuery<VirtualNetwork> odataQuery = default(ODataQuery<VirtualNetwork>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<VirtualNetwork>> ListAsync(this IVirtualNetworksOperations operations, string labName, ODataQuery<VirtualNetwork> odataQuery = default(ODataQuery<VirtualNetwork>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, labName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(labName, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -74,9 +68,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -86,9 +77,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='expand'>
             /// Specify the $expand query. Example: 'properties($expand=externalSubnets)'
             /// </param>
-            public static VirtualNetwork Get(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, string name, string expand = default(string))
+            public static VirtualNetwork Get(this IVirtualNetworksOperations operations, string labName, string name, string expand = default(string))
             {
-                return operations.GetAsync(resourceGroupName, labName, name, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(labName, name, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -96,9 +87,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -112,9 +100,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualNetwork> GetAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualNetwork> GetAsync(this IVirtualNetworksOperations operations, string labName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, labName, name, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(labName, name, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -127,9 +115,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -139,9 +124,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='virtualNetwork'>
             /// A virtual network.
             /// </param>
-            public static VirtualNetwork CreateOrUpdate(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, string name, VirtualNetwork virtualNetwork)
+            public static VirtualNetwork CreateOrUpdate(this IVirtualNetworksOperations operations, string labName, string name, VirtualNetwork virtualNetwork)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, labName, name, virtualNetwork).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(labName, name, virtualNetwork).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -150,9 +135,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -166,9 +148,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualNetwork> CreateOrUpdateAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, string name, VirtualNetwork virtualNetwork, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualNetwork> CreateOrUpdateAsync(this IVirtualNetworksOperations operations, string labName, string name, VirtualNetwork virtualNetwork, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, name, virtualNetwork, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(labName, name, virtualNetwork, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -180,18 +162,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='name'>
             /// The name of the virtual network.
             /// </param>
-            public static void Delete(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, string name)
+            public static void Delete(this IVirtualNetworksOperations operations, string labName, string name)
             {
-                operations.DeleteAsync(resourceGroupName, labName, name).GetAwaiter().GetResult();
+                operations.DeleteAsync(labName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -199,9 +178,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -212,9 +188,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IVirtualNetworksOperations operations, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -223,9 +199,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -235,9 +208,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='virtualNetwork'>
             /// A virtual network.
             /// </param>
-            public static VirtualNetwork Update(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, string name, VirtualNetworkFragment virtualNetwork)
+            public static VirtualNetwork Update(this IVirtualNetworksOperations operations, string labName, string name, VirtualNetworkFragment virtualNetwork)
             {
-                return operations.UpdateAsync(resourceGroupName, labName, name, virtualNetwork).GetAwaiter().GetResult();
+                return operations.UpdateAsync(labName, name, virtualNetwork).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -246,9 +219,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -261,9 +231,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualNetwork> UpdateAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, string name, VirtualNetworkFragment virtualNetwork, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualNetwork> UpdateAsync(this IVirtualNetworksOperations operations, string labName, string name, VirtualNetworkFragment virtualNetwork, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, labName, name, virtualNetwork, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(labName, name, virtualNetwork, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -276,9 +246,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -288,9 +255,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='virtualNetwork'>
             /// A virtual network.
             /// </param>
-            public static VirtualNetwork BeginCreateOrUpdate(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, string name, VirtualNetwork virtualNetwork)
+            public static VirtualNetwork BeginCreateOrUpdate(this IVirtualNetworksOperations operations, string labName, string name, VirtualNetwork virtualNetwork)
             {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, labName, name, virtualNetwork).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(labName, name, virtualNetwork).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -299,9 +266,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -315,9 +279,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualNetwork> BeginCreateOrUpdateAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, string name, VirtualNetwork virtualNetwork, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualNetwork> BeginCreateOrUpdateAsync(this IVirtualNetworksOperations operations, string labName, string name, VirtualNetwork virtualNetwork, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, name, virtualNetwork, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(labName, name, virtualNetwork, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -329,18 +293,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='name'>
             /// The name of the virtual network.
             /// </param>
-            public static void BeginDelete(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, string name)
+            public static void BeginDelete(this IVirtualNetworksOperations operations, string labName, string name)
             {
-                operations.BeginDeleteAsync(resourceGroupName, labName, name).GetAwaiter().GetResult();
+                operations.BeginDeleteAsync(labName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -348,9 +309,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -361,9 +319,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IVirtualNetworksOperations operations, string resourceGroupName, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteAsync(this IVirtualNetworksOperations operations, string labName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteWithHttpMessagesAsync(labName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

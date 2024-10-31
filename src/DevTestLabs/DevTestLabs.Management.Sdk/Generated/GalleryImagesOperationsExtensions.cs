@@ -28,18 +28,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
-            public static IPage<GalleryImage> List(this IGalleryImagesOperations operations, string resourceGroupName, string labName, ODataQuery<GalleryImage> odataQuery = default(ODataQuery<GalleryImage>))
+            public static IPage<GalleryImage> List(this IGalleryImagesOperations operations, string labName, ODataQuery<GalleryImage> odataQuery = default(ODataQuery<GalleryImage>))
             {
-                return operations.ListAsync(resourceGroupName, labName, odataQuery).GetAwaiter().GetResult();
+                return operations.ListAsync(labName, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -47,9 +44,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -60,9 +54,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<GalleryImage>> ListAsync(this IGalleryImagesOperations operations, string resourceGroupName, string labName, ODataQuery<GalleryImage> odataQuery = default(ODataQuery<GalleryImage>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<GalleryImage>> ListAsync(this IGalleryImagesOperations operations, string labName, ODataQuery<GalleryImage> odataQuery = default(ODataQuery<GalleryImage>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, labName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(labName, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -40,9 +37,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
-            public static IPage<Schedule> List(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, ODataQuery<Schedule> odataQuery = default(ODataQuery<Schedule>))
+            public static IPage<Schedule> List(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, ODataQuery<Schedule> odataQuery = default(ODataQuery<Schedule>))
             {
-                return operations.ListAsync(resourceGroupName, labName, virtualMachineName, odataQuery).GetAwaiter().GetResult();
+                return operations.ListAsync(labName, virtualMachineName, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -51,9 +48,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -66,9 +60,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Schedule>> ListAsync(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, ODataQuery<Schedule> odataQuery = default(ODataQuery<Schedule>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Schedule>> ListAsync(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, ODataQuery<Schedule> odataQuery = default(ODataQuery<Schedule>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, labName, virtualMachineName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(labName, virtualMachineName, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -79,9 +73,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -95,9 +86,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='expand'>
             /// Specify the $expand query. Example: 'properties($select=status)'
             /// </param>
-            public static Schedule Get(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, string name, string expand = default(string))
+            public static Schedule Get(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, string name, string expand = default(string))
             {
-                return operations.GetAsync(resourceGroupName, labName, virtualMachineName, name, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(labName, virtualMachineName, name, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -105,9 +96,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -124,9 +112,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Schedule> GetAsync(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Schedule> GetAsync(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, labName, virtualMachineName, name, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(labName, virtualMachineName, name, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -138,9 +126,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -153,9 +138,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='schedule'>
             /// A schedule.
             /// </param>
-            public static Schedule CreateOrUpdate(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, string name, Schedule schedule)
+            public static Schedule CreateOrUpdate(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, string name, Schedule schedule)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, labName, virtualMachineName, name, schedule).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(labName, virtualMachineName, name, schedule).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -164,9 +149,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -182,9 +164,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Schedule> CreateOrUpdateAsync(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, string name, Schedule schedule, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Schedule> CreateOrUpdateAsync(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, string name, Schedule schedule, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, virtualMachineName, name, schedule, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(labName, virtualMachineName, name, schedule, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -196,9 +178,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -208,9 +187,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='name'>
             /// The name of the schedule.
             /// </param>
-            public static void Delete(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, string name)
+            public static void Delete(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, string name)
             {
-                operations.DeleteAsync(resourceGroupName, labName, virtualMachineName, name).GetAwaiter().GetResult();
+                operations.DeleteAsync(labName, virtualMachineName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -219,9 +198,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -234,9 +210,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, labName, virtualMachineName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(labName, virtualMachineName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -244,9 +220,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -260,9 +233,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='schedule'>
             /// A schedule.
             /// </param>
-            public static Schedule Update(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, string name, ScheduleFragment schedule)
+            public static Schedule Update(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, string name, ScheduleFragment schedule)
             {
-                return operations.UpdateAsync(resourceGroupName, labName, virtualMachineName, name, schedule).GetAwaiter().GetResult();
+                return operations.UpdateAsync(labName, virtualMachineName, name, schedule).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -270,9 +243,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -289,9 +259,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Schedule> UpdateAsync(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, string name, ScheduleFragment schedule, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Schedule> UpdateAsync(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, string name, ScheduleFragment schedule, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, labName, virtualMachineName, name, schedule, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(labName, virtualMachineName, name, schedule, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -303,9 +273,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -315,9 +282,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='name'>
             /// The name of the schedule.
             /// </param>
-            public static void Execute(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, string name)
+            public static void Execute(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, string name)
             {
-                operations.ExecuteAsync(resourceGroupName, labName, virtualMachineName, name).GetAwaiter().GetResult();
+                operations.ExecuteAsync(labName, virtualMachineName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -325,9 +292,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -341,9 +305,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task ExecuteAsync(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task ExecuteAsync(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.ExecuteWithHttpMessagesAsync(resourceGroupName, labName, virtualMachineName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.ExecuteWithHttpMessagesAsync(labName, virtualMachineName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -351,9 +315,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -364,9 +325,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='name'>
             /// The name of the schedule.
             /// </param>
-            public static void BeginExecute(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, string name)
+            public static void BeginExecute(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, string name)
             {
-                operations.BeginExecuteAsync(resourceGroupName, labName, virtualMachineName, name).GetAwaiter().GetResult();
+                operations.BeginExecuteAsync(labName, virtualMachineName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -374,9 +335,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -390,9 +348,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginExecuteAsync(this IVirtualMachineSchedulesOperations operations, string resourceGroupName, string labName, string virtualMachineName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginExecuteAsync(this IVirtualMachineSchedulesOperations operations, string labName, string virtualMachineName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginExecuteWithHttpMessagesAsync(resourceGroupName, labName, virtualMachineName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginExecuteWithHttpMessagesAsync(labName, virtualMachineName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

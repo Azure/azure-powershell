@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -40,9 +37,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
-            public static IPage<Policy> List(this IPoliciesOperations operations, string resourceGroupName, string labName, string policySetName, ODataQuery<Policy> odataQuery = default(ODataQuery<Policy>))
+            public static IPage<Policy> List(this IPoliciesOperations operations, string labName, string policySetName, ODataQuery<Policy> odataQuery = default(ODataQuery<Policy>))
             {
-                return operations.ListAsync(resourceGroupName, labName, policySetName, odataQuery).GetAwaiter().GetResult();
+                return operations.ListAsync(labName, policySetName, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -51,9 +48,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -66,9 +60,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Policy>> ListAsync(this IPoliciesOperations operations, string resourceGroupName, string labName, string policySetName, ODataQuery<Policy> odataQuery = default(ODataQuery<Policy>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Policy>> ListAsync(this IPoliciesOperations operations, string labName, string policySetName, ODataQuery<Policy> odataQuery = default(ODataQuery<Policy>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, labName, policySetName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(labName, policySetName, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -79,9 +73,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -95,9 +86,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='expand'>
             /// Specify the $expand query. Example: 'properties($select=description)'
             /// </param>
-            public static Policy Get(this IPoliciesOperations operations, string resourceGroupName, string labName, string policySetName, string name, string expand = default(string))
+            public static Policy Get(this IPoliciesOperations operations, string labName, string policySetName, string name, string expand = default(string))
             {
-                return operations.GetAsync(resourceGroupName, labName, policySetName, name, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(labName, policySetName, name, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -105,9 +96,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -124,9 +112,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Policy> GetAsync(this IPoliciesOperations operations, string resourceGroupName, string labName, string policySetName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Policy> GetAsync(this IPoliciesOperations operations, string labName, string policySetName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, labName, policySetName, name, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(labName, policySetName, name, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -138,9 +126,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -153,9 +138,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='policy'>
             /// A Policy.
             /// </param>
-            public static Policy CreateOrUpdate(this IPoliciesOperations operations, string resourceGroupName, string labName, string policySetName, string name, Policy policy)
+            public static Policy CreateOrUpdate(this IPoliciesOperations operations, string labName, string policySetName, string name, Policy policy)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, labName, policySetName, name, policy).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(labName, policySetName, name, policy).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -163,9 +148,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -182,9 +164,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Policy> CreateOrUpdateAsync(this IPoliciesOperations operations, string resourceGroupName, string labName, string policySetName, string name, Policy policy, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Policy> CreateOrUpdateAsync(this IPoliciesOperations operations, string labName, string policySetName, string name, Policy policy, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, labName, policySetName, name, policy, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(labName, policySetName, name, policy, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -196,9 +178,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -208,9 +187,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='name'>
             /// The name of the policy.
             /// </param>
-            public static void Delete(this IPoliciesOperations operations, string resourceGroupName, string labName, string policySetName, string name)
+            public static void Delete(this IPoliciesOperations operations, string labName, string policySetName, string name)
             {
-                operations.DeleteAsync(resourceGroupName, labName, policySetName, name).GetAwaiter().GetResult();
+                operations.DeleteAsync(labName, policySetName, name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -219,9 +198,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -234,9 +210,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IPoliciesOperations operations, string resourceGroupName, string labName, string policySetName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IPoliciesOperations operations, string labName, string policySetName, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, labName, policySetName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(labName, policySetName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -244,9 +220,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -260,9 +233,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='policy'>
             /// A Policy.
             /// </param>
-            public static Policy Update(this IPoliciesOperations operations, string resourceGroupName, string labName, string policySetName, string name, PolicyFragment policy)
+            public static Policy Update(this IPoliciesOperations operations, string labName, string policySetName, string name, PolicyFragment policy)
             {
-                return operations.UpdateAsync(resourceGroupName, labName, policySetName, name, policy).GetAwaiter().GetResult();
+                return operations.UpdateAsync(labName, policySetName, name, policy).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -270,9 +243,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -289,9 +259,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Policy> UpdateAsync(this IPoliciesOperations operations, string resourceGroupName, string labName, string policySetName, string name, PolicyFragment policy, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Policy> UpdateAsync(this IPoliciesOperations operations, string labName, string policySetName, string name, PolicyFragment policy, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, labName, policySetName, name, policy, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(labName, policySetName, name, policy, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

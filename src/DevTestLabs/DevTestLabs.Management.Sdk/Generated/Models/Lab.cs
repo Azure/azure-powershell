@@ -51,14 +51,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <param name="labStorageType">Type of storage used by the lab. It
         /// can be either Premium or Standard. Default is Premium. Possible
         /// values include: 'Standard', 'Premium'</param>
-        /// <param name="mandatoryArtifactsResourceIdsLinux">The ordered list
-        /// of artifact resource IDs that should be applied on all Linux VM
-        /// creations by default, prior to the artifacts specified by the
-        /// user.</param>
-        /// <param name="mandatoryArtifactsResourceIdsWindows">The ordered list
-        /// of artifact resource IDs that should be applied on all Windows VM
-        /// creations by default, prior to the artifacts specified by the
-        /// user.</param>
         /// <param name="createdDate">The creation date of the lab.</param>
         /// <param name="premiumDataDisks">The setting to enable usage of
         /// premium data disks.
@@ -66,29 +58,11 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// disks is allowed.
         /// When its value is 'Disabled', only creation of standard data disks
         /// is allowed. Possible values include: 'Disabled', 'Enabled'</param>
-        /// <param name="environmentPermission">The access rights to be granted
-        /// to the user when provisioning an environment. Possible values
-        /// include: 'Reader', 'Contributor'</param>
-        /// <param name="announcement">The properties of any lab announcement
-        /// associated with this lab</param>
-        /// <param name="support">The properties of any lab support message
-        /// associated with this lab</param>
-        /// <param name="vmCreationResourceGroup">The resource group in which
-        /// lab virtual machines will be created in.</param>
-        /// <param name="publicIpId">The public IP address for the lab's load
-        /// balancer.</param>
-        /// <param name="loadBalancerId">The load balancer used to for lab VMs
-        /// that use shared IP address.</param>
-        /// <param name="networkSecurityGroupId">The Network Security Group
-        /// attached to the lab VMs Network interfaces to restrict open
-        /// ports.</param>
-        /// <param name="extendedProperties">Extended properties of the lab
-        /// used for experimental features</param>
         /// <param name="provisioningState">The provisioning status of the
         /// resource.</param>
         /// <param name="uniqueIdentifier">The unique immutable identifier of a
         /// resource (Guid).</param>
-        public Lab(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string defaultStorageAccount = default(string), string defaultPremiumStorageAccount = default(string), string artifactsStorageAccount = default(string), string premiumDataDiskStorageAccount = default(string), string vaultName = default(string), string labStorageType = default(string), IList<string> mandatoryArtifactsResourceIdsLinux = default(IList<string>), IList<string> mandatoryArtifactsResourceIdsWindows = default(IList<string>), System.DateTime? createdDate = default(System.DateTime?), string premiumDataDisks = default(string), string environmentPermission = default(string), LabAnnouncementProperties announcement = default(LabAnnouncementProperties), LabSupportProperties support = default(LabSupportProperties), string vmCreationResourceGroup = default(string), string publicIpId = default(string), string loadBalancerId = default(string), string networkSecurityGroupId = default(string), IDictionary<string, string> extendedProperties = default(IDictionary<string, string>), string provisioningState = default(string), string uniqueIdentifier = default(string))
+        public Lab(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string defaultStorageAccount = default(string), string defaultPremiumStorageAccount = default(string), string artifactsStorageAccount = default(string), string premiumDataDiskStorageAccount = default(string), string vaultName = default(string), string labStorageType = default(string), System.DateTime? createdDate = default(System.DateTime?), string premiumDataDisks = default(string), string provisioningState = default(string), string uniqueIdentifier = default(string))
             : base(id, name, type, location, tags)
         {
             DefaultStorageAccount = defaultStorageAccount;
@@ -97,18 +71,8 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
             PremiumDataDiskStorageAccount = premiumDataDiskStorageAccount;
             VaultName = vaultName;
             LabStorageType = labStorageType;
-            MandatoryArtifactsResourceIdsLinux = mandatoryArtifactsResourceIdsLinux;
-            MandatoryArtifactsResourceIdsWindows = mandatoryArtifactsResourceIdsWindows;
             CreatedDate = createdDate;
             PremiumDataDisks = premiumDataDisks;
-            EnvironmentPermission = environmentPermission;
-            Announcement = announcement;
-            Support = support;
-            VmCreationResourceGroup = vmCreationResourceGroup;
-            PublicIpId = publicIpId;
-            LoadBalancerId = loadBalancerId;
-            NetworkSecurityGroupId = networkSecurityGroupId;
-            ExtendedProperties = extendedProperties;
             ProvisioningState = provisioningState;
             UniqueIdentifier = uniqueIdentifier;
             CustomInit();
@@ -158,22 +122,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         public string LabStorageType { get; set; }
 
         /// <summary>
-        /// Gets or sets the ordered list of artifact resource IDs that should
-        /// be applied on all Linux VM creations by default, prior to the
-        /// artifacts specified by the user.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.mandatoryArtifactsResourceIdsLinux")]
-        public IList<string> MandatoryArtifactsResourceIdsLinux { get; set; }
-
-        /// <summary>
-        /// Gets or sets the ordered list of artifact resource IDs that should
-        /// be applied on all Windows VM creations by default, prior to the
-        /// artifacts specified by the user.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.mandatoryArtifactsResourceIdsWindows")]
-        public IList<string> MandatoryArtifactsResourceIdsWindows { get; set; }
-
-        /// <summary>
         /// Gets the creation date of the lab.
         /// </summary>
         [JsonProperty(PropertyName = "properties.createdDate")]
@@ -190,72 +138,16 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         public string PremiumDataDisks { get; set; }
 
         /// <summary>
-        /// Gets or sets the access rights to be granted to the user when
-        /// provisioning an environment. Possible values include: 'Reader',
-        /// 'Contributor'
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.environmentPermission")]
-        public string EnvironmentPermission { get; set; }
-
-        /// <summary>
-        /// Gets or sets the properties of any lab announcement associated with
-        /// this lab
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.announcement")]
-        public LabAnnouncementProperties Announcement { get; set; }
-
-        /// <summary>
-        /// Gets or sets the properties of any lab support message associated
-        /// with this lab
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.support")]
-        public LabSupportProperties Support { get; set; }
-
-        /// <summary>
-        /// Gets the resource group in which lab virtual machines will be
-        /// created in.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.vmCreationResourceGroup")]
-        public string VmCreationResourceGroup { get; private set; }
-
-        /// <summary>
-        /// Gets the public IP address for the lab's load balancer.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.publicIpId")]
-        public string PublicIpId { get; private set; }
-
-        /// <summary>
-        /// Gets the load balancer used to for lab VMs that use shared IP
-        /// address.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.loadBalancerId")]
-        public string LoadBalancerId { get; private set; }
-
-        /// <summary>
-        /// Gets the Network Security Group attached to the lab VMs Network
-        /// interfaces to restrict open ports.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.networkSecurityGroupId")]
-        public string NetworkSecurityGroupId { get; private set; }
-
-        /// <summary>
-        /// Gets or sets extended properties of the lab used for experimental
-        /// features
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.extendedProperties")]
-        public IDictionary<string, string> ExtendedProperties { get; set; }
-
-        /// <summary>
-        /// Gets the provisioning status of the resource.
+        /// Gets or sets the provisioning status of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState { get; private set; }
+        public string ProvisioningState { get; set; }
 
         /// <summary>
-        /// Gets the unique immutable identifier of a resource (Guid).
+        /// Gets or sets the unique immutable identifier of a resource (Guid).
         /// </summary>
         [JsonProperty(PropertyName = "properties.uniqueIdentifier")]
-        public string UniqueIdentifier { get; private set; }
+        public string UniqueIdentifier { get; set; }
 
     }
 }

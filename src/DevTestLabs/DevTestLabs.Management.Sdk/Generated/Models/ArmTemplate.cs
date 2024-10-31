@@ -51,9 +51,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <param name="parametersValueFilesInfo">File name and parameter
         /// values information from all azuredeploy.*.parameters.json for the
         /// ARM template.</param>
-        /// <param name="enabled">Whether or not ARM template is enabled for
-        /// use by lab user.</param>
-        public ArmTemplate(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string displayName = default(string), string description = default(string), string publisher = default(string), string icon = default(string), object contents = default(object), System.DateTime? createdDate = default(System.DateTime?), IList<ParametersValueFileInfo> parametersValueFilesInfo = default(IList<ParametersValueFileInfo>), bool? enabled = default(bool?))
+        public ArmTemplate(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string displayName = default(string), string description = default(string), string publisher = default(string), string icon = default(string), object contents = default(object), System.DateTime? createdDate = default(System.DateTime?), IList<ParametersValueFileInfo> parametersValueFilesInfo = default(IList<ParametersValueFileInfo>))
             : base(id, name, type, location, tags)
         {
             DisplayName = displayName;
@@ -63,7 +61,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
             Contents = contents;
             CreatedDate = createdDate;
             ParametersValueFilesInfo = parametersValueFilesInfo;
-            Enabled = enabled;
             CustomInit();
         }
 
@@ -114,12 +111,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.parametersValueFilesInfo")]
         public IList<ParametersValueFileInfo> ParametersValueFilesInfo { get; private set; }
-
-        /// <summary>
-        /// Gets whether or not ARM template is enabled for use by lab user.
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.enabled")]
-        public bool? Enabled { get; private set; }
 
     }
 }

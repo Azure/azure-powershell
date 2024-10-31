@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
     /// A virtual network.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class VirtualNetworkFragment : UpdateResource
+    public partial class VirtualNetworkFragment : Resource
     {
         /// <summary>
         /// Initializes a new instance of the VirtualNetworkFragment class.
@@ -34,6 +34,10 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <summary>
         /// Initializes a new instance of the VirtualNetworkFragment class.
         /// </summary>
+        /// <param name="id">The identifier of the resource.</param>
+        /// <param name="name">The name of the resource.</param>
+        /// <param name="type">The type of the resource.</param>
+        /// <param name="location">The location of the resource.</param>
         /// <param name="tags">The tags of the resource.</param>
         /// <param name="allowedSubnets">The allowed subnets of the virtual
         /// network.</param>
@@ -41,15 +45,24 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// network.</param>
         /// <param name="externalProviderResourceId">The Microsoft.Network
         /// resource identifier of the virtual network.</param>
+        /// <param name="externalSubnets">The external subnet
+        /// properties.</param>
         /// <param name="subnetOverrides">The subnet overrides of the virtual
         /// network.</param>
-        public VirtualNetworkFragment(IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubnetFragment> allowedSubnets = default(IList<SubnetFragment>), string description = default(string), string externalProviderResourceId = default(string), IList<SubnetOverrideFragment> subnetOverrides = default(IList<SubnetOverrideFragment>))
-            : base(tags)
+        /// <param name="provisioningState">The provisioning status of the
+        /// resource.</param>
+        /// <param name="uniqueIdentifier">The unique immutable identifier of a
+        /// resource (Guid).</param>
+        public VirtualNetworkFragment(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubnetFragment> allowedSubnets = default(IList<SubnetFragment>), string description = default(string), string externalProviderResourceId = default(string), IList<ExternalSubnetFragment> externalSubnets = default(IList<ExternalSubnetFragment>), IList<SubnetOverrideFragment> subnetOverrides = default(IList<SubnetOverrideFragment>), string provisioningState = default(string), string uniqueIdentifier = default(string))
+            : base(id, name, type, location, tags)
         {
             AllowedSubnets = allowedSubnets;
             Description = description;
             ExternalProviderResourceId = externalProviderResourceId;
+            ExternalSubnets = externalSubnets;
             SubnetOverrides = subnetOverrides;
+            ProvisioningState = provisioningState;
+            UniqueIdentifier = uniqueIdentifier;
             CustomInit();
         }
 
@@ -78,10 +91,28 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         public string ExternalProviderResourceId { get; set; }
 
         /// <summary>
+        /// Gets or sets the external subnet properties.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.externalSubnets")]
+        public IList<ExternalSubnetFragment> ExternalSubnets { get; set; }
+
+        /// <summary>
         /// Gets or sets the subnet overrides of the virtual network.
         /// </summary>
         [JsonProperty(PropertyName = "properties.subnetOverrides")]
         public IList<SubnetOverrideFragment> SubnetOverrides { get; set; }
+
+        /// <summary>
+        /// Gets or sets the provisioning status of the resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.provisioningState")]
+        public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the unique immutable identifier of a resource (Guid).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.uniqueIdentifier")]
+        public string UniqueIdentifier { get; set; }
 
     }
 }

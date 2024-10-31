@@ -62,15 +62,12 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
-            public static IPage<Lab> ListByResourceGroup(this ILabsOperations operations, string resourceGroupName, ODataQuery<Lab> odataQuery = default(ODataQuery<Lab>))
+            public static IPage<Lab> ListByResourceGroup(this ILabsOperations operations, ODataQuery<Lab> odataQuery = default(ODataQuery<Lab>))
             {
-                return operations.ListByResourceGroupAsync(resourceGroupName, odataQuery).GetAwaiter().GetResult();
+                return operations.ListByResourceGroupAsync(odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -79,18 +76,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Lab>> ListByResourceGroupAsync(this ILabsOperations operations, string resourceGroupName, ODataQuery<Lab> odataQuery = default(ODataQuery<Lab>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Lab>> ListByResourceGroupAsync(this ILabsOperations operations, ODataQuery<Lab> odataQuery = default(ODataQuery<Lab>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -102,9 +96,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
@@ -112,9 +103,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// Specify the $expand query. Example:
             /// 'properties($select=defaultStorageAccount)'
             /// </param>
-            public static Lab Get(this ILabsOperations operations, string resourceGroupName, string name, string expand = default(string))
+            public static Lab Get(this ILabsOperations operations, string name, string expand = default(string))
             {
-                return operations.GetAsync(resourceGroupName, name, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(name, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -123,9 +114,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
@@ -136,9 +124,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Lab> GetAsync(this ILabsOperations operations, string resourceGroupName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Lab> GetAsync(this ILabsOperations operations, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, name, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(name, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -151,18 +139,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
             /// <param name='lab'>
             /// A lab.
             /// </param>
-            public static Lab CreateOrUpdate(this ILabsOperations operations, string resourceGroupName, string name, Lab lab)
+            public static Lab CreateOrUpdate(this ILabsOperations operations, string name, Lab lab)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, name, lab).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(name, lab).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -172,9 +157,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
@@ -184,9 +166,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Lab> CreateOrUpdateAsync(this ILabsOperations operations, string resourceGroupName, string name, Lab lab, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Lab> CreateOrUpdateAsync(this ILabsOperations operations, string name, Lab lab, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, name, lab, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(name, lab, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -198,15 +180,12 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
-            public static void Delete(this ILabsOperations operations, string resourceGroupName, string name)
+            public static void Delete(this ILabsOperations operations, string name)
             {
-                operations.DeleteAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                operations.DeleteAsync(name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -215,18 +194,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this ILabsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this ILabsOperations operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -234,9 +210,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='name'>
             /// The name of the lab.
@@ -244,9 +217,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='lab'>
             /// A lab.
             /// </param>
-            public static Lab Update(this ILabsOperations operations, string resourceGroupName, string name, LabFragment lab)
+            public static Lab Update(this ILabsOperations operations, string name, LabFragment lab)
             {
-                return operations.UpdateAsync(resourceGroupName, name, lab).GetAwaiter().GetResult();
+                return operations.UpdateAsync(name, lab).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -254,9 +227,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='name'>
             /// The name of the lab.
@@ -267,9 +237,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Lab> UpdateAsync(this ILabsOperations operations, string resourceGroupName, string name, LabFragment lab, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Lab> UpdateAsync(this ILabsOperations operations, string name, LabFragment lab, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, name, lab, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(name, lab, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -282,15 +252,12 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
-            public static void ClaimAnyVm(this ILabsOperations operations, string resourceGroupName, string name)
+            public static void ClaimAnyVm(this ILabsOperations operations, string name)
             {
-                operations.ClaimAnyVmAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                operations.ClaimAnyVmAsync(name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -300,18 +267,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task ClaimAnyVmAsync(this ILabsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task ClaimAnyVmAsync(this ILabsOperations operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.ClaimAnyVmWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.ClaimAnyVmWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -320,9 +284,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='name'>
             /// The name of the lab.
@@ -330,9 +291,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='labVirtualMachineCreationParameter'>
             /// Properties for creating a virtual machine.
             /// </param>
-            public static void CreateEnvironment(this ILabsOperations operations, string resourceGroupName, string name, LabVirtualMachineCreationParameter labVirtualMachineCreationParameter)
+            public static void CreateEnvironment(this ILabsOperations operations, string name, LabVirtualMachineCreationParameter labVirtualMachineCreationParameter)
             {
-                operations.CreateEnvironmentAsync(resourceGroupName, name, labVirtualMachineCreationParameter).GetAwaiter().GetResult();
+                operations.CreateEnvironmentAsync(name, labVirtualMachineCreationParameter).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -341,9 +302,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='name'>
             /// The name of the lab.
@@ -354,9 +312,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task CreateEnvironmentAsync(this ILabsOperations operations, string resourceGroupName, string name, LabVirtualMachineCreationParameter labVirtualMachineCreationParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task CreateEnvironmentAsync(this ILabsOperations operations, string name, LabVirtualMachineCreationParameter labVirtualMachineCreationParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.CreateEnvironmentWithHttpMessagesAsync(resourceGroupName, name, labVirtualMachineCreationParameter, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.CreateEnvironmentWithHttpMessagesAsync(name, labVirtualMachineCreationParameter, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -365,9 +323,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='name'>
             /// The name of the lab.
@@ -375,9 +330,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='exportResourceUsageParameters'>
             /// The parameters of the export operation.
             /// </param>
-            public static void ExportResourceUsage(this ILabsOperations operations, string resourceGroupName, string name, ExportResourceUsageParameters exportResourceUsageParameters)
+            public static void ExportResourceUsage(this ILabsOperations operations, string name, ExportResourceUsageParameters exportResourceUsageParameters)
             {
-                operations.ExportResourceUsageAsync(resourceGroupName, name, exportResourceUsageParameters).GetAwaiter().GetResult();
+                operations.ExportResourceUsageAsync(name, exportResourceUsageParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -386,9 +341,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='name'>
             /// The name of the lab.
@@ -399,9 +351,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task ExportResourceUsageAsync(this ILabsOperations operations, string resourceGroupName, string name, ExportResourceUsageParameters exportResourceUsageParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task ExportResourceUsageAsync(this ILabsOperations operations, string name, ExportResourceUsageParameters exportResourceUsageParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.ExportResourceUsageWithHttpMessagesAsync(resourceGroupName, name, exportResourceUsageParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.ExportResourceUsageWithHttpMessagesAsync(name, exportResourceUsageParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -409,9 +361,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='name'>
             /// The name of the lab.
@@ -419,9 +368,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='generateUploadUriParameter'>
             /// Properties for generating an upload URI.
             /// </param>
-            public static GenerateUploadUriResponse GenerateUploadUri(this ILabsOperations operations, string resourceGroupName, string name, GenerateUploadUriParameter generateUploadUriParameter)
+            public static GenerateUploadUriResponse GenerateUploadUri(this ILabsOperations operations, string name, GenerateUploadUriParameter generateUploadUriParameter)
             {
-                return operations.GenerateUploadUriAsync(resourceGroupName, name, generateUploadUriParameter).GetAwaiter().GetResult();
+                return operations.GenerateUploadUriAsync(name, generateUploadUriParameter).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -429,9 +378,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='name'>
             /// The name of the lab.
@@ -442,59 +388,26 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GenerateUploadUriResponse> GenerateUploadUriAsync(this ILabsOperations operations, string resourceGroupName, string name, GenerateUploadUriParameter generateUploadUriParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<GenerateUploadUriResponse> GenerateUploadUriAsync(this ILabsOperations operations, string name, GenerateUploadUriParameter generateUploadUriParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GenerateUploadUriWithHttpMessagesAsync(resourceGroupName, name, generateUploadUriParameter, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GenerateUploadUriWithHttpMessagesAsync(name, generateUploadUriParameter, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Import a virtual machine into a different lab. This operation can take a
-            /// while to complete.
+            /// List disk images available for custom image creation.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
-            /// <param name='importLabVirtualMachineRequest'>
-            /// This represents the payload required to import a virtual machine from a
-            /// different lab into the current one
-            /// </param>
-            public static void ImportVirtualMachine(this ILabsOperations operations, string resourceGroupName, string name, ImportLabVirtualMachineRequest importLabVirtualMachineRequest)
+            public static IPage<LabVhd> ListVhds(this ILabsOperations operations, string name)
             {
-                operations.ImportVirtualMachineAsync(resourceGroupName, name, importLabVirtualMachineRequest).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Import a virtual machine into a different lab. This operation can take a
-            /// while to complete.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the lab.
-            /// </param>
-            /// <param name='importLabVirtualMachineRequest'>
-            /// This represents the payload required to import a virtual machine from a
-            /// different lab into the current one
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task ImportVirtualMachineAsync(this ILabsOperations operations, string resourceGroupName, string name, ImportLabVirtualMachineRequest importLabVirtualMachineRequest, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.ImportVirtualMachineWithHttpMessagesAsync(resourceGroupName, name, importLabVirtualMachineRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                return operations.ListVhdsAsync(name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -503,35 +416,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the lab.
-            /// </param>
-            public static IPage<LabVhd> ListVhds(this ILabsOperations operations, string resourceGroupName, string name)
-            {
-                return operations.ListVhdsAsync(resourceGroupName, name).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// List disk images available for custom image creation.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<LabVhd>> ListVhdsAsync(this ILabsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<LabVhd>> ListVhdsAsync(this ILabsOperations operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListVhdsWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListVhdsWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -544,18 +437,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
             /// <param name='lab'>
             /// A lab.
             /// </param>
-            public static Lab BeginCreateOrUpdate(this ILabsOperations operations, string resourceGroupName, string name, Lab lab)
+            public static Lab BeginCreateOrUpdate(this ILabsOperations operations, string name, Lab lab)
             {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, name, lab).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(name, lab).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -564,9 +454,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='name'>
             /// The name of the lab.
@@ -577,9 +464,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Lab> BeginCreateOrUpdateAsync(this ILabsOperations operations, string resourceGroupName, string name, Lab lab, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Lab> BeginCreateOrUpdateAsync(this ILabsOperations operations, string name, Lab lab, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, name, lab, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(name, lab, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -591,15 +478,12 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
-            public static void BeginDelete(this ILabsOperations operations, string resourceGroupName, string name)
+            public static void BeginDelete(this ILabsOperations operations, string name)
             {
-                operations.BeginDeleteAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                operations.BeginDeleteAsync(name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -608,18 +492,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this ILabsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteAsync(this ILabsOperations operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -629,15 +510,12 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
-            public static void BeginClaimAnyVm(this ILabsOperations operations, string resourceGroupName, string name)
+            public static void BeginClaimAnyVm(this ILabsOperations operations, string name)
             {
-                operations.BeginClaimAnyVmAsync(resourceGroupName, name).GetAwaiter().GetResult();
+                operations.BeginClaimAnyVmAsync(name).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -647,18 +525,15 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='name'>
             /// The name of the lab.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginClaimAnyVmAsync(this ILabsOperations operations, string resourceGroupName, string name, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginClaimAnyVmAsync(this ILabsOperations operations, string name, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginClaimAnyVmWithHttpMessagesAsync(resourceGroupName, name, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginClaimAnyVmWithHttpMessagesAsync(name, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -667,9 +542,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='name'>
             /// The name of the lab.
@@ -677,9 +549,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='labVirtualMachineCreationParameter'>
             /// Properties for creating a virtual machine.
             /// </param>
-            public static void BeginCreateEnvironment(this ILabsOperations operations, string resourceGroupName, string name, LabVirtualMachineCreationParameter labVirtualMachineCreationParameter)
+            public static void BeginCreateEnvironment(this ILabsOperations operations, string name, LabVirtualMachineCreationParameter labVirtualMachineCreationParameter)
             {
-                operations.BeginCreateEnvironmentAsync(resourceGroupName, name, labVirtualMachineCreationParameter).GetAwaiter().GetResult();
+                operations.BeginCreateEnvironmentAsync(name, labVirtualMachineCreationParameter).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -688,9 +560,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='name'>
             /// The name of the lab.
@@ -701,9 +570,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginCreateEnvironmentAsync(this ILabsOperations operations, string resourceGroupName, string name, LabVirtualMachineCreationParameter labVirtualMachineCreationParameter, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginCreateEnvironmentAsync(this ILabsOperations operations, string name, LabVirtualMachineCreationParameter labVirtualMachineCreationParameter, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginCreateEnvironmentWithHttpMessagesAsync(resourceGroupName, name, labVirtualMachineCreationParameter, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginCreateEnvironmentWithHttpMessagesAsync(name, labVirtualMachineCreationParameter, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -712,9 +581,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='name'>
             /// The name of the lab.
@@ -722,9 +588,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='exportResourceUsageParameters'>
             /// The parameters of the export operation.
             /// </param>
-            public static void BeginExportResourceUsage(this ILabsOperations operations, string resourceGroupName, string name, ExportResourceUsageParameters exportResourceUsageParameters)
+            public static void BeginExportResourceUsage(this ILabsOperations operations, string name, ExportResourceUsageParameters exportResourceUsageParameters)
             {
-                operations.BeginExportResourceUsageAsync(resourceGroupName, name, exportResourceUsageParameters).GetAwaiter().GetResult();
+                operations.BeginExportResourceUsageAsync(name, exportResourceUsageParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -733,9 +599,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='name'>
             /// The name of the lab.
@@ -746,56 +609,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginExportResourceUsageAsync(this ILabsOperations operations, string resourceGroupName, string name, ExportResourceUsageParameters exportResourceUsageParameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginExportResourceUsageAsync(this ILabsOperations operations, string name, ExportResourceUsageParameters exportResourceUsageParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginExportResourceUsageWithHttpMessagesAsync(resourceGroupName, name, exportResourceUsageParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
-            }
-
-            /// <summary>
-            /// Import a virtual machine into a different lab. This operation can take a
-            /// while to complete.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the lab.
-            /// </param>
-            /// <param name='importLabVirtualMachineRequest'>
-            /// This represents the payload required to import a virtual machine from a
-            /// different lab into the current one
-            /// </param>
-            public static void BeginImportVirtualMachine(this ILabsOperations operations, string resourceGroupName, string name, ImportLabVirtualMachineRequest importLabVirtualMachineRequest)
-            {
-                operations.BeginImportVirtualMachineAsync(resourceGroupName, name, importLabVirtualMachineRequest).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Import a virtual machine into a different lab. This operation can take a
-            /// while to complete.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the lab.
-            /// </param>
-            /// <param name='importLabVirtualMachineRequest'>
-            /// This represents the payload required to import a virtual machine from a
-            /// different lab into the current one
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task BeginImportVirtualMachineAsync(this ILabsOperations operations, string resourceGroupName, string name, ImportLabVirtualMachineRequest importLabVirtualMachineRequest, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                (await operations.BeginImportVirtualMachineWithHttpMessagesAsync(resourceGroupName, name, importLabVirtualMachineRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginExportResourceUsageWithHttpMessagesAsync(name, exportResourceUsageParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

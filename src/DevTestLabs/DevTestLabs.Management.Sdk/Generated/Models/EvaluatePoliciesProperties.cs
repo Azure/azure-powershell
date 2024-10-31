@@ -32,14 +32,11 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// <param name="factName">The fact name.</param>
         /// <param name="factData">The fact data.</param>
         /// <param name="valueOffset">The value offset.</param>
-        /// <param name="userObjectId">The user for which policies will be
-        /// evaluated</param>
-        public EvaluatePoliciesProperties(string factName = default(string), string factData = default(string), string valueOffset = default(string), string userObjectId = default(string))
+        public EvaluatePoliciesProperties(string factName = default(string), string factData = default(string), string valueOffset = default(string))
         {
             FactName = factName;
             FactData = factData;
             ValueOffset = valueOffset;
-            UserObjectId = userObjectId;
             CustomInit();
         }
 
@@ -65,12 +62,6 @@ namespace Microsoft.Azure.Management.DevTestLabs.Models
         /// </summary>
         [JsonProperty(PropertyName = "valueOffset")]
         public string ValueOffset { get; set; }
-
-        /// <summary>
-        /// Gets or sets the user for which policies will be evaluated
-        /// </summary>
-        [JsonProperty(PropertyName = "userObjectId")]
-        public string UserObjectId { get; set; }
 
     }
 }

@@ -28,9 +28,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -40,9 +37,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='odataQuery'>
             /// OData parameters to apply to the operation.
             /// </param>
-            public static IPage<ArmTemplate> List(this IArmTemplatesOperations operations, string resourceGroupName, string labName, string artifactSourceName, ODataQuery<ArmTemplate> odataQuery = default(ODataQuery<ArmTemplate>))
+            public static IPage<ArmTemplate> List(this IArmTemplatesOperations operations, string labName, string artifactSourceName, ODataQuery<ArmTemplate> odataQuery = default(ODataQuery<ArmTemplate>))
             {
-                return operations.ListAsync(resourceGroupName, labName, artifactSourceName, odataQuery).GetAwaiter().GetResult();
+                return operations.ListAsync(labName, artifactSourceName, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -50,9 +47,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -66,9 +60,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ArmTemplate>> ListAsync(this IArmTemplatesOperations operations, string resourceGroupName, string labName, string artifactSourceName, ODataQuery<ArmTemplate> odataQuery = default(ODataQuery<ArmTemplate>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ArmTemplate>> ListAsync(this IArmTemplatesOperations operations, string labName, string artifactSourceName, ODataQuery<ArmTemplate> odataQuery = default(ODataQuery<ArmTemplate>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, labName, artifactSourceName, odataQuery, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(labName, artifactSourceName, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -80,9 +74,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
-            /// </param>
             /// <param name='labName'>
             /// The name of the lab.
             /// </param>
@@ -95,9 +86,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='expand'>
             /// Specify the $expand query. Example: 'properties($select=displayName)'
             /// </param>
-            public static ArmTemplate Get(this IArmTemplatesOperations operations, string resourceGroupName, string labName, string artifactSourceName, string name, string expand = default(string))
+            public static ArmTemplate Get(this IArmTemplatesOperations operations, string labName, string artifactSourceName, string name, string expand = default(string))
             {
-                return operations.GetAsync(resourceGroupName, labName, artifactSourceName, name, expand).GetAwaiter().GetResult();
+                return operations.GetAsync(labName, artifactSourceName, name, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -105,9 +96,6 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='resourceGroupName'>
-            /// The name of the resource group.
             /// </param>
             /// <param name='labName'>
             /// The name of the lab.
@@ -124,9 +112,9 @@ namespace Microsoft.Azure.Management.DevTestLabs
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ArmTemplate> GetAsync(this IArmTemplatesOperations operations, string resourceGroupName, string labName, string artifactSourceName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ArmTemplate> GetAsync(this IArmTemplatesOperations operations, string labName, string artifactSourceName, string name, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, labName, artifactSourceName, name, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(labName, artifactSourceName, name, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
