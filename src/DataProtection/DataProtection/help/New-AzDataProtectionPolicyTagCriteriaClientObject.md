@@ -15,20 +15,20 @@ Creates a new criteria object
 ### ScheduleCriteria (Default)
 ```
 New-AzDataProtectionPolicyTagCriteriaClientObject [-DaysOfWeek <DaysOfWeek[]>] [-WeeksOfMonth <WeeksOfMonth[]>]
- [-MonthsOfYear <MonthsOfYear[]>] [-ScheduleTimes <DateTime[]>] [-ProgressAction <ActionPreference>]
+ [-MonthsOfYear <MonthsOfYear[]>] [-ScheduleTimes <DateTime[]>]
  [<CommonParameters>]
 ```
 
 ### AbsoluteCriteria
 ```
 New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria <AbsoluteTagCriteria>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### MonthlyCriteria
 ```
 New-AzDataProtectionPolicyTagCriteriaClientObject [-MonthsOfYear <MonthsOfYear[]>]
- [-ScheduleTimes <DateTime[]>] -DaysOfMonth <String[]> [-ProgressAction <ActionPreference>]
+ [-ScheduleTimes <DateTime[]>] -DaysOfMonth <String[]>
  [<CommonParameters>]
 ```
 
@@ -121,21 +121,6 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.MonthsOfYear[]
 Parameter Sets: ScheduleCriteria, MonthlyCriteria
 Aliases:
 Accepted values: January, February, March, April, May, June, July, August, September, October, November, December
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

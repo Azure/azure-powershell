@@ -15,20 +15,20 @@ Get the Update run for a specified update
 ### List (Default)
 ```
 Get-AzStackHciUpdateRun -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -UpdateName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -UpdateName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzStackHciUpdateRun -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -UpdateName <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzStackHciUpdateRun -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,21 +101,6 @@ Parameter Sets: Get
 Aliases: UpdateRunName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
