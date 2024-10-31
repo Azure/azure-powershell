@@ -14,7 +14,7 @@ Create an in-memory object for ItsmReceiver.
 
 ```
 New-AzActionGroupItsmReceiverObject -ConnectionId <String> -Name <String> -Region <String>
- -TicketConfiguration <String> -WorkspaceId <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -TicketConfiguration <String> -WorkspaceId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,21 +64,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

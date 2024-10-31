@@ -15,21 +15,21 @@ Get a device enrollment group.
 ### ResourceSet (Default)
 ```
 Get-AzIoTDeviceProvisioningServiceEnrollmentGroup [-ResourceGroupName] <String> [-DpsName] <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
 Get-AzIoTDeviceProvisioningServiceEnrollmentGroup [-DpsObject] <PSProvisioningServiceDescription>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
 Get-AzIoTDeviceProvisioningServiceEnrollmentGroup [-ResourceId] <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,21 +105,6 @@ Name of the enrollment group.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -16,40 +16,40 @@ Patch the base Settings of the target resource.
 ```
 Update-AzArcSetting -BaseProvider <String> -BaseResourceName <String> -BaseResourceType <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-GatewayResourceId <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Patch
 ```
 Update-AzArcSetting -BaseProvider <String> -BaseResourceName <String> -BaseResourceType <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -Parameter <ISettings> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PatchViaJsonFilePath
 ```
 Update-AzArcSetting -BaseProvider <String> -BaseResourceName <String> -BaseResourceType <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PatchViaJsonString
 ```
 Update-AzArcSetting -BaseProvider <String> -BaseResourceName <String> -BaseResourceType <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PatchViaIdentity
 ```
 Update-AzArcSetting -InputObject <IArcGatewayIdentity> -Parameter <ISettings> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PatchViaIdentityExpanded
 ```
 Update-AzArcSetting -InputObject <IArcGatewayIdentity> [-GatewayResourceId <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,21 +217,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

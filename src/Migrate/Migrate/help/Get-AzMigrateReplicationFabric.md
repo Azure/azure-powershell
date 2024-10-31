@@ -15,14 +15,14 @@ Gets the details of an Azure Site Recovery fabric.
 ### List (Default)
 ```
 Get-AzMigrateReplicationFabric -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMigrateReplicationFabric -ResourceGroupName <String> -ResourceName <String> -FabricName <String>
  [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -126,21 +126,6 @@ OData filter options.
 Type: System.String
 Parameter Sets: Get
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

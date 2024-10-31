@@ -15,7 +15,7 @@ Finds the valid recovery point in time ranges for the restore.
 ```
 Find-AzDataProtectionRestorableTimeRange -BackupInstanceName <String> -ResourceGroupName <String>
  -VaultName <String> [-SubscriptionId <String>] -SourceDataStoreType <RestoreSourceDataStoreType>
- [-EndTime <String>] [-StartTime <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-EndTime <String>] [-StartTime <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -85,21 +85,6 @@ ISO 8601 format.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -15,7 +15,7 @@ Queues an email message to be sent to one or more recipients
 ### Send (Default)
 ```
 Send-AzEmailServicedataEmail -Endpoint <String> [-ClientRequestId <String>] [-OperationId <String>]
- -Message <IEmailMessage> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -Message <IEmailMessage> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,20 +26,20 @@ Send-AzEmailServicedataEmail -Endpoint <String> [-ClientRequestId <String>] [-Op
  [-Attachment <IEmailAttachment[]>] [-ContentHtml <String>] [-ContentPlainText <String>] [-Header <Hashtable>]
  [-RecipientBcc <IEmailAddress[]>] [-RecipientCc <IEmailAddress[]>] [-ReplyTo <IEmailAddress[]>]
  [-UserEngagementTrackingDisabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SendViaJsonFilePath
 ```
 Send-AzEmailServicedataEmail -Endpoint <String> [-ClientRequestId <String>] [-OperationId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SendViaJsonString
 ```
 Send-AzEmailServicedataEmail -Endpoint <String> [-ClientRequestId <String>] [-OperationId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -377,21 +377,6 @@ If an ID is not provided by the customer, the service will generate one.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

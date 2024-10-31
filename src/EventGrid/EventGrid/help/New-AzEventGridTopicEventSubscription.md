@@ -24,21 +24,21 @@ New-AzEventGridTopicEventSubscription -EventSubscriptionName <String> -ResourceG
  [-FilterIncludedEventType <String[]>] [-FilterIsSubjectCaseSensitive] [-FilterSubjectBeginsWith <String>]
  [-FilterSubjectEndsWith <String>] [-Label <String[]>] [-RetryPolicyEventTimeToLiveInMinute <Int32>]
  [-RetryPolicyMaxDeliveryAttempt <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzEventGridTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -TopicName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzEventGridTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -TopicName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityTopicExpanded
@@ -52,7 +52,7 @@ New-AzEventGridTopicEventSubscription -EventSubscriptionName <String> -TopicInpu
  [-FilterIncludedEventType <String[]>] [-FilterIsSubjectCaseSensitive] [-FilterSubjectBeginsWith <String>]
  [-FilterSubjectEndsWith <String>] [-Label <String[]>] [-RetryPolicyEventTimeToLiveInMinute <Int32>]
  [-RetryPolicyMaxDeliveryAttempt <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -66,7 +66,7 @@ New-AzEventGridTopicEventSubscription -InputObject <IEventGridIdentity>
  [-FilterIncludedEventType <String[]>] [-FilterIsSubjectCaseSensitive] [-FilterSubjectBeginsWith <String>]
  [-FilterSubjectEndsWith <String>] [-Label <String[]>] [-RetryPolicyEventTimeToLiveInMinute <Int32>]
  [-RetryPolicyMaxDeliveryAttempt <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -435,21 +435,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
