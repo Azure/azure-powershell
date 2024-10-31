@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 7.2.1
 * Fixed bug in `Set-ASRReplicationProtectedItem` cmdlet of H2A for replication to MD scenario.
 
 ## Version 7.2.0

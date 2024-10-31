@@ -1,3 +1,120 @@
+## 12.5.0 - October 2024
+#### Az.Accounts 3.0.5
+* Fixed the issue that 'Export-AzSshConfig' and 'Enter-AzVM' from Az.Ssh are not able to use when WAM is enabled.
+* Added breaking change preannouncement for the removal of alias 'Resolve-Error'. #26189
+* Integrated new detection library to expand the scope of secrets.
+
+#### Az.AnalysisServices 1.1.6
+* Migrated AnalysisServices SDK to generated SDK
+    - Removed 'Microsoft.Azure.Management.Analysis' Version '2.0.4' PackageReference
+    - Added AnalysisServices.Management.Sdk ProjectReference
+
+#### Az.ApiManagement 4.0.5
+* Removed Microsoft.Azure.Management.ApiManagement 8.0.0.0-preview
+* Added ApiManagement.Management.Sdk
+
+#### Az.Attestation 2.0.3
+* Migrated Attestation SDK to generated SDK
+    - Removed 'Microsoft.Azure.Management.Attestation' Version '0.12.0-preview' PackageReference
+    - Added Attestation.Management.Sdk ProjectReference
+
+#### Az.Batch 3.6.4
+* Migrate Batch SDK to generated SDK
+  - Removed 'Microsoft.Azure.Management.Batch' Version='15.0.0' PackageReference
+  - Added Batch.Management.Sdk ProjectReference
+
+#### Az.Compute 8.5.0
+* Added optional parameters '-SecurityPostureId' and '-SecurityPostureExcludeExtension' to cmdlets 'New-AzVmss' and 'New-AzVmssConfig'.
+* Updated image aliases to be up-to-date in the azure-powershell\src\Compute\Strategies\ComputeRp\Images.json file.
+* Added 'NvmeDisk' argument completer to 'DiffDiskPlacement' parameter for 'Set-AzVMOSDisk' and 'Set-AzVmssStorageProfile' cmdlets, allowing options for disk placement as 'CacheDisk', 'ResourceDisk', or 'NvmeDisk'.
+
+#### Az.ConnectedMachine 1.0.0
+* General availability for module Az.ConnectedMachine
+
+#### Az.DataFactory 1.18.9
+* Added pageSize support to Salesforce V2 Source.
+* Added pageSize support to ServiceNow V2 Source.
+* Added host property to Snowflake linked service.
+* Fixed missing authenticationType in PostgreSQL V2 linked service.
+
+#### Az.DataProtection 2.5.0
+* Added support for vault tier backup and restore for AzureKubernetesService
+* Added support for resource modifier reference
+* Added a fix for Update-AzDataProtectionBackupInstance
+
+#### Az.DesktopVirtualization 4.3.2
+* Preannounced the breaking changes for Az.DesktopVirtualization 6.0.0
+
+#### Az.EventGrid 2.1.0
+* Fixed an issue that caused some commands ending in 'Object' to not work properly.
+
+#### Az.EventHub 5.0.1
+* Migrated EventHub SDK to generated SDK
+  - Removed 'Microsoft.Azure.Management.EventHub' Version '5.0.0' PackageReference
+  - Added EventHub.Management.Sdk ProjectReference
+
+#### Az.Functions 4.1.1
+* Used 'Get-AzAccessToken -AsSecureString' inside the 'Functions' for the plain text version is going to be deprecate in the next release.
+
+#### Az.Migrate 2.5.0
+* Validated user login with Microsoft Managed System Identity (MSI) in 'Initialize-AzMigrateHCIReplicationInfrastructure'
+* Passed appropriate Hyper-V Generation value based on source VMware firmware type in 'New-AzMigrateHCIServerReplication'
+* Added support for LinuxLicenseType in Az.Migrate module.
+
+#### Az.Monitor 5.3.0
+* Added new cmdlet for Azure Monitor Pipeline Groups
+  * 'Get-AzPipelineGroup'
+  * 'New-AzPipelineGroup'
+  * 'Update-AzPipelineGroup'
+  * 'Remove-AzPipelineGroup'
+
+#### Az.Network 7.10.0
+* Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management
+    - 'New/Get/Remove/Set-AzNetworkManagerRoutingConfiguration'
+    - 'New/Get/Remove/Set-AzNetworkManagerRoutingRuleCollection'
+    - 'New/Get/Remove/Set-AzNetworkManagerRoutingRule'
+    - 'New-AzNetworkManagerRoutingGroupItem'
+    - 'New-AzNetworkManagerRoutingRuleDestination'
+    - 'New-AzNetworkManagerRoutingRuleNextHop'
+    - 'New/Get/Remove/Set-AzNetworkManagerSecurityUserConfiguration'
+    - 'New/Get/Remove/Set-AzNetworkManagerSecurityUserRuleCollection'
+    - 'New/Get/Remove/Set-AzNetworkManagerSecurityUserRule'
+    - 'New-AzNetworkManagerSecurityUserGroupItem'
+* Added support for 'MemberType' property in 'New-AzNetworkManagerSecurityUserGroupItem' command
+
+#### Az.PrivateDns 1.1.0
+* Updated new property ResolutionPolicy to Get, New and Set virtual network link cmdlets.
+* Created autorest generated sdk in PrivateDns.Management.Sdk folder
+
+#### Az.RecoveryServices 7.2.1
+* Fixed bug in 'Set-ASRReplicationProtectedItem' cmdlet of H2A for replication to MD scenario.
+
+#### Az.ResourceGraph 1.0.1
+* Migrated ResourceGraph SDK to generated SDK
+  - Removed 'Microsoft.Azure.Management.ResourceGraph' Version '2.1.0' PackageReference
+  - Added ResourceGraph.Management.Sdk ProjectReference
+
+#### Az.Resources 7.6.0
+* Fixed customer-reported 'Remove-AzPolicyAssignment' behavior.
+* Added new cmdlets of DataBoundary
+
+#### Az.ServiceBus 4.0.1
+* Migrated ServiceBus SDK to generated SDK
+    - Removed 'Microsoft.Azure.Management.ServiceBus' Version '5.0.0' PackageReference
+    - Added ServiceBus.Management.Sdk ProjectReference 
+
+#### Az.StackHCI 2.4.1
+* added support for new environment
+
+#### Az.Storage 7.5.0
+* Added a warning for an upcoming breaking change for download blob will block input parameter -AbsoluteUri and -Context together.
+    - 'Get-AzStorageBlobContent'
+* Revised AzureStorageBlob construct logic to make it more stable.
+
+### Thanks to our community contributors
+* Laurent Bouriez (@lbouriez), Update New-AzGalleryImageVersion.md (#26259)
+* @reyjordi, made note to address a limitation on AppGW PowerShell (#26473)
+
 ## 12.4.0 - October 2024
 #### Az.App 1.1.0
 * Added breaking change messages:

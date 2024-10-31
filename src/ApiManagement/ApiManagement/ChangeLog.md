@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.0.5
 * Removed Microsoft.Azure.Management.ApiManagement 8.0.0.0-preview
 * Added ApiManagement.Management.Sdk
 

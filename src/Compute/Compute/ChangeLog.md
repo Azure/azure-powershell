@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 8.5.0
 * Added optional parameters `-SecurityPostureId` and `-SecurityPostureExcludeExtension` to cmdlets `New-AzVmss` and `New-AzVmssConfig`.
 * Updated image aliases to be up-to-date in the azure-powershell\src\Compute\Strategies\ComputeRp\Images.json file.
 * Added `NvmeDisk` argument completer to `DiffDiskPlacement` parameter for `Set-AzVMOSDisk` and `Set-AzVmssStorageProfile` cmdlets, allowing options for disk placement as `CacheDisk`, `ResourceDisk`, or `NvmeDisk`.
