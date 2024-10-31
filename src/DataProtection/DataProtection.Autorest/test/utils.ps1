@@ -55,6 +55,7 @@ function setupEnv() {
     $randomstring = RandomString -allChars $false -len 10
     $BackupVaultTestVariables = @{
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        CreateSubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "sarath-rg"
         VaultName = "sarath-vault"
         NewVaultName = "new-pstest-vault"
@@ -149,7 +150,8 @@ function setupEnv() {
         SubscriptionId = "f0c630e0-2995-4853-b056-0b3c09cb673f"
         ResourceGroupName = "AKS-ps-shasha-test-source"
         VaultName = "ps-vault"
-        NewPolicyName = "pstest-aks-policy"       
+        NewPolicyName = "pstest-aks-policy"
+        NewVaultedPolicyName = "vaulted-aks-pspol"
     }
 
     $AksVariables = @{

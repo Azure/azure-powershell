@@ -468,6 +468,12 @@ function Set-AzConnectedKubernetes {
                 $PSBoundParameters.Add('GatewayResourceId', $GatewayResourceId)
             }
         }
+        else {
+            $PSBoundParameters.Add('GatewayEnabled', -not $DisableGateway)
+            if (-not [String]::IsNullOrEmpty($GatewayResourceId)) {
+                $PSBoundParameters.Add('GatewayResourceId', $GatewayResourceId)
+            }
+        }
 
         $CommonPSBoundParameters = @{}
         if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
@@ -801,36 +807,6 @@ function Set-AzConnectedKubernetes {
                 -KubeContext $KubeContext `
                 -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
                 -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
-
-            # try {
-            #     # If running on Linux, there is no USERPROFILE set; instead we
-            #     # have HOME.
-            #     # Exporting Helm chart; note that we might be one Windows or Linux.
-            #     if (Test-Path Env:USERPROFILE) {
-            #         $root = $Env:USERPROFILE
-            #     }
-            #     elseif (Test-Path Env:HOME) {
-            #         $root = $Env:HOME
-            #     }
-            #     else {
-            #         throw "No environment to use as root."
-            #     }
-            #     Write-Verbose "Using 'helm' to add Azure Arc resources to Kubernetes cluster"
-            #     $userValuesLocation = $root | Join-Path -ChildPath '.azure' | Join-Path -ChildPath "userValues.txt"
-            # 
-            #     # !!REMOVE THIS LATER !! ??
-            #     Write-Debug "helm get values azure-arc `
-            #          --namespace $ReleaseInstallNamespace `
-            #          --kubeconfig $KubeConfig `
-            #          --kube-context $KubeContext > $userValuesLocation" -Debug
-            #     helm get values azure-arc `
-            #         --namespace $ReleaseInstallNamespace `
-            #         --kubeconfig $KubeConfig `
-            #         --kube-context $KubeContext > $userValuesLocation
-            # }
-            # catch {
-            #     throw "Unable to get helm values: `n$_"
-            # }
         }
 
         Write-Output "Executing helm upgrade, this can take a few minutes ...."
