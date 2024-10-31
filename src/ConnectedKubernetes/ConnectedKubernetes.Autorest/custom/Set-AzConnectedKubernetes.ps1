@@ -468,12 +468,6 @@ function Set-AzConnectedKubernetes {
                 $PSBoundParameters.Add('GatewayResourceId', $GatewayResourceId)
             }
         }
-        else {
-            $PSBoundParameters.Add('GatewayEnabled', -not $DisableGateway)
-            if (-not [String]::IsNullOrEmpty($GatewayResourceId)) {
-                $PSBoundParameters.Add('GatewayResourceId', $GatewayResourceId)
-            }
-        }
 
         $CommonPSBoundParameters = @{}
         if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
@@ -800,6 +794,7 @@ function Set-AzConnectedKubernetes {
         # Get current helm values
         if ($PSCmdlet.ShouldProcess($ClusterName, "Get current helm values")) {
             Get-HelmValue `
+                -HelmClientLocation $HelmClientLocation `
                 -Namespace $ReleaseInstallNamespace `
                 -KubeConfig $KubeConfig `
                 -KubeContext $KubeContext `
