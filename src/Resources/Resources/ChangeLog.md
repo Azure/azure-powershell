@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added new cmdlets of DataBoundary
 * Fixed customer-reported `Remove-AzPolicyAssignment` behavior.
 
 ## Version 7.5.0
