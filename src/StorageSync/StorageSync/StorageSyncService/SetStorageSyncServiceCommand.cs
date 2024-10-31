@@ -130,9 +130,9 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
         public string IdentityType { get; set; }
 
         [Parameter(
-           Mandatory = false,
-           HelpMessage = HelpMessages.StorageSyncServiceUseIdentityParameter)]
-        public SwitchParameter UseIdentity { get; set; }
+            Mandatory = false,
+            HelpMessage = HelpMessages.StorageSyncServiceUseIdentityParameter)]
+        public bool UseIdentity { get; set; }
 
         /// <summary>
         /// Gets or sets the tag.
@@ -211,9 +211,14 @@ namespace Microsoft.Azure.Commands.StorageSync.StorageSyncService
                 }
 
                 bool? useIdentity;
-                if (this.UseIdentity.IsPresent)
+                if (this.IsParameterBound(c => c.UseIdentity))
                 {
-                    useIdentity = true;
+                    useIdentity = this.UseIdentity;
+
+                    if(!this.UseIdentity)
+                    {
+                        throw new PSArgumentException($"This cmdlet cannot be used to reset the Storage Sync Service Identity. Please reach out to administrator to turn off managed identity for StorageSync service.");
+                    }
                 }
                 else
                 {
