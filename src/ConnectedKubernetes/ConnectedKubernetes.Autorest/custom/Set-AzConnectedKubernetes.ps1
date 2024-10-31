@@ -799,8 +799,6 @@ function Set-AzConnectedKubernetes {
 
         # Get current helm values
         if ($PSCmdlet.ShouldProcess($ClusterName, "Get current helm values")) {
-
-            # !!PDS This should be in the HelmHelpers script.
             Get-HelmValue `
                 -Namespace $ReleaseInstallNamespace `
                 -KubeConfig $KubeConfig `

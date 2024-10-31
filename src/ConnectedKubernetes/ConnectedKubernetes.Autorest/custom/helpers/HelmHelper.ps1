@@ -125,7 +125,30 @@ function IsAmd64 {
         return $isSupport
     }
 }
+function Get-AzureHelmPath {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    param(
+        [string[]]$ChildPaths
+    )
 
+    # The top-level directory is always determined from HOME or USERPROFILE 
+    # and ".azure"
+    if (Test-Path Env:USERPROFILE) {
+        $Path = $Env:USERPROFILE
+    }
+    elseif (Test-Path Env:HOME) {
+        $Path = $Env:HOME
+    }
+    else {
+        throw "No environment to use as Azure/helm path root."
+    }
+    $Path = Join-Path -Path $Path '.azure'
+
+    foreach ($childPath in $ChildPaths) {
+        $Path = Join-Path $Path -ChildPath $childPath
+    }
+    return $Path
+}
 function Get-HelmValue {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
@@ -139,27 +162,8 @@ function Get-HelmValue {
     )
 
     try {
-        # If running on Linux, there is no USERPROFILE set; instead we
-        # have HOME.
-        # Exporting Helm chart; note that we might be one Windows or Linux.
-        if (Test-Path Env:USERPROFILE) {
-            $root = $Env:USERPROFILE
-        }
-        elseif (Test-Path Env:HOME) {
-            $root = $Env:HOME
-        }
-        else {
-            throw "No environment to use as root."
-        }
-        Write-Verbose "Using 'helm' to add Azure Arc resources to Kubernetes cluster"
-        $userValuesLocation = $root | Join-Path -ChildPath '.azure' | Join-Path -ChildPath $ValuesFile
+        $userValuesLocation = Get-AzureHelmPath -ChildPaths $ValuesFile
 
-        ## !!REMOVE THIS LATER !! ??
-        #helm get values azure-arc `
-        #    --namespace $ReleaseInstallNamespace `
-        #    --kubeconfig $KubeConfig `
-        #    --kube-context $KubeContext > $userValuesLocation
-        
         $cmdHelmValuesPull = @($HelmClientLocation, "get", "values", "azure-arc", "--namespace", $ReleaseInstallNamespace)
         if ($KubeConfig) {
             $cmdHelmValuesPull += "--kubeconfig", $KubeConfig
@@ -194,19 +198,7 @@ function Get-HelmChartPath {
 
     # Special path!
     $PreOnboardingHelmChartsFolderName = 'PreOnboardingChecksCharts'
-
-    # Exporting Helm chart; note that we might be on Windows or Linux.
-    if (Test-Path Env:USERPROFILE) {
-        $root = $Env:USERPROFILE
-    }
-    elseif (Test-Path Env:HOME) {
-        $root = $Env:HOME
-    }
-    else {
-        throw "No environment to use as root."
-    }
-    Write-Verbose "Using 'helm' to add Azure Arc resources to Kubernetes cluster"
-    $ChartExportPath = $root | Join-Path -ChildPath '.azure' | Join-Path -ChildPath $ChartFolderName
+    $ChartExportPath = Get-HelmAzurePath $ChartFolderName
     try {
         if (Test-Path $ChartExportPath) {
             Write-Debug "Cleaning up existing Helm chart folder at: $ChartExportPath"
