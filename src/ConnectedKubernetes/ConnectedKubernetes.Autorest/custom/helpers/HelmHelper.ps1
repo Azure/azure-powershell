@@ -126,6 +126,57 @@ function IsAmd64 {
     }
 }
 
+function Get-HelmValue {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    param (
+        [Parameter(Mandatory)]
+        [string]$HelmClientLocation,
+        [Parameter(Mandatory)]
+        [string]$Namespace,
+        [string]$KubeConfig,
+        [string]$KubeContext,
+        [string]$ValuesFile = 'userValues.txt'
+    )
+
+    try {
+        # If running on Linux, there is no USERPROFILE set; instead we
+        # have HOME.
+        # Exporting Helm chart; note that we might be one Windows or Linux.
+        if (Test-Path Env:USERPROFILE) {
+            $root = $Env:USERPROFILE
+        }
+        elseif (Test-Path Env:HOME) {
+            $root = $Env:HOME
+        }
+        else {
+            throw "No environment to use as root."
+        }
+        Write-Verbose "Using 'helm' to add Azure Arc resources to Kubernetes cluster"
+        $userValuesLocation = $root | Join-Path -ChildPath '.azure' | Join-Path -ChildPath $ValuesFile
+
+        ## !!REMOVE THIS LATER !! ??
+        #helm get values azure-arc `
+        #    --namespace $ReleaseInstallNamespace `
+        #    --kubeconfig $KubeConfig `
+        #    --kube-context $KubeContext > $userValuesLocation
+        
+        $cmdHelmValuesPull = @($HelmClientLocation, "get", "values", "azure-arc", "--namespace", $ReleaseInstallNamespace)
+        if ($KubeConfig) {
+            $cmdHelmValuesPull += "--kubeconfig", $KubeConfig
+        }
+        if ($KubeContext) {
+            $cmdHelmValuesPull += "--kube-context", $KubeContext
+        }
+        $cmdHelmValuesPull += ">", $userValuesLocation
+
+        Write-Debug "Pull helm values: $cmdHelmValuesPull[0] $cmdValuesPull[1..($cmdHelmVauesPull.Count - 1)]"
+        Invoke-ExternalCommand $cmdHelmValuesPull[0] $cmdHelmValuesPull[1..($cmdHelmValuesPull.Count - 1)]
+    }
+    catch {
+        throw "Unable to get helm values: `n$_"
+    }
+}
+
 function Get-HelmChartPath {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
@@ -144,7 +195,7 @@ function Get-HelmChartPath {
     # Special path!
     $PreOnboardingHelmChartsFolderName = 'PreOnboardingChecksCharts'
 
-    # Exporting Helm chart; note that we might be one Windows or Linux.
+    # Exporting Helm chart; note that we might be on Windows or Linux.
     if (Test-Path Env:USERPROFILE) {
         $root = $Env:USERPROFILE
     }

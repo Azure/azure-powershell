@@ -456,11 +456,13 @@ function Set-AzConnectedKubernetes {
         if ($PSBoundParameters.ContainsKey('GatewayResourceId')) {
             Write-Debug "Gateway enabled"
             $PSBoundParameters.Add('GatewayEnabled', $true)
-        } elseif ($PSBoundParameters.ContainsKey('DisableGateway')) {
+        }
+        elseif ($PSBoundParameters.ContainsKey('DisableGateway')) {
             Write-Debug "Gateway disabled"
             $Null = $PSBoundParameters.Remove('DisableGateway')
             $PSBoundParameters.Add('GatewayEnabled', $false)
-        } else {
+        }
+        else {
             $PSBoundParameters.Add('GatewayEnabled', -not $DisableGateway)
             if (-not [String]::IsNullOrEmpty($GatewayResourceId)) {
                 $PSBoundParameters.Add('GatewayResourceId', $GatewayResourceId)
@@ -792,17 +794,43 @@ function Set-AzConnectedKubernetes {
         # Get current helm values
         if ($PSCmdlet.ShouldProcess($ClusterName, "Get current helm values")) {
 
-            try {
-                $userValuesLocation = Join-Path $env:USERPROFILE ".azure\userValues.txt"
+            # !!PDS This should be in the HelmHelpers script.
+            Get-HelmValue `
+                -Namespace $ReleaseInstallNamespace `
+                -KubeConfig $KubeConfig `
+                -KubeContext $KubeContext `
+                -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+                -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
-                helm get values azure-arc `
-                    --namespace $ReleaseInstallNamespace `
-                    --kubeconfig $KubeConfig `
-                    --kube-context $KubeContext > $userValuesLocation
-            }
-            catch {
-                throw "Unable to get helm values"
-            }
+            # try {
+            #     # If running on Linux, there is no USERPROFILE set; instead we
+            #     # have HOME.
+            #     # Exporting Helm chart; note that we might be one Windows or Linux.
+            #     if (Test-Path Env:USERPROFILE) {
+            #         $root = $Env:USERPROFILE
+            #     }
+            #     elseif (Test-Path Env:HOME) {
+            #         $root = $Env:HOME
+            #     }
+            #     else {
+            #         throw "No environment to use as root."
+            #     }
+            #     Write-Verbose "Using 'helm' to add Azure Arc resources to Kubernetes cluster"
+            #     $userValuesLocation = $root | Join-Path -ChildPath '.azure' | Join-Path -ChildPath "userValues.txt"
+            # 
+            #     # !!REMOVE THIS LATER !! ??
+            #     Write-Debug "helm get values azure-arc `
+            #          --namespace $ReleaseInstallNamespace `
+            #          --kubeconfig $KubeConfig `
+            #          --kube-context $KubeContext > $userValuesLocation" -Debug
+            #     helm get values azure-arc `
+            #         --namespace $ReleaseInstallNamespace `
+            #         --kubeconfig $KubeConfig `
+            #         --kube-context $KubeContext > $userValuesLocation
+            # }
+            # catch {
+            #     throw "Unable to get helm values: `n$_"
+            # }
         }
 
         Write-Output "Executing helm upgrade, this can take a few minutes ...."
