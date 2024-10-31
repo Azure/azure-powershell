@@ -198,7 +198,7 @@ function Get-HelmChartPath {
 
     # Special path!
     $PreOnboardingHelmChartsFolderName = 'PreOnboardingChecksCharts'
-    $ChartExportPath = Get-HelmAzurePath $ChartFolderName
+    $ChartExportPath = Get-AzureHelmPath $ChartFolderName
     try {
         if (Test-Path $ChartExportPath) {
             Write-Debug "Cleaning up existing Helm chart folder at: $ChartExportPath"
