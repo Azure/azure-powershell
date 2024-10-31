@@ -27,7 +27,7 @@ Create a data collection endpoint.
 Create a data collection rule.
 
 ### [New-AzDataCollectionRuleAssociation](New-AzDataCollectionRuleAssociation.md)
-create an association.
+Create an association.
 
 ### [New-AzDataFlowObject](New-AzDataFlowObject.md)
 Create an in-memory object for DataFlow.
@@ -93,5 +93,5 @@ Update part of a data collection endpoint.
 Update a data collection rule.
 
 ### [Update-AzDataCollectionRuleAssociation](Update-AzDataCollectionRuleAssociation.md)
-update an association.
+Updatean association.
 
