@@ -21,7 +21,7 @@ New-AzEventGridClient -Name <String> -NamespaceName <String> -ResourceGroupName 
  [-CertificateThumbprintPrimary <String>] [-CertificateThumbprintSecondary <String>]
  [-ClientCertificateAuthenticationAllowedThumbprint <String[]>]
  [-ClientCertificateAuthenticationValidationScheme <String>] [-Description <String>] [-State <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -29,14 +29,14 @@ New-AzEventGridClient -Name <String> -NamespaceName <String> -ResourceGroupName 
 ```
 New-AzEventGridClient -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzEventGridClient -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNamespaceExpanded
@@ -47,7 +47,7 @@ New-AzEventGridClient -Name <String> -NamespaceInputObject <IEventGridIdentity> 
  [-CertificateSubjectOrganizationUnit <String>] [-CertificateThumbprintPrimary <String>]
  [-CertificateThumbprintSecondary <String>] [-ClientCertificateAuthenticationAllowedThumbprint <String[]>]
  [-ClientCertificateAuthenticationValidationScheme <String>] [-Description <String>] [-State <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -59,7 +59,7 @@ New-AzEventGridClient -InputObject <IEventGridIdentity> [-Attribute <Hashtable>]
  [-CertificateThumbprintPrimary <String>] [-CertificateThumbprintSecondary <String>]
  [-ClientCertificateAuthenticationAllowedThumbprint <String[]>]
  [-ClientCertificateAuthenticationValidationScheme <String>] [-Description <String>] [-State <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -386,21 +386,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
