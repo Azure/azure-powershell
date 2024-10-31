@@ -171,14 +171,14 @@ function Get-HelmValue {
         if ($KubeContext) {
             $cmdHelmValuesPull += "--kube-context", $KubeContext
         }
-        $cmdHelmValuesPull += ">", $userValuesLocation
 
-        Write-Debug "Pull helm values: $cmdHelmValuesPull[0] $cmdValuesPull[1..($cmdHelmVauesPull.Count - 1)]"
-        Invoke-ExternalCommand $cmdHelmValuesPull[0] $cmdHelmValuesPull[1..($cmdHelmValuesPull.Count - 1)]
+        Write-Debug "Pull helm values: $cmdHelmValuesPull[0] $cmdValuesPull[1..($cmdHelmValuesPull.Count - 1)]"
+        Invoke-ExternalCommand $cmdHelmValuesPull[0] $cmdHelmValuesPull[1..($cmdHelmValuesPull.Count - 1)] > $userValuesLocation
     }
     catch {
         throw "Unable to get helm values: `n$_"
     }
+    return $userValuesLocation
 }
 
 function Get-HelmChartPath {
