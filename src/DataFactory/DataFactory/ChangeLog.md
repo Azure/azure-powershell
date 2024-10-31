@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.18.9
 * Added pageSize support to Salesforce V2 Source.
 * Added pageSize support to ServiceNow V2 Source.
 * Added host property to Snowflake linked service.

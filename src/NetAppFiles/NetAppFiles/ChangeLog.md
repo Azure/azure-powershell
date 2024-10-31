@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.19.0
 * Added new cmdLets for on-prem volume migration `Start-AnfPeerExternalCluster`, `Start-AnfFinalizeExternalReplication`, `Start-AnfPerformExternalReplication`, `Start-AnfAuthorizeExternalReplication`
 * Added new cmdLets `Get-AzNetAppFilesQuotaAvailability`, `Get-AzNetAppFilesNameAvailability` and `Get-AzNetAppFilesFileNameAvailability`
 * Added `RemotePath` to `PSNetAppFilesReplicationObject`

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.5.0
 * Added support for vault tier backup and restore for AzureKubernetesService
 * Added support for resource modifier reference
 * Added a fix for Update-AzDataProtectionBackupInstance

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.2
 * Fixed bug where Remove-AzAksArcCluster would take a very long time to complete.
 * Fixed issue where Update-AzAksArcCluster would error out when passing AdminGroupObjectID parameter.
 
