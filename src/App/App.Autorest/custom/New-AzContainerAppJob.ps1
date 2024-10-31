@@ -429,7 +429,6 @@ function New-AzContainerAppJob {
     ${ProxyUseDefaultCredentials}
   )
 
-
   process {
     if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity') ) {
       $supportsSystemAssignedIdentity = $PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')
