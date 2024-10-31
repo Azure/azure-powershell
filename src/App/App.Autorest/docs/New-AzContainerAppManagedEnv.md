@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppManagedEnv
 
 ## SYNOPSIS
-create a Managed Environment used to host container apps.
+Create a Managed Environment used to host container apps.
 
 ## SYNTAX
 
@@ -56,7 +56,7 @@ New-AzContainerAppManagedEnv -Name <String> -ResourceGroupName <String> -JsonStr
 ```
 
 ## DESCRIPTION
-create a Managed Environment used to host container apps.
+Create a Managed Environment used to host container apps.
 
 ## EXAMPLES
 
