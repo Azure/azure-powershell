@@ -15,8 +15,9 @@ Updates a given backup instance
 ```
 Update-AzDataProtectionBackupInstance -ResourceGroupName <String> -VaultName <String>
  -BackupInstanceName <String> [-SubscriptionId <String>] [-PolicyId <String>]
- [-VaultedBackupContainer <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VaultedBackupContainer <String[]>] [-ResourceGuardOperationRequest <String[]>] [-Token <String>]
+ [-SecureToken <SecureString>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,6 +122,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group of the backup vault
 
@@ -136,8 +152,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGuardOperationRequest
+Resource guard operation request in the format similar to \<ResourceGuard-ARMID\>/dppModifyPolicy/default.
+Use this parameter when the operation is MUA protected.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription Id of the vault
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Token
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
 
 ```yaml
 Type: System.String

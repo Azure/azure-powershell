@@ -15,7 +15,8 @@ Updates a given backup instance
 ```
 Update-AzDataProtectionBackupInstance -BackupInstanceName <String> -ResourceGroupName <String>
  -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-PolicyId <String>]
- [-SubscriptionId <String>] [-VaultedBackupContainer <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ResourceGuardOperationRequest <String[]>] [-SecureToken <SecureString>] [-SubscriptionId <String>]
+ [-Token <String>] [-VaultedBackupContainer <String[]>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,8 +139,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGuardOperationRequest
+Resource guard operation request in the format similar to \<ResourceGuard-ARMID\>/dppModifyPolicy/default.
+Use this parameter when the operation is MUA protected.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecureToken
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription Id of the vault
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Token
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -AsSecureString").Token to fetch secure authorization token for different tenant and then convert to string using ConvertFrom-SecureString cmdlet.
 
 ```yaml
 Type: System.String
