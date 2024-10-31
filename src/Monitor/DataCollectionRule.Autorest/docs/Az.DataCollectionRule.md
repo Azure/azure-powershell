@@ -21,10 +21,10 @@ Returns the specified data collection rule.
 Returns the specified association.
 
 ### [New-AzDataCollectionEndpoint](New-AzDataCollectionEndpoint.md)
-create a data collection endpoint.
+Create a data collection endpoint.
 
 ### [New-AzDataCollectionRule](New-AzDataCollectionRule.md)
-create a data collection rule.
+Create a data collection rule.
 
 ### [New-AzDataCollectionRuleAssociation](New-AzDataCollectionRuleAssociation.md)
 create an association.
@@ -87,7 +87,7 @@ Deletes a data collection rule.
 Deletes an association.
 
 ### [Update-AzDataCollectionEndpoint](Update-AzDataCollectionEndpoint.md)
-update a data collection endpoint.
+Update part of a data collection endpoint.
 
 ### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
 Update a data collection rule.

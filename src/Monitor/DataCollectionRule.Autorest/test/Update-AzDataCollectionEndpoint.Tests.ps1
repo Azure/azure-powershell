@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDataCollectionEndpoi
 }
 
 Describe 'Update-AzDataCollectionEndpoint' {
-    It 'UpdateExpanded' -skip {
+    It 'UpdateExpanded' {
         {
             Update-AzDataCollectionEndpoint -Name $env.testCollectionEndpoint -ResourceGroupName $env.resourceGroup -Tag @{"123"="abc"}
         } | Should -Not -Throw
