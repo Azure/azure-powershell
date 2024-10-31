@@ -93,5 +93,5 @@ Update part of a data collection endpoint.
 Update a data collection rule.
 
 ### [Update-AzDataCollectionRuleAssociation](Update-AzDataCollectionRuleAssociation.md)
-Updatean association.
+Update an association.
 
