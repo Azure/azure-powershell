@@ -24,7 +24,7 @@
 	- Renamed `SecondaryAvailabilityGroupName` -> `InstanceAvailabilityGroupName`
 			  `SourceEndpoint` -> `PartnerEndpoint`
 			  `PrimaryAvailabilityGroupName` -> `PartnerAvailabilityGroupName`
-	- `TargetDatabase` -> `Databases`, parameter type is changed from string to string[].
+	- `TargetDatabase` -> `Database`, parameter type is changed from string to string[].
 * Updated `AzureSqlManagedInstanceLinkModel` that is a return type of `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Update-AzSqlInstanceLink` ,`Remove-AzSqlInstanceLink`
 
 ## Version 5.2.0

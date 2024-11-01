@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = "Database names in the distributed availability group.")]
         [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = "Database names in the distributed availability group.")]
         [ValidateNotNullOrEmpty]
-        public string[] Databases { get; set; }
+        public string[] Database { get; set; }
 
         /// <summary>
         /// Gets or sets the partner endpoint
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     ResourceGroupName = ResourceGroupName,
                     InstanceName = InstanceName,
                     Name = Name,
-                    Databases = Databases.Select(databaseName => new DistributedAvailabilityGroupDatabase { DatabaseName = databaseName }).ToList(),
+                    Databases = Database.Select(databaseName => new DistributedAvailabilityGroupDatabase { DatabaseName = databaseName }).ToList(),
                     InstanceAvailabilityGroupName = InstanceAvailabilityGroupName,
                     PartnerAvailabilityGroupName = PartnerAvailabilityGroupName,
                     InstanceLinkRole = InstanceLinkRole,

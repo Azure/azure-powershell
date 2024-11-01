@@ -50,7 +50,7 @@ function Test-ManagedInstanceLink
 
         # Create link
         Write-Debug ('Creating link...')
-        $instance | New-AzSqlInstanceLink -Name $linkName -Databases $databases -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -FailoverMode $failoverMode -SeedingMode $seedingMode
+        $instance | New-AzSqlInstanceLink -Name $linkName -Database $databases -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -FailoverMode $failoverMode -SeedingMode $seedingMode
         $instanceId = $instance.Id
         $linkId = $instanceId + "/distributedAvailabilityGroups/" + $linkName
 
@@ -170,20 +170,20 @@ function Test-ManagedInstanceLinkErrHandling
 
         # Test required args validation
         $msgExc = "Cannot validate argument on parameter"
-        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName "" -InstanceName $miName -LinkName $linkName -Databases $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
-        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName "" -LinkName $linkName -Databases $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
-        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName "" -Databases $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
-        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Databases $empty_database_list -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
-        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Databases $databases -FailoverMode "" -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
-        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Databases $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName "" -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
-        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Databases $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole "" -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
-        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Databases $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName "" -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
-        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Databases $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint "" -SeedingMode $seedingMode  } $msgExc
-        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Databases $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode "" } $msgExc
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName "" -InstanceName $miName -LinkName $linkName -Database $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName "" -LinkName $linkName -Database $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName "" -Database $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Database $empty_database_list -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Database $databases -FailoverMode "" -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Database $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName "" -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Database $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole "" -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Database $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName "" -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode  } $msgExc
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Database $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint "" -SeedingMode $seedingMode  } $msgExc
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Database $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode "" } $msgExc
 
         # Should throw when partner endpoint is not in proper format
         $msgExcInvalid = "Invalid value"
-        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Databases $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint "invalid_value" -SeedingMode $seedingMode } $msgExcInvalid
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Database $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint "invalid_value" -SeedingMode $seedingMode } $msgExcInvalid
 
         # Should throw when deleting non-existent mi link
         $msgExcNotFound = "The requested resource of type 'Microsoft.Sql/managedInstances/distributedAvailabilityGroups' with name '" + $invalidLinkName + "' was not found."
@@ -208,11 +208,11 @@ function Test-ManagedInstanceLinkErrHandling
 
         # Create link
         Write-Debug ('Creating link...')
-        New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Databases $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode
+        New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName -Database $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode
 
         # Try creating another link with same parameters
         $msgExcCreatingLink = "Choose a different database name"
-        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName1 -Databases $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode } $msgExcCreatingLink
+        Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName1 -Database $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode } $msgExcCreatingLink
 
         # Start failover and assert that the planned failover can't be invoked when MI is secondary
         $msgExcCantFailover = "Planned failover can be executed on a link in the primary role only. Current state of the specified link is secondary."
@@ -247,7 +247,7 @@ function Test-ManagedInstanceLinkPiping
         $instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName
         
         # Upsert and get with parent instance Piping
-        $upsertJ = $instance | New-AzSqlInstanceLink -LinkName $linkName -Databases $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode -AsJob
+        $upsertJ = $instance | New-AzSqlInstanceLink -LinkName $linkName -Database $databases -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -SeedingMode $seedingMode -AsJob
         $upsertJ | Wait-Job
 
         $listResp = $instance | Get-AzSqlInstanceLink
@@ -295,7 +295,7 @@ function Test-ManagedInstanceLinkMIFirstPlannedFailover
         # Create link
         Write-Debug ('Creating link...')
         $instance = Get-AzSqlInstance -ResourceGroupName $rgName -Name $miName
-        New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Databases $databases -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -FailoverMode $failoverMode -SeedingMode $seedingMode
+        New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Database $databases -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -FailoverMode $failoverMode -SeedingMode $seedingMode
 
         $listResp = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName
         Write-Debug ('$New list is of size: ' + (ConvertTo-Json $listResp))
@@ -340,7 +340,7 @@ function Test-ManagedInstanceLinkMIFirstForcedFailover
 
         # Create link
         Write-Debug ('Creating link...')
-        $instance | New-AzSqlInstanceLink -LinkName $linkName -Databases $databases -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -FailoverMode $failoverMode -SeedingMode $seedingMode
+        $instance | New-AzSqlInstanceLink -LinkName $linkName -Database $databases -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -FailoverMode $failoverMode -SeedingMode $seedingMode
 
         $listResp = $instance | Get-AzSqlInstanceLink
         Write-Debug ('$New list is of size: ' + (ConvertTo-Json $listResp))
@@ -386,7 +386,7 @@ function Test-ManagedInstanceLinkBOXFirstForcedFailover
 
         # Create link
         Write-Debug ('Creating link...')
-        New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Databases $databases -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -FailoverMode $failoverMode -SeedingMode $seedingMode
+        New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -Database $databases -InstanceAvailabilityGroupName $instanceAgName -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -InstanceLinkRole $instanceLinkRole -FailoverMode $failoverMode -SeedingMode $seedingMode
 
         # Increased by 1
         $listResp = $instance | Get-AzSqlInstanceLink
