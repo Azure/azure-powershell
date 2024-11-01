@@ -45,11 +45,10 @@ function Get-AzComputeFleet {
         ${ResourceGroupName},
 
         [Parameter(Mandatory)]
-        [Alias('FleetName')]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
         [System.String]
         # Fleet name
-        ${Name},
+        ${FleetName},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]

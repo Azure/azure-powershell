@@ -31,10 +31,10 @@ function Get-AzComputeFleet {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetProperties])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
-        [Parameter()]
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
-        [System.String[]]
+        [System.String]
         # Microsoft Azure subscription id
         ${SubscriptionId},
 
@@ -45,11 +45,10 @@ function Get-AzComputeFleet {
         ${ResourceGroupName},
         
         [Parameter(Mandatory)]
-        [Alias('FleetName')]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
         [System.String]
         # Fleet name
-        ${Name},
+        ${FleetName},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
