@@ -534,32 +534,79 @@ function Test-CreateClusterWithPrivateLinkConfiguration{
 
 <#
 .SYNOPSIS
-Test Update clusterIdentity
+Test Update cluster tags
 #>
 
-function Test-UpdateClusterTagsAndIdentity{
-
+function Test-UpdateClusterTags{
 	# Create some resources that will be used throughout test
 	try
 	{
-		$location = "East US"
+		# prepare parameter for creating parameter
+		#$params= Prepare-ClusterCreateParameter
 
-		# create cluster that will be used throughout test
-		$cluster = Get-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51
-		Assert-NotNull $cluster
+		$rg="yuchen-devrp"
+		$clusterName="yuchen-hadoop-002"
 
 		# Update cluster tags
-		#$tags = @{"tag1"="value1";"tag2"="value2"} 
-		#Update-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51 -Tag @{"Tag1"="Value1"; "Tag2"="Value2"}
+		$tags = New-Object 'System.Collections.Generic.Dictionary[System.String,System.String]'
+		$tags.Add('Tag3', 'Value3')
 
-		# Update cluster identity
-		# Update-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51 -IdentityType SystemAssigned
+		$cluster = Update-AzHDInsightCluster -ResourceGroupName $rg -ClusterName $clusterName -Tag $tags
+ 	}
+	finally
+	{
+		# Delete cluster and resource group
+		# Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
+ 	}
+}
 
-		# Update cluster identity
-		Update-AzHDInsightCluster -ResourceGroupName yuchen-ps-test -ClusterName spark51 -IdentityType UserAssigned -IdentityId "/subscriptions/964c10bb-8a6c-43bc-83d3-6b318c6c7305/resourceGroups/yuchen-ps-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdi-msi"
+<#
+.SYNOPSIS
+Test Update cluster System Assigned Identity
+#>
+function Test-UpdateClusterSystemAssigned{
+	try
+	{
+		$rg="yuchen-ps-test"
+		$clusterName="h1-spark"
+
+		$cluster = Update-AzHDInsightCluster -ResourceGroupName $rg -ClusterName $clusterName -IdentityType SystemAssigned
+
+		Assert-NotNull $cluster
+		Assert-AreEqual $cluster.AssignedIdentity.Type SystemAssigned
+	}
+	finally
+	{
+		# Delete cluster and resource group
+		# Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
+	}
+}
+
+<#
+.SYNOPSIS
+Test Update cluster User Assigned Identity
+#>
+function Test-UpdateClusterUserAssigned{
+	try
+	{
+		$rg="yuchen-ps-test"
+		$clusterName="h1-spark"
+
+		# Define the list of Identity IDs
+		$identityIds = @(
+			"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/yuchen-ps-test/providers/microsoft.managedidentity/userassignedidentities/hdi-msi",
+			"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/yuchen-devrp/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hdiwasbmsi"
+		)
+
+		$cluster = Update-AzHDInsightCluster -ResourceGroupName $rg -ClusterName $clusterName -IdentityType UserAssigned -IdentityId $identityIds
+
+		Assert-NotNull $cluster
+		Assert-AreEqual $cluster.AssignedIdentity.Type UserAssigned
 
  	}
 	finally
 	{
+		# Delete cluster and resource group
+		# Remove-AzResourceGroup -ResourceGroupName $params.resourceGroupName
 	}
 }
