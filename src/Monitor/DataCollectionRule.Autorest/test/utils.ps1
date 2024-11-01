@@ -43,7 +43,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.Location = "eastus"
+    $env.Location = "westus2"
     $env.resourceGroup = 'AMCS-TEST'
     $env.resourceGroup2 = 'AMCS-TEST2'
     $env.testCollectionRule1 = 'testCollectionRule1'
