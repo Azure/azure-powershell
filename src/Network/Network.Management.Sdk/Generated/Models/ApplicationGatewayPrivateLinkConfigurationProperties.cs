@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="provisioningState">The provisioning state of the application gateway private link
         /// configuration.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public ApplicationGatewayPrivateLinkConfigurationProperties(System.Collections.Generic.IList<ApplicationGatewayPrivateLinkIpConfiguration> ipConfigurations = default(System.Collections.Generic.IList<ApplicationGatewayPrivateLinkIpConfiguration>), string provisioningState = default(string))
 
         {
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets the provisioning state of the application gateway private link
-        /// configuration. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// configuration. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

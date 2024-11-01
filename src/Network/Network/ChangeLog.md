@@ -19,8 +19,34 @@
 --->
 
 ## Upcoming Release
-* Added support for `ResiliencyModel` property in `New-AzVirtualNetworkGateway` and `Set-AzVirtualNetworkGateway` command for ExpressRoute
+* Onboarded Azure Virtual Network Manager Cmdlets for IpamPool
+    - `Get-AzNetworkManagerAssociatedResourcesList`
+    - `Get-AzNetworkManagerIpamPool`
+    - `Get-AzNetworkManagerIpamPoolStaticCidr`
+    - `Get-AzNetworkManagerIpamPoolUsage`
+    - `New-AzNetworkManagerIpamPool`
+    - `New-AzNetworkManagerIpamPoolStaticCidr`
+    - `Remove-AzNetworkManagerIpamPool`
+    - `Remove-AzNetworkManagerIpamPoolStaticCidr`
+    - `Set-AzNetworkManagerIpamPool`
+* Onboarded Azure Virtual Network Manager Cmdlets for VnetVerifier
+    - `New-AzNetworkManagerSecurityGroupItem`
+    - `New-AzNetworkManagerVerifierWorkspace`
+    - `Get-AzNetworkManagerVerifierWorkspace`
+    - `Set-AzNetworkManagerVerifierWorkspace`
+    - `Remove-AzNetworkManagerVerifierWorkspace`
+    - `New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent`
+    - `New-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+    - `Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+    - `Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun`
+* Updated cmdlet to add the property of `NetworkGroupAddressSpaceAggregationOption`, and updated corresponding cmdlets.
+    - `New-AzNetworkManagerSecurityAdminConfiguration`
+    - `New-AzNetworkManagerAddressPrefixItemCommand`
 * Added `DefaultOutboundConnectivityEnabled` property in PSNetworkInterface
+* Added support for `AutoscaleConfiguration` property in `AzureFirewall` model for `New-AzFirewall` and `Set-AzFirewall` commands
+* Added support for `ResiliencyModel` property in `New-AzVirtualNetworkGateway` and `Set-AzVirtualNetworkGateway` command for ExpressRoute
 
 ## Version 7.10.0
 * Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management

@@ -66,8 +66,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "How security admin rules are applied to virtual networks with services using network intent policies. Valid values include 'None', 'All', and 'AllowRulesOnly'.")]
+           HelpMessage = "How security admin rules are applied to virtual networks with services using network intent policies.  Valid values include 'None', 'All', and 'AllowRulesOnly'.")]
         public NetworkIntentPolicyBasedServiceType[] ApplyOnNetworkIntentPolicyBasedService { get; set; }
+       
+        [Parameter(
+          Mandatory = false,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "How security admin rules are applied using network group address space aggregation. Valid values include 'None' and 'Manual'.")]
+        public virtual string NetworkGroupAddressSpaceAggregationOption { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -88,6 +94,12 @@ namespace Microsoft.Azure.Commands.Network
             None,
             All,
             AllowRulesOnly,
+        }
+
+        public enum NetworkGroupAddressSpaceAggregation
+        {
+            None,
+            Manual,
         }
 
         public override void Execute()
@@ -119,6 +131,17 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     securityConfig.ApplyOnNetworkIntentPolicyBasedServices.Add(nipType.ToString());
                 }
+            }
+
+            if (!string.IsNullOrEmpty(this.NetworkGroupAddressSpaceAggregationOption))
+            {
+                securityConfig.NetworkGroupAddressSpaceAggregationOption = this.NetworkGroupAddressSpaceAggregationOption;
+            }
+
+            if (!string.IsNullOrEmpty(this.NetworkGroupAddressSpaceAggregationOption))
+            {
+                securityConfig.NetworkGroupAddressSpaceAggregationOption = this.NetworkGroupAddressSpaceAggregationOption;
+ 
             }
 
             if (!string.IsNullOrEmpty(this.Description))

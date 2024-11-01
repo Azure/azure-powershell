@@ -114,5 +114,37 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NetworkManagerResourceMinimumParameterCreate");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerIpamPoolCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerIpamPoolCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerIpamPoolStaticCidrCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerIpamPoolStaticCidrCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerSecurityAdminRuleManualAggregationCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerSecurityAdminRuleManualAggregationCRUD");
+        }
     }
 }

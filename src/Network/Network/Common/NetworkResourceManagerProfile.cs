@@ -410,6 +410,7 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSVirtualNetwork, MNM.SubResource>();
                 cfg.CreateMap<CNM.PSAddressSpace, MNM.AddressSpace>();
+                cfg.CreateMap<CNM.PSIpamPoolPrefixAllocation, MNM.IpamPoolPrefixAllocation>();
                 cfg.CreateMap<CNM.PSVirtualNetwork, MNM.VirtualNetwork>()
                     .ForMember(
                         dest => dest.IPAllocations,
@@ -421,6 +422,7 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.SubResource, CNM.PSVirtualNetwork>();
                 cfg.CreateMap<MNM.AddressSpace, CNM.PSAddressSpace>();
+                cfg.CreateMap<MNM.IpamPoolPrefixAllocation, CNM.PSIpamPoolPrefixAllocation>();
                 cfg.CreateMap<MNM.VirtualNetwork, CNM.PSVirtualNetwork>()
                     .ForMember(
                         dest => dest.IpAllocations,
@@ -1928,6 +1930,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureFlags, MNM.AzureFirewallPacketCaptureFlags>();
                 cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureRule, MNM.AzureFirewallPacketCaptureRule>();
                 cfg.CreateMap<CNM.PSAzureFirewallPacketCaptureParameters, MNM.FirewallPacketCaptureParameters>();
+                cfg.CreateMap<CNM.PSAzureFirewallAutoscaleConfiguration, MNM.AzureFirewallAutoscaleConfiguration>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>()
@@ -2021,6 +2024,8 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.AzureFirewallFqdnTag, CNM.PSAzureFirewallFqdnTag>();
+
+                cfg.CreateMap<MNM.AzureFirewallAutoscaleConfiguration, CNM.PSAzureFirewallAutoscaleConfiguration>();
 
                 // Azure Firewall Policies
                 // CNM to MNM
@@ -2315,6 +2320,22 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityUserRuleCollection, MNM.SecurityUserRuleCollection>();
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityUserConfiguration, MNM.SecurityUserConfiguration>();
                 cfg.CreateMap<ANM.PSNetworkManagerSecurityUserGroupItem, MNM.SecurityUserGroupItem>();
+                
+                // IpamPool
+                cfg.CreateMap<ANM.PSIpamPool, MNM.IpamPool>();
+                cfg.CreateMap<ANM.PSIpamPoolProperties, MNM.IpamPoolProperties>();
+                cfg.CreateMap<ANM.PSPoolAssociation, MNM.PoolAssociation>();
+                cfg.CreateMap<ANM.PSPoolUsage, MNM.PoolUsage>();
+                cfg.CreateMap<ANM.PSResourceBasics, MNM.ResourceBasics>();
+                cfg.CreateMap<ANM.PSStaticCidr, MNM.StaticCidr>();
+                // VnetVerifier
+                cfg.CreateMap<ANM.PSVerifierWorkspace, MNM.VerifierWorkspace>();
+                cfg.CreateMap<ANM.PSVerifierWorkspaceProperties, MNM.VerifierWorkspaceProperties>();
+                cfg.CreateMap<ANM.PSReachabilityAnalysisRun, MNM.ReachabilityAnalysisRun>();
+                cfg.CreateMap<ANM.PSReachabilityAnalysisRunProperties, MNM.ReachabilityAnalysisRunProperties>();
+                cfg.CreateMap<ANM.PSReachabilityAnalysisIntent, MNM.ReachabilityAnalysisIntent>();
+                cfg.CreateMap<ANM.PSReachabilityAnalysisIntentProperties, MNM.ReachabilityAnalysisIntentProperties>();
+                cfg.CreateMap<ANM.PSIPTraffic, MNM.IPTraffic>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkManager, ANM.PSNetworkManager>();
@@ -2365,6 +2386,22 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.SecurityUserConfiguration, ANM.PSNetworkManagerSecurityUserConfiguration>();
                 cfg.CreateMap<MNM.SecurityUserGroupItem, ANM.PSNetworkManagerSecurityUserGroupItem>();
 
+                // IpamPool
+                cfg.CreateMap<MNM.IpamPool, ANM.PSIpamPool>();
+                cfg.CreateMap<MNM.IpamPoolProperties, ANM.PSIpamPoolProperties>();
+                cfg.CreateMap<MNM.PoolAssociation, ANM.PSPoolAssociation>();
+                cfg.CreateMap<MNM.PoolUsage, ANM.PSPoolUsage>();
+                cfg.CreateMap<MNM.ResourceBasics, ANM.PSResourceBasics>();
+                cfg.CreateMap<MNM.StaticCidr, ANM.PSStaticCidr>();
+                
+                // VnetVerifier
+                cfg.CreateMap<MNM.VerifierWorkspace, ANM.PSVerifierWorkspace>();
+                cfg.CreateMap<MNM.VerifierWorkspaceProperties, ANM.PSVerifierWorkspaceProperties>();
+                cfg.CreateMap<MNM.ReachabilityAnalysisRun, ANM.PSReachabilityAnalysisRun>();
+                cfg.CreateMap<MNM.ReachabilityAnalysisRunProperties, ANM.PSReachabilityAnalysisRunProperties>();
+                cfg.CreateMap<MNM.ReachabilityAnalysisIntent, ANM.PSReachabilityAnalysisIntent>();
+                cfg.CreateMap<MNM.ReachabilityAnalysisIntentProperties, ANM.PSReachabilityAnalysisIntentProperties>();
+                cfg.CreateMap<MNM.IPTraffic, ANM.PSIPTraffic>();
             });
             _mapper = config.CreateMapper();
         }
