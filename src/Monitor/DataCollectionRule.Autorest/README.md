@@ -43,10 +43,6 @@ title: DataCollectionRule
 module-version: 0.1.0
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
 subject-prefix: ''
-# Disable transform IdentityType as GET+PUT can not replace patch(https://github.com/Azure/autorest.powershell/blob/main/docs/migration-from-v3-to-v4.md#managed-identity-best-practice-alignment)
-# 1. DataCollectionEndpoint_CreateOrUpdate and DataCollectionRule_CreateOrUpdate can not update resources
-# 2. the input schemas of PUT and PATCH are different
-disable-transform-identity-type: true
 
 directive:
   # custom required body
@@ -193,13 +189,4 @@ directive:
     - model-name: StorageBlobDestination
     # string Name, string StorageAccountResourceId, string TableName
     - model-name: StorageTableDestination
-
-  - where:
-      verb: New|Update
-      subject: DataCollectionEndpoint
-    hide: true
-  - where:
-      verb: New|Update
-      subject: DataCollectionRule
-    hide: true
 ```

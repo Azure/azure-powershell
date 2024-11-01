@@ -15,14 +15,16 @@ Update part of a data collection endpoint.
 ### UpdateExpanded (Default)
 ```
 Update-AzDataCollectionEndpoint -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+ [-Description <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-ImmutableId <String>] [-Kind <String>]
+ [-NetworkAclsPublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDataCollectionEndpoint -InputObject <IDataCollectionRuleIdentity>
- [-EnableSystemAssignedIdentity <Boolean?>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
+Update-AzDataCollectionEndpoint -InputObject <IDataCollectionRuleIdentity> [-Description <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-ImmutableId <String>] [-Kind <String>]
+ [-NetworkAclsPublicNetworkAccess <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -92,11 +94,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Description
+Description of the data collection endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableSystemAssignedIdentity
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImmutableId
+The immutable ID of this data collection endpoint resource.
+This property is READ-ONLY.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -122,6 +155,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Kind
+The kind of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the data collection endpoint.
 The name is case insensitive.
@@ -132,6 +180,21 @@ Parameter Sets: UpdateExpanded
 Aliases: DataCollectionEndpointName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkAclsPublicNetworkAccess
+The configuration to set whether network access from public internet to the endpoints are allowed.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
