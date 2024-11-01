@@ -351,6 +351,12 @@ directive:
       verb: Test
     remove: true
 
+  # hide Set-AzConnectedLicenseProfile (PUT) from user and keep Update-AzConnectedLicenseProfile (PATCH)
+  - where:
+      subject: LicenseProfile
+      verb: Set
+    remove: true
+
   # We don't want user to talk directly to the network configuration API
   - where:
       subject: NetworkConfiguration
@@ -387,5 +393,11 @@ directive:
   - model-cmdlet:
     - model-name: LicenseDetails
       cmdlet-name: New-AzConnectedLicenseDetail
+  - model-cmdlet:
+    - model-name: ProductProfileUpdateProperties
+      cmdlet-name: New-AzConnectedLicenseProfileUpdate
+  - model-cmdlet:
+    - model-name: ProductFeature
+      cmdlet-name: New-AzConnectedLicenseProfileFeature
 
 ```

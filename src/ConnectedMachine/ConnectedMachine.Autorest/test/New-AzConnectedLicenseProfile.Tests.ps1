@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedLicenseProfile
 }
 
 Describe 'New-AzConnectedLicenseProfile' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded'  {
+        $productfeature = New-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
+        $all = @(New-AzConnectedLicenseProfile -MachineName $env.MachineName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -EsuProfileAssignedLicense $env.LicenseResourceId -ProductProfileProductType "WindowsServer" -ProductProfileSubscriptionStatus "Enabled" -ProductProfileProductFeature $productfeature -SoftwareAssuranceCustomer)
+        $all | Should -Not -BeNullOrEmpty
     }
 
     It 'CreateViaJsonString' -skip {

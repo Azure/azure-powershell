@@ -16,7 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzConnectedLicenseProf
 
 Describe 'Update-AzConnectedLicenseProfile' {
     It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $productfeature = New-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
+        $all = @(Update-AzConnectedLicenseProfile -MachineName $env.MachineName -ResourceGroupName $env.ResourceGroupName -EsuProfileAssignedLicense $env.LicenseResourceId -ProductProfileProductType "WindowsServer" -ProductProfileSubscriptionStatus "Enabled" -ProductProfileProductFeature $productfeature -SoftwareAssuranceCustomer)
+        $all | Should -Not -BeNullOrEmpty
     }
 
     It 'UpdateViaJsonString' -skip {
