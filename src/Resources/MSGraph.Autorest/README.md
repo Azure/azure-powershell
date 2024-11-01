@@ -156,14 +156,14 @@ directive:
       parameter-name: Id
       alias: ServicePrincipalId    
   - where:
-      subject: ^group$
-      verb: ^(?!Update$)$
+      subject: ^Group$
+      verb: ^(?!Update$)
       parameter-name: GroupId
     set:
       parameter-name: Id
       alias: GroupId
   - where:
-      subject: ^group$
+      subject: ^Group$
       verb: ^Update$
       parameter-name: GroupId
     set:
