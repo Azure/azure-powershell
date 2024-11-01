@@ -16,1024 +16,1234 @@
 
 <#
 .Synopsis
-List ComputeFleet marketplace agreements in the subscription.
+List ComputeFleet.
 .Description
-List ComputeFleet marketplace agreements in the subscription.
+List ComputeFleet.
 .Example
-Get-AzComputeFleetMarketplaceAgreement
+Get-AzComputeFleet
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IComputeFleetAgreementResource
+Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IFleetProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleetmarketplaceagreement
+https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleet
 #>
-function Get-AzComputeFleetMarketplaceAgreement {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IComputeFleetAgreementResource])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # Microsoft Azure subscription id
-    ${SubscriptionId},
+function Get-AzComputeFleet {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IFleetProperties])]
+    [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
+    param(
+        [Parameter(Mandatory)]
+        [Alias('FleetName')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
+        [System.String]
+        # Fleet name
+        ${Name},
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
+        [System.String]
+        # Resource group name
+        ${ResourceGroupName},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [System.String[]]
+        # Microsoft Azure subscription id
+        ${SubscriptionId},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
+        [Parameter()]
+        [Alias('AzureRMContext', 'AzureCredential')]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Azure')]
+        [System.Management.Automation.PSObject]
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+        ${DefaultProfile},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Wait for .NET debugger to attach
+        ${Break},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+        [System.Management.Automation.PSCredential]
+        # Credentials for a proxy server to use for the remote call
+        ${ProxyCredential},
 
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Use the default credentials for the proxy
+        ${ProxyUseDefaultCredentials}
+    )
+
+    begin {
+        try {
+            $outBuffer = $null
+            if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+                $PSBoundParameters['OutBuffer'] = 1
             }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
+            $parameterSet = $PSCmdlet.ParameterSetName
 
-        $mapping = @{
-            List = 'Az.ComputeFleet.private\Get-AzComputeFleetMarketplaceAgreement_List';
-        }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+                [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+            }         
+            $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+            if ($preTelemetryId -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = (New-Guid).ToString()
+                [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet) # ???
+                # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
             }
+            else {
+                $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+                if ($internalCalledCmdlets -eq '') {
+                    [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+                }
+                else {
+                    [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+                }
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+            }
+
+            $mapping = @{
+                List = 'Az.ComputeFleet.private\Get-Fleet_Get';
+            }
+            $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)) {
+                [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+                [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+            }
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+            $scriptCmd = { & $wrappedCmd @PSBoundParameters }
+            $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+            $steppablePipeline.Begin($PSCmdlet)
         }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        catch {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+            throw
         }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
     }
 
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
+    process {
+        try {
+            $steppablePipeline.Process($_)
+        }
+        catch {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+            throw
+        }
 
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+        finally {
+            $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+            $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
 
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
     }
-} 
-}
+    end {
+        try {
+            $steppablePipeline.End()
 
-<#
-.Synopsis
-Get the properties of a specific Organization resource.
-.Description
-Get the properties of a specific Organization resource.
-.Example
-Get-AzComputeFleetOrganization
-.Example
-Get-AzComputeFleetOrganization -ResourceGroupName azure-rg-test
-.Example
-Get-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-01-portal
-.Example
-New-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-02-pwsh -Location eastus -OfferDetailId "computefleet-cloud-azure-prod" -OfferDetailPlanId "computefleet-cloud-azure-payg-prod" -OfferDetailPlanName "ComputeFleet Cloud - Pay as you Go" -OfferDetailPublisherId "computefleetinc" -OfferDetailTermUnit "P1M" | Get-AzComputeFleetOrganization
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IOrganizationResource
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IComputeFleetIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [OrganizationName <String>]: Organization resource name
-  [ResourceGroupName <String>]: Resource group name
-  [SubscriptionId <String>]: Microsoft Azure subscription id
-.Link
-https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleetorganization
-#>
-function Get-AzComputeFleetOrganization {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IOrganizationResource])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
-param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Alias('OrganizationName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [System.String]
-    # Organization resource name
-    ${Name},
-
-    [Parameter(ParameterSetName='Get', Mandatory)]
-    [Parameter(ParameterSetName='List1', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [System.String]
-    # Resource group name
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='Get')]
-    [Parameter(ParameterSetName='List')]
-    [Parameter(ParameterSetName='List1')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # Microsoft Azure subscription id
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+            if ($preTelemetryId -eq '') {
+                [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet) # ???
+                # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
             }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
         }
-
-        $mapping = @{
-            Get = 'Az.ComputeFleet.private\Get-AzComputeFleetOrganization_Get';
-            GetViaIdentity = 'Az.ComputeFleet.private\Get-AzComputeFleetOrganization_GetViaIdentity';
-            List = 'Az.ComputeFleet.private\Get-AzComputeFleetOrganization_List';
-            List1 = 'Az.ComputeFleet.private\Get-AzComputeFleetOrganization_List1';
-        }
-        if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+        catch {
             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+            throw
         }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Create Organization resource
-.Description
-Create Organization resource
-.Example
-New-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-02-pwsh -Location eastus -OfferDetailId "computefleet-cloud-azure-prod" -OfferDetailPlanId "computefleet-cloud-azure-payg-prod" -OfferDetailPlanName "ComputeFleet Cloud - Pay as you Go" -OfferDetailPublisherId "computefleetinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "xxxx@microsoft.com"
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IOrganizationResource
-.Link
-https://learn.microsoft.com/powershell/module/az.computefleet/new-azcomputefleetorganization
-#>
-function New-AzComputeFleetOrganization {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IOrganizationResource])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(Mandatory)]
-    [Alias('OrganizationName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [System.String]
-    # Organization resource name
-    ${Name},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [System.String]
-    # Resource group name
-    ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # Microsoft Azure subscription id
-    ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [System.String]
-    # Location of Organization resource
-    ${Location},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [System.String]
-    # Offer Id
-    ${OfferDetailId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [System.String]
-    # Offer Plan Id
-    ${OfferDetailPlanId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [System.String]
-    # Offer Plan Name
-    ${OfferDetailPlanName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [System.String]
-    # Publisher Id
-    ${OfferDetailPublisherId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [System.String]
-    # Offer Plan Term unit
-    ${OfferDetailTermUnit},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IOrganizationResourceTags]))]
-    [System.Collections.Hashtable]
-    # Organization resource tags
-    ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [System.String]
-    # Email address
-    ${UserDetailEmailAddress},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [System.String]
-    # First name
-    ${UserDetailFirstName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [System.String]
-    # Last name
-    ${UserDetailLastName},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            CreateExpanded = 'Az.ComputeFleet.private\New-AzComputeFleetOrganization_CreateExpanded';
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
     }
 }
 
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
+# <#
+# .Synopsis
+# List ComputeFleet marketplace agreements in the subscription.
+# .Description
+# List ComputeFleet marketplace agreements in the subscription.
+# .Example
+# Get-AzComputeFleetMarketplaceAgreement
 
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
+# .Outputs
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IComputeFleetAgreementResource
+# .Link
+# https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleetmarketplaceagreement
+# #>
+# function Get-AzComputeFleetMarketplaceAgreement {
+#     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IComputeFleetAgreementResource])]
+#     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
+#     param(
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+#         [System.String[]]
+#         # Microsoft Azure subscription id
+#         ${SubscriptionId},
 
-}
-end {
-    try {
-        $steppablePipeline.End()
+#         [Parameter()]
+#         [Alias('AzureRMContext', 'AzureCredential')]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Azure')]
+#         [System.Management.Automation.PSObject]
+#         # The DefaultProfile parameter is not functional.
+#         # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+#         ${DefaultProfile},
 
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Wait for .NET debugger to attach
+#         ${Break},
 
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
+#         # SendAsync Pipeline Steps to be appended to the front of the pipeline
+#         ${HttpPipelineAppend},
 
-<#
-.Synopsis
-Update Organization resource
-.Description
-Update Organization resource
-.Example
-Update-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-02-pwsh -Tag @{"key01" = "value01"}
-.Example
-Get-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-02-pwsh | Update-AzComputeFleetOrganization -Tag @{"key01" = "value01"; "key02"="value02"}
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
+#         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+#         ${HttpPipelinePrepend},
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IOrganizationResource
-.Notes
-COMPLEX PARAMETER PROPERTIES
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Uri]
+#         # The URI for the proxy server to use
+#         ${Proxy},
 
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.PSCredential]
+#         # Credentials for a proxy server to use for the remote call
+#         ${ProxyCredential},
 
-INPUTOBJECT <IComputeFleetIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [OrganizationName <String>]: Organization resource name
-  [ResourceGroupName <String>]: Resource group name
-  [SubscriptionId <String>]: Microsoft Azure subscription id
-.Link
-https://learn.microsoft.com/powershell/module/az.computefleet/update-azcomputefleetorganization
-#>
-function Update-AzComputeFleetOrganization {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IOrganizationResource])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Alias('OrganizationName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [System.String]
-    # Organization resource name
-    ${Name},
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Use the default credentials for the proxy
+#         ${ProxyUseDefaultCredentials}
+#     )
 
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [System.String]
-    # Resource group name
-    ${ResourceGroupName},
+#     begin {
+#         try {
+#             $outBuffer = $null
+#             if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+#                 $PSBoundParameters['OutBuffer'] = 1
+#             }
+#             $parameterSet = $PSCmdlet.ParameterSetName
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # Microsoft Azure subscription id
-    ${SubscriptionId},
+#             if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+#                 [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+#             }         
+#             $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+#             if ($preTelemetryId -eq '') {
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = (New-Guid).ToString()
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet) # ???
+#                 # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+#             }
+#             else {
+#                 $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+#                 if ($internalCalledCmdlets -eq '') {
+#                     [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+#                 }
+#                 else {
+#                     [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+#                 }
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+#             }
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+#             $mapping = @{
+#                 List = 'Az.ComputeFleet.private\Get-AzComputeFleetMarketplaceAgreement_List';
+#             }
+#             if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+#                 $testPlayback = $false
+#                 $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+#                 if ($testPlayback) {
+#                     $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+#                 }
+#                 else {
+#                     $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+#                 }
+#             }
+#             $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+#             [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+#             if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)) {
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+#                 [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+#             }
+#             $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+#             $scriptCmd = { & $wrappedCmd @PSBoundParameters }
+#             $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+#             $steppablePipeline.Begin($PSCmdlet)
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
+#     }
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IOrganizationResourceUpdateTags]))]
-    [System.Collections.Hashtable]
-    # ARM resource tags
-    ${Tag},
+#     process {
+#         try {
+#             $steppablePipeline.Process($_)
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-    ${DefaultProfile},
+#         finally {
+#             $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+#             $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#         }
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
+#     }
+#     end {
+#         try {
+#             $steppablePipeline.End()
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+#             if ($preTelemetryId -eq '') {
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet) # ???
+#                 # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             }
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
+#     } 
+# }
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
+# <#
+# .Synopsis
+# Get the properties of a specific Organization resource.
+# .Description
+# Get the properties of a specific Organization resource.
+# .Example
+# Get-AzComputeFleetOrganization
+# .Example
+# Get-AzComputeFleetOrganization -ResourceGroupName azure-rg-test
+# .Example
+# Get-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-01-portal
+# .Example
+# New-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-02-pwsh -Location eastus -OfferDetailId "computefleet-cloud-azure-prod" -OfferDetailPlanId "computefleet-cloud-azure-payg-prod" -OfferDetailPlanName "ComputeFleet Cloud - Pay as you Go" -OfferDetailPublisherId "computefleetinc" -OfferDetailTermUnit "P1M" | Get-AzComputeFleetOrganization
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
+# .Inputs
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
+# .Outputs
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource
+# .Notes
+# COMPLEX PARAMETER PROPERTIES
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
+# To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
+# INPUTOBJECT <IComputeFleetIdentity>: Identity Parameter
+#   [Id <String>]: Resource identity path
+#   [OrganizationName <String>]: Organization resource name
+#   [ResourceGroupName <String>]: Resource group name
+#   [SubscriptionId <String>]: Microsoft Azure subscription id
+# .Link
+# https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleetorganization
+# #>
+# function Get-AzComputeFleetOrganization {
+#     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource])]
+#     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
+#     param(
+#         [Parameter(ParameterSetName = 'Get', Mandatory)]
+#         [Alias('OrganizationName')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [System.String]
+#         # Organization resource name
+#         ${Name},
 
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
+#         [Parameter(ParameterSetName = 'Get', Mandatory)]
+#         [Parameter(ParameterSetName = 'List1', Mandatory)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [System.String]
+#         # Resource group name
+#         ${ResourceGroupName},
 
-        $mapping = @{
-            UpdateExpanded = 'Az.ComputeFleet.private\Update-AzComputeFleetOrganization_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.ComputeFleet.private\Update-AzComputeFleetOrganization_UpdateViaIdentityExpanded';
-        }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
+#         [Parameter(ParameterSetName = 'Get')]
+#         [Parameter(ParameterSetName = 'List')]
+#         [Parameter(ParameterSetName = 'List1')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+#         [System.String[]]
+#         # Microsoft Azure subscription id
+#         ${SubscriptionId},
 
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
+#         [Parameter(ParameterSetName = 'GetViaIdentity', Mandatory, ValueFromPipeline)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity]
+#         # Identity Parameter
+#         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+#         ${InputObject},
 
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
+#         [Parameter()]
+#         [Alias('AzureRMContext', 'AzureCredential')]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Azure')]
+#         [System.Management.Automation.PSObject]
+#         # The DefaultProfile parameter is not functional.
+#         # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+#         ${DefaultProfile},
 
-}
-end {
-    try {
-        $steppablePipeline.End()
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Wait for .NET debugger to attach
+#         ${Break},
 
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
+#         # SendAsync Pipeline Steps to be appended to the front of the pipeline
+#         ${HttpPipelineAppend},
 
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
+#         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+#         ${HttpPipelinePrepend},
 
-<#
-.Synopsis
-Delete Organization resource
-.Description
-Delete Organization resource
-.Example
-Remove-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-01-portal
-.Example
-Get-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-02-pwsh | Remove-AzComputeFleetOrganization
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Uri]
+#         # The URI for the proxy server to use
+#         ${Proxy},
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
-.Outputs
-System.Boolean
-.Notes
-COMPLEX PARAMETER PROPERTIES
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.PSCredential]
+#         # Credentials for a proxy server to use for the remote call
+#         ${ProxyCredential},
 
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Use the default credentials for the proxy
+#         ${ProxyUseDefaultCredentials}
+#     )
 
-INPUTOBJECT <IComputeFleetIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [OrganizationName <String>]: Organization resource name
-  [ResourceGroupName <String>]: Resource group name
-  [SubscriptionId <String>]: Microsoft Azure subscription id
-.Link
-https://learn.microsoft.com/powershell/module/az.computefleet/remove-azcomputefleetorganization
-#>
-function Remove-AzComputeFleetOrganization {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('OrganizationName')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [System.String]
-    # Organization resource name
-    ${Name},
+#     begin {
+#         try {
+#             $outBuffer = $null
+#             if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+#                 $PSBoundParameters['OutBuffer'] = 1
+#             }
+#             $parameterSet = $PSCmdlet.ParameterSetName
 
-    [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [System.String]
-    # Resource group name
-    ${ResourceGroupName},
+#             if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+#                 [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+#             }         
+#             $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+#             if ($preTelemetryId -eq '') {
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = (New-Guid).ToString()
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet) # ???
+#                 # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+#             }
+#             else {
+#                 $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+#                 if ($internalCalledCmdlets -eq '') {
+#                     [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+#                 }
+#                 else {
+#                     [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+#                 }
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+#             }
 
-    [Parameter(ParameterSetName='Delete')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # Microsoft Azure subscription id
-    ${SubscriptionId},
+#             $mapping = @{
+#                 Get            = 'Az.ComputeFleet.private\Get-AzComputeFleetOrganization_Get';
+#                 GetViaIdentity = 'Az.ComputeFleet.private\Get-AzComputeFleetOrganization_GetViaIdentity';
+#                 List           = 'Az.ComputeFleet.private\Get-AzComputeFleetOrganization_List';
+#                 List1          = 'Az.ComputeFleet.private\Get-AzComputeFleetOrganization_List1';
+#             }
+#             if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+#                 $testPlayback = $false
+#                 $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+#                 if ($testPlayback) {
+#                     $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+#                 }
+#                 else {
+#                     $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+#                 }
+#             }
+#             $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+#             [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+#             if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)) {
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+#                 [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+#             }
+#             $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+#             $scriptCmd = { & $wrappedCmd @PSBoundParameters }
+#             $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+#             $steppablePipeline.Begin($PSCmdlet)
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
+#     }
 
-    [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+#     process {
+#         try {
+#             $steppablePipeline.Process($_)
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
 
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
+#         finally {
+#             $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+#             $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#         }
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
+#     }
+#     end {
+#         try {
+#             $steppablePipeline.End()
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+#             if ($preTelemetryId -eq '') {
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet) # ???
+#                 # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             }
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
+#     } 
+# }
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
+# <#
+# .Synopsis
+# Create Organization resource
+# .Description
+# Create Organization resource
+# .Example
+# New-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-02-pwsh -Location eastus -OfferDetailId "computefleet-cloud-azure-prod" -OfferDetailPlanId "computefleet-cloud-azure-payg-prod" -OfferDetailPlanName "ComputeFleet Cloud - Pay as you Go" -OfferDetailPublisherId "computefleetinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "xxxx@microsoft.com"
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
+# .Outputs
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource
+# .Link
+# https://learn.microsoft.com/powershell/module/az.computefleet/new-azcomputefleetorganization
+# #>
+# function New-AzComputeFleetOrganization {
+#     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource])]
+#     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+#     param(
+#         [Parameter(Mandatory)]
+#         [Alias('OrganizationName')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [System.String]
+#         # Organization resource name
+#         ${Name},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
+#         [Parameter(Mandatory)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [System.String]
+#         # Resource group name
+#         ${ResourceGroupName},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+#         [System.String]
+#         # Microsoft Azure subscription id
+#         ${SubscriptionId},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
+#         [System.String]
+#         # Location of Organization resource
+#         ${Location},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
+#         [System.String]
+#         # Offer Id
+#         ${OfferDetailId},
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
+#         [System.String]
+#         # Offer Plan Id
+#         ${OfferDetailPlanId},
 
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
+#         [System.String]
+#         # Offer Plan Name
+#         ${OfferDetailPlanName},
 
-        $mapping = @{
-            Delete = 'Az.ComputeFleet.custom\Remove-AzComputeFleetOrganization';
-            DeleteViaIdentity = 'Az.ComputeFleet.custom\Remove-AzComputeFleetOrganization';
-        }
-        if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
-            if ($testPlayback) {
-                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
-            } else {
-                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-            }
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-        }
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
+#         [System.String]
+#         # Publisher Id
+#         ${OfferDetailPublisherId},
 
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
+#         [System.String]
+#         # Offer Plan Term unit
+#         ${OfferDetailTermUnit},
 
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResourceTags]))]
+#         [System.Collections.Hashtable]
+#         # Organization resource tags
+#         ${Tag},
 
-}
-end {
-    try {
-        $steppablePipeline.End()
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
+#         [System.String]
+#         # Email address
+#         ${UserDetailEmailAddress},
 
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
+#         [System.String]
+#         # First name
+#         ${UserDetailFirstName},
 
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
+#         [System.String]
+#         # Last name
+#         ${UserDetailLastName},
+
+#         [Parameter()]
+#         [Alias('AzureRMContext', 'AzureCredential')]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Azure')]
+#         [System.Management.Automation.PSObject]
+#         # The DefaultProfile parameter is not functional.
+#         # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+#         ${DefaultProfile},
+
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Run the command as a job
+#         ${AsJob},
+
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Wait for .NET debugger to attach
+#         ${Break},
+
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
+#         # SendAsync Pipeline Steps to be appended to the front of the pipeline
+#         ${HttpPipelineAppend},
+
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
+#         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+#         ${HttpPipelinePrepend},
+
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Run the command asynchronously
+#         ${NoWait},
+
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Uri]
+#         # The URI for the proxy server to use
+#         ${Proxy},
+
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.PSCredential]
+#         # Credentials for a proxy server to use for the remote call
+#         ${ProxyCredential},
+
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Use the default credentials for the proxy
+#         ${ProxyUseDefaultCredentials}
+#     )
+
+#     begin {
+#         try {
+#             $outBuffer = $null
+#             if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+#                 $PSBoundParameters['OutBuffer'] = 1
+#             }
+#             $parameterSet = $PSCmdlet.ParameterSetName
+
+#             if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+#                 [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+#             }         
+#             $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+#             if ($preTelemetryId -eq '') {
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = (New-Guid).ToString()
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet) # ???
+#                 # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+#             }
+#             else {
+#                 $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+#                 if ($internalCalledCmdlets -eq '') {
+#                     [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+#                 }
+#                 else {
+#                     [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+#                 }
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+#             }
+
+#             $mapping = @{
+#                 CreateExpanded = 'Az.ComputeFleet.private\New-AzComputeFleetOrganization_CreateExpanded';
+#             }
+#             if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+#                 $testPlayback = $false
+#                 $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+#                 if ($testPlayback) {
+#                     $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+#                 }
+#                 else {
+#                     $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+#                 }
+#             }
+#             $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+#             [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+#             if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)) {
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+#                 [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+#             }
+#             $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+#             $scriptCmd = { & $wrappedCmd @PSBoundParameters }
+#             $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+#             $steppablePipeline.Begin($PSCmdlet)
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
+#     }
+
+#     process {
+#         try {
+#             $steppablePipeline.Process($_)
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
+
+#         finally {
+#             $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+#             $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#         }
+
+#     }
+#     end {
+#         try {
+#             $steppablePipeline.End()
+
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+#             if ($preTelemetryId -eq '') {
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet) # ???
+#                 # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             }
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
+#     } 
+# }
+
+# <#
+# .Synopsis
+# Update Organization resource
+# .Description
+# Update Organization resource
+# .Example
+# Update-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-02-pwsh -Tag @{"key01" = "value01"}
+# .Example
+# Get-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-02-pwsh | Update-AzComputeFleetOrganization -Tag @{"key01" = "value01"; "key02"="value02"}
+
+# .Inputs
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
+# .Outputs
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource
+# .Notes
+# COMPLEX PARAMETER PROPERTIES
+
+# To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+# INPUTOBJECT <IComputeFleetIdentity>: Identity Parameter
+#   [Id <String>]: Resource identity path
+#   [OrganizationName <String>]: Organization resource name
+#   [ResourceGroupName <String>]: Resource group name
+#   [SubscriptionId <String>]: Microsoft Azure subscription id
+# .Link
+# https://learn.microsoft.com/powershell/module/az.computefleet/update-azcomputefleetorganization
+# #>
+# function Update-AzComputeFleetOrganization {
+#     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource])]
+#     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+#     param(
+#         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+#         [Alias('OrganizationName')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [System.String]
+#         # Organization resource name
+#         ${Name},
+
+#         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [System.String]
+#         # Resource group name
+#         ${ResourceGroupName},
+
+#         [Parameter(ParameterSetName = 'UpdateExpanded')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+#         [System.String]
+#         # Microsoft Azure subscription id
+#         ${SubscriptionId},
+
+#         [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity]
+#         # Identity Parameter
+#         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+#         ${InputObject},
+
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResourceUpdateTags]))]
+#         [System.Collections.Hashtable]
+#         # ARM resource tags
+#         ${Tag},
+
+#         [Parameter()]
+#         [Alias('AzureRMContext', 'AzureCredential')]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Azure')]
+#         [System.Management.Automation.PSObject]
+#         # The DefaultProfile parameter is not functional.
+#         # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+#         ${DefaultProfile},
+
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Wait for .NET debugger to attach
+#         ${Break},
+
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
+#         # SendAsync Pipeline Steps to be appended to the front of the pipeline
+#         ${HttpPipelineAppend},
+
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
+#         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+#         ${HttpPipelinePrepend},
+
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Uri]
+#         # The URI for the proxy server to use
+#         ${Proxy},
+
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.PSCredential]
+#         # Credentials for a proxy server to use for the remote call
+#         ${ProxyCredential},
+
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Use the default credentials for the proxy
+#         ${ProxyUseDefaultCredentials}
+#     )
+
+#     begin {
+#         try {
+#             $outBuffer = $null
+#             if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+#                 $PSBoundParameters['OutBuffer'] = 1
+#             }
+#             $parameterSet = $PSCmdlet.ParameterSetName
+
+#             if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+#                 [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+#             }         
+#             $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+#             if ($preTelemetryId -eq '') {
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = (New-Guid).ToString()
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet) # ???
+#                 # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+#             }
+#             else {
+#                 $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+#                 if ($internalCalledCmdlets -eq '') {
+#                     [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+#                 }
+#                 else {
+#                     [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+#                 }
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+#             }
+
+#             $mapping = @{
+#                 UpdateExpanded            = 'Az.ComputeFleet.private\Update-AzComputeFleetOrganization_UpdateExpanded';
+#                 UpdateViaIdentityExpanded = 'Az.ComputeFleet.private\Update-AzComputeFleetOrganization_UpdateViaIdentityExpanded';
+#             }
+#             if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+#                 $testPlayback = $false
+#                 $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+#                 if ($testPlayback) {
+#                     $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+#                 }
+#                 else {
+#                     $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+#                 }
+#             }
+#             $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+#             [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+#             if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)) {
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+#                 [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+#             }
+#             $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+#             $scriptCmd = { & $wrappedCmd @PSBoundParameters }
+#             $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+#             $steppablePipeline.Begin($PSCmdlet)
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
+#     }
+
+#     process {
+#         try {
+#             $steppablePipeline.Process($_)
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
+
+#         finally {
+#             $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+#             $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#         }
+
+#     }
+#     end {
+#         try {
+#             $steppablePipeline.End()
+
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+#             if ($preTelemetryId -eq '') {
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet) # ???
+#                 # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             }
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
+#     } 
+# }
+
+# <#
+# .Synopsis
+# Delete Organization resource
+# .Description
+# Delete Organization resource
+# .Example
+# Remove-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-01-portal
+# .Example
+# Get-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-02-pwsh | Remove-AzComputeFleetOrganization
+
+# .Inputs
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
+# .Outputs
+# System.Boolean
+# .Notes
+# COMPLEX PARAMETER PROPERTIES
+
+# To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+# INPUTOBJECT <IComputeFleetIdentity>: Identity Parameter
+#   [Id <String>]: Resource identity path
+#   [OrganizationName <String>]: Organization resource name
+#   [ResourceGroupName <String>]: Resource group name
+#   [SubscriptionId <String>]: Microsoft Azure subscription id
+# .Link
+# https://learn.microsoft.com/powershell/module/az.computefleet/remove-azcomputefleetorganization
+# #>
+# function Remove-AzComputeFleetOrganization {
+#     [OutputType([System.Boolean])]
+#     [CmdletBinding(DefaultParameterSetName = 'Delete', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+#     param(
+#         [Parameter(ParameterSetName = 'Delete', Mandatory)]
+#         [Alias('OrganizationName')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [System.String]
+#         # Organization resource name
+#         ${Name},
+
+#         [Parameter(ParameterSetName = 'Delete', Mandatory)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [System.String]
+#         # Resource group name
+#         ${ResourceGroupName},
+
+#         [Parameter(ParameterSetName = 'Delete')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+#         [System.String]
+#         # Microsoft Azure subscription id
+#         ${SubscriptionId},
+
+#         [Parameter(ParameterSetName = 'DeleteViaIdentity', Mandatory, ValueFromPipeline)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity]
+#         # Identity Parameter
+#         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+#         ${InputObject},
+
+#         [Parameter()]
+#         [Alias('AzureRMContext', 'AzureCredential')]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Azure')]
+#         [System.Management.Automation.PSObject]
+#         # The credentials, account, tenant, and subscription used for communication with Azure.
+#         ${DefaultProfile},
+
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Run the command as a job
+#         ${AsJob},
+
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Wait for .NET debugger to attach
+#         ${Break},
+
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
+#         # SendAsync Pipeline Steps to be appended to the front of the pipeline
+#         ${HttpPipelineAppend},
+
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.SendAsyncStep[]]
+#         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+#         ${HttpPipelinePrepend},
+
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Run the command asynchronously
+#         ${NoWait},
+
+#         [Parameter()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Returns true when the command succeeds
+#         ${PassThru},
+
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Uri]
+#         # The URI for the proxy server to use
+#         ${Proxy},
+
+#         [Parameter(DontShow)]
+#         [ValidateNotNull()]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.PSCredential]
+#         # Credentials for a proxy server to use for the remote call
+#         ${ProxyCredential},
+
+#         [Parameter(DontShow)]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
+#         [System.Management.Automation.SwitchParameter]
+#         # Use the default credentials for the proxy
+#         ${ProxyUseDefaultCredentials}
+#     )
+
+#     begin {
+#         try {
+#             $outBuffer = $null
+#             if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+#                 $PSBoundParameters['OutBuffer'] = 1
+#             }
+#             $parameterSet = $PSCmdlet.ParameterSetName
+
+#             if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+#                 [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+#             }         
+#             $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+#             if ($preTelemetryId -eq '') {
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = (New-Guid).ToString()
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet) # ???
+#                 # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+#             }
+#             else {
+#                 $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+#                 if ($internalCalledCmdlets -eq '') {
+#                     [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+#                 }
+#                 else {
+#                     [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+#                 }
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+#             }
+
+#             $mapping = @{
+#                 Delete            = 'Az.ComputeFleet.custom\Remove-AzComputeFleetOrganization';
+#                 DeleteViaIdentity = 'Az.ComputeFleet.custom\Remove-AzComputeFleetOrganization';
+#             }
+#             if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+#                 $testPlayback = $false
+#                 $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+#                 if ($testPlayback) {
+#                     $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+#                 }
+#                 else {
+#                     $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+#                 }
+#             }
+#             $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+#             [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+#             if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)) {
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+#                 [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+#             }
+#             $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+#             $scriptCmd = { & $wrappedCmd @PSBoundParameters }
+#             $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+#             $steppablePipeline.Begin($PSCmdlet)
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
+#     }
+
+#     process {
+#         try {
+#             $steppablePipeline.Process($_)
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
+
+#         finally {
+#             $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+#             $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#         }
+
+#     }
+#     end {
+#         try {
+#             $steppablePipeline.End()
+
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+#             if ($preTelemetryId -eq '') {
+#                 [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet) # ???
+#                 # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+#                 [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             }
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+#         }
+#         catch {
+#             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+#             throw
+#         }
+#     } 
+# }

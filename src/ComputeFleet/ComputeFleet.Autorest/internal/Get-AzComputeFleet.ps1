@@ -25,12 +25,12 @@ List all operations provided by Microsoft.ComputeFleet.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IOperationResult
+Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module.Api20241101.IComputeFleet.IComputeFleet
 .Link
-https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleetorganizationoperation
+https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleet
 #>
-function Get-AzComputeFleetOrganizationOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IOperationResult])]
+function Get-AzComputeFleet {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module.Api20241101.IComputeFleet.IComputeFleet])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

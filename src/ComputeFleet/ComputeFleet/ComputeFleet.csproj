@@ -20,7 +20,7 @@
   <!-- Assets -->
   <ItemGroup>
     <PackageReference Include="Azure.ResourceManager.ComputeFleet" Version="1.0.0" />
-    <!-- <PackageReference Include="Azure.Core" Version="1.44.1" /> -->
+    <PackageReference Update="Azure.Core" Version="1.44.1" />
   </ItemGroup>
 
   <ItemGroup>

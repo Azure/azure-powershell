@@ -37,7 +37,8 @@ $modulePath = $modulePsd1.FullName
 # Load DLL to use build-time cmdlets
 Import-Module -Name $modulePath
 Import-Module -Name (Join-Path $PSScriptRoot "./bin/$moduleName.private.dll")
-$instance = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance
+$instance = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance # ???
+# $instance = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance
 # Module info is shared per profile
 $moduleInfo = Get-Module -Name $moduleName
 $parameterSetsInfo = Get-Module -Name "$moduleName.private"

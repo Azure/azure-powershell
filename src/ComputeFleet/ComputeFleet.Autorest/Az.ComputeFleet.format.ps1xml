@@ -36,9 +36,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.ComputeFleetAgreementProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.ComputeFleetAgreementProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.ComputeFleetAgreementProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.ComputeFleetAgreementProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -100,9 +100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.ComputeFleetAgreementResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.ComputeFleetAgreementResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.ComputeFleetAgreementResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.ComputeFleetAgreementResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -122,9 +122,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.ComputeFleetAgreementResourceListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.ComputeFleetAgreementResourceListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.ComputeFleetAgreementResourceListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.ComputeFleetAgreementResourceListResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -144,9 +144,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.ErrorResponseBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.ErrorResponseBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.ErrorResponseBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.ErrorResponseBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -178,9 +178,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OfferDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OfferDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OfferDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OfferDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -224,9 +224,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -264,9 +264,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OperationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -286,9 +286,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OperationResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OperationResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OperationResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OperationResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -314,9 +314,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -342,9 +342,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourceListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourceListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourceListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourceListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -364,9 +364,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourceProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourceProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -404,9 +404,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourcePropertiesAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourcePropertiesAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourcePropertiesAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourcePropertiesAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -498,9 +498,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourcePropertiesOfferDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourcePropertiesOfferDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourcePropertiesOfferDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourcePropertiesOfferDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -544,9 +544,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourcePropertiesUserDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourcePropertiesUserDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourcePropertiesUserDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourcePropertiesUserDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -578,9 +578,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -600,9 +600,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourceUpdateTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourceUpdateTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.OrganizationResourceUpdateTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.OrganizationResourceUpdateTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -622,9 +622,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.UserDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.UserDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.UserDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.UserDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

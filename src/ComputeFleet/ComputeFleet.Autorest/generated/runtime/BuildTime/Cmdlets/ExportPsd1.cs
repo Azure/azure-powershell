@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PowerShell
         [Parameter(Mandatory = true)]
         public Guid ModuleGuid { get; set; }
 
-        private static readonly bool IsAzure = Convert.ToBoolean(@"true");
+        private static readonly bool IsAzure = Convert.ToBoolean(@"false");
         private const string CustomFolderRelative = "./custom";
         private const string Indent = Psd1Indent;
         private const string Undefined = "undefined";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PowerShell
                     throw new ArgumentException($"Custom folder '{CustomFolder}' does not exist");
                 }
 
-                string version = Convert.ToString(@"0.2.0");
+                string version = Convert.ToString(@"0.1.0");
                 // Validate the module version should be semantic version
                 // Following regex is official from https://semver.org/
                 Regex rx = new Regex(@"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$", RegexOptions.Compiled);
@@ -71,13 +71,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PowerShell
                 var sb = new StringBuilder();
                 sb.AppendLine("@{");
                 sb.AppendLine($@"{GuidStart} = '{ModuleGuid}'");
-                sb.AppendLine($@"{Indent}RootModule = '{"./Az.ComputeFleet.psm1"}'");
+                sb.AppendLine($@"{Indent}RootModule = '{"./Fleet.psm1"}'");
                 sb.AppendLine($@"{Indent}ModuleVersion = '{version}'");
                 sb.AppendLine($@"{Indent}CompatiblePSEditions = 'Core', 'Desktop'");
-                sb.AppendLine($@"{Indent}Author = '{"Microsoft Corporation"}'");
-                sb.AppendLine($@"{Indent}CompanyName = '{"Microsoft Corporation"}'");
-                sb.AppendLine($@"{Indent}Copyright = '{"Microsoft Corporation. All rights reserved."}'");
-                sb.AppendLine($@"{Indent}Description = '{"Microsoft Azure PowerShell: ComputeFleet cmdlets"}'");
+                sb.AppendLine($@"{Indent}Author = '{""}'");
+                sb.AppendLine($@"{Indent}CompanyName = '{""}'");
+                sb.AppendLine($@"{Indent}Copyright = '{""}'");
+                sb.AppendLine($@"{Indent}Description = '{""}'");
                 sb.AppendLine($@"{Indent}PowerShellVersion = '5.1'");
                 sb.AppendLine($@"{Indent}DotNetFrameworkVersion = '4.7.2'");
 
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PowerShell
                 }
                 else
                 {
-                    sb.AppendLine($@"{Indent}RequiredAssemblies = '{"./bin/Az.ComputeFleet.private.dll"}'");
+                    sb.AppendLine($@"{Indent}RequiredAssemblies = '{"./bin/Fleet.private.dll"}'");
                 }
 
                 // NestedModules
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PowerShell
                     var customFormatPs1xmlFiles = Directory.GetFiles(CustomFolder)
                         .Where(f => f.EndsWith(".format.ps1xml"))
                         .Select(f => $"{CustomFolderRelative}/{Path.GetFileName(f)}");
-                    var formatList = customFormatPs1xmlFiles.Prepend("./Az.ComputeFleet.format.ps1xml").ToPsList();
+                    var formatList = customFormatPs1xmlFiles.Prepend("./Fleet.format.ps1xml").ToPsList();
                     sb.AppendLine($@"{Indent}FormatsToProcess = {formatList}");
                 }
 
@@ -165,9 +165,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PowerShell
                 {
                     sb.AppendLine($@"{Indent}{Indent}{Indent}Prerelease = '{previewVersion}'");
                 }
-                sb.AppendLine($@"{Indent}{Indent}{Indent}Tags = {"Azure ResourceManager ARM PSModule ComputeFleet".Split(' ').ToPsList().NullIfEmpty() ?? "''"}");
-                sb.AppendLine($@"{Indent}{Indent}{Indent}LicenseUri = '{"https://aka.ms/azps-license"}'");
-                sb.AppendLine($@"{Indent}{Indent}{Indent}ProjectUri = '{"https://github.com/Azure/azure-powershell"}'");
+                sb.AppendLine($@"{Indent}{Indent}{Indent}Tags = {"".Split(' ').ToPsList().NullIfEmpty() ?? "''"}");
+                sb.AppendLine($@"{Indent}{Indent}{Indent}LicenseUri = '{""}'");
+                sb.AppendLine($@"{Indent}{Indent}{Indent}ProjectUri = '{""}'");
                 sb.AppendLine($@"{Indent}{Indent}{Indent}ReleaseNotes = ''");
                 var profilesList = "";
                 if (IsAzure && !String.IsNullOrEmpty(profilesList))

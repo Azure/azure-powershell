@@ -79,7 +79,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdate
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -186,11 +186,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdate
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IOrganizationResource
+### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IFleetUpdate
 
 ## NOTES
 

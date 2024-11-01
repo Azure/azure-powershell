@@ -319,7 +319,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20200301.IOrganizationResource
+### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource
 
 ## NOTES
 
