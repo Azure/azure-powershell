@@ -217,8 +217,8 @@ directive:
       cmdlet-name: New-AzFrontDoorCdnRuleRequestHeaderActionObject
     - model-name:  DeliveryRuleResponseHeaderAction
       cmdlet-name: New-AzFrontDoorCdnRuleResponseHeaderActionObject
-    - model-name: DeliveryRuleRouteConfigurationOverrideAction
-      cmdlet-name: New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject
+    # - model-name: DeliveryRuleRouteConfigurationOverrideAction
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject
 
     # CDN content
     - model-name: PurgeParameters
