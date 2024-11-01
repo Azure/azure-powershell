@@ -1,0 +1,40 @@
+{
+  "New-AzFrontDoorCdnCustomDomain+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-kwhc/providers/Microsoft.Cdn/profiles/fdp-j8nl5s/customDomains/domain-psName010?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-kwhc/providers/Microsoft.Cdn/profiles/fdp-j8nl5s/customDomains/domain-psName010?api-version=2024-09-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"hostName\": \"pstestnew.dev.cdn.azure.cn\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "74" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c061917a-1c44-4882-b3f3-71fa97303a58" ],
+        "x-ms-client-request-id": [ "330e14c4-68f6-4b16-a657-e59953432765" ],
+        "x-ms-correlation-request-id": [ "35ff3485-df0e-4e3b-a7a4-6b8262ce0c0b" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20241031T042717Z:35ff3485-df0e-4e3b-a7a4-6b8262ce0c0b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C042AACC2C194BABAFC53BC5E1421ACB Ref B: MAA201060513053 Ref C: 2024-10-31T04:27:15Z" ],
+        "Date": [ "Thu, 31 Oct 2024 04:27:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "143" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"error\": {\n    \"code\": \"BadRequest\",\n    \"message\": \"Property \u0027AfdDomain.TlsSettings.CertificateType\u0027 is required but it was not set\"\n  }\n}",
+      "isContentBase64": false
+    }
+  }
+}

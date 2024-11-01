@@ -13,9 +13,9 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleRequestUriConditionObject -ParameterOperator <String> -ParameterTypeName <String>
- [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>]
- [<CommonParameters>]
+New-AzFrontDoorCdnRuleRequestUriConditionObject -Name <String> -ParameterOperator <String>
+ -ParameterTypeName <String> [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>]
+ [-ParameterTransform <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +37,21 @@ RequestUri
 Create an in-memory object for DeliveryRuleRequestUriCondition
 
 ## PARAMETERS
+
+### -Name
+The name of the condition for the delivery rule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ParameterMatchValue
 The match value for the condition of the delivery rule.

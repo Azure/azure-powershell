@@ -1,0 +1,45 @@
+{
+  "Get-AzFrontDoorCdnEndpointResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-kwhc/providers/Microsoft.Cdn/profiles/fdp-j8nl5s/afdEndpoints/end-0bon4y/usages?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-kwhc/providers/Microsoft.Cdn/profiles/fdp-j8nl5s/afdEndpoints/end-0bon4y/usages?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "157" ],
+        "x-ms-client-request-id": [ "d94bcdb4-54b1-48a7-bc1f-9e9bca0d3484" ],
+        "CommandName": [ "Get-AzFrontDoorCdnEndpointResourceUsage" ],
+        "FullCommandName": [ "Get-AzFrontDoorCdnEndpointResourceUsage_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.4.0", "PSVersion/v7.4.6", "Az.Cdn/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "819c999c-04f9-4dfd-aa17-309de119ddd5" ],
+        "x-ms-client-request-id": [ "d94bcdb4-54b1-48a7-bc1f-9e9bca0d3484" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
+        "x-ms-correlation-request-id": [ "4f93b895-cafe-45b3-85b2-6beda20adb86" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20241031T040435Z:4f93b895-cafe-45b3-85b2-6beda20adb86" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: FBB60F838A8B4B819AB080C58DD5A3AA Ref B: MAA201060513053 Ref C: 2024-10-31T04:04:34Z" ],
+        "Date": [ "Thu, 31 Oct 2024 04:04:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "264" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-kwhc/providers/Microsoft.Cdn/profiles/fdp-j8nl5s/afdendpoints/end-0bon4y\",\"unit\":\"count\",\"currentValue\":0,\"limit\":100,\"name\":{\"value\":\"route\",\"localizedValue\":\"route\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -19,7 +19,7 @@ Describe 'Update-AzFrontDoorCdnRule'  {
         $rulesetName = 'rsName120'
         Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
         New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
-        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
+        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any" -ParameterTypeName "DeliveryRuleRemoteAddressConditionParameters"
         $conditions = @(
             $uriConditon
         );

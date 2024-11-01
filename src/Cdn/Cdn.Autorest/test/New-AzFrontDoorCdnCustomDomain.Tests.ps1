@@ -22,7 +22,8 @@ Describe 'New-AzFrontDoorCdnCustomDomain'  {
 
         $customDomainName = "domain-psName010" 
         $hostName = "pstestnew.dev.cdn.azure.cn"
+        $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "ManagedCertificate" -MinimumTlsVersion "TLS12"
         New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -HostName $hostName
+        -HostName $hostName -TlsSetting $tlsSetting
     }
 }

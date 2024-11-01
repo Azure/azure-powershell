@@ -39,7 +39,7 @@ Describe 'Update-AzFrontDoorCdnRoute'  {
         $rulesetName = 'rsName110'
         Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
         $ruleSet = New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
-        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
+        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any" -ParameterTypeName "DeliveryRuleRemoteAddressConditionParameters"
         $conditions = @(
             $uriConditon
         );

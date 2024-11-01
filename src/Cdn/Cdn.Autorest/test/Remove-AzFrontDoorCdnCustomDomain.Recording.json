@@ -1,0 +1,78 @@
+{
+  "Remove-AzFrontDoorCdnCustomDomain+[NoContext]+Delete+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-kwhc/providers/Microsoft.Cdn/profiles/fdp-j8nl5s/customDomains/domain-psName020?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-kwhc/providers/Microsoft.Cdn/profiles/fdp-j8nl5s/customDomains/domain-psName020?api-version=2024-09-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"hostName\": \"removedomain.dev.cdn.azure.cn\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "77" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "6629eebc-c4c7-4f67-8f66-c1c364cabbd9" ],
+        "x-ms-client-request-id": [ "b058b373-0ba4-4f4d-a205-a32708bba47d" ],
+        "x-ms-correlation-request-id": [ "04505c7c-220d-4843-9786-b4142142e4d8" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20241031T050901Z:04505c7c-220d-4843-9786-b4142142e4d8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C0DF30DDCAEA43D180EADB73A3004C0A Ref B: MAA201060513053 Ref C: 2024-10-31T05:09:00Z" ],
+        "Date": [ "Thu, 31 Oct 2024 05:09:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "143" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"error\": {\n    \"code\": \"BadRequest\",\n    \"message\": \"Property \u0027AfdDomain.TlsSettings.CertificateType\u0027 is required but it was not set\"\n  }\n}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzFrontDoorCdnCustomDomain+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-kwhc/providers/Microsoft.Cdn/profiles/fdp-j8nl5s/customDomains/domain-psName021?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-kwhc/providers/Microsoft.Cdn/profiles/fdp-j8nl5s/customDomains/domain-psName021?api-version=2024-09-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"hostName\": \"removedomain.dev.cdn.azure.cn\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "77" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "ada873ea-d79d-43dd-bd75-cde2ca679917" ],
+        "x-ms-client-request-id": [ "889b9c36-bde7-4a90-bc81-ba7c9749b80e" ],
+        "x-ms-correlation-request-id": [ "d2758dbd-54f3-4615-920d-7935982560cf" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20241031T050903Z:d2758dbd-54f3-4615-920d-7935982560cf" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 143A487C07C84F9594AFF96294127BA4 Ref B: MAA201060513053 Ref C: 2024-10-31T05:09:01Z" ],
+        "Date": [ "Thu, 31 Oct 2024 05:09:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "143" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"error\": {\n    \"code\": \"BadRequest\",\n    \"message\": \"Property \u0027AfdDomain.TlsSettings.CertificateType\u0027 is required but it was not set\"\n  }\n}",
+      "isContentBase64": false
+    }
+  }
+}

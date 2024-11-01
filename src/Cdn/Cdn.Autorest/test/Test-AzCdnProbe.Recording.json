@@ -1,0 +1,80 @@
+{
+  "Test-AzCdnProbe+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2024-09-01",
+      "Content": "{\r\n  \"probeURL\": \"https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "79" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "53588547-871f-4f9e-980f-6fd43ace6c71" ],
+        "x-ms-client-request-id": [ "a3990710-622e-4f6a-bfb4-5028547d0bcd" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "d35a4026-329c-46b5-8b85-8308f9a78b18" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20241031T053539Z:d35a4026-329c-46b5-8b85-8308f9a78b18" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 667BBF04350445F6AEA7FCDF533768A5 Ref B: MAA201060513053 Ref C: 2024-10-31T05:35:39Z" ],
+        "Date": [ "Thu, 31 Oct 2024 05:35:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "50" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"isValid\":true,\"errorCode\":\"None\",\"message\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzCdnProbe+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2024-09-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2024-09-01",
+      "Content": "{\r\n  \"probeURL\": \"https://www.notexist.com/notexist/notexist.txt\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "68" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "08023e1c-9d8f-4e9c-b1a4-99a14beccd6a" ],
+        "x-ms-client-request-id": [ "19b1c026-7e2b-4987-a581-3b27258df76f" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "dbc34913-cca5-4fca-8698-5c26347c9563" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20241031T053541Z:dbc34913-cca5-4fca-8698-5c26347c9563" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 49BCC88FE7D34F28B50F06CB0CF2D13B Ref B: MAA201060513053 Ref C: 2024-10-31T05:35:39Z" ],
+        "Date": [ "Thu, 31 Oct 2024 05:35:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "194" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"isValid\":false,\"errorCode\":\"EndpointProbeCannotBeRetrieved\",\"message\":\"We couldn\u0027t retrieve the input probe. Please verify that it is publicly accessible and its size is approximately 10 KB.\"}",
+      "isContentBase64": false
+    }
+  }
+}

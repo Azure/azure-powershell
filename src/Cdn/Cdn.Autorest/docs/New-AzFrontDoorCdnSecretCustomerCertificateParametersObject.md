@@ -14,7 +14,7 @@ Create an in-memory object for CustomerCertificateParameters.
 
 ```
 New-AzFrontDoorCdnSecretCustomerCertificateParametersObject [-SecretSourceId <String>]
- [-SecretVersion <String>] [-SubjectAlternativeName <String[]>] [-UseLatestVersion <Boolean>]
+ [-SecretVersion <String>] [-SubjectAlternativeName <String[]>] [-Type <String>] [-UseLatestVersion <Boolean>]
  [<CommonParameters>]
 ```
 
@@ -74,6 +74,21 @@ The list of SANs.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+The Type of Certificate.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

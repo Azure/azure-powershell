@@ -333,7 +333,7 @@ Create an in-memory object for DeliveryRuleSocketAddrCondition.
 Create an in-memory object for DeliveryRuleSslProtocolCondition.
 
 ### [New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject](New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject.md)
-Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
+Create an in-memory object for DeliveryRuleRequestUriCondition.
 
 ### [New-AzFrontDoorCdnRuleUrlFileNameConditionObject](New-AzFrontDoorCdnRuleUrlFileNameConditionObject.md)
 Create an in-memory object for DeliveryRuleUrlFileNameCondition.

@@ -87,8 +87,8 @@ directive:
     # https
     - model-name: UserManagedHttpsParameters
       cmdlet-name: New-AzCdnUserManagedHttpsParametersObject
-    - model-name: CdnManagedHttpsParameters
-      cmdlet-name: New-AzCdnManagedHttpsParametersObject
+    # - model-name: CdnManagedHttpsParameters
+    #   cmdlet-name: New-AzCdnManagedHttpsParametersObject
     - model-name: DeliveryRule
       cmdlet-name: New-AzCdnDeliveryRuleObject
     # CDN condition
@@ -142,8 +142,8 @@ directive:
     - model-name: DeliveryRuleRequestSchemeCondition
       cmdlet-name: New-AzFrontDoorCdnRuleRequestSchemeConditionObject
     - model-name: DeliveryRuleRequestUriCondition
-      cmdlet-name: New-AzFrontDoorCdnRuleRequestUriConditionObject
-    - model-name: DeliveryRuleUrlFileExtensionCondition 
+    #   cmdlet-name: New-AzFrontDoorCdnRuleRequestUriConditionObject
+    # - model-name: DeliveryRuleUrlFileExtensionCondition 
       cmdlet-name: New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject
     - model-name:  DeliveryRuleUrlFileNameCondition
       cmdlet-name: New-AzFrontDoorCdnRuleUrlFileNameConditionObject
@@ -166,8 +166,8 @@ directive:
     - model-name: AfdPurgeParameters
       cmdlet-name: New-AzFrontDoorCdnPurgeParametersObject
     
-    - model-name: CustomerCertificateParameters
-      cmdlet-name: New-AzFrontDoorCdnSecretCustomerCertificateParametersObject
+    # - model-name: CustomerCertificateParameters
+    #   cmdlet-name: New-AzFrontDoorCdnSecretCustomerCertificateParametersObject
     - model-name: AzureFirstPartyManagedCertificateParameters
       cmdlet-name: New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject
     - model-name: ManagedCertificateParameters
@@ -216,7 +216,9 @@ directive:
     - model-name:  DeliveryRuleRequestHeaderAction
       cmdlet-name: New-AzFrontDoorCdnRuleRequestHeaderActionObject
     - model-name:  DeliveryRuleResponseHeaderAction
-      cmdlet-name: New-AzFrontDoorCdnRuleResponseHeaderActionObject  
+      cmdlet-name: New-AzFrontDoorCdnRuleResponseHeaderActionObject
+    - model-name: DeliveryRuleRouteConfigurationOverrideAction
+      cmdlet-name: New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject
 
     # CDN content
     - model-name: PurgeParameters

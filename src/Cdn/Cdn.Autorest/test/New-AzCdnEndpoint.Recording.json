@@ -1,0 +1,40 @@
+{
+  "New-AzCdnEndpoint+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-kwhc/providers/Microsoft.Cdn/profiles/p-c96qmj/endpoints/e-clipstest310?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-kwhc/providers/Microsoft.Cdn/profiles/p-c96qmj/endpoints/e-clipstest310?api-version=2024-09-01",
+      "Content": "{\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"origins\": [\r\n      {\r\n        \"properties\": {\r\n          \"hostName\": \"host1.hello.com\"\r\n        },\r\n        \"name\": \"origin1\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "201" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "399" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "b3790135-4940-480c-95ec-6afa642ceb08" ],
+        "x-ms-client-request-id": [ "f5468232-1ecc-4f29-8461-c2001514413d" ],
+        "x-ms-correlation-request-id": [ "1556749a-2b88-4849-b323-48e243f4c7de" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20241031T042626Z:1556749a-2b88-4849-b323-48e243f4c7de" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 653DD6267CEE4219A94EA84BE262B360 Ref B: MAA201060513053 Ref C: 2024-10-31T04:26:20Z" ],
+        "Date": [ "Thu, 31 Oct 2024 04:26:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "97" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"error\": {\n    \"code\": \"Conflict\",\n    \"message\": \"That resource name isn\u0027t available.\"\n  }\n}",
+      "isContentBase64": false
+    }
+  }
+}

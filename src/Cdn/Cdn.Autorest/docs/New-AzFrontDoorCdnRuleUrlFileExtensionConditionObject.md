@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject
 
 ## SYNOPSIS
-Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
+Create an in-memory object for DeliveryRuleRequestUriCondition.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject -ParameterOperator <String
 ```
 
 ## DESCRIPTION
-Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
+Create an in-memory object for DeliveryRuleRequestUriCondition.
 
 ## EXAMPLES
 
@@ -120,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleUrlFileExtensionCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.DeliveryRuleRequestUriCondition
 
 ## NOTES
 

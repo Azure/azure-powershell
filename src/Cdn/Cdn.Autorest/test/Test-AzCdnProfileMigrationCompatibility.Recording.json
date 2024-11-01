@@ -1,0 +1,46 @@
+{
+  "Test-AzCdnProfileMigrationCompatibility+[NoContext]+Can+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/cli-test-rg/providers/Microsoft.Cdn/profiles/cli-test-profile/cdnCanMigrateToAfd?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/cli-test-rg/providers/Microsoft.Cdn/profiles/cli-test-profile/cdnCanMigrateToAfd?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "666" ],
+        "x-ms-client-request-id": [ "45be1e61-46d7-49bc-81ce-b61f3e99057e" ],
+        "CommandName": [ "Test-AzCdnProfileMigrationCompatibility" ],
+        "FullCommandName": [ "Test-AzCdnProfileMigrationCompatibility_Can" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.4.0", "PSVersion/v7.4.6", "Az.Cdn/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "865a7684-2f78-4954-9b4b-b730db8c8e0d" ],
+        "x-ms-client-request-id": [ "45be1e61-46d7-49bc-81ce-b61f3e99057e" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "bacd3aef-c4be-4d63-b0f7-97297f663cbe" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20241031T053542Z:bacd3aef-c4be-4d63-b0f7-97297f663cbe" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: DDF240618820415C9156458BCCB0577A Ref B: MAA201060513053 Ref C: 2024-10-31T05:35:41Z" ],
+        "Date": [ "Thu, 31 Oct 2024 05:35:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "142" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"error\": {\n    \"code\": \"BadRequest\",\n    \"message\": \"The requested operation cannot be executed on the entity in the current state.\"\n  }\n}",
+      "isContentBase64": false
+    }
+  }
+}

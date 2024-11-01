@@ -13,9 +13,9 @@ Create an in-memory object for CdnManagedHttpsParameters.
 ## SYNTAX
 
 ```
-New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType <String>
- -CertificateSourceParameterTypeName <String> -ProtocolType <String> [-MinimumTlsVersion <String>]
- [<CommonParameters>]
+New-AzCdnManagedHttpsParametersObject -CertificateSource <String>
+ -CertificateSourceParameterCertificateType <String> -CertificateSourceParameterTypeName <String>
+ -ProtocolType <String> [-MinimumTlsVersion <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,6 +37,21 @@ Cdn                                 TLS12
 Create an in-memory object for AzureCDN CdnManagedHttpsParameters
 
 ## PARAMETERS
+
+### -CertificateSource
+Defines the source of the SSL certificate.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CertificateSourceParameterCertificateType
 Type of certificate used.

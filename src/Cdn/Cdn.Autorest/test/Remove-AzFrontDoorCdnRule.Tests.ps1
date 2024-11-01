@@ -19,7 +19,7 @@ Describe 'Remove-AzFrontDoorCdnRule'  {
         $rulesetName = 'rsName090'
         Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
         New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
-        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
+        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any" -ParameterTypeName "DeliveryRuleRemoteAddressConditionParameters"
         $conditions = @(
             $uriConditon
         );
@@ -45,7 +45,7 @@ Describe 'Remove-AzFrontDoorCdnRule'  {
         $rulesetName = 'ruleName06'
         Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
         New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
-        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
+        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any" -ParameterTypeName "DeliveryRuleRemoteAddressConditionParameters"
         $conditions = @(
             $uriConditon
         );

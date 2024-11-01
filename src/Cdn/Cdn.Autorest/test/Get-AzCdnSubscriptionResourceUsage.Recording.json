@@ -1,0 +1,46 @@
+{
+  "Get-AzCdnSubscriptionResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/checkResourceUsage?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/checkResourceUsage?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "148" ],
+        "x-ms-client-request-id": [ "1b3a414f-04a7-4076-862d-c2d289d51a79" ],
+        "CommandName": [ "Get-AzCdnSubscriptionResourceUsage" ],
+        "FullCommandName": [ "Get-AzCdnSubscriptionResourceUsage_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.4.0", "PSVersion/v7.4.6", "Az.Cdn/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "402d649d-2d27-48c8-9656-731233f25db5" ],
+        "x-ms-client-request-id": [ "1b3a414f-04a7-4076-862d-c2d289d51a79" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
+        "x-ms-correlation-request-id": [ "81064b88-81a3-46ba-a829-af00def82099" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20241031T040423Z:81064b88-81a3-46ba-a829-af00def82099" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 13376AF9F3FB4DC79A471A86A7EC0FFA Ref B: MAA201060513053 Ref C: 2024-10-31T04:04:22Z" ],
+        "Date": [ "Thu, 31 Oct 2024 04:04:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "158" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"resourceType\":\"profile\",\"unit\":\"count\",\"currentValue\":60,\"limit\":200},{\"resourceType\":\"afdprofile\",\"unit\":\"count\",\"currentValue\":16,\"limit\":500}]}",
+      "isContentBase64": false
+    }
+  }
+}

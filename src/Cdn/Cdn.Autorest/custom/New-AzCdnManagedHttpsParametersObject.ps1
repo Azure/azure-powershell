@@ -45,7 +45,11 @@ function New-AzCdnManagedHttpsParametersObject {
         [Parameter(Mandatory, HelpMessage="Defines the TLS extension protocol that is used for secure delivery.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("ServerNameIndication", "IPBased")]
         [string]
-        $ProtocolType
+        $ProtocolType,
+        [Parameter(Mandatory, HelpMessage="Defines the source of the SSL certificate.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Cdn")]
+        [string]
+        $CertificateSource
     )
 
     process {
@@ -62,6 +66,9 @@ function New-AzCdnManagedHttpsParametersObject {
         }
         if ($PSBoundParameters.ContainsKey('ProtocolType')) {
             $Object.ProtocolType = $ProtocolType
+        }
+        if ($PSBoundParameters.ContainsKey('CertificateSource')) {
+            $Object.CertificateSource = $CertificateSource
         }
         return $Object
     }

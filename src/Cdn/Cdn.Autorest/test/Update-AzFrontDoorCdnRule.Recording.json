@@ -1,0 +1,45 @@
+{
+  "Update-AzFrontDoorCdnRule+[NoContext]+[NoScenario]+$PUT+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-vn5k/providers/Microsoft.Cdn/profiles/fdp-lwyv1e/ruleSets/rsName120?api-version=2024-09-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-vn5k/providers/Microsoft.Cdn/profiles/fdp-lwyv1e/ruleSets/rsName120?api-version=2024-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "93e3aa27-b8c2-4a92-b221-7a7501e99b26" ],
+        "CommandName": [ "New-AzFrontDoorCdnRuleSet" ],
+        "FullCommandName": [ "New-AzFrontDoorCdnRuleSet_Create" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.4.0", "PSVersion/v7.4.6", "Az.Cdn/0.0.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "8cb8052b-4a29-4af0-8cdf-0fa74bf09cd4" ],
+        "x-ms-client-request-id": [ "93e3aa27-b8c2-4a92-b221-7a7501e99b26" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-correlation-request-id": [ "34dbdc43-d891-4f34-a64d-863033362959" ],
+        "x-ms-routing-request-id": [ "MALAYSIASOUTH:20241101T062934Z:34dbdc43-d891-4f34-a64d-863033362959" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: E29174BD2FBC4937B838F043133A63D6 Ref B: MAA201060514029 Ref C: 2024-11-01T06:29:31Z" ],
+        "Date": [ "Fri, 01 Nov 2024 06:29:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "292" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-vn5k/providers/Microsoft.Cdn/profiles/fdp-lwyv1e/rulesets/rsName120\",\"type\":\"Microsoft.Cdn/profiles/rulesets\",\"name\":\"rsName120\",\"properties\":{\"provisioningState\":\"Succeeded\",\"deploymentStatus\":\"NotStarted\"}}",
+      "isContentBase64": false
+    }
+  }
+}
