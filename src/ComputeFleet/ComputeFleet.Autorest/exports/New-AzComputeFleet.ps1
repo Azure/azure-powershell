@@ -23,12 +23,12 @@
 # New-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-02-pwsh -Location eastus -OfferDetailId "computefleet-cloud-azure-prod" -OfferDetailPlanId "computefleet-cloud-azure-payg-prod" -OfferDetailPlanName "ComputeFleet Cloud - Pay as you Go" -OfferDetailPublisherId "computefleetinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "xxxx@microsoft.com"
 
 # .Outputs
-# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResource
 # .Link
 # https://learn.microsoft.com/powershell/module/az.computefleet/new-azcomputefleetorganization
 # #>
 # function New-AzComputeFleetOrganization {
-# [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource])]
+# [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResource])]
 # [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 # param(
 #     [Parameter(Mandatory)]
@@ -89,7 +89,7 @@
 
 #     [Parameter()]
 #     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResourceTags]))]
+#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResourceTags]))]
 #     [System.Collections.Hashtable]
 #     # Organization resource tags
 #     ${Tag},

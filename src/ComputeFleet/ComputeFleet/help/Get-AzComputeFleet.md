@@ -76,7 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module.Api20241101.IComputeFleetAgreementResource
+### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module.IComputeFleetAgreementResource
 
 ## NOTES
 

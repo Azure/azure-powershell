@@ -18,8 +18,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Cmdlets
     public partial class GetFleet_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener
     {
+        /// <summary>A unique id generatd for the this cmdlet when it is instantiated.</summary>
+        private string __correlationId = System.Guid.NewGuid().ToString();
+
         /// <summary>A copy of the Invocation Info (necessary to allow asJob to clone this cmdlet)</summary>
         private global::System.Management.Automation.InvocationInfo __invocationInfo;
+
+        /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
+        private string __processRecordId;
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -192,7 +198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Cmdlets
                         return ;
                     }
                 }
-                await Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.EventData ), InvocationInformation, this.ParameterSetName, null );
+                await Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
                 if (token.IsCancellationRequested)
                 {
                     return ;
@@ -205,6 +211,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Cmdlets
         protected override void ProcessRecord()
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Events.CmdletProcessRecordStart).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            __processRecordId = System.Guid.NewGuid().ToString();
             try
             {
                 // work
@@ -245,7 +252,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Cmdlets
             {
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module.Instance.CreatePipeline(InvocationInformation, this.ParameterSetName);
+                Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
                 {
                     Pipeline.Prepend((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelinePrepend) ?? HttpPipelinePrepend);

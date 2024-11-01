@@ -23,23 +23,23 @@ List ComputeFleet.
 Get-AzComputeFleet
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IFleetProperties
+Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleet
 #>
 function Get-AzComputeFleet {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IFleetProperties])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetProperties])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
         [Alias('FleetName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
         [System.String]
         # Fleet name
         ${Name},
 
         [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
         [System.String]
         # Resource group name
         ${ResourceGroupName},
@@ -196,12 +196,12 @@ function Get-AzComputeFleet {
 # {{ Add code here }}
 
 # .Outputs
-# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IFleetProperties
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetProperties
 # .Link
 # https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleetorganizationoperation
 # #>
 # function Get-AzComputeFleet {
-# [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IFleetProperties])]
+# [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetProperties])]
 # [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 # param(
 #     [Parameter()]

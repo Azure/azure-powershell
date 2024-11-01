@@ -190,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IFleetUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdate
 
 ## NOTES
 

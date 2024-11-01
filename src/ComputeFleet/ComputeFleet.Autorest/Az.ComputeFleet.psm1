@@ -43,8 +43,7 @@
   $null = Import-Module -Name (Join-Path $PSScriptRoot './bin/Az.ComputeFleet.private.dll')
 
   # Get the private module's instance
-  $instance = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance # ??? use below
-  # $instance = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance
+  $instance = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance
 
   # Ask for the shared functionality table
   $VTable = Register-AzModule

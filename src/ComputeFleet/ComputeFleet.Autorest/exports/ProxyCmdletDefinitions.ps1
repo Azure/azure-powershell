@@ -23,33 +23,33 @@ List ComputeFleet.
 Get-AzComputeFleet
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IFleetProperties
+Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleet
 #>
 function Get-AzComputeFleet {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IFleetProperties])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetProperties])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
-        [Parameter(Mandatory)]
-        [Alias('FleetName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
-        [System.String]
-        # Fleet name
-        ${Name},
-
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Confluent.Category('Path')]
-        [System.String]
-        # Resource group name
-        ${ResourceGroupName},
-
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String[]]
         # Microsoft Azure subscription id
         ${SubscriptionId},
+
+        [Parameter(Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+        [System.String]
+        # Resource group name
+        ${ResourceGroupName},
+        
+        [Parameter(Mandatory)]
+        [Alias('FleetName')]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+        [System.String]
+        # Fleet name
+        ${Name},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -194,12 +194,12 @@ function Get-AzComputeFleet {
 # Get-AzComputeFleetMarketplaceAgreement
 
 # .Outputs
-# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IComputeFleetAgreementResource
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetAgreementResource
 # .Link
 # https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleetmarketplaceagreement
 # #>
 # function Get-AzComputeFleetMarketplaceAgreement {
-#     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IComputeFleetAgreementResource])]
+#     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetAgreementResource])]
 #     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
 #     param(
 #         [Parameter()]
@@ -370,7 +370,7 @@ function Get-AzComputeFleet {
 # .Inputs
 # Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
 # .Outputs
-# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResource
 # .Notes
 # COMPLEX PARAMETER PROPERTIES
 
@@ -385,7 +385,7 @@ function Get-AzComputeFleet {
 # https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleetorganization
 # #>
 # function Get-AzComputeFleetOrganization {
-#     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource])]
+#     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResource])]
 #     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
 #     param(
 #         [Parameter(ParameterSetName = 'Get', Mandatory)]
@@ -573,12 +573,12 @@ function Get-AzComputeFleet {
 # New-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-02-pwsh -Location eastus -OfferDetailId "computefleet-cloud-azure-prod" -OfferDetailPlanId "computefleet-cloud-azure-payg-prod" -OfferDetailPlanName "ComputeFleet Cloud - Pay as you Go" -OfferDetailPublisherId "computefleetinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "xxxx@microsoft.com"
 
 # .Outputs
-# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResource
 # .Link
 # https://learn.microsoft.com/powershell/module/az.computefleet/new-azcomputefleetorganization
 # #>
 # function New-AzComputeFleetOrganization {
-#     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource])]
+#     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResource])]
 #     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 #     param(
 #         [Parameter(Mandatory)]
@@ -639,7 +639,7 @@ function Get-AzComputeFleet {
 
 #         [Parameter()]
 #         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResourceTags]))]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResourceTags]))]
 #         [System.Collections.Hashtable]
 #         # Organization resource tags
 #         ${Tag},
@@ -831,7 +831,7 @@ function Get-AzComputeFleet {
 # .Inputs
 # Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IComputeFleetIdentity
 # .Outputs
-# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResource
 # .Notes
 # COMPLEX PARAMETER PROPERTIES
 
@@ -846,7 +846,7 @@ function Get-AzComputeFleet {
 # https://learn.microsoft.com/powershell/module/az.computefleet/update-azcomputefleetorganization
 # #>
 # function Update-AzComputeFleetOrganization {
-#     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResource])]
+#     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResource])]
 #     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 #     param(
 #         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
@@ -878,7 +878,7 @@ function Get-AzComputeFleet {
 
 #         [Parameter()]
 #         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.Api20241101.IOrganizationResourceUpdateTags]))]
+#         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResourceUpdateTags]))]
 #         [System.Collections.Hashtable]
 #         # ARM resource tags
 #         ${Tag},
