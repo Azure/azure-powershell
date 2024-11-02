@@ -23,6 +23,7 @@ Describe 'Move-AzCdnProfileToAFD' {
         $subId = $env.SubscriptionId
         $map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
         Move-AzCdnProfileToAFD -Subscription $subId -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -SkuName Premium_AzureFrontDoor -MigrationEndpointMapping @($map1)
+        Invoke-AzCdnAbortProfileToAFDMigration -Subscription $subId -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
     }
 
     It 'MigrateViaIdentity' -skip {
