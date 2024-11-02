@@ -16,7 +16,7 @@ Create a new Backup Restore Files request
 ```
 Restore-AzNetAppFilesBackupFile -ResourceGroupName <String> -AccountName <String> -Name <String>
  -BackupVaultName <String> -FileList <String[]> [-RestoreFilePath <String>] -DestinationVolumeId <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Restore-AzNetAppFilesBackupFile -ResourceGroupName <String> -AccountName <String
 ```
 Restore-AzNetAppFilesBackupFile -Name <String> -FileList <String[]> [-RestoreFilePath <String>]
  -DestinationVolumeId <String> -BackupVaultObject <PSNetAppFilesBackupVault> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,14 +32,14 @@ Restore-AzNetAppFilesBackupFile -Name <String> -FileList <String[]> [-RestoreFil
 ```
 Restore-AzNetAppFilesBackupFile -FileList <String[]> [-RestoreFilePath <String>] -DestinationVolumeId <String>
  -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Restore-AzNetAppFilesBackupFile -FileList <String[]> [-RestoreFilePath <String>] -DestinationVolumeId <String>
  -InputObject <PSNetAppFilesBackup> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -185,21 +185,6 @@ Return whether the specified files where successfully restored
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
