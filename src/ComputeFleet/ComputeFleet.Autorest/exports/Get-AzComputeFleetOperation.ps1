@@ -16,52 +16,21 @@
 
 <#
 .Synopsis
-Get ComputeFleet.
+Get ComputeFleet Operation.
 .Description
-Get ComputeFleet.
+Get ComputeFleet Operation.
 .Example
-Get-AzComputeFleet
+Get-AzComputeFleetOperation
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet
+Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOperation
 .Link
-https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleet
+https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleetoperation
 #>
-function Get-AzComputeFleet {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet])]
-    [CmdletBinding(DefaultParameterSetName = 'ListBySubscriptionId', PositionalBinding = $false)]
+function Get-AzComputeFleetOperation {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOperation])]
+    [CmdletBinding(DefaultParameterSetName = 'ListOperation', PositionalBinding = $false)]
     param(
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory)]
-        [Parameter(ParameterSetName='ListBySubscriptionId', Mandatory)]
-        [Parameter(ParameterSetName='ListByResourceGroup', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
-        [System.String]
-        # Microsoft Azure subscription id
-        ${SubscriptionId},
-
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory)]
-        [Parameter(ParameterSetName='ListByResourceGroup', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-        [System.String]
-        # Resource group name
-        ${ResourceGroupName},
-
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-        [System.String]
-        # Fleet name
-        ${FleetName},
-
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetIdentity]
-        # Identity Parameter
-        ${InputObject},
-        
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -139,10 +108,7 @@ function Get-AzComputeFleet {
             }
 
             $mapping = @{
-                Get = 'Az.ComputeFleet.private\Get-Fleet_Get';
-                GetViaIdentity = 'Az.ComputeFleet.private\Get-Fleet_GetViaIdentity';
-                ListBySubscriptionId = 'Az.ComputeFleet.private\Get-Fleet_List';
-                ListByResourceGroup = 'Az.ComputeFleet.private\Get-Fleet_List1';
+                ListOperation = 'Az.ComputeFleet.private\Get-Operation_List';
             }
             $cmdInfo = Get-Command -Name $mapping[$parameterSet]
             [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

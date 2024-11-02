@@ -16,51 +16,39 @@
 
 <#
 .Synopsis
-Get ComputeFleet.
+Get ComputeFleet Virtual Machine Scale Set (VMSS).
 .Description
-Get ComputeFleet.
+Get ComputeFleet Virtual Machine Scale Set (VMSS).
 .Example
-Get-AzComputeFleet
+Get-AzComputeFleetVMSS
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet
+Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineScaleSet
 .Link
-https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleet
+https://learn.microsoft.com/powershell/module/az.computefleet/get-azcomputefleetvmss
 #>
-function Get-AzComputeFleet {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet])]
-    [CmdletBinding(DefaultParameterSetName = 'ListBySubscriptionId', PositionalBinding = $false)]
+function Get-AzComputeFleetVMSS {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IVirtualMachineScaleSet])]
+    [CmdletBinding(DefaultParameterSetName = 'ListVMSS', PositionalBinding = $false)]
     param(
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory)]
-        [Parameter(ParameterSetName='ListBySubscriptionId', Mandatory)]
-        [Parameter(ParameterSetName='ListByResourceGroup', Mandatory)]
+        [Parameter(ParameterSetName='ListVMSS', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # Microsoft Azure subscription id
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory)]
-        [Parameter(ParameterSetName='ListByResourceGroup', Mandatory)]
+        [Parameter(ParameterSetName='ListVMSS', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
         [System.String]
         # Resource group name
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName='Get', Mandatory)]
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory)]
+        [Parameter(ParameterSetName='ListVMSS', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
         [System.String]
         # Fleet name
         ${FleetName},
-
-        [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetIdentity]
-        # Identity Parameter
-        ${InputObject},
         
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -139,10 +127,7 @@ function Get-AzComputeFleet {
             }
 
             $mapping = @{
-                Get = 'Az.ComputeFleet.private\Get-Fleet_Get';
-                GetViaIdentity = 'Az.ComputeFleet.private\Get-Fleet_GetViaIdentity';
-                ListBySubscriptionId = 'Az.ComputeFleet.private\Get-Fleet_List';
-                ListByResourceGroup = 'Az.ComputeFleet.private\Get-Fleet_List1';
+                ListVMSS = 'Az.ComputeFleet.private\Get-FleetVirtualMachineScaleSet_List';
             }
             $cmdInfo = Get-Command -Name $mapping[$parameterSet]
             [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

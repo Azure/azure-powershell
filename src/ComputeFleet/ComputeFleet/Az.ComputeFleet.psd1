@@ -69,9 +69,7 @@ FormatsToProcess = 'ComputeFleet.Autorest\Az.ComputeFleet.format.ps1xml'
 NestedModules = @('ComputeFleet.Autorest/Az.ComputeFleet.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Get-AzComputeFleetMarketplaceAgreement', 
-               'Get-AzComputeFleetOrganization', 'New-AzComputeFleetOrganization', 
-               'Remove-AzComputeFleetOrganization', 'Update-AzComputeFleetOrganization'
+FunctionsToExport = 'Get-AzComputeFleet', 'Get-AzComputeFleetOperation', 'Get-AzComputeFleetVMSS'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()

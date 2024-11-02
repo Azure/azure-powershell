@@ -3,7 +3,6 @@
   $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '..\bin\Az.ComputeFleet.private.dll')
 
   # Get the private module's instance
-  # $instance = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance # ???
   $instance = [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance
 
   # Export nothing to clear implicit exports

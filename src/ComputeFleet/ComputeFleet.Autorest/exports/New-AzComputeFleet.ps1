@@ -16,27 +16,27 @@
 
 # <#
 # .Synopsis
-# Create Organization resource
+# Create ComputeFleet resource
 # .Description
-# Create Organization resource
+# Create ComputeFleet resource
 # .Example
-# New-AzComputeFleetOrganization -ResourceGroupName azure-rg-test -Name computefleetorg-02-pwsh -Location eastus -OfferDetailId "computefleet-cloud-azure-prod" -OfferDetailPlanId "computefleet-cloud-azure-payg-prod" -OfferDetailPlanName "ComputeFleet Cloud - Pay as you Go" -OfferDetailPublisherId "computefleetinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress "xxxx@microsoft.com"
+# New-AzComputeFleet -SubscriptionId subscriptionId -ResourceGroupName azure-rg-test -FleetName testFleet
 
 # .Outputs
-# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResource
+# Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetProperties
 # .Link
-# https://learn.microsoft.com/powershell/module/az.computefleet/new-azcomputefleetorganization
+# https://learn.microsoft.com/powershell/module/az.computefleet/new-azcomputefleet
 # #>
 # function New-AzComputeFleetOrganization {
-# [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResource])]
+# [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetProperties])]
 # [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 # param(
 #     [Parameter(Mandatory)]
-#     [Alias('OrganizationName')]
 #     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
+#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
 #     [System.String]
-#     # Organization resource name
-#     ${Name},
+#     # Microsoft Azure subscription id
+#     ${SubscriptionId},
 
 #     [Parameter(Mandatory)]
 #     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
@@ -44,73 +44,11 @@
 #     # Resource group name
 #     ${ResourceGroupName},
 
-#     [Parameter()]
+#     [Parameter(Mandatory)]
 #     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Path')]
-#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
 #     [System.String]
-#     # Microsoft Azure subscription id
-#     ${SubscriptionId},
-
-#     [Parameter()]
-#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-#     [System.String]
-#     # Location of Organization resource
-#     ${Location},
-
-#     [Parameter()]
-#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-#     [System.String]
-#     # Offer Id
-#     ${OfferDetailId},
-
-#     [Parameter()]
-#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-#     [System.String]
-#     # Offer Plan Id
-#     ${OfferDetailPlanId},
-
-#     [Parameter()]
-#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-#     [System.String]
-#     # Offer Plan Name
-#     ${OfferDetailPlanName},
-
-#     [Parameter()]
-#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-#     [System.String]
-#     # Publisher Id
-#     ${OfferDetailPublisherId},
-
-#     [Parameter()]
-#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-#     [System.String]
-#     # Offer Plan Term unit
-#     ${OfferDetailTermUnit},
-
-#     [Parameter()]
-#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOrganizationResourceTags]))]
-#     [System.Collections.Hashtable]
-#     # Organization resource tags
-#     ${Tag},
-
-#     [Parameter()]
-#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-#     [System.String]
-#     # Email address
-#     ${UserDetailEmailAddress},
-
-#     [Parameter()]
-#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-#     [System.String]
-#     # First name
-#     ${UserDetailFirstName},
-
-#     [Parameter()]
-#     [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-#     [System.String]
-#     # Last name
-#     ${UserDetailLastName},
+#     # Fleet name
+#     ${FleetName},
 
 #     [Parameter()]
 #     [Alias('AzureRMContext', 'AzureCredential')]
@@ -187,8 +125,7 @@
 #         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
 #         if ($preTelemetryId -eq '') {
 #             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-#             [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet) # ???
-#             # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+#             [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
 #         } else {
 #             $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
 #             if ($internalCalledCmdlets -eq '') {
@@ -200,7 +137,7 @@
 #         }
 
 #         $mapping = @{
-#             CreateExpanded = 'Az.ComputeFleet.private\New-AzComputeFleetOrganization_CreateExpanded';
+#             CreateExpanded = 'Az.ComputeFleet.private\NewFleet_Create';
 #         }
 #         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
 #             $testPlayback = $false
@@ -249,8 +186,7 @@
 #         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
 #         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
 #         if ($preTelemetryId -eq '') {
-#             [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet) # ???
-#             # [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+#             [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
 #             [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
 #         }
 #         [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
