@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+Breaking change:
+* Removed parameters `Location`, `PoolName`, `VolumeName` from `Get-AzNetAppFilesBackup`, `New-AzNetAppFilesBackup`, `Update-AzNetAppFilesBackup`, `Remove-AzNetAppFilesBackup` and `Restore-AzNetAppFilesBackupFile`
+* 
 ## Version 0.18.0
 * Fixed some minor issues
 * Added `SnapshotName` to `New-AzNetAppFilesBackup`

@@ -51,7 +51,7 @@ Restore the specified files from the specified backup to the active filesystem
 ```powershell
 $fileList = New-Object string[] 1
 $fileList[0] = "/dir1/customer1.db"
-Restore-AzNetAppFilesBackupFile -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyVolume" -BackupName "MyBackup" -FileList $fileList -DestinationVolumeId "destinationVolumeResourceId"
+Restore-AzNetAppFilesBackupFile -ResourceGroupName "MyRG" -AccountName "MyAccount" -BackupVaultName "MyVault" -BackupName "MyBackup" -FileList $fileList -DestinationVolumeId "destinationVolumeResourceId"
 ```
 
 This command Restores the file customer1.db from "MyBackup" to the specified destingation volume
