@@ -41,8 +41,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ActivityLogAlert", "..\.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Autoscale", "..\..\generated\Monitor\Autoscale.Autorest\Az.Autoscale.csproj", "{5FD7A770-6F8F-4A8E-8285-5076ED5451C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataCollectionRule", "..\..\generated\Monitor\DataCollectionRule.Autorest\Az.DataCollectionRule.csproj", "{E2153850-BEA6-4190-9468-8146B421267A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DiagnosticSetting", "..\..\generated\Monitor\DiagnosticSetting.Autorest\Az.DiagnosticSetting.csproj", "{186427F0-7029-484E-AA95-5C76FBAA4FBC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MetricData", "..\..\generated\Monitor\MetricData.Autorest\Az.MetricData.csproj", "{05E2DF8B-AFD1-4C3F-A703-179A369C0DAC}"
@@ -54,6 +52,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ApplicationInsights", "..\..\generated\ApplicationInsights\ApplicationInsights.Autorest\Az.ApplicationInsights.csproj", "{E4A033B3-2058-474C-97EB-68CC1FD6987B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.PipelineGroup", "..\..\generated\Monitor\PipelineGroup.Autorest\Az.PipelineGroup.csproj", "{B4F3C4B3-F54D-4C74-96F2-7F21CD8362B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataCollectionRule", "..\..\generated\Monitor\DataCollectionRule.Autorest\Az.DataCollectionRule.csproj", "{902B48A0-D987-42FA-BD60-C4A9803340C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -128,10 +128,6 @@ Global
 		{5FD7A770-6F8F-4A8E-8285-5076ED5451C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FD7A770-6F8F-4A8E-8285-5076ED5451C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FD7A770-6F8F-4A8E-8285-5076ED5451C1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2153850-BEA6-4190-9468-8146B421267A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2153850-BEA6-4190-9468-8146B421267A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2153850-BEA6-4190-9468-8146B421267A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2153850-BEA6-4190-9468-8146B421267A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{186427F0-7029-484E-AA95-5C76FBAA4FBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{186427F0-7029-484E-AA95-5C76FBAA4FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{186427F0-7029-484E-AA95-5C76FBAA4FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -156,6 +152,10 @@ Global
 		{B4F3C4B3-F54D-4C74-96F2-7F21CD8362B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4F3C4B3-F54D-4C74-96F2-7F21CD8362B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4F3C4B3-F54D-4C74-96F2-7F21CD8362B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{902B48A0-D987-42FA-BD60-C4A9803340C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{902B48A0-D987-42FA-BD60-C4A9803340C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{902B48A0-D987-42FA-BD60-C4A9803340C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{902B48A0-D987-42FA-BD60-C4A9803340C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{99E9B517-1C84-47CA-8364-F4F1C25EC656} = {EAA233B5-64B2-4DB0-991A-DD490E0B252B}
