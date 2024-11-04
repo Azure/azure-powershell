@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed breaking change warnings for MI best practices 
+    - `New-AzElasticSanVolumeGroup`
+    - `Update-AzElasticSanVolumeGroup`
 
 ## Version 1.1.0
 * Supported `EnforceDataIntegrityCheckForIscsi` for creating and updating volume groups
