@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Get ComputeFleet.
+Get Fleet resource
 .Description
-Get ComputeFleet.
+Get Fleet resource
 .Example
 Get-AzComputeFleet
 

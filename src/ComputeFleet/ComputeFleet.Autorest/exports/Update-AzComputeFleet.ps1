@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Update ComputeFleet.
+Update Fleet resource
 .Description
-Update ComputeFleet.
+Update Fleet resource
 .Example
 Update-AzComputeFleet -SubscriptionId "00000000-0000-0000-0000-000000000000" -ResourceGroupName azure-rg-test -FleetName testFleet
 
