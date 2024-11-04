@@ -128,7 +128,7 @@ function IsAmd64 {
 function Get-AzureHelmPath {
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param(
-        [string[]]$ChildPaths
+        [string]$ChildPath
     )
 
     # The top-level directory is always determined from HOME or USERPROFILE 
@@ -142,11 +142,12 @@ function Get-AzureHelmPath {
     else {
         throw "No environment to use as Azure/helm path root."
     }
-    $Path = Join-Path -Path $Path '.azure'
 
-    foreach ($childPath in $ChildPaths) {
-        $Path = Join-Path $Path -ChildPath $childPath
-    }
+    # In Powershell v5.1 (Desktop), Join-Path lacks the AdditionalChildPaths
+    # argument so we have to avoid using it.
+    $Path = Join-Path -Path $Path -ChildPath '.azure'
+    $Path = Join-Path -Path $Path -ChildPath $ChildPath
+
     return $Path
 }
 function Get-HelmValue {
