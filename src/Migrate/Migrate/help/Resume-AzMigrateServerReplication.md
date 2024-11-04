@@ -15,13 +15,13 @@ Starts the replication that has been suspended.
 ### ByIDVMwareCbt (Default)
 ```
 Resume-AzMigrateServerReplication -TargetObjectID <String> [-DeleteMigratedResource] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
 Resume-AzMigrateServerReplication [-DeleteMigratedResource] [-SubscriptionId <String>]
- -InputObject <IMigrationItem> [-DefaultProfile <PSObject>] [-WhatIf]
+ -InputObject <IMigrationItem> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -129,11 +129,26 @@ The server object can be retrieved using the Get-AzMigrateServerReplication cmdl
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IMigrationItem
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -209,7 +224,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202401.IJob
 
 ## NOTES
 
