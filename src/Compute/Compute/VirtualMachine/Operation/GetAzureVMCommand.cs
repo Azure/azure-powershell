@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string ListLocationVirtualMachinesParamSet = "ListLocationVirtualMachinesParamSet";
         protected const string GetVirtualMachineById = "GetVirtualMachineById";
         private const string InfoNotAvailable = "Info Not Available";
-        private const int MaxNumVMforStatus = 100;
+        private const int MaxNumVMforStatus = 8000;
         private InstanceViewTypes UserDataExpand = InstanceViewTypes.UserData;
 
         [Parameter(
