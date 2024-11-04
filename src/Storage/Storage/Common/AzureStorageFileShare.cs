@@ -14,16 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
-    using Microsoft.Azure.Storage.Blob;
     using System;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
-    using Microsoft.Azure.Storage.File;
-    using Microsoft.WindowsAzure.Commands.Storage;
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using global::Azure.Storage.Files.Shares.Models;
-    using Microsoft.Azure.Storage.Auth;
     using System.Management.Automation;
 
     /// <summary>
@@ -31,13 +27,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     /// </summary>
     public class AzureStorageFileShare : AzureStorageBase
     {
-        /// <summary>
-        /// CloudBlob object
-        /// </summary>    
-        [Ps1Xml(Label = "Share Uri", Target = ViewControl.Table, GroupByThis = true, ScriptBlock = "$_.CloudFile.Share.Uri")]
-        [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.Name", Position = 0, TableColumnWidth = 20)]
-        public CloudFileShare CloudFileShare { get; private set; }
-
         /// <summary>
         /// The Snapshot time of the share
         /// </summary>
@@ -64,28 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// </summary>
         public int? Quota { get; private set; }
 
-        /// <summary>
-        /// XSCL Track2 File Share Client, used to run file APIs
-        /// </summary>
-        public ShareClient ShareClient
-        {
-            get
-            {
-                if (privateShareClient == null)
-                {
-                    if (this.IsDeleted == null || !this.IsDeleted.Value)
-                    {
-                        privateShareClient = GetTrack2FileShareClient(this.CloudFileShare, (AzureStorageContext)this.Context);
-                    }
-                    else
-                    {
-                        throw new InvalidJobStateException("This share is already deleted. Can't create ShareClient for it.");
-                    }
-                }
-                return privateShareClient;
-            }
-        }
-        private ShareClient privateShareClient = null;
+        public ShareClient ShareClient { get; private set; }
 
         /// <summary>
         /// XSCL Track2 File Share properties, will retrieve the properties on server and return to user
@@ -117,29 +85,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         private ShareServiceClient shareService { get; set; }
 
         /// <summary>
-        /// Azure storage file constructor
-        /// </summary>
-        /// <param name="share">Cloud file share object</param>
-        /// <param name="storageContext">Storage context containing account information used to construct ShareClient.</param>
-        public AzureStorageFileShare(CloudFileShare share, AzureStorageContext storageContext)
-        {
-            Name = share.Name;
-            CloudFileShare = share;
-            LastModified = share.Properties.LastModified;
-            IsSnapshot = share.IsSnapshot;
-            SnapshotTime = share.SnapshotTime;
-            Quota = share.Properties.Quota;
-            Context = storageContext;
-        }
-
-        /// <summary>
         /// Azure storage file share constructor from Track2 get file properties output
         /// </summary>
         public AzureStorageFileShare(ShareClient shareClient, AzureStorageContext storageContext, ShareProperties shareProperties = null, ShareClientOptions clientOptions = null)
         {
             Name = shareClient.Name;
-            this.privateShareClient = shareClient;
-            CloudFileShare = GetTrack1FileShareClient(shareClient, storageContext.StorageAccount.Credentials);
+            this.ShareClient = shareClient;
             if (shareProperties != null)
             {
                 privateShareProperties = shareProperties;
@@ -161,8 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public AzureStorageFileShare(ShareClient shareClient, AzureStorageContext storageContext, ShareItem shareItem, ShareClientOptions clientOptions = null)
         {
             Name = shareClient.Name;
-            //this.privateShareClient = shareClient;
-            CloudFileShare = GetTrack1FileShareClient(shareClient, storageContext.StorageAccount.Credentials);
+            this.ShareClient = shareClient;
             if (shareItem != null)
             {
                 this.ListShareProperties = shareItem;
@@ -178,8 +128,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
                 {
                     SnapshotTime = DateTimeOffset.Parse(shareItem.Snapshot).ToUniversalTime();
                     IsSnapshot = true;
-                    this.privateShareClient = GetTrack2FileShareClient(CloudFileShare, storageContext, clientOptions);
-                    this.privateShareClient = this.privateShareClient.WithSnapshot(shareItem.Snapshot);
+                    this.ShareClient = this.ShareClient.WithSnapshot(shareItem.Snapshot);
                 }
             }
             Context = storageContext;
@@ -225,53 +174,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             {
                 throw new InvalidJobStateException("This share is not soft deleted, so can't undelete it.");
             }
-        }
-
-        // Convert Track2 File share object to Track 1 file share object
-        public static CloudFileShare GetTrack1FileShareClient(ShareClient shareClient, StorageCredentials credentials)
-        {
-            if (credentials.IsToken)
-            {
-                return new InvalidCloudFileShare(shareClient.Uri, credentials);
-            }
-            if (credentials.IsSAS) // the Uri already contains credentail.
-            {
-                credentials = null;
-            }
-            CloudFileShare track1CloudFileShare = new CloudFileShare(shareClient.Uri, credentials);
-            return track1CloudFileShare;
-        }
-
-        // Convert Track1 File share object to Track 2 file share Client
-        public static ShareClient GetTrack2FileShareClient(CloudFileShare cloudFileShare, AzureStorageContext context, ShareClientOptions clientOptions = null)
-        {
-            ShareClient fileShareClient;
-            if (cloudFileShare.ServiceClient.Credentials.IsSAS) //SAS
-            {
-                string sas = Util.GetSASStringWithoutQuestionMark(cloudFileShare.ServiceClient.Credentials.SASToken);
-                string fullUri = cloudFileShare.SnapshotQualifiedUri.ToString();
-                if (cloudFileShare.IsSnapshot)
-                {
-                    // Since snapshot URL already has '?', need remove '?' in the first char of sas
-                    fullUri = fullUri + "&" + sas;
-                }
-                else
-                {
-                    fullUri = fullUri + "?" + sas;
-                }
-                fileShareClient = new ShareClient(new Uri(fullUri), clientOptions);
-            }
-            else if (cloudFileShare.ServiceClient.Credentials.IsSharedKey) //Shared Key
-            {
-                fileShareClient = new ShareClient(cloudFileShare.SnapshotQualifiedUri,
-                    new StorageSharedKeyCredential(cloudFileShare.ServiceClient.Credentials.AccountName, cloudFileShare.ServiceClient.Credentials.ExportBase64EncodedKey()), clientOptions);
-            }
-            else //Anonymous
-            {
-                fileShareClient = new ShareClient(cloudFileShare.SnapshotQualifiedUri, clientOptions);
-            }
-
-            return fileShareClient;
         }
     }
 }
