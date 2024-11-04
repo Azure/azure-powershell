@@ -202,6 +202,85 @@ function Test-subnetCRUD
     }
 }
 
+function Test-VirtualNetworkCRUDWithIpamPool
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = "centraluseuap"
+    $networkManagerName = Get-ResourceName
+    $ipamPoolName = Get-ResourceName
+    $rglocation = "centraluseuap"
+    $subscriptionId = "/subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359"
+    $addressPrefixes  = @("10.0.0.0/8")
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create Scope
+        $subscriptions  = @($subscriptionId)
+        $scope = New-AzNetworkManagerScope -Subscription $subscriptions
+
+        # Define access
+        $access  = @("SecurityAdmin")
+
+        # Create network manager
+        New-AzNetworkManager -ResourceGroupName $rgName -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
+
+        # Create ipam pool
+        New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefix $addressPrefixes
+        $ipamPool = Get-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName
+        Assert-NotNull $ipamPool;
+
+        # Create the Virtual Network
+        $ipamPoolPrefixAllocation = [PSCustomObject]@{
+            Id = $ipamPool.Id
+            NumberOfIpAddresses = "256"
+        }
+
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -IpamPoolPrefixAllocation $ipamPoolPrefixAllocation
+        $job = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -IpamPoolPrefixAllocation $ipamPoolPrefixAllocation -Subnet $subnet -AsJob
+        $job | Wait-Job
+        $actual = $job | Receive-Job
+        $expected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        
+        Assert-AreEqual $expected.ResourceGroupName $rgname    
+        Assert-AreEqual $expected.Name $actual.Name    
+        Assert-AreEqual $expected.Location $actual.Location
+        Assert-AreEqual "Succeeded" $expected.ProvisioningState
+        Assert-NotNull $expected.ResourceGuid
+        Assert-AreEqual "10.0.0.0/24" $expected.AddressSpace.AddressPrefixes[0]
+        Assert-AreEqual $expected.AddressSpace.IpamPoolPrefixAllocations.Count 1;
+        Assert-AreEqual $expected.AddressSpace.IpamPoolPrefixAllocations[0].Id $ipamPool.Id;
+        Assert-AreEqual $expected.AddressSpace.IpamPoolPrefixAllocations[0].NumberOfIpAddresses "256";
+
+        Assert-AreEqual 1 @($expected.Subnets).Count
+        Assert-AreEqual $subnetName $expected.Subnets[0].Name
+        Assert-AreEqual "10.0.0.0/24" $expected.Subnets[0].AddressPrefix
+        Assert-AreEqual $expected.Subnets[0].IpamPoolPrefixAllocations.Count 1;
+        Assert-AreEqual $expected.Subnets[0].IpamPoolPrefixAllocations[0].Id $ipamPool.Id;
+        Assert-AreEqual $expected.Subnets[0].IpamPoolPrefixAllocations[0].NumberOfIpAddresses "256";
+        
+        # Delete VirtualNetwork
+        $job = Remove-AzVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force -AsJob
+        $job | Wait-Job
+        $delete = $job | Receive-Job
+        Assert-AreEqual true $delete
+                
+        $list = Get-AzVirtualNetwork -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 <#
 .SYNOPSIS
 Tests creating new simple virtualNetwork and subnets.

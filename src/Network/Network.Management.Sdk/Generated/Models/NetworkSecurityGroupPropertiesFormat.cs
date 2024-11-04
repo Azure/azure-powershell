@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the network security group resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public NetworkSecurityGroupPropertiesFormat(bool? flushConnection = default(bool?), System.Collections.Generic.IList<SecurityRule> securityRules = default(System.Collections.Generic.IList<SecurityRule>), System.Collections.Generic.IList<SecurityRule> defaultSecurityRules = default(System.Collections.Generic.IList<SecurityRule>), System.Collections.Generic.IList<NetworkInterface> networkInterfaces = default(System.Collections.Generic.IList<NetworkInterface>), System.Collections.Generic.IList<Subnet> subnets = default(System.Collections.Generic.IList<Subnet>), System.Collections.Generic.IList<FlowLog> flowLogs = default(System.Collections.Generic.IList<FlowLog>), string resourceGuid = default(string), string provisioningState = default(string))
 
         {
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public string ResourceGuid {get; private set; }
 
         /// <summary>
-        /// Gets the provisioning state of the network security group resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the network security group resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

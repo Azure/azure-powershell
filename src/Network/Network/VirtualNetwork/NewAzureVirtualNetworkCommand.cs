@@ -54,11 +54,17 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
-        [ValidateNotNullOrEmpty]
         public string[] AddressPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "IpamPool to auto allocate from for virtual network address prefixes.")]
+        [ValidateNotNullOrEmpty]
+        public PSIpamPoolPrefixAllocation[] IpamPoolPrefixAllocation { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -165,6 +171,11 @@ namespace Microsoft.Azure.Commands.Network
                 Location = Location,
                 AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix?.ToList()}
             };
+
+            if (IpamPoolPrefixAllocation?.Length > 0)
+            {
+                vnet.AddressSpace.IpamPoolPrefixAllocations = IpamPoolPrefixAllocation.ToList();
+            }
 
             if (DnsServer != null)
             {

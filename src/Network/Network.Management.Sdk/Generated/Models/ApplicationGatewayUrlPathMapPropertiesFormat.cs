@@ -43,7 +43,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the URL path map resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public ApplicationGatewayUrlPathMapPropertiesFormat(SubResource defaultBackendAddressPool = default(SubResource), SubResource defaultBackendHttpSettings = default(SubResource), SubResource defaultRewriteRuleSet = default(SubResource), SubResource defaultRedirectConfiguration = default(SubResource), SubResource defaultLoadDistributionPolicy = default(SubResource), System.Collections.Generic.IList<ApplicationGatewayPathRule> pathRules = default(System.Collections.Generic.IList<ApplicationGatewayPathRule>), string provisioningState = default(string))
 
         {
@@ -100,7 +101,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<ApplicationGatewayPathRule> PathRules {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the URL path map resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the URL path map resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }

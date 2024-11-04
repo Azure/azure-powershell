@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the NAT rule collection resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
         public AzureFirewallNatRuleCollectionProperties(int? priority = default(int?), AzureFirewallNatRCAction action = default(AzureFirewallNatRCAction), System.Collections.Generic.IList<AzureFirewallNatRule> rules = default(System.Collections.Generic.IList<AzureFirewallNatRule>), string provisioningState = default(string))
 
         {
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Management.Network.Models
         public System.Collections.Generic.IList<AzureFirewallNatRule> Rules {get; set; }
 
         /// <summary>
-        /// Gets the provisioning state of the NAT rule collection resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the NAT rule collection resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
