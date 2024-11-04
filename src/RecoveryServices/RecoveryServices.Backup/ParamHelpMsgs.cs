@@ -181,6 +181,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TargetVNetResourceGroup = "Name of the resource group which contains the target VNet, in the case of Alternate Location restore to a new VM";
             public const string TargetSubnetName = "Name of the subnet in which the target VM should be created, in the case of Alternate Location restore to a new VM";
             public const string TargetSubscriptionId = "ID of the target subscription to which the resource should be restored. Use this parameter for Cross subscription restore";
+            public const string DiskAccessOption = "Specifies the disk access option for target disks";
+            public const string TargetDiskAccessId = "Specifies the target disk access ID when DiskAccessOption set to EnablePrivateAccessForAllDisks";
         }
 
         internal static class RestoreFS
