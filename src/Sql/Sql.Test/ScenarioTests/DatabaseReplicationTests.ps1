@@ -270,7 +270,7 @@ function Test-GetReplicationLink()
 		 -DatabaseName $database.DatabaseName -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName
 		Assert-NotNull $secondary.LinkId
 		Assert-NotNull $secondary.LinkType
-		Assert-AreEqual $secondary.ResourceGroupName $rg.ResourceGroupNamec
+		Assert-AreEqual $secondary.ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $secondary.ServerName $server.ServerName
 		Assert-AreEqual $secondary.DatabaseName $database.DatabaseName
 		Assert-AreEqual $secondary.Role Primary
