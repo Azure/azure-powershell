@@ -18,6 +18,30 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrated following Azure Storage File dataplane cmdlets from 'Microsoft.Azure.Storage.File' to 'Azure.Storage.Files.Shares'
+    - `Close-AzStorageFileHandle`
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `Get-AzStorageFileCopyState`
+    - `Get-AzStorageFileHandle`
+    - `Get-AzStorageShare`
+    - `Get-AzStorageShareStoredAccessPolicy`
+    - `New-AzStorageDirectory`
+    - `New-AzStorageShare`
+    - `New-AzStorageFileSASToken`
+    - `New-AzStorageShareSASToken`
+    - `New-AzStorageShareStoredAccessPolicy`
+    - `Remove-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Remove-AzStorageShare`
+    - `Remove-AzStorageShareStoredAccessPolicy`
+    - `Rename-AzStorageDirectory`
+    - `Rename-AzStorageFile`
+    - `Set-AzStorageFileContent`
+    - `Set-AzStorageShareQuota`
+    - `Set-AzStorageShareStoredAccessPolicy`
+    - `Start-AzStorageFileCopy`
+    - `Stop-AzStorageFileCopy`
 
 ## Version 7.4.0
 * Added a warning for an upcoming breaking change for removing references to "Microsoft.Azure.Storage.File"

@@ -16,33 +16,32 @@ Lists file handles of a file share, a file directory or a file.
 ```
 Get-AzStorageFileHandle [-ShareName] <String> [[-Path] <String>] [-Recursive] [-DisAllowTrailingDot]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### Share
 ```
-Get-AzStorageFileHandle [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [[-Path] <String>] [-Recursive]
+Get-AzStorageFileHandle [-ShareClient] <ShareClient> [[-Path] <String>] [-Recursive]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### Directory
 ```
-Get-AzStorageFileHandle [-Directory] <CloudFileDirectory> [-ShareDirectoryClient <ShareDirectoryClient>]
- [[-Path] <String>] [-Recursive] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>]
- [<CommonParameters>]
+Get-AzStorageFileHandle [-ShareDirectoryClient] <ShareDirectoryClient> [[-Path] <String>] [-Recursive]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### File
 ```
-Get-AzStorageFileHandle [-File] <CloudFile> [-ShareFileClient <ShareFileClient>] [-Recursive]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzStorageFileHandle [-ShareFileClient <ShareFileClient>] [-Recursive] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,21 +160,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Directory
-CloudFileDirectory object indicated the base folder where the files/directories would be listed.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFileDirectory
-Parameter Sets: Directory
-Aliases: CloudFileDirectory
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -DisAllowTrailingDot
 Disallow trailing dot (.) to suffix directory and file names.
 
@@ -188,21 +172,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -File
-CloudFile object indicated the file to list File Handles.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFile
-Parameter Sets: File
-Aliases: CloudFile
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -252,21 +221,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Share
-CloudFileShare object indicated the share where the files/directories would be listed.
-
-```yaml
-Type: Microsoft.Azure.Storage.File.CloudFileShare
-Parameter Sets: Share
-Aliases: CloudFileShare
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -ShareClient
 ShareClient object indicated the share where the files/directories would list File Handles
 
@@ -275,8 +229,8 @@ Type: Azure.Storage.Files.Shares.ShareClient
 Parameter Sets: Share
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -290,8 +244,8 @@ Type: Azure.Storage.Files.Shares.ShareDirectoryClient
 Parameter Sets: Directory
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -378,15 +332,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Storage.File.CloudFileShare
+### Azure.Storage.Files.Shares.ShareClient
 
-### Microsoft.Azure.Storage.File.CloudFileDirectory
+### Azure.Storage.Files.Shares.ShareDirectoryClient
+
+### Azure.Storage.Files.Shares.ShareFileClient
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 
-### Microsoft.Azure.Storage.File.FileHandleResultSegment
+### Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSFileHandle
 
 ## NOTES
 

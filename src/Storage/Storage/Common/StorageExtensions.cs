@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
 
             string sasToken = GetFileSASToken(file, disableTrailingDot);
-            
+
             if (string.IsNullOrEmpty(sasToken))
             {
                 return file.SnapshotQualifiedUri;
