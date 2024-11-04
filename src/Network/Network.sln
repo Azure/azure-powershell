@@ -61,29 +61,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Management.Sdk", "..\KeyVault\KeyVault.Management.Sdk\KeyVault.Management.Sdk.csproj", "{66BD1E20-2B2A-415C-80E0-8DAEFF9A4E36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Compute", "..\..\generated\Compute\Compute.Autorest\Az.Compute.csproj", "{B4DA5552-0DA5-431A-B1D0-9A3376806A5D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.KeyVault", "..\..\generated\KeyVault\KeyVault.Autorest\Az.KeyVault.csproj", "{7EC3CFAA-67E7-4199-A0A2-7B78B089801F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ManagedServiceIdentity", "..\..\generated\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj", "{720DB887-8593-4731-96BC-7DC99E70E7B8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ActionGroup", "..\..\generated\Monitor\ActionGroup.Autorest\Az.ActionGroup.csproj", "{FD4A113D-A005-4E19-A7DB-C3CD0665493A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ActivityLogAlert", "..\..\generated\Monitor\ActivityLogAlert.Autorest\Az.ActivityLogAlert.csproj", "{A4465178-324D-4F5A-9CF0-AB281549D6A3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Autoscale", "..\..\generated\Monitor\Autoscale.Autorest\Az.Autoscale.csproj", "{7E2BF607-C762-4811-AE39-AD8C3D22508B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DataCollectionRule", "..\..\generated\Monitor\DataCollectionRule.Autorest\Az.DataCollectionRule.csproj", "{F54ED131-8175-4ECD-897B-67AF3412C79C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DiagnosticSetting", "..\..\generated\Monitor\DiagnosticSetting.Autorest\Az.DiagnosticSetting.csproj", "{2F23A27F-4C4D-4234-92DF-C9EB34C0BD12}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Metricdata", "..\..\generated\Monitor\MetricData.Autorest\Az.Metricdata.csproj", "{658C495A-4A4C-4AFB-B47E-EEBE793D37C0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MonitorWorkspace", "..\..\generated\Monitor\MonitorWorkspace.Autorest\Az.MonitorWorkspace.csproj", "{7FB2C03D-600F-401A-BB26-0B7F47D7D43F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScheduledQueryRule", "..\..\generated\Monitor\ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj", "{3101CB7D-0516-48B3-B5F9-0173168527CB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Storage", "..\..\generated\Storage\Storage.Autorest\Az.Storage.csproj", "{E3C2497E-7660-450A-BD1E-C17013E95AE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.PipelineGroup", "..\Monitor\PipelineGroup.Autorest\Az.PipelineGroup.csproj", "{C1362419-9C04-46F7-A72A-CF71D9A2F53A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -195,54 +173,10 @@ Global
 		{66BD1E20-2B2A-415C-80E0-8DAEFF9A4E36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66BD1E20-2B2A-415C-80E0-8DAEFF9A4E36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66BD1E20-2B2A-415C-80E0-8DAEFF9A4E36}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4DA5552-0DA5-431A-B1D0-9A3376806A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4DA5552-0DA5-431A-B1D0-9A3376806A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4DA5552-0DA5-431A-B1D0-9A3376806A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4DA5552-0DA5-431A-B1D0-9A3376806A5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7EC3CFAA-67E7-4199-A0A2-7B78B089801F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7EC3CFAA-67E7-4199-A0A2-7B78B089801F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7EC3CFAA-67E7-4199-A0A2-7B78B089801F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7EC3CFAA-67E7-4199-A0A2-7B78B089801F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{720DB887-8593-4731-96BC-7DC99E70E7B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{720DB887-8593-4731-96BC-7DC99E70E7B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{720DB887-8593-4731-96BC-7DC99E70E7B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{720DB887-8593-4731-96BC-7DC99E70E7B8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD4A113D-A005-4E19-A7DB-C3CD0665493A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD4A113D-A005-4E19-A7DB-C3CD0665493A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD4A113D-A005-4E19-A7DB-C3CD0665493A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD4A113D-A005-4E19-A7DB-C3CD0665493A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A4465178-324D-4F5A-9CF0-AB281549D6A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4465178-324D-4F5A-9CF0-AB281549D6A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4465178-324D-4F5A-9CF0-AB281549D6A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4465178-324D-4F5A-9CF0-AB281549D6A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7E2BF607-C762-4811-AE39-AD8C3D22508B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E2BF607-C762-4811-AE39-AD8C3D22508B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E2BF607-C762-4811-AE39-AD8C3D22508B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E2BF607-C762-4811-AE39-AD8C3D22508B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F54ED131-8175-4ECD-897B-67AF3412C79C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F54ED131-8175-4ECD-897B-67AF3412C79C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F54ED131-8175-4ECD-897B-67AF3412C79C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F54ED131-8175-4ECD-897B-67AF3412C79C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F23A27F-4C4D-4234-92DF-C9EB34C0BD12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F23A27F-4C4D-4234-92DF-C9EB34C0BD12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F23A27F-4C4D-4234-92DF-C9EB34C0BD12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F23A27F-4C4D-4234-92DF-C9EB34C0BD12}.Release|Any CPU.Build.0 = Release|Any CPU
-		{658C495A-4A4C-4AFB-B47E-EEBE793D37C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{658C495A-4A4C-4AFB-B47E-EEBE793D37C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{658C495A-4A4C-4AFB-B47E-EEBE793D37C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{658C495A-4A4C-4AFB-B47E-EEBE793D37C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FB2C03D-600F-401A-BB26-0B7F47D7D43F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FB2C03D-600F-401A-BB26-0B7F47D7D43F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FB2C03D-600F-401A-BB26-0B7F47D7D43F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FB2C03D-600F-401A-BB26-0B7F47D7D43F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3101CB7D-0516-48B3-B5F9-0173168527CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3101CB7D-0516-48B3-B5F9-0173168527CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3101CB7D-0516-48B3-B5F9-0173168527CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3101CB7D-0516-48B3-B5F9-0173168527CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3C2497E-7660-450A-BD1E-C17013E95AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3C2497E-7660-450A-BD1E-C17013E95AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3C2497E-7660-450A-BD1E-C17013E95AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3C2497E-7660-450A-BD1E-C17013E95AE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1362419-9C04-46F7-A72A-CF71D9A2F53A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1362419-9C04-46F7-A72A-CF71D9A2F53A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1362419-9C04-46F7-A72A-CF71D9A2F53A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1362419-9C04-46F7-A72A-CF71D9A2F53A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -273,5 +207,6 @@ Global
 		{F048F7DB-0949-4846-A191-C5877212C008} = {64E7C944-C1C6-401E-AF80-F7B1C94C45D2}
 		{BE9114D3-FCC6-412D-927A-1EA60FF4D357} = {2DA02D7C-D132-4B90-8306-886B6959B6C6}
 		{66BD1E20-2B2A-415C-80E0-8DAEFF9A4E36} = {64E7C944-C1C6-401E-AF80-F7B1C94C45D2}
+		{C1362419-9C04-46F7-A72A-CF71D9A2F53A} = {64E7C944-C1C6-401E-AF80-F7B1C94C45D2}
 	EndGlobalSection
 EndGlobal
