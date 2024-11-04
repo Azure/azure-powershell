@@ -51,6 +51,7 @@ This command gets the backup named "MyVolumeBackup" from the Backup Vault "MyVau
 
 ### Example 2
 ```powershell
+$volumeResourceId = "/subscriptions/D633CC2E-722B-4AE1-B636-BBD9E4C60ED9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/MyAccount/capacityPools/MyPool/volumes/MyVolume"
 Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -BackupVaultName "MyVault"  -Filter $volumeResourceId
 ```
 
