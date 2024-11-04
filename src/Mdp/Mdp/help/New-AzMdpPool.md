@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Mdp-help.xml
 Module Name: Az.Mdp
 online version: https://learn.microsoft.com/powershell/module/az.mdp/new-azmdppool
 schema: 2.0.0
@@ -14,23 +14,33 @@ create a Pool
 
 ### CreateExpanded (Default)
 ```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity]
  [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>]
  [-ProvisioningState <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -Resource <IPool> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzMdpPool -InputObject <IMdpIdentity> -Resource <IPool> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Resource <IPool>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -39,19 +49,13 @@ New-AzMdpPool -InputObject <IMdpIdentity> -Location <String> [-AgentProfile <IAg
  [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity] [-FabricProfile <IFabricProfile>]
  [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### CreateViaJsonFilePath
+### CreateViaIdentity
 ```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMdpPool -InputObject <IMdpIdentity> -Resource <IPool> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,7 +177,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IMdpIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -249,7 +253,7 @@ It needs to be globally unique.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases: PoolName
 
 Required: True
@@ -281,6 +285,21 @@ Defines the organization in which the pool will be used.
 Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOrganizationProfile
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -325,7 +344,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: True
@@ -341,7 +360,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Create
 Aliases:
 
 Required: False
@@ -429,4 +448,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

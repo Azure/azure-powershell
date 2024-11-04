@@ -1,79 +1,70 @@
 ---
-external help file:
+external help file: Az.Mdp-help.xml
 Module Name: Az.Mdp
-online version: https://learn.microsoft.com/powershell/module/az.mdp/new-azmdppool
+online version: https://learn.microsoft.com/powershell/module/az.mdp/update-azmdppool
 schema: 2.0.0
 ---
 
-# New-AzMdpPool
+# Update-AzMdpPool
 
 ## SYNOPSIS
-create a Pool
+update a Pool
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity]
+Update-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AgentProfile <IAgentProfile>] [-DevCenterProjectResourceId <String>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>]
+ [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Update
+```
+Update-AzMdpPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Resource <IPool>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentityExpanded
+```
+Update-AzMdpPool -InputObject <IMdpIdentity> [-AgentProfile <IAgentProfile>]
+ [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity <Boolean>]
  [-FabricProfile <IFabricProfile>] [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>]
  [-ProvisioningState <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### Create
+### UpdateViaIdentity
 ```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -Resource <IPool> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzMdpPool -InputObject <IMdpIdentity> -Resource <IPool> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzMdpPool -InputObject <IMdpIdentity> -Location <String> [-AgentProfile <IAgentProfile>]
- [-DevCenterProjectResourceId <String>] [-EnableSystemAssignedIdentity] [-FabricProfile <IFabricProfile>]
- [-MaximumConcurrency <Int32>] [-OrganizationProfile <IOrganizationProfile>] [-ProvisioningState <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzMdpPool -Name <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMdpPool -InputObject <IMdpIdentity> -Resource <IPool> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a Pool
+update a Pool
 
 ## EXAMPLES
 
-### Example 1: Create a Managed DevOps Pool
+### Example 1: Update a Managed DevOps Pool
 ```powershell
-New-AzMdpPool -Name Contoso -ResourceGroupName testRG -Location westus -MaximumConcurrency 2 -DevCenterProjectResourceId "/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/example/providers/Microsoft.DevCenter/projects/contoso-proj" -AgentProfile '{"kind": "stateless"}' -OrganizationProfile '{"kind": "AzureDevOps","organizations": [{"url": "https://dev.azure.com/contoso-org","projects": null,"parallelism": 1}],"permissionProfile": {"kind": "CreatorOnly"}}' -FabricProfile '{"kind": "Vmss", "sku": {"name": "Standard_DS12_v2"}, "storageProfile": { "osDiskStorageAccountType": "Standard","dataDisks": []},"images": [{"resourceId": "/Subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/Providers/Microsoft.Compute/Locations/eastus2/Publishers/canonical/ArtifactTypes/VMImage/Offers/0001-com-ubuntu-server-focal/Skus/20_04-lts-gen2/versions/latest","buffer": "*"}]}'
+Update-AzMdpPool -Name Contoso -ResourceGroupName testRg -MaximumConcurrency 2 -Tag @{"tag1"= "value1"}
 ```
 
-This command creates a Managed DevOps Pool named "Contoso" under the resource group "testRG"
+This command updates a Managed DevOps Pool named "Contoso" under the resource group "testRG"
 
-### Example 2: Create a Managed DevOps Pool using InputObject
+### Example 2: Update a Managed DevOps Pool using InputObject
 ```powershell
 $pool = @{"ResourceGroupName" = "testRg"; "PoolName" = "Contoso"; "SubscriptionId" = "0ac520ee-14c0-480f-b6c9-0a90c58ffff"}
 
-New-AzMdpPool -InputObject $pool -Location westus -MaximumConcurrency 2 -DevCenterProjectResourceId "/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/example/providers/Microsoft.DevCenter/projects/contoso-proj" -AgentProfile '{"kind": "stateless"}' -OrganizationProfile '{"kind": "AzureDevOps","organizations": [{"url": "https://dev.azure.com/contoso-org","projects": null,"parallelism": 1}],"permissionProfile": {"kind": "CreatorOnly"}}' -FabricProfile '{"kind": "Vmss", "sku": {"name": "Standard_DS12_v2"}, "storageProfile": { "osDiskStorageAccountType": "Standard","dataDisks": []},"images": [{"resourceId": "/Subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/Providers/Microsoft.Compute/Locations/eastus2/Publishers/canonical/ArtifactTypes/VMImage/Offers/0001-com-ubuntu-server-focal/Skus/20_04-lts-gen2/versions/latest","buffer": "*"}]}'
+Update-AzMdpPool -InputObject $pool -MaximumConcurrency 2 -Tag @{"tag1"= "value1"}
 ```
 
-This command creates a Managed DevOps Pool named "Contoso" under the resource group "testRG"
+This command updates a Managed DevOps Pool named "Contoso" under the resource group "testRG"
 
 ## PARAMETERS
 
@@ -82,7 +73,7 @@ Defines how the machine will be handled once it executed a job.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IAgentProfile
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -128,7 +119,7 @@ The resource id of the DevCenter Project the pool belongs to.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -142,8 +133,8 @@ Accept wildcard characters: False
 Determines whether to enable a system-assigned identity for the resource.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -158,7 +149,7 @@ Defines the type of fabric the agent will run on.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IFabricProfile
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -173,7 +164,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IMdpIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -183,57 +174,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MaximumConcurrency
 Defines how many resources can there be created at any given time.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -249,7 +195,7 @@ It needs to be globally unique.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded, Update
 Aliases: PoolName
 
 Required: True
@@ -279,8 +225,23 @@ Defines the organization in which the pool will be used.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IOrganizationProfile
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -294,7 +255,7 @@ The status of the current operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -309,7 +270,7 @@ Concrete tracked resource types can be created by aliasing this type using a spe
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Mdp.Models.IPool
-Parameter Sets: Create, CreateViaIdentity
+Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -325,7 +286,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: True
@@ -341,7 +302,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: UpdateExpanded, Update
 Aliases:
 
 Required: False
@@ -356,7 +317,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -372,7 +333,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -429,4 +390,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

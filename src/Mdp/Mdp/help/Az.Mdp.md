@@ -1,14 +1,14 @@
 ---
 Module Name: Az.Mdp
-Module Guid: 75b3ea19-47a8-4653-ad9b-9da09d7380d1
-Download Help Link: https://learn.microsoft.com/powershell/module/az.mdp
-Help Version: 1.0.0.0
-Locale: en-US
+Module Guid: {{ Update Module Guid }}
+Download Help Link: {{ Update Download Link }}
+Help Version: {{ Update Help Version }}
+Locale: {{ Update Locale }}
 ---
 
 # Az.Mdp Module
 ## Description
-Microsoft Azure PowerShell: Mdp cmdlets
+{{ Fill in the Description }}
 
 ## Az.Mdp Cmdlets
 ### [Get-AzMdpPool](Get-AzMdpPool.md)
