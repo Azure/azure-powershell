@@ -90,6 +90,7 @@ function Merge-MaybeNullInput {
     $mergeFields = @(
         'WorkloadIdentityEnabled',
         'OidcIssuerProfileEnabled'
+        'OidcIssuerProfileSelfHostedIssuerUrl',
         'Distribution', 
         'DistributionVersion',
         'Infrastructure',
