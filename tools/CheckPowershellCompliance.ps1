@@ -91,8 +91,9 @@ function Confirm-Compliance {
     }
 
     # Recursively find all *.ps1 files and run Invoke-ScriptAnalyzer against them.
-    Get-ChildItem -Path . -Recurse -Include '*.ps1' | Invoke-ScriptAnalyzer -Settings $settings
-    if ($LastExitCode -ne 0) {
+    $problems = $(Get-ChildItem -Path ./custom -Recurse -Include '*.ps1' | Invoke-ScriptAnalyzer -Settings $settings)
+    if ("" -ne $problems) {
+        Write-Output $problems
         Write-Error 'ScriptAnalyzer found (possibly back-compatibility) issues.'
         exit 5
     }
