@@ -1,4 +1,3 @@
-
 # ----------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,15 +30,6 @@ function Get-AzComputeFleetOperation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IOperation])]
     [CmdletBinding(DefaultParameterSetName = 'ListOperation', PositionalBinding = $false)]
     param(
-        [Parameter()]
-        [Alias('AzureRMContext', 'AzureCredential')]
-        [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Azure')]
-        [System.Management.Automation.PSObject]
-        # The DefaultProfile parameter is not functional.
-        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
-        ${DefaultProfile},
-
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
