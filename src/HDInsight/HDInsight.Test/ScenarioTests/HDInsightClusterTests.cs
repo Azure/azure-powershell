@@ -118,9 +118,23 @@ namespace Commands.HDInsight.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateCluster()
+        public void TestUpdateClusterTags()
         {
-            TestRunner.RunTestScript("Test-UpdateClusterTagsAndIdentity");
+            TestRunner.RunTestScript("Test-UpdateClusterTags");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateClusterSystemAssigned()
+        {
+            TestRunner.RunTestScript("Test-UpdateClusterSystemAssigned");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateClusterUserAssigned()
+        {
+            TestRunner.RunTestScript("Test-UpdateClusterUserAssigned");
         }
     }
 }
