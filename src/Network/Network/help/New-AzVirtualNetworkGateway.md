@@ -30,7 +30,7 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-VpnGatewayGeneration <String>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
  [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AsJob] [-AdminState <String>]
  [-MinScaleUnit <Int32>] [-MaxScaleUnit <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Confirm] [<CommonParameters>] [-ResiliencyModel <String>]
 ```
 
 ## DESCRIPTION
@@ -632,6 +632,22 @@ P2S External Radius server secret.
 Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResiliencyModel
+Property to indicate Resiliency Model on the Express Route Gateway : SingleHomed/MultiHomed
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: SingleHomed, MultiHomed
 
 Required: False
 Position: Named
