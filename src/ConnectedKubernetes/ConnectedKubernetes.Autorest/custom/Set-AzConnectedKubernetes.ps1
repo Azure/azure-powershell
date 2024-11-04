@@ -78,6 +78,32 @@ INPUTOBJECT <IConnectedCluster>:
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/set-azconnectedkubernetes
 #>
+function Merge-MaybeNullInput {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    param(
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
+        $InputObject,
+        [System.Collections.Generic.Dictionary[system.String, System.Object]]
+        $LclPSBoundParameters
+    )
+
+    $mergeFields = @(
+        'WorkloadIdentityEnabled',
+        'OidcIssuerProfileEnabled'
+        'Distribution', 
+        'DistributionVersion',
+        'Infrastructure',
+        'PrivateLinkState'
+    )
+
+    foreach ($mergeField in $mergeFields) {
+        if ((-not $PSBoundParameters.ContainsKey($mergeField)) -and $InputObject.PSObject.Properties[$mergeField] -and $null -ne $InputObject.PSObject.Properties[$mergeField]) {
+            $parameterValue = $InputObject.PSObject.Properties[$mergeField]
+            $LclPSBoundParameters.Add($mergeField, $parameterValue)
+        }
+    }
+}
+
 function Set-AzConnectedKubernetes {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
@@ -421,36 +447,39 @@ function Set-AzConnectedKubernetes {
                 $DisableAutoUpgrade = ($InputObject.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')
             }
 
-            if ((-not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled')) -and $InputObject.PSObject.Properties['WorkloadIdentityEnabled']) {
-                $WorkloadIdentityEnabled = $InputObject.WorkloadIdentityEnabled
-                $PSBoundParameters.Add('WorkloadIdentityEnabled', $WorkloadIdentityEnabled)
-            }
+            # Merge the fields that use a common merging process.
+            Merge-MaybeNullInput -InputObject $InputObject -PSBoundParameters $PSBoundParameters
 
-            if ((-not $PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled')) -and $InputObject.OidcIssuerProfileEnabled) {
-                $OidcIssuerProfileEnabled = $true
-                $PSBoundParameters.Add('OidcIssuerProfileEnabled', $OidcIssuerProfileEnabled)
-            }
+            # if ((-not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled')) -and $InputObject.PSObject.Properties['WorkloadIdentityEnabled']) {
+            #     $WorkloadIdentityEnabled = $InputObject.WorkloadIdentityEnabled
+            #     $PSBoundParameters.Add('WorkloadIdentityEnabled', $WorkloadIdentityEnabled)
+            # }
 
-            if ((-not $PSBoundParameters.ContainsKey('OidcIssuerProfileSelfHostedIssuerUrl')) -and $InputObject.OidcIssuerProfileSelfHostedIssuerUrl) {
-                $OidcIssuerProfileEnabled = $true
-                $PSBoundParameters.Add('OidcIssuerProfileSelfHostedIssuerUrl', $InputObject.OidcIssuerProfileSelfHostedIssuerUrl)
-            }
-
-            if ((-not $PSBoundParameters.ContainsKey('Distribution')) -and $InputObject.PSObject.Properties['Distribution']) {
-                $PSBoundParameters.Add('Distribution', $InputObject.Distribution)
-            }
-
-            if ((-not $PSBoundParameters.ContainsKey('DistributionVersion')) -and $InputObject.PSObject.Properties['DistributionVersion']) {
-                $PSBoundParameters.Add('DistributionVersion', $InputObject.DistributionVersion)
-            }
-
-            if ((-not $PSBoundParameters.ContainsKey('Infrastructure')) -and $InputObject.PSObject.Properties['Infrastructure']) {
-                $PSBoundParameters.Add('Infrastructure', $InputObject.Infrastructure)
-            }
-
-            if ((-not $PSBoundParameters.ContainsKey('PrivateLinkState')) -and $InputObject.PSObject.Properties['PrivateLinkState']) {
-                $PSBoundParameters.Add('PrivateLinkState', $InputObject.PrivateLinkState)
-            }
+            # if ((-not $PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled')) -and $InputObject.OidcIssuerProfileEnabled) {
+            #     $OidcIssuerProfileEnabled = $true
+            #     $PSBoundParameters.Add('OidcIssuerProfileEnabled', $OidcIssuerProfileEnabled)
+            # }
+            # 
+            # if ((-not $PSBoundParameters.ContainsKey('OidcIssuerProfileSelfHostedIssuerUrl')) -and $InputObject.OidcIssuerProfileSelfHostedIssuerUrl) {
+            #     $OidcIssuerProfileEnabled = $true
+            #     $PSBoundParameters.Add('OidcIssuerProfileSelfHostedIssuerUrl', $InputObject.OidcIssuerProfileSelfHostedIssuerUrl)
+            # }
+            # 
+            # if ((-not $PSBoundParameters.ContainsKey('Distribution')) -and $InputObject.PSObject.Properties['Distribution']) {
+            #     $PSBoundParameters.Add('Distribution', $InputObject.Distribution)
+            # }
+            # 
+            # if ((-not $PSBoundParameters.ContainsKey('DistributionVersion')) -and $InputObject.PSObject.Properties['DistributionVersion']) {
+            #     $PSBoundParameters.Add('DistributionVersion', $InputObject.DistributionVersion)
+            # }
+            # 
+            # if ((-not $PSBoundParameters.ContainsKey('Infrastructure')) -and $InputObject.PSObject.Properties['Infrastructure']) {
+            #     $PSBoundParameters.Add('Infrastructure', $InputObject.Infrastructure)
+            # }
+            # 
+            # if ((-not $PSBoundParameters.ContainsKey('PrivateLinkState')) -and $InputObject.PSObject.Properties['PrivateLinkState']) {
+            #     $PSBoundParameters.Add('PrivateLinkState', $InputObject.PrivateLinkState)
+            # }
         }
 
         if ($PSBoundParameters.ContainsKey('GatewayResourceId')) {
@@ -847,3 +876,4 @@ function Set-AzConnectedKubernetes {
         }
     }
 }
+
