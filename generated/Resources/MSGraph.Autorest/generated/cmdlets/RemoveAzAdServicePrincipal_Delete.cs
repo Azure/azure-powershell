@@ -89,6 +89,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>Backing field for <see cref="Id" /> property.</summary>
+        private string _id;
+
+        /// <summary>key: id of servicePrincipal</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "key: id of servicePrincipal")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"key: id of servicePrincipal",
+        SerializedName = @"servicePrincipal-id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("ServicePrincipalId")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Path)]
+        public string Id { get => this._id; set => this._id = value; }
+
         /// <summary>Backing field for <see cref="IfMatch" /> property.</summary>
         private string _ifMatch;
 
@@ -141,20 +156,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Use the default credentials for the proxy")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
-
-        /// <summary>Backing field for <see cref="ServicePrincipalId" /> property.</summary>
-        private string _servicePrincipalId;
-
-        /// <summary>key: id of servicePrincipal</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "key: id of servicePrincipal")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"key: id of servicePrincipal",
-        SerializedName = @"servicePrincipal-id",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Path)]
-        public string ServicePrincipalId { get => this._servicePrincipalId; set => this._servicePrincipalId = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -363,12 +364,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ServicePrincipalsServicePrincipalDeleteServicePrincipal(ServicePrincipalId, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, onNoContent, onDefault, this, Pipeline);
+                    await this.Client.ServicePrincipalsServicePrincipalDeleteServicePrincipal(Id, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, onNoContent, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ServicePrincipalId=ServicePrincipalId,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Id=Id,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });

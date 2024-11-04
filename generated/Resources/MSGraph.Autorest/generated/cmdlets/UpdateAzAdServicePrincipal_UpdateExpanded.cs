@@ -377,6 +377,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>Backing field for <see cref="Id" /> property.</summary>
+        private string _id;
+
+        /// <summary>key: id of servicePrincipal</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "key: id of servicePrincipal")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"key: id of servicePrincipal",
+        SerializedName = @"servicePrincipal-id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("ServicePrincipalId")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Path)]
+        public string Id { get => this._id; set => this._id = value; }
+
         /// <summary>informationalUrl</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "informationalUrl")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
@@ -583,20 +598,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         SerializedName = @"samlSingleSignOnSettings",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSamlSingleSignOnSettings) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSamlSingleSignOnSettings SamlSingleSignOnSetting { get => _body.SamlSingleSignOnSetting ?? null /* object */; set => _body.SamlSingleSignOnSetting = value; }
-
-        /// <summary>Backing field for <see cref="ServicePrincipalId" /> property.</summary>
-        private string _servicePrincipalId;
-
-        /// <summary>key: id of servicePrincipal</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "key: id of servicePrincipal")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"key: id of servicePrincipal",
-        SerializedName = @"servicePrincipal-id",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Path)]
-        public string ServicePrincipalId { get => this._servicePrincipalId; set => this._servicePrincipalId = value; }
 
         /// <summary>
         /// Contains the list of identifiersUris, copied over from the associated application. Additional values can be added to hybrid
@@ -905,12 +906,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ServicePrincipalsServicePrincipalUpdateServicePrincipal(ServicePrincipalId, _body, onNoContent, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate);
+                    await this.Client.ServicePrincipalsServicePrincipalUpdateServicePrincipal(Id, _body, onNoContent, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ServicePrincipalId=ServicePrincipalId})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Id=Id})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
