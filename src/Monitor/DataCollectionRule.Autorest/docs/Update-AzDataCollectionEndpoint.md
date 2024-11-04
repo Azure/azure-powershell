@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzDataCollectionEndpoint
 
 ## SYNOPSIS
-Update part of a data collection endpoint.
+update a data collection endpoint.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Update-AzDataCollectionEndpoint -InputObject <IDataCollectionRuleIdentity> [-Des
 ```
 
 ## DESCRIPTION
-Update part of a data collection endpoint.
+update a data collection endpoint.
 
 ## EXAMPLES
 
