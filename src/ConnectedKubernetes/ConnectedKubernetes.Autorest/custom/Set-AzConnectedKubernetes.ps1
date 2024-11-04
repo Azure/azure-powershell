@@ -98,7 +98,7 @@ function Merge-MaybeNullInput {
     )
 
     foreach ($mergeField in $mergeFields) {
-        if ((-not $PSBoundParameters.ContainsKey($mergeField)) -and $InputObject.PSObject.Properties[$mergeField] -and $null -ne $InputObject.PSObject.Properties[$mergeField]) {
+        if ((-not $LclBoundParameters.ContainsKey($mergeField)) -and $InputObject.PSObject.Properties[$mergeField] -and $null -ne $InputObject.PSObject.Properties[$mergeField]) {
             $parameterValue = $InputObject.PSObject.Properties[$mergeField]
             $LclPSBoundParameters.Add($mergeField, $parameterValue)
         }
@@ -448,8 +448,12 @@ function Set-AzConnectedKubernetes {
                 $DisableAutoUpgrade = ($InputObject.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')
             }
 
+            Set-PSDebug 2
+
             # Merge the fields that use a common merging process.
-            Merge-MaybeNullInput -InputObject $InputObject -PSBoundParameters $PSBoundParameters
+            Merge-MaybeNullInput -InputObject $InputObject -LclPSBoundParameters $PSBoundParameters
+
+            Set-PSDebug 0
 
             # if ((-not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled')) -and $InputObject.PSObject.Properties['WorkloadIdentityEnabled']) {
             #     $WorkloadIdentityEnabled = $InputObject.WorkloadIdentityEnabled
