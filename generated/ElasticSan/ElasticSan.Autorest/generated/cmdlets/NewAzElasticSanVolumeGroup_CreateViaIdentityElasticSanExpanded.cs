@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Volume Group.</summary>
+    /// <summary>create a Volume Group.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzElasticSanVolumeGroup_CreateViaIdentityElasticSanExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroup))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"Create a Volume Group.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"create a Volume Group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}", ApiVersion = "2024-05-01")]
     public partial class NewAzElasticSanVolumeGroup_CreateViaIdentityElasticSanExpanded : global::System.Management.Automation.PSCmdlet,

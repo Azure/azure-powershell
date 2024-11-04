@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
     public partial class ElasticSan
     {
 
-        /// <summary>Create ElasticSan.</summary>
+        /// <summary>create ElasticSan.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create ElasticSan.</summary>
+        /// <summary>create ElasticSan.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Elastic San object.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create ElasticSan.</summary>
+        /// <summary>create ElasticSan.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Elastic San object.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create ElasticSan.</summary>
+        /// <summary>create ElasticSan.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create ElasticSan.</summary>
+        /// <summary>create ElasticSan.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create ElasticSan.</summary>
+        /// <summary>create ElasticSan.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -1865,7 +1865,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update a Elastic San.</summary>
+        /// <summary>update a Elastic San.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -1914,7 +1914,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update a Elastic San.</summary>
+        /// <summary>update a Elastic San.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Elastic San object.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1973,7 +1973,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update a Elastic San.</summary>
+        /// <summary>update a Elastic San.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Elastic San object.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2030,7 +2030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update a Elastic San.</summary>
+        /// <summary>update a Elastic San.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -2078,7 +2078,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update a Elastic San.</summary>
+        /// <summary>update a Elastic San.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -2124,7 +2124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update a Elastic San.</summary>
+        /// <summary>update a Elastic San.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -2780,7 +2780,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the Elastic San
+        /// update the state of specified private endpoint connection associated with the Elastic San
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -2834,7 +2834,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the Elastic San
+        /// update the state of specified private endpoint connection associated with the Elastic San
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Private Endpoint Connection Approval object.</param>
@@ -2898,7 +2898,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the Elastic San
+        /// update the state of specified private endpoint connection associated with the Elastic San
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Private Endpoint Connection Approval object.</param>
@@ -2960,7 +2960,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the Elastic San
+        /// update the state of specified private endpoint connection associated with the Elastic San
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3013,7 +3013,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the Elastic San
+        /// update the state of specified private endpoint connection associated with the Elastic San
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -3064,7 +3064,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the Elastic San
+        /// update the state of specified private endpoint connection associated with the Elastic San
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -5047,7 +5047,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create a Volume Group.</summary>
+        /// <summary>create a Volume Group.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -5099,7 +5099,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create a Volume Group.</summary>
+        /// <summary>create a Volume Group.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Volume Group object.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5161,7 +5161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create a Volume Group.</summary>
+        /// <summary>create a Volume Group.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Volume Group object.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5221,7 +5221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create a Volume Group.</summary>
+        /// <summary>create a Volume Group.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -5272,7 +5272,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create a Volume Group.</summary>
+        /// <summary>create a Volume Group.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -5321,7 +5321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create a Volume Group.</summary>
+        /// <summary>create a Volume Group.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -6669,7 +6669,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update an VolumeGroup.</summary>
+        /// <summary>update an VolumeGroup.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -6721,7 +6721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update an VolumeGroup.</summary>
+        /// <summary>update an VolumeGroup.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Volume Group object.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6783,7 +6783,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update an VolumeGroup.</summary>
+        /// <summary>update an VolumeGroup.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Volume Group object.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6843,7 +6843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update an VolumeGroup.</summary>
+        /// <summary>update an VolumeGroup.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -6894,7 +6894,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update an VolumeGroup.</summary>
+        /// <summary>update an VolumeGroup.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -6943,7 +6943,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update an VolumeGroup.</summary>
+        /// <summary>update an VolumeGroup.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -7324,7 +7324,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update a Volume Snapshot.</summary>
+        /// <summary>update a Volume Snapshot.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -7379,7 +7379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update a Volume Snapshot.</summary>
+        /// <summary>update a Volume Snapshot.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Snapshot object.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7444,7 +7444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update a Volume Snapshot.</summary>
+        /// <summary>update a Volume Snapshot.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Snapshot object.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7507,7 +7507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update a Volume Snapshot.</summary>
+        /// <summary>update a Volume Snapshot.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -7561,7 +7561,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update a Volume Snapshot.</summary>
+        /// <summary>update a Volume Snapshot.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -7613,7 +7613,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update a Volume Snapshot.</summary>
+        /// <summary>update a Volume Snapshot.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -9028,7 +9028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create a Volume.</summary>
+        /// <summary>create a Volume.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -9083,7 +9083,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create a Volume.</summary>
+        /// <summary>create a Volume.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Volume object.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9148,7 +9148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create a Volume.</summary>
+        /// <summary>create a Volume.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Volume object.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9211,7 +9211,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create a Volume.</summary>
+        /// <summary>create a Volume.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -9265,7 +9265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create a Volume.</summary>
+        /// <summary>create a Volume.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -9317,7 +9317,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Create a Volume.</summary>
+        /// <summary>create a Volume.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -10750,7 +10750,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update an Volume.</summary>
+        /// <summary>update an Volume.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -10805,7 +10805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update an Volume.</summary>
+        /// <summary>update an Volume.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Volume object.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10870,7 +10870,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update an Volume.</summary>
+        /// <summary>update an Volume.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Volume object.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10933,7 +10933,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update an Volume.</summary>
+        /// <summary>update an Volume.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -10987,7 +10987,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update an Volume.</summary>
+        /// <summary>update an Volume.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -11039,7 +11039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Update an Volume.</summary>
+        /// <summary>update an Volume.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
