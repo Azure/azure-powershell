@@ -54,20 +54,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
-        /// <summary>Backing field for <see cref="ApplicationId" /> property.</summary>
-        private string _applicationId;
-
-        /// <summary>key: id of application</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "key: id of application")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"key: id of application",
-        SerializedName = @"application-id",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Path)]
-        public string ApplicationId { get => this._applicationId; set => this._applicationId = value; }
-
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Runtime)]
@@ -103,6 +89,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
+
+        /// <summary>Backing field for <see cref="Id" /> property.</summary>
+        private string _id;
+
+        /// <summary>key: id of application</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "key: id of application")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"key: id of application",
+        SerializedName = @"application-id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("ApplicationId")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Path)]
+        public string Id { get => this._id; set => this._id = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -363,12 +364,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ApplicationsApplicationUpdateApplicationViaJsonString(ApplicationId, _jsonString, onNoContent, onDefault, this, Pipeline);
+                    await this.Client.ApplicationsApplicationUpdateApplicationViaJsonString(Id, _jsonString, onNoContent, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ApplicationId=ApplicationId})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Id=Id})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
