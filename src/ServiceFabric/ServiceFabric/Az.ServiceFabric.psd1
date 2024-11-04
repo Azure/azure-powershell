@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '3.3.4'
+ModuleVersion = '4.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -162,10 +162,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed secrets exposure in example documentation.'
+        ReleaseNotes = '* Updated ServiceFabric.Management.Sdk to 2023-11-01-preview
+* Updated ServiceFabricManagedClusters.Sdk to 2024-04-01'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
