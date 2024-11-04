@@ -14,8 +14,8 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 
 ```
 New-AzFrontDoorCdnRuleRequestUriConditionObject -Name <String> -ParameterOperator <String>
- -ParameterTypeName <String> [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>]
- [-ParameterTransform <String[]>] [<CommonParameters>]
+ [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,21 +107,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParameterTypeName
-
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

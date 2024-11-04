@@ -44,10 +44,6 @@ function New-AzFrontDoorCdnRuleRequestUriConditionObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("Lowercase", "Uppercase", "Trim", "UrlDecode", "UrlEncode", "RemoveNulls")]
         [string[]]
         $ParameterTransform,
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleRemoteAddressConditionParameters", "DeliveryRuleRequestMethodConditionParameters", "DeliveryRuleQueryStringConditionParameters", "DeliveryRulePostArgsConditionParameters", "DeliveryRuleRequestUriConditionParameters", "DeliveryRuleRequestHeaderConditionParameters", "DeliveryRuleRequestBodyConditionParameters", "DeliveryRuleRequestSchemeConditionParameters", "DeliveryRuleUrlPathMatchConditionParameters", "DeliveryRuleUrlFileExtensionMatchConditionParameters", "DeliveryRuleUrlFilenameConditionParameters", "DeliveryRuleHttpVersionConditionParameters", "DeliveryRuleCookiesConditionParameters", "DeliveryRuleIsDeviceConditionParameters", "DeliveryRuleSocketAddrConditionParameters", "DeliveryRuleClientPortConditionParameters", "DeliveryRuleServerPortConditionParameters", "DeliveryRuleHostNameConditionParameters", "DeliveryRuleSslProtocolConditionParameters")]
-        [string]
-        $ParameterTypeName,
         [Parameter(Mandatory, HelpMessage="The name of the condition for the delivery rule.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("RequestUri")]
         [string]

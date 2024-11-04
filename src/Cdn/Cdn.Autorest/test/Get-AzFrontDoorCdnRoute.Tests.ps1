@@ -35,7 +35,7 @@ Describe 'Get-AzFrontDoorCdnRoute'  {
         $rulesetName = 'rsName010'
         Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
         $ruleSet = New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
-        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any" -ParameterTypeName "DeliveryRuleRouteConfigurationOverrideActionParameters"
+        $uriConditon = New-AzFrontDoorCdnRuleRequestUriConditionObject -Name "RequestUri" -ParameterOperator "Any"
         $conditions = @(
             $uriConditon
         );
@@ -43,8 +43,7 @@ Describe 'Get-AzFrontDoorCdnRoute'  {
         -CacheConfigurationQueryStringCachingBehavior "IgnoreSpecifiedQueryStrings" `
         -CacheConfigurationQueryParameter "a=test" `
         -CacheConfigurationIsCompressionEnabled "Enabled" `
-        -CacheConfigurationCacheBehavior "HonorOrigin" `
-        -ParameterTypeName "DeliveryRuleRouteConfigurationOverrideActionParameters"
+        -CacheConfigurationCacheBehavior "HonorOrigin" 
         $actions = @($overrideAction);
         
         $ruleName = 'ruleName010'

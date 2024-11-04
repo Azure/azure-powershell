@@ -55,10 +55,6 @@ function New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("HttpOnly", "HttpsOnly", "MatchRequest")]
         [string]
         $OriginGroupOverrideForwardingProtocol,
-        [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("DeliveryRuleUrlRedirectActionParameters", "DeliveryRuleUrlSigningActionParameters", "DeliveryRuleOriginGroupOverrideActionParameters", "DeliveryRuleUrlRewriteActionParameters", "DeliveryRuleHeaderActionParameters", "DeliveryRuleCacheExpirationActionParameters", "DeliveryRuleCacheKeyQueryStringBehaviorActionParameters", "DeliveryRuleRouteConfigurationOverrideActionParameters")]
-        [string]
-        $ParameterTypeName,
         [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.PSArgumentCompleterAttribute("RouteConfigurationOverride")]
         [string]

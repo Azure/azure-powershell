@@ -13,7 +13,7 @@ Create an in-memory object for DeliveryRuleRouteConfigurationOverrideAction.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name <String> -ParameterTypeName <String>
+New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name <String>
  [-CacheConfigurationCacheBehavior <String>] [-CacheConfigurationCacheDuration <String>]
  [-CacheConfigurationIsCompressionEnabled <String>] [-CacheConfigurationQueryParameter <String>]
  [-CacheConfigurationQueryStringCachingBehavior <String>] [-OriginGroupId <String>]
@@ -159,21 +159,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParameterTypeName
-
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
