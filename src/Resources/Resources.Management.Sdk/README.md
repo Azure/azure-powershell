@@ -47,7 +47,7 @@ suppressions:
     reason: OperationsAPI will come from Resources
 ```
 
-### Tag: package-resources-2021-04
+### Tag: package-resources-2024-07
 
 These settings apply only when `--tag=package-resources-2024-07` is specified on the command line.
 
