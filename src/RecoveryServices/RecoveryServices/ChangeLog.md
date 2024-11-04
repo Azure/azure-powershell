@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added CRR support for southeastus, westus3 region.
 * Added support for enabling Disk access settings for managed VM restores.
 
 ## Version 7.2.0
