@@ -21,9 +21,11 @@ Describe 'Move-AzCdnProfileToAFD' {
 
     It 'Migrate' {
         $subId = $env.SubscriptionId
-        $map1 = New-AzCdnMigrationEndpointMappingObject -MigratedFrom maxtestendpointcli-test-profile1.azureedge.net -MigratedTo maxtestendpointcli-test-profile2
-        Move-AzCdnProfileToAFD -Subscription $subId -ProfileName cli-test-profile -ResourceGroupName cli-test-rg -SkuName Premium_AzureFrontDoor -MigrationEndpointMapping @($map1)
-        Invoke-AzCdnAbortProfileToAFDMigration -Subscription $subId -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
+        $cdnProfileName = 'cdn-migratipn-test-profile'
+        Write-Host -ForegroundColor Green "Use CdnProfileName : $($cdnProfileName)"
+        $profileSku = "Standard_Microsoft";
+        New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+        Move-AzCdnProfileToAFD -Subscription $subId -ProfileName $cdnProfileName -ResourceGroupName $env.ResourceGroupName -SkuName 'Premium_AzureFrontDoor'
     }
 
     It 'MigrateViaIdentity' -skip {

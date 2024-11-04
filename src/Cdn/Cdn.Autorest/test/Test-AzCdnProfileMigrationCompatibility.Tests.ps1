@@ -18,7 +18,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzCdnProfileMigrationCom
 Describe 'Test-AzCdnProfileMigrationCompatibility' {
     It 'Can' {
         $subId = $env.SubscriptionId
-        Test-AzCdnProfileMigrationCompatibility -Subscription $subId -ProfileName cli-test-profile -ResourceGroupName cli-test-rg
+        $cdnProfileName = 'cdn-migratipn-test-profile-compatibility'
+        Write-Host -ForegroundColor Green "Use CdnProfileName : $($cdnProfileName)"
+        $profileSku = "Standard_Microsoft";
+        New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+
+        Test-AzCdnProfileMigrationCompatibility -Subscription $subId -ProfileName $cdnProfileName -ResourceGroupName $env.ResourceGroupName
     }
 
     It 'CanViaIdentity' -skip {
