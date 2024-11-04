@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ElasticSan
-Module Guid: ed90c36c-f150-4ad2-96ae-57e0ebb0a376
+Module Guid: 33e10708-ad9f-47ef-bdbc-7dfe922128fb
 Download Help Link: https://learn.microsoft.com/powershell/module/az.elasticsan
 Help Version: 1.0.0.0
 Locale: en-US
@@ -30,19 +30,19 @@ Get either a list of all volume groups from an Elastic SAN or get a single volum
 Get a Volume Snapshot.
 
 ### [New-AzElasticSan](New-AzElasticSan.md)
-Create ElasticSan.
+create ElasticSan.
 
 ### [New-AzElasticSanVirtualNetworkRuleObject](New-AzElasticSanVirtualNetworkRuleObject.md)
 Create an in-memory object for VirtualNetworkRule.
 
 ### [New-AzElasticSanVolume](New-AzElasticSanVolume.md)
-Create a Volume.
+create a Volume.
 
 ### [New-AzElasticSanVolumeGroup](New-AzElasticSanVolumeGroup.md)
 Create a Volume Group.
 
 ### [New-AzElasticSanVolumeSnapshot](New-AzElasticSanVolumeSnapshot.md)
-Create a Volume Snapshot.
+create a Volume Snapshot.
 
 ### [Remove-AzElasticSan](Remove-AzElasticSan.md)
 Delete a Elastic San.
@@ -60,10 +60,10 @@ Remove a list of virtual network rules from a VolumeGroup
 Delete a Volume Snapshot.
 
 ### [Update-AzElasticSan](Update-AzElasticSan.md)
-Update a Elastic San.
+update a Elastic San.
 
 ### [Update-AzElasticSanVolume](Update-AzElasticSanVolume.md)
-Update an Volume.
+update an Volume.
 
 ### [Update-AzElasticSanVolumeGroup](Update-AzElasticSanVolumeGroup.md)
 Update an VolumeGroup.
