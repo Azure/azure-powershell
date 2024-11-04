@@ -163,7 +163,7 @@ function Get-HelmValue {
     )
 
     try {
-        $userValuesLocation = Get-AzureHelmPath -ChildPaths $ValuesFile
+        $userValuesLocation = Get-AzureHelmPath -ChildPath $ValuesFile
 
         $cmdHelmValuesPull = @($HelmClientLocation, "get", "values", "azure-arc", "--namespace", $ReleaseInstallNamespace)
         if ($KubeConfig) {
@@ -199,7 +199,7 @@ function Get-HelmChartPath {
 
     # Special path!
     $PreOnboardingHelmChartsFolderName = 'PreOnboardingChecksCharts'
-    $ChartExportPath = Get-AzureHelmPath $ChartFolderName
+    $ChartExportPath = Get-AzureHelmPath -ChildPath $ChartFolderName
     try {
         if (Test-Path $ChartExportPath) {
             Write-Debug "Cleaning up existing Helm chart folder at: $ChartExportPath"
