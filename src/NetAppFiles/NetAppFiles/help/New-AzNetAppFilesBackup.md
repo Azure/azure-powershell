@@ -16,7 +16,7 @@ Creates a new Azure NetApp Files (ANF) backup.
 ```
 New-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> -BackupVaultName <String>
  -Name <String> -VolumeResourceId <String> [-Label <String>] [-UseExistingSnapshot] [-SnapshotName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> -Backu
 ```
 New-AzNetAppFilesBackup -Name <String> -VolumeResourceId <String> [-Label <String>] [-UseExistingSnapshot]
  [-SnapshotName <String>] -BackupVaultObject <PSNetAppFilesBackupVault>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -127,21 +127,6 @@ Parameter Sets: (All)
 Aliases: BackupName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
