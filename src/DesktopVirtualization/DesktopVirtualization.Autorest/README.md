@@ -52,7 +52,7 @@ subject-prefix: 'Wvd'
 input-file:
 - $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2024-04-03/desktopvirtualization.json
 
-module-version: 6.0.0
+module-version: 2.1.0
 title: DesktopVirtualizationClient
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 # use-extension:
@@ -64,9 +64,6 @@ disable-transform-identity-type: true
 flatten-userassignedidentity: false
 
 directive:
-  - where:
-      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
-    remove: true
   - where:
       variant: ^CreateViaIdentity.*$
     remove: true

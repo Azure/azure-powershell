@@ -26,6 +26,13 @@ Update-AzWvdSessionHost -InputObject <IDesktopVirtualizationIdentity> [-Force] [
  [<CommonParameters>]
 ```
 
+### UpdateViaIdentityHostPool
+```
+Update-AzWvdSessionHost -HostPoolInputObject <IDesktopVirtualizationIdentity> -Name <String>
+ -SessionHost <ISessionHostPatch> [-Force] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### UpdateViaIdentityHostPoolExpanded
 ```
 Update-AzWvdSessionHost -HostPoolInputObject <IDesktopVirtualizationIdentity> -Name <String> [-Force]
@@ -150,7 +157,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: UpdateViaIdentityHostPoolExpanded
+Parameter Sets: UpdateViaIdentityHostPool, UpdateViaIdentityHostPoolExpanded
 Aliases:
 
 Required: True
@@ -225,7 +232,7 @@ The name of the session host within the specified host pool
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityHostPoolExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityHostPool, UpdateViaIdentityHostPoolExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: SessionHostName
 
 Required: True
@@ -248,6 +255,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SessionHost
+SessionHost properties that can be patched.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPatch
+Parameter Sets: UpdateViaIdentityHostPool
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -304,6 +326,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISessionHostPatch
 
 ## OUTPUTS
 

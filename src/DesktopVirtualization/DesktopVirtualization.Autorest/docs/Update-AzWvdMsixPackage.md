@@ -25,6 +25,12 @@ Update-AzWvdMsixPackage -InputObject <IDesktopVirtualizationIdentity> [-DisplayN
  [-IsRegularRegistration] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityHostPool
+```
+Update-AzWvdMsixPackage -FullName <String> -HostPoolInputObject <IDesktopVirtualizationIdentity>
+ -MsixPackage <IMsixPackagePatch> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityHostPoolExpanded
 ```
 Update-AzWvdMsixPackage -FullName <String> -HostPoolInputObject <IDesktopVirtualizationIdentity>
@@ -107,7 +113,7 @@ The version specific package full name of the MSIX package within specified host
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityHostPoolExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityHostPool, UpdateViaIdentityHostPoolExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases: MsixPackageFullName
 
 Required: True
@@ -122,7 +128,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: UpdateViaIdentityHostPoolExpanded
+Parameter Sets: UpdateViaIdentityHostPool, UpdateViaIdentityHostPoolExpanded
 Aliases:
 
 Required: True
@@ -223,6 +229,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MsixPackage
+MSIX Package properties that can be patched.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackagePatch
+Parameter Sets: UpdateViaIdentityHostPool
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -292,6 +313,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixPackagePatch
 
 ## OUTPUTS
 

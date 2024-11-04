@@ -39,6 +39,13 @@ Update-AzWvdScalingPlanPooledSchedule -InputObject <IDesktopVirtualizationIdenti
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### UpdateViaIdentityScalingPlan
+```
+Update-AzWvdScalingPlanPooledSchedule -ScalingPlanInputObject <IDesktopVirtualizationIdentity>
+ -ScalingPlanScheduleName <String> -ScalingPlanSchedule <IScalingPlanPooledSchedulePatch>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### UpdateViaIdentityScalingPlanExpanded
 ```
 Update-AzWvdScalingPlanPooledSchedule -ScalingPlanInputObject <IDesktopVirtualizationIdentity>
@@ -506,7 +513,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
-Parameter Sets: UpdateViaIdentityScalingPlanExpanded
+Parameter Sets: UpdateViaIdentityScalingPlan, UpdateViaIdentityScalingPlanExpanded
 Aliases:
 
 Required: True
@@ -531,12 +538,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScalingPlanSchedule
+ScalingPlanPooledSchedule properties that can be patched.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatch
+Parameter Sets: UpdateViaIdentityScalingPlan
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ScalingPlanScheduleName
 The name of the ScalingPlanSchedule
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlan, UpdateViaIdentityScalingPlanExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -599,6 +621,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IScalingPlanPooledSchedulePatch
 
 ## OUTPUTS
 
