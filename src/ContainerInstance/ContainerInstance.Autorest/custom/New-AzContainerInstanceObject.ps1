@@ -143,7 +143,10 @@ function New-AzContainerInstanceObject {
         $Object.Command = $Command
         $Object.ConfigMapKeyValuePair = $ConfigMapKeyValuePair
         $Object.EnvironmentVariable = $EnvironmentVariable
-        $Object.Image = $Image
+        if($PSBoundParameters.ContainsKey("Image")) {
+ 
+            $Object.Image = $Image
+        }
         $Object.LimitCpu = $LimitCpu
         $Object.LimitMemoryInGb = $LimitMemoryInGb
         $Object.LimitsGpuCount = $LimitsGpuCount
@@ -170,10 +173,22 @@ function New-AzContainerInstanceObject {
         $Object.ReadinessProbePeriodSecond = $ReadinessProbePeriodSecond
         $Object.ReadinessProbeSuccessThreshold = $ReadinessProbeSuccessThreshold
         $Object.ReadinessProbeTimeoutSecond = $ReadinessProbeTimeoutSecond
-        $Object.RequestCpu = $RequestCpu
-        $Object.RequestMemoryInGb = $RequestMemoryInGb
-        $Object.RequestsGpuCount = $RequestsGpuCount
-        $Object.RequestsGpuSku = $RequestsGpuSku
+        if($PSBoundParameters.ContainsKey("RequestCpu")) {
+ 
+            $Object.RequestCpu = $Image.RequestCpu
+        }
+        if($PSBoundParameters.ContainsKey("RequestMemoryInGb")) {
+ 
+            $Object.RequestMemoryInGb = $Image.RequestMemoryInGb
+        }
+        if($PSBoundParameters.ContainsKey("RequestsGpuCount")) {
+ 
+            $Object.RequestsGpuCount = $Image.RequestsGpuCount
+        }
+        if($PSBoundParameters.ContainsKey("RequestsGpuSku")) {
+ 
+            $Object.RequestsGpuSku = $Image.RequestsGpuSku
+        }
         $Object.VolumeMount = $VolumeMount
         return $Object
     }
