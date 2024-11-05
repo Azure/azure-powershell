@@ -31,6 +31,7 @@ using Track2Models = global::Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs;
 using Azure.Storage;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
@@ -113,11 +114,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         private bool checkMd5;
 
-        [CmdletParameterBreakingChangeWithVersion("AbsoluteUri", "13.0.0", "8.0.0", ChangeDescription = "When download blob with parameter AbsoluteUri (alias Uri, BlobUri), parameter Context will not be allowed to input together.")]
         [Alias("Uri", "BlobUri")]
         [Parameter(HelpMessage = "Blob uri to download from.", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = UriParameterSet)]
         public string AbsoluteUri { get; set; }
+
+        [Parameter(HelpMessage = "Azure Storage Context Object",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ManualParameterSet)]
+        [Parameter(HelpMessage = "Azure Storage Context Object",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = BlobParameterSet)]
+        [Parameter(HelpMessage = "Azure Storage Context Object",
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ContainerParameterSet)]
+        public override IStorageContext Context { get; set; }
 
         private BlobToFileSystemNameResolver fileNameResolver;
         private bool skipSourceChannelInit;

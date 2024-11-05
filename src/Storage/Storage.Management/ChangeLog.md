@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* When download blob with parameter AbsoluteUri (alias Uri, BlobUri), not allow input parameter Context together.
+    - `Get-AzStorageBlobContent`
 * Added a warning for an upcoming breaking change for download blob will block input parameter -AbsoluteUri and -Context together.
     - `Get-AzStorageBlobContent`
 * Revised AzureStorageBlob construct logic to make it more stable.
