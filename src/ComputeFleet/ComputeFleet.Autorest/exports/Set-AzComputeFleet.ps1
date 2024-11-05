@@ -19,7 +19,7 @@ Set Fleet resource
 .Description
 Set Fleet resource
 .Example
-Set-AzComputeFleet -SubscriptionId "00000000-0000-0000-0000-000000000000" -ResourceGroupName azure-rg-test -FleetName testFleet
+Set-AzComputeFleet -SubscriptionId "00000000-0000-0000-0000-000000000000" -ResourceGroupName azure-rg-test -FleetName testFleet -Resource <resource>
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleet
