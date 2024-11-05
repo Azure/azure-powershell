@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Management.Resources.Models
     using System.Linq;
 
     /// <summary>
-    /// The resource Id model.
+    /// The resourceId model.
     /// </summary>
     public partial class ResourceReference
     {
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// Initializes a new instance of the ResourceReference class.
         /// </summary>
 
-        /// <param name="id">The fully qualified resource Id.
+        /// <param name="id">The resourceId of a resource managed by the deployment stack.
         /// </param>
         public ResourceReference(string id = default(string))
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Management.Resources.Models
 
 
         /// <summary>
-        /// Gets the fully qualified resource Id.
+        /// Gets the resourceId of a resource managed by the deployment stack.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "id")]
         public string Id {get; private set; }
