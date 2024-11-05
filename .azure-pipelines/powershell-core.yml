@@ -32,6 +32,19 @@ pr:
       - Azs-tzl
 
 jobs:
+- job: Build2
+  displayName: Build2
+  condition: succeeded()
+  timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
+  pool: pool-windows-2019
+
+  steps:
+  - template: util/build-steps.yml
+    parameters:
+      configuration: ${{ variables.Configuration }}
+      testFramework: ${{ variables.TestFramework }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}
+      
 - job: Build
   displayName: Build
   condition: succeeded()
