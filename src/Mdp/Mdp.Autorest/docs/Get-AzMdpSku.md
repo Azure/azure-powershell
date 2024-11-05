@@ -13,8 +13,7 @@ List ResourceSku resources by subscription ID
 ## SYNTAX
 
 ```
-Get-AzMdpSku -LocationName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzMdpSku -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +23,7 @@ List ResourceSku resources by subscription ID
 
 ### Example 1: List skus in location
 ```powershell
-Get-AzMdpSku -LocationName westus
+Get-AzMdpSku -Location westus
 ```
 
 List all skus in the location "westus" in the current subscription
@@ -47,7 +46,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocationName
+### -Location
 Name of the location.
 
 ```yaml
