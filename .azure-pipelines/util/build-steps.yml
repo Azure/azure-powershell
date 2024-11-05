@@ -28,7 +28,7 @@ steps:
       Write-Host "------------------------6"
       git --no-pager log -n 6
       Write-Host "------------------------7"
-      git --no-pager diff --name-only --diff-filter=ACMRT origin/$(System.PullRequest.TargetBranch) -- .
+      git --no-pager diff --name-only --diff-filter=ACMRT origin/main -- .
       Write-Host "------------------------8"
     
 - task: NodeTool@0
