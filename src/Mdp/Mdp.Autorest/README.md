@@ -57,6 +57,13 @@ directive:
       subject: ResourceDetail
     set:
       subject: PoolAgent
+# Rename LocationName parameter
+  - where:
+      verb: Get
+      subject: Sku
+      parameter-name: LocationName
+    set:
+      parameter-name: Location
 # Dont flatten hash objects
   - no-inline:
     - AgentProfile
