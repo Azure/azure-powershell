@@ -1,5 +1,5 @@
 function New-AzWvdApplication_AppAlias {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IApplication')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IApplication')]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter()]
@@ -86,11 +86,10 @@ function New-AzWvdApplication_AppAlias {
         ${Description},
 
         [Parameter(Mandatory, HelpMessage='Command Line Setting')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute( "DoNotAllow","Allow","Require")]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(SerializedName='CommandLineSetting',
-            PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting]),
-            Description='Specifies the Azure subscr')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.CommandLineSetting]
+        [System.String]
+        # The command line setting for the application. Possible values include: 'DoNotAllow', 'Allow', 'Require'.
         ${CommandLineSetting},
 
         [Parameter(HelpMessage='Show In Portal')]

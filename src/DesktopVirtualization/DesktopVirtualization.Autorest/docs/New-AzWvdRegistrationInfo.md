@@ -33,7 +33,7 @@ ExpirationTime         RegistrationTokenOperation Token
 02/14/2050 12:00:00 PM Update                     <base64 encoded string>
 ```
 
-Creates a new Registration Info object for the selected HostPool
+Creates a new Registration Info object for the selected HostPool.
 
 ## PARAMETERS
 
@@ -150,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IRegistrationInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IRegistrationInfo
 
 ## NOTES
 

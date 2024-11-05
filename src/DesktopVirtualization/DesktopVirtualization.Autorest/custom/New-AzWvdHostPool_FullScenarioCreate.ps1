@@ -1,5 +1,5 @@
-function New-AzWvdHostPool_FullSenerioCreate {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool')]
+function New-AzWvdHostPool_FullScenarioCreate {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IHostPool')]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter()]
@@ -76,18 +76,21 @@ function New-AzWvdHostPool_FullSenerioCreate {
         ${WorkspaceName},
 
         [Parameter(Mandatory, HelpMessage='HostPool Type')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("Personal","Pooled","BYODesktop")]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType]
+        [System.String]
         ${HostPoolType},
 
         [Parameter(Mandatory, HelpMessage='LoadBalancer Type')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("BreadthFirst","DepthFirst","Persistent")]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.LoadBalancerType]
+        [System.String]
         ${LoadBalancerType},
 
         [Parameter(Mandatory, HelpMessage='Preferred App Group Type')]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PSArgumentCompleterAttribute("None","Desktop","RailApplications")]
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType]
+        [System.String]
         ${PreferredAppGroupType},
 
         [Parameter(Mandatory, HelpMessage='Location')]
