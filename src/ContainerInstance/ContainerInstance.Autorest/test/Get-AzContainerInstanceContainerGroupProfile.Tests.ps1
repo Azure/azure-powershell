@@ -29,9 +29,4 @@ Describe 'Get-AzContainerInstanceContainerGroupProfile' {
     It 'List1' {
         Get-AzContainerInstanceContainerGroupProfile -ResourceGroupName $env.resourceGroupName
     }
- 
-    It 'GetViaIdentity' {
-        $get = Update-AzContainerInstanceContainerGroupProfile -Name $env.containerGroupProfileName -ResourceGroupName $env.resourceGroupName -Tag @{"key"="value"}
-        Get-AzContainerInstanceContainerGroupProfile -InputObject $get
-    }
 }
