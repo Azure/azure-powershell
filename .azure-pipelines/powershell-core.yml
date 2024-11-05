@@ -45,7 +45,7 @@ jobs:
       targetType: inline
       script: |
         $ErrorActionPreference = 'Stop'
-        $PR_NO = $(System.PullRequest.PullRequestId)
+        $PR_NO = $(System.PullRequest.PullRequestNumber)
         Write-Host "PR NO is ${PR_NO}"
         $REPO = 'Azure/azure-powershell'
         $page = 1
