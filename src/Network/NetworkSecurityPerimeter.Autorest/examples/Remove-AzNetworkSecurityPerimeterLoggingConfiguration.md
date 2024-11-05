@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove the Network security perimeter logging configuration
 ```powershell
-{{ Add code here }}
+Remove-AzNetworkSecurityPerimeterLoggingConfiguration -Name instance -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
+Get the Network security perimeter logging configuration
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a network security perimeter logging configuration via identity
 ```powershell
-{{ Add code here }}
+ $linkRefObj = Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_Ex -SecurityPerimeterName ext-nsp11 -Name instance
+ Remove-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject $linkRefObj
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Remove a network security perimeter logging configuration via identity

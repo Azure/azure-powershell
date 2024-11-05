@@ -155,11 +155,6 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
 
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
-
-           # $GETObject = Get-AzNetworkSecurityPerimeterLoggingConfiguration @PSBoundParameters
-
-            # $GETObject
-            # 2. PUT
             
             $pathParams = 'InputObject', 'ResourceGroupName', 'SubscriptionId', 'SecurityPerimeterName'
 
