@@ -69,6 +69,9 @@ Create a in-memory object for HttpHeader
 ### [New-AzContainerInstanceInitDefinitionObject](New-AzContainerInstanceInitDefinitionObject.md)
 Create a in-memory object for InitContainerDefinition
 
+### [New-AzContainerInstanceNoDefaultObject](New-AzContainerInstanceNoDefaultObject.md)
+Create a in-memory object for Container with no default values
+
 ### [New-AzContainerInstanceObject](New-AzContainerInstanceObject.md)
 Create a in-memory object for Container
 
