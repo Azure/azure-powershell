@@ -7,6 +7,28 @@ steps:
 - checkout: self
   persistCredentials: true
 - template: get-github-token-steps.yml
+- task: PowerShell@2
+  displayName: Test
+  inputs:
+    targetType: inline
+    pwsh: true
+    script: |
+      Write-Host "------------------------0"
+      Write-Host (Get-Location).Path
+      Write-Host "------------------------1"
+      (Get-childItem -Depth 2).FullName | ForEach-Object {Write-Host $_}
+      Write-Host "------------------------2"
+      Write-Host $(System.PullRequest.targetBranchName)
+      Write-Host "------------------------3"
+      Write-Host $(System.PullRequest.SourceBranch)
+      Write-Host "------------------------4"
+      Write-Host $(System.PullRequest.TargetBranch)
+      Write-Host "------------------------5"
+      git branch
+      Write-Host "------------------------6"
+      git --no-pager log -n 6
+      Write-Host "------------------------6"
+    
 - task: NodeTool@0
   condition: eq(variables.IsGenerateBased, true)
   displayName: Install Autorest
