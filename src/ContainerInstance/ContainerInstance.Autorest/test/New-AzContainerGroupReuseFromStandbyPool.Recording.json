@@ -13,7 +13,7 @@
       }
     },
     "Response": {
-      "StatusCode": 400,
+      "StatusCode": 201,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
@@ -31,11 +31,11 @@
         "Date": [ "Thu, 31 Oct 2024 05:06:24 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "107" ],
+        "Content-Length": [ "0" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"BadRequest\",\"message\":\"ContainerGroup properties other than config map are not allowed\"}}",
+      "Content": "",
       "isContentBase64": false
     }
   }
