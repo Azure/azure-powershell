@@ -14,6 +14,7 @@
 $ignoredFiles = @(
     "src/DataFactory/DataFactoryV2.Test/SessionRecords/Microsoft.Azure.Commands.DataFactoryV2.Test.RunTests/TestRunV2.json"
 )
+Write-Host "Hello World 20241105 in script!"
 $hasIssue = $false
 foreach($file in $ignoredFiles) {
     if(Test-Path $file) {
