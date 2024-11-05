@@ -39,27 +39,6 @@ jobs:
   pool: pool-windows-2019
 
   steps:
-  - task: PowerShell@2
-    displayName: Test
-    inputs:
-      targetType: inline
-      script: |
-        $ErrorActionPreference = 'Stop'
-        $PR_NO = $(System.PullRequest.PullRequestNumber)
-        Write-Host "PR NO is ${PR_NO}"
-        $REPO = 'Azure/azure-powershell'
-        $page = 1
-        $per_page = 100
-        $totalFiles = @()
-        do {
-            $filesResp = Invoke-RestMethod -Method Get -Uri "https://api.github.com/repos/${REPO}/pulls/${PR_NO}/files?per_page=${per_page}&page=${page}"
-            $totalFiles += $filesResp
-        } while (
-            $filesResp.Count -le $per_page
-        )
-        Write-Host $totalFiles.Count 
-        $totalFiles.filename
-      pwsh: true
   - template: util/build-steps.yml
     parameters:
       configuration: ${{ variables.Configuration }}
