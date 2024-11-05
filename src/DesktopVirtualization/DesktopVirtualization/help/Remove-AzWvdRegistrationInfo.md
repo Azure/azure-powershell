@@ -14,7 +14,7 @@ Remove the Windows virtual desktop registration info.
 
 ```
 Remove-AzWvdRegistrationInfo -ResourceGroupName <String> -HostPoolName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,6 +61,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group Name
 
@@ -77,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-help foo 1
+Subscription ID
 
 ```yaml
 Type: System.String
