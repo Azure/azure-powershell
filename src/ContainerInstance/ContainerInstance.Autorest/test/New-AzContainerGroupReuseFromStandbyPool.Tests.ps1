@@ -28,6 +28,6 @@ Describe 'New-AzContainerGroupReuseFromStandbyPool' {
         $containerGroup.Container[0].RequestMemoryInGb | Should -Be 1
  
         $containerGroup.OSType | Should -Be $env.osType
-        $containerGroup.IsReusedFromStandbyPool | Should -Be True
+        $containerGroup.IsCreatedFromStandbyPool | Should -Be True
     }
 }

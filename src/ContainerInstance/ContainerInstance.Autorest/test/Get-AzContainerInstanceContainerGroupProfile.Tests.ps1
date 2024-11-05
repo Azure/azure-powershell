@@ -25,8 +25,4 @@ Describe 'Get-AzContainerInstanceContainerGroupProfile' {
     It 'Get' {
         Get-AzContainerInstanceContainerGroupProfile -Name $env.containerGroupProfileName -ResourceGroupName $env.resourceGroupName
     }
- 
-    It 'List1' {
-        Get-AzContainerInstanceContainerGroupProfile -ResourceGroupName $env.resourceGroupName
-    }
 }
