@@ -90,7 +90,7 @@ function Merge-MaybeNullInput {
     $mergeFields = 'WorkloadIdentityEnabled', 'OidcIssuerProfileEnabled', 'OidcIssuerProfileSelfHostedIssuerUrl', 'Distribution', 'DistributionVersion', 'Infrastructure', 'PrivateLinkState'
 
     foreach ($mergeField in $mergeFields) {
-        if ((-not $LclPSBoundParameters.ContainsKey($mergeField)) -and $InputObject.PSObject.Properties[$mergeField] -and $null -ne $InputObject.PSObject.Properties[$mergeField]) {
+        if ((-not $LclPSBoundParameters.ContainsKey($mergeField)) -and $InputObject.PSObject.Properties[$mergeField] -and $null -ne $InputObject.PSObject.Properties[$mergeField].Value) {
             $parameterValue = $InputObject.PSObject.Properties[$mergeField].Value
             $LclPSBoundParameters.Add($mergeField, $parameterValue)
         }
