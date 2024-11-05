@@ -14,24 +14,23 @@ Deletes an Azure NetApp Files (ANF) backup.
 
 ### ByFieldsParameterSet (Default)
 ```
-Remove-AzNetAppFilesBackup -ResourceGroupName <String> [-AccountName <String>] [-PoolName <String>]
- [-VolumeName <String>] -BackupVaultName <String> -Name <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzNetAppFilesBackup -ResourceGroupName <String> [-AccountName <String>] -BackupVaultName <String>
+ -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByAccountBackupFieldsParameterSet
 ```
-Remove-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> [-AccountBackupName <String>]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Remove-AzNetAppFilesBackup -Name <String> [-VolumeObject <PSNetAppFilesVolume>]
- -BackupVaultObject <PSNetAppFilesBackupVault> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzNetAppFilesBackup -Name <String> -BackupVaultObject <PSNetAppFilesBackupVault> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -54,34 +53,13 @@ The **Remove-AzNetAppFilesBackup** cmdlet deletes an ANF account.
 
 ### Example 1
 ```powershell
-Remove-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -Name "MyBackup"
+Remove-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -BackupVaultName "MyVault" -Name "MyVolumeBackup"
 ```
 
-This command deletes the new ANF backup with a the name "MyBackup" for volume "MyVolume".
+This command deletes the new ANF backup with a the name "MyVolumeBackup" from Backup Vault "MyVault".
 
-### Example 2
-```powershell
-Remove-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -AccountBackupName "MyBackup"
-```
-
-This command deletes the new ANF backup with a the name "MyBackup" for account "MyAccount".
 
 ## PARAMETERS
-
-### -AccountBackupName
-The name of the ANF backup
-
-```yaml
-Type: System.String
-Parameter Sets: ByAccountBackupFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AccountName
 The name of the ANF account
@@ -200,21 +178,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PoolName
-The name of the ANF pool
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group of the ANF account
 
@@ -242,36 +205,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -VolumeName
-The name of the ANF volume
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VolumeObject
-The volume object containing the backup to return
-
-```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -312,8 +245,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupVault
 

@@ -343,7 +343,7 @@ Updates an existing AutoscaleSettingsResource.
 To update other fields use the CreateOrUpdate method.
 
 ### [Update-AzDataCollectionEndpoint](Update-AzDataCollectionEndpoint.md)
-update part of a data collection endpoint.
+update a data collection endpoint.
 
 ### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
 Update a data collection rule.

@@ -244,6 +244,19 @@ namespace Microsoft.Azure.Commands.Dns
                     Selector = mamlRecord.Selector.GetValueOrDefault(),
                 };
             }
+            else if (record is Management.Dns.Models.NaptrRecord)
+            {
+                var mamlRecord = (Management.Dns.Models.NaptrRecord)record;
+                return new NaptrRecord
+                {
+                    Flags = mamlRecord.Flags,
+                    Order = (ushort) mamlRecord.Order,
+                    Preference = (ushort) mamlRecord.Preference,
+                    Regexp = mamlRecord.Regexp,
+                    Replacement = mamlRecord.Replacement,
+                    Services = mamlRecord.Services,
+                };
+            }
 
             return null;
         }
@@ -486,6 +499,69 @@ namespace Microsoft.Azure.Commands.Dns
         public override object Clone()
         {
             return new MxRecord { Exchange = this.Exchange, Preference = this.Preference };
+        }
+    }
+
+    /// <summary>
+    /// Represents a DNS record of type NAPTR that is part of a <see cref="DnsRecordSet"/>.
+    /// </summary>
+    public class NaptrRecord : DnsRecordBase
+    {
+        /// <summary>
+        /// Gets or sets the order for this NAPTR record.
+        /// </summary>
+        public ushort Order { get; set; }
+
+        /// <summary>
+        /// Gets or sets the preference metric for this NAPTR record.
+        /// </summary>
+        public ushort Preference { get; set; }
+
+        /// <summary>
+        /// Gets or sets the flags for this NAPTR record.
+        /// </summary>
+        public string Flags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the services for this NAPTR record.
+        /// </summary>
+        public string Services { get; set; }
+
+        /// <summary>
+        /// Gets or sets the regular expression for this NAPTR record.
+        /// </summary>
+        public string Regexp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the replacement for this NAPTR record.
+        /// </summary>
+        public string Replacement { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("[{0},{1},{2},{3},{4},{5}]", Order, Preference, Flags, Services, Regexp, Replacement);
+        }
+
+        internal override object ToMamlRecord()
+        {
+            return new Management.Dns.Models.NaptrRecord
+            {
+                Order = this.Order,
+                Preference = this.Preference,
+                Flags = this.Flags,
+                Services = this.Services,
+                Regexp = this.Regexp,
+                Replacement = this.Replacement
+            };
+        }
+
+        /// <summary>
+        /// Cerates a deep copy of this object
+        /// </summary>
+        /// <returns>A clone of this object</returns>
+        public override object Clone()
+        {
+            return new NaptrRecord { Order = this.Order, Preference = this.Preference, Flags = this.Flags, Services = this.Services, Regexp = this.Regexp, Replacement = this.Replacement };
         }
     }
 

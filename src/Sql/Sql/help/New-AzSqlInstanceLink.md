@@ -15,45 +15,47 @@ Creates a new instance link.
 ### CreateByNameParameterSet (Default)
 ```
 New-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String>
- -PrimaryAvailabilityGroupName <String> -SecondaryAvailabilityGroupName <String> -TargetDatabase <String>
- -SourceEndpoint <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -PartnerAvailabilityGroupName <String> -InstanceAvailabilityGroupName <String> -Database <String[]>
+ -PartnerEndpoint <String> [-FailoverMode <String>] [-InstanceLinkRole <String>] [-SeedingMode <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
 ```
-New-AzSqlInstanceLink [-Name] <String> -PrimaryAvailabilityGroupName <String>
- -SecondaryAvailabilityGroupName <String> -TargetDatabase <String> -SourceEndpoint <String>
+New-AzSqlInstanceLink [-Name] <String> -PartnerAvailabilityGroupName <String>
+ -InstanceAvailabilityGroupName <String> -Database <String[]> -PartnerEndpoint <String>
+ [-FailoverMode <String>] [-InstanceLinkRole <String>] [-SeedingMode <String>]
  [-InstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzSqlInstanceLink** cmdlet creates an Azure SQL Managed Instance link by joining distributed availability group on SQL Server based on the parameters passed.
+The **New-AzSqlInstanceLink** cmdlet creates an Managed Instance link by joining distributed availability group on SQL Server based on the parameters passed.
 
 ## EXAMPLES
 
 ### Example 1: Create a new instance link
 ```powershell
-New-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Database01" -SourceEndpoint "TCP://SERVER01:5022"
+New-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" -Database "Database01" -InstanceAvailabilityGroupName "AG_Database01_MI" -PartnerAvailabilityGroupName "AG_Database01" -InstanceLinkRole "Secondary" -PartnerEndpoint "TCP://SERVER01:5022" -FailoverMode "Manual" -SeedingMode "Automatic"
 ```
 
-```output		
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   : Link01PrimaryAG
-SecondaryAvailabilityGroupName : Link01SecondaryAG
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
+```output
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
+Name                             : Link01
+DistributedAvailabilityGroupName : Link01
+DistributedAvailabilityGroupId   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Databases                        : {Database01}
+InstanceAvailabilityGroupName    : AG_Database01_MI
+PartnerAvailabilityGroupName     : AG_Database01
+PartnerEndpoint                  : TCP://SERVER01:5022
+InstanceLinkRole                 : Secondary
+PartnerLinkRole                  : Primary
+ReplicationMode                  : Async
+FailoverMode                     : Manual
+SeedingMode                      : Automatic
 ```
 
 This command creates a new instance link with name "Link01".
@@ -61,25 +63,26 @@ This command creates a new instance link with name "Link01".
 ### Example 2: Create a new instance link using an instance object
 ```powershell
 $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01"
-New-AzSqlInstanceLink -InstanceObject $instance -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Database01" -SourceEndpoint "TCP://SERVER01:5022"
+New-AzSqlInstanceLink -InstanceObject $instance -Name "Link01" -Database "Database01" -InstanceAvailabilityGroupName "AG_Database01_MI" -PartnerAvailabilityGroupName "AG_Database01" -InstanceLinkRole "Secondary" -PartnerEndpoint "TCP://SERVER01:5022" -FailoverMode "Manual" -SeedingMode "Automatic"
 ```
 
-```output		
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   : Link01PrimaryAG
-SecondaryAvailabilityGroupName : Link01SecondaryAG
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
+```output
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
+Name                             : Link01
+DistributedAvailabilityGroupName : Link01
+DistributedAvailabilityGroupId   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Databases                        : {Database01}
+InstanceAvailabilityGroupName    : AG_Database01_MI
+PartnerAvailabilityGroupName     : AG_Database01
+PartnerEndpoint                  : TCP://SERVER01:5022
+InstanceLinkRole                 : Secondary
+PartnerLinkRole                  : Primary
+ReplicationMode                  : Async
+FailoverMode                     : Manual
+SeedingMode                      : Automatic
 ```
 
 This command creates a new instance link using a managed instance object as a parameter.
@@ -87,25 +90,26 @@ This command creates a new instance link using a managed instance object as a pa
 ### Example 3: Create a new instance link by piping an instance object
 ```powershell
 $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01"
-$instance | New-AzSqlInstanceLink -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Database01" -SourceEndpoint "TCP://SERVER01:5022"
+$instance | New-AzSqlInstanceLink -Name "Link01" -Database "Database01" -InstanceAvailabilityGroupName "AG_Database01_MI" -PartnerAvailabilityGroupName "AG_Database01" -InstanceLinkRole "Secondary" -PartnerEndpoint "TCP://SERVER01:5022" -FailoverMode "Manual" -SeedingMode "Automatic"
 ```
 
-```output		
-ResourceGroupName              : ResourceGroup01
-InstanceName                   : ManagedInstance01
-Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
-Id                             : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
-Name                           : Link01
-TargetDatabase                 : Database01
-SourceEndpoint                 : TCP://SERVER01:5022
-PrimaryAvailabilityGroupName   : Link01PrimaryAG
-SecondaryAvailabilityGroupName : Link01SecondaryAG
-ReplicationMode                : Async
-DistributedAvailabilityGroupId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SourceReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-TargetReplicaId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-LinkState                      : Copying
-LastHardenedLsn                :
+```output
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01
+Name                             : Link01
+DistributedAvailabilityGroupName : Link01
+DistributedAvailabilityGroupId   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Databases                        : {Database01}
+InstanceAvailabilityGroupName    : AG_Database01_MI
+PartnerAvailabilityGroupName     : AG_Database01
+PartnerEndpoint                  : TCP://SERVER01:5022
+InstanceLinkRole                 : Secondary
+PartnerLinkRole                  : Primary
+ReplicationMode                  : Async
+FailoverMode                     : Manual
+SeedingMode                      : Automatic
 ```
 
 This command creates a new instance link by piping an instance object.
@@ -127,6 +131,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Database
+Database names in the distributed availability group.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -142,8 +161,53 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FailoverMode
+The link failover mode - can be Manual if intended to be used for two-way failover with a supported SQL Server, or None for one-way failover to Azure.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceAvailabilityGroupName
+Managed instance side availability group name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceLinkRole
+Managed instance side link role.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InstanceName
-Name of Azure SQL Managed Instance.
+Name of the managed instance.
 
 ```yaml
 Type: System.String
@@ -173,7 +237,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the instance link.
+Managed Instance link name.
 
 ```yaml
 Type: System.String
@@ -187,8 +251,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrimaryAvailabilityGroupName
-Name of the primary availability group.
+### -PartnerAvailabilityGroupName
+SQL server side availability group name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerEndpoint
+SQL server side endpoint - IP or DNS resolvable name.
 
 ```yaml
 Type: System.String
@@ -217,45 +296,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SecondaryAvailabilityGroupName
-Name of the secondary availability group.
+### -SeedingMode
+Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceEndpoint
-IP adress of the source endpoint.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetDatabase
-Name of the target database.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -313,3 +362,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Update-AzSqlInstanceLink](./Update-AzSqlInstanceLink.md)
 
 [Remove-AzSqlInstanceLink](./Remove-AzSqlInstanceLink.md)
+
+[Start-AzSqlInstanceLinkFailover](./Start-AzSqlInstanceLinkFailover.md)

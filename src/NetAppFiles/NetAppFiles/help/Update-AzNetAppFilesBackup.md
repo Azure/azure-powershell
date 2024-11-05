@@ -15,17 +15,15 @@ Updates an Azure NetApp Files (ANF) backup to the optional modifiers provided.
 ### ByFieldsParameterSet (Default)
 ```
 Update-AzNetAppFilesBackup -ResourceGroupName <String> -Location <String> -AccountName <String> -Name <String>
- [-PoolName <String>] [-VolumeName <String>] -BackupVaultName <String> [-Label <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -BackupVaultName <String> [-Label <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Update-AzNetAppFilesBackup -Name <String> [-Label <String>] [-Tag <Hashtable>]
- [-VolumeObject <PSNetAppFilesVolume>] -BackupVaultObject <PSNetAppFilesBackupVault>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -BackupVaultObject <PSNetAppFilesBackupVault> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -49,10 +47,10 @@ The **Update-AzNetAppFilesBackup** cmdlet modifies an ANF backup.
 
 ### Example 1
 ```powershell
-Update-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -Name "BackupName" -Label "updatedLabel"
+Update-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -BackupVaultName "MyVault" -Name "BackupName" -Label "updatedLabel"
 ```
 
-This command performs an update on the given backup modifying the username to that provided.
+This command performs an update on the given backup modifying the label to that provided.
 
 ## PARAMETERS
 
@@ -176,21 +174,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PoolName
-The name of the ANF pool
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group of the ANF account
 
@@ -236,36 +219,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VolumeName
-The name of the ANF volume
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VolumeObject
-The volume object containing the backup to return
-
-```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -303,8 +256,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupVault
 
