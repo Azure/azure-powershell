@@ -120,6 +120,13 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
         # The name of the network security perimeter.
         ${SecurityPerimeterName},
 
+        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the Logging configuration.")]
+        [Alias('LoggingConfigurationName')]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+        [System.String]
+        # The name of the Logging Configuration.
+        ${Name},
+
 
         # Body paramters
 
@@ -127,7 +134,7 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.String[]]
         # enabled log categories
-        ${EnabledLogCategories},
+        ${EnabledLogCategories}
 
         # Add only those paramters which can be updated
     )
@@ -149,9 +156,9 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $GETObject = Get-AzNetworkSecurityPerimeterLoggingConfiguration @PSBoundParameters
+           # $GETObject = Get-AzNetworkSecurityPerimeterLoggingConfiguration @PSBoundParameters
 
-            
+            # $GETObject
             # 2. PUT
             
             $pathParams = 'InputObject', 'ResourceGroupName', 'SubscriptionId', 'SecurityPerimeterName'

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkSecurityPerimeterProfile
 
 ## SYNOPSIS
-Create a network profile.
+create a network profile.
 
 ## SYNTAX
 
@@ -63,7 +63,7 @@ New-AzNetworkSecurityPerimeterProfile -Name <String> -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-Create a network profile.
+create a network profile.
 
 ## EXAMPLES
 
