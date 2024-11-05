@@ -116,7 +116,7 @@ function Update-AzComputeFleet {
         [Parameter(ParameterSetName='UpdateExpanded')]
         [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-        [System.Int]
+        [System.Int32]
         # Specifies the number of fault domains to use when creating the underlying VMSS.A fault domain is a logical group of hardware within an Azure datacenter.VMs in the same fault domain share a common power source and network switch.If not specified, defaults to 1, which represents \"Max Spreading\" (using as many fault domains as possible).This property cannot be updated.
         ${PlatformFaultDomainCount},
 
@@ -179,14 +179,14 @@ function Update-AzComputeFleet {
         [Parameter(ParameterSetName='UpdateExpanded')]
         [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-        [System.Int]
+        [System.Int32]
         # Total capacity to achieve. It is currently in terms of number of VMs
         ${RegularPriorityProfileCapacity},
 
         [Parameter(ParameterSetName='UpdateExpanded')]
         [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-        [System.Int]
+        [System.Int32]
         # Minimum capacity to achieve which cannot be updated. If we will not be able to "guarantee" minimum capacity, we will reject the request in the sync path itself
         ${RegularPriorityProfileMinCapacity},
 
@@ -200,7 +200,7 @@ function Update-AzComputeFleet {
         [Parameter(ParameterSetName='UpdateExpanded')]
         [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-        [System.Int]
+        [System.Int32]
         # Total capacity to achieve. It is currently in terms of number of VMs
         ${SpotPriorityProfileCapacity},
 
@@ -221,14 +221,14 @@ function Update-AzComputeFleet {
         [Parameter(ParameterSetName='UpdateExpanded')]
         [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-        [System.Float]
+        [System.Single]
         # Price per hour of each Spot VM will never exceed this
         ${SpotPriorityProfileMaxPricePerVM},
 
         [Parameter(ParameterSetName='UpdateExpanded')]
         [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-        [System.Int]
+        [System.Int32]
         # Minimum capacity to achieve which cannot be updated. If we will not be able to ""guarantee"" minimum capacity, we will reject the request in the sync path itself
         ${SpotPriorityProfileMinCapacity},
 
