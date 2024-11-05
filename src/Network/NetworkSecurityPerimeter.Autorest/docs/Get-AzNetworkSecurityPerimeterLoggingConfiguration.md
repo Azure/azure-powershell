@@ -37,27 +37,18 @@ Gets the NSP logging configuration.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the Network security perimeter logging configuration
 ```powershell
-{{ Add code here }}
+Get-AzNetworkSecurityPerimeterLoggingConfiguration -Name instance -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EnabledLogCategory           Name
+------------------           ----
+{NspPublicInboundPerimeterRulesAllowed} instance
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Get the Network security perimeter logging configuration
 
 ## PARAMETERS
 
