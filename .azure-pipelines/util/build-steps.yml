@@ -16,7 +16,7 @@ steps:
       Write-Host "------------------------0"
       Write-Host (Get-Location).Path
       Write-Host "------------------------1"
-      (Get-childItem -Depth 2).FullName | ForEach-Object {Write-Host $_}
+      (Get-childItem -Depth 1).FullName | ForEach-Object {Write-Host $_}
       Write-Host "------------------------2"
       Write-Host $(System.PullRequest.targetBranchName)
       Write-Host "------------------------3"
@@ -27,7 +27,9 @@ steps:
       git branch
       Write-Host "------------------------6"
       git --no-pager log -n 6
-      Write-Host "------------------------6"
+      Write-Host "------------------------7"
+      git --no-pager diff --name-only --diff-filter=ACMRT origin/$(System.PullRequest.TargetBranch) -- .
+      Write-Host "------------------------8"
     
 - task: NodeTool@0
   condition: eq(variables.IsGenerateBased, true)
