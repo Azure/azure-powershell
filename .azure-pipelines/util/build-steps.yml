@@ -30,8 +30,8 @@ steps:
       Write-Host "------------------------7"
       git remote -v
       Write-Host "------------------------8"
-      $targetBranch = $(System.PullRequest.TargetBranch)
-      git fetch origin $targetBranch:origin/base
+      Write-Host "$(System.PullRequest.TargetBranch)"
+      git fetch origin $(System.PullRequest.TargetBranch):origin/base
       Write-Host "------------------------9"
       git --no-pager diff --name-only --diff-filter=ACMRT origin/base -- .
       Write-Host "------------------------10"
