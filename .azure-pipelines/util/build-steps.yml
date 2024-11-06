@@ -31,7 +31,7 @@ steps:
       git remote -v
       Write-Host "------------------------8"
       $targetBranch = $(System.PullRequest.TargetBranch)
-      git fetch --no-tags origin $targetBranch:origin/base
+      git fetch --no-tags origin "${targetBranch}:origin/base"
       Write-Host "------------------------9"
       git branch
       Write-Host "------------------------10"
