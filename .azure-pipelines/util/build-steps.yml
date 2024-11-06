@@ -16,7 +16,7 @@ steps:
       Write-Host "------------------------0"
       Write-Host (Get-Location).Path
       Write-Host "------------------------1"
-      (Get-childItem -Depth 1).FullName | ForEach-Object {Write-Host $_}
+      # (Get-childItem -Depth 1).FullName | ForEach-Object {Write-Host $_}
       Write-Host "------------------------2"
       Write-Host $(System.PullRequest.targetBranchName)
       Write-Host "------------------------3"
@@ -30,11 +30,13 @@ steps:
       Write-Host "------------------------7"
       git remote -v
       Write-Host "------------------------8"
-      Write-Host "$(System.PullRequest.TargetBranch)"
-      git fetch origin $(System.PullRequest.TargetBranch):origin/base
+      $targetBranch = $(System.PullRequest.TargetBranch)
+      git fetch --no-tags origin $targetBranch:origin/base
       Write-Host "------------------------9"
-      git --no-pager diff --name-only --diff-filter=ACMRT origin/base -- .
+      git branch
       Write-Host "------------------------10"
+      git --no-pager diff --name-only --diff-filter=ACMRT origin/base -- .
+      Write-Host "------------------------11"
     
 - task: NodeTool@0
   condition: eq(variables.IsGenerateBased, true)
