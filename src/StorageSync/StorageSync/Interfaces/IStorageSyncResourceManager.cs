@@ -66,8 +66,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
         /// <summary>
         /// Gets the Server Type from the the StorageSync registry path. Default to <see cref="LocalServerType.HybridServer"/>
         /// </summary>
-        /// <param name="serverTypeFromRegistry"></param>
-        /// <returns>System.String</returns>
+        /// <returns>LocalServerType</returns>
         LocalServerType GetServerTypeFromRegistry();
 
         /// <summary>
