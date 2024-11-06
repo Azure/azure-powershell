@@ -78,25 +78,6 @@ INPUTOBJECT <IConnectedCluster>:
 .Link
 https://learn.microsoft.com/powershell/module/az.connectedkubernetes/set-azconnectedkubernetes
 #>
-function Merge-MaybeNullInput {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
-    param(
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
-        $InputObject,
-        [System.Collections.Generic.Dictionary[system.String, System.Object]]
-        $LclPSBoundParameters
-    )
-
-    $mergeFields = 'WorkloadIdentityEnabled', 'OidcIssuerProfileEnabled', 'OidcIssuerProfileSelfHostedIssuerUrl', 'Distribution', 'DistributionVersion', 'Infrastructure', 'PrivateLinkState'
-
-    foreach ($mergeField in $mergeFields) {
-        if ((-not $LclPSBoundParameters.ContainsKey($mergeField)) -and $InputObject.PSObject.Properties[$mergeField] -and $null -ne $InputObject.PSObject.Properties[$mergeField].Value) {
-            $parameterValue = $InputObject.PSObject.Properties[$mergeField].Value
-            $LclPSBoundParameters.Add($mergeField, $parameterValue)
-        }
-    }
-}
-
 function Set-AzConnectedKubernetes {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
@@ -839,3 +820,21 @@ function Set-AzConnectedKubernetes {
     }
 }
 
+function Merge-MaybeNullInput {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    param(
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
+        $InputObject,
+        [System.Collections.Generic.Dictionary[system.String, System.Object]]
+        $LclPSBoundParameters
+    )
+
+    $mergeFields = 'WorkloadIdentityEnabled', 'OidcIssuerProfileEnabled', 'OidcIssuerProfileSelfHostedIssuerUrl', 'Distribution', 'DistributionVersion', 'Infrastructure', 'PrivateLinkState'
+
+    foreach ($mergeField in $mergeFields) {
+        if ((-not $LclPSBoundParameters.ContainsKey($mergeField)) -and $InputObject.PSObject.Properties[$mergeField] -and $null -ne $InputObject.PSObject.Properties[$mergeField].Value) {
+            $parameterValue = $InputObject.PSObject.Properties[$mergeField].Value
+            $LclPSBoundParameters.Add($mergeField, $parameterValue)
+        }
+    }
+}
