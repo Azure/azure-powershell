@@ -14,7 +14,7 @@ Create a in-memory object for ImageRegistryCredential
 
 ```
 New-AzContainerGroupImageRegistryCredentialObject -Server <String> [-Password <SecureString>]
- [-Username <String>] [-AcrIdentity <String>] [<CommonParameters>]
+ [-Username <String>] [-AcrIdentity <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,6 +68,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Server
 The Docker image registry server without a protocol such as "http" and "https".
 
@@ -105,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ImageRegistryCredential
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ImageRegistryCredential
 
 ## NOTES
 
