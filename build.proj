@@ -134,7 +134,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)CreateFilterMappings.ps1&quot;" />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)PrepareForSecurityCheck.ps1&quot;" Condition="'$(IsSecurityCheck)' == 'true'"/>
 
-    <CIFilterTask FilesChanged="@(FilesChanged)" Mode="$(Configuration)" CsprojMapFilePath="./CsprojMappings.json">
+    <CIFilterTask FilesChangedFile="$(RepoArtifacts)FilesChanged.txt" Mode="$(Configuration)" CsprojMapFilePath="./CsprojMappings.json">
       <Output TaskParameter="BuildCsprojList" ItemName="BuildCsprojList" />
       <Output TaskParameter="TestCsprojList" ItemName="TestCsprojList" />
       <Output TaskParameter="SubTasks" PropertyName="SubTasks" />
