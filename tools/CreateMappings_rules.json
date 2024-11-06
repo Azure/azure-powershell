@@ -931,5 +931,10 @@
   {
     "module": "HealthDataAIServices",
     "alias": "HealthDataAIServices"
+  },
+  {
+    "alias": "Mdp",
+    "module": "Mdp"
+  }
   }
 ]
