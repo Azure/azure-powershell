@@ -30,19 +30,19 @@ Get either a list of all volume groups from an Elastic SAN or get a single volum
 Get a Volume Snapshot.
 
 ### [New-AzElasticSan](New-AzElasticSan.md)
-create ElasticSan.
+Create ElasticSan.
 
 ### [New-AzElasticSanVirtualNetworkRuleObject](New-AzElasticSanVirtualNetworkRuleObject.md)
 Create an in-memory object for VirtualNetworkRule.
 
 ### [New-AzElasticSanVolume](New-AzElasticSanVolume.md)
-create a Volume.
+Create a Volume.
 
 ### [New-AzElasticSanVolumeGroup](New-AzElasticSanVolumeGroup.md)
 Create a Volume Group.
 
 ### [New-AzElasticSanVolumeSnapshot](New-AzElasticSanVolumeSnapshot.md)
-create a Volume Snapshot.
+Create a Volume Snapshot.
 
 ### [Remove-AzElasticSan](Remove-AzElasticSan.md)
 Delete a Elastic San.
@@ -60,10 +60,10 @@ Remove a list of virtual network rules from a VolumeGroup
 Delete a Volume Snapshot.
 
 ### [Update-AzElasticSan](Update-AzElasticSan.md)
-update a Elastic San.
+Update a Elastic San.
 
 ### [Update-AzElasticSanVolume](Update-AzElasticSanVolume.md)
-update an Volume.
+Update an Volume.
 
 ### [Update-AzElasticSanVolumeGroup](Update-AzElasticSanVolumeGroup.md)
 Update an VolumeGroup.
