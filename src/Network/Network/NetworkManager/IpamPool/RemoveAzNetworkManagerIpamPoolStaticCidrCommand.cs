@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string PoolName { get; set; }
+        public virtual string IpamPoolName { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    this.StaticCidrClient.Delete(this.ResourceGroupName, this.NetworkManagerName, this.PoolName, this.Name);
+                    this.StaticCidrClient.Delete(this.ResourceGroupName, this.NetworkManagerName, this.IpamPoolName, this.Name);
                     if (PassThru.IsPresent)
                     {
                         WriteObject(true);

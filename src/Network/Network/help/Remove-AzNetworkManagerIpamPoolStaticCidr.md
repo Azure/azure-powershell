@@ -14,7 +14,7 @@ Removes a Static Cidr.
 
 ```
 Remove-AzNetworkManagerIpamPoolStaticCidr -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> -PoolName <String> [-Force] [-PassThru] [-AsJob]
+ -ResourceGroupName <String> -IpamPoolName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ The **Remove-AzNetworkManagerIpamPoolStaticCidr** cmdlet removes the given Stati
 
 ### Example 1
 ```powershell
-Remove-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -PoolName testPool
+Remove-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -IpamPoolName testPool
 ```
 
 ```output
@@ -128,7 +128,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PoolName
+### -IpamPoolName
 The pool resource name.
 
 ```yaml

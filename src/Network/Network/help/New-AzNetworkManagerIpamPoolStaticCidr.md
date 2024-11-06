@@ -13,7 +13,7 @@ Creates a new Static Cidr.
 ## SYNTAX
 
 ```
-New-AzNetworkManagerIpamPoolStaticCidr -Name <String> -NetworkManagerName <String> -ResourceGroupName <String> -PoolName <String> -AddressPrefix <System.Collections.Generic.List`1[System.String]>
+New-AzNetworkManagerIpamPoolStaticCidr -Name <String> -NetworkManagerName <String> -ResourceGroupName <String> -IpamPoolName <String> -AddressPrefix <System.Collections.Generic.List`1[System.String]>
  [-NumberOfIPAddressesToAllocate <String>] [-Description <String>] [-Force]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -26,14 +26,14 @@ The **New-AzNetworkManagerIpamPoolStaticCidr** cmdlet creates a new Static Cidr 
 
 ### Example 1
 ```powershell
-New-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -PoolName testCmdletPool -AddressPrefix @("10.0.0.0/28")
+New-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -IpamPoolName testCmdletPool -AddressPrefix @("10.0.0.0/28")
 ```
 
 ```output
 
 
 Name               : testStaticCidr
-PoolName           : testCmdletPool
+IpamPoolName           : testCmdletPool
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSStaticCidrProperties
@@ -171,7 +171,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PoolName
+### -IpamPoolName
 IP Address Manager Pool resource name.
 
 ```yaml

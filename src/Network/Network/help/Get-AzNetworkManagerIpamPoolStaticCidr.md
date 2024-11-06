@@ -15,14 +15,14 @@ Gets Static Cidr(s) in an IPAM pool.
 ### NoExpand (Default)
 ```
 Get-AzNetworkManagerIpamPoolStaticCidr [-Name <String>] -NetworkManagerName <String>
- -ResourceGroupName <String> -PoolName <String> [-DefaultProfile <IAzureContextContainer>]
+ -ResourceGroupName <String> -IpamPoolName <String> [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Expand
 ```
 Get-AzNetworkManagerIpamPoolStaticCidr -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
- -PoolName <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ -IpamPoolName <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -33,12 +33,12 @@ If given a Static Cidr name, the **Get-AzNetworkManagerIpamPoolStaticCidr** cmdl
 
 ### Example 1
 ```powershell
-Get-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -PoolName testPool
+Get-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -IpamPoolName testPool
 ```
 
 ```output
 Name               : testStaticCidr
-PoolName           : testPool
+IpamPoolName           : testPool
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSStaticCidrProperties
@@ -54,12 +54,12 @@ Gets static Cidr with name 'testStaticCidr'
 
 ### Example 2
 ```powershell
-Get-AzNetworkManagerIpamPoolStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -PoolName testPool
+Get-AzNetworkManagerIpamPoolStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -IpamPoolName testPool
 ```
 
 ```output
 Name               : New
-PoolName           :
+IpamPoolName           :
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSStaticCidrProperties
@@ -72,7 +72,7 @@ Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
                      /testPool/staticCidrs/New
 
 Name               : New2
-PoolName           :
+IpamPoolName           :
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSStaticCidrProperties
@@ -85,7 +85,7 @@ Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
                      /testPool/staticCidrs/New2
 
 Name               : On-Prem
-PoolName           :
+IpamPoolName           :
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSStaticCidrProperties
@@ -158,7 +158,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -PoolName
+### -IpamPoolName
 The pool resource name.
 
 ```yaml
