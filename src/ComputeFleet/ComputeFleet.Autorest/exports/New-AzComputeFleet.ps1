@@ -137,7 +137,7 @@ function New-AzComputeFleet {
         [Parameter(ParameterSetName='CreateExpanded')]
         [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IManagedServiceIdentitySetUserAssignedIdentities]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IManagedServiceIdentityUpdateUserAssignedIdentities]
         # The identities assigned to this resource by the user
         ${UserAssignedIdentities},
 
@@ -242,7 +242,7 @@ function New-AzComputeFleet {
         [Parameter(ParameterSetName='CreateExpanded')]
         [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetSetTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IFleetUpdateTags]
         # Resource tags
         ${Tags},
 
