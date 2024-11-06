@@ -174,12 +174,12 @@ function New-AzContainerInstanceObject {
         $Object.ReadinessProbePeriodSecond = $ReadinessProbePeriodSecond
         $Object.ReadinessProbeSuccessThreshold = $ReadinessProbeSuccessThreshold
         $Object.ReadinessProbeTimeoutSecond = $ReadinessProbeTimeoutSecond
-        if(!$PSBoundParameters.ContainsKey("RequestCpu"))
+        if(!$PSBoundParameters.ContainsKey("RequestCpu") -or [System.String]::IsNullOrEmpty($PSBoundParameters["RequestCpu"]))
         {
             $RequestCpu = 1.0
         }
         $Object.RequestCpu = [double]$RequestCpu
-        if(!$PSBoundParameters.ContainsKey("RequestMemoryInGb"))
+        if(!$PSBoundParameters.ContainsKey("RequestMemoryInGb") -or [System.String]::IsNullOrEmpty($PSBoundParameters["RequestMemoryInGb"]))
         {
             $RequestMemoryInGb = 1.5
         }
