@@ -26,6 +26,8 @@ For information on how to develop for `Az.Aks`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 
+
+
 ``` yaml
 commit: 6031674c73a95ffd60f58b5cdd633c94b3360467
 require:
@@ -34,8 +36,8 @@ input-file:
   - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-02-01/managedClusters.json
   - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2019-08-01/location.json
 
-title: Aks
-module-version: 0.1.0
+title: Aks2
+module-version: 0.2.0
 subject-prefix: $(service-name)
 identity-correction-for-post: true
 
