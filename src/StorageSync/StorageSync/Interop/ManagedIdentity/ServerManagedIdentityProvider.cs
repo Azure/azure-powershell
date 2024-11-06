@@ -3,8 +3,6 @@ using Commands.StorageSync.Interop.Interfaces;
 using Hyak.Common;
 using Kailani.Afs.ServerManagedIdentity;
 using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
-using Microsoft.Azure.Commands.StorageSync.Interop.Exceptions;
-using Microsoft.Azure.Commands.StorageSync.Interop.Interfaces;
 using System;
 using System.Diagnostics.Tracing;
 using System.Threading.Tasks;
@@ -16,8 +14,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
     /// </summary>
     public class ServerManagedIdentityProvider : IServerManagedIdentityProvider
     {
-        private IServerManagedIdentityTokenProvider serverManagedIdentityTokenProvider;
-
         public bool EnableMIChecking { get; set; }
 
         public Action<string, EventLevel> TraceLog { get; private set; }
