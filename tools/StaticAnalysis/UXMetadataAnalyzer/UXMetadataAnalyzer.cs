@@ -178,6 +178,10 @@ namespace StaticAnalysis.UXMetadataAnalyzer
 
         private void ValidateExample(IssueLoggerContext context, UXMetadataCommand command, CmdletMetadata cmdletMetadata, UXMetadataCommandExample example, ReportLogger<UXMetadataIssue> issueLogger)
         {
+            if (example.Parameters == null)
+            {
+                return;
+            }
             List<string> parameterListConvertedFromAlias = example.Parameters.Select(x =>
             {
                 string parameterNameInExample = x.Name.Trim('-');
