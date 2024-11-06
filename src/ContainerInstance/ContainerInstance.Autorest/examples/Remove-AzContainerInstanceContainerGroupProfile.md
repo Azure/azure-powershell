@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a container group profile
 ```powershell
-{{ Add code here }}
+Remove-AzContainerInstanceContainerGroupProfile -Name test-cgp -ResourceGroupName test-rg
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes the specified container group profile.
 
-### Example 2: {{ Add title here }}
+### Example 2: Removes a container group profile by piping
 ```powershell
-{{ Add code here }}
+Get-AzContainerInstanceContainerGroupProfile -Name test-cgp -ResourceGroupName test-rg | Remove-AzContainerInstanceContainerGroupProfile
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+This command removes a container group profile by piping.

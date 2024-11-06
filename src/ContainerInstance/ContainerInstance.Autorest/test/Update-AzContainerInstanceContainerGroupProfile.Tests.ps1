@@ -16,6 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzContainerInstanceCon
 
 Describe 'Update-AzContainerInstanceContainerGroupProfile' {
     It 'PatchExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
         # The Update-AzContainerInstanceContainerGroupProfile operation supports the PATCH method.
         # This parameters are required -Name, -ResourceGroupName, -Tag
         # Tag is of type Modesl.Api20240501Preview.ContainerGroupPatchTags
