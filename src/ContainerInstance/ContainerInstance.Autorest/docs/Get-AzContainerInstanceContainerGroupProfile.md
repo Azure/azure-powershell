@@ -137,7 +137,7 @@ The command gets the specified container group profile.
 
 ### Example 4: Get a specific revision of a container group profile in a resource group
 ```powershell
-Get-AzContainerInstanceContainerGroupProfile -Name test-cgp -ResourceGroupName test-rg -Revision 1 | Format-List
+Get-AzContainerInstanceContainerGroupProfile -Name test-cgp -ResourceGroupName test-rg -RevisionNumber 1 | Format-List
 ```
 
 ```output
