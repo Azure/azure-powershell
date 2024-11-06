@@ -41,15 +41,13 @@ function setupEnv() {
     $env.Location = 'eastus'
     $env.MachineName = 'testmachine'
     $env.PrivateLinkScopeName = 'myScope3'
-    $env.RunCommandName = 'myRunCommand2'
+    $env.RunCommandName = 'myRunCommand3'
     $env.Script = 'Write-Host Hello World!'
     $env.EsuLicenseName = 'myEsuLicense2'
     $env.ResourceUri = 'subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine'
     $env.PrivateLinkScopeUri = '/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3'
     $env.ExtensionName = 'networkWatcher'
-    $env.ResourceGroupNameNSP = 'adrielk_test'
-    $env.PrivateLinkScopeNameNSP = 'adrielScope'
-    $env.PerimeterName = 'fd1289de-e8d3-4f76-8008-de297232dbf6.adrielScope-e1bf45b1-b9a1-4f8b-a76e-3607869aed94'
+    $env.PerimeterName = 'testPerimeter'
     $env.LicenseResourceId = '/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/licenses/myLicense'
 
     #New-AzResourceGroup -Name $env.ResourceGroupName -Location $env.Location | Out-Null

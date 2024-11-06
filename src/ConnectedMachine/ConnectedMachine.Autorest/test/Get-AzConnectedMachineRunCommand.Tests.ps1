@@ -15,11 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedMachineRunComm
 }
 
 Describe 'Get-AzConnectedMachineRunCommand' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $runCommand = Get-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -MachineName $env.MachineName
+        $runCommand.Count | Should -Not -BeNullOrEmpty
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $runCommand = Get-AzConnectedMachineRunCommand -ResourceGroupName $env.ResourceGroupName -RunCommandName $env.RunCommandName -MachineName $env.MachineName
+        $runCommand.Count | Should -Not -BeNullOrEmpty
     }
 }
