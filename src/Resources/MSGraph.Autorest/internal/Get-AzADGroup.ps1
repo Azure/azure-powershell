@@ -43,10 +43,11 @@ function Get-AzADGroup {
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Alias('GroupId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of group
-    ${GroupId},
+    ${Id},
 
     [Parameter()]
     [AllowEmptyCollection()]

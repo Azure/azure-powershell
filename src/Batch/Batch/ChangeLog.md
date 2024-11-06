@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.6.4
 * Migrate Batch SDK to generated SDK
   - Removed "Microsoft.Azure.Management.Batch" Version="15.0.0" PackageReference
   - Added Batch.Management.Sdk ProjectReference

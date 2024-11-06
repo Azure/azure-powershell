@@ -201,6 +201,18 @@ Updates an Azure NetApp Files (ANF) Snapshot Policy with the new data set.
 ### [Set-AzNetAppFilesVolumePool](Set-AzNetAppFilesVolumePool.md)
 Change pool for an Azure NetApp Files (ANF) volume.
 
+### [Start-AzNetAppFilesAuthorizeExternalReplication](Start-AzNetAppFilesAuthorizeExternalReplication.md)
+Start migration process
+
+### [Start-AzNetAppFilesFinalizeExternalReplication](Start-AzNetAppFilesFinalizeExternalReplication.md)
+Finalize migration process
+
+### [Start-AzNetAppFilesPeerExternalCluster](Start-AzNetAppFilesPeerExternalCluster.md)
+Start Cluster peering
+
+### [Start-AzNetAppFilesPerformExternalReplication](Start-AzNetAppFilesPerformExternalReplication.md)
+Perform a replication transfer
+
 ### [Suspend-AzNetAppFilesReplication](Suspend-AzNetAppFilesReplication.md)
 Suspend/break the replication connection on the destination volume
 

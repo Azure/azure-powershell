@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.2.2'
+ModuleVersion = '5.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.4'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '3.0.5'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'ActionGroup.Autorest/bin/Az.ActionGroup.private.dll', 
@@ -68,10 +68,10 @@ RequiredAssemblies = 'ActionGroup.Autorest/bin/Az.ActionGroup.private.dll',
                'ScheduledQueryRule.Autorest/bin/Az.ScheduledQueryRule.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @()
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = @()
+# TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 'ActionGroup.Autorest/Az.ActionGroup.format.ps1xml', 
@@ -198,7 +198,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'ResourceManager', 'ARM', 'Monitor'
+        Tags = 'Azure','ResourceManager','ARM','Monitor'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -210,12 +210,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added breaking change messages:
-  * ''New-AzDataCollectionEndpoint''
-  * ''New-AzDataCollectionRule''
-  * ''Update-AzDataCollectionEndpoint''
-  * ''Update-AzDataCollectionRule''
-* Updated documentation for ''New-AzActionGroupLogicAppReceiverObject'''
+        ReleaseNotes = '* Added new cmdlet for Azure Monitor Pipeline Groups
+  * ''Get-AzPipelineGroup''
+  * ''New-AzPipelineGroup''
+  * ''Update-AzPipelineGroup''
+  * ''Remove-AzPipelineGroup'''
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -228,7 +227,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
-} # End of PrivateData hashtable
+ } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

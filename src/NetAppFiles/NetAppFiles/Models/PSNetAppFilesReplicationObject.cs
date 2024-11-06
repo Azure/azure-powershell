@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.NetApp.Models;
+
 namespace Microsoft.Azure.Commands.NetAppFiles.Models
 {
     public class PSNetAppFilesReplicationObject
@@ -42,5 +44,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets the remote region for the other end of the Volume Replication.
         /// </summary>
         public string RemoteVolumeRegion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the full path to a volume that is to be migrated into ANF.
+        /// </summary>
+        public PSRemotePath RemotePath { get; set; }
     }
 }

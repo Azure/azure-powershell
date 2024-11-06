@@ -917,6 +917,216 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.ReInitializeReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
+        /// Starts peering the external cluster for this migration volume
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static ClusterPeerCommandResponse PeerExternalCluster(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, PeerClusterForVolumeMigrationRequest body)
+        {
+                return ((IVolumesOperations)operations).PeerExternalClusterAsync(resourceGroupName, accountName, poolName, volumeName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Starts peering the external cluster for this migration volume
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ClusterPeerCommandResponse> PeerExternalClusterAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, PeerClusterForVolumeMigrationRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.PeerExternalClusterWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Starts SVM peering and returns a command to be run on the external ONTAP to
+        /// accept it.  Once the SVM have been peered a SnapMirror will be created
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static SvmPeerCommandResponse AuthorizeExternalReplication(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        {
+                return ((IVolumesOperations)operations).AuthorizeExternalReplicationAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Starts SVM peering and returns a command to be run on the external ONTAP to
+        /// accept it.  Once the SVM have been peered a SnapMirror will be created
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SvmPeerCommandResponse> AuthorizeExternalReplicationAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.AuthorizeExternalReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Finalizes the migration of an external volume by releasing the replication
+        /// and breaking the external cluster peering if no other migration is active.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static VolumesFinalizeExternalReplicationHeaders FinalizeExternalReplication(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        {
+                return ((IVolumesOperations)operations).FinalizeExternalReplicationAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Finalizes the migration of an external volume by releasing the replication
+        /// and breaking the external cluster peering if no other migration is active.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VolumesFinalizeExternalReplicationHeaders> FinalizeExternalReplicationAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.FinalizeExternalReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Performs an adhoc replication transfer on a volume with volumeType
+        /// Migration
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static VolumesPerformReplicationTransferHeaders PerformReplicationTransfer(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        {
+                return ((IVolumesOperations)operations).PerformReplicationTransferAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Performs an adhoc replication transfer on a volume with volumeType
+        /// Migration
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VolumesPerformReplicationTransferHeaders> PerformReplicationTransferAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.PerformReplicationTransferWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
         /// Moves volume to another pool
         /// </summary>
         /// <param name='operations'>
@@ -1815,6 +2025,216 @@ namespace Microsoft.Azure.Management.NetApp
         public static async System.Threading.Tasks.Task BeginReInitializeReplicationAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginReInitializeReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// Starts peering the external cluster for this migration volume
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static ClusterPeerCommandResponse BeginPeerExternalCluster(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, PeerClusterForVolumeMigrationRequest body)
+        {
+                return ((IVolumesOperations)operations).BeginPeerExternalClusterAsync(resourceGroupName, accountName, poolName, volumeName, body).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Starts peering the external cluster for this migration volume
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<ClusterPeerCommandResponse> BeginPeerExternalClusterAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, PeerClusterForVolumeMigrationRequest body, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginPeerExternalClusterWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Starts SVM peering and returns a command to be run on the external ONTAP to
+        /// accept it.  Once the SVM have been peered a SnapMirror will be created
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static SvmPeerCommandResponse BeginAuthorizeExternalReplication(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        {
+                return ((IVolumesOperations)operations).BeginAuthorizeExternalReplicationAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Starts SVM peering and returns a command to be run on the external ONTAP to
+        /// accept it.  Once the SVM have been peered a SnapMirror will be created
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<SvmPeerCommandResponse> BeginAuthorizeExternalReplicationAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginAuthorizeExternalReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Finalizes the migration of an external volume by releasing the replication
+        /// and breaking the external cluster peering if no other migration is active.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static VolumesFinalizeExternalReplicationHeaders BeginFinalizeExternalReplication(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        {
+                return ((IVolumesOperations)operations).BeginFinalizeExternalReplicationAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Finalizes the migration of an external volume by releasing the replication
+        /// and breaking the external cluster peering if no other migration is active.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VolumesFinalizeExternalReplicationHeaders> BeginFinalizeExternalReplicationAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginFinalizeExternalReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
+        }
+        /// <summary>
+        /// Performs an adhoc replication transfer on a volume with volumeType
+        /// Migration
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static VolumesPerformReplicationTransferHeaders BeginPerformReplicationTransfer(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        {
+                return ((IVolumesOperations)operations).BeginPerformReplicationTransferAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Performs an adhoc replication transfer on a volume with volumeType
+        /// Migration
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VolumesPerformReplicationTransferHeaders> BeginPerformReplicationTransferAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginPerformReplicationTransferWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Moves volume to another pool
