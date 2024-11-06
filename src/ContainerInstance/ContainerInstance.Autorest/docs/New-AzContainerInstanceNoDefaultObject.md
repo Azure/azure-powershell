@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://learn.microsoft.com/powershell/module/az.containerinstance/new-azcontainerinstancenodefaultobject
+online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceNoDefaultObject
 schema: 2.0.0
 ---
 

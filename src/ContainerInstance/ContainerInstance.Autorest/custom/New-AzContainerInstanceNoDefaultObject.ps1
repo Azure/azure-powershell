@@ -19,7 +19,7 @@ Create a in-memory object for Container with no default values
 .Description
 Create a in-memory object for Container with no default values
 .Link
-https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/New-AzContainerInstanceNoDefaultObject
 #>
 function New-AzContainerInstanceNoDefaultObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Container')]
