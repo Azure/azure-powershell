@@ -1629,27 +1629,32 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         Assert-NotNull $reachabilityAnalysisRun
         Assert-AreEqual $reachabilityAnalysisRunName $reachabilityAnalysisRun.Name
 
-         # Get  analysis run list
+        # Get  analysis run list
         $reachabilityAnalysisRunList = Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName
         Assert-NotNull $reachabilityAnalysisRunList;
         Assert-AreEqual $reachabilityAnalysisRunList.Count 1
 
-       Start-TestSleep -Seconds 300
-       Assert-NotNull $reachabilityAnalysisRun
-       Assert-AreEqual "DESCription" $reachabilityAnalysisRun.Properties.Description;
-       Assert-AreEqual $intentId  $reachabilityAnalysisRun.Properties.IntentId;
+        Start-TestSleep -Seconds 300
+        Assert-NotNull $reachabilityAnalysisRun
+
+        # Output the value of AnalysisResult for debugging
+        Write-Output "AnalysisResult: $($reachabilityAnalysisRun.Properties.AnalysisResult)"
+
+        Assert-NotNull $reachabilityAnalysisRun.Properties.AnalysisResult
+        Assert-AreEqual "DESCription" $reachabilityAnalysisRun.Properties.Description;
+        Assert-AreEqual $intentId  $reachabilityAnalysisRun.Properties.IntentId;
 
         # Delete analysis run
         $job = Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $reachabilityAnalysisRunName -VerifierWorkspaceName $verifierWorkspaceName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
-         # Delete analysis intent
+        # Delete analysis intent
         $job = Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisIntentName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
-          # Delete verifier workspace
+        # Delete verifier workspace
         $job = Remove-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;

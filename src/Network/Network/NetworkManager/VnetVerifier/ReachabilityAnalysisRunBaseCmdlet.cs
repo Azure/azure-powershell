@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Net;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 { 
@@ -63,7 +64,32 @@ namespace Microsoft.Azure.Commands.Network
         public PSReachabilityAnalysisRun ToPsReachabilityAnalysisRun(Management.Network.Models.ReachabilityAnalysisRun analysisRun)
         {
             var psReachabilityAnalysisRun = NetworkResourceManagerProfile.Mapper.Map<PSReachabilityAnalysisRun>(analysisRun);
+            psReachabilityAnalysisRun.Properties.AnalysisResult = analysisRun.Properties.AnalysisResult;
+            psReachabilityAnalysisRun.Properties.ErrorMessage = analysisRun.Properties.ErrorMessage;
+            psReachabilityAnalysisRun.Properties.IntentContent = NetworkResourceManagerProfile.Mapper.Map<PSIntentContent>(analysisRun.Properties.IntentContent);
             return psReachabilityAnalysisRun;
+        }
+
+        private PSIPTraffic ToPsIPTraffic(Management.Network.Models.IPTraffic ipTraffic)
+        {
+            return new PSIPTraffic
+            {
+                SourceIps = ipTraffic.SourceIps?.ToList(),
+                DestinationIps = ipTraffic.DestinationIps?.ToList(),
+                SourcePorts = ipTraffic.SourcePorts?.ToList(),
+                DestinationPorts = ipTraffic.DestinationPorts?.ToList(),
+                Protocols = ipTraffic.Protocols?.ToList()
+            };
+        }
+        private PSIntentContent ToPsIntentContent(Management.Network.Models.IntentContent intentContent)
+        {
+            var ipTraffic = ToPsIPTraffic(intentContent.IPTraffic);
+            return new PSIntentContent
+            {
+                SourceResourceId = intentContent.SourceResourceId,
+                DestinationResourceId = intentContent.DestinationResourceId,
+                IpTraffic = ipTraffic
+            };
         }
     }
 }
