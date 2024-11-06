@@ -38,6 +38,11 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         public string FilesChangedFile { get; set; }
 
         /// <summary>
+        /// Changed File List
+        /// </summary>
+        private string[] FilesChanged { get; set; }
+
+        /// <summary>
         /// Gets or set the Mode, e.g. Release
         /// </summary>
         [Required]
@@ -187,8 +192,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         {
             Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>();
 			
-			string[] FilesChanged = File.ReadAllLines(FilesChangedFile);
-
             foreach (string filePath in FilesChanged)
             {
                 List<string> phaseList = new List<string>();
@@ -424,6 +427,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             SubTasks = "";
             var csprojMap = ReadMapFile(CsprojMapFilePath, "CsprojMapFilePath");
 
+            FilesChanged = File.ReadAllLines(FilesChangedFile);
             Console.WriteLine(string.Format("FilesChanged: {0}", FilesChanged.Length));
             if (FilesChanged != null)
             {
