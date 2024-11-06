@@ -16,7 +16,7 @@ steps:
       $changedFiles = git --no-pager diff --name-only --diff-filter=ACMRT origin/base -- .
       Write-Host "Total updated files:" $changedFiles.Count
       Write-Host "All Updated files:"
-      $temp | Foreach-Object {Write-Host $_}
+      $changedFiles | Foreach-Object {Write-Host $_}
       $RepoArtifacts = 'artifacts'
       if(-not (Test-Path $RepoArtifacts)){
         New-Item -ItemType Directory -Name $RepoArtifacts
