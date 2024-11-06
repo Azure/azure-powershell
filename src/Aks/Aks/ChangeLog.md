@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* faked change
 
 ## Version 6.0.4
 * Fixed secrets exposure in example documentation.
