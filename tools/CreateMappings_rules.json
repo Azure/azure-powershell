@@ -923,5 +923,9 @@
   {
     "module": "Terraform",
     "alias": "Terraform"
+  },
+  {
+    "alias": "Mdp",
+    "module": "Mdp"
   }
 ]
