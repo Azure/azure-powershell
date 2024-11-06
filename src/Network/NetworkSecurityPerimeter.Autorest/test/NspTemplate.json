@@ -90,6 +90,13 @@
         "description": "Name of the NSP resource."
       }
     },
+    "nsp13Name": {
+      "type": "string",
+      "defaultValue": "t-nsp13",
+      "metadata": {
+        "description": "Name of the NSP resource."
+      }
+    },
     "nspDelBase1Name": {
       "type": "string",
       "defaultValue": "t-nspDelBase1",
@@ -273,6 +280,13 @@
       "metadata": {
         "description": "Name of the NSP link."
       }
+    },
+    "loggingConfig13Name": {
+      "type": "string",
+      "defaultValue": "instance",
+      "metadata": {
+        "description": "Name of the NSP logging configuration."
+      }
     }
   },
   "variables": {
@@ -288,6 +302,7 @@
     "nsp10ResourceName": "[parameters('nsp10Name')]",
     "nsp11ResourceName": "[parameters('nsp11Name')]",
     "nsp12ResourceName": "[parameters('nsp12Name')]",
+    "nsp13ResourceName": "[parameters('nsp13Name')]",
     "nspDelBase1ResourceName": "[parameters('nspDelBase1Name')]",
     "nspDelete1ResourceName": "[parameters('nspDelete1Name')]",
     "nspDelete2ResourceName": "[parameters('nspDelete2Name')]",
@@ -314,7 +329,8 @@
     "link1ResourceName": "[concat(variables('nsp2ResourceName'), '/', parameters('link1Name'))]",
     "link2ResourceName": "[concat(variables('nsp4ResourceName'), '/', parameters('link2Name'))]",
     "linkDelete3ResourceName": "[concat(variables('nsp8ResourceName'), '/', parameters('linkDelete3Name'))]",
-    "linkDelete4ResourceName": "[concat(variables('nsp10ResourceName'), '/', parameters('linkDelete4Name'))]"
+    "linkDelete4ResourceName": "[concat(variables('nsp10ResourceName'), '/', parameters('linkDelete4Name'))]",
+    "loggingConfig13ResourceName": "[concat(variables('nsp13ResourceName'), '/', parameters('loggingConfig13Name'))]"
   },
   "resources": [
     {
@@ -447,6 +463,17 @@
       "properties": {
         "displayName": "NSP 12 for link",
         "description": "NSP 12 for link"
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters",
+      "name": "[variables('nsp13ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [],
+      "properties": {
+        "displayName": "NSP 13 for link",
+        "description": "NSP 13 for link"
       }
     },
     {
@@ -1090,6 +1117,20 @@
         "remoteInboundProfiles": [ "*" ],
 
         "remoteOutboundProfiles": [ "*" ]
+
+      }
+    },
+    {
+      "apiVersion": "2023-08-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters/loggingconfigurations",
+      "name": "[variables('loggingConfig13ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityPerimeters', variables('nsp13ResourceName'))]"
+      ],
+      "properties": {
+
+       "enabledLogCategories": []
 
       }
     }

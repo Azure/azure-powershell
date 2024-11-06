@@ -17,13 +17,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkSecurityPerimete
 Describe 'Get-AzNetworkSecurityPerimeterLoggingConfiguration' {
     It 'Get' {
         {
-                    Get-AzNetworkSecurityPerimeterLoggingConfiguration -Name $env.tmpLoggingConfigurationName -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2
+            Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp13
         } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' {
         {
-            $GETObj = Get-AzNetworkSecurityPerimeterLoggingConfiguration -Name $env.tmpLoggingConfigurationName -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2
+            $GETObj = Get-AzNetworkSecurityPerimeterLoggingConfiguration  -Name $env.tmpLoggingConfig13Name -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp13
             $GETObjViaIdentity = Get-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject $GETObj
             $GETObj.Name | Should -Be $GETObjViaIdentity.Name
         } | Should -Not -Throw

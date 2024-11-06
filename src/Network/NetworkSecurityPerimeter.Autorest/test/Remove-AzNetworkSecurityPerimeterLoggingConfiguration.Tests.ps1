@@ -17,16 +17,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkSecurityPerim
 Describe 'Remove-AzNetworkSecurityPerimeterLoggingConfiguration' {
     It 'Delete' {
         {            
-            Remove-AzNetworkSecurityPerimeterLoggingConfiguration -Name $env.tmpLoggingConfigurationName -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp9
+            Remove-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp6
 
         } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' {
         { 
-            $configGet = Get-AzNetworkSecurityPerimeterLoggingConfiguration -Name $env.tmpLoggingConfigurationName -ResourceGroupName $env.rgname  -SecurityPerimeterName $env.tmpNsp9
+            $configGet = Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName $env.rgname  -SecurityPerimeterName $env.tmpNsp7
     
-            Remove-AzNetworkSecurityPerimeterLinkReference -InputObject $configGet
+            Remove-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject $configGet
 
         } | Should -Not -Throw
     }

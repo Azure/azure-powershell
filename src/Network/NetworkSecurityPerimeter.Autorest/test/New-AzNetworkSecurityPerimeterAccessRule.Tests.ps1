@@ -54,9 +54,9 @@ Describe 'New-AzNetworkSecurityPerimeterAccessRule' {
 
     It 'CreateExpandedWithServiceTags' {
         {
-            $servicetags = @("st1", "st2")
+            $servicetags = @("MicrosoftPublicIPSpace", "MicrosoftPrivateIPSpace")
 
-            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule2 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ServiceTag $servicetags -Direction 'Inbound' -Location $env.location
+            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule1 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ServiceTag $servicetags -Direction 'Inbound' -Location $env.location
 
         } | Should -Not -Throw
     }

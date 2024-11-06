@@ -18,7 +18,17 @@ Describe 'Update-AzNetworkSecurityPerimeterLoggingConfiguration' {
      It 'UpdateExpanded' {
         {
 
-        $updateLinkObj = Update-AzNetworkSecurityPerimeterLoggingConfiguration -Name 'instance' -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp4
+        Update-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp13 -EnabledLogCategory @('NspPublicOutboundPerimeterRulesAllowed')
+
+        } | Should -Not -Throw
+    }
+
+     It 'UpdateViaIdentityExpanded' {
+        {
+
+           $GETObj = Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp13
+
+           Update-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject $GETObj -EnabledLogCategory @('NspPublicOutboundResourceRulesAllowed')
 
         } | Should -Not -Throw
     }
