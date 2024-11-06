@@ -175,19 +175,19 @@ function New-AzContainerInstanceNoDefaultObject {
         $Object.ReadinessProbeTimeoutSecond = $ReadinessProbeTimeoutSecond
         if($PSBoundParameters.ContainsKey("RequestCpu")) {
  
-            $Object.RequestCpu = $Image.RequestCpu
+            $Object.RequestCpu = $RequestCpu
         }
         if($PSBoundParameters.ContainsKey("RequestMemoryInGb")) {
  
-            $Object.RequestMemoryInGb = $Image.RequestMemoryInGb
+            $Object.RequestMemoryInGb = $RequestMemoryInGb
         }
         if($PSBoundParameters.ContainsKey("RequestsGpuCount")) {
  
-            $Object.RequestsGpuCount = $Image.RequestsGpuCount
+            $Object.RequestsGpuCount = $RequestsGpuCount
         }
         if($PSBoundParameters.ContainsKey("RequestsGpuSku")) {
  
-            $Object.RequestsGpuSku = $Image.RequestsGpuSku
+            $Object.RequestsGpuSku = $RequestsGpuSku
         }
         $Object.VolumeMount = $VolumeMount
         return $Object

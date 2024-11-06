@@ -17,15 +17,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzContainerInstanceCon
 Describe 'Update-AzContainerInstanceContainerGroupProfile' {
     It 'PatchExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
-        # The Update-AzContainerInstanceContainerGroupProfile operation supports the PATCH method.
-        # This parameters are required -Name, -ResourceGroupName, -Tag
-        # Tag is of type Modesl.Api20240501Preview.ContainerGroupPatchTags
-        # However, defining Tag like this @{"k"="v"} is throwing this error - 'Required property 'properties' not found in JSON.
-        # So, how exactly should tag be defined in json is looks like this properties={"tags": {"tag1key": "tag1Value", "tag2key": "tag2Value"}}
-        # So, how to define this in powershell?
-        
-
-
     }
 
     It 'Patch' -skip {
