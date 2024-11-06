@@ -1,0 +1,2 @@
+"Module","Severity","ResourceType","SubResourceType","Command","Description"
+"Az.Resources","1","Microsoft.Resources","dataBoundaries","","ArrayItemNotValid: #/commands[1]\n{\n  ArrayItemNotValid: #/commands[1].help.parameterSets[0]\n  {\n    ArrayExpected: #/commands[1].help.parameterSets[0].parameters\n  }\n  \n  ArrayItemNotValid: #/commands[1].examples[0]\n  {\n    ArrayExpected: #/commands[1].examples[0].parameters\n  }\n  \n}\n"
