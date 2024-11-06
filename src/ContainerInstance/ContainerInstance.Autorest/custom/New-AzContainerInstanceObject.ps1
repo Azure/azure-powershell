@@ -178,12 +178,12 @@ function New-AzContainerInstanceObject {
         {
             $RequestCpu = 1.0
         }
-        $Object.RequestCpu = $RequestCpu
+        $Object.RequestCpu = [double]$RequestCpu
         if(!$PSBoundParameters.ContainsKey("RequestMemoryInGb"))
         {
             $RequestMemoryInGb = 1.5
         }
-        $Object.RequestMemoryInGb = $RequestMemoryInGb
+        $Object.RequestMemoryInGb = [double]$RequestMemoryInGb
         $Object.RequestsGpuCount = $RequestsGpuCount
         $Object.RequestsGpuSku = $RequestsGpuSku
         $Object.VolumeMount = $VolumeMount
