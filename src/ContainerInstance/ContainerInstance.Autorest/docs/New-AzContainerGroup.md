@@ -13,17 +13,19 @@ Create or update container groups with specified configurations.
 ## SYNTAX
 
 ```
-New-AzContainerGroup -Name <String> -ResourceGroupName <String> -Container <IContainer[]> -Location <String>
- [-SubscriptionId <String>] [-DnsConfigNameServer <String[]>] [-DnsConfigOption <String>]
- [-DnsConfigSearchDomain <String>] [-EncryptionPropertyKeyName <String>]
- [-EncryptionPropertyKeyVersion <String>] [-EncryptionPropertyVaultBaseUrl <String>]
- [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-ImageRegistryCredential <IImageRegistryCredential[]>] [-InitContainer <IInitContainerDefinition[]>]
- [-IPAddressDnsNameLabel <String>] [-IPAddressIP <String>] [-IPAddressPort <IPort[]>]
- [-IPAddressType <ContainerGroupIPAddressType>] [-LogAnalyticLogType <LogAnalyticsLogType>]
- [-LogAnalyticMetadata <Hashtable>] [-LogAnalyticWorkspaceId <String>] [-LogAnalyticWorkspaceKey <String>]
+New-AzContainerGroup -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-Container <IContainer[]>] [-ContainerGroupProfileId <String>] [-ContainerGroupProfileRevision <Int32>]
+ [-DnsConfigNameServer <String[]>] [-DnsConfigOption <String>] [-DnsConfigSearchDomain <String>]
+ [-EncryptionPropertyKeyName <String>] [-EncryptionPropertyKeyVersion <String>]
+ [-EncryptionPropertyVaultBaseUrl <String>] [-IdentityType <ResourceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-ImageRegistryCredential <IImageRegistryCredential[]>]
+ [-InitContainer <IInitContainerDefinition[]>] [-IPAddressDnsNameLabel <String>] [-IPAddressIP <String>]
+ [-IPAddressPort <IPort[]>] [-IPAddressType <ContainerGroupIPAddressType>]
+ [-LogAnalyticLogType <LogAnalyticsLogType>] [-LogAnalyticMetadata <Hashtable>]
+ [-LogAnalyticWorkspaceId <String>] [-LogAnalyticWorkspaceKey <String>]
  [-LogAnalyticWorkspaceResourceId <String>] [-OSType <OperatingSystemTypes>] [-Priority <String>]
  [-RestartPolicy <ContainerGroupRestartPolicy>] [-Sku <ContainerGroupSku>]
+ [-StandbyPoolProfileFailContainerGroupCreateOnReuseFailure] [-StandbyPoolProfileId <String>]
  [-SubnetId <IContainerGroupSubnetId[]>] [-Tag <Hashtable>] [-Volume <IVolume[]>] [-Zone <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -165,11 +167,41 @@ The containers within the container group.
 To construct, see NOTES section for CONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainer[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainerGroupProfileId
+The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainerGroupProfileRevision
+The container group profile reference revision.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -319,7 +351,7 @@ The image registry credentials by which the container group is created from.
 To construct, see NOTES section for IMAGEREGISTRYCREDENTIAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IImageRegistryCredential[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IImageRegistryCredential[]
 Parameter Sets: (All)
 Aliases:
 
@@ -335,7 +367,7 @@ The init containers for a container group.
 To construct, see NOTES section for INITCONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IInitContainerDefinition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -381,7 +413,7 @@ The list of ports exposed on the container group.
 To construct, see NOTES section for IPADDRESSPORT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IPort[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IPort[]
 Parameter Sets: (All)
 Aliases:
 
@@ -537,7 +569,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: "Linux"
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -603,12 +635,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StandbyPoolProfileFailContainerGroupCreateOnReuseFailure
+The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StandbyPoolProfileId
+The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubnetId
 The subnet resource IDs for a container group.
 To construct, see NOTES section for SUBNETID properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroupSubnetId[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroupSubnetId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -655,7 +717,7 @@ The list of volumes that can be mounted by containers in this container group.
 To construct, see NOTES section for VOLUME properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolume[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IVolume[]
 Parameter Sets: (All)
 Aliases:
 
@@ -719,104 +781,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroup
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CONTAINER <IContainer[]>`: The containers within the container group.
-  - `Image <String>`: The name of the image used to create the container instance.
-  - `Name <String>`: The user-provided name of the container instance.
-  - `RequestCpu <Double>`: The CPU request of this container instance.
-  - `RequestMemoryInGb <Double>`: The memory request in GB of this container instance.
-  - `[Command <String[]>]`: The commands to execute within the container instance in exec form.
-  - `[EnvironmentVariable <IEnvironmentVariable[]>]`: The environment variables to set in the container instance.
-    - `Name <String>`: The name of the environment variable.
-    - `[SecureValue <String>]`: The value of the secure environment variable.
-    - `[Value <String>]`: The value of the environment variable.
-  - `[LimitCpu <Double?>]`: The CPU limit of this container instance.
-  - `[LimitMemoryInGb <Double?>]`: The memory limit in GB of this container instance.
-  - `[LimitsGpuCount <Int32?>]`: The count of the GPU resource.
-  - `[LimitsGpuSku <GpuSku?>]`: The SKU of the GPU resource.
-  - `[LivenessProbeExecCommand <String[]>]`: The commands to execute within the container.
-  - `[LivenessProbeFailureThreshold <Int32?>]`: The failure threshold.
-  - `[LivenessProbeHttpGetHttpHeader <IHttpHeader[]>]`: The HTTP headers.
-    - `[Name <String>]`: The header name.
-    - `[Value <String>]`: The header value.
-  - `[LivenessProbeHttpGetPath <String>]`: The path to probe.
-  - `[LivenessProbeHttpGetPort <Int32?>]`: The port number to probe.
-  - `[LivenessProbeHttpGetScheme <Scheme?>]`: The scheme.
-  - `[LivenessProbeInitialDelaySecond <Int32?>]`: The initial delay seconds.
-  - `[LivenessProbePeriodSecond <Int32?>]`: The period seconds.
-  - `[LivenessProbeSuccessThreshold <Int32?>]`: The success threshold.
-  - `[LivenessProbeTimeoutSecond <Int32?>]`: The timeout seconds.
-  - `[Port <IContainerPort[]>]`: The exposed ports on the container instance.
-    - `Port <Int32>`: The port number exposed within the container group.
-    - `[Protocol <ContainerNetworkProtocol?>]`: The protocol associated with the port.
-  - `[ReadinessProbeExecCommand <String[]>]`: The commands to execute within the container.
-  - `[ReadinessProbeFailureThreshold <Int32?>]`: The failure threshold.
-  - `[ReadinessProbeHttpGetHttpHeader <IHttpHeader[]>]`: The HTTP headers.
-  - `[ReadinessProbeHttpGetPath <String>]`: The path to probe.
-  - `[ReadinessProbeHttpGetPort <Int32?>]`: The port number to probe.
-  - `[ReadinessProbeHttpGetScheme <Scheme?>]`: The scheme.
-  - `[ReadinessProbeInitialDelaySecond <Int32?>]`: The initial delay seconds.
-  - `[ReadinessProbePeriodSecond <Int32?>]`: The period seconds.
-  - `[ReadinessProbeSuccessThreshold <Int32?>]`: The success threshold.
-  - `[ReadinessProbeTimeoutSecond <Int32?>]`: The timeout seconds.
-  - `[RequestsGpuCount <Int32?>]`: The count of the GPU resource.
-  - `[RequestsGpuSku <GpuSku?>]`: The SKU of the GPU resource.
-  - `[VolumeMount <IVolumeMount[]>]`: The volume mounts available to the container instance.
-    - `MountPath <String>`: The path within the container where the volume should be mounted. Must not contain colon (:).
-    - `Name <String>`: The name of the volume mount.
-    - `[ReadOnly <Boolean?>]`: The flag indicating whether the volume mount is read-only.
-
-`IMAGEREGISTRYCREDENTIAL <IImageRegistryCredential[]>`: The image registry credentials by which the container group is created from.
-  - `Server <String>`: The Docker image registry server without a protocol such as "http" and "https".
-  - `[Identity <String>]`: The identity for the private registry.
-  - `[IdentityUrl <String>]`: The identity URL for the private registry.
-  - `[Password <String>]`: The password for the private registry.
-  - `[Username <String>]`: The username for the private registry.
-
-`INITCONTAINER <IInitContainerDefinition[]>`: The init containers for a container group.
-  - `Name <String>`: The name for the init container.
-  - `[Command <String[]>]`: The command to execute within the init container in exec form.
-  - `[EnvironmentVariable <IEnvironmentVariable[]>]`: The environment variables to set in the init container.
-    - `Name <String>`: The name of the environment variable.
-    - `[SecureValue <String>]`: The value of the secure environment variable.
-    - `[Value <String>]`: The value of the environment variable.
-  - `[Image <String>]`: The image of the init container.
-  - `[VolumeMount <IVolumeMount[]>]`: The volume mounts available to the init container.
-    - `MountPath <String>`: The path within the container where the volume should be mounted. Must not contain colon (:).
-    - `Name <String>`: The name of the volume mount.
-    - `[ReadOnly <Boolean?>]`: The flag indicating whether the volume mount is read-only.
-
-`IPADDRESSPORT <IPort[]>`: The list of ports exposed on the container group.
-  - `Port1 <Int32>`: The port number.
-  - `[Protocol <ContainerGroupNetworkProtocol?>]`: The protocol associated with the port.
-
-`SUBNETID <IContainerGroupSubnetId[]>`: The subnet resource IDs for a container group.
-  - `Id <String>`: Resource ID of virtual network and subnet.
-  - `[Name <String>]`: Friendly name for the subnet.
-
-`VOLUME <IVolume[]>`: The list of volumes that can be mounted by containers in this container group.
-  - `Name <String>`: The name of the volume.
-  - `[AzureFileReadOnly <Boolean?>]`: The flag indicating whether the Azure File shared mounted as a volume is read-only.
-  - `[AzureFileShareName <String>]`: The name of the Azure File share to be mounted as a volume.
-  - `[AzureFileStorageAccountKey <String>]`: The storage account access key used to access the Azure File share.
-  - `[AzureFileStorageAccountName <String>]`: The name of the storage account that contains the Azure File share.
-  - `[EmptyDir <IVolumeEmptyDir>]`: The empty directory volume.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[GitRepoDirectory <String>]`: Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
-  - `[GitRepoRepository <String>]`: Repository URL
-  - `[GitRepoRevision <String>]`: Commit hash for the specified revision.
-  - `[Secret <ISecretVolume>]`: The secret volume.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 
