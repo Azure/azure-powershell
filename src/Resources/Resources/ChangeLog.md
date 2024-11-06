@@ -19,8 +19,11 @@
 -->
 
 ## Upcoming Release
-* Fixed customer-reported `Remove-AzPolicyAssignment` behavior.
 * Updated Resources SDK to 2024-07-01.
+
+## Version 7.6.0
+* Fixed customer-reported `Remove-AzPolicyAssignment` behavior.
+* Added new cmdlets of DataBoundary
 
 ## Version 7.5.0
 * Added `ResourceSelector` and `Override` parameters to `New/Update-AzPolicyAssignment`.
