@@ -14,9 +14,8 @@ Gets the NSP logging configuration.
 
 ### Get (Default)
 ```
-Get-AzNetworkSecurityPerimeterLoggingConfiguration -Name <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -SecurityPerimeterName <String>
+ [-Name <String>] [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -27,9 +26,9 @@ Get-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject <INetworkSecurit
 
 ### GetViaIdentityNetworkSecurityPerimeter
 ```
-Get-AzNetworkSecurityPerimeterLoggingConfiguration -Name <String>
- -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzNetworkSecurityPerimeterLoggingConfiguration
+ -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-Name <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +38,7 @@ Gets the NSP logging configuration.
 
 ### Example 1: Get the Network security perimeter logging configuration
 ```powershell
-Get-AzNetworkSecurityPerimeterLoggingConfiguration -Name instance -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
+Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
 ```
 
 ```output
@@ -92,9 +91,9 @@ Type: System.String
 Parameter Sets: Get, GetViaIdentityNetworkSecurityPerimeter
 Aliases: LoggingConfigurationName
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: "instance"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

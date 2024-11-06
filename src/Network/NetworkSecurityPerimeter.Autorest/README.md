@@ -296,6 +296,13 @@ directive:
         - NetworkSecurityPerimeterName
         - NSPName
 
+  - where:
+      subject: LoggingConfiguration
+      parameter-name: Name
+    set:
+      default:
+        script: '"instance"'
+
 # feature request for the below change https://github.com/Azure/autorest.powershell/issues/982
   - from: source-file-csharp
     where: $

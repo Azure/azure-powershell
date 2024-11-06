@@ -14,9 +14,9 @@ Deletes an NSP Logging configuration.
 
 ### Delete (Default)
 ```
-Remove-AzNetworkSecurityPerimeterLoggingConfiguration -Name <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String>
+ -SecurityPerimeterName <String> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -27,9 +27,9 @@ Remove-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject <INetworkSecu
 
 ### DeleteViaIdentityNetworkSecurityPerimeter
 ```
-Remove-AzNetworkSecurityPerimeterLoggingConfiguration -Name <String>
- -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzNetworkSecurityPerimeterLoggingConfiguration
+ -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-Name <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,15 +39,15 @@ Deletes an NSP Logging configuration.
 
 ### Example 1: Remove the Network security perimeter logging configuration
 ```powershell
-Remove-AzNetworkSecurityPerimeterLoggingConfiguration -Name instance -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
+Remove-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
 ```
 
 Get the Network security perimeter logging configuration
 
 ### Example 2: Remove a network security perimeter logging configuration via identity
 ```powershell
- $linkRefObj = Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_Ex -SecurityPerimeterName ext-nsp11 -Name instance
- Remove-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject $linkRefObj
+ $configObj = Get-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_Ex -SecurityPerimeterName ext-nsp11
+ Remove-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject $configObj
 ```
 
 Remove a network security perimeter logging configuration via identity
@@ -94,9 +94,9 @@ Type: System.String
 Parameter Sets: Delete, DeleteViaIdentityNetworkSecurityPerimeter
 Aliases: LoggingConfigurationName
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: "instance"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

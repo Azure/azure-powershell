@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Updates a NSP Logging configuration
+Updates a NSP Logging Configuration
 .Description
-Updates a NSP Logging configuration
+Updates a NSP Logging Configuration
 #>
 function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration])]
@@ -113,6 +113,13 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
         # The name is case insensitive.
         ${ResourceGroupName},
 
+        [Parameter(ParameterSetName = 'UpdateExpanded', HelpMessage = "The name of the logging configuration.")]
+        [Alias('LoggingConfigurationName')]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+        [System.String]
+        # The name of the Logging configuration.
+        ${Name},
+
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the network security perimeter")]
         [Alias('NetworkSecurityPerimeterName')]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
@@ -120,32 +127,38 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
         # The name of the network security perimeter.
         ${SecurityPerimeterName},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the Logging configuration.")]
-        [Alias('LoggingConfigurationName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
-        [System.String]
-        # The name of the Logging Configuration.
-        ${Name},
-
 
         # Body paramters
 
-        [Parameter(HelpMessage = "Enabled log categories")]
+        [Parameter(HelpMessage = "Resource tags.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.IResourceTags]))]
+        [System.Collections.Hashtable]
+        # Resource tags.
+        ${Tag},
+
+        [Parameter(HelpMessage = "Location of the resource")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+        [System.String]
+        # The Location of the resource
+        ${Location},
+
+        [Parameter(HelpMessage = "Log categories to enable")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.String[]]
-        # enabled log categories
-        ${EnabledLogCategories}
+        # Enabled log categories
+        ${EnabledLogCategory}
 
         # Add only those paramters which can be updated
     )
 
     process {
         try {
-            
+
             # 1. GET
 
             # body params and AsJob
-            $bodyParams = 'EnabledLogCategories', 'AsJob'
+            $bodyParams = 'Tag', 'Location', 'EnabledLogCategory', 'AsJob'
 
             $bodyParamsMap = @{}
 
@@ -155,8 +168,12 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
 
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
+
+            $GETObject = Get-AzNetworkSecurityPerimeterLoggingConfiguration @PSBoundParameters
             
-            $pathParams = 'InputObject', 'ResourceGroupName', 'SubscriptionId', 'SecurityPerimeterName'
+            # 2. PUT
+            
+            $pathParams = 'InputObject', 'ResourceGroupName', 'Name', 'SubscriptionId', 'SecurityPerimeterName'
 
             ForEach($pathParam in $pathParams){        
                 $null = $PSBoundParameters.Remove($pathParam)
@@ -175,7 +192,7 @@ function Update-AzNetworkSecurityPerimeterLoggingConfiguration {
 
             
             # Call PUT method
-            Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterLoggingConfiguration_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
+            New-AzNetworkSecurityPerimeterLoggingConfiguration_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
 
         }
         catch {

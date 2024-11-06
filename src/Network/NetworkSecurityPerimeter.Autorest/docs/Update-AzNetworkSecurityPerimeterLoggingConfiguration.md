@@ -8,50 +8,43 @@ schema: 2.0.0
 # Update-AzNetworkSecurityPerimeterLoggingConfiguration
 
 ## SYNOPSIS
-Updates a NSP Logging configuration
+Updates a NSP Logging Configuration
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzNetworkSecurityPerimeterLoggingConfiguration -Name <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-EnabledLogCategories <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String>
+ -SecurityPerimeterName <String> [-Name <String>] [-SubscriptionId <String>] [-EnabledLogCategory <String[]>]
+ [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject <INetworkSecurityPerimeterIdentity>
- [-EnabledLogCategories <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-EnabledLogCategory <String[]>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a NSP Logging configuration
+Updates a NSP Logging Configuration
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update network security perimeter logging configuration
 ```powershell
-{{ Add code here }}
+Update-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6
+ -EnabledLogCategory NspPublicOutboundPerimeterRulesAllowed
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+EnabledLogCategory           Name
+------------------           ----
+{NspPublicOutboundPerimeterRulesAllowed} instance
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create network security perimeter logging configuration
 
 ## PARAMETERS
 
@@ -85,8 +78,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnabledLogCategories
-Enabled log categories
+### -EnabledLogCategory
+Log categories to enable
 
 ```yaml
 Type: System.String[]
@@ -116,15 +109,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Location
+Location of the resource
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
-The name of the Logging configuration.
+The name of the logging configuration.
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases: LoggingConfigurationName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -188,6 +196,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -1,6 +1,6 @@
-### Example 1: Update network security perimeter logging configuration
+### Example 1: Create network security perimeter logging configuration
 ```powershell
-Update-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6
+New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6
  -EnabledLogCategory NspPublicOutboundPerimeterRulesAllowed
 ```
 
@@ -11,4 +11,3 @@ EnabledLogCategory           Name
 ```
 
 Create network security perimeter logging configuration
-

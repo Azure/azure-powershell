@@ -48,6 +48,9 @@ create a NSP resource association.
 ### [New-AzNetworkSecurityPerimeterLink](New-AzNetworkSecurityPerimeterLink.md)
 create NSP link resource.
 
+### [New-AzNetworkSecurityPerimeterLoggingConfiguration](New-AzNetworkSecurityPerimeterLoggingConfiguration.md)
+create NSP logging configuration.
+
 ### [New-AzNetworkSecurityPerimeterProfile](New-AzNetworkSecurityPerimeterProfile.md)
 create a network profile.
 
@@ -85,5 +88,5 @@ Updates an association
 Updates a NSP Link
 
 ### [Update-AzNetworkSecurityPerimeterLoggingConfiguration](Update-AzNetworkSecurityPerimeterLoggingConfiguration.md)
-Updates a NSP Logging configuration
+Updates a NSP Logging Configuration
 
