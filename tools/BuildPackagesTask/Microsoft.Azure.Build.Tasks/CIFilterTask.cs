@@ -31,10 +31,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
     /// </summary>
     public class CIFilterTask : Task
     {
-		/// <summary>
+        /// <summary>
         /// Gets or set the OutputFile, store FilesChanged.txt in 'artifacts' folder
         /// </summary>
-		[Required]
+        [Required]
         public string FilesChangedFile { get; set; }
 
         /// <summary>
