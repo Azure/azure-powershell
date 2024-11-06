@@ -31,7 +31,7 @@ eastus   test-cgp      test-rg
 
 This commands creates a container group profile and runs a custom script inside the container.
 
-### Example 4: Create a container group profile with a container instance using image nginx in Azure Container Registry
+### Example 3: Create a container group profile with a container instance using image nginx in Azure Container Registry
 ```powershell
 $pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $container = New-AzContainerInstanceObject -Name test-container -Image myacr.azurecr.io/nginx:latest -RequestCpu 1 -RequestMemoryInGb 1.5
