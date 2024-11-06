@@ -13,8 +13,8 @@ while(-not $mockingPath) {
  
 Describe 'New-AzContainerGroupReuseFromStandbyPool' {
     It 'Reuses a container group from a standby pool' {
-        $container = New-AzContainerInstanceObject -Name $env.reusedcontainerInstanceName -ConfigMapKeyValuePair @{"key1"="value1"}
-        $containerGroup = New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.reusedContainerGroupName -Location $env.location -Container $container -ContainerGroupProfileId $env.containerGroupProfileId -ContainerGroupProfileRevision $env.containerGroupProfileRevision -StandbyPoolProfileId $env.standbyPoolProfileId
+        $container = New-AzContainerInstancenoDefaultObject -Name $env.reusedcontainerInstanceName -ConfigMapKeyValuePair @{"key1"="value1"}
+        $containerGroup = New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.reusedContainerGroupName -Container $container -Location $env.location -ContainerGroupProfileId $env.containerGroupProfileId -ContainerGroupProfileRevision $env.containerGroupProfileRevision -StandbyPoolProfileId $env.standbyPoolProfileId
  
         $containerGroup | Should -Not -Be $null
         $containerGroup.Name | Should -Be $env.reusedContainerGroupName
@@ -28,6 +28,6 @@ Describe 'New-AzContainerGroupReuseFromStandbyPool' {
         $containerGroup.Container[0].RequestMemoryInGb | Should -Be 1
  
         $containerGroup.OSType | Should -Be $env.osType
-        $containerGroup.IsReusedFromStandbyPool | Should -Be True
+        $containerGroup.IsCreatedFromStandbyPool | Should -Be True
     }
 }

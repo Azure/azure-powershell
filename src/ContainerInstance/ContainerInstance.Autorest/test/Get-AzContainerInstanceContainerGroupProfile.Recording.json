@@ -99,7 +99,7 @@
       }
     },
     "Response": {
-      "StatusCode": 400,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
@@ -119,7 +119,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"InvalidRequestContent\",\"message\":\"The request content was invalid and could not be deserialized: \u0027Required property \u0027properties\u0027 not found in JSON. Path \u0027\u0027, line 1, position 24.\u0027.\"}}",
+      "Content": "{\"properties\":{\"containers\":[{\"name\":\"bez-test-ci\",\"properties\":{\"image\":\"mcr.microsoft.com\/azuredocs\/aci-helloworld:latest\",\"resources\":{\"requests\":{\"memoryInGB\":1.5,\"cpu\":1}}}}],\"osType\":\"Linux\",\"revision\":1},\"id\":\"\/subscriptions\/da28f5e5-aa45-46fe-90c8-053ca49ab4b5\/resourceGroups\/test-rg9iwau\/providers\/Microsoft.ContainerInstance\/containerGroupProfiles\/bez-test-cgp\",\"name\":\"bez-test-cgp\",\"type\":\"Microsoft.ContainerInstance\/containerGroupProfiles\",\"location\":\"eastus\"}",
       "isContentBase64": false
     }
   }

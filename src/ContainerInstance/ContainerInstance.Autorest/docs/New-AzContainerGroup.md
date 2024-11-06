@@ -13,8 +13,8 @@ Create or update container groups with specified configurations.
 ## SYNTAX
 
 ```
-New-AzContainerGroup -Name <String> -ResourceGroupName <String> -Container <IContainer[]> -Location <String>
- [-SubscriptionId <String>] [-ContainerGroupProfileId <String>] [-ContainerGroupProfileRevision <Int32>]
+New-AzContainerGroup -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ [-Container <IContainer[]>] [-ContainerGroupProfileId <String>] [-ContainerGroupProfileRevision <Int32>]
  [-DnsConfigNameServer <String[]>] [-DnsConfigOption <String>] [-DnsConfigSearchDomain <String>]
  [-EncryptionPropertyKeyName <String>] [-EncryptionPropertyKeyVersion <String>]
  [-EncryptionPropertyVaultBaseUrl <String>] [-IdentityType <ResourceIdentityType>]
@@ -171,7 +171,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Pre
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

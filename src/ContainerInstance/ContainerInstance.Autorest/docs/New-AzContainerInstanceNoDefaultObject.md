@@ -1,22 +1,22 @@
 ---
 external help file:
 Module Name: Az.ContainerInstance
-online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceObject
+online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/New-AzContainerInstanceNoDefaultObject
 schema: 2.0.0
 ---
 
-# New-AzContainerInstanceObject
+# New-AzContainerInstanceNoDefaultObject
 
 ## SYNOPSIS
-Create a in-memory object for Container
+Create a in-memory object for Container with no default values
 
 ## SYNTAX
 
 ```
-New-AzContainerInstanceObject -Image <String> -Name <String> [-Command <String[]>]
+New-AzContainerInstanceNoDefaultObject -Name <String> [-Command <String[]>]
  [-ConfigMapKeyValuePair <IConfigMapKeyValuePairs>] [-EnvironmentVariable <IEnvironmentVariable[]>]
- [-LimitCpu <Double>] [-LimitMemoryInGb <Double>] [-LimitsGpuCount <Int32>] [-LimitsGpuSku <String>]
- [-LivenessProbeExecCommand <String[]>] [-LivenessProbeFailureThreshold <Int32>]
+ [-Image <String>] [-LimitCpu <Double>] [-LimitMemoryInGb <Double>] [-LimitsGpuCount <Int32>]
+ [-LimitsGpuSku <String>] [-LivenessProbeExecCommand <String[]>] [-LivenessProbeFailureThreshold <Int32>]
  [-LivenessProbeHttpGetHttpHeader <IHttpHeader[]>] [-LivenessProbeHttpGetPath <String>]
  [-LivenessProbeHttpGetPort <Int32>] [-LivenessProbeHttpGetScheme <String>]
  [-LivenessProbeInitialDelaySecond <Int32>] [-LivenessProbePeriodSecond <Int32>]
@@ -31,13 +31,13 @@ New-AzContainerInstanceObject -Image <String> -Name <String> [-Command <String[]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for Container
+Create a in-memory object for Container with no default values
 
 ## EXAMPLES
 
 ### Example 1: Create a container instance using image alphine with request cpu 1.0 and request memory 1.5Gb
 ```powershell
-New-AzContainerInstanceObject -Name "test-container" -Image alpine -RequestCpu 1 -RequestMemoryInGb 1.5
+New-AzContainerInstanceNoDefaultObject -Name "test-container" -Image alpine -RequestCpu 1 -RequestMemoryInGb 1.5
 ```
 
 ```output
@@ -50,7 +50,7 @@ Create a container instance using image alphine with request cpu 1.0 and request
 
 ### Example 2: Create a container instance using image alphine with limit cpu 2.0 and limit memory 2.5Gb
 ```powershell
-New-AzContainerInstanceObject -Image alpine -Name "test-container" -LimitCpu 2 -LimitMemoryInGb 2.5
+New-AzContainerInstanceNoDefaultObject -Image alpine -Name "test-container" -LimitCpu 2 -LimitMemoryInGb 2.5
 ```
 
 ```output
@@ -63,7 +63,7 @@ Create a container instance using image alphine with limit cpu 2.0 and limit mem
 
 ### Example 3: Create a container group with a container instance
 ```powershell
-$container = New-AzContainerInstanceObject -Name test-container -Image alpine
+$container = New-AzContainerInstanceNoDefaultObject -Name test-container -Image alpine
 New-AzContainerGroup -ResourceGroupName testrg-rg -Name test-cg -Location eastus -Container $container
 ```
 
@@ -132,7 +132,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

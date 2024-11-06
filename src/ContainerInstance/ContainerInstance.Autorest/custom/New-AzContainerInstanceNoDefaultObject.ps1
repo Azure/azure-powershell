@@ -15,13 +15,13 @@
 
 <#
 .Synopsis
-Create a in-memory object for Container
+Create a in-memory object for Container with no default values
 .Description
-Create a in-memory object for Container
+Create a in-memory object for Container with no default values
 .Link
-https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/New-AzContainerInstanceNoDefaultObject
 #>
-function New-AzContainerInstanceObject {
+function New-AzContainerInstanceNoDefaultObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Container')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
@@ -35,7 +35,7 @@ function New-AzContainerInstanceObject {
         [Parameter(HelpMessage="The environment variables to set in the container instance.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IEnvironmentVariable[]]
         $EnvironmentVariable,
-        [Parameter(Mandatory, HelpMessage="The name of the image used to create the container instance.")]
+        [Parameter(HelpMessage="The name of the image used to create the container instance.")]
         [string]
         $Image,
         [Parameter(HelpMessage="The CPU limit of this container instance.")]
@@ -143,7 +143,10 @@ function New-AzContainerInstanceObject {
         $Object.Command = $Command
         $Object.ConfigMapKeyValuePair = $ConfigMapKeyValuePair
         $Object.EnvironmentVariable = $EnvironmentVariable
-        $Object.Image = $Image
+        if($PSBoundParameters.ContainsKey("Image")) {
+ 
+            $Object.Image = $Image
+        }
         $Object.LimitCpu = $LimitCpu
         $Object.LimitMemoryInGb = $LimitMemoryInGb
         $Object.LimitsGpuCount = $LimitsGpuCount
@@ -159,10 +162,6 @@ function New-AzContainerInstanceObject {
         $Object.LivenessProbeSuccessThreshold = $LivenessProbeSuccessThreshold
         $Object.LivenessProbeTimeoutSecond = $LivenessProbeTimeoutSecond
         $Object.Name = $Name
-        if(!$PSBoundParameters.ContainsKey("Port"))
-        {
-            $Port = New-AzContainerInstancePortObject -Port 80
-        }
         $Object.Port = $Port
         $Object.ReadinessProbeExecCommand = $ReadinessProbeExecCommand
         $Object.ReadinessProbeFailureThreshold = $ReadinessProbeFailureThreshold
@@ -174,19 +173,24 @@ function New-AzContainerInstanceObject {
         $Object.ReadinessProbePeriodSecond = $ReadinessProbePeriodSecond
         $Object.ReadinessProbeSuccessThreshold = $ReadinessProbeSuccessThreshold
         $Object.ReadinessProbeTimeoutSecond = $ReadinessProbeTimeoutSecond
-        if(!$PSBoundParameters.ContainsKey("RequestCpu"))
-        {
-            $RequestCpu = 1.0
+        if($PSBoundParameters.ContainsKey("RequestCpu")) {
+ 
+            $Object.RequestCpu = $Image.RequestCpu
         }
-        $Object.RequestCpu = $RequestCpu
-        if(!$PSBoundParameters.ContainsKey("RequestMemoryInGb"))
-        {
-            $RequestMemoryInGb = 1.5
+        if($PSBoundParameters.ContainsKey("RequestMemoryInGb")) {
+ 
+            $Object.RequestMemoryInGb = $Image.RequestMemoryInGb
         }
-        $Object.RequestMemoryInGb = $RequestMemoryInGb
-        $Object.RequestsGpuCount = $RequestsGpuCount
-        $Object.RequestsGpuSku = $RequestsGpuSku
+        if($PSBoundParameters.ContainsKey("RequestsGpuCount")) {
+ 
+            $Object.RequestsGpuCount = $Image.RequestsGpuCount
+        }
+        if($PSBoundParameters.ContainsKey("RequestsGpuSku")) {
+ 
+            $Object.RequestsGpuSku = $Image.RequestsGpuSku
+        }
         $Object.VolumeMount = $VolumeMount
         return $Object
     }
 }
+
