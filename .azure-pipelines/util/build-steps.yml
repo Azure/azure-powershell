@@ -5,24 +5,7 @@ parameters:
 
 steps:
 - checkout: self
-- task: PowerShell@2
-  displayName: Test
-  inputs:
-    targetType: inline
-    pwsh: true
-    script: |
-      $targetBranch = $(System.PullRequest.TargetBranch)
-      git fetch --no-tags origin "${targetBranch}:origin/base"
-      $changedFiles = git --no-pager diff --name-only --diff-filter=ACMRT origin/base -- .
-      Write-Host "Total updated files:" $changedFiles.Count
-      Write-Host "All Updated files:"
-      $changedFiles | Foreach-Object {Write-Host $_}
-      $RepoArtifacts = 'artifacts'
-      if(-not (Test-Path $RepoArtifacts)){
-        New-Item -ItemType Directory -Name $RepoArtifacts
-      }
-      $changedFiles | Out-File $RepoArtifacts/FilesChanged.txt
-    
+- template: get-pr-changed-files.yml
 - task: NodeTool@0
   condition: eq(variables.IsGenerateBased, true)
   displayName: Install Autorest
