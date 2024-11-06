@@ -33,7 +33,7 @@ pr:
 
 jobs:
 - job: Build2
-  displayName: Test Build
+  displayName: Test Build 2nd
   condition: succeeded()
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
   pool: pool-windows-2019
