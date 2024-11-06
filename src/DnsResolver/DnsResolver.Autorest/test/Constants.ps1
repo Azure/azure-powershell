@@ -1,5 +1,5 @@
 $NRP_SIMULATOR_URI = "https://eastus2.test.azuremresolver.net:9002"
 $LOCATION = "westus2"
-$SUBSCRIPTION_ID = "abdd4249-9f34-4cc6-8e42-c2e32110603e"
+$SUBSCRIPTION_ID = "91ab65d2-c73f-4768-89d0-b061815f258b"
 $RESOURCE_GROUP_NAME = "rg-dev-eastus2-sdk-powershell"
 $SUBNET_NAME = "snet-sim2"
