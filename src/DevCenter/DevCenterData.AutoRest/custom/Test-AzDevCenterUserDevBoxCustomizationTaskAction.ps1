@@ -20,9 +20,59 @@ Validates a list of customization tasks.
 .Description
 Validates a list of customization tasks.
 .Example
-{{ Add code here }}
+$task = @{
+    Name = "catalogName/choco"
+    DisplayName = "choco"
+    Parameter = @{
+        PackageName = "vscode"
+        PackageVersion = "1.0.0"
+    }
+    RunAs = "User"
+    TimeoutInSecond = 120
+}
+$tasks = @($task)
+Test-AzDevCenterUserDevBoxCustomizationTaskAction -DevCenterName Contoso -ProjectName DevProject -Task $tasks
 .Example
-{{ Add code here }}
+$task = @{
+    Name = "catalogName/choco"
+    DisplayName = "choco"
+    Parameter = @{
+        PackageName = "vscode"
+        PackageVersion = "1.0.0"
+    }
+    RunAs = "System"
+    TimeoutInSecond = 120
+}
+$tasks = @($task)
+$taskInput = @{"ProjectName" = "DevProject" }
+Test-AzDevCenterUserDevBoxCustomizationTaskAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $taskInput -Task $tasks
+.Example
+$task = @{
+    Name = "catalogName/choco"
+    DisplayName = "choco"
+    Parameter = @{
+        PackageName = "vscode"
+        PackageVersion = "1.0.0"
+    }
+    RunAs = "System"
+    TimeoutInSecond = 120
+}
+$tasks = @($task)
+Test-AzDevCenterUserDevBoxCustomizationTaskAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -ProjectName DevProject -Task $tasks
+.Example
+$task = @{
+    Name = "catalogName/choco"
+    DisplayName = "choco"
+    Parameter = @{
+        PackageName = "vscode"
+        PackageVersion = "1.0.0"
+    }
+    RunAs = "System"
+    TimeoutInSecond = 120
+}
+$tasks = @($task)
+$taskInput = @{"ProjectName" = "DevProject" }
+Test-AzDevCenterUserDevBoxCustomizationTaskAction -DevCenterName Contoso -InputObject $taskInput -Task $tasks
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity

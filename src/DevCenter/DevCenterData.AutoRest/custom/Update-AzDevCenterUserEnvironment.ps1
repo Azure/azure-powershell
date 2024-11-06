@@ -133,7 +133,7 @@ function Update-AzDevCenterUserEnvironment {
       [Parameter()]
       [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
       [System.DateTime]
-      # The time the expiration date will be triggered (UTC), after which theenvironment and associated resources will be deleted.
+      # The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
       ${ExpirationDate},
   
       [Parameter()]
