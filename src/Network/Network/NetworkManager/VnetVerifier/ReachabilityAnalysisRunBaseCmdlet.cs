@@ -17,6 +17,8 @@ using Microsoft.Azure.Management.Network;
 using System.Net;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 { 
@@ -38,27 +40,81 @@ namespace Microsoft.Azure.Commands.Network
             }
             catch (Microsoft.Azure.Management.Network.Models.CommonErrorResponseException exception)
             {
-                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    // Resource is not present
-                    return false;
-                }
-
-                throw;
+                // Use the concise error handling method
+                HandleError(exception);
+                return false;
             }
-
             return true;
         }
 
         public PSReachabilityAnalysisRun GetAnalysisRun(string resourceGroupName, string networkManagerName, string workspaceName, string analysisRunName)
         {
-            var analysisRun = this.ReachabilityAnalysisRunClient.Get(resourceGroupName, networkManagerName, workspaceName, analysisRunName);
-            var psAnalysisRun = ToPsReachabilityAnalysisRun(analysisRun);
-            psAnalysisRun.ResourceGroupName = resourceGroupName;
-            psAnalysisRun.NetworkManagerName = networkManagerName;
-            psAnalysisRun.VerifierWorkspaceName = workspaceName;
-            psAnalysisRun.Name = analysisRunName;
-            return psAnalysisRun;
+                var analysisRun = this.ReachabilityAnalysisRunClient.Get(resourceGroupName, networkManagerName, workspaceName, analysisRunName);
+                var psAnalysisRun = ToPsReachabilityAnalysisRun(analysisRun);
+                psAnalysisRun.ResourceGroupName = resourceGroupName;
+                psAnalysisRun.NetworkManagerName = networkManagerName;
+                psAnalysisRun.VerifierWorkspaceName = workspaceName;
+                psAnalysisRun.Name = analysisRunName;
+                return psAnalysisRun;           
+        }
+
+        // Helper method for concise error handling
+        private void HandleError(Microsoft.Azure.Management.Network.Models.CommonErrorResponseException exception)
+        {
+            switch (exception.Response.StatusCode)
+            {
+                case HttpStatusCode.BadRequest:
+                    // Specific handling for Bad Request with detailed message
+                    DisplayDetailedErrorMessage(exception);
+                    break;
+
+                case HttpStatusCode.NotFound:
+                    WriteWarning("Error: Not Found - The specified resource could not be found.");
+                    break;
+
+                case HttpStatusCode.Forbidden:
+                    WriteWarning("Error: Forbidden - You do not have permission to perform this operation.");
+                    break;
+
+                case HttpStatusCode.InternalServerError:
+                    WriteWarning("Error: Internal Server Error - The server encountered an unexpected condition. Try again later.");
+                    break;
+
+                default:
+                    WriteWarning($"Error: {exception.Response.StatusCode} - {exception.Message}");
+                    break;
+            }
+        }
+
+        // Method to display a detailed error message for BadRequest (400) responses
+        private void DisplayDetailedErrorMessage(Microsoft.Azure.Management.Network.Models.CommonErrorResponseException exception)
+        {
+            string errorMessage = "Bad Request: An unknown error occurred.";
+
+            // Check if the response content is available
+            if (!string.IsNullOrEmpty(exception.Response.Content))
+            {
+                try
+                {
+                    // Parse the JSON response content to get the "message" field
+                    var errorContent = JObject.Parse(exception.Response.Content);
+                    errorMessage = errorContent["message"]?.ToString() ?? errorMessage;
+                }
+                catch
+                {
+                    // Fallback if parsing fails
+                    WriteWarning($"Bad Request: Unable to parse error details. Raw response: {exception.Response.Content}");
+                    return;
+                }
+            }
+            else
+            {
+                // If there is no content, default message
+                errorMessage = "Bad Request: The request was invalid. Please check your parameters.";
+            }
+
+            // Display the error message to the user
+            WriteWarning(errorMessage);
         }
 
         public PSReachabilityAnalysisRun ToPsReachabilityAnalysisRun(Management.Network.Models.ReachabilityAnalysisRun analysisRun)
