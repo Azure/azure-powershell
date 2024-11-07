@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Made `-PublicIpSku` parameter Standard by default in `New-AzVM`
 
 ## Version 8.5.0
 * Added optional parameters `-SecurityPostureId` and `-SecurityPostureExcludeExtension` to cmdlets `New-AzVmss` and `New-AzVmssConfig`.
