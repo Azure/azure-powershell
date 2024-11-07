@@ -151,8 +151,8 @@ function Remove-AzComputeFleet {
             }
 
             $mapping = @{
-                Delete = 'Az.ComputeFleet.custom\Remove-Fleet_Delete';
-                DeleteViaIdentity = 'Az.ComputeFleet.custom\Remove-Fleet_DeleteViaIdentity';
+                Delete = 'Az.ComputeFleet.private\Remove-Fleet_Delete';
+                DeleteViaIdentity = 'Az.ComputeFleet.private\Remove-Fleet_DeleteViaIdentity';
             }
             $cmdInfo = Get-Command -Name $mapping[$parameterSet]
             [Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
