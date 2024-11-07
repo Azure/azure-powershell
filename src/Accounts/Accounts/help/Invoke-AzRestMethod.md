@@ -492,7 +492,7 @@ Accept wildcard characters: False
 ```
 
 ### -WaitForCompletion
-Waits for the long-running operation completes before returning the result.
+Waits for the long-running operation to complete before returning the result.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

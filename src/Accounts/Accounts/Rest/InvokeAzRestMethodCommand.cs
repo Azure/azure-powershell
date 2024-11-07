@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Waits for the long-running operation completes before returning the result.")]
+        [Parameter(Mandatory = false, HelpMessage = "Waits for the long-running operation to complete before returning the result.")]
         public SwitchParameter WaitForCompletion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Specifies the polling header (to fetch from) for long-running operation status.")]
