@@ -14,19 +14,20 @@ Create a in-memory object for Container
 
 ```
 New-AzContainerInstanceObject -Image <String> -Name <String> [-Command <String[]>]
- [-EnvironmentVariable <IEnvironmentVariable[]>] [-LimitCpu <Double>] [-LimitMemoryInGb <Double>]
- [-LimitsGpuCount <Int32>] [-LimitsGpuSku <String>] [-LivenessProbeExecCommand <String[]>]
- [-LivenessProbeFailureThreshold <Int32>] [-LivenessProbeHttpGetHttpHeader <IHttpHeader[]>]
- [-LivenessProbeHttpGetPath <String>] [-LivenessProbeHttpGetPort <Int32>]
- [-LivenessProbeHttpGetScheme <String>] [-LivenessProbeInitialDelaySecond <Int32>]
- [-LivenessProbePeriodSecond <Int32>] [-LivenessProbeSuccessThreshold <Int32>]
- [-LivenessProbeTimeoutSecond <Int32>] [-Port <IContainerPort[]>] [-ReadinessProbeExecCommand <String[]>]
- [-ReadinessProbeFailureThreshold <Int32>] [-ReadinessProbeHttpGetHttpHeader <IHttpHeader[]>]
- [-ReadinessProbeHttpGetPath <String>] [-ReadinessProbeHttpGetPort <Int32>]
- [-ReadinessProbeHttpGetScheme <String>] [-ReadinessProbeInitialDelaySecond <Int32>]
- [-ReadinessProbePeriodSecond <Int32>] [-ReadinessProbeSuccessThreshold <Int32>]
- [-ReadinessProbeTimeoutSecond <Int32>] [-RequestCpu <Double>] [-RequestMemoryInGb <Double>]
- [-RequestsGpuCount <Int32>] [-RequestsGpuSku <String>] [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
+ [-ConfigMapKeyValuePair <IConfigMapKeyValuePairs>] [-EnvironmentVariable <IEnvironmentVariable[]>]
+ [-LimitCpu <Double>] [-LimitMemoryInGb <Double>] [-LimitsGpuCount <Int32>] [-LimitsGpuSku <String>]
+ [-LivenessProbeExecCommand <String[]>] [-LivenessProbeFailureThreshold <Int32>]
+ [-LivenessProbeHttpGetHttpHeader <IHttpHeader[]>] [-LivenessProbeHttpGetPath <String>]
+ [-LivenessProbeHttpGetPort <Int32>] [-LivenessProbeHttpGetScheme <String>]
+ [-LivenessProbeInitialDelaySecond <Int32>] [-LivenessProbePeriodSecond <Int32>]
+ [-LivenessProbeSuccessThreshold <Int32>] [-LivenessProbeTimeoutSecond <Int32>] [-Port <IContainerPort[]>]
+ [-ReadinessProbeExecCommand <String[]>] [-ReadinessProbeFailureThreshold <Int32>]
+ [-ReadinessProbeHttpGetHttpHeader <IHttpHeader[]>] [-ReadinessProbeHttpGetPath <String>]
+ [-ReadinessProbeHttpGetPort <Int32>] [-ReadinessProbeHttpGetScheme <String>]
+ [-ReadinessProbeInitialDelaySecond <Int32>] [-ReadinessProbePeriodSecond <Int32>]
+ [-ReadinessProbeSuccessThreshold <Int32>] [-ReadinessProbeTimeoutSecond <Int32>] [-RequestCpu <Double>]
+ [-RequestMemoryInGb <Double>] [-RequestsGpuCount <Int32>] [-RequestsGpuSku <String>]
+ [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,12 +92,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ConfigMapKeyValuePair
+The key value pairs dictionary in the config map to set in the container instance.
+To construct, see NOTES section for CONFIGMAPKEYVALUEPAIR properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IConfigMapKeyValuePairs
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnvironmentVariable
 The environment variables to set in the container instance.
 To construct, see NOTES section for ENVIRONMENTVARIABLE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IEnvironmentVariable[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IEnvironmentVariable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +234,7 @@ The HTTP headers for liveness probe.
 To construct, see NOTES section for LIVENESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IHttpHeader[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IHttpHeader[]
 Parameter Sets: (All)
 Aliases:
 
@@ -353,7 +370,7 @@ The exposed ports on the container instance.
 To construct, see NOTES section for PORT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPort[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerPort[]
 Parameter Sets: (All)
 Aliases:
 
@@ -399,7 +416,7 @@ The HTTP headers for readiness probe.
 To construct, see NOTES section for READINESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IHttpHeader[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IHttpHeader[]
 Parameter Sets: (All)
 Aliases:
 
@@ -580,7 +597,7 @@ The volume mounts available to the container instance.
 To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolumeMount[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IVolumeMount[]
 Parameter Sets: (All)
 Aliases:
 
@@ -598,38 +615,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Container
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Container
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ENVIRONMENTVARIABLE <IEnvironmentVariable[]>`: The environment variables to set in the container instance.
-  - `Name <String>`: The name of the environment variable.
-  - `[SecureValue <String>]`: The value of the secure environment variable.
-  - `[Value <String>]`: The value of the environment variable.
-
-`LIVENESSPROBEHTTPGETHTTPHEADER <IHttpHeader[]>`: The HTTP headers for liveness probe.
-  - `[Name <String>]`: The header name.
-  - `[Value <String>]`: The header value.
-
-`PORT <IContainerPort[]>`: The exposed ports on the container instance.
-  - `Port <Int32>`: The port number exposed within the container group.
-  - `[Protocol <ContainerNetworkProtocol?>]`: The protocol associated with the port.
-
-`READINESSPROBEHTTPGETHTTPHEADER <IHttpHeader[]>`: The HTTP headers for readiness probe.
-  - `[Name <String>]`: The header name.
-  - `[Value <String>]`: The header value.
-
-`VOLUMEMOUNT <IVolumeMount[]>`: The volume mounts available to the container instance.
-  - `MountPath <String>`: The path within the container where the volume should be mounted. Must not contain colon (:).
-  - `Name <String>`: The name of the volume mount.
-  - `[ReadOnly <Boolean?>]`: The flag indicating whether the volume mount is read-only.
 
 ## RELATED LINKS
 
