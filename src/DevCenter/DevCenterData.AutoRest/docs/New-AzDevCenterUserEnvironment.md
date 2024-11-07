@@ -22,10 +22,10 @@ New-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName <S
 
 ### CreateExpandedByDevCenter
 ```
-New-AzDevCenterUserEnvironment -DevCenterName <String> -Name <String> -ProjectName <String>
- -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>]
- [-ExpirationDate <DateTime>] [-Parameter <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDevCenterUserEnvironment -DevCenterName <String> -Name <String> -CatalogName <String>
+ -EnvironmentDefinitionName <String> -EnvironmentType <String> [-UserId <String>] [-ExpirationDate <DateTime>]
+ [-Parameter <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpirationDate
-The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
+The time the expiration date will be triggered (UTC), after which theenvironment and associated resources will be deleted.
 
 ```yaml
 Type: System.DateTime
@@ -282,7 +282,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateExpandedByDevCenter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -348,7 +348,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
 
 ## NOTES
 
