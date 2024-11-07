@@ -47,10 +47,11 @@ function Get-AzADServicePrincipal {
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Alias('ServicePrincipalId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of servicePrincipal
-    ${ServicePrincipalId},
+    ${Id},
 
     [Parameter()]
     [AllowEmptyCollection()]

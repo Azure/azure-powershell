@@ -12,6 +12,9 @@
             <Label>ContainerGroupName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ContainerGroupProfileName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ContainerName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -19,6 +22,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RevisionNumber</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>SubnetName</Label>
@@ -37,6 +43,9 @@
                 <PropertyName>ContainerGroupName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ContainerGroupProfileName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ContainerName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -44,6 +53,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RevisionNumber</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SubnetName</PropertyName>
@@ -60,9 +72,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.GpuResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.GpuResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.GpuResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.GpuResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -88,9 +100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ResourceRequests</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ResourceRequests</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ResourceRequests</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ResourceRequests</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -116,9 +128,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ResourceLimits</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ResourceLimits</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ResourceLimits</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ResourceLimits</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -144,9 +156,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerHttpGet</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerHttpGet</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerHttpGet</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerHttpGet</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -178,9 +190,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerProbe</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerProbe</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerProbe</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerProbe</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -224,9 +236,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -252,9 +264,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.EnvironmentVariable</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.EnvironmentVariable</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.EnvironmentVariable</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.EnvironmentVariable</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -286,9 +298,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerPort</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerPort</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerPort</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerPort</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -314,9 +326,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Port</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Port</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Port</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Port</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -342,9 +354,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ImageRegistryCredential</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ImageRegistryCredential</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ImageRegistryCredential</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ImageRegistryCredential</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -388,9 +400,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.InitContainerPropertiesDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.InitContainerPropertiesDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.InitContainerPropertiesDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.InitContainerPropertiesDefinition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -416,9 +428,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.InitContainerDefinition</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.InitContainerDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.InitContainerDefinition</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.InitContainerDefinition</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -438,9 +450,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.AzureFileVolume</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.AzureFileVolume</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.AzureFileVolume</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.AzureFileVolume</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -478,9 +490,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.GitRepoVolume</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.GitRepoVolume</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.GitRepoVolume</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.GitRepoVolume</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -512,9 +524,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Volume</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Volume</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Volume</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Volume</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -534,9 +546,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.CachedImages</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.CachedImages</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.CachedImages</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.CachedImages</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -562,9 +574,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.CachedImagesListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.CachedImagesListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.CachedImagesListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.CachedImagesListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -584,9 +596,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Capabilities</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Capabilities</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Capabilities</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Capabilities</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -630,9 +642,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.CapabilitiesAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.CapabilitiesAutoGenerated</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.CapabilitiesAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.CapabilitiesAutoGenerated</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -664,9 +676,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.CapabilitiesListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.CapabilitiesListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.CapabilitiesListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.CapabilitiesListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -686,9 +698,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.CloudErrorBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.CloudErrorBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.CloudErrorBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.CloudErrorBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -720,9 +732,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ConfidentialComputeProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ConfidentialComputeProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ConfidentialComputeProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ConfidentialComputeProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -742,9 +754,31 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Container</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ConfigMapKeyValuePairs</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Container</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ConfigMapKeyValuePairs</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Container</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Container</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -764,9 +798,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerAttachResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerAttachResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerAttachResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerAttachResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -792,9 +826,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerExec</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerExec</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerExec</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerExec</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -814,9 +848,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerExecRequest</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerExecRequest</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerExecRequest</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerExecRequest</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -836,9 +870,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerExecRequestTerminalSize</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerExecRequestTerminalSize</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerExecRequestTerminalSize</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerExecRequestTerminalSize</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -864,9 +898,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerExecResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerExecResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerExecResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerExecResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -892,9 +926,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerGroup</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroup</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerGroup</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroup</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -950,6 +984,9 @@
             <Label>InstanceViewState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>IsCreatedFromStandbyPool</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -974,6 +1011,12 @@
             <Label>Priority</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ProfileId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProfileRevision</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -981,6 +1024,12 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Sku</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StandbyPoolProfileFailContainerGroupCreateOnReuseFailure</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>StandbyPoolProfileId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Zone</Label>
@@ -1044,6 +1093,9 @@
                 <PropertyName>InstanceViewState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>IsCreatedFromStandbyPool</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1068,6 +1120,12 @@
                 <PropertyName>Priority</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>ProfileId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProfileRevision</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1075,6 +1133,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Sku</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StandbyPoolProfileFailContainerGroupCreateOnReuseFailure</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>StandbyPoolProfileId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Zone</PropertyName>
@@ -1088,9 +1152,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerGroupIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerGroupIdentity</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupIdentity</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1116,9 +1180,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerGroupListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerGroupListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1138,12 +1202,281 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerGroupPropertiesAutoGenerated</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerGroupPropertiesAutoGenerated</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>ConfidentialComputePropertyCcePolicy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EncryptionPropertyIdentity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EncryptionPropertyKeyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EncryptionPropertyKeyVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EncryptionPropertyVaultBaseUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IPAddressAutoGeneratedDomainNameLabelScope</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IPAddressDnsNameLabel</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IPAddressFqdn</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IPAddressIP</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IPAddressType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LogAnalyticLogType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LogAnalyticWorkspaceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LogAnalyticWorkspaceKey</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LogAnalyticWorkspaceResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Priority</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RestartPolicy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Revision</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Sku</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Zone</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ConfidentialComputePropertyCcePolicy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EncryptionPropertyIdentity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EncryptionPropertyKeyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EncryptionPropertyKeyVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>EncryptionPropertyVaultBaseUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IPAddressAutoGeneratedDomainNameLabelScope</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IPAddressDnsNameLabel</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IPAddressFqdn</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IPAddressIP</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IPAddressType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LogAnalyticLogType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LogAnalyticWorkspaceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LogAnalyticWorkspaceKey</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LogAnalyticWorkspaceResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Priority</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RestartPolicy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Revision</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Sku</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Zone</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupProfileListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupProfileListResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupProfilePatchTags</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupProfilePatchTags</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Item</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Item</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupProfilePropertiesAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupProfilePropertiesAutoGenerated</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>OSType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Priority</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RestartPolicy</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Revision</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Sku</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>OSType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Priority</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RestartPolicy</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Revision</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Sku</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupProfileReferenceDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupProfileReferenceDefinition</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Revision</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Revision</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupPropertiesAutoGenerated</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupPropertiesAutoGenerated</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>IsCreatedFromStandbyPool</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>OSType</Label>
           </TableColumnHeader>
@@ -1163,6 +1496,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IsCreatedFromStandbyPool</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>OSType</PropertyName>
               </TableColumnItem>
@@ -1184,9 +1520,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerGroupPropertiesInstanceView</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupPropertiesInstanceView</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerGroupPropertiesInstanceView</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupPropertiesInstanceView</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1206,9 +1542,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerGroupSubnetId</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupSubnetId</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerGroupSubnetId</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerGroupSubnetId</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1228,9 +1564,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerPropertiesInstanceView</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerPropertiesInstanceView</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerPropertiesInstanceView</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerPropertiesInstanceView</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1250,9 +1586,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerState</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerState</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerState</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerState</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1296,9 +1632,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.DeploymentExtensionSpec</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.DeploymentExtensionSpec</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.DeploymentExtensionSpec</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.DeploymentExtensionSpec</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1318,9 +1654,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.DeploymentExtensionSpecProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.DeploymentExtensionSpecProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.DeploymentExtensionSpecProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.DeploymentExtensionSpecProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1346,9 +1682,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.DnsConfiguration</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.DnsConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.DnsConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.DnsConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1380,9 +1716,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.EncryptionProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.EncryptionProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.EncryptionProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.EncryptionProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1420,9 +1756,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Event</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Event</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Event</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Event</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1466,9 +1802,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.HttpHeader</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.HttpHeader</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.HttpHeader</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.HttpHeader</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1494,9 +1830,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.InitContainerPropertiesDefinitionInstanceView</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.InitContainerPropertiesDefinitionInstanceView</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.InitContainerPropertiesDefinitionInstanceView</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.InitContainerPropertiesDefinitionInstanceView</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1516,9 +1852,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IPAddress</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IPAddress</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IPAddress</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IPAddress</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1556,9 +1892,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.LogAnalytics</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.LogAnalytics</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.LogAnalytics</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.LogAnalytics</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1596,9 +1932,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.LogAnalyticsMetadata</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.LogAnalyticsMetadata</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.LogAnalyticsMetadata</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.LogAnalyticsMetadata</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1618,9 +1954,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Logs</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Logs</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Logs</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Logs</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1640,9 +1976,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Operation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1668,9 +2004,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1708,9 +2044,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.OperationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1730,9 +2066,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Resource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1764,9 +2100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1786,9 +2122,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.SecretVolume</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.SecretVolume</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.SecretVolume</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.SecretVolume</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1808,9 +2144,105 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Usage</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.SecurityContextCapabilitiesDefinition</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Usage</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.SecurityContextCapabilitiesDefinition</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Add</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Drop</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Add</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Drop</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.SecurityContextDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.SecurityContextDefinition</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AllowPrivilegeEscalation</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Privileged</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RunAsGroup</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RunAsUser</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SeccompProfile</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AllowPrivilegeEscalation</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Privileged</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RunAsGroup</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RunAsUser</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SeccompProfile</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.StandbyPoolProfileDefinition</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.StandbyPoolProfileDefinition</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>FailContainerGroupCreateOnReuseFailure</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>FailContainerGroupCreateOnReuseFailure</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Usage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.Usage</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1842,9 +2274,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.UsageName</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.UsageName</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.UsageName</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.UsageName</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1870,9 +2302,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.UserAssignedIdentities</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.UserAssignedIdentities</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.UserAssignedIdentities</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.UserAssignedIdentities</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1898,9 +2330,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.VolumeMount</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.VolumeMount</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.VolumeMount</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.VolumeMount</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

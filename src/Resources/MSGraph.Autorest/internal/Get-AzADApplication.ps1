@@ -47,10 +47,11 @@ function Get-AzADApplication {
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Alias('ApplicationId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
     [System.String]
     # key: id of application
-    ${ApplicationId},
+    ${Id},
 
     [Parameter()]
     [AllowEmptyCollection()]

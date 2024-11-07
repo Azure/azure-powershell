@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added top level arm object for app attach packages
 
 ## Version 4.3.2
 * Preannounced the breaking changes for Az.DesktopVirtualization 6.0.0

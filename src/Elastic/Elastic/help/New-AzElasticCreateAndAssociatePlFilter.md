@@ -16,7 +16,7 @@ Create and Associate private link traffic filter for the given deployment.
 ```
 New-AzElasticCreateAndAssociatePlFilter -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Name <String>] [-PrivateEndpointGuid <String>] [-PrivateEndpointName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzElasticCreateAndAssociatePlFilter -MonitorName <String> -ResourceGroupName
 ```
 New-AzElasticCreateAndAssociatePlFilter -InputObject <IElasticIdentity> [-Name <String>]
  [-PrivateEndpointGuid <String>] [-PrivateEndpointName <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -170,21 +170,6 @@ Name of the private endpoint
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

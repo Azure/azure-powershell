@@ -923,5 +923,18 @@
   {
     "module": "Terraform",
     "alias": "Terraform"
+  },
+  {
+    "alias": "ArcGateway",
+    "module": "ArcGateway"
+  },
+  {
+    "module": "HealthDataAIServices",
+    "alias": "HealthDataAIServices"
+  },
+  {
+    "alias": "Mdp",
+    "module": "Mdp"
+  }
   }
 ]
