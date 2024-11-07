@@ -1528,16 +1528,16 @@ function Test-NetworkManagerIpamPoolStaticCidrCRUD
         New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefix $addressPrefixes
 
         # Create static cidr
-        New-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName -AddressPrefix $addressPrefixes
+        New-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName -Name $staticCidrName -AddressPrefix $addressPrefixes
 
         # Get static cidr
-        $staticCidr = Get-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName
+        $staticCidr = Get-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName -Name $staticCidrName
         Assert-NotNull $staticCidr;
         Assert-AreEqual $staticCidrName $staticCidr.Name;
         Assert-AreEqual $staticCidr.Properties.AddressPrefixes[0] $addressPrefixes[0];
 
         # Remove static cidr
-        $job = Remove-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName -PassThru -Force -AsJob;
+        $job = Remove-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName -Name $staticCidrName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
     }

@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "IP Address Manager Pool resource name.")]
          [ValidateNotNullOrEmpty]
-        public virtual string PoolName { get; set; }
+        public virtual string IpamPoolName { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string NumberOfIPAddressesToAllocate { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "List of IP address prefixes of the resource.")]
         public virtual List<string> AddressPrefix { get; set; }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var present = this.IsStaticCidrPresent(this.ResourceGroupName, this.NetworkManagerName, this.PoolName, this.Name);
+            var present = this.IsStaticCidrPresent(this.ResourceGroupName, this.NetworkManagerName, this.IpamPoolName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -128,9 +128,9 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var staticCidrModel = NetworkResourceManagerProfile.Mapper.Map<MNM.StaticCidr>(staticCidr);
 
-            // Execute the Create Network call string resourceGroupName, string networkManagerName, string poolName, string staticCidrName
-            this.StaticCidrClient.Create(this.ResourceGroupName, this.NetworkManagerName, this.PoolName, this.Name, staticCidrModel);
-            var psStaticCidr = this.GetStaticCidr(this.ResourceGroupName, this.NetworkManagerName, this.PoolName, this.Name);
+            // Execute the Create Network call string resourceGroupName, string networkManagerName, string IpamPoolName, string staticCidrName
+            this.StaticCidrClient.Create(this.ResourceGroupName, this.NetworkManagerName, this.IpamPoolName, this.Name, staticCidrModel);
+            var psStaticCidr = this.GetStaticCidr(this.ResourceGroupName, this.NetworkManagerName, this.IpamPoolName, this.Name);
             return psStaticCidr;
         }
     }

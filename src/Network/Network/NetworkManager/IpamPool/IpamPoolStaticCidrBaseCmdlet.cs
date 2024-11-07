@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        public bool IsStaticCidrPresent(string resourceGroupName, string networkManagerName, string poolName, string staticCidrName)
+        public bool IsStaticCidrPresent(string resourceGroupName, string networkManagerName, string ipamPoolName, string staticCidrName)
         {
             try
             {
-                GetStaticCidr(resourceGroupName, networkManagerName, poolName, staticCidrName);
+                GetStaticCidr(resourceGroupName, networkManagerName, ipamPoolName, staticCidrName);
             }
             catch (Microsoft.Azure.Management.Network.Models.CommonErrorResponseException exception)
             {
@@ -49,13 +49,13 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSStaticCidr GetStaticCidr(string resourceGroupName, string networkManagerName, string poolName, string staticCidrName)
+        public PSStaticCidr GetStaticCidr(string resourceGroupName, string networkManagerName, string ipamPoolName, string staticCidrName)
         {
-            var staticCidr = this.StaticCidrClient.Get(resourceGroupName, networkManagerName, poolName, staticCidrName);
+            var staticCidr = this.StaticCidrClient.Get(resourceGroupName, networkManagerName, ipamPoolName, staticCidrName);
             var psStaticCidr = ToPsStaticCidr(staticCidr);
             psStaticCidr.ResourceGroupName = resourceGroupName;
             psStaticCidr.NetworkManagerName = networkManagerName;
-            psStaticCidr.PoolName = poolName;
+            psStaticCidr.PoolName = ipamPoolName;
             psStaticCidr.Name = staticCidrName;
             return psStaticCidr;
         }
