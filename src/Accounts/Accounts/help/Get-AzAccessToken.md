@@ -8,7 +8,8 @@ schema: 2.0.0
 # Get-AzAccessToken
 
 ## SYNOPSIS
-Get raw access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
+Get secure raw access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
+> **_NOTE:_**  The current default output type `PSAccessToken` is going to be deprecate. Please always use `-AsSecureString` to avoid the upcoming breaking change. After that the output turns to be `PSSecureAccessToken`, which contains `token` as a `SecureString`. Please refer to [Unprotect-SecureString](https://github.com/Azure/azure-powershell/blob/main/src/Aks/Aks.Autorest/utils/Unprotect-SecureString.ps1) for how to convert from `SecureString` to plain text.
 
 ## SYNTAX
 
@@ -31,21 +32,21 @@ Get access token
 
 ### Example 1 Get the access token for ARM endpoint
 ```powershell
-Get-AzAccessToken
+Get-AzAccessToken -AsSecureString
 ```
 
 Get access token of current account for ResourceManager endpoint
 
 ### Example 2 Get the access token for Microsoft Graph endpoint
 ```powershell
-Get-AzAccessToken -ResourceTypeName MSGraph
+Get-AzAccessToken -AsSecureString -ResourceTypeName MSGraph
 ```
 
 Get access token of Microsoft Graph endpoint for current account
 
 ### Example 3 Get the access token for Microsoft Graph endpoint
 ```powershell
-Get-AzAccessToken -ResourceUrl "https://graph.microsoft.com/"
+Get-AzAccessToken -AsSecureString -ResourceUrl "https://graph.microsoft.com/"
 ```
 
 Get access token of Microsoft Graph endpoint for current account
