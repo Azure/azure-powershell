@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed bugs related to Linux/Windows difference identified.
-* Fixed issues with unexpected value changes resulting from a Get/Set.
+* Correct function that only worked on Windows.
+* Prevent unexpected value changes where parameters that were never set are unchanged but replayed back as part of Set-AzConnectedKubernetes processing.
 
 ## Version 0.11.1
 * Fixed environment variable usage
