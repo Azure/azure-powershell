@@ -12,52 +12,52 @@ Gets a schedule.
 
 ## SYNTAX
 
-### List (Default)
+### List1 (Default)
 ```
 Get-AzDevCenterUserSchedule -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDevCenterUserSchedule -Endpoint <String> -PoolName <String> -ProjectName <String> -ScheduleName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserSchedule -Endpoint <String> -ProjectName <String> -PoolName <String> -ScheduleName <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterUserSchedule -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### List1
+### List
 ```
-Get-AzDevCenterUserSchedule -Endpoint <String> -PoolName <String> -ProjectName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserSchedule -Endpoint <String> -ProjectName <String> -PoolName <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
-Get-AzDevCenterUserSchedule -DevCenterName <String> -PoolName <String> -ProjectName <String>
- -ScheduleName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserSchedule -DevCenterName <String> -ProjectName <String> -PoolName <String>
+ -ScheduleName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
 Get-AzDevCenterUserSchedule -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1ByDevCenter
 ```
-Get-AzDevCenterUserSchedule -DevCenterName <String> -PoolName <String> -ProjectName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserSchedule -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserSchedule -DevCenterName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDevCenterUserSchedule -DevCenterName <String> -ProjectName <String> -PoolName <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,7 +161,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get, GetViaIdentity, List1
+Parameter Sets: List1, Get, GetViaIdentity, List
 Aliases:
 
 Required: True
@@ -188,11 +188,11 @@ Accept wildcard characters: False
 ```
 
 ### -PoolName
-The name of a pool of Dev Boxes.
+Pool name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1, GetByDevCenter, List1ByDevCenter
+Parameter Sets: Get, List, GetByDevCenter, ListByDevCenter
 Aliases:
 
 Required: True
@@ -202,12 +202,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
-The DevCenter Project upon which to execute operations.
+Name of the project.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get, List1, GetByDevCenter, List1ByDevCenter, ListByDevCenter
+Parameter Sets: List1, Get, List, GetByDevCenter, List1ByDevCenter, ListByDevCenter
 Aliases:
 
 Required: True
@@ -218,7 +233,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleName
-The name of a schedule.
+Display name for the Schedule.
 
 ```yaml
 Type: System.String
@@ -241,7 +256,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.ISchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.ISchedule
 
 ## NOTES
 
