@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Correct function that only worked on Windows.
-* Prevent unexpected value changes where parameters that were never set are unchanged but replayed back as part of Set-AzConnectedKubernetes processing.
+* Corrected function that only worked on Windows.
+* Prevented unexpected value changes where parameters that were never set are unchanged but replayed back as part of Set-AzConnectedKubernetes processing.
 
 ## Version 0.11.1
 * Fixed environment variable usage
