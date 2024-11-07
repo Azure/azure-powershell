@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.6
 * Migrated AnalysisServices SDK to generated SDK
     - Removed "Microsoft.Azure.Management.Analysis" Version "2.0.4" PackageReference
     - Added AnalysisServices.Management.Sdk ProjectReference

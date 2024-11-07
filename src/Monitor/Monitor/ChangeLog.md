@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 5.3.0
 * Added new cmdlet for Azure Monitor Pipeline Groups
   * `Get-AzPipelineGroup`
   * `New-AzPipelineGroup`

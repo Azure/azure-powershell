@@ -7,8 +7,7 @@ Describe 'Backcompat-GetBuiltinsByName' -Tag 'LiveOnly' {
         {
             # policy definitions
             $builtins = Get-AzPolicyDefinition -Builtin -BackwardCompatible | Select-Object -First 100
-            foreach ($builtin in $builtins)
-            {
+            foreach ($builtin in $builtins) {
                 $done = $false
                 do {
                     try {
@@ -35,8 +34,7 @@ Describe 'Backcompat-GetBuiltinsByName' -Tag 'LiveOnly' {
         {
             # policy set definitions
             $builtins = Get-AzPolicySetDefinition -Builtin -BackwardCompatible | Select-Object -First 100
-            foreach ($builtin in $builtins)
-            {
+            foreach ($builtin in $builtins) {
                 $done = $false
                 do {
                     try {

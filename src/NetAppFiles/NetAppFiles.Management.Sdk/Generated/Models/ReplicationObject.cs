@@ -34,18 +34,24 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="replicationSchedule">Schedule
         /// Possible values include: &#39;_10minutely&#39;, &#39;hourly&#39;, &#39;daily&#39;</param>
 
-        /// <param name="remoteVolumeResourceId">The resource ID of the remote volume.
+        /// <param name="remoteVolumeResourceId">The resource ID of the remote volume. Required for cross region and cross
+        /// zone replication
+        /// </param>
+
+        /// <param name="remotePath">The full path to a volume that is to be migrated into ANF. Required for
+        /// Migration volumes
         /// </param>
 
         /// <param name="remoteVolumeRegion">The remote region for the other end of the Volume Replication.
         /// </param>
-        public ReplicationObject(string remoteVolumeResourceId, string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeRegion = default(string))
+        public ReplicationObject(string replicationId = default(string), string endpointType = default(string), string replicationSchedule = default(string), string remoteVolumeResourceId = default(string), RemotePath remotePath = default(RemotePath), string remoteVolumeRegion = default(string))
 
         {
             this.ReplicationId = replicationId;
             this.EndpointType = endpointType;
             this.ReplicationSchedule = replicationSchedule;
             this.RemoteVolumeResourceId = remoteVolumeResourceId;
+            this.RemotePath = remotePath;
             this.RemoteVolumeRegion = remoteVolumeRegion;
             CustomInit();
         }
@@ -76,10 +82,18 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public string ReplicationSchedule {get; set; }
 
         /// <summary>
-        /// Gets or sets the resource ID of the remote volume.
+        /// Gets or sets the resource ID of the remote volume. Required for cross
+        /// region and cross zone replication
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "remoteVolumeResourceId")]
         public string RemoteVolumeResourceId {get; set; }
+
+        /// <summary>
+        /// Gets or sets the full path to a volume that is to be migrated into ANF.
+        /// Required for Migration volumes
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "remotePath")]
+        public RemotePath RemotePath {get; set; }
 
         /// <summary>
         /// Gets or sets the remote region for the other end of the Volume Replication.
@@ -94,14 +108,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (this.RemoteVolumeResourceId == null)
+
+
+
+
+            if (this.RemotePath != null)
             {
-                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "RemoteVolumeResourceId");
+                this.RemotePath.Validate();
             }
-
-
-
-
 
         }
     }
