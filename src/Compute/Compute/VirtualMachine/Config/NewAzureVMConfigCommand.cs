@@ -75,6 +75,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = true)]
         public string EncryptionIdentity { get; set; }
 
@@ -255,7 +256,6 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (this.IsParameterBound(c => c.EncryptionIdentity))
             {
-                IDictionary<string, UserAssignedIdentitiesValue> vmUserAssignedIdentities = null;
                 if (vm.Identity == null)
                 {
                     vm.Identity = new VirtualMachineIdentity(type: ResourceIdentityType.UserAssigned);
@@ -264,22 +264,17 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     vm.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
                 }
-                vmUserAssignedIdentities = vm.Identity.UserAssignedIdentities;
-                if (vmUserAssignedIdentities == null)
+
+                if (vm.Identity.UserAssignedIdentities == null)
                 {
-                    vmUserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
+                    vm.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
                 }
 
-                if (vmUserAssignedIdentities.ContainsKey(this.EncryptionIdentity))
+                if(!vm.Identity.UserAssignedIdentities.ContainsKey(this.EncryptionIdentity))
                 {
-                    this.WriteObject("Encryption Identity already assigned to the VM.");
+                    vm.Identity.UserAssignedIdentities.Add(this.EncryptionIdentity, new UserAssignedIdentitiesValue());
                 }
-                else
-                {
-                    this.WriteObject("Encryption Identity assigned to the VM.");
-                    vmUserAssignedIdentities.Add(this.EncryptionIdentity, new UserAssignedIdentitiesValue());
-                    vm.Identity.UserAssignedIdentities = vmUserAssignedIdentities;
-                }
+
             }
 
             if (!string.IsNullOrEmpty(this.VMSize))

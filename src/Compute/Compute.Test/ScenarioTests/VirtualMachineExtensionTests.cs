@@ -155,11 +155,30 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureDiskEncryptionLnxManagedDisk");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineCreationWithEncryptionIdentity()
+        public void TestAddEncryptionIdentityInAzureVmConfig () {
+            TestRunner.RunTestScript("Test-AddEncryptionIdentityInAzureVmConfig");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig()
         {
-            TestRunner.RunTestScript("Test-VirtualMachineCreationWithEncryptionIdentity");
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithEncryptionIdentityAttachedAtVmConfig() {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithEncryptionIdentityAttachedAtVmConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewVmUserAssignedIdentityWithSystemAssignedIdentity()
+        {
+            TestRunner.RunTestScript("Test-NewVmUserAssignedIdentityWithSystemAssignedIdentity");
         }
 
         [Fact]
@@ -168,12 +187,17 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureDiskEncryptionEncryptionIdentityNonNullIdentityAndSecurityProfile");
         }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureDiskEncryptionEncryptionIdentity()
+        public void TestAzureDiskEncryptionWithIdentityNotSetInVirtualMachine()
         {
-            TestRunner.RunTestScript("Test-AzureDiskEncryptionEncryptionIdentity");
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithIdentityNotSetInVirtualMachine");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionWithIdentityNotAckledInKeyVault()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithIdentityNotAckledInKeyVault");
         }
 
         [Fact]
