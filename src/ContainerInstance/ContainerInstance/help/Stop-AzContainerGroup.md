@@ -16,14 +16,14 @@ Compute resources will be deallocated and billing will stop.
 ### Stop (Default)
 ```
 Stop-AzContainerGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### StopViaIdentity
 ```
 Stop-AzContainerGroup -InputObject <IContainerInstanceIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,8 +111,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -127,8 +143,8 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
