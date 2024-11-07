@@ -32,8 +32,8 @@ pr:
       - Azs-tzl
 
 jobs:
-- job: Build222
-  displayName: Build
+- job: Build
+  displayName: Build 111
   condition: succeeded()
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
   pool: pool-windows-2019
