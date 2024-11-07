@@ -421,46 +421,20 @@ function Set-AzConnectedKubernetes {
                 $DisableAutoUpgrade = ($InputObject.ArcAgentProfileAgentAutoUpgrade -eq 'Disabled')
             }
 
-            if ((-not $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled')) -and $InputObject.PSObject.Properties['WorkloadIdentityEnabled']) {
-                $WorkloadIdentityEnabled = $InputObject.WorkloadIdentityEnabled
-                $PSBoundParameters.Add('WorkloadIdentityEnabled', $WorkloadIdentityEnabled)
-            }
-
-            if ((-not $PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled')) -and $InputObject.OidcIssuerProfileEnabled) {
-                $OidcIssuerProfileEnabled = $true
-                $PSBoundParameters.Add('OidcIssuerProfileEnabled', $OidcIssuerProfileEnabled)
-            }
-
-            if ((-not $PSBoundParameters.ContainsKey('OidcIssuerProfileSelfHostedIssuerUrl')) -and $InputObject.OidcIssuerProfileSelfHostedIssuerUrl) {
-                $OidcIssuerProfileEnabled = $true
-                $PSBoundParameters.Add('OidcIssuerProfileSelfHostedIssuerUrl', $InputObject.OidcIssuerProfileSelfHostedIssuerUrl)
-            }
-
-            if ((-not $PSBoundParameters.ContainsKey('Distribution')) -and $InputObject.PSObject.Properties['Distribution']) {
-                $PSBoundParameters.Add('Distribution', $InputObject.Distribution)
-            }
-
-            if ((-not $PSBoundParameters.ContainsKey('DistributionVersion')) -and $InputObject.PSObject.Properties['DistributionVersion']) {
-                $PSBoundParameters.Add('DistributionVersion', $InputObject.DistributionVersion)
-            }
-
-            if ((-not $PSBoundParameters.ContainsKey('Infrastructure')) -and $InputObject.PSObject.Properties['Infrastructure']) {
-                $PSBoundParameters.Add('Infrastructure', $InputObject.Infrastructure)
-            }
-
-            if ((-not $PSBoundParameters.ContainsKey('PrivateLinkState')) -and $InputObject.PSObject.Properties['PrivateLinkState']) {
-                $PSBoundParameters.Add('PrivateLinkState', $InputObject.PrivateLinkState)
-            }
+            # Merge the fields that use a common merging process.
+            Merge-MaybeNullInput -InputObject $InputObject -LclPSBoundParameters $PSBoundParameters
         }
 
         if ($PSBoundParameters.ContainsKey('GatewayResourceId')) {
             Write-Debug "Gateway enabled"
             $PSBoundParameters.Add('GatewayEnabled', $true)
-        } elseif ($PSBoundParameters.ContainsKey('DisableGateway')) {
+        }
+        elseif ($PSBoundParameters.ContainsKey('DisableGateway')) {
             Write-Debug "Gateway disabled"
             $Null = $PSBoundParameters.Remove('DisableGateway')
             $PSBoundParameters.Add('GatewayEnabled', $false)
-        } else {
+        }
+        else {
             $PSBoundParameters.Add('GatewayEnabled', -not $DisableGateway)
             if (-not [String]::IsNullOrEmpty($GatewayResourceId)) {
                 $PSBoundParameters.Add('GatewayResourceId', $GatewayResourceId)
@@ -791,18 +765,13 @@ function Set-AzConnectedKubernetes {
 
         # Get current helm values
         if ($PSCmdlet.ShouldProcess($ClusterName, "Get current helm values")) {
-
-            try {
-                $userValuesLocation = Join-Path $env:USERPROFILE ".azure\userValues.txt"
-
-                helm get values azure-arc `
-                    --namespace $ReleaseInstallNamespace `
-                    --kubeconfig $KubeConfig `
-                    --kube-context $KubeContext > $userValuesLocation
-            }
-            catch {
-                throw "Unable to get helm values"
-            }
+            $userValuesLocation = Get-HelmValue `
+                -HelmClientLocation $HelmClientLocation `
+                -Namespace $ReleaseInstallNamespace `
+                -KubeConfig $KubeConfig `
+                -KubeContext $KubeContext `
+                -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+                -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
         }
 
         Write-Output "Executing helm upgrade, this can take a few minutes ...."
@@ -847,6 +816,25 @@ function Set-AzConnectedKubernetes {
                     Write-Error "Cluster configuration timed out after 60 minutes."
                 }
             }
+        }
+    }
+}
+
+function Merge-MaybeNullInput {
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
+    param(
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
+        $InputObject,
+        [System.Collections.Generic.Dictionary[system.String, System.Object]]
+        $LclPSBoundParameters
+    )
+
+    $mergeFields = 'WorkloadIdentityEnabled', 'OidcIssuerProfileEnabled', 'OidcIssuerProfileSelfHostedIssuerUrl', 'Distribution', 'DistributionVersion', 'Infrastructure', 'PrivateLinkState'
+
+    foreach ($mergeField in $mergeFields) {
+        if ((-not $LclPSBoundParameters.ContainsKey($mergeField)) -and $InputObject.PSObject.Properties[$mergeField] -and $null -ne $InputObject.PSObject.Properties[$mergeField].Value) {
+            $parameterValue = $InputObject.PSObject.Properties[$mergeField].Value
+            $LclPSBoundParameters.Add($mergeField, $parameterValue)
         }
     }
 }
