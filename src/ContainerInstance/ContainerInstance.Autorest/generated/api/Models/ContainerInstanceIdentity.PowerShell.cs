@@ -103,6 +103,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).SubnetName = (string) content.GetValueForProperty("SubnetName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).SubnetName, global::System.Convert.ToString);
             }
+            if (content.Contains("ContainerGroupProfileName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).ContainerGroupProfileName = (string) content.GetValueForProperty("ContainerGroupProfileName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).ContainerGroupProfileName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RevisionNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).RevisionNumber = (string) content.GetValueForProperty("RevisionNumber",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).RevisionNumber, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -151,6 +159,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
             if (content.Contains("SubnetName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).SubnetName = (string) content.GetValueForProperty("SubnetName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).SubnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ContainerGroupProfileName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).ContainerGroupProfileName = (string) content.GetValueForProperty("ContainerGroupProfileName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).ContainerGroupProfileName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RevisionNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).RevisionNumber = (string) content.GetValueForProperty("RevisionNumber",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerInstanceIdentityInternal)this).RevisionNumber, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

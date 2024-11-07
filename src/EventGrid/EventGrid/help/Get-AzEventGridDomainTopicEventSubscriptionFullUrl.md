@@ -16,27 +16,27 @@ Get the full endpoint URL for a nested event subscription for domain topic.
 ```
 Get-AzEventGridDomainTopicEventSubscriptionFullUrl -DomainName <String> -EventSubscriptionName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] -TopicName <String> [-DefaultProfile <PSObject>]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetViaIdentityTopic
 ```
 Get-AzEventGridDomainTopicEventSubscriptionFullUrl -EventSubscriptionName <String>
  -TopicInputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetViaIdentityDomain
 ```
 Get-AzEventGridDomainTopicEventSubscriptionFullUrl -EventSubscriptionName <String> -TopicName <String>
  -DomainInputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzEventGridDomainTopicEventSubscriptionFullUrl -InputObject <IEventGridIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -171,21 +171,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

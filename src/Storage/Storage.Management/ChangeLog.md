@@ -42,6 +42,8 @@
     - `Set-AzStorageShareStoredAccessPolicy`
     - `Start-AzStorageFileCopy`
     - `Stop-AzStorageFileCopy`
+
+## Version 7.5.0
 * Added a warning for an upcoming breaking change for download blob will block input parameter -AbsoluteUri and -Context together.
     - `Get-AzStorageBlobContent`
 * Revised AzureStorageBlob construct logic to make it more stable.

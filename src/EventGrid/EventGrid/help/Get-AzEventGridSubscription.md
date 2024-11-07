@@ -15,27 +15,27 @@ Get properties of an event subscription.
 ### Get (Default)
 ```
 Get-AzEventGridSubscription -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzEventGridSubscription -InputObject <IEventGridIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzEventGridSubscription -ProviderNamespace <String> -ResourceGroupName <String> -ResourceName <String>
  -ResourceTypeName <String> [-SubscriptionId <String[]>] [-Filter <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzEventGridSubscription -ResourceGroupName <String> [-SubscriptionId <String[]>] -DomainName <String>
  -TopicName <String> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,21 +159,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

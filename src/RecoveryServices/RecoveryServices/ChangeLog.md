@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added CRR support for southeastus, westus3 region.
 * Added support for enabling Disk access settings for managed VM restores.
+
+## Version 7.2.1
+* Fixed bug in `Set-ASRReplicationProtectedItem` cmdlet of H2A for replication to MD scenario.
 
 ## Version 7.2.0
 * Fixed bug for making RecoveryAzureStorageAccountId parameter optional in `New-ASRReplicationProtectedItem` cmdlet of H2A.

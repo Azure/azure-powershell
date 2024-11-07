@@ -14,22 +14,21 @@ Gets details of an Azure NetApp Files (ANF) Backup.
 
 ### ByFieldsParameterSet (Default)
 ```
-Get-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> [-PoolName <String>]
- [-VolumeName <String>] [-BackupVaultName <String>] [-Name <String>] [-Filter <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> [-BackupVaultName <String>]
+ [-Name <String>] [-Filter <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByAccountBackupFieldsParameterSet
 ```
-Get-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> [-AccountBackupName <String>]
+Get-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzNetAppFilesBackup [-Name <String>] [-AccountBackupName <String>] [-VolumeObject <PSNetAppFilesVolume>]
- -BackupVaultObject <PSNetAppFilesBackupVault> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzNetAppFilesBackup [-Name <String>] -BackupVaultObject <PSNetAppFilesBackupVault>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -45,34 +44,21 @@ The **Get-AzNetAppFilesBackup** cmdlet gets details of an ANF backup.
 
 ### Example 1
 ```powershell
-Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -PoolName "MyPool" -VolumeName "MyVolume" -Name "MyBackup"
+Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -BackupVaultName "MyVault" -Name "MyVolumeBackup"
 ```
 
-This command gets the backup named "MyAnfAccount" from the volume named "MyVolume".
+This command gets the backup named "MyVolumeBackup" from the Backup Vault "MyVault".
 
 ### Example 2
 ```powershell
-Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -AccountBackupName "MyBackup"
+$volumeResourceId = "/subscriptions/D633CC2E-722B-4AE1-B636-BBD9E4C60ED9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/MyAccount/capacityPools/MyPool/volumes/MyVolume"
+Get-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -BackupVaultName "MyVault"  -Filter $volumeResourceId
 ```
 
-This command gets the backup named "MyAnfAccount" from the Account named "MyAccount".
+This command gets the backups for the volume with resource Id volume with resource Id $volumeResourceId from the Backup Vault "MyVault".
+
 
 ## PARAMETERS
-
-### -AccountBackupName
-The name of the ANF backup
-
-```yaml
-Type: System.String
-Parameter Sets: ByAccountBackupFieldsParameterSet, ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AccountName
 The name of the ANF account
@@ -164,21 +150,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PoolName
-The name of the ANF pool
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The resource group of the ANF account
 
@@ -209,44 +180,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VolumeName
-The name of the ANF volume
-
-```yaml
-Type: System.String
-Parameter Sets: ByFieldsParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VolumeObject
-The volume object containing the backup to return
-
-```yaml
-Type: Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesVolume
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupVault
 

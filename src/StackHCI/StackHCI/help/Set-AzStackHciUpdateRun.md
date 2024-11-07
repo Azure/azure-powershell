@@ -19,7 +19,7 @@ Set-AzStackHciUpdateRun -ClusterName <String> -Name <String> -ResourceGroupName 
  [-ProgressDescription <String>] [-ProgressEndTimeUtc <DateTime>] [-ProgressErrorMessage <String>]
  [-ProgressLastUpdatedTimeUtc <DateTime>] [-ProgressName <String>] [-ProgressStartTimeUtc <DateTime>]
  [-ProgressStatus <String>] [-ProgressStep <IStep[]>] [-State <UpdateRunPropertiesState>]
- [-TimeStarted <DateTime>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-TimeStarted <DateTime>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Set-AzStackHciUpdateRun -ClusterName <String> -Name <String> -ResourceGroupName 
 ```
 Set-AzStackHciUpdateRun -ClusterName <String> -Name <String> -ResourceGroupName <String> -UpdateName <String>
  [-SubscriptionId <String>] -UpdateRunsProperty <IUpdateRun> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,21 +129,6 @@ Parameter Sets: (All)
 Aliases: UpdateRunName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
