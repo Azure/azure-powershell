@@ -261,22 +261,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                 PSDeploymentStackParameter parameter;
                 if (parameters[key].Reference != null)
                 {
-                    parameter = new PSDeploymentStackParameter { KeyVaultReference = parameters[key].Reference };
-
-                    if (parameters[key].Type != null)
-                    {
-                        parameter.Type = parameters[key].Type;
-                    }
-                    else
-                    {
-                        // If type does not exist, secret value is unknown and the type cannot be inferred:
-                        parameter.Type = "unknown";
-                    }
+                    parameter = new PSDeploymentStackParameter { KeyVaultReference = parameters[key].Reference, Type = ExtractDeploymentStackParameterValueType(parameters[key].Value) };
                 }
                 else
                 {
                     // If the type is not present, attempt to infer:
-                    parameter = new PSDeploymentStackParameter { Value = parameters[key].Value, Type = parameters[key].Type != null ? parameters[key].Type : ExtractDeploymentStackParameterValueType(parameters[key].Value) };
+                    parameter = new PSDeploymentStackParameter { Value = parameters[key].Value, Type = ExtractDeploymentStackParameterValueType(parameters[key].Value) };
                     if (parameter.Value != null && "Array".Equals(parameter.Type))
                     {
                         parameter.Value = JsonConvert.DeserializeObject<object[]>(parameter.Value.ToString());

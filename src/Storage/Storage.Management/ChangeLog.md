@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* When download blob with parameter AbsoluteUri (alias Uri, BlobUri), not allow input parameter Context together.
+    - `Get-AzStorageBlobContent`
 * Migrated following Azure Storage File dataplane cmdlets from 'Microsoft.Azure.Storage.File' to 'Azure.Storage.Files.Shares'
     - `Close-AzStorageFileHandle`
     - `Get-AzStorageFile`
