@@ -294,7 +294,6 @@ function Update-AzAstroOrganization {
                         $PSBoundParameters.IdentityUserAssignedIdentity.Add($_, $null)
                         }
                     }
-                    }
                 }
             }
 
