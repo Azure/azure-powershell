@@ -288,13 +288,12 @@ function Update-AzAstroOrganization {
                     $PSBoundParameters.IdentityUserAssignedIdentity.Add($item, $userIdentityObject )
                 }
         
-                if ($null -ne $organization.IdentityUserAssignedIdentity) {
+                if ($organization.IdentityUserAssignedIdentity.Count -gt 0) {
                     $organization.IdentityUserAssignedIdentity.Keys | ForEach-Object {
-                        foreach ($item in $UserAssignedIdentity) {
-                            if ($_ -ne $item) {
-                                $PSBoundParameters.IdentityUserAssignedIdentity.Add($_, $null)
-                            }
+                        if (-NOT($_ -in $UserAssignedIdentity)) {
+                        $PSBoundParameters.IdentityUserAssignedIdentity.Add($_, $null)
                         }
+                    }
                     }
                 }
             }
