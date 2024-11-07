@@ -25,23 +25,27 @@ $port2 = New-AzContainerInstancePortObject -Port 8001 -Protocol TCP
 $container = New-AzContainerInstanceObject -Name test-container -Image nginx -RequestCpu 1 -RequestMemoryInGb 1.5 -Port @($port1, $port2)
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux -RestartPolicy "Never" -IpAddressType Public
 .Example
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $env1 = New-AzContainerInstanceEnvironmentVariableObject -Name "env1" -Value "value1"
-$env2 = New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue (ConvertTo-SecureString -String "value2" -AsPlainText -Force)
+$env2 = New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue $pwd
 $container = New-AzContainerInstanceObject -Name test-container -Image alpine -Command "/bin/sh -c myscript.sh" -EnvironmentVariable @($env1, $env2)
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux
 .Example
 $container = New-AzContainerInstanceObject -Name test-container -Image alpine -Command "echo hello" 
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -OsType Linux
 .Example
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $container = New-AzContainerInstanceObject -Name test-container -Image myacr.azurecr.io/nginx:latest
-$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myacr.azurecr.io" -Username "username" -Password (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force) 
+$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myacr.azurecr.io" -Username "username" -Password $pwd
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -ImageRegistryCredential $imageRegistryCredential
 .Example
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 $container = New-AzContainerInstanceObject -Name test-container -Image myserver.com/nginx:latest
-$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force) 
+$imageRegistryCredential = New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password $pwd
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -ImageRegistryCredential $imageRegistryCredential
 .Example
-$volume = New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey (ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force)
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$volume = New-AzContainerGroupVolumeObject -Name "myvolume" -AzureFileShareName "myshare" -AzureFileStorageAccountName "username" -AzureFileStorageAccountKey $pwd
 $mount = New-AzContainerInstanceVolumeMountObject -MountPath "/aci/logs" -Name "myvolume"
 $container = New-AzContainerInstanceObject -Name test-container -Image alpine -VolumeMount $mount
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -Volume $volume
@@ -50,22 +54,24 @@ $container = New-AzContainerInstanceObject -Name test-container -Image alpine
 $containerGroup = New-AzContainerGroup -ResourceGroupName test-rg -Name test-cg -Location eastus -Container $container -IdentityType "SystemAssigned, UserAssigned" -IdentityUserAssignedIdentity @{"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}" = @{}}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroup
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CONTAINER <IContainer[]>: The containers within the container group.
-  Image <String>: The name of the image used to create the container instance.
   Name <String>: The user-provided name of the container instance.
-  RequestCpu <Double>: The CPU request of this container instance.
-  RequestMemoryInGb <Double>: The memory request in GB of this container instance.
+  [CapabilityAdd <String[]>]: The capabilities to add to the container.
+  [CapabilityDrop <String[]>]: The capabilities to drop from the container.
   [Command <String[]>]: The commands to execute within the container instance in exec form.
+  [ConfigMapKeyValuePair <IConfigMapKeyValuePairs>]: The key value pairs dictionary in the config map.
+    [(Any) <String>]: This indicates any property can be added to this object.
   [EnvironmentVariable <IEnvironmentVariable[]>]: The environment variables to set in the container instance.
     Name <String>: The name of the environment variable.
     [SecureValue <String>]: The value of the secure environment variable.
     [Value <String>]: The value of the environment variable.
+  [Image <String>]: The name of the image used to create the container instance.
   [LimitCpu <Double?>]: The CPU limit of this container instance.
   [LimitMemoryInGb <Double?>]: The memory limit in GB of this container instance.
   [LimitsGpuCount <Int32?>]: The count of the GPU resource.
@@ -95,8 +101,15 @@ CONTAINER <IContainer[]>: The containers within the container group.
   [ReadinessProbePeriodSecond <Int32?>]: The period seconds.
   [ReadinessProbeSuccessThreshold <Int32?>]: The success threshold.
   [ReadinessProbeTimeoutSecond <Int32?>]: The timeout seconds.
+  [RequestCpu <Double?>]: The CPU request of this container instance.
+  [RequestMemoryInGb <Double?>]: The memory request in GB of this container instance.
   [RequestsGpuCount <Int32?>]: The count of the GPU resource.
   [RequestsGpuSku <GpuSku?>]: The SKU of the GPU resource.
+  [SecurityContextAllowPrivilegeEscalation <Boolean?>]: A boolean value indicating whether the init process can elevate its privileges
+  [SecurityContextPrivileged <Boolean?>]: The flag to determine if the container permissions is elevated to Privileged.
+  [SecurityContextRunAsGroup <Int32?>]: Sets the User GID for the container.
+  [SecurityContextRunAsUser <Int32?>]: Sets the User UID for the container.
+  [SecurityContextSeccompProfile <String>]: a base64 encoded string containing the contents of the JSON in the seccomp profile
   [VolumeMount <IVolumeMount[]>]: The volume mounts available to the container instance.
     MountPath <String>: The path within the container where the volume should be mounted. Must not contain colon (:).
     Name <String>: The name of the volume mount.
@@ -118,12 +131,19 @@ IMAGEREGISTRYCREDENTIAL <IImageRegistryCredential[]>: The image registry credent
 
 INITCONTAINER <IInitContainerDefinition[]>: The init containers for a container group.
   Name <String>: The name for the init container.
+  [CapabilityAdd <String[]>]: The capabilities to add to the container.
+  [CapabilityDrop <String[]>]: The capabilities to drop from the container.
   [Command <String[]>]: The command to execute within the init container in exec form.
   [EnvironmentVariable <IEnvironmentVariable[]>]: The environment variables to set in the init container.
     Name <String>: The name of the environment variable.
     [SecureValue <String>]: The value of the secure environment variable.
     [Value <String>]: The value of the environment variable.
   [Image <String>]: The image of the init container.
+  [SecurityContextAllowPrivilegeEscalation <Boolean?>]: A boolean value indicating whether the init process can elevate its privileges
+  [SecurityContextPrivileged <Boolean?>]: The flag to determine if the container permissions is elevated to Privileged.
+  [SecurityContextRunAsGroup <Int32?>]: Sets the User GID for the container.
+  [SecurityContextRunAsUser <Int32?>]: Sets the User UID for the container.
+  [SecurityContextSeccompProfile <String>]: a base64 encoded string containing the contents of the JSON in the seccomp profile
   [VolumeMount <IVolumeMount[]>]: The volume mounts available to the init container.
     MountPath <String>: The path within the container where the volume should be mounted. Must not contain colon (:).
     Name <String>: The name of the volume mount.
@@ -154,7 +174,7 @@ VOLUME <IVolume[]>: The list of volumes that can be mounted by containers in thi
 https://learn.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
 #>
 function New-AzContainerGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroup])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -168,37 +188,42 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
     [System.String]
     # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Subscription credentials which uniquely identify Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainer[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainer[]]
     # The containers within the container group.
     # To construct, see NOTES section for CONTAINER properties and create a hash table.
     ${Container},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.DefaultInfo(Description='Sets OSType equal Linux by default.', Script='"Linux"')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes]
-    # The operating system type required by the containers in the container group.
-    ${OSType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [System.String]
     # The base64 encoded confidential compute enforcement policy
     ${ConfidentialComputePropertyCcePolicy},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.String]
+    # The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
+    ${ContainerGroupProfileId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.Int32]
+    # The container group profile reference revision.
+    ${ContainerGroupProfileRevision},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -246,7 +271,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IDeploymentExtensionSpec[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IDeploymentExtensionSpec[]]
     # extensions used by virtual kubelet
     # To construct, see NOTES section for EXTENSION properties and create a hash table.
     ${Extension},
@@ -278,7 +303,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IPort[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IPort[]]
     # The list of ports exposed on the container group.
     # To construct, see NOTES section for IPADDRESSPORT properties and create a hash table.
     ${IPAddressPort},
@@ -301,7 +326,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroupIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroupIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # The list of user identities associated with the container group.
     ${IdentityUserAssignedIdentity},
@@ -309,7 +334,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IImageRegistryCredential[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IImageRegistryCredential[]]
     # The image registry credentials by which the container group is created from.
     # To construct, see NOTES section for IMAGEREGISTRYCREDENTIAL properties and create a hash table.
     ${ImageRegistryCredential},
@@ -317,7 +342,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinition[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IInitContainerDefinition[]]
     # The init containers for a container group.
     # To construct, see NOTES section for INITCONTAINER properties and create a hash table.
     ${InitContainer},
@@ -337,7 +362,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ILogAnalyticsMetadata]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ILogAnalyticsMetadata]))]
     [System.Collections.Hashtable]
     # Metadata for log analytics.
     ${LogAnalyticMetadata},
@@ -359,6 +384,13 @@ param(
     [System.String]
     # The workspace resource id for log analytics
     ${LogAnalyticWorkspaceResourceId},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes]
+    # The operating system type required by the containers in the container group.
+    ${OSType},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupPriority])]
@@ -383,16 +415,28 @@ param(
     ${Sku},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # The flag to determine whether ACI should fail the create request if the container group can not be obtained from standby pool.
+    ${StandbyPoolProfileFailContainerGroupCreateOnReuseFailure},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
+    [System.String]
+    # The standby pool profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyPoolName}'.
+    ${StandbyPoolProfileId},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroupSubnetId[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IContainerGroupSubnetId[]]
     # The subnet resource IDs for a container group.
     # To construct, see NOTES section for SUBNETID properties and create a hash table.
     ${SubnetId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IResourceTags]))]
     [System.Collections.Hashtable]
     # The resource tags.
     ${Tag},
@@ -400,7 +444,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolume[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.IVolume[]]
     # The list of volumes that can be mounted by containers in this container group.
     # To construct, see NOTES section for VOLUME properties and create a hash table.
     ${Volume},
@@ -492,9 +536,6 @@ begin {
             } else {
                 $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
             }
-        }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('OSType')) {
-            $PSBoundParameters['OSType'] = "Linux"
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

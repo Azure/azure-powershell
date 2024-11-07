@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update a Elastic San.
+update a Elastic San.
 .Description
-Update a Elastic San.
+update a Elastic San.
 .Example
 $elasticSan = Update-AzElasticSan -ResourceGroupName myresourcegroup -Name myelasticsan -BaseSizeTib 64 -ExtendedCapacitySizeTib 128 -Tag @{"tag3" = "value3"}
 
