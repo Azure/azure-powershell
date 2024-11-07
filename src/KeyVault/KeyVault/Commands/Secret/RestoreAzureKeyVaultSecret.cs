@@ -113,8 +113,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (ParameterSetName == BySecretUriParameterSet)
             {
-                var secretUri = new Uri(Id);
-                SecretUriComponents splitUri = this.SplitSecretUri(secretUri);
+                SecretUriComponents splitUri = new SecretUriComponents(Id);
 
                 VaultName = splitUri.VaultName;
             }

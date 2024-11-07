@@ -25,14 +25,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Models.Secret
         /// <summary>
         /// Initializes a new instance of the SecretUriComponents class with the specified vault name, secret name, and version.
         /// </summary>
-        /// <param name="vaultName">The name of the Key Vault</param>
-        /// <param name="secretName">The name of the secret</param>
-        /// <param name="secretVersion">The version of the secret (optional)</param>
-        public SecretUriComponents(string vaultName, string secretName, string secretVersion)
+        /// <param name="secretId">The unique Uri/secretId (as a string) of the secret</param>
+        public SecretUriComponents(string secretId)
         {
-            VaultName = vaultName;
-            SecretName = secretName;
-            SecretVersion = secretVersion;
+            Uri secretUri = new Uri(secretId);
+
+            // Extract vault name from the URI
+            this.VaultName = secretUri.Host.Split('.')[0];
+
+            // Extract secret name from the URI
+            this.SecretName = secretUri.Segments.Length > 2 ? secretUri.Segments[2].TrimEnd('/') : string.Empty;
+
+            // Extract secret version (if present)
+            this.SecretVersion = secretUri.Segments.Length > 3 ? secretUri.Segments[3] : string.Empty;
+
         }
 
         /// <summary>
