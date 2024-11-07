@@ -447,7 +447,18 @@ function New-AzContainerAppJob {
       else {
         $PSBoundParameters.Add("IdentityType", "None")
       }
-        
+
+      # If user input UserAssignedIdentity
+      if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+        $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.UserAssignedIdentity]::New()
+        $PSBoundParameters.IdentityUserAssignedIdentity = @{}
+        foreach ($item in $PSBoundParameters.UserAssignedIdentity) {
+          $PSBoundParameters.IdentityUserAssignedIdentity.Add($item, $userIdentityObject )
+        }
+
+        $null = $PSBoundParameters.Remove('UserAssignedIdentity')
+      }
+
       # remove EnableSystemAssignedIdentity
       if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
         $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")

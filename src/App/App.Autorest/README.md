@@ -65,6 +65,7 @@ auto-switch-view: false
 # Disable transform IdentityType as GET+PUT can not replace patch(https://github.com/Azure/autorest.powershell/blob/main/docs/migration-from-v3-to-v4.md#managed-identity-best-practice-alignment)
 # 1. ContainerApps_CreateOrUpdate and Jobs_CreateOrUpdate can not update resources
 # 2. the input schemas of PUT and PATCH are different
+flatten-userassignedidentity: false
 disable-transform-identity-type: true
 
 use-extension: 

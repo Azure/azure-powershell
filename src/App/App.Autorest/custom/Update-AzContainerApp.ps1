@@ -435,19 +435,38 @@ function Update-AzContainerApp {
 
   process {
     if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity') -or $PSBoundParameters.ContainsKey('UserAssignedIdentity') ) {
-      # get existing organization
+      # Get ContainerApp DataObj
+      $parameterSet = $PSCmdlet.ParameterSetName
       if (('UpdateExpanded') -contains $parameterSet) {
-        $organization = Az.App.exports\Get-AzContainerApp -Name $Name -ResourceGroupName $ResourceGroupName
+        $containerAppObj = Az.App\Get-AzContainerApp -Name $Name -ResourceGroupName $ResourceGroupName
       }
       elseif (('UpdateViaIdentityExpanded') -contains $parameterSet) {
-        $organization = Az.App.exports\Get-AzContainerApp -InputObject $InputObject
+        $containerAppObj = Az.App\Get-AzContainerApp -InputObject $InputObject
       }
-      if ($null -eq $organization) {
+      if ($null -eq $containerAppObj) {
         throw "$Name doesn't exist"
       }
+
+      # If user input UserAssignedIdentity
+      if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+        $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.UserAssignedIdentity]::New()
+        $PSBoundParameters.IdentityUserAssignedIdentity = @{}
+        foreach ($item in $PSBoundParameters.UserAssignedIdentity) {
+          $PSBoundParameters.IdentityUserAssignedIdentity.Add($item, $userIdentityObject )
+        }
+        
+        if ($containerAppObj.IdentityUserAssignedIdentity.Count -gt 0) {
+          $containerAppObj.IdentityUserAssignedIdentity.Keys | ForEach-Object {
+            if (-NOT($_ -in $UserAssignedIdentity)) {
+              $PSBoundParameters.IdentityUserAssignedIdentity.Add($_, $null)
+            }
+          }
+        }
+      }
+
       # calculate IdentityType
-      $supportsSystemAssignedIdentity = $EnableSystemAssignedIdentity -or (($null -eq $EnableSystemAssignedIdentity) -and ($organization.IdentityType -Contains "SystemAssigned"))
-      $supportsUserAssignedIdentity = ($PSBoundParameters.ContainsKey('UserAssignedIdentity') -and $UserAssignedIdentity.Length -gt 0) -or ((-not $PSBoundParameters.ContainsKey('UserAssignedIdentity')) -and ($organization.IdentityType -Contains "UserAssigned"));
+      $supportsSystemAssignedIdentity = $EnableSystemAssignedIdentity -or (($null -eq $EnableSystemAssignedIdentity) -and ($containerAppObj.IdentityType.Contains('SystemAssigned')))
+      $supportsUserAssignedIdentity = ($PSBoundParameters.ContainsKey('UserAssignedIdentity') -and $UserAssignedIdentity.Length -gt 0) -or ((-not $PSBoundParameters.ContainsKey('UserAssignedIdentity')) -and ($containerAppObj.IdentityType.Contains('UserAssigned')));
       if (($supportsSystemAssignedIdentity -and $supportsUserAssignedIdentity)) {
         $PSBoundParameters.Add("IdentityType", "SystemAssigned,UserAssigned")
       }
@@ -460,9 +479,14 @@ function Update-AzContainerApp {
       else {
         $PSBoundParameters.Add("IdentityType", "None")
       }
-      # remove EnableSystemAssignedIdentity
+
+      # remove EnableSystemAssignedIdentity 
       if ($PSBoundParameters.ContainsKey('EnableSystemAssignedIdentity')) {
         $null = $PSBoundParameters.Remove("EnableSystemAssignedIdentity")
+      }
+      # remove UserAssignedIdentity 
+      if ($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+        $null = $PSBoundParameters.Remove('UserAssignedIdentity')
       }
     }
     Az.App.internal\Update-AzContainerApp @PSBoundParameters
