@@ -783,7 +783,7 @@
           "186"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"administratorLoginPassword\": \"t357ingP@s5w0rd!\",\r\n    \"minimalTlsVersion\": \"1.2\"\r\n  },\r\n  \"location\": \"West US 3\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"administratorLoginPassword\": \"[Sanitized\",\r\n    \"minimalTlsVersion\": \"1.2\"\r\n  },\r\n  \"location\": \"West US 3\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -3576,7 +3576,7 @@
           "186"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"administratorLoginPassword\": \"t357ingP@s5w0rd!\",\r\n    \"minimalTlsVersion\": \"1.2\"\r\n  },\r\n  \"location\": \"West US 3\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"administratorLoginPassword\": \"[Sanitized\",\r\n    \"minimalTlsVersion\": \"1.2\"\r\n  },\r\n  \"location\": \"West US 3\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
