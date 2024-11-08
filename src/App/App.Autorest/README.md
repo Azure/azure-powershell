@@ -68,9 +68,6 @@ auto-switch-view: false
 flatten-userassignedidentity: false
 disable-transform-identity-type: true
 
-use-extension: 
-  "@autorest/powershell": "4.x"
-
 directive:
   - from: swagger-document 
     where: $.definitions.Certificate.properties.properties.properties.password
