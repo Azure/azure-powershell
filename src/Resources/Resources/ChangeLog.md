@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated Resources SDK to 2024-07-01.
+* Add Diagnostics/Warnings to WhatIf results for deployments.
 
 ## Version 7.6.0
 * Fixed customer-reported `Remove-AzPolicyAssignment` behavior.
