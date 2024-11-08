@@ -21,8 +21,11 @@ using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Management.Automation.Language;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -99,12 +102,46 @@ namespace Microsoft.Azure.Commands.Profile.Rest
         public SwitchParameter WaitForCompletion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Specifies the polling header (to fetch from) for long-running operation status.")]
-        [ValidateSet("AzureAsyncLocation", "Location", "OriginalUri", "Operation-Location", IgnoreCase = true)]
+        [ArgumentCompleter(typeof(PollFromCompleter))]
         public string PollFrom { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Specifies the header for final GET result after the long-running operation completes.")]
-        [ValidateSet("FinalStateVia", "Location", "OriginalUri", "Operation-Location", IgnoreCase = true)]
+        [ArgumentCompleter(typeof(FinalResultFromCompleter))]
         public string FinalResultFrom { get; set; }
+
+
+        // Define the ArgumentCompleter for PollFrom
+        public class PollFromCompleter : IArgumentCompleter
+        {
+            public IEnumerable<CompletionResult> CompleteArgument(string commandName, string parameterName, string wordToComplete, CommandAst commandAst, IDictionary fakeBoundParameters)
+            {
+                var suggestions = new List<string> { "AzureAsyncLocation", "Location", "OriginalUri", "Operation-Location" };
+                foreach (var suggestion in suggestions)
+                {
+                    if (suggestion.StartsWith(wordToComplete, StringComparison.OrdinalIgnoreCase))
+                    {
+                        yield return new CompletionResult(suggestion);
+                    }
+                }
+            }
+        }
+
+        // Define the ArgumentCompleter for FinalResultFrom
+        public class FinalResultFromCompleter : IArgumentCompleter
+        {
+            public IEnumerable<CompletionResult> CompleteArgument(string commandName, string parameterName, string wordToComplete, CommandAst commandAst, IDictionary fakeBoundParameters)
+            {
+                var suggestions = new List<string> { "FinalStateVia", "Location", "OriginalUri", "Operation-Location" };
+                foreach (var suggestion in suggestions)
+                {
+                    if (suggestion.StartsWith(wordToComplete, StringComparison.OrdinalIgnoreCase))
+                    {
+                        yield return new CompletionResult(suggestion);
+                    }
+                }
+            }
+        }
+
 
         #endregion
 
