@@ -75,4 +75,7 @@ directive:
   - where:
       verb: Update
     hide: true
+  - from: UserAssignedIdentities.dictionary.cs
+    where: $
+    transform: $ = $.replace('null != property.Key && null != property.Value', 'null != property.Key');
 ```
