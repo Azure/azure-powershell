@@ -21,27 +21,18 @@ Create an in-memory object for ProductFeatureUpdate.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create the profile update object
 ```powershell
-{{ Add code here }}
+New-AzConnectedLicenseProfileUpdate -Name "Hotpatch" -SubscriptionStatus "Enable"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name     SubscriptionStatus
+----     ------------------
+Hotpatch Enable
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create the profile update object
 
 ## PARAMETERS
 

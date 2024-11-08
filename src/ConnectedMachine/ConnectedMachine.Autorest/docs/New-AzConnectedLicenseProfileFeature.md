@@ -21,27 +21,28 @@ Create an in-memory object for ProductFeature.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a profile feature
 ```powershell
-{{ Add code here }}
+New-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+
+AdditionalInfo     :
+BillingEndDate     :
+BillingStartDate   :
+Code               :
+Detail             :
+DisenrollmentDate  :
+EnrollmentDate     :
+Message            :
+Name               : Hotpatch
+SubscriptionStatus : Enable
+Target             :
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a profile feature
 
 ## PARAMETERS
 
