@@ -12,8 +12,8 @@ steps:
       git fetch --no-tags origin "${targetBranch}:origin/base"
       # refer to https://git-scm.com/docs/git-diff
       # compare the pr and targetBranch branch, get the changed file list
-      # diff-filter options are ACMRT, which are: Added, Copied, Modified, Renamed, Changed
-      $changedFiles = git --no-pager diff --name-only --diff-filter=ACMRT origin/base -- .
+      # diff-filter options are ACDMRT, which are: Added, Copied, Deleted, Modified, Renamed, Changed
+      $changedFiles = git --no-pager diff --name-only --diff-filter=ACDMRT origin/base -- .
       Write-Host "Total updated files:" $changedFiles.Count
       Write-Host "All Updated files:"
       $changedFiles | Foreach-Object {Write-Host $_}
