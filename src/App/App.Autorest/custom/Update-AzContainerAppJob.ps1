@@ -451,15 +451,21 @@ function Update-AzContainerAppJob {
         foreach ($item in $PSBoundParameters.UserAssignedIdentity) {
           $PSBoundParameters.IdentityUserAssignedIdentity.Add($item, $userIdentityObject )
         }
-        
-        if ($containerAppJobObj.IdentityUserAssignedIdentity.Count -gt 0) {
+        Write-Host "=========================================================================================="
+        Write-Host $PSBoundParameters.IdentityUserAssignedIdentity
+
+        if ($containerAppJobObj.IdentityUserAssignedIdentity -ne $null) {
           $containerAppJobObj.IdentityUserAssignedIdentity.Keys | ForEach-Object {
             if (-NOT($_ -in $UserAssignedIdentity)) {
               $PSBoundParameters.IdentityUserAssignedIdentity.Add($_, $null)
+              Write-Host "======================================A========================================="
+              Write-host $_
             }
           }
         }
       }
+      Write-Host "=========================================================================================="
+      Write-Host $PSBoundParameters.IdentityUserAssignedIdentity
 
       # calculate IdentityType
       $supportsSystemAssignedIdentity = $EnableSystemAssignedIdentity -or (($null -eq $EnableSystemAssignedIdentity) -and ($containerAppJobObj.IdentityType.Contains('SystemAssigned')))
@@ -486,6 +492,9 @@ function Update-AzContainerAppJob {
         $null = $PSBoundParameters.Remove('UserAssignedIdentity')
       }
     }
+    Write-Host "=========================================================================================="
+    Write-Host $PSBoundParameters.IdentityUserAssignedIdentity
+    Write-Host $PSBoundParameters
     Az.App.internal\Update-AzContainerAppJob @PSBoundParameters
   }
 }

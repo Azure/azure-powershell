@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerAppConnectedEnvStorage
 
 ## SYNOPSIS
-Update storage for a connectedEnvironment.
+update storage for a connectedEnvironment.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Update-AzContainerAppConnectedEnvStorage -InputObject <IAppIdentity> [-AzureFile
 ```
 
 ## DESCRIPTION
-Update storage for a connectedEnvironment.
+update storage for a connectedEnvironment.
 
 ## EXAMPLES
 
