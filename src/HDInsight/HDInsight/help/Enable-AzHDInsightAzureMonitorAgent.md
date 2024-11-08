@@ -16,20 +16,20 @@ Enables Azure Monitor Agent in a specified HDInsight cluster.
 ```
 Enable-AzHDInsightAzureMonitorAgent [-PassThru] [[-ResourceGroupName] <String>] [-ClusterName] <String>
  [-WorkspaceId] <String> [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EnableByResourceIdParameterSet
 ```
 Enable-AzHDInsightAzureMonitorAgent [-PassThru] [-ResourceId] <String> [-WorkspaceId] <String>
- [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EnableByInputObjectParameterSet
 ```
 Enable-AzHDInsightAzureMonitorAgent [-PassThru] [-InputObject] <AzureHDInsightCluster> [-WorkspaceId] <String>
- [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -134,6 +134,21 @@ Aliases:
 
 Required: True
 Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+Specifies how the cmdlet should handle progress updates.
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

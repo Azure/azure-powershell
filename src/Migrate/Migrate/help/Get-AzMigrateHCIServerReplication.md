@@ -15,37 +15,37 @@ Retrieves the details of the replicating server.
 ### ListByName (Default)
 ```
 Get-AzMigrateHCIServerReplication -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByMachineName
 ```
 Get-AzMigrateHCIServerReplication -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- -MachineName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -MachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByItemID
 ```
 Get-AzMigrateHCIServerReplication [-SubscriptionId <String>] -TargetObjectID <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetBySDSID
 ```
 Get-AzMigrateHCIServerReplication [-SubscriptionId <String>] -DiscoveredMachineId <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByInputObject
 ```
 Get-AzMigrateHCIServerReplication [-SubscriptionId <String>] -InputObject <IMigrateIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ListById
 ```
 Get-AzMigrateHCIServerReplication [-SubscriptionId <String>] -ResourceGroupID <String> -ProjectID <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -185,21 +185,6 @@ Parameter Sets: GetByMachineName
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

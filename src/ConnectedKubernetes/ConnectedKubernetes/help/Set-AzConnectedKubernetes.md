@@ -23,7 +23,7 @@ Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> [-Su
  [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-WorkloadIdentityEnabled]
  [-AcceptEULA] [-ConfigurationSetting <Hashtable>] [-ConfigurationProtectedSetting <Hashtable>]
  [-GatewayResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetExpandedDisableGateway
@@ -37,7 +37,7 @@ Set-AzConnectedKubernetes -ClusterName <String> -ResourceGroupName <String> [-Su
  [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>] [-WorkloadIdentityEnabled]
  [-AcceptEULA] [-ConfigurationSetting <Hashtable>] [-ConfigurationProtectedSetting <Hashtable>]
  [-GatewayResourceId <String>] [-DisableGateway] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetDisableGateway
@@ -51,7 +51,7 @@ Set-AzConnectedKubernetes [-SubscriptionId <String>] [-HttpProxy <Uri>] [-HttpsP
  [-WorkloadIdentityEnabled] [-AcceptEULA] [-ConfigurationSetting <Hashtable>]
  [-ConfigurationProtectedSetting <Hashtable>] [-GatewayResourceId <String>] [-DisableGateway]
  -InputObject <IConnectedCluster> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Set
@@ -64,7 +64,7 @@ Set-AzConnectedKubernetes [-SubscriptionId <String>] [-HttpProxy <Uri>] [-HttpsP
  [-CustomLocationsOid <String>] [-OidcIssuerProfileEnabled] [-OidcIssuerProfileSelfHostedIssuerUrl <String>]
  [-WorkloadIdentityEnabled] [-AcceptEULA] [-ConfigurationSetting <Hashtable>]
  [-ConfigurationProtectedSetting <Hashtable>] [-GatewayResourceId <String>] -InputObject <IConnectedCluster>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -497,21 +497,6 @@ Property which describes the state of private link on a connected cluster resour
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.PrivateLinkState
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

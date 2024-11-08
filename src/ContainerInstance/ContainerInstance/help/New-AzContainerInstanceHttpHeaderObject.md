@@ -13,7 +13,7 @@ Create a in-memory object for HttpHeader
 ## SYNTAX
 
 ```
-New-AzContainerInstanceHttpHeaderObject -Name <String> [-Value <String>]
+New-AzContainerInstanceHttpHeaderObject -Name <String> [-Value <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -52,6 +52,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Value
 The header value..
 
@@ -74,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.HttpHeader
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.HttpHeader
 
 ## NOTES
 

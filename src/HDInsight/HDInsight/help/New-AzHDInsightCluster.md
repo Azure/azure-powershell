@@ -37,8 +37,9 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-KafkaClientGroupId <String>] [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>]
  [-PrivateLink <String>] [-PublicIpTagType <String>] [-PublicIpTag <String>]
  [-OutboundDependenciesManagedType <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>]
- [-Zone <String[]>] [-PrivateLinkConfiguration <AzureHDInsightPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Zone <String[]>] [-Tag <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
+ [-PrivateLinkConfiguration <AzureHDInsightPrivateLinkConfiguration[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### CertificateFilePath
@@ -66,8 +67,9 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>] [-PrivateLink <String>]
  [-PublicIpTagType <String>] [-PublicIpTag <String>] [-OutboundDependenciesManagedType <String>]
  [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zone <String[]>]
+ [-Tag <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-PrivateLinkConfiguration <AzureHDInsightPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### CertificateFileContents
@@ -95,8 +97,9 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-KafkaClientGroupName <String>] [-ResourceProviderConnection <String>] [-PrivateLink <String>]
  [-PublicIpTagType <String>] [-PublicIpTag <String>] [-OutboundDependenciesManagedType <String>]
  [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zone <String[]>]
+ [-Tag <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-PrivateLinkConfiguration <AzureHDInsightPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -1326,6 +1329,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+Specifies how the cmdlet should handle progress updates.
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicIpTag
 Gets or sets value of the IpTag associated with the public IP. Example HDInsight, SQL, Storage etc
 
@@ -1562,6 +1580,21 @@ Gets or sets the subnet name for this HDInsight cluster.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Gets or sets the cluster tags.
+
+```yaml
+Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
 Parameter Sets: (All)
 Aliases:
 

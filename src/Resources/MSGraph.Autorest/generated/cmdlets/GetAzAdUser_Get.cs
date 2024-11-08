@@ -117,6 +117,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
+        /// <summary>Backing field for <see cref="Id" /> property.</summary>
+        private string _id;
+
+        /// <summary>key: id of user</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "key: id of user")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"key: id of user",
+        SerializedName = @"user-id",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::System.Management.Automation.Alias("UserId")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Path)]
+        public string Id { get => this._id; set => this._id = value; }
+
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
@@ -163,20 +178,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Query)]
         public string[] Select { get => this._select; set => this._select = value; }
-
-        /// <summary>Backing field for <see cref="UserId" /> property.</summary>
-        private string _userId;
-
-        /// <summary>key: id of user</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "key: id of user")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"key: id of user",
-        SerializedName = @"user-id",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Path)]
-        public string UserId { get => this._userId; set => this._userId = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -390,12 +391,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.UsersUserGetUser(UserId, this.InvocationInformation.BoundParameters.ContainsKey("ConsistencyLevel") ? ConsistencyLevel : null, this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* fixedArrayOf */, this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* fixedArrayOf */, onOk, onDefault, this, Pipeline);
+                    await this.Client.UsersUserGetUser(Id, this.InvocationInformation.BoundParameters.ContainsKey("ConsistencyLevel") ? ConsistencyLevel : null, this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* fixedArrayOf */, this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* fixedArrayOf */, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { UserId=UserId,ConsistencyLevel=this.InvocationInformation.BoundParameters.ContainsKey("ConsistencyLevel") ? ConsistencyLevel : null,Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* fixedArrayOf */,Expand=this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* fixedArrayOf */})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Id=Id,ConsistencyLevel=this.InvocationInformation.BoundParameters.ContainsKey("ConsistencyLevel") ? ConsistencyLevel : null,Select=this.InvocationInformation.BoundParameters.ContainsKey("Select") ? Select : null /* fixedArrayOf */,Expand=this.InvocationInformation.BoundParameters.ContainsKey("Expand") ? Expand : null /* fixedArrayOf */})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });

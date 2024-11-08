@@ -1,17 +1,17 @@
 {
-  "Get-AzContainerInstanceLog+[NoContext]+List+$GET+https://management.azure.com/subscriptions/858cf1fd-d678-42ee-ae83-7f84b54c67df/resourceGroups/test-rgc41vt/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/logs?api-version=2022-10-01-preview+1": {
+  "Get-AzContainerInstanceLog+[NoContext]+List+$GET+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rg9iwau/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/logs?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/858cf1fd-d678-42ee-ae83-7f84b54c67df/resourceGroups/test-rgc41vt/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/logs?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rg9iwau/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/logs?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "61" ],
-        "x-ms-client-request-id": [ "713b8109-8b46-49c8-887e-742a9dd8310b" ],
+        "x-ms-unique-id": [ "64" ],
+        "x-ms-client-request-id": [ "179e8206-30ca-4a8e-b709-9452302d0ba5" ],
         "CommandName": [ "Get-AzContainerInstanceLog" ],
         "FullCommandName": [ "Get-AzContainerInstanceLog_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ContainerInstance/1.0.3" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.23", "Az.ContainerInstance/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,37 +22,39 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "eastus:ff60a634-e931-41ed-afcc-7b52eee6b345" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11957" ],
-        "x-ms-correlation-request-id": [ "5cab64d0-80fe-45f0-bcc1-70633ba4038e" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20230218T000438Z:5cab64d0-80fe-45f0-bcc1-70633ba4038e" ],
+        "x-ms-request-id": [ "eastus:10995279-583d-4958-8d20-5119f2df4632" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "e8ca7694-2baf-479c-9039-56c8df2017b1" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241031T050216Z:e8ca7694-2baf-479c-9039-56c8df2017b1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 18 Feb 2023 00:04:38 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CC2208248B1C468EB6AB87AC4F64C22A Ref B: MAA201060514031 Ref C: 2024-10-31T05:02:16Z" ],
+        "Date": [ "Thu, 31 Oct 2024 05:02:16 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1178" ],
+        "Content-Length": [ "36" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"content\":\"/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration\\n/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/\\n/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh\\n10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf\\n10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf\\n/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh\\n/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh\\n/docker-entrypoint.sh: Configuration complete; ready for start up\\n2023/02/17 23:53:49 [notice] 14#14: using the \\\"epoll\\\" event method\\n2023/02/17 23:53:49 [notice] 14#14: nginx/1.23.3\\n2023/02/17 23:53:49 [notice] 14#14: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) \\n2023/02/17 23:53:49 [notice] 14#14: OS: Linux 5.10.102.2-microsoft-standard\\n2023/02/17 23:53:49 [notice] 14#14: getrlimit(RLIMIT_NOFILE): 1024:1048576\\n2023/02/17 23:53:49 [notice] 14#14: start worker processes\\n2023/02/17 23:53:49 [notice] 14#14: start worker process 46\\n\"}",
+      "Content": "{\"content\":\"listening on port 80\\n\"}",
       "isContentBase64": false
     }
   },
-  "Get-AzContainerInstanceLog+[NoContext]+Get the tail 2 lines of log of a container instance+$GET+https://management.azure.com/subscriptions/858cf1fd-d678-42ee-ae83-7f84b54c67df/resourceGroups/test-rgc41vt/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/logs?api-version=2022-10-01-preview\u0026tail=2+1": {
+  "Get-AzContainerInstanceLog+[NoContext]+Get the tail 2 lines of log of a container instance+$GET+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rg9iwau/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/logs?api-version=2024-05-01-preview\u0026tail=2+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/858cf1fd-d678-42ee-ae83-7f84b54c67df/resourceGroups/test-rgc41vt/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/logs?api-version=2022-10-01-preview\u0026tail=2",
+      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/resourceGroups/test-rg9iwau/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/logs?api-version=2024-05-01-preview\u0026tail=2",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "62" ],
-        "x-ms-client-request-id": [ "1dc78a2e-d243-4424-a885-0ab716d3350b" ],
+        "x-ms-unique-id": [ "65" ],
+        "x-ms-client-request-id": [ "35cc772d-1295-416b-b9f9-37fc4fe02b12" ],
         "CommandName": [ "Get-AzContainerInstanceLog" ],
         "FullCommandName": [ "Get-AzContainerInstanceLog_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ContainerInstance/1.0.3" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.23", "Az.ContainerInstance/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -63,21 +65,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "eastus:21efe767-9837-4fc7-bbb7-7485f351f775" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11956" ],
-        "x-ms-correlation-request-id": [ "99b595c2-f045-459c-aea6-5e4dfee554c6" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20230218T000439Z:99b595c2-f045-459c-aea6-5e4dfee554c6" ],
+        "x-ms-request-id": [ "eastus:3b6ce9c0-979f-470a-96fd-88f84c0062a4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "27c86cb2-857f-4d80-b3d1-6b52c132e0e1" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241031T050217Z:27c86cb2-857f-4d80-b3d1-6b52c132e0e1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 18 Feb 2023 00:04:38 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 3DE9294E3D1645B0B68184463FC82324 Ref B: MAA201060514031 Ref C: 2024-10-31T05:02:17Z" ],
+        "Date": [ "Thu, 31 Oct 2024 05:02:17 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "135" ],
+        "Content-Length": [ "36" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"content\":\"2023/02/17 23:53:49 [notice] 14#14: start worker processes\\n2023/02/17 23:53:49 [notice] 14#14: start worker process 46\\n\"}",
+      "Content": "{\"content\":\"listening on port 80\\n\"}",
       "isContentBase64": false
     }
   }

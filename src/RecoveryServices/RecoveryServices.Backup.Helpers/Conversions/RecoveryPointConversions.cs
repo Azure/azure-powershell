@@ -367,6 +367,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 Zones = recoveryPoint.Zones,
                 RehydrationExpiryTime = (DateTime?)null,
                 ExtendedLocation = recoveryPoint.ExtendedLocation,
+                IsPrivateAccessEnabledOnAnyDisk = recoveryPoint.IsPrivateAccessEnabledOnAnyDisk
             };
 
             if (recoveryPoint.RecoveryPointTierDetails != null)

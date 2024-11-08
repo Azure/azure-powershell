@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(string))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Description(@"Gets all the network dependencies for this container group to allow complete control of network setting and configuration. For container groups, this will always be an empty list.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/outboundNetworkDependenciesEndpoints", ApiVersion = "2022-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{containerGroupName}/outboundNetworkDependenciesEndpoints", ApiVersion = "2024-05-01-preview")]
     public partial class GetAzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.IEventListener
     {
@@ -113,12 +113,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
@@ -355,12 +355,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ICloudError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }

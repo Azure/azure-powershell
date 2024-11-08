@@ -106,3 +106,25 @@ function GetClientDatasourceType
 		return ""
 	}
 }
+
+function UnprotectSecureString
+{
+	[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DoNotExportAttribute()]
+	param(
+		[Parameter(Mandatory, ValueFromPipeline)]
+		[System.Security.SecureString]
+		${SecureString}
+	)
+
+	process
+	{
+		$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecureString)
+		try {
+			$plaintext = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+		} finally {
+			[System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+		}
+
+		return $plaintext
+	}
+}

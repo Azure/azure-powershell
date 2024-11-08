@@ -119,7 +119,8 @@ directive:
   - from: source-file-csharp
     where: $
     transform: if ($documentPath.endsWith("MSGraph.cs")) {$ = $.replace(/Count.ToString\(\)/g, "Count.ToString().ToLower()")}
-  
+    
+    # below directives are for mitigate breaking change upgrading autorest.powershell v3 -> v4
   - where:
       subject: ApplicationsApplication
     set:
@@ -136,6 +137,38 @@ directive:
       subject: (UsersUser)(.*)
     set:
       subject: User$2
+  - where:
+      subject: ^Application$
+      parameter-name: ApplicationId
+    set: 
+      parameter-name: Id
+      alias: ApplicationId
+  - where:
+      subject: ^User$
+      parameter-name: UserId
+    set: 
+      parameter-name: Id
+      alias: UserId    
+  - where:
+      subject: ^ServicePrincipal$
+      parameter-name: ServicePrincipalId
+    set: 
+      parameter-name: Id
+      alias: ServicePrincipalId    
+  - where:
+      subject: ^Group$
+      verb: ^(?!Update$)
+      parameter-name: GroupId
+    set:
+      parameter-name: Id
+      alias: GroupId
+  - where:
+      subject: ^Group$
+      verb: ^Update$
+      parameter-name: GroupId
+    set:
+      parameter-name: ObjectId
+      alias: GroupId
 
   # hide user owned application cmdlets
   - where:
@@ -240,18 +273,6 @@ directive:
       subject: organization
       verb: New
     hide: true
-  - where:
-      subject: ^group$
-      verb: ^Update$
-      parameter-name: GroupId
-    set:
-      parameter-name: ObjectId
-  - where:
-      subject: ^group$
-      verb: ^Update$
-      parameter-name: ObjectId
-    set:
-      alias: GroupId
 
   - where: 
       subject: ^group$
