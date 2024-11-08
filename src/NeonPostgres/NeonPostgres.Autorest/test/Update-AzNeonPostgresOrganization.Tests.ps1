@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNeonPostgresOrganiza
 }
 
 # Define variables directly in the script
-$resourceName = "almasTestNeonPSRecord10"
+$resourceName = "almasTestNeonPSRecord1A"
 $resourceGroupName = "NeonDemoRG"
 $subscriptionId = "5d9a6cc3-4e60-4b41-be79-d28f0a01074e"
 
@@ -29,7 +29,7 @@ $companyDetailOfficeAddress = "1234 Azure Ave"
 
 # Partner Organization Properties
 $partnerOrganizationPropertyOrganizationId = "org12345"
-$partnerOrganizationPropertyOrganizationName = "PartnerOrgRecord10"
+$partnerOrganizationPropertyOrganizationName = "PartnerOrgRecord1A"
 
 # Single Sign-On Properties
 $singleSignOnPropertyAadDomain = "partnerorg.com"
