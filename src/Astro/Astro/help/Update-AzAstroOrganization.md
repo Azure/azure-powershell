@@ -21,21 +21,21 @@ Update-AzAstroOrganization -Name <String> -ResourceGroupName <String> [-Subscrip
  [-SingleSignOnPropertyEnterpriseAppId <String>] [-SingleSignOnPropertySingleSignOnState <String>]
  [-SingleSignOnPropertySingleSignOnUrl <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
  [-UserEmailAddress <String>] [-UserFirstName <String>] [-UserLastName <String>] [-UserPhoneNumber <String>]
- [-UserUpn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-UserUpn <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzAstroOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzAstroOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ Update-AzAstroOrganization -InputObject <IAstroIdentity> [-EnableSystemAssignedI
  [-SingleSignOnPropertySingleSignOnState <String>] [-SingleSignOnPropertySingleSignOnUrl <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-UserEmailAddress <String>] [-UserFirstName <String>]
  [-UserLastName <String>] [-UserPhoneNumber <String>] [-UserUpn <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -282,6 +282,21 @@ Workspace name in partner's system
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
