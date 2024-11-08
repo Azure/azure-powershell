@@ -39,9 +39,9 @@ Describe 'Test-AzCdnEndpointCustomDomain'  {
 
     It 'ValidateViaIdentityExpanded' {  
         # Hard-coding host and endpoint names due to requirement for DNS CNAME
-        $endpointName = 'ps-2024-0901-domain051'
-        $customDomainHostName = 'ps-2024-0901-domain051.ps.cdne2e.azfdtest.xyz'
-        $customDomainInvalidHostName = 'ps-2024-0901-domain051e.ps.cdne2e.azfdtest.xyz'
+        $endpointName = 'ps-2024-0901-domain052'
+        $customDomainHostName = 'ps-2024-0901-domain052.ps.cdne2e.azfdtest.xyz'
+        $customDomainInvalidHostName = 'ps-2024-0901-domain052e.ps.cdne2e.azfdtest.xyz'
         $origin = @{
             Name = "origin1"
             HostName = "host1.hello.com"
