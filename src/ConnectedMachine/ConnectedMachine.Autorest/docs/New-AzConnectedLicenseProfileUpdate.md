@@ -8,17 +8,16 @@ schema: 2.0.0
 # New-AzConnectedLicenseProfileUpdate
 
 ## SYNOPSIS
-Create an in-memory object for ProductProfileUpdateProperties.
+Create an in-memory object for ProductFeatureUpdate.
 
 ## SYNTAX
 
 ```
-New-AzConnectedLicenseProfileUpdate [-ProductFeature <IProductFeatureUpdate[]>] [-ProductType <String>]
- [-SubscriptionStatus <String>] [<CommonParameters>]
+New-AzConnectedLicenseProfileUpdate [-Name <String>] [-SubscriptionStatus <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for ProductProfileUpdateProperties.
+Create an in-memory object for ProductFeatureUpdate.
 
 ## EXAMPLES
 
@@ -46,23 +45,8 @@ Create an in-memory object for ProductProfileUpdateProperties.
 
 ## PARAMETERS
 
-### -ProductFeature
-The list of product feature updates.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeatureUpdate[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProductType
-Indicates the product type of the license.
+### -Name
+Product feature name.
 
 ```yaml
 Type: System.String
@@ -77,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionStatus
-Indicates the subscription status of the product.
+Indicates the new status of the product feature.
 
 ```yaml
 Type: System.String
@@ -98,7 +82,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductProfileUpdateProperties
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeatureUpdate
 
 ## NOTES
 

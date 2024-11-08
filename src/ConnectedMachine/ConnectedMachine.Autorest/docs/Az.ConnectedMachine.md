@@ -60,7 +60,7 @@ The operation to create or update a license profile.
 Create an in-memory object for ProductFeature.
 
 ### [New-AzConnectedLicenseProfileUpdate](New-AzConnectedLicenseProfileUpdate.md)
-Create an in-memory object for ProductProfileUpdateProperties.
+Create an in-memory object for ProductFeatureUpdate.
 
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
 The operation to create or update the extension.

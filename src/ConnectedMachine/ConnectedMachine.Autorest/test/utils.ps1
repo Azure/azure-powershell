@@ -38,11 +38,11 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     $env.ResourceGroupName = 'ytongtest'
-    $env.ResourceGroupNameProfile = 'edyoung'
+    $env.ResourceGroupNameProfile = 'PayGo_cmdlet'
     $env.Location = 'eastus'
-    $env.LocationProfile = 'centraluseuap'
     $env.MachineName = 'testmachine'
-    $env.MachineNameProfile = 'WIN-89LGOPE94T3'
+    $env.MachineNameSA = 'WIN-A3C7NS0B144'
+    $env.MachineNamePaygo = 'WIN-IAH3TLSP7A8'
     $env.PrivateLinkScopeName = 'myScope3'
     $env.RunCommandName = 'myRunCommand3'
     $env.Script = 'Write-Host Hello World!'

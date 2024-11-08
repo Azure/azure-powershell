@@ -394,7 +394,7 @@ directive:
     - model-name: LicenseDetails
       cmdlet-name: New-AzConnectedLicenseDetail
   - model-cmdlet:
-    - model-name: ProductProfileUpdateProperties
+    - model-name: ProductFeatureUpdate
       cmdlet-name: New-AzConnectedLicenseProfileUpdate
   - model-cmdlet:
     - model-name: ProductFeature

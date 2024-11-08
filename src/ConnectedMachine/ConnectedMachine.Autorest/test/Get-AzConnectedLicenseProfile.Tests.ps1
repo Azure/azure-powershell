@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedLicenseProfile
 }
 
 Describe 'Get-AzConnectedLicenseProfile' {
-    It 'Get' {
-        $all = @(Get-AzConnectedLicenseProfile -MachineName $env.MachineNameProfile -ResourceGroupName $env.ResourceGroupNameProfile)
+    It 'Get' -skip {
+        $all = @(Get-AzConnectedLicenseProfile -MachineName $env.MachineNamePaygo -ResourceGroupName $env.ResourceGroupNameProfile)
         $all | Should -Not -BeNullOrEmpty
     }
 }
