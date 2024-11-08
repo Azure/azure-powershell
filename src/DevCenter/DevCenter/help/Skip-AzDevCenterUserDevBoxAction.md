@@ -14,30 +14,30 @@ Skips an occurrence of an action.
 
 ### Skip (Default)
 ```
-Skip-AzDevCenterUserDevBoxAction -Endpoint <String> -Name <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+Skip-AzDevCenterUserDevBoxAction -Endpoint <String> -DevBoxName <String> -Name <String> -ProjectName <String>
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### SkipViaIdentity
 ```
 Skip-AzDevCenterUserDevBoxAction -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SkipViaIdentityByDevCenter
 ```
 Skip-AzDevCenterUserDevBoxAction -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SkipByDevCenter
 ```
-Skip-AzDevCenterUserDevBoxAction -DevCenterName <String> -Name <String> -DevBoxName <String>
+Skip-AzDevCenterUserDevBoxAction -DevCenterName <String> -DevBoxName <String> -Name <String>
  -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -DevBoxName
-The name of a Dev Box.
+Display name for the Dev Box.
 
 ```yaml
 Type: System.String
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of an action that will take place on a Dev Box.
+The name of the action.
 
 ```yaml
 Type: System.String
@@ -184,8 +184,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
-The DevCenter Project upon which to execute operations.
+Name of the project.
 
 ```yaml
 Type: System.String

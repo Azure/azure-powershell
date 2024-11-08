@@ -15,7 +15,7 @@ Gets a Task from the catalog
 ### List (Default)
 ```
 Get-AzDevCenterAdminCustomizationTask -CatalogName <String> -DevCenterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -23,13 +23,13 @@ Get-AzDevCenterAdminCustomizationTask -CatalogName <String> -DevCenterName <Stri
 ```
 Get-AzDevCenterAdminCustomizationTask -CatalogName <String> -DevCenterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -TaskName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterAdminCustomizationTask -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,6 +120,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
