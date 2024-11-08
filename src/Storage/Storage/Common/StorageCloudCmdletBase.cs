@@ -275,7 +275,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             return context;
         }
 
-        internal AzureStorageContext GetCmdletStorageContext(IStorageContext inContext, bool outputErrorMessage = true)
+        internal AzureStorageContext GetCmdletStorageContext(IStorageContext inContext, bool outputErrorMessage = true, bool isDestContext = false)
         {
             var context = inContext as AzureStorageContext;
 
@@ -304,8 +304,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     }
                     else
                     {
-                        throw new InvalidOperationException("Could not get the storage context. Please pass in a storage context with \"-Context\" parameter (can be created with New-AzStorageContext cmdlet), " +
+                        if (isDestContext)
+                        {
+                            throw new InvalidOperationException("Could not get the destination storage context. Please pass in a storage context with \"-DestContext\" parameter (can be created with New-AzStorageContext cmdlet).");
+                        } 
+                        else
+                        {
+                            throw new InvalidOperationException("Could not get the storage context. Please pass in a storage context with \"-Context\" parameter (can be created with New-AzStorageContext cmdlet), " +
                             "or set the current storage context with Set-AzCurrentStorageAccount cmdlet.");
+                        }
                     }
                 }
                 catch (Exception e)
