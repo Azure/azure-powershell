@@ -93,27 +93,56 @@ The operation to create or update a run command.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a run command
 ```powershell
-{{ Add code here }}
+New-AzConnectedMachineRunCommand -ResourceGroupName "ytongtest" -Location "eastus" -SourceScript "Write-Host Hello World!" -RunCommandName "myRunCommand2" -MachineName "testmachine" -Subscription "********-****-****-****-**********"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+AsyncExecution                    : False
+ErrorBlobManagedIdentityClientId  :
+ErrorBlobManagedIdentityObjectId  :
+ErrorBlobUri                      :
+Id                                : /subscriptions/********-****-****-****-**********/resourceGroups/ytong
+                                    test/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/
+                                    myRunCommand
+InstanceViewEndTime               : 11/8/2024 7:43:31 PM
+InstanceViewError                 :
+InstanceViewExecutionMessage      : RunCommand script execution completed
+InstanceViewExecutionState        : Succeeded
+InstanceViewExitCode              : 0
+InstanceViewOutput                : Hello World!
+InstanceViewStartTime             : 11/8/2024 7:43:31 PM
+InstanceViewStatuses              :
+Location                          : eastus
+Name                              : myRunCommand
+OutputBlobManagedIdentityClientId :
+OutputBlobManagedIdentityObjectId :
+OutputBlobUri                     :
+Parameter                         :
+ProtectedParameter                :
+ProvisioningState                 : Succeeded
+ResourceGroupName                 : ytongtest
+RunAsPassword                     :
+RunAsUser                         :
+ScriptUriManagedIdentityClientId  :
+ScriptUriManagedIdentityObjectId  :
+SourceCommandId                   :
+SourceScript                      : Write-Host Hello World!
+SourceScriptUri                   :
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
+Tags                              : {
+                                    }
+TimeoutInSecond                   : 0
+Type                              : Microsoft.HybridCompute/machines/runcommands
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a run command
 
 ## PARAMETERS
 

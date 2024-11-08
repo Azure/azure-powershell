@@ -13,7 +13,7 @@ EsuProfileEsuEligibility             : Ineligible
 EsuProfileEsuKey                     : {}
 EsuProfileEsuKeyState                : Inactive
 EsuProfileServerType                 : Datacenter
-Id                                   : /subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/PayGo_c
+Id                                   : /subscriptions/********-****-****-****-**********/resourceGroups/PayGo_c
                                        mdlet/providers/Microsoft.HybridCompute/machines/WIN-IAH3TLSP7A8/licensePr
                                        ofiles/default
 Location                             : eastus

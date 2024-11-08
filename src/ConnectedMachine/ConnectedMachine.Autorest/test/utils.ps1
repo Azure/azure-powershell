@@ -47,7 +47,7 @@ function setupEnv() {
     $env.RunCommandName = 'myRunCommand3'
     $env.Script = 'Write-Host Hello World!'
     $env.EsuLicenseName = 'myEsuLicense2'
-    $env.ResourceUri = 'subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine'
+    $env.ResourceUri = 'subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine'
     $env.PrivateLinkScopeUri = '/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3'
     $env.ExtensionName = 'networkWatcher'
     $env.PerimeterName = 'a12ebbfe-c600-4964-b1aa-1b302b91d074.testAssociation'
