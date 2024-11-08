@@ -445,6 +445,26 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void Format_ChangeTypeModify_FormatsDiagnostics()
+        {
+            var diagnostics = new List<DeploymentDiagnosticsDefinition>
+            {
+                new DeploymentDiagnosticsDefinition("Warning", "Code", "Nested Deployment Skipped.", "resource1")
+            };
+
+            string expected = $@"{Color.DarkYellow}(resource1) Nested Deployment Skipped. (Code)
+{Color.Reset}";
+
+            // Act.
+            string result = WhatIfOperationResultFormatter.Format(
+                new PSWhatIfOperationResult(new WhatIfOperationResult(diagnostics: diagnostics)));
+
+            // Assert.
+            Assert.Contains(expected, result);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Format_nested_array_changes_does_not_throw()
         {
             // Arrange.
