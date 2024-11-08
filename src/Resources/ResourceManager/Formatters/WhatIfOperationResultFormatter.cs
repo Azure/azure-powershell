@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             formatter.FormatLegend(result.Changes);
             formatter.FormatResourceChanges(result.Changes);
             formatter.FormatStats(result.Changes);
-            formatter.FormatDiagnostics(result.Diagnostics);
+            formatter.FormatDiagnostics(result.Diagnostics, result.Changes);
 
             return builder.ToString();
         }
@@ -113,8 +113,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             this.Builder.Append(".");
         }
 
-        private void FormatDiagnostics(IList<DeploymentDiagnosticsDefinition> diagnostics)
+        private void FormatDiagnostics(IList<DeploymentDiagnosticsDefinition> diagnostics, IList<PSWhatIfChange> changes)
         {
+            if (changes != null)
+            {
+                var unsupportedChanges = changes
+                    .Where(c => c.ChangeType == ChangeType.Unsupported)
+                    .ToList();
+
+                if (diagnostics == null)
+                {
+                    diagnostics = new List<DeploymentDiagnosticsDefinition>();
+                }
+                foreach (var change in unsupportedChanges)
+                {
+                    diagnostics.Add(new DeploymentDiagnosticsDefinition(Level.Warning, "UnsupportedChange", change.UnsupportedReason, change.FullyQualifiedResourceId));
+                }
+            }
+            
             if (diagnostics == null || diagnostics.Count == 0)
             {
                 return;
