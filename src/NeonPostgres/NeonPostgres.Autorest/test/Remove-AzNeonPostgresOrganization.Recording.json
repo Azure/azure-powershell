@@ -1,0 +1,43 @@
+{
+  "Remove-AzNeonPostgresOrganization+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/5d9a6cc3-4e60-4b41-be79-d28f0a01074e/resourceGroups/AlmasNeonTesting/providers/Neon.Postgres/organizations/AlmasPSTest1?api-version=2024-08-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/5d9a6cc3-4e60-4b41-be79-d28f0a01074e/resourceGroups/AlmasNeonTesting/providers/Neon.Postgres/organizations/AlmasPSTest1?api-version=2024-08-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "7ff72774-65ca-41a4-8acb-e7ee46f02149" ],
+        "CommandName": [ "Remove-AzNeonPostgresOrganization" ],
+        "FullCommandName": [ "Remove-AzNeonPostgresOrganization_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v12.1.0", "PSVersion/v7.4.6", "Az.NeonPostgres/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "199" ],
+        "x-ms-ratelimit-remaining-subscription-global-deletes": [ "2999" ],
+        "x-ms-request-id": [ "b746443c-0938-4ee5-b69f-bba643d4296f" ],
+        "x-ms-correlation-request-id": [ "b746443c-0938-4ee5-b69f-bba643d4296f" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20241108T130723Z:b746443c-0938-4ee5-b69f-bba643d4296f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 133A1847439343408B2C7337C56398D4 Ref B: MAA201060516033 Ref C: 2024-11-08T13:07:22Z" ],
+        "Date": [ "Fri, 08 Nov 2024 13:07:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

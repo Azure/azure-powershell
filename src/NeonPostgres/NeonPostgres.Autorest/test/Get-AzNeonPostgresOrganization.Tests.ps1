@@ -15,19 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNeonPostgresOrganizatio
 }
 
 Describe 'Get-AzNeonPostgresOrganization' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { 
+            $result = Get-AzNeonPostgresOrganization -SubscriptionId 5d9a6cc3-4e60-4b41-be79-d28f0a01074e
+            $result.Count | Should -BeGreaterThan 0 
+        } | Should -Not -Throw
     }
 }
