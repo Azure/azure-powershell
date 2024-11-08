@@ -677,6 +677,9 @@ directive:
       verb: New|Update
       subject: ContainerAppJob
     hide: true
+  - from: UserAssignedIdentities.dictionary.cs
+    where: $
+    transform: $ = $.replace('null != property.Key && null != property.Value', 'null != property.Key');
 
   # This command requires the user to provide the github token, but the command is missing this parameter, 
   # so the command cannot be used normally. Wait for the next version to fix the problem

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppAuthConfig
 
 ## SYNOPSIS
-create the AuthConfig for a Container App.
+Create the AuthConfig for a Container App.
 
 ## SYNTAX
 
@@ -68,7 +68,7 @@ New-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -Resource
 ```
 
 ## DESCRIPTION
-create the AuthConfig for a Container App.
+Create the AuthConfig for a Container App.
 
 ## EXAMPLES
 
