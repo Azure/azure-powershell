@@ -358,7 +358,7 @@ namespace Commands.StorageSync.Interop.Clients
                 registrationInfo.ApplicationId = Guid.Parse(registeredServerResource.ApplicationId); // use Managed Identity ID
             }
  
-            // We try to register monitoring agent but do not gurantee it to succeed.
+            // We try to register monitoring agent but do not guarantee it to succeed.
             hr = EcsManagementInteropClient.RegisterMonitoringAgent(
                JsonConvert.SerializeObject(registrationInfo),
                 monitoringDataPath);

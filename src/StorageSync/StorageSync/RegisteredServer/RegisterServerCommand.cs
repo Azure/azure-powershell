@@ -99,6 +99,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         [Alias(StorageSyncAliases.StorageSyncServiceIdAlias)]
         public string ParentResourceId { get; set; }
 
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = HelpMessages.RegisteredServerAssignIdentityParameter)]
+        public SwitchParameter AssignIdentity { get; set; }
 
         /// <summary>
         /// Gets or sets as job.
@@ -227,13 +231,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 ClusterId = serverRegistrationData.ClusterId.ToString(),
                 ClusterName = serverRegistrationData.ClusterName,
                 AgentVersion = serverRegistrationData.AgentVersion,
-                ApplicationId = serverRegistrationData.ApplicationId.HasValue ? serverRegistrationData.ApplicationId.Value.ToString() : Guid.Empty.ToString(),
-                ServerCertificate = serverRegistrationData.ServerCertificate != null ? Convert.ToBase64String(serverRegistrationData.ServerCertificate) : null,
+
                 ServerOSVersion = serverRegistrationData.ServerOSVersion,
                 ServerRole = serverRegistrationData.ServerRole.ToString(),
                 FriendlyName = SystemUtility.GetMachineName(),
                 LastHeartBeat = DateTime.Now.ToString(),
             };
+
+            if (AssignIdentity.IsPresent)
+            {
+                createParameters.ApplicationId = serverRegistrationData.ApplicationId.HasValue ? serverRegistrationData.ApplicationId.Value.ToString() : Guid.Empty.ToString();
+            }
+            else
+            {
+                createParameters.ServerCertificate = serverRegistrationData.ServerCertificate != null ? Convert.ToBase64String(serverRegistrationData.ServerCertificate) : null;
+            }
 
             return StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Create(
                resourceGroupName,
