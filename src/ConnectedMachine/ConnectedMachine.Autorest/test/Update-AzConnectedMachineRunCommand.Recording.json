@@ -1,8 +1,8 @@
 {
-  "Update-AzConnectedMachineRunCommand+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand2?api-version=2024-07-31-preview+1": {
+  "Update-AzConnectedMachineRunCommand+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand3?api-version=2024-07-31-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand2?api-version=2024-07-31-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand3?api-version=2024-07-31-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -38,14 +38,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"myRunCommand2\",\"type\":\"Microsoft.HybridCompute/machines/runcommands\",\"location\":\"eastus\",\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand2\",\"properties\":{\"source\":{\"script\":\"Write-Host Hello World!\"},\"asyncExecution\":false,\"timeoutInSeconds\":0,\"provisioningState\":\"Succeeded\",\"instanceView\":{\"exitCode\":0,\"executionState\":\"Succeeded\",\"executionMessage\":\"RunCommand script execution completed\",\"output\":\"Hello World!\",\"error\":\"\",\"startTime\":\"2024-11-05T21:03:04.1782253+00:00\",\"endTime\":\"2024-11-05T21:03:04.6093307+00:00\"}}}",
+      "Content": "{\"name\":\"myRunCommand3\",\"type\":\"Microsoft.HybridCompute/machines/runcommands\",\"location\":\"eastus\",\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand3\",\"properties\":{\"source\":{\"script\":\"Write-Host Hello World!\"},\"asyncExecution\":false,\"timeoutInSeconds\":0,\"provisioningState\":\"Succeeded\",\"instanceView\":{\"exitCode\":0,\"executionState\":\"Succeeded\",\"executionMessage\":\"RunCommand script execution completed\",\"output\":\"Hello World!\",\"error\":\"\",\"startTime\":\"2024-11-05T21:03:04.1782253+00:00\",\"endTime\":\"2024-11-05T21:03:04.6093307+00:00\"}}}",
       "isContentBase64": false
     }
   },
-  "Update-AzConnectedMachineRunCommand+[NoContext]+Update+$PUT+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand2?api-version=2024-07-31-preview+2": {
+  "Update-AzConnectedMachineRunCommand+[NoContext]+Update+$PUT+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand3?api-version=2024-07-31-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand2?api-version=2024-07-31-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand3?api-version=2024-07-31-preview",
       "Content": "{\r\n  \"tags\": {\r\n    \"Tag2\": \"tag2\",\r\n    \"Tag1\": \"tag1\"\r\n  },\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"source\": {\r\n      \"script\": \"Write-Host Hello World!\"\r\n    },\r\n    \"asyncExecution\": false,\r\n    \"timeoutInSeconds\": 0\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -78,7 +78,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"myRunCommand2\",\"type\":\"Microsoft.HybridCompute/machines/runcommands\",\"location\":\"eastus\",\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand2\",\"tags\":{\"Tag2\":\"tag2\",\"Tag1\":\"tag1\"},\"properties\":{\"source\":{\"script\":\"Write-Host Hello World!\"},\"asyncExecution\":false,\"timeoutInSeconds\":0,\"provisioningState\":\"Creating\"}}",
+      "Content": "{\"name\":\"myRunCommand3\",\"type\":\"Microsoft.HybridCompute/machines/runcommands\",\"location\":\"eastus\",\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand3\",\"tags\":{\"Tag2\":\"tag2\",\"Tag1\":\"tag1\"},\"properties\":{\"source\":{\"script\":\"Write-Host Hello World!\"},\"asyncExecution\":false,\"timeoutInSeconds\":0,\"provisioningState\":\"Creating\"}}",
       "isContentBase64": false
     }
   },
@@ -167,14 +167,14 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"5c11abe1-3c31-4cf7-8d58-8c2896973c6b\",\"status\":\"Succeeded\",\"startTime\":\"2024-11-05T21:06:01.981523Z\",\"properties\":{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand2\",\"name\":\"myRunCommand2\",\"location\":\"eastus\",\"type\":\"Microsoft.HybridCompute/machines/runcommands\",\"tags\":{\"Tag2\":\"tag2\",\"Tag1\":\"tag1\"},\"properties\":{\"source\":{\"script\":\"Write-Host Hello World!\"},\"asyncExecution\":false,\"timeoutInSeconds\":0,\"provisioningState\":\"Succeeded\",\"instanceView\":{\"exitCode\":0,\"executionState\":\"Succeeded\",\"executionMessage\":\"RunCommand script execution completed\",\"output\":\"Hello World!\",\"error\":\"\",\"startTime\":\"2024-11-05T21:06:10.5278088+00:00\",\"endTime\":\"2024-11-05T21:06:10.9086061+00:00\"}}}}",
+      "Content": "{\"name\":\"5c11abe1-3c31-4cf7-8d58-8c2896973c6b\",\"status\":\"Succeeded\",\"startTime\":\"2024-11-05T21:06:01.981523Z\",\"properties\":{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand3\",\"name\":\"myRunCommand3\",\"location\":\"eastus\",\"type\":\"Microsoft.HybridCompute/machines/runcommands\",\"tags\":{\"Tag2\":\"tag2\",\"Tag1\":\"tag1\"},\"properties\":{\"source\":{\"script\":\"Write-Host Hello World!\"},\"asyncExecution\":false,\"timeoutInSeconds\":0,\"provisioningState\":\"Succeeded\",\"instanceView\":{\"exitCode\":0,\"executionState\":\"Succeeded\",\"executionMessage\":\"RunCommand script execution completed\",\"output\":\"Hello World!\",\"error\":\"\",\"startTime\":\"2024-11-05T21:06:10.5278088+00:00\",\"endTime\":\"2024-11-05T21:06:10.9086061+00:00\"}}}}",
       "isContentBase64": false
     }
   },
-  "Update-AzConnectedMachineRunCommand+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand2?api-version=2024-07-31-preview+5": {
+  "Update-AzConnectedMachineRunCommand+[NoContext]+Update+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand3?api-version=2024-07-31-preview+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand2?api-version=2024-07-31-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runCommands/myRunCommand3?api-version=2024-07-31-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -210,7 +210,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"myRunCommand2\",\"type\":\"Microsoft.HybridCompute/machines/runcommands\",\"location\":\"eastus\",\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand2\",\"tags\":{\"Tag2\":\"tag2\",\"Tag1\":\"tag1\"},\"properties\":{\"source\":{\"script\":\"Write-Host Hello World!\"},\"asyncExecution\":false,\"timeoutInSeconds\":0,\"provisioningState\":\"Succeeded\",\"instanceView\":{\"exitCode\":0,\"executionState\":\"Succeeded\",\"executionMessage\":\"RunCommand script execution completed\",\"output\":\"Hello World!\",\"error\":\"\",\"startTime\":\"2024-11-05T21:06:10.5278088+00:00\",\"endTime\":\"2024-11-05T21:06:10.9086061+00:00\"}}}",
+      "Content": "{\"name\":\"myRunCommand3\",\"type\":\"Microsoft.HybridCompute/machines/runcommands\",\"location\":\"eastus\",\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand3\",\"tags\":{\"Tag2\":\"tag2\",\"Tag1\":\"tag1\"},\"properties\":{\"source\":{\"script\":\"Write-Host Hello World!\"},\"asyncExecution\":false,\"timeoutInSeconds\":0,\"provisioningState\":\"Succeeded\",\"instanceView\":{\"exitCode\":0,\"executionState\":\"Succeeded\",\"executionMessage\":\"RunCommand script execution completed\",\"output\":\"Hello World!\",\"error\":\"\",\"startTime\":\"2024-11-05T21:06:10.5278088+00:00\",\"endTime\":\"2024-11-05T21:06:10.9086061+00:00\"}}}",
       "isContentBase64": false
     }
   }
