@@ -148,27 +148,85 @@ Gets list of network manager verifier workspace reachability analysis runs for '
 
 ### Example 2
 ```powershell
-Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -NetworkManagerName "testNM" -ResourceGroupName "testRG" -VerifierWorkspaceName "testVNV" -Name "testrun"
+$run = Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -NetworkManagerName "NetworkManagerTest" -ResourceGroupName "ResourceGroupTest" -VerifierWorkspaceName "VNVTest" -Name "demorun"
+$run.Properties
 ```
 
 ```output
-Name                  : testrun
-VerifierWorkspaceName : testVNV
-ResourceGroupName     : testRG
-NetworkManagerName    : testNM
-Properties            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSReachabilityAnalysisRunProperties
-Type                  : Microsoft.Network/networkManagers/verifierWorkspaces/reachabilityAnalysisRuns
-SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
-SystemDataText        : {
-                          "CreatedBy": "test@email.com",
-                          "CreatedByType": "User",
-                          "CreatedAt": "2024-09-19T16:01:54.313026Z",
-                          "LastModifiedBy": "test@email.com",
-                          "LastModifiedByType": "User",
-                          "LastModifiedAt": "2024-09-19T16:02:07.4222816Z"
+Description    :
+IntentId       : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/ResourceGroupTest/providers/Microsoft.Netw
+                 ork/networkManagers/NetworkManagerTest/verifierWorkspaces/VNVTest/reachabilityAnalysisIntents/demoIntent1
+IntentContent  : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSIntentContent
+AnalysisResult : {"resultOutcome":"NoPacketsReached","unreachedTrace":"[{\"name\":\"default\",\"resourceId\":\"/subscri
+                 ptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResources/providers/Microso
+                 ft.Network/virtualNetworks/vnetVerifierTesting-vnet/subnets/default\",\"resourceType\":\"Microsoft.Net
+                 work/virtualNetworks/subnets\",\"packet\":{\"destinationAddress\":\"::\",\"destinationPort\":\"0\",\"s
+                 ourceAddress\":\"::\",\"sourcePort\":\"0\",\"protocol\":\"TCP\"},\"explanation\":{\"description\":\"Pa
+                 cked dropped at subnet as subnet does not have a ip prefix for the analysis IP
+                 version.\",\"explanationCode\":\"NO_SUBNET_PREFIX\"}}]"}
+ErrorMessage   :
+```
+
+```powershell
+$run.Properties.IntentContent.IpTraffic | Format-List *
+```
+
+```output
+SourceResourceId      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResources/providers/Microsoft.Network/virtualNetworks/vnetVerifi
+                        erTesting-vnet/subnets/default
+DestinationResourceId : internet
+IpTraffic             : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSIPTraffic
+IntentContentText     : {
+                          "SourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testResources/providers/Microsoft.Network/vir
+                        tualNetworks/vnetVerifierTesting-vnet/subnets/default",
+                          "DestinationResourceId": "internet",
+                          "IpTraffic": {
+                            "SourceIps": [
+                              "::"
+                            ],
+                            "DestinationIps": [
+                              "::"
+                            ],
+                            "SourcePorts": [
+                              "*"
+                            ],
+                            "DestinationPorts": [
+                              "*"
+                            ],
+                            "Protocols": [
+                              "TCP"
+                            ]
+                          }
                         }
-Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/verifierW
-                        orkspaces/testVNV/reachabilityAnalysisRuns/testrun
+```
+
+```powershell
+$run.Properties.IntentContent.IpTraffic | Format-List *
+```
+
+```output
+SourceIps        : {::}
+DestinationIps   : {::}
+SourcePorts      : {*}
+DestinationPorts : {*}
+Protocols        : {TCP}
+IpTrafficText    : {
+                     "SourceIps": [
+                       "::"
+                     ],
+                     "DestinationIps": [
+                       "::"
+                     ],
+                     "SourcePorts": [
+                       "*"
+                     ],
+                     "DestinationPorts": [
+                       "*"
+                     ],
+                     "Protocols": [
+                       "TCP"
+                     ]
+                   }
 ```
 
 Gets network manager verifier workspace reachability analysis run for 'testrun'.

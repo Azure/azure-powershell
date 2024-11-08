@@ -67,14 +67,14 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual string PoolName { get; set; }
+        public virtual string IpamPoolName { get; set; }
 
         public override void Execute()
         {
             base.Execute();
             if (this.Name != null)
             {
-                var staticCidr = this.GetStaticCidr(this.ResourceGroupName, this.NetworkManagerName, this.PoolName, this.Name);
+                var staticCidr = this.GetStaticCidr(this.ResourceGroupName, this.NetworkManagerName, this.IpamPoolName, this.Name);
                 staticCidr.ResourceGroupName = this.ResourceGroupName;
                 staticCidr.NetworkManagerName = this.NetworkManagerName;
                 WriteObject(staticCidr);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 IPage<StaticCidr> staticCidrPage;
-                staticCidrPage = this.StaticCidrClient.List(this.ResourceGroupName, this.NetworkManagerName, this.PoolName);
+                staticCidrPage = this.StaticCidrClient.List(this.ResourceGroupName, this.NetworkManagerName, this.IpamPoolName);
 
                 // Get all resources by polling on next page link
                 var staticCidrList = ListNextLink<StaticCidr>.GetAllResourcesByPollingNextLink(staticCidrPage, this.StaticCidrClient.ListNext);

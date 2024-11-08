@@ -1528,16 +1528,16 @@ function Test-NetworkManagerIpamPoolStaticCidrCRUD
         New-AzNetworkManagerIpamPool -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $ipamPoolName -Location $rglocation -AddressPrefix $addressPrefixes
 
         # Create static cidr
-        New-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName -AddressPrefix $addressPrefixes
+        New-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName -Name $staticCidrName -AddressPrefix $addressPrefixes
 
         # Get static cidr
-        $staticCidr = Get-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName
+        $staticCidr = Get-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName -Name $staticCidrName
         Assert-NotNull $staticCidr;
         Assert-AreEqual $staticCidrName $staticCidr.Name;
         Assert-AreEqual $staticCidr.Properties.AddressPrefixes[0] $addressPrefixes[0];
 
         # Remove static cidr
-        $job = Remove-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -PoolName $ipamPoolName -Name $staticCidrName -PassThru -Force -AsJob;
+        $job = Remove-AzNetworkManagerIpamPoolStaticCidr -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -IpamPoolName $ipamPoolName -Name $staticCidrName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
     }
@@ -1629,27 +1629,32 @@ function Test-NetworkManagerVerifierWorkspaceReachabilityAnalysisRunCRUD
         Assert-NotNull $reachabilityAnalysisRun
         Assert-AreEqual $reachabilityAnalysisRunName $reachabilityAnalysisRun.Name
 
-         # Get  analysis run list
+        # Get  analysis run list
         $reachabilityAnalysisRunList = Get-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName
         Assert-NotNull $reachabilityAnalysisRunList;
         Assert-AreEqual $reachabilityAnalysisRunList.Count 1
 
-       Start-TestSleep -Seconds 300
-       Assert-NotNull $reachabilityAnalysisRun
-       Assert-AreEqual "DESCription" $reachabilityAnalysisRun.Properties.Description;
-       Assert-AreEqual $intentId  $reachabilityAnalysisRun.Properties.IntentId;
+        Start-TestSleep -Seconds 300
+        Assert-NotNull $reachabilityAnalysisRun
+
+        # Output the value of AnalysisResult for debugging
+        Write-Output "AnalysisResult: $($reachabilityAnalysisRun.Properties.AnalysisResult)"
+
+        Assert-NotNull $reachabilityAnalysisRun.Properties.AnalysisResult
+        Assert-AreEqual "DESCription" $reachabilityAnalysisRun.Properties.Description;
+        Assert-AreEqual $intentId  $reachabilityAnalysisRun.Properties.IntentId;
 
         # Delete analysis run
         $job = Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisRun -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $reachabilityAnalysisRunName -VerifierWorkspaceName $verifierWorkspaceName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
-         # Delete analysis intent
+        # Delete analysis intent
         $job = Remove-AzNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -VerifierWorkspaceName $verifierWorkspaceName -Name $reachabilityAnalysisIntentName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
-          # Delete verifier workspace
+        # Delete verifier workspace
         $job = Remove-AzNetworkManagerVerifierWorkspace -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -Name $verifierWorkspaceName -PassThru -Force -AsJob;
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;

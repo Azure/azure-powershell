@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
     public class PSIntentContent
     {
-        public string SourceResourceId { get; }
-        public string DestinationResourceId { get; }
-        public PSIPTraffic IpTraffic { get; }
+        public string SourceResourceId { get; set; }
+        public string DestinationResourceId { get; set; }
+        public PSIPTraffic IpTraffic { get; set; }
 
         [JsonIgnore]
         public string IntentContentText

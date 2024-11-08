@@ -23,9 +23,9 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
         public string Description { get; set; }
 
         public string IntentId { get; set; }
-        public PSIntentContent IntentContent { get; }
-        public string AnalysisResult { get; }
-        public string ErrorMessage { get; }
+        public PSIntentContent IntentContent { get; set; }
+        public string AnalysisResult { get; set; }
+        public string ErrorMessage { get; set; }
 
     }
 }

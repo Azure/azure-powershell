@@ -22,8 +22,6 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 
         public string Description { get; set; }
 
-        public string DisplayName { get; set; }
-
         public string VerifierWorkspaceName { get; set; }
     }
 }
