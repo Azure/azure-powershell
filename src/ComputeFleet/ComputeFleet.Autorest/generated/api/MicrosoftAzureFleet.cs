@@ -294,6 +294,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="fleetName">The name of the Compute Fleet</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -302,7 +303,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FleetsDelete(string subscriptionId, string resourceGroupName, string fleetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FleetsDelete(string subscriptionId, string resourceGroupName, string fleetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2024-11-01";
             // Constant Parameters
@@ -329,12 +330,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FleetsDelete_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.FleetsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Delete a Fleet</summary>
         /// <param name="viaIdentity"></param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -343,7 +345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task FleetsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task FleetsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2024-11-01";
             // Constant Parameters
@@ -382,12 +384,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.FleetsDelete_Call(request,onNoContent,onDefault,eventListener,sender);
+                await this.FleetsDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref="FleetsDelete" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -396,7 +399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task FleetsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task FleetsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -508,6 +511,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet
 
                     switch ( _response.StatusCode )
                     {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
                         case global::System.Net.HttpStatusCode.NoContent:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.ComputeFleet.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
