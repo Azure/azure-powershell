@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* The parameters of the `New-AzContainerApp`, `New-AzContainerAppJob`, `Update-AzContainerApp`, `Update-AzContainerAppJob` commands have changed.
+  * `IdentityType` will be removed. `EnableSystemAssignedIdentity` will be used to enable/disable system-assigned identities.
+  * The type of `UserAssignedIdentity` will be simplified to an array of strings that will be used to specify the user's assigned identity.
 
 ## Version 1.1.0
 * Added breaking change messages:
