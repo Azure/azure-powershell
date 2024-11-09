@@ -23,7 +23,7 @@ New-AzContainerAppConfigurationObject [-ActiveRevisionsMode <String>] [-CorPolic
  [-IngressIPSecurityRestriction <IIPSecurityRestrictionRule[]>] [-IngressTargetPort <Int32>]
  [-IngressTraffic <ITrafficWeight[]>] [-IngressTransport <String>] [-MaxInactiveRevision <Int32>]
  [-Registry <IRegistryCredentials[]>] [-Secret <ISecret[]>] [-ServiceType <String>]
- [-StickySessionAffinity <String>] [<CommonParameters>]
+ [-StickySessionAffinity <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -431,6 +431,21 @@ Max inactive revisions a Container App can have.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

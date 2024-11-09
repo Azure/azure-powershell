@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/jobs/{jobName}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzContainerAppJob_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJob))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Patches a Container Apps Job using JSON Merge Patch")]

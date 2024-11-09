@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppConnectedEnv
 
 ## SYNOPSIS
-Create an connectedEnvironment.
+create an connectedEnvironment.
 
 ## SYNTAX
 
@@ -19,20 +19,20 @@ New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> [-Subs
  [-CustomDomainConfigurationDnsSuffix <String>] [-CustomDomainPassword <SecureString>]
  [-DaprAiConnectionString <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
  [-StaticIP <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzContainerAppConnectedEnv -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -42,11 +42,11 @@ New-AzContainerAppConnectedEnv -InputObject <IAppIdentity> -Location <String>
  [-CustomDomainConfigurationCertificateValueInputFile <String>] [-CustomDomainConfigurationDnsSuffix <String>]
  [-CustomDomainPassword <SecureString>] [-DaprAiConnectionString <String>] [-ExtendedLocationName <String>]
  [-ExtendedLocationType <String>] [-StaticIP <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an connectedEnvironment.
+create an connectedEnvironment.
 
 ## EXAMPLES
 
@@ -269,6 +269,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

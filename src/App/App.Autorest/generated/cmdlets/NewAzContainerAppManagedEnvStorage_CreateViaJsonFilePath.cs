@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create storage for a managedEnvironment.</summary>
+    /// <summary>create storage for a managedEnvironment.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/storages/{storageName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzContainerAppManagedEnvStorage_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedEnvironmentStorage))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Create storage for a managedEnvironment.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"create storage for a managedEnvironment.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}/storages/{storageName}", ApiVersion = "2023-05-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.NotSuggestDefaultParameterSet]

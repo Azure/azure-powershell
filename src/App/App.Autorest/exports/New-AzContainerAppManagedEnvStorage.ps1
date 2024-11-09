@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create storage for a managedEnvironment.
+create storage for a managedEnvironment.
 .Description
-Create storage for a managedEnvironment.
+create storage for a managedEnvironment.
 .Example
 New-AzStorageAccount -ResourceGroupName azps_test_group_app -AccountName azpstestsa -Location eastus -SkuName Standard_GRS
 $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
