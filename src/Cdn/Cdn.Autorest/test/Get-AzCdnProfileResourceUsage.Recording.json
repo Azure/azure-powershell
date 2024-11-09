@@ -1,13 +1,13 @@
 {
-  "Get-AzCdnProfileResourceUsage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-ushk/providers/Microsoft.Cdn/profiles/p-j378km?api-version=2024-09-01+1": {
+  "Get-AzCdnProfileResourceUsage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-i4qa/providers/Microsoft.Cdn/profiles/p-qdj3t2?api-version=2024-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-ushk/providers/Microsoft.Cdn/profiles/p-j378km?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-i4qa/providers/Microsoft.Cdn/profiles/p-qdj3t2?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "145" ],
-        "x-ms-client-request-id": [ "2cf0cf0b-36c7-48a7-8dd3-35fbcd2a1260" ],
+        "x-ms-unique-id": [ "144" ],
+        "x-ms-client-request-id": [ "c4c72186-f537-47b0-8c68-3d2907e1b4fb" ],
         "CommandName": [ "Az.Cdn.internal\\Get-AzCdnProfile" ],
         "FullCommandName": [ "Get-AzCdnProfile_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,34 +23,34 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "abbf7a19-2785-4151-8dd8-5068a9eed7df" ],
-        "x-ms-client-request-id": [ "2cf0cf0b-36c7-48a7-8dd3-35fbcd2a1260" ],
+        "x-ms-request-id": [ "102f1dc5-2156-4a40-95e9-e00de8af2e8b" ],
+        "x-ms-client-request-id": [ "c4c72186-f537-47b0-8c68-3d2907e1b4fb" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "4999" ],
-        "x-ms-correlation-request-id": [ "0266ef43-da9e-4bef-8e52-1b9399fb1c95" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20241108T080852Z:0266ef43-da9e-4bef-8e52-1b9399fb1c95" ],
+        "x-ms-correlation-request-id": [ "4f301caa-8f2d-4db5-8b90-64bbf50cd8d5" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20241109T010603Z:4f301caa-8f2d-4db5-8b90-64bbf50cd8d5" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0A38BDF801834B598BE70A1731B51D85 Ref B: TYO201151004060 Ref C: 2024-11-08T08:08:52Z" ],
-        "Date": [ "Fri, 08 Nov 2024 08:08:52 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 35548BBCB9A8433F995C6A36D13D13D6 Ref B: MAA201060513011 Ref C: 2024-11-09T01:06:02Z" ],
+        "Date": [ "Sat, 09 Nov 2024 01:06:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "357" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-ushk/providers/Microsoft.Cdn/profiles/p-j378km\",\"type\":\"Microsoft.Cdn/profiles\",\"name\":\"p-j378km\",\"location\":\"Global\",\"kind\":\"cdn\",\"tags\":{},\"sku\":{\"name\":\"Standard_Microsoft\"},\"properties\":{\"extendedProperties\":{},\"resourceState\":\"Active\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/testps-rg-i4qa/providers/Microsoft.Cdn/profiles/p-qdj3t2\",\"type\":\"Microsoft.Cdn/profiles\",\"name\":\"p-qdj3t2\",\"location\":\"Global\",\"kind\":\"cdn\",\"tags\":{},\"sku\":{\"name\":\"Standard_Microsoft\"},\"properties\":{\"extendedProperties\":{},\"resourceState\":\"Active\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzCdnProfileResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-ushk/providers/Microsoft.Cdn/profiles/p-j378km/checkResourceUsage?api-version=2024-09-01+2": {
+  "Get-AzCdnProfileResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-i4qa/providers/Microsoft.Cdn/profiles/p-qdj3t2/checkResourceUsage?api-version=2024-09-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-ushk/providers/Microsoft.Cdn/profiles/p-j378km/checkResourceUsage?api-version=2024-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-i4qa/providers/Microsoft.Cdn/profiles/p-qdj3t2/checkResourceUsage?api-version=2024-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "146" ],
-        "x-ms-client-request-id": [ "75e89451-de35-4ce9-bbb1-927e389aec53" ],
+        "x-ms-unique-id": [ "145" ],
+        "x-ms-client-request-id": [ "b7bdbe77-f3ac-4f92-86dc-219cb4c737d6" ],
         "CommandName": [ "Get-AzCdnProfileResourceUsage" ],
         "FullCommandName": [ "Get-AzCdnProfileResourceUsage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -66,16 +66,16 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "d094e423-0b63-4bbf-8df6-c1543b3f156d" ],
-        "x-ms-client-request-id": [ "75e89451-de35-4ce9-bbb1-927e389aec53" ],
+        "x-ms-request-id": [ "044583dc-f714-4eb7-8165-bc7814ae5481" ],
+        "x-ms-client-request-id": [ "b7bdbe77-f3ac-4f92-86dc-219cb4c737d6" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "5c556b26-b489-42a7-987c-811e8b19eeac" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20241108T080853Z:5c556b26-b489-42a7-987c-811e8b19eeac" ],
+        "x-ms-correlation-request-id": [ "58f31942-ecbd-4c83-b5f1-ac37eff61094" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20241109T010605Z:58f31942-ecbd-4c83-b5f1-ac37eff61094" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 420AE7961E85427095CF778707673949 Ref B: TYO201151004060 Ref C: 2024-11-08T08:08:52Z" ],
-        "Date": [ "Fri, 08 Nov 2024 08:08:53 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C900DB153971497192938B281D068A73 Ref B: MAA201060513011 Ref C: 2024-11-09T01:06:04Z" ],
+        "Date": [ "Sat, 09 Nov 2024 01:06:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "82" ],
