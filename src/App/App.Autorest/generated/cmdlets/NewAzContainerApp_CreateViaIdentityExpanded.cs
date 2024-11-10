@@ -10,13 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a Container App.</summary>
+    /// <summary>create a Container App.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzContainerApp_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Create a Container App.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"create a Container App.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}", ApiVersion = "2023-05-01")]
     public partial class NewAzContainerApp_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -140,7 +141,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ParameterBreakingChange("IdentityType", "13.0.0", "2.0.0", "2024/11/19", ChangeDescription="IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
         public string IdentityType { get => _containerAppEnvelopeBody.IdentityType ?? null; set => _containerAppEnvelopeBody.IdentityType = value; }
 
@@ -158,7 +158,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
         SerializedName = @"userAssignedIdentities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IUserAssignedIdentities) })]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ParameterBreakingChange("IdentityUserAssignedIdentity", "13.0.0", "2.0.0", "2024/11/19", ChangeDescription="IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity. And its type will be simplified as string array.", OldParamaterType="Hashtable", NewParameterType="string[]")]
         public Microsoft.Azure.PowerShell.Cmdlets.App.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _containerAppEnvelopeBody.IdentityUserAssignedIdentity ?? null /* object */; set => _containerAppEnvelopeBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
