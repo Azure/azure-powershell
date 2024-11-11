@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated the `Get-AzAccessToken` breaking change warning message.
 * Added Long Running Operation Support for Invoke-AzRest command.
 
 ## Version 3.0.5
