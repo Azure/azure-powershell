@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a Managed Certificate.
+create a Managed Certificate.
 .Description
-Create a Managed Certificate.
+create a Managed Certificate.
 .Example
 New-AzContainerAppManagedCert -EnvName azps-env -Name azps-managedcert -ResourceGroupName azps_test_group_app -Location eastus -DomainControlValidation TXT -SubjectName "mycertweb.com"
 

@@ -43,14 +43,14 @@
         },
         "parameterSets": [
           {
-            "parameters": null
+            "parameters": []
           }
         ]
       },
       "examples": [
         {
           "description": "Get data boundary of tenant.",
-          "parameters": null
+          "parameters": []
         }
       ]
     }

@@ -8,21 +8,21 @@ schema: 2.0.0
 # Update-AzDevCenterUserEnvironment
 
 ## SYNOPSIS
-Partially updates an environment
+Partially updates an environment.
 
 ## SYNTAX
 
 ### PatchExpanded (Default)
 ```
 Update-AzDevCenterUserEnvironment -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### PatchViaIdentityExpanded
 ```
 Update-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,18 +30,18 @@ Update-AzDevCenterUserEnvironment -Endpoint <String> -InputObject <IDevCenterdat
 ```
 Update-AzDevCenterUserEnvironment -DevCenterName <String> -Name <String> -ProjectName <String>
  [-UserId <String>] [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PatchViaIdentityExpandedByDevCenter
 ```
 Update-AzDevCenterUserEnvironment -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-ExpirationDate <DateTime>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Partially updates an environment
+Partially updates an environment.
 
 ## EXAMPLES
 
@@ -182,6 +182,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
@@ -253,7 +268,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IEnvironment
 
 ## NOTES
 

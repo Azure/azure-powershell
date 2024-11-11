@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support
         /// <summary>The task is currently executing.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.CustomizationTaskStatus Running = @"Running";
 
-        /// <summary>The task was skipped.</summary>
+        /// <summary>he task was skipped.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.CustomizationTaskStatus Skipped = @"Skipped";
 
         /// <summary>The task successfully executed.</summary>
@@ -30,6 +30,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support
 
         /// <summary>The task timed out.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.CustomizationTaskStatus TimedOut = @"TimedOut";
+
+        /// <summary>
+        /// The task is awaiting the User Account Control (UAC) prompt to be approved. (See more at: https://learn.microsoft.com/windows/security/application-security/application-control/user-account-control/)
+        /// </summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.CustomizationTaskStatus WaitingForUserInputUac = @"WaitingForUserInputUac";
+
+        /// <summary>The task is awaiting the user to connect to the Dev Box to execute.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.CustomizationTaskStatus WaitingForUserSession = @"WaitingForUserSession";
 
         /// <summary>the value for an instance of the <see cref="CustomizationTaskStatus" /> Enum.</summary>
         private string _value { get; set; }

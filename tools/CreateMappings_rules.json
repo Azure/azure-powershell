@@ -935,6 +935,9 @@
   {
     "alias": "Mdp",
     "module": "Mdp"
-  }
+  },
+  {
+    "alias": "NeonPostgres",
+    "module": "NeonPostgres"
   }
 ]

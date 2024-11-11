@@ -13,7 +13,7 @@ Create a in-memory object for ContainerPort
 ## SYNTAX
 
 ```
-New-AzContainerInstancePortObject -Port <Int32> [-Protocol <String>]
+New-AzContainerInstancePortObject -Port <Int32> [-Protocol <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -52,6 +52,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Protocol
 The protocol associated with the port.
 
@@ -74,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ContainerPort
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ContainerPort
 
 ## NOTES
 

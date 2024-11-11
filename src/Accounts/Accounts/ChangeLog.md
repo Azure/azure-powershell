@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Updated the `Get-AzAccessToken` breaking change warning message.
+* Added Long Running Operation Support for Invoke-AzRest command.
 
 ## Version 3.0.5
 * Fixed the issue that `Export-AzSshConfig` and `Enter-AzVM` from Az.Ssh are not able to use when WAM is enabled.
