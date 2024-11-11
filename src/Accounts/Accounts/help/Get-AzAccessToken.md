@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Get secure raw access token. When using -ResourceUrl, please make sure the value does match current Azure environment. You may refer to the value of `(Get-AzContext).Environment`.
-> **_NOTE:_**  The current default output type `PSAccessToken` is going to be deprecate. Please always use `-AsSecureString` to avoid the upcoming breaking change. After that the output turns to be `PSSecureAccessToken`, which contains `token` as a `SecureString`. Please refer to [Unprotect-SecureString](https://github.com/Azure/azure-powershell/blob/main/src/Aks/Aks.Autorest/utils/Unprotect-SecureString.ps1) for how to convert from `SecureString` to plain text.
+> **_NOTE:_**  The current default output token type is going to be changed from plain text `String` to `SecureString` for security. Please use `-AsSecureString` to migrate to the secure behaviour before the breaking change takes effects.
 
 ## SYNTAX
 
@@ -55,6 +55,7 @@ Get access token of Microsoft Graph endpoint for current account
 
 ### -AsSecureString
 Specifiy to convert output token as a secure string.
+Please always use the parameter to avoid the upcoming breaking chang and refer to [Frequently asked questions about Azure PowerShell](https://learn.microsoft.com/en-us/powershell/azure/faq) for how to convert from `SecureString` to plain text.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -138,8 +139,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAccessToken
+The output type is going to be deprecate.
 
 ### Microsoft.Azure.Commands.Profile.Models.PSSecureAccessToken
+Use `-AsSecureString` to get the token as `SecureString`.
 
 ## NOTES
 
