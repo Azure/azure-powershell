@@ -27,11 +27,62 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspace", SupportsShouldProcess = true), OutputType(typeof(PSVerifierWorkspace))]
     public class SetAzNetworkManagerVerifierWorkspaceCommand : VerifierWorkspaceBaseCmdlet
     {
+        private const string SetByNameParameterSet = "ByNameParameters";
+        private const string SetByResourceIdParameterSet = "ByResourceId";
+        private const string SetByInputObjectParameterSet = "ByInputObject";
+
+        [Alias("ResourceName")]
         [Parameter(
+          ParameterSetName = SetByNameParameterSet,
+          Mandatory = true,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.Network/networkManagers/verifierWorkspaces", "ResourceGroupName", "NetworkManagerName")]
+        [SupportsWildcards]
+        public string Name { get; set; }
+
+        [Parameter(
+            ParameterSetName = SetByInputObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Verifier Workspace")]
         public PSVerifierWorkspace InputObject { get; set; }
+
+        [Parameter(
+           ParameterSetName = SetByResourceIdParameterSet,
+           Mandatory = true,
+           HelpMessage = "The network manager verifier workspace id.",
+           ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [Alias("VerifierWorkspaceId")]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            ParameterSetName = SetByNameParameterSet,
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            ParameterSetName = SetByNameParameterSet,
+            Mandatory = true,
+            HelpMessage = "The network manager name.")]
+        [ValidateNotNullOrEmpty]
+        public string NetworkManagerName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Description.",
+            ParameterSetName = SetByNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Description.",
+            ParameterSetName = SetByResourceIdParameterSet)]
+        public string Description { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
