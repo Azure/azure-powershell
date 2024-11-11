@@ -80,7 +80,6 @@ Type                              : Microsoft.HybridCompute/machines/runcommands
 
 Get run command of a machine
 
-
 ## PARAMETERS
 
 ### -DefaultProfile

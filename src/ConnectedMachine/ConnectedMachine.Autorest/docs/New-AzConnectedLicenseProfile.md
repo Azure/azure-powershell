@@ -117,9 +117,6 @@ Type                                 : Microsoft.HybridCompute/machines/licenseP
 
 Create a license profile for a machine
 
-
-
-
 ## PARAMETERS
 
 ### -AsJob

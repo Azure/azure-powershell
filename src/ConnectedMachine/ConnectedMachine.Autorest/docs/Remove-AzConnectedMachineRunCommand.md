@@ -43,7 +43,6 @@ Remove-AzConnectedMachineRunCommand -ResourceGroupName "ytongtest" -RunCommandNa
 
 Remove a run command
 
-
 ## PARAMETERS
 
 ### -AsJob
