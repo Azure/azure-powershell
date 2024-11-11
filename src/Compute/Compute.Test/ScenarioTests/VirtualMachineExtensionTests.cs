@@ -158,11 +158,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddEncryptionIdentityInAzureVmConfig () {
-            TestRunner.RunTestScript("Test-AddEncryptionIdentityInAzureVmConfig");
-        }
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig()
         {
             TestRunner.RunTestScript("Test-AzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig");
@@ -170,22 +165,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureDiskEncryptionWithEncryptionIdentityAttachedAtVmConfig() {
-            TestRunner.RunTestScript("Test-AzureDiskEncryptionWithEncryptionIdentityAttachedAtVmConfig");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewVmUserAssignedIdentityWithSystemAssignedIdentity()
+        public void TestAzureDiskEncryptionEncryptionWithEncryptionIdentity()
         {
-            TestRunner.RunTestScript("Test-NewVmUserAssignedIdentityWithSystemAssignedIdentity");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureDiskEncryptionEncryptionIdentityNonNullIdentityAndSecurityProfile()
-        {
-            TestRunner.RunTestScript("Test-AzureDiskEncryptionEncryptionIdentityNonNullIdentityAndSecurityProfile");
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionEncryptionWithEncryptionIdentity");
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
