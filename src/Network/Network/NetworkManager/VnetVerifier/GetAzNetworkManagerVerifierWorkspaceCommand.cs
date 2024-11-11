@@ -25,19 +25,13 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspace", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSVerifierWorkspace))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspace", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSVerifierWorkspace))]
     public class GetAzNetworkManagerVerifierWorkspaceCommand : VerifierWorkspaceBaseCmdlet
     {
         private const string ListParameterSet = "ByList";
         private const string GetByNameParameterSet = "ByName";
         private const string GetByResourceIdParameterSet = "ByResourceId";
 
-        [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.",
-            ParameterSetName = "NoExpand")]
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
@@ -125,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 // Validate the format of the ResourceId
                 var segments = parsedResourceId.ParentResource.Split('/');
-                if (segments.Length < 3)
+                if (segments.Length < 2)
                 {
                     throw new PSArgumentException("Invalid ResourceId format. Ensure the ResourceId is in the correct format.");
                 }

@@ -17,14 +17,16 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspace", SupportsShouldProcess = true), OutputType(typeof(PSVerifierWorkspace))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerVerifierWorkspace", SupportsShouldProcess = true, DefaultParameterSetName = SetByInputObjectParameterSet), OutputType(typeof(PSVerifierWorkspace))]
     public class SetAzNetworkManagerVerifierWorkspaceCommand : VerifierWorkspaceBaseCmdlet
     {
         private const string SetByNameParameterSet = "ByNameParameters";
@@ -87,24 +89,113 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        //public override void Execute()
+        //{
+        //    if (this.ShouldProcess(this.InputObject.Name, VerbsLifecycle.Restart))
+        //    {
+        //        base.Execute();
+
+        //        if (!this.IsVerifierWorkspacePresent(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name))
+        //        {
+        //            throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
+        //        }
+
+        //        // Map to the sdk object
+        //        var verifierWorkspaceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VerifierWorkspace>(this.InputObject);
+
+        //        // Execute the PUT VerifierWorkspace call
+        //        this.VerifierWorkspaceClient.Create(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name, verifierWorkspaceModel);
+        //        var psVerifierWorkspace = this.GetVerifierWorkspace(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
+        //        WriteObject(psVerifierWorkspace);
+        //    }
+        //}
+
         public override void Execute()
         {
-            if (this.ShouldProcess(this.InputObject.Name, VerbsLifecycle.Restart))
+            if (this.ShouldProcess(this.InputObject?.Name ?? this.Name, VerbsLifecycle.Restart))
             {
                 base.Execute();
 
-                if (!this.IsVerifierWorkspacePresent(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name))
+                var (resourceGroupName, networkManagerName, verfierWorkspaceName) = ExtractResourceDetails();
+
+                var verifierWorkspaceModel = MapToSdkObject();
+
+                var verifierWorkspaceResponse = this.VerifierWorkspaceClient.Create(
+                    resourceGroupName,
+                    networkManagerName,
+                    verfierWorkspaceName,
+                    verifierWorkspaceModel);
+
+                var psVerifierWorkspace = this.ToPsVerifierWorkspace(verifierWorkspaceResponse);
+                WriteObject(psVerifierWorkspace);
+            }
+        }
+
+        private (string resourceGroupName, string networkManagerName, string verifierWorkspaceName) ExtractResourceDetails()
+        {
+            if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+
+                // Validate the format of the ResourceId
+                var segments = parsedResourceId.ParentResource.Split('/');
+                if (segments.Length < 2)
                 {
-                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
+                    throw new PSArgumentException("Invalid ResourceId format. Ensure the ResourceId is in the correct format.");
                 }
 
-                // Map to the sdk object
-                var verifierWorkspaceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VerifierWorkspace>(this.InputObject);
+                this.Name = parsedResourceId.ResourceName;
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.NetworkManagerName = segments[1];
+                
 
-                // Execute the PUT VerifierWorkspace call
-                this.VerifierWorkspaceClient.Create(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name, verifierWorkspaceModel);
-                var psVerifierWorkspace = this.GetVerifierWorkspace(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
-                WriteObject(psVerifierWorkspace);
+                return (this.ResourceGroupName, this.NetworkManagerName, this.Name);
+            }
+            else if (this.InputObject != null)
+            {
+                return (
+                    this.InputObject.ResourceGroupName,
+                    this.InputObject.NetworkManagerName,
+                    this.InputObject.Name
+                );
+            }
+            else
+            {
+                return (
+                    this.ResourceGroupName,
+                    this.NetworkManagerName,
+                    this.Name
+                );
+            }
+        }
+
+        private VerifierWorkspace MapToSdkObject()
+        {
+            if (this.InputObject != null)
+            {
+                if (this.InputObject is PSVerifierWorkspace)
+                {
+                    return NetworkResourceManagerProfile.Mapper.Map<VerifierWorkspace>(InputObject);
+                }
+                else
+                {
+                    throw new PSArgumentException("Invalid InputObject type. Expected type is PSNetworkManagerRoutingRule.");
+                }
+            }
+            else
+            {
+                var verifierWorkspace = new VerifierWorkspace();
+
+                if (verifierWorkspace.Properties == null)
+                {
+                    verifierWorkspace.Properties = new VerifierWorkspaceProperties();
+                }
+                if (!string.IsNullOrEmpty(this.Description))
+                {
+                    verifierWorkspace.Properties.Description = this.Description;
+                }
+
+                return verifierWorkspace;
             }
         }
     }
