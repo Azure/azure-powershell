@@ -20,7 +20,7 @@ Describe 'Get-AzConnectedNetworkSecurityPerimeterConfiguration' {
         $all | Should -Not -BeNullOrEmpty
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $all = @(Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName $env.ResourceGroupName -ScopeName $env.PrivateLinkScopeName -PerimeterName $env.PerimeterName)
         $all | Should -Not -BeNullOrEmpty
     }

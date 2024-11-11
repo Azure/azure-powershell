@@ -18,8 +18,4 @@ Describe 'Remove-AzConnectedLicenseProfile' {
     It 'Delete' {
         Remove-AzConnectedLicenseProfile -MachineName $env.MachineNamePaygo -ResourceGroupName $env.ResourceGroupNameProfile 
     }
-
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

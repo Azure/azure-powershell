@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedLicenseProfile
 }
 
 Describe 'New-AzConnectedLicenseProfile' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         # SA and WS PayGo have incompatible pre-requisites - SA claim in only for licensed machine. You can enroll in WS PayGo subscription only if the machine is unlicensed. hotpatch is fine either way.
         $productfeature = New-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
 
@@ -25,25 +25,5 @@ Describe 'New-AzConnectedLicenseProfile' {
         # WS paygo and hotpatch
         $all = @(New-AzConnectedLicenseProfile -MachineName $env.MachineNamePaygo -ResourceGroupName $env.ResourceGroupNameProfile -Location $env.Location -ProductProfileProductType "WindowsServer" -ProductProfileSubscriptionStatus "Enabled" -ProductProfileProductFeature $productfeature)
         $all | Should -Not -BeNullOrEmpty
-    }
-
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

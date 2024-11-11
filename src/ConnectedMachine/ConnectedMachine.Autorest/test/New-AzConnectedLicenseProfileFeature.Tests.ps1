@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedLicenseProfile
 }
 
 Describe 'New-AzConnectedLicenseProfileFeature' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'LicenseProfileFeature' {
+        $productfeature = New-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
+        $productfeature | Should -Not -BeNullOrEmpty
     }
 }
