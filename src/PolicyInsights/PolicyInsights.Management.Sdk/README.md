@@ -5,18 +5,17 @@ This directory contains management plane service clients of Az.Policyinsights mo
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
-azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
 title: PolicyInsightsClient
 ```
@@ -136,4 +135,12 @@ directive:
       - $.paths["/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults"]
       - $.paths["/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults"]
     transform: delete $['post']['x-ms-pageable']['operationName']
+  # - from: swagger-document
+  #   where:
+  #     - $.parameters.topParameter
+  #   transform: delete $['x-ms-parameter-location']
+  # - from: swagger-document
+  #   where:
+  #     - $.parameters.fromParameter
+  #   transform: delete $['x-ms-parameter-location']
 ```
