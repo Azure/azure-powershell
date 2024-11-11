@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrated PolicyInsights SDK to generated SDK
+    - Removed "Microsoft.Azure.Management.PolicyInsights" Version "1.0.0" PackageReference
+    - Added PolicyInsights.Management.Sdk ProjectReference
 
 ## Version 1.7.0
 * Upgraded nuget package to signed package.
