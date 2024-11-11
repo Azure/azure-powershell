@@ -76,6 +76,16 @@ $prop = Set-AzRecoveryServicesVaultProperty -VaultId $vault.Id -DisableHybridBac
 The first command gets a Vault object and then stores it in the $vault variable.
 The second command disables the HybridBackupSecurityFeature of the vault, set $true to enable it again.
 
+### Example 5: Update SoftDeleteFeatureState and HybridBackupSecurityFeature to AlwaysON
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName" 
+$prop = Set-AzRecoveryServicesVaultProperty -VaultId $vault.Id -SoftDeleteFeatureState AlwaysON
+```
+
+The first command gets a Vault object and then stores it in the $vault variable.
+The second command sets the SoftDeleteFeatureState of the vault to "AlwaysON", which will also set the HybridBackupSecurityFeature to AlwaysON. Additionally, the SoftDeleteRetentionPeriodInDays parameter is used to set the soft delete retention period to 16 days. 
+
 ## PARAMETERS
 
 ### -DefaultProfile

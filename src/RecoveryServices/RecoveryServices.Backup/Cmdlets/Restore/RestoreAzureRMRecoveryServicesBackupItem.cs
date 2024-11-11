@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     providerParameters.Add(CRRParams.SecondaryRegion, secondaryRegion);
                 }
 
-                if(RehydratePriority != null)
+                if (RehydratePriority != null)
                 {
                     Logger.Instance.WriteDebug("Rehydrate priority is " + RehydratePriority);
 
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         string.Equals(this.ParameterSetName, AzureManagedVMReplaceExistingParameterSet, StringComparison.Ordinal))
                 {
                     AzureVmRecoveryPoint rp = (AzureVmRecoveryPoint)RecoveryPoint;
-                    if ((bool)rp.IsPrivateAccessEnabledOnAnyDisk)
+                    if (rp.IsPrivateAccessEnabledOnAnyDisk.GetValueOrDefault())
                     {
                         throw new ArgumentException("DiskAccessOption parameter must be provided since private access is enabled in given recovery point");
                     }
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     providerParameters.Add(RestoreFSBackupItemParams.SourceFileType, SourceFileType.ToString());
                 }
 
-                if(MultipleSourceFilePath != null)
+                if (MultipleSourceFilePath != null)
                 {
                     providerParameters.Add(RestoreFSBackupItemParams.MultipleSourceFilePath, MultipleSourceFilePath);
                 }

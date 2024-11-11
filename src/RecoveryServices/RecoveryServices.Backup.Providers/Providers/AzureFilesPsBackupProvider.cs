@@ -996,6 +996,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             throw new NotImplementedException();
         }
+        public void UndeleteContainer()
+        {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
+            string containerName = (string)ProviderData[ContainerParams.Name];
+            string backupManagementType = (string)ProviderData[ContainerParams.BackupManagementType];
+            string workloadType = (string)ProviderData[ContainerParams.ContainerType];
+
+            AzureFileShareContainer container = (AzureFileShareContainer)ProviderData[ContainerParams.Container];
+
+            string containerUri = HelperUtils.GetContainerUri(
+                HelperUtils.ParseUri(container.Id),
+                container.Id);
+
+            ProtectionContainerResource protectionContainerResource = null;
+            protectionContainerResource = new ProtectionContainerResource(container.Id, containerUri);
+
+            AzureStorageContainer storageContainer = new AzureStorageContainer(
+                backupManagementType: backupManagementType,
+                sourceResourceId: container.SourceResourceId,
+                operationType: "Rehydrate");
+
+            protectionContainerResource.Properties = storageContainer;
+
+            AzureWorkloadProviderHelper.UndeleteContainer(containerUri,
+            protectionContainerResource,
+            vaultName,
+            vaultResourceGroupName);
+        }
 
         public static void CopyProperties<TSource, TTarget>(TSource source, TTarget target)
         {
