@@ -29,7 +29,6 @@ $productfeature | Should -Not -BeNullOrEmpty
 
 Create an object to pass into license profile
 
-
 ## PARAMETERS
 
 ### -Name

@@ -188,7 +188,7 @@ The ID of the target subscription.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: Subscription
 
 Required: False
 Position: Named

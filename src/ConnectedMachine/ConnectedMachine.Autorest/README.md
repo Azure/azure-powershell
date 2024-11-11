@@ -259,6 +259,11 @@ directive:
       parameter-name: AgentUpgradeEnableAutomaticUpgrade
     set:
       parameter-name: AgentUpgradeEnableAutomatic
+  - where:
+      subject: MachineRunCommand
+      parameter-name: SubscriptionId
+    set:
+      alias: Subscription
     
   # Rename Tag to Tags
   - where:
