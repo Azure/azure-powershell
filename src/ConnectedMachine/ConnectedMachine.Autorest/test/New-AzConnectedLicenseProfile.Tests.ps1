@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedLicenseProfile
 Describe 'New-AzConnectedLicenseProfile' {
     It 'CreateExpanded' {
         # SA and WS PayGo have incompatible pre-requisites - SA claim in only for licensed machine. You can enroll in WS PayGo subscription only if the machine is unlicensed. hotpatch is fine either way.
-        $productfeature = New-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
+        $productfeature = Set-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
 
         # SA benefit only
         # $all = @(New-AzConnectedLicenseProfile -MachineName $env.MachineNameSA -ResourceGroupName $env.ResourceGroupNameProfile -Location $env.Location -SoftwareAssuranceCustomer)

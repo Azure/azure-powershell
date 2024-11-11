@@ -393,11 +393,14 @@ directive:
   - model-cmdlet:
     - model-name: LicenseDetails
       cmdlet-name: New-AzConnectedLicenseDetail
+  
+  # Generate complex object for Update-AzConnectedLicenseProfile
   - model-cmdlet:
     - model-name: ProductFeatureUpdate
-      cmdlet-name: New-AzConnectedLicenseProfileUpdate
+      cmdlet-name: Update-AzConnectedLicenseProfileFeature
+  # Generate complex object for New-AzConnectedLicenseProfile, change prefix to New- will cause CI styling issue
   - model-cmdlet:
     - model-name: ProductFeature
-      cmdlet-name: New-AzConnectedLicenseProfileFeature
+      cmdlet-name: Set-AzConnectedLicenseProfileFeature
 
 ```

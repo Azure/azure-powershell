@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedLicenseProfileUpdate'))
+if(($null -eq $TestName) -or ($TestName -contains 'Update-AzConnectedLicenseProfileFeature'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzConnectedLicenseProfileUpdate.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzConnectedLicenseProfileFeature.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,9 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedLicenseProfile
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzConnectedLicenseProfileUpdate' {
-    It 'LicenseProfileUpdate' {
-        $productfeature = New-AzConnectedLicenseProfileUpdate -Name "Hotpatch" -SubscriptionStatus "Enable"
+Describe 'Update-AzConnectedLicenseProfileFeature' {
+    It '__AllParameterSets' {
+        $productfeature = Update-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
         $productfeature | Should -Not -BeNullOrEmpty
     }
 }

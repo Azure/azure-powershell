@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzConnectedLicenseProf
 
 Describe 'Update-AzConnectedLicenseProfile' {
     It 'UpdateExpanded' {
-        $productfeature = New-AzConnectedLicenseProfileUpdate -Name "Hotpatch" -SubscriptionStatus "Enable"
+        $productfeature = Update-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
         $all = @(Update-AzConnectedLicenseProfile -MachineName $env.MachineNamePaygo -ResourceGroupName $env.ResourceGroupNameProfile -ProductProfileProductType "WindowsServer" -ProductProfileSubscriptionStatus "Enabled" -ProductProfileProductFeature $productfeature)
         $all | Should -Not -BeNullOrEmpty
     }

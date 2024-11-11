@@ -1,38 +1,34 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/new-azconnectedlicenseprofileupdate
+online version: https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/set-azconnectedlicenseprofilefeature
 schema: 2.0.0
 ---
 
-# New-AzConnectedLicenseProfileUpdate
+# Set-AzConnectedLicenseProfileFeature
 
 ## SYNOPSIS
-Create an in-memory object for ProductFeatureUpdate.
+Create an in-memory object for ProductFeature.
 
 ## SYNTAX
 
 ```
-New-AzConnectedLicenseProfileUpdate [-Name <String>] [-SubscriptionStatus <String>] [<CommonParameters>]
+Set-AzConnectedLicenseProfileFeature [-Name <String>] [-SubscriptionStatus <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for ProductFeatureUpdate.
+Create an in-memory object for ProductFeature.
 
 ## EXAMPLES
 
-### Example 1: Create the profile update object
+### Example 1: Create an object to pass into license profile
 ```powershell
-New-AzConnectedLicenseProfileUpdate -Name "Hotpatch" -SubscriptionStatus "Enable"
+$productfeature = Set-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
+$productfeature | Should -Not -BeNullOrEmpty
 ```
 
-```output
-Name     SubscriptionStatus
-----     ------------------
-Hotpatch Enable
-```
+Create an object to pass into license profile
 
-Create the profile update object
 
 ## PARAMETERS
 
@@ -52,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionStatus
-Indicates the new status of the product feature.
+Indicates the current status of the product features.
 
 ```yaml
 Type: System.String
@@ -73,7 +69,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeatureUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeature
 
 ## NOTES
 

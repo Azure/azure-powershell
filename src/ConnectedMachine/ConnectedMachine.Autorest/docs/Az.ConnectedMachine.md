@@ -56,12 +56,6 @@ Create an in-memory object for LicenseDetails.
 ### [New-AzConnectedLicenseProfile](New-AzConnectedLicenseProfile.md)
 The operation to create or update a license profile.
 
-### [New-AzConnectedLicenseProfileFeature](New-AzConnectedLicenseProfileFeature.md)
-Create an in-memory object for ProductFeature.
-
-### [New-AzConnectedLicenseProfileUpdate](New-AzConnectedLicenseProfileUpdate.md)
-Create an in-memory object for ProductFeatureUpdate.
-
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
 The operation to create or update the extension.
 
@@ -93,6 +87,9 @@ Deletes a Azure Arc PrivateLinkScope.
 ### [Set-AzConnectedLicense](Set-AzConnectedLicense.md)
 The operation to create or update a license.
 
+### [Set-AzConnectedLicenseProfileFeature](Set-AzConnectedLicenseProfileFeature.md)
+Create an in-memory object for ProductFeature.
+
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
 The operation to create or update the extension.
 
@@ -105,6 +102,9 @@ The operation to Upgrade Machine Extensions.
 
 ### [Update-AzConnectedLicenseProfile](Update-AzConnectedLicenseProfile.md)
 The operation to update a license profile.
+
+### [Update-AzConnectedLicenseProfileFeature](Update-AzConnectedLicenseProfileFeature.md)
+Create an in-memory object for ProductFeatureUpdate.
 
 ### [Update-AzConnectedMachine](Update-AzConnectedMachine.md)
 The operation to update a hybrid machine.

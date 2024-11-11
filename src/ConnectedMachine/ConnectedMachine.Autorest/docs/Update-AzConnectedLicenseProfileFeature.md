@@ -1,48 +1,34 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/new-azconnectedlicenseprofilefeature
+online version: https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/update-azconnectedlicenseprofilefeature
 schema: 2.0.0
 ---
 
-# New-AzConnectedLicenseProfileFeature
+# Update-AzConnectedLicenseProfileFeature
 
 ## SYNOPSIS
-Create an in-memory object for ProductFeature.
+Create an in-memory object for ProductFeatureUpdate.
 
 ## SYNTAX
 
 ```
-New-AzConnectedLicenseProfileFeature [-Name <String>] [-SubscriptionStatus <String>] [<CommonParameters>]
+Update-AzConnectedLicenseProfileFeature [-Name <String>] [-SubscriptionStatus <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for ProductFeature.
+Create an in-memory object for ProductFeatureUpdate.
 
 ## EXAMPLES
 
-### Example 1: Create a profile feature
+### Example 1: Create an object to pass into license profile
 ```powershell
-New-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
+$productfeature = Update-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
+$productfeature | Should -Not -BeNullOrEmpty
 ```
 
-```output
+Create an object to pass into license profile
 
-AdditionalInfo     :
-BillingEndDate     :
-BillingStartDate   :
-Code               :
-Detail             :
-DisenrollmentDate  :
-EnrollmentDate     :
-Message            :
-Name               : Hotpatch
-SubscriptionStatus : Enable
-Target             :
-
-```
-
-Create a profile feature
 
 ## PARAMETERS
 
@@ -62,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionStatus
-Indicates the current status of the product features.
+Indicates the new status of the product feature.
 
 ```yaml
 Type: System.String
@@ -83,7 +69,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeature
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProductFeatureUpdate
 
 ## NOTES
 
