@@ -41,5 +41,47 @@
       "Content": "{\"value\":[{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3/networkSecurityPerimeterConfigurations/a12ebbfe-c600-4964-b1aa-1b302b91d074.testAssociation\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes/networkSecurityPerimeterConfigurations\",\"name\":\"a12ebbfe-c600-4964-b1aa-1b302b91d074.testAssociation\",\"properties\":{\"provisioningState\":\"Succeeded\",\"provisioningIssues\":[],\"networkSecurityPerimeter\":{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.Network/networkSecurityPerimeters/testPerimeter\",\"perimeterGuid\":\"a12ebbfe-c600-4964-b1aa-1b302b91d074\",\"location\":\"eastus\"},\"resourceAssociation\":{\"name\":\"testAssociation\",\"accessMode\":\"Learning\"},\"profile\":{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.Network/networkSecurityPerimeters/testPerimeter/profiles/testProfile\",\"name\":\"testProfile\",\"accessRulesVersion\":0,\"accessRules\":[],\"diagnosticSettingsVersion\":0,\"enabledLogCategories\":[]}}}]}",
       "isContentBase64": false
     }
+  },
+  "Get-AzConnectedNetworkSecurityPerimeterConfiguration+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3/networkSecurityPerimeterConfigurations?api-version=2024-07-31-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/adrielk_test/providers/Microsoft.HybridCompute/privateLinkScopes/adrielScope/networkSecurityPerimeterConfigurations/fd1289de-e8d3-4f76-8008-de297232dbf6.adrielScope-e1bf45b1-b9a1-4f8b-a76e-3607869aed94?api-version=2024-05-20-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "5c64ca93-6093-4ac2-9d1b-fbe4166bc101" ],
+        "CommandName": [ "Get-AzConnectedNetworkSecurityPerimeterConfiguration" ],
+        "FullCommandName": [ "Get-AzConnectedNetworkSecurityPerimeterConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.6", "Az.ConnectedMachine/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c8461ea4-893a-4df5-89c0-f692a8e6a6ee" ],
+        "x-ms-correlation-request-id": [ "f339377b-4fb4-42f1-b5bd-2d8bfb2ac8a7" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240919T203454Z:f339377b-4fb4-42f1-b5bd-2d8bfb2ac8a7" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: F0BF7A2A00284D10AD10DACD8A607985 Ref B: MNZ221060608011 Ref C: 2024-09-19T20:34:54Z" ],
+        "Date": [ "Wed, 10 Nov 2024 13:26:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1709" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.HybridCompute/privateLinkScopes/myScope3/networkSecurityPerimeterConfigurations/a12ebbfe-c600-4964-b1aa-1b302b91d074.testAssociation\",\"type\":\"Microsoft.HybridCompute/privateLinkScopes/networkSecurityPerimeterConfigurations\",\"name\":\"a12ebbfe-c600-4964-b1aa-1b302b91d074.testAssociation\",\"properties\":{\"provisioningState\":\"Succeeded\",\"provisioningIssues\":[],\"networkSecurityPerimeter\":{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.Network/networkSecurityPerimeters/testPerimeter\",\"perimeterGuid\":\"a12ebbfe-c600-4964-b1aa-1b302b91d074\",\"location\":\"eastus\"},\"resourceAssociation\":{\"name\":\"testAssociation\",\"accessMode\":\"Learning\"},\"profile\":{\"id\":\"/subscriptions/b24cc8ee-df4f-48ac-94cf-46edf36b0fae/resourceGroups/ytongtest/providers/Microsoft.Network/networkSecurityPerimeters/testPerimeter/profiles/testProfile\",\"name\":\"testProfile\",\"accessRulesVersion\":0,\"accessRules\":[],\"diagnosticSettingsVersion\":0,\"enabledLogCategories\":[]}}}]}",
+      "isContentBase64": false
+    }
   }
 }
