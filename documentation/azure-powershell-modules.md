@@ -93,7 +93,7 @@
 | HDInsight                      | `Az.HDInsight`                  | [![HDInsight]][HDInsightGallery]                                   | [Changelog][HDInsightChangeLog]                  |
 | HdInsightOnAks                 | `Az.HdInsightOnAks`             | [![HdInsightOnAks]][HdInsightOnAksGallery]                         | [Changelog][HdInsightOnAksChangeLog]             |
 | HealthBot                      | `Az.HealthBot`                  | [![HealthBot]][HealthBotGallery]                                   | [Changelog][HealthBotChangeLog]                  |
-| HealthDataAIServices           | `Az.HealthDataAIServices`       | [![HealthDataAIServices]][HealthDataAIServicesGallery]             | [Changelog][HealthDataAIServicesLog]             |
+| HealthDataAIServices           | `Az.HealthDataAIServices`       | [![HealthDataAIServices]][HealthDataAIServicesGallery]             | [Changelog][HealthDataAIServicesChangeLog]       |
 | API for FHIR                   | `Az.HealthcareApis`             | [![HealthcareApis]][HealthcareApisGallery]                         | [Changelog][HealthcareApisChangeLog]             |
 | HPC Cache                      | `Az.HPCCache`                   | [![HPCCache]][HPCCacheGallery]                                     | [Changelog][HPCCacheChangeLog]                   |
 | Image Builder                  | `Az.ImageBuilder`               | [![ImageBuilder]][ImageBuilderGallery]                             | [Changelog][ImageBuilderChangeLog]               |
@@ -456,7 +456,7 @@
 [HdInsightOnAksGallery]:             https://www.powershellgallery.com/packages/Az.HdInsightOnAks/
 [HealthBotGallery]:                  https://www.powershellgallery.com/packages/Az.HealthBot/
 [HealthcareApisGallery]:             https://www.powershellgallery.com/packages/Az.HealthcareApis/
-[HealthDataAIServices]:              https://www.powershellgallery.com/packages/Az.HealthDataAIServices/
+[HealthDataAIServicesGallery]:       https://www.powershellgallery.com/packages/Az.HealthDataAIServices/
 [HPCCacheGallery]:                   https://www.powershellgallery.com/packages/Az.HPCCache/
 [ImageBuilderGallery]:               https://www.powershellgallery.com/packages/Az.ImageBuilder/
 [ImportExportGallery]:               https://www.powershellgallery.com/packages/Az.ImportExport/
