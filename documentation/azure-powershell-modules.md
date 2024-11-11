@@ -386,6 +386,7 @@
 [AppComplianceAutomationGallery]:    https://www.powershellgallery.com/packages/Az.AppComplianceAutomation/
 [AppConfigurationGallery]:           https://www.powershellgallery.com/packages/Az.AppConfiguration/
 [ApplicationInsightsGallery]:        https://www.powershellgallery.com/packages/Az.ApplicationInsights/
+[ArcGatewayGallery]:                 https://www.powershellgallery.com/packages/Az.ArcGateway/
 [ArcResourceBridgeGallery]:          https://www.powershellgallery.com/packages/Az.ArcResourceBridge/
 [AttestationGallery]:                https://www.powershellgallery.com/packages/Az.Attestation/
 [AutomanageGallery]:                 https://www.powershellgallery.com/packages/Az.Automanage/
@@ -455,6 +456,7 @@
 [HdInsightOnAksGallery]:             https://www.powershellgallery.com/packages/Az.HdInsightOnAks/
 [HealthBotGallery]:                  https://www.powershellgallery.com/packages/Az.HealthBot/
 [HealthcareApisGallery]:             https://www.powershellgallery.com/packages/Az.HealthcareApis/
+[HealthDataAIServices]:              https://www.powershellgallery.com/packages/Az.HealthDataAIServices/
 [HPCCacheGallery]:                   https://www.powershellgallery.com/packages/Az.HPCCache/
 [ImageBuilderGallery]:               https://www.powershellgallery.com/packages/Az.ImageBuilder/
 [ImportExportGallery]:               https://www.powershellgallery.com/packages/Az.ImportExport/
