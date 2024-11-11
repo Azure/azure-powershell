@@ -25,6 +25,7 @@
 | App Configuration              | `Az.AppConfiguration`           | [![AppConfiguration]][AppConfigurationGallery]                     | [Changelog][AppConfigurationChangeLog]           |
 | Application Insights           | `Az.ApplicationInsights`        | [![ApplicationInsights]][ApplicationInsightsGallery]               | [Changelog][ApplicationInsightsChangeLog]        |
 | Arc Resource Bridge            | `Az.ArcResourceBridge`          | [![ArcResourceBridge]][ArcResourceBridgeGallery]                   | [Changelog][ArcResourceBridgeChangeLog]          |
+| ArcGateway                     | `Az.ArcGateway`                 | [![ArcGateway]][ArcGatewayGallery]                                 | [Changelog][ArcGatewayChangeLog]                 |
 | Attestation                    | `Az.Attestation`                | [![Attestation]][AttestationGallery]                               | [Changelog][AttestationChangeLog]                |
 | Automanage                     | `Az.Automanage`                 | [![Automanage]][AutomanageGallery]                                 | [Changelog][AutomanageChangeLog]                 |
 | Automation                     | `Az.Automation`                 | [![Automation]][AutomationGallery]                                 | [Changelog][AutomationChangeLog]                 |
@@ -92,6 +93,7 @@
 | HDInsight                      | `Az.HDInsight`                  | [![HDInsight]][HDInsightGallery]                                   | [Changelog][HDInsightChangeLog]                  |
 | HdInsightOnAks                 | `Az.HdInsightOnAks`             | [![HdInsightOnAks]][HdInsightOnAksGallery]                         | [Changelog][HdInsightOnAksChangeLog]             |
 | HealthBot                      | `Az.HealthBot`                  | [![HealthBot]][HealthBotGallery]                                   | [Changelog][HealthBotChangeLog]                  |
+| HealthDataAIServices           | `Az.HealthDataAIServices`       | [![HealthDataAIServices]][HealthDataAIServicesGallery]             | [Changelog][HealthDataAIServicesLog]             |
 | API for FHIR                   | `Az.HealthcareApis`             | [![HealthcareApis]][HealthcareApisGallery]                         | [Changelog][HealthcareApisChangeLog]             |
 | HPC Cache                      | `Az.HPCCache`                   | [![HPCCache]][HPCCacheGallery]                                     | [Changelog][HPCCacheChangeLog]                   |
 | Image Builder                  | `Az.ImageBuilder`               | [![ImageBuilder]][ImageBuilderGallery]                             | [Changelog][ImageBuilderChangeLog]               |
@@ -206,6 +208,7 @@
 [AppConfiguration]:           https://img.shields.io/powershellgallery/v/Az.AppConfiguration.svg?style=flat-square&label=Az.AppConfiguration
 [ApplicationInsights]:        https://img.shields.io/powershellgallery/v/Az.ApplicationInsights.svg?style=flat-square&label=Az.ApplicationInsights
 [ArcResourceBridge]:          https://img.shields.io/powershellgallery/v/Az.ArcResourceBridge.svg?style=flat-square&label=Az.ArcResourceBridge
+[ArcGateway]:                 https://img.shields.io/powershellgallery/v/Az.ArcGateway.svg?style=flat-square&label=Az.ArcGateway
 [Attestation]:                https://img.shields.io/powershellgallery/v/Az.Attestation.svg?style=flat-square&label=Az.Attestation
 [Automanage]:                 https://img.shields.io/powershellgallery/v/Az.Automanage.svg?style=flat-square&label=Az.Automanage
 [Automation]:                 https://img.shields.io/powershellgallery/v/Az.Automation.svg?style=flat-square&label=Az.Automation
@@ -274,6 +277,7 @@
 [HdInsightOnAks]:             https://img.shields.io/powershellgallery/v/Az.HdInsightOnAks.svg?style=flat-square&label=Az.HdInsightOnAks
 [HealthBot]:                  https://img.shields.io/powershellgallery/v/Az.HealthBot.svg?style=flat-square&label=Az.HealthBot
 [HealthcareApis]:             https://img.shields.io/powershellgallery/v/Az.HealthcareApis.svg?style=flat-square&label=Az.HealthcareApis
+[HealthDataAIServices]:       https://img.shields.io/powershellgallery/v/Az.HealthDataAIServices.svg?style=flat-square&label=Az.HealthDataAIServices
 [HPCCache]:                   https://img.shields.io/powershellgallery/v/Az.HPCCache.svg?style=flat-square&label=Az.HPCCache
 [ImageBuilder]:               https://img.shields.io/powershellgallery/v/Az.ImageBuilder.svg?style=flat-square&label=Az.ImageBuilder
 [ImportExport]:               https://img.shields.io/powershellgallery/v/Az.ImportExport.svg?style=flat-square&label=Az.ImportExport
@@ -557,6 +561,7 @@
 [AppComplianceAutomationChangelog]:    ../src/AppComplianceAutomation/AppComplianceAutomation/ChangeLog.md
 [AppConfigurationChangeLog]:           ../src/AppConfiguration/AppConfiguration/ChangeLog.md
 [ApplicationInsightsChangeLog]:        ../src/ApplicationInsights/ApplicationInsights/ChangeLog.md
+[ArcGatewayChangeLog]:                 ../src/ArcGateway/ArcGateway/ChangeLog.md
 [ArcResourceBridgeChangeLog]:          ../src/ArcResourceBridge/ArcResourceBridge/ChangeLog.md
 [AttestationChangeLog]:                ../src/Attestation/Attestation/ChangeLog.md
 [AutomanageChangeLog]:                 ../src/Automanage/Automanage/ChangeLog.md
@@ -626,6 +631,7 @@
 [HdInsightOnAksChangeLog]:             ../src/HdInsightOnAks/HdInsightOnAks/ChangeLog.md
 [HealthBotChangeLog]:                  ../src/HealthBot/HealthBot/ChangeLog.md
 [HealthcareApisChangeLog]:             ../src/HealthcareApis/HealthcareApis/ChangeLog.md
+[HealthDataAIServicesChangeLog]:       ../src/HealthDataAIServices/HealthDataAIServices/ChangeLog.md
 [HPCCacheChangeLog]:                   ../src/HPCCache/HPCCache/ChangeLog.md
 [ImageBuilderChangeLog]:               ../src/ImageBuilder/ImageBuilder/ChangeLog.md
 [ImportExportChangeLog]:               ../src/ImportExport/ImportExport/ChangeLog.md
