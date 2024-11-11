@@ -14,7 +14,7 @@ Create an in-memory object for PartnerEventSubscriptionDestination.
 
 ```
 New-AzEventGridPartnerEventSubscriptionDestinationObject [-ResourceId <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,21 +36,6 @@ PartnerDestination
 Create an in-memory object for PartnerEventSubscriptionDestination.
 
 ## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ResourceId
 The Azure Resource Id that represents the endpoint of a Partner Destination of an event subscription.

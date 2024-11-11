@@ -27,13 +27,13 @@ For information on how to develop for `Az.ContainerInstance`, see [how-to.md](ho
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 81562c6c057a510ddde50ff40720d254bd5f6dbf
+commit: 400510ae981419169f35012c3a217b268e779b2b
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/preview/2022-10-01-preview/containerInstance.json 
+  - $(repo)/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/preview/2024-05-01-preview/containerInstance.json 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -95,13 +95,6 @@ directive:
       parameter-name: ImageRegistryCredentials
     set:
       parameter-name: ImageRegistryCredential
-  # Sets OSType equal Linux by default
-  - where:
-      parameter-name: OSType
-    set:
-      default:
-        description: Sets OSType equal Linux by default.
-        script: '"Linux"'
   # 1. Set IPAddressPort equals $Container.Port
   # 2. Set Location mandatory
   - where:

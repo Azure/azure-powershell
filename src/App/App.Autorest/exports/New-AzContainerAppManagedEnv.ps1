@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a Managed Environment used to host container apps.
+create a Managed Environment used to host container apps.
 .Description
-Create a Managed Environment used to host container apps.
+create a Managed Environment used to host container apps.
 .Example
 New-AzOperationalInsightsWorkspace -ResourceGroupName azps_test_group_app -Name workspace-azpstestgp -Sku PerGB2018 -Location canadacentral -PublicNetworkAccessForIngestion "Enabled" -PublicNetworkAccessForQuery "Enabled"
 

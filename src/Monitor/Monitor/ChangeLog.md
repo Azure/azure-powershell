@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* The parameters of the `New-AzDataCollectionEndpoint`, `New-AzDataCollectionRule`, `Update-AzDataCollectionEndpoint`, `Update-AzDataCollectionRule` commands have changed.
+  * `IdentityType` will be removed. `EnableSystemAssignedIdentity` will be used to enable/disable system-assigned identities.
+  * The type of `UserAssignedIdentity` will be simplified to an array of strings that will be used to specify the user's assigned identity.
+
+## Version 5.3.0
 * Added new cmdlet for Azure Monitor Pipeline Groups
   * `Get-AzPipelineGroup`
   * `New-AzPipelineGroup`

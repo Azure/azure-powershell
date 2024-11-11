@@ -26,6 +26,7 @@
 			  `PrimaryAvailabilityGroupName` -> `PartnerAvailabilityGroupName`
 	- `TargetDatabase` -> `Database`, parameter type is changed from string to string[].
 * Updated `AzureSqlManagedInstanceLinkModel` that is a return type of `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Update-AzSqlInstanceLink` ,`Remove-AzSqlInstanceLink`
+* Added new optional parameter for `New-AzSqlDatabaseSecondary` to support cross-subscription geo-replication.
 
 ## Version 5.3.0
 * Fixed secrets exposure in example documentation.

@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a OrganizationResource</summary>
+    /// <summary>update a OrganizationResource</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Astronomer.Astro/organizations/{organizationName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzAstroOrganization_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IOrganizationResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.Description(@"Update a OrganizationResource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.Description(@"update a OrganizationResource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Astronomer.Astro/organizations/{organizationName}", ApiVersion = "2023-08-01")]
     public partial class UpdateAzAstroOrganization_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -107,6 +107,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
         public string IdentityType { get => _propertiesBody.IdentityType ?? null; set => _propertiesBody.IdentityType = value; }
+
+        /// <summary>
+        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
+        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
+        /// The dictionary values can be empty objects ({}) in requests.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Astro.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Astro.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+        SerializedName = @"userAssignedIdentities",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _propertiesBody.IdentityUserAssignedIdentity ?? null /* object */; set => _propertiesBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IAstroIdentity _inputObject;
@@ -257,14 +273,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Cmdlets
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IOrganizationResourceUpdateTags) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.IOrganizationResourceUpdateTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
-
-        /// <summary>
-        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
-        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
-        [global::System.Management.Automation.AllowEmptyCollection]
-        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>Email address of the user</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Email address of the user")]
@@ -599,15 +607,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        if (this.UserAssignedIdentity?.Length > 0)
-                        {
-                            // calculate UserAssignedIdentity
-                            _propertiesBody.IdentityUserAssignedIdentity.Clear();
-                            foreach( var id in this.UserAssignedIdentity )
-                            {
-                                _propertiesBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.UserAssignedIdentity());
-                            }
-                        }
                         await this.Client.OrganizationsUpdateViaIdentity(InputObject.Id, _propertiesBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
@@ -624,15 +623,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Astro.Cmdlets
                         if (null == InputObject.OrganizationName)
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.OrganizationName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
-                        }
-                        if (this.UserAssignedIdentity?.Length > 0)
-                        {
-                            // calculate UserAssignedIdentity
-                            _propertiesBody.IdentityUserAssignedIdentity.Clear();
-                            foreach( var id in this.UserAssignedIdentity )
-                            {
-                                _propertiesBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.Astro.Models.UserAssignedIdentity());
-                            }
                         }
                         await this.Client.OrganizationsUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.OrganizationName ?? null, _propertiesBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Astro.Runtime.SerializationMode.IncludeUpdate);
                     }
