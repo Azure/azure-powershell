@@ -23,38 +23,48 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerIpamPool", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSIpamPool))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerIpamPool", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSIpamPool))]
     public class GetAzNetworkManagerIpamPoolCommand : IpamPoolBaseCmdlet
     {
+        private const string ListParameterSet = "ByList";
+        private const string GetByNameParameterSet = "ByName";
+
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.",
-            ParameterSetName = "NoExpand")]
-        [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
-           ParameterSetName = "Expand")]
+           ParameterSetName = GetByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/ipamPools", "ResourceGroupName", "NetworkManagerName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string Name { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            ParameterSetName = GetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The network manager name.")]
+        [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
+           HelpMessage = "The network manager name.",
+           ParameterSetName = ListParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string NetworkManagerName { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            ParameterSetName = GetByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
+           HelpMessage = "The resource group name.",
+           ParameterSetName = ListParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
@@ -63,32 +73,36 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            if (this.Name != null)
+            switch (this.ParameterSetName)
             {
-                var ipamPool = this.GetIpamPool(this.ResourceGroupName, this.NetworkManagerName, this.Name);
-                ipamPool.ResourceGroupName = this.ResourceGroupName;
-                ipamPool.NetworkManagerName = this.NetworkManagerName;
-                WriteObject(ipamPool);
-            }
-            else
-            {
-                IPage<Management.Network.Models.IpamPool> ipamPoolPage;
-                ipamPoolPage = this.IpamPoolClient.List(this.ResourceGroupName, this.NetworkManagerName);
+                case GetByNameParameterSet:
+                    var ipamPoolByName = this.GetIpamPool(this.ResourceGroupName, this.NetworkManagerName, this.Name);
+                    ipamPoolByName.ResourceGroupName = this.ResourceGroupName;
+                    ipamPoolByName.NetworkManagerName = this.NetworkManagerName;
+                    WriteObject(ipamPoolByName);
+                    break;
 
-                // Get all resources by polling on next page link
-                var ipamPoolList = ListNextLink<IpamPool>.GetAllResourcesByPollingNextLink(ipamPoolPage, this.IpamPoolClient.ListNext);
+                case ListParameterSet:
+                    IPage<Management.Network.Models.IpamPool> ipamPoolPage;
+                    ipamPoolPage = this.IpamPoolClient.List(this.ResourceGroupName, this.NetworkManagerName);
 
-                var psIpamPoolList = new List<PSIpamPool>();
+                    // Get all resources by polling on next page link
+                    var ipamPoolList = ListNextLink<IpamPool>.GetAllResourcesByPollingNextLink(ipamPoolPage, this.IpamPoolClient.ListNext);
 
-                foreach (var ipamPool in ipamPoolList)
-                {
-                    var psIpamPool = this.ToPsIpamPool(ipamPool);
-                    psIpamPool.ResourceGroupName = this.ResourceGroupName;
-                    psIpamPool.NetworkManagerName = this.NetworkManagerName;
-                    psIpamPoolList.Add(psIpamPool);
-                }
+                    var psIpamPoolList = new List<PSIpamPool>();
 
-                WriteObject(psIpamPoolList);
+                    foreach (var ipamPool in ipamPoolList)
+                    {
+                        var psIpamPool = this.ToPsIpamPool(ipamPool);
+                        psIpamPool.ResourceGroupName = this.ResourceGroupName;
+                        psIpamPool.NetworkManagerName = this.NetworkManagerName;
+                        psIpamPoolList.Add(psIpamPool);
+                    }
+
+                    WriteObject(psIpamPoolList);
+                    break;
+                default:
+                    break;
             }
         }
     }
