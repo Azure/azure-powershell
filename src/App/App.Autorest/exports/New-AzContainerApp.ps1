@@ -30,7 +30,7 @@ $EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName azps_test_group_app -N
 
 New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
 Get-ChildItem -Path cert:\LocalMachine\My
-$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$mypwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
 New-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
 
@@ -56,7 +56,7 @@ $EnvId = (Get-AzContainerAppConnectedEnv -ResourceGroupName azps_test_group_app 
 
 New-SelfSignedCertificate -DnsName "www.fabrikam.com", "www.contoso.com" -CertStoreLocation "cert:\LocalMachine\My"
 Get-ChildItem -Path cert:\LocalMachine\My
-$mypwd = ConvertTo-SecureString -String "1234" -Force -AsPlainText
+$mypwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Get-ChildItem -Path cert:\localMachine\my\F61C9A8C53D0500F819463A66C5921AA09E1B787 | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $mypwd
 New-AzContainerAppConnectedEnvCert -Name azps-connectedenvcert -ConnectedEnvironmentName azps-connectedenv -ResourceGroupName azps_test_group_app -Location eastus -InputFile "C:\mypfx.pfx" -Password $mypwd
 
@@ -265,7 +265,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -280,7 +279,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfiguration]
     # Non versioned Container App configuration properties.
-    # To construct, see NOTES section for CONFIGURATION properties and create a hash table.
     ${Configuration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -363,7 +361,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule[]]
     # Scaling rules.
-    # To construct, see NOTES section for SCALERULE properties and create a hash table.
     ${ScaleRule},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -380,7 +377,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[]]
     # List of container definitions for the Container App.
-    # To construct, see NOTES section for TEMPLATECONTAINER properties and create a hash table.
     ${TemplateContainer},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -389,7 +385,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer[]]
     # List of specialized containers that run before app containers.
-    # To construct, see NOTES section for TEMPLATEINITCONTAINER properties and create a hash table.
     ${TemplateInitContainer},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -405,7 +400,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind[]]
     # List of container app services bound to the app
-    # To construct, see NOTES section for TEMPLATESERVICEBIND properties and create a hash table.
     ${TemplateServiceBind},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -426,7 +420,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[]]
     # List of volume definitions for the Container App.
-    # To construct, see NOTES section for TEMPLATEVOLUME properties and create a hash table.
     ${TemplateVolume},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -541,7 +534,13 @@ begin {
             CreateViaJsonString = 'Az.App.private\New-AzContainerApp_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

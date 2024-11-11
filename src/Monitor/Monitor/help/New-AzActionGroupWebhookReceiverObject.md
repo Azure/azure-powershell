@@ -15,7 +15,7 @@ Create an in-memory object for WebhookReceiver.
 ```
 New-AzActionGroupWebhookReceiverObject -Name <String> -ServiceUri <String> [-IdentifierUri <String>]
  [-ObjectId <String>] [-TenantId <String>] [-UseAadAuth <Boolean>] [-UseCommonAlertSchema <Boolean>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,15 +25,15 @@ Create an in-memory object for WebhookReceiver.
 
 ### Example 1: create action group webhook receiver with aad auth
 ```powershell
-New-AzActionGroupWebhookReceiverObject -Name "sample webhook" -ServiceUri "http://www.example.com/webhook1" -IdentifierUri "http://someidentifier/00001111-aaaa-2222-bbbb-3333cccc4444" -ObjectId "d3bb868c-fe44-452c-aa26-769a6538c808" -TenantId 00001111-aaaa-2222-bbbb-3333cccc4444 -UseAadAuth $true -UseCommonAlertSchema $true
+New-AzActionGroupWebhookReceiverObject -Name "sample webhook" -ServiceUri "http://www.example.com/webhook1" -IdentifierUri "http://someidentifier/d7811ba3-7996-4a93-99b6-6b2f3f355f8a" -ObjectId "d3bb868c-fe44-452c-aa26-769a6538c808" -TenantId 68a4459a-ccb8-493c-b9da-dd30457d1b84 -UseAadAuth $true -UseCommonAlertSchema $true
 ```
 
 ```output
-IdentifierUri        : http://someidentifier/00001111-aaaa-2222-bbbb-3333cccc4444
+IdentifierUri        : http://someidentifier/d7811ba3-7996-4a93-99b6-6b2f3f355f8a
 Name                 : sample webhook
 ObjectId             : d3bb868c-fe44-452c-aa26-769a6538c808
 ServiceUri           : http://www.example.com/webhook1
-TenantId             : 00001111-aaaa-2222-bbbb-3333cccc4444
+TenantId             : 68a4459a-ccb8-493c-b9da-dd30457d1b84
 UseAadAuth           : True
 UseCommonAlertSchema : True
 ```
@@ -97,6 +97,21 @@ Indicates the webhook app object Id for aad auth.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

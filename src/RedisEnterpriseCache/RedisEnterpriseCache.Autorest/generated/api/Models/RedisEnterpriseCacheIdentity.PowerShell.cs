@@ -126,6 +126,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentityInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentityInternal)this).DatabaseName, global::System.Convert.ToString);
             }
+            if (content.Contains("AccessPolicyAssignmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentityInternal)this).AccessPolicyAssignmentName = (string) content.GetValueForProperty("AccessPolicyAssignmentName",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentityInternal)this).AccessPolicyAssignmentName, global::System.Convert.ToString);
+            }
             if (content.Contains("PrivateEndpointConnectionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
@@ -174,6 +178,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models
             if (content.Contains("DatabaseName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentityInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentityInternal)this).DatabaseName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccessPolicyAssignmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentityInternal)this).AccessPolicyAssignmentName = (string) content.GetValueForProperty("AccessPolicyAssignmentName",((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentityInternal)this).AccessPolicyAssignmentName, global::System.Convert.ToString);
             }
             if (content.Contains("PrivateEndpointConnectionName"))
             {

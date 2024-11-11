@@ -111,6 +111,12 @@ function New-AzElasticSanVolumeGroup {
         [System.String]
         # Type of encryption
         ${Encryption},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+        [System.Boolean]
+        # A boolean indicating whether or not Data Integrity Check is enabled
+        ${EnforceDataIntegrityCheckForIscsi},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
@@ -232,6 +238,10 @@ function New-AzElasticSanVolumeGroup {
         $userIdentityObject = [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.UserAssignedIdentity]::New()
         $PSBoundParameters.IdentityUserAssignedIdentity = @{$IdentityUserAssignedIdentityId=$userIdentityObject}
         $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentityId')
+      }
+
+      if (($PSBoundParameters.ContainsKey("EnforceDataIntegrityCheckForIscsi") -eq $false) -or ($PSBoundParameters.EnforceDataIntegrityCheckForIscsi -eq $true)) {
+        Write-Warning "This needs CRC32C to be set on header and data digests on the client for all the connections from the client to the volumes in this volume group. You can do this by connecting to the volumes from the client using multi-session scripts generated in portal connect flow or from documentation, which contain steps to set CRC32C on header and data digests. Do not enable CRC protection on the volume group if you are using Fedora or its downstream Linux distributions such as RHEL, CentOS etc. as data digests are not supported on them. If you enable this flag for those distributions, connectivity to the volumes will fail. Refer to https://learn.microsoft.com/en-us/azure/storage/elastic-san/elastic-san-create?tabs=azure-portal for more information."
       }
 
       Az.ElasticSan.internal\New-AzElasticSanVolumeGroup @PSBoundParameters

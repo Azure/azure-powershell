@@ -191,4 +191,24 @@ directive:
     - model-name: StorageBlobDestination
     # string Name, string StorageAccountResourceId, string TableName
     - model-name: StorageTableDestination
+
+##### announce upcoming MI-related breaking changes
+  - where:
+      parameter-name: IdentityType
+    set:
+      breaking-change:
+        change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.0.0
+        change-effective-date: 2024/11/19
+  - where:
+      parameter-name: UserAssignedIdentity
+    set:
+      breaking-change:
+        old-parameter-type: Hashtable
+        new-parameter-type: string[]
+        change-description: UserAssignedIdentity's type will be simplified as string array.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 13.0.0
+        change-effective-date: 2024/11/19
 ```

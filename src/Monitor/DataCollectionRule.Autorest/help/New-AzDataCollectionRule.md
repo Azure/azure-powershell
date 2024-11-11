@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDataCollectionRule
 
 ## SYNOPSIS
-Create a data collection rule.
+create a data collection rule.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzDataCollectionRule -Name <String> -ResourceGroupName <String> -JsonString 
 ```
 
 ## DESCRIPTION
-Create a data collection rule.
+create a data collection rule.
 
 ## EXAMPLES
 

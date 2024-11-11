@@ -79,10 +79,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
-            {_category = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("category"), out var __jsonCategory) ? (string)__jsonCategory : (string)Category;}
-            {_occurredDateTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("occurredDateTime"), out var __jsonOccurredDateTime) ? global::System.DateTime.TryParse((string)__jsonOccurredDateTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonOccurredDateTimeValue) ? __jsonOccurredDateTimeValue : OccurredDateTime : OccurredDateTime;}
-            {_propertyCausingError = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("propertyCausingError"), out var __jsonPropertyCausingError) ? (string)__jsonPropertyCausingError : (string)PropertyCausingError;}
-            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("value"), out var __jsonValue) ? (string)__jsonValue : (string)Value;}
+            {_category = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("category"), out var __jsonCategory) ? (string)__jsonCategory : (string)_category;}
+            {_occurredDateTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("occurredDateTime"), out var __jsonOccurredDateTime) ? global::System.DateTime.TryParse((string)__jsonOccurredDateTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonOccurredDateTimeValue) ? __jsonOccurredDateTimeValue : _occurredDateTime : _occurredDateTime;}
+            {_propertyCausingError = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("propertyCausingError"), out var __jsonPropertyCausingError) ? (string)__jsonPropertyCausingError : (string)_propertyCausingError;}
+            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("value"), out var __jsonValue) ? (string)__jsonValue : (string)_value;}
             AfterFromJson(json);
         }
 

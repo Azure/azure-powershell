@@ -19,7 +19,7 @@ New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-S
  [-ManagedRgStorageAccountName <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-ManagedResourceGroupName <String>] [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>]
  [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateWithJsonTemplatePath
@@ -28,7 +28,7 @@ New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-S
  -Environment <SapEnvironmentType> -Location <String> -SapProduct <SapProductType>
  [-IdentityType <ManagedServiceIdentityType>] [-ManagedResourceGroupName <String>]
  [-ManagedResourcesNetworkAccessType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- -Configuration <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -Configuration <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -310,21 +310,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

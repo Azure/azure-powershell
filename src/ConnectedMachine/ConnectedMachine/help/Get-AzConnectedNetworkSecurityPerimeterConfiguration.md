@@ -15,7 +15,7 @@ Gets the network security perimeter configuration for a private link scope.
 ### List (Default)
 ```
 Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName <String> -ScopeName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName <String>
 ```
 Get-AzConnectedNetworkSecurityPerimeterConfiguration -ResourceGroupName <String> -ScopeName <String>
  -PerimeterName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,6 +93,21 @@ Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

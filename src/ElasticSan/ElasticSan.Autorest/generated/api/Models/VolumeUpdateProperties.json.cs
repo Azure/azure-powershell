@@ -84,6 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return container;
             }
+            AddIf( null != this._managedBy ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode) this._managedBy.ToJson(null,serializationMode) : null, "managedBy" ,container.Add );
             AddIf( null != this._sizeGiB ? (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber((long)this._sizeGiB) : null, "sizeGiB" ,container.Add );
             AfterToJson(ref container);
             return container;
@@ -101,6 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
+            {_managedBy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("managedBy"), out var __jsonManagedBy) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ManagedByInfo.FromJson(__jsonManagedBy) : _managedBy;}
             {_sizeGiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("sizeGiB"), out var __jsonSizeGiB) ? (long?)__jsonSizeGiB : _sizeGiB;}
             AfterFromJson(json);
         }

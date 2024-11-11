@@ -17,7 +17,7 @@ Get the SAP Disk Configuration Layout prod/non-prod SAP System.
 Invoke-AzWorkloadsSapDiskConfiguration -Location <String> [-SubscriptionId <String>] -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DbVMSku <String> -DeploymentType <SapDeploymentType>
  -Environment <SapEnvironmentType> -SapProduct <SapProductType> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SapViaIdentityExpanded
@@ -25,7 +25,7 @@ Invoke-AzWorkloadsSapDiskConfiguration -Location <String> [-SubscriptionId <Stri
 Invoke-AzWorkloadsSapDiskConfiguration -InputObject <ISapVirtualInstanceIdentity> -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DbVMSku <String> -DeploymentType <SapDeploymentType>
  -Environment <SapEnvironmentType> -SapProduct <SapProductType> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -187,21 +187,6 @@ Parameter Sets: SapExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

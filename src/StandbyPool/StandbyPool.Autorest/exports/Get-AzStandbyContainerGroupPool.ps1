@@ -37,6 +37,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IStandbyPoolIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [RuntimeView <String>]: The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.
   [StandbyContainerGroupPoolName <String>]: Name of the standby container group pool
   [StandbyVirtualMachineName <String>]: Name of the standby virtual machine
   [StandbyVirtualMachinePoolName <String>]: Name of the standby virtual machine pool

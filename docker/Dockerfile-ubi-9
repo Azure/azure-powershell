@@ -1,4 +1,5 @@
 FROM mcr.microsoft.com/powershell:ubi-9
+RUN dnf update -y && dnf clean all
 
 ARG REPOSITORY=PSGallery
 ARG MODULE=Az
@@ -36,7 +37,9 @@ RUN if [ "${LATEST}" = True ] ; then \
         pwsh -Command Invoke-WebRequest -uri ${BLOB_URL} -OutFile latest.tar.gz && \
         mkdir latest  && \
         tar -zxvf ./latest.tar.gz -C ./latest  && \
-        pwsh -Command ./latest/InstallModule.ps1 -Scope AllUsers ;\
+        pwsh -Command ./latest/InstallModule.ps1 -Scope AllUsers &&\
+        rm -fr latest &&\
+        rm -f latest.tar.gz ;\
     else \
         # install old azure-powershell from PSGallery
         pwsh -Command Set-PSRepository -Name ${REPOSITORY} -InstallationPolicy Trusted && \

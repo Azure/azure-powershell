@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedMachineExtension
 
 ## SYNOPSIS
-The operation to create or update the extension.
+The operation to update the extension.
 
 ## SYNTAX
 
@@ -18,28 +18,28 @@ Update-AzConnectedMachineExtension -MachineName <String> -Name <String> -Resourc
  [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ForceRerun <String>]
  [-ProtectedSetting <Hashtable>] [-Publisher <String>] [-Setting <Hashtable>] [-Tag <Hashtable>]
  [-Type <String>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -ExtensionParameter <IMachineExtensionUpdate> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMachineExpanded
@@ -48,14 +48,14 @@ Update-AzConnectedMachineExtension -Name <String> -MachineInputObject <IConnecte
  [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ForceRerun <String>] [-ProtectedSetting <Hashtable>]
  [-Publisher <String>] [-Setting <Hashtable>] [-Tag <Hashtable>] [-Type <String>]
  [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMachine
 ```
 Update-AzConnectedMachineExtension -Name <String> -MachineInputObject <IConnectedMachineIdentity>
  -ExtensionParameter <IMachineExtensionUpdate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -63,7 +63,7 @@ Update-AzConnectedMachineExtension -Name <String> -MachineInputObject <IConnecte
 Update-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> [-AutoUpgradeMinorVersion]
  [-EnableAutomaticUpgrade] [-ForceRerun <String>] [-ProtectedSetting <Hashtable>] [-Publisher <String>]
  [-Setting <Hashtable>] [-Tag <Hashtable>] [-Type <String>] [-TypeHandlerVersion <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -71,11 +71,11 @@ Update-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> [-Au
 ```
 Update-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity>
  -ExtensionParameter <IMachineExtensionUpdate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to create or update the extension.
+The operation to update the extension.
 
 ## EXAMPLES
 
@@ -349,6 +349,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

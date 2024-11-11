@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUsageAggregatesWithDefaultParameters()
         {
-            TestRunner.RunTestScript("Test-GetUsageAggregatesWithDefaultParameters");
+            TestRunner.RunTestScript("Test-GetAzUsageAggregateWithDefaultParameters");
         }
     }
 }

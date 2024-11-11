@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.3.3
 * Fixed an error that values in row could be null when grouping by the value of TagKey in Invoke-AzCostManagementQuery cmdlet. Fix in 0.3.1 accidentally removed from 0.3.2, added it back. [#25948]
 
 ## Version 0.3.2

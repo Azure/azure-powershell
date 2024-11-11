@@ -20,12 +20,12 @@ Get-AzContainerApp [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<C
 ### Get
 ```
 Get-AzContainerApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzContainerApp -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+Get-AzContainerApp -InputObject <IAppIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
@@ -100,7 +100,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -123,21 +122,6 @@ Parameter Sets: Get
 Aliases: ContainerAppName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Get, GetViaIdentity
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

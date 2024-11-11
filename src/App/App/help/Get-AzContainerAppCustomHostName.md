@@ -14,8 +14,8 @@ Analyzes a custom hostname for a Container App
 
 ```
 Get-AzContainerAppCustomHostName -ContainerAppName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-CustomHostname <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-CustomHostname <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -82,8 +82,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {_serviceStatuses = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("serviceStatuses"), out var __jsonServiceStatuses) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceStatuses.FromJson(__jsonServiceStatuses) : _serviceStatuses;}
             {_cloudMetadata = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("cloudMetadata"), out var __jsonCloudMetadata) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.CloudMetadata.FromJson(__jsonCloudMetadata) : _cloudMetadata;}
             {_agentUpgrade = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("agentUpgrade"), out var __jsonAgentUpgrade) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.AgentUpgrade.FromJson(__jsonAgentUpgrade) : _agentUpgrade;}
-            {_oSProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("osProfile"), out var __jsonOSProfile) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfile.FromJson(__jsonOSProfile) : _oSProfile;}
-            {_licenseProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("licenseProfile"), out var __jsonLicenseProfile) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseProfileMachineInstanceView.FromJson(__jsonLicenseProfile) : _licenseProfile;}
             {_networkProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("networkProfile"), out var __jsonNetworkProfile) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.NetworkProfile.FromJson(__jsonNetworkProfile) : _networkProfile;}
             {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
             {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
@@ -108,6 +106,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {_parentClusterResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("parentClusterResourceId"), out var __jsonParentClusterResourceId) ? (string)__jsonParentClusterResourceId : (string)_parentClusterResourceId;}
             {_mssqlDiscovered = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonString>("mssqlDiscovered"), out var __jsonMssqlDiscovered) ? (string)__jsonMssqlDiscovered : (string)_mssqlDiscovered;}
             {_detectedProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("detectedProperties"), out var __jsonDetectedProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DetectedProperties.FromJson(__jsonDetectedProperties) : _detectedProperty;}
+            {_oSProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("osProfile"), out var __jsonOSProfile) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfile.FromJson(__jsonOSProfile) : _oSProfile;}
+            {_licenseProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("licenseProfile"), out var __jsonLicenseProfile) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LicenseProfileMachineInstanceView.FromJson(__jsonLicenseProfile) : _licenseProfile;}
             AfterFromJson(json);
         }
 
@@ -138,8 +138,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             AddIf( null != this._serviceStatuses ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._serviceStatuses.ToJson(null,serializationMode) : null, "serviceStatuses" ,container.Add );
             AddIf( null != this._cloudMetadata ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._cloudMetadata.ToJson(null,serializationMode) : null, "cloudMetadata" ,container.Add );
             AddIf( null != this._agentUpgrade ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._agentUpgrade.ToJson(null,serializationMode) : null, "agentUpgrade" ,container.Add );
-            AddIf( null != this._oSProfile ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._oSProfile.ToJson(null,serializationMode) : null, "osProfile" ,container.Add );
-            AddIf( null != this._licenseProfile ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._licenseProfile.ToJson(null,serializationMode) : null, "licenseProfile" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
             {
                 AddIf( null != this._networkProfile ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._networkProfile.ToJson(null,serializationMode) : null, "networkProfile" ,container.Add );
@@ -234,6 +232,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 AddIf( null != this._detectedProperty ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._detectedProperty.ToJson(null,serializationMode) : null, "detectedProperties" ,container.Add );
             }
+            AddIf( null != this._oSProfile ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._oSProfile.ToJson(null,serializationMode) : null, "osProfile" ,container.Add );
+            AddIf( null != this._licenseProfile ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._licenseProfile.ToJson(null,serializationMode) : null, "licenseProfile" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

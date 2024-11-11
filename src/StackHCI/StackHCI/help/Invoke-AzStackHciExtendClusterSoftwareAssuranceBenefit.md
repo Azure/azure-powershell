@@ -16,14 +16,14 @@ Extends Software Assurance Benefit to a cluster
 ```
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-SoftwareAssuranceIntent <SoftwareAssuranceIntent>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Extend
 ```
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -SoftwareAssuranceChangeRequest <ISoftwareAssuranceChangeRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -31,14 +31,14 @@ Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName <String> -Re
 ```
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -InputObject <IStackHciIdentity>
  [-SoftwareAssuranceIntent <SoftwareAssuranceIntent>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExtendViaIdentity
 ```
 Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -InputObject <IStackHciIdentity>
  -SoftwareAssuranceChangeRequest <ISoftwareAssuranceChangeRequest> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,6 +131,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

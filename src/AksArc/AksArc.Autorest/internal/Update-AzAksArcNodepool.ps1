@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update the agent pool in the provisioned cluster
+update the agent pool in the provisioned cluster
 .Description
-Update the agent pool in the provisioned cluster
+update the agent pool in the provisioned cluster
 .Example
 Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -Count 3
 .Example

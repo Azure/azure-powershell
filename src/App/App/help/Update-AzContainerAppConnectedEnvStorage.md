@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerAppConnectedEnvStorage
 
 ## SYNOPSIS
-Create storage for a connectedEnvironment.
+Update storage for a connectedEnvironment.
 
 ## SYNTAX
 
@@ -24,7 +24,8 @@ Update-AzContainerAppConnectedEnvStorage -ConnectedEnvironmentName <String> -Nam
 ```
 Update-AzContainerAppConnectedEnvStorage -Name <String> -ConnectedEnvironmentInputObject <IAppIdentity>
  [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>] [-AzureFileAccountName <String>]
- [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -35,7 +36,7 @@ Update-AzContainerAppConnectedEnvStorage -InputObject <IAppIdentity> [-AzureFile
 ```
 
 ## DESCRIPTION
-Create storage for a connectedEnvironment.
+Update storage for a connectedEnvironment.
 
 ## EXAMPLES
 
@@ -150,7 +151,6 @@ Accept wildcard characters: False
 
 ### -ConnectedEnvironmentInputObject
 Identity Parameter
-To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -197,7 +197,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity

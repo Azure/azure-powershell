@@ -13,7 +13,8 @@ Create an in-memory object for SecretVolumeItem.
 ## SYNTAX
 
 ```
-New-AzContainerAppSecretVolumeItemObject [-Path <String>] [-SecretRef <String>] [<CommonParameters>]
+New-AzContainerAppSecretVolumeItemObject [-Path <String>] [-SecretRef <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

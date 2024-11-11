@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -208,6 +209,41 @@ namespace Microsoft.Azure.Commands.Network
         public string StorageId { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Optional field to filter network traffic logs.",
+            ParameterSetName = SetByResource)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Optional field to filter network traffic logs.",
+            ParameterSetName = SetByResourceWithTA)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Optional field to filter network traffic logs.",
+            ParameterSetName = SetByName)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Optional field to filter network traffic logs.",
+            ParameterSetName = SetByNameWithTA)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Optional field to filter network traffic logs.",
+            ParameterSetName = SetByLocation)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Optional field to filter network traffic logs.",
+            ParameterSetName = SetByLocationWithTA)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Optional field to filter network traffic logs.",
+            ParameterSetName = SetByResourceId)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Optional field to filter network traffic logs.",
+            ParameterSetName = SetByResourceIdWithTA)]
+        [ValidateNotNullOrEmpty]
+        public string EnabledFilteringCriteria { get; set; }
+
+        [Parameter(
             Mandatory = true,
             HelpMessage = "Flag to enable/disable flow logging.",
             ParameterSetName = SetByResource)]
@@ -347,6 +383,45 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("JSON")]
         public string FormatType { get; set; }
+
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
+          ParameterSetName = SetByResource)]
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
+          ParameterSetName = SetByResourceWithTA)]
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
+          ParameterSetName = SetByName)]
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
+          ParameterSetName = SetByNameWithTA)]
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
+          ParameterSetName = SetByLocation)]
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
+          ParameterSetName = SetByLocationWithTA)]
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
+          ParameterSetName = SetByResourceId)]
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
+          ParameterSetName = SetByResourceIdWithTA)]
+        [Parameter(
+          Mandatory = false,
+          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
+          ParameterSetName = SetByInputObject)]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentityId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -555,6 +630,7 @@ namespace Microsoft.Azure.Commands.Network
             this.TargetResourceId = this.InputObject.TargetResourceId;
             this.StorageId = this.InputObject.StorageId;
             this.Enabled = this.InputObject.Enabled ?? true;
+            this.EnabledFilteringCriteria = this.InputObject.EnabledFilteringCriteria ?? "";
             if (this.InputObject.FlowAnalyticsConfiguration?.NetworkWatcherFlowAnalyticsConfiguration != null)
             {
                 this.EnableTrafficAnalytics = this.InputObject.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled == true;
@@ -577,8 +653,8 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSFlowLogResource CreateFlowLog()
         {
-            this.ValidateFlowLogParameters(this.TargetResourceId, this.StorageId, this.FormatVersion, this.FormatType, this.EnableTrafficAnalytics == true,
-                this.TrafficAnalyticsWorkspaceId, this.TrafficAnalyticsInterval, this.RetentionPolicyDays);
+            this.ValidateFlowLogParameters(this.TargetResourceId, this.StorageId, this.EnabledFilteringCriteria, this.FormatVersion, this.FormatType, this.EnableTrafficAnalytics == true,
+                this.TrafficAnalyticsWorkspaceId, this.TrafficAnalyticsInterval, this.RetentionPolicyDays, this.UserAssignedIdentityId);
 
             MNM.FlowLog flowLogParameters = GetFlowLogParametersFromRequest();
 
@@ -596,6 +672,7 @@ namespace Microsoft.Azure.Commands.Network
                 TargetResourceId = this.TargetResourceId,
                 StorageId = this.StorageId,
                 Enabled = this.Enabled,
+                EnabledFilteringCriteria = this.EnabledFilteringCriteria ?? "",
                 Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
             };
 
@@ -606,6 +683,28 @@ namespace Microsoft.Azure.Commands.Network
                     Enabled = this.EnableRetention,
                     Days = this.RetentionPolicyDays
                 };
+            }
+
+            if (this.UserAssignedIdentityId != null)
+            {
+                if (string.Equals(this.UserAssignedIdentityId, "none", StringComparison.OrdinalIgnoreCase))
+                {
+                    flowLogParameters.Identity = new ManagedServiceIdentity
+                    {
+                        Type = MNM.ResourceIdentityType.None,
+                    };
+                }
+                else
+                {
+                    flowLogParameters.Identity = new ManagedServiceIdentity
+                    {
+                        Type = MNM.ResourceIdentityType.UserAssigned,
+                        UserAssignedIdentities = new Dictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue>
+                    {
+                        { this.UserAssignedIdentityId, new ManagedServiceIdentityUserAssignedIdentitiesValue() }
+                    }
+                    };
+                }
             }
 
             if (!string.IsNullOrWhiteSpace(this.FormatType) || this.FormatVersion != null)

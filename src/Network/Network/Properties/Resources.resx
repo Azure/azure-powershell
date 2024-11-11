@@ -575,6 +575,9 @@
   <data name="InvalidStatusCodeRangesFormat" xml:space="preserve">
     <value>Invalid format of status code ranges in HTTPConfiguration. Example of valid values: '100', '200-205', '3xx'. Codes should be between 100 and 600.</value>
   </data>
+   <data name="InvalidUserAssignedManagedIdentity" xml:space="preserve">
+    <value>UserAssigned ManagedIdentity specified in flow log is not a valid ID ManagedIdentity.</value>
+  </data>
   <data name="ConnectionMonitorEndpointMustHaveName" xml:space="preserve">
     <value>Connection monitor endpoint must have name.</value>
   </data>
@@ -676,6 +679,9 @@
   </data>
   <data name="InvalidFlowLogFormatVersion" xml:space="preserve">
     <value>Invalid format version. Supported values are 0, 1 and 2.</value>
+  </data>
+  <data name="FlowLogFilteringCriteriaExceedsLimit" xml:space="preserve">
+    <value>Filtering string can be maximum of 1000 characters in length.</value>
   </data>
   <data name="InvalidFlowLogFormatType" xml:space="preserve">
     <value>Invalid format type. Supported value is 'JSON'.</value>
@@ -818,5 +824,14 @@
   </data>
   <data name="BastionTunnelingAndSessionRecordingNotAllowed" xml:space="preserve">
     <value>Tunneling and session recording cannot be enabled together</value>
+  </data>
+  <data name="BastionShareableLinkConfirmRemove" xml:space="preserve">
+    <value>Are you sure you want to remove Bastion shareable link(s)?</value>
+  </data>
+  <data name="BastionShareableLinkRemoving" xml:space="preserve">
+    <value>Removing Bastion shareable link(s)</value>
+  </data>
+  <data name="BastionShareableLinkNotEnabled" xml:space="preserve">
+    <value>Shareable link feature is not enabled</value>
   </data>
 </root>

@@ -17,7 +17,8 @@ New-AzContainerAppProbeObject [-FailureThreshold <Int32>] [-HttpGetHost <String>
  [-HttpGetHttpHeader <IContainerAppProbeHttpGetHttpHeadersItem[]>] [-HttpGetPath <String>]
  [-HttpGetPort <Int32>] [-HttpGetScheme <String>] [-InitialDelaySecond <Int32>] [-PeriodSecond <Int32>]
  [-SuccessThreshold <Int32>] [-TcpSocketHost <String>] [-TcpSocketPort <Int32>]
- [-TerminationGracePeriodSecond <Int64>] [-TimeoutSecond <Int32>] [-Type <String>] [<CommonParameters>]
+ [-TerminationGracePeriodSecond <Int64>] [-TimeoutSecond <Int32>] [-Type <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +80,6 @@ Accept wildcard characters: False
 ### -HttpGetHttpHeader
 Custom headers to set in the request.
 HTTP allows repeated headers.
-To construct, see NOTES section for HTTPGETHTTPHEADER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeHttpGetHttpHeadersItem[]

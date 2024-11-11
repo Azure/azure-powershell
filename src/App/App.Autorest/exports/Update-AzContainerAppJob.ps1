@@ -171,7 +171,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -180,7 +179,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRegistryCredentials[]]
     # Collection of private container registry credentials used by a Container apps job
-    # To construct, see NOTES section for CONFIGURATIONREGISTRY properties and create a hash table.
     ${ConfigurationRegistry},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -203,7 +201,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]]
     # Collection of secrets used by a Container Apps Job
-    # To construct, see NOTES section for CONFIGURATIONSECRET properties and create a hash table.
     ${ConfigurationSecret},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -310,7 +307,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobScaleRule[]]
     # Scaling rules.
-    # To construct, see NOTES section for SCALERULE properties and create a hash table.
     ${ScaleRule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -348,7 +344,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[]]
     # List of container definitions for the Container App.
-    # To construct, see NOTES section for TEMPLATECONTAINER properties and create a hash table.
     ${TemplateContainer},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -357,7 +352,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer[]]
     # List of specialized containers that run before app containers.
-    # To construct, see NOTES section for TEMPLATEINITCONTAINER properties and create a hash table.
     ${TemplateInitContainer},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -366,7 +360,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[]]
     # List of volume definitions for the Container App.
-    # To construct, see NOTES section for TEMPLATEVOLUME properties and create a hash table.
     ${TemplateVolume},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
@@ -474,7 +467,13 @@ begin {
             UpdateViaJsonString = 'Az.App.private\Update-AzContainerAppJob_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

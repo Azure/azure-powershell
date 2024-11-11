@@ -19,6 +19,18 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Added breaking change messages:
+  * `New-AzContainerApp`
+  * `New-AzContainerAppJob`
+  * `Update-AzContainerApp`
+  * `Update-AzContainerAppJob`
+* Fixed an issue that caused Get/New-Az* cmdlets with returned objects to incorrectly expose the parameter [-PassThru].
+  * `Get-AzContainerApp`
+  * `Get-AzContainerAppAuthToken`
+  * `Get-AzContainerAppDiagnosticRoot`
+  * `New-AzContainerAppManagedCert`
+
 ## Version 1.0.1
 * Fixed secrets exposure in example documentation.
 

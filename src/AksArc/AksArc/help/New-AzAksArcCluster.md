@@ -16,7 +16,7 @@ Create the provisioned cluster instance
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-MinCount <Int32>] [-MaxCount <Int32>] [-MaxPod <Int32>] -CustomLocationName <String> -VnetId <String>
- -ControlPlaneIP <String> [-Location <String>] [-AdminGroupObjectID <String[]>] [-SshAuthIp <String>]
+ [-ControlPlaneIP <String>] [-Location <String>] [-AdminGroupObjectID <String[]>] [-SshAuthIp <String>]
  [-ControlPlaneCount <Int32>] [-ControlPlaneVMSize <String>] [-KubernetesVersion <String>]
  [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-LoadBalancerCount <Int32>] [-PodCidr <String>]
  [-NfCsiDriverEnabled] [-SmbCsiDriverEnabled] [-SshKeyValue <String>] [-EnableAutoScaling]
@@ -29,7 +29,7 @@ New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-Subscrip
  [-AutoScalerProfileScaleDownUnneededTime <String>] [-AutoScalerProfileScaleDownUnreadyTime <String>]
  [-AutoScalerProfileScaleDownUtilizationThreshold <String>] [-AutoScalerProfileScanInterval <String>]
  [-AutoScalerProfileSkipNodesWithLocalStorage <String>] [-AutoScalerProfileSkipNodesWithSystemPod <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -37,28 +37,28 @@ New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-Subscrip
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -MinCount <Int32> -MaxCount <Int32> -MaxPod <Int32> -CustomLocationName <String> -VnetId <String>
- -ControlPlaneIP <String> [-Location <String>] [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit]
+ [-ControlPlaneIP <String>] [-Location <String>] [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit]
  [-EnableAzureRbac] [-EnableAutoScaling] [-NodeLabel <Hashtable>] [-NodeTaint <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -CustomLocationName <String> -VnetId <String> -ControlPlaneIP <String> [-Location <String>]
+ -CustomLocationName <String> -VnetId <String> [-ControlPlaneIP <String>] [-Location <String>]
  [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-NodeLabel <Hashtable>]
  [-NodeTaint <String[]>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzAksArcCluster -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -CustomLocationName <String> -VnetId <String> -ControlPlaneIP <String> [-Location <String>]
+ -CustomLocationName <String> -VnetId <String> [-ControlPlaneIP <String>] [-Location <String>]
  [-AdminGroupObjectID <String[]>] [-EnableAzureHybridBenefit] [-EnableAzureRbac] [-NodeLabel <Hashtable>]
  [-NodeTaint <String[]>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -479,7 +479,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -815,6 +815,21 @@ A CIDR notation IP Address range from which to assign pod IPs.
 Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

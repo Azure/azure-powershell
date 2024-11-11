@@ -109,6 +109,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsStatusTypeConverter.ConvertFrom);
+            }
             if (content.Contains("AssessmentMode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).AssessmentMode = (string) content.GetValueForProperty("AssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).AssessmentMode, global::System.Convert.ToString);
@@ -116,6 +120,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("PatchMode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).PatchMode = (string) content.GetValueForProperty("PatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).PatchMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnableHotpatching"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).EnableHotpatching = (bool?) content.GetValueForProperty("EnableHotpatching",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).EnableHotpatching, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("StatusError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).StatusError = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail) content.GetValueForProperty("StatusError",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).StatusError, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StatusHotpatchEnablementStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).StatusHotpatchEnablementStatus = (string) content.GetValueForProperty("StatusHotpatchEnablementStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).StatusHotpatchEnablementStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).AdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -134,6 +170,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsStatusTypeConverter.ConvertFrom);
+            }
             if (content.Contains("AssessmentMode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).AssessmentMode = (string) content.GetValueForProperty("AssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).AssessmentMode, global::System.Convert.ToString);
@@ -141,6 +181,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("PatchMode"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).PatchMode = (string) content.GetValueForProperty("PatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).PatchMode, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnableHotpatching"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).EnableHotpatching = (bool?) content.GetValueForProperty("EnableHotpatching",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).EnableHotpatching, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("StatusError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).StatusError = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail) content.GetValueForProperty("StatusError",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).StatusError, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StatusHotpatchEnablementStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).StatusHotpatchEnablementStatus = (string) content.GetValueForProperty("StatusHotpatchEnablementStatus",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).StatusHotpatchEnablementStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("Code"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Code = (string) content.GetValueForProperty("Code",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Code, global::System.Convert.ToString);
+            }
+            if (content.Contains("Message"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Message, global::System.Convert.ToString);
+            }
+            if (content.Contains("Target"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Target = (string) content.GetValueForProperty("Target",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Target, global::System.Convert.ToString);
+            }
+            if (content.Contains("Detail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Detail = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>) content.GetValueForProperty("Detail",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).Detail, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetailTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AdditionalInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).AdditionalInfo = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>) content.GetValueForProperty("AdditionalInfo",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettingsInternal)this).AdditionalInfo, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorAdditionalInfoTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

@@ -138,6 +138,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public ShareFileClient DestShareFileClient { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Context", "13.0.0", "8.0.0", ChangeDescription = "The parameter Context will be required when the input source blob is based on OAuth credential.")]
         [Alias("SrcContext")]
         [Parameter(HelpMessage = "Source Azure Storage Context Object",
             Mandatory = false,

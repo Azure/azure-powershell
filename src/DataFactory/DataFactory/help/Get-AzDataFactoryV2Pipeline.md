@@ -39,11 +39,11 @@ If you do not specify a name, this cmdlet gets information about all the pipelin
 
 ### Example 1: Get information about all pipelines
 ```powershell
-Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF" 
+Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
 ```
 
 ```output
-    PipelineName      : DPWikisample
+PipelineName      : DPWikisample
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF
     Activities        : {MyWebActivity}
@@ -66,7 +66,7 @@ Get-AzDataFactoryV2Pipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataF
 ```
 
 ```output
-    PipelineName      : DPWikisample
+PipelineName      : DPWikisample
     ResourceGroupName : ADF
     DataFactoryName   : WikiADF
     Activities        : {MyCopyActivity_0_0, MyCopyActivity_1_0}
@@ -84,7 +84,7 @@ For more information, type Get-Help Format-List.
 ```
 
 ```output
-    Source                          : Microsoft.Azure.Management.DataFactory.Models.BlobSource
+Source                          : Microsoft.Azure.Management.DataFactory.Models.BlobSource
     Sink                            : Microsoft.Azure.Management.DataFactory.Models.BlobSink
     Translator                      :
     EnableStaging                   :
@@ -127,7 +127,7 @@ This command gets information for the pipeline named DPWikisample in the data fa
 ```
 
 ```output
-    ReferenceName : dsIn
+ReferenceName : dsIn
     Parameters    :
 ```
 
@@ -230,7 +230,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

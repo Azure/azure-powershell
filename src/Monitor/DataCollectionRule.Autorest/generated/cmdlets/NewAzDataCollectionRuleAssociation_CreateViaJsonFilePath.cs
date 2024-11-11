@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create an association.</summary>
+    /// <summary>create an association.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/{resourceUri}/providers/Microsoft.Insights/dataCollectionRuleAssociations/{associationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDataCollectionRuleAssociation_CreateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleAssociationProxyOnlyResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Description(@"Create an association.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Description(@"create an association.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.HttpPath(Path = "/{resourceUri}/providers/Microsoft.Insights/dataCollectionRuleAssociations/{associationName}", ApiVersion = "2022-06-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.NotSuggestDefaultParameterSet]

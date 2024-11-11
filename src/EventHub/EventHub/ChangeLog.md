@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Migrated EventHub SDK to generated SDK
+  - Removed "Microsoft.Azure.Management.EventHub" Version "5.0.0" PackageReference
+  - Added EventHub.Management.Sdk ProjectReference
 
 ## Version 5.0.0
 * Moved cmdlets to V4

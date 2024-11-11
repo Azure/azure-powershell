@@ -538,6 +538,87 @@ function Test-RecordSetMXNonEmpty
 .SYNOPSIS
 Full Record Set CRUD cycle
 #>
+function Test-RecordSetNAPTR
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
+
+	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType NAPTR
+
+	# add two records, remove one, remove another no-op
+	$record = $record | Add-AzDnsRecordConfig -Order 10 -Preference 20 -Flags "U" -Services "SIP+D2U" -Regexp "" -Replacement "_sip._udp.example.com."
+	$record = $record | Add-AzDnsRecordConfig -Order 20 -Preference 30 -Flags "A" -Services "EAU+SIP" -Regexp "!^.*$!mailto:info@example.com!" -Replacement "."
+	$record = $record | Remove-AzDnsRecordConfig -Order 10 -Preference 20 -Flags "U" -Services "SIP+D2U" -Regexp "" -Replacement "_sip._udp.example.com."
+	$record = $record | Remove-AzDnsRecordConfig -Order 30 -Preference 30 -Flags "A" -Services "EAU+SIP" -Regexp "!^.*$!mailto:info@example.com!" -Replacement "."
+
+	$record | Set-AzDnsRecordSet
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NAPTR
+
+	Assert-AreEqual 1 $getResult.Records.Count
+	Assert-AreEqual 20 $getResult.Records[0].Order
+	Assert-AreEqual 30 $getResult.Records[0].Preference
+	Assert-AreEqual "A" $getResult.Records[0].Flags
+	Assert-AreEqual "EAU+SIP" $getResult.Records[0].Services
+	Assert-AreEqual "!^.*$!mailto:info@example.com!" $getResult.Records[0].Regexp
+	Assert-AreEqual "." $getResult.Records[0].Replacement
+
+	$listResult = Get-AzDnsRecordSet -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NAPTR
+
+	Assert-AreEqual 1 $listResult[0].Records.Count
+	Assert-AreEqual 20 $getResult.Records[0].Order
+	Assert-AreEqual 30 $getResult.Records[0].Preference
+	Assert-AreEqual "A" $getResult.Records[0].Flags
+	Assert-AreEqual "EAU+SIP" $getResult.Records[0].Services
+	Assert-AreEqual "!^.*$!mailto:info@example.com!" $getResult.Records[0].Regexp
+	Assert-AreEqual "." $getResult.Records[0].Replacement
+
+	$removed = $listResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Full Record Set CRUD cycle
+#>
+function Test-RecordSetNAPTRNonEmpty
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup
+	$zone = $resourceGroup | New-AzDnsZone -Name $zoneName
+
+	$records = @();
+	$records += New-AzDnsRecordConfig -Order 10 -Preference 20 -Flags "U" -Services "SIP+D2U" -Regexp "" -Replacement "_sip._udp.example.com."
+	$record = $zone | New-AzDnsRecordSet -Name $recordName -Ttl 100 -RecordType NAPTR -DnsRecords $records
+
+	$getResult = Get-AzDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType NAPTR
+
+	Assert-AreEqual 1 $getResult.Records.Count
+	Assert-AreEqual 10 $getResult.Records[0].Order
+	Assert-AreEqual 20 $getResult.Records[0].Preference
+	Assert-AreEqual "U" $getResult.Records[0].Flags
+	Assert-AreEqual "SIP+D2U" $getResult.Records[0].Services
+	Assert-AreEqual "" $getResult.Records[0].Regexp
+	Assert-AreEqual "_sip._udp.example.com." $getResult.Records[0].Replacement
+
+	$removed = $getResult[0] | Remove-AzDnsRecordSet -Confirm:$false -PassThru
+
+	Assert-True { $removed }
+
+	Remove-AzDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Full Record Set CRUD cycle
+#>
 function Test-RecordSetNS
 {
 	$zoneName = Get-RandomZoneName

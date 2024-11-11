@@ -137,10 +137,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LocationData = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILocationData) content.GetValueForProperty("LocationData",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LocationData, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LocationDataTypeConverter.ConvertFrom);
             }
-            if (content.Contains("OSProfile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile) content.GetValueForProperty("OSProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileTypeConverter.ConvertFrom);
-            }
             if (content.Contains("CloudMetadata"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).CloudMetadata = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadata) content.GetValueForProperty("CloudMetadata",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).CloudMetadata, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.CloudMetadataTypeConverter.ConvertFrom);
@@ -148,6 +144,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("AgentUpgrade"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).AgentUpgrade = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgrade) content.GetValueForProperty("AgentUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).AgentUpgrade, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.AgentUpgradeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("OSProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile) content.GetValueForProperty("OSProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileTypeConverter.ConvertFrom);
             }
             if (content.Contains("IdentityType"))
             {
@@ -189,26 +189,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LocationDataCountryOrRegion = (string) content.GetValueForProperty("LocationDataCountryOrRegion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LocationDataCountryOrRegion, global::System.Convert.ToString);
             }
-            if (content.Contains("OSProfileWindowsConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfileWindowsConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfiguration) content.GetValueForProperty("OSProfileWindowsConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfileWindowsConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileWindowsConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("OSProfileLinuxConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfileLinuxConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfiguration) content.GetValueForProperty("OSProfileLinuxConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfileLinuxConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileLinuxConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("OSProfileComputerName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfileComputerName = (string) content.GetValueForProperty("OSProfileComputerName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfileComputerName, global::System.Convert.ToString);
-            }
-            if (content.Contains("WindowConfigurationPatchSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).WindowConfigurationPatchSetting = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings) content.GetValueForProperty("WindowConfigurationPatchSetting",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).WindowConfigurationPatchSetting, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("LinuxConfigurationPatchSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LinuxConfigurationPatchSetting = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings) content.GetValueForProperty("LinuxConfigurationPatchSetting",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LinuxConfigurationPatchSetting, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsTypeConverter.ConvertFrom);
-            }
             if (content.Contains("AgentUpgradeEnableAutomaticUpgrade"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).AgentUpgradeEnableAutomaticUpgrade = (bool?) content.GetValueForProperty("AgentUpgradeEnableAutomaticUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).AgentUpgradeEnableAutomaticUpgrade, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -228,22 +208,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("AgentUpgradeLastAttemptMessage"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).AgentUpgradeLastAttemptMessage = (string) content.GetValueForProperty("AgentUpgradeLastAttemptMessage",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).AgentUpgradeLastAttemptMessage, global::System.Convert.ToString);
-            }
-            if (content.Contains("WindowsConfigurationPatchSettingsAssessmentMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).WindowsConfigurationPatchSettingsAssessmentMode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsAssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).WindowsConfigurationPatchSettingsAssessmentMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("WindowsConfigurationPatchSettingsPatchMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).WindowsConfigurationPatchSettingsPatchMode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsPatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).WindowsConfigurationPatchSettingsPatchMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinuxConfigurationPatchSettingsAssessmentMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LinuxConfigurationPatchSettingsAssessmentMode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsAssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LinuxConfigurationPatchSettingsAssessmentMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinuxConfigurationPatchSettingsPatchMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LinuxConfigurationPatchSettingsPatchMode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsPatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LinuxConfigurationPatchSettingsPatchMode, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -290,10 +254,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LocationData = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILocationData) content.GetValueForProperty("LocationData",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LocationData, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LocationDataTypeConverter.ConvertFrom);
             }
-            if (content.Contains("OSProfile"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile) content.GetValueForProperty("OSProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileTypeConverter.ConvertFrom);
-            }
             if (content.Contains("CloudMetadata"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).CloudMetadata = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadata) content.GetValueForProperty("CloudMetadata",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).CloudMetadata, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.CloudMetadataTypeConverter.ConvertFrom);
@@ -301,6 +261,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("AgentUpgrade"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).AgentUpgrade = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgrade) content.GetValueForProperty("AgentUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).AgentUpgrade, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.AgentUpgradeTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("OSProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile) content.GetValueForProperty("OSProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileTypeConverter.ConvertFrom);
             }
             if (content.Contains("IdentityType"))
             {
@@ -342,26 +306,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LocationDataCountryOrRegion = (string) content.GetValueForProperty("LocationDataCountryOrRegion",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LocationDataCountryOrRegion, global::System.Convert.ToString);
             }
-            if (content.Contains("OSProfileWindowsConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfileWindowsConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfiguration) content.GetValueForProperty("OSProfileWindowsConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfileWindowsConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileWindowsConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("OSProfileLinuxConfiguration"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfileLinuxConfiguration = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfiguration) content.GetValueForProperty("OSProfileLinuxConfiguration",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfileLinuxConfiguration, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.OSProfileLinuxConfigurationTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("OSProfileComputerName"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfileComputerName = (string) content.GetValueForProperty("OSProfileComputerName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).OSProfileComputerName, global::System.Convert.ToString);
-            }
-            if (content.Contains("WindowConfigurationPatchSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).WindowConfigurationPatchSetting = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings) content.GetValueForProperty("WindowConfigurationPatchSetting",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).WindowConfigurationPatchSetting, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("LinuxConfigurationPatchSetting"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LinuxConfigurationPatchSetting = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings) content.GetValueForProperty("LinuxConfigurationPatchSetting",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LinuxConfigurationPatchSetting, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.PatchSettingsTypeConverter.ConvertFrom);
-            }
             if (content.Contains("AgentUpgradeEnableAutomaticUpgrade"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).AgentUpgradeEnableAutomaticUpgrade = (bool?) content.GetValueForProperty("AgentUpgradeEnableAutomaticUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).AgentUpgradeEnableAutomaticUpgrade, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -381,22 +325,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("AgentUpgradeLastAttemptMessage"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).AgentUpgradeLastAttemptMessage = (string) content.GetValueForProperty("AgentUpgradeLastAttemptMessage",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).AgentUpgradeLastAttemptMessage, global::System.Convert.ToString);
-            }
-            if (content.Contains("WindowsConfigurationPatchSettingsAssessmentMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).WindowsConfigurationPatchSettingsAssessmentMode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsAssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).WindowsConfigurationPatchSettingsAssessmentMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("WindowsConfigurationPatchSettingsPatchMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).WindowsConfigurationPatchSettingsPatchMode = (string) content.GetValueForProperty("WindowsConfigurationPatchSettingsPatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).WindowsConfigurationPatchSettingsPatchMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinuxConfigurationPatchSettingsAssessmentMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LinuxConfigurationPatchSettingsAssessmentMode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsAssessmentMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LinuxConfigurationPatchSettingsAssessmentMode, global::System.Convert.ToString);
-            }
-            if (content.Contains("LinuxConfigurationPatchSettingsPatchMode"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LinuxConfigurationPatchSettingsPatchMode = (string) content.GetValueForProperty("LinuxConfigurationPatchSettingsPatchMode",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdateInternal)this).LinuxConfigurationPatchSettingsPatchMode, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

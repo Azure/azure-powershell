@@ -18,7 +18,7 @@ Get-AzMetricsBatch -Endpoint <String> [-SubscriptionId <String[]>]
  -Name <System.Collections.Generic.List`1[System.String]> -Namespace <String> [-Aggregation <String>]
  [-EndTime <String>] [-Filter <String>] [-Interval <String>] [-Orderby <String>] [-Rollupby <String>]
  [-StartTime <String>] [-Top <Int32>] [-ResourceId <String[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BatchViaIdentityExpanded
@@ -27,7 +27,7 @@ Get-AzMetricsBatch -Endpoint <String> -InputObject <IMetricdataIdentity>
  -Name <System.Collections.Generic.List`1[System.String]> -Namespace <String> [-Aggregation <String>]
  [-EndTime <String>] [-Filter <String>] [-Interval <String>] [-Orderby <String>] [-Rollupby <String>]
  [-StartTime <String>] [-Top <Int32>] [-ResourceId <String[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -607,7 +607,7 @@ Accept wildcard characters: False
 ```
 
 ### -Endpoint
-The regional endpoint to use, for example `https://eastus.metrics.monitor.azure.com`.
+The regional endpoint to use, for example https://eastus.metrics.monitor.azure.com.
 The region should match the region of the requested resources.
 For global resources, the region should be 'global'.
 
@@ -909,7 +909,7 @@ Accept wildcard characters: False
 ```
 
 ### -Endpoint
-The regional endpoint to use, for example `https://eastus.metrics.monitor.azure.com`.
+The regional endpoint to use, for example https://eastus.metrics.monitor.azure.com.
 The region should match the region of the requested resources.
 For global resources, the region should be 'global'.
 
@@ -1040,6 +1040,21 @@ Only one order can be specified.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

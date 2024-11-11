@@ -60,6 +60,13 @@ Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Defa
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicy'
 Update-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
 .Example
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -ResourceSelector $ResourceSelector
+.Example
+$Selector = @{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")}
+$Override = @(@{Kind = "policyEffect"; Value = 'Disabled'; Selector = @($Selector)})
+Update-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -Override $Override
+.Example
 $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
 Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
@@ -107,6 +114,21 @@ INPUTOBJECT <IPolicyAssignment>:
   [ResourceSelector <List<IResourceSelector>>]: The resource selector list to filter policies by resource properties.
     [Name <String>]: The name of the resource selector.
     [Selector <List<ISelector>>]: The list of the selector expressions.
+
+OVERRIDE <IOverride[]>: The policy property value override.
+  [Kind <String>]: The override kind.
+  [Selector <List<ISelector>>]: The list of the selector expressions.
+    [In <List<String>>]: The list of values to filter in.
+    [Kind <String>]: The selector kind.
+    [NotIn <List<String>>]: The list of values to filter out.
+  [Value <String>]: The value to override the policy property.
+
+RESOURCESELECTOR <IResourceSelector[]>: The resource selector list to filter policies by resource properties.
+  [Name <String>]: The name of the resource selector.
+  [Selector <List<ISelector>>]: The list of the selector expressions.
+    [In <List<String>>]: The list of values to filter in.
+    [Kind <String>]: The selector kind.
+    [NotIn <List<String>>]: The list of values to filter out.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyassignment
 #>
@@ -209,6 +231,20 @@ param(
     # The messages that describe why a resource is non-compliant with the policy.
     # To construct, see NOTES section for NONCOMPLIANCEMESSAGE properties and create a hash table.
     ${NonComplianceMessage},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[]]
+    # The policy property value override.
+    ${Override},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]]
+    # The resource selector list to filter policies by resource properties.
+    ${ResourceSelector},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]

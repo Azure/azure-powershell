@@ -16,26 +16,27 @@ This operation updates a policy exemption with the given scope and name.
 ```
 Update-AzPolicyExemption -Name <String> [-Scope <String>] [-ExemptionCategory <String>]
  [-PolicyDefinitionReferenceId <String[]>] [-DisplayName <String>] [-Description <String>]
- [-ExpiresOn <DateTime>] [-ClearExpiration] [-Metadata <String>] [-BackwardCompatible]
- [-AssignmentScopeValidation <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExpiresOn <DateTime>] [-ClearExpiration] [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>]
+ [-AssignmentScopeValidation <String>] [-BackwardCompatible] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Id
 ```
 Update-AzPolicyExemption [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>] -Id <String>
  [-DisplayName <String>] [-Description <String>] [-ExpiresOn <DateTime>] [-ClearExpiration]
- [-Metadata <String>] [-BackwardCompatible] [-AssignmentScopeValidation <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>] [-AssignmentScopeValidation <String>]
+ [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Update-AzPolicyExemption [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>]
  [-DisplayName <String>] [-Description <String>] [-ExpiresOn <DateTime>] [-ClearExpiration]
- [-Metadata <String>] [-BackwardCompatible] [-AssignmentScopeValidation <String>]
- -InputObject <IPolicyExemption> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Metadata <String>] [-ResourceSelector <IResourceSelector[]>] [-AssignmentScopeValidation <String>]
+ [-BackwardCompatible] -InputObject <IPolicyExemption> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +98,16 @@ The second command gets the policy exemption named PolicyExemption07 by using th
 The command stores that object in the $PolicyExemption variable.
 The final command updates the expiration date time for the policy exemption on the default subscription.
 
-### Example 5: [Backcompat] Clear the expiration date time
+### Example 5: Update resource selector
+```powershell
+$ResourceSelector = @{Name = "MyLocationSelector"; Selector = @(@{Kind = "resourceLocation"; NotIn = @("eastus", "eastus2")})}
+Update-AzPolicyExemption -Name 'VirtualMachineExemption' -ResourceSelector $ResourceSelector
+```
+
+The first command creates a resource selector object that will be used to specify the exemption should only apply to resources in locations other than East US or East US 2 and stores it in the $ResourceSelector variable.
+The final command updates the policy exemption named VirtualMachineExemption with the resource selector specified by $ResourceSelector.
+
+### Example 6: [Backcompat] Clear the expiration date time
 ```powershell
 $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
 Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration
@@ -304,6 +314,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceSelector
+The resource selector list to filter policies by resource properties.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

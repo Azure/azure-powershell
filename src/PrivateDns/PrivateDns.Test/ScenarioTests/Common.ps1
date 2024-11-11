@@ -69,6 +69,12 @@ function Get-RandomZoneName
 	return $prefix + ".pstest.test" ;
 }
 
+function Get-RandomPrivatelinkZoneName
+{
+	$prefix = getAssetName;
+	return $prefix + ".privatelink.test" ;
+}
+
 function Get-RandomLinkName
 {
 	$prefix = getAssetName;

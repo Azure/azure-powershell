@@ -6,12 +6,21 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
 {
 
-    /// <summary>Clustering policy - default is OSSCluster. Specified at create time.</summary>
+    /// <summary>
+    /// Clustering policy - default is OSSCluster. This property must be chosen at create time, and cannot be changed without
+    /// deleting the database.
+    /// </summary>
     public partial struct ClusteringPolicy :
         System.IEquatable<ClusteringPolicy>
     {
+        /// <summary>
+        /// Enterprise clustering policy uses only the classic redis protocol, which does not support redis cluster commands.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy EnterpriseCluster = @"EnterpriseCluster";
 
+        /// <summary>
+        /// OSS clustering policy follows the redis cluster specification, and requires all clients to support redis clustering.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy OssCluster = @"OSSCluster";
 
         /// <summary>the value for an instance of the <see cref="ClusteringPolicy" /> Enum.</summary>
