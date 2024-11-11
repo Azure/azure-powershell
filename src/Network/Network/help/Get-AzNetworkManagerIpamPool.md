@@ -12,15 +12,15 @@ Gets IPAM pool(s).
 
 ## SYNTAX
 
-### NoExpand (Default)
+### ByList (Default)
 ```
-Get-AzNetworkManagerIpamPool [-Name <String>] -NetworkManagerName <String> -ResourceGroupName <String>
+Get-AzNetworkManagerIpamPool -NetworkManagerName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### Expand
+### ByName
 ```
-Get-AzNetworkManagerIpamPool -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
+Get-AzNetworkManagerIpamPool [-Name <String>] -NetworkManagerName <String> -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -67,6 +67,7 @@ SystemDataText     : {
 Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/ipamPools
                      /testPool
 ```
+
 Gets specific IPAM pool 'testPool'.
 
 ### Example 2
@@ -139,14 +140,16 @@ SystemDataText     : {
                      }
 Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/cusNM/ipamPools/sm_cus_pool1_0911
 ```
+
 Gets all IPAM pools in network manager 'cusNM'.
+
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -161,23 +164,11 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
-Parameter Sets: NoExpand
+Type: System.String
+Parameter Sets: ByName
 Aliases: ResourceName
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
-
-```yaml
-Type: String
-Parameter Sets: Expand
-Aliases: ResourceName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -188,7 +179,7 @@ Accept wildcard characters: True
 The network manager name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -203,7 +194,7 @@ Accept wildcard characters: True
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -218,7 +209,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -243,6 +234,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzNetworkManagerIpamPool](./New-AzNetworkManagerIpamPool.md)
 
 [Remove-AzNetworkManagerIpamPool](./Remove-AzNetworkManagerIpamPool.md)
