@@ -1,17 +1,17 @@
 {
-  "Get-AzContainerInstanceCachedImage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/858cf1fd-d678-42ee-ae83-7f84b54c67df/providers/Microsoft.ContainerInstance/locations/eastus/cachedImages?api-version=2022-10-01-preview+1": {
+  "Get-AzContainerInstanceCachedImage+[NoContext]+List+$GET+https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/cachedImages?api-version=2024-05-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/858cf1fd-d678-42ee-ae83-7f84b54c67df/providers/Microsoft.ContainerInstance/locations/eastus/cachedImages?api-version=2022-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/da28f5e5-aa45-46fe-90c8-053ca49ab4b5/providers/Microsoft.ContainerInstance/locations/eastus/cachedImages?api-version=2024-05-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "59" ],
-        "x-ms-client-request-id": [ "8c47ed68-73bd-4e81-bb1a-8281984d8935" ],
+        "x-ms-client-request-id": [ "62fdcb26-3adf-4415-81fd-c438499876b3" ],
         "CommandName": [ "Get-AzContainerInstanceCachedImage" ],
         "FullCommandName": [ "Get-AzContainerInstanceCachedImage_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ContainerInstance/1.0.3" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.23", "Az.ContainerInstance/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,14 +22,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "x-ms-request-id": [ "eastus:02da9e66-4b5b-4ea0-b5cf-1dae1bc34b73" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11959" ],
-        "x-ms-correlation-request-id": [ "cd2626b3-34d4-4edc-ab3a-ae5eea631278" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20230218T000408Z:cd2626b3-34d4-4edc-ab3a-ae5eea631278" ],
+        "x-ms-request-id": [ "eastus:9d448e52-6121-4742-815a-7b93b3e7d21f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "1099" ],
+        "x-ms-ratelimit-remaining-subscription-global-reads": [ "16499" ],
+        "x-ms-correlation-request-id": [ "565b5c20-1369-43d7-a388-c554937e238e" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20241031T050109Z:565b5c20-1369-43d7-a388-c554937e238e" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 18 Feb 2023 00:04:08 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 377B07A628024525B3E6995428E8B674 Ref B: MAA201060514031 Ref C: 2024-10-31T05:01:08Z" ],
+        "Date": [ "Thu, 31 Oct 2024 05:01:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "5880" ],

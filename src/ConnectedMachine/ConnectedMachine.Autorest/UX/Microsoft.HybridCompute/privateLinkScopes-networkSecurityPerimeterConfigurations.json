@@ -1,6 +1,6 @@
 {
   "resourceType": "privateLinkScopes/networkSecurityPerimeterConfigurations",
-  "apiVersion": "2024-07-10",
+  "apiVersion": "2024-07-31-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.connectedmachine"
   },
