@@ -21,13 +21,13 @@ Create an in-memory object for ProductFeatureUpdate.
 
 ## EXAMPLES
 
-### Example 1: Create an object to pass into license profile
+### Example 1: Update an object to pass into license profile
 ```powershell
 $productfeature = Update-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
 $productfeature | Should -Not -BeNullOrEmpty
 ```
 
-Create an object to pass into license profile
+Update an object to pass into license profile
 
 ## PARAMETERS
 

@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedMachine
-online version: https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/set-azconnectedlicenseprofilefeature
+online version: https://learn.microsoft.com/powershell/module/Az.ConnectedMachine/new-azconnectedlicenseprofilefeature
 schema: 2.0.0
 ---
 
-# Set-AzConnectedLicenseProfileFeature
+# New-AzConnectedLicenseProfileFeature
 
 ## SYNOPSIS
 Create an in-memory object for ProductFeature.
@@ -13,7 +13,7 @@ Create an in-memory object for ProductFeature.
 ## SYNTAX
 
 ```
-Set-AzConnectedLicenseProfileFeature [-Name <String>] [-SubscriptionStatus <String>] [<CommonParameters>]
+New-AzConnectedLicenseProfileFeature [-Name <String>] [-SubscriptionStatus <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,11 +23,12 @@ Create an in-memory object for ProductFeature.
 
 ### Example 1: Create an object to pass into license profile
 ```powershell
-$productfeature = Set-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
+$productfeature = New-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
 $productfeature | Should -Not -BeNullOrEmpty
 ```
 
 Create an object to pass into license profile
+
 
 ## PARAMETERS
 

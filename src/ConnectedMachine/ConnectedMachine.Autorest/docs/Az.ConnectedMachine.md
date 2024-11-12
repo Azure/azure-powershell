@@ -56,6 +56,9 @@ Create an in-memory object for LicenseDetails.
 ### [New-AzConnectedLicenseProfile](New-AzConnectedLicenseProfile.md)
 The operation to create or update a license profile.
 
+### [New-AzConnectedLicenseProfileFeature](New-AzConnectedLicenseProfileFeature.md)
+Create an in-memory object for ProductFeature.
+
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
 The operation to create or update the extension.
 
@@ -86,9 +89,6 @@ Deletes a Azure Arc PrivateLinkScope.
 
 ### [Set-AzConnectedLicense](Set-AzConnectedLicense.md)
 The operation to create or update a license.
-
-### [Set-AzConnectedLicenseProfileFeature](Set-AzConnectedLicenseProfileFeature.md)
-Create an in-memory object for ProductFeature.
 
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
 The operation to create or update the extension.

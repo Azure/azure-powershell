@@ -406,6 +406,6 @@ directive:
   # Generate complex object for New-AzConnectedLicenseProfile, change prefix to New- will cause CI styling issue
   - model-cmdlet:
     - model-name: ProductFeature
-      cmdlet-name: Set-AzConnectedLicenseProfileFeature
+      cmdlet-name: New-AzConnectedLicenseProfileFeature
 
 ```
