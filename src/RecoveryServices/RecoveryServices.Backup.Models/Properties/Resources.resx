@@ -863,7 +863,7 @@ Please contact Microsoft for further assistance.</value>
     <value>Modifying existing policies to stop data transfer to the vault and retain backups only as snapshots is not supported. Please create a new policy to opt-out of the data transfer to the recovery services vault.</value>
   </data>
   <data name="AFSPolicyUpdateWarning" xml:space="preserve">
-    <value>Changing the backup tier will retain the existing snapshots AS-IS per the configured retention in the current policy. The future backups will be moved to the vault and retained as per the vault retention you configure. It is an irreversible operation with additional cost for backup storage and switching from vault to snapshot tier requires reconfiguration of the backup. Learn more.</value>
+    <value>Changing the backup tier keeps current snapshots as-is under the existing policy. Future backups will be stored in the vault with new retention settings. This action is irreversible and incurs additional costs. Switching from vault to snapshot requires reconfiguration. Learn more at https://learn.microsoft.com/en-us/azure/backup/azure-file-share-backup-overview?tabs=snapshot.</value>
   </data>
   <data name="AFSPolicyUpdate" xml:space="preserve">
     <value>Changing Policy to VaultStandard tier.</value>

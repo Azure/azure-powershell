@@ -2766,7 +2766,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Changing the backup tier will retain the existing snapshots AS-IS per the configured retention in the current policy. The future backups will be moved to the vault and retained as per the vault retention you configure. It is an irreversible operation with additional cost for backup storage and switching from vault to snapshot tier requires reconfiguration of the backup. Learn more.
+        ///   Looks up a localized string similar to Changing the backup tier keeps current snapshots as-is under the existing policy. Future backups will be stored in the vault with new retention settings. This action is irreversible and incurs additional costs. Switching from vault to snapshot requires reconfiguration. Learn more at https://learn.microsoft.com/en-us/azure/backup/azure-file-share-backup-overview?tabs=snapshot.
         /// </summary>
         public static string AFSPolicyUpdateWarning
         {
