@@ -1,0 +1,85 @@
+{
+  "resourceType": "cdnWebApplicationFirewallPolicies",
+  "apiVersion": "2024-09-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.frontdoor"
+  },
+  "commands": [
+    {
+      "name": "Get-AzFrontDoorPolicy",
+      "description": "Retrieve protection policy with specified name within a resource group.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorpolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Retrieve protection policy with specified name within a resource group.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.policyName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzFrontDoorPolicy",
+      "description": "Deletes Policy",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorpolicy"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes Policy",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.policyName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
