@@ -224,7 +224,7 @@ $Condition = '(
  (
   @Request[Microsoft.Authorization/roleAssignments:PrincipalType] StringEqualsIgnoreCase ''ServicePrincipal''
   AND
-  NOT @Request[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {8e3af657-a8ff-443c-a75c-2fe8c4bcb635, b24988ac-6180-42a0-ab88-20f7382dd24c, 76cc9ee4-d5d3-4a45-a930-26add3d73475, 011d09a5-6c21-45a9-ab4d-b63d126504c7, e496a383-f933-4d51-9c43-45700124193f, e6001d50-2bb0-482e-87b3-9a20725bda43, 37bec740-8b2e-4938-891e-e26ec9617a4c, 16e9e0dd-a932-4453-9577-db71fb5d6b23, f58310d9-a9f6-439a-9e8d-f62e7b41a168, 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9, a8889054-8d42-49c9-bc1c-52486c10e7cd, 32e6a4ec-6095-4e37-b54b-12aa350ba81f}
+  NOT @Request[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {8e3af657-a8ff-443c-a75c-2fe8c4bcb635,18d7d88d-d35e-4fb5-a5c3-7773c20a72d9}
  )
 )
 AND
@@ -236,7 +236,7 @@ AND
  (
   @Resource[Microsoft.Authorization/roleAssignments:PrincipalType] StringEqualsIgnoreCase ''ServicePrincipal''
   AND
-  NOT @Resource[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {8e3af657-a8ff-443c-a75c-2fe8c4bcb635, b24988ac-6180-42a0-ab88-20f7382dd24c, 76cc9ee4-d5d3-4a45-a930-26add3d73475, 011d09a5-6c21-45a9-ab4d-b63d126504c7, e496a383-f933-4d51-9c43-45700124193f, e6001d50-2bb0-482e-87b3-9a20725bda43, 37bec740-8b2e-4938-891e-e26ec9617a4c, 16e9e0dd-a932-4453-9577-db71fb5d6b23, a8889054-8d42-49c9-bc1c-52486c10e7cd, f58310d9-a9f6-439a-9e8d-f62e7b41a168, 32e6a4ec-6095-4e37-b54b-12aa350ba81f, 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9}
+  NOT @Resource[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {8e3af657-a8ff-443c-a75c-2fe8c4bcb635,18d7d88d-d35e-4fb5-a5c3-7773c20a72d9}
  )
 )'
 
@@ -252,7 +252,7 @@ New-AzRoleAssignment @DelegationParams
 ```
 
 Grant User Access Administrator over an azure subscription with constrained delegation.<br>
-The constrained delegation will only allow that the delegated user/service principal/group may only create/delete/update new role assignments for a service principal and non-privileged roles.
+The constrained delegation will only allow that the delegated user/service principal/group may only create/delete/update new role assignments for a service principal, excluding the [Owner](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/privileged#owner) and [User Access Administrator](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles/privileged#user-access-administrator) role.
 
 ## PARAMETERS
 
