@@ -18,9 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Migrated DevTestLabs SDK to generated SDK
-    - Removed "Microsoft.Azure.Management.DevTestLabs" Version "1.0.0" PackageReference
-    - Added DevTestLabs.Management.Sdk ProjectReference
 
 ## Version 1.0.3
 * Removed the outdated deps.json file.
