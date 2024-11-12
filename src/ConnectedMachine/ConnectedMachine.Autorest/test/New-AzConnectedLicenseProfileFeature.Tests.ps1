@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzConnectedLicenseProfile
 }
 
 Describe 'New-AzConnectedLicenseProfileFeature' {
-    It '__AllParameterSets' -skip {
+    It '__AllParameterSets' {
         $productfeature = New-AzConnectedLicenseProfileFeature -Name "Hotpatch" -SubscriptionStatus "Enable"
         $productfeature | Should -Not -BeNullOrEmpty
     }
