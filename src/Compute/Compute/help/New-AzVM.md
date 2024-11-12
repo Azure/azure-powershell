@@ -1213,6 +1213,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionIdentity
+The name of a managed service identity that should be assigned to the VM and can use for Azure Disk Encryption
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UserData
 UserData for the VM, which will be base-64 encoded. Customer should not pass any secrets in here.
 
