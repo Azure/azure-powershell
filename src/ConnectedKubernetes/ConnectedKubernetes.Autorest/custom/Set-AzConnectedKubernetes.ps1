@@ -716,17 +716,17 @@ function Set-AzConnectedKubernetes {
             $timeout = [datetime]::Now.AddMinutes(60)
 
             for (;;) {
-                $GetResponse = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
+                $CCResponse = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
 
-                if ($GetResponse.ArcAgentProfileAgentState -eq $null) {
+                if ($null -eq $CCResponse.ArcAgentProfileAgentState) {
                     Write-Verbose "No agent configuration in progress."
                     break
                 }
-                if ($GetResponse.ArcAgentProfileAgentState -eq "Succeeded") {
+                if ($CCResponse.ArcAgentProfileAgentState -eq "Succeeded") {
                     Write-Verbose "Cluster agent configuration succeeded."
                     break
                 }
-                if ($GetResponse.ArcAgentProfileAgentState -eq "Failed") {
+                if ($CCResponse.ArcAgentProfileAgentState -eq "Failed") {
                     Write-Error "Cluster agent configuration failed."
                     break
                 }
