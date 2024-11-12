@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzComputeScheduleOperations'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzComputeScheduleOperationError'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Stop-AzComputeScheduleOperations.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzComputeScheduleOperationError.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,8 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzComputeScheduleOperati
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Stop-AzComputeScheduleOperations' {
-    It 'CancelExpanded' -skip {
+Describe 'Get-AzComputeScheduleOperationError' {
+    It 'GetExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

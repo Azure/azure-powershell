@@ -78,14 +78,14 @@ directive:
       subject: ScheduledAction
       variant: GetExpanded
     set:
-      subject: OperationsErrors
+      subject: OperationError
 
   - where:
       verb: Get
       subject: ScheduledAction
       variant: GetExpanded1
     set:
-      subject: OperationsStatus
+      subject: OperationStatus
 
   - where:
       verb: Invoke
@@ -137,7 +137,8 @@ directive:
       subject: ScheduledAction
       variant: CancelExpanded
     set:
-      subject: Operations
+      verb: Stop
+      subject: Operation
 
 # Hide initial cmdlets generated with all endpoints grouped
   - where:
@@ -150,10 +151,10 @@ directive:
       subject: ScheduledAction
     hide: true
 
-  - where:
-      verb: Stop
-      subject: ScheduledAction
-    hide: true
+  # - where:
+  #     verb: Stop
+  #     subject: ScheduledAction
+  #   hide: true
 
   - where:
       verb: Get
@@ -176,6 +177,20 @@ directive:
       parameter-name: RetryWindowInMinutes
 
   - where:
+      verb: Invoke|Get|Stop
+      subject: ^(Submit|Execute|Operation)(.*)
+      parameter-name: Locationparameter
+    set:
+      parameter-name: Location
+
+  - where:
+      verb: Invoke|Get|Stop
+      subject: ^(Submit|Execute|Operation)(.*)
+      parameter-name: Correlationid
+    set:
+      parameter-name: CorrelationId
+
+  - where:
       verb: Invoke
       subject: ^(Submit)(.*)
       parameter-name: ScheduleDeadLine
@@ -194,14 +209,7 @@ directive:
       subject: ^(Submit)(.*)
       parameter-name: ScheduleTimeZone
     set:
-      parameter-name: TimeZone
-
-  - where:
-      verb: Get|Stop
-      subject: ^(Operations)(.*)
-      parameter-name: OperationId
-    set:
-      parameter-name: OperationIds
+      parameter-name: Timezone
 
 # Hide OptimizationPreference paramater
   - where:

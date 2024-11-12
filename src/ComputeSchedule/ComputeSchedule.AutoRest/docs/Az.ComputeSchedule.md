@@ -11,10 +11,10 @@ Locale: en-US
 Microsoft Azure PowerShell: ComputeSchedule cmdlets
 
 ## Az.ComputeSchedule Cmdlets
-### [Get-AzComputeScheduleOperationsErrors](Get-AzComputeScheduleOperationsErrors.md)
+### [Get-AzComputeScheduleOperationError](Get-AzComputeScheduleOperationError.md)
 virtualMachinesGetOperationErrors: getOperationErrors associated with an operation on a virtual machine
 
-### [Get-AzComputeScheduleOperationsStatus](Get-AzComputeScheduleOperationsStatus.md)
+### [Get-AzComputeScheduleOperationStatus](Get-AzComputeScheduleOperationStatus.md)
 virtualMachinesGetOperationStatus: getOperationStatus for a virtual machine
 
 ### [Invoke-AzComputeScheduleExecuteDeallocate](Invoke-AzComputeScheduleExecuteDeallocate.md)
@@ -35,6 +35,6 @@ virtualMachinesSubmitHibernate: submitHibernate for a virtual machine
 ### [Invoke-AzComputeScheduleSubmitStart](Invoke-AzComputeScheduleSubmitStart.md)
 virtualMachinesSubmitStart: submitStart for a virtual machine
 
-### [Stop-AzComputeScheduleOperations](Stop-AzComputeScheduleOperations.md)
+### [Stop-AzComputeScheduleScheduledAction](Stop-AzComputeScheduleScheduledAction.md)
 virtualMachinesCancelOperations: cancelOperations for a virtual machine
 

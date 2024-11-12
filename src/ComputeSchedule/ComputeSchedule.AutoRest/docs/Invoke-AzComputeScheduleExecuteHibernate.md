@@ -13,9 +13,9 @@ virtualMachinesExecuteHibernate: executeHibernate for a virtual machine
 ## SYNTAX
 
 ```
-Invoke-AzComputeScheduleExecuteHibernate -Locationparameter <String> -Correlationid <String>
- -ResourceId <String[]> [-SubscriptionId <String>] [-RetryCount <Int32>] [-RetryWindowInMinutes <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzComputeScheduleExecuteHibernate -Location <String> -CorrelationId <String> -ResourceId <String[]>
+ [-SubscriptionId <String>] [-RetryCount <Int32>] [-RetryWindowInMinutes <Int32>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,7 @@ virtualMachinesExecuteHibernate: executeHibernate for a virtual machine
 
 ## PARAMETERS
 
-### -Correlationid
+### -CorrelationId
 CorrelationId item
 
 ```yaml
@@ -78,7 +78,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Locationparameter
+### -Location
 The location name.
 
 ```yaml

@@ -13,9 +13,9 @@ virtualMachinesExecuteStart: executeStart for a virtual machine
 ## SYNTAX
 
 ```
-Invoke-AzComputeScheduleExecuteStart -Locationparameter <String> -Correlationid <String>
- -ResourceId <String[]> [-SubscriptionId <String>] [-RetryCount <Int32>] [-RetryWindowInMinutes <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzComputeScheduleExecuteStart -Location <String> -CorrelationId <String> -ResourceId <String[]>
+ [-SubscriptionId <String>] [-RetryCount <Int32>] [-RetryWindowInMinutes <Int32>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,7 @@ virtualMachinesExecuteStart: executeStart for a virtual machine
 
 ## PARAMETERS
 
-### -Correlationid
+### -CorrelationId
 CorrelationId item
 
 ```yaml
@@ -78,7 +78,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Locationparameter
+### -Location
 The location name.
 
 ```yaml

@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.ComputeSchedule
-online version: https://learn.microsoft.com/powershell/module/az.computeschedule/get-azcomputescheduleoperationserrors
+online version: https://learn.microsoft.com/powershell/module/az.computeschedule/get-azcomputescheduleoperationstatus
 schema: 2.0.0
 ---
 
-# Get-AzComputeScheduleOperationsErrors
+# Get-AzComputeScheduleOperationStatus
 
 ## SYNOPSIS
-virtualMachinesGetOperationErrors: getOperationErrors associated with an operation on a virtual machine
+virtualMachinesGetOperationStatus: getOperationStatus for a virtual machine
 
 ## SYNTAX
 
 ```
-Get-AzComputeScheduleOperationsErrors -Locationparameter <String> -OperationIds <String[]>
+Get-AzComputeScheduleOperationStatus -Location <String> -CorrelationId <String> -OperationId <String[]>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-virtualMachinesGetOperationErrors: getOperationErrors associated with an operation on a virtual machine
+virtualMachinesGetOperationStatus: getOperationStatus for a virtual machine
 
 ## EXAMPLES
 
@@ -46,6 +46,21 @@ virtualMachinesGetOperationErrors: getOperationErrors associated with an operati
 
 ## PARAMETERS
 
+### -CorrelationId
+CorrelationId item
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -62,7 +77,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Locationparameter
+### -Location
 The location name.
 
 ```yaml
@@ -77,8 +92,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationIds
-The list of operation ids to query errors of
+### -OperationId
+The list of operation ids to get the status of
 
 ```yaml
 Type: System.String[]
@@ -146,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Models.IGetOperationErrorsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Models.IGetOperationStatusResponse
 
 ## NOTES
 

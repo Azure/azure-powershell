@@ -13,10 +13,10 @@ virtualMachinesSubmitHibernate: submitHibernate for a virtual machine
 ## SYNTAX
 
 ```
-Invoke-AzComputeScheduleSubmitHibernate -Locationparameter <String> -Correlationid <String>
- -Deadline <DateTime> -DeadlineType <String> -ResourceId <String[]> -TimeZone <String>
- [-SubscriptionId <String>] [-RetryCount <Int32>] [-RetryWindowInMinutes <Int32>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzComputeScheduleSubmitHibernate -Location <String> -CorrelationId <String> -Deadline <DateTime>
+ -DeadlineType <String> -ResourceId <String[]> -Timezone <String> [-SubscriptionId <String>]
+ [-RetryCount <Int32>] [-RetryWindowInMinutes <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +48,7 @@ virtualMachinesSubmitHibernate: submitHibernate for a virtual machine
 
 ## PARAMETERS
 
-### -Correlationid
+### -CorrelationId
 CorrelationId item
 
 ```yaml
@@ -109,7 +109,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Locationparameter
+### -Location
 The location name.
 
 ```yaml
@@ -185,7 +185,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TimeZone
+### -Timezone
 The timezone for the operation
 
 ```yaml

@@ -1,19 +1,45 @@
 ---
 external help file:
 Module Name: Az.ComputeSchedule
-online version: https://learn.microsoft.com/powershell/module/az.computeschedule/stop-azcomputescheduleoperations
+online version: https://learn.microsoft.com/powershell/module/az.computeschedule/stop-azcomputeschedulescheduledaction
 schema: 2.0.0
 ---
 
-# Stop-AzComputeScheduleOperations
+# Stop-AzComputeScheduleScheduledAction
 
 ## SYNOPSIS
 virtualMachinesCancelOperations: cancelOperations for a virtual machine
 
 ## SYNTAX
 
+### Cancel (Default)
 ```
-Stop-AzComputeScheduleOperations -Locationparameter <String> -Correlationid <String> -OperationIds <String[]>
+Stop-AzComputeScheduleScheduledAction -Locationparameter <String> -RequestBody <ICancelOperationsRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CancelViaIdentity
+```
+Stop-AzComputeScheduleScheduledAction -InputObject <IComputeScheduleIdentity>
+ -RequestBody <ICancelOperationsRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CancelViaIdentityExpanded
+```
+Stop-AzComputeScheduleScheduledAction -InputObject <IComputeScheduleIdentity> -Correlationid <String>
+ -OperationId <String[]> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CancelViaJsonFilePath
+```
+Stop-AzComputeScheduleScheduledAction -Locationparameter <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CancelViaJsonString
+```
+Stop-AzComputeScheduleScheduledAction -Locationparameter <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -51,7 +77,7 @@ CorrelationId item
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CancelViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -77,12 +103,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Locationparameter
-The location name.
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Models.IComputeScheduleIdentity
+Parameter Sets: CancelViaIdentity, CancelViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Cancel operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CancelViaJsonFilePath
 Aliases:
 
 Required: True
@@ -92,18 +133,63 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OperationIds
-The list of operation ids to cancel operations on
+### -JsonString
+Json string supplied to the Cancel operation
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CancelViaJsonString
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Locationparameter
+The location name.
+
+```yaml
+Type: System.String
+Parameter Sets: Cancel, CancelViaJsonFilePath, CancelViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OperationId
+The list of operation ids to cancel operations on
+
+```yaml
+Type: System.String[]
+Parameter Sets: CancelViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RequestBody
+This is the request to cancel running operations in scheduled actions using the operation ids
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Models.ICancelOperationsRequest
+Parameter Sets: Cancel, CancelViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -113,7 +199,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Cancel, CancelViaJsonFilePath, CancelViaJsonString
 Aliases:
 
 Required: False
@@ -158,6 +244,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Models.ICancelOperationsRequest
+
+### Microsoft.Azure.PowerShell.Cmdlets.ComputeSchedule.Models.IComputeScheduleIdentity
 
 ## OUTPUTS
 
