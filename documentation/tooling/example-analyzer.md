@@ -23,6 +23,12 @@ Example analyzer will check
 ### What will be ignore by example analyzer?
  - If the example begins with `<!-- Aladdin Generated Example -->` or matches with regex `<!-- Skip.*-->`, its scan will be skipped.
 
+### How to run example analyzer locally to debug issues reported in CIs
+Run following script in PowerShell console, which requires PSScriptAnalyzer installed on local
+```powershell
+tools/StaticAnalysis/ExampleAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths {your-help-folder} -RulePaths tools/StaticAnalysis/ExampleAnalyzer/AnalyzeRules/*.psm1
+```
+
 ### TroubleShooting
  - If a cmdlet is recognized as Invalid_Cmdlet, most likely its module is not imported correctly. Check its import process and configuration. If it's correct, it may be caused by parallel importing all psd1 files. Currently, the workaround is suppressing false positive. Maybe only importing changed modules are one of potential solutions. 
 
