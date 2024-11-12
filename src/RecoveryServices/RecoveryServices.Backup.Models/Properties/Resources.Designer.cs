@@ -2797,5 +2797,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("AFSPolicyUpdateCanceled", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SnapshotRetentionInDays should be from 1 - 30.
+        /// </summary>
+        public static string SnapshotRetentionInDaysInvalidException
+        {
+            get
+            {
+                return ResourceManager.GetString("SnapshotRetentionInDaysInvalidException", resourceCulture);
+            }
+        }
     }
 }

@@ -871,4 +871,7 @@ Please contact Microsoft for further assistance.</value>
   <data name="AFSPolicyUpdateCanceled" xml:space="preserve">
     <value>Canceled Operation.</value>
   </data>
+  <data name="SnapshotRetentionInDaysInvalidException" xml:space="preserve">
+    <value>SnapshotRetentionInDays should be from 1 - 30</value>
+  </data>
 </root>
