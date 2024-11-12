@@ -80,6 +80,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {_locationData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("locationData"), out var __jsonLocationData) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.LocationData.FromJson(__jsonLocationData) : _locationData;}
             {_agentConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("agentConfiguration"), out var __jsonAgentConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.AgentConfiguration.FromJson(__jsonAgentConfiguration) : _agentConfiguration;}
             {_serviceStatuses = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("serviceStatuses"), out var __jsonServiceStatuses) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceStatuses.FromJson(__jsonServiceStatuses) : _serviceStatuses;}
+            {_hardwareProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("hardwareProfile"), out var __jsonHardwareProfile) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.HardwareProfile.FromJson(__jsonHardwareProfile) : _hardwareProfile;}
+            {_storageProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("storageProfile"), out var __jsonStorageProfile) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.StorageProfile.FromJson(__jsonStorageProfile) : _storageProfile;}
+            {_firmwareProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("firmwareProfile"), out var __jsonFirmwareProfile) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.FirmwareProfile.FromJson(__jsonFirmwareProfile) : _firmwareProfile;}
             {_cloudMetadata = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("cloudMetadata"), out var __jsonCloudMetadata) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.CloudMetadata.FromJson(__jsonCloudMetadata) : _cloudMetadata;}
             {_agentUpgrade = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("agentUpgrade"), out var __jsonAgentUpgrade) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.AgentUpgrade.FromJson(__jsonAgentUpgrade) : _agentUpgrade;}
             {_networkProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonObject>("networkProfile"), out var __jsonNetworkProfile) ? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.NetworkProfile.FromJson(__jsonNetworkProfile) : _networkProfile;}
@@ -136,6 +139,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
                 AddIf( null != this._agentConfiguration ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._agentConfiguration.ToJson(null,serializationMode) : null, "agentConfiguration" ,container.Add );
             }
             AddIf( null != this._serviceStatuses ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._serviceStatuses.ToJson(null,serializationMode) : null, "serviceStatuses" ,container.Add );
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._hardwareProfile ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._hardwareProfile.ToJson(null,serializationMode) : null, "hardwareProfile" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._storageProfile ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._storageProfile.ToJson(null,serializationMode) : null, "storageProfile" ,container.Add );
+            }
+            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
+            {
+                AddIf( null != this._firmwareProfile ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._firmwareProfile.ToJson(null,serializationMode) : null, "firmwareProfile" ,container.Add );
+            }
             AddIf( null != this._cloudMetadata ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._cloudMetadata.ToJson(null,serializationMode) : null, "cloudMetadata" ,container.Add );
             AddIf( null != this._agentUpgrade ? (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Json.JsonNode) this._agentUpgrade.ToJson(null,serializationMode) : null, "agentUpgrade" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeRead))
