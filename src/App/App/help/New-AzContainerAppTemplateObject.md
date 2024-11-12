@@ -15,7 +15,7 @@ Create an in-memory object for Container.
 ```
 New-AzContainerAppTemplateObject [-Probe <IContainerAppProbe[]>] [-Arg <String[]>] [-Command <String[]>]
  [-Env <IEnvironmentVar[]>] [-Image <String>] [-Name <String>] [-ResourceCpu <Double>]
- [-ResourceMemory <String>] [-VolumeMount <IVolumeMount[]>] [-ProgressAction <ActionPreference>]
+ [-ResourceMemory <String>] [-VolumeMount <IVolumeMount[]>]
  [<CommonParameters>]
 ```
 
@@ -124,21 +124,6 @@ List of probes for the container.
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbe[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

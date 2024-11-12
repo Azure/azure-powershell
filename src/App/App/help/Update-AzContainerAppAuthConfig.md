@@ -23,7 +23,7 @@ Update-AzContainerAppAuthConfig -ContainerAppName <String> -Name <String> -Resou
  [-LoginAllowedExternalRedirectUrl <String[]>] [-LoginPreserveUrlFragmentsForLogin]
  [-NonceExpirationInterval <String>] [-NonceValidateNonce] [-PlatformEnabled]
  [-PlatformRuntimeVersion <String>] [-RouteApiPrefix <String>] [-RouteLogoutEndpoint <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityContainerAppExpanded
@@ -37,7 +37,7 @@ Update-AzContainerAppAuthConfig -Name <String> -ContainerAppInputObject <IAppIde
  [-LoginAllowedExternalRedirectUrl <String[]>] [-LoginPreserveUrlFragmentsForLogin]
  [-NonceExpirationInterval <String>] [-NonceValidateNonce] [-PlatformEnabled]
  [-PlatformRuntimeVersion <String>] [-RouteApiPrefix <String>] [-RouteLogoutEndpoint <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -50,7 +50,7 @@ Update-AzContainerAppAuthConfig -InputObject <IAppIdentity> [-CookieExpirationCo
  [-IdentityProvider <IIdentityProviders>] [-LoginAllowedExternalRedirectUrl <String[]>]
  [-LoginPreserveUrlFragmentsForLogin] [-NonceExpirationInterval <String>] [-NonceValidateNonce]
  [-PlatformEnabled] [-PlatformRuntimeVersion <String>] [-RouteApiPrefix <String>]
- [-RouteLogoutEndpoint <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-RouteLogoutEndpoint <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -413,21 +413,6 @@ The RuntimeVersion of the Authentication / Authorization feature in use for the 
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

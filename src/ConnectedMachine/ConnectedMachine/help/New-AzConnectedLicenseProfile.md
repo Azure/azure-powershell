@@ -18,20 +18,20 @@ New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> 
  -Location <String> [-EsuProfileAssignedLicense <String>] [-ProductProfileProductFeature <IProductFeature[]>]
  [-ProductProfileProductType <String>] [-ProductProfileSubscriptionStatus <String>]
  [-SoftwareAssuranceCustomer] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> 
 ```
 New-AzConnectedLicenseProfile -MachineName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Parameter <ILicenseProfile> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -48,13 +48,13 @@ New-AzConnectedLicenseProfile -InputObject <IConnectedMachineIdentity> -Location
  [-EsuProfileAssignedLicense <String>] [-ProductProfileProductFeature <IProductFeature[]>]
  [-ProductProfileProductType <String>] [-ProductProfileSubscriptionStatus <String>]
  [-SoftwareAssuranceCustomer] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzConnectedLicenseProfile -InputObject <IConnectedMachineIdentity> -Parameter <ILicenseProfile>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -310,21 +310,6 @@ Indicates the subscription status of the product.
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -16,7 +16,7 @@ Construct and perform HTTP request to Azure resource management endpoint only
 ```
 Invoke-AzRestMethod -Path <String> [-Method <String>] [-Payload <String>] [-AsJob] [-WaitForCompletion]
  [-PollFrom <String>] [-FinalResultFrom <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParameters
@@ -24,7 +24,7 @@ Invoke-AzRestMethod -Path <String> [-Method <String>] [-Payload <String>] [-AsJo
 Invoke-AzRestMethod [-SubscriptionId <String>] [-ResourceGroupName <String>] [-ResourceProviderName <String>]
  [-ResourceType <String[]>] [-Name <String[]>] -ApiVersion <String> [-Method <String>] [-Payload <String>]
  [-AsJob] [-WaitForCompletion] [-PollFrom <String>] [-FinalResultFrom <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Invoke-AzRestMethod [-SubscriptionId <String>] [-ResourceGroupName <String>] [-R
 ```
 Invoke-AzRestMethod [-Uri] <Uri> [-ResourceId <Uri>] [-Method <String>] [-Payload <String>] [-AsJob]
  [-WaitForCompletion] [-PollFrom <String>] [-FinalResultFrom <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -378,21 +378,6 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: AzureAsyncLocation, Location, OriginalUri, Operation-Location
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
