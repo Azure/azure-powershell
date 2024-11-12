@@ -701,9 +701,9 @@ function Set-AzConnectedKubernetes {
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
 
-        Write-Output "Updating the connected cluster resource...."
-        $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
-        if ((-not $WhatIfPreference) -and (-not $Response)) {
+        Write-Verbose "Updating the connected cluster resource...."
+        $CCResponse = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
+        if ((-not $WhatIfPreference) -and (-not $CCResponse)) {
             Write-Error "Failed to update the 'Kubernetes - Azure Arc' resource"
             return
         }
@@ -716,17 +716,17 @@ function Set-AzConnectedKubernetes {
             $timeout = [datetime]::Now.AddMinutes(60)
 
             for (;;) {
-                $Response = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
+                $GetResponse = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
 
-                if ($Response.ArcAgentProfileAgentState -eq $null) {
-                    Write-Output "No agent configuration in progress."
+                if ($GetResponse.ArcAgentProfileAgentState -eq $null) {
+                    Write-Verbose "No agent configuration in progress."
                     break
                 }
-                if ($Response.ArcAgentProfileAgentState -eq "Succeeded") {
-                    Write-Output "Cluster agent configuration succeeded."
+                if ($GetResponse.ArcAgentProfileAgentState -eq "Succeeded") {
+                    Write-Verbose "Cluster agent configuration succeeded."
                     break
                 }
-                if ($Response.ArcAgentProfileAgentState -eq "Failed") {
+                if ($GetResponse.ArcAgentProfileAgentState -eq "Failed") {
                     Write-Error "Cluster agent configuration failed."
                     break
                 }
@@ -736,7 +736,7 @@ function Set-AzConnectedKubernetes {
                     break
                 }
 
-                Write-Output "Cluster agent configuration is in progress..."
+                Write-Verbose "Cluster agent configuration is in progress..."
                 Start-Sleep -Seconds 30
             }
         }
@@ -750,8 +750,8 @@ function Set-AzConnectedKubernetes {
 
 
         # Convert the $Response object into a nested hashtable.
-        Write-Debug "PUT response: $Response"
-        $Response = ConvertFrom-Json "$Response"
+        Write-Debug "PUT response: $CCResponse"
+        $Response = ConvertFrom-Json "$CCResponse"
         $Response = ConvertTo-Hashtable $Response
 
         # Whatif may return empty response
@@ -769,7 +769,7 @@ function Set-AzConnectedKubernetes {
         $ResponseStr = $Response | ConvertTo-Json -Depth 10
         Write-Debug "PUT response: $ResponseStr"
 
-        Write-Output "Preparing helm ...."
+        Write-Verbose "Preparing helm ...."
 
         if ($PSCmdlet.ShouldProcess('configDP', 'get helm values from config DP')) {
             $helmValuesDp = Get-HelmValuesFromConfigDP `
@@ -832,14 +832,14 @@ function Set-AzConnectedKubernetes {
                 helm get values azure-arc `
                     --namespace $ReleaseInstallNamespace `
                     --kubeconfig $KubeConfig `
-                    --kube-context $KubeContext > $userValuesLocation
+                    --kube-context $KubeContext > $userValuesLocation | Out-Null
             }
             catch {
                 throw "Unable to get helm values"
             }
         }
 
-        Write-Output "Executing helm upgrade, this can take a few minutes ...."
+        Write-Verbose "Executing helm upgrade, this can take a few minutes ...."
         Write-Debug $options -ErrorAction Continue
         if ($DebugPreference -eq "Continue") {
             $options += " --debug"
@@ -851,7 +851,7 @@ function Set-AzConnectedKubernetes {
                     $ChartPath `
                     --namespace $ReleaseInstallNamespace `
                     -f $userValuesLocation `
-                    --wait (-split $options)
+                    --wait (-split $options) | Out-Null
             }
             catch {
                 throw "Unable to install helm release"
@@ -862,6 +862,6 @@ function Set-AzConnectedKubernetes {
         if ($agentsInTerminalState -eq $false) {
                 throw "Timed out waiting for Agent State to reach terminal state."
         }
-        Return $Response
+        Return $CCResponse
     }
 }
