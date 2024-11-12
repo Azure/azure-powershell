@@ -33,7 +33,7 @@ pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.8.5.0.zip;sourceType=sa]Az.Compute,8.5.0
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConfidentialLedger.1.0.1.zip;sourceType=sa]Az.ConfidentialLedger,1.0.1
 pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Confluent.0.2.1.zip;sourceType=sa]Az.Confluent,0.2.1
-pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedKubernetes.0.11.1.zip;sourceType=sa]Az.ConnectedKubernetes,0.11.1
+pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedKubernetes.0.12.0.zip;sourceType=sa]Az.ConnectedKubernetes,0.12.0
 pac36,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedMachine.1.0.0.zip;sourceType=sa]Az.ConnectedMachine,1.0.0
 pac37,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedNetwork.0.1.1.zip;sourceType=sa]Az.ConnectedNetwork,0.1.1
 pac38,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedVMware.0.1.2.zip;sourceType=sa]Az.ConnectedVMware,0.1.2
@@ -110,8 +110,9 @@ pac108,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac109,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MariaDb.0.2.2.zip;sourceType=sa]Az.MariaDb,0.2.2
 pac110,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Marketplace.0.5.1.zip;sourceType=sa]Az.Marketplace,0.5.1
 pac111,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MarketplaceOrdering.2.0.1.zip;sourceType=sa]Az.MarketplaceOrdering,2.0.1
-pac112,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Media.1.1.2.zip;sourceType=sa]Az.Media,1.1.2
-pac113,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Migrate.2.5.0.zip;sourceType=sa]Az.Migrate,2.5.0
-pac114,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MixedReality.0.2.1.zip;sourceType=sa]Az.MixedReality,0.2.1
-pac115,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MobileNetwork.0.4.1.zip;sourceType=sa]Az.MobileNetwork,0.4.1
+pac112,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Mdp.0.1.0.zip;sourceType=sa]Az.Mdp,0.1.0
+pac113,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Media.1.1.2.zip;sourceType=sa]Az.Media,1.1.2
+pac114,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Migrate.2.5.0.zip;sourceType=sa]Az.Migrate,2.5.0
+pac115,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MixedReality.0.2.1.zip;sourceType=sa]Az.MixedReality,0.2.1
+pac116,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.MobileNetwork.0.4.1.zip;sourceType=sa]Az.MobileNetwork,0.4.1
 
