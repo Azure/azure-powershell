@@ -41,8 +41,7 @@ Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AutoPatching
 .Example
 Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AssessmentSettingEnable
 .Example
-# $pwd is the password for cluster accounts
-$securepwd = ConvertTo-SecureString -String $pwd -AsPlainText -Force
+$securepwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
 Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' `
 -SqlVirtualMachineGroupResourceId '<group resource id>' `
 -WsfcDomainCredentialsClusterBootstrapAccountPassword $securepwd `
