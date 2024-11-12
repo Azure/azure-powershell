@@ -202,6 +202,15 @@ function Test-AzureFSProtection
 {
 	try
 	{
+		$resourceGroupName = "iannea-rg"
+		$vaultName = "iannea-rsv"
+		$policyName = "afspolicy3"
+		$newPolicyName = "afspolicy4"
+		$fileShareFriendlyName = "afs0"
+		$saName = "iannafstest1"
+		$targetSaName = "iannafstest2"
+		$targetFileShareName = "afs0"
+
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
 		
 		$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
