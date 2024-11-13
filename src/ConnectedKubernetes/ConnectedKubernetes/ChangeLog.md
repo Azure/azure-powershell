@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed output type of cmdlet
 
 ## Version 0.12.0
 * Corrected function that only worked on Windows.

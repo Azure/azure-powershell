@@ -411,7 +411,7 @@ function New-AzConnectedKubernetes {
             catch {
                 # This is attempting to delete Azure Arc resources that are orphaned.
                 # We are catching and ignoring any messages here.
-                $null = helm delete azure-arc --ignore-not-found --namespace $ReleaseNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
+                $null = helm delete azure-arc --ignore-not-found --namespace $ReleaseNamespace --kubeconfig $KubeConfig --kube-context $KubeContext | Out-Null
             }
         }
 
@@ -622,11 +622,11 @@ function New-AzConnectedKubernetes {
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
 
-        Write-Output "Creating 'Kubernetes - Azure Arc' object in Azure"
+        Write-Verbose "Creating 'Kubernetes - Azure Arc' object in Azure"
         Write-Debug "PSBoundParameters: $PSBoundParameters"
-        $Response = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
+        $CCResponse = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
-        if ((-not $WhatIfPreference) -and (-not $Response)) {
+        if ((-not $WhatIfPreference) -and (-not $CCResponse)) {
             Write-Error "Failed to create the 'Kubernetes - Azure Arc' resource."
             return
         }
@@ -639,8 +639,8 @@ function New-AzConnectedKubernetes {
             -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
 
         # Convert the $Response object into a nested hashtable.
-        Write-Debug "PUT response: $Response"
-        $Response = ConvertFrom-Json "$Response"
+        Write-Debug "PUT response: $CCResponse"
+        $Response = ConvertFrom-Json "$CCResponse"
         $Response = ConvertTo-Hashtable $Response
 
         # What-If processing does not create a full response so we might have
@@ -716,7 +716,7 @@ function New-AzConnectedKubernetes {
             $options += " --debug"
         }
         if ($PSCmdlet.ShouldProcess($ClusterName, "Update Kubernetes cluster with Azure Arc")) {
-            Write-Output "Executing helm upgrade command, this can take a few minutes...."
+            Write-Verbose "Executing helm upgrade command, this can take a few minutes...."
             try {
                 helm upgrade `
                     --install azure-arc `
@@ -733,7 +733,7 @@ function New-AzConnectedKubernetes {
                     --set global.azureEnvironment=AZUREPUBLICCLOUD `
                     --set systemDefaultValues.clusterconnect-agent.enabled=true `
                     --set global.kubernetesDistro=$Distribution `
-                    --set global.kubernetesInfra=$Infrastructure (-split $options)
+                    --set global.kubernetesInfra=$Infrastructure (-split $options) | Out-Null
             }
             catch {
                 throw "Unable to install helm chart at $ChartPath"
@@ -744,7 +744,7 @@ function New-AzConnectedKubernetes {
             if ($PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled') -or $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled') ) {
                 $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
 
-                Write-Output "Cluster configuration is in progress..."
+                Write-Verbose "Cluster configuration is in progress..."
                 $timeout = [datetime]::Now.AddMinutes(60)
 
                 while (($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Succeeded") -and ($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Failed") -and ([datetime]::Now -lt $timeout)) {
@@ -753,7 +753,7 @@ function New-AzConnectedKubernetes {
                 }
 
                 if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
-                    Write-Output "Cluster configuration succeeded."
+                    Write-Verbose "Cluster configuration succeeded."
                 }
                 elseif ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Failed") {
                     Write-Error "Cluster configuration failed."
@@ -763,6 +763,6 @@ function New-AzConnectedKubernetes {
                 }
             }
         }
-        Return $Response
+        Return $CCResponse
     }
 }
