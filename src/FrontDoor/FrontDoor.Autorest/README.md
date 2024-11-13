@@ -38,6 +38,7 @@ input-file:
   # - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/afdx.json
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/cdnwebapplicationfirewall.json
   - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json
+  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/network.json
 
 try-require: 
   - $(repo)/specification/xxx/resource-manager/readme.powershell.md
