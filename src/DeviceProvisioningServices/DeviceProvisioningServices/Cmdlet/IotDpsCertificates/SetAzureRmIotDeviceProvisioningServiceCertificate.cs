@@ -159,12 +159,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     break;
             }
 
-            certificate = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(certificate));
+            var certificaterawBytes = Encoding.UTF8.GetBytes(certificate);
 
-            VerificationCodeRequest verificationCodeRequest = new VerificationCodeRequest();
-            verificationCodeRequest.Certificate = certificate;
-
-            CertificateResponse certificateResponse = this.IotDpsClient.DpsCertificate.VerifyCertificate(this.CertificateName, this.Etag,this.ResourceGroupName, this.Name, verificationCodeRequest.Certificate);
+            CertificateResponse certificateResponse = this.IotDpsClient.DpsCertificate.VerifyCertificate(certificateName: this.CertificateName, certificateName: this.Etag, resourceGroupName: this.ResourceGroupName, provisioningServiceName: this.Name, certificaterawBytes: certificaterawBytes);
             this.WriteObject(IotDpsUtils.ToPSCertificateResponse(certificateResponse));
         }
     }
