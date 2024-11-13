@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* [Breaking Change] Removed alias `Resolve-Error` for the cmdlet `Resolve-AzError`.
 * Updated the `Get-AzAccessToken` breaking change warning message.
 * Added Long Running Operation Support for Invoke-AzRest command.
 
