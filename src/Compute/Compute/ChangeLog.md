@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added `-Redeploy` parameter as an optional boolean for `Update-AzHost` cmdlet to enhance host management capabilities.
 * Made `-PublicIpSku` parameter Standard by default in `New-AzVM`
 
 ## Version 8.5.0
