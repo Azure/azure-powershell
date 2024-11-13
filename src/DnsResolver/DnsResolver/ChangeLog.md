@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add 4 new DNS Resolver Policy (DNS Security Policy) resources into the commandlets
+* Added 4 new DNS Resolver Policy (DNS Security Policy) resources into the cmdlets
     - DNS Resolver Policy (DNS Security Policy)
     - DNS Security Rule
     - DNS Resolver Policy Link (DNS Security Policy Link)
