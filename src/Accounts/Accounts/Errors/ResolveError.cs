@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Profile.Errors
     [OutputType(typeof(AzureErrorRecord))]
     [OutputType(typeof(AzureExceptionRecord))]
     [OutputType(typeof(AzureRestExceptionRecord))]
+    [GenericBreakingChangeWithVersion("The alias 'Resolve-Error' will be removed. Please use 'Resolve-AzError' instead.", "13.0.0", "4.0.0")]
     public class ResolveError : AzureRMCmdlet
     {
         public const string AnyErrorParameterSet = "AnyErrorParameterSet";

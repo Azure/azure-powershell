@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridChannel
 
 ## SYNOPSIS
-Synchronously updates a channel with the specified parameters.
+Synchronously update a channel with the specified parameters.
 
 ## SYNTAX
 
@@ -17,21 +17,21 @@ Synchronously updates a channel with the specified parameters.
 Update-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-EventTypeInfoInlineEventType <Hashtable>] [-EventTypeInfoKind <String>]
  [-ExpirationTimeIfNotActivatedUtc <DateTime>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPartnerNamespaceExpanded
@@ -39,18 +39,18 @@ Update-AzEventGridChannel -Name <String> -PartnerNamespaceName <String> -Resourc
 Update-AzEventGridChannel -Name <String> -PartnerNamespaceInputObject <IEventGridIdentity>
  [-EventTypeInfoInlineEventType <Hashtable>] [-EventTypeInfoKind <String>]
  [-ExpirationTimeIfNotActivatedUtc <DateTime>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzEventGridChannel -InputObject <IEventGridIdentity> [-EventTypeInfoInlineEventType <Hashtable>]
  [-EventTypeInfoKind <String>] [-ExpirationTimeIfNotActivatedUtc <DateTime>] [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Synchronously updates a channel with the specified parameters.
+Synchronously update a channel with the specified parameters.
 
 ## EXAMPLES
 
@@ -230,6 +230,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

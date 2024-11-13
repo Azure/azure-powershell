@@ -58,7 +58,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.19.0'; })
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Attestation.Autorest/bin/Az.Attestation.private.dll', 
                'Microsoft.Azure.Attestation.dll', 
-               'Microsoft.Azure.Management.Attestation.dll', 
+               'Microsoft.Azure.PowerShell.Attestation.Management.Sdk.dll', 
                'Microsoft.IdentityModel.JsonWebTokens.dll', 
                'Microsoft.IdentityModel.Logging.dll', 
                'Microsoft.IdentityModel.Tokens.dll'

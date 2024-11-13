@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                         break;
                     }
 
-                case RecordType.AAAA:
+                case RecordType.Aaaa:
                     {
                         result.Records.Add(new Models.AaaaRecord { Ipv6Address = this.Ipv6Address });
                         break;
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.PrivateDns.Records
                         result.Records.Add(new Models.PtrRecord { Ptrdname = this.Ptrdname });
                         break;
                     }
-                case RecordType.CNAME:
+                case RecordType.Cname:
                     {
                         if (result.Records.Count != 0)
                         {

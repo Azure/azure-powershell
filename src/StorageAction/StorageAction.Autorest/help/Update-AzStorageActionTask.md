@@ -103,7 +103,7 @@ ElseOperation                : {{
                                }}
 Enabled                      : True
 Id                           : /subscriptions/11111111-2222-3333-4444-123456789101/resourceGroups/group001/providers/Microsoft.StorageActions/storageTasks/mytask3
-IdentityPrincipalId          : 11111111-2222-3333-4444-123456789123
+IdentityPrincipalId          : 00001111-aaaa-2222-bbbb-3333cccc4444
 IdentityTenantId             : 11111111-2222-3333-4444-987654321012
 IdentityType                 : SystemAssigned
 IdentityUserAssignedIdentity : {

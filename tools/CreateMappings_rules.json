@@ -911,5 +911,17 @@
   {
     "alias": "Astro",
     "module": "Astro"
+  },
+  {
+    "module": "Fabric",
+    "alias": "Fabric"
+  },
+  {
+    "alias": "KubernetesRuntime",
+    "module": "KubernetesRuntime"
+  },
+  {
+    "module": "Terraform",
+    "alias": "Terraform"
   }
 ]

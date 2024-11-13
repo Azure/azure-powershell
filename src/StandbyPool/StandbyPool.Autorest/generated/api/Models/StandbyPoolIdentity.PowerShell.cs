@@ -124,6 +124,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentityInternal)this).StandbyVirtualMachinePoolName = (string) content.GetValueForProperty("StandbyVirtualMachinePoolName",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentityInternal)this).StandbyVirtualMachinePoolName, global::System.Convert.ToString);
             }
+            if (content.Contains("RuntimeView"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentityInternal)this).RuntimeView = (string) content.GetValueForProperty("RuntimeView",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentityInternal)this).RuntimeView, global::System.Convert.ToString);
+            }
             if (content.Contains("StandbyVirtualMachineName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentityInternal)this).StandbyVirtualMachineName = (string) content.GetValueForProperty("StandbyVirtualMachineName",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentityInternal)this).StandbyVirtualMachineName, global::System.Convert.ToString);
@@ -164,6 +168,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
             if (content.Contains("StandbyVirtualMachinePoolName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentityInternal)this).StandbyVirtualMachinePoolName = (string) content.GetValueForProperty("StandbyVirtualMachinePoolName",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentityInternal)this).StandbyVirtualMachinePoolName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RuntimeView"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentityInternal)this).RuntimeView = (string) content.GetValueForProperty("RuntimeView",((Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models.IStandbyPoolIdentityInternal)this).RuntimeView, global::System.Convert.ToString);
             }
             if (content.Contains("StandbyVirtualMachineName"))
             {

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously creates or updates a new namespace with the specified parameters.
+Asynchronously create a new namespace with the specified parameters.
 .Description
-Asynchronously creates or updates a new namespace with the specified parameters.
+Asynchronously create a new namespace with the specified parameters.
 .Example
 New-AzEventGridNamespace -Name azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -Location eastus -TopicSpaceConfigurationState Enabled
 

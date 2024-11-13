@@ -14,7 +14,7 @@ Create an in-memory object for WebhookNotification.
 
 ```
 New-AzAutoscaleWebhookNotificationObject [-Property <IWebhookNotificationProperties>] [-ServiceUri <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,21 @@ New-AzAutoscaleWebhookNotificationObject -Property @{} -ServiceUri "http://myser
 Create webhook nofitication object
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Property
 a property bag of settings.

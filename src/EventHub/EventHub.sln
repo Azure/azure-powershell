@@ -39,6 +39,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Management.Sdk", "..\KeyVault\KeyVault.Management.Sdk\KeyVault.Management.Sdk.csproj", "{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHub.Management.Sdk", "EventHub.Management.Sdk\EventHub.Management.Sdk.csproj", "{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F9ECF94-AF8A-4C4E-8E68-A9A8BA93BBC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F2F6F2F-827B-4C9D-90CF-8BE1AB1FA80A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

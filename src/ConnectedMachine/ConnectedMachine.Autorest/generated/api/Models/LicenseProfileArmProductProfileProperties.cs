@@ -13,12 +13,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal
     {
 
+        /// <summary>The error additional info.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).AdditionalInfo; }
+
+        /// <summary>Backing field for <see cref="BillingEndDate" /> property.</summary>
+        private global::System.DateTime? _billingEndDate;
+
+        /// <summary>The timestamp in UTC when the billing ends.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        public global::System.DateTime? BillingEndDate { get => this._billingEndDate; }
+
         /// <summary>Backing field for <see cref="BillingStartDate" /> property.</summary>
         private global::System.DateTime? _billingStartDate;
 
         /// <summary>The timestamp in UTC when the billing starts.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public global::System.DateTime? BillingStartDate { get => this._billingStartDate; }
+
+        /// <summary>The error code.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public string Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Code; }
+
+        /// <summary>The error details.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Detail; }
 
         /// <summary>Backing field for <see cref="DisenrollmentDate" /> property.</summary>
         private global::System.DateTime? _disenrollmentDate;
@@ -34,14 +53,48 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public global::System.DateTime? EnrollmentDate { get => this._enrollmentDate; }
 
+        /// <summary>Backing field for <see cref="Error" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail _error;
+
+        /// <summary>
+        /// The errors that were encountered during the feature enrollment or disenrollment.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetail()); }
+
+        /// <summary>The error message.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public string Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Message; }
+
+        /// <summary>Internal Acessors for AdditionalInfo</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal.AdditionalInfo { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).AdditionalInfo; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).AdditionalInfo = value; }
+
+        /// <summary>Internal Acessors for BillingEndDate</summary>
+        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal.BillingEndDate { get => this._billingEndDate; set { {_billingEndDate = value;} } }
+
         /// <summary>Internal Acessors for BillingStartDate</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal.BillingStartDate { get => this._billingStartDate; set { {_billingStartDate = value;} } }
+
+        /// <summary>Internal Acessors for Code</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal.Code { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Code = value; }
+
+        /// <summary>Internal Acessors for Detail</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal.Detail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Detail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Detail = value; }
 
         /// <summary>Internal Acessors for DisenrollmentDate</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal.DisenrollmentDate { get => this._disenrollmentDate; set { {_disenrollmentDate = value;} } }
 
         /// <summary>Internal Acessors for EnrollmentDate</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal.EnrollmentDate { get => this._enrollmentDate; set { {_enrollmentDate = value;} } }
+
+        /// <summary>Internal Acessors for Error</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal.Error { get => (this._error = this._error ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ErrorDetail()); set { {_error = value;} } }
+
+        /// <summary>Internal Acessors for Message</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal.Message { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Message = value; }
+
+        /// <summary>Internal Acessors for Target</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfilePropertiesInternal.Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Target; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Target = value; }
 
         /// <summary>Backing field for <see cref="ProductFeature" /> property.</summary>
         private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature> _productFeature;
@@ -64,6 +117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string SubscriptionStatus { get => this._subscriptionStatus; set => this._subscriptionStatus = value; }
 
+        /// <summary>The error target.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
+        public string Target { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetailInternal)Error).Target; }
+
         /// <summary>
         /// Creates an new <see cref="LicenseProfileArmProductProfileProperties" /> instance.
         /// </summary>
@@ -76,6 +133,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     public partial interface ILicenseProfileArmProductProfileProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable
     {
+        /// <summary>The error additional info.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error additional info.",
+        SerializedName = @"additionalInfo",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> AdditionalInfo { get;  }
+        /// <summary>The timestamp in UTC when the billing ends.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The timestamp in UTC when the billing ends.",
+        SerializedName = @"billingEndDate",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        global::System.DateTime? BillingEndDate { get;  }
         /// <summary>The timestamp in UTC when the billing starts.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -87,6 +166,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"billingStartDate",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? BillingStartDate { get;  }
+        /// <summary>The error code.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error code.",
+        SerializedName = @"code",
+        PossibleTypes = new [] { typeof(string) })]
+        string Code { get;  }
+        /// <summary>The error details.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error details.",
+        SerializedName = @"details",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Detail { get;  }
         /// <summary>The timestamp in UTC when the user disenrolled the feature.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -109,6 +210,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"enrollmentDate",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? EnrollmentDate { get;  }
+        /// <summary>The error message.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error message.",
+        SerializedName = @"message",
+        PossibleTypes = new [] { typeof(string) })]
+        string Message { get;  }
         /// <summary>The list of product features.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -142,28 +254,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Description = @"Indicates the subscription status of the product.",
         SerializedName = @"subscriptionStatus",
         PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Unknown", "Enabling", "Enabled", "Disabled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Unknown", "Enabling", "Enabled", "Disabled", "Disabling", "Failed")]
         string SubscriptionStatus { get; set; }
+        /// <summary>The error target.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
+        Required = false,
+        ReadOnly = true,
+        Read = true,
+        Create = false,
+        Update = false,
+        Description = @"The error target.",
+        SerializedName = @"target",
+        PossibleTypes = new [] { typeof(string) })]
+        string Target { get;  }
 
     }
     /// Describes the properties of a Product License Profile ARM model.
     internal partial interface ILicenseProfileArmProductProfilePropertiesInternal
 
     {
+        /// <summary>The error additional info.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorAdditionalInfo> AdditionalInfo { get; set; }
+        /// <summary>The timestamp in UTC when the billing ends.</summary>
+        global::System.DateTime? BillingEndDate { get; set; }
         /// <summary>The timestamp in UTC when the billing starts.</summary>
         global::System.DateTime? BillingStartDate { get; set; }
+        /// <summary>The error code.</summary>
+        string Code { get; set; }
+        /// <summary>The error details.</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Detail { get; set; }
         /// <summary>The timestamp in UTC when the user disenrolled the feature.</summary>
         global::System.DateTime? DisenrollmentDate { get; set; }
         /// <summary>The timestamp in UTC when the user enrolls the feature.</summary>
         global::System.DateTime? EnrollmentDate { get; set; }
+        /// <summary>
+        /// The errors that were encountered during the feature enrollment or disenrollment.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail Error { get; set; }
+        /// <summary>The error message.</summary>
+        string Message { get; set; }
         /// <summary>The list of product features.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature> ProductFeature { get; set; }
         /// <summary>Indicates the product type of the license.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("WindowsServer", "WindowsIoTEnterprise")]
         string ProductType { get; set; }
         /// <summary>Indicates the subscription status of the product.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Unknown", "Enabling", "Enabled", "Disabled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Unknown", "Enabling", "Enabled", "Disabled", "Disabling", "Failed")]
         string SubscriptionStatus { get; set; }
+        /// <summary>The error target.</summary>
+        string Target { get; set; }
 
     }
 }

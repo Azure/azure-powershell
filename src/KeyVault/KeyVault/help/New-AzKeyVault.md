@@ -185,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableRbacAuthorization
-If specified, disables to authorize data actions by Role Based Access Control (RBAC), and then the access policies specified in vault properties will be ignored. Note that management actions are always authorized with RBAC.
+If specified, disables to authorize data actions by Role Based Access Control (RBAC), and then the access policies specified in vault properties will be honored. Note that management actions are always authorized with RBAC.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

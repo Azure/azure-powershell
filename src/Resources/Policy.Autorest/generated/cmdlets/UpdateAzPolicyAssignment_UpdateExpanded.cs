@@ -11,9 +11,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     using System;
 
     /// <summary>
-    /// This operation creates or updates the policy assignment with the given ID. Policy assignments made on a scope apply to
-    /// all resources contained in that scope. For example, when you assign a policy to a resource group that policy applies to
-    /// all resources in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+    /// This operation update the policy assignment with the given ID. Policy assignments made on a scope apply to all resources
+    /// contained in that scope. For example, when you assign a policy to a resource group that policy applies to all resources
+    /// in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
     /// Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription
     /// (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
     /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzPolicyAssignment_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.Alias("Set-AzPolicyAssignment")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation creates or updates the policy assignment with the given ID. Policy assignments made on a scope apply to all resources contained in that scope. For example, when you assign a policy to a resource group that policy applies to all resources in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation update the policy assignment with the given ID. Policy assignments made on a scope apply to all resources contained in that scope. For example, when you assign a policy to a resource group that policy applies to all resources in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
     public partial class UpdateAzPolicyAssignment_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener,
@@ -239,7 +239,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         Description = @"The policy property value override.",
         SerializedName = @"overrides",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExport]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[] Override { get => _parametersBody.Override?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.Override = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride>(value) : null); }
 
         /// <summary>
@@ -300,7 +299,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         Description = @"The resource selector list to filter policies by resource properties.",
         SerializedName = @"resourceSelectors",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExport]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[] ResourceSelector { get => _parametersBody.ResourceSelector?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ResourceSelector = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector>(value) : null); }
 
         /// <summary>
@@ -570,14 +568,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                 if (true == this.MyInvocation?.BoundParameters?.ContainsKey("NonComplianceMessageTable"))
                 {
                     NonComplianceMessageTable = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.INonComplianceMessage[])this.MyInvocation.BoundParameters["NonComplianceMessageTable"];
-                }
-                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("ResourceSelector"))
-                {
-                    ResourceSelector = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[])this.MyInvocation.BoundParameters["ResourceSelector"];
-                }
-                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("Override"))
-                {
-                    Override = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IOverride[])this.MyInvocation.BoundParameters["Override"];
                 }
                 try
                 {

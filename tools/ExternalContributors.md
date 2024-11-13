@@ -1,3 +1,2 @@
 ### Thanks to our community contributors
-* Paolo Frigo (@PaoloFrigo), Update New-AzStorageAccount.md (#25493)
-* @Skatterbrainz, Update Import-AzAutomationRunbook.md (#25587)
+* @jufuku0108, Update New-AzKeyVault.md (#26032)

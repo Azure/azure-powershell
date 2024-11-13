@@ -5,51 +5,50 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{8E7C6C0C-BFD1-4E1A-B042-79FB992B3558}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{3E40F9C5-9E33-423F-952A-605DC7990281}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{3E40F9C5-9E33-423F-952A-605DC7990281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{5CA3299D-1709-4776-9A04-FF16380198DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{5CA3299D-1709-4776-9A04-FF16380198DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{BC6DE799-8CEC-4E08-B118-1C8FF7C8BDA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{BC6DE799-8CEC-4E08-B118-1C8FF7C8BDA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{FBC258F0-AED5-4F1B-A357-86ADB99E2121}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{FBC258F0-AED5-4F1B-A357-86ADB99E2121}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{D89E857E-E7C2-490B-BD6B-3ED50BE8B007}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{D89E857E-E7C2-490B-BD6B-3ED50BE8B007}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{3DD6D4E8-9021-459A-BDD8-B4533CB8F1A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{3DD6D4E8-9021-459A-BDD8-B4533CB8F1A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E09BB005-D744-4D6A-B74B-04DE90074A32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blueprint.Test", "Blueprint.Test\Blueprint.Test.csproj", "{64E319D3-7268-4052-B02E-F5E9319E2158}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blueprint.Test", "Blueprint.Test\Blueprint.Test.csproj", "{64E319D3-7268-4052-B02E-F5E9319E2158}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blueprint", "Blueprint\Blueprint.csproj", "{2E6A7EAC-01F0-4188-A32C-441847577F8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blueprint", "Blueprint\Blueprint.csproj", "{2E6A7EAC-01F0-4188-A32C-441847577F8C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependentModules", "DependentModules", "{77D2C987-7CEB-4CFA-AA47-5171BD5B7C0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Authorization", "..\Resources\Authorization.Autorest\Az.Authorization.csproj", "{29A8760B-A0DB-480C-8270-83038355969B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Authorization", "..\Resources\Authorization.Autorest\Az.Authorization.csproj", "{29A8760B-A0DB-480C-8270-83038355969B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MSGraph", "..\Resources\MSGraph.Autorest\Az.MSGraph.csproj", "{44787BCE-CD80-4726-B9C5-8C7FBC2982B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.MSGraph", "..\Resources\MSGraph.Autorest\Az.MSGraph.csproj", "{44787BCE-CD80-4726-B9C5-8C7FBC2982B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceManager", "..\Resources\ResourceManager\ResourceManager.csproj", "{12A89145-B44B-420B-8BF4-A0B0856D1110}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager", "..\Resources\ResourceManager\ResourceManager.csproj", "{12A89145-B44B-420B-8BF4-A0B0856D1110}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "..\Resources\Resources\Resources.csproj", "{79F05C6B-D6CB-4CE7-AC49-516D22822B86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources", "..\Resources\Resources\Resources.csproj", "{79F05C6B-D6CB-4CE7-AC49-516D22822B86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tags", "..\Resources\Tags\Tags.csproj", "{38A4D9FA-7D11-4014-ACED-5AC28C74CCF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tags", "..\Resources\Tags\Tags.csproj", "{38A4D9FA-7D11-4014-ACED-5AC28C74CCF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{7E48CE83-9B77-4544-A4BF-9E850D6C2AD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{7E48CE83-9B77-4544-A4BF-9E850D6C2AD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization.Management.Sdk", "..\Resources\Authorization.Management.Sdk\Authorization.Management.Sdk.csproj", "{6C83208C-9E59-4EBA-86AB-E850FC13BD68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Management.Sdk", "..\Resources\Authorization.Management.Sdk\Authorization.Management.Sdk.csproj", "{6C83208C-9E59-4EBA-86AB-E850FC13BD68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources.Management.Sdk", "..\Resources\Resources.Management.Sdk\Resources.Management.Sdk.csproj", "{9A74916D-E00D-4CC5-ADA2-FA563F5F9505}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resources.Management.Sdk", "..\Resources\Resources.Management.Sdk\Resources.Management.Sdk.csproj", "{9A74916D-E00D-4CC5-ADA2-FA563F5F9505}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Policy", "..\Resources\Policy.Autorest\Az.Policy.csproj", "{E980C1BE-CCDA-4D03-AC11-3B818F695BBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Policy", "..\Resources\Policy.Autorest\Az.Policy.csproj", "{E980C1BE-CCDA-4D03-AC11-3B818F695BBC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blueprint.Management.Sdk", "Blueprint.Management.Sdk\Blueprint.Management.Sdk.csproj", "{F31A4D84-8DC4-4885-B3AA-69842AA7C218}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3E40F9C5-9E33-423F-952A-605DC7990281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -120,6 +119,13 @@ Global
 		{E980C1BE-CCDA-4D03-AC11-3B818F695BBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E980C1BE-CCDA-4D03-AC11-3B818F695BBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E980C1BE-CCDA-4D03-AC11-3B818F695BBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F31A4D84-8DC4-4885-B3AA-69842AA7C218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F31A4D84-8DC4-4885-B3AA-69842AA7C218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F31A4D84-8DC4-4885-B3AA-69842AA7C218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F31A4D84-8DC4-4885-B3AA-69842AA7C218}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3E40F9C5-9E33-423F-952A-605DC7990281} = {8E7C6C0C-BFD1-4E1A-B042-79FB992B3558}
@@ -139,5 +145,8 @@ Global
 		{6C83208C-9E59-4EBA-86AB-E850FC13BD68} = {77D2C987-7CEB-4CFA-AA47-5171BD5B7C0A}
 		{9A74916D-E00D-4CC5-ADA2-FA563F5F9505} = {77D2C987-7CEB-4CFA-AA47-5171BD5B7C0A}
 		{E980C1BE-CCDA-4D03-AC11-3B818F695BBC} = {77D2C987-7CEB-4CFA-AA47-5171BD5B7C0A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5CDB3790-4408-4927-A8AC-7C96CE1DBCAD}
 	EndGlobalSection
 EndGlobal

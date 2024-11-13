@@ -27,6 +27,7 @@ New-AzStandbyVMPool `
 -Location eastus `
 -VMSSId /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Compute/virtualMachineScaleSets/test-vmss `
 -MaxReadyCapacity 1 `
+-MinReadyCapacity 1 `
 -VMState Running
 
 .Outputs
@@ -69,8 +70,15 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category('Body')]
     [System.Int64]
-    # Specifies maximum number of virtual machines in the standby virtual machine pool.
+    # Specifies the maximum number of virtual machines in the standby virtual machine pool.
     ${MaxReadyCapacity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category('Body')]
+    [System.Int64]
+    # Specifies the desired minimum number of virtual machines in the standby virtual machine pool.
+    # MinReadyCapacity cannot exceed MaxReadyCapacity.
+    ${MinReadyCapacity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Category('Body')]

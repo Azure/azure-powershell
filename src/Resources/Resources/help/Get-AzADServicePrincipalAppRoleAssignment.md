@@ -33,27 +33,27 @@ Get appRoleAssignments from servicePrincipals
 
 ### Example 1: List assigned app roles
 ```powershell
-Get-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId 00001111-aaaa-2222-bbbb-3333cccc4444
+Get-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId 71beb965-8347-495d-a589-c21cdde7a722
 ```
 
 ```output
 Id                                          AppRoleId                            PrincipalDisplayName PrincipalId                          CreatedDateTime
 --                                          ---------                            -------------------- -----------                          ---------------
-Zbm-cUeDXUmlicIc3eenIkgIm8kv9kJPj4MFhepACNE 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83 funapp1214           00001111-aaaa-2222-bbbb-3333cccc4444 12/14/2023 7:04:28 AM
-Zbm-cUeDXUmlicIc3eenIhHyPMkzw2VEh76fTc0bGtM e799a9e2-acac-4960-9ba0-6a17661fa16a funapp1214           00001111-aaaa-2222-bbbb-3333cccc4444 12/14/2023 6:56:52 AM
+Zbm-cUeDXUmlicIc3eenIkgIm8kv9kJPj4MFhepACNE 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83 funapp1214           71beb965-8347-495d-a589-c21cdde7a722 12/14/2023 7:04:28 AM
+Zbm-cUeDXUmlicIc3eenIhHyPMkzw2VEh76fTc0bGtM e799a9e2-acac-4960-9ba0-6a17661fa16a funapp1214           71beb965-8347-495d-a589-c21cdde7a722 12/14/2023 6:56:52 AM
 ```
 
 List assigned app roles.
 
 ### Example 2: Get by AppRoleAssignmentId
 ```powershell
-Get-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId 00001111-aaaa-2222-bbbb-3333cccc4444 -AppRoleAssignmentId Zbm-cUeDXUmlicIc3eenIkgIm8kv9kJPj4MFhepACNE
+Get-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId 71beb965-8347-495d-a589-c21cdde7a722 -AppRoleAssignmentId Zbm-cUeDXUmlicIc3eenIkgIm8kv9kJPj4MFhepACNE
 ```
 
 ```output
 Id                                          AppRoleId                            PrincipalDisplayName PrincipalId                          CreatedDateTime
 --                                          ---------                            -------------------- -----------                          ---------------
-Zbm-cUeDXUmlicIc3eenIkgIm8kv9kJPj4MFhepACNE 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83 funapp1214           00001111-aaaa-2222-bbbb-3333cccc4444 12/14/2023 7:04:28 AM
+Zbm-cUeDXUmlicIc3eenIkgIm8kv9kJPj4MFhepACNE 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83 funapp1214           71beb965-8347-495d-a589-c21cdde7a722 12/14/2023 7:04:28 AM
 ```
 
 Get an assigned app role by Id.
@@ -91,7 +91,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -250,7 +251,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

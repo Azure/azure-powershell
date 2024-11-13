@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Fixed the issue that `Export-AzSshConfig` and `Enter-AzVM` from Az.Ssh are not able to use when WAM is enabled.
+* Added breaking change preannouncement for the removal of alias `Resolve-Error`. #26189
+* Integrated new detection library to expand the scope of secrets.
+
+## Version 3.0.4
 * Added customized UserAgent for ARM telemetry.
 * Fixed secrets exposure in example documentation.
 * Updated `Connect-AzAccount` to fix a display issue in PowerShell ISE [#24556].

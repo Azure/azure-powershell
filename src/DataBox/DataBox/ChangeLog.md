@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.3.2
 * Fixed secrets exposure in example documentation.
 
 ## Version 0.3.1

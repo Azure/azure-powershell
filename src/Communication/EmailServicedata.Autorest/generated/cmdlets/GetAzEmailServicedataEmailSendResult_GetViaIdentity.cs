@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Models.IEmailSendResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Description(@"Gets the status of the email send operation.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.HttpPath(Path = "/emails/operations/{operationId}", ApiVersion = "2023-03-31")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.HttpPath(Path = "/emails/operations/{operationId}", ApiVersion = "2024-07-01-preview")]
     public partial class GetAzEmailServicedataEmailSendResult_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.EmailServicedata.Runtime.IContext

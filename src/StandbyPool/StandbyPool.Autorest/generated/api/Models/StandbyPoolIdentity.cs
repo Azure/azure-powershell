@@ -26,6 +26,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>Backing field for <see cref="RuntimeView" /> property.</summary>
+        private string _runtimeView;
+
+        /// <summary>
+        /// The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime
+        /// view of the pool, otherwise the request will fail with NotFound exception.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.PropertyOrigin.Owned)]
+        public string RuntimeView { get => this._runtimeView; set => this._runtimeView = value; }
+
         /// <summary>Backing field for <see cref="StandbyContainerGroupPoolName" /> property.</summary>
         private string _standbyContainerGroupPoolName;
 
@@ -85,6 +95,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+        /// <summary>
+        /// The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime
+        /// view of the pool, otherwise the request will fail with NotFound exception.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime view of the pool, otherwise the request will fail with NotFound exception.",
+        SerializedName = @"runtimeView",
+        PossibleTypes = new [] { typeof(string) })]
+        string RuntimeView { get; set; }
         /// <summary>Name of the standby container group pool</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.Info(
         Required = false,
@@ -138,6 +162,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Models
         string Id { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
+        /// <summary>
+        /// The unique identifier for the runtime view. The input string should be the word 'latest', which will get the latest runtime
+        /// view of the pool, otherwise the request will fail with NotFound exception.
+        /// </summary>
+        string RuntimeView { get; set; }
         /// <summary>Name of the standby container group pool</summary>
         string StandbyContainerGroupPoolName { get; set; }
         /// <summary>Name of the standby virtual machine</summary>

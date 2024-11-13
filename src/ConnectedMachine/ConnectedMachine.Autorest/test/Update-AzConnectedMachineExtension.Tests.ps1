@@ -31,7 +31,7 @@ Describe 'Update-AzConnectedMachineExtension' {
         $splat = @{
             ResourceGroupName = "ytongtest"
             MachineName = "testmachine"
-            Name = "customScript"
+            Name = "networkWatcher"
             Settings = @{
                 commandToExecute = "powershell.exe ls"
             }

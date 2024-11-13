@@ -18,7 +18,7 @@ New-AzMigrateHCIServerReplication -MachineId <String> -TargetStoragePathId <Stri
  -TargetResourceGroupId <String> -TargetVMName <String> -TargetVirtualSwitchId <String> -OSDiskID <String>
  [-TargetVMCPUCore <Int32>] [-TargetTestVirtualSwitchId <String>] [-IsDynamicMemoryEnabled <String>]
  [-TargetVMRam <Int64>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -27,7 +27,7 @@ New-AzMigrateHCIServerReplication -MachineId <String> -TargetStoragePathId <Stri
  -TargetResourceGroupId <String> -TargetVMName <String> [-TargetVMCPUCore <Int32>]
  [-IsDynamicMemoryEnabled <String>] [-TargetVMRam <Int64>] [-SubscriptionId <String>]
  -DiskToInclude <AzStackHCIDiskInput[]> -NicToInclude <AzStackHCINicInput[]> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -207,6 +207,21 @@ Parameter Sets: ByIdDefaultUser
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

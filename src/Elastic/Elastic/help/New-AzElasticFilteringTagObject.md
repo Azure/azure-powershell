@@ -14,7 +14,7 @@ Create a in-memory object for FilteringTag
 
 ```
 New-AzElasticFilteringTagObject [-Action <TagAction>] [-Name <String>] [-Value <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,6 +68,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Value
 The value of the tag.
 
@@ -90,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.FilteringTag
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.FilteringTag
 
 ## NOTES
 

@@ -14,17 +14,18 @@ Saves a modified azure firewall policy draft
 
 ### SetByNameParameterSet (Default)
 ```
-Set-AzFirewallPolicyDraft -AzureFirewallPolicyName <String> -ResourceGroupName <String> [-AsJob] [-ThreatIntelMode <String>]
- [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>] [-BasePolicy <String>]
- [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
+Set-AzFirewallPolicyDraft -AzureFirewallPolicyName <String> -ResourceGroupName <String> [-AsJob]
+ [-ThreatIntelMode <String>] [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>]
+ [-BasePolicy <String>] [-DnsSetting <PSAzureFirewallPolicyDnsSettings>]
+ [-SqlSetting <PSAzureFirewallPolicySqlSetting>] [-Tag <Hashtable>]
  [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>] [-PrivateRange <String[]>]
  [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByParentInputObjectParameterSet
+### SetByInputObjectParameterSet
 ```
-Set-AzFirewallPolicyDraft [-AzureFirewallPolicyName <String>] -FirewallPolicyObject <PSAzureFirewallPolicy> [-AsJob] [-ThreatIntelMode <String>]
+Set-AzFirewallPolicyDraft -InputObject <PSAzureFirewallPolicyDraft> [-AsJob] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>] [-BasePolicy <String>]
  [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
  [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>] [-PrivateRange <String[]>]
@@ -32,9 +33,9 @@ Set-AzFirewallPolicyDraft [-AzureFirewallPolicyName <String>] -FirewallPolicyObj
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByInputObjectParameterSet
+### SetByParentInputObjectParameterSet
 ```
-Set-AzFirewallPolicyDraft [-AzureFirewallPolicyName <String>] -InputObject <PSAzureFirewallPolicyDraft> [-AsJob] [-ThreatIntelMode <String>]
+Set-AzFirewallPolicyDraft -FirewallPolicyObject <PSAzureFirewallPolicy> [-AsJob] [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>] [-BasePolicy <String>]
  [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
  [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>] [-PrivateRange <String[]>]
@@ -136,6 +137,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AzureFirewallPolicyName
+The resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
 ### -BasePolicy
 The base policy to inherit from
 
@@ -207,7 +223,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -239,33 +255,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-```
-
-### -AzureFirewallPolicyName
-The resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: SetByNameParameterSet
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
-
-```yaml
-Type: System.String
-Parameter Sets: SetByInputObjectParameterSet
-Aliases: ResourceName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
 ```
 
 ### -PrivateRange

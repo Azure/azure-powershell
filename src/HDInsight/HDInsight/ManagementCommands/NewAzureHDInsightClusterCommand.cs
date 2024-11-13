@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     clusterIdentity.UserAssignedIdentities.Add(AssignedIdentity, new UserAssignedIdentity());
                 }
-                if (StorageAccountManagedIdentity != null)
+                if (StorageAccountManagedIdentity != null && !clusterIdentity.UserAssignedIdentities.ContainsKey(StorageAccountManagedIdentity))
                 {
                     clusterIdentity.UserAssignedIdentities.Add(StorageAccountManagedIdentity, new UserAssignedIdentity());
                 }

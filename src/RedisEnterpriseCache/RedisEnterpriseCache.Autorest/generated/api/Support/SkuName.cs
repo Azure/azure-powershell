@@ -6,14 +6,77 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
 {
 
+    /// <summary>
+    /// The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5',
+    /// etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported
+    /// in the future.
+    /// </summary>
     public partial struct SkuName :
         System.IEquatable<SkuName>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB0 = @"Balanced_B0";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB1 = @"Balanced_B1";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB10 = @"Balanced_B10";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB100 = @"Balanced_B100";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB1000 = @"Balanced_B1000";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB150 = @"Balanced_B150";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB20 = @"Balanced_B20";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB250 = @"Balanced_B250";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB3 = @"Balanced_B3";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB350 = @"Balanced_B350";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB5 = @"Balanced_B5";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB50 = @"Balanced_B50";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB500 = @"Balanced_B500";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName BalancedB700 = @"Balanced_B700";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName ComputeOptimizedX10 = @"ComputeOptimized_X10";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName ComputeOptimizedX100 = @"ComputeOptimized_X100";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName ComputeOptimizedX150 = @"ComputeOptimized_X150";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName ComputeOptimizedX20 = @"ComputeOptimized_X20";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName ComputeOptimizedX250 = @"ComputeOptimized_X250";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName ComputeOptimizedX3 = @"ComputeOptimized_X3";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName ComputeOptimizedX350 = @"ComputeOptimized_X350";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName ComputeOptimizedX5 = @"ComputeOptimized_X5";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName ComputeOptimizedX50 = @"ComputeOptimized_X50";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName ComputeOptimizedX500 = @"ComputeOptimized_X500";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName ComputeOptimizedX700 = @"ComputeOptimized_X700";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName EnterpriseE1 = @"Enterprise_E1";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName EnterpriseE10 = @"Enterprise_E10";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName EnterpriseE100 = @"Enterprise_E100";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName EnterpriseE20 = @"Enterprise_E20";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName EnterpriseE200 = @"Enterprise_E200";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName EnterpriseE400 = @"Enterprise_E400";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName EnterpriseE5 = @"Enterprise_E5";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName EnterpriseE50 = @"Enterprise_E50";
 
@@ -22,6 +85,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName EnterpriseFlashF300 = @"EnterpriseFlash_F300";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName EnterpriseFlashF700 = @"EnterpriseFlash_F700";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName FlashOptimizedA1000 = @"FlashOptimized_A1000";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName FlashOptimizedA1500 = @"FlashOptimized_A1500";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName FlashOptimizedA2000 = @"FlashOptimized_A2000";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName FlashOptimizedA250 = @"FlashOptimized_A250";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName FlashOptimizedA4500 = @"FlashOptimized_A4500";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName FlashOptimizedA500 = @"FlashOptimized_A500";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName FlashOptimizedA700 = @"FlashOptimized_A700";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName MemoryOptimizedM10 = @"MemoryOptimized_M10";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName MemoryOptimizedM100 = @"MemoryOptimized_M100";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName MemoryOptimizedM1000 = @"MemoryOptimized_M1000";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName MemoryOptimizedM150 = @"MemoryOptimized_M150";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName MemoryOptimizedM1500 = @"MemoryOptimized_M1500";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName MemoryOptimizedM20 = @"MemoryOptimized_M20";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName MemoryOptimizedM2000 = @"MemoryOptimized_M2000";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName MemoryOptimizedM250 = @"MemoryOptimized_M250";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName MemoryOptimizedM350 = @"MemoryOptimized_M350";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName MemoryOptimizedM50 = @"MemoryOptimized_M50";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName MemoryOptimizedM500 = @"MemoryOptimized_M500";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName MemoryOptimizedM700 = @"MemoryOptimized_M700";
 
         /// <summary>the value for an instance of the <see cref="SkuName" /> Enum.</summary>
         private string _value { get; set; }

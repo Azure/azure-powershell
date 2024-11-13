@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Cmdlets;
     using System;
 
-    /// <summary>This operation updates a policy exemption with the given scope and name.</summary>
+    /// <summary>This operation update a policy exemption with the given scope and name.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/{scope}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}"
     /// </remarks>
@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzPolicyExemption_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.Alias("Set-AzPolicyExemption")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@" This operation updates a policy exemption with the given scope and name.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@" This operation update a policy exemption with the given scope and name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/{scope}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}", ApiVersion = "2022-07-01-preview")]
     public partial class UpdateAzPolicyExemption_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -159,7 +159,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
         Description = @"The resource selector list to filter policies by resource properties.",
         SerializedName = @"resourceSelectors",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.DoNotExport]
         public Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[] ResourceSelector { get => _parametersBody.ResourceSelector?.ToArray() ?? null /* fixedArrayOf */; set => _parametersBody.ResourceSelector = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector>(value) : null); }
 
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
@@ -386,10 +385,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                     Pipeline.Append((this.CommandRuntime as Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.PowerShell.IAsyncCommandRuntimeExtensions)?.Wrap(HttpPipelineAppend) ?? HttpPipelineAppend);
                 }
                 // get the client instance
-                if (true == this.MyInvocation?.BoundParameters?.ContainsKey("ResourceSelector"))
-                {
-                    ResourceSelector = (Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IResourceSelector[])this.MyInvocation.BoundParameters["ResourceSelector"];
-                }
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }

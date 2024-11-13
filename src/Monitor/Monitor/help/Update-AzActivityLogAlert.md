@@ -17,14 +17,14 @@ To update other fields use CreateOrUpdate operation.
 ### UpdateExpanded (Default)
 ```
 Update-AzActivityLogAlert -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Enabled <Boolean>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Enabled <Boolean>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzActivityLogAlert -InputObject <IActivityLogAlertIdentity> [-Enabled <Boolean>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,6 +99,21 @@ Parameter Sets: UpdateExpanded
 Aliases: ActivityLogAlertName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

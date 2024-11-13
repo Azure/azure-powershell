@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.3.0
 * Fixed secrets exposure in example documentation.
 * Fixed issues regarding Active Directory Administrator in `Set-AzSqlInstanceActiveDirectoryAdministrator` and `Set-AzSqlInstance` cmdlets.
 * Added new parameter AuthenticationMetadata to `New-AzSqlInstance` and `Set-AzSqlInstance`

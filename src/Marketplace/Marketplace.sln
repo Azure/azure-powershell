@@ -5,35 +5,34 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{8093C7F1-B506-4873-B0CC-515F3DADAD74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{BBBDB6E5-48B9-471A-8BC6-BEF3FC8D283D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{BBBDB6E5-48B9-471A-8BC6-BEF3FC8D283D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{57ED0218-D1DB-4304-85A0-E8C2E5812632}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{57ED0218-D1DB-4304-85A0-E8C2E5812632}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{33979B47-9B05-403E-94F5-C88A7C93FEDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{33979B47-9B05-403E-94F5-C88A7C93FEDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{BBE5C25A-9D4A-47BE-946A-4BD437A53125}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{BBE5C25A-9D4A-47BE-946A-4BD437A53125}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{3ED4A583-F4A6-4544-9A22-8F0AB3CC018B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{3ED4A583-F4A6-4544-9A22-8F0AB3CC018B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{97F41786-D7B7-42E8-B9AF-6E67EB6ED319}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{97F41786-D7B7-42E8-B9AF-6E67EB6ED319}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Marketplace", "Marketplace.Autorest\Az.Marketplace.csproj", "{7FC23BD5-5EA8-4DE7-B537-F083750034F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Marketplace", "Marketplace.Autorest\Az.Marketplace.csproj", "{7FC23BD5-5EA8-4DE7-B537-F083750034F9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E2AFE775-9330-4955-B7E6-45C52566CB48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace.Test", "Marketplace.Test\Marketplace.Test.csproj", "{CC255CC3-582B-4E84-91A6-9F596B75DBC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marketplace.Test", "Marketplace.Test\Marketplace.Test.csproj", "{CC255CC3-582B-4E84-91A6-9F596B75DBC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marketplace", "Marketplace\Marketplace.csproj", "{E85AA2EB-11D0-4A8D-B04A-85267DE7C273}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marketplace", "Marketplace\Marketplace.csproj", "{E85AA2EB-11D0-4A8D-B04A-85267DE7C273}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{874EAA39-034D-4232-A1F3-B5584ED20E07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{874EAA39-034D-4232-A1F3-B5584ED20E07}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marketplace.Management.Sdk", "Marketplace.Management.Sdk\Marketplace.Management.Sdk.csproj", "{716D96C3-F553-46D5-AA0C-D736218623FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BBBDB6E5-48B9-471A-8BC6-BEF3FC8D283D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -76,6 +75,13 @@ Global
 		{874EAA39-034D-4232-A1F3-B5584ED20E07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{874EAA39-034D-4232-A1F3-B5584ED20E07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{874EAA39-034D-4232-A1F3-B5584ED20E07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{716D96C3-F553-46D5-AA0C-D736218623FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{716D96C3-F553-46D5-AA0C-D736218623FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{716D96C3-F553-46D5-AA0C-D736218623FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{716D96C3-F553-46D5-AA0C-D736218623FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BBBDB6E5-48B9-471A-8BC6-BEF3FC8D283D} = {8093C7F1-B506-4873-B0CC-515F3DADAD74}
@@ -86,5 +92,8 @@ Global
 		{97F41786-D7B7-42E8-B9AF-6E67EB6ED319} = {8093C7F1-B506-4873-B0CC-515F3DADAD74}
 		{CC255CC3-582B-4E84-91A6-9F596B75DBC9} = {E2AFE775-9330-4955-B7E6-45C52566CB48}
 		{874EAA39-034D-4232-A1F3-B5584ED20E07} = {E2AFE775-9330-4955-B7E6-45C52566CB48}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D60E86D9-134F-41DA-ADF6-7D5A746638EA}
 	EndGlobalSection
 EndGlobal

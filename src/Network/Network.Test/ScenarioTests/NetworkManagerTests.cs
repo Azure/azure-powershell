@@ -70,6 +70,22 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerRoutingRuleCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerRoutingRuleCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
+        public void NetworkManagerSecurityUserRuleCRUD()
+        {
+            TestRunner.RunTestScript("Test-NetworkManagerSecurityUserRuleCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nsmdev)]
         public void NetworkManagerScopeConnectionCRUD()
         {
             TestRunner.RunTestScript("Test-NetworkManagerScopeConnectionCRUD");

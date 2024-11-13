@@ -76,10 +76,15 @@ jobs:
       custom: msbuild
       arguments: 'build.proj /t:Build /p:Configuration=Release;TurnOnTestCoverage=true;ModifiedModuleBuild=true'
 
-  - task: EsrpCodeSigning@4
+  - task: EsrpCodeSigning@5
     displayName: "Sign Dll [Authenticode + Strong Name]"
     inputs:
-      ConnectedServiceName: '$(signServiceConnection)'
+      ConnectedServiceName: '$(ESRPServiceConnectionName)' 
+      AppRegistrationClientId: '$(ESRPAppClientId)' 
+      AppRegistrationTenantId: '$(ESRPAppTenantId)' 
+      AuthAKVName: '$(ESRPKVName)' 
+      AuthCertName: '$(ESRPAuthCertName)' 
+      AuthSignCertName: '$(ESRPSignCertName)'
       FolderPath: 'artifacts'
       Pattern: |
         Release/**/Microsoft*Azure*PowerShell*.dll
@@ -128,10 +133,15 @@ jobs:
       SessionTimeout: '60'
       MaxConcurrency: '50'
       MaxRetryAttempts: '5'
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@5
     displayName: "Sign Scripts [Authenticode]"
     inputs:
-      ConnectedServiceName: '$(signServiceConnection)'
+      ConnectedServiceName: '$(ESRPServiceConnectionName)' 
+      AppRegistrationClientId: '$(ESRPAppClientId)' 
+      AppRegistrationTenantId: '$(ESRPAppTenantId)' 
+      AuthAKVName: '$(ESRPKVName)' 
+      AuthCertName: '$(ESRPAuthCertName)' 
+      AuthSignCertName: '$(ESRPSignCertName)'
       FolderPath: 'artifacts'
       Pattern: |
         Release/**/*.ps1
@@ -164,10 +174,15 @@ jobs:
             "ToolVersion": "1.0"
           }
         ]
-  - task: EsrpCodeSigning@4
+  - task: EsrpCodeSigning@5
     displayName: 'Sign 3rd Party [Strong Name]'
     inputs:
-      ConnectedServiceName: '$(signServiceConnection)'
+      ConnectedServiceName: '$(ESRPServiceConnectionName)' 
+      AppRegistrationClientId: '$(ESRPAppClientId)' 
+      AppRegistrationTenantId: '$(ESRPAppTenantId)' 
+      AuthAKVName: '$(ESRPKVName)' 
+      AuthCertName: '$(ESRPAuthCertName)' 
+      AuthSignCertName: '$(ESRPSignCertName)'
       FolderPath: artifacts
       Pattern: 'Release/**/FuzzySharp.dll'
       UseMinimatch: true

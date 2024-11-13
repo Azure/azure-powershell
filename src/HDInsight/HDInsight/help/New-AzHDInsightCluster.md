@@ -38,7 +38,7 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-PrivateLink <String>] [-PublicIpTagType <String>] [-PublicIpTag <String>]
  [-OutboundDependenciesManagedType <String>] [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>]
  [-Zone <String[]>] [-PrivateLinkConfiguration <AzureHDInsightPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateFilePath
@@ -67,7 +67,7 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-PublicIpTagType <String>] [-PublicIpTag <String>] [-OutboundDependenciesManagedType <String>]
  [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zone <String[]>]
  [-PrivateLinkConfiguration <AzureHDInsightPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CertificateFileContents
@@ -96,7 +96,7 @@ New-AzHDInsightCluster [-Location] <String> [-ResourceGroupName] <String> [-Clus
  [-PublicIpTagType <String>] [-PublicIpTag <String>] [-OutboundDependenciesManagedType <String>]
  [-EnableComputeIsolation] [-ComputeIsolationHostSku <String>] [-Zone <String[]>]
  [-PrivateLinkConfiguration <AzureHDInsightPrivateLinkConfiguration[]>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -382,7 +382,6 @@ New-AzHDInsightCluster `
 ### Example 8: Create an Azure HDInsight cluster with Azure Data Lake Gen2 storage.
 ```powershell
 # Primary storage account info
-$storageAccountResourceGroupName = "Group"
 $storageAccountResourceId = "yourstorageaccountresourceid"
 $storageManagedIdentity = "yourstorageusermanagedidentity"
 $storageFileSystem = "filesystem01"
@@ -412,7 +411,7 @@ New-AzHDInsightCluster `
     -SshCredential $clusterCreds
 ```
 
-### Example 9: Create an Azure HDInsight cluster with Enterprise Security Package(ESP) and Enable HDInsight ID Broker.
+### Example 9: Create an Azure HDInsight cluster with Enterprise Security Package(ESP), Enable HDInsight ID Broker and using WASB storage.
 ```powershell
 # Primary storage account info
 $storageAccountResourceGroupName = "Group"
@@ -621,6 +620,52 @@ New-AzHDInsightCluster `
     -SshCredential $clusterCreds `
     -VirtualNetworkId $virtualNetworkId -SubnetName $subnetName `
     -AmbariDatabase $config.AmbariDatabase -HiveMetastore $config.HiveMetastore -OozieMetastore $config.OozieMetastore -Zone $zones
+```
+
+### Example 13: Create an Azure HDInsight cluster with Enterprise Security Package(ESP) and using Azure Data Lake Gen2 storage.
+```powershell
+# Primary storage account info
+$storageAccountResourceId = "yourstorageaccountresourceid"
+$storageManagedIdentity = "yourstorageusermanagedidentity"
+$storageFileSystem = "filesystem01"
+$storageAccountType = "AzureDataLakeStorageGen2"
+# Cluster configuration info
+$location = "East US 2"
+$clusterResourceGroupName = "Group"
+$clusterName = "your-hadoop-002"
+$clusterCreds = Get-Credential
+# If the cluster's resource group doesn't exist yet, run:
+# New-AzResourceGroup -Name $clusterResourceGroupName -Location $location
+# ESP configuration
+$domainResourceId = "your Azure AD Domin Service resource id"
+$domainUser = "yourdomainuser"
+$domainPassword = ConvertTo-SecureString -String "****" -AsPlainText -Force
+$domainCredential = New-Object System.Management.Automation.PSCredential($domainUser, $domainPassword)
+$clusterUserGroupDns = "dominusergroup"
+$ldapUrls = "ldaps://{your domain name}:636"
+$clusterTier = "Premium"
+$vnetId = "yourvnetid"
+$subnetName = "yoursubnetname"
+$assignedIdentity = "your user managed assigned identity resourcee id"
+#Create security profile
+$config= New-AzHDInsightClusterConfig|Add-AzHDInsightSecurityProfile -DomainResourceId $domainResourceId -DomainUserCredential $domainCredential -LdapsUrls $ldapUrls -ClusterUsersGroupDNs $clusterUserGroupDns
+# Create the cluster
+New-AzHDInsightCluster `
+    -ClusterTier $clusterTier `
+    -ClusterType Hadoop `
+    -ClusterSizeInNodes 3 `
+    -ResourceGroupName $clusterResourceGroupName `
+    -ClusterName $clusterName `
+    -HttpCredential $clusterCreds `
+    -Location $location `
+    -StorageAccountResourceId $storageAccountResourceId `
+    -StorageAccountManagedIdentity $storageManagedIdentity `
+    -StorageFileSystem $storageFileSystem `
+    -StorageAccountType $storageAccountType `
+    -SshCredential $clusterCreds `
+    -VirtualNetworkId $vnetId -SubnetName $subnetName `
+    -AssignedIdentity $assignedIdentity `
+    -SecurityProfile $config.SecurityProfile
 ```
 
 ## PARAMETERS
@@ -1273,21 +1318,6 @@ Gets or sets the private link configuration.
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightPrivateLinkConfiguration[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

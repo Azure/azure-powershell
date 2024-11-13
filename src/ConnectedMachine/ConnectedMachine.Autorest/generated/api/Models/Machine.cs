@@ -144,41 +144,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
         public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> ErrorDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ErrorDetail; }
 
-        /// <summary>The assigned license resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicense EsuProfileAssignedLicense { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileAssignedLicense; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileAssignedLicense = value ?? null /* model class */; }
-
-        /// <summary>The guid id of the license.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string EsuProfileAssignedLicenseImmutableId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileAssignedLicenseImmutableId; }
-
-        /// <summary>Indicates the eligibility state of Esu.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string EsuProfileEsuEligibility { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileEsuEligibility; }
-
-        /// <summary>The list of ESU keys.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKey> EsuProfileEsuKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileEsuKey; }
-
-        /// <summary>Indicates whether there is an ESU Key currently active for the machine.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string EsuProfileEsuKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileEsuKeyState; }
-
-        /// <summary>Describes the license assignment state (Assigned or NotAssigned).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string EsuProfileLicenseAssignmentState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileLicenseAssignmentState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileLicenseAssignmentState = value ?? null; }
-
-        /// <summary>The type of the Esu servers.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string EsuProfileServerType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileServerType; }
-
         /// <summary>Machine Extensions information (deprecated field)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
@@ -254,25 +219,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
         public global::System.DateTime? LastStatusChange { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LastStatusChange; }
 
-        /// <summary>Indicates the license channel.</summary>
+        /// <summary>Specifies the License related properties for a machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string LicenseProfileLicenseChannel { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfileLicenseChannel; }
-
-        /// <summary>Indicates the license status of the OS.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string LicenseProfileLicenseStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfileLicenseStatus; }
-
-        /// <summary>Specifies the assessment mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string LinuxConfigurationPatchSettingsAssessmentMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LinuxConfigurationPatchSettingsAssessmentMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LinuxConfigurationPatchSettingsAssessmentMode = value ?? null; }
-
-        /// <summary>Specifies the patch mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string LinuxConfigurationPatchSettingsPatchMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LinuxConfigurationPatchSettingsPatchMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LinuxConfigurationPatchSettingsPatchMode = value ?? null; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceView LicenseProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfile = value ?? null /* model class */; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inherited)]
@@ -368,21 +318,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Internal Acessors for ErrorDetail</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.ErrorDetail { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ErrorDetail; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ErrorDetail = value; }
 
-        /// <summary>Internal Acessors for EsuProfileAssignedLicenseImmutableId</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.EsuProfileAssignedLicenseImmutableId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileAssignedLicenseImmutableId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileAssignedLicenseImmutableId = value; }
-
-        /// <summary>Internal Acessors for EsuProfileEsuEligibility</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.EsuProfileEsuEligibility { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileEsuEligibility; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileEsuEligibility = value; }
-
-        /// <summary>Internal Acessors for EsuProfileEsuKey</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKey> Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.EsuProfileEsuKey { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileEsuKey; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileEsuKey = value; }
-
-        /// <summary>Internal Acessors for EsuProfileEsuKeyState</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.EsuProfileEsuKeyState { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileEsuKeyState; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileEsuKeyState = value; }
-
-        /// <summary>Internal Acessors for EsuProfileServerType</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.EsuProfileServerType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileServerType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).EsuProfileServerType = value; }
-
         /// <summary>Internal Acessors for Fqdn</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.Fqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).MachineFqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).MachineFqdn = value; }
 
@@ -398,27 +333,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Internal Acessors for LastStatusChange</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.LastStatusChange { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LastStatusChange; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LastStatusChange = value; }
 
-        /// <summary>Internal Acessors for LicenseProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceView Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.LicenseProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfile = value; }
-
-        /// <summary>Internal Acessors for LicenseProfileEsuProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceViewEsuProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.LicenseProfileEsuProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfileEsuProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfileEsuProfile = value; }
-
-        /// <summary>Internal Acessors for LicenseProfileLicenseChannel</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.LicenseProfileLicenseChannel { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfileLicenseChannel; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfileLicenseChannel = value; }
-
-        /// <summary>Internal Acessors for LicenseProfileLicenseStatus</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.LicenseProfileLicenseStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfileLicenseStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfileLicenseStatus = value; }
-
-        /// <summary>Internal Acessors for LicenseProfileProductProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfileProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.LicenseProfileProductProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfileProductProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfileProductProfile = value; }
-
-        /// <summary>Internal Acessors for LicenseProfileSoftwareAssurance</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceViewSoftwareAssurance Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.LicenseProfileSoftwareAssurance { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfileSoftwareAssurance; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LicenseProfileSoftwareAssurance = value; }
-
-        /// <summary>Internal Acessors for LinuxConfigurationPatchSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.LinuxConfigurationPatchSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LinuxConfigurationPatchSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LinuxConfigurationPatchSetting = value; }
-
         /// <summary>Internal Acessors for LocationData</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILocationData Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.LocationData { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LocationData; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).LocationData = value; }
 
@@ -431,32 +345,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>Internal Acessors for OSName</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.OSName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSName = value; }
 
-        /// <summary>Internal Acessors for OSProfile</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.OSProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSProfile = value; }
-
-        /// <summary>Internal Acessors for OSProfileComputerName</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.OSProfileComputerName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSProfileComputerName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSProfileComputerName = value; }
-
-        /// <summary>Internal Acessors for OSProfileLinuxConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfiguration Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.OSProfileLinuxConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSProfileLinuxConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSProfileLinuxConfiguration = value; }
-
-        /// <summary>Internal Acessors for OSProfileWindowsConfiguration</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfiguration Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.OSProfileWindowsConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSProfileWindowsConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSProfileWindowsConfiguration = value; }
-
         /// <summary>Internal Acessors for OSSku</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.OSSku { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSSku; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSSku = value; }
 
         /// <summary>Internal Acessors for OSVersion</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.OSVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSVersion = value; }
-
-        /// <summary>Internal Acessors for ProductProfileBillingStartDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.ProductProfileBillingStartDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileBillingStartDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileBillingStartDate = value; }
-
-        /// <summary>Internal Acessors for ProductProfileDisenrollmentDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.ProductProfileDisenrollmentDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileDisenrollmentDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileDisenrollmentDate = value; }
-
-        /// <summary>Internal Acessors for ProductProfileEnrollmentDate</summary>
-        global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.ProductProfileEnrollmentDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileEnrollmentDate; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileEnrollmentDate = value; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineProperties Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.MachineProperties()); set { {_property = value;} } }
@@ -481,9 +374,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
 
         /// <summary>Internal Acessors for VMUuid</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.VMUuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).VMUuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).VMUuid = value; }
-
-        /// <summary>Internal Acessors for WindowConfigurationPatchSetting</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineInternal.WindowConfigurationPatchSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).WindowConfigurationPatchSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).WindowConfigurationPatchSetting = value; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IResourceInternal)__trackedResource).Id = value; }
@@ -522,10 +412,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
         public string OSName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSName; }
 
-        /// <summary>Specifies the host OS name of the hybrid machine.</summary>
+        /// <summary>Specifies the operating system settings for the hybrid machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string OSProfileComputerName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSProfileComputerName; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile OSProfile { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSProfile; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).OSProfile = value ?? null /* model class */; }
 
         /// <summary>Specifies the Operating System product SKU.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
@@ -554,36 +444,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
         public string PrivateLinkScopeResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).PrivateLinkScopeResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).PrivateLinkScopeResourceId = value ?? null; }
 
-        /// <summary>The timestamp in UTC when the billing starts.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public global::System.DateTime? ProductProfileBillingStartDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileBillingStartDate; }
-
-        /// <summary>The timestamp in UTC when the user disenrolled the feature.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public global::System.DateTime? ProductProfileDisenrollmentDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileDisenrollmentDate; }
-
-        /// <summary>The timestamp in UTC when the user enrolls the feature.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public global::System.DateTime? ProductProfileEnrollmentDate { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileEnrollmentDate; }
-
-        /// <summary>The list of product features.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature> ProductProfileProductFeature { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileProductFeature; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileProductFeature = value ?? null /* arrayOf */; }
-
-        /// <summary>Indicates the product type of the license.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string ProductProfileProductType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileProductType; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileProductType = value ?? null; }
-
-        /// <summary>Indicates the subscription status of the product.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string ProductProfileSubscriptionStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileSubscriptionStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).ProductProfileSubscriptionStatus = value ?? null; }
-
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineProperties _property;
 
@@ -609,13 +469,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.FormatTable(Index = 0)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
-
-        /// <summary>
-        /// Specifies if this machine is licensed as part of a Software Assurance agreement.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public bool? SoftwareAssuranceCustomer { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).SoftwareAssuranceCustomer; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).SoftwareAssuranceCustomer = value ?? default(bool); }
 
         /// <summary>The status of the hybrid machine agent.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
@@ -680,16 +533,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
         public string VMUuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).VMUuid; }
-
-        /// <summary>Specifies the assessment mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string WindowsConfigurationPatchSettingsAssessmentMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).WindowsConfigurationPatchSettingsAssessmentMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).WindowsConfigurationPatchSettingsAssessmentMode = value ?? null; }
-
-        /// <summary>Specifies the patch mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.DoNotFormat]
-        public string WindowsConfigurationPatchSettingsPatchMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).WindowsConfigurationPatchSettingsPatchMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)Property).WindowsConfigurationPatchSettingsPatchMode = value ?? null; }
 
         /// <summary>Creates an new <see cref="Machine" /> instance.</summary>
         public Machine()
@@ -985,87 +828,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"errorDetails",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> ErrorDetail { get;  }
-        /// <summary>The assigned license resource.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The assigned license resource.",
-        SerializedName = @"assignedLicense",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicense) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicense EsuProfileAssignedLicense { get; set; }
-        /// <summary>The guid id of the license.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The guid id of the license.",
-        SerializedName = @"assignedLicenseImmutableId",
-        PossibleTypes = new [] { typeof(string) })]
-        string EsuProfileAssignedLicenseImmutableId { get;  }
-        /// <summary>Indicates the eligibility state of Esu.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Indicates the eligibility state of Esu.",
-        SerializedName = @"esuEligibility",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Eligible", "Ineligible", "Unknown")]
-        string EsuProfileEsuEligibility { get;  }
-        /// <summary>The list of ESU keys.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The list of ESU keys.",
-        SerializedName = @"esuKeys",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKey) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKey> EsuProfileEsuKey { get;  }
-        /// <summary>Indicates whether there is an ESU Key currently active for the machine.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Indicates whether there is an ESU Key currently active for the machine.",
-        SerializedName = @"esuKeyState",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Inactive", "Active")]
-        string EsuProfileEsuKeyState { get;  }
-        /// <summary>Describes the license assignment state (Assigned or NotAssigned).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Describes the license assignment state (Assigned or NotAssigned).",
-        SerializedName = @"licenseAssignmentState",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Assigned", "NotAssigned")]
-        string EsuProfileLicenseAssignmentState { get; set; }
-        /// <summary>The type of the Esu servers.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The type of the Esu servers.",
-        SerializedName = @"serverType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Standard", "Datacenter")]
-        string EsuProfileServerType { get;  }
         /// <summary>Machine Extensions information (deprecated field)</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -1191,53 +953,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"lastStatusChange",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         global::System.DateTime? LastStatusChange { get;  }
-        /// <summary>Indicates the license channel.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Indicates the license channel.",
-        SerializedName = @"licenseChannel",
-        PossibleTypes = new [] { typeof(string) })]
-        string LicenseProfileLicenseChannel { get;  }
-        /// <summary>Indicates the license status of the OS.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Indicates the license status of the OS.",
-        SerializedName = @"licenseStatus",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Unlicensed", "Licensed", "OOBGrace", "OOTGrace", "NonGenuineGrace", "Notification", "ExtendedGrace")]
-        string LicenseProfileLicenseStatus { get;  }
-        /// <summary>Specifies the assessment mode.</summary>
+        /// <summary>Specifies the License related properties for a machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies the assessment mode.",
-        SerializedName = @"assessmentMode",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
-        string LinuxConfigurationPatchSettingsAssessmentMode { get; set; }
-        /// <summary>Specifies the patch mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Specifies the patch mode.",
-        SerializedName = @"patchMode",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-        string LinuxConfigurationPatchSettingsPatchMode { get; set; }
+        Description = @"Specifies the License related properties for a machine.",
+        SerializedName = @"licenseProfile",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceView) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceView LicenseProfile { get; set; }
         /// <summary>The city or locality where the resource is located.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -1326,17 +1052,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"osName",
         PossibleTypes = new [] { typeof(string) })]
         string OSName { get;  }
-        /// <summary>Specifies the host OS name of the hybrid machine.</summary>
+        /// <summary>Specifies the operating system settings for the hybrid machine.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Specifies the host OS name of the hybrid machine.",
-        SerializedName = @"computerName",
-        PossibleTypes = new [] { typeof(string) })]
-        string OSProfileComputerName { get;  }
+        Create = true,
+        Update = true,
+        Description = @"Specifies the operating system settings for the hybrid machine.",
+        SerializedName = @"osProfile",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile OSProfile { get; set; }
         /// <summary>Specifies the Operating System product SKU.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -1394,74 +1120,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"privateLinkScopeResourceId",
         PossibleTypes = new [] { typeof(string) })]
         string PrivateLinkScopeResourceId { get; set; }
-        /// <summary>The timestamp in UTC when the billing starts.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The timestamp in UTC when the billing starts.",
-        SerializedName = @"billingStartDate",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? ProductProfileBillingStartDate { get;  }
-        /// <summary>The timestamp in UTC when the user disenrolled the feature.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The timestamp in UTC when the user disenrolled the feature.",
-        SerializedName = @"disenrollmentDate",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? ProductProfileDisenrollmentDate { get;  }
-        /// <summary>The timestamp in UTC when the user enrolls the feature.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The timestamp in UTC when the user enrolls the feature.",
-        SerializedName = @"enrollmentDate",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        global::System.DateTime? ProductProfileEnrollmentDate { get;  }
-        /// <summary>The list of product features.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"The list of product features.",
-        SerializedName = @"productFeatures",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature> ProductProfileProductFeature { get;  }
-        /// <summary>Indicates the product type of the license.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Indicates the product type of the license.",
-        SerializedName = @"productType",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("WindowsServer", "WindowsIoTEnterprise")]
-        string ProductProfileProductType { get;  }
-        /// <summary>Indicates the subscription status of the product.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Indicates the subscription status of the product.",
-        SerializedName = @"subscriptionStatus",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Unknown", "Enabling", "Enabled", "Disabled")]
-        string ProductProfileSubscriptionStatus { get;  }
         /// <summary>The provisioning state, which only appears in the response.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -1484,19 +1142,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"resources",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtension) })]
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtension> Resource { get;  }
-        /// <summary>
-        /// Specifies if this machine is licensed as part of a Software Assurance agreement.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"Specifies if this machine is licensed as part of a Software Assurance agreement.",
-        SerializedName = @"softwareAssuranceCustomer",
-        PossibleTypes = new [] { typeof(bool) })]
-        bool? SoftwareAssuranceCustomer { get;  }
         /// <summary>The status of the hybrid machine agent.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -1531,30 +1176,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"vmUuid",
         PossibleTypes = new [] { typeof(string) })]
         string VMUuid { get;  }
-        /// <summary>Specifies the assessment mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Specifies the assessment mode.",
-        SerializedName = @"assessmentMode",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
-        string WindowsConfigurationPatchSettingsAssessmentMode { get; set; }
-        /// <summary>Specifies the patch mode.</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"Specifies the patch mode.",
-        SerializedName = @"patchMode",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-        string WindowsConfigurationPatchSettingsPatchMode { get; set; }
 
     }
     /// Describes a hybrid machine.
@@ -1624,24 +1245,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string DomainName { get; set; }
         /// <summary>Details about the error state.</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IErrorDetail> ErrorDetail { get; set; }
-        /// <summary>The assigned license resource.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicense EsuProfileAssignedLicense { get; set; }
-        /// <summary>The guid id of the license.</summary>
-        string EsuProfileAssignedLicenseImmutableId { get; set; }
-        /// <summary>Indicates the eligibility state of Esu.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Eligible", "Ineligible", "Unknown")]
-        string EsuProfileEsuEligibility { get; set; }
-        /// <summary>The list of ESU keys.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IEsuKey> EsuProfileEsuKey { get; set; }
-        /// <summary>Indicates whether there is an ESU Key currently active for the machine.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Inactive", "Active")]
-        string EsuProfileEsuKeyState { get; set; }
-        /// <summary>Describes the license assignment state (Assigned or NotAssigned).</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Assigned", "NotAssigned")]
-        string EsuProfileLicenseAssignmentState { get; set; }
-        /// <summary>The type of the Esu servers.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Standard", "Datacenter")]
-        string EsuProfileServerType { get; set; }
         /// <summary>Machine Extensions information (deprecated field)</summary>
         System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionInstanceView> Extension { get; set; }
         /// <summary>The behavior of the service when the Arc-enabled machine starts up.</summary>
@@ -1672,25 +1275,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         global::System.DateTime? LastStatusChange { get; set; }
         /// <summary>Specifies the License related properties for a machine.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceView LicenseProfile { get; set; }
-        /// <summary>Properties for the Machine ESU profile.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceViewEsuProperties LicenseProfileEsuProfile { get; set; }
-        /// <summary>Indicates the license channel.</summary>
-        string LicenseProfileLicenseChannel { get; set; }
-        /// <summary>Indicates the license status of the OS.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Unlicensed", "Licensed", "OOBGrace", "OOTGrace", "NonGenuineGrace", "Notification", "ExtendedGrace")]
-        string LicenseProfileLicenseStatus { get; set; }
-        /// <summary>Hybrid Compute Product Profile properties</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileArmProductProfileProperties LicenseProfileProductProfile { get; set; }
-
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILicenseProfileMachineInstanceViewSoftwareAssurance LicenseProfileSoftwareAssurance { get; set; }
-        /// <summary>Specifies the patch settings.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings LinuxConfigurationPatchSetting { get; set; }
-        /// <summary>Specifies the assessment mode.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
-        string LinuxConfigurationPatchSettingsAssessmentMode { get; set; }
-        /// <summary>Specifies the patch mode.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-        string LinuxConfigurationPatchSettingsPatchMode { get; set; }
         /// <summary>Metadata pertaining to the geographic location of the resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ILocationData LocationData { get; set; }
         /// <summary>The city or locality where the resource is located.</summary>
@@ -1713,12 +1297,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string OSName { get; set; }
         /// <summary>Specifies the operating system settings for the hybrid machine.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfile OSProfile { get; set; }
-        /// <summary>Specifies the host OS name of the hybrid machine.</summary>
-        string OSProfileComputerName { get; set; }
-        /// <summary>Specifies the linux configuration for update management.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileLinuxConfiguration OSProfileLinuxConfiguration { get; set; }
-        /// <summary>Specifies the windows configuration for update management.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IOSProfileWindowsConfiguration OSProfileWindowsConfiguration { get; set; }
         /// <summary>Specifies the Operating System product SKU.</summary>
         string OSSku { get; set; }
         /// <summary>The type of Operating System (windows/linux).</summary>
@@ -1731,20 +1309,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string ParentClusterResourceId { get; set; }
         /// <summary>The resource id of the private link scope this machine is assigned to, if any.</summary>
         string PrivateLinkScopeResourceId { get; set; }
-        /// <summary>The timestamp in UTC when the billing starts.</summary>
-        global::System.DateTime? ProductProfileBillingStartDate { get; set; }
-        /// <summary>The timestamp in UTC when the user disenrolled the feature.</summary>
-        global::System.DateTime? ProductProfileDisenrollmentDate { get; set; }
-        /// <summary>The timestamp in UTC when the user enrolls the feature.</summary>
-        global::System.DateTime? ProductProfileEnrollmentDate { get; set; }
-        /// <summary>The list of product features.</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProductFeature> ProductProfileProductFeature { get; set; }
-        /// <summary>Indicates the product type of the license.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("WindowsServer", "WindowsIoTEnterprise")]
-        string ProductProfileProductType { get; set; }
-        /// <summary>Indicates the subscription status of the product.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Unknown", "Enabling", "Enabled", "Disabled")]
-        string ProductProfileSubscriptionStatus { get; set; }
         /// <summary>Hybrid Compute Machine properties</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineProperties Property { get; set; }
         /// <summary>The provisioning state, which only appears in the response.</summary>
@@ -1757,10 +1321,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatus ServiceStatusesExtensionService { get; set; }
         /// <summary>The state of the guest configuration service on the Arc-enabled machine.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatus ServiceStatusesGuestConfigurationService { get; set; }
-        /// <summary>
-        /// Specifies if this machine is licensed as part of a Software Assurance agreement.
-        /// </summary>
-        bool? SoftwareAssuranceCustomer { get; set; }
         /// <summary>The status of the hybrid machine agent.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Connected", "Disconnected", "Error")]
         string Status { get; set; }
@@ -1768,14 +1328,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string VMId { get; set; }
         /// <summary>Specifies the Arc Machine's unique SMBIOS ID</summary>
         string VMUuid { get; set; }
-        /// <summary>Specifies the patch settings.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IPatchSettings WindowConfigurationPatchSetting { get; set; }
-        /// <summary>Specifies the assessment mode.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform")]
-        string WindowsConfigurationPatchSettingsAssessmentMode { get; set; }
-        /// <summary>Specifies the patch mode.</summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("ImageDefault", "AutomaticByPlatform", "AutomaticByOS", "Manual")]
-        string WindowsConfigurationPatchSettingsPatchMode { get; set; }
 
     }
 }

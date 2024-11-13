@@ -127,7 +127,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersCustomOpenIdConnectProviders]
     # The map of the name of the alias of each custom Open ID Connect provider to the
     #         configuration settings of the custom Open ID Connect provider.
-    # To construct, see NOTES section for CUSTOMOPENIDCONNECTPROVIDER properties and create a hash table.
     ${CustomOpenIdConnectProvider},
 
     [Parameter()]

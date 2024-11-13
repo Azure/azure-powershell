@@ -927,10 +927,26 @@ function Test-CreateRPIWithMangedDisksForReplication
     param([string] $vaultSettingsFilePath)
 
     Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $PrimaryFabricName = "ToPowershell"
     $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
     $pc =  Get-ASRProtectionContainer -Fabric $fabric
     $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $pc
     $policy = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName
     $VM= Get-AsrProtectableItem -ProtectionContainer $pc -FriendlyName $VMName
-    $EnableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping[0] -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $VMName -OS Windows -RecoveryResourceGroupId $RecoveryResourceGroupId -UseManagedDisksForReplication True
+
+    Assert-ThrowsContains { New-AzRecoveryServicesAsrReplicationProtectedItem `
+    -ProtectableItem $VM[0] `
+    -Name $VM[0].Name `
+    -ProtectionContainerMapping $ProtectionContainerMapping[0] `
+    -RecoveryAzureStorageAccountId $StorageAccountID `
+    -OSDiskName $VMName `
+    -OS Windows `
+    -RecoveryResourceGroupId $RecoveryResourceGroupId `
+    -UseManagedDisksForReplication True } `
+    "Only one of the input parameters are expected not both either RecoveryAzureStorageAccountId or UseManagedDisksForReplication"
+
+    $EnableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM[0] -Name $VM[0].Name -ProtectionContainerMapping $ProtectionContainerMapping[0] -LogStorageAccountId $StorageAccountID -OSDiskName $VMName -OS Windows -RecoveryResourceGroupId $RecoveryResourceGroupId -UseManagedDisksForReplication True
+    WaitForJobCompletion -JobId $EnableDRjob.Name
+    $Job = Get-AzRecoveryServicesAsrJob -Name $EnableDRjob.Name
+    Assert-True { $Job.State -eq "Succeeded" }
 }

@@ -23,7 +23,7 @@ function Test-NetworkManagerCRUD
     $rgName = Get-ResourceGroupName
     $networkManagerName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
     $managementGroupId = "/providers/Microsoft.Management/managementGroups/SwaggerStackTestMG"
 
     try{
@@ -78,7 +78,7 @@ function Test-NetworkManagerGroupCRUD
     $networkManagerName = Get-ResourceName
     $networkGroupName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
 
     try{
         #Create the resource group
@@ -139,8 +139,8 @@ function Test-NetworkManagerStaticMemberCRUD
     $networkGroupName = Get-ResourceName
     $staticMemberName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
-    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
 
     try{
         #Create the resource group
@@ -206,9 +206,9 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
     $staticMemberName = Get-ResourceName
     $connectivityConfigurationName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
-    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
-    $hubId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet-Hub" 
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $hubId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet-Hub" 
     $vnetName = "SwaggerStackVnet"
     $vnetRGName = "SwaggerStackRG"
     
@@ -269,7 +269,8 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         $regions = @($rglocation)  
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity" 
 
-        Start-TestSleep -Seconds 60
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
 
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "Connectivity"
         Assert-NotNull $deploymentStatus;
@@ -306,7 +307,8 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
 
         $job = Remove-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $connectivityConfigurationName -ForceDelete -PassThru -Force -AsJob;
 
-        Start-TestSleep -Seconds 60
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
 
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
@@ -346,8 +348,8 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
     $RuleCollectionName = Get-ResourceName
     $RuleName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
-    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
     $vnetName = "SwaggerStackVnet"
     $vnetRGName = "SwaggerStackRG"
 
@@ -434,7 +436,8 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         $regions = @($rglocation)  
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "SecurityAdmin" 
 
-        Start-TestSleep -Seconds 60
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
        
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "SecurityAdmin"
         Assert-NotNull $deploymentStatus;
@@ -466,7 +469,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual  $newAdminRule.Id $effectiveSecurityAdminRuleList.Value[0].Id;
         Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[0].RuleGroups[0].Id;
         Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[0].RuleCollectionAppliesToGroups[0].NetworkGroupId;
-       
+
 
         Assert-AreEqual $securityConfig.Description $effectiveSecurityAdminRuleList.Value[0].ConfigurationDescription;
         Assert-AreEqual $ruleCollection.Description $effectiveSecurityAdminRuleList.Value[0].RuleCollectionDescription;
@@ -483,7 +486,8 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
 
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "SecurityAdmin" 
 
-        Start-TestSleep -Seconds 60
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
 
         $job = Remove-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -528,7 +532,7 @@ function Test-NetworkManagerScopeConnectionCRUD
     $networkManagerName = Get-ResourceName
     $scopeConnectionName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
 
     try{
         #Create the resource group
@@ -579,7 +583,7 @@ function Test-NetworkManagerSubscriptionConnectionCRUD
 {
     # Setup
     $networkManagerConnectionName = Get-ResourceName
-    $networkManagerId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
+    $networkManagerId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
 
     try{
         New-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName -NetworkManagerId $networkManagerId -Description "SampleDescription" 
@@ -609,7 +613,7 @@ function Test-NetworkManagerManagementGroupConnectionCRUD
 {
     # Setup
     $networkManagerConnectionName = Get-ResourceName
-    $networkManagerId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
+    $networkManagerId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/networkManagers/SwaggerStackNetworkManager"
     $managementGroupId = "SwaggerStackTestMG"
 
     try{
@@ -641,16 +645,20 @@ function Test-NetworkManagerResourceMinimumParameterCreate
     # Setup
     $rgName = Get-ResourceGroupName
     $networkManagerName = Get-ResourceName
-    $networkGroupName = Get-ResourceName
+    $vnetNetworkGroupName = Get-ResourceName
+    $subnetNetworkGroupName = Get-ResourceName
     $staticMemberName = Get-ResourceName
     $connectivityConfigurationName = Get-ResourceName
     $SecurityConfigurationName = Get-ResourceName
+    $SecurityUserConfigurationName = Get-ResourceName
+    $RoutingConfigurationName = Get-ResourceName
     $RuleCollectionName = Get-ResourceName
     $RuleName = Get-ResourceName
     $scopeConnectionName = Get-ResourceName
     $rglocation = "centraluseuap"
-    $subscriptionId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52"
-    $vnetId = "/subscriptions/08615b4b-bc9c-4a70-be1b-2ea10bc97b52/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
 
     try{
         #Create the resource group
@@ -662,20 +670,23 @@ function Test-NetworkManagerResourceMinimumParameterCreate
         $scope = New-AzNetworkManagerScope -Subscription $subscriptions
 
         # Define access
-        $access  = @("Connectivity", "SecurityAdmin")
+        $access  = @("SecurityAdmin", "Routing", "SecurityUser")
 
         # Create network manager
         New-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
 
-        # Create a network group
-        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName
+        # Create a vnet and subnet network group
+        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $vnetNetworkGroupName
+        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $subnetNetworkGroupName -MemberType "Subnet"
 
         # Create a static member
-        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -ResourceId $vnetId
+        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $vnetNetworkGroupName -Name $staticMemberName -ResourceId $vnetId
+        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $subnetNetworkGroupName -Name $staticMemberName -ResourceId $subnetId
 
         # Create connectivity group item and config
-        $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName 
-        $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroup.Id
+        $vnetNetworkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $vnetNetworkGroupName 
+        $subnetNetworkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $subnetNetworkGroupName 
+        $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $vnetNetworkGroup.Id
         $connectivityGroup  = @($connectivityGroupItem)  
         New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -Name $connectivityConfigurationName -NetworkManagerName $networkManagerName -ConnectivityTopology "Mesh" -AppliesToGroup $connectivityGroup -DeleteExistingPeering 
 
@@ -684,7 +695,7 @@ function Test-NetworkManagerResourceMinimumParameterCreate
 
         # Create a security admin rule collection
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem]]$configGroup  = @() 
-        $groupItem = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId $networkGroup.Id
+        $groupItem = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId $vnetNetworkGroup.Id
         $configGroup.Add($groupItem)
         New-AzNetworkManagerSecurityAdminRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityConfigurationName -Name $RuleCollectionName -AppliesToGroup $configGroup 
         
@@ -693,8 +704,541 @@ function Test-NetworkManagerResourceMinimumParameterCreate
 	    
         # Create a scope connection
         New-AzNetworkManagerScopeConnection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $scopeConnectionName -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ResourceId $subscriptionId
+
+        # Create a routing config
+        New-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName
+
+        # Create a routing rule collection
+        [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingGroupItem]]$configGroup  = @() 
+        $groupItem = New-AzNetworkManagerRoutingGroupItem -NetworkGroupId $subnetNetworkGroup.Id
+        $configGroup.Add($groupItem)
+        New-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName -AppliesTo $configGroup -DisableBgpRoutePropagation "True"
+        
+        # Create a routing rule
+        $destination = New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "10.1.1.1/32" -Type "AddressPrefix" 
+        $nextHop = New-AzNetworkManagerRoutingRuleNextHop -NextHopType "VirtualAppliance" -NextHopAddress "2.2.2.2"
+        New-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -ResourceName $RuleName -Destination $destination -NextHop $nextHop
+
+        # Create a security user config
+        New-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityUserConfigurationName
+
+        # Create a security user rule collection
+        [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityUserGroupItem]]$configGroup  = @() 
+        $groupItem = New-AzNetworkManagerSecurityUserGroupItem -NetworkGroupId $subnetNetworkGroup.Id
+        $configGroup.Add($groupItem)
+        New-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName -AppliesToGroup $configGroup 
+        
+        # Create a security user rule
+        $sourceAddressPrefixes = @()
+        $sourceAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "10.1.0.0/24" -AddressPrefixType "IPPrefix"
+        $sourceAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "50.1.0.0/24" -AddressPrefixType "IPPrefix"
+
+        # Add destination address prefix items to the array
+        $destinationAddressPrefixes = @()
+        $destinationAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "6.6.6.6/32" -AddressPrefixType "IPPrefix"
+
+        $sourcePortList = @("100", "80")
+        $destinationPortList = @("99", "200")
+        New-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName  -RuleCollectionName $RuleCollectionName -Name $RuleName -Protocol "TCP" -Direction "Inbound" -SourcePortRange $sourcePortList -DestinationPortRange $destinationPortList -SourceAddressPrefix $sourceAddressPrefixes -DestinationAddressPrefix $destinationAddressPrefixes
     }
-    finally{
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Tests creating/getting/deleting new simple networkmanager Routing Configuration/RuleCollection/Rule
+#>
+function Test-NetworkManagerRoutingRuleCRUD
+{
+    # Setup
+    # Need to update $subscriptionId/vnetid before running in live mode
+    $rgName = Get-ResourceGroupName
+    $networkManagerName = Get-ResourceName
+    $vnetNetworkGroupName = Get-ResourceName
+    $subnetNetworkGroupName = Get-ResourceName
+    $staticMemberName = Get-ResourceName
+    $RoutingConfigurationName = Get-ResourceName
+    $RuleCollectionName = Get-ResourceName
+    $RuleName1 = Get-ResourceName
+    $rglocation = "centraluseuap"
+    $subscriptionId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70"
+    $vnetId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subnetId = "/subscriptions/16319507-0b13-46b9-9dcb-b943a4ee1d70/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
+    $vnetName = "SwaggerStackVnet"
+    $vnetRGName = "SwaggerStackRG"
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+        # Create Scope
+        $group  = @($subscriptionId)
+        $access  = @("Routing")
+        $scope = New-AzNetworkManagerScope -Subscription $group
+        New-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
+
+        $networkManager = Get-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName
+        Assert-NotNull $networkManager;
+        Assert-AreEqual $networkManagerName $networkManager.Name;
+        Assert-AreEqual $rglocation $networkManager.Location;
+
+        # Create Network Groups
+        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $vnetNetworkGroupName -Description "SampleVnetNG"
+        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $subnetNetworkGroupName -Description "SampleSubnetNG" -MemberType "Subnet"
+
+        # Create Static Members
+        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $vnetNetworkGroupName -Name $staticMemberName -ResourceId $vnetId
+        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $subnetNetworkGroupName -Name $staticMemberName -ResourceId $subnetId
+
+        $vnetNetworkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $vnetNetworkGroupName
+        $subnetNetworkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $subnetNetworkGroupName
+
+        # Create a Routing Configuration
+        New-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName -Description "Sample Routing Configuration"
+        
+        $routingConfig = Get-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName
+        Assert-NotNull $routingConfig;
+        Assert-AreEqual $RoutingConfigurationName $routingConfig.Name;
+
+        # Validate List Routing config command
+        $routingConfigs = Get-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName
+        Assert-NotNull $routingConfigs
+        Assert-AreEqual 1 $routingConfigs.Count
+
+        # Get by resourceId
+        $resourceId = $routingConfig.Id
+        $routingConfig = Get-AzNetworkManagerRoutingConfiguration -ResourceId $resourceId
+        Assert-NotNull $routingConfig
+        Assert-AreEqual $resourceId $routingConfig.Id
+
+        # Set by InputObject
+        $routingConfig.Description = "A different description."
+        $routingConfig = Set-AzNetworkManagerRoutingConfiguration -InputObject $routingConfig
+        Assert-NotNull $routingConfig;
+        Assert-AreEqual "A different description." $routingConfig.Description;
+        Assert-AreEqual $RoutingConfigurationName $routingConfig.Name;
+
+        # Set by resourceId
+        $resourceId = $routingConfig.Id
+        $routingConfig = Set-AzNetworkManagerRoutingConfiguration -ResourceId $resourceId -Description "Updated description."
+        Assert-NotNull $routingConfig;
+        Assert-AreEqual "Updated description." $routingConfig.Description;
+        Assert-AreEqual $RoutingConfigurationName $routingConfig.Name;
+
+        # Set by Name
+        $routingConfig = Set-AzNetworkManagerRoutingConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $RoutingConfigurationName -Description "Updated description again."
+        Assert-NotNull $routingConfig;
+        Assert-AreEqual "Updated description again." $routingConfig.Description;
+        Assert-AreEqual $RoutingConfigurationName $routingConfig.Name;
+
+        # Create a Routing Rule Collection
+        [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerRoutingGroupItem]]$configGroup  = @() 
+        $vnetGroupItem = New-AzNetworkManagerRoutingGroupItem -NetworkGroupId $vnetNetworkGroup.Id
+        $subnetGroupItem = New-AzNetworkManagerRoutingGroupItem -NetworkGroupId $subnetNetworkGroup.Id
+        $configGroup.Add($vnetGroupItem)
+        $configGroup.Add($subnetGroupItem)
+
+        New-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName -AppliesTo $configGroup -DisableBgpRoutePropagation "False" -Description "First collection"
+
+        $ruleCollection = Get-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName
+        Assert-NotNull $ruleCollection;
+        Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
+        Assert-AreEqual "False" $ruleCollection.DisableBgpRoutePropagation;
+
+        # Get by resourceId
+        $resourceId = $ruleCollection.Id
+        $ruleCollection = Get-AzNetworkManagerRoutingRuleCollection -ResourceId $resourceId
+        Assert-NotNull $ruleCollection
+        Assert-AreEqual $resourceId $ruleCollection.Id
+
+        # Check if the AppliesTo collections are equivalent
+        $expectedAppliesTo = $configGroup | ForEach-Object { $_.NetworkGroupId }
+        $actualAppliesTo = $ruleCollection.AppliesTo | ForEach-Object { $_.NetworkGroupId }
+
+        foreach ($expectedItem in $expectedAppliesTo)
+        {
+            $actualItem = $actualAppliesTo | Where-Object { $_ -eq $expectedItem }
+            Assert-NotNull $actualItem
+            Assert-AreEqual $expectedItem $actualItem
+        }
+
+        # Validate List Routing rule collection command
+        $ruleCollections = Get-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName
+        Assert-NotNull $ruleCollections
+        Assert-AreEqual 1 $ruleCollections.Count
+
+        # Set by InputObject
+        $ruleCollection.Description = "Updated first collection"
+        $ruleCollection = Set-AzNetworkManagerRoutingRuleCollection -InputObject $ruleCollection
+        Assert-NotNull $ruleCollection;
+        Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
+        Assert-AreEqual "Updated first collection" $ruleCollection.Description;
+ 
+        # Set by resourceId
+        $resourceId = $ruleCollection.Id
+        $ruleCollection = Set-AzNetworkManagerRoutingRuleCollection -ResourceId $resourceId -Description "Updated collection"
+        Assert-NotNull $ruleCollection;
+        Assert-AreEqual "Updated collection" $ruleCollection.Description;
+        Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
+
+        # Set by Name
+        $ruleCollection = Set-AzNetworkManagerRoutingRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -Name $RuleCollectionName -Description "Updated collection again"
+        Assert-NotNull $ruleCollection;
+        Assert-AreEqual "Updated collection again" $ruleCollection.Description;
+        Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
+
+        # Create Routing Rule and validate
+        # ByName - Create a Routing Rule by Name
+        $destination = New-AzNetworkManagerRoutingRuleDestination -DestinationAddress "10.1.1.1/32" -Type "AddressPrefix" 
+        $nextHop = New-AzNetworkManagerRoutingRuleNextHop -NextHopType "VirtualAppliance" -NextHopAddress "2.2.2.2"
+
+        New-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -ResourceName $RuleName1 -Destination $destination -NextHop $nextHop
+
+        #region - Start Routing Rule Get-* cmdlets tests
+
+        # Test List - List all the routing rules in a collection
+        $routingRule = Get-AzNetworkManagerRoutingRule -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -ConfigName $routingConfigurationName -RuleCollectionName $ruleCollectionName
+        Assert-AreEqual 1 $routingRule.Count
+        Assert-NotNull $routingRule
+
+        # Test GetByName - Get the routing rule by name
+        $routingRule = Get-AzNetworkManagerRoutingRule -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -ConfigName $routingConfigurationName -RuleCollectionName $ruleCollectionName -ResourceName $RuleName1
+        Assert-NotNull $routingRule
+        Assert-AreEqual $ruleName1 $routingRule.Name
+        Assert-AreEqual $routingConfigurationName $routingRule.RoutingConfigurationName
+        Assert-AreEqual $ruleCollectionName $routingRule.RuleCollectionName
+        Assert-AreEqual $destination.DestinationAddress $routingRule.Destination.DestinationAddress
+        Assert-AreEqual $destination.Type $routingRule.Destination.Type
+        Assert-AreEqual $nextHop.NextHopAddress $routingRule.NextHop.NextHopAddress
+        Assert-AreEqual $nextHop.NextHopType $routingRule.NextHop.NextHopType
+
+        # Test GetByResourceId - Get the routing rule by resourceId
+        $resourceId = $routingRule.Id
+        $routingRule = Get-AzNetworkManagerRoutingRule -ResourceId $resourceId
+        Assert-NotNull $routingRule
+        Assert-AreEqual $resourceId $routingRule.Id
+
+        #endregion - End Routing Rule Get-* cmdlets tests
+
+        #region - Start Routing Rule Set-* cmdlets tests
+
+        # Test SetByInputObject - Set the routing rule by input object
+        $routingRule.Description = "Updated first routing rule."
+        $updatedFirstRoutingRule = Set-AzNetworkManagerRoutingRule -InputObject $routingRule
+        Assert-NotNull $updatedFirstRoutingRule;
+        Assert-AreEqual $RuleName1 $updatedFirstRoutingRule.Name;
+        Assert-AreEqual "Updated first routing rule." $updatedFirstRoutingRule.Description;
+
+        # Test SetByResourceId - Set the routing rule by resourceId
+        $resourceId = $updatedFirstRoutingRule.Id
+        $updatedFirstRoutingRule = Set-AzNetworkManagerRoutingRule -ResourceId $resourceId -DestinationAddress "30.1.1.1/32" -DestinationType "AddressPrefix" -NextHopAddress "2.2.2.2" -NextHopType "VirtualAppliance" -Description "Again updated routing rule."
+
+        Assert-NotNull $updatedFirstRoutingRule;
+        Assert-AreEqual $RuleName1 $updatedFirstRoutingRule.Name;
+        Assert-AreEqual "Again updated routing rule." $updatedFirstRoutingRule.Description;
+
+        # Test SetByName - Set the routing rule by name
+        $RuleName3 = Get-ResourceName
+        $thirdRoutingRule = Set-AzNetworkManagerRoutingRule -ResourceGroupName $rgName -NetworkManagerName $networkManagerName -ConfigName $routingConfigurationName -RuleCollectionName $ruleCollectionName -Name $RuleName3 -DestinationAddress "40.1.1.1/32" -DestinationType "AddressPrefix" -NextHopAddress "2.2.2.2" -NextHopType "VirtualAppliance" -Description "Second updated routing rule."
+
+        Assert-NotNull $thirdRoutingRule;
+        Assert-AreEqual $RuleName3 $thirdRoutingRule.Name;
+        Assert-AreEqual "Second updated routing rule." $thirdRoutingRule.Description;
+
+        #endregion - End Routing Rule Set-* cmdlets tests
+
+        $configIds  = @($routingConfig.Id)
+        $regions = @($rglocation)  
+        Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configIds -CommitType "Routing" 
+
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
+       
+        $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "Routing"
+        Assert-NotNull $deploymentStatus;
+        Assert-AreEqual "Routing" $deploymentStatus.Value[0].DeploymentType;
+        Assert-AreEqual $routingConfig.Id $deploymentStatus.Value[0].ConfigurationIds[0];
+
+        Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "Routing" 
+
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
+
+        $job = Remove-AzNetworkManagerRoutingRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $RoutingConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName1 -ForceDelete -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+
+        # Remove by resourceId
+        $job = Remove-AzNetworkManagerRoutingRuleCollection -ResourceId $ruleCollection.Id -ForceDelete -PassThru -Force -AsJob;
+
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+
+        # Remove by InputObject
+        $job = Remove-AzNetworkManagerRoutingConfiguration -InputObject $routingConfig -ForceDelete -PassThru -Force -AsJob;
+
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+
+        $job = Remove-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $vnetNetworkGroupName -Name $staticMemberName -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+
+        $job = Remove-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $subnetNetworkGroupName -Name $staticMemberName -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+
+        $job = Remove-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $vnetNetworkGroupName -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+
+        $job = Remove-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $subnetNetworkGroupName -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+
+        $job = Remove-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+	}
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Tests creating/getting/deleting new simple public networkmanager Security User Configuration/RuleCollection/Rule
+#>
+function Test-NetworkManagerSecurityUserRuleCRUD
+{
+    # Setup
+    # Need to update $subscriptionId/vnetid before running in live mode
+    $rgName = Get-ResourceGroupName
+    $networkManagerName = Get-ResourceName
+    $networkGroupName = Get-ResourceName
+    $SecurityUserConfigurationName = Get-ResourceName
+    $staticMemberName = Get-ResourceName
+    $RuleCollectionName = Get-ResourceName
+    $RuleName = Get-ResourceName
+    $rglocation = "centraluseuap"
+    $subscriptionId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c"
+    $vnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet"
+    $subnetId = "/subscriptions/dd7b516d-9de0-4fd6-b6f2-db41b3ee0c0c/resourceGroups/SwaggerStackRG/providers/Microsoft.Network/virtualNetworks/SwaggerStackVnet/subnets/subnet1"
+    $vnetName = "SwaggerStackVnet"
+    $vnetRGName = "SwaggerStackRG"
+
+    try
+    {
+        #Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+        # Create Scope
+        $group  = @($subscriptionId)
+        $access  = @("SecurityUser")
+        $scope = New-AzNetworkManagerScope -Subscription $group
+        New-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
+
+        $networkManager = Get-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName
+        Assert-NotNull $networkManager;
+        Assert-AreEqual $networkManagerName $networkManager.Name;
+        Assert-AreEqual $rglocation $networkManager.Location;
+
+        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -Description "Sample SecurityUser Configuration" -MemberType "Subnet"
+
+        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -ResourceId $subnetId
+
+        $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName
+
+        New-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityUserConfigurationName -Description "Sample Network Manager"
+        
+        # Get security user configuration ByName and validate
+        $securityUserConfig = Get-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityUserConfigurationName
+        Assert-NotNull $securityUserConfig;
+        Assert-AreEqual $securityUserConfigurationName $securityUserConfig.Name;
+
+        # Validate List Security User config command
+        $securityUserConfigs = Get-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName
+        Assert-NotNull $securityUserConfigs
+        Assert-AreEqual 1 $securityUserConfigs.Count
+
+        # Get security user configuration ByResourceId and validate
+        $securityUserConfig = Get-AzNetworkManagerSecurityUserConfiguration -ResourceId $securityUserConfig.Id
+        Assert-NotNull $securityUserConfig;
+        Assert-AreEqual $securityUserConfigurationName $securityUserConfig.Name;
+
+        # Set by InputObject
+        $securityUserConfig.Description = "A different description."
+        $securityUserConfig = Set-AzNetworkManagerSecurityUserConfiguration -InputObject $securityUserConfig
+        Assert-NotNull $securityUserConfig;
+        Assert-AreEqual "A different description." $securityUserConfig.Description;
+        Assert-AreEqual $SecurityUserConfigurationName $securityUserConfig.Name;
+
+        # Set by resourceId
+        $securityUserConfig = Set-AzNetworkManagerSecurityUserConfiguration -ResourceId $securityUserConfig.Id -Description "Updated description."
+        Assert-NotNull $securityUserConfig;
+        Assert-AreEqual "Updated description." $securityUserConfig.Description;
+        Assert-AreEqual $SecurityUserConfigurationName $securityUserConfig.Name;
+
+        # Set by name
+        $securityUserConfig = Set-AzNetworkManagerSecurityUserConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityUserConfigurationName -Description "Updated description."
+        Assert-NotNull $securityUserConfig;
+        Assert-AreEqual "Updated description." $securityUserConfig.Description;
+        Assert-AreEqual $SecurityUserConfigurationName $securityUserConfig.Name;
+
+        [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityUserGroupItem]]$configGroup  = @() 
+        $groupItem = New-AzNetworkManagerSecurityUserGroupItem -NetworkGroupId $networkGroup.Id
+        $configGroup.Add($groupItem)
+
+        New-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName -AppliesToGroup $configGroup
+
+        $ruleCollection = Get-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName
+        Assert-NotNull $ruleCollection;
+        Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
+        Assert-AreEqual $networkGroup.Id $ruleCollection.AppliesToGroups[0].NetworkGroupId;
+
+        # Validate List Security User collection command
+        $ruleCollections = Get-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName
+        Assert-NotNull $ruleCollections
+        Assert-AreEqual 1 $ruleCollections.Count
+
+        # Get RuleCollection by ResourceId
+        $ruleCollection = Get-AzNetworkManagerSecurityUserRuleCollection -ResourceId $ruleCollection.Id
+        Assert-NotNull $ruleCollection;
+        Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
+
+        # Set by InputObject
+        $ruleCollection.Description = "Sample rule Collection Description"
+        $ruleCollection = Set-AzNetworkManagerSecurityUserRuleCollection -InputObject $ruleCollection
+        Assert-NotNull $ruleCollection;
+        Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
+        Assert-AreEqual "Sample rule Collection Description" $ruleCollection.Description;
+
+        # Set rule collection by ResourceId
+        $ruleCollection = Set-AzNetworkManagerSecurityUserRuleCollection -ResourceId $ruleCollection.Id -Description "Updated rule Collection Description"
+        Assert-NotNull $ruleCollection;
+        Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
+        Assert-AreEqual "Updated rule Collection Description" $ruleCollection.Description;
+
+        # Set rule collection by Name
+        $ruleCollection = Set-AzNetworkManagerSecurityUserRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -Name $RuleCollectionName -Description "Updated rule Collection Description"
+        Assert-NotNull $ruleCollection;
+        Assert-AreEqual $RuleCollectionName $ruleCollection.Name;
+        Assert-AreEqual "Updated rule Collection Description" $ruleCollection.Description;
+ 
+        # Add source address prefix items to the array
+        $sourceAddressPrefixes = @()
+        $sourceAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "10.1.0.0/24" -AddressPrefixType "IPPrefix"
+        $sourceAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "50.1.0.0/24" -AddressPrefixType "IPPrefix"
+
+        # Add destination address prefix items to the array
+        $destinationAddressPrefixes = @()
+        $destinationAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "6.6.6.6/32" -AddressPrefixType "IPPrefix"
+        $destinationAddressPrefixes += New-AzNetworkManagerAddressPrefixItem -AddressPrefix "7.7.7.7/32" -AddressPrefixType "IPPrefix"
+
+        $sourcePortList = @("100", "80")
+        $destinationPortList = @("99", "200")
+        New-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName  -RuleCollectionName $RuleCollectionName -Name $RuleName -Description "Description" -Protocol  "TCP" -Direction "Inbound" -SourcePortRange $sourcePortList -DestinationPortRange $destinationPortList -SourceAddressPrefix $sourceAddressPrefixes -DestinationAddressPrefix $destinationAddressPrefixes
+
+        $userRule = Get-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityUserConfigurationName $SecurityUserConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName
+        Assert-NotNull $userRule
+        Assert-AreEqual $RuleName $userRule.Name
+        Assert-AreEqual "TCP" $userRule.Protocol
+        Assert-AreEqual "Inbound" $userRule.Direction
+
+        Assert-AreEqual "100" $userRule.SourcePortRanges[0]
+        Assert-AreEqual "80" $userRule.SourcePortRanges[1]
+        Assert-AreEqual "99" $userRule.DestinationPortRanges[0]
+        Assert-AreEqual "200" $userRule.DestinationPortRanges[1]
+        Assert-AreEqual "10.1.0.0/24" $userRule.Sources[0].AddressPrefix
+        Assert-AreEqual "IPPrefix" $userRule.Sources[0].AddressPrefixType
+        Assert-AreEqual "50.1.0.0/24" $userRule.Sources[1].AddressPrefix
+        Assert-AreEqual "IPPrefix" $userRule.Sources[1].AddressPrefixType
+        Assert-AreEqual "6.6.6.6/32" $userRule.Destinations[0].AddressPrefix
+        Assert-AreEqual "IPPrefix" $userRule.Destinations[0].AddressPrefixType
+        Assert-AreEqual "7.7.7.7/32" $userRule.Destinations[1].AddressPrefix
+        Assert-AreEqual "IPPrefix" $userRule.Destinations[1].AddressPrefixType
+
+        # Validate List Security User rule command
+        $userRules = Get-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityUserConfigurationName $SecurityUserConfigurationName -RuleCollectionName $RuleCollectionName
+        Assert-NotNull $userRules
+        Assert-AreEqual 1 $userRules.Count
+
+        # Get Security User rule by ResourceId
+        $userRule = Get-AzNetworkManagerSecurityUserRule -ResourceId $userRule.Id
+        Assert-NotNull $userRule
+        Assert-AreEqual $RuleName $userRule.Name
+
+        # Set by InputObject
+        $userRule.Description = "A different description."
+        $newSecurityUserRule = Set-AzNetworkManagerSecurityUserRule -InputObject $userRule
+        Assert-NotNull $newSecurityUserRule;
+        Assert-AreEqual $RuleName $newSecurityUserRule.Name;
+
+        # Set Security User rule by ResourceId
+        $userRule = Set-AzNetworkManagerSecurityUserRule -ResourceId $userRule.Id -Description "Updated description." -Protocol  "TCP" -Direction "Inbound" -SourcePortRange $sourcePortList -DestinationPortRange $destinationPortList -SourceAddressPrefix $sourceAddressPrefixes -DestinationAddressPrefix $destinationAddressPrefixes
+        Assert-NotNull $userRule;
+        Assert-AreEqual "Updated description." $userRule.Description;
+
+        # Set Security User rule by Name
+        $userRule = Set-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityUserConfigurationName $SecurityUserConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -Description "Updated description again." -Protocol  "TCP" -Direction "Inbound" -SourcePortRange $sourcePortList -DestinationPortRange $destinationPortList -SourceAddressPrefix $sourceAddressPrefixes -DestinationAddressPrefix $destinationAddressPrefixes
+        Assert-NotNull $userRule;
+        Assert-AreEqual "Updated description again." $userRule.Description;
+
+        $configIds  = @($securityUserConfig.Id)
+        $regions = @($rglocation)  
+        Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configIds -CommitType "SecurityUser" 
+
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
+       
+        $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "SecurityUser"
+        Assert-NotNull $deploymentStatus;
+        Assert-AreEqual "SecurityUser"  $deploymentStatus.Value[0].DeploymentType;
+        Assert-AreEqual $securityUserConfig.Id  $deploymentStatus.Value[0].ConfigurationIds[0];
+
+        Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "SecurityUser" 
+
+        # Uncomment during Record to allow time for commit
+        # Start-TestSleep -Seconds 60
+
+        # Remove the network manager security user rule
+        $job = Remove-AzNetworkManagerSecurityUserRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityUserConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob
+        $job | Wait-Job
+        $removeResult = $job | Receive-Job
+
+        # Remove security user rule collection by resourceId
+        $job = Remove-AzNetworkManagerSecurityUserRuleCollection -ResourceId $ruleCollection.Id -ForceDelete -PassThru -Force -AsJob
+
+		$job | Wait-Job
+		$removeResult = $job | Receive-Job
+
+        # Remove by InputObject
+        $job = Remove-AzNetworkManagerSecurityUserConfiguration -InputObject $securityUserConfig -ForceDelete -PassThru -Force -AsJob;
+
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+
+        $job = Remove-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+
+        $job = Remove-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+
+        $job = Remove-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -PassThru -Force -AsJob;
+        $job | Wait-Job;
+        $removeResult = $job | Receive-Job;
+	}
+    finally
+    {
         # Cleanup
         Clean-ResourceGroup $rgname
 	}
