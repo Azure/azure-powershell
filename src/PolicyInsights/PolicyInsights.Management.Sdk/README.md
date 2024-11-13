@@ -16,6 +16,7 @@ powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
+azure-arm: true
 license-header: MICROSOFT_MIT_NO_VERSION
 title: PolicyInsightsClient
 ```
@@ -135,12 +136,75 @@ directive:
       - $.paths["/subscriptions/{subscriptionId}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults"]
       - $.paths["/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{authorizationNamespace}/policyAssignments/{policyAssignmentName}/providers/Microsoft.PolicyInsights/policyStates/{policyStatesResource}/queryResults"]
     transform: delete $['post']['x-ms-pageable']['operationName']
-  # - from: swagger-document
-  #   where:
-  #     - $.parameters.topParameter
-  #   transform: delete $['x-ms-parameter-location']
-  # - from: swagger-document
-  #   where:
-  #     - $.parameters.fromParameter
-  #   transform: delete $['x-ms-parameter-location']
+
+#Adjust parameter order
+  - from: swagger-document
+    where: $.paths["/{resourceId}/providers/Microsoft.PolicyInsights/remediations/{remediationName}/listDeployments"].post.parameters
+    transform: >-
+      return [
+          {
+            "$ref": "#/parameters/resourceIdParameter"
+          },
+          {
+            "$ref": "#/parameters/remediationNameParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/topParameter"
+          }
+        ]
+  - from: swagger-document
+    where: $.paths["/{resourceId}/providers/Microsoft.PolicyInsights/remediations"].get.parameters
+    transform: >-
+      return [
+          {
+            "$ref": "#/parameters/resourceIdParameter"
+          },
+          {
+            "$ref": "#/parameters/apiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/topParameter"
+          },
+          {
+            "$ref": "#/parameters/filterParameter"
+          }
+        ]
+  - from: swagger-document
+    where: $.paths["/{resourceId}/providers/Microsoft.PolicyInsights/attestations"].get.parameters
+    transform: >-
+      return [
+          {
+            "$ref": "#/parameters/resourceIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/topParameter"
+          },
+          {
+            "$ref": "#/parameters/filterParameter"
+          }
+        ]
+  - from: swagger-document
+    where:
+      - $.paths["/{resourceId}/providers/Microsoft.PolicyInsights/attestations"].get.parameters
+    transform: >-
+      return [
+          {
+            "$ref": "#/parameters/resourceIdParameter"
+          },
+          {
+            "$ref": "../../../../../common-types/resource-management/v1/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/topParameter"
+          },
+          {
+            "$ref": "#/parameters/filterParameter"
+          }
+        ]
 ```
