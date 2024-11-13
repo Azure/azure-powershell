@@ -14,7 +14,7 @@ Create a in-memory object for IPConfiguration
 
 ```
 New-AzDnsResolverIPConfigurationObject [-PrivateIPAddress <String>]
- [-PrivateIPAllocationMethod <IPAllocationMethod>] [-SubnetId <String>] [-ProgressAction <ActionPreference>]
+ [-PrivateIPAllocationMethod <IPAllocationMethod>] [-SubnetId <String>]
  [<CommonParameters>]
 ```
 
@@ -60,21 +60,6 @@ Private IP address allocation method.
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.IPAllocationMethod
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
