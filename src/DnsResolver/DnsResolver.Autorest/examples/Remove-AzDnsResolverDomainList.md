@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a DNS Resolver Domain List by name
 ```powershell
-{{ Add code here }}
+Remove-AzDnsResolverDomainList -ResourceGroupName powershell-test-rg -Name psdnsresolvername33nmy1fz
 ```
+This command removes a DNS Resolver Domain List by name.
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a DNS Resolver Domain List by identity
 ```powershell
-{{ Add code here }}
+$dnsResolverDomainListObject = Get-AzDnsResolverDomainList -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
+Remove-AzDnsResolverDomainList -InputObject $dnsResolverDomainListObject 
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command removes a DNS Resolver Domain List by identity.
 

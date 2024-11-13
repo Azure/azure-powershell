@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an existing DNS Security Rule by name
 ```powershell
-{{ Add code here }}
+Update-AzDnsResolverPolicyDnsSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleDnsResolverPolicyName -Name psdnssecurityrulename33nmy1fz -Tag @{"key0" = "value0"} 
 ```
 
 ```output
-{{ Add output here }}
+Location Name                                Type                                     Etag
+-------- ----                                ----                                     ----
+westus2  psdnssecurityrulename33nmy1fz       Microsoft.Network/dnsSecurityRules       "0000efd6-0000-0800-0000-60401c7c0000"
 ```
 
-{{ Add description here }}
+This command updates an existing DNS Security Rules by name ( adding tag ).
 
-### Example 2: {{ Add title here }}
+### Example 2: Updates an existing DNS Resolver by identity
 ```powershell
-{{ Add code here }}
+$dnsSecurityRuleObject = Get-AzDnsResolverPolicyDnsSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleDnsResolverPolicyName -Name psdnssecurityrulename33nmy1fz
+Update-AzDnsResolverPolicyDnsSecurityRule -InputObject $dnsSecurityRuleObject  -Tag @{} 
 ```
 
 ```output
-{{ Add output here }}
+Location Name                                Type                                     Etag
+-------- ----                                ----                                     ----
+westus2  psdnssecurityrulename33nmy1fz       Microsoft.Network/dnsSecurityRules       "0000efd6-0000-0800-0000-60401c7c0000"
 ```
-
-{{ Add description here }}
-
+This command updates an existing DNS Security Rules by identity ( removing tag ).

@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a DNS Resolver Policy Link by name
 ```powershell
-{{ Add code here }}
+Remove-AzDnsResolverPolicyVirtualNetworkLink  -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleResolverPolicyName -Name psdnsresolverpolicylinkname33nmy1fz
 ```
+This command removes a DNS Resolver Policy Link by name.
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a DNS Resolver Policy Link by identity
 ```powershell
-{{ Add code here }}
+$dnsResolverPolicyLinkObject = Get-AzDnsResolverPolicyVirtualNetworkLink  -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleResolverPolicyName -Name psdnsresolverpolicylinkname33nmy1fz
+Remove-AzDnsResolverPolicyVirtualNetworkLink  -InputObject $dnsResolverPolicyLinkObject 
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command removes a DNS Resolver Policy Link by identity.
 

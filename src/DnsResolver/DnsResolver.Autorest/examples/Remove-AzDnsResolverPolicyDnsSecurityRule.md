@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a DNS Security Rule by name
 ```powershell
-{{ Add code here }}
+Remove-AzDnsResolverPolicyDnsSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleResolverPolicyName -Name psdnssecurityrulename33nmy1fz
 ```
+This command removes a DNS Security Rule by name.
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a DNS Security Rule by identity
 ```powershell
-{{ Add code here }}
+$dnsSecurityRuleObject = Get-AzDnsResolverPolicyDnsSecurityRule -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleResolverPolicyName -Name psdnssecurityrulename33nmy1fz
+Remove-AzDnsResolverPolicyDnsSecurityRule  -InputObject $dnsSecurityRuleObject 
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command removes a DNS Security Rule by identity.

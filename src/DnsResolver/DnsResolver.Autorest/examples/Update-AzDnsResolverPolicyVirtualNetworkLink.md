@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an existing DNS Resolver Policy Link by name
 ```powershell
-{{ Add code here }}
+Update-AzDnsResolverPolicyVirtualNetworkLink  -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleDnsResolverPolicyName -Name psdnsresolverpolicylinkname33nmy1fz -Tag @{"key0" = "value0"} 
 ```
 
 ```output
-{{ Add output here }}
+Location Name                                Type                                     Etag
+-------- ----                                ----                                     ----
+westus2  psdnsresolverpolicylinkname33nmy1fz Microsoft.Network/dnsResolverPolicyLinks "0000efd6-0000-0800-0000-60401c7c0000"
 ```
 
-{{ Add description here }}
+This command updates an existing DNS Resolver Policy Links by name ( adding tag ).
 
-### Example 2: {{ Add title here }}
+### Example 2: Updates an existing DNS Resolver by identity
 ```powershell
-{{ Add code here }}
+$dnsResolverPolicyLinkObject = Get-AzDnsResolverPolicyVirtualNetworkLink  -ResourceGroupName powershell-test-rg -DnsResolverPolicyName exampleDnsResolverPolicyName -Name psdnsresolverpolicylinkname33nmy1fz
+Update-AzDnsResolverPolicyVirtualNetworkLink  -InputObject $dnsResolverPolicyLinkObject  -Tag @{} 
 ```
 
 ```output
-{{ Add output here }}
+Location Name                                Type                                     Etag
+-------- ----                                ----                                     ----
+westus2  psdnsresolverpolicylinkname33nmy1fz Microsoft.Network/dnsResolverPolicyLinks "0000efd6-0000-0800-0000-60401c7c0000"
 ```
-
-{{ Add description here }}
-
+This command updates an existing DNS Resolver Policy Links by identity ( removing tag ).

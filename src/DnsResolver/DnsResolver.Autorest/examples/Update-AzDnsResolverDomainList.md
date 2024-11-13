@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an existing DNS Resolver Domain List by name
 ```powershell
-{{ Add code here }}
+Update-AzDnsResolverDomainList -ResourceGroupName powershell-test-rg -Name  psdnsresolverdomainlistname33nmy1fz -Tag @{"key0" = "value0"} 
 ```
 
 ```output
-{{ Add output here }}
+Location Name                            Type                                         Etag
+-------- ----                            ----                                         ----
+westus2  psdnsresolverdomainlistname33nmy1fz Microsoft.Network/dnsResolverDomainLists "0000efd6-0000-0800-0000-60401c7c0000"
 ```
 
-{{ Add description here }}
+This command updates an existing DNS Resolver Domain List by name ( adding tag ).
 
-### Example 2: {{ Add title here }}
+### Example 2: Updates an existing DNS Resolver Domain List by identity
 ```powershell
-{{ Add code here }}
+$dnsResolverDomainListObject = Get-AzDnsResolverDomainList -ResourceGroupName powershell-test-rg -Name  psdnsresolverdomainlistname33nmy1fz
+Update-AzDnsResolverDomainList -InputObject $dnsResolverDomainListObject  -Tag @{} 
 ```
 
 ```output
-{{ Add output here }}
+Location Name                                Type                                     Etag
+-------- ----                                ----                                     ----
+westus2  psdnsresolverdomainlistname33nmy1fz Microsoft.Network/dnsResolverDomainLists "0000efd6-0000-0800-0000-60401c7c0000"
 ```
-
-{{ Add description here }}
-
+This command updates an existing DNS Resolver Domain List by identity ( removing tag ).

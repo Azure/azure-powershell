@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a DNS resolver policy 
 ```powershell
-{{ Add code here }}
+New-AzDnsResolverPolicy -Name sampleResolverPolicy -ResourceGroupName powershell-test-rg -Location westus2
 ```
 
 ```output
-{{ Add output here }}
+Location Name           Type                           Etag
+-------- ----           ----                           ----
+westus2  sampleResolverPolicy Microsoft.Network/dnsResolvers "000027d5-0000-0800-0000-6040150e0000"
 ```
 
-{{ Add description here }}
+This cmdlet creates a DNS resolver policy.
 
-### Example 2: {{ Add title here }}
+
+### Example 2: Create a DNS resolver policy with tag
 ```powershell
-{{ Add code here }}
+New-AzDnsResolverPolicy -Name sampleResolverPolicy -ResourceGroupName powershell-test-rg -Location westus2 -Tag @{"key0" = "value0"}
 ```
 
 ```output
-{{ Add output here }}
+Location Name                 Type                           Etag
+-------- ----                 ----                           ----
+westus2  sampleResolverPolicy Microsoft.Network/dnsResolvers "00008cd5-0000-0800-0000-604016c90000"
 ```
 
-{{ Add description here }}
-
+This cmdlet creates a DNS resolver policy with tag.

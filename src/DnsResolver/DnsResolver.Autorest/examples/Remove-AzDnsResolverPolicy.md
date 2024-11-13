@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Dns Resolver Policy by name
 ```powershell
-{{ Add code here }}
+Remove-AzDnsResolverPolicy -ResourceGroupName powershell-test-rg -Name psdnsresolvername33nmy1fz
 ```
+This command removes a Dns Resolver Policy by name.
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a Dns Resolver Policy by identity
 ```powershell
-{{ Add code here }}
+$dnsResolverPolicyObject = Get-AzDnsResolverPolicy -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
+Remove-AzDnsResolverPolicy -InputObject $dnsResolverPolicyObject 
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command removes a Dns Resolver Policy by identity.
 
