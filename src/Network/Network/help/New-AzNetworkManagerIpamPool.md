@@ -9,6 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Creates a new IPAM pool.
+
 ## SYNTAX
 
 ```
@@ -27,8 +28,8 @@ The **New-AzNetworkManagerIpamPool** cmdlet creates a new IPAM pool in the given
 ### Example 1
 ```powershell
 New-AzNetworkManagerIpamPool -Name testCmdletPool -NetworkManagerName testNM -ResourceGroupName testRG -Location eastus -AddressPrefix @("10.0.0.0/24")
-
 ```
+
 ```output
 Location           : eastus
 Tags               :
@@ -61,6 +62,7 @@ Id                 : /subscriptions/c9295b92-3574-4021-95a1-26c8f74f8359/resourc
 ```
 
 A new IPAM pool was created called 'testCmdletPool' in the Network Manager 'testNM'
+
 ## PARAMETERS
 
 ### -AddressPrefix
@@ -82,7 +84,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +99,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -112,7 +114,7 @@ Accept wildcard characters: False
 Description.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +129,7 @@ Accept wildcard characters: False
 Display name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +144,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +159,7 @@ Accept wildcard characters: False
 location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +174,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -187,7 +189,7 @@ Accept wildcard characters: False
 The network manager name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -202,7 +204,7 @@ Accept wildcard characters: False
 Name of the parent pool name to assign this pool to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +219,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -232,7 +234,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -247,7 +249,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -262,7 +264,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -278,7 +280,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -307,6 +309,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Remove-AzNetworkManagerIpamPool](./Remove-AzNetworkManagerIpamPool.md)
 
 [Get-AzNetworkManagerIpamPool](./Get-AzNetworkManagerIpamPool.md)

@@ -13,9 +13,10 @@ Creates a new Static Cidr.
 ## SYNTAX
 
 ```
-New-AzNetworkManagerIpamPoolStaticCidr -Name <String> -NetworkManagerName <String> -ResourceGroupName <String> -IpamPoolName <String> -AddressPrefix <System.Collections.Generic.List`1[System.String]>
- [-NumberOfIPAddressesToAllocate <String>] [-Description <String>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+New-AzNetworkManagerIpamPoolStaticCidr -Name <String> -NetworkManagerName <String> -ResourceGroupName <String>
+ -IpamPoolName <String> [-NumberOfIPAddressesToAllocate <String>]
+ [-AddressPrefix <System.Collections.Generic.List`1[System.String]>] [-Description <String>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,14 +27,12 @@ The **New-AzNetworkManagerIpamPoolStaticCidr** cmdlet creates a new Static Cidr 
 
 ### Example 1
 ```powershell
-New-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -IpamPoolName testCmdletPool -AddressPrefix @("10.0.0.0/28")
+New-AzNetworkManagerIpamPoolStaticCidr -Name testStaticCidr -NetworkManagerName testNM -ResourceGroupName testRG -PoolName testCmdletPool -AddressPrefix @("10.0.0.0/28")
 ```
 
 ```output
-
-
 Name               : testStaticCidr
-IpamPoolName           : testCmdletPool
+PoolName           : testCmdletPool
 ResourceGroupName  : testRG
 NetworkManagerName : testNM
 Properties         : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSStaticCidrProperties
@@ -43,7 +42,6 @@ SystemDataText     : {
                        "CreatedAt": "2024-10-02T22:34:01.3598795Z"
                      }
 Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/testNM/ipamPools/testCmdletPool/staticCidrs/testStaticCidr
-
 ```
 
 Created the Static Cidr 'testStaticCidr' and allocated it to the IPAM pool 'testCmdletPool'.
@@ -69,7 +67,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +82,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -99,7 +97,7 @@ Accept wildcard characters: False
 Description.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +112,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -125,11 +123,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IpamPoolName
+IP Address Manager Pool resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Static Cidr allocation name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -144,7 +157,7 @@ Accept wildcard characters: False
 The network manager name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -160,22 +173,7 @@ Number of IP addresses to allocate for a static CIDR resource.
 The IP addresses will be assigned based on IpamPools available space.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IpamPoolName
-IP Address Manager Pool resource name.
-
-```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +188,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -205,7 +203,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -220,7 +218,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -236,7 +234,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -263,6 +261,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Remove-AzNetworkManagerIpamPoolStaticCidr](./Remove-AzNetworkManagerIpamPoolStaticCidr.md)
 
 [Get-AzNetworkManagerIpamPoolStaticCidr](./Get-AzNetworkManagerIpamPoolStaticCidr.md)

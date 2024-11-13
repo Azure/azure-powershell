@@ -24,6 +24,12 @@ Get-AzNetworkManagerIpamPool [-Name <String>] -NetworkManagerName <String> -Reso
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
+### ByResourceId
+```
+Get-AzNetworkManagerIpamPool -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 When given a 'Name', the **Get-AzNetworkManagerIpamPool** cmdlet gets that specific IPAM pool. When not given a 'Name', the **Get-AzNetworkManagerIpamPool** cmdlet gets a list of IPAM pools in specified network manager.
 
@@ -180,7 +186,7 @@ The network manager name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByList, ByName
 Aliases:
 
 Required: True
@@ -210,7 +216,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByList, ByName
 Aliases:
 
 Required: True
@@ -218,6 +224,21 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -ResourceId
+The Ipam Pool resource id.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases: IpamPoolId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
