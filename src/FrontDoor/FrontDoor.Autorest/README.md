@@ -37,6 +37,7 @@ input-file:
 # You need to specify your swagger files here.
   # - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/afdx.json
   - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/cdnwebapplicationfirewall.json
+  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json
 
 try-require: 
   - $(repo)/specification/xxx/resource-manager/readme.powershell.md
@@ -64,7 +65,7 @@ directive:
       variant: ^CreateViaIdentity.*$
     remove: true
 
-  # mograted from SDK
+  # migrated from SDK
   - from: networkexperiment.json
     where: $.paths
     transform: >

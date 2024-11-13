@@ -1,0 +1,85 @@
+{
+  "resourceType": "NetworkExperimentProfiles",
+  "apiVersion": "2019-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.frontdoor"
+  },
+  "commands": [
+    {
+      "name": "Get-AzFrontDoorNetworkExperimentProfile",
+      "description": "Gets an NetworkExperiment Profile by ProfileName",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoornetworkexperimentprofile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an NetworkExperiment Profile by ProfileName",
+          "parameters": [
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzFrontDoorNetworkExperimentProfile",
+      "description": "Deletes an NetworkExperiment Profile by ProfileName",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoornetworkexperimentprofile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an NetworkExperiment Profile by ProfileName",
+          "parameters": [
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
