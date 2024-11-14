@@ -1,6 +1,6 @@
 ---
 Module Name: Az.ComputeFleet
-Module Guid: 64fafc2b-4e7b-4c5e-ba88-937ad2ea637c
+Module Guid: 9d01853a-0e16-49bf-8392-111a999162ef
 Download Help Link: https://learn.microsoft.com/powershell/module/az.computefleet
 Help Version: 1.0.0.0
 Locale: en-US
