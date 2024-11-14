@@ -61,8 +61,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                 sourceAppLocation = app.Location;
                 sourceAppArmResourceId = app.Id;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                WriteWarning($"Unable to fetch the source app location and resource ID from Microsoft.Web RP. {ex.Message}, An attempt will be made to retrieve the same from ARM cache");
             }
 
             // Fall back code to fetch the source app location and resource ID from ARM cache, Useful with disaster recovery scenaior's when Microsoft.Web RP is not accessible
