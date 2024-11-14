@@ -292,6 +292,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
                 return roleAssignment;
             }
+            catch (Exception ex)
+            {
+                VerboseLogger.Invoke($"Failed to create role assignment for Service Principal with exception {ex.Message}. Please create role assignment using troubleshooting documents.");
+                throw;
+            }
             finally
             {
                 if (hasMismatchSubscription)

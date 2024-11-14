@@ -170,7 +170,8 @@ namespace Commands.StorageSync.Interop.Clients
             string monitoringDataPath,
             string agentVersion,
             string serverMachineName,
-            Func<string, string, ServerRegistrationData, RegisteredServer> registerOnlineCallback)
+            Func<string, string, ServerRegistrationData, RegisteredServer> registerOnlineCallback,
+            bool assignIdentity)
         {
             // Get ApplicationId
             Guid? applicationId = GetApplicationIdOrNull();

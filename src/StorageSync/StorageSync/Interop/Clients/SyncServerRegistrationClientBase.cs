@@ -155,6 +155,7 @@ namespace Commands.StorageSync.Interop.Clients
         /// <param name="agentVersion">Agent Version</param>
         /// <param name="serverMachineName">Server Machine Name</param>
         /// <param name="registerOnlineCallback">Register Online Callback</param>
+        /// <param name="assignIdentity">Assign Identity</param>
         /// <returns>Registered Server Resource</returns>
         public RegisteredServer Register(
             Uri managementEndpointUri,
@@ -167,19 +168,16 @@ namespace Commands.StorageSync.Interop.Clients
             string monitoringDataPath,
             string agentVersion,
             string serverMachineName,
-            Func<string,string,ServerRegistrationData, RegisteredServer> registerOnlineCallback)
+            Func<string,string,ServerRegistrationData, RegisteredServer> registerOnlineCallback,
+            bool assignIdentity)
         {
             // Discover the server type , Get the application id, 
             Guid? applicationId = GetApplicationIdOrNull();
 
-            // Honor identity if present
-            bool isCertificateRegistration = true;
-            // We allow only server registration with server certificate in v19. applicationId.GetValueOrDefault(Guid.Empty) == Guid.Empty;
-
             // Set the registry key for ServerAuthType
             RegistryUtility.WriteValue(StorageSyncConstants.ServerAuthRegistryKeyName,
                        StorageSyncConstants.AfsRegistryKey,
-                      (isCertificateRegistration ? RegisteredServerAuthType.Certificate : RegisteredServerAuthType.ManagedIdentity).ToString(),
+                      (assignIdentity ? RegisteredServerAuthType.ManagedIdentity : RegisteredServerAuthType.Certificate).ToString(),
                        RegistryValueKind.String,
                        true);
 
