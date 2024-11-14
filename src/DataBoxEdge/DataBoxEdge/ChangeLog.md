@@ -20,9 +20,7 @@
 
 
 ## Upcoming Release
-* Migrated DataBoxEdge SDK to generated SDK
-  - Removed "Microsoft.Azure.Management.DataBoxEdge" Version "1.0.0" PackageReference
-  - Added DataBoxEdge.Management.Sdk ProjectReference
+* Removed "Microsoft.Azure.Management.DataBoxEdge" Version "1.0.0" PackageReference
 
 ## Version 1.1.1
 * Removed the outdated deps.json file.
