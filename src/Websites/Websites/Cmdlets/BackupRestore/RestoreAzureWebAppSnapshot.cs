@@ -51,11 +51,32 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            var sourceApp = ResourcesClient.GetAppResource(InputObject.Name, InputObject.Slot);
+            var sourceAppLocation = string.Empty;
+            var sourceAppArmResourceId = string.Empty;
+
+            // Try to get the source app location and resource ID from Microsoft.Web RP
+            try
+            {
+                var app = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+                sourceAppLocation = app.Location;
+                sourceAppArmResourceId = app.Id;
+            }
+            catch (Exception)
+            {
+            }
+
+            // Fall back code to fetch the source app location and resource ID from ARM cache, Useful with disaster recovery scenaior's when Microsoft.Web RP is not accessible
+            if (string.IsNullOrEmpty(sourceAppLocation) || string.IsNullOrEmpty(sourceAppArmResourceId))
+            {
+                var sourceApp = ResourcesClient.GetAppResource(InputObject.Name, InputObject.Slot);
+                sourceAppLocation = sourceApp?.Location;
+                sourceAppArmResourceId = sourceApp?.Id;
+            }
+
             SnapshotRecoverySource source = new SnapshotRecoverySource()
             {
-                Location = sourceApp?.Location,
-                Id = sourceApp?.Id
+                Location = sourceAppLocation,
+                Id = sourceAppArmResourceId
             };
             SnapshotRestoreRequest recoveryReq = new SnapshotRestoreRequest()
             {
