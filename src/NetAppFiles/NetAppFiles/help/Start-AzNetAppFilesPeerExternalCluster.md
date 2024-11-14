@@ -41,7 +41,7 @@ Starts peering the external cluster for this migration volume
 ### Example 1
 ```powershell
 $peerIpAddresses = '0.0.0.1', '0.0.0.2','0.0.0.3', '0.0.0.4', '0.0.0.5', '0.0.0.6'
-Start-AzNetAppFilesFinalizeExternalReplication -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume" -PeerIPAddress  $peerIpAddresses
+Start-AzNetAppFilesPeerExternalCluster -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyDestinationAnfVolume" -PeerIPAddress  $peerIpAddresses
 ```
 
 Starts peering the external cluster for "MyDestinationAnfVolume" migration volume
