@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.13.0
 * Fixed output type of cmdlet
 
 ## Version 0.12.0
