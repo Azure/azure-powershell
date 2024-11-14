@@ -16,27 +16,27 @@ Create or update a OpenAI integration rule for a given monitor resource.
 ```
 New-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Key <String>] [-OpenAiResourceEndpoint <String>] [-OpenAiResourceId <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzElasticOpenAi -IntegrationName <String> -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Body <IOpenAiIntegrationRpmodel> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzElasticOpenAi -InputObject <IElasticIdentity> [-Key <String>] [-OpenAiResourceEndpoint <String>]
- [-OpenAiResourceId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-OpenAiResourceId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzElasticOpenAi -InputObject <IElasticIdentity> -Body <IOpenAiIntegrationRpmodel>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -174,21 +174,6 @@ The resource name of Open AI resource
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a Dapr Component in a Managed Environment.
+create a Dapr Component in a Managed Environment.
 .Description
-Create a Dapr Component in a Managed Environment.
+create a Dapr Component in a Managed Environment.
 .Example
 $scope = @("container-app-1","container-app-2")
 $secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"

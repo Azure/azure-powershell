@@ -10,10 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support
     public partial struct CustomizationTaskDefinitionParameterType :
         System.IEquatable<CustomizationTaskDefinitionParameterType>
     {
+        /// <summary>The parameter accepts a boolean value.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.CustomizationTaskDefinitionParameterType Boolean = @"boolean";
 
+        /// <summary>The parameter accepts a number value.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.CustomizationTaskDefinitionParameterType Number = @"number";
 
+        /// <summary>The parameter accepts a string value.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Support.CustomizationTaskDefinitionParameterType String = @"string";
 
         /// <summary>

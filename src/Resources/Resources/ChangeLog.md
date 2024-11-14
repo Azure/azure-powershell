@@ -19,7 +19,12 @@
 -->
 
 ## Upcoming Release
+* Updated Resources SDK to 2024-07-01.
+* Fixed overriding of Bicep parameters in Deployment Stack cmdlets to support SecureString parameters.
+
+## Version 7.6.0
 * Fixed customer-reported `Remove-AzPolicyAssignment` behavior.
+* Added new cmdlets of DataBoundary
 
 ## Version 7.5.0
 * Added `ResourceSelector` and `Override` parameters to `New/Update-AzPolicyAssignment`.

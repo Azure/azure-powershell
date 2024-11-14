@@ -1017,13 +1017,39 @@ end {
 .Synopsis
 API to set properties of the connected cluster resource
 .Description
-API to set properties of the connected cluster resource
+API to set properties of the connected cluster resource.
+Replaces all configuration of an existing connected cluster; any properties not specified will be reset to their default values.
 .Example
 Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -DisableGateway
 .Example
-Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -GatewayResourceId gatewayResourceId
+Set-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus -GatewayResourceId $gatewayResourceId
 
+.Example
+# Get an existing cluster first
+$inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
+# Enable gateway and set gateway resource Id 
+$inputObject.GatewayEnabled=$true
+$inputObject.GatewayResourceId=$gatewayResourceId
+Set-AzConnectedKubernetes -InputObject $inputObject     
 
+.Example
+# Get an existing cluster first
+$inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
+# Enable workload identity and OIDC issuer profile
+$inputObject.WorkloadIdentityEnabled=$true
+$inputObject.OidcIssuerProfileEnabled=$true
+Set-AzConnectedKubernetes -InputObject $inputObject 
+.Example
+# Get an existing cluster first
+$inputObject = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId
+# Disable workload identity 
+$inputObject.WorkloadIdentityEnabled=$falue
+Set-AzConnectedKubernetes -InputObject $inputObject 
+.Example
+Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -SubscriptionId $subscriptionId | Set-AzConnectedKubernetes -WorkloadIdentityEnabled:$false
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster
 .Notes
@@ -1080,6 +1106,7 @@ function Set-AzConnectedKubernetes {
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
     [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
     [Alias('Name')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
@@ -1088,6 +1115,7 @@ param(
     ${ClusterName},
 
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
     [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Path')]
     [System.String]
@@ -1139,6 +1167,7 @@ param(
     ${ContainerLogPath},
 
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
     [Parameter(ParameterSetName='SetExpandedDisableGateway', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.String]
@@ -1230,7 +1259,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Whether to enable or disable the workload identity Webhook
+    # Enable the workload identity Webhook
     ${WorkloadIdentityEnabled},
 
     [Parameter()]
@@ -1251,7 +1280,8 @@ param(
     # Arc Agentry System Protected Configuration
     ${ConfigurationProtectedSetting},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SetExpandedEnableGateway', Mandatory)]
+    [Parameter(ParameterSetName='SetEnableGateway', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [System.String]
     # Arc Gateway resource Id, providing this will enable the gateway
@@ -1263,8 +1293,9 @@ param(
     [System.Management.Automation.SwitchParameter]
     ${DisableGateway},
 
-    [Parameter(ParameterSetName='SetDisableGateway', Mandatory)]
-    [Parameter(ParameterSetName='Set', Mandatory)]
+    [Parameter(ParameterSetName='SetEnableGateway', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='SetDisableGateway', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='Set', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20240715Preview.IConnectedCluster]
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -1357,11 +1388,13 @@ begin {
 
         $mapping = @{
             SetExpanded = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
+            SetExpandedEnableGateway = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
             SetExpandedDisableGateway = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
+            SetEnableGateway = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
             SetDisableGateway = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
             Set = 'Az.ConnectedKubernetes.custom\Set-AzConnectedKubernetes';
         }
-        if (('SetExpanded', 'SetExpandedDisableGateway', 'SetDisableGateway', 'Set') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('SetExpanded', 'SetExpandedEnableGateway', 'SetExpandedDisableGateway', 'SetEnableGateway', 'SetDisableGateway', 'Set') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
