@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.1.0
 * Added ContainerGroupProfileId ContainerGroupProfileRevision StandbyPoolProfileFailContainerGroupCreateOnReuseFailure StandbyPoolProfileId to Container Group properties.
 * Added ConfigMapKeyValuePair to Container object properties.
 * Added new cmdlet to define container without using the preset default properties New-AzContainerInstanceNoDefaultObject
