@@ -338,9 +338,13 @@ process {
       {
         $null = $PSBoundParameters.Add("IPAddressPort", $Container.Port)
       }
+
+      if(!$PSBoundParameters.ContainsKey("StandbyPoolProfileId")) {
+        if(!$PSBoundParameters.ContainsKey("OSType")) {
+          $null = $PSBoundParameters.Add("OSType", "Linux")
+        }
+      }
       
-
-
       Az.ContainerInstance.internal\New-AzContainerGroup @PSBoundParameters
     } catch {
         throw
