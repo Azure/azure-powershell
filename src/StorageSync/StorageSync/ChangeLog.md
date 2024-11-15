@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Fixed the bug in server registration
 * Improved the error message for Set-AzStorageSyncServiceIdentity cmdlet
+* Add RoleAssignmentExists check
+* Add AssignIdentity to Set-AzStorageSyncServer
+* Add a default behavior of system assigned identity to StorageSyncService provisioning
 
 ## Version 2.3.1
 * Fixed the bug in server registration

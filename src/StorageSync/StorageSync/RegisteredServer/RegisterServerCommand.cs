@@ -211,8 +211,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     Path.Combine(StorageSyncClientWrapper.AfsAgentInstallerPath, StorageSyncConstants.MonitoringAgentDirectoryName),
                     StorageSyncClientWrapper.AfsAgentVersion,
                     ServerMachineName,
-                    (pResourceGroupName, pStorageSyncCerviceName, pServerRegistrationData) => CreateRegisteredResourceInCloud(pResourceGroupName, pStorageSyncCerviceName,
-                            StorageSyncClientWrapper.StorageSyncResourceManager.UpdateServerRegistrationData(pServerRegistrationData)));
+                    (pResourceGroupName, pStorageSyncServiceName, pServerRegistrationData) => CreateRegisteredResourceInCloud(pResourceGroupName, pStorageSyncServiceName,
+                            StorageSyncClientWrapper.StorageSyncResourceManager.UpdateServerRegistrationData(pServerRegistrationData)),
+                    this.AssignIdentity.ToBool());
             }
         }
 
@@ -238,9 +239,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 LastHeartBeat = DateTime.Now.ToString(),
             };
 
-            if (AssignIdentity.IsPresent)
+            if (AssignIdentity.ToBool())
             {
                 createParameters.ApplicationId = serverRegistrationData.ApplicationId.HasValue ? serverRegistrationData.ApplicationId.Value.ToString() : Guid.Empty.ToString();
+                if(createParameters.ApplicationId == Guid.Empty.ToString())
+                {
+                    throw new PSArgumentException("This server is not configured properly to use managed identities. Follow the steps in the Azure File Sync documentation (https://aka.ms/AFS/ManagedIdentities) to enable a system-assigned managed identity for this server.");
+                }
             }
             else
             {

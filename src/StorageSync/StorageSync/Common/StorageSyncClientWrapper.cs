@@ -27,6 +27,7 @@ using Microsoft.Azure.Management.StorageSync;
 using Microsoft.Rest.Azure.OData;
 using System;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common
@@ -38,6 +39,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncClientWrapper" />
     public class StorageSyncClientWrapper : IStorageSyncClientWrapper
     {
+        public const string RoleAssignmentAlreadyExists = "RoleAssignmentAlreadyExists";
+
         /// <summary>
         /// The azure cloud kailani application identifier
         /// TODO : Az.StorageSync Remove KailaniAppId(s) from Cmdlet code https://github.com/Azure/azure-powershell/issues/8652
@@ -258,10 +261,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 {
                     AuthorizationManagementClient.SubscriptionId = storageAccountSubscriptionId;
                 }
+                var roleAssignmentScope = storageAccountResourceId;
 
                 var resourceIdentifier = new ResourceIdentifier(storageAccountResourceId);
-                string roleDefinitionScope = "/";
-                RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleDefinitionScope, BuiltInRoleDefinitionId);
+                
+                RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleAssignmentScope, BuiltInRoleDefinitionId);
 
                 var serverPrincipalId = serverPrincipal.Id.ToString();
                 var roleAssignments = AuthorizationManagementClient.RoleAssignments.ListForResource(
@@ -272,7 +276,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId))
                     );
 
-                var roleAssignmentScope = storageAccountResourceId;
                 Guid roleAssignmentId = StorageSyncResourceManager.GetGuid();
 
                 RoleAssignment roleAssignment = roleAssignments.FirstOrDefault();
@@ -282,7 +285,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     var createParameters = new RoleAssignmentCreateParameters
                     {
                         PrincipalId = serverPrincipalId,
-                        RoleDefinitionId=AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(resourceIdentifier.Subscription, BuiltInRoleDefinitionId)
+                        RoleDefinitionId = AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(resourceIdentifier.Subscription, BuiltInRoleDefinitionId)
                     };
 
                     roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId.ToString(), createParameters);
@@ -292,6 +295,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 
                 return roleAssignment;
             }
+            catch (Exception ex) 
+            {
+                VerboseLogger.Invoke($"Failed to create role assignment for Service Principal with exception {ex.Message} {(ex as ErrorResponseException).Body?.Error?.Message}. Please create role assignment using troubleshooting documents.");
+
+                if ((ex as ErrorResponseException).Body?.Error?.Code != RoleAssignmentAlreadyExists)
+                {
+                    throw;
+                }
+            }
             finally
             {
                 if (hasMismatchSubscription)
@@ -299,6 +311,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     AuthorizationManagementClient.SubscriptionId = currentSubscriptionId;
                 }
             }
+            return null;
         }
 
         /// <summary>
@@ -462,8 +475,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
             }
             catch (Exception ex)
             {
-                VerboseLogger.Invoke($"Failed to create role assignment with exception {ex.Message}. Please create role assignment using troubleshooting documents.");
-                throw;
+                VerboseLogger.Invoke($"Failed to create role assignment for Service Principal with exception {ex.Message} {(ex as ErrorResponseException).Body?.Error?.Message}. Please create role assignment using troubleshooting documents.");
+
+                if ((ex as ErrorResponseException).Body?.Error?.Code != RoleAssignmentAlreadyExists)
+                {
+                    throw;
+                }
             }
             finally
             {
@@ -472,6 +489,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     AuthorizationManagementClient.SubscriptionId = currentSubscriptionId;
                 }
             }
+            return (null, true);
         }
     }
 }

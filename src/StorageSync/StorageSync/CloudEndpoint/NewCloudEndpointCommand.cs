@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                 {
                     throw new PSArgumentException(StorageSyncResources.MissingServicePrincipalResourceIdErrorMessage);
                 }
-                RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, storageAccountResourceIdentifier.Subscription, StorageAccountResourceId);
+                StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, storageAccountResourceIdentifier.Subscription, StorageAccountResourceId);
 
                 var parentResourceIdentifier = default(ResourceIdentifier);
 
