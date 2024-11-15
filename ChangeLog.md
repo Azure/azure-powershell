@@ -103,6 +103,9 @@
     - 'Start-AzStorageFileCopy'
     - 'Stop-AzStorageFileCopy'
 
+### Thanks to our community contributors
+* @sidesw1pe, Update Copy-AzRecoveryServicesVault.md (#26570)
+
 ## 12.5.0 - October 2024
 #### Az.Accounts 3.0.5
 * Fixed the issue that 'Export-AzSshConfig' and 'Enter-AzVM' from Az.Ssh are not able to use when WAM is enabled.
