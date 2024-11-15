@@ -1,21 +1,21 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/set-azfrontdoorpolicy
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy
 schema: 2.0.0
 ---
 
-# Set-AzFrontDoorPolicy
+# New-AzFrontDoorWafPolicy
 
 ## SYNOPSIS
-update policy with specified rule set name within a resource group.
+create policy with specified rule set name within a resource group.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### CreateExpanded (Default)
 ```
-Set-AzFrontDoorPolicy -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-CustomRule <ICustomRule[]>] [-Etag <String>] [-ExtendedProperty <Hashtable>]
+New-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-CustomRule <ICustomRule[]>] [-Etag <String>] [-ExtendedProperty <Hashtable>]
  [-ManagedRuleSet <IManagedRuleSet[]>] [-PolicySettingDefaultCustomBlockResponseBody <String>]
  [-PolicySettingDefaultCustomBlockResponseStatusCode <Int32>] [-PolicySettingDefaultRedirectUrl <String>]
  [-PolicySettingEnabledState <String>] [-PolicySettingMode <String>] [-RateLimitRule <IRateLimitRule[]>]
@@ -23,22 +23,22 @@ Set-AzFrontDoorPolicy -Name <String> -ResourceGroupName <String> -Location <Stri
  [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### CreateViaJsonFilePath
 ```
-Set-AzFrontDoorPolicy -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+New-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### UpdateViaJsonString
+### CreateViaJsonString
 ```
-Set-AzFrontDoorPolicy -Name <String> -ResourceGroupName <String> -JsonString <String>
+New-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update policy with specified rule set name within a resource group.
+create policy with specified rule set name within a resource group.
 
 ## EXAMPLES
 
@@ -86,7 +86,7 @@ List of rules
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICustomRule[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -117,7 +117,7 @@ Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -132,7 +132,7 @@ Key-Value pair representing additional properties for Web Application Firewall p
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -143,11 +143,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Update operation
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -158,11 +158,11 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Update operation
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -177,7 +177,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -192,7 +192,7 @@ List of rule sets.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -238,7 +238,7 @@ The body must be specified in base64 encoding.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -253,7 +253,7 @@ If the action type is block, this field defines the default customer overridable
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -268,7 +268,7 @@ If action type is redirect, this field represents the default redirect URL for t
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -283,7 +283,7 @@ describes if the policy is in enabled state or disabled state
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -298,7 +298,7 @@ Describes if it is in detection mode or prevention mode at policy level.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -313,7 +313,7 @@ List of rules
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRateLimitRule[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -343,7 +343,7 @@ Name of the pricing tier.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -373,7 +373,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False

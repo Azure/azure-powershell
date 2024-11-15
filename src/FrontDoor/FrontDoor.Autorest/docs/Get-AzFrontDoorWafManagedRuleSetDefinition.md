@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoormanagedruleset
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorwafmanagedrulesetdefinition
 schema: 2.0.0
 ---
 
-# Get-AzFrontDoorManagedRuleSet
+# Get-AzFrontDoorWafManagedRuleSetDefinition
 
 ## SYNOPSIS
 Lists all available managed rule sets.
@@ -13,7 +13,8 @@ Lists all available managed rule sets.
 ## SYNTAX
 
 ```
-Get-AzFrontDoorManagedRuleSet [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFrontDoorWafManagedRuleSetDefinition [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

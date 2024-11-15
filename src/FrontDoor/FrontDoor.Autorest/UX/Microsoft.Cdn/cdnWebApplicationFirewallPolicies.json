@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Get-AzFrontDoorPolicy",
+      "name": "Get-AzFrontDoorWafPolicy",
       "description": "Retrieve protection policy with specified name within a resource group.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorpolicy"
+          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorwafpolicy"
         },
         "parameterSets": [
           {
@@ -44,12 +44,12 @@
       ]
     },
     {
-      "name": "Remove-AzFrontDoorPolicy",
+      "name": "Remove-AzFrontDoorWafPolicy",
       "description": "Deletes Policy",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorpolicy"
+          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorwafpolicy"
         },
         "parameterSets": [
           {

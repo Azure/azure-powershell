@@ -15,24 +15,24 @@ Gets a Timeseries for a given Experiment
 ### Get (Default)
 ```
 Get-AzFrontDoorReportTimesery -ExperimentName <String> -ProfileName <String> -ResourceGroupName <String>
- -AggregationInterval <String> -EndOn <DateTime> -StartOn <DateTime> -TimeseriesType <String>
- [-SubscriptionId <String[]>] [-Country <String>] [-Endpoint <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ -AggregationInterval <String> -EndDateTimeUtc <DateTime> -StartDateTimeUtc <DateTime>
+ -TimeseriesType <String> [-SubscriptionId <String[]>] [-Country <String>] [-Endpoint <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzFrontDoorReportTimesery -InputObject <IFrontDoorIdentity> -AggregationInterval <String>
- -EndOn <DateTime> -StartOn <DateTime> -TimeseriesType <String> [-Country <String>] [-Endpoint <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -EndDateTimeUtc <DateTime> -StartDateTimeUtc <DateTime> -TimeseriesType <String> [-Country <String>]
+ [-Endpoint <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityNetworkExperimentProfile
 ```
 Get-AzFrontDoorReportTimesery -ExperimentName <String>
- -NetworkExperimentProfileInputObject <IFrontDoorIdentity> -AggregationInterval <String> -EndOn <DateTime>
- -StartOn <DateTime> -TimeseriesType <String> [-Country <String>] [-Endpoint <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -NetworkExperimentProfileInputObject <IFrontDoorIdentity> -AggregationInterval <String>
+ -EndDateTimeUtc <DateTime> -StartDateTimeUtc <DateTime> -TimeseriesType <String> [-Country <String>]
+ [-Endpoint <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,7 +111,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndOn
+### -EndDateTimeUtc
 The end DateTime of the Timeseries in UTC
 
 ```yaml
@@ -216,7 +216,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StartOn
+### -StartDateTimeUtc
 The start DateTime of the Timeseries in UTC
 
 ```yaml

@@ -16,20 +16,20 @@ Gets a Latency Scorecard for a given Experiment
 ```
 Get-AzFrontDoorReportLatencyScorecard -ExperimentName <String> -ProfileName <String>
  -ResourceGroupName <String> -AggregationInterval <String> [-SubscriptionId <String[]>] [-Country <String>]
- [-EndOn <DateTime>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-EndDateTimeUtc <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzFrontDoorReportLatencyScorecard -InputObject <IFrontDoorIdentity> -AggregationInterval <String>
- [-Country <String>] [-EndOn <DateTime>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Country <String>] [-EndDateTimeUtc <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityNetworkExperimentProfile
 ```
 Get-AzFrontDoorReportLatencyScorecard -ExperimentName <String>
  -NetworkExperimentProfileInputObject <IFrontDoorIdentity> -AggregationInterval <String> [-Country <String>]
- [-EndOn <DateTime>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-EndDateTimeUtc <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,11 +108,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EndOn
+### -EndDateTimeUtc
 The end DateTime of the Latency Scorecard in UTC
 
 ```yaml
-Type: System.DateTime
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

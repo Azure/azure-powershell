@@ -17,9 +17,8 @@ Enables a frontendEndpoint for HTTPS traffic
 Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorName <String> -FrontendEndpointName <String>
  -ResourceGroupName <String> -CertificateSource <String> -MinimumTlsVersion <String>
  [-SubscriptionId <String>] [-FrontDoorCertificateSourceParameterCertificateType <String>]
- [-KeyVaultCertificateSourceParameterSecretName <String>]
- [-KeyVaultCertificateSourceParameterSecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SecretName <String>] [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Enable
@@ -40,9 +39,8 @@ Enable-AzFrontDoorFrontendEndpointHttps -InputObject <IFrontDoorIdentity>
 ```
 Enable-AzFrontDoorFrontendEndpointHttps -InputObject <IFrontDoorIdentity> -CertificateSource <String>
  -MinimumTlsVersion <String> [-FrontDoorCertificateSourceParameterCertificateType <String>]
- [-KeyVaultCertificateSourceParameterSecretName <String>]
- [-KeyVaultCertificateSourceParameterSecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SecretName <String>] [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaIdentityFrontDoor
@@ -56,10 +54,9 @@ Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorInputObject <IFrontDoorIdentit
 ```
 Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorInputObject <IFrontDoorIdentity>
  -FrontendEndpointName <String> -CertificateSource <String> -MinimumTlsVersion <String>
- [-FrontDoorCertificateSourceParameterCertificateType <String>]
- [-KeyVaultCertificateSourceParameterSecretName <String>]
- [-KeyVaultCertificateSourceParameterSecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-FrontDoorCertificateSourceParameterCertificateType <String>] [-SecretName <String>]
+ [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaJsonFilePath
@@ -271,36 +268,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -KeyVaultCertificateSourceParameterSecretName
-The name of the Key Vault secret representing the full certificate PFX
-
-```yaml
-Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyVaultCertificateSourceParameterSecretVersion
-The version of the Key Vault secret representing the full certificate PFX
-
-```yaml
-Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MinimumTlsVersion
 The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
 
@@ -355,6 +322,36 @@ Parameter Sets: Enable, EnableExpanded, EnableViaJsonFilePath, EnableViaJsonStri
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecretName
+The name of the Key Vault secret representing the full certificate PFX
+
+```yaml
+Type: System.String
+Parameter Sets: EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecretVersion
+The version of the Key Vault secret representing the full certificate PFX
+
+```yaml
+Type: System.String
+Parameter Sets: EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

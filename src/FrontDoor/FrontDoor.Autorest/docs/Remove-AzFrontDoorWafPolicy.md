@@ -1,45 +1,31 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/update-azfrontdoorpolicy
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorwafpolicy
 schema: 2.0.0
 ---
 
-# Update-AzFrontDoorPolicy
+# Remove-AzFrontDoorWafPolicy
 
 ## SYNOPSIS
-update an existing CdnWebApplicationFirewallPolicy with the specified policy name under the specified subscription and resource group
+Deletes Policy
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Delete (Default)
 ```
-Update-AzFrontDoorPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzFrontDoorPolicy -InputObject <IFrontDoorIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaJsonFilePath
+### DeleteViaIdentity
 ```
-Update-AzFrontDoorPolicy -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzFrontDoorPolicy -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update an existing CdnWebApplicationFirewallPolicy with the specified policy name under the specified subscription and resource group
+Deletes Policy
 
 ## EXAMPLES
 
@@ -67,21 +53,6 @@ update an existing CdnWebApplicationFirewallPolicy with the specified policy nam
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -103,7 +74,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -113,42 +84,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the CdnWebApplicationFirewallPolicy.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: Delete
 Aliases: PolicyName
 
 Required: True
@@ -158,8 +99,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -178,7 +119,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -193,27 +134,12 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-CdnWebApplicationFirewallPolicy tags
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -258,7 +184,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICdnWebApplicationFirewallPolicy
+### System.Boolean
 
 ## NOTES
 

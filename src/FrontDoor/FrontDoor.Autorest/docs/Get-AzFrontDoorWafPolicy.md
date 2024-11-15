@@ -1,31 +1,36 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorpolicy
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorwafpolicy
 schema: 2.0.0
 ---
 
-# Remove-AzFrontDoorPolicy
+# Get-AzFrontDoorWafPolicy
 
 ## SYNOPSIS
-Deletes Policy
+Retrieve protection policy with specified name within a resource group.
 
 ## SYNTAX
 
-### Delete (Default)
+### List (Default)
 ```
-Remove-AzFrontDoorPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzFrontDoorWafPolicy -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Get
 ```
-Remove-AzFrontDoorPolicy -InputObject <IFrontDoorIdentity> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes Policy
+Retrieve protection policy with specified name within a resource group.
 
 ## EXAMPLES
 
@@ -74,7 +79,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -89,25 +94,10 @@ The name of the CdnWebApplicationFirewallPolicy.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Get
 Aliases: PolicyName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,7 +109,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -133,44 +123,13 @@ Accept wildcard characters: False
 Azure Subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -184,7 +143,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ICdnWebApplicationFirewallPolicy
 
 ## NOTES
 

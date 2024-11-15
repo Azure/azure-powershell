@@ -67,110 +67,37 @@ directive:
       variant: ^CreateViaIdentity.*$
     remove: true
 
-  # migrated from SDK
-  - from: networkexperiment.json
-    where: $.paths
-    transform: >
-      $['/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/LatencyScorecard'].get.parameters[5].format = 'date-time';
-      $['/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/LatencyScorecard'].get.parameters[5]['x-ms-client-name'] = 'endOn';
-      $['/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/Timeseries'].get.parameters[5]['x-ms-client-name'] = 'startOn';
-      $['/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/NetworkExperimentProfiles/{profileName}/Experiments/{experimentName}/Timeseries'].get.parameters[6]['x-ms-client-name'] = 'endOn';
-  - from: networkexperiment.json
-    where: $.definitions
-    transform: >
-      $.TimeseriesProperties.properties.startDateTimeUTC['format'] = 'date-time';
-      $.TimeseriesProperties.properties.endDateTimeUTC['format'] = 'date-time';
-      $.TimeseriesDataPoint.properties.dateTimeUTC['format'] = 'date-time';
-      $.LatencyMetric.properties.endDateTimeUTC['format'] = 'date-time';
-  - from: network.json
-    where: $.definitions
-    transform: >
-      $.Resource['x-ms-client-name'] = 'FrontDoorResourceModel';
-      $.FrontDoorResource = {
-        'properties': {
-            'id': {
-              'type': 'string',
-              'description': 'Resource ID.',
-              'x-ms-format': 'arm-id'
-            },
-            'name': {
-              'type': 'string',
-              'description': 'Resource name.'
-            },
-            'type': {
-              'readOnly': true,
-              'type': 'string',
-              'description': 'Resource type.',
-              'x-ms-format': 'resource-type'
-            }
-          },
-        'description': 'Common resource representation.',
-        'x-ms-azure-resource': true,
-        'x-ms-client-name': 'FrontDoorResourceData'
-      };
-  - from: frontdoor.json
-    where: $.definitions[?(@.allOf && @.properties.name && !@.properties.name.readOnly && @.properties.type && @.properties.type.readOnly)]
-    transform: >
-      if ($.allOf[0]['$ref'].includes('network.json#/definitions/SubResource'))
-      {
-        $.allOf[0]['$ref'] = $.allOf[0]['$ref'].replace('SubResource', 'FrontDoorResource');
-        delete $.properties.name;
-        delete $.properties.type;
-      }
-  - from: frontdoor.json
-    where: $.definitions
-    transform: >
-      $.FrontendEndpointUpdateParameters.properties.sessionAffinityTtlSeconds['x-ms-client-name'] = 'SessionAffinityTtlInSeconds';
   - from: swagger-document
-    where: $.definitions.ForwardingConfiguration.properties.cacheConfiguration
-    transform: >
-        $["x-nullable"] = true;
+    where: $.definitions.RouteUpdatePropertiesParameters.properties.supportedProtocols
+    transform: delete $.default
   - from: swagger-document
-    where: $.definitions.RoutingRuleUpdateParameters.properties.rulesEngine
-    transform: >
-        $["x-nullable"] = true;
-  - from: swagger-document
-    where: $.definitions.FrontendEndpointUpdateParameters.properties.webApplicationFirewallPolicyLink
-    transform: >
-        $["x-nullable"] = true;
-  - from: swagger-document
-    where: $.definitions.RoutingRuleUpdateParameters.properties.webApplicationFirewallPolicyLink
-    transform: >
-        $["x-nullable"] = true;
-  - from: swagger-document
-    where: $.definitions.Backend.properties.privateLinkResourceId
-    transform: >
-        $["x-nullable"] = true;
-  - from: swagger-document
-    where: $.definitions.Backend.properties.privateLinkLocation
-    transform: >
-        $["x-nullable"] = true;
-  - from: swagger-document
-    where: $.definitions.Backend.properties.privateEndpointStatus
-    transform: >
-        $["x-nullable"] = true;
-  - from: swagger-document
-    where: $.definitions.RulesEngineAction.properties.routeConfigurationOverride
-    transform: >
-        $["x-nullable"] = true;
-  - from: swagger-document
-    where: $.definitions.RulesEngineRule.properties.matchConditions
-    transform: >
-        $["x-nullable"] = true;
-  - from: swagger-document
-    where: $.definitions.RulesEngineRule.properties.matchProcessingBehavior
-    transform: >
-        $["x-nullable"] = true;
-  - from: swagger-document
-    where: $.definitions.FrontendEndpointProperties.properties.customHttpsProvisioningState
-    transform: >
-        $["x-nullable"] = true;
-  - from: swagger-document
-    where: $.definitions.FrontendEndpointProperties.properties.customHttpsProvisioningSubstate
-    transform: >
-        $["x-nullable"] = true;
-  - from: swagger-document
-    where: $.definitions.FrontendEndpointProperties.properties.customHttpsConfiguration
-    transform: >
-        $["x-nullable"] = true;
+    where: $.definitions.PolicySettings.properties.logScrubbing
+    transform: $['x-ms-client-flatten'] = false;
+
+  - model-cmdlet:
+    - model-name: FrontendEndpoint
+      cmdlet-name: New-AzFrontDoorFrontendEndpointObject
+  # Rename
+  - where: 
+      subject: ManagedRuleSet
+    set:
+      subject: WafManagedRuleSetDefinition
+  - where:
+      subject: Policy
+    set:
+      subject: WafPolicy
+
+  # Enable-AzFrontDoorFrontendEndpointHttps
+  - where:
+      verb: Enable
+      subject: FrontendEndpointHttps
+      parameter-name: KeyVaultCertificateSourceParameterSecretName
+    set:
+      parameter-name: SecretName
+  - where:
+      verb: Enable
+      subject: FrontendEndpointHttps
+      parameter-name: KeyVaultCertificateSourceParameterSecretVersion
+    set:
+      parameter-name: SecretVersion
 ```
