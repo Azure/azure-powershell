@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * Added 4 new DNS Resolver Policy (DNS Security Policy) resources into the cmdlets
     - DNS Resolver Policy (DNS Security Policy)
     - DNS Security Rule

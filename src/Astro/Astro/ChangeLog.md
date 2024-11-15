@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Fixed the failure issue when deleting or replacing UserAssignedIdentity.
 
 ## Version 0.1.0

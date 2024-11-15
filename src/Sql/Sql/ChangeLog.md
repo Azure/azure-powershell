@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.0
 * Added `Start-AzSqlInstanceLinkFailover` cmdlet for Managed Instance Link.
 * Updated `New-AzSqlInstanceLink` with new input parameters
 	- Added `DistributedAvailabilityGroupName`, `FailoverMode`, `InstanceLinkRole`, `SeedingMode`
