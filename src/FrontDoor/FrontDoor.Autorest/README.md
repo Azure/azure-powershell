@@ -74,9 +74,42 @@ directive:
     where: $.definitions.PolicySettings.properties.logScrubbing
     transform: $['x-ms-client-flatten'] = false;
 
+  # For New object model cmdlet
   - model-cmdlet:
+    - model-name: Backend
+      cmdlet-name: New-AzFrontDoorFrontendBackendObject
+    - model-name: BackendPool
+      cmdlet-name: New-AzFrontDoorFrontendBackendPoolObject
+    - model-name: BackendPoolSettings
+      cmdlet-name: New-AzFrontDoorFrontendBackendPoolSettingsObject
     - model-name: FrontendEndpoint
       cmdlet-name: New-AzFrontDoorFrontendEndpointObject
+    - model-name: HeaderAction
+      cmdlet-name: New-AzFrontDoorFrontendHeaderActionObject
+    - model-name: HeaderAction
+      cmdlet-name: New-AzFrontDoorFrontendHeaderActionObject
+    - model-name: HealthProbeSettingsModel
+      cmdlet-name: New-AzFrontDoorFrontendHealthProbeSettingsObject
+    - model-name: LoadBalancingSettingsModel
+      cmdlet-name: New-AzFrontDoorFrontendLoadBalancingSettingsObject
+    - model-name: RoutingRule
+      cmdlet-name: New-AzFrontDoorFrontendRoutingRuleObject
+    - model-name: RulesEngineAction
+      cmdlet-name: New-AzFrontDoorFrontendRulesEngineActionObject
+    - model-name: RulesEngineMatchCondition
+      cmdlet-name: New-AzFrontDoorFrontendRulesEngineMatchConditionObject
+    - model-name: RulesEngineRule
+      cmdlet-name: New-AzFrontDoorFrontendRulesEngineRuleObject
+    - model-name: CustomRule
+      cmdlet-name: New-AzFrontDoorFrontendCustomRuleObject
+    - model-name: ManagedRuleOverride
+      cmdlet-name: New-AzFrontDoorWafManagedRuleOverrideObject
+    - model-name: MatchCondition
+      cmdlet-name: New-AzFrontDoorFrontendMatchConditionObject
+    - model-name: ManagedRuleGroupOverride
+      cmdlet-name: New-AzFrontDoorWafRuleGroupOverrideObject 
+
+      
   # Rename
   - where: 
       subject: ManagedRuleSet

@@ -56,8 +56,41 @@ create a new Front Door with a Front Door name under the specified subscription 
 ### [New-AzFrontDoorExperiment](New-AzFrontDoorExperiment.md)
 create an Experiment
 
+### [New-AzFrontDoorFrontendBackendObject](New-AzFrontDoorFrontendBackendObject.md)
+Create an in-memory object for Backend.
+
+### [New-AzFrontDoorFrontendBackendPoolObject](New-AzFrontDoorFrontendBackendPoolObject.md)
+Create an in-memory object for BackendPool.
+
+### [New-AzFrontDoorFrontendCustomRuleObject](New-AzFrontDoorFrontendCustomRuleObject.md)
+Create an in-memory object for CustomRule.
+
 ### [New-AzFrontDoorFrontendEndpointObject](New-AzFrontDoorFrontendEndpointObject.md)
 Create an in-memory object for FrontendEndpoint.
+
+### [New-AzFrontDoorFrontendHeaderActionObject](New-AzFrontDoorFrontendHeaderActionObject.md)
+Create an in-memory object for HeaderAction.
+
+### [New-AzFrontDoorFrontendHealthProbeSettingsObject](New-AzFrontDoorFrontendHealthProbeSettingsObject.md)
+Create an in-memory object for HealthProbeSettingsModel.
+
+### [New-AzFrontDoorFrontendLoadBalancingSettingsObject](New-AzFrontDoorFrontendLoadBalancingSettingsObject.md)
+Create an in-memory object for LoadBalancingSettingsModel.
+
+### [New-AzFrontDoorFrontendMatchConditionObject](New-AzFrontDoorFrontendMatchConditionObject.md)
+Create an in-memory object for MatchCondition.
+
+### [New-AzFrontDoorFrontendRoutingRuleObject](New-AzFrontDoorFrontendRoutingRuleObject.md)
+Create an in-memory object for RoutingRule.
+
+### [New-AzFrontDoorFrontendRulesEngineActionObject](New-AzFrontDoorFrontendRulesEngineActionObject.md)
+Create an in-memory object for RulesEngineAction.
+
+### [New-AzFrontDoorFrontendRulesEngineMatchConditionObject](New-AzFrontDoorFrontendRulesEngineMatchConditionObject.md)
+Create an in-memory object for RulesEngineMatchCondition.
+
+### [New-AzFrontDoorFrontendRulesEngineRuleObject](New-AzFrontDoorFrontendRulesEngineRuleObject.md)
+Create an in-memory object for RulesEngineRule.
 
 ### [New-AzFrontDoorNetworkExperimentProfile](New-AzFrontDoorNetworkExperimentProfile.md)
 create an NetworkExperiment Profile
@@ -65,8 +98,14 @@ create an NetworkExperiment Profile
 ### [New-AzFrontDoorRulesEngine](New-AzFrontDoorRulesEngine.md)
 create a new Rules Engine Configuration with the specified name within the specified Front Door.
 
+### [New-AzFrontDoorWafManagedRuleOverrideObject](New-AzFrontDoorWafManagedRuleOverrideObject.md)
+Create an in-memory object for ManagedRuleOverride.
+
 ### [New-AzFrontDoorWafPolicy](New-AzFrontDoorWafPolicy.md)
 create policy with specified rule set name within a resource group.
+
+### [New-AzFrontDoorWafRuleGroupOverrideObject](New-AzFrontDoorWafRuleGroupOverrideObject.md)
+Create an in-memory object for ManagedRuleGroupOverride.
 
 ### [Remove-AzFrontDoor](Remove-AzFrontDoor.md)
 Deletes an existing Front Door with the specified parameters.
