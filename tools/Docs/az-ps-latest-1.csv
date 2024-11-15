@@ -33,7 +33,7 @@ pac31,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac32,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.8.5.0.zip;sourceType=sa]Az.Compute,8.5.0
 pac33,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConfidentialLedger.1.0.1.zip;sourceType=sa]Az.ConfidentialLedger,1.0.1
 pac34,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Confluent.0.2.1.zip;sourceType=sa]Az.Confluent,0.2.1
-pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedKubernetes.0.12.0.zip;sourceType=sa]Az.ConnectedKubernetes,0.12.0
+pac35,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedKubernetes.0.13.0.zip;sourceType=sa]Az.ConnectedKubernetes,0.13.0
 pac36,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedMachine.1.0.0.zip;sourceType=sa]Az.ConnectedMachine,1.0.0
 pac37,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedNetwork.0.1.1.zip;sourceType=sa]Az.ConnectedNetwork,0.1.1
 pac38,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedVMware.0.1.2.zip;sourceType=sa]Az.ConnectedVMware,0.1.2
