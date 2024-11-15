@@ -52,7 +52,7 @@ use-extension:
 
 directive:
 
-  # Remove Create & Update Expanded cmdlets
+  # Remove Create & Update Expanded/JsonFilePath/JsonString cmdlets
   # Replace Get-AzComputeFleet List with ListBySubscriptionId
   # Replace Get-AzComputeFleet List1 with ListByResourceGroup
   # Rename Get-AzComputeFleetVirtualMachineScaleSet with Get-AzComputeFleetVMSS
@@ -80,44 +80,6 @@ directive:
       parameter-name: Name
     set:
       alias: FleetName
-  # - where:
-  #     subject: Fleet
-  #     variant: ^UpdateViaIdentityExpanded$
-  #   add:
-  #     parameters:
-  #       - name: AdminPassword
-  #         type: string
-
-  # - where:
-  #     subject: Fleet
-  #     variant: ^UpdateViaIdentityExpanded$
-  #   transform: >
-  #     $["AdminPassword"] = {
-  #       "name": "AdminPassword",
-  #       "in": "query",
-  #       "required": false,
-  #       "type": "string",
-  #       "description": "This is a new parameter added through transformation."
-  #     };
-  #   # add:
-  #   #   parameters:
-  #   #     # name and type are required, the others are optional.
-  #   #     - name: AdminPassword
-  #   #       type: string
-  #   #       # type: SecureString
-  #   #       # required: false
-  #   #       # completer:
-  #   #       #   name: Location Completer
-  #   #       #   description: Gets the list of locations available for this resource.
-  #   #       #   script: "'westus2', 'centralus', 'global'"
-  #   #       # default:
-  #   #       #   name: Location default
-  #   #       #   description: This is a default value
-  #   #       # script: "westus2"
-  #   #       # description: "This is a parameter"
-  # - where:
-  #     parameter-name: AcceleratorCountMax
-  #   hide: true
   - where:
       verb: (Set|SetViaIdentity|SetExpanded|SetExpandedViaIdentity)
     remove: true
