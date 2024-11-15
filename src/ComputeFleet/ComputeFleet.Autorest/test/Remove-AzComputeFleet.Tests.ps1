@@ -15,20 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzComputeFleet'))
 }
 
 Describe 'Remove-AzComputeFleet' {
-    It 'Delete' -skip {
+    It 'Delete' {
         {
-            Remove-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
+            Remove-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName2
             $fleetList = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId
-            $fleetList.Name | Should -Not -Contain $env.FleetName
+            $fleetList.Name | Should -Not -Contain $env.FleetName2
         } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         {
-            $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName2
+            $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName3
             Remove-AzComputeFleet -InputObject $fleet
             $fleetList = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId
-            $fleetList.Name | Should -Not -Contain $env.FleetName2
+            $fleetList.Name | Should -Not -Contain $env.FleetName3
         } | Should -Not -Throw
     }
 }

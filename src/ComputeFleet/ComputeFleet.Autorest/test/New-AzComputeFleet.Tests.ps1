@@ -15,31 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzComputeFleet'))
 }
 
 Describe 'New-AzComputeFleet' {
-    It 'CreateExpanded' -skip {
+    It 'Create' {
         {
-            $fleet = New-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName2 -Location $env.Location
-            $fleet.Name | Should -Be $env.FleetName2
+            $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
+            $securedPassword = ConvertTo-SecureString -AsPlainText "testPassword01%" -Force
+            $fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
+            $fleet = New-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName "testFleet5" -Resource $fleet
+            $fleet.Name | Should -Be "testFleet5"
         } | Should -Not -Throw
     }
     
-    # ???
-    It 'CreateViaJsonString' -skip {
+    It 'CreateViaIdentity' {
         {
             $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
-            $jsonString = $fleet | ConvertTo-Json
-            $fleet = New-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName -JsonString $jsonString
-            $fleet.Name | Should -Be $env.FleetName
-        } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        {
-            $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
-            $fleet = New-AzComputeFleet -InputObject $fleet -Location $env.Location
+            $fleet = New-AzComputeFleet -InputObject $fleet -Resource $fleet
             $fleet.Name | Should -Be $env.FleetName
         } | Should -Not -Throw
     }

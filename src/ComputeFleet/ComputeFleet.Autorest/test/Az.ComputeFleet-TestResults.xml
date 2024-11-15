@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="11" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2024-11-14" time="16:07:47">
+  <environment clr-version="4.0.30319.42000" user-domain="CICICHEN" cwd="C:\oneRepo\Others\azure-powershell\src\ComputeFleet\ComputeFleet.Autorest" platform="Microsoft Windows 11 Enterprise|C:\WINDOWS|\Device\Harddisk0\Partition3" machine-name="CICICHEN" nunit-version="2.5.8.0" os-version="10.0.26100" user="Cici Chen" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="294.7946" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\oneRepo\Others\azure-powershell\src\ComputeFleet\ComputeFleet.Autorest\test\Get-AzComputeFleet.Tests.ps1" executed="True" result="Success" success="True" time="3.3999" asserts="0" description="C:\oneRepo\Others\azure-powershell\src\ComputeFleet\ComputeFleet.Autorest\test\Get-AzComputeFleet.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzComputeFleet" executed="True" result="Success" success="True" time="3.1139" asserts="0" description="Get-AzComputeFleet">
+            <results>
+              <test-case description="ListBySubscriptionId" name="Get-AzComputeFleet.ListBySubscriptionId" time="1.2564" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Get" name="Get-AzComputeFleet.Get" time="0.3296" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="ListByResourceGroup" name="Get-AzComputeFleet.ListByResourceGroup" time="0.3705" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="GetViaIdentity" name="Get-AzComputeFleet.GetViaIdentity" time="0.8835" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\oneRepo\Others\azure-powershell\src\ComputeFleet\ComputeFleet.Autorest\test\Get-AzComputeFleetVMSS.Tests.ps1" executed="True" result="Success" success="True" time="1.6363" asserts="0" description="C:\oneRepo\Others\azure-powershell\src\ComputeFleet\ComputeFleet.Autorest\test\Get-AzComputeFleetVMSS.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-AzComputeFleetVMSS" executed="True" result="Success" success="True" time="1.4538" asserts="0" description="Get-AzComputeFleetVMSS">
+            <results>
+              <test-case description="List" name="Get-AzComputeFleetVMSS.List" time="1.3916" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\oneRepo\Others\azure-powershell\src\ComputeFleet\ComputeFleet.Autorest\test\New-AzComputeFleet.Tests.ps1" executed="True" result="Success" success="True" time="96.5409" asserts="0" description="C:\oneRepo\Others\azure-powershell\src\ComputeFleet\ComputeFleet.Autorest\test\New-AzComputeFleet.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="New-AzComputeFleet" executed="True" result="Success" success="True" time="96.3941" asserts="0" description="New-AzComputeFleet">
+            <results>
+              <test-case description="Create" name="New-AzComputeFleet.Create" time="64.6675" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="CreateViaIdentity" name="New-AzComputeFleet.CreateViaIdentity" time="31.6642" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\oneRepo\Others\azure-powershell\src\ComputeFleet\ComputeFleet.Autorest\test\Remove-AzComputeFleet.Tests.ps1" executed="True" result="Success" success="True" time="127.0673" asserts="0" description="C:\oneRepo\Others\azure-powershell\src\ComputeFleet\ComputeFleet.Autorest\test\Remove-AzComputeFleet.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-AzComputeFleet" executed="True" result="Success" success="True" time="126.9468" asserts="0" description="Remove-AzComputeFleet">
+            <results>
+              <test-case description="Delete" name="Remove-AzComputeFleet.Delete" time="63.2555" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="DeleteViaIdentity" name="Remove-AzComputeFleet.DeleteViaIdentity" time="63.6357" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\oneRepo\Others\azure-powershell\src\ComputeFleet\ComputeFleet.Autorest\test\Update-AzComputeFleet.Tests.ps1" executed="True" result="Success" success="True" time="66.1502" asserts="0" description="C:\oneRepo\Others\azure-powershell\src\ComputeFleet\ComputeFleet.Autorest\test\Update-AzComputeFleet.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Update-AzComputeFleet" executed="True" result="Success" success="True" time="66.0311" asserts="0" description="Update-AzComputeFleet">
+            <results>
+              <test-case description="Update" name="Update-AzComputeFleet.Update" time="33.4038" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="UpdateViaIdentity" name="Update-AzComputeFleet.UpdateViaIdentity" time="32.5651" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

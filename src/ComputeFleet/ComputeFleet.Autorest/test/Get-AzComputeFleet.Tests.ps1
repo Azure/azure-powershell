@@ -15,28 +15,28 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzComputeFleet'))
 }
 
 Describe 'Get-AzComputeFleet' {
-    It 'ListBySubscriptionId' -skip {
+    It 'ListBySubscriptionId' {
         {
             $fleetList = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId
             $fleetList.Count | Should -BeGreaterOrEqual 1
         } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         {
             $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
             $fleet.Name | Should -Be $env.FleetName
         } | Should -Not -Throw
     }
 
-    It 'ListByResourceGroup' -skip {
+    It 'ListByResourceGroup' {
         {
             $fleetList = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName
             $fleetList.Count | Should -BeGreaterOrEqual 1
         } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         {
             $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
             $fleet = Get-AzComputeFleet -InputObject $fleet

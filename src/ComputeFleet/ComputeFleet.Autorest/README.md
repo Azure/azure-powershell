@@ -59,7 +59,7 @@ directive:
   # Add Alias FleetName to parameter Name
   # Remove Set-* cmdlets
   - where:
-      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+      variant: ^(Create|Update)(?=.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       subject: Fleet
@@ -80,13 +80,13 @@ directive:
       parameter-name: Name
     set:
       alias: FleetName
-  - where:
-      subject: Fleet
-      variant: ^UpdateViaIdentityExpanded$
-    add:
-      parameters:
-        - name: AdminPassword
-          type: string
+  # - where:
+  #     subject: Fleet
+  #     variant: ^UpdateViaIdentityExpanded$
+  #   add:
+  #     parameters:
+  #       - name: AdminPassword
+  #         type: string
 
   # - where:
   #     subject: Fleet

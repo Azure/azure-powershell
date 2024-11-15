@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzComputeFleetVMSS'))
 }
 
 Describe 'Get-AzComputeFleetVMSS' {
-    It 'List' -skip {
+    It 'List' {
         {
             $fleetVMSS = Get-AzComputeFleetVMSS -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
             $fleetVMSS.Count | Should -BeGreaterOrEqual 1
