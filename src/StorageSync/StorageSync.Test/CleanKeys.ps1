@@ -3,7 +3,6 @@ $directory = "."
 $filePattern = "*Test*.json"
 
 # Define a regex pattern to match the specific pattern for Storage Account keys ending with ==
-$pattern = "([a-zA-Z0-9+/=]{86}==)"
 $pattern = '\\\"value\\\":\s\\\"(?<SAKey>[a-zA-Z0-9+/=]{86}==)\\\",'
 # Iterate over all files in the directory matching the pattern
 Get-ChildItem -Path $directory -Filter $filePattern -Recurse | ForEach-Object {
