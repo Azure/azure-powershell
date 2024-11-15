@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.7.0
 * Updated Resources SDK to 2024-07-01.
 
 ## Version 7.6.0

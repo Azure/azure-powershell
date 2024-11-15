@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.11.0
 * Updated Device Update Private Link provider configuration
     - Updated Microsoft.DeviceUpdate/accounts API version to 2023-07-01
 
