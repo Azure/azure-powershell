@@ -115,8 +115,16 @@ directive:
       cmdlet-name: New-AzFrontDoorFrontendMatchConditionObject
     - model-name: ManagedRuleGroupOverride
       cmdlet-name: New-AzFrontDoorWafRuleGroupOverrideObject 
-
-      
+    - model-name: GroupByVariable
+      cmdlet-name: New-AzFrontDoorWafCustomRuleGroupByVariableObject
+    - model-name: ExclusionManagedRule
+      cmdlet-name: New-AzFrontDoorWafCustomRuleExclusionManagedRuleObject
+    - model-name: PolicySettingsLogScrubbing
+      cmdlet-name: New-AzFrontDoorWafLogScrubbingSettingObject 
+    - model-name: WebApplicationFirewallScrubbingRules
+      cmdlet-name: New-AzFrontDoorWafLogScrubbingRuleObject 
+    - model-name: WebApplicationFirewallCustomRule
+      cmdlet-name: New-AzFrontDoorWafCustomRuleObject 
   # Rename
   - where: 
       subject: ManagedRuleSet

@@ -92,6 +92,21 @@ create an NetworkExperiment Profile
 ### [New-AzFrontDoorRulesEngine](New-AzFrontDoorRulesEngine.md)
 create a new Rules Engine Configuration with the specified name within the specified Front Door.
 
+### [New-AzFrontDoorWafCustomRuleExclusionManagedRuleObject](New-AzFrontDoorWafCustomRuleExclusionManagedRuleObject.md)
+Create an in-memory object for ExclusionManagedRule.
+
+### [New-AzFrontDoorWafCustomRuleGroupByVariableObject](New-AzFrontDoorWafCustomRuleGroupByVariableObject.md)
+Create an in-memory object for GroupByVariable.
+
+### [New-AzFrontDoorWafCustomRuleObject](New-AzFrontDoorWafCustomRuleObject.md)
+Create an in-memory object for WebApplicationFirewallCustomRule.
+
+### [New-AzFrontDoorWafLogScrubbingRuleObject](New-AzFrontDoorWafLogScrubbingRuleObject.md)
+Create an in-memory object for WebApplicationFirewallScrubbingRules.
+
+### [New-AzFrontDoorWafLogScrubbingSettingObject](New-AzFrontDoorWafLogScrubbingSettingObject.md)
+Create an in-memory object for PolicySettingsLogScrubbing.
+
 ### [New-AzFrontDoorWafManagedRuleOverrideObject](New-AzFrontDoorWafManagedRuleOverrideObject.md)
 Create an in-memory object for ManagedRuleOverride.
 
