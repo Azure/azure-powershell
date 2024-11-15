@@ -1,107 +1,87 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeterprofile
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeterloggingconfiguration
 schema: 2.0.0
 ---
 
-# New-AzNetworkSecurityPerimeterProfile
+# New-AzNetworkSecurityPerimeterLoggingConfiguration
 
 ## SYNOPSIS
-create a network profile.
+create NSP logging configuration.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzNetworkSecurityPerimeterProfile -Name <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-Location <String>] [-ProfileId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -SecurityPerimeterName <String>
+ [-Name <String>] [-SubscriptionId <String>] [-EnabledLogCategory <String[]>] [-Location <String>]
+ [-LoggingConfigurationId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzNetworkSecurityPerimeterProfile -Name <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> -Parameter <INspProfile> [-SubscriptionId <String>]
+New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -SecurityPerimeterName <String>
+ -Parameter <INspLoggingConfiguration> [-Name <String>] [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzNetworkSecurityPerimeterProfile -InputObject <INetworkSecurityPerimeterIdentity> [-Location <String>]
- [-ProfileId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject <INetworkSecurityPerimeterIdentity>
+ [-EnabledLogCategory <String[]>] [-Location <String>] [-LoggingConfigurationId <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkSecurityPerimeter
 ```
-New-AzNetworkSecurityPerimeterProfile -Name <String>
- -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> -Parameter <INspProfile>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkSecurityPerimeterLoggingConfiguration
+ -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity>
+ -Parameter <INspLoggingConfiguration> [-Name <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkSecurityPerimeterExpanded
 ```
-New-AzNetworkSecurityPerimeterProfile -Name <String>
- -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-Location <String>]
- [-ProfileId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzNetworkSecurityPerimeterLoggingConfiguration
+ -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-Name <String>]
+ [-EnabledLogCategory <String[]>] [-Location <String>] [-LoggingConfigurationId <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzNetworkSecurityPerimeterProfile -Name <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> -JsonFilePath <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -SecurityPerimeterName <String>
+ -JsonFilePath <String> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzNetworkSecurityPerimeterProfile -Name <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -SecurityPerimeterName <String>
+ -JsonString <String> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create a network profile.
+create NSP logging configuration.
 
 ## EXAMPLES
 
-### Example 1: Creates a NetworkSecurityPerimeterProfile
+### Example 1: Create network security perimeter logging configuration
 ```powershell
-
- New-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
+New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6
+ -EnabledLogCategory NspPublicOutboundPerimeterRulesAllowed
 ```
 
 ```output
-
-Location    Name
---------    ----
-eastus2euap profile1
-
-
+EnabledLogCategory           Name
+------------------           ----
+{NspPublicOutboundPerimeterRulesAllowed} instance
 ```
 
-Creates a NetworkSecurityPerimeterProfile
-
-### Example 2: Creates a NetworkSecurityPerimeterProfile
-```powershell
-
- New-AzNetworkSecurityPerimeterProfile -Name profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
-
-```
-
-```output
-
-Location    Name
---------    ----
-eastus2euap profile2
-
-
-```
-
-Creates a NetworkSecurityPerimeterProfile
+Create network security perimeter logging configuration
 
 ## PARAMETERS
 
@@ -113,6 +93,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnabledLogCategory
+The log categories to enable in the NSP logging configuration.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -181,17 +176,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LoggingConfigurationId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded
+Aliases: Id
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
-The name of the NSP profile.
+The name of the NSP logging configuration.
+Accepts 'instance' as name.
 
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded, CreateViaIdentityNetworkSecurityPerimeter, CreateViaIdentityNetworkSecurityPerimeterExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases: ProfileName
+Aliases: LoggingConfigurationName
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: "instance"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -212,10 +223,10 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-The network security perimeter profile resource
+The NSP logging configuration
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration
 Parameter Sets: Create, CreateViaIdentityNetworkSecurityPerimeter
 Aliases:
 
@@ -223,21 +234,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProfileId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded
-Aliases: Id
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -340,11 +336,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspProfile
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INspLoggingConfiguration
 
 ## NOTES
 

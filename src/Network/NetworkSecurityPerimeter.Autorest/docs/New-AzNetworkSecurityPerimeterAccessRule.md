@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkSecurityPerimeterAccessRule
 
 ## SYNOPSIS
-Create a network access rule.
+create a network access rule.
 
 ## SYNTAX
 
@@ -86,7 +86,7 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -R
 ```
 
 ## DESCRIPTION
-Create a network access rule.
+create a network access rule.
 
 ## EXAMPLES
 

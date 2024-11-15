@@ -55,6 +55,7 @@ function setupEnv() {
     $tmpNsp10 =  $randomString + 't-nsp10'
     $tmpNsp11 =  $randomString + 't-nsp11'
     $tmpNsp12 =  $randomString + 't-nsp12'
+    $tmpNsp13 =  $randomString + 't-nsp13'
     $tmpNspDelBase1 =  $randomString + 't-nspDelB1'
     $tmpNspDelete1 =  $randomString + 't-nspD1'
     $tmpNspDelete2 =  $randomString + 't-nspD2'
@@ -82,9 +83,10 @@ function setupEnv() {
     $tmpLink2 = 't-link2'
     $tmpLinkDelete3 = 't-linkD3'
     $tmpLinkDelete4 = 't-linkD4'
+    $tmpLoggingConfig13Name = 'instance'
 
-    $tmpKeys = 'rgname', 'tmpNsp1', 'tmpNsp2', 'tmpNsp3', 'tmpNsp4', 'tmpNsp5', 'tmpNsp6', 'tmpNsp7', 'tmpNsp8', 'tmpNsp9', 'tmpNsp10', 'tmpNsp11', 'tmpNsp12', 'tmpNspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfile3', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1', 'tmpAccessRule2', 'tmpAccessRule3', 'tmpAccessRule4', 'tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpPaas4Rp','tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2', 'tmpLink1', 'tmpLink2', 'tmpLinkDelete3', 'tmpLinkDelete4'
-    $tmpValues = $rgname, $tmpNsp1, $tmpNsp2, $tmpNsp3, $tmpNsp4, $tmpNsp5, $tmpNsp6, $tmpNsp7, $tmpNsp8, $tmpNsp9, $tmpNsp10, $tmpNsp11, $tmpNsp12, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfile3, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRule2, $tmpAccessRule3, $tmpAccessRule4, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpPaas4Rp,  $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2, $tmpLink1, $tmpLink2, $tmpLinkDelete3, $tmpLinkDelete4
+    $tmpKeys = 'rgname', 'tmpNsp1', 'tmpNsp2', 'tmpNsp3', 'tmpNsp4', 'tmpNsp5', 'tmpNsp6', 'tmpNsp7', 'tmpNsp8', 'tmpNsp9', 'tmpNsp10', 'tmpNsp11', 'tmpNsp12', 'tmpNsp13', 'tmpNspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfile3', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1', 'tmpAccessRule2', 'tmpAccessRule3', 'tmpAccessRule4', 'tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpPaas4Rp','tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2', 'tmpLink1', 'tmpLink2', 'tmpLinkDelete3', 'tmpLinkDelete4', 'tmploggingConfig13Name'
+    $tmpValues = $rgname, $tmpNsp1, $tmpNsp2, $tmpNsp3, $tmpNsp4, $tmpNsp5, $tmpNsp6, $tmpNsp7, $tmpNsp8, $tmpNsp9, $tmpNsp10, $tmpNsp11, $tmpNsp12, $tmpNsp13, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfile3, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRule2, $tmpAccessRule3, $tmpAccessRule4, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpPaas4Rp,  $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2, $tmpLink1, $tmpLink2, $tmpLinkDelete3, $tmpLinkDelete4, $tmploggingConfig13Name
 
     for ($i = 0; $i -le ($tmpKeys.length - 1); $i += 1) {
         if ($env.Contains($tmpKeys[$i])) {
@@ -123,6 +125,7 @@ function setupEnv() {
         nsp10Name = $env.tmpNsp10
         nsp11Name = $env.tmpNsp11
         nsp12Name = $env.tmpNsp12
+        nsp13Name = $env.tmpNsp13
         nspDelBase1Name = $env.tmpNspDelBase1
         nspDelete1Name = $env.tmpNspDelete1
         nspDelete2Name = $env.tmpNspDelete2
@@ -150,6 +153,7 @@ function setupEnv() {
         link2Name = $env.tmpLink2
         linkDelete3Name = $env.tmpLinkDelete3
         linkDelete4Name = $env.tmpLinkDelete4
+        loggingConfig13Name = $env.tmploggingConfig13Name
        }
     
     #deploy template

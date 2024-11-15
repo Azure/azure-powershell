@@ -74,11 +74,11 @@ Describe 'Update-AzNetworkSecurityPerimeterAccessRule' {
     It 'UpdateViaIdentityExpandedServiceTag' {
         {
            # this test case is dependent on the above test case
-           $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule4 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ProfileName $env.tmpProfile1
+           $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ProfileName $env.tmpProfile1
 
-           $UpdateObj = Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -ServiceTag @('st1', 'st2')
+           $UpdateObj = Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix @() -ServiceTag @('MicrosoftPublicIPSpace')
 
-           $UpdateObj.ServiceTag | Should -Be @('st1', 'st2')
+           $UpdateObj.ServiceTag | Should -Be @('MicrosoftPublicIPSpace')
            
         } | Should -Not -Throw
     }
