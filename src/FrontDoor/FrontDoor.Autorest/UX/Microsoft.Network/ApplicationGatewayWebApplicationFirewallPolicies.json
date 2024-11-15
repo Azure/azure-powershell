@@ -1,22 +1,22 @@
 {
-  "resourceType": "cdnWebApplicationFirewallPolicies",
-  "apiVersion": "2024-09-01",
+  "resourceType": "ApplicationGatewayWebApplicationFirewallPolicies",
+  "apiVersion": "2024-03-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.frontdoor"
   },
   "commands": [
     {
-      "name": "Get-AzFrontDoorWafPolicy",
+      "name": "Get-AzFrontDoorWebApplicationFirewallPolicy",
       "description": "Retrieve protection policy with specified name within a resource group.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorwafpolicy"
+          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoorwebapplicationfirewallpolicy"
         },
         "parameterSets": [
           {
             "parameters": [
-              "-Name <String>",
+              "-PolicyName <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String[]>]"
             ]
@@ -28,7 +28,7 @@
           "description": "Retrieve protection policy with specified name within a resource group.",
           "parameters": [
             {
-              "name": "-Name",
+              "name": "-PolicyName",
               "value": "[Path.policyName]"
             },
             {
@@ -44,17 +44,17 @@
       ]
     },
     {
-      "name": "Remove-AzFrontDoorWafPolicy",
-      "description": "Deletes Policy",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
+      "name": "Remove-AzFrontDoorWebApplicationFirewallPolicy",
+      "description": "Deletes Policy.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/{policyName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorwafpolicy"
+          "url": "https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorwebapplicationfirewallpolicy"
         },
         "parameterSets": [
           {
             "parameters": [
-              "-Name <String>",
+              "-PolicyName <String>",
               "-ResourceGroupName <String>",
               "[-SubscriptionId <String>]"
             ]
@@ -63,10 +63,10 @@
       },
       "examples": [
         {
-          "description": "Deletes Policy",
+          "description": "Deletes Policy.",
           "parameters": [
             {
-              "name": "-Name",
+              "name": "-PolicyName",
               "value": "[Path.policyName]"
             },
             {

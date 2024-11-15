@@ -13,8 +13,8 @@ Create an in-memory object for MatchCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorFrontendMatchConditionObject -MatchValue <String[]> -MatchVariable <String> -Operator <String>
- [-NegateCondition <Boolean>] [-Selector <String>] [-Transform <String[]>] [<CommonParameters>]
+New-AzFrontDoorFrontendMatchConditionObject -MatchValue <String[]> -MatchVariable <IMatchVariable[]>
+ -Operator <String> [-NegationConditon <Boolean>] [-Transform <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,7 @@ Create an in-memory object for MatchCondition.
 ## PARAMETERS
 
 ### -MatchValue
-List of possible match values.
+Match value.
 
 ```yaml
 Type: System.String[]
@@ -62,10 +62,10 @@ Accept wildcard characters: False
 ```
 
 ### -MatchVariable
-Match variable to compare against.
+List of match variables.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IMatchVariable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -76,8 +76,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NegateCondition
-Describes if the result of this condition should be negated.
+### -NegationConditon
+Whether this is negate condition or not.
 
 ```yaml
 Type: System.Boolean
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -Operator
-Describes operator to be matched.
+The operator to be matched.
 
 ```yaml
 Type: System.String
@@ -100,21 +100,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Selector
-Selector can used to match a specific key for QueryString, Cookies, RequestHeader or PostArgs.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

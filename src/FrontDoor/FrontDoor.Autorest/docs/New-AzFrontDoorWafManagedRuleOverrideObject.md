@@ -13,8 +13,8 @@ Create an in-memory object for ManagedRuleOverride.
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafManagedRuleOverrideObject -RuleId <String> [-Action <String>] [-EnabledState <String>]
- [<CommonParameters>]
+New-AzFrontDoorWafManagedRuleOverrideObject -RuleId <String> [-Action <String>] [-Sensitivity <String>]
+ [-State <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,9 +61,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnabledState
-Describes if the managed rule is in enabled or disabled state.
-Defaults to Disabled if not specified.
+### -RuleId
+Identifier for the managed rule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Sensitivity
+Describes the override sensitivity to be applied when rule matches.
 
 ```yaml
 Type: System.String
@@ -77,15 +91,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleId
-Identifier for the managed rule.
+### -State
+The state of the managed rule.
+Defaults to Disabled if not specified.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

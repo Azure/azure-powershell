@@ -47,7 +47,7 @@ Create an in-memory object for ManagedRuleGroupOverride.
 ## PARAMETERS
 
 ### -Rule
-List of rules that will be enabled.
+List of rules that will be disabled.
 If none specified, all rules in the group will be disabled.
 
 ```yaml
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -RuleGroupName
-Describes the managed rule group within the rule set to override.
+The managed rule group to override.
 
 ```yaml
 Type: System.String

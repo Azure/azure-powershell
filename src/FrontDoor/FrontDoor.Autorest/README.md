@@ -36,7 +36,7 @@ require:
 input-file:
 # You need to specify your swagger files here.
   # - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/afdx.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/cdnwebapplicationfirewall.json
+  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/webapplicationfirewall.json
   - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json
   - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/network.json
   - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2021-06-01/frontdoor.json
@@ -66,6 +66,13 @@ directive:
   - where:
       variant: ^CreateViaIdentity.*$
     remove: true
+  - no-inline:  # choose ONE of these models to disable inlining
+    - NetworkInterfaceIPConfiguration
+    #- NetworkInterfaceIPConfigurationPropertiesFormat
+    - PublicIPAddress
+    #- PublicIPAddressPropertiesFormat
+    - IPConfiguration
+    #- IPConfigurationPropertiesFormat
 
   - from: swagger-document
     where: $.definitions.RouteUpdatePropertiesParameters.properties.supportedProtocols
