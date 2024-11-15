@@ -15,7 +15,7 @@ Create an in-memory object for ExportQuery.
 ```
 New-AzTerraformExportQueryObject -Query <String> [-NamePattern <String>] [-Recursive <Boolean>]
  [-FullProperty <Boolean>] [-MaskSensitive <Boolean>] [-TargetProvider <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,6 +80,21 @@ The name pattern of the Terraform resources.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
