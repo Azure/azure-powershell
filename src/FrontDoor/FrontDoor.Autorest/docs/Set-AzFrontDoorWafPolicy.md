@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/set-azfrontdoorwebapplicationfirewallpolicy
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/set-azfrontdoorwafpolicy
 schema: 2.0.0
 ---
 
-# Set-AzFrontDoorWebApplicationFirewallPolicy
+# Set-AzFrontDoorWafPolicy
 
 ## SYNOPSIS
 update or update policy with specified rule set name within a resource group.
@@ -14,31 +14,29 @@ update or update policy with specified rule set name within a resource group.
 
 ### UpdateExpanded (Default)
 ```
-Set-AzFrontDoorWebApplicationFirewallPolicy -PolicyName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-Id <String>]
- [-Location <String>] [-LogScrubbingRule <IWebApplicationFirewallScrubbingRules[]>]
- [-LogScrubbingState <String>] [-ManagedRuleException <IExceptionEntry[]>]
- [-ManagedRuleExclusion <IOwaspCrsExclusionEntry[]>] [-ManagedRuleSet <IManagedRuleSet[]>]
- [-PolicySettingCustomBlockResponseBody <String>] [-PolicySettingCustomBlockResponseStatusCode <Int32>]
- [-PolicySettingFileUploadEnforcement] [-PolicySettingFileUploadLimitInMb <Int32>]
- [-PolicySettingJsChallengeCookieExpirationInMin <Int32>] [-PolicySettingMaxRequestBodySizeInKb <Int32>]
- [-PolicySettingMode <String>] [-PolicySettingRequestBodyCheck] [-PolicySettingRequestBodyEnforcement]
- [-PolicySettingRequestBodyInspectLimitInKb <Int32>] [-PolicySettingState <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzFrontDoorWafPolicy -PolicyName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-Id <String>] [-Location <String>]
+ [-LogScrubbingRule <IWebApplicationFirewallScrubbingRules[]>] [-LogScrubbingState <String>]
+ [-ManagedRuleException <IExceptionEntry[]>] [-ManagedRuleExclusion <IOwaspCrsExclusionEntry[]>]
+ [-ManagedRuleSet <IManagedRuleSet[]>] [-PolicySettingCustomBlockResponseBody <String>]
+ [-PolicySettingCustomBlockResponseStatusCode <Int32>] [-PolicySettingFileUploadEnforcement]
+ [-PolicySettingFileUploadLimitInMb <Int32>] [-PolicySettingJsChallengeCookieExpirationInMin <Int32>]
+ [-PolicySettingMaxRequestBodySizeInKb <Int32>] [-PolicySettingMode <String>] [-PolicySettingRequestBodyCheck]
+ [-PolicySettingRequestBodyEnforcement] [-PolicySettingRequestBodyInspectLimitInKb <Int32>]
+ [-PolicySettingState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
-Set-AzFrontDoorWebApplicationFirewallPolicy -PolicyName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzFrontDoorWafPolicy -PolicyName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Set-AzFrontDoorWebApplicationFirewallPolicy -PolicyName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzFrontDoorWafPolicy -PolicyName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

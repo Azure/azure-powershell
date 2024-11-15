@@ -13,10 +13,10 @@ Create an in-memory object for Backend.
 ## SYNTAX
 
 ```
-New-AzFrontDoorFrontendBackendObject [-Address <String>] [-EnabledState <String>] [-HostHeader <String>]
- [-HttpPort <Int32>] [-HttpsPort <Int32>] [-Priority <Int32>] [-PrivateLinkAlias <String>]
- [-PrivateLinkApprovalMessage <String>] [-PrivateLinkLocation <String>] [-PrivateLinkResourceId <String>]
- [-Weight <Int32>] [<CommonParameters>]
+New-AzFrontDoorFrontendBackendObject [-Address <String>] [-BackendHostHeader <String>]
+ [-EnabledState <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>] [-Priority <Int32>]
+ [-PrivateLinkAlias <String>] [-PrivateLinkApprovalMessage <String>] [-PrivateLinkLocation <String>]
+ [-PrivateLinkResourceId <String>] [-Weight <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,9 +63,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnabledState
-Whether to enable use of this backend.
-Permitted values are 'Enabled' or 'Disabled'.
+### -BackendHostHeader
+The value to use as the host header sent to the backend.
+If blank or unspecified, this defaults to the incoming host.
 
 ```yaml
 Type: System.String
@@ -79,9 +79,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HostHeader
-The value to use as the host header sent to the backend.
-If blank or unspecified, this defaults to the incoming host.
+### -EnabledState
+Whether to enable use of this backend.
+Permitted values are 'Enabled' or 'Disabled'.
 
 ```yaml
 Type: System.String

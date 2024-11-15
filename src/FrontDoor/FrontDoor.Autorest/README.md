@@ -73,6 +73,7 @@ directive:
     #- PublicIPAddressPropertiesFormat
     - IPConfiguration
     #- IPConfigurationPropertiesFormat
+    - BackendPoolsSettings
 
   - from: swagger-document
     where: $.definitions.RouteUpdatePropertiesParameters.properties.supportedProtocols
@@ -87,8 +88,8 @@ directive:
       cmdlet-name: New-AzFrontDoorFrontendBackendObject
     - model-name: BackendPool
       cmdlet-name: New-AzFrontDoorFrontendBackendPoolObject
-    - model-name: BackendPoolSettings
-      cmdlet-name: New-AzFrontDoorFrontendBackendPoolSettingsObject
+    - model-name: BackendPoolsSettings
+      cmdlet-name: New-AzFrontDoorFrontendBackendPoolsSettingsObject
     - model-name: FrontendEndpoint
       cmdlet-name: New-AzFrontDoorFrontendEndpointObject
     - model-name: HeaderAction
@@ -127,11 +128,7 @@ directive:
       cmdlet-name: New-AzFrontDoorWafCustomRuleObject 
   # Rename
   - where: 
-      subject: ManagedRuleSet
-    set:
-      subject: WafManagedRuleSetDefinition
-  - where:
-      subject: Policy
+      subject: WebApplicationFirewallPolicy
     set:
       subject: WafPolicy
 
@@ -148,4 +145,17 @@ directive:
       parameter-name: KeyVaultCertificateSourceParameterSecretVersion
     set:
       parameter-name: SecretVersion
+  - where:
+      verb: Enable
+      subject: FrontendEndpointHttps
+      parameter-name: FrontDoorCertificateSourceParameterCertificateType
+    set:
+      parameter-name: CertificateType
+
+  # New-AzFrontDoorFrontendBackendObject
+  - where:
+      model-name: Backend
+      property-name: HostHeader
+    set:
+      property-name: BackendHostHeader
 ```

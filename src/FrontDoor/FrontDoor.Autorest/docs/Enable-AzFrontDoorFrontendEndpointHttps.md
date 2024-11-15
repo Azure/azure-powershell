@@ -16,9 +16,9 @@ Enables a frontendEndpoint for HTTPS traffic
 ```
 Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorName <String> -FrontendEndpointName <String>
  -ResourceGroupName <String> -CertificateSource <String> -MinimumTlsVersion <String>
- [-SubscriptionId <String>] [-FrontDoorCertificateSourceParameterCertificateType <String>]
- [-SecretName <String>] [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-CertificateType <String>] [-SecretName <String>] [-SecretVersion <String>]
+ [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Enable
@@ -38,9 +38,9 @@ Enable-AzFrontDoorFrontendEndpointHttps -InputObject <IFrontDoorIdentity>
 ### EnableViaIdentityExpanded
 ```
 Enable-AzFrontDoorFrontendEndpointHttps -InputObject <IFrontDoorIdentity> -CertificateSource <String>
- -MinimumTlsVersion <String> [-FrontDoorCertificateSourceParameterCertificateType <String>]
- [-SecretName <String>] [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -MinimumTlsVersion <String> [-CertificateType <String>] [-SecretName <String>] [-SecretVersion <String>]
+ [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### EnableViaIdentityFrontDoor
@@ -54,9 +54,8 @@ Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorInputObject <IFrontDoorIdentit
 ```
 Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorInputObject <IFrontDoorIdentity>
  -FrontendEndpointName <String> -CertificateSource <String> -MinimumTlsVersion <String>
- [-FrontDoorCertificateSourceParameterCertificateType <String>] [-SecretName <String>]
- [-SecretVersion <String>] [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CertificateType <String>] [-SecretName <String>] [-SecretVersion <String>] [-VaultId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### EnableViaJsonFilePath
@@ -132,6 +131,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CertificateType
+Defines the type of the certificate used for secure connections to a frontendEndpoint
+
+```yaml
+Type: System.String
+Parameter Sets: EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CustomHttpsConfiguration
 Https settings for a domain
 
@@ -155,21 +169,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FrontDoorCertificateSourceParameterCertificateType
-Defines the type of the certificate used for secure connections to a frontendEndpoint
-
-```yaml
-Type: System.String
-Parameter Sets: EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
-Aliases:
 
 Required: False
 Position: Named

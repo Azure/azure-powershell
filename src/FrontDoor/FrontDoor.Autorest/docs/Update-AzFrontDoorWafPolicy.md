@@ -1,48 +1,49 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwebapplicationfirewallpolicy
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/update-azfrontdoorwafpolicy
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorWebApplicationFirewallPolicy
+# Update-AzFrontDoorWafPolicy
 
 ## SYNOPSIS
-create or create policy with specified rule set name within a resource group.
+update or update policy with specified rule set name within a resource group.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzFrontDoorWebApplicationFirewallPolicy -PolicyName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-Id <String>]
- [-Location <String>] [-LogScrubbingRule <IWebApplicationFirewallScrubbingRules[]>]
- [-LogScrubbingState <String>] [-ManagedRuleException <IExceptionEntry[]>]
- [-ManagedRuleExclusion <IOwaspCrsExclusionEntry[]>] [-ManagedRuleSet <IManagedRuleSet[]>]
- [-PolicySettingCustomBlockResponseBody <String>] [-PolicySettingCustomBlockResponseStatusCode <Int32>]
- [-PolicySettingFileUploadEnforcement] [-PolicySettingFileUploadLimitInMb <Int32>]
- [-PolicySettingJsChallengeCookieExpirationInMin <Int32>] [-PolicySettingMaxRequestBodySizeInKb <Int32>]
- [-PolicySettingMode <String>] [-PolicySettingRequestBodyCheck] [-PolicySettingRequestBodyEnforcement]
- [-PolicySettingRequestBodyInspectLimitInKb <Int32>] [-PolicySettingState <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
-```
-New-AzFrontDoorWebApplicationFirewallPolicy -PolicyName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Update-AzFrontDoorWafPolicy -PolicyName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-Id <String>] [-Location <String>]
+ [-LogScrubbingRule <IWebApplicationFirewallScrubbingRules[]>] [-LogScrubbingState <String>]
+ [-ManagedRuleException <IExceptionEntry[]>] [-ManagedRuleExclusion <IOwaspCrsExclusionEntry[]>]
+ [-ManagedRuleSet <IManagedRuleSet[]>] [-PolicySettingCustomBlockResponseBody <String>]
+ [-PolicySettingCustomBlockResponseStatusCode <Int32>] [-PolicySettingFileUploadEnforcement]
+ [-PolicySettingFileUploadLimitInMb <Int32>] [-PolicySettingJsChallengeCookieExpirationInMin <Int32>]
+ [-PolicySettingMaxRequestBodySizeInKb <Int32>] [-PolicySettingMode <String>] [-PolicySettingRequestBodyCheck]
+ [-PolicySettingRequestBodyEnforcement] [-PolicySettingRequestBodyInspectLimitInKb <Int32>]
+ [-PolicySettingState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CreateViaJsonString
+### UpdateViaIdentityExpanded
 ```
-New-AzFrontDoorWebApplicationFirewallPolicy -PolicyName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Update-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity>
+ [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-Id <String>] [-Location <String>]
+ [-LogScrubbingRule <IWebApplicationFirewallScrubbingRules[]>] [-LogScrubbingState <String>]
+ [-ManagedRuleException <IExceptionEntry[]>] [-ManagedRuleExclusion <IOwaspCrsExclusionEntry[]>]
+ [-ManagedRuleSet <IManagedRuleSet[]>] [-PolicySettingCustomBlockResponseBody <String>]
+ [-PolicySettingCustomBlockResponseStatusCode <Int32>] [-PolicySettingFileUploadEnforcement]
+ [-PolicySettingFileUploadLimitInMb <Int32>] [-PolicySettingJsChallengeCookieExpirationInMin <Int32>]
+ [-PolicySettingMaxRequestBodySizeInKb <Int32>] [-PolicySettingMode <String>] [-PolicySettingRequestBodyCheck]
+ [-PolicySettingRequestBodyEnforcement] [-PolicySettingRequestBodyInspectLimitInKb <Int32>]
+ [-PolicySettingState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-create or create policy with specified rule set name within a resource group.
+update or update policy with specified rule set name within a resource group.
 
 ## EXAMPLES
 
@@ -75,7 +76,7 @@ The custom rules inside the policy.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallCustomRule[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -106,7 +107,7 @@ Resource ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -116,33 +117,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Create operation
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Create operation
-
-```yaml
-Type: System.String
-Parameter Sets: CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -151,7 +137,7 @@ Resource location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -166,7 +152,7 @@ The rules that are applied to the logs for scrubbing.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallScrubbingRules[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -182,7 +168,7 @@ Default value is Enabled.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -197,7 +183,7 @@ The exceptions that are applied on the policy.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IExceptionEntry[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -212,7 +198,7 @@ The Exclusions that are applied on the policy.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IOwaspCrsExclusionEntry[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -227,7 +213,7 @@ The managed rule sets that are associated with the policy.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -242,7 +228,7 @@ The name of the policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -258,7 +244,7 @@ The body must be specified in base64 encoding.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -273,7 +259,7 @@ If the action type is block, customer can override the response status code.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -288,7 +274,7 @@ Whether allow WAF to enforce file upload limits.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -303,7 +289,7 @@ Maximum file upload size in Mb for WAF.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -318,7 +304,7 @@ Web Application Firewall JavaScript Challenge Cookie Expiration time in minutes.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -333,7 +319,7 @@ Maximum request body size in Kb for WAF.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -348,7 +334,7 @@ The mode of the policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -363,7 +349,7 @@ Whether to allow WAF to check request Body.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -378,7 +364,7 @@ Whether allow WAF to enforce request body limits.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -393,7 +379,7 @@ Max inspection limit in KB for request body inspection for WAF.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -408,7 +394,7 @@ The state of the policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -423,7 +409,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -439,7 +425,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -454,7 +440,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -499,6 +485,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
 
 ## OUTPUTS
 

@@ -44,7 +44,7 @@ Gets a Timeseries for a given Experiment
 ### [Get-AzFrontDoorRulesEngine](Get-AzFrontDoorRulesEngine.md)
 Gets a Rules Engine Configuration with the specified name within the specified Front Door.
 
-### [Get-AzFrontDoorWebApplicationFirewallPolicy](Get-AzFrontDoorWebApplicationFirewallPolicy.md)
+### [Get-AzFrontDoorWafPolicy](Get-AzFrontDoorWafPolicy.md)
 Retrieve protection policy with specified name within a resource group.
 
 ### [New-AzFrontDoor](New-AzFrontDoor.md)
@@ -58,6 +58,9 @@ Create an in-memory object for Backend.
 
 ### [New-AzFrontDoorFrontendBackendPoolObject](New-AzFrontDoorFrontendBackendPoolObject.md)
 Create an in-memory object for BackendPool.
+
+### [New-AzFrontDoorFrontendBackendPoolsSettingsObject](New-AzFrontDoorFrontendBackendPoolsSettingsObject.md)
+Create an in-memory object for BackendPoolsSettings.
 
 ### [New-AzFrontDoorFrontendEndpointObject](New-AzFrontDoorFrontendEndpointObject.md)
 Create an in-memory object for FrontendEndpoint.
@@ -110,11 +113,11 @@ Create an in-memory object for PolicySettingsLogScrubbing.
 ### [New-AzFrontDoorWafManagedRuleOverrideObject](New-AzFrontDoorWafManagedRuleOverrideObject.md)
 Create an in-memory object for ManagedRuleOverride.
 
+### [New-AzFrontDoorWafPolicy](New-AzFrontDoorWafPolicy.md)
+create or create policy with specified rule set name within a resource group.
+
 ### [New-AzFrontDoorWafRuleGroupOverrideObject](New-AzFrontDoorWafRuleGroupOverrideObject.md)
 Create an in-memory object for ManagedRuleGroupOverride.
-
-### [New-AzFrontDoorWebApplicationFirewallPolicy](New-AzFrontDoorWebApplicationFirewallPolicy.md)
-create or create policy with specified rule set name within a resource group.
 
 ### [Remove-AzFrontDoor](Remove-AzFrontDoor.md)
 Deletes an existing Front Door with the specified parameters.
@@ -128,7 +131,7 @@ Deletes an NetworkExperiment Profile by ProfileName
 ### [Remove-AzFrontDoorRulesEngine](Remove-AzFrontDoorRulesEngine.md)
 Deletes an existing Rules Engine Configuration with the specified parameters.
 
-### [Remove-AzFrontDoorWebApplicationFirewallPolicy](Remove-AzFrontDoorWebApplicationFirewallPolicy.md)
+### [Remove-AzFrontDoorWafPolicy](Remove-AzFrontDoorWafPolicy.md)
 Deletes Policy.
 
 ### [Set-AzFrontDoor](Set-AzFrontDoor.md)
@@ -143,7 +146,7 @@ update an NetworkExperiment Profile
 ### [Set-AzFrontDoorRulesEngine](Set-AzFrontDoorRulesEngine.md)
 update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
-### [Set-AzFrontDoorWebApplicationFirewallPolicy](Set-AzFrontDoorWebApplicationFirewallPolicy.md)
+### [Set-AzFrontDoorWafPolicy](Set-AzFrontDoorWafPolicy.md)
 update or update policy with specified rule set name within a resource group.
 
 ### [Test-AzFrontDoorCustomDomain](Test-AzFrontDoorCustomDomain.md)
@@ -167,6 +170,6 @@ update an NetworkExperimentProfiles
 ### [Update-AzFrontDoorRulesEngine](Update-AzFrontDoorRulesEngine.md)
 update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
-### [Update-AzFrontDoorWebApplicationFirewallPolicy](Update-AzFrontDoorWebApplicationFirewallPolicy.md)
+### [Update-AzFrontDoorWafPolicy](Update-AzFrontDoorWafPolicy.md)
 update or update policy with specified rule set name within a resource group.
 

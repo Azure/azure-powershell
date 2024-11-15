@@ -15,21 +15,20 @@ update a new Front Door with a Front Door name under the specified subscription 
 ### UpdateExpanded (Default)
 ```
 Update-AzFrontDoor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-BackendPool <IBackendPool[]>] [-BackendPoolSettingEnforceCertificateNameCheck <String>]
- [-BackendPoolSettingSendRecvTimeoutSecond <Int32>] [-EnabledState <String>] [-FriendlyName <String>]
- [-FrontendEndpoint <IFrontendEndpoint[]>] [-HealthProbeSetting <IHealthProbeSettingsModel[]>]
- [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>] [-Location <String>] [-RoutingRule <IRoutingRule[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BackendPool <IBackendPool[]>] [-BackendPoolsSetting <IBackendPoolsSettings>] [-EnabledState <String>]
+ [-FriendlyName <String>] [-FrontendEndpoint <IFrontendEndpoint[]>]
+ [-HealthProbeSetting <IHealthProbeSettingsModel[]>] [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>]
+ [-Location <String>] [-RoutingRule <IRoutingRule[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFrontDoor -InputObject <IFrontDoorIdentity> [-BackendPool <IBackendPool[]>]
- [-BackendPoolSettingEnforceCertificateNameCheck <String>] [-BackendPoolSettingSendRecvTimeoutSecond <Int32>]
- [-EnabledState <String>] [-FriendlyName <String>] [-FrontendEndpoint <IFrontendEndpoint[]>]
- [-HealthProbeSetting <IHealthProbeSettingsModel[]>] [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>]
- [-Location <String>] [-RoutingRule <IRoutingRule[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BackendPoolsSetting <IBackendPoolsSettings>] [-EnabledState <String>] [-FriendlyName <String>]
+ [-FrontendEndpoint <IFrontendEndpoint[]>] [-HealthProbeSetting <IHealthProbeSettingsModel[]>]
+ [-LoadBalancingSetting <ILoadBalancingSettingsModel[]>] [-Location <String>] [-RoutingRule <IRoutingRule[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,28 +90,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BackendPoolSettingEnforceCertificateNameCheck
-Whether to enforce certificate name check on HTTPS requests to all backend pools.
-No effect on non-HTTPS requests.
+### -BackendPoolsSetting
+Settings for all backendPools
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackendPoolSettingSendRecvTimeoutSecond
-Send and receive timeout on forwarding request to the backend.
-When timeout is reached, the request fails and returns.
-
-```yaml
-Type: System.Int32
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPoolsSettings
 Parameter Sets: (All)
 Aliases:
 
