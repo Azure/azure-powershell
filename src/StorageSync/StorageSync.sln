@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageSync.Management.Sdk", "StorageSync.Management.Sdk\StorageSync.Management.Sdk.csproj", "{3D256234-F790-4163-8B45-B99A12022585}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage.common", "..\Storage\Storage.common\Storage.common.csproj", "{9A1A777F-25E1-4352-8347-13E96814A6CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{3D256234-F790-4163-8B45-B99A12022585}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D256234-F790-4163-8B45-B99A12022585}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D256234-F790-4163-8B45-B99A12022585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A1A777F-25E1-4352-8347-13E96814A6CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A1A777F-25E1-4352-8347-13E96814A6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A1A777F-25E1-4352-8347-13E96814A6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A1A777F-25E1-4352-8347-13E96814A6CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +123,7 @@ Global
 		{E96CA030-A854-4A25-ADDC-CC0D514B6B05} = {504553A7-A8C8-46AB-BCCA-F7EB933E2BF0}
 		{10698BD6-8659-4CE7-9E9F-CD26697F5B55} = {BA28D092-BC0B-45F8-B061-BBC7010534F6}
 		{8300487A-A4B7-414C-8A90-872EB286D0B1} = {BA28D092-BC0B-45F8-B061-BBC7010534F6}
+		{9A1A777F-25E1-4352-8347-13E96814A6CA} = {504553A7-A8C8-46AB-BCCA-F7EB933E2BF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {71598E43-943F-472E-8686-D79D423AFD8F}
