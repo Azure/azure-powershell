@@ -41,7 +41,7 @@ try-require:
   - $(repo)/specification/healthdataaiservices/resource-manager/readme.powershell.md
  
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 1.0.0
 # Normally, title is the service name
 title: HealthDataAIServices
 subject-prefix: Deid
