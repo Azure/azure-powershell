@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Kailani.Afs.ServerManagedIdentity
+namespace Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity
 {
     using System.Text;
     using System.Threading.Tasks;
@@ -25,7 +25,6 @@ namespace Kailani.Afs.ServerManagedIdentity
     using Microsoft.Azure.Commands.StorageSync.Common;
     using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
     using Microsoft.Azure.Commands.StorageSync.Interop.Exceptions;
-    using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
     using Microsoft.Azure.Commands.StorageSync.Properties;
     using Microsoft.Rest.TransientFaultHandling;
 
