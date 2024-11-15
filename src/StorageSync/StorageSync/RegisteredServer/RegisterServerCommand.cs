@@ -211,8 +211,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     Path.Combine(StorageSyncClientWrapper.AfsAgentInstallerPath, StorageSyncConstants.MonitoringAgentDirectoryName),
                     StorageSyncClientWrapper.AfsAgentVersion,
                     ServerMachineName,
-                    (pResourceGroupName, pStorageSyncCerviceName, pServerRegistrationData) => CreateRegisteredResourceInCloud(pResourceGroupName, pStorageSyncCerviceName,
-                            StorageSyncClientWrapper.StorageSyncResourceManager.UpdateServerRegistrationData(pServerRegistrationData)));
+                    (pResourceGroupName, pStorageSyncServiceName, pServerRegistrationData) => CreateRegisteredResourceInCloud(pResourceGroupName, pStorageSyncServiceName,
+                            StorageSyncClientWrapper.StorageSyncResourceManager.UpdateServerRegistrationData(pServerRegistrationData)),
+                    this.AssignIdentity.ToBool());
             }
         }
 
@@ -238,9 +239,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 LastHeartBeat = DateTime.Now.ToString(),
             };
 
-            if (AssignIdentity.IsPresent)
+            if (AssignIdentity.ToBool())
             {
                 createParameters.ApplicationId = serverRegistrationData.ApplicationId.HasValue ? serverRegistrationData.ApplicationId.Value.ToString() : Guid.Empty.ToString();
+                if(createParameters.ApplicationId == Guid.Empty.ToString())
+                {
+                    throw new PSArgumentException("The server is unable to acquire the identity as it could not be located. Kindly verify or install the managed identity on the current server using the Azure Arc or Azure Virtual Machine managed identity usage guides.");
+                }
             }
             else
             {

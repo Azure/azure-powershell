@@ -1,7 +1,6 @@
 ﻿using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
 using Hyak.Common;
-using Kailani.Afs.ServerManagedIdentity;
 using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
 using System;
 using System.Diagnostics.Tracing;
