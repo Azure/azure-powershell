@@ -84,16 +84,20 @@ directive:
 
   # For New object model cmdlet
   - model-cmdlet:
-    - model-name: Backend
-      cmdlet-name: New-AzFrontDoorFrontendBackendObject
-    - model-name: BackendPool
-      cmdlet-name: New-AzFrontDoorFrontendBackendPoolObject
-    - model-name: BackendPoolsSettings
-      cmdlet-name: New-AzFrontDoorFrontendBackendPoolsSettingsObject
-    - model-name: FrontendEndpoint
-      cmdlet-name: New-AzFrontDoorFrontendEndpointObject
-    - model-name: HeaderAction
-      cmdlet-name: New-AzFrontDoorFrontendHeaderActionObject
+    # - model-name: Backend
+    #   cmdlet-name: New-AzFrontDoorFrontendBackendObject
+    # # New-AzFrontDoorFrontendBackendObject
+    # - where:
+    #     model-name: Backend
+    #     property-name: HostHeader
+    #   set:
+    #     property-name: BackendHostHeader
+    # - model-name: BackendPool
+    #   cmdlet-name: New-AzFrontDoorFrontendBackendPoolObject
+    # - model-name: BackendPoolsSettings
+    #   cmdlet-name: New-AzFrontDoorFrontendBackendPoolsSettingsObject
+    # - model-name: FrontendEndpoint
+    #   cmdlet-name: New-AzFrontDoorFrontendEndpointObject
     - model-name: HeaderAction
       cmdlet-name: New-AzFrontDoorFrontendHeaderActionObject
     - model-name: HealthProbeSettingsModel
@@ -152,10 +156,10 @@ directive:
     set:
       parameter-name: CertificateType
 
-  # New-AzFrontDoorFrontendBackendObject
+    # New-AzFrontDoorHeaderActionObject
   - where:
-      model-name: Backend
-      property-name: HostHeader
+      model-name: HeaderAction
+      property-name: Type
     set:
-      property-name: BackendHostHeader
+      property-name: HeaderActionType
 ```

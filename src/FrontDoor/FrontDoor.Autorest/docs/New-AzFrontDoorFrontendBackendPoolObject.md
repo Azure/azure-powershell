@@ -13,8 +13,9 @@ Create an in-memory object for BackendPool.
 ## SYNTAX
 
 ```
-New-AzFrontDoorFrontendBackendPoolObject [-Backend <IBackend[]>] [-HealthProbeSettingId <String>]
- [-Id <String>] [-LoadBalancingSettingId <String>] [-Name <String>] [<CommonParameters>]
+New-AzFrontDoorFrontendBackendPoolObject [-Backend <IBackend[]>] [-FrontDoorName <String>]
+ [-HealthProbeSettingName <String>] [-Id <String>] [-LoadBalancingSettingName <String>] [-Name <String>]
+ [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,7 +62,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HealthProbeSettingId
+### -FrontDoorName
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HealthProbeSettingName
 Resource ID.
 
 ```yaml
@@ -91,7 +107,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LoadBalancingSettingId
+### -LoadBalancingSettingName
 Resource ID.
 
 ```yaml
@@ -108,6 +124,21 @@ Accept wildcard characters: False
 
 ### -Name
 Resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource ID.
 
 ```yaml
 Type: System.String
