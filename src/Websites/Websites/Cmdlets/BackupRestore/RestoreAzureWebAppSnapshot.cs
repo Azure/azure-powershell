@@ -57,13 +57,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
             // Try to get the source app location and resource ID from Microsoft.Web RP
             try
             {
-                var app = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+                var app = new PSSite(WebsitesClient.GetWebApp(InputObject.ResourceGroupName, InputObject.Name, InputObject.Slot));
                 sourceAppLocation = app.Location;
                 sourceAppArmResourceId = app.Id;
+                WriteDebug($"Fetched the source app location and resource ID from Microsoft.Web RP for {InputObject.Name}, Location = {sourceAppLocation}, Id = {sourceAppArmResourceId}");
             }
             catch (Exception ex)
             {
-                WriteWarning($"Unable to fetch the source app location and resource ID from Microsoft.Web RP. {ex.Message}, An attempt will be made to retrieve the same from ARM cache");
+                WriteDebug($"Unable to fetch the source app location and resource ID from Microsoft.Web RP. {ex.Message}, An attempt will be made to retrieve the same from ARM cache");
             }
 
             // Fall back code to fetch the source app location and resource ID from ARM cache, Useful with disaster recovery scenaior's when Microsoft.Web RP is not accessible
