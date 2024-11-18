@@ -14,7 +14,7 @@ Create an in-memory object for FrontendEndpoint.
 
 ```
 New-AzFrontDoorFrontendEndpointObject [-HostName <String>] [-Id <String>] [-Name <String>]
- [-SessionAffinityEnabledState <String>] [-SessionAffinityTtlSecond <Int32>]
+ [-SessionAffinityEnabledState <String>] [-SessionAffinityTtlInSeconds <Int32>]
  [-WebApplicationFirewallPolicyLinkId <String>] [<CommonParameters>]
 ```
 
@@ -109,7 +109,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SessionAffinityTtlSecond
+### -SessionAffinityTtlInSeconds
 UNUSED.
 This field will be ignored.
 The TTL to use in seconds for session affinity, if applicable.

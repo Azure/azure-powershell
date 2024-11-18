@@ -1,24 +1,25 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendloadbalancingsettingsobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorrulesengineactionobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorFrontendLoadBalancingSettingsObject
+# New-AzFrontDoorRulesEngineActionObject
 
 ## SYNOPSIS
-Create an in-memory object for LoadBalancingSettingsModel.
+Create an in-memory object for RulesEngineAction.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorFrontendLoadBalancingSettingsObject [-AdditionalLatencyMillisecond <Int32>] [-Id <String>]
- [-Name <String>] [-SampleSize <Int32>] [-SuccessfulSamplesRequired <Int32>] [<CommonParameters>]
+New-AzFrontDoorRulesEngineActionObject [-RequestHeaderAction <IHeaderAction[]>]
+ [-ResponseHeaderAction <IHeaderAction[]>] [-RouteConfigurationOverrideOdataType <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for LoadBalancingSettingsModel.
+Create an in-memory object for RulesEngineAction.
 
 ## EXAMPLES
 
@@ -46,11 +47,11 @@ Create an in-memory object for LoadBalancingSettingsModel.
 
 ## PARAMETERS
 
-### -AdditionalLatencyMillisecond
-The additional latency in milliseconds for probes to fall into the lowest latency bucket.
+### -RequestHeaderAction
+A list of header actions to apply from the request from AFD to the origin.
 
 ```yaml
-Type: System.Int32
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHeaderAction[]
 Parameter Sets: (All)
 Aliases:
 
@@ -61,56 +62,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Resource ID.
+### -ResponseHeaderAction
+A list of header actions to apply from the response from AFD to the client.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHeaderAction[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RouteConfigurationOverrideOdataType
+
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SampleSize
-The number of samples to consider for load balancing decisions.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SuccessfulSamplesRequired
-The number of samples within the sample period that must succeed.
-
-```yaml
-Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +99,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.LoadBalancingSettingsModel
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineAction
 
 ## NOTES
 

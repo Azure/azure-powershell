@@ -99,25 +99,25 @@ directive:
     # - model-name: FrontendEndpoint
     #   cmdlet-name: New-AzFrontDoorFrontendEndpointObject
     - model-name: HeaderAction
-      cmdlet-name: New-AzFrontDoorFrontendHeaderActionObject
+      cmdlet-name: New-AzFrontDoorHeaderActionObject
     - model-name: HealthProbeSettingsModel
-      cmdlet-name: New-AzFrontDoorFrontendHealthProbeSettingsObject
+      cmdlet-name: New-AzFrontDoorHealthProbeSettingObject
     - model-name: LoadBalancingSettingsModel
-      cmdlet-name: New-AzFrontDoorFrontendLoadBalancingSettingsObject
-    - model-name: RoutingRule
-      cmdlet-name: New-AzFrontDoorFrontendRoutingRuleObject
+      cmdlet-name: New-AzFrontDoorLoadBalancingSettingObject
+    # - model-name: RoutingRule
+    #   cmdlet-name: New-AzFrontDoorRoutingRuleObject
     - model-name: RulesEngineAction
-      cmdlet-name: New-AzFrontDoorFrontendRulesEngineActionObject
+      cmdlet-name: New-AzFrontDoorRulesEngineActionObject
     - model-name: RulesEngineMatchCondition
-      cmdlet-name: New-AzFrontDoorFrontendRulesEngineMatchConditionObject
+      cmdlet-name: New-AzFrontDoorRulesEngineMatchConditionObject
     - model-name: RulesEngineRule
-      cmdlet-name: New-AzFrontDoorFrontendRulesEngineRuleObject
+      cmdlet-name: New-AzFrontDoorRulesEngineRuleObject
     - model-name: CustomRule
-      cmdlet-name: New-AzFrontDoorFrontendCustomRuleObject
+      cmdlet-name: New-AzFrontDoorCustomRuleObject
     - model-name: ManagedRuleOverride
       cmdlet-name: New-AzFrontDoorWafManagedRuleOverrideObject
     - model-name: MatchCondition
-      cmdlet-name: New-AzFrontDoorFrontendMatchConditionObject
+      cmdlet-name: New-AzFrontDoorWafMatchConditionObject
     - model-name: ManagedRuleGroupOverride
       cmdlet-name: New-AzFrontDoorWafRuleGroupOverrideObject 
     - model-name: GroupByVariable
@@ -156,10 +156,26 @@ directive:
     set:
       parameter-name: CertificateType
 
-    # New-AzFrontDoorHeaderActionObject
+  # Breaking change avoid rename
+  # New-AzFrontDoorHeaderActionObject
   - where:
       model-name: HeaderAction
       property-name: Type
     set:
       property-name: HeaderActionType
+
+  # New-AzFrontDoorHealthProbeSettingObject
+  - where:
+      model-name: HealthProbeSettingsModel
+      property-name: IntervalInSecond
+    set:
+      property-name: IntervalInSeconds
+
+  # New-AzFrontDoorLoadBalancingSettingsObject
+  - where:
+      model-name: LoadBalancingSettingsModel
+      property-name: AdditionalLatencyInMillisecond
+    set:
+      property-name: AdditionalLatencyInMilliseconds 
+
 ```

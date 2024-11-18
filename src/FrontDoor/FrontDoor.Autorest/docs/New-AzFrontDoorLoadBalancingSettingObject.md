@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendmatchconditionobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorloadbalancingsettingobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorFrontendMatchConditionObject
+# New-AzFrontDoorLoadBalancingSettingObject
 
 ## SYNOPSIS
-Create an in-memory object for MatchCondition.
+Create an in-memory object for LoadBalancingSettingsModel.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorFrontendMatchConditionObject -MatchValue <String[]> -MatchVariable <IMatchVariable[]>
- -Operator <String> [-NegationConditon <Boolean>] [-Transform <String[]>] [<CommonParameters>]
+New-AzFrontDoorLoadBalancingSettingObject [-AdditionalLatencyMillisecond <Int32>] [-Id <String>]
+ [-Name <String>] [-SampleSize <Int32>] [-SuccessfulSamplesRequired <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for MatchCondition.
+Create an in-memory object for LoadBalancingSettingsModel.
 
 ## EXAMPLES
 
@@ -46,41 +46,11 @@ Create an in-memory object for MatchCondition.
 
 ## PARAMETERS
 
-### -MatchValue
-Match value.
+### -AdditionalLatencyMillisecond
+The additional latency in milliseconds for probes to fall into the lowest latency bucket.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MatchVariable
-List of match variables.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IMatchVariable[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NegationConditon
-Whether this is negate condition or not.
-
-```yaml
-Type: System.Boolean
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -91,26 +61,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Operator
-The operator to be matched.
+### -Id
+Resource ID.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Transform
-List of transforms.
+### -Name
+Resource name.
 
 ```yaml
-Type: System.String[]
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SampleSize
+The number of samples to consider for load balancing decisions.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SuccessfulSamplesRequired
+The number of samples within the sample period that must succeed.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +128,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.MatchCondition
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.LoadBalancingSettingsModel
 
 ## NOTES
 

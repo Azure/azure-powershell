@@ -1,26 +1,24 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendroutingruleobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorhealthprobesettingobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorFrontendRoutingRuleObject
+# New-AzFrontDoorHealthProbeSettingObject
 
 ## SYNOPSIS
-Create an in-memory object for RoutingRule.
+Create an in-memory object for HealthProbeSettingsModel.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorFrontendRoutingRuleObject [-AcceptedProtocol <String[]>] [-EnabledState <String>]
- [-FrontendEndpoint <ISubResource[]>] [-Id <String>] [-Name <String>] [-PatternsToMatch <String[]>]
- [-RouteConfigurationOdataType <String>] [-RuleEngineId <String>]
- [-WebApplicationFirewallPolicyLinkId <String>] [<CommonParameters>]
+New-AzFrontDoorHealthProbeSettingObject [-EnabledState <String>] [-HealthProbeMethod <String>] [-Id <String>]
+ [-IntervalInSeconds <Int32>] [-Name <String>] [-Path <String>] [-Protocol <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for RoutingRule.
+Create an in-memory object for HealthProbeSettingsModel.
 
 ## EXAMPLES
 
@@ -48,24 +46,9 @@ Create an in-memory object for RoutingRule.
 
 ## PARAMETERS
 
-### -AcceptedProtocol
-Protocol schemes to match for this rule.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnabledState
-Whether to enable use of this rule.
-Permitted values are 'Enabled' or 'Disabled'.
+Whether to enable health probes to be made against backends defined under backendPools.
+Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
 
 ```yaml
 Type: System.String
@@ -79,11 +62,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FrontendEndpoint
-Frontend endpoints associated with this rule.
+### -HealthProbeMethod
+Configures which HTTP method to use to probe the backends defined under backendPools.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ISubResource[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -109,6 +92,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IntervalInSeconds
+The number of seconds between health probes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Resource name.
 
@@ -124,23 +122,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PatternsToMatch
-The route patterns of the rule.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RouteConfigurationOdataType
-
+### -Path
+The path to use for the health probe.
+Default is /.
 
 ```yaml
 Type: System.String
@@ -154,23 +138,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleEngineId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WebApplicationFirewallPolicyLinkId
-Resource ID.
+### -Protocol
+Protocol scheme to use for this probe.
 
 ```yaml
 Type: System.String
@@ -191,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RoutingRule
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.HealthProbeSettingsModel
 
 ## NOTES
 

@@ -1,25 +1,24 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendrulesengineactionobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafmatchconditionobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorFrontendRulesEngineActionObject
+# New-AzFrontDoorWafMatchConditionObject
 
 ## SYNOPSIS
-Create an in-memory object for RulesEngineAction.
+Create an in-memory object for MatchCondition.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorFrontendRulesEngineActionObject [-RequestHeaderAction <IHeaderAction[]>]
- [-ResponseHeaderAction <IHeaderAction[]>] [-RouteConfigurationOverrideOdataType <String>]
- [<CommonParameters>]
+New-AzFrontDoorWafMatchConditionObject -MatchValue <String[]> -MatchVariable <IMatchVariable[]>
+ -Operator <String> [-NegationConditon <Boolean>] [-Transform <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for RulesEngineAction.
+Create an in-memory object for MatchCondition.
 
 ## EXAMPLES
 
@@ -47,11 +46,41 @@ Create an in-memory object for RulesEngineAction.
 
 ## PARAMETERS
 
-### -RequestHeaderAction
-A list of header actions to apply from the request from AFD to the origin.
+### -MatchValue
+Match value.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHeaderAction[]
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MatchVariable
+List of match variables.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IMatchVariable[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NegationConditon
+Whether this is negate condition or not.
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -62,26 +91,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResponseHeaderAction
-A list of header actions to apply from the response from AFD to the client.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHeaderAction[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RouteConfigurationOverrideOdataType
-
+### -Operator
+The operator to be matched.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Transform
+List of transforms.
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +128,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineAction
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.MatchCondition
 
 ## NOTES
 

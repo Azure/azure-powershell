@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendheaderactionobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorheaderactionobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorFrontendHeaderActionObject
+# New-AzFrontDoorHeaderActionObject
 
 ## SYNOPSIS
 Create an in-memory object for HeaderAction.
@@ -13,7 +13,7 @@ Create an in-memory object for HeaderAction.
 ## SYNTAX
 
 ```
-New-AzFrontDoorFrontendHeaderActionObject -HeaderName <String> -Type <String> [-Value <String>]
+New-AzFrontDoorHeaderActionObject -HeaderActionType <String> -HeaderName <String> [-Value <String>]
  [<CommonParameters>]
 ```
 
@@ -46,8 +46,8 @@ Create an in-memory object for HeaderAction.
 
 ## PARAMETERS
 
-### -HeaderName
-The name of the header this action will apply to.
+### -HeaderActionType
+Which type of manipulation to apply to the header.
 
 ```yaml
 Type: System.String
@@ -61,8 +61,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Type
-Which type of manipulation to apply to the header.
+### -HeaderName
+The name of the header this action will apply to.
 
 ```yaml
 Type: System.String

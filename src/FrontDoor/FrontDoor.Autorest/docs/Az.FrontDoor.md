@@ -65,35 +65,32 @@ Create an in-memory object for BackendPoolsSettings.
 ### [New-AzFrontDoorFrontendEndpointObject](New-AzFrontDoorFrontendEndpointObject.md)
 Create an in-memory object for FrontendEndpoint.
 
-### [New-AzFrontDoorFrontendHeaderActionObject](New-AzFrontDoorFrontendHeaderActionObject.md)
+### [New-AzFrontDoorHeaderActionObject](New-AzFrontDoorHeaderActionObject.md)
 Create an in-memory object for HeaderAction.
 
-### [New-AzFrontDoorFrontendHealthProbeSettingsObject](New-AzFrontDoorFrontendHealthProbeSettingsObject.md)
+### [New-AzFrontDoorHealthProbeSettingObject](New-AzFrontDoorHealthProbeSettingObject.md)
 Create an in-memory object for HealthProbeSettingsModel.
 
-### [New-AzFrontDoorFrontendLoadBalancingSettingsObject](New-AzFrontDoorFrontendLoadBalancingSettingsObject.md)
+### [New-AzFrontDoorLoadBalancingSettingObject](New-AzFrontDoorLoadBalancingSettingObject.md)
 Create an in-memory object for LoadBalancingSettingsModel.
-
-### [New-AzFrontDoorFrontendMatchConditionObject](New-AzFrontDoorFrontendMatchConditionObject.md)
-Create an in-memory object for MatchCondition.
-
-### [New-AzFrontDoorFrontendRoutingRuleObject](New-AzFrontDoorFrontendRoutingRuleObject.md)
-Create an in-memory object for RoutingRule.
-
-### [New-AzFrontDoorFrontendRulesEngineActionObject](New-AzFrontDoorFrontendRulesEngineActionObject.md)
-Create an in-memory object for RulesEngineAction.
-
-### [New-AzFrontDoorFrontendRulesEngineMatchConditionObject](New-AzFrontDoorFrontendRulesEngineMatchConditionObject.md)
-Create an in-memory object for RulesEngineMatchCondition.
-
-### [New-AzFrontDoorFrontendRulesEngineRuleObject](New-AzFrontDoorFrontendRulesEngineRuleObject.md)
-Create an in-memory object for RulesEngineRule.
 
 ### [New-AzFrontDoorNetworkExperimentProfile](New-AzFrontDoorNetworkExperimentProfile.md)
 create an NetworkExperiment Profile
 
+### [New-AzFrontDoorRoutingRuleObject](New-AzFrontDoorRoutingRuleObject.md)
+Create an in-memory object for RoutingRule.
+
 ### [New-AzFrontDoorRulesEngine](New-AzFrontDoorRulesEngine.md)
 create a new Rules Engine Configuration with the specified name within the specified Front Door.
+
+### [New-AzFrontDoorRulesEngineActionObject](New-AzFrontDoorRulesEngineActionObject.md)
+Create an in-memory object for RulesEngineAction.
+
+### [New-AzFrontDoorRulesEngineMatchConditionObject](New-AzFrontDoorRulesEngineMatchConditionObject.md)
+Create an in-memory object for RulesEngineMatchCondition.
+
+### [New-AzFrontDoorRulesEngineRuleObject](New-AzFrontDoorRulesEngineRuleObject.md)
+Create an in-memory object for RulesEngineRule.
 
 ### [New-AzFrontDoorWafCustomRuleExclusionManagedRuleObject](New-AzFrontDoorWafCustomRuleExclusionManagedRuleObject.md)
 Create an in-memory object for ExclusionManagedRule.
@@ -112,6 +109,9 @@ Create an in-memory object for PolicySettingsLogScrubbing.
 
 ### [New-AzFrontDoorWafManagedRuleOverrideObject](New-AzFrontDoorWafManagedRuleOverrideObject.md)
 Create an in-memory object for ManagedRuleOverride.
+
+### [New-AzFrontDoorWafMatchConditionObject](New-AzFrontDoorWafMatchConditionObject.md)
+Create an in-memory object for MatchCondition.
 
 ### [New-AzFrontDoorWafPolicy](New-AzFrontDoorWafPolicy.md)
 create or create policy with specified rule set name within a resource group.

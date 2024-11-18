@@ -1,25 +1,26 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorfrontendrulesenginematchconditionobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorroutingruleobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorFrontendRulesEngineMatchConditionObject
+# New-AzFrontDoorRoutingRuleObject
 
 ## SYNOPSIS
-Create an in-memory object for RulesEngineMatchCondition.
+Create an in-memory object for RoutingRule.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorFrontendRulesEngineMatchConditionObject -RulesEngineMatchValue <String[]>
- -RulesEngineMatchVariable <String> -RulesEngineOperator <String> [-NegateCondition <Boolean>]
- [-Selector <String>] [-Transform <String[]>] [<CommonParameters>]
+New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-EnabledState <String>]
+ [-FrontendEndpoint <ISubResource[]>] [-Id <String>] [-Name <String>] [-PatternsToMatch <String[]>]
+ [-RouteConfigurationOdataType <String>] [-RuleEngineId <String>]
+ [-WebApplicationFirewallPolicyLinkId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for RulesEngineMatchCondition.
+Create an in-memory object for RoutingRule.
 
 ## EXAMPLES
 
@@ -47,11 +48,11 @@ Create an in-memory object for RulesEngineMatchCondition.
 
 ## PARAMETERS
 
-### -NegateCondition
-Describes if this is negate condition or not.
+### -AcceptedProtocol
+Protocol schemes to match for this rule.
 
 ```yaml
-Type: System.Boolean
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -62,55 +63,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RulesEngineMatchValue
-Match values to match against.
-The operator will apply to each value in here with OR semantics.
-If any of them match the variable with the given operator this match condition is considered a match.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RulesEngineMatchVariable
-Match Variable.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RulesEngineOperator
-Describes operator to apply to the match condition.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Selector
-Name of selector in RequestHeader or RequestBody to be matched.
+### -EnabledState
+Whether to enable use of this rule.
+Permitted values are 'Enabled' or 'Disabled'.
 
 ```yaml
 Type: System.String
@@ -124,11 +79,101 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Transform
-List of transforms.
+### -FrontendEndpoint
+Frontend endpoints associated with this rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ISubResource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PatternsToMatch
+The route patterns of the rule.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RouteConfigurationOdataType
+
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleEngineId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WebApplicationFirewallPolicyLinkId
+Resource ID.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +191,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineMatchCondition
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RoutingRule
 
 ## NOTES
 
