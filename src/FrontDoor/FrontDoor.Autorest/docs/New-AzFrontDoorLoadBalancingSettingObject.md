@@ -13,7 +13,7 @@ Create an in-memory object for LoadBalancingSettingsModel.
 ## SYNTAX
 
 ```
-New-AzFrontDoorLoadBalancingSettingObject [-AdditionalLatencyMillisecond <Int32>] [-Id <String>]
+New-AzFrontDoorLoadBalancingSettingObject [-AdditionalLatencyMilliseconds <Int32>] [-Id <String>]
  [-Name <String>] [-SampleSize <Int32>] [-SuccessfulSamplesRequired <Int32>] [<CommonParameters>]
 ```
 
@@ -46,7 +46,7 @@ Create an in-memory object for LoadBalancingSettingsModel.
 
 ## PARAMETERS
 
-### -AdditionalLatencyMillisecond
+### -AdditionalLatencyMilliseconds
 The additional latency in milliseconds for probes to fall into the lowest latency bucket.
 
 ```yaml

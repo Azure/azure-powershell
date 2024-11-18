@@ -14,9 +14,9 @@ Create an in-memory object for RoutingRule.
 
 ```
 New-AzFrontDoorRoutingRuleObject [-AcceptedProtocol <String[]>] [-EnabledState <String>]
- [-FrontendEndpoint <ISubResource[]>] [-Id <String>] [-Name <String>] [-PatternsToMatch <String[]>]
- [-RouteConfigurationOdataType <String>] [-RuleEngineId <String>]
- [-WebApplicationFirewallPolicyLinkId <String>] [<CommonParameters>]
+ [-FrontDoorName <String>] [-FrontendEndpoint <ISubResource[]>] [-Id <String>] [-Name <String>]
+ [-PatternsToMatch <String[]>] [-ResourceGroupName <String>] [-RouteConfigurationOdataType <String>]
+ [-RuleEngineId <String>] [-WebApplicationFirewallPolicyLinkId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +66,21 @@ Accept wildcard characters: False
 ### -EnabledState
 Whether to enable use of this rule.
 Permitted values are 'Enabled' or 'Disabled'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FrontDoorName
+The name of the Front Door to which this routing rule belongs.
 
 ```yaml
 Type: System.String
@@ -129,6 +144,21 @@ The route patterns of the rule.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource Group name.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

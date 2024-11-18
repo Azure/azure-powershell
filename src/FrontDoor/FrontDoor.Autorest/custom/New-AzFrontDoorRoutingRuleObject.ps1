@@ -44,6 +44,12 @@ function New-AzFrontDoorRoutingRuleObject {
         [Parameter(HelpMessage="Resource name.")]
         [string]
         $Name,
+        [Parameter(HelpMessage="Resource Group name.")]
+        [string]
+        $ResourceGroupName ,
+        [Parameter(HelpMessage="The name of the Front Door to which this routing rule belongs.")]
+        [string]
+        $FrontDoorName,
         [Parameter(HelpMessage="The route patterns of the rule.")]
         [string[]]
         $PatternsToMatch,

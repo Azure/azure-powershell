@@ -83,17 +83,11 @@ Create an in-memory object for RoutingRule.
 ### [New-AzFrontDoorRulesEngine](New-AzFrontDoorRulesEngine.md)
 create a new Rules Engine Configuration with the specified name within the specified Front Door.
 
-### [New-AzFrontDoorRulesEngineActionObject](New-AzFrontDoorRulesEngineActionObject.md)
-Create an in-memory object for RulesEngineAction.
-
 ### [New-AzFrontDoorRulesEngineMatchConditionObject](New-AzFrontDoorRulesEngineMatchConditionObject.md)
 Create an in-memory object for RulesEngineMatchCondition.
 
 ### [New-AzFrontDoorRulesEngineRuleObject](New-AzFrontDoorRulesEngineRuleObject.md)
 Create an in-memory object for RulesEngineRule.
-
-### [New-AzFrontDoorWafCustomRuleExclusionManagedRuleObject](New-AzFrontDoorWafCustomRuleExclusionManagedRuleObject.md)
-Create an in-memory object for ExclusionManagedRule.
 
 ### [New-AzFrontDoorWafCustomRuleGroupByVariableObject](New-AzFrontDoorWafCustomRuleGroupByVariableObject.md)
 Create an in-memory object for GroupByVariable.
@@ -106,6 +100,9 @@ Create an in-memory object for WebApplicationFirewallScrubbingRules.
 
 ### [New-AzFrontDoorWafLogScrubbingSettingObject](New-AzFrontDoorWafLogScrubbingSettingObject.md)
 Create an in-memory object for PolicySettingsLogScrubbing.
+
+### [New-AzFrontDoorWafManagedRuleExclusionObject](New-AzFrontDoorWafManagedRuleExclusionObject.md)
+Create an in-memory object for ExclusionManagedRule.
 
 ### [New-AzFrontDoorWafManagedRuleOverrideObject](New-AzFrontDoorWafManagedRuleOverrideObject.md)
 Create an in-memory object for ManagedRuleOverride.

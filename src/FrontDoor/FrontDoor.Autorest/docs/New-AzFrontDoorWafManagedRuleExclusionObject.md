@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafcustomruleexclusionmanagedruleobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafmanagedruleexclusionobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorWafCustomRuleExclusionManagedRuleObject
+# New-AzFrontDoorWafManagedRuleExclusionObject
 
 ## SYNOPSIS
 Create an in-memory object for ExclusionManagedRule.
@@ -13,7 +13,7 @@ Create an in-memory object for ExclusionManagedRule.
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafCustomRuleExclusionManagedRuleObject -RuleId <String> [<CommonParameters>]
+New-AzFrontDoorWafManagedRuleExclusionObject -RuleId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

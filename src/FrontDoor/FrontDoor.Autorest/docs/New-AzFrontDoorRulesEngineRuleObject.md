@@ -13,8 +13,7 @@ Create an in-memory object for RulesEngineRule.
 ## SYNTAX
 
 ```
-New-AzFrontDoorRulesEngineRuleObject -Name <String> -Priority <Int32>
- [-ActionRequestHeaderAction <IHeaderAction[]>] [-ActionResponseHeaderAction <IHeaderAction[]>]
+New-AzFrontDoorRulesEngineRuleObject -Name <String> -Priority <Int32> [-Action <IRulesEngineAction>]
  [-MatchCondition <IRulesEngineMatchCondition[]>] [-MatchProcessingBehavior <String>]
  [-RouteConfigurationOverrideOdataType <String>] [<CommonParameters>]
 ```
@@ -48,26 +47,11 @@ Create an in-memory object for RulesEngineRule.
 
 ## PARAMETERS
 
-### -ActionRequestHeaderAction
-A list of header actions to apply from the request from AFD to the origin.
+### -Action
+Actions to perform on the request and response if all of the match conditions are met.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHeaderAction[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ActionResponseHeaderAction
-A list of header actions to apply from the response from AFD to the client.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHeaderAction[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRulesEngineAction
 Parameter Sets: (All)
 Aliases:
 

@@ -100,18 +100,32 @@ directive:
     #   cmdlet-name: New-AzFrontDoorFrontendEndpointObject
     - model-name: HeaderAction
       cmdlet-name: New-AzFrontDoorHeaderActionObject
-    - model-name: HealthProbeSettingsModel
-      cmdlet-name: New-AzFrontDoorHealthProbeSettingObject
-    - model-name: LoadBalancingSettingsModel
-      cmdlet-name: New-AzFrontDoorLoadBalancingSettingObject
+    # - model-name: HealthProbeSettingsModel
+    #   cmdlet-name: New-AzFrontDoorHealthProbeSettingObject
+    #     # New-AzFrontDoorHealthProbeSettingObject
+    #   - where:
+    #       model-name: HealthProbeSettingsModel
+    #       property-name: IntervalInSecond
+    #     set:
+    #       property-name: IntervalInSeconds
+    # - model-name: LoadBalancingSettingsModel
+    #   cmdlet-name: New-AzFrontDoorLoadBalancingSettingObject
+    # # New-AzFrontDoorLoadBalancingSettingsObject
+    # - where:
+    #     model-name: LoadBalancingSettingsModel
+    #     property-name: AdditionalLatencyInMillisecond
+    #   set:
+    #     property-name: AdditionalLatencyInMilliseconds 
     # - model-name: RoutingRule
     #   cmdlet-name: New-AzFrontDoorRoutingRuleObject
-    - model-name: RulesEngineAction
-      cmdlet-name: New-AzFrontDoorRulesEngineActionObject
-    - model-name: RulesEngineMatchCondition
-      cmdlet-name: New-AzFrontDoorRulesEngineMatchConditionObject
-    - model-name: RulesEngineRule
-      cmdlet-name: New-AzFrontDoorRulesEngineRuleObject
+    # - model-name: RulesEngineAction
+    #   cmdlet-name: New-AzFrontDoorRulesEngineActionObject
+    # - model-name: RulesEngineMatchCondition
+    #   cmdlet-name: New-AzFrontDoorRulesEngineMatchConditionObject
+    # - model-name: RulesEngineRule
+    #   cmdlet-name: New-AzFrontDoorRulesEngineRuleObject
+    # - model-name: WebApplicationFirewallCustomRule
+    #   cmdlet-name: New-AzFrontDoorWafCustomRuleObject 
     - model-name: CustomRule
       cmdlet-name: New-AzFrontDoorCustomRuleObject
     - model-name: ManagedRuleOverride
@@ -123,13 +137,12 @@ directive:
     - model-name: GroupByVariable
       cmdlet-name: New-AzFrontDoorWafCustomRuleGroupByVariableObject
     - model-name: ExclusionManagedRule
-      cmdlet-name: New-AzFrontDoorWafCustomRuleExclusionManagedRuleObject
+      cmdlet-name: New-AzFrontDoorWafManagedRuleExclusionObject
     - model-name: PolicySettingsLogScrubbing
       cmdlet-name: New-AzFrontDoorWafLogScrubbingSettingObject 
     - model-name: WebApplicationFirewallScrubbingRules
       cmdlet-name: New-AzFrontDoorWafLogScrubbingRuleObject 
-    - model-name: WebApplicationFirewallCustomRule
-      cmdlet-name: New-AzFrontDoorWafCustomRuleObject 
+
   # Rename
   - where: 
       subject: WebApplicationFirewallPolicy
@@ -163,19 +176,5 @@ directive:
       property-name: Type
     set:
       property-name: HeaderActionType
-
-  # New-AzFrontDoorHealthProbeSettingObject
-  - where:
-      model-name: HealthProbeSettingsModel
-      property-name: IntervalInSecond
-    set:
-      property-name: IntervalInSeconds
-
-  # New-AzFrontDoorLoadBalancingSettingsObject
-  - where:
-      model-name: LoadBalancingSettingsModel
-      property-name: AdditionalLatencyInMillisecond
-    set:
-      property-name: AdditionalLatencyInMilliseconds 
 
 ```
