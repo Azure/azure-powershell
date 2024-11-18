@@ -1512,7 +1512,7 @@ Remove-AzStorageDirectory -Directory $dir.CloudFileDirectory
 $share = Get-AzStorageShare -Name $sharename -Context $ctx 
 Remove-AzStorageDirectory -ShareClient $share.ShareClient -Path $dirpath -Conetxt $ctx
 
-$dir = Get-AzStorageFile -ShareName testshare1 -Path $dirpath -Context $ctx 
+$dir = Get-AzStorageFile -ShareName $sharename -Path $dirpath -Context $ctx 
 Remove-AzStorageDirectory -ShareDirectoryClient.ShareDirectoryClient -Context $ctx
 ```
 
