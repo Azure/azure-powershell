@@ -239,13 +239,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 LastHeartBeat = DateTime.Now.ToString(),
             };
 
-            if (AssignIdentity.ToBool())
+            if (AssignIdentity.IsPresent)
             {
-                createParameters.ApplicationId = serverRegistrationData.ApplicationId.HasValue ? serverRegistrationData.ApplicationId.Value.ToString() : Guid.Empty.ToString();
-                if(createParameters.ApplicationId == Guid.Empty.ToString())
+                if(default == serverRegistrationData.ApplicationId.GetValueOrDefault())
                 {
                     throw new PSArgumentException("This server is not configured properly to use managed identities. Follow the steps in the Azure File Sync documentation (https://aka.ms/AFS/ManagedIdentities) to enable a system-assigned managed identity for this server.");
                 }
+                createParameters.ApplicationId = serverRegistrationData.ApplicationId.ToString();
             }
             else
             {

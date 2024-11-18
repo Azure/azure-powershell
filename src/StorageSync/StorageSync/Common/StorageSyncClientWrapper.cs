@@ -261,11 +261,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                 {
                     AuthorizationManagementClient.SubscriptionId = storageAccountSubscriptionId;
                 }
-                var roleAssignmentScope = storageAccountResourceId;
+                string roleDefinitionScope = "/";
 
                 var resourceIdentifier = new ResourceIdentifier(storageAccountResourceId);
                 
-                RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleAssignmentScope, BuiltInRoleDefinitionId);
+                RoleDefinition roleDefinition = AuthorizationManagementClient.RoleDefinitions.Get(roleDefinitionScope, BuiltInRoleDefinitionId);
 
                 var serverPrincipalId = serverPrincipal.Id.ToString();
                 var roleAssignments = AuthorizationManagementClient.RoleAssignments.ListForResource(
@@ -275,7 +275,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     resourceIdentifier.ResourceName,
                     odataQuery: new ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(serverPrincipalId))
                     );
-
+ 
+                var roleAssignmentScope = storageAccountResourceId;
                 Guid roleAssignmentId = StorageSyncResourceManager.GetGuid();
 
                 RoleAssignment roleAssignment = roleAssignments.FirstOrDefault();
@@ -285,7 +286,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                     var createParameters = new RoleAssignmentCreateParameters
                     {
                         PrincipalId = serverPrincipalId,
-                        RoleDefinitionId = AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(resourceIdentifier.Subscription, BuiltInRoleDefinitionId)
+                        RoleDefinitionId=AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(resourceIdentifier.Subscription, BuiltInRoleDefinitionId)
                     };
 
                     roleAssignment = AuthorizationManagementClient.RoleAssignments.Create(roleAssignmentScope, roleAssignmentId.ToString(), createParameters);
