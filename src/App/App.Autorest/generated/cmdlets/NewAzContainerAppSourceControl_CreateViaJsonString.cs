@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create the SourceControl for a Container App.</summary>
+    /// <summary>create the SourceControl for a Container App.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/sourcecontrols/{sourceControlName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzContainerAppSourceControl_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISourceControl))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Create the SourceControl for a Container App.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"create the SourceControl for a Container App.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}/sourcecontrols/{sourceControlName}", ApiVersion = "2023-05-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.NotSuggestDefaultParameterSet]

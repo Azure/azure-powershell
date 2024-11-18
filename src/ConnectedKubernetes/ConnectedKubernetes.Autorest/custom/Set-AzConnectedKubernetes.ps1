@@ -675,12 +675,46 @@ function Set-AzConnectedKubernetes {
 
         $PSBoundParameters.Add('ArcAgentryConfiguration', $arcAgentryConfigs)
 
-        Write-Output "Updating the connected cluster resource...."
-        $Response = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
-        if ((-not $WhatIfPreference) -and (-not $Response)) {
+        Write-Verbose "Updating the connected cluster resource...."
+        $CCResponse = Az.ConnectedKubernetes.internal\Set-AzConnectedKubernetes @PSBoundParameters
+        if ((-not $WhatIfPreference) -and (-not $CCResponse)) {
             Write-Error "Failed to update the 'Kubernetes - Azure Arc' resource"
             return
         }
+
+        # Wait for the agent state to settle before proceeding.  If it doesn't,
+        # we'll continue anyway - but remember and throw an error at the end.
+        $agentsInTerminalState = $true
+        if ($PSCmdlet.ShouldProcess($ClusterName, "Check agent state of the connected cluster")) {
+
+            $timeout = [datetime]::Now.AddMinutes(60)
+
+            for (;;) {
+                $CCResponse = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
+
+                if ($null -eq $CCResponse.ArcAgentProfileAgentState) {
+                    Write-Verbose "No agent configuration in progress."
+                    break
+                }
+                if ($CCResponse.ArcAgentProfileAgentState -eq "Succeeded") {
+                    Write-Verbose "Cluster agent configuration succeeded."
+                    break
+                }
+                if ($CCResponse.ArcAgentProfileAgentState -eq "Failed") {
+                    Write-Error "Cluster agent configuration failed."
+                    break
+                }
+                if ([datetime]::Now -ge $timeout) {
+                    Write-Error "Cluster agent configuration timed out after 60 minutes."
+                    $agentsInTerminalState = $false
+                    break
+                }
+
+                Write-Verbose "Cluster agent configuration is in progress..."
+                Start-Sleep -Seconds 30
+            }
+        }
+
         $arcAgentryConfigs = ConvertTo-ArcAgentryConfiguration `
             -ConfigurationSetting $ConfigurationSetting `
             -RedactedProtectedConfiguration $RedactedProtectedConfiguration `
@@ -690,8 +724,8 @@ function Set-AzConnectedKubernetes {
 
 
         # Convert the $Response object into a nested hashtable.
-        Write-Debug "PUT response: $Response"
-        $Response = ConvertFrom-Json "$Response"
+        Write-Debug "PUT response: $CCResponse"
+        $Response = ConvertFrom-Json "$CCResponse"
         $Response = ConvertTo-Hashtable $Response
 
         # Whatif may return empty response
@@ -709,7 +743,7 @@ function Set-AzConnectedKubernetes {
         $ResponseStr = $Response | ConvertTo-Json -Depth 10
         Write-Debug "PUT response: $ResponseStr"
 
-        Write-Output "Preparing helm ...."
+        Write-Verbose "Preparing helm ...."
 
         if ($PSCmdlet.ShouldProcess('configDP', 'get helm values from config DP')) {
             $helmValuesDp = Get-HelmValuesFromConfigDP `
@@ -774,7 +808,7 @@ function Set-AzConnectedKubernetes {
                 -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
         }
 
-        Write-Output "Executing helm upgrade, this can take a few minutes ...."
+        Write-Verbose "Executing helm upgrade, this can take a few minutes ...."
         Write-Debug $options -ErrorAction Continue
         if ($DebugPreference -eq "Continue") {
             $options += " --debug"
@@ -786,37 +820,18 @@ function Set-AzConnectedKubernetes {
                     $ChartPath `
                     --namespace $ReleaseInstallNamespace `
                     -f $userValuesLocation `
-                    --wait (-split $options)
+                    --wait (-split $options) | Out-Null
             }
             catch {
                 throw "Unable to install helm release"
             }
-            Return $Response
         }
 
-        if ($PSCmdlet.ShouldProcess($ClusterName, "Check agent state of the connected cluster")) {
-            if ($PSBoundParameters.ContainsKey('OidcIssuerProfileEnabled') -or $PSBoundParameters.ContainsKey('WorkloadIdentityEnabled') ) {
-                $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
-
-                Write-Output "Cluster configuration is in progress..."
-                $timeout = [datetime]::Now.AddMinutes(60)
-
-                while (($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Succeeded") -and ($ExistConnectedKubernetes.ArcAgentProfileAgentState -ne "Failed") -and ([datetime]::Now -lt $timeout)) {
-                    Start-Sleep -Seconds 30
-                    $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
-                }
-
-                if ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Succeeded") {
-                    Write-Output "Cluster configuration succeeded."
-                }
-                elseif ($ExistConnectedKubernetes.ArcAgentProfileAgentState -eq "Failed") {
-                    Write-Error "Cluster configuration failed."
-                }
-                else {
-                    Write-Error "Cluster configuration timed out after 60 minutes."
-                }
-            }
+        # If there was a problem with agent state, throw the error now.
+        if ($agentsInTerminalState -eq $false) {
+                throw "Timed out waiting for Agent State to reach terminal state."
         }
+        Return $CCResponse
     }
 }
 

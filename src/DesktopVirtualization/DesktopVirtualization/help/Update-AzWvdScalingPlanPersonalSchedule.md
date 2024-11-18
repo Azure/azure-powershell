@@ -27,21 +27,21 @@ Update-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlan
  [-RampUpActionOnDisconnect <String>] [-RampUpActionOnLogoff <String>] [-RampUpAutoStartHost <String>]
  [-RampUpMinutesToWaitOnDisconnect <Int32>] [-RampUpMinutesToWaitOnLogoff <Int32>]
  [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>] [-RampUpStartVMOnConnect <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
  -ScalingPlanScheduleName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlanName <String>
  -ScalingPlanScheduleName <String> [-SubscriptionId <String>] -JsonFilePath <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityScalingPlanExpanded
@@ -59,7 +59,7 @@ Update-AzWvdScalingPlanPersonalSchedule -ScalingPlanScheduleName <String>
  [-RampUpActionOnDisconnect <String>] [-RampUpActionOnLogoff <String>] [-RampUpAutoStartHost <String>]
  [-RampUpMinutesToWaitOnDisconnect <Int32>] [-RampUpMinutesToWaitOnLogoff <Int32>]
  [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>] [-RampUpStartVMOnConnect <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityScalingPlan
@@ -67,7 +67,7 @@ Update-AzWvdScalingPlanPersonalSchedule -ScalingPlanScheduleName <String>
 Update-AzWvdScalingPlanPersonalSchedule -ScalingPlanScheduleName <String>
  -ScalingPlanInputObject <IDesktopVirtualizationIdentity>
  -ScalingPlanSchedule <IScalingPlanPersonalSchedulePatch> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -84,7 +84,7 @@ Update-AzWvdScalingPlanPersonalSchedule -InputObject <IDesktopVirtualizationIden
  [-RampUpActionOnDisconnect <String>] [-RampUpActionOnLogoff <String>] [-RampUpAutoStartHost <String>]
  [-RampUpMinutesToWaitOnDisconnect <Int32>] [-RampUpMinutesToWaitOnLogoff <Int32>]
  [-RampUpStartTimeHour <Int32>] [-RampUpStartTimeMinute <Int32>] [-RampUpStartVMOnConnect <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -416,21 +416,6 @@ The desired configuration of Start VM On Connect for the hostpool during the pea
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityScalingPlanExpanded, UpdateViaIdentityExpanded
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

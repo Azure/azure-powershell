@@ -15,14 +15,14 @@ Gets the logs for an operation on an environment.
 ### Get (Default)
 ```
 Get-AzDevCenterUserEnvironmentLog -Endpoint <String> -EnvironmentName <String> -OperationId <String>
- -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserEnvironmentLog -DevCenterName <String> -EnvironmentName <String> -OperationId <String>
- -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -117,21 +117,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
