@@ -1100,7 +1100,7 @@ Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Manage
     - The parameter : 'SourceEndpoint' is being replaced by parameter : 'PartnerEndpoint'.
     - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
   - `-TargetDatabase`
-    - The parameter 'TargetDatabase' is being replaced by parameter 'Database'. The type of new parameter is changing from 'String' to 'String[]'
+    - The parameter 'TargetDatabase' is being replaced by parameter 'Database'. The type of new parameter is changing from 'string' to 'string[]'
     - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
 
 
