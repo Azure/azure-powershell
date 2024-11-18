@@ -939,5 +939,9 @@
   {
     "alias": "NeonPostgres",
     "module": "NeonPostgres"
+  },
+  {
+    "module": "ComputeFleet",
+    "alias": "ComputeFleet"
   }
 ]
