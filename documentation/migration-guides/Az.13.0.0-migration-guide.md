@@ -154,11 +154,10 @@ Default value of `-PublicIpSku` will be Standard if it is not specified
 
 
 #### Before
-```powershell
 
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
@@ -167,12 +166,10 @@ Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.;
 ```
 - ProvisioningState is type System.String
 - HardwareProfileSKuName is type System.String
-```
 #### After
-```powershell
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -183,7 +180,6 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 - ProvisioningState is type DevBoxProvisioningState. Possible values will be Creating, Deleting, Failed, InGracePeriod, NotProvisioned, ProvisionedWithWarning, Provisioning, Starting, Stopping, Succeeded, Updating.
 - HardwareProfileSKuName is type SkuName. Possible values will be general_a_16c64gb1024ssd_v2, general_a_16c64gb2048ssd_v2, general_a_16c64gb256ssd_v2, general_a_16c64gb512ssd_v2, general_a_32c128gb1024ssd_v2, general_a_32c128gb2048ssd_v2, general_a_32c128gb512ssd_v2, general_a_8c32gb1024ssd_v2, general_a_8c32gb2048ssd_v2, general_a_8c32gb256ssd_v2, general_a_8c32gb512ssd_v2, general_i_16c64gb1024ssd_v2, general_i_16c64gb2048ssd_v2, general_i_16c64gb256ssd_v2, general_i_16c64gb512ssd_v2, general_i_32c128gb1024ssd_v2, general_i_32c128gb2048ssd_v2, general_i_32c128gb512ssd_v2, general_i_8c32gb1024ssd_v2, general_i_8c32gb2048ssd_v2, general_i_8c32gb256ssd_v2, general_i_8c32gb512ssd_v2
-```
 
 
 ### `Get-AzDevCenterUserDevBoxOperation`
@@ -197,10 +193,9 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 
 #### Before
-```powershell
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
@@ -209,12 +204,10 @@ Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.;
 ```
 
 - Status is type DevBoxOperationStatus
-```
 #### After
-```powershell
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -224,7 +217,6 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 ```
 
 - Status is type OperationState. The possible values are the same (Canceled, Failed, NotStarted, Running, Succeeded). The change is a rename from DevBoxOperationStatus to OperationState.
-```
 
 
 ### `Get-AzDevCenterUserEnvironment`
@@ -238,10 +230,9 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 
 #### Before
-```powershell
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
@@ -250,12 +241,10 @@ Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.;
 ```
 
 - ProvisioningState is type System.String
-```
 #### After
-```powershell
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -265,7 +254,6 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 ```
 
 - ProvisioningState is type EnvironmentProvisioningState. Possible values will be Accepted, Canceled, Creating, Deleting, Failed, MovingResources, Preparing, Running, StorageProvisioningFailed, Succeeded, Syncing, TransientFailure, Updating.
-```
 
 
 ### `Get-AzDevCenterUserEnvironmentAction`
@@ -280,11 +268,11 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 #### Before
 ```powershell
-- NextScheduledTime is type System.DateTime
+NextScheduledTime is type System.DateTime
 ```
 #### After
 ```powershell
-- NextScheduledTime is type nullable System.DateTime
+NextScheduledTime is type nullable System.DateTime
 ```
 
 
@@ -308,13 +296,13 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
 ```powershell
--Output type is string representation of logs
--Outfile parameter is removed
--Passthru parameter is removed
+Output type is string representation of logs
+Outfile parameter is removed
+Passthru parameter is removed
 ```
 
 
@@ -329,10 +317,9 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 
 #### Before
-```powershell
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
@@ -342,12 +329,10 @@ Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.;
 
 -Status is type EnvironmentOperationStatus
 -EnvironmentParameter is type IAny
-```
 #### After
-```powershell
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -360,7 +345,6 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 -EnvironmentParameter is type EnvironmentOperationEnvironmentParameters. This is serializable to JSON and to function as an associative array (dictionary) of objects
 
 
-```
 
 
 ### `Get-AzDevCenterUserPool`
@@ -375,11 +359,11 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 #### Before
 ```powershell
-- HardwareProfileSKuName is type System.String
+HardwareProfileSKuName is type System.String
 ```
 #### After
 ```powershell
-- HardwareProfileSKuName is type SkuName. Possible values will be general_a_16c64gb1024ssd_v2, general_a_16c64gb2048ssd_v2, general_a_16c64gb256ssd_v2, general_a_16c64gb512ssd_v2, general_a_32c128gb1024ssd_v2, general_a_32c128gb2048ssd_v2, general_a_32c128gb512ssd_v2, general_a_8c32gb1024ssd_v2, general_a_8c32gb2048ssd_v2, general_a_8c32gb256ssd_v2, general_a_8c32gb512ssd_v2, general_i_16c64gb1024ssd_v2, general_i_16c64gb2048ssd_v2, general_i_16c64gb256ssd_v2, general_i_16c64gb512ssd_v2, general_i_32c128gb1024ssd_v2, general_i_32c128gb2048ssd_v2, general_i_32c128gb512ssd_v2, general_i_8c32gb1024ssd_v2, general_i_8c32gb2048ssd_v2, general_i_8c32gb256ssd_v2, general_i_8c32gb512ssd_v2
+HardwareProfileSKuName is type SkuName. Possible values will be general_a_16c64gb1024ssd_v2, general_a_16c64gb2048ssd_v2, general_a_16c64gb256ssd_v2, general_a_16c64gb512ssd_v2, general_a_32c128gb1024ssd_v2, general_a_32c128gb2048ssd_v2, general_a_32c128gb512ssd_v2, general_a_8c32gb1024ssd_v2, general_a_8c32gb2048ssd_v2, general_a_8c32gb256ssd_v2, general_a_8c32gb512ssd_v2, general_i_16c64gb1024ssd_v2, general_i_16c64gb2048ssd_v2, general_i_16c64gb256ssd_v2, general_i_16c64gb512ssd_v2, general_i_32c128gb1024ssd_v2, general_i_32c128gb2048ssd_v2, general_i_32c128gb512ssd_v2, general_i_8c32gb1024ssd_v2, general_i_8c32gb2048ssd_v2, general_i_8c32gb256ssd_v2, general_i_8c32gb512ssd_v2
 ```
 
 
@@ -394,22 +378,19 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 
 #### Before
-```powershell
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
 Target     : resourceName
 Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.; Target=resourceName}, @{Code=ResourceGroupNotFound; Message=The specified resource group does not exist.; Target=resourceGroupName}}
 ```
-```
 #### After
-```powershell
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -418,7 +399,6 @@ Detail     : {@{Code=MissingParameter; Message=A required parameter is missing.;
 Innererror : @{Code=InnerErrorCode; Message=More specific information about the error.}
 ```
 
-```
 
 
 ### `Invoke-AzDevCenterUserDelayEnvironmentAction`
@@ -433,11 +413,11 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 #### Before
 ```powershell
-- NextScheduledTime is type System.DateTime
+NextScheduledTime is type System.DateTime
 ```
 #### After
 ```powershell
-- NextScheduledTime is type nullable System.DateTime
+NextScheduledTime is type nullable System.DateTime
 ```
 
 
@@ -452,11 +432,10 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 
 #### Before
-```powershell
 
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
@@ -466,12 +445,10 @@ Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.;
 
 - ProvisioningState is type System.String
 - HardwareProfileSKuName is type System.String
-```
 #### After
-```powershell
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -482,7 +459,6 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 - ProvisioningState is type DevBoxProvisioningState. Possible values will be Creating, Deleting, Failed, InGracePeriod, NotProvisioned, ProvisionedWithWarning, Provisioning, Starting, Stopping, Succeeded, Updating.
 - HardwareProfileSKuName is type SkuName. Possible values will be general_a_16c64gb1024ssd_v2, general_a_16c64gb2048ssd_v2, general_a_16c64gb256ssd_v2, general_a_16c64gb512ssd_v2, general_a_32c128gb1024ssd_v2, general_a_32c128gb2048ssd_v2, general_a_32c128gb512ssd_v2, general_a_8c32gb1024ssd_v2, general_a_8c32gb2048ssd_v2, general_a_8c32gb256ssd_v2, general_a_8c32gb512ssd_v2, general_i_16c64gb1024ssd_v2, general_i_16c64gb2048ssd_v2, general_i_16c64gb256ssd_v2, general_i_16c64gb512ssd_v2, general_i_32c128gb1024ssd_v2, general_i_32c128gb2048ssd_v2, general_i_32c128gb512ssd_v2, general_i_8c32gb1024ssd_v2, general_i_8c32gb2048ssd_v2, general_i_8c32gb256ssd_v2, general_i_8c32gb512ssd_v2
-```
 
 
 ### `Update-AzDevCenterUserEnvironment`
@@ -494,10 +470,9 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
   - The change is expected to take effect from version : '2.0.0'
 
 #### Before
-```powershell
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
@@ -506,12 +481,10 @@ Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.;
 ```
 
 - ProvisioningState is type System.String
-```
 #### After
-```powershell
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -521,7 +494,6 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 ```
 
 - ProvisioningState is type EnvironmentProvisioningState. Possible values will be Accepted, Canceled, Creating, Deleting, Failed, MovingResources, Preparing, Running, StorageProvisioningFailed, Succeeded, Syncing, TransientFailure, Updating.
-```
 
 
 ### `Deploy-AzDevCenterUserEnvironment`
@@ -532,13 +504,12 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
-```powershell
--Output type is Environment
+- Output type is Environment
 
-Example output:
+- Example output:
 ```powershell
 Name                     : myEnvironment
 EnvironmentType          : dev
@@ -546,7 +517,6 @@ User                     : 00000000-0000-0000-0000-000000000000
 ProvisioningState        : Succeeded
 CatalogName              : devCatalog
 EnvironmentDefinitionName: FunctionApp
-```
 ```
 
 
@@ -558,16 +528,14 @@ EnvironmentDefinitionName: FunctionApp
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
-```powershell
--Output type is Catalog
+- Output type is Catalog
 
-Example output:
+- Example output:
 ```powershell
 Name: myCatalogName
-```
 ```
 
 
@@ -579,13 +547,12 @@ Name: myCatalogName
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
-```powershell
--Output type is Environment
+- Output type is Environment
 
-Example output:
+- Example output:
 ```powershell
 Name                     : myEnvironment
 EnvironmentType          : dev
@@ -593,7 +560,6 @@ User                     : 00000000-0000-0000-0000-000000000000
 ProvisioningState        : Succeeded
 CatalogName              : devCatalog
 EnvironmentDefinitionName: FunctionApp
-```
 ```
 
 
@@ -605,12 +571,11 @@ EnvironmentDefinitionName: FunctionApp
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
-```powershell
--Output type is OperationStatus
-Example output: 
+- Output type is OperationStatus
+- Example output: 
 ```powershell
 Code             : ResourceNotFound
 Detail           : {@{Code=InvalidResourceName; Message=The resource name is invalid.; Target=resourceName}}
@@ -627,7 +592,6 @@ ResourceId       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceG
 StartTime        : 10/1/2023 12:00:00 PM
 Status           : Succeeded
 Target           : resourceName
-```
 ```
 
 
@@ -639,12 +603,11 @@ Target           : resourceName
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
-```powershell
--Output type is OperationStatus
-Example output: 
+- Output type is OperationStatus
+- Example output: 
 ```powershell
 Code             : ResourceNotFound
 Detail           : {@{Code=InvalidResourceName; Message=The resource name is invalid.; Target=resourceName}}
@@ -661,7 +624,6 @@ ResourceId       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceG
 StartTime        : 10/1/2023 12:00:00 PM
 Status           : Succeeded
 Target           : resourceName
-```
 ```
 
 
@@ -673,12 +635,11 @@ Target           : resourceName
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
-```powershell
--Output type is OperationStatus
-Example output: 
+- Output type is OperationStatus
+- Example output: 
 ```powershell
 Code             : ResourceNotFound
 Detail           : {@{Code=InvalidResourceName; Message=The resource name is invalid.; Target=resourceName}}
@@ -695,7 +656,6 @@ ResourceId       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceG
 StartTime        : 10/1/2023 12:00:00 PM
 Status           : Succeeded
 Target           : resourceName
-```
 ```
 
 
@@ -707,12 +667,11 @@ Target           : resourceName
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
-```powershell
--Output type is OperationStatus
-Example output: 
+- Output type is OperationStatus
+- Example output: 
 ```powershell
 Code             : ResourceNotFound
 Detail           : {@{Code=InvalidResourceName; Message=The resource name is invalid.; Target=resourceName}}
@@ -729,7 +688,6 @@ ResourceId       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceG
 StartTime        : 10/1/2023 12:00:00 PM
 Status           : Succeeded
 Target           : resourceName
-```
 ```
 
 
@@ -741,12 +699,11 @@ Target           : resourceName
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
-```powershell
--Output type is OperationStatus
-Example output: 
+- Output type is OperationStatus
+- Example output: 
 ```powershell
 Code             : ResourceNotFound
 Detail           : {@{Code=InvalidResourceName; Message=The resource name is invalid.; Target=resourceName}}
@@ -763,7 +720,6 @@ ResourceId       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceG
 StartTime        : 10/1/2023 12:00:00 PM
 Status           : Succeeded
 Target           : resourceName
-```
 ```
 
 
@@ -775,12 +731,11 @@ Target           : resourceName
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
-```powershell
--Output type is OperationStatus
-Example output: 
+- Output type is OperationStatus
+- Example output: 
 ```powershell
 Code             : ResourceNotFound
 Detail           : {@{Code=InvalidResourceName; Message=The resource name is invalid.; Target=resourceName}}
@@ -797,7 +752,6 @@ ResourceId       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceG
 StartTime        : 10/1/2023 12:00:00 PM
 Status           : Succeeded
 Target           : resourceName
-```
 ```
 
 
