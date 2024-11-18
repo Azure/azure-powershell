@@ -19,14 +19,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     internal class TemplateValidationInfo
     {
-        public TemplateValidationInfo(List<Provider> requiredProviders, List<ErrorDetail> errors)
+        public TemplateValidationInfo(List<Provider> requiredProviders, List<ErrorDetail> errors, List<DeploymentDiagnosticsDefinition> diagnostics)
         {
             Errors = errors;
             RequiredProviders = requiredProviders;
+            Diagnostics = diagnostics;
         }
 
         public List<ErrorDetail> Errors { get; set; }
 
         public List<Provider> RequiredProviders { get; set; }
+
+        public List<DeploymentDiagnosticsDefinition> Diagnostics { get; set; }
     }
 }

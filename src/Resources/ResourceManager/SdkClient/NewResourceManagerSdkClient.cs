@@ -491,9 +491,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 switch (validationResult)
                 {
                     case DeploymentExtended deploymentExtended:
-                        return new TemplateValidationInfo(deploymentExtended.Properties?.Providers?.ToList() ?? new List<Provider>(), new List<ErrorDetail>());
+                        return new TemplateValidationInfo(deploymentExtended.Properties?.Providers?.ToList() ?? new List<Provider>(), new List<ErrorDetail>(), deploymentExtended.Properties?.Diagnostics?.ToList() ?? new List<DeploymentDiagnosticsDefinition>());
                     case DeploymentValidationError deploymentValidationError:
-                        return new TemplateValidationInfo(new List<Provider>(), new List<ErrorDetail>(deploymentValidationError.Error.AsArray()));
+                        return new TemplateValidationInfo(new List<Provider>(), new List<ErrorDetail>(deploymentValidationError.Error.AsArray()), new List<DeploymentDiagnosticsDefinition>());
                     default:
                         throw new InvalidOperationException($"Received unexpected type {validationResult.GetType()}");
                 }
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             catch (Exception ex)
             {
                 var error = HandleError(ex).FirstOrDefault();
-                return new TemplateValidationInfo(new List<Provider>(), error.AsArray().ToList());
+                return new TemplateValidationInfo(new List<Provider>(), error.AsArray().ToList(), new List<DeploymentDiagnosticsDefinition>());
             }
         }
 
@@ -1731,8 +1731,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 WriteVerbose(ProjectResources.TemplateValid);
             }
-            return validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList();
+
+            //var builder = new ColoredStringBuilder();
+
+            //var errors = validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList();
+
+            //var formatter = new WhatIfOperationResultFormatter(builder);
+
+            //FormatErrors(errors, builder);
+            //formatter.FormatDiagnostics(validationInfo.Diagnostics, new List<PSWhatIfChange>());
+
+
+            //return builder.ToString();
+
+            return validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).Concat(validationInfo.Diagnostics.Select(e => new ErrorDetail(code: e.Level, message: $"{e.Code} - {e.Target} {e.Message}").ToPSResourceManagerError())).ToList();
         }
+
+        //private void FormatErrors(List<PSResourceManagerError> errors, ColoredStringBuilder builder)
+        //{
+        //    if (errors == null || errors.Count == 0)
+        //    {
+        //        return;
+        //    }
+        //    foreach (var error in errors)
+        //    {
+        //        builder.Append($"{error.Code} - {error.Message}");
+        //        builder.AppendLine();
+
+        //    }
+        //    builder.AppendLine();
+        //}
 
         public string GetDeploymentErrorMessagesWithOperationId(DeploymentOperationErrorInfo errorInfo, string deploymentName = null, string correlationId = null)
         {

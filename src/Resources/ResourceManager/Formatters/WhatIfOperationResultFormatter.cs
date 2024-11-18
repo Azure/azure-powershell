@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
                 }
                 foreach (var change in unsupportedChanges)
                 {
-                    diagnostics.Add(new DeploymentDiagnosticsDefinition(Level.Warning, "UnsupportedChange", change.UnsupportedReason, change.FullyQualifiedResourceId));
+                    diagnostics.Add(new DeploymentDiagnosticsDefinition(level: Level.Warning, code: "Unsupported", message: change.UnsupportedReason, target: change.FullyQualifiedResourceId));
                 }
             }
             
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
             this.Builder.AppendLine().AppendLine();
 
-            this.Builder.Append("Diagnostics: ").AppendLine();
+            this.Builder.Append($"Diagnostics ({diagnostics.Count}): ").AppendLine();
             
             diagnostics.ForEach(d =>
             {

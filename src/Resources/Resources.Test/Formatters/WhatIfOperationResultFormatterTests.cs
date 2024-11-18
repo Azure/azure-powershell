@@ -453,7 +453,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
                 {
                     ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo",
                     ChangeType = ChangeType.Unsupported,
-                    UnsupportedReason = "Unable to determine the source"
+                    UnsupportedReason = "Unable to determine the source."
                 }
             };
 
@@ -462,9 +462,9 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
                 new DeploymentDiagnosticsDefinition("Warning", "Code", "Nested Deployment Skipped.", "resource1")
             };
 
-            string expected = $@"Diagnostics: 
+            string expected = $@"Diagnostics (2): 
 {Color.DarkYellow}(resource1) Nested Deployment Skipped. (Code)
-{Color.Reset}{Color.DarkYellow}(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source (UnsupportedChange)
+{Color.Reset}{Color.DarkYellow}(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source. (Unsupported)
 {Color.Reset}";
 
             // Act.
@@ -484,7 +484,7 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
                 new DeploymentDiagnosticsDefinition("Warning", "Code", "Nested Deployment Skipped.", "resource1")
             };
 
-            string expected = $@"Diagnostics: 
+            string expected = $@"Diagnostics (1): 
 {Color.DarkYellow}(resource1) Nested Deployment Skipped. (Code)
 {Color.Reset}";
 
@@ -506,12 +506,12 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
                 {
                     ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo",
                     ChangeType = ChangeType.Unsupported,
-                    UnsupportedReason = "Unable to determine the source"
+                    UnsupportedReason = "Unable to determine the source."
                 }
             };
 
-            string expected = $@"Diagnostics: 
-{Color.DarkYellow}(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source (UnsupportedChange)
+            string expected = $@"Diagnostics (1): 
+{Color.DarkYellow}(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source. (Unsupported)
 {Color.Reset}";
 
             // Act.
