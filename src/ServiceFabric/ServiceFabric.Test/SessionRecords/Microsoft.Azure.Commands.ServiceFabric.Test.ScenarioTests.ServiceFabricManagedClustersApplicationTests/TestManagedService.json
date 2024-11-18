@@ -3750,7 +3750,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/sfmcps-rg-ps4358/providers/Microsoft.ServiceFabric/managedClusters/sfmcps-ps279/applicationTypes/VotingType/versions/1.0.0\",\r\n  \"type\": \"Microsoft.ServiceFabric/managedclusters/applicationTypes/versions\",\r\n  \"location\": \"southcentralus\",\r\n  \"name\": \"1.0.0\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"mwesigwaguma@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2024-10-08T16:30:53.8418173-04:00\",\r\n    \"lastModifiedBy\": \"mwesigwaguma@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2024-10-08T16:30:53.8418173-04:00\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"appPackageUrl\": \"https://sfmcpsacc.blob.core.windows.net/sfmcptest/Voting.sfpkg?sp=racwdyti&st=2024-10-08T18:15:25Z&se=2024-11-10T03:15:25Z&sv=2022-11-02&sr=b&sig=ariv2Dgs1rkTgzGYGjyDcVkfUCgsleZ2bkC9%2BcBpXs4%3D\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/sfmcps-rg-ps4358/providers/Microsoft.ServiceFabric/managedClusters/sfmcps-ps279/applicationTypes/VotingType/versions/1.0.0\",\r\n  \"type\": \"Microsoft.ServiceFabric/managedclusters/applicationTypes/versions\",\r\n  \"location\": \"southcentralus\",\r\n  \"name\": \"1.0.0\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"mwesigwaguma@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2024-10-08T16:30:53.8418173-04:00\",\r\n    \"lastModifiedBy\": \"mwesigwaguma@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2024-10-08T16:30:53.8418173-04:00\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"appPackageUrl\": \"https://sfmcpsacc.blob.core.windows.net/sfmcptest/Voting.sfpkg?sp=racwdyti&st=2024-10-08T18:15:25Z&se=2024-11-10T03:15:25Z&sv=2022-11-02&sr=0000000000000000000000000000000000000000000000000000\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -3777,7 +3777,7 @@
           "280"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"appPackageUrl\": \"https://sfmcpsacc.blob.core.windows.net/sfmcptest/Voting.sfpkg?sp=racwdyti&st=2024-10-08T18:15:25Z&se=2024-11-10T03:15:25Z&sv=2022-11-02&sr=b&sig=ariv2Dgs1rkTgzGYGjyDcVkfUCgsleZ2bkC9%2BcBpXs4%3D\"\r\n  },\r\n  \"location\": \"southcentralus\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"appPackageUrl\": \"https://sfmcpsacc.blob.core.windows.net/sfmcptest/Voting.sfpkg?sp=racwdyti&st=2024-10-08T18:15:25Z&se=2024-11-10T03:15:25Z&sv=2022-11-02&sr=0000000000000000000000000000000000000000000000000000\"\r\n  },\r\n  \"location\": \"southcentralus\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -3828,7 +3828,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/sfmcps-rg-ps4358/providers/Microsoft.ServiceFabric/managedClusters/sfmcps-ps279/applicationTypes/VotingType/versions/1.0.0\",\r\n  \"type\": \"Microsoft.ServiceFabric/managedclusters/applicationTypes/versions\",\r\n  \"location\": \"southcentralus\",\r\n  \"name\": \"1.0.0\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"mwesigwaguma@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2024-10-08T16:30:53.8418173-04:00\",\r\n    \"lastModifiedBy\": \"mwesigwaguma@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2024-10-08T16:30:53.8418173-04:00\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"appPackageUrl\": \"https://sfmcpsacc.blob.core.windows.net/sfmcptest/Voting.sfpkg?sp=racwdyti&st=2024-10-08T18:15:25Z&se=2024-11-10T03:15:25Z&sv=2022-11-02&sr=b&sig=ariv2Dgs1rkTgzGYGjyDcVkfUCgsleZ2bkC9%2BcBpXs4%3D\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b36cdf46-b75d-4dc2-9fe1-1296ee8c623d/resourcegroups/sfmcps-rg-ps4358/providers/Microsoft.ServiceFabric/managedClusters/sfmcps-ps279/applicationTypes/VotingType/versions/1.0.0\",\r\n  \"type\": \"Microsoft.ServiceFabric/managedclusters/applicationTypes/versions\",\r\n  \"location\": \"southcentralus\",\r\n  \"name\": \"1.0.0\",\r\n  \"systemData\": {\r\n    \"createdBy\": \"mwesigwaguma@microsoft.com\",\r\n    \"createdByType\": \"User\",\r\n    \"createdAt\": \"2024-10-08T16:30:53.8418173-04:00\",\r\n    \"lastModifiedBy\": \"mwesigwaguma@microsoft.com\",\r\n    \"lastModifiedByType\": \"User\",\r\n    \"lastModifiedAt\": \"2024-10-08T16:30:53.8418173-04:00\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"appPackageUrl\": \"https://sfmcpsacc.blob.core.windows.net/sfmcptest/Voting.sfpkg?sp=racwdyti&st=2024-10-08T18:15:25Z&se=2024-11-10T03:15:25Z&sv=2022-11-02&sr=0000000000000000000000000000000000000000000000000000\"\r\n  }\r\n}",
       "StatusCode": 202
     },
     {
