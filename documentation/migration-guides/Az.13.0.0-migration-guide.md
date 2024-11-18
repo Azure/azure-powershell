@@ -1067,7 +1067,7 @@ Update-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAccount" -B
 - Cmdlet breaking-change will happen to all parameter sets
   - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
   - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
-  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
+  - The following properties are being added to the output type : 'Database' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
   - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
 
 
@@ -1086,7 +1086,7 @@ Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Manage
 - Cmdlet breaking-change will happen to all parameter sets
   - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
   - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
-  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
+  - The following properties are being added to the output type : 'Database' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
   - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
 
 - Parameter breaking-change will happen to all parameter sets
@@ -1100,7 +1100,7 @@ Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Manage
     - The parameter : 'SourceEndpoint' is being replaced by parameter : 'PartnerEndpoint'.
     - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
   - `-TargetDatabase`
-    - The parameter 'TargetDatabase' is being replaced by parameter 'Databases'. The type of new parameter is changing from 'String' to 'List<String>'
+    - The parameter 'TargetDatabase' is being replaced by parameter 'Database'. The type of new parameter is changing from 'String' to 'String[]'
     - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
 
 
@@ -1120,7 +1120,7 @@ New-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Manage
 - Cmdlet breaking-change will happen to all parameter sets
   - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
   - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
-  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
+  - The following properties are being added to the output type : 'Database' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
   - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
 
 
@@ -1139,7 +1139,7 @@ Remove-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "Man
 - Cmdlet breaking-change will happen to all parameter sets
   - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model.AzureSqlManagedInstanceLinkModel' is changing
   - The following properties in the output type are being deprecated : 'TargetDatabase' 'PrimaryAvailabilityGroupName' 'SecondaryAvailabilityGroupName' 'SourceEndpoint' 'SourceReplicaId' 'TargetReplicaId' 'LinkState' 'LastHardenedLsn'
-  - The following properties are being added to the output type : 'Databases' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
+  - The following properties are being added to the output type : 'Database' 'DistributedAvailabilityGroupName ' 'InstanceAvailabilityGroupName' 'PartnerAvailabilityGroupName' 'InstanceLinkRole' 'PartnerLinkRole' 'FailoverMode' 'SeedingMode' 'PartnerEndpoint'
   - This change is expected to take effect from Az.Sql version: 6.0.0 and Az version: 13.0.0
 
 
