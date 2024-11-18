@@ -169,7 +169,7 @@ Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.;
 #### After
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -207,7 +207,7 @@ Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.;
 #### After
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -244,7 +244,7 @@ Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.;
 #### After
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -268,11 +268,11 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 #### Before
 ```powershell
-- NextScheduledTime is type System.DateTime
+NextScheduledTime is type System.DateTime
 ```
 #### After
 ```powershell
-- NextScheduledTime is type nullable System.DateTime
+NextScheduledTime is type nullable System.DateTime
 ```
 
 
@@ -300,9 +300,9 @@ Output type is Boolean
 ```
 #### After
 ```powershell
--Output type is string representation of logs
--Outfile parameter is removed
--Passthru parameter is removed
+Output type is string representation of logs
+Outfile parameter is removed
+Passthru parameter is removed
 ```
 
 
@@ -332,7 +332,7 @@ Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.;
 #### After
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -359,11 +359,11 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 #### Before
 ```powershell
-- HardwareProfileSKuName is type System.String
+HardwareProfileSKuName is type System.String
 ```
 #### After
 ```powershell
-- HardwareProfileSKuName is type SkuName. Possible values will be general_a_16c64gb1024ssd_v2, general_a_16c64gb2048ssd_v2, general_a_16c64gb256ssd_v2, general_a_16c64gb512ssd_v2, general_a_32c128gb1024ssd_v2, general_a_32c128gb2048ssd_v2, general_a_32c128gb512ssd_v2, general_a_8c32gb1024ssd_v2, general_a_8c32gb2048ssd_v2, general_a_8c32gb256ssd_v2, general_a_8c32gb512ssd_v2, general_i_16c64gb1024ssd_v2, general_i_16c64gb2048ssd_v2, general_i_16c64gb256ssd_v2, general_i_16c64gb512ssd_v2, general_i_32c128gb1024ssd_v2, general_i_32c128gb2048ssd_v2, general_i_32c128gb512ssd_v2, general_i_8c32gb1024ssd_v2, general_i_8c32gb2048ssd_v2, general_i_8c32gb256ssd_v2, general_i_8c32gb512ssd_v2
+HardwareProfileSKuName is type SkuName. Possible values will be general_a_16c64gb1024ssd_v2, general_a_16c64gb2048ssd_v2, general_a_16c64gb256ssd_v2, general_a_16c64gb512ssd_v2, general_a_32c128gb1024ssd_v2, general_a_32c128gb2048ssd_v2, general_a_32c128gb512ssd_v2, general_a_8c32gb1024ssd_v2, general_a_8c32gb2048ssd_v2, general_a_8c32gb256ssd_v2, general_a_8c32gb512ssd_v2, general_i_16c64gb1024ssd_v2, general_i_16c64gb2048ssd_v2, general_i_16c64gb256ssd_v2, general_i_16c64gb512ssd_v2, general_i_32c128gb1024ssd_v2, general_i_32c128gb2048ssd_v2, general_i_32c128gb512ssd_v2, general_i_8c32gb1024ssd_v2, general_i_8c32gb2048ssd_v2, general_i_8c32gb256ssd_v2, general_i_8c32gb512ssd_v2
 ```
 
 
@@ -390,7 +390,7 @@ Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.;
 #### After
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -413,11 +413,11 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 #### Before
 ```powershell
-- NextScheduledTime is type System.DateTime
+NextScheduledTime is type System.DateTime
 ```
 #### After
 ```powershell
-- NextScheduledTime is type nullable System.DateTime
+NextScheduledTime is type nullable System.DateTime
 ```
 
 
@@ -448,7 +448,7 @@ Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.;
 #### After
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -484,7 +484,7 @@ Detail     : {@{Code=InvalidResourceName; Message=The resource name is invalid.;
 #### After
 - Detail is type AzureCoreFoundationsError. Innererror property is added for additional error information. AzureCoreFoundationsError uses an array of IAzureCoreFoundationsError for the Detail property.
 
-Example output for Detail: 
+- Example output for Detail: 
 ```powershell
 Code       : InvalidRequest
 Message    : The request is invalid.
@@ -507,9 +507,9 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 Output type is Boolean
 ```
 #### After
--Output type is Environment
+- Output type is Environment
 
-Example output:
+- Example output:
 ```powershell
 Name                     : myEnvironment
 EnvironmentType          : dev
@@ -531,9 +531,9 @@ EnvironmentDefinitionName: FunctionApp
 Output type is Boolean
 ```
 #### After
--Output type is Catalog
+- Output type is Catalog
 
-Example output:
+- Example output:
 ```powershell
 Name: myCatalogName
 ```
@@ -550,9 +550,9 @@ Name: myCatalogName
 Output type is Boolean
 ```
 #### After
--Output type is Environment
+- Output type is Environment
 
-Example output:
+- Example output:
 ```powershell
 Name                     : myEnvironment
 EnvironmentType          : dev
