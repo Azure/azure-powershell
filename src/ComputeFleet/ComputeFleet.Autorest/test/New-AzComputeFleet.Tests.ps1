@@ -18,7 +18,7 @@ Describe 'New-AzComputeFleet' {
     It 'Create' {
         {
             $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
-            $securedPassword = ConvertTo-SecureString -AsPlainText "testPassword01%" -Force
+            $securedPassword = ConvertTo-SecureString -AsPlainText "examplePassword" -Force
             $fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
             $fleet = New-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName "testFleet5" -Resource $fleet
             $fleet.Name | Should -Be "testFleet5"

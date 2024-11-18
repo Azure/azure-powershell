@@ -1,7 +1,7 @@
 ### Example 1: Create a new compute fleet resource by ResourceGroupName and FleetName
 ```powershell
 $fleet = Get-AzComputeFleet -ResourceGroupName "test-fleet" -FleetName "testFleet2"
-$securedPassword = ConvertTo-SecureString -AsPlainText "testPassword01%" -Force
+$securedPassword = ConvertTo-SecureString -AsPlainText "examplePassword" -Force
 $fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
 New-AzComputeFleet -ResourceGroupName "test-fleet" -FleetName "testFleet" -Resource $fleet
 ```

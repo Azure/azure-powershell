@@ -1,7 +1,7 @@
 ### Example 1: Update a compute fleet resource by ResourceGroupName and FleetName
 ```powershell
 $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName "test-fleet" -FleetName "testFleet"
-$securedPassword = ConvertTo-SecureString -AsPlainText "testPassword01%" -Force
+$securedPassword = ConvertTo-SecureString -AsPlainText "examplePassword" -Force
 $fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
 $fleet.AcceleratorCountMax = 3
 Update-AzComputeFleet -ResourceGroupName "test-fleet" -FleetName "testFleet" -Resource $fleet
@@ -159,7 +159,7 @@ This command updates a compute fleet resource by ResourceGroupName and FleetName
 ### Example 2: Update a compute fleet resource by Identity
 ```powershell
 $fleet = Get-AzComputeFleet -SubscriptionId "ca8520e1-3c83-4b64-bb99-60a64673daa3" -ResourceGroupName "test-fleet" -FleetName "testFleet"
-$securedPassword = ConvertTo-SecureString -AsPlainText "testPassword01%" -Force
+$securedPassword = ConvertTo-SecureString -AsPlainText "examplePassword" -Force
 $fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
 $fleet.MemoryInGiBMax = 500
 Update-AzComputeFleet -InputObject $fleet -Resource $fleet
