@@ -1732,35 +1732,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 WriteVerbose(ProjectResources.TemplateValid);
             }
 
-            //var builder = new ColoredStringBuilder();
-
-            //var errors = validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList();
-
-            //var formatter = new WhatIfOperationResultFormatter(builder);
-
-            //FormatErrors(errors, builder);
-            //formatter.FormatDiagnostics(validationInfo.Diagnostics, new List<PSWhatIfChange>());
-
-
-            //return builder.ToString();
-
             return validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).Concat(validationInfo.Diagnostics.Select(e => new ErrorDetail(code: e.Level, message: $"{e.Code} - {e.Target} {e.Message}").ToPSResourceManagerError())).ToList();
         }
-
-        //private void FormatErrors(List<PSResourceManagerError> errors, ColoredStringBuilder builder)
-        //{
-        //    if (errors == null || errors.Count == 0)
-        //    {
-        //        return;
-        //    }
-        //    foreach (var error in errors)
-        //    {
-        //        builder.Append($"{error.Code} - {error.Message}");
-        //        builder.AppendLine();
-
-        //    }
-        //    builder.AppendLine();
-        //}
 
         public string GetDeploymentErrorMessagesWithOperationId(DeploymentOperationErrorInfo errorInfo, string deploymentName = null, string correlationId = null)
         {
