@@ -157,7 +157,7 @@ Default value of `-PublicIpSku` will be Standard if it is not specified
 
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
@@ -195,7 +195,7 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 #### Before
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
@@ -232,7 +232,7 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 #### Before
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
@@ -296,7 +296,7 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
 ```powershell
@@ -319,7 +319,7 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 #### Before
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
@@ -380,7 +380,7 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 #### Before
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
@@ -435,7 +435,7 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
@@ -472,7 +472,7 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 #### Before
 - Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
 
-Example output for Details:
+- Example output for Details:
 ```powershell
 Code       : ResourceNotFound
 Message    : The specified resource does not exist.
@@ -504,7 +504,7 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
 -Output type is Environment
@@ -528,7 +528,7 @@ EnvironmentDefinitionName: FunctionApp
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
 -Output type is Catalog
@@ -547,7 +547,7 @@ Name: myCatalogName
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
 -Output type is Environment
@@ -571,11 +571,11 @@ EnvironmentDefinitionName: FunctionApp
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
--Output type is OperationStatus
-Example output: 
+- Output type is OperationStatus
+- Example output: 
 ```powershell
 Code             : ResourceNotFound
 Detail           : {@{Code=InvalidResourceName; Message=The resource name is invalid.; Target=resourceName}}
@@ -603,11 +603,11 @@ Target           : resourceName
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
--Output type is OperationStatus
-Example output: 
+- Output type is OperationStatus
+- Example output: 
 ```powershell
 Code             : ResourceNotFound
 Detail           : {@{Code=InvalidResourceName; Message=The resource name is invalid.; Target=resourceName}}
@@ -635,11 +635,11 @@ Target           : resourceName
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
--Output type is OperationStatus
-Example output: 
+- Output type is OperationStatus
+- Example output: 
 ```powershell
 Code             : ResourceNotFound
 Detail           : {@{Code=InvalidResourceName; Message=The resource name is invalid.; Target=resourceName}}
@@ -667,11 +667,11 @@ Target           : resourceName
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
--Output type is OperationStatus
-Example output: 
+- Output type is OperationStatus
+- Example output: 
 ```powershell
 Code             : ResourceNotFound
 Detail           : {@{Code=InvalidResourceName; Message=The resource name is invalid.; Target=resourceName}}
@@ -699,11 +699,11 @@ Target           : resourceName
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
--Output type is OperationStatus
-Example output: 
+- Output type is OperationStatus
+- Example output: 
 ```powershell
 Code             : ResourceNotFound
 Detail           : {@{Code=InvalidResourceName; Message=The resource name is invalid.; Target=resourceName}}
@@ -731,11 +731,11 @@ Target           : resourceName
 
 #### Before
 ```powershell
--Output type is Boolean
+Output type is Boolean
 ```
 #### After
--Output type is OperationStatus
-Example output: 
+- Output type is OperationStatus
+- Example output: 
 ```powershell
 Code             : ResourceNotFound
 Detail           : {@{Code=InvalidResourceName; Message=The resource name is invalid.; Target=resourceName}}
