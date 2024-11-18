@@ -35,14 +35,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         /// <summary>The URL of the resource used to check the status of the asynchronous operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
-        ReadOnly = false,
+        ReadOnly = true,
         Read = true,
-        Create = true,
-        Update = true,
+        Create = false,
+        Update = false,
         Description = @"The URL of the resource used to check the status of the asynchronous operation.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        string Location { get; set; }
+        string Location { get;  }
 
     }
     /// Result of network security perimeter configurations.

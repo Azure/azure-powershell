@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 9.0.0
 * Made `-PublicIpSku` parameter Standard by default in `New-AzVM`
 
 ## Version 8.5.0

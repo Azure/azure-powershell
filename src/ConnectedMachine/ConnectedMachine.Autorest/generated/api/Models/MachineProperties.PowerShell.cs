@@ -121,6 +121,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ServiceStatuses = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatuses) content.GetValueForProperty("ServiceStatuses",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ServiceStatuses, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceStatusesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("HardwareProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfile) content.GetValueForProperty("HardwareProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.HardwareProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StorageProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).StorageProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IStorageProfile) content.GetValueForProperty("StorageProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).StorageProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.StorageProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FirmwareProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).FirmwareProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IFirmwareProfile) content.GetValueForProperty("FirmwareProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).FirmwareProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.FirmwareProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("CloudMetadata"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).CloudMetadata = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadata) content.GetValueForProperty("CloudMetadata",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).CloudMetadata, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.CloudMetadataTypeConverter.ConvertFrom);
@@ -257,6 +269,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).AgentConfigurationExtensionsEnabled = (string) content.GetValueForProperty("AgentConfigurationExtensionsEnabled",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).AgentConfigurationExtensionsEnabled, global::System.Convert.ToString);
             }
+            if (content.Contains("HardwareProfileProcessor"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfileProcessor = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProcessor>) content.GetValueForProperty("HardwareProfileProcessor",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfileProcessor, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProcessor>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProcessorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("StorageProfileDisk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).StorageProfileDisk = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk>) content.GetValueForProperty("StorageProfileDisk",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).StorageProfileDisk, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DiskTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("FirmwareProfileSerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).FirmwareProfileSerialNumber = (string) content.GetValueForProperty("FirmwareProfileSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).FirmwareProfileSerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("FirmwareProfileType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).FirmwareProfileType = (string) content.GetValueForProperty("FirmwareProfileType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).FirmwareProfileType, global::System.Convert.ToString);
+            }
             if (content.Contains("CloudMetadataProvider"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).CloudMetadataProvider = (string) content.GetValueForProperty("CloudMetadataProvider",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).CloudMetadataProvider, global::System.Convert.ToString);
@@ -304,6 +332,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("ServiceStatusesGuestConfigurationService"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ServiceStatusesGuestConfigurationService = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatus) content.GetValueForProperty("ServiceStatusesGuestConfigurationService",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ServiceStatusesGuestConfigurationService, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("HardwareProfileTotalPhysicalMemoryInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfileTotalPhysicalMemoryInByte = (long?) content.GetValueForProperty("HardwareProfileTotalPhysicalMemoryInByte",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfileTotalPhysicalMemoryInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("HardwareProfileNumberOfCpuSocket"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfileNumberOfCpuSocket = (int?) content.GetValueForProperty("HardwareProfileNumberOfCpuSocket",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfileNumberOfCpuSocket, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("AgentUpgradeEnableAutomaticUpgrade"))
             {
@@ -370,6 +406,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ServiceStatuses = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatuses) content.GetValueForProperty("ServiceStatuses",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ServiceStatuses, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceStatusesTypeConverter.ConvertFrom);
             }
+            if (content.Contains("HardwareProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IHardwareProfile) content.GetValueForProperty("HardwareProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.HardwareProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("StorageProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).StorageProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IStorageProfile) content.GetValueForProperty("StorageProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).StorageProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.StorageProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FirmwareProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).FirmwareProfile = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IFirmwareProfile) content.GetValueForProperty("FirmwareProfile",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).FirmwareProfile, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.FirmwareProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("CloudMetadata"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).CloudMetadata = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ICloudMetadata) content.GetValueForProperty("CloudMetadata",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).CloudMetadata, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.CloudMetadataTypeConverter.ConvertFrom);
@@ -506,6 +554,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).AgentConfigurationExtensionsEnabled = (string) content.GetValueForProperty("AgentConfigurationExtensionsEnabled",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).AgentConfigurationExtensionsEnabled, global::System.Convert.ToString);
             }
+            if (content.Contains("HardwareProfileProcessor"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfileProcessor = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProcessor>) content.GetValueForProperty("HardwareProfileProcessor",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfileProcessor, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IProcessor>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ProcessorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("StorageProfileDisk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).StorageProfileDisk = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk>) content.GetValueForProperty("StorageProfileDisk",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).StorageProfileDisk, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IDisk>(__y, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.DiskTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("FirmwareProfileSerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).FirmwareProfileSerialNumber = (string) content.GetValueForProperty("FirmwareProfileSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).FirmwareProfileSerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("FirmwareProfileType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).FirmwareProfileType = (string) content.GetValueForProperty("FirmwareProfileType",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).FirmwareProfileType, global::System.Convert.ToString);
+            }
             if (content.Contains("CloudMetadataProvider"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).CloudMetadataProvider = (string) content.GetValueForProperty("CloudMetadataProvider",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).CloudMetadataProvider, global::System.Convert.ToString);
@@ -553,6 +617,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("ServiceStatusesGuestConfigurationService"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ServiceStatusesGuestConfigurationService = (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IServiceStatus) content.GetValueForProperty("ServiceStatusesGuestConfigurationService",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).ServiceStatusesGuestConfigurationService, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ServiceStatusTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("HardwareProfileTotalPhysicalMemoryInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfileTotalPhysicalMemoryInByte = (long?) content.GetValueForProperty("HardwareProfileTotalPhysicalMemoryInByte",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfileTotalPhysicalMemoryInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("HardwareProfileNumberOfCpuSocket"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfileNumberOfCpuSocket = (int?) content.GetValueForProperty("HardwareProfileNumberOfCpuSocket",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachinePropertiesInternal)this).HardwareProfileNumberOfCpuSocket, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             }
             if (content.Contains("AgentUpgradeEnableAutomaticUpgrade"))
             {

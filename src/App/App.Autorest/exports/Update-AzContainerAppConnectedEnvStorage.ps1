@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update storage for a connectedEnvironment.
+update storage for a connectedEnvironment.
 .Description
-Update storage for a connectedEnvironment.
+update storage for a connectedEnvironment.
 .Example
 $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]
 

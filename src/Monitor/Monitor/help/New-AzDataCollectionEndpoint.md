@@ -17,7 +17,7 @@ create a data collection endpoint.
 New-AzDataCollectionEndpoint -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> [-Description <String>] [-EnableSystemAssignedIdentity] [-ImmutableId <String>]
  [-Kind <String>] [-NetworkAclsPublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 

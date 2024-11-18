@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create an connectedEnvironment.
+create an connectedEnvironment.
 .Description
-Create an connectedEnvironment.
+create an connectedEnvironment.
 .Example
 New-AzContainerAppConnectedEnv -Name azps-connectedenv -ResourceGroupName azps_test_group_app -Location eastus -ExtendedLocationName "/subscriptions/{subId}/resourceGroups/azps_test_group_app/providers/Microsoft.ExtendedLocation/customLocations/my-custom-location" -ExtendedLocationType CustomLocation
 

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"The operation to update a hybrid machine.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}", ApiVersion = "2024-07-10")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}", ApiVersion = "2024-07-31-preview")]
     public partial class UpdateAzConnectedMachine_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IContext
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         /// </summary>
         private int _responseSize = 0;
 
-        /// <summary>The correlation ID passed in from RSM per upgrade.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The correlation ID passed in from RSM per upgrade.")]
+        /// <summary>The correlation ID associated with an agent upgrade operation.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The correlation ID associated with an agent upgrade operation.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The correlation ID passed in from RSM per upgrade.",
+        Description = @"The correlation ID associated with an agent upgrade operation.",
         SerializedName = @"correlationId",
         PossibleTypes = new [] { typeof(string) })]
         public string AgentUpgradeCorrelationId { get => _parametersBody.AgentUpgradeCorrelationId ?? null; set => _parametersBody.AgentUpgradeCorrelationId = value; }
@@ -75,13 +75,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string AgentUpgradeDesiredVersion { get => _parametersBody.AgentUpgradeDesiredVersion ?? null; set => _parametersBody.AgentUpgradeDesiredVersion = value; }
 
-        /// <summary>Specifies if RSM should try to upgrade this machine</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies if RSM should try to upgrade this machine")]
+        /// <summary>Specifies if the machine's agent should be upgraded</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies if the machine's agent should be upgraded")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Specifies if RSM should try to upgrade this machine",
+        Description = @"Specifies if the machine's agent should be upgraded",
         SerializedName = @"enableAutomaticUpgrade",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
         public global::System.Management.Automation.SwitchParameter AgentUpgradeEnableAutomatic { get => _parametersBody.AgentUpgradeEnableAutomaticUpgrade ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.AgentUpgradeEnableAutomaticUpgrade = value; }

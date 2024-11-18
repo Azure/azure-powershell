@@ -16,7 +16,7 @@ Send a message to a user.
 ```
 Send-AzWvdUserSessionMessage -HostPoolName <String> -ResourceGroupName <String> -SessionHostName <String>
  [-SubscriptionId <String>] -UserSessionId <String> [-MessageBody <String>] [-MessageTitle <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,21 +24,21 @@ Send-AzWvdUserSessionMessage -HostPoolName <String> -ResourceGroupName <String> 
 ```
 Send-AzWvdUserSessionMessage -HostPoolName <String> -ResourceGroupName <String> -SessionHostName <String>
  [-SubscriptionId <String>] -UserSessionId <String> -JsonString <String> [-DefaultProfile <PSObject>]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SendViaJsonFilePath
 ```
 Send-AzWvdUserSessionMessage -HostPoolName <String> -ResourceGroupName <String> -SessionHostName <String>
  [-SubscriptionId <String>] -UserSessionId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SendViaIdentityHostPoolExpanded
 ```
 Send-AzWvdUserSessionMessage -SessionHostName <String> -UserSessionId <String>
  -HostPoolInputObject <IDesktopVirtualizationIdentity> [-MessageBody <String>] [-MessageTitle <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -46,27 +46,27 @@ Send-AzWvdUserSessionMessage -SessionHostName <String> -UserSessionId <String>
 ```
 Send-AzWvdUserSessionMessage -SessionHostName <String> -UserSessionId <String>
  -HostPoolInputObject <IDesktopVirtualizationIdentity> -SendMessage <ISendMessage> [-DefaultProfile <PSObject>]
- [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SendViaIdentitySessionHostExpanded
 ```
 Send-AzWvdUserSessionMessage -UserSessionId <String> -SessionHostInputObject <IDesktopVirtualizationIdentity>
  [-MessageBody <String>] [-MessageTitle <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SendViaIdentitySessionHost
 ```
 Send-AzWvdUserSessionMessage -UserSessionId <String> -SessionHostInputObject <IDesktopVirtualizationIdentity>
- -SendMessage <ISendMessage> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ -SendMessage <ISendMessage> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SendViaIdentityExpanded
 ```
 Send-AzWvdUserSessionMessage -InputObject <IDesktopVirtualizationIdentity> [-MessageBody <String>]
- [-MessageTitle <String>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ [-MessageTitle <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -217,21 +217,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
