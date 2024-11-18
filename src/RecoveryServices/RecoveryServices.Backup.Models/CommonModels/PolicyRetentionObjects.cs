@@ -227,64 +227,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 throw new ArgumentException(Resources.SnapshotRetentionInDaysInvalidException);
             }
-
-            if (IsDailyScheduleEnabled == false && IsWeeklyScheduleEnabled == false &&
-                IsMonthlyScheduleEnabled == false && IsYearlyScheduleEnabled == false)
-            {
-                throw new ArgumentException(Resources.AllRetentionSchedulesEmptyException);
-            }
-
-            if (IsDailyScheduleEnabled)
-            {
-                if (DailySchedule == null)
-                {
-                    throw new ArgumentException(Resources.DailyScheduleEnabledButScheduleIsNullException);
-                }
-                else
-                {
-                    DailySchedule.BackupManagementType = BackupManagementType;
-                    DailySchedule.Validate(ScheduleRunFrequency);
-                }
-            }
-
-            if (IsWeeklyScheduleEnabled)
-            {
-                if (WeeklySchedule == null)
-                {
-                    throw new ArgumentException(Resources.WeeklyScheduleEnabledButScheduleIsNullException);
-                }
-                else
-                {
-                    WeeklySchedule.BackupManagementType = BackupManagementType;
-                    WeeklySchedule.Validate(ScheduleRunFrequency);
-                }
-            }
-
-            if (IsMonthlyScheduleEnabled)
-            {
-                if (MonthlySchedule == null)
-                {
-                    throw new ArgumentException(Resources.MonthlyScheduleEnabledButScheduleIsNullException);
-                }
-                else
-                {
-                    MonthlySchedule.BackupManagementType = BackupManagementType;
-                    MonthlySchedule.Validate(ScheduleRunFrequency);
-                }
-            }
-
-            if (IsYearlyScheduleEnabled)
-            {
-                if (YearlySchedule == null)
-                {
-                    throw new ArgumentException(Resources.YearlyScheduleEnabledButScheduleIsNullException);
-                }
-                else
-                {
-                    YearlySchedule.BackupManagementType = BackupManagementType;
-                    YearlySchedule.Validate(ScheduleRunFrequency);
-                }
-            }
         }
 
         public override string ToString()
