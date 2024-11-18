@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.3.0
 * Changed the type of parameter `-IdentityId` in command `Update-AzHDInsightCluster` from `string`  to `string[]`.
 
 ## Version 6.2.1

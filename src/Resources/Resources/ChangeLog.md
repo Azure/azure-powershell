@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 7.7.0
 * Updated Resources SDK to 2024-07-01.
 * Fixed overriding of Bicep parameters in Deployment Stack cmdlets to support SecureString parameters.
 * Updated verbose status log during stack deployments to show deployment status.
