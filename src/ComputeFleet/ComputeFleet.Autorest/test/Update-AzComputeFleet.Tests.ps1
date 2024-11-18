@@ -18,7 +18,7 @@ Describe 'Update-AzComputeFleet' {
     It 'Update' {
         {
             $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
-            $securedPassword = ConvertTo-SecureString -AsPlainText "examplePassword" -Force
+            $securedPassword = ConvertTo-SecureString -AsPlainText "[Sanitized]" -Force
             $fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
             $fleet.AcceleratorCountMax = 3
             $fleet = Update-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName -Resource $fleet
@@ -29,7 +29,7 @@ Describe 'Update-AzComputeFleet' {
     It 'UpdateViaIdentity' {
         {
             $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -FleetName $env.FleetName
-            $securedPassword = ConvertTo-SecureString -AsPlainText "examplePassword" -Force
+            $securedPassword = ConvertTo-SecureString -AsPlainText "[Sanitized]" -Force
             $fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
             $fleet.MemoryInGiBMax = 500
             $fleet = Update-AzComputeFleet -InputObject $fleet -Resource $fleet

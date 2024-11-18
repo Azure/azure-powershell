@@ -32,7 +32,7 @@ update a Fleet
 ### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 $fleet = Get-AzComputeFleet -SubscriptionId $env.SubscriptionId -ResourceGroupName "test-fleet" -FleetName "testFleet"
-$securedPassword = ConvertTo-SecureString -AsPlainText "examplePassword" -Force
+$securedPassword = ConvertTo-SecureString -AsPlainText "[Sanitized]" -Force
 $fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
 $fleet.AcceleratorCountMax = 3
 Update-AzComputeFleet -ResourceGroupName "test-fleet" -FleetName "testFleet" -Resource $fleet
@@ -41,7 +41,7 @@ Update-AzComputeFleet -ResourceGroupName "test-fleet" -FleetName "testFleet" -Re
 ### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 $fleet = Get-AzComputeFleet -SubscriptionId "ca8520e1-3c83-4b64-bb99-60a64673daa3" -ResourceGroupName "test-fleet" -FleetName "testFleet"
-$securedPassword = ConvertTo-SecureString -AsPlainText "examplePassword" -Force
+$securedPassword = ConvertTo-SecureString -AsPlainText "[Sanitized]" -Force
 $fleet.ComputeProfileBaseVirtualMachineProfile.OSProfileAdminPassword = $securedPassword
 $fleet.MemoryInGiBMax = 500
 Update-AzComputeFleet -InputObject $fleet -Resource $fleet
