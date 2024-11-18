@@ -1410,7 +1410,7 @@ New-AzStorageDirectory -Directory $dir.CloudFileDirectory -Path $dirpath
 ```
 #### After
 ```powershell
-$dir = New-AzStorageDirectory -ShareName testshare1 -Path $dirpath -Context $ctx 
+$dir = New-AzStorageDirectory -ShareName $sharename -Path $dirpath -Context $ctx 
 $dir.ShareDirectoryClient
 
 $share = Get-AzStorageShare -Name $sharename -Context $ctx
