@@ -1504,7 +1504,7 @@ New-AzStorageShareSASToken -ShareName $sharename -Permission rdwl -Protocol Http
 $share = Get-AzStorageShare -Name $sharename -Context $ctx 
 Remove-AzStorageDirectory -Share $share.CloudFileShare -Path $dirpath
 
-$dir = Get-AzStorageFile -ShareName testshare1 -Path $dirpath -Context $ctx 
+$dir = Get-AzStorageFile -ShareName $sharename -Path $dirpath -Context $ctx 
 Remove-AzStorageDirectory -Directory $dir.CloudFileDirectory 
 ```
 #### After
