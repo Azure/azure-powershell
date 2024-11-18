@@ -1771,7 +1771,7 @@ Stop-AzStorageFileCopy -ShareFileClient $fd.ShareFileClient -Context $ctx -Force
 
 #### Before
 ```powershell
-Allow input -Context, but Context value actually is not used when execute the cmdlet:
+Allow input -Context and -AbsoluteUri together, but Context value actually is not used when execute the cmdlet:
 ```powershell
 Get-AzStorageBlobContent -AbsoluteUri $sasuri -Destination c:\tempfile -Context $ctx
 ```
