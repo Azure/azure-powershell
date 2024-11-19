@@ -119,6 +119,7 @@
 | Database for MariaDB           | `Az.MariaDb`                    | [![MariaDb]][MariaDbGallery]                                       | [Changelog][MariaDbChangeLog]                    |
 | Marketplace                    | `Az.Marketplace`                | [![Marketplace]][MarketplaceGallery]                               | [Changelog][MarketplaceChangeLog]                |
 | Marketplace Ordering           | `Az.MarketplaceOrdering`        | [![MarketplaceOrdering]][MarketplaceOrderingGallery]               | [Changelog][MarketplaceOrderingChangeLog]        |
+| Managed DevOps Pools           | `Az.Mdp`                        | [![Mdp]][MdpGallery]                                               | [Changelog][MdpChangeLog]                        |
 | Media                          | `Az.Media`                      | [![Media]][MediaGallery]                                           | [Changelog][MediaChangeLog]                      |
 | Migrate                        | `Az.Migrate`                    | [![Migrate]][MigrateGallery]                                       | [Changelog][MigrateChangeLog]                    |
 | Mixed Reality                  | `Az.MixedReality`               | [![MixedReality]][MixedRealityGallery]                             | [Changelog][MixedRealityChangeLog]               |
@@ -126,6 +127,7 @@
 | Monitor                        | `Az.Monitor`                    | [![Monitor]][MonitorGallery]                                       | [Changelog][MonitorChangeLog]                    |
 | Monitoring Solutions           | `Az.MonitoringSolutions`        | [![MonitoringSolutions]][MonitoringSolutionsGallery]               | [Changelog][MonitoringSolutionsChangeLog]        |
 | Database for MySQL             | `Az.MySql`                      | [![MySql]][MySqlGallery]                                           | [Changelog][MySqlChangeLog]                      |
+| Neon Postgres                  | `Az.NeonPostgres`               | [![NeonPostgres]][NeonPostgresGallery]                             | [Changelog][NeonPostgresChangeLog]               |
 | NetApp Files                   | `Az.NetAppFiles`                | [![NetAppFiles]][NetAppFilesGallery]                               | [Changelog][NetAppFilesChangeLog]                |
 | Network                        | `Az.Network`                    | [![Network]][NetworkGallery]                                       | [Changelog][NetworkChangeLog]                    |
 | NetworkAnalytics               | `Az.NetworkAnalytics`           | [![NetworkAnalytics]][NetworkAnalyticsGallery]                     | [Changelog][NetworkAnalyticsChangeLog]           |
@@ -302,6 +304,7 @@
 [MariaDb]:                    https://img.shields.io/powershellgallery/v/Az.MariaDb.svg?style=flat-square&label=Az.MariaDb
 [Marketplace]:                https://img.shields.io/powershellgallery/v/Az.Marketplace.svg?style=flat-square&label=Az.Marketplace
 [MarketplaceOrdering]:        https://img.shields.io/powershellgallery/v/Az.MarketplaceOrdering.svg?style=flat-square&label=Az.MarketplaceOrdering
+[Mdp]:                        https://img.shields.io/powershellgallery/v/Az.Mdp.svg?style=flat-square&label=Az.Mdp
 [Media]:                      https://img.shields.io/powershellgallery/v/Az.Media.svg?style=flat-square&label=Az.Media
 [Migrate]:                    https://img.shields.io/powershellgallery/v/Az.Migrate.svg?style=flat-square&label=Az.Migrate
 [MixedReality]:               https://img.shields.io/powershellgallery/v/Az.MixedReality.svg?style=flat-square&label=Az.MixedReality
@@ -309,6 +312,7 @@
 [Monitor]:                    https://img.shields.io/powershellgallery/v/Az.Monitor.svg?style=flat-square&label=Az.Monitor
 [MonitoringSolutions]:        https://img.shields.io/powershellgallery/v/Az.MonitoringSolutions.svg?style=flat-square&label=Az.MonitoringSolutions
 [MySql]:                      https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql
+[NeonPostgres]:               https://img.shields.io/powershellgallery/v/Az.NeonPostgres.svg?style=flat-square&label=Az.NeonPostgres                
 [NetAppFiles]:                https://img.shields.io/powershellgallery/v/Az.NetAppFiles.svg?style=flat-square&label=Az.NetAppFiles
 [Network]:                    https://img.shields.io/powershellgallery/v/Az.Network.svg?style=flat-square&label=Az.Network
 [NetworkAnalytics]:           https://img.shields.io/powershellgallery/v/Az.NetworkAnalytics.svg?style=flat-square&label=Az.NetworkAnalytics
@@ -481,6 +485,7 @@
 [MariaDbGallery]:                    https://www.powershellgallery.com/packages/Az.MariaDb/
 [MarketplaceGallery]:                https://www.powershellgallery.com/packages/Az.Marketplace/
 [MarketplaceOrderingGallery]:        https://www.powershellgallery.com/packages/Az.MarketplaceOrdering/
+[MdpGallery]:                        https://www.powershellgallery.com/packages/Az.Mdp/
 [MediaGallery]:                      https://www.powershellgallery.com/packages/Az.Media/
 [MigrateGallery]:                    https://www.powershellgallery.com/packages/Az.Migrate/
 [MixedRealityGallery]:               https://www.powershellgallery.com/packages/Az.MixedReality/
@@ -488,6 +493,7 @@
 [MonitorGallery]:                    https://www.powershellgallery.com/packages/Az.Monitor/
 [MonitoringSolutionsGallery]:        https://www.powershellgallery.com/packages/Az.MonitoringSolutions/
 [MySqlGallery]:                      https://www.powershellgallery.com/packages/Az.MySql/
+[NeonPostgresGallery]:               https://www.powershellgallery.com/packages/Az.NeonPostgres/
 [NetAppFilesGallery]:                https://www.powershellgallery.com/packages/Az.NetAppFiles/
 [NetworkGallery]:                    https://www.powershellgallery.com/packages/Az.Network/
 [NetworkAnalyticsGallery]:           https://www.powershellgallery.com/packages/Az.NetworkAnalytics/
@@ -658,6 +664,7 @@
 [MariaDbChangeLog]:                    ../src/MariaDb/MariaDb/ChangeLog.md
 [MarketplaceChangeLog]:                ../src/Marketplace/Marketplace/ChangeLog.md
 [MarketplaceOrderingChangeLog]:        ../src/MarketplaceOrdering/MarketplaceOrdering/ChangeLog.md
+[MdpChangeLog]:                        ../src/Mdp/Mdp/ChangeLog.md
 [MediaChangeLog]:                      ../src/Media/Media/ChangeLog.md
 [MigrateChangeLog]:                    ../src/Migrate/Migrate/ChangeLog.md
 [MixedRealityChangeLog]:               ../src/MixedReality/MixedReality/ChangeLog.md
@@ -665,6 +672,7 @@
 [MonitorChangeLog]:                    ../src/Monitor/Monitor/ChangeLog.md
 [MonitoringSolutionsChangeLog]:        ../src/MonitoringSolutions/MonitoringSolutions/ChangeLog.md
 [MySqlChangeLog]:                      ../src/MySql/MySql/ChangeLog.md
+[NeonPostgresChangeLog]:               ../src/NeonPostgres/NeonPostgres/ChangeLog.md
 [NetAppFilesChangeLog]:                ../src/NetAppFiles/NetAppFiles/ChangeLog.md
 [NetworkChangeLog]:                    ../src/Network/Network/ChangeLog.md
 [NetworkAnalyticsChangeLog]:           ../src/NetworkAnalytics/NetworkAnalytics/ChangeLog.md
