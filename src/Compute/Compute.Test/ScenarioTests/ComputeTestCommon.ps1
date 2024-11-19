@@ -139,7 +139,7 @@ function Create-KeyVault
 }
 
 # Create key vault resources
-function Create-KeyVaultWithAckEncryptionIdentity
+function Create-KeyVaultWithAclEncryptionIdentity
 {
     Param
     (
@@ -168,7 +168,7 @@ function Create-KeyVaultWithAckEncryptionIdentity
     if (-not [string]::IsNullOrEmpty($userIdentityPrincipalId)) {
        Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -ObjectId $userIdentityPrincipalId -PermissionsToKeys all -PermissionsToSecrets all
     }
-    Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -EnabledForDiskEncryption -EnabledForDeployment -EnabledForTemplateDeployment
+    Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -EnabledForDeployment -EnabledForTemplateDeployment
 
     # return the newly created key vault properties
     $properties = New-Object PSObject -Property @{

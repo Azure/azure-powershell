@@ -671,13 +671,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateVmWithAdditionOfEncryptionIdentityInNewAzVmCommand()
-        {
-            TestRunner.RunTestScript("Test-CreateVmWithAdditionOfEncryptionIdentityInNewAzVmCommand");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddEncryptionIdentityInAzureVmConfig()
         {
             TestRunner.RunTestScript("Test-AddEncryptionIdentityInAzureVmConfig");

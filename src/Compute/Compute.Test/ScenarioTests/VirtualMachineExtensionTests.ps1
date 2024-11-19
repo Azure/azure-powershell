@@ -1717,7 +1717,7 @@ function Test-AzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig{
         $imageSku = "92-gen2";
         $stnd = "Standard";
         $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testingazmsi";
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd -EncryptionIdentity $encIdentity -IdentityType SystemAssigned;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd -EncryptionIdentity $encIdentity -IdentityType UserAssigned -IdentityId $encIdentity;
         
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -1769,9 +1769,7 @@ function Test-AzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig{
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
         Write-Verbose "The value of the variable is: $vm"
         Assert-AreEqual $vmname $vm.Name;
-        Assert-AreEqual "SystemAssignedUserAssigned" $vm.Identity.Type     
-        Assert-NotNull  $vm.Identity.PrincipalId
-        Assert-NotNull  $vm.Identity.TenantId
+        Assert-AreEqual "UserAssigned" $vm.Identity.Type     
         Assert-NotNull $vm.Identity.UserAssignedIdentities
         Assert-AreEqual 1 $vm.Identity.UserAssignedIdentities.Count
         Assert-True { $vm.Identity.UserAssignedIdentities.ContainsKey($encIdentity) }
@@ -1781,14 +1779,14 @@ function Test-AzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig{
         $vaultName = $rgname + '-kv';
         $principalId = "6d8bf4f5-7adb-4f5d-80a8-ea537c338003";
         
-        $keyVault = create-KeyVaultWithAckEncryptionIdentity $rgName $loc $vaultName $principalId;
+        $keyVault = create-KeyVaultWithAclEncryptionIdentity $rgName $loc $vaultName $principalId;
 
         Set-AzVMDiskEncryptionExtension `
             -ResourceGroupName $vm.ResourceGroupName `
             -VMName $vm.Name `
             -DiskEncryptionKeyVaultUrl $keyVault.DiskEncryptionKeyVaultUrl `
             -DiskEncryptionKeyVaultId $keyVault.DiskEncryptionKeyVaultId `
-            -EncryptionIdentity $encIdentity -VolumeType "OS" -Force -SkipVmBackup;
+            -EncryptionIdentity $encIdentity -VolumeType "All" -Force -SkipVmBackup;
         $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name;
         Assert-NotNull $status;
         Assert-AreEqual $status.OsVolumeEncrypted EncryptionInProgress;
@@ -1806,73 +1804,6 @@ function Test-AzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig{
 }
 
 
-function Test-AzureDiskEncryptionEncryptionWithEncryptionIdentity
-{
-    # Setup
-    $rgname = Get-ComputeTestResourceName
-
-    try
-    {
-        $loc = 'centraluseuap';
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
-
-        # VM Profile & Hardware
-        $vmsize = 'Standard_DS2_v2';
-        $vmname = 'vm' + $rgname;
-        $stnd = "Standard";
-        [string]$domainNameLabel = "$vmname-$vmname".tolower();
-
-        $user = "Foo2";
-        $password = $PLACEHOLDER;
-        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
-        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-        $computerName = 'test';
-
-        # Get VM
-        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testingazmsi";
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType $stnd -EncryptionIdentity $encIdentity -SystemAssignedIdentity;
-
-        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
-        Assert-AreEqual $vmname $vm.Name;
-        Assert-AreEqual "SystemAssignedUserAssigned" $vm.Identity.Type     
-        Assert-NotNull  $vm.Identity.PrincipalId
-        Assert-NotNull  $vm.Identity.TenantId
-        Assert-NotNull $vm.Identity.UserAssignedIdentities
-        Assert-AreEqual 1 $vm.Identity.UserAssignedIdentities.Count
-        Assert-True { $vm.Identity.UserAssignedIdentities.ContainsKey($encIdentity) }
-        Assert-NotNull  $vm.Identity.UserAssignedIdentities[$encIdentity].PrincipalId
-        Assert-NotNull  $vm.Identity.UserAssignedIdentities[$encIdentity].ClientId
-
-        $vaultName = $rgname + '-kv';
-        $principalId = "6d8bf4f5-7adb-4f5d-80a8-ea537c338003";
-        
-        $keyVault = create-KeyVaultWithAckEncryptionIdentity $rgName $loc $vaultName $principalId;
-
-        Set-AzVMDiskEncryptionExtension `
-            -ResourceGroupName $vm.ResourceGroupName `
-            -VMName $vm.Name `
-            -DiskEncryptionKeyVaultUrl $keyVault.DiskEncryptionKeyVaultUrl `
-            -DiskEncryptionKeyVaultId $keyVault.DiskEncryptionKeyVaultId `
-            -EncryptionIdentity $encIdentity `
-            -Force;
-
-        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name;
-        Assert-NotNull $status;
-        Assert-AreEqual $status.OsVolumeEncrypted Encrypted;
-
-        # verify encryption settings
-        $settings = $status.OsVolumeEncryptionSettings;
-    
-        Assert-NotNull $settings;
-        Assert-True {$settings.Enabled}
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
 function Test-AzureDiskEncryptionWithIdentityNotSetInVirtualMachine {
     
     # Setup
@@ -1880,34 +1811,76 @@ function Test-AzureDiskEncryptionWithIdentityNotSetInVirtualMachine {
 
     try
     {
-        $loc = 'centraluseuap';
+        # create virtual machine
+        $loc = "eastus2euap";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-
         # VM Profile & Hardware
-        $vmsize = 'Standard_DS2_v2';
+        $vmsize = 'Standard_D2S_V3';
         $vmname = 'vm' + $rgname;
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "92-gen2";
         $stnd = "Standard";
-        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testingazmsi";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd -IdentityType SystemAssigned;
+        
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Static -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+        Write-Verbose "Completed one instances";
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
-        $user = "Foo2";
+        $osDiskName = 'linuxOsDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -Caching $osDiskCaching -CreateOption FromImage -Linux;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+        # OS & Image
+        $user = "Foo12";
         $password = $PLACEHOLDER;
-        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        # Get VM
-        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testingazmsi";
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType $stnd ;
+        $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred -DisablePasswordAuthentication;
+        Write-Verbose "Adding SSH public key for VM"
+        $sshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9tGj7bjzqid3QP5YpH2+YGK8Or2KRZLdNuRGiFqgefGEF4uZrsKXeRXAXS7ia5CdCSIu020PDR69nPZq3dEQGp8GNMKXvfIBIpI++BISbT1jPuMVwEnI4JESGI4ay1glh1JtbRzQsktNjUGUYDxoOAYbtj3GU5lvw2CJ5WmobtcQbXLHWYqdDmTZQ7ry7l6GCjJSzye4IkwlQoGUql/T2iU2bLQyOCsFzcDEzFv6hVR8iFcV+eOJNHIkjCQz3Bw+tOTZbHMz1G95tSswdkrdwfMvR8fkWmby39lnFC+I7xcySQI6FMzaQZ7bA0tFGpp1JoThy5J5hBak5yOTqGBYL dummy@cc-1b92760a-6bb78476c6-h5cwh";
+        $sshPath = "/home/" + $user + "/.ssh/authorized_keys"
+        Add-AzVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath
+        Write-Verbose "Added SSH public key successfully."
+        $p = Set-AzVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest"
+        Assert-AreEqual $p.OSProfile.AdminUsername $user;
+        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $p.OSProfile.AdminPassword $password;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imageOffer;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imagePublisher;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imageSku;
+        $p = Set-AzVMBootDiagnostic -VM $p -Disable
 
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Write-Verbose "The value of the variable is: $vm"
         Assert-AreEqual $vmname $vm.Name;
+        Assert-AreEqual "SystemAssigned" $vm.Identity.Type     
         Assert-Null $vm.Identity.UserAssignedIdentities
-        Assert-AreEqual 0 $vm.Identity.UserAssignedIdentities.Count
 
         $vaultName = $rgname + '-kv';
         $principalId = "6d8bf4f5-7adb-4f5d-80a8-ea537c338003";
         
-        $keyVault = create-KeyVaultWithAckEncryptionIdentity $rgName $loc $vaultName $principalId;
+        $keyVault = create-KeyVaultWithAclEncryptionIdentity $rgName $loc $vaultName $principalId;
 
         Assert-ThrowsContains {Set-AzVMDiskEncryptionExtension `
             -ResourceGroupName $vm.ResourceGroupName `
@@ -1915,7 +1888,7 @@ function Test-AzureDiskEncryptionWithIdentityNotSetInVirtualMachine {
             -DiskEncryptionKeyVaultUrl $keyVault.DiskEncryptionKeyVaultUrl `
             -DiskEncryptionKeyVaultId $keyVault.DiskEncryptionKeyVaultId `
             -EncryptionIdentity $encIdentity `
-            -Force; } `
+            -VolumeType "All" -Force -SkipVmBackup;} `
         "Encryption Identity should be an ARM Resource ID of one of the user assigned identities associated to the resource";
 
     }
@@ -1933,30 +1906,70 @@ function Test-AzureDiskEncryptionWithIdentityNotAckledInKeyVault {
 
     try
     {
-        $loc = 'centraluseuap';
+        # create virtual machine
+        $loc = "eastus2euap";
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
-
         # VM Profile & Hardware
-        $vmsize = 'Standard_DS2_v2';
+        $vmsize = 'Standard_D2S_V3';
         $vmname = 'vm' + $rgname;
+        $imagePublisher = "RedHat";
+        $imageOffer = "RHEL";
+        $imageSku = "92-gen2";
         $stnd = "Standard";
-        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testingazmsi";
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd -EncryptionIdentity $encIdentity -IdentityType UserAssigned -IdentityId $encIdentity;
+        
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Static -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+        Write-Verbose "Completed one instances";
+        $p = Add-AzVMNetworkInterface -VM $p -Id $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
-        $user = "Foo2";
+        $osDiskName = 'linuxOsDisk';
+        $osDiskCaching = 'ReadWrite';
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
+        $p = Set-AzVMOSDisk -VM $p -Name $osDiskName -Caching $osDiskCaching -CreateOption FromImage -Linux;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
+        # OS & Image
+        $user = "Foo12";
         $password = $PLACEHOLDER;
-        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force; <#[SuppressMessage("Microsoft.Security", "CS001:SecretInline", Justification="Credentials are used only for the duration of test. Resources are deleted at the end of the test.")]#>
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
+        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        # Get VM
-        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testingazmsi";
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType $stnd -EncryptionIdentity $encIdentity -SystemAssignedIdentity;
+        $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred -DisablePasswordAuthentication;
+        Write-Verbose "Adding SSH public key for VM"
+        $sshPublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9tGj7bjzqid3QP5YpH2+YGK8Or2KRZLdNuRGiFqgefGEF4uZrsKXeRXAXS7ia5CdCSIu020PDR69nPZq3dEQGp8GNMKXvfIBIpI++BISbT1jPuMVwEnI4JESGI4ay1glh1JtbRzQsktNjUGUYDxoOAYbtj3GU5lvw2CJ5WmobtcQbXLHWYqdDmTZQ7ry7l6GCjJSzye4IkwlQoGUql/T2iU2bLQyOCsFzcDEzFv6hVR8iFcV+eOJNHIkjCQz3Bw+tOTZbHMz1G95tSswdkrdwfMvR8fkWmby39lnFC+I7xcySQI6FMzaQZ7bA0tFGpp1JoThy5J5hBak5yOTqGBYL dummy@cc-1b92760a-6bb78476c6-h5cwh";
+        $sshPath = "/home/" + $user + "/.ssh/authorized_keys"
+        Add-AzVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath
+        Write-Verbose "Added SSH public key successfully."
+        $p = Set-AzVMSourceImage -VM $p -PublisherName $imagePublisher -Offer $imageOffer -Skus $imageSku -Version "latest"
+        Assert-AreEqual $p.OSProfile.AdminUsername $user;
+        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
+        Assert-AreEqual $p.OSProfile.AdminPassword $password;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imageOffer;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imagePublisher;
+        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imageSku;
+        $p = Set-AzVMBootDiagnostic -VM $p -Disable
 
+        # Virtual Machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
+        Write-Verbose "The value of the variable is: $vm"
         Assert-AreEqual $vmname $vm.Name;
-        Assert-AreEqual "SystemAssignedUserAssigned" $vm.Identity.Type     
-        Assert-NotNull  $vm.Identity.PrincipalId
-        Assert-NotNull  $vm.Identity.TenantId
+        Assert-AreEqual "UserAssigned" $vm.Identity.Type     
         Assert-NotNull $vm.Identity.UserAssignedIdentities
         Assert-AreEqual 1 $vm.Identity.UserAssignedIdentities.Count
         Assert-True { $vm.Identity.UserAssignedIdentities.ContainsKey($encIdentity) }
@@ -1966,7 +1979,7 @@ function Test-AzureDiskEncryptionWithIdentityNotAckledInKeyVault {
         $vaultName = $rgname + '-kv';
         $principalId = "6d8bf4f5-7adb-4f5d-80a8-ea537c338003";
         
-        $keyVault = create-KeyVaultWithAckEncryptionIdentity $rgName $loc $vaultName
+        $keyVault = create-KeyVaultWithAclEncryptionIdentity $rgName $loc $vaultName
 
         Assert-ThrowsContains {Set-AzVMDiskEncryptionExtension `
             -ResourceGroupName $vm.ResourceGroupName `
@@ -1974,7 +1987,7 @@ function Test-AzureDiskEncryptionWithIdentityNotAckledInKeyVault {
             -DiskEncryptionKeyVaultUrl $keyVault.DiskEncryptionKeyVaultUrl `
             -DiskEncryptionKeyVaultId $keyVault.DiskEncryptionKeyVaultId `
             -EncryptionIdentity $encIdentity `
-            -Force; } `
+            -VolumeType "All" -Force -SkipVmBackup; } `
             "RUNTIME_E_KEYVAULT_SET_SECRET_FAILED  Failed to set secret to KeyVault"
     }
     finally

@@ -7688,6 +7688,10 @@ function Test-VMwithSSHKeyEd25519
     }
 }
 
+<#
+.SYNOPSIS
+Test Test-AddEncryptionIdentityInAzureVmConfig add encryptionIdentity for Azure dusk encryption using managed Identity.
+#>
 function Test-AddEncryptionIdentityInAzureVmConfig{
     $rgName = Get-ComputeTestResourceName;
     try {
@@ -7702,7 +7706,7 @@ function Test-AddEncryptionIdentityInAzureVmConfig{
         $imageSku = "92-gen2";
         $stnd = "Standard";
         $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testingazmsi";
-        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd -EncryptionIdentity $encIdentity -IdentityType SystemAssigned;
+        $p = New-AzVMConfig -VMName $vmname -VMSize $vmsize -SecurityType $stnd -EncryptionIdentity $encIdentity -IdentityType UserAssigned -IdentityId $encIdentity;
         
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
@@ -7754,9 +7758,7 @@ function Test-AddEncryptionIdentityInAzureVmConfig{
         $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
         Write-Verbose "The value of the variable is: $vm"
         Assert-AreEqual $vmname $vm.Name;
-        Assert-AreEqual "SystemAssignedUserAssigned" $vm.Identity.Type     
-        Assert-NotNull  $vm.Identity.PrincipalId
-        Assert-NotNull  $vm.Identity.TenantId
+        Assert-AreEqual "UserAssigned" $vm.Identity.Type
         Assert-NotNull $vm.Identity.UserAssignedIdentities
         Assert-AreEqual 1 $vm.Identity.UserAssignedIdentities.Count
         Assert-True { $vm.Identity.UserAssignedIdentities.ContainsKey($encIdentity) }
@@ -7769,45 +7771,3 @@ function Test-AddEncryptionIdentityInAzureVmConfig{
     }
 }
 
-function Test-CreateVmWithAdditionOfEncryptionIdentityInNewAzVmCommand{
-    
-    # Setup
-    $rgname = Get-ComputeTestResourceName
-
-    try
-    {
-        $loc = 'centraluseuap';
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
-
-        # VM Profile & Hardware
-        $vmsize = 'Standard_DS2_v2';
-        $vmname = 'vm' + $rgname;
-        $stnd = "Standard";
-        [string]$domainNameLabel = "$vmname-$vmname".tolower();
-
-        $user = "Foo2";
-        $password = $PLACEHOLDER;
-        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
-        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-        $computerName = 'test';
-
-        # Get VM
-        $encIdentity = "/subscriptions/759532d8-9991-4d04-878f-49f0f4804906/resourceGroups/linuxRhel-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testingazmsi";
-        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SecurityType $stnd -EncryptionIdentity $encIdentity -SystemAssignedIdentity
-
-        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
-        Write-Verbose "The value of the variable is: $vm"
-        Assert-AreEqual $vmname $vm.Name;
-        Assert-AreEqual "SystemAssignedUserAssigned" $vm.Identity.Type
-        Assert-NotNull $vm.Identity.UserAssignedIdentities
-        Assert-AreEqual 1 $vm.Identity.UserAssignedIdentities.Count
-        Assert-True { $vm.Identity.UserAssignedIdentities.ContainsKey($encIdentity) }
-        Assert-NotNull  $vm.Identity.UserAssignedIdentities[$encIdentity].PrincipalId
-        Assert-NotNull  $vm.Identity.UserAssignedIdentities[$encIdentity].ClientId
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}

@@ -255,10 +255,6 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string UserAssignedIdentity { get; set; }
 
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
-        [ValidateNotNullOrEmpty]
-        public string EncryptionIdentity { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -1355,37 +1351,22 @@ namespace Microsoft.Azure.Commands.Compute
         /// <returns>Returning the Identity generated form the cmdlet parameters "SystemAssignedIdentity" and "UserAssignedIdentity"</returns>
         private VirtualMachineIdentity GetVMIdentityFromArgs()
         {
-            var isUserAssignedEnabled = !string.IsNullOrWhiteSpace(UserAssignedIdentity) || !string.IsNullOrWhiteSpace(EncryptionIdentity);
+            var isUserAssignedEnabled = !string.IsNullOrWhiteSpace(UserAssignedIdentity);
+            return (SystemAssignedIdentity.IsPresent || isUserAssignedEnabled)
+                ? new VirtualMachineIdentity
+                {
+                    Type = !isUserAssignedEnabled ?
+                           CM.ResourceIdentityType.SystemAssigned :
+                           (SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
 
-            if (SystemAssignedIdentity.IsPresent || isUserAssignedEnabled) {
-
-                Microsoft.Azure.Management.Compute.Models.ResourceIdentityType Type = CM.ResourceIdentityType.None;
-                Dictionary<string, UserAssignedIdentitiesValue> UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
-
-                if (!isUserAssignedEnabled) {
-                    Type = CM.ResourceIdentityType.SystemAssigned;
-                    UserAssignedIdentities = null;
+                    UserAssignedIdentities = isUserAssignedEnabled
+                                             ? new Dictionary<string, UserAssignedIdentitiesValue>()
+                                             {
+                                                 { UserAssignedIdentity, new UserAssignedIdentitiesValue() }
+                                             }
+                                             : null,
                 }
-                else {
-                    if (SystemAssignedIdentity.IsPresent) {
-                        Type = CM.ResourceIdentityType.SystemAssignedUserAssigned;
-                    }
-                    else {
-                        Type = CM.ResourceIdentityType.UserAssigned;
-                    }
-
-                    if (!string.IsNullOrWhiteSpace(UserAssignedIdentity)) {
-                        UserAssignedIdentities.Add(UserAssignedIdentity,  new UserAssignedIdentitiesValue());
-                    }
-                    else if (!string.IsNullOrWhiteSpace(EncryptionIdentity)) {
-                        UserAssignedIdentities.Add(EncryptionIdentity,  new UserAssignedIdentitiesValue());
-                    }
-                }
-                return new VirtualMachineIdentity {Type = Type, UserAssignedIdentities = UserAssignedIdentities,};
-            }
-            else {
-                return null;
-            }
+                : null;
         }
 
         private string GetBginfoExtension()

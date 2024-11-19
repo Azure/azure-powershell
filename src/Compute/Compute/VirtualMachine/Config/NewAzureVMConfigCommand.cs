@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Compute.Common;
@@ -231,7 +233,8 @@ namespace Microsoft.Azure.Commands.Compute
                 Tags = this.Tags != null ? this.Tags.ToDictionary() : null,
                 Zones = this.Zone,
                 EvictionPolicy = this.EvictionPolicy,
-                Priority = this.Priority
+                Priority = this.Priority,
+                SecurityProfile = null
             };
 
             if (this.IsParameterBound(c => c.IdentityType))
@@ -256,25 +259,25 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (this.IsParameterBound(c => c.EncryptionIdentity))
             {
-                if (vm.Identity == null)
+                if (vm.Identity != null && vm.Identity.UserAssignedIdentities != null && 
+                    vm.Identity.UserAssignedIdentities.ContainsKey(this.EncryptionIdentity))
                 {
-                    vm.Identity = new VirtualMachineIdentity(type: ResourceIdentityType.UserAssigned);
-                }
-                if (vm.Identity.Type == ResourceIdentityType.SystemAssigned)
-                {
-                    vm.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
-                }
+                    if (vm.SecurityProfile == null)
+                    {
+                        vm.SecurityProfile = new SecurityProfile();
+                    }
 
-                if (vm.Identity.UserAssignedIdentities == null)
-                {
-                    vm.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
-                }
+                    if (vm.SecurityProfile.EncryptionIdentity == null)
+                    {
+                        vm.SecurityProfile.EncryptionIdentity = new EncryptionIdentity();
+                    }
 
-                if(!vm.Identity.UserAssignedIdentities.ContainsKey(this.EncryptionIdentity))
-                {
-                    vm.Identity.UserAssignedIdentities.Add(this.EncryptionIdentity, new UserAssignedIdentitiesValue());
+                    if (String.IsNullOrEmpty(vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId) ||
+                        !vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId.Equals(this.EncryptionIdentity, StringComparison.OrdinalIgnoreCase))
+                    {
+                        vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId = this.EncryptionIdentity;
+                    }
                 }
-
             }
 
             if (!string.IsNullOrEmpty(this.VMSize))

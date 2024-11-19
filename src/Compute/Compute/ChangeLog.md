@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Added new parameter `EncryptionIdentity` to cmdlet `Set-AzVMDiskEncryptionExtension`
+* Added new parameter `EncryptionIdentity` to cmdlet `New-AzVMConfig`
 
 ## Version 8.4.0
 * Added `SkuProfileVmSize` and `SkuProfileAllocationStrategy` parameters to `New-AzVmss`, `New-AzVmssConfig`, and `Update-AzVmss` cmdlets for VMSS Instance Mix operations.
