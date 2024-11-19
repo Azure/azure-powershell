@@ -1716,8 +1716,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// Validates a given deployment.
         /// </summary>
         /// <param name="parameters">The deployment create options</param>
-        /// <returns>The validation errors if there's any, or empty list otherwise.</returns>
-        public virtual List<PSResourceManagerError> ValidateDeployment(PSDeploymentCmdletParameters parameters)
+        /// <returns>The validation info</returns>
+        public virtual TemplateValidationInfo ValidateDeployment(PSDeploymentCmdletParameters parameters)
         {
             if (parameters.DeploymentName == null)
             {
@@ -1731,8 +1731,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 WriteVerbose(ProjectResources.TemplateValid);
             }
-
-            return validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).Concat(validationInfo.Diagnostics.Select(e => new ErrorDetail(code: e.Level, message: $"{e.Code} - {e.Target} {e.Message}").ToPSResourceManagerError())).ToList();
+            return validationInfo;
         }
 
         public string GetDeploymentErrorMessagesWithOperationId(DeploymentOperationErrorInfo errorInfo, string deploymentName = null, string correlationId = null)

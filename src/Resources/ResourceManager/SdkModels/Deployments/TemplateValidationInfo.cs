@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.Resources.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    internal class TemplateValidationInfo
+    public class TemplateValidationInfo
     {
         public TemplateValidationInfo(List<Provider> requiredProviders, List<ErrorDetail> errors, List<DeploymentDiagnosticsDefinition> diagnostics)
         {

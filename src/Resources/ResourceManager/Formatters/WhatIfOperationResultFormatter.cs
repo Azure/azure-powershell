@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
 
     public class WhatIfOperationResultFormatter : WhatIfJsonFormatter
     {
-        private WhatIfOperationResultFormatter(ColoredStringBuilder builder)
+        public WhatIfOperationResultFormatter(ColoredStringBuilder builder)
             : base(builder)
         {
         }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Formatters
             this.Builder.Append(".");
         }
 
-        private void FormatDiagnostics(IList<DeploymentDiagnosticsDefinition> diagnostics, IList<PSWhatIfChange> changes)
+        public void FormatDiagnostics(IList<DeploymentDiagnosticsDefinition> diagnostics, IList<PSWhatIfChange> changes)
         {
             if (changes != null)
             {

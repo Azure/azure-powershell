@@ -324,9 +324,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 }))
                 .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
 
-            IEnumerable<PSResourceManagerError> error = resourcesClient.ValidateDeployment(parameters);
-            Assert.Empty(error);
-
+            TemplateValidationInfo error = resourcesClient.ValidateDeployment(parameters);
+            Assert.Empty(error.Errors);
             progressLoggerMock.Verify(f => f("Template is valid."), Times.Once());
         }
 
@@ -368,7 +367,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 }))
                 .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
 
-            List<PSResourceManagerError> error = resourcesClient.ValidateDeployment(parameters);
+            TemplateValidationInfo info = resourcesClient.ValidateDeployment(parameters);
             var expected = new List<PSResourceManagerError>()
             { 
                 new PSResourceManagerError()
@@ -378,9 +377,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 }
             };
 
-            Assert.Equal(expected.Count, error.Count);
-            Assert.Equal(expected[0].Code, error[0].Code);
-            Assert.Equal(expected[0].Message, error[0].Message);
+            var error = info.Errors;
+            var diagnostics = info.Diagnostics;
+
+            Assert.Empty(error);
 
             progressLoggerMock.Verify(f => f("Template is valid."), Times.Once());
         }
