@@ -36,7 +36,8 @@ function New-AzFrontDoorWafCustomRuleObject {
         $Action,
         [Parameter(HelpMessage="List of user session identifier group by clauses.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IGroupByUserSession[]]
-        $CustomRule,
+        [Alias("CustomRule")]
+        $GroupByUserSession,
         [Parameter(Mandatory, HelpMessage="List of match conditions.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IMatchCondition[]]
         $MatchCondition,
@@ -45,11 +46,13 @@ function New-AzFrontDoorWafCustomRuleObject {
         $Name,
         [Parameter(Mandatory, HelpMessage="Priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.")]
         [int]
-        $Priority,
+        [ValidateRange(0, [int]::MaxValue)]
+        $Priority = 0,
         [Parameter(HelpMessage="Duration over which Rate Limit policy will be applied. Applies only when ruleType is RateLimitRule.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("OneMin", "FiveMins")]
         [string]
-        $RateLimitDurationInMinutes,
+        [Alias("RateLimitDurationInMinutes")]
+        $RateLimitDuration = "OneMin",
         [Parameter(HelpMessage="Rate Limit threshold to apply in case ruleType is RateLimitRule. Must be greater than or equal to 1.")]
         [int]
         $RateLimitThreshold,
@@ -60,7 +63,8 @@ function New-AzFrontDoorWafCustomRuleObject {
         [Parameter(HelpMessage="Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Disabled", "Enabled")]
         [string]
-        $EnabledState
+        [Alias("EnabledState")]
+        $State = "Enabled"
     )
 
     process {
@@ -70,7 +74,7 @@ function New-AzFrontDoorWafCustomRuleObject {
             $Object.Action = $Action
         }
         if ($PSBoundParameters.ContainsKey('GroupByUserSession')) {
-            $Object.GroupByUserSession = $CustomRule
+            $Object.GroupByUserSession = $GroupByUserSession
         }
         if ($PSBoundParameters.ContainsKey('MatchCondition')) {
             $Object.MatchCondition = $MatchCondition
@@ -82,9 +86,7 @@ function New-AzFrontDoorWafCustomRuleObject {
             $Object.Priority = $Priority
         }
         if ($PSBoundParameters.ContainsKey('RateLimitDuration')) {
-            $Object.RateLimitDuration = $RateLimitDurationInMinutes 
-        } else {
-            $Object.RateLimitDuration = "OneMin"
+            $Object.RateLimitDuration = $RateLimitDuration 
         }
         if ($PSBoundParameters.ContainsKey('RateLimitThreshold')) {
             $Object.RateLimitThreshold = $RateLimitThreshold
@@ -93,10 +95,8 @@ function New-AzFrontDoorWafCustomRuleObject {
             $Object.RuleType = $RuleType
         }
         if ($PSBoundParameters.ContainsKey('State')) {
-            $Object.State = $EnabledState
-        } else {
-            $Object.State = "Enabled"
-        }
+            $Object.State = $State
+        } 
         return $Object
     }
 }

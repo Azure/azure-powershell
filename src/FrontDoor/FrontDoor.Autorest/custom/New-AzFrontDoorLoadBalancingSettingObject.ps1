@@ -32,16 +32,17 @@ function New-AzFrontDoorLoadBalancingSettingObject {
 
         [Parameter(HelpMessage="The additional latency in milliseconds for probes to fall into the lowest latency bucket.")]
         [int]
-        $AdditionalLatencyMilliseconds,
+        [Alias("AdditionalLatencyMilliseconds")]
+        $AdditionalLatencyMillisecond = 0,
         [Parameter(HelpMessage="Resource name.")]
         [string]
         $Name,
         [Parameter(HelpMessage="The number of samples to consider for load balancing decisions.")]
         [int]
-        $SampleSize,
+        $SampleSize = 4,
         [Parameter(HelpMessage="The number of samples within the sample period that must succeed.")]
         [int]
-        $SuccessfulSamplesRequired,
+        $SuccessfulSamplesRequired = 2,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
         $Id
@@ -51,22 +52,16 @@ function New-AzFrontDoorLoadBalancingSettingObject {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.LoadBalancingSettingsModel]::New()
 
         if ($PSBoundParameters.ContainsKey('AdditionalLatencyMillisecond')) {
-            $Object.AdditionalLatencyMillisecond = $AdditionalLatencyMilliseconds
-        } else {
-            $Object.AdditionalLatencyMillisecond = 0
+            $Object.AdditionalLatencyMillisecond = $AdditionalLatencyMillisecond
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
         }
         if ($PSBoundParameters.ContainsKey('SampleSize')) {
             $Object.SampleSize = $SampleSize
-        } else {
-            $Object.SampleSize = 4
         }
         if ($PSBoundParameters.ContainsKey('SuccessfulSamplesRequired')) {
             $Object.SuccessfulSamplesRequired = $SuccessfulSamplesRequired
-        } else {
-            $Object.SuccessfulSamplesRequired = 2
         }
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id

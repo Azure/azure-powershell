@@ -45,7 +45,8 @@ function New-AzFrontDoorRulesEngineRuleObject {
         $Name,
         [Parameter(Mandatory, HelpMessage="A priority assigned to this rule. .")]
         [int]
-        $Priority,
+        [ValidateRange(0, [int]::MaxValue)]
+        $Priority = 0,
         [Parameter()]
         [string]
         $RouteConfigurationOverrideOdataType
@@ -68,12 +69,7 @@ function New-AzFrontDoorRulesEngineRuleObject {
             $Object.Name = $Name
         }
         if ($PSBoundParameters.ContainsKey('Priority')) {
-            if ($Priority -lt 0) {
-                throw "Priority must be larger than or equal to 0"
-            }
             $Object.Priority = $Priority
-        } else {
-            $Object.Priority = 0
         }
         if ($PSBoundParameters.ContainsKey('RouteConfigurationOverrideOdataType')) {
             $Object.RouteConfigurationOverrideOdataType = $RouteConfigurationOverrideOdataType

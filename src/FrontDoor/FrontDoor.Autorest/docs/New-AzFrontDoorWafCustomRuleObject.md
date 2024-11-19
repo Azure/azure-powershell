@@ -14,8 +14,8 @@ Create an in-memory object for WebApplicationFirewallCustomRule.
 
 ```
 New-AzFrontDoorWafCustomRuleObject -Action <String> -MatchCondition <IMatchCondition[]> -Priority <Int32>
- -RuleType <String> [-GroupByUserSession <IGroupByUserSession[]>] [-Name <String>]
- [-RateLimitDuration <String>] [-RateLimitThreshold <Int32>] [-State <String>] [<CommonParameters>]
+ -RuleType <String> [-CustomRule <IGroupByUserSession[]>] [-EnabledState <String>] [-Name <String>]
+ [-RateLimitDurationInMinutes <String>] [-RateLimitThreshold <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,11 +62,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupByUserSession
+### -CustomRule
 List of user session identifier group by clauses.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IGroupByUserSession[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnabledState
+Describes if the custom rule is in enabled or disabled state.
+Defaults to Enabled if not specified.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +140,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RateLimitDuration
+### -RateLimitDurationInMinutes
 Duration over which Rate Limit policy will be applied.
 Applies only when ruleType is RateLimitRule.
 
@@ -165,22 +181,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -State
-Describes if the custom rule is in enabled or disabled state.
-Defaults to Enabled if not specified.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

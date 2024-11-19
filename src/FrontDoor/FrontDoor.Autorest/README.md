@@ -81,6 +81,15 @@ directive:
   - from: swagger-document
     where: $.definitions.PolicySettings.properties.logScrubbing
     transform: $['x-ms-client-flatten'] = false;
+  - from: swagger-document
+    where: $.definitions.FrontendEndpointProperties.properties.customHttpsConfiguration
+    transform: >- 
+      return {
+        "description": "The configuration specifying how to enable HTTPS",
+        "$ref": "#/definitions/CustomHttpsConfiguration"
+      }
+
+ 
 
   # For New object model cmdlet
   - model-cmdlet:
@@ -96,8 +105,8 @@ directive:
     #   cmdlet-name: New-AzFrontDoorFrontendBackendPoolObject
     # - model-name: BackendPoolsSettings
     #   cmdlet-name: New-AzFrontDoorFrontendBackendPoolsSettingsObject
-    # - model-name: FrontendEndpoint
-    #   cmdlet-name: New-AzFrontDoorFrontendEndpointObject
+    - model-name: FrontendEndpoint
+      cmdlet-name: New-AzFrontDoorFrontendEndpointObject
     - model-name: HeaderAction
       cmdlet-name: New-AzFrontDoorHeaderActionObject
     # - model-name: HealthProbeSettingsModel

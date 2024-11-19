@@ -34,20 +34,21 @@ function New-AzFrontDoorFrontendBackendObject {
         $Address,
         [Parameter(HelpMessage="The value to use as the host header sent to the backend. If blank or unspecified, this defaults to the incoming host.")]
         [string]
-        $BackendHostHeader,
+        $BackendHostHeader = $Address,
         [Parameter(HelpMessage="Whether to enable use of this backend. Permitted values are 'Enabled' or 'Disabled'.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [string]
-        $EnabledState,
+        $EnabledState = 'Enabled',
         [Parameter(HelpMessage="The HTTP TCP port number. Must be between 1 and 65535.")]
         [int]
-        $HttpPort,
+        $HttpPort = 80,
         [Parameter(HelpMessage="The HTTPS TCP port number. Must be between 1 and 65535.")]
         [int]
-        $HttpsPort,
+        $HttpsPort = 443,
         [Parameter(HelpMessage="Priority to use for load balancing. Higher priorities will not be used for load balancing if any lower priority backend is healthy.")]
         [int]
-        $Priority,
+        [ValidateRange(0, [int]::MaxValue)]
+        $Priority = 1,
         [Parameter(HelpMessage="The Alias of the Private Link resource. Populating this optional field indicates that this backend is 'Private'.")]
         [string]
         $PrivateLinkAlias,
@@ -62,7 +63,7 @@ function New-AzFrontDoorFrontendBackendObject {
         $PrivateLinkResourceId,
         [Parameter(HelpMessage="Weight of this endpoint for load balancing purposes.")]
         [int]
-        $Weight
+        $Weight = 50
     )
 
     process {
@@ -73,29 +74,19 @@ function New-AzFrontDoorFrontendBackendObject {
         }
         if ($PSBoundParameters.ContainsKey('BackendHostHeader')) {
             $Object.HostHeader = $BackendHostHeader
-        } else {
-            $Object.HostHeader = $Address
         }
         if ($PSBoundParameters.ContainsKey('EnabledState')) {
             $Object.EnabledState = $EnabledState
-        } else {
-            $Object.EnabledState = 'Enabled'
         }
         if ($PSBoundParameters.ContainsKey('HttpPort')) {
             $Object.HttpPort = $HttpPort
-        } else {
-            $Object.HttpPort = 80
         }
         if ($PSBoundParameters.ContainsKey('HttpsPort')) {
             $Object.HttpsPort = $HttpsPort
-        } else {
-            $Object.HttpsPort = 443
-        }
+        } 
         if ($PSBoundParameters.ContainsKey('Priority')) {
             $Object.Priority = $Priority
-        } else {
-            $Object.Priority = 1
-        }
+        } 
         if ($PSBoundParameters.ContainsKey('PrivateLinkAlias')) {
             $Object.PrivateLinkAlias = $PrivateLinkAlias
         }
@@ -110,8 +101,6 @@ function New-AzFrontDoorFrontendBackendObject {
         }
         if ($PSBoundParameters.ContainsKey('Weight')) {
             $Object.Weight = $Weight
-        } else {
-            50
         }
         return $Object
     }

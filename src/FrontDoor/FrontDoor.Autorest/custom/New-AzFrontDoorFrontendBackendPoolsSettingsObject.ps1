@@ -33,10 +33,10 @@ function New-AzFrontDoorFrontendBackendPoolsSettingsObject {
         [Parameter(HelpMessage="Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [string]
-        $EnforceCertificateNameCheck,
+        $EnforceCertificateNameCheck = 'Enabled',
         [Parameter(HelpMessage="Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.")]
         [int]
-        $SendRecvTimeoutSecond
+        $SendRecvTimeoutSecond = 30
     )
 
     process {
@@ -44,13 +44,9 @@ function New-AzFrontDoorFrontendBackendPoolsSettingsObject {
 
         if ($PSBoundParameters.ContainsKey('EnforceCertificateNameCheck')) {
             $Object.EnforceCertificateNameCheck = $EnforceCertificateNameCheck
-        } else {
-            $Object.EnforceCertificateNameCheck = 'Enabled'
         }
         if ($PSBoundParameters.ContainsKey('SendRecvTimeoutSecond')) {
             $Object.SendRecvTimeoutSecond = $SendRecvTimeoutSecond
-        } else {
-            $Object.SendRecvTimeoutSecond = 30
         }
         return $Object
     }

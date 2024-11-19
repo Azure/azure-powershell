@@ -30,51 +30,102 @@ function New-AzFrontDoorFrontendEndpointObject {
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
+        [Parameter(HelpMessage="Defines the source of the SSL certificate.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("AzureKeyVault", "FrontDoor")]
+        [string]
+        [Alias("CertificateSource")]
+        $CustomHttpsConfigurationCertificateSource,
+        [Parameter(HelpMessage="The minimum TLS version required from the clients to establish an SSL handshake with Front Door.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("1.0", "1.2")]
+        [string]
+        [Alias("MinimumTlsVersion")]
+        $CustomHttpsConfigurationMinimumTlsVersion,
+        [Parameter(HelpMessage="Defines the type of the certificate used for secure connections to a frontendEndpoint.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Dedicated")]
+        [string]
+        [Alias("CertificateType")]
+        $FrontDoorCertificateSourceParameterCertificateType,
         [Parameter(HelpMessage="The host name of the frontendEndpoint. Must be a domain name.")]
         [string]
         $HostName,
+        [Parameter(HelpMessage="The name of the Key Vault secret representing the full certificate PFX.")]
+        [string]
+        [Alias("SecretName")]
+        $KeyVaultCertificateSourceParameterSecretName,
+        [Parameter(HelpMessage="The version of the Key Vault secret representing the full certificate PFX.")]
+        [string]
+        [Alias("SecretVersion")]
+        $KeyVaultCertificateSourceParameterSecretVersion,
         [Parameter(HelpMessage="Resource name.")]
         [string]
         $Name,
         [Parameter(HelpMessage="Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [string]
-        $SessionAffinityEnabledState,
+        $SessionAffinityEnabledState = 'Endabled',
         [Parameter(HelpMessage="UNUSED. This field will be ignored. The TTL to use in seconds for session affinity, if applicable.")]
         [int]
-        $SessionAffinityTtlInSeconds,
+        [Alias("SessionAffinityTtlInSeconds" )]
+        $SessionAffinityTtlSecond = 0,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
+        [Alias("Vault")]
+        $VaultId,
+        [Parameter(HelpMessage="Resource ID.")]
+        [string]
+        [Alias("WebApplicationFirewallPolicyLink")]
         $WebApplicationFirewallPolicyLinkId,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
-        $Id
+        $Id,
+        # This was ignored by autorest because of only one enum
+        [Parameter(HelpMessage="The TLS extension protocol that is used for secure delivery")]
+        [string]
+        [Alias("ProtocolType ")]
+        $CustomHttpsConfigurationProtocolType = "ServerNameIndication"
     )
 
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.FrontendEndpoint]::New()
 
+        if ($PSBoundParameters.ContainsKey('CustomHttpsConfigurationCertificateSource')) {
+            $Object.CustomHttpsConfigurationCertificateSource = $CustomHttpsConfigurationCertificateSource
+        }
+        if ($PSBoundParameters.ContainsKey('CustomHttpsConfigurationMinimumTlsVersion')) {
+            $Object.CustomHttpsConfigurationMinimumTlsVersion = $CustomHttpsConfigurationMinimumTlsVersion
+        }
+        if ($PSBoundParameters.ContainsKey('FrontDoorCertificateSourceParameterCertificateType')) {
+            $Object.FrontDoorCertificateSourceParameterCertificateType = $FrontDoorCertificateSourceParameterCertificateType
+        }
         if ($PSBoundParameters.ContainsKey('HostName')) {
             $Object.HostName = $HostName
+        }
+        if ($PSBoundParameters.ContainsKey('KeyVaultCertificateSourceParameterSecretName')) {
+            $Object.KeyVaultCertificateSourceParameterSecretName = $KeyVaultCertificateSourceParameterSecretName
+        }
+        if ($PSBoundParameters.ContainsKey('KeyVaultCertificateSourceParameterSecretVersion')) {
+            $Object.KeyVaultCertificateSourceParameterSecretVersion = $KeyVaultCertificateSourceParameterSecretVersion
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
         }
         if ($PSBoundParameters.ContainsKey('SessionAffinityEnabledState')) {
             $Object.SessionAffinityEnabledState = $SessionAffinityEnabledState
-        } else {
-            $Object.SessionAffinityEnabledState = 'Disabled'
         }
-        if ($PSBoundParameters.ContainsKey('SessionAffinityTtlInSeconds')) {
-            $Object.SessionAffinityTtlSecond = $SessionAffinityTtlInSeconds
-        } else {
-            $Object.SessionAffinityTtlSecond = 0
+        if ($PSBoundParameters.ContainsKey('SessionAffinityTtlSecond')) {
+            $Object.SessionAffinityTtlSecond = $SessionAffinityTtlSecond
+        }
+        if ($PSBoundParameters.ContainsKey('VaultId')) {
+            $Object.VaultId = $VaultId
         }
         if ($PSBoundParameters.ContainsKey('WebApplicationFirewallPolicyLinkId')) {
             $Object.WebApplicationFirewallPolicyLinkId = $WebApplicationFirewallPolicyLinkId
         }
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id
+        }
+        if ($PSBoundParameters.ContainsKey('CustomHttpsConfigurationProtocolType')) {
+            $Object.CustomHttpsConfigurationProtocolType = $CustomHttpsConfigurationProtocolType
         }
         return $Object
     }

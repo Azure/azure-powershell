@@ -32,7 +32,7 @@ function New-AzFrontDoorRulesEngineMatchConditionObject {
 
         [Parameter(HelpMessage="Describes if this is negate condition or not.")]
         [bool]
-        $NegateCondition,
+        $NegateCondition = $false,
         [Parameter(Mandatory, HelpMessage="Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.")]
         [string[]]
         $RulesEngineMatchValue,
@@ -43,7 +43,7 @@ function New-AzFrontDoorRulesEngineMatchConditionObject {
         [Parameter(Mandatory, HelpMessage="Describes operator to apply to the match condition.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Any", "IPMatch", "GeoMatch", "Equal", "Contains", "LessThan", "GreaterThan", "LessThanOrEqual", "GreaterThanOrEqual", "BeginsWith", "EndsWith")]
         [string]
-        $RulesEngineOperator,
+        $RulesEngineOperator = "Any",
         [Parameter(HelpMessage="Name of selector in RequestHeader or RequestBody to be matched.")]
         [string]
         $Selector,
@@ -58,8 +58,6 @@ function New-AzFrontDoorRulesEngineMatchConditionObject {
 
         if ($PSBoundParameters.ContainsKey('NegateCondition')) {
             $Object.NegateCondition = $NegateCondition
-        } else {
-            $Object.NegateCondition = $false
         }
         if ($PSBoundParameters.ContainsKey('RulesEngineMatchValue')) {
             $Object.RulesEngineMatchValue = $RulesEngineMatchValue
@@ -69,8 +67,6 @@ function New-AzFrontDoorRulesEngineMatchConditionObject {
         }
         if ($PSBoundParameters.ContainsKey('RulesEngineOperator')) {
             $Object.RulesEngineOperator = $RulesEngineOperator
-        } else {
-            $Object.RulesEngineOperator = "Any"
         }
         if ($PSBoundParameters.ContainsKey('Selector')) {
             $Object.Selector = $Selector

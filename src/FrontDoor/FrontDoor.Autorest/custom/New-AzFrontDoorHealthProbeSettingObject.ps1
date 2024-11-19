@@ -33,24 +33,25 @@ function New-AzFrontDoorHealthProbeSettingObject {
         [Parameter(HelpMessage="Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [string]
-        $EnabledState,
+        $EnabledState = 'Enabled',
         [Parameter(HelpMessage="Configures which HTTP method to use to probe the backends defined under backendPools.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("GET", "HEAD")]
         [string]
-        $HealthProbeMethod,
+        $HealthProbeMethod = 'HEAD',
         [Parameter(HelpMessage="The number of seconds between health probes.")]
         [int]
-        $IntervalInSeconds,
+        [Alias("IntervalInSeconds")]
+        $IntervalInSecond = 30,
         [Parameter(HelpMessage="Resource name.")]
         [string]
         $Name,
         [Parameter(HelpMessage="The path to use for the health probe. Default is /.")]
         [string]
-        $Path,
+        $Path = "/",
         [Parameter(HelpMessage="Protocol scheme to use for this probe.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Http", "Https")]
         [string]
-        $Protocol,
+        $Protocol = "Http",
         [Parameter(HelpMessage="Resource ID.")]
         [string]
         $Id
@@ -61,31 +62,21 @@ function New-AzFrontDoorHealthProbeSettingObject {
 
         if ($PSBoundParameters.ContainsKey('EnabledState')) {
             $Object.EnabledState = $EnabledState
-        } else {
-            $Object.EnabledState = "Enabled"
         }
         if ($PSBoundParameters.ContainsKey('HealthProbeMethod')) {
             $Object.HealthProbeMethod = $HealthProbeMethod
-        } else {
-            $Object.HealthProbeMethod = "HEAD"
         }
-        if ($PSBoundParameters.ContainsKey('IntervalInSeconds')) {
-            $Object.IntervalInSecond = $IntervalInSeconds
-        } else {
-            $Object.IntervalInSecond = 30
+        if ($PSBoundParameters.ContainsKey('IntervalInSecond')) {
+            $Object.IntervalInSecond = $IntervalInSecond
         }
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name
         }
         if ($PSBoundParameters.ContainsKey('Path')) {
             $Object.Path = $Path
-        } else {
-            $Object.Path = "/"
         }
         if ($PSBoundParameters.ContainsKey('Protocol')) {
             $Object.Protocol = $Protocol
-        } else {
-            $Object.Protocol = "Http"
         }
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id
