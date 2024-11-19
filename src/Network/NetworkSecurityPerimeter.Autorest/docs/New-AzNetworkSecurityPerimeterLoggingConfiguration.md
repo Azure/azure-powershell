@@ -15,9 +15,8 @@ create NSP logging configuration.
 ### CreateExpanded (Default)
 ```
 New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -SecurityPerimeterName <String>
- [-Name <String>] [-SubscriptionId <String>] [-EnabledLogCategory <String[]>] [-Location <String>]
- [-LoggingConfigurationId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Name <String>] [-SubscriptionId <String>] [-EnabledLogCategory <String[]>] [-Version <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -30,8 +29,8 @@ New-AzNetworkSecurityPerimeterLoggingConfiguration -ResourceGroupName <String> -
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkSecurityPerimeterLoggingConfiguration -InputObject <INetworkSecurityPerimeterIdentity>
- [-EnabledLogCategory <String[]>] [-Location <String>] [-LoggingConfigurationId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnabledLogCategory <String[]>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkSecurityPerimeter
@@ -46,8 +45,8 @@ New-AzNetworkSecurityPerimeterLoggingConfiguration
 ```
 New-AzNetworkSecurityPerimeterLoggingConfiguration
  -NetworkSecurityPerimeterInputObject <INetworkSecurityPerimeterIdentity> [-Name <String>]
- [-EnabledLogCategory <String[]>] [-Location <String>] [-LoggingConfigurationId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnabledLogCategory <String[]>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -161,36 +160,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LoggingConfigurationId
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded
-Aliases: Id
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the NSP logging configuration.
 Accepts 'instance' as name.
@@ -283,11 +252,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Resource tags.
+### -Version
+The version of the NSP logging configuration.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNetworkSecurityPerimeterExpanded
 Aliases:
 
