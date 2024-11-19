@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Commands.StorageSync.Interop.DataObjects;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
@@ -174,7 +175,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 }
                 else
                 {
-                    WriteVerbose($"Server ApplicationId: {applicationId}");
+                    WriteVerbose($"Server ApplicationId to apply: {applicationId}");
                 }
 
                 // 2. RBAC permission set for Server Endpoints
@@ -218,7 +219,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                             }
                             catch (Exception ex)
                             {
-                                StorageSyncClientWrapper.ErrorLogger.Invoke($"ServerEndpoint {serverEndpoint.Name} has failed with an exception {ex.Message}.");
+                                StorageSyncClientWrapper.ErrorLogger.Invoke($"RBAC creation for ServerEndpoint {serverEndpoint.Name} has failed with an exception {ex.Message}.");
                                 serverEndpointFirstException = serverEndpointFirstException ?? ex;
                             }
                         } // Iterating server endpoints
@@ -241,11 +242,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 Target = string.Join("/", resourceGroupName, storageSyncServiceName, resourceName);
                 if (ShouldProcess(Target, ActionMessage))
                 {
+                    var updateParameters = new RegisteredServerUpdateParameters()
+                    {
+                        Identity = identity,
+                        ApplicationId = applicationId.ToString()
+                    };
+
                     RegisteredServer resource = StorageSyncClientWrapper.StorageSyncManagementClient.RegisteredServers.Update(
                         resourceGroupName,
                         storageSyncServiceName,
                         resourceName,
-                        identity
+                        updateParameters
                         );
 
                     WriteObject(resource);
