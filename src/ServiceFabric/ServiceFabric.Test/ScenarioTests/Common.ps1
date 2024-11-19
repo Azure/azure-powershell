@@ -350,12 +350,12 @@ function Get-AppTypeV2Name
 
 function Get-AppPackageV1
 {
-    return "https://clisftestsa.blob.core.windows.net/calappcontainer/CalcApp_1.0.sfpkg?sp=racwdyti&st=2024-05-22T23:20:16Z&se=2024-06-08T07:20:16Z&sv=2022-11-02&sr=b&sig=jFcokw2HE%2FG6%2BdB8V7opOOdL8QeOimpntcjqW92LXHU%3D"
+    return "https://clisftestsa.blob.core.windows.net/calappcontainer/CalcApp_1.0.sfpkg?sp=racwdyti&st=2024-05-22T23:20:16Z&se=2024-06-08T07:20:16Z&sv=2022-11-02&sr=00000000000000000000000000000000000000000000000000000000000"
 }
 
 function Get-AppPackageV2
 {
-    return "https://clisftestsa.blob.core.windows.net/calappcontainer/CalcApp_1.1.sfpkg?sp=racwdyti&st=2024-05-22T23:20:51Z&se=2024-06-08T07:20:51Z&sv=2022-11-02&sr=b&sig=9CjziHFL3vpxp%2FqrBWf7yTKTavZjj141SIarjCH8slc%3D"
+    return "https://clisftestsa.blob.core.windows.net/calappcontainer/CalcApp_1.1.sfpkg?sp=racwdyti&st=2024-05-22T23:20:51Z&se=2024-06-08T07:20:51Z&sv=2022-11-02&sr=0000000000000000000000000000000000000000000000000"
 }
 
 function Get-ServiceTypeName
