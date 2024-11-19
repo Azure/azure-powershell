@@ -517,8 +517,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             var vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(
                 this.ResourceGroupName, this.VMName));
 
-            this.WriteObject("Encryption Identity "+ this.EncryptionIdentity);
-
             if (vmParameters.SecurityProfile == null)
             {
                 vmParameters.SecurityProfile = new SecurityProfile();
@@ -534,14 +532,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 vmParameters.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId = this.EncryptionIdentity;
                 updateVm = true;
             }
-            else
-            {
-                this.WriteObject("No change in Encryption Identity");
-            }
 
             if (updateVm)
             {
-                this.WriteObject("Encryption Identity" + updateVm);
                 // update VM
                 AzureOperationResponse<VirtualMachine> updateEncryptionIdentity = null;
                 updateEncryptionIdentity = this.ComputeClient.ComputeManagementClient.
@@ -552,7 +545,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                 if (!updateEncryptionIdentity.Response.IsSuccessStatusCode)
                 {
-                    this.WriteObject("Encryption Identity Something went wrong");
                     ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture,
                                                                                    Resources.EncryptionIdentityADEFailure,
                                                                                     this.EncryptionIdentity, this.VMName,

@@ -1703,6 +1703,10 @@ function Test-AzureDiskEncryptionLnxManagedDisk
     }
 }
 
+<#
+.SYNOPSIS
+Test the Set-AzVMDiskEncryptionExtension with EncryptionIdentity Added in vm security profile
+#>
 function Test-AzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig{
     $rgName = Get-ComputeTestResourceName;
     try {
@@ -1803,7 +1807,12 @@ function Test-AzureDiskEncryptionWithEncryptionIdentityAddedInAzVmConfig{
     }
 }
 
-
+<#
+.SYNOPSIS
+Test the Set-AzVMDiskEncryptionExtension with EncryptionIdentity not added in vm security profile
+Throw Exception with message:Encryption Identity should be an ARM Resource ID of one of the 
+user assigned identities associated to the resource
+#>
 function Test-AzureDiskEncryptionWithIdentityNotSetInVirtualMachine {
     
     # Setup
@@ -1899,6 +1908,12 @@ function Test-AzureDiskEncryptionWithIdentityNotSetInVirtualMachine {
     }
 }
 
+<#
+.SYNOPSIS
+Test the Set-AzVMDiskEncryptionExtension with EncryptionIdentity added in vm security profile
+Encryption Identity not acled in the KeyVault
+Throw Exception with message:RUNTIME_E_KEYVAULT_SET_SECRET_FAILED  Failed to set secret to KeyVault
+#>
 function Test-AzureDiskEncryptionWithIdentityNotAckledInKeyVault {
     
     # Setup

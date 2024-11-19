@@ -7690,7 +7690,7 @@ function Test-VMwithSSHKeyEd25519
 
 <#
 .SYNOPSIS
-Test Test-AddEncryptionIdentityInAzureVmConfig add encryptionIdentity for Azure dusk encryption using managed Identity.
+Test Test-AddEncryptionIdentityInAzureVmConfig add encryptionIdentity for Azure disk encryption using managed Identity.
 #>
 function Test-AddEncryptionIdentityInAzureVmConfig{
     $rgName = Get-ComputeTestResourceName;
