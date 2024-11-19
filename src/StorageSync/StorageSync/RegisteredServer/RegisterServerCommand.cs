@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 LastHeartBeat = DateTime.Now.ToString(),
             };
 
-            if (AssignIdentity.IsPresent)
+            if (AssignIdentity)
             {
                 if(default == serverRegistrationData.ApplicationId.GetValueOrDefault())
                 {
