@@ -45,11 +45,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
             RunCmdlet(() =>
             {
-                var parameters = new NameAvailabilityParameters(
-                    type: Constants.SignalRResourceType,
-                    name: Name);
-
-                var availability = Client.SignalR.CheckNameAvailability(Location, parameters);
+                var availability = Client.SignalR.CheckNameAvailability(Location, Constants.SignalRResourceType, Name);
                 bool result = (bool)availability.NameAvailable;
                 WriteObject(result);
             });
