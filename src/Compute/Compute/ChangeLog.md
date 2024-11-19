@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Upgraded Azure.Core to 1.44.1.
 
 ## Version 9.0.0
 * Made `-PublicIpSku` parameter Standard by default in `New-AzVM`
