@@ -16,65 +16,66 @@
 
 <#
 .Synopsis
-Create an in-memory object for WebApplicationFirewallCustomRule.
+Create an in-memory object for CustomRule.
 .Description
-Create an in-memory object for WebApplicationFirewallCustomRule.
+Create an in-memory object for CustomRule.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.WebApplicationFirewallCustomRule
+Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CustomRule
 .Link
 https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafcustomruleobject
 #>
 function New-AzFrontDoorWafCustomRuleObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.WebApplicationFirewallCustomRule')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CustomRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(Mandatory, HelpMessage="Type of Actions.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Allow", "Block", "Log", "JSChallenge")]
+        [Parameter(Mandatory, HelpMessage="Describes what action to be applied when rule matches.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Allow", "Block", "Log", "Redirect", "AnomalyScoring", "JSChallenge")]
         [string]
         $Action,
-        [Parameter(HelpMessage="List of user session identifier group by clauses.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IGroupByUserSession[]]
-        [Alias("CustomRule")]
-        $GroupByUserSession,
-        [Parameter(Mandatory, HelpMessage="List of match conditions.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IMatchCondition[]]
-        $MatchCondition,
-        [Parameter(HelpMessage="The name of the resource that is unique within a policy. This name can be used to access the resource.")]
-        [string]
-        $Name,
-        [Parameter(Mandatory, HelpMessage="Priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.")]
-        [int]
-        [ValidateRange(0, [int]::MaxValue)]
-        $Priority = 0,
-        [Parameter(HelpMessage="Duration over which Rate Limit policy will be applied. Applies only when ruleType is RateLimitRule.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("OneMin", "FiveMins")]
-        [string]
-        [Alias("RateLimitDurationInMinutes")]
-        $RateLimitDuration = "OneMin",
-        [Parameter(HelpMessage="Rate Limit threshold to apply in case ruleType is RateLimitRule. Must be greater than or equal to 1.")]
-        [int]
-        $RateLimitThreshold,
-        [Parameter(Mandatory, HelpMessage="The rule type.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("MatchRule", "RateLimitRule", "Invalid")]
-        [string]
-        $RuleType,
         [Parameter(HelpMessage="Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Disabled", "Enabled")]
         [string]
-        [Alias("EnabledState")]
-        $State = "Enabled"
+        $EnabledState = 'Enabled',
+        [Parameter(HelpMessage="Describes the list of variables to group the rate limit requests.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IGroupByVariable[]]
+        [Alias("CustomRule")]
+        $GroupBy,
+        [Parameter(Mandatory, HelpMessage="List of match conditions.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IMatchCondition[]]
+        $MatchCondition,
+        [Parameter(HelpMessage="Describes the name of the rule.")]
+        [string]
+        $Name,
+        [Parameter(Mandatory, HelpMessage="Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.")]
+        [int]
+        [ValidateRange(0, [int]::MaxValue)]
+        $Priority = 0,
+        [Parameter(HelpMessage="Time window for resetting the rate limit count. Default is 1 minute.")]
+        [int]
+        [Alias("RateLimitDurationInMinutes")]
+        $RateLimitDurationInMinute = 1,
+        [Parameter(HelpMessage="Number of allowed requests per client within the time window.")]
+        [int]
+        $RateLimitThreshold,
+        [Parameter(Mandatory, HelpMessage="Describes type of rule.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("MatchRule", "RateLimitRule")]
+        [string]
+        $RuleType
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.WebApplicationFirewallCustomRule]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CustomRule]::New()
 
         if ($PSBoundParameters.ContainsKey('Action')) {
             $Object.Action = $Action
         }
-        if ($PSBoundParameters.ContainsKey('GroupByUserSession')) {
-            $Object.GroupByUserSession = $GroupByUserSession
+        if ($PSBoundParameters.ContainsKey('EnabledState')) {
+            $Object.EnabledState = $EnabledState
+        }
+        if ($PSBoundParameters.ContainsKey('GroupBy')) {
+            $Object.GroupBy = $GroupBy
         }
         if ($PSBoundParameters.ContainsKey('MatchCondition')) {
             $Object.MatchCondition = $MatchCondition
@@ -85,18 +86,15 @@ function New-AzFrontDoorWafCustomRuleObject {
         if ($PSBoundParameters.ContainsKey('Priority')) {
             $Object.Priority = $Priority
         }
-        if ($PSBoundParameters.ContainsKey('RateLimitDuration')) {
-            $Object.RateLimitDuration = $RateLimitDuration 
+        if ($PSBoundParameters.ContainsKey('RateLimitDurationInMinute')) {
+            $Object.RateLimitDurationInMinute = $RateLimitDurationInMinute
         }
         if ($PSBoundParameters.ContainsKey('RateLimitThreshold')) {
             $Object.RateLimitThreshold = $RateLimitThreshold
-        } 
+        }
         if ($PSBoundParameters.ContainsKey('RuleType')) {
             $Object.RuleType = $RuleType
         }
-        if ($PSBoundParameters.ContainsKey('State')) {
-            $Object.State = $State
-        } 
         return $Object
     }
 }

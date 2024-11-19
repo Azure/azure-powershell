@@ -1,24 +1,23 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwaflogscrubbingsettingobject
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/get-azfrontdoormanagedruleset
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorWafLogScrubbingSettingObject
+# Get-AzFrontDoorManagedRuleSet
 
 ## SYNOPSIS
-Create an in-memory object for PolicySettingsLogScrubbing.
+Lists all available managed rule sets.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafLogScrubbingSettingObject [-ScrubbingRule <IWebApplicationFirewallScrubbingRules[]>]
- [-State <String>] [<CommonParameters>]
+Get-AzFrontDoorManagedRuleSet [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for PolicySettingsLogScrubbing.
+Lists all available managed rule sets.
 
 ## EXAMPLES
 
@@ -46,13 +45,14 @@ Create an in-memory object for PolicySettingsLogScrubbing.
 
 ## PARAMETERS
 
-### -ScrubbingRule
-List of log scrubbing rules applied to the Web Application Firewall logs.
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallScrubbingRules[]
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases:
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -61,18 +61,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -State
-State of the log scrubbing config.
-Default value is Enabled.
+### -SubscriptionId
+The subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -84,7 +84,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.PolicySettingsLogScrubbing
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSetDefinition
 
 ## NOTES
 

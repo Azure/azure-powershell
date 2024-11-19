@@ -8,18 +8,18 @@ schema: 2.0.0
 # New-AzFrontDoorWafCustomRuleObject
 
 ## SYNOPSIS
-Create an in-memory object for WebApplicationFirewallCustomRule.
+Create an in-memory object for CustomRule.
 
 ## SYNTAX
 
 ```
 New-AzFrontDoorWafCustomRuleObject -Action <String> -MatchCondition <IMatchCondition[]> -Priority <Int32>
- -RuleType <String> [-CustomRule <IGroupByUserSession[]>] [-EnabledState <String>] [-Name <String>]
- [-RateLimitDurationInMinutes <String>] [-RateLimitThreshold <Int32>] [<CommonParameters>]
+ -RuleType <String> [-EnabledState <String>] [-GroupBy <IGroupByVariable[]>] [-Name <String>]
+ [-RateLimitDurationInMinute <Int32>] [-RateLimitThreshold <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for WebApplicationFirewallCustomRule.
+Create an in-memory object for CustomRule.
 
 ## EXAMPLES
 
@@ -48,7 +48,7 @@ Create an in-memory object for WebApplicationFirewallCustomRule.
 ## PARAMETERS
 
 ### -Action
-Type of Actions.
+Describes what action to be applied when rule matches.
 
 ```yaml
 Type: System.String
@@ -56,21 +56,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CustomRule
-List of user session identifier group by clauses.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IGroupByUserSession[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -85,6 +70,21 @@ Defaults to Enabled if not specified.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GroupBy
+Describes the list of variables to group the rate limit requests.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IGroupByVariable[]
+Parameter Sets: (All)
+Aliases: CustomRule
 
 Required: False
 Position: Named
@@ -109,8 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the resource that is unique within a policy.
-This name can be used to access the resource.
+Describes the name of the rule.
 
 ```yaml
 Type: System.String
@@ -125,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-Priority of the rule.
+Describes priority of the rule.
 Rules with a lower value will be evaluated before rules with a higher value.
 
 ```yaml
@@ -140,14 +139,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RateLimitDurationInMinutes
-Duration over which Rate Limit policy will be applied.
-Applies only when ruleType is RateLimitRule.
+### -RateLimitDurationInMinute
+Time window for resetting the rate limit count.
+Default is 1 minute.
 
 ```yaml
-Type: System.String
+Type: System.Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: RateLimitDurationInMinutes
 
 Required: False
 Position: Named
@@ -157,8 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -RateLimitThreshold
-Rate Limit threshold to apply in case ruleType is RateLimitRule.
-Must be greater than or equal to 1.
+Number of allowed requests per client within the time window.
 
 ```yaml
 Type: System.Int32
@@ -173,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -RuleType
-The rule type.
+Describes type of rule.
 
 ```yaml
 Type: System.String
@@ -194,7 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.WebApplicationFirewallCustomRule
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.CustomRule
 
 ## NOTES
 

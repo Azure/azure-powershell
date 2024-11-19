@@ -13,8 +13,8 @@ Create an in-memory object for ManagedRuleOverride.
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafManagedRuleOverrideObject -RuleId <String> [-Action <String>] [-Sensitivity <String>]
- [-State <String>] [<CommonParameters>]
+New-AzFrontDoorWafManagedRuleOverrideObject -RuleId <String> [-Action <String>] [-EnabledState <String>]
+ [-Exclusion <IManagedRuleExclusion[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,6 +61,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnabledState
+Describes if the managed rule is in enabled or disabled state.
+Defaults to Disabled if not specified.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Exclusion
+Describes the exclusions that are applied to this specific rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RuleId
 Identifier for the managed rule.
 
@@ -70,37 +101,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Sensitivity
-Describes the override sensitivity to be applied when rule matches.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -State
-The state of the managed rule.
-Defaults to Disabled if not specified.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

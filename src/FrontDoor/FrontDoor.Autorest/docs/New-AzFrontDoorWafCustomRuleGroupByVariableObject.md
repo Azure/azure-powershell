@@ -46,7 +46,7 @@ Create an in-memory object for GroupByVariable.
 ## PARAMETERS
 
 ### -VariableName
-User Session clause variable.
+Describes the supported variable for group by.
 
 ```yaml
 Type: System.String

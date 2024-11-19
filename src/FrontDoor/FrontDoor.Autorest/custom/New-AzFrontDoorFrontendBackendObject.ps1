@@ -34,7 +34,8 @@ function New-AzFrontDoorFrontendBackendObject {
         $Address,
         [Parameter(HelpMessage="The value to use as the host header sent to the backend. If blank or unspecified, this defaults to the incoming host.")]
         [string]
-        $BackendHostHeader = $Address,
+        [Alias("BackendHostHeader")]
+        $HostHeader = $Address,
         [Parameter(HelpMessage="Whether to enable use of this backend. Permitted values are 'Enabled' or 'Disabled'.")]
         [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
         [string]
@@ -72,8 +73,8 @@ function New-AzFrontDoorFrontendBackendObject {
         if ($PSBoundParameters.ContainsKey('Address')) {
             $Object.Address = $Address
         }
-        if ($PSBoundParameters.ContainsKey('BackendHostHeader')) {
-            $Object.HostHeader = $BackendHostHeader
+        if ($PSBoundParameters.ContainsKey('HostHeader')) {
+            $Object.HostHeader = $HostHeader
         }
         if ($PSBoundParameters.ContainsKey('EnabledState')) {
             $Object.EnabledState = $EnabledState

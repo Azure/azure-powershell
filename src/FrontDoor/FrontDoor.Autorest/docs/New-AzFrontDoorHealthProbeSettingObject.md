@@ -14,7 +14,7 @@ Create an in-memory object for HealthProbeSettingsModel.
 
 ```
 New-AzFrontDoorHealthProbeSettingObject [-EnabledState <String>] [-HealthProbeMethod <String>] [-Id <String>]
- [-IntervalInSeconds <Int32>] [-Name <String>] [-Path <String>] [-Protocol <String>] [<CommonParameters>]
+ [-IntervalInSecond <Int32>] [-Name <String>] [-Path <String>] [-Protocol <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,13 +92,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IntervalInSeconds
+### -IntervalInSecond
 The number of seconds between health probes.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: IntervalInSeconds
 
 Required: False
 Position: Named

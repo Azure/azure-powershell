@@ -35,10 +35,9 @@ require:
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 input-file:
 # You need to specify your swagger files here.
-  # - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-09-01/afdx.json
-  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/webapplicationfirewall.json
+  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2024-02-01/webapplicationfirewall.json
   - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json
-  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/network.json
+  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2024-02-01/network.json
   - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2021-06-01/frontdoor.json
 
 try-require: 
@@ -88,25 +87,26 @@ directive:
         "description": "The configuration specifying how to enable HTTPS",
         "$ref": "#/definitions/CustomHttpsConfiguration"
       }
+  - from: swagger-document
+    where: $.definitions.FrontendEndpointProperties.properties.customHttpsConfiguration
+    transform: >- 
+      return {
+        "description": "The configuration specifying how to enable HTTPS",
+        "$ref": "#/definitions/CustomHttpsConfiguration"
+      }
 
  
 
   # For New object model cmdlet
   - model-cmdlet:
-    # - model-name: Backend
-    #   cmdlet-name: New-AzFrontDoorFrontendBackendObject
-    # # New-AzFrontDoorFrontendBackendObject
-    # - where:
-    #     model-name: Backend
-    #     property-name: HostHeader
-    #   set:
-    #     property-name: BackendHostHeader
+    - model-name: Backend
+      cmdlet-name: New-AzFrontDoorFrontendBackendObject
     # - model-name: BackendPool
     #   cmdlet-name: New-AzFrontDoorFrontendBackendPoolObject
     # - model-name: BackendPoolsSettings
     #   cmdlet-name: New-AzFrontDoorFrontendBackendPoolsSettingsObject
-    - model-name: FrontendEndpoint
-      cmdlet-name: New-AzFrontDoorFrontendEndpointObject
+    # - model-name: FrontendEndpoint
+    #   cmdlet-name: New-AzFrontDoorFrontendEndpointObject
     - model-name: HeaderAction
       cmdlet-name: New-AzFrontDoorHeaderActionObject
     # - model-name: HealthProbeSettingsModel
@@ -125,18 +125,16 @@ directive:
     #     property-name: AdditionalLatencyInMillisecond
     #   set:
     #     property-name: AdditionalLatencyInMilliseconds 
-    # - model-name: RoutingRule
-    #   cmdlet-name: New-AzFrontDoorRoutingRuleObject
-    # - model-name: RulesEngineAction
-    #   cmdlet-name: New-AzFrontDoorRulesEngineActionObject
-    # - model-name: RulesEngineMatchCondition
-    #   cmdlet-name: New-AzFrontDoorRulesEngineMatchConditionObject
+    - model-name: RoutingRule
+      cmdlet-name: New-AzFrontDoorRoutingRuleObject
+    - model-name: RulesEngineAction
+      cmdlet-name: New-AzFrontDoorRulesEngineActionObject
+    - model-name: RulesEngineMatchCondition
+      cmdlet-name: New-AzFrontDoorRulesEngineMatchConditionObject
     # - model-name: RulesEngineRule
     #   cmdlet-name: New-AzFrontDoorRulesEngineRuleObject
-    # - model-name: WebApplicationFirewallCustomRule
-    #   cmdlet-name: New-AzFrontDoorWafCustomRuleObject 
-    - model-name: CustomRule
-      cmdlet-name: New-AzFrontDoorCustomRuleObject
+    # - model-name: CustomRule
+    #   cmdlet-name: New-AzFrontDoorWafCustomRuleObject
     - model-name: ManagedRuleOverride
       cmdlet-name: New-AzFrontDoorWafManagedRuleOverrideObject
     - model-name: MatchCondition
@@ -145,7 +143,7 @@ directive:
       cmdlet-name: New-AzFrontDoorWafRuleGroupOverrideObject 
     - model-name: GroupByVariable
       cmdlet-name: New-AzFrontDoorWafCustomRuleGroupByVariableObject
-    - model-name: ExclusionManagedRule
+    - model-name: ManagedRuleExclusion
       cmdlet-name: New-AzFrontDoorWafManagedRuleExclusionObject
     - model-name: PolicySettingsLogScrubbing
       cmdlet-name: New-AzFrontDoorWafLogScrubbingSettingObject 
@@ -154,7 +152,7 @@ directive:
 
   # Rename
   - where: 
-      subject: WebApplicationFirewallPolicy
+      subject: Policy
     set:
       subject: WafPolicy
 
@@ -179,6 +177,29 @@ directive:
       parameter-name: CertificateType
 
   # Breaking change avoid rename
+  # New-AzFrontDoorFrontendBackendObject
+  - where:
+      model-name: Backend
+      property-name: HostHeader
+    set:
+      property-name: BackendHostHeader
+
+  - where:
+      parameter-name: HostHeader
+    set:
+      default:
+        script: '$Address'
+  - where:
+      parameter-name: EnabledState
+    set:
+      default: 
+        script: 'Enabled'
+  - where:
+      parameter-name: Priority
+    set:
+      default:
+        script: 1
+
   # New-AzFrontDoorHeaderActionObject
   - where:
       model-name: HeaderAction

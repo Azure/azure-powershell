@@ -1,24 +1,25 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwaflogscrubbingruleobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorrulesengineactionobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorWafLogScrubbingRuleObject
+# New-AzFrontDoorRulesEngineActionObject
 
 ## SYNOPSIS
-Create an in-memory object for WebApplicationFirewallScrubbingRules.
+Create an in-memory object for RulesEngineAction.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafLogScrubbingRuleObject -MatchVariable <String> -SelectorMatchOperator <String>
- [-Selector <String>] [-State <String>] [<CommonParameters>]
+New-AzFrontDoorRulesEngineActionObject [-RequestHeaderAction <IHeaderAction[]>]
+ [-ResponseHeaderAction <IHeaderAction[]>] [-RouteConfigurationOverrideOdataType <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for WebApplicationFirewallScrubbingRules.
+Create an in-memory object for RulesEngineAction.
 
 ## EXAMPLES
 
@@ -46,26 +47,11 @@ Create an in-memory object for WebApplicationFirewallScrubbingRules.
 
 ## PARAMETERS
 
-### -MatchVariable
-The variable to be scrubbed from the logs.
+### -RequestHeaderAction
+A list of header actions to apply from the request from AFD to the origin.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Selector
-When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHeaderAction[]
 Parameter Sets: (All)
 Aliases:
 
@@ -76,24 +62,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SelectorMatchOperator
-When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
+### -ResponseHeaderAction
+A list of header actions to apply from the response from AFD to the client.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHeaderAction[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -State
-Defines the state of a log scrubbing rule.
-Default value is enabled.
+### -RouteConfigurationOverrideOdataType
+
 
 ```yaml
 Type: System.String
@@ -114,7 +99,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.WebApplicationFirewallScrubbingRules
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.RulesEngineAction
 
 ## NOTES
 

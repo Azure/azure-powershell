@@ -29,6 +29,9 @@ Gets an Experiment by ExperimentName
 ### [Get-AzFrontDoorFrontendEndpoint](Get-AzFrontDoorFrontendEndpoint.md)
 Gets a Frontend endpoint with the specified name within the specified Front Door.
 
+### [Get-AzFrontDoorManagedRuleSet](Get-AzFrontDoorManagedRuleSet.md)
+Lists all available managed rule sets.
+
 ### [Get-AzFrontDoorNetworkExperimentProfile](Get-AzFrontDoorNetworkExperimentProfile.md)
 Gets an NetworkExperiment Profile by ProfileName
 
@@ -83,6 +86,9 @@ Create an in-memory object for RoutingRule.
 ### [New-AzFrontDoorRulesEngine](New-AzFrontDoorRulesEngine.md)
 create a new Rules Engine Configuration with the specified name within the specified Front Door.
 
+### [New-AzFrontDoorRulesEngineActionObject](New-AzFrontDoorRulesEngineActionObject.md)
+Create an in-memory object for RulesEngineAction.
+
 ### [New-AzFrontDoorRulesEngineMatchConditionObject](New-AzFrontDoorRulesEngineMatchConditionObject.md)
 Create an in-memory object for RulesEngineMatchCondition.
 
@@ -93,7 +99,7 @@ Create an in-memory object for RulesEngineRule.
 Create an in-memory object for GroupByVariable.
 
 ### [New-AzFrontDoorWafCustomRuleObject](New-AzFrontDoorWafCustomRuleObject.md)
-Create an in-memory object for WebApplicationFirewallCustomRule.
+Create an in-memory object for CustomRule.
 
 ### [New-AzFrontDoorWafLogScrubbingRuleObject](New-AzFrontDoorWafLogScrubbingRuleObject.md)
 Create an in-memory object for WebApplicationFirewallScrubbingRules.
@@ -102,7 +108,7 @@ Create an in-memory object for WebApplicationFirewallScrubbingRules.
 Create an in-memory object for PolicySettingsLogScrubbing.
 
 ### [New-AzFrontDoorWafManagedRuleExclusionObject](New-AzFrontDoorWafManagedRuleExclusionObject.md)
-Create an in-memory object for ExclusionManagedRule.
+Create an in-memory object for ManagedRuleExclusion.
 
 ### [New-AzFrontDoorWafManagedRuleOverrideObject](New-AzFrontDoorWafManagedRuleOverrideObject.md)
 Create an in-memory object for ManagedRuleOverride.
@@ -111,7 +117,7 @@ Create an in-memory object for ManagedRuleOverride.
 Create an in-memory object for MatchCondition.
 
 ### [New-AzFrontDoorWafPolicy](New-AzFrontDoorWafPolicy.md)
-create or create policy with specified rule set name within a resource group.
+create policy with specified rule set name within a resource group.
 
 ### [New-AzFrontDoorWafRuleGroupOverrideObject](New-AzFrontDoorWafRuleGroupOverrideObject.md)
 Create an in-memory object for ManagedRuleGroupOverride.
@@ -129,7 +135,7 @@ Deletes an NetworkExperiment Profile by ProfileName
 Deletes an existing Rules Engine Configuration with the specified parameters.
 
 ### [Remove-AzFrontDoorWafPolicy](Remove-AzFrontDoorWafPolicy.md)
-Deletes Policy.
+Deletes Policy
 
 ### [Set-AzFrontDoor](Set-AzFrontDoor.md)
 update a new Front Door with a Front Door name under the specified subscription and resource group.
@@ -144,7 +150,7 @@ update an NetworkExperiment Profile
 update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
 ### [Set-AzFrontDoorWafPolicy](Set-AzFrontDoorWafPolicy.md)
-update or update policy with specified rule set name within a resource group.
+update policy with specified rule set name within a resource group.
 
 ### [Test-AzFrontDoorCustomDomain](Test-AzFrontDoorCustomDomain.md)
 Validates the custom domain mapping to ensure it maps to the correct Front Door endpoint in DNS.
@@ -168,5 +174,5 @@ update an NetworkExperimentProfiles
 update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
 ### [Update-AzFrontDoorWafPolicy](Update-AzFrontDoorWafPolicy.md)
-update or update policy with specified rule set name within a resource group.
+Patch a specific frontdoor webApplicationFirewall policy for tags update under the specified subscription and resource group.
 

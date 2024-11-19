@@ -19,7 +19,7 @@ Get-AzFrontDoorWafPolicy [-SubscriptionId <String[]>] [-DefaultProfile <PSObject
 
 ### Get
 ```
-Get-AzFrontDoorWafPolicy -PolicyName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -94,13 +94,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PolicyName
-The name of the policy.
+### -Name
+The name of the Web Application Firewall Policy.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: PolicyName
 
 Required: True
 Position: Named
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String

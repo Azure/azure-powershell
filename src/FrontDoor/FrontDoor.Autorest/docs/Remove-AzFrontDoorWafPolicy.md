@@ -8,13 +8,13 @@ schema: 2.0.0
 # Remove-AzFrontDoorWafPolicy
 
 ## SYNOPSIS
-Deletes Policy.
+Deletes Policy
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzFrontDoorWafPolicy -PolicyName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Remove-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-Deletes Policy.
+Deletes Policy
 
 ## EXAMPLES
 
@@ -99,6 +99,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the Web Application Firewall Policy.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: PolicyName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -129,23 +144,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PolicyName
-The name of the policy.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-The name of the resource group.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String

@@ -8,16 +8,17 @@ schema: 2.0.0
 # New-AzFrontDoorWafManagedRuleExclusionObject
 
 ## SYNOPSIS
-Create an in-memory object for ExclusionManagedRule.
+Create an in-memory object for ManagedRuleExclusion.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafManagedRuleExclusionObject -RuleId <String> [<CommonParameters>]
+New-AzFrontDoorWafManagedRuleExclusionObject -MatchVariable <String> -Selector <String>
+ -SelectorMatchOperator <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for ExclusionManagedRule.
+Create an in-memory object for ManagedRuleExclusion.
 
 ## EXAMPLES
 
@@ -45,8 +46,38 @@ Create an in-memory object for ExclusionManagedRule.
 
 ## PARAMETERS
 
-### -RuleId
-Identifier for the managed rule.
+### -MatchVariable
+The variable type to be excluded.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Selector
+Selector value for which elements in the collection this exclusion applies to.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SelectorMatchOperator
+Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
 
 ```yaml
 Type: System.String
@@ -67,7 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ExclusionManagedRule
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleExclusion
 
 ## NOTES
 

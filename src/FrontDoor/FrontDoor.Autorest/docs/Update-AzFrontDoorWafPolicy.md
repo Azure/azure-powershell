@@ -8,42 +8,38 @@ schema: 2.0.0
 # Update-AzFrontDoorWafPolicy
 
 ## SYNOPSIS
-update or update policy with specified rule set name within a resource group.
+Patch a specific frontdoor webApplicationFirewall policy for tags update under the specified subscription and resource group.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzFrontDoorWafPolicy -PolicyName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-Id <String>] [-Location <String>]
- [-LogScrubbingRule <IWebApplicationFirewallScrubbingRules[]>] [-LogScrubbingState <String>]
- [-ManagedRuleException <IExceptionEntry[]>] [-ManagedRuleExclusion <IOwaspCrsExclusionEntry[]>]
- [-ManagedRuleSet <IManagedRuleSet[]>] [-PolicySettingCustomBlockResponseBody <String>]
- [-PolicySettingCustomBlockResponseStatusCode <Int32>] [-PolicySettingFileUploadEnforcement]
- [-PolicySettingFileUploadLimitInMb <Int32>] [-PolicySettingJsChallengeCookieExpirationInMin <Int32>]
- [-PolicySettingMaxRequestBodySizeInKb <Int32>] [-PolicySettingMode <String>] [-PolicySettingRequestBodyCheck]
- [-PolicySettingRequestBodyEnforcement] [-PolicySettingRequestBodyInspectLimitInKb <Int32>]
- [-PolicySettingState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity>
- [-CustomRule <IWebApplicationFirewallCustomRule[]>] [-Id <String>] [-Location <String>]
- [-LogScrubbingRule <IWebApplicationFirewallScrubbingRules[]>] [-LogScrubbingState <String>]
- [-ManagedRuleException <IExceptionEntry[]>] [-ManagedRuleExclusion <IOwaspCrsExclusionEntry[]>]
- [-ManagedRuleSet <IManagedRuleSet[]>] [-PolicySettingCustomBlockResponseBody <String>]
- [-PolicySettingCustomBlockResponseStatusCode <Int32>] [-PolicySettingFileUploadEnforcement]
- [-PolicySettingFileUploadLimitInMb <Int32>] [-PolicySettingJsChallengeCookieExpirationInMin <Int32>]
- [-PolicySettingMaxRequestBodySizeInKb <Int32>] [-PolicySettingMode <String>] [-PolicySettingRequestBodyCheck]
- [-PolicySettingRequestBodyEnforcement] [-PolicySettingRequestBodyInspectLimitInKb <Int32>]
- [-PolicySettingState <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Update-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update or update policy with specified rule set name within a resource group.
+Patch a specific frontdoor webApplicationFirewall policy for tags update under the specified subscription and resource group.
 
 ## EXAMPLES
 
@@ -71,11 +67,11 @@ update or update policy with specified rule set name within a resource group.
 
 ## PARAMETERS
 
-### -CustomRule
-The custom rules inside the policy.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallCustomRule[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -102,21 +98,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Resource ID.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 
@@ -132,103 +113,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-Resource location.
+### -JsonFilePath
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LogScrubbingRule
-The rules that are applied to the logs for scrubbing.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallScrubbingRules[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LogScrubbingState
-State of the log scrubbing config.
-Default value is Enabled.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedRuleException
-The exceptions that are applied on the policy.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IExceptionEntry[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedRuleExclusion
-The Exclusions that are applied on the policy.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IOwaspCrsExclusionEntry[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedRuleSet
-The managed rule sets that are associated with the policy.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicyName
-The name of the policy.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -238,162 +128,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PolicySettingCustomBlockResponseBody
-If the action type is block, customer can override the response body.
-The body must be specified in base64 encoding.
+### -JsonString
+Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateViaJsonString
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PolicySettingCustomBlockResponseStatusCode
-If the action type is block, customer can override the response status code.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySettingFileUploadEnforcement
-Whether allow WAF to enforce file upload limits.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySettingFileUploadLimitInMb
-Maximum file upload size in Mb for WAF.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySettingJsChallengeCookieExpirationInMin
-Web Application Firewall JavaScript Challenge Cookie Expiration time in minutes.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySettingMaxRequestBodySizeInKb
-Maximum request body size in Kb for WAF.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySettingMode
-The mode of the policy.
+### -Name
+The name of the Web Application Firewall Policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Aliases: PolicyName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PolicySettingRequestBodyCheck
-Whether to allow WAF to check request Body.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySettingRequestBodyEnforcement
-Whether allow WAF to enforce request body limits.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySettingRequestBodyInspectLimitInKb
-Max inspection limit in KB for request body inspection for WAF.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySettingState
-The state of the policy.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -405,11 +174,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: True
@@ -425,7 +194,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
 Aliases:
 
 Required: False
@@ -440,7 +209,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
