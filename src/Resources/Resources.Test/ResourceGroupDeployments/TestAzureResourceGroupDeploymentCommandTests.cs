@@ -131,7 +131,8 @@ Diagnostics (3):
 {Color.DarkYellow}(resource1) bad input (202)
 {Color.Reset}{Color.DarkYellow}(resource2) bad input 2 (203)
 {Color.Reset}{Color.Red}(resource3) bad input 3 (203)
-{Color.Reset}";
+{Color.Reset}"
+            .Replace("\r\n", Environment.NewLine);
 
             JToken expectedToken = new JValue(expected);
             PSObject expectedObject = new PSObject(JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: expectedToken));

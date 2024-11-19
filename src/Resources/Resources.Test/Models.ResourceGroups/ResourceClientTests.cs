@@ -368,19 +368,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
 
             TemplateValidationInfo info = resourcesClient.ValidateDeployment(parameters);
-            var expected = new List<PSResourceManagerError>()
-            { 
-                new PSResourceManagerError()
-                {
-                    Code = "Warning",
-                    Message = "Diagnostic - Target Test Diagnostic"
-                }
-            };
 
             var error = info.Errors;
             var diagnostics = info.Diagnostics;
 
+            var expected = new DeploymentDiagnosticsDefinition(level: Level.Warning, message: "Test Diagnostic", code: "Diagnostic", target: "Target");
+
             Assert.Empty(error);
+            Assert.Equal(expected.Code, diagnostics[0].Code);
+            Assert.Equal(expected.Level, diagnostics[0].Level);
+            Assert.Equal(expected.Message, diagnostics[0].Message);
 
             progressLoggerMock.Verify(f => f("Template is valid."), Times.Once());
         }

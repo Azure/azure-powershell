@@ -465,7 +465,8 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
             string expected = $@"Diagnostics (2): 
 {Color.DarkYellow}(resource1) Nested Deployment Skipped. (Code)
 {Color.Reset}{Color.DarkYellow}(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source. (Unsupported)
-{Color.Reset}";
+{Color.Reset}"
+            .Replace("\r\n", Environment.NewLine);
 
             // Act.
             string result = WhatIfOperationResultFormatter.Format(
@@ -486,7 +487,8 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
 
             string expected = $@"Diagnostics (1): 
 {Color.DarkYellow}(resource1) Nested Deployment Skipped. (Code)
-{Color.Reset}";
+{Color.Reset}"
+            .Replace("\r\n", Environment.NewLine); 
 
             // Act.
             string result = WhatIfOperationResultFormatter.Format(
@@ -512,7 +514,8 @@ Scope: /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1
 
             string expected = $@"Diagnostics (1): 
 {Color.DarkYellow}(/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg1/providers/p0/foo) Unable to determine the source. (Unsupported)
-{Color.Reset}";
+{Color.Reset}"
+            .Replace("\r\n", Environment.NewLine);
 
             // Act.
             string result = WhatIfOperationResultFormatter.Format(
