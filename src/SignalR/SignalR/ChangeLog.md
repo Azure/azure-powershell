@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed Microsoft.Azure.Management.SignalR 1.1.2-preview dependencies
+* Added Microsoft.Azure.PowerShell.SignalR.Management.Sdk
 
 ## Version 2.0.2
 * Fixed secrets exposure in example documentation.
