@@ -7764,6 +7764,8 @@ function Test-AddEncryptionIdentityInAzureVmConfig{
         Assert-True { $vm.Identity.UserAssignedIdentities.ContainsKey($encIdentity) }
         Assert-NotNull  $vm.Identity.UserAssignedIdentities[$encIdentity].PrincipalId
         Assert-NotNull  $vm.Identity.UserAssignedIdentities[$encIdentity].ClientId
+        Assert-NotNull $vm.SecurityProfile.EncryptionIdentity
+        Assert-AreEqual $encIdentity $vm.SecurityProfile.EncryptionIdentity.UserAssignedIdentityResourceId
 
     }
     finally {
