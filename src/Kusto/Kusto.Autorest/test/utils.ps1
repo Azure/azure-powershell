@@ -76,7 +76,7 @@ function setupEnv() {
     Write-Host "Preparing parameters for ARM template deploymet" -ForegroundColor Green
     $params = Get-Content .\test\deployment-templates\all-resources\parameters.json | ConvertFrom-Json
 
-    Update-Parameter -propertyName "kustoApiVersion" -propertyValue "2023-08-15" -params $params
+    Update-Parameter -propertyName "kustoApiVersion" -propertyValue "2023-04-13" -params $params
     Update-Parameter -propertyName "userAssignedManagedIdentityName" -propertyValue ("uaMi" + $rstr1) -params $params
     Update-Parameter -propertyName "kustoSkuName" -propertyValue "Dev(No SLA)_Standard_E2a_v4" -params $params
     Update-Parameter -propertyName "kustoFollowerSkuName" -propertyValue "Standard_E8as_v5+1TB_PS" -params $params #Hyper threading vm is required for sandbox custom image tests
