@@ -56,6 +56,9 @@ create a new Front Door with a Front Door name under the specified subscription 
 ### [New-AzFrontDoorExperiment](New-AzFrontDoorExperiment.md)
 create an Experiment
 
+### [New-AzFrontDoorForwardingConfigurationObject](New-AzFrontDoorForwardingConfigurationObject.md)
+Create an in-memory object for ForwardingConfiguration.
+
 ### [New-AzFrontDoorFrontendBackendObject](New-AzFrontDoorFrontendBackendObject.md)
 Create an in-memory object for Backend.
 
@@ -79,6 +82,12 @@ Create an in-memory object for LoadBalancingSettingsModel.
 
 ### [New-AzFrontDoorNetworkExperimentProfile](New-AzFrontDoorNetworkExperimentProfile.md)
 create an NetworkExperiment Profile
+
+### [New-AzFrontDoorRedirectConfigurationObject](New-AzFrontDoorRedirectConfigurationObject.md)
+Create an in-memory object for RedirectConfiguration.
+
+### [New-AzFrontDoorRouteConfigurationObject](New-AzFrontDoorRouteConfigurationObject.md)
+Create an in-memory object for RouteConfiguration.
 
 ### [New-AzFrontDoorRoutingRuleObject](New-AzFrontDoorRoutingRuleObject.md)
 Create an in-memory object for RoutingRule.
@@ -109,6 +118,9 @@ Create an in-memory object for PolicySettingsLogScrubbing.
 
 ### [New-AzFrontDoorWafManagedRuleExclusionObject](New-AzFrontDoorWafManagedRuleExclusionObject.md)
 Create an in-memory object for ManagedRuleExclusion.
+
+### [New-AzFrontDoorWafManagedRuleObject](New-AzFrontDoorWafManagedRuleObject.md)
+Create an in-memory object for ManagedRuleSet.
 
 ### [New-AzFrontDoorWafManagedRuleOverrideObject](New-AzFrontDoorWafManagedRuleOverrideObject.md)
 Create an in-memory object for ManagedRuleOverride.

@@ -1,24 +1,25 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafmanagedruleoverrideobject
+online version: https://learn.microsoft.com/powershell/module/Az.FrontDoor/new-azfrontdoorwafmanagedruleobject
 schema: 2.0.0
 ---
 
-# New-AzFrontDoorWafManagedRuleOverrideObject
+# New-AzFrontDoorWafManagedRuleObject
 
 ## SYNOPSIS
-Create an in-memory object for ManagedRuleOverride.
+Create an in-memory object for ManagedRuleSet.
 
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafManagedRuleOverrideObject -RuleId <String> [-Action <String>] [-Disabled <String>]
- [-Exclusion <IManagedRuleExclusion[]>] [<CommonParameters>]
+New-AzFrontDoorWafManagedRuleObject -RuleSetType <String> -RuleSetVersion <String>
+ [-Exclusion <IManagedRuleExclusion[]>] [-RuleGroupOverride <IManagedRuleGroupOverride[]>]
+ [-RuleSetAction <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for ManagedRuleOverride.
+Create an in-memory object for ManagedRuleSet.
 
 ## EXAMPLES
 
@@ -46,39 +47,8 @@ Create an in-memory object for ManagedRuleOverride.
 
 ## PARAMETERS
 
-### -Action
-Describes the override action to be applied when rule matches.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Disabled
-Describes if the managed rule is in enabled or disabled state.
-Defaults to Disabled if not specified.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Exclusion
-Describes the exclusions that are applied to this specific rule.
+Describes the exclusions that are applied to all rules in the set.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleExclusion[]
@@ -92,8 +62,53 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleId
-Identifier for the managed rule.
+### -RuleGroupOverride
+Defines the rule group overrides to apply to the rule set.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleGroupOverride[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleSetAction
+Defines the rule set action.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleSetType
+Defines the rule set type to use.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RuleSetVersion
+Defines the version of the rule set to use.
 
 ```yaml
 Type: System.String
@@ -114,7 +129,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleOverride
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ManagedRuleSet
 
 ## NOTES
 

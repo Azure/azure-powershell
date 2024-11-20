@@ -66,13 +66,8 @@ directive:
       variant: ^CreateViaIdentity.*$
     remove: true
   - no-inline:  # choose ONE of these models to disable inlining
-    - NetworkInterfaceIPConfiguration
-    #- NetworkInterfaceIPConfigurationPropertiesFormat
-    - PublicIPAddress
-    #- PublicIPAddressPropertiesFormat
-    - IPConfiguration
-    #- IPConfigurationPropertiesFormat
     - BackendPoolsSettings
+    - RouteConfiguration
 
   - from: swagger-document
     where: $.definitions.RouteUpdatePropertiesParameters.properties.supportedProtocols
@@ -99,8 +94,8 @@ directive:
 
   # For New object model cmdlet
   - model-cmdlet:
-    - model-name: Backend
-      cmdlet-name: New-AzFrontDoorFrontendBackendObject
+    # - model-name: Backend
+    #   cmdlet-name: New-AzFrontDoorFrontendBackendObject
     # - model-name: BackendPool
     #   cmdlet-name: New-AzFrontDoorFrontendBackendPoolObject
     # - model-name: BackendPoolsSettings
@@ -125,8 +120,8 @@ directive:
     #     property-name: AdditionalLatencyInMillisecond
     #   set:
     #     property-name: AdditionalLatencyInMilliseconds 
-    - model-name: RoutingRule
-      cmdlet-name: New-AzFrontDoorRoutingRuleObject
+    # - model-name: RoutingRule
+    #   cmdlet-name: New-AzFrontDoorRoutingRuleObject
     - model-name: RulesEngineAction
       cmdlet-name: New-AzFrontDoorRulesEngineActionObject
     - model-name: RulesEngineMatchCondition
@@ -135,20 +130,28 @@ directive:
     #   cmdlet-name: New-AzFrontDoorRulesEngineRuleObject
     # - model-name: CustomRule
     #   cmdlet-name: New-AzFrontDoorWafCustomRuleObject
-    - model-name: ManagedRuleOverride
-      cmdlet-name: New-AzFrontDoorWafManagedRuleOverrideObject
+    # - model-name: ManagedRuleOverride
+    #   cmdlet-name: New-AzFrontDoorWafManagedRuleOverrideObject
     - model-name: MatchCondition
       cmdlet-name: New-AzFrontDoorWafMatchConditionObject
     - model-name: ManagedRuleGroupOverride
       cmdlet-name: New-AzFrontDoorWafRuleGroupOverrideObject 
     - model-name: GroupByVariable
       cmdlet-name: New-AzFrontDoorWafCustomRuleGroupByVariableObject
-    - model-name: ManagedRuleExclusion
-      cmdlet-name: New-AzFrontDoorWafManagedRuleExclusionObject
+    # - model-name: ManagedRuleExclusion
+    #   cmdlet-name: New-AzFrontDoorWafManagedRuleExclusionObject
+    - model-name: ManagedRuleSet
+      cmdlet-name: New-AzFrontDoorWafManagedRuleObject
     - model-name: PolicySettingsLogScrubbing
       cmdlet-name: New-AzFrontDoorWafLogScrubbingSettingObject 
     - model-name: WebApplicationFirewallScrubbingRules
-      cmdlet-name: New-AzFrontDoorWafLogScrubbingRuleObject 
+      cmdlet-name: New-AzFrontDoorWafLogScrubbingRuleObject
+    - model-name: ForwardingConfiguration
+      cmdlet-name: New-AzFrontDoorForwardingConfigurationObject
+    - model-name: RedirectConfiguration
+      cmdlet-name: New-AzFrontDoorRedirectConfigurationObject
+    # - model-name: RouteConfiguration
+    #   cmdlet-name: New-AzFrontDoorRouteConfigurationObject
 
   # Rename
   - where: 
@@ -177,28 +180,6 @@ directive:
       parameter-name: CertificateType
 
   # Breaking change avoid rename
-  # New-AzFrontDoorFrontendBackendObject
-  - where:
-      model-name: Backend
-      property-name: HostHeader
-    set:
-      property-name: BackendHostHeader
-
-  - where:
-      parameter-name: HostHeader
-    set:
-      default:
-        script: '$Address'
-  - where:
-      parameter-name: EnabledState
-    set:
-      default: 
-        script: 'Enabled'
-  - where:
-      parameter-name: Priority
-    set:
-      default:
-        script: 1
 
   # New-AzFrontDoorHeaderActionObject
   - where:
