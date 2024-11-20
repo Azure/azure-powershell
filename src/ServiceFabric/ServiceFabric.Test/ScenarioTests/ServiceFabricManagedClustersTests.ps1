@@ -16,7 +16,7 @@ function Test-CreateBasicCluster
 {
 	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
 	$clusterName = "sfmcps-" + (getAssetname)
-	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
+	$pass = (ConvertTo-SecureString -AsPlainText -Force "00000000000000")
 	$location = "westus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
@@ -56,7 +56,7 @@ function Test-NodeTypeOperations
 	$clusterName = "sfmcps-" + (getAssetname)
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
-	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
+	$pass = (ConvertTo-SecureString -AsPlainText -Force "00000000000000")
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -UpgradeMode Automatic -UpgradeCadence Wave1 -Location $location `
@@ -103,7 +103,7 @@ function Test-Extension
 	$clusterName = "sfmcps-" + (getAssetname)
 	$location = "westus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
-	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
+	$pass = (ConvertTo-SecureString -AsPlainText -Force "00000000000000")
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
@@ -141,7 +141,7 @@ function Test-Certificate
 	$clusterName = "sfmcps-" + (getAssetname)
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
-	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
+	$pass = (ConvertTo-SecureString -AsPlainText -Force "00000000000000")
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
 	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
@@ -175,7 +175,7 @@ function Test-AddNetworkSecurityRule
 {
 	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
 	$clusterName = "sfmcps-" + (getAssetname)
-	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
+	$pass = (ConvertTo-SecureString -AsPlainText -Force "00000000000000")
 	$location = "southcentralus"
 	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
 	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "ResourceGroupNotFound"

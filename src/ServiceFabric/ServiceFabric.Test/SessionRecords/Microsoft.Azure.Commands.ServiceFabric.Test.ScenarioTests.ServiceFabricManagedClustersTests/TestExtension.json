@@ -435,7 +435,7 @@
           "525"
         ]
       },
-      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"dnsName\": \"sfmcps-ps2481\",\r\n    \"clientConnectionPort\": 19000,\r\n    \"httpGatewayConnectionPort\": 19080,\r\n    \"adminUserName\": \"vmadmin\",\r\n    \"adminPassword\": \"TestPass1234!@#\",\r\n    \"clients\": [\r\n      {\r\n        \"isAdmin\": false,\r\n        \"thumbprint\": \"123BDACDCDFB2C7B250192C6078E47D1E1DB119B\"\r\n      }\r\n    ],\r\n    \"clusterUpgradeMode\": \"Automatic\",\r\n    \"clusterUpgradeCadence\": \"Wave0\",\r\n    \"zonalResiliency\": false\r\n  },\r\n  \"location\": \"westus\"\r\n}",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"dnsName\": \"sfmcps-ps2481\",\r\n    \"clientConnectionPort\": 19000,\r\n    \"httpGatewayConnectionPort\": 19080,\r\n    \"adminUserName\": \"vmadmin\",\r\n    \"adminPassword\": \"00000000000000\",\r\n    \"clients\": [\r\n      {\r\n        \"isAdmin\": false,\r\n        \"thumbprint\": \"123BDACDCDFB2C7B250192C6078E47D1E1DB119B\"\r\n      }\r\n    ],\r\n    \"clusterUpgradeMode\": \"Automatic\",\r\n    \"clusterUpgradeCadence\": \"Wave0\",\r\n    \"zonalResiliency\": false\r\n  },\r\n  \"location\": \"westus\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
