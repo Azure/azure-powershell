@@ -7,13 +7,12 @@ namespace Microsoft.Azure.Management.PowerBIEmbedded.Models
 {
 
     /// <summary>
-    /// Defines values for CheckNameReason.
+    /// Defines values for AzureSkuName.
     /// </summary>
 
 
-    public static class CheckNameReason
+    public static class AzureSkuName
     {
-        public const string Unavailable = "Unavailable";
-        public const string Invalid = "Invalid";
+        public const string S1 = "S1";
     }
 }
