@@ -138,7 +138,7 @@ try {
                     Sdk = $_;
                     Severity = 1;
                     ProblemId = $AutorestCSharpDetected
-                    Description = "Do not support updating SDK using autorest csharp v3."
+                    Description = "Do not support updating SDK using autorest csharp."
                     Remediation = "Please update the Readme.md to generate code by autorest powershell v4."
                 }
             }
