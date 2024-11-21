@@ -22,7 +22,6 @@ variables:
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
-  IsGenerateBased: $[startsWith(variables['system.pullRequest.targetBranch'], 'generation')]
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
   TestTimeoutInMinutes: 180
@@ -52,26 +51,31 @@ jobs:
 
   steps:
   - checkout: self
+  - template: get-github-pat-steps.yml
   - task: PowerShell@2
-    displayName: 'Initialize Build Paths'
+    displayName: 'Get Archive Module'
     inputs:
       targetType: inline
       pwsh: true
       script: |
+        $forceRegenerate = $false
+        if ('true' -eq '${{ parameters.ForceRegenerate }}') {
+          $forceRegenerate = $true
+        }
         $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
         Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
-        $subTasksFilePath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'SubTasksFile.txt'
-        Write-Host "##vso[task.setvariable variable=SubTasksFilePath]$subTasksFilePath"
-  - template: get-pr-changed-files.yml
-    parameters:
-      filesChangedOutputPath: $(FilesChangedOutputPath)
+
+        $buildScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildScripts.psm1'
+        Import-Module $buildScriptPath
+        $targetModule = Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+        $targetModule | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
   - template: util/build-steps.yml
     parameters:
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
-      filesChangedOutputPath: $(FilesChangedOutputPath)
-      subTasksFilePath: $(SubTasksFilePath)
+      TargetModule: ${{ parameters.TargetModule }}
+      ForceRegenerate: ${{ parameters.ForceRegenerate }}
 
 - job: Analyze
   displayName: Analyze
@@ -86,7 +90,6 @@ jobs:
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
-      IsGenerateBased: ${{ variables.IsGenerateBased }}
 
 - job: Test
   displayName: Test

@@ -108,6 +108,37 @@ function Get-OutdatedSubModule {
     return $outDatedSubModule
 }
 
+function Get-OutdatedModuleFromTargetModule {
+    param (
+        [string]$RepoRoot,
+        [string]$TargetModule,
+        [bool]$ForceRegenerate
+    )
+    $sourceDirectory = Join-Path $RepoRoot 'src'
+    $generatedDirectory = Join-Path $RepoRoot 'generated'
+
+    if ('all' -eq $TargetModule) {
+        $notModules = @('lib', 'shared')
+        $TargetModule = Get-Childitem -Path $sourceDirectory -Directory | ForEach-Object {
+            if ($_.Name -notin $notModules) {
+                return $_.Name
+            }
+        }
+    } else {
+        $TargetModule = $TargetModule.Split(',')
+    } 
+
+    $TargetModule = $TargetModule | Foreach-Object {
+        $moduleRootSource = Join-Path $sourceDirectory $_
+        $moduleRootGenerated = Join-Path $generatedDirectory $_
+        if (Get-OutdatedSubModule -SourceDirectory $moduleRootSource -GeneratedDirectory $moduleRootGenerated -ForceRegenerate:$ForceRegenerate) {
+            return $_
+        }
+    }
+    
+    return $TargetModule
+}
+
 function Invoke-SubModuleGeneration {
     param (
         [string]$GenerateDirectory,

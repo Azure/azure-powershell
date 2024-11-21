@@ -2,62 +2,10 @@ parameters:
   testFramework: ''
   configuration: ''
   powerShellPlatform: ''
-  TargetModule: ''
-  ForceRegenerate: false
+  filesChangedOutputPath: ''
+  subTasksFilePath: ''
 
 steps:
-- checkout: self
-  persistCredentials: true
-- template: get-github-token-steps.yml
-- task: PowerShell@2
-  displayName: 'Set trigger'
-  inputs:
-    targetType: inline
-    pwsh: true
-    script: |
-      $subTasksFilePath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'SubTasksFile.txt'
-      Write-Host "##vso[task.setvariable variable=SubTasksFilePath]$subTasksFilePath"
-
-      $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
-      Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
-
-      $reason = "$(Build.Reason)"
-      switch ($reason) {
-        { $reason -in @('IndividualCI', 'BatchedCI') } {
-          $trigger = "$(Build.SourceVersion)"
-          $triggerType = 'Commit'
-          break
-        }
-        'PullRequest' {
-          $trigger = "$(System.PullRequest.PullRequestNumber)"
-          $triggerType = 'PullRequest'
-          break
-        }
-        { $reason -in @('Manual', 'Schedule') } {
-          $targetModule = "${{ parameters.TargetModule }}"
-          if ('all' -eq $targetModule) {
-            $notModules = @('lib', 'shared')
-            $src = Join-Path "$(Build.SourcesDirectory)" 'src'
-            $trigger = Get-Childitem -Path $src -Directory | ForEach-Object {
-              if ($_.Name -in $notModules) {
-                return
-              }
-              return Join-Path $_.Parent.Name $_.Name
-            } | Join-String -Separator ','
-          } else {
-            $trigger = $targetModule.Split(',') | ForEach-Object { Join-Path 'src' $_ } | Join-String -Separator ','
-          }
-          $triggerType = 'TargetModule'
-          break
-        }
-        default {
-          $triggerType = Null
-          break
-        }
-      }
-      Write-Host "##vso[task.setvariable variable=TriggerType]$triggerType"
-      Write-Host "##vso[task.setvariable variable=Trigger]$trigger"
-      Write-Host "##[section]Filter files triggered by ${reason}: ${trigger}" -ForegroundColor DarkYellow
 - task: PowerShell@2
   displayName: 'Create branch for CI/Manual/Schedule triggered pipeline'
   condition: or(eq(variables.TriggerType, 'Commit'), eq(variables.TriggerType, 'TargetModule'))
@@ -80,9 +28,8 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'build.proj /t:FilterBuild /p:TriggerType=$(TriggerType);Trigger=$(Trigger);FilesChangedOutputPath=$(FilesChangedOutputPath);SubTasksFilePath=$(SubTasksFilePath)'
+    arguments: 'build.proj /t:FilterBuild /p:FilesChangedOutputPath="${{ parameters.filesChangedOutputPath }}";SubTasksFilePath="${{ parameters.subTasksFilePath }}"'
   env:
-      OCTOKITPAT: $(GithubToken)
       PowerShellPlatform: ${{ parameters.PowerShellPlatform }}
 - task: PowerShell@2
   displayName: 'Set subtasks if any'
@@ -90,8 +37,8 @@ steps:
     targetType: inline
     pwsh: true
     script: |
-      if (Test-Path $(SubTasksFilePath)) {
-        Get-Content $(SubTasksFilePath) | ForEach-Object {
+      if (Test-Path "${{ parameters.subTasksFilePath }}") {
+        Get-Content "${{ parameters.subTasksFilePath }}" | ForEach-Object {
           if ($_ && 'Predictor' -eq $_) {
             Write-Host "##vso[task.setvariable variable=SubTaskPredictor]true"
           } elseif ($_ && 'Installer' -eq $_) {
@@ -102,7 +49,7 @@ steps:
         }
       }
 - task: PowerShell@2
-  displayName: 'Analyze Pull Request'
+  displayName: 'Analyze Changed Files'
   condition: eq(variables.TriggerType, 'PullRequest')
   inputs:
     targetType: inline
@@ -110,7 +57,7 @@ steps:
     script: |
       Write-Host "##[group]#1. Check generate-info.json for autorest generated modules"
       $noGenerateInfo = @()
-      $modules=Get-Content $(FilesChangedOutputPath) -OutVariable paths | Foreach-Object { if($_ -match "^src.*\.Autorest"){ Write-Output $Matches[0] } } | Select-Object -Unique
+      $modules=Get-Content "${{ parameters.filesChangedOutputPath }}" -OutVariable paths | Foreach-Object { if($_ -match "^src.*\.Autorest"){ Write-Output $Matches[0] } } | Select-Object -Unique
       foreach ($module in $modules) {
         $hasGenerateInfo = $false
         $pattern = "^$module/generate-info.json"
@@ -130,8 +77,8 @@ steps:
 
       # this might not be true, for example when release branch or preview branch merge back to main branch, it's possible changes present in both /src and /generated
       Write-Host "##[group]#2. PR should contain changes from either /src or /generated only"
-      $srcFiles = Get-Content $(FilesChangedOutputPath) | Where-Object { $_ -match "^src.*" }
-      $generatedFiles = Get-Content $(FilesChangedOutputPath) | Where-Object { $_ -match "^generated.*" }
+      $srcFiles = Get-Content "${{ parameters.filesChangedOutputPath }}" | Where-Object { $_ -match "^src.*" }
+      $generatedFiles = Get-Content "${{ parameters.filesChangedOutputPath }}" | Where-Object { $_ -match "^generated.*" }
       if ($srcFiles -and $srcFiles.Count -gt 0  -and $generatedFiles -and $generatedFiles.Count -gt 0) {
         Write-Host "##vso[task.logissue type=warning]PR should contain changes from either /src or /generated only."
       }
