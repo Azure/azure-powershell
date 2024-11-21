@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.PowerBI.Models
 
         private ResourceSku GetResourceSkuFromName(string skuName)
         {
-            var tier = skuName.StartsWith("A") ? SkuTier.PBIEAzure : null;
+            var tier = skuName.StartsWith("A") ? SkuTier.PbieAzure : null;
             return new ResourceSku(skuName, tier);
         }
 
