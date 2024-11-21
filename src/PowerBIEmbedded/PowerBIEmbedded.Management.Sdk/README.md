@@ -1,5 +1,5 @@
 # Overall
-This directory contains management plane service clients of Az.Storage module.
+This directory contains PowerBI Embedded management plane service clients of Az.PowerBIEmbedded module.
 
 ## Run Generation
 In this directory, run AutoRest:
