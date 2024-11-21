@@ -1352,6 +1352,14 @@
     {
       "file": "src\\Resources\\MSGraph.Autorest\\exports\\New-AzADUser.ps1",
       "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\ServiceFabric\\ServiceFabric.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\\TestNewAzureRmServiceFabricCluster.json",
+      "_justification": "False positive, there are no cred in this file."
+    },
+    {
+      "file": "src\\ServiceFabric\\ServiceFabric.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests.TestServiceFabric\\TestNewAzureRmServiceFabricClusterCNCert.json",
+      "_justification": "False positive, there are no cred in this file."
     }
   ]
 }
