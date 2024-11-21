@@ -101,9 +101,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (top != null)
@@ -337,9 +337,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (configurationName == null)
@@ -566,9 +566,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (configurationName == null)
@@ -844,9 +844,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (configurationName == null)

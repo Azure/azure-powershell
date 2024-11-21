@@ -105,9 +105,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
 
@@ -380,9 +380,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (poolName == null)
@@ -391,9 +391,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (poolName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             string apiVersion = "2024-05-01";
@@ -614,9 +614,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (poolName == null)
@@ -625,9 +625,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (poolName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             string apiVersion = "2024-05-01";
@@ -866,9 +866,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (poolName == null)
@@ -877,9 +877,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (poolName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             string apiVersion = "2024-05-01";
@@ -1093,9 +1093,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (poolName == null)
@@ -1104,9 +1104,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (poolName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             string apiVersion = "2024-05-01";
@@ -1331,9 +1331,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (poolName == null)
@@ -1342,9 +1342,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (poolName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             string apiVersion = "2024-05-01";
@@ -1593,9 +1593,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (networkManagerName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(networkManagerName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "networkManagerName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             if (poolName == null)
@@ -1604,9 +1604,9 @@ namespace Microsoft.Azure.Management.Network
             }
             if (poolName != null)
             {
-                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[a-zA-Z0-9-]*$"))
+                if (!System.Text.RegularExpressions.Regex.IsMatch(poolName, "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$"))
                 {
-                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[a-zA-Z0-9-]*$");
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.Pattern, "poolName", "^[0-9a-zA-Z]([0-9a-zA-Z_.-]{0,62}[0-9a-zA-Z_])?$");
                 }
             }
             string apiVersion = "2024-05-01";
