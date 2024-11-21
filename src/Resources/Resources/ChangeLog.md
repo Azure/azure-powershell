@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Add Diagnostics/Warnings to WhatIf/Validate results for deployments.
+* Added Diagnostics/Warnings to WhatIf/Validate results for deployments.
 
 ## Version 7.7.0
 * Updated Resources SDK to 2024-07-01.
