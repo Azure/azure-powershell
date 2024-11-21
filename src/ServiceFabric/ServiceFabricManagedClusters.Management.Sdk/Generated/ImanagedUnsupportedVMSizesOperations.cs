@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// Get the lists of unsupported vm sizes for Service Fabric Managed Clusters.
         /// </remarks>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// Get unsupported vm size for Service Fabric Managed Clusters.
         /// </remarks>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='vmSize'>
         /// VM Size name.

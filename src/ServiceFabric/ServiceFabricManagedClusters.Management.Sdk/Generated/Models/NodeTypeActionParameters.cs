@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </param>
 
         /// <param name="updateType">Specifies the way the operation will be performed.
-        /// Possible values include: 'Default', 'ByUpgradeDomain'</param>
+        /// Possible values include: &#39;Default&#39;, &#39;ByUpgradeDomain&#39;</param>
         public NodeTypeActionParameters(System.Collections.Generic.IList<string> nodes = default(System.Collections.Generic.IList<string>), bool? force = default(bool?), string updateType = default(string))
 
         {

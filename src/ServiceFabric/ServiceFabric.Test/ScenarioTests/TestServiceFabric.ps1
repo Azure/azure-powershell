@@ -43,8 +43,8 @@ function Test-UpdateAzureRmServiceFabricReliability
 
 function Test-AddAzureRmServiceFabricClientCertificate
 {
-	$clusterName = Get-ClusterName
-	$resourceGroupName = Get-ResourceGroupName
+	$clusterName = "sfmcaddcert"
+	$resourceGroupName = "addcertrg"
     $certName  = Get-NewCertName
     $commonName = "cn=$certName"
     $thumbprint  = Get-Thumbprint
@@ -58,8 +58,8 @@ function Test-AddAzureRmServiceFabricClientCertificate
 
 function Test-RemoveAzureRmServiceFabricClientCertificate
 {
-	$clusterName = Get-ClusterName
-	$resourceGroupName = Get-ResourceGroupName
+	$clusterName = "sfmcaddcert"
+	$resourceGroupName = "addcertrg"
     $certName  = Get-NewCertName
     $commonName = "cn=$certName"
     $thumbprint  = Get-Thumbprint
@@ -73,9 +73,9 @@ function Test-RemoveAzureRmServiceFabricClientCertificate
 
 function Test-NewAzureRmServiceFabricCluster
 {
-    $clusterName = "azurermsfclustertptest"
-    $resourceGroupName = "azurermsfrgTP"
-    $keyvaulturi = Get-SecretUrl
+	$clusterName = "sfmcnewclusterps5"
+	$resourceGroupName = "azurermsfrg9"
+    $keyvaulturi = "https://sfmckvpowkv.vault.azure.net/secrets/pstestcert/e84c69cc474e45bead9f0fa4d83fe2ed"
     $vmPassword = Get-RandomPwd | ConvertTo-SecureString -Force -AsPlainText
 
     $cluster = New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -VmPassword $vmPassword `
@@ -91,9 +91,9 @@ function Test-NewAzureRmServiceFabricCluster
 
 function Test-NewAzureRmServiceFabricClusterCNCert
 {
-    $clusterName = "azurermsfcntest"
-    $resourceGroupName = "azurermsfrgCNTest"
-    $keyvaulturi = Get-CACertSecretUrl
+    $clusterName = "azurermsfcntest7"
+    $resourceGroupName = "azurermsfrg11"
+    $keyvaulturi = "https://sfmccntestkv.vault.azure.net/secrets/pstestcert/e81c060e2a4c41b08eb875894c4cf325"
     $vmPassword = Get-RandomPwd | ConvertTo-SecureString -Force -AsPlainText
     $commonName = Get-CACertCommonName
 	$issuerThumbprint = Get-CACertIssuerThumbprint
@@ -113,8 +113,8 @@ function Test-NewAzureRmServiceFabricClusterCNCert
 
 function Test-AddAzureRmServiceFabricNodeType
 {
-	$clusterName = "pstestnodetypecluster"
-	$resourceGroupName = Get-ResourceGroupName	
+	$clusterName = "sfrptestclusterps"
+	$resourceGroupName = "sfrptestrg"		
 	$newNodeTypeName = Get-NewNodeTypeName
 
 	WaitForClusterReadyStateIfRecord $clusterName  $resourceGroupName
@@ -128,9 +128,9 @@ function Test-AddAzureRmServiceFabricNodeType
 
 function Test-RemoveAzureRmServiceFabricNodeType
 {
-	$clusterName = Get-ClusterName
-	$resourceGroupName = Get-ResourceGroupName	
-	$newNodeTypeName = Get-NewNodeTypeName
+	$clusterName = "sfrptestclusterps"
+	$resourceGroupName = "sfrptestrg"	
+	$newNodeTypeName = "mynodetype"
 
 	WaitForClusterReadyStateIfRecord $clusterName  $resourceGroupName
 
@@ -142,10 +142,10 @@ function Test-RemoveAzureRmServiceFabricNodeType
 
 function Test-AddAzureRmServiceFabricNode
 {
-    $clusterName = Get-ClusterName
-    $resourceGroupName = Get-ResourceGroupName	
-    $newNodeTypeName = Get-NewNodeTypeName
-    $nodes = 5
+    $clusterName = "sfrptestclusterps1"
+	$resourceGroupName = "sfrptestrg"	
+    $newNodeTypeName = "Type476"
+    $nodes = 2
 
 	WaitForClusterReadyStateIfRecord $clusterName  $resourceGroupName
 
@@ -158,9 +158,9 @@ function Test-AddAzureRmServiceFabricNode
 
 function Test-RemoveAzureRmServiceFabricNode
 {
-    $clusterName = Get-ClusterName
-    $resourceGroupName = Get-ResourceGroupName	
-    $newNodeTypeName = Get-NewNodeTypeName
+    $clusterName = "sfrptestclusterps1"
+	$resourceGroupName = "sfrptestrg"	
+    $newNodeTypeName = "Type476"
     $nodes = 1
 
 	WaitForClusterReadyStateIfRecord $clusterName  $resourceGroupName
@@ -174,8 +174,8 @@ function Test-RemoveAzureRmServiceFabricNode
 
 function Test-SetAzureRmServiceFabricSettings
 {
-	$clusterName = Get-ClusterName
-	$resourceGroupName = Get-ResourceGroupName	
+	$clusterName = "sfmcaddcert"
+	$resourceGroupName = "addcertrg"
 	$sectionName =  Get-SectionName
 	$parameterName = Get-ParameterName
 	$valueName = Get-ValueName
@@ -200,8 +200,8 @@ function Test-SetAzureRmServiceFabricSettings
 
 function Test-RemoveAzureRmServiceFabricSettings
 {
-	$clusterName = Get-ClusterName
-	$resourceGroupName = Get-ResourceGroupName	
+	$clusterName = "sfmcaddcert"
+	$resourceGroupName = "addcertrg"
 	$sectionName =  Get-SectionName
 	$parameterName = Get-ParameterName
 

@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
     public static partial class ApplicationTypesOperationsExtensions
     {
         /// <summary>
-        /// Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric cluster resource.
+        /// Get a Service Fabric application type name resource created or in the
+        /// process of being created in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -33,7 +34,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric cluster resource.
+        /// Get a Service Fabric application type name resource created or in the
+        /// process of being created in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -58,7 +60,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             }
         }
         /// <summary>
-        /// Create or update a Service Fabric application type name resource with the specified name.
+        /// Create or update a Service Fabric application type name resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -78,7 +81,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Create or update a Service Fabric application type name resource with the specified name.
+        /// Create or update a Service Fabric application type name resource with the
+        /// specified name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -103,7 +107,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             }
         }
         /// <summary>
-        /// Delete a Service Fabric application type name resource with the specified name.
+        /// Delete a Service Fabric application type name resource with the specified
+        /// name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -123,7 +128,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Delete a Service Fabric application type name resource with the specified name.
+        /// Delete a Service Fabric application type name resource with the specified
+        /// name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -145,7 +151,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets all application type name resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Gets all application type name resources created or in the process of being
+        /// created in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -162,7 +169,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Gets all application type name resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Gets all application type name resources created or in the process of being
+        /// created in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -184,7 +192,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             }
         }
         /// <summary>
-        /// Delete a Service Fabric application type name resource with the specified name.
+        /// Delete a Service Fabric application type name resource with the specified
+        /// name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -204,7 +213,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Delete a Service Fabric application type name resource with the specified name.
+        /// Delete a Service Fabric application type name resource with the specified
+        /// name.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -226,7 +236,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, applicationTypeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Gets all application type name resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Gets all application type name resources created or in the process of being
+        /// created in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -240,7 +251,8 @@ namespace Microsoft.Azure.Management.ServiceFabric
         }
 
         /// <summary>
-        /// Gets all application type name resources created or in the process of being created in the Service Fabric cluster resource.
+        /// Gets all application type name resources created or in the process of being
+        /// created in the Service Fabric cluster resource.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

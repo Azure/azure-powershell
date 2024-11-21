@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
         /// <param name="privateEndpointNetworkPolicies">Enable or Disable apply network policies on private end point in the
         /// subnet.
-        /// Possible values include: 'enabled', 'disabled'</param>
+        /// Possible values include: &#39;enabled&#39;, &#39;disabled&#39;</param>
 
         /// <param name="privateLinkServiceNetworkPolicies">Enable or Disable apply network policies on private link service in the
         /// subnet.
-        /// Possible values include: 'enabled', 'disabled'</param>
+        /// Possible values include: &#39;enabled&#39;, &#39;disabled&#39;</param>
 
         /// <param name="networkSecurityGroupId">Full resource id for the network security group.
         /// </param>

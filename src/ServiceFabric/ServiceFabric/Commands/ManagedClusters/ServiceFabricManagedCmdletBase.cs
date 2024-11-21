@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
+using Microsoft.PowerShell.Commands;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json.Linq;
 using System;
@@ -59,9 +60,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         #region Helper
 
-        protected void PollLongRunningOperation(Rest.Azure.AzureOperationResponse beginRequestResponse)
+
+        protected void PollLongRunningOperation<T>(Rest.Azure.AzureOperationHeaderResponse<T> beginRequestResponse)
         {
-            AzureOperationResponse<object> response2 = new Rest.Azure.AzureOperationResponse<object>
+            AzureOperationResponse<object, object> response2 = new Rest.Azure.AzureOperationResponse<object, object>
             {
                 Request = beginRequestResponse.Request,
                 Response = beginRequestResponse.Response,
@@ -71,15 +73,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             this.PollLongRunningOperation(response2);
         }
 
-        protected T PollLongRunningOperation<T>(AzureOperationResponse<T> beginRequestResponse) where T : class
+        protected TOne PollLongRunningOperation<TOne, TTwo>(AzureOperationResponse<TOne, TTwo> beginRequestResponse) where TOne : class where TTwo : class 
         {
+          
             var progress = new ProgressRecord(0, "Request in progress", "Getting Status...");
             WriteProgress(progress);
             WriteVerboseWithTimestamp(string.Format("Begin request ARM correlationId: '{0}' response: '{1}'",
                                         beginRequestResponse.RequestId,
                                         beginRequestResponse.Response.StatusCode));
 
-            AzureOperationResponse<T> result = null;
+            AzureOperationResponse<TOne, TTwo> result = null;
             var tokenSource = new CancellationTokenSource();
             Uri asyncOperationStatusEndpoint = null;
             HttpRequestMessage asyncOpStatusRequest = null;

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
 
         /// <param name="notificationChannel">The notification channel indicates the type of receivers subscribed to the
         /// notification, either user or subscription.
-        /// Possible values include: 'EmailUser', 'EmailSubscription'</param>
+        /// Possible values include: &#39;EmailUser&#39;, &#39;EmailSubscription&#39;</param>
 
         /// <param name="receivers">List of targets that subscribe to the notification.
         /// </param>

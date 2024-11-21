@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             ServiceFabricCmdletBase.RunningTest = true;
             ServiceFabricCmdletBase.NewCreatedKeyVaultWaitTimeInSec = 0;
             //change the thumbprint in the common.ps1 file as well
-            ServiceFabricCmdletBase.TestThumbprint = "3027AB10104C94545CB23406FF31ADEFE896A9BB";
+            ServiceFabricCmdletBase.TestThumbprint = "8EC81BC5EDC7BB35801F2F87FCE03B4BA953CD78";
             ServiceFabricCmdletBase.TestCommonNameCACert = "pstestcert";
             ServiceFabricCmdletBase.TestCommonNameAppCert = "AzureRMSFTestCertApp";
-            ServiceFabricCmdletBase.TestThumbprintAppCert = "50EA76B5EC4B588CC25CB4C38CC13666A0CA0BB3";
+            ServiceFabricCmdletBase.TestThumbprintAppCert = "1C1A149ABE9FB943BBACC452B0B8022FEA769B3C";
             ServiceFabricCmdletBase.TestAppCert = false;
         }
 

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
 
         /// <param name="name">Sku Name.
-        /// Possible values include: 'Basic', 'Standard'</param>
+        /// Possible values include: &#39;Basic&#39;, &#39;Standard&#39;</param>
         public Sku(string name)
 
         {

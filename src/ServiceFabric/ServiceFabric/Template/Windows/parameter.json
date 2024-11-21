@@ -21,7 +21,7 @@
       "value": "WindowsServer"
     },
     "vmImageSku": {
-      "value": "2022-datacenter-azure-edition"
+      "value": "2016-Datacenter-with-Containers"
     },
     "vmImageVersion": {
       "value": "latest"
@@ -60,10 +60,10 @@
       "value": 5
     },
     "vmNodeType0Size": {
-      "value": "Standard_D2s_v3"
+      "value": "Standard_D2_V2"
     },
     "durabilityLevel": {
-      "value": "Silver"
+      "value": "Bronze"
     },
     "reliabilityLevel": {
       "value": "Silver"

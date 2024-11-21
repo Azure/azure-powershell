@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
     public partial interface IManagedAzResiliencyStatusOperations
     {
         /// <summary>
-        /// Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.
+        /// Action to get Az Resiliency Status of all the Base resources constituting
+        /// Service Fabric Managed Clusters.
         /// </summary>
         /// <remarks>
-        /// Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.
+        /// Action to get Az Resiliency Status of all the Base resources constituting
+        /// Service Fabric Managed Clusters.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
         /// Get long running operation status.
         /// </remarks>
         /// <param name='location'>
-        /// The location for the cluster code versions. This is different from cluster location.
+        /// The location for the cluster code versions. This is different from cluster
+        /// location.
         /// </param>
         /// <param name='operationId'>
         /// operation identifier.

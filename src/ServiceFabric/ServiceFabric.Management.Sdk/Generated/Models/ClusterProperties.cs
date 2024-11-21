@@ -91,10 +91,10 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// - AutoScale - Indicates that the ReliabilityLevel of the cluster is being
         /// adjusted.
         /// - Ready - Indicates that the cluster is in a stable state.
-        /// Possible values include: 'WaitingForNodes', 'Deploying', 'BaselineUpgrade',
-        /// 'UpdatingUserConfiguration', 'UpdatingUserCertificate',
-        /// 'UpdatingInfrastructure', 'EnforcingClusterVersion',
-        /// 'UpgradeServiceUnreachable', 'AutoScale', 'Ready'</param>
+        /// Possible values include: &#39;WaitingForNodes&#39;, &#39;Deploying&#39;, &#39;BaselineUpgrade&#39;,
+        /// &#39;UpdatingUserConfiguration&#39;, &#39;UpdatingUserCertificate&#39;,
+        /// &#39;UpdatingInfrastructure&#39;, &#39;EnforcingClusterVersion&#39;,
+        /// &#39;UpgradeServiceUnreachable&#39;, &#39;AutoScale&#39;, &#39;Ready&#39;</param>
 
         /// <param name="diagnosticsStorageAccountConfig">The storage account information for storing Service Fabric diagnostic logs.
         /// </param>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the cluster resource.
-        /// Possible values include: 'Updating', 'Succeeded', 'Failed', 'Canceled'</param>
+        /// Possible values include: &#39;Updating&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;</param>
 
         /// <param name="reliabilityLevel">The reliability level sets the replica set size of system services. Learn
         /// about
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// - Silver - Run the System services with a target replica set count of 5.
         /// - Gold - Run the System services with a target replica set count of 7.
         /// - Platinum - Run the System services with a target replica set count of 9.
-        /// Possible values include: 'None', 'Bronze', 'Silver', 'Gold', 'Platinum'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Bronze&#39;, &#39;Silver&#39;, &#39;Gold&#39;, &#39;Platinum&#39;</param>
 
         /// <param name="reverseProxyCertificate">The server certificate used by reverse proxy.
         /// </param>
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
 
         /// <param name="upgradeMode">The upgrade mode of the cluster when new Service Fabric runtime version is
         /// available.
-        /// Possible values include: 'Automatic', 'Manual'</param>
+        /// Possible values include: &#39;Automatic&#39;, &#39;Manual&#39;</param>
 
         /// <param name="applicationTypeVersionsCleanupPolicy">The policy used to clean up unused versions.
         /// </param>
@@ -150,11 +150,11 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// <param name="sfZonalUpgradeMode">This property controls the logical grouping of VMs in upgrade domains
         /// (UDs). This property can&#39;t be modified if a node type with multiple
         /// Availability Zones is already present in the cluster.
-        /// Possible values include: 'Parallel', 'Hierarchical'</param>
+        /// Possible values include: &#39;Parallel&#39;, &#39;Hierarchical&#39;</param>
 
         /// <param name="vmssZonalUpgradeMode">This property defines the upgrade mode for the virtual machine scale set,
         /// it is mandatory if a node type with multiple Availability Zones is added.
-        /// Possible values include: 'Parallel', 'Hierarchical'</param>
+        /// Possible values include: &#39;Parallel&#39;, &#39;Hierarchical&#39;</param>
 
         /// <param name="infrastructureServiceManager">Indicates if infrastructure service manager is enabled.
         /// </param>
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// <param name="upgradeWave">Indicates when new cluster runtime version upgrades will be applied after
         /// they are released. By default is Wave0. Only applies when **upgradeMode**
         /// is set to &#39;Automatic&#39;.
-        /// Possible values include: 'Wave0', 'Wave1', 'Wave2'</param>
+        /// Possible values include: &#39;Wave0&#39;, &#39;Wave1&#39;, &#39;Wave2&#39;</param>
 
         /// <param name="upgradePauseStartTimestampUtc">Indicates the start date and time to pause automatic runtime version
         /// upgrades on the cluster for an specific period of time on the cluster
@@ -178,7 +178,13 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
 
         /// <param name="notifications">Indicates a list of notification channels for cluster events.
         /// </param>
-        public ClusterProperties(string managementEndpoint, System.Collections.Generic.IList<NodeTypeDescription> nodeTypes, System.Collections.Generic.IList<string> addOnFeatures = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ClusterVersionDetails> availableClusterVersions = default(System.Collections.Generic.IList<ClusterVersionDetails>), AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), CertificateDescription certificate = default(CertificateDescription), ServerCertificateCommonNames certificateCommonNames = default(ServerCertificateCommonNames), System.Collections.Generic.IList<ClientCertificateCommonName> clientCertificateCommonNames = default(System.Collections.Generic.IList<ClientCertificateCommonName>), System.Collections.Generic.IList<ClientCertificateThumbprint> clientCertificateThumbprints = default(System.Collections.Generic.IList<ClientCertificateThumbprint>), string clusterCodeVersion = default(string), string clusterEndpoint = default(string), string clusterId = default(string), string clusterState = default(string), DiagnosticsStorageAccountConfig diagnosticsStorageAccountConfig = default(DiagnosticsStorageAccountConfig), bool? eventStoreServiceEnabled = default(bool?), System.Collections.Generic.IList<SettingsSectionDescription> fabricSettings = default(System.Collections.Generic.IList<SettingsSectionDescription>), string provisioningState = default(string), string reliabilityLevel = default(string), CertificateDescription reverseProxyCertificate = default(CertificateDescription), ServerCertificateCommonNames reverseProxyCertificateCommonNames = default(ServerCertificateCommonNames), ClusterUpgradePolicy upgradeDescription = default(ClusterUpgradePolicy), string upgradeMode = default(string), ApplicationTypeVersionsCleanupPolicy applicationTypeVersionsCleanupPolicy = default(ApplicationTypeVersionsCleanupPolicy), string vmImage = default(string), string sfZonalUpgradeMode = default(string), string vmssZonalUpgradeMode = default(string), bool? infrastructureServiceManager = default(bool?), string upgradeWave = default(string), System.DateTime? upgradePauseStartTimestampUtc = default(System.DateTime?), System.DateTime? upgradePauseEndTimestampUtc = default(System.DateTime?), bool? waveUpgradePaused = default(bool?), System.Collections.Generic.IList<Notification> notifications = default(System.Collections.Generic.IList<Notification>))
+
+        /// <param name="enableHttpGatewayExclusiveAuthMode">If true, token-based authentication is not allowed on the
+        /// HttpGatewayEndpoint. This is required to support TLS versions 1.3 and
+        /// above. If token-based authentication is used,
+        /// HttpGatewayTokenAuthEndpointPort must be defined.
+        /// </param>
+        public ClusterProperties(string managementEndpoint, System.Collections.Generic.IList<NodeTypeDescription> nodeTypes, System.Collections.Generic.IList<string> addOnFeatures = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ClusterVersionDetails> availableClusterVersions = default(System.Collections.Generic.IList<ClusterVersionDetails>), AzureActiveDirectory azureActiveDirectory = default(AzureActiveDirectory), CertificateDescription certificate = default(CertificateDescription), ServerCertificateCommonNames certificateCommonNames = default(ServerCertificateCommonNames), System.Collections.Generic.IList<ClientCertificateCommonName> clientCertificateCommonNames = default(System.Collections.Generic.IList<ClientCertificateCommonName>), System.Collections.Generic.IList<ClientCertificateThumbprint> clientCertificateThumbprints = default(System.Collections.Generic.IList<ClientCertificateThumbprint>), string clusterCodeVersion = default(string), string clusterEndpoint = default(string), string clusterId = default(string), string clusterState = default(string), DiagnosticsStorageAccountConfig diagnosticsStorageAccountConfig = default(DiagnosticsStorageAccountConfig), bool? eventStoreServiceEnabled = default(bool?), System.Collections.Generic.IList<SettingsSectionDescription> fabricSettings = default(System.Collections.Generic.IList<SettingsSectionDescription>), string provisioningState = default(string), string reliabilityLevel = default(string), CertificateDescription reverseProxyCertificate = default(CertificateDescription), ServerCertificateCommonNames reverseProxyCertificateCommonNames = default(ServerCertificateCommonNames), ClusterUpgradePolicy upgradeDescription = default(ClusterUpgradePolicy), string upgradeMode = default(string), ApplicationTypeVersionsCleanupPolicy applicationTypeVersionsCleanupPolicy = default(ApplicationTypeVersionsCleanupPolicy), string vmImage = default(string), string sfZonalUpgradeMode = default(string), string vmssZonalUpgradeMode = default(string), bool? infrastructureServiceManager = default(bool?), string upgradeWave = default(string), System.DateTime? upgradePauseStartTimestampUtc = default(System.DateTime?), System.DateTime? upgradePauseEndTimestampUtc = default(System.DateTime?), bool? waveUpgradePaused = default(bool?), System.Collections.Generic.IList<Notification> notifications = default(System.Collections.Generic.IList<Notification>), bool? enableHttpGatewayExclusiveAuthMode = default(bool?))
 
         {
             this.AddOnFeatures = addOnFeatures;
@@ -213,6 +219,7 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
             this.UpgradePauseEndTimestampUtc = upgradePauseEndTimestampUtc;
             this.WaveUpgradePaused = waveUpgradePaused;
             this.Notifications = notifications;
+            this.EnableHttpGatewayExclusiveAuthMode = enableHttpGatewayExclusiveAuthMode;
             CustomInit();
         }
 
@@ -475,6 +482,15 @@ namespace Microsoft.Azure.Management.ServiceFabric.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "notifications")]
         public System.Collections.Generic.IList<Notification> Notifications {get; set; }
+
+        /// <summary>
+        /// Gets or sets if true, token-based authentication is not allowed on the
+        /// HttpGatewayEndpoint. This is required to support TLS versions 1.3 and
+        /// above. If token-based authentication is used,
+        /// HttpGatewayTokenAuthEndpointPort must be defined.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "enableHttpGatewayExclusiveAuthMode")]
+        public bool? EnableHttpGatewayExclusiveAuthMode {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
