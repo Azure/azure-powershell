@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerAppManagedEnvStorage
 
 ## SYNOPSIS
-Update storage for a managedEnvironment.
+update storage for a managedEnvironment.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Update-AzContainerAppManagedEnvStorage -InputObject <IAppIdentity> [-AzureFileAc
 ```
 
 ## DESCRIPTION
-Update storage for a managedEnvironment.
+update storage for a managedEnvironment.
 
 ## EXAMPLES
 

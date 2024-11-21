@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.0.0
 * Added `Start-AzSqlInstanceLinkFailover` cmdlet for Managed Instance Link.
 * Updated `New-AzSqlInstanceLink` with new input parameters
 	- Added `DistributedAvailabilityGroupName`, `FailoverMode`, `InstanceLinkRole`, `SeedingMode`
@@ -26,6 +28,7 @@
 			  `PrimaryAvailabilityGroupName` -> `PartnerAvailabilityGroupName`
 	- `TargetDatabase` -> `Database`, parameter type is changed from string to string[].
 * Updated `AzureSqlManagedInstanceLinkModel` that is a return type of `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Update-AzSqlInstanceLink` ,`Remove-AzSqlInstanceLink`
+* Added new optional parameter for `New-AzSqlDatabaseSecondary` to support cross-subscription geo-replication.
 
 ## Version 5.3.0
 * Fixed secrets exposure in example documentation.

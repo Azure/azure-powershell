@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create storage for a connectedEnvironment.
+create storage for a connectedEnvironment.
 .Description
-Create storage for a connectedEnvironment.
+create storage for a connectedEnvironment.
 .Example
 New-AzStorageAccount -ResourceGroupName azps_test_group_app -AccountName azpstestsa -Location eastus -SkuName Standard_GRS
 $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName azps_test_group_app -AccountName azpstestsa).Value[0]

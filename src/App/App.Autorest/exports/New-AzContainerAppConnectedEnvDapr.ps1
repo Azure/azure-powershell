@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a Dapr Component in a connected environment.
+create a Dapr Component in a connected environment.
 .Description
-Create a Dapr Component in a connected environment.
+create a Dapr Component in a connected environment.
 .Example
 $scope = @("container-app-1","container-app-2")
 $secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"

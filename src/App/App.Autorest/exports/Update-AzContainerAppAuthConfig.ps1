@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update the AuthConfig for a Container App.
+update the AuthConfig for a Container App.
 .Description
-Update the AuthConfig for a Container App.
+update the AuthConfig for a Container App.
 .Example
 Update-AzContainerAppAuthConfig -Name current -ContainerAppName azps-containerapp-2 -ResourceGroupName azps_test_group_app -PlatformEnabled -GlobalValidationUnauthenticatedClientAction RedirectToLoginPage -IdentityProvider $identity
 .Example

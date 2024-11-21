@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerAppSourceControl
 
 ## SYNOPSIS
-Update the SourceControl for a Container App.
+update the SourceControl for a Container App.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ Update-AzContainerAppSourceControl -InputObject <IAppIdentity> [-AzureClientId <
 ```
 
 ## DESCRIPTION
-Update the SourceControl for a Container App.
+update the SourceControl for a Container App.
 
 ## EXAMPLES
 
