@@ -125,6 +125,8 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string IndexingPolicyCompositePathHelpMessage = "Array of array of objects of type Microsoft.Azure.Commands.CosmosDB.PSCompositePath";
         public const string SpatialTypeHelpMessage = "Array of strings with acceptable values: Point, LineString, Polygon, MultiPolygon. Represent’s paths spatial type.";
         public const string SpatialPathHelpMessage = "Path in JSON document to index.";
+        public const string VectorIndexPathHelpMessage = "The path to the vector field in the document.";
+        public const string VectorIndexTypeHelpMessage = "The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported.";
         public const string SortOrderHelpMessage = "The sort order of the CompositeIndex";
         public const string PathHelpMessage = "String value of the path";
         public const string PartitionKeyVersionHelpMessage = "The version of the partition key definition";
@@ -148,6 +150,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ClientEncryptionKeyObjectHelpMessage = "Client Encryption Key object.";
         public const string RestorableSqlContainersFeedStartTimeHelpMessage = "Restorable Sql containers event feed start time.";
         public const string RestorableSqlContainersFeedEndTimeHelpMessage = "Restorable Sql containers event feed end time.";
+        public const string VectorEmbeddingPolicyVectorEmbeddingdHelpMessage = "Represents a vector embedding. A vector embedding is used to define a vector field in the documents.";
+        public const string VectorEmbeddingPathHelpMessage = "The path to the vector field in the document.";
+        public const string VectorEmbeddingDataTypeHelpMessage = "Indicates the data type of vector.";
+        public const string VectorEmbeddingDistanceFunctionHelpMessage = "The distance function to use for distance calculation in between vectors.";
+        public const string VectorEmbeddingDimensionsHelpMessage = "The number of dimensions in the vector.";
+        public const string IndexingPolicyVectorIndexHelpMessage = "Array of strings containing path to the vector field in the document.";
 
         //SQL Client Side Encryption
         public const string ClientEncryptionKeyName = "Client Encryption Key name.";
