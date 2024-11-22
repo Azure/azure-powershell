@@ -145,13 +145,6 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.DefaultInfo(Script='"global"')]
-    [System.String]
-    # Resource location.
-    ${Location},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettingsLogScrubbing]
     # Defines rules that scrub sensitive fields in the Web Application Firewall logs.
     ${LogScrubbing},

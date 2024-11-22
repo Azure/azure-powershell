@@ -69,7 +69,7 @@ When timeout is reached, the request fails and returns.
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: SendRecvTimeoutInSeconds
 
 Required: False
 Position: Named

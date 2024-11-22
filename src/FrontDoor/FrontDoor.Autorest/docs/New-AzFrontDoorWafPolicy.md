@@ -17,8 +17,8 @@ create policy with specified rule set name within a resource group.
 New-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-BlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-CustomRule <ICustomRule[]>]
  [-EnabledState <String>] [-Etag <String>] [-JavascriptChallengeExpirationInMinute <Int32>]
- [-Location <String>] [-LogScrubbing <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>]
- [-Mode <String>] [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
+ [-LogScrubbing <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
+ [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -216,21 +216,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: "global"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

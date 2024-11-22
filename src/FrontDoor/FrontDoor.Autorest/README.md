@@ -199,9 +199,9 @@ directive:
 
   # AzFrontDoor
   - where:
-      verb: New
       subject: FrontDoor
       parameter-name: Location
+    hide: true
     set:
       default:
         script: '"global"'
@@ -217,11 +217,15 @@ directive:
       verb: New
       subject: FrontDoor
     hide: true
+  - where:
+      verb: Set
+      subject: FrontDoor
+    hide: true
   # AzFrontDoorWafPolicy
   - where:
-      verb: New
       subject: WafPolicy
       parameter-name: Location
+    hide: true
     set:
       default:
         script: '"global"'

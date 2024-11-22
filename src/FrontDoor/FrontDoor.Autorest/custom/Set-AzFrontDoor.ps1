@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-create a new Front Door with a Front Door name under the specified subscription and resource group.
+update a new Front Door with a Front Door name under the specified subscription and resource group.
 .Description
-create a new Front Door with a Front Door name under the specified subscription and resource group.
+update a new Front Door with a Front Door name under the specified subscription and resource group.
 .Example
 {{ Add code here }}
 .Example
@@ -96,11 +96,11 @@ ROUTINGRULE <IRoutingRule[]>: Routing rules associated with this Front Door.
   [RuleEngineId <String>]: Resource ID.
   [WebApplicationFirewallPolicyLinkId <String>]: Resource ID.
 .Link
-https://learn.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoor
+https://learn.microsoft.com/powershell/module/az.frontdoor/set-azfrontdoor
 #>
-function New-AzFrontDoor {
+function Set-AzFrontDoor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoor])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [Alias('FrontDoorName')]
@@ -123,14 +123,14 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPool[]]
     # Backend pools available to routing rules.
     ${BackendPool},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IBackendPoolsSettings]
     # Settings for all backendPools
@@ -139,65 +139,65 @@ param(
     [switch]
     ${DisableCertificateNameCheck},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # Operational status of the Front Door load balancer.
     # Permitted values are 'Enabled' or 'Disabled'
-    ${EnabledState} = 'Enabled',
+    ${EnabledState},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
     # A friendly name for the frontDoor
     ${FriendlyName},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontendEndpoint[]]
     # Frontend endpoints available to routing rules.
     ${FrontendEndpoint},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IHealthProbeSettingsModel[]]
     # Health probe settings associated with this Front Door instance.
     ${HealthProbeSetting},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.ILoadBalancingSettingsModel[]]
     # Load balancing settings associated with this Front Door instance.
     ${LoadBalancingSetting},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IRoutingRule[]]
     # Routing rules associated with this Front Door.
     ${RoutingRule},
 
-    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
-    # Path of Json file supplied to the Create operation
+    # Path of Json file supplied to the Update operation
     ${JsonFilePath},
 
-    [Parameter(ParameterSetName='CreateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Category('Body')]
     [System.String]
-    # Json string supplied to the Create operation
+    # Json string supplied to the Update operation
     ${JsonString},
 
     [Parameter()]
@@ -261,16 +261,11 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-    process {
-        $duplicateCheck = Get-AzFrontDoor -ResourceGroupName $ResourceGroupName -Name $Name
-        if ($null -ne $duplicateCheck) {
-            throw "Front Door with name $Name already exists in resource group $ResourceGroupName"
-        }
-        else {
-            if ($DisableCertificateNameCheck -and $null -ne $BackendPoolsSetting) {
-                $BackendPoolsSetting.EnforceCertificateNameCheck = 'Disabled'
-            }
-            Az.FrontDoor.internal\New-AzFrontDoor @PSBoundParameters
-        }
+process {
+    if ($DisableCertificateNameCheck -and $null -ne $BackendPoolsSetting) {
+        $BackendPoolsSetting.EnforceCertificateNameCheck = 'Disabled'
     }
+
+    Az.FrontDoor.internal\Set-AzFrontDoor @PSBoundParameters
+}
 }

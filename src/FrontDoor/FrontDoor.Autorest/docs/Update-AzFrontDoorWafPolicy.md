@@ -17,8 +17,8 @@ update policy with specified rule set name within a resource group.
 Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-BlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-CustomRule <ICustomRule[]>]
  [-EnabledState <String>] [-Etag <String>] [-JavascriptChallengeExpirationInMinute <Int32>]
- [-Location <String>] [-LogScrubbing <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>]
- [-Mode <String>] [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
+ [-LogScrubbing <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
+ [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-Subscri
 ```
 Update-AzFrontDoorWafPolicy -InputObject <IFrontDoorIdentity> [-BlockResponseBody <String>]
  [-CustomBlockResponseStatusCode <Int32>] [-CustomRule <ICustomRule[]>] [-EnabledState <String>]
- [-Etag <String>] [-JavascriptChallengeExpirationInMinute <Int32>] [-Location <String>]
+ [-Etag <String>] [-JavascriptChallengeExpirationInMinute <Int32>]
  [-LogScrubbing <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>] [-Mode <String>]
  [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -239,21 +239,6 @@ Parameter Sets: UpdateViaJsonString
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

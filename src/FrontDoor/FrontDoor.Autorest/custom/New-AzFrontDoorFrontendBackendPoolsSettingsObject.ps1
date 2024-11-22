@@ -36,6 +36,7 @@ function New-AzFrontDoorFrontendBackendPoolsSettingsObject {
         $EnforceCertificateNameCheck = 'Enabled',
         [Parameter(HelpMessage="Send and receive timeout on forwarding request to the backend. When timeout is reached, the request fails and returns.")]
         [int]
+        [Alias("SendRecvTimeoutInSeconds")]
         $SendRecvTimeoutSecond = 30
     )
 
