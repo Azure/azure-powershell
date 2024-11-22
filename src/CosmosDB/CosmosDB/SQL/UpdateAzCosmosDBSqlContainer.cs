@@ -91,6 +91,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         public PSSqlConflictResolutionPolicy ConflictResolutionPolicy { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = Constants.SqlVectorEmbeddingPolicyHelpMessage)]
+        [ValidateNotNull]
+        public PSSqlVectorEmbeddingPolicy vectorEmbeddingPolicy { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.SqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
         public PSSqlDatabaseGetResults ParentObject { get; set; }
@@ -161,6 +165,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 sqlContainerResource.ConflictResolutionPolicy = PSConflictResolutionPolicy.ToSDKModel(ConflictResolutionPolicy);
             }
+
+            if (vectorEmbeddingPolicy != null)
+            {
+                sqlContainerResource.VectorEmbeddingPolicy = PSVectorEmbeddingPolicy.ToSDKModel(VectorEmbeddingPolicy);
+            }
+            
             else if (ConflictResolutionPolicyMode != null)
             {
                 ConflictResolutionPolicy conflictResolutionPolicy = new ConflictResolutionPolicy

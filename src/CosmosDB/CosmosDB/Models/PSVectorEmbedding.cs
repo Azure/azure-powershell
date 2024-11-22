@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         //
         // Summary:
         //     The number of dimensions in the vector.
-        public string Dimensions { get; set; }
+        public int Dimensions { get; set; }
 
         static public VectorEmbedding ToSDKModel(PSVectorEmbedding pSVectorEmbedding)
         {

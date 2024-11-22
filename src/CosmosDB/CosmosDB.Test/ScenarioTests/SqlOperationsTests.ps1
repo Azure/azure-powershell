@@ -71,6 +71,7 @@ function Test-SqlOperationsCmdlets
       $SpatialSpec = New-AzCosmosDBSqlSpatialSpec -Path  "/mySpatialPath/*" -Type  "Point", "LineString", "Polygon", "MultiPolygon"
       $cp1 = New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
       $cp2 = New-AzCosmosDBSqlCompositePath -Path "/aberc" -Order Descending
+      $VectorIndex = New-AzCosmosDBSql
       $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
 
       $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
