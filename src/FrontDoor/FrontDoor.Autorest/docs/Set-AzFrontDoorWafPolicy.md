@@ -15,11 +15,10 @@ update policy with specified rule set name within a resource group.
 ### UpdateExpanded (Default)
 ```
 Set-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CustomRule <ICustomRule[]>] [-Etag <String>] [-Location <String>]
- [-LogScrubbingRule <IWebApplicationFirewallScrubbingRules[]>] [-LogScrubbingState <String>]
- [-ManagedRuleSet <IManagedRuleSet[]>] [-PolicySettingCustomBlockResponseBody <String>]
- [-PolicySettingCustomBlockResponseStatusCode <Int32>] [-PolicySettingEnabledState <String>]
- [-PolicySettingJavascriptChallengeExpirationInMinute <Int32>] [-PolicySettingMode <String>]
+ [-CustomRule <ICustomRule[]>] [-Etag <String>] [-Location <String>] [-ManagedRuleSet <IManagedRuleSet[]>]
+ [-PolicySettingCustomBlockResponseBody <String>] [-PolicySettingCustomBlockResponseStatusCode <Int32>]
+ [-PolicySettingEnabledState <String>] [-PolicySettingJavascriptChallengeExpirationInMinute <Int32>]
+ [-PolicySettingLogScrubbing <IPolicySettingsLogScrubbing>] [-PolicySettingMode <String>]
  [-PolicySettingRedirectUrl <String>] [-PolicySettingRequestBodyCheck <String>] [-SkuName <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -173,37 +172,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LogScrubbingRule
-List of log scrubbing rules applied to the Web Application Firewall logs.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallScrubbingRules[]
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LogScrubbingState
-State of the log scrubbing config.
-Default value is Enabled.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ManagedRuleSet
 List of rule sets.
 
@@ -303,6 +271,21 @@ Value must be an integer between 5 and 1440 with the default value being 30.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicySettingLogScrubbing
+Defines rules that scrub sensitive fields in the Web Application Firewall logs.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettingsLogScrubbing
 Parameter Sets: UpdateExpanded
 Aliases:
 

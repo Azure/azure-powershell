@@ -68,6 +68,7 @@ directive:
   - no-inline:  # choose ONE of these models to disable inlining
     - BackendPoolsSettings
     - RouteConfiguration
+    - PolicySettingsLogScrubbing
 
   - from: swagger-document
     where: $.definitions.RouteUpdatePropertiesParameters.properties.supportedProtocols
@@ -204,10 +205,69 @@ directive:
   - where:
       verb: New
       subject: FrontDoor
-    hide: true        
+    hide: true     
+  # New-AzFrontDoorWafPolicy
+  - where:
+      verb: New
+      subject: WafPolicy
+      parameter-name: Location
+    set:
+      default:
+        script: '"global"'
+  - where:
+      verb: New
+      subject: WafPolicy
+      parameter-name: PolicySettingCustomBlockResponseBody
+    set: 
+      parameter-name: BlockResponseBody
+  - where:
+      verb: New
+      subject: WafPolicy
+      parameter-name: PolicySettingCustomBlockResponseStatusCode
+    set: 
+      parameter-name: CustomBlockResponseStatusCode
+  - where:
+      verb: New
+      subject: WafPolicy
+      parameter-name: PolicySettingEnabledState
+    set: 
+      parameter-name: EnabledState
+  - where:
+      verb: New
+      subject: WafPolicy
+      parameter-name: PolicySettingJavascriptChallengeExpirationInMinute
+    set: 
+      parameter-name: JavascriptChallengeExpirationInMinute
+  - where:
+      verb: New
+      subject: WafPolicy
+      parameter-name: PolicySettingLogScrubbing
+    set: 
+      parameter-name: LogScrubbing
+  - where:
+      verb: New
+      subject: WafPolicy
+      parameter-name: PolicySettingMode
+    set: 
+      parameter-name: Mode
+  - where:
+      verb: New
+      subject: WafPolicy
+      parameter-name: PolicySettingRedirectUrl
+    set: 
+      parameter-name: RedirectUrl
+  - where:
+      verb: New
+      subject: WafPolicy
+      parameter-name: PolicySettingRequestBodyCheck
+    set: 
+      parameter-name: RequestBodyCheck
+  - where:
+      verb: New
+      subject: WafPolicy
+    hide: true
 
   # Breaking change avoid rename
-
   # New-AzFrontDoorHeaderActionObject
   - where:
       model-name: HeaderAction

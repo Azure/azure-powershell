@@ -15,13 +15,11 @@ create policy with specified rule set name within a resource group.
 ### CreateExpanded (Default)
 ```
 New-AzFrontDoorWafPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CustomRule <ICustomRule[]>] [-Etag <String>] [-Location <String>]
- [-LogScrubbingRule <IWebApplicationFirewallScrubbingRules[]>] [-LogScrubbingState <String>]
- [-ManagedRuleSet <IManagedRuleSet[]>] [-PolicySettingCustomBlockResponseBody <String>]
- [-PolicySettingCustomBlockResponseStatusCode <Int32>] [-PolicySettingEnabledState <String>]
- [-PolicySettingJavascriptChallengeExpirationInMinute <Int32>] [-PolicySettingMode <String>]
- [-PolicySettingRedirectUrl <String>] [-PolicySettingRequestBodyCheck <String>] [-SkuName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BlockResponseBody <String>] [-CustomBlockResponseStatusCode <Int32>] [-CustomRule <ICustomRule[]>]
+ [-EnabledState <String>] [-Etag <String>] [-JavascriptChallengeExpirationInMinute <Int32>]
+ [-Location <String>] [-LogScrubbing <IPolicySettingsLogScrubbing>] [-ManagedRuleSet <IManagedRuleSet[]>]
+ [-Mode <String>] [-RedirectUrl <String>] [-RequestBodyCheck <String>] [-SkuName <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -43,27 +41,19 @@ create policy with specified rule set name within a resource group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
 
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -73,6 +63,37 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BlockResponseBody
+If the action type is block, customer can override the response body.
+The body must be specified in base64 encoding.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CustomBlockResponseStatusCode
+If the action type is block, customer can override the response status code.
+
+```yaml
+Type: System.Int32
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -113,11 +134,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnabledState
+Describes if the policy is in enabled or disabled state.
+Defaults to Enabled if not specified.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Etag
 Gets a unique read-only string that changes whenever the resource is updated.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JavascriptChallengeExpirationInMinute
+Defines the JavaScript challenge cookie validity lifetime in minutes.
+This setting is only applicable to Premium_AzureFrontDoor.
+Value must be an integer between 5 and 1440 with the default value being 30.
+
+```yaml
+Type: System.Int32
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -168,32 +222,16 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "global"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LogScrubbingRule
-List of log scrubbing rules applied to the Web Application Firewall logs.
+### -LogScrubbing
+Defines rules that scrub sensitive fields in the Web Application Firewall logs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IWebApplicationFirewallScrubbingRules[]
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LogScrubbingState
-State of the log scrubbing config.
-Default value is Enabled.
-
-```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPolicySettingsLogScrubbing
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -209,6 +247,21 @@ List of rule sets.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IManagedRuleSet[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Mode
+Describes if it is in detection mode or prevention mode at policy level.
+
+```yaml
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -249,86 +302,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PolicySettingCustomBlockResponseBody
-If the action type is block, customer can override the response body.
-The body must be specified in base64 encoding.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySettingCustomBlockResponseStatusCode
-If the action type is block, customer can override the response status code.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySettingEnabledState
-Describes if the policy is in enabled or disabled state.
-Defaults to Enabled if not specified.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySettingJavascriptChallengeExpirationInMinute
-Defines the JavaScript challenge cookie validity lifetime in minutes.
-This setting is only applicable to Premium_AzureFrontDoor.
-Value must be an integer between 5 and 1440 with the default value being 30.
-
-```yaml
-Type: System.Int32
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySettingMode
-Describes if it is in detection mode or prevention mode at policy level.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySettingRedirectUrl
+### -RedirectUrl
 If action type is redirect, this field represents redirect URL for the client.
 
 ```yaml
@@ -343,7 +317,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PolicySettingRequestBodyCheck
+### -RequestBodyCheck
 Describes if policy managed rules will inspect the request body content.
 
 ```yaml
