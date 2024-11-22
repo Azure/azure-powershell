@@ -26,15 +26,6 @@ Gets a Frontend endpoint with the specified name within the specified Front Door
 ### [Get-AzFrontDoorManagedRuleSet](Get-AzFrontDoorManagedRuleSet.md)
 Lists all available managed rule sets.
 
-### [Get-AzFrontDoorPreconfiguredEndpoint](Get-AzFrontDoorPreconfiguredEndpoint.md)
-Gets a list of Preconfigured Endpoints
-
-### [Get-AzFrontDoorReportLatencyScorecard](Get-AzFrontDoorReportLatencyScorecard.md)
-Gets a Latency Scorecard for a given Experiment
-
-### [Get-AzFrontDoorReportTimesery](Get-AzFrontDoorReportTimesery.md)
-Gets a Timeseries for a given Experiment
-
 ### [Get-AzFrontDoorRulesEngine](Get-AzFrontDoorRulesEngine.md)
 Gets a Rules Engine Configuration with the specified name within the specified Front Door.
 

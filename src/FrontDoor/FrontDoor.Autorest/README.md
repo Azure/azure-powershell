@@ -36,7 +36,6 @@ require:
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2024-02-01/webapplicationfirewall.json
-  - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/networkexperiment.json
   - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2024-02-01/network.json
   - $(repo)/specification/frontdoor/resource-manager/Microsoft.Network/stable/2021-06-01/frontdoor.json
 
@@ -274,14 +273,6 @@ directive:
     set:
       verb: Remove
       subject: Content
-
-  # Hide unused cmdlet
-  - where:
-      subject: Experiment
-    hide: true
-  - where:
-      subject: NetworkExperimentProfile
-    hide: true
 
   # Breaking change avoid rename
   # New-AzFrontDoorHeaderActionObject
