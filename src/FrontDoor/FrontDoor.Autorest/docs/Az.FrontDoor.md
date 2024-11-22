@@ -128,24 +128,6 @@ update a new Front Door with a Front Door name under the specified subscription 
 ### [Set-AzFrontDoorRulesEngine](Set-AzFrontDoorRulesEngine.md)
 update a new Rules Engine Configuration with the specified name within the specified Front Door.
 
-### [Set-AzFrontDoorWafPolicy](Set-AzFrontDoorWafPolicy.md)
-update policy with specified rule set name within a resource group.
-
-### [Test-AzFrontDoorCustomDomain](Test-AzFrontDoorCustomDomain.md)
-Validates the custom domain mapping to ensure it maps to the correct Front Door endpoint in DNS.
-
-### [Test-AzFrontDoorNameAvailability](Test-AzFrontDoorNameAvailability.md)
-Check the availability of a Front Door resource name.
-
-### [Test-AzFrontDoorNameAvailabilityWithSubscription](Test-AzFrontDoorNameAvailabilityWithSubscription.md)
-Check the availability of a Front Door subdomain.
-
-### [Update-AzFrontDoor](Update-AzFrontDoor.md)
-update a new Front Door with a Front Door name under the specified subscription and resource group.
-
-### [Update-AzFrontDoorRulesEngine](Update-AzFrontDoorRulesEngine.md)
-update a new Rules Engine Configuration with the specified name within the specified Front Door.
-
 ### [Update-AzFrontDoorWafPolicy](Update-AzFrontDoorWafPolicy.md)
-Patch a specific frontdoor webApplicationFirewall policy for tags update under the specified subscription and resource group.
+update policy with specified rule set name within a resource group.
 

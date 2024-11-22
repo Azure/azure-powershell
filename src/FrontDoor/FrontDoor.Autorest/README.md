@@ -158,6 +158,17 @@ directive:
       subject: Policy
     set:
       subject: WafPolicy
+  # Hide unused
+  - where:
+      verb: New
+      subject: WafPolicy
+    hide: true
+  - where:
+      verb: Test
+    hide: true
+  - where:
+      verb: Update
+    hide: true
 
   # Enable-AzFrontDoorFrontendEndpointHttps
   - where:
@@ -186,7 +197,7 @@ directive:
       default:
         script: '1.2'
 
-  # New-AzFrontDoor
+  # AzFrontDoor
   - where:
       verb: New
       subject: FrontDoor
@@ -201,11 +212,12 @@ directive:
     set:
       default:
         script: '"Enabled"'
+  # Customize
   - where:
       verb: New
       subject: FrontDoor
-    hide: true     
-  # New-AzFrontDoorWafPolicy
+    hide: true
+  # AzFrontDoorWafPolicy
   - where:
       verb: New
       subject: WafPolicy
@@ -214,57 +226,45 @@ directive:
       default:
         script: '"global"'
   - where:
-      verb: New
       subject: WafPolicy
       parameter-name: PolicySettingCustomBlockResponseBody
     set: 
       parameter-name: BlockResponseBody
   - where:
-      verb: New
       subject: WafPolicy
       parameter-name: PolicySettingCustomBlockResponseStatusCode
     set: 
       parameter-name: CustomBlockResponseStatusCode
   - where:
-      verb: New
       subject: WafPolicy
       parameter-name: PolicySettingEnabledState
     set: 
       parameter-name: EnabledState
   - where:
-      verb: New
       subject: WafPolicy
       parameter-name: PolicySettingJavascriptChallengeExpirationInMinute
     set: 
       parameter-name: JavascriptChallengeExpirationInMinute
   - where:
-      verb: New
       subject: WafPolicy
       parameter-name: PolicySettingLogScrubbing
     set: 
       parameter-name: LogScrubbing
   - where:
-      verb: New
       subject: WafPolicy
       parameter-name: PolicySettingMode
     set: 
       parameter-name: Mode
   - where:
-      verb: New
       subject: WafPolicy
       parameter-name: PolicySettingRedirectUrl
     set: 
       parameter-name: RedirectUrl
   - where:
-      verb: New
       subject: WafPolicy
       parameter-name: PolicySettingRequestBodyCheck
     set: 
       parameter-name: RequestBodyCheck
-  - where:
-      verb: New
-      subject: WafPolicy
-    hide: true
 
   # Clear-AzFrontDoorEndpointContent rename to Remove-AzFrontDoorContent
   - where:
@@ -273,6 +273,14 @@ directive:
     set:
       verb: Remove
       subject: Content
+
+  # Set-AzFrontDoorWafPolicy rename to Update-AzFrontDoorWafPolicy
+  - where:
+      verb: Set
+      subject: WafPolicy
+    set:
+      verb: Update
+      subject: WafPolicy
 
   # Breaking change avoid rename
   # New-AzFrontDoorHeaderActionObject
