@@ -78,67 +78,6 @@ function Get-CsprojFromModule {
     return $result
 }
 
-function Get-OutdatedSubModule {
-    param (
-        [string]$SourceDirectory,
-        [string]$GeneratedDirectory,
-        [switch]$ForceRegenerate
-    )
-    $outdatedSubModule = @()
-    $subModuleSource = Get-ChildItem -Path $SourceDirectory -Directory | Foreach-Object { $_.Name } | Where-Object { $_ -match "^*.Autorest$" }
-    foreach ($subModule in $subModuleSource) {
-        $generateInfoSource = Join-Path $SourceDirectory $subModule "generate-info.json"
-        $generateInfoGenerated = Join-Path $GeneratedDirectory $subModule "generate-info.json"
-        if (-not (Test-Path $generateInfoSource)) {
-            Write-Error "$generateInfoSource was not found!"
-            Exit 1
-        }
-        if (Test-Path $generateInfoGenerated) {
-            $generateIdSource = (Get-Content -Path $generateInfoSource | ConvertFrom-Json).generate_Id
-            $generateIdGenerated = (Get-Content -Path $generateInfoGenerated | ConvertFrom-Json).generate_Id
-            Write-Host "Submodule $subModule generate Id src: $generateIdSource" -ForegroundColor Cyan
-            Write-Host "Submodule $subModule generate Id generated: $generateIdGenerated" -ForegroundColor Cyan
-            if ($generateIdSource -And $generateIdGenerated -And ($generateIdSource -eq $generateIdGenerated) -And (-not $ForceRegenerate)) {
-                continue
-            }
-        }
-        Write-Host "Found outdated submodule: $subModule" -ForegroundColor DarkMagenta
-        $outDatedSubModule += $subModule
-    }
-    return $outDatedSubModule
-}
-
-function Get-OutdatedModuleFromTargetModule {
-    param (
-        [string]$RepoRoot,
-        [string]$TargetModule,
-        [bool]$ForceRegenerate
-    )
-    $sourceDirectory = Join-Path $RepoRoot 'src'
-    $generatedDirectory = Join-Path $RepoRoot 'generated'
-
-    if ('all' -eq $TargetModule) {
-        $notModules = @('lib', 'shared')
-        $TargetModule = Get-Childitem -Path $sourceDirectory -Directory | ForEach-Object {
-            if ($_.Name -notin $notModules) {
-                return $_.Name
-            }
-        }
-    } else {
-        $TargetModule = $TargetModule.Split(',')
-    } 
-
-    $TargetModule = $TargetModule | Foreach-Object {
-        $moduleRootSource = Join-Path $sourceDirectory $_
-        $moduleRootGenerated = Join-Path $generatedDirectory $_
-        if (Get-OutdatedSubModule -SourceDirectory $moduleRootSource -GeneratedDirectory $moduleRootGenerated -ForceRegenerate:$ForceRegenerate) {
-            return $_
-        }
-    }
-    
-    return $TargetModule
-}
-
 function Invoke-SubModuleGeneration {
     param (
         [string]$GenerateDirectory,

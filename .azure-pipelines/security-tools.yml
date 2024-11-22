@@ -19,58 +19,33 @@ jobs:
   steps:
   - checkout: self
     fetchTags: false
-  - template: util/get-pr-changed-files.yml
+  - task: PowerShell@2
+    displayName: 'Initialize Build'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
+        Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
+        New-Item -Type File -Path $filesChangedOutputPath -Force
+
+        $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
+        Import-Module $filesChangedScriptPath
+        if ("PullRequest" -eq "$(Build.Reason)") {
+          Get-FilesChangedFromPR -RepoRoot "$(Build.SourcesDirectory)" -TargetBranch "$(System.PullRequest.TargetBranch)" | Out-File $filesChangedOutputPath
+        } else {
+          Get-AllModule -RepoRoot "$(Build.SourcesDirectory)" | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
+        }
+  - template: util/build-steps.yml
+    parameters:
+      configuration: Debug
+      filesChangedOutputPath: $(FilesChangedOutputPath)
   - task: PowerShell@2
     displayName: Install platyPS
     inputs:
       targetType: inline
       script: Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser
       pwsh: true
-  - task: NodeTool@0
-    displayName: Install Node 14.17.1
-    inputs:
-      versionSpec: 14.17.1
-
-  - task: PowerShell@2
-    displayName: Install autorest
-    inputs:
-      targetType: inline
-      script: npm install autorest@latest;$env:NODE_OPTIONS="--max-old-space-size=65536"
-
-  - task: PowerShell@2
-    displayName: Filter changed files
-    condition: eq(variables['Build.Reason'], 'PullRequest')
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
-        dotnet msbuild build.proj /t:FilterBuild /p:"TriggerType=PullRequest;Trigger=$(System.PullRequest.PullRequestNumber);FilesChangedOutputPath=$filesChangedOutputPath;IsSecurityCheck=true"
-    env:
-        OCTOKITPAT: $(GithubToken)
-
-  - task: PowerShell@2
-    displayName: Build
-    inputs:
-      targetType: inline
-      pwsh: true
-      script: |
-        $buildScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
-        $reason = "$(Build.Reason)"
-        switch ($reason) {
-          'PullRequest' {
-            . $buildScript -CIPlan -RepoRoot "$(Build.SourcesDirectory)" -InvokedByPipeline
-            break
-          }
-          { $reason -in @('Manual', 'Schedule') } {
-            . $buildScript -RepoRoot "$(Build.SourcesDirectory)" -InvokedByPipeline
-            break
-          }
-          default {
-            Exit 1
-          }
-        }
-
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
     displayName: Run CredScan
     inputs:

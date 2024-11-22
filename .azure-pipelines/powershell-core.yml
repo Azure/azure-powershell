@@ -1,13 +1,3 @@
-parameters:
-- name: TargetModule
-  displayName: 'List of target modules, all modules if not provided'
-  type: string
-  default: 'all'
-- name: ForceRegenerate
-  displayName: 'Force regenerate autorest generated modules when pipeline triggered manually'
-  type: boolean
-  default: false
-
 variables:
   WindowsName: windows
   WindowsAgentPoolName: pool-windows-2019
@@ -32,12 +22,6 @@ variables:
   PowerShellPlatform: PowerShell Core
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
-
-trigger:
-  branches:
-    include:
-      - future
-
 pr:
   branches:
     include:
@@ -53,18 +37,20 @@ jobs:
   steps:
   - checkout: self
   - task: PowerShell@2
-    displayName: 'Initialize Build Paths'
+    displayName: 'Initialize Build'
     inputs:
       targetType: inline
       pwsh: true
       script: |
         $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
         Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
+        New-Item -Type File -Path $filesChangedOutputPath -Force
         $subTasksFilePath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'SubTasksFile.txt'
         Write-Host "##vso[task.setvariable variable=SubTasksFilePath]$subTasksFilePath"
-  - template: get-pr-changed-files.yml
-    parameters:
-      filesChangedOutputPath: $(FilesChangedOutputPath)
+
+        $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
+        Import-Module $filesChangedScriptPath
+        Get-FilesChangedFromPR -RepoRoot "$(Build.SourcesDirectory)" -TargetBranch "$(System.PullRequest.TargetBranch)" | Out-File $filesChangedOutputPath
   - template: util/build-steps.yml
     parameters:
       configuration: ${{ variables.Configuration }}

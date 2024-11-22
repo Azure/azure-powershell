@@ -30,6 +30,8 @@ param (
 #>
 $BuildScriptsModulePath = Join-Path $PSScriptRoot "BuildScripts.psm1"
 Import-Module $BuildScriptsModulePath
+$FilesChangedScriptModulePath = Join-Path $PSScriptRoot "FilesChangedScript.psm1"
+Import-Module $FilesChangedScriptModulePath
 
 $sourceDirectory = Join-Path $RepoRoot "src"
 $generatedDirectory = Join-Path $RepoRoot "generated"

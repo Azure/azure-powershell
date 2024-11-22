@@ -1,28 +1,12 @@
 parameters:
-  testFramework: ''
-  configuration: ''
-  powerShellPlatform: ''
+  testFramework: net6.0
+  configuration: Debug
+  powerShellPlatform: PowerShell Core
+  ForceRegenerate: false
   filesChangedOutputPath: ''
   subTasksFilePath: ''
 
 steps:
-- task: PowerShell@2
-  displayName: 'Create branch for CI/Manual/Schedule triggered pipeline'
-  condition: or(eq(variables.TriggerType, 'Commit'), eq(variables.TriggerType, 'TargetModule'))
-  inputs:
-    targetType: inline
-    pwsh: true
-    script: |
-      $baseBranchName = "origin/$(Build.SourceBranchName)"
-      $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
-      if ('Commit' -eq "$(TriggerType)") {
-        $tmpBranchName += "/$(Trigger)"
-      }
-      Write-Host "##vso[task.setvariable variable=TmpBranchName]$tmpBranchName"
-      Write-Host "##vso[task.setvariable variable=BaseBranchName]$baseBranchName"
-      Write-Host "##[section]Switch from $baseBranchName to $tmpBranchName"
-      git fetch origin $(Build.SourceBranchName)
-      git checkout -b $tmpBranchName $baseBranchName
 - task: DotNetCoreCLI@2
   displayName: Filter changed files
   inputs:
@@ -50,7 +34,6 @@ steps:
       }
 - task: PowerShell@2
   displayName: 'Analyze Changed Files'
-  condition: eq(variables.TriggerType, 'PullRequest')
   inputs:
     targetType: inline
     pwsh: true
@@ -125,7 +108,28 @@ steps:
     script: |
       $pipelineScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'ExecuteCIStep.ps1'
       $repoArtifact = Join-Path "$(Build.SourcesDirectory)" 'artifacts'
-      . $pipelineScript -Build -TriggerType "$(Build.Reason)" -Trigger "$(Trigger)" -RepoArtifacts $repoArtifact -Configuration ${{ parameters.configuration }}
+      $reason = "$(Build.Reason)"
+      switch ($reason) {
+        $reason -in @('IndividualCI', 'BatchedCI') {
+          $trigger = "$(Build.SourceVersion)"
+          break
+        }
+        'PullRequest' {
+          $trigger = "$(System.PullRequest.PullRequestNumber)"
+          break
+        }
+        'Manual' {
+        #TODO: change value of $trigger to the account who trigger this run
+          $trigger = 'Manual'
+          break
+        }
+        'Schedule' {
+        #TODO: change value of $trigger to datetime this run was scheduled
+          $trigger = 'Schedule'
+          break
+        }
+      }
+      . $pipelineScript -Build -TriggerType "$(Build.Reason)" -Trigger $trigger -RepoArtifacts $repoArtifact -Configuration ${{ parameters.configuration }}
 - task: DotNetCoreCLI@2
   displayName: 'SubTask Predictor'
   condition: or(eq(variables.SubTaskPredictor, true), eq(variables.SubTaskAll, true))
@@ -140,44 +144,6 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:AzToolsInstaller'
-- task: PowerShell@2
-  displayName: 'Update branch for CI/Manual/Schedule triggered pipeline'
-  condition: or(eq(variables.TriggerType, 'Commit'), eq(variables.TriggerType, 'TargetModule'))
-  inputs:
-    targetType: inline
-    pwsh: true
-    script: |
-      if ("Commit" -eq "$(TriggerType)") {
-        $prTitle = "[skip ci] Archive $(Trigger)"
-      } elseif ("TargetModule" -eq "$(TriggerType)") {
-        $prTitle = "[skip ci] Archive selected modules"
-      } else {
-        return
-      }
-      $tmpBranchName = "$(TmpBranchName)"
-      $baseBranchName = "$(BaseBranchName)"
-      $generatedPath = Join-Path "$(Build.SourcesDirectory)" 'generated'
-      $diff = ( git status --short --untracked-files $generatedPath)
-      if ((-not $diff) -or ($null -eq $diff) -or (0 -eq $diff.Count)) {
-        return
-      }
-      
-      $prDescription = "triggered by: $(TriggerType) ($(Trigger))"
-      $prScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'Github' 'CreatePR.ps1'
-
-      git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
-      git config user.name "azure-powershell-bot";
-      git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
-      git add $generatedPath
-      git commit -m $prTitle
-      git push origin $tmpBranchName --force
-      
-      . $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch "$(Build.SourceBranchName)" -BotAccessToken $(GithubToken) -Description $prDescription
-
-      <#
-        this commidId will be useful when we push directly to target branch in the future
-        $commitId = (git rev-parse HEAD)
-      #>
 - template: publish-artifacts-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}

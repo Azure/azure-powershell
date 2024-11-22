@@ -37,11 +37,6 @@ trigger:
     include:
       - future
 
-pr:
-  branches:
-    include:
-      - future
-
 jobs:
 - job: Build
   displayName: Build
@@ -53,22 +48,39 @@ jobs:
   - checkout: self
   - template: get-github-pat-steps.yml
   - task: PowerShell@2
-    displayName: 'Get Archive Module'
+    displayName: 'Initialize Build'
     inputs:
       targetType: inline
       pwsh: true
       script: |
+        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
+        Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
+        New-Item -Type File -Path $filesChangedOutputPath -Force
+
         $forceRegenerate = $false
         if ('true' -eq '${{ parameters.ForceRegenerate }}') {
           $forceRegenerate = $true
         }
-        $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
-        Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
 
-        $buildScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildScripts.psm1'
-        Import-Module $buildScriptPath
-        $targetModule = Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
-        $targetModule | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
+        $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
+        Import-Module $filesChangedScriptPath
+        Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
+  - task: PowerShell@2
+    displayName: 'Create branch for generated assets'
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        $baseBranchName = "origin/$(Build.SourceBranchName)"
+        $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
+        if ("$(Build.reason)" -in @('IndividualCI', 'BatchedCI')) {
+          $tmpBranchName += "/$(Build.reason)"
+        }
+        Write-Host "##vso[task.setvariable variable=TmpBranchName]$tmpBranchName"
+        Write-Host "##vso[task.setvariable variable=BaseBranchName]$baseBranchName"
+        Write-Host "##[section]Switch from $baseBranchName to $tmpBranchName"
+        git fetch origin $(Build.SourceBranchName)
+        git checkout -b $tmpBranchName $baseBranchName
   - template: util/build-steps.yml
     parameters:
       configuration: ${{ variables.Configuration }}
@@ -76,6 +88,43 @@ jobs:
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
       TargetModule: ${{ parameters.TargetModule }}
       ForceRegenerate: ${{ parameters.ForceRegenerate }}
+  - task: PowerShell@2
+    displayName: 'push archive branch after build'
+    condition: or(eq(variables.TriggerType, 'Commit'), eq(variables.TriggerType, 'TargetModule'))
+    inputs:
+      targetType: inline
+      pwsh: true
+      script: |
+        if ("$(Build.reason)" -in @('IndividualCI', 'BatchedCI')) {
+          $prTitle = "[skip ci] Archive $(Build.SourceVersion)"
+        } else {
+          #TODO: replace $(Build.reason) with account when manual and dateime when schedule
+          $prTitle = "[skip ci] Archive $(Build.reason)"
+        }
+        $tmpBranchName = "$(TmpBranchName)"
+        $baseBranchName = "$(BaseBranchName)"
+        $generatedPath = Join-Path "$(Build.SourcesDirectory)" 'generated'
+        $diff = ( git status --short --untracked-files $generatedPath)
+        if ((-not $diff) -or ($null -eq $diff) -or (0 -eq $diff.Count)) {
+          return
+        }
+        #TODO: add better PR description
+        $prDescription = ""
+        $prScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'Github' 'CreatePR.ps1'
+
+        git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
+        git config user.name "azure-powershell-bot";
+        git remote set-url origin https://azure-powershell-bot:$(GithubToken)@github.com/Azure/azure-powershell.git;
+        git add $generatedPath
+        git commit -m $prTitle
+        git push origin $tmpBranchName --force
+        
+        . $prScriptPath -Title $prTitle -HeadBranch $tmpBranchName -BaseBranch "$(Build.SourceBranchName)" -BotAccessToken $(GithubToken) -Description $prDescription
+
+        <#
+          this commidId will be useful when we push directly to target branch in the future
+          $commitId = (git rev-parse HEAD)
+        #>
 
 - job: Analyze
   displayName: Analyze
