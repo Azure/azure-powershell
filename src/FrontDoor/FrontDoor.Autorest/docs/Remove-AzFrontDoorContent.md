@@ -1,41 +1,59 @@
 ---
 external help file:
 Module Name: Az.FrontDoor
-online version: https://learn.microsoft.com/powershell/module/az.frontdoor/set-azfrontdoorexperiment
+online version: https://learn.microsoft.com/powershell/module/az.frontdoor/remove-azfrontdoorcontent
 schema: 2.0.0
 ---
 
-# Set-AzFrontDoorExperiment
+# Remove-AzFrontDoorContent
 
 ## SYNOPSIS
-update an Experiment
+Removes a content from Front Door.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### PurgeExpanded (Default)
 ```
-Set-AzFrontDoorExperiment -Name <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Description <String>] [-EnabledState <String>] [-EndpointAEndpoint <String>]
- [-EndpointAName <String>] [-EndpointBEndpoint <String>] [-EndpointBName <String>] [-Location <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Set-AzFrontDoorExperiment -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzFrontDoorContent -FrontDoorName <String> -ResourceGroupName <String> -ContentPath <String[]>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### UpdateViaJsonString
+### Purge
 ```
-Set-AzFrontDoorExperiment -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzFrontDoorContent -FrontDoorName <String> -ResourceGroupName <String>
+ -ContentFilePath <IPurgeParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PurgeViaIdentity
+```
+Remove-AzFrontDoorContent -InputObject <IFrontDoorIdentity> -ContentFilePath <IPurgeParameters>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PurgeViaIdentityExpanded
+```
+Remove-AzFrontDoorContent -InputObject <IFrontDoorIdentity> -ContentPath <String[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PurgeViaJsonFilePath
+```
+Remove-AzFrontDoorContent -FrontDoorName <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### PurgeViaJsonString
+```
+Remove-AzFrontDoorContent -FrontDoorName <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-update an Experiment
+Removes a content from Front Door.
 
 ## EXAMPLES
 
@@ -78,6 +96,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ContentFilePath
+Parameters required for content purge.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPurgeParameters
+Parameter Sets: Purge, PurgeViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ContentPath
+The path to the content to be purged.
+Can describe a file path or a wild card directory.
+
+```yaml
+Type: System.String[]
+Parameter Sets: PurgeExpanded, PurgeViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -94,102 +143,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-The description of the details or intents of the Experiment
+### -FrontDoorName
+Name of the Front Door which is globally unique.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Purge, PurgeExpanded, PurgeViaJsonFilePath, PurgeViaJsonString
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnabledState
-The state of the Experiment
+### -InputObject
+Identity Parameter
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+Parameter Sets: PurgeViaIdentity, PurgeViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EndpointAEndpoint
-The endpoint URL
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EndpointAName
-The name of the endpoint
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EndpointBEndpoint
-The endpoint URL
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EndpointBName
-The name of the endpoint
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Update operation
+Path of Json file supplied to the Purge operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
+Parameter Sets: PurgeViaJsonFilePath
 Aliases:
 
 Required: True
@@ -200,42 +189,12 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Update operation
+Json string supplied to the Purge operation
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateViaJsonString
+Parameter Sets: PurgeViaJsonString
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The Experiment identifier associated with the Experiment
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ExperimentName
 
 Required: True
 Position: Named
@@ -259,15 +218,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProfileName
-The Profile identifier associated with the Tenant and Partner
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -279,7 +238,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Purge, PurgeExpanded, PurgeViaJsonFilePath, PurgeViaJsonString
 Aliases:
 
 Required: True
@@ -295,27 +254,12 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Purge, PurgeExpanded, PurgeViaJsonFilePath, PurgeViaJsonString
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -356,9 +300,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IFrontDoorIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IPurgeParameters
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.FrontDoor.Models.IExperiment
+### System.Boolean
 
 ## NOTES
 

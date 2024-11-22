@@ -267,6 +267,22 @@ directive:
       subject: WafPolicy
     hide: true
 
+  # Clear-AzFrontDoorEndpointContent rename to Remove-AzFrontDoorContent
+  - where:
+      verb: Clear
+      subject: EndpointContent
+    set:
+      verb: Remove
+      subject: Content
+
+  # Hide unused cmdlet
+  - where:
+      subject: Experiment
+    hide: true
+  - where:
+      subject: NetworkExperimentProfile
+    hide: true
+
   # Breaking change avoid rename
   # New-AzFrontDoorHeaderActionObject
   - where:
