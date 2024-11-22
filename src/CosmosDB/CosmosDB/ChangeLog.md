@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Upgraded Azure.Core to 1.44.1.
+* Added Vector Indexing properties to Sql container APIs.
+* Per Partition Automatic Failover GA
 
 ## Version 1.15.0
 * Added new parameter `DisableTtl` to `Restore-AzCosmosDBAccount`.
