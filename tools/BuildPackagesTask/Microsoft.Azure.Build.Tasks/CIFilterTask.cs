@@ -32,9 +32,14 @@ namespace Microsoft.WindowsAzure.Build.Tasks
     public class CIFilterTask : Task
     {
         /// <summary>
-        /// Gets or sets the files changed in a given pull request.
+        /// Gets or set the Output File Path
         /// </summary>
         [Required]
+        public string FilesChangedPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the files changed in a given pull request.
+        /// </summary>
         public string[] FilesChanged { get; set; }
 
         /// <summary>
@@ -427,6 +432,18 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             TestCsprojList = new string[0];
             SubTasks = "";
             var csprojMap = ReadMapFile(CsprojMapFilePath, "CsprojMapFilePath");
+
+            if (!String.IsNullOrEmpty(FilesChangedPath)) 
+            {
+                try
+                {
+                    FilesChanged = File.ReadAllLines(FilesChangedPath);
+                }
+                catch (Exception e)
+                {
+                    throw new ArgumentException("Invalid files changed path: " + FilesChangedPath);
+                }
+            }
 
             Console.WriteLine(string.Format("FilesChanged: {0}", FilesChanged.Length));
             if (FilesChanged != null)
