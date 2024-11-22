@@ -28,7 +28,7 @@ function Get-OutdatedSubModule {
     return $outDatedSubModule
 }
 
-Get-AllModule {
+function Get-AllModule {
     param (
         [string]$RepoRoot
     )
