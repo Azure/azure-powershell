@@ -79,15 +79,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
                 return;
             }
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
-            {_adminConsentDescription = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("adminConsentDescription"), out var __jsonAdminConsentDescription) ? (string)__jsonAdminConsentDescription : (string)AdminConsentDescription;}
-            {_adminConsentDisplayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("adminConsentDisplayName"), out var __jsonAdminConsentDisplayName) ? (string)__jsonAdminConsentDisplayName : (string)AdminConsentDisplayName;}
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
-            {_isEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonBoolean>("isEnabled"), out var __jsonIsEnabled) ? (bool?)__jsonIsEnabled : IsEnabled;}
-            {_origin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("origin"), out var __jsonOrigin) ? (string)__jsonOrigin : (string)Origin;}
-            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)Type;}
-            {_userConsentDescription = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("userConsentDescription"), out var __jsonUserConsentDescription) ? (string)__jsonUserConsentDescription : (string)UserConsentDescription;}
-            {_userConsentDisplayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("userConsentDisplayName"), out var __jsonUserConsentDisplayName) ? (string)__jsonUserConsentDisplayName : (string)UserConsentDisplayName;}
-            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("value"), out var __jsonValue) ? (string)__jsonValue : (string)Value;}
+            {_adminConsentDescription = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("adminConsentDescription"), out var __jsonAdminConsentDescription) ? (string)__jsonAdminConsentDescription : (string)_adminConsentDescription;}
+            {_adminConsentDisplayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("adminConsentDisplayName"), out var __jsonAdminConsentDisplayName) ? (string)__jsonAdminConsentDisplayName : (string)_adminConsentDisplayName;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_id;}
+            {_isEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonBoolean>("isEnabled"), out var __jsonIsEnabled) ? (bool?)__jsonIsEnabled : _isEnabled;}
+            {_origin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("origin"), out var __jsonOrigin) ? (string)__jsonOrigin : (string)_origin;}
+            {_type = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("type"), out var __jsonType) ? (string)__jsonType : (string)_type;}
+            {_userConsentDescription = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("userConsentDescription"), out var __jsonUserConsentDescription) ? (string)__jsonUserConsentDescription : (string)_userConsentDescription;}
+            {_userConsentDisplayName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("userConsentDisplayName"), out var __jsonUserConsentDisplayName) ? (string)__jsonUserConsentDisplayName : (string)_userConsentDisplayName;}
+            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("value"), out var __jsonValue) ? (string)__jsonValue : (string)_value;}
             AfterFromJson(json);
         }
 

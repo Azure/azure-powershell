@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPartnerConfiguration
 
 ## SYNOPSIS
-Synchronously creates or updates a partner configuration with the specified parameters.
+Synchronously create a partner configuration with the specified parameters.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ New-AzEventGridPartnerConfiguration -ResourceGroupName <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-Synchronously creates or updates a partner configuration with the specified parameters.
+Synchronously create a partner configuration with the specified parameters.
 
 ## EXAMPLES
 

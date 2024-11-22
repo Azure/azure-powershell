@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update a permission binding with the specified parameters.
+update a permission binding with the specified parameters.
 .Description
-Update a permission binding with the specified parameters.
+update a permission binding with the specified parameters.
 .Example
 Update-AzEventGridPermissionBinding -ResourceGroupName azps_test_group_eventgrid -NamespaceName azps-eventgridnamespace -Name azps-pb -ClientGroupName "azps-clientgroup" -Permission Publisher -TopicSpaceName "azps-topicspace"
 .Example

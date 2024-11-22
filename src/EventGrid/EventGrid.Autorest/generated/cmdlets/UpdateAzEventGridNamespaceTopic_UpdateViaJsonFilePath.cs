@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Asynchronously updates a namespace topic with the specified parameters.</summary>
+    /// <summary>Asynchronously update a namespace topic with the specified parameters.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzEventGridNamespaceTopic_UpdateViaJsonFilePath", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.INamespaceTopic))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"Asynchronously updates a namespace topic with the specified parameters.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Description(@"Asynchronously update a namespace topic with the specified parameters.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/namespaces/{namespaceName}/topics/{topicName}", ApiVersion = "2023-06-01-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EventGrid.NotSuggestDefaultParameterSet]

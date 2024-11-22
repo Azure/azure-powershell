@@ -9,6 +9,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>IntegrationName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>MonitorName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -24,6 +27,9 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>IntegrationName</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MonitorName</PropertyName>
               </TableColumnItem>
@@ -42,9 +48,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api50.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api50.SystemData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -94,9 +100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.CompanyInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.CompanyInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.CompanyInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.CompanyInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -140,14 +146,82 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.DeploymentInfoResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ConnectedPartnerResourceProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.DeploymentInfoResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ConnectedPartnerResourceProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>AzureResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PartnerDeploymentName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PartnerDeploymentUri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AzureResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PartnerDeploymentName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PartnerDeploymentUri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ConnectedPartnerResourcesListResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ConnectedPartnerResourcesListResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.DeploymentInfoResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.DeploymentInfoResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>DeploymentUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DiskCapacity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ElasticsearchEndPoint</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>MemoryCapacity</Label>
@@ -163,7 +237,13 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>DeploymentUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>DiskCapacity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ElasticsearchEndPoint</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MemoryCapacity</PropertyName>
@@ -180,9 +260,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudDeployment</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticCloudDeployment</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudDeployment</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticCloudDeployment</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -238,9 +318,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudUser</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticCloudUser</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudUser</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticCloudUser</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -266,9 +346,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticMonitorResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticMonitorResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -306,9 +386,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticMonitorResourceListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResourceListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticMonitorResourceListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResourceListResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -328,9 +408,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticMonitorResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticMonitorResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -350,9 +430,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticMonitorResourceUpdateParametersTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResourceUpdateParametersTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticMonitorResourceUpdateParametersTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorResourceUpdateParametersTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -372,9 +452,189 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ErrorResponseBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorUpgrade</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ErrorResponseBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticMonitorUpgrade</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticOrganizationToAzureSubscriptionMappingResponseProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticOrganizationToAzureSubscriptionMappingResponseProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BilledAzureSubscriptionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ElasticOrganizationId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ElasticOrganizationName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BilledAzureSubscriptionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ElasticOrganizationId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ElasticOrganizationName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticTrafficFilter</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticTrafficFilter</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IncludeByDefault</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Region</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>IncludeByDefault</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Region</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticTrafficFilterRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticTrafficFilterRule</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AzureEndpointGuid</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>AzureEndpointName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Description</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Source</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>AzureEndpointGuid</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>AzureEndpointName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Description</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Source</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticVersionListProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticVersionListProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticVersionsListResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ElasticVersionsListResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ErrorResponseBody</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ErrorResponseBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -406,9 +666,77 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.FilteringTag</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ExternalUserCreationResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.FilteringTag</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ExternalUserCreationResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Created</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Created</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ExternalUserInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ExternalUserInfo</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EmailId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>FullName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Password</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Role</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UserName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EmailId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FullName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Password</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Role</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UserName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.FilteringTag</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.FilteringTag</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -440,9 +768,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IdentityProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IdentityProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IdentityProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IdentityProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -468,9 +796,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.LogRules</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.LogRules</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.LogRules</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.LogRules</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -502,9 +830,55 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitoredResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MarketplaceSaaSInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitoredResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MarketplaceSaaSInfo</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>BilledAzureSubscriptionId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MarketplaceName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MarketplaceResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MarketplaceStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Subscribed</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>BilledAzureSubscriptionId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MarketplaceName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MarketplaceResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MarketplaceStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Subscribed</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoredResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoredResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -530,9 +904,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitoredResourceListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoredResourceListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitoredResourceListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoredResourceListResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -552,9 +926,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitoringTagRules</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoringTagRules</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitoringTagRules</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoringTagRules</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -580,9 +954,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitoringTagRulesListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoringTagRulesListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitoringTagRulesListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoringTagRulesListResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -602,9 +976,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitoringTagRulesProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoringTagRulesProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitoringTagRulesProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitoringTagRulesProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -624,12 +998,15 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitorProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitorProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitorProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.MonitorProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Label>GenerateApiKey</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Label>LiftrResourceCategory</Label>
           </TableColumnHeader>
@@ -642,10 +1019,28 @@
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SaaSAzureSubscriptionStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceCampaignId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SourceCampaignName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>GenerateApiKey</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>LiftrResourceCategory</PropertyName>
               </TableColumnItem>
@@ -658,15 +1053,142 @@
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SaaSAzureSubscriptionStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceCampaignId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SourceCampaignName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Key</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LastRefreshAt</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OpenAiResourceEndpoint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OpenAiResourceId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Key</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>LastRefreshAt</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OpenAiResourceEndpoint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OpenAiResourceId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationRpmodel</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationRpmodel</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationRpmodelListResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationRpmodelListResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>NextLink</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>NextLink</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationStatusResponseProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OpenAiIntegrationStatusResponseProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Status</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Status</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OperationDisplay</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -704,9 +1226,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OperationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -726,9 +1248,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.OperationResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OperationResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.OperationResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.OperationResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -760,9 +1282,83 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ResourceSku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.PartnerBillingEntity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ResourceSku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.PartnerBillingEntity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PartnerEntityUri</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PartnerEntityUri</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.PlanDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.PlanDetails</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>OfferId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PlanId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PlanName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PublisherId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>TermId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>OfferId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PlanId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PlanName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublisherId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TermId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ResourceSku</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.ResourceSku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -782,9 +1378,81 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.UserInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UpgradableVersionsList</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.UserInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UpgradableVersionsList</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CurrentVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>UpgradableVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CurrentVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>UpgradableVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UserApiKeyResponseProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UserApiKeyResponseProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ApiKey</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ApiKey</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UserEmailId</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UserEmailId</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>EmailId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>EmailId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UserInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.UserInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -822,9 +1490,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.VMCollectionUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMCollectionUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.VMCollectionUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMCollectionUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -850,9 +1518,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.VMHostListResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMHostListResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.VMHostListResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMHostListResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -872,9 +1540,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.VMIngestionDetailsResponse</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMIngestionDetailsResponse</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.VMIngestionDetailsResponse</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMIngestionDetailsResponse</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -900,9 +1568,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.VMResources</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMResources</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.VMResources</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.VMResources</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

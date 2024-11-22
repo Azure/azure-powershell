@@ -397,6 +397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         Description =@"",
         Script = @"(Get-AzContext).Subscription.Id",
         SetCondition = @"")]
+        [global::System.Management.Automation.Alias("Subscription")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 

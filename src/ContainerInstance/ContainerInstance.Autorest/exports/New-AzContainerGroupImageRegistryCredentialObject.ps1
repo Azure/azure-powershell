@@ -20,15 +20,16 @@ Create a in-memory object for ImageRegistryCredential
 .Description
 Create a in-memory object for ImageRegistryCredential
 .Example
-New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password (ConvertTo-SecureString "******" -AsPlainText -Force) 
+$pwd = ConvertTo-SecureString -String "****" -AsPlainText -Force
+New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password $pwd
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ImageRegistryCredential
+Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ImageRegistryCredential
 .Link
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupImageRegistryCredentialObject
 #>
 function New-AzContainerGroupImageRegistryCredentialObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ImageRegistryCredential])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20240501Preview.ImageRegistryCredential])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

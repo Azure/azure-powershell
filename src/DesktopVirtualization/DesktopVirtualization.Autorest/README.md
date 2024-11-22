@@ -44,21 +44,26 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: 50175f111e9c899249e79eb082a75fb8a7aba0e2
+commit: 0feca76719343b0cb1e6a9d6064c7037827706ca
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2023-09-05/desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2024-04-03/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
+
+#v4 migration settings
+keep-pec-and-plr: true
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 directive:
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
   - where:
       verb: New
       subject: HostPool
@@ -94,10 +99,9 @@ directive:
       verb: Get
       subject: ActiveApplication
     remove: true
-  - where:      
-      verb: Remove    
+  - where:
+      verb: Remove
       subject: UserSession
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
-```

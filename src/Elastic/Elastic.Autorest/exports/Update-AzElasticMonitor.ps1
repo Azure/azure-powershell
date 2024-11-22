@@ -25,28 +25,38 @@ Update-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh
 Get-AzElasticMonitor -ResourceGroupName lucas-elastic-test -Name elastic-pwsh02 | Update-AzElasticMonitor -Tag @{'key01' = '1'; 'key2' = '2'; 'key3' = '3'}
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorUpgrade
+.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource
+Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResource
+.Outputs
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+BODY <IElasticMonitorUpgrade>: Upgrade elastic monitor version
+  [Version <String>]: Version to which the elastic monitor should be upgraded to
+
 INPUTOBJECT <IElasticIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
+  [IntegrationName <String>]: OpenAI Integration name
   [MonitorName <String>]: Monitor resource name
-  [ResourceGroupName <String>]: The name of the resource group to which the Elastic resource belongs.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [RuleSetName <String>]: Tag Rule Set resource name
-  [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
 .Link
 https://learn.microsoft.com/powershell/module/az.elastic/update-azelasticmonitor
 #>
 function Update-AzElasticMonitor {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResource], [System.Boolean])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
     [Alias('MonitorName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [System.String]
@@ -54,33 +64,53 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [System.String]
-    # The name of the resource group to which the Elastic resource belongs.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='Upgrade')]
+    [Parameter(ParameterSetName='UpgradeExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # The Azure subscription ID.
-    # This is a GUID-formatted string (e.g.
-    # 00000000-0000-0000-0000-000000000000)
+    # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IElasticIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorResourceUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # elastic monitor resource tags.
     ${Tag},
+
+    [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20240301.IElasticMonitorUpgrade]
+    # Upgrade elastic monitor version
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Body')]
+    [System.String]
+    # Version to which the elastic monitor should be upgraded to
+    ${Version},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -128,7 +158,23 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
+    ${ProxyUseDefaultCredentials},
+
+    [Parameter(ParameterSetName='Upgrade')]
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(ParameterSetName='Upgrade')]
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaIdentity')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Elastic.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait}
 )
 
 begin {
@@ -159,8 +205,11 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Elastic.private\Update-AzElasticMonitor_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Elastic.private\Update-AzElasticMonitor_UpdateViaIdentityExpanded';
+            Upgrade = 'Az.Elastic.private\Update-AzElasticMonitor_Upgrade';
+            UpgradeExpanded = 'Az.Elastic.private\Update-AzElasticMonitor_UpgradeExpanded';
+            UpgradeViaIdentity = 'Az.Elastic.private\Update-AzElasticMonitor_UpgradeViaIdentity';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('UpdateExpanded', 'Upgrade', 'UpgradeExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

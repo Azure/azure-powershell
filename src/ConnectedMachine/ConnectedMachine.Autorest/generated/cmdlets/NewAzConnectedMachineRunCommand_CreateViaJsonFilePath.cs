@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"The operation to create a run command.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}", ApiVersion = "2024-05-20-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}", ApiVersion = "2024-07-31-preview")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.NotSuggestDefaultParameterSet]
     public partial class NewAzConnectedMachineRunCommand_CreateViaJsonFilePath : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener,
@@ -208,6 +208,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         Description =@"",
         Script = @"(Get-AzContext).Subscription.Id",
         SetCondition = @"")]
+        [global::System.Management.Automation.Alias("Subscription")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 

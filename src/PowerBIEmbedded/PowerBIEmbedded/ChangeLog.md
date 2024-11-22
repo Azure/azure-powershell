@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed "Microsoft.Azure.Management.PowerBIEmbedded" Version "1.1.1-preview" PackageReference
+* Removed "Microsoft.Azure.Management.PowerBIDedicated" Version "0.11.0-preview" PackageReference
 
 ## Version 2.0.0
 * Removed deprecated workspace collection cmdlets

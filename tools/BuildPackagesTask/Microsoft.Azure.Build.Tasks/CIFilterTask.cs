@@ -212,7 +212,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         private Dictionary<string, HashSet<string>> CalculateInfluencedModuleInfoForEachPhase(List<(Regex, List<string>)> ruleList, Dictionary<string, string[]> csprojMap)
         {
             Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>();
-
+			
             foreach (string filePath in FilesChanged)
             {
                 List<string> phaseList = new List<string>();

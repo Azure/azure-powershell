@@ -167,10 +167,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
             }
-            if (content.Contains("ResourceUri"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ResourceUri = (string) content.GetValueForProperty("ResourceUri",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ResourceUri, global::System.Convert.ToString);
-            }
             if (content.Contains("PerimeterName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PerimeterName = (string) content.GetValueForProperty("PerimeterName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PerimeterName, global::System.Convert.ToString);
@@ -287,10 +283,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
             if (content.Contains("PrivateEndpointConnectionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("ResourceUri"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ResourceUri = (string) content.GetValueForProperty("ResourceUri",((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentityInternal)this).ResourceUri, global::System.Convert.ToString);
             }
             if (content.Contains("PerimeterName"))
             {

@@ -13,7 +13,7 @@
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="5.0.0" />
+    <ProjectReference Include="..\ServiceBus.Management.Sdk\ServiceBus.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AksArc.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.AksArc.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create the virtual network resource</summary>
+    /// <summary>create the virtual network resource</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzAksArcVirtualNetwork_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.AksArc.Models.IVirtualNetwork))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"Create the virtual network resource")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Description(@"create the virtual network resource")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}", ApiVersion = "2024-01-01")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.AksArc.NotSuggestDefaultParameterSet]

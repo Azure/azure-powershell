@@ -75,6 +75,8 @@ if(-not $NotIsolated -and -not $Debugger) {
 $binFolder = Join-Path $PSScriptRoot 'bin'
 $objFolder = Join-Path $PSScriptRoot 'obj'
 
+$isAzure = [System.Convert]::ToBoolean('true')
+
 if(-not $Debugger) {
   Write-Host -ForegroundColor Green 'Cleaning build folders...'
   $null = Remove-Item -Recurse -ErrorAction SilentlyContinue -Path $binFolder, $objFolder
@@ -130,7 +132,7 @@ $examplesFolder = Join-Path $PSScriptRoot 'examples'
 $null = New-Item -ItemType Directory -Force -Path $examplesFolder
 
 Write-Host -ForegroundColor Green 'Creating cmdlets for specified models...'
-$modelCmdlets = @(@{modelName="LicenseDetails"; cmdletName="New-AzConnectedLicenseDetail"})
+$modelCmdlets = @(@{modelName="LicenseDetails"; cmdletName="New-AzConnectedLicenseDetail"}, @{modelName="ProductFeatureUpdate"; cmdletName="Update-AzConnectedLicenseProfileFeature"}, @{modelName="ProductFeature"; cmdletName="New-AzConnectedLicenseProfileFeature"})
 $modelCmdletFolder = Join-Path (Join-Path $PSScriptRoot './custom') 'autogen-model-cmdlets'
 if (Test-Path $modelCmdletFolder) {
   $null = Remove-Item -Force -Recurse -Path $modelCmdletFolder
@@ -151,7 +153,7 @@ if($NoDocs) {
     $null = Get-ChildItem -Path $docsFolder -Recurse -Exclude 'README.md' | Remove-Item -Recurse -ErrorAction SilentlyContinue
   }
   $null = New-Item -ItemType Directory -Force -Path $docsFolder
-  $addComplexInterfaceInfo = ![System.Convert]::ToBoolean('true')
+  $addComplexInterfaceInfo = !$isAzure
   Export-ProxyCmdlet -ModuleName $moduleName -ModulePath $modulePaths -ExportsFolder $exportsFolder -InternalFolder $internalFolder -ModuleDescription $moduleDescription -DocsFolder $docsFolder -ExamplesFolder $examplesFolder -ModuleGuid $guid -AddComplexInterfaceInfo:$addComplexInterfaceInfo
 }
 
@@ -185,6 +187,5 @@ if (-not $DisableAfterBuildTasks){
     . $afterBuildTasksPath @afterBuildTasksArgs
   }
 }
-
 
 Write-Host -ForegroundColor Green '-------------Done-------------'

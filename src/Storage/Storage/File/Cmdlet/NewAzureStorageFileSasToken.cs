@@ -12,20 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.Azure.Storage;
-using Microsoft.Azure.Storage.File;
 using System;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Azure.Storage.Files.Shares;
 using Azure.Storage.Files.Shares.Models;
 using Azure.Storage.Sas;
-using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -42,15 +35,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         /// </summary>
         private const string NameSasPolicyParmeterSet = "NameSasPolicy";
 
-        /// <summary>
-        /// Sas permission with CloudFile instance parameter set name
-        /// </summary>
-        private const string CloudFileSasPermissionParameterSet = "FileSasPermission";
+        private const string FileClientSasPermissionParameterSet = "FileSasPermission";
 
-        /// <summary>
-        /// Sas policy with CloudFile instance parameter set name
-        /// </summary>
-        private const string CloudFileSasPolicyParmeterSet = "FileSasPolicy";
+        private const string FileClientSasPolicyParameterSet = "FileSasPolicy";
+
 
         [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "Share Name",
@@ -78,23 +66,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("File", "13.0.0", "8.0.0", ChangeDescription = "The parameter File (alias CloudFile) will be deprecated, and a new mandatory parameter ShareFileClient will be added.")]
         [Parameter(Mandatory = true,
-            HelpMessage = "CloudFile instance to represent the file to get SAS token against.",
+            HelpMessage = "ShareFlieClient instance to represent the file to get SAS token against.",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CloudFileSasPermissionParameterSet)]
+            ParameterSetName = FileClientSasPermissionParameterSet)]
         [Parameter(Mandatory = true,
-            HelpMessage = "CloudFile instance to represent the file to get SAS token against.",
+            HelpMessage = "ShareFileClient instance to represent the file to get SAS token against.",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CloudFileSasPolicyParmeterSet)]
+            ParameterSetName = FileClientSasPolicyParameterSet)]
         [ValidateNotNull]
-        [Alias("CloudFile")]
-        public CloudFile File { get; set; }
+        public ShareFileClient ShareFileClient { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Policy Identifier", ParameterSetName = NameSasPolicyParmeterSet)]
-        [Parameter(Mandatory = true, HelpMessage = "Policy Identifier", ParameterSetName = CloudFileSasPolicyParmeterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "Policy Identifier", ParameterSetName = FileClientSasPolicyParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Policy
         {
@@ -110,14 +96,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(
             Mandatory = false,
             HelpMessage = "Permissions for a file. Permissions can be any subset of \"rwd\".",
-            ParameterSetName = CloudFileSasPermissionParameterSet)]
+            ParameterSetName = FileClientSasPermissionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("Protocol", "13.0.0", "8.0.0", ChangeDescription = "The type of parameter Protocol will be changed from SharedAccessProtocol to string.")]
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
-        [ValidateNotNull]
-        public SharedAccessProtocol? Protocol { get; set; }
+        [ValidateSet("HttpsOnly", "HttpsOrHttp", IgnoreCase = true),]
+        public string Protocol { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.")]
         [ValidateNotNullOrEmpty]
@@ -134,19 +119,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Display full uri with sas token")]
         public SwitchParameter FullUri { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipeline = true,
-            HelpMessage = "Azure Storage Context Object",
-            ParameterSetName = NameSasPermissionParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipeline = true,
-            HelpMessage = "Azure Storage Context Object",
-            ParameterSetName = NameSasPolicyParmeterSet)]
-        [ValidateNotNull]
-        public override IStorageContext Context { get; set; }
-
         // Overwrite the useless parameter
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
@@ -161,16 +133,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         {
             ShareClient shareClient;
             ShareFileClient fileClient;
-            if (null != this.File)
-            {
-                // Build and set storage context for the output object when
-                // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
-                if (ShouldSetContext(this.Context, this.File.ServiceClient))
-                {
-                    this.Context = GetStorageContextFromTrack1FileServiceClient(this.File.ServiceClient, DefaultContext);
-                }
 
-                fileClient = AzureStorageFile.GetTrack2FileClient(this.File, this.ClientOptions);
+            if (null != this.ShareFileClient)
+            {
+                CheckContextForObjectInput((AzureStorageContext)this.Context);
+                fileClient = this.ShareFileClient;
                 shareClient = Util.GetTrack2ShareReference(fileClient.ShareName,
                         (AzureStorageContext)this.Context,
                         snapshotTime: Util.GetSnapshotTimeStringFromUri(fileClient.Uri),
@@ -188,7 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             if (this.Context != null && this.Context is AzureStorageContext && ((AzureStorageContext)this.Context).StorageAccount != null && !((AzureStorageContext)this.Context).StorageAccount.Credentials.IsSharedKey)
             {
-                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credentail.");
+                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credential.");
             }
 
             // Get share saved policy if any

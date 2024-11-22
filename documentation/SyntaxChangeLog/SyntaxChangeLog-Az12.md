@@ -1,3 +1,52 @@
+## 12.5.0 - October 2024
+#### Az.Compute 8.5.0 
+* Modified cmdlet `New-AzVmss`
+   - Added parameters `-SecurityPostureId`, `-SecurityPostureExcludeExtension`
+* Modified cmdlet `New-AzVmssConfig`
+   - Added parameters `-SecurityPostureId`, `-SecurityPostureExcludeExtension`
+#### Az.DataProtection 2.5.0 
+* Modified cmdlet `Initialize-AzDataProtectionRestoreRequest`
+   - Changed the type of parameter `-RestoreConfiguration` from `KubernetesClusterRestoreCriteria` to `PSObject`
+* Modified cmdlet `New-AzDataProtectionRestoreConfigurationClientObject`
+   - Added parameters `-ResourceModifierReference`, `-StagingResourceGroupId`, `-StagingStorageAccountId`
+* Modified cmdlet `Start-AzDataProtectionBackupInstanceRestore`
+   - Added parameter `-SecureToken`
+* Modified cmdlet `Stop-AzDataProtectionBackupInstanceProtection`
+   - Added parameter `-SecureToken`
+* Modified cmdlet `Suspend-AzDataProtectionBackupInstanceBackup`
+   - Added parameter `-SecureToken`
+* Modified cmdlet `Unlock-AzDataProtectionResourceGuardOperation`
+   - Added parameter `-SecureToken`
+* Modified cmdlet `Update-AzDataProtectionBackupInstance`
+   - Added parameters `-ResourceGuardOperationRequest`, `-Token`, `-SecureToken`
+* Modified cmdlet `Update-AzDataProtectionBackupInstanceAssociatedPolicy`
+   - Added parameters `-ResourceGuardOperationRequest`, `-Token`, `-SecureToken`
+* Modified cmdlet `Update-AzDataProtectionBackupVault`
+   - Added parameter `-SecureToken`
+#### Az.EventGrid 2.1.0 
+* Removed cmdlet `New-AzEventGridAdvancedFilterObject`, `New-AzEventGridDeliveryAttributeMappingObject`, `New-AzEventGridFilterObject`
+* Added cmdlet `New-AzEventGridBoolEqualsAdvancedFilterObject`, `New-AzEventGridBoolEqualsFilterObject`, `New-AzEventGridDynamicDeliveryAttributeMappingObject`, `New-AzEventGridEventSubscriptionFilterObject`, `New-AzEventGridIsNotNullAdvancedFilterObject`, `New-AzEventGridIsNotNullFilterObject`, `New-AzEventGridIsNullOrUndefinedAdvancedFilterObject`, `New-AzEventGridIsNullOrUndefinedFilterObject`, `New-AzEventGridNumberGreaterThanAdvancedFilterObject`, `New-AzEventGridNumberGreaterThanFilterObject`, `New-AzEventGridNumberGreaterThanOrEqualsAdvancedFilterObject`, `New-AzEventGridNumberGreaterThanOrEqualsFilterObject`, `New-AzEventGridNumberInAdvancedFilterObject`, `New-AzEventGridNumberInFilterObject`, `New-AzEventGridNumberInRangeAdvancedFilterObject`, `New-AzEventGridNumberInRangeFilterObject`, `New-AzEventGridNumberLessThanAdvancedFilterObject`, `New-AzEventGridNumberLessThanFilterObject`, `New-AzEventGridNumberLessThanOrEqualsAdvancedFilterObject`, `New-AzEventGridNumberLessThanOrEqualsFilterObject`, `New-AzEventGridNumberNotInAdvancedFilterObject`, `New-AzEventGridNumberNotInFilterObject`, `New-AzEventGridNumberNotInRangeAdvancedFilterObject`, `New-AzEventGridNumberNotInRangeFilterObject`, `New-AzEventGridStaticDeliveryAttributeMappingObject`, `New-AzEventGridStringBeginsWithAdvancedFilterObject`, `New-AzEventGridStringBeginsWithFilterObject`, `New-AzEventGridStringContainsAdvancedFilterObject`, `New-AzEventGridStringContainsFilterObject`, `New-AzEventGridStringEndsWithAdvancedFilterObject`, `New-AzEventGridStringEndsWithFilterObject`, `New-AzEventGridStringInAdvancedFilterObject`, `New-AzEventGridStringInFilterObject`, `New-AzEventGridStringNotBeginsWithAdvancedFilterObject`, `New-AzEventGridStringNotBeginsWithFilterObject`, `New-AzEventGridStringNotContainsAdvancedFilterObject`, `New-AzEventGridStringNotContainsFilterObject`, `New-AzEventGridStringNotEndsWithAdvancedFilterObject`, `New-AzEventGridStringNotEndsWithFilterObject`, `New-AzEventGridStringNotInAdvancedFilterObject`, `New-AzEventGridStringNotInFilterObject`
+#### Az.Migrate 2.5.0 
+* Modified cmdlet `New-AzMigrateServerReplication`
+   - Added parameter `-LinuxLicenseType`
+* Modified cmdlet `Set-AzMigrateServerReplication`
+   - Added parameter `-LinuxLicenseType`
+#### Az.Monitor 5.3.0 
+* Added cmdlet `Get-AzPipelineGroup`, `New-AzPipelineGroup`, `Remove-AzPipelineGroup`, `Update-AzPipelineGroup`
+#### Az.PrivateDns 1.1.0 
+* Modified cmdlet `New-AzPrivateDnsVirtualNetworkLink`
+   - Added parameter `-ResolutionPolicy`
+* Modified cmdlet `Set-AzPrivateDnsVirtualNetworkLink`
+   - Added parameter `-ResolutionPolicy`
+#### Az.Resources 7.6.0 
+* Modified cmdlet `Update-AzADAppFederatedCredential`
+   - Added parameters `-JsonFilePath`, `-JsonString`
+* Modified cmdlet `Update-AzADGroup`
+   - Added parameters `-JsonFilePath`, `-JsonString`
+* Modified cmdlet `Update-AzADServicePrincipalAppRoleAssignment`
+   - Added parameters `-JsonFilePath`, `-JsonString`
+* Added cmdlet `Get-AzDataBoundaryScope`, `Get-AzDataBoundaryTenant`, `Set-AzDataBoundary`
+
 ## 12.4.0 - October 2024
 #### Az.App 1.1.0 
 * Modified cmdlet `Get-AzContainerApp`
@@ -40,10 +89,6 @@
 * Modified cmdlet `Set-AzNetworkWatcherFlowLog`
    - Added parameters `-EnabledFilteringCriteria`, `-UserAssignedIdentityId`
 * Added cmdlet `Get-AzBastionShareableLink`, `New-AzBastionShareableLink`, `Remove-AzBastionShareableLink`
-#### Az.RedisEnterpriseCache 1.3.0 
-* Modified cmdlet `Update-AzRedisEnterpriseCache`
-   - Added parameter `-HighAvailability`
-* Added cmdlet `Get-AzRedisEnterpriseCacheAccessPolicyAssignment`, `Invoke-AzRedisEnterpriseCacheForceDatabaseLinkToReplicationGroup`, `New-AzRedisEnterpriseCacheAccessPolicyAssignment`, `Remove-AzRedisEnterpriseCacheAccessPolicyAssignment`, `Update-AzRedisEnterpriseCacheDatabaseDbRedisVersion`
 #### Az.Resources 7.5.0 
 * Modified cmdlet `New-AzPolicyAssignment`
    - Added parameters `-Override`, `-ResourceSelector`
@@ -1031,6 +1076,7 @@
    - Changed the type of parameter `-Status` from `Status` to `String`
    - Output type changed from ``PSSupportTicket`` to ``ISupportTicketDetails``
 * Added cmdlet `Get-AzSupportChatTranscript`, `Get-AzSupportChatTranscriptsNoSubscription`, `Get-AzSupportCommunication`, `Get-AzSupportCommunicationsNoSubscription`, `Get-AzSupportFile`, `Get-AzSupportFilesNoSubscription`, `Get-AzSupportFileWorkspace`, `Get-AzSupportFileWorkspacesNoSubscription`, `Get-AzSupportOperation`, `Get-AzSupportTicketsNoSubscription`, `New-AzSupportCommunication`, `New-AzSupportCommunicationsNoSubscription`, `New-AzSupportFileAndUpload`, `New-AzSupportFileAndUploadNoSubscription`, `New-AzSupportFileWorkspace`, `New-AzSupportFileWorkspacesNoSubscription`, `New-AzSupportTicketsNoSubscription`, `Test-AzSupportCommunicationNameAvailability`, `Test-AzSupportCommunicationsNoSubscriptionNameAvailability`, `Test-AzSupportTicketNameAvailability`, `Test-AzSupportTicketsNoSubscriptionNameAvailability`, `Update-AzSupportTicketsNoSubscription`
+
 
 
 

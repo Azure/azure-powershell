@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShel
     public bool UseExpandedFormat { get; set; }
 
     private const string ModelNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models";
-    private const string SupportNamespace = @"Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Support";
+    private const string SupportNamespace = @"${$project.supportNamespace.fullName}";
 
     protected override void ProcessRecord()
     {

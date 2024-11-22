@@ -19,6 +19,12 @@
 --->
 
 ## Upcoming Release
+
+## Version 7.11.0
+* Updated Device Update Private Link provider configuration
+    - Updated Microsoft.DeviceUpdate/accounts API version to 2023-07-01
+
+## Version 7.10.0
 * Onboarded Azure Virtual Network Manager Cmdlets for UDR and NSG Management
     - `New/Get/Remove/Set-AzNetworkManagerRoutingConfiguration`
     - `New/Get/Remove/Set-AzNetworkManagerRoutingRuleCollection`
@@ -47,6 +53,7 @@
 * Added support of `DestinationIPAddress` property in `New-AzPrivateLinkService` command
     - `LoadBalancerFrontendIpConfiguration` is not a mandatory parameter anymore.
     - The user can provide either `LoadBalancerFrontendIpConfiguration` or `DestinationIPAddress`.
+* Added support for `PrivateEndpointVNetPolicies` property in `New-AzVirtualNetwork`
 
 ## Version 7.8.1
 * Fixed secrets exposure in example documentation.

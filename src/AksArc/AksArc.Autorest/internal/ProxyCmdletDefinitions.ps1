@@ -988,9 +988,9 @@ end {
 
 <#
 .Synopsis
-Create the provisioned cluster instance
+create the provisioned cluster instance
 .Description
-Create the provisioned cluster instance
+create the provisioned cluster instance
 .Example
 New-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -ControlPlaneCount 3
 .Example
@@ -1555,9 +1555,9 @@ end {
 
 <#
 .Synopsis
-Create the agent pool in the provisioned cluster
+create the agent pool in the provisioned cluster
 .Description
-Create the agent pool in the provisioned cluster
+create the agent pool in the provisioned cluster
 .Example
 New-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example
 .Example
@@ -1815,9 +1815,9 @@ end {
 
 <#
 .Synopsis
-Create the virtual network resource
+create the virtual network resource
 .Description
-Create the virtual network resource
+create the virtual network resource
 .Example
 New-AzAksArcVirtualNetwork -Name "test-vnet-static" -ResourceGroupName "test-arcappliance-resgrp" -CustomLocationName "testcustomlocation" -MocVnetName "test-vnet"
 
@@ -2525,9 +2525,9 @@ end {
 
 <#
 .Synopsis
-Update the provisioned cluster instance
+update the provisioned cluster instance
 .Description
-Update the provisioned cluster instance
+update the provisioned cluster instance
 .Example
 Update-AzAksArcCluster -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -ControlPlaneCount 3
 .Example
@@ -2922,9 +2922,9 @@ end {
 
 <#
 .Synopsis
-Update the agent pool in the provisioned cluster
+update the agent pool in the provisioned cluster
 .Description
-Update the agent pool in the provisioned cluster
+update the agent pool in the provisioned cluster
 .Example
 Update-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example -Count 3
 .Example

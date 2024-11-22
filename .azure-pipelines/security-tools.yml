@@ -19,7 +19,7 @@ jobs:
   steps:
   - checkout: self
     fetchTags: false
-  - template: util/get-github-pat-steps.yml
+  - template: util/get-pr-changed-files.yml
   - task: PowerShell@2
     displayName: Install platyPS
     inputs:
