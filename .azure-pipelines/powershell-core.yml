@@ -22,6 +22,8 @@ variables:
   PowerShellPlatform: PowerShell Core
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
+trigger: none
+
 pr:
   branches:
     include:
