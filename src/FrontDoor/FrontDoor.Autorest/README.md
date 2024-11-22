@@ -178,6 +178,33 @@ directive:
       parameter-name: FrontDoorCertificateSourceParameterCertificateType
     set:
       parameter-name: CertificateType
+  - where:
+      verb: Enable
+      subject: FrontendEndpointHttps
+      parameter-name: MinimumTlsVersion
+    set:
+      default:
+        script: '1.2'
+
+  # New-AzFrontDoor
+  - where:
+      verb: New
+      subject: FrontDoor
+      parameter-name: Location
+    set:
+      default:
+        script: '"global"'
+  - where:
+      verb: New
+      subject: FrontDoor
+      parameter-name: EnabledState
+    set:
+      default:
+        script: '"Enabled"'
+  - where:
+      verb: New
+      subject: FrontDoor
+    hide: true        
 
   # Breaking change avoid rename
 

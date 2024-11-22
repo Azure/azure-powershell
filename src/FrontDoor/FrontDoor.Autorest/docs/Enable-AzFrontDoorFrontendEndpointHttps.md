@@ -15,8 +15,8 @@ Enables a frontendEndpoint for HTTPS traffic
 ### EnableExpanded (Default)
 ```
 Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorName <String> -FrontendEndpointName <String>
- -ResourceGroupName <String> -CertificateSource <String> -MinimumTlsVersion <String>
- [-SubscriptionId <String>] [-CertificateType <String>] [-SecretName <String>] [-SecretVersion <String>]
+ -ResourceGroupName <String> -CertificateSource <String> [-SubscriptionId <String>]
+ [-CertificateType <String>] [-MinimumTlsVersion <String>] [-SecretName <String>] [-SecretVersion <String>]
  [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -38,7 +38,7 @@ Enable-AzFrontDoorFrontendEndpointHttps -InputObject <IFrontDoorIdentity>
 ### EnableViaIdentityExpanded
 ```
 Enable-AzFrontDoorFrontendEndpointHttps -InputObject <IFrontDoorIdentity> -CertificateSource <String>
- -MinimumTlsVersion <String> [-CertificateType <String>] [-SecretName <String>] [-SecretVersion <String>]
+ [-CertificateType <String>] [-MinimumTlsVersion <String>] [-SecretName <String>] [-SecretVersion <String>]
  [-VaultId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -53,8 +53,8 @@ Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorInputObject <IFrontDoorIdentit
 ### EnableViaIdentityFrontDoorExpanded
 ```
 Enable-AzFrontDoorFrontendEndpointHttps -FrontDoorInputObject <IFrontDoorIdentity>
- -FrontendEndpointName <String> -CertificateSource <String> -MinimumTlsVersion <String>
- [-CertificateType <String>] [-SecretName <String>] [-SecretVersion <String>] [-VaultId <String>]
+ -FrontendEndpointName <String> -CertificateSource <String> [-CertificateType <String>]
+ [-MinimumTlsVersion <String>] [-SecretName <String>] [-SecretVersion <String>] [-VaultId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -275,9 +275,9 @@ Type: System.String
 Parameter Sets: EnableExpanded, EnableViaIdentityExpanded, EnableViaIdentityFrontDoorExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: 1.2
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
