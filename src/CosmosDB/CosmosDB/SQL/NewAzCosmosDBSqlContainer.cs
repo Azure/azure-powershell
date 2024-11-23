@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (vectorEmbeddingPolicy != null)
             {
-                sqlContainerResource.VectorEmbeddingPolicy = PSVectorEmbeddingPolicy.ToSDKModel(VectorEmbeddingPolicy);
+                sqlContainerResource.VectorEmbeddingPolicy = PSVectorEmbeddingPolicy.ToSDKModel(vectorEmbeddingPolicy);
             }
 
             if (ConflictResolutionPolicyMode != null)

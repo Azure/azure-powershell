@@ -445,6 +445,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
 
+### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlVectorEmbeddingPolicy
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults

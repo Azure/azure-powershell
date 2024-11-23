@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ClientEncryptionKeyObjectHelpMessage = "Client Encryption Key object.";
         public const string RestorableSqlContainersFeedStartTimeHelpMessage = "Restorable Sql containers event feed start time.";
         public const string RestorableSqlContainersFeedEndTimeHelpMessage = "Restorable Sql containers event feed end time.";
-        public const string VectorEmbeddingPolicyVectorEmbeddingdHelpMessage = "Represents a vector embedding. A vector embedding is used to define a vector field in the documents.";
+        public const string VectorEmbeddingPolicyVectorEmbeddingHelpMessage = "Represents a vector embedding. A vector embedding is used to define a vector field in the documents.";
         public const string VectorEmbeddingPathHelpMessage = "The path to the vector field in the document.";
         public const string VectorEmbeddingDataTypeHelpMessage = "Indicates the data type of vector.";
         public const string VectorEmbeddingDistanceFunctionHelpMessage = "The distance function to use for distance calculation in between vectors.";

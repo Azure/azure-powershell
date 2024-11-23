@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, HelpMessage = Constants.VectorEmbeddingDimensionsHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string Dimensions { get; set; }
+        public int Dimensions { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -57,10 +57,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 pSVectorEmbedding.DistanceFunction = DistanceFunction;
             }
 
-            if (Dimensions != null)
-            {
-                pSVectorEmbedding.Dimensions = Dimensions;
-            }
+            pSVectorEmbedding.Dimensions = Dimensions;
 
             WriteObject(pSVectorEmbedding);
             return;
