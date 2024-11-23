@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string Path { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.VectorIndexTypeHelpMessage)]
-        public string[] Type { get; set; }
+        public string Type { get; set; }
 
         public override void ExecuteCmdlet()
         {

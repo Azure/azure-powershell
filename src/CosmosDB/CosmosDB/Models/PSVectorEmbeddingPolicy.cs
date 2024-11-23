@@ -24,17 +24,17 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         {
         }
 
-        public PSVectorEmbeddingPolicy(VectorEmbedding vectorEmbedding)
+        public PSVectorEmbeddingPolicy(VectorEmbeddingPolicy vectorEmbeddingPolicy)
         {
-            if (vectorEmbedding == null)
+            if (vectorEmbeddingPolicy == null)
             {
                 return;
             }
 
-            if (ModelHelper.IsNotNullOrEmpty(vectorEmbedding.VectorEmbeddings))
+            if (ModelHelper.IsNotNullOrEmpty(vectorEmbeddingPolicy.VectorEmbeddings))
             {
-                VectorEmbeddings = new List<PSVectorEmbeddingPolicy>();
-                foreach (VectorEmbedding vectorEmbedding in vectorEmbedding.VectorEmbeddings)
+                VectorEmbeddings = new List<PSVectorEmbedding>();
+                foreach (VectorEmbedding vectorEmbedding in vectorEmbeddingPolicy.VectorEmbeddings)
                 {
                     VectorEmbeddings.Add(new PSVectorEmbedding(vectorEmbedding));
                 }
@@ -56,14 +56,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
             VectorEmbeddingPolicy vectorEmbeddingPolicy = new VectorEmbeddingPolicy();
 
-            if (ModelHelper.IsNotNullOrEmpty(pSVectorEmbedding.VectorEmbeddings))
+            if (ModelHelper.IsNotNullOrEmpty(pSVectorEmbeddingPolicy.VectorEmbeddings))
             {
                 IList<VectorEmbedding> vectorEmbeddings = new List<VectorEmbedding>();
-                foreach (PSVectorEmbedding pSVectorEmbedding in pSVectorEmbedding.VectorEmbeddings)
+                foreach (PSVectorEmbedding pSVectorEmbedding in pSVectorEmbeddingPolicy.VectorEmbeddings)
                 {
-                    VectorEmbeddings.Add(PSVectorEmbedding.ToSDKModel(pSVectorEmbedding));
+                    vectorEmbeddings.Add(PSVectorEmbedding.ToSDKModel(pSVectorEmbedding));
                 }
-                vectorEmbeddingPolicy.VectorEmbeddings = VectorEmbeddings;
+                vectorEmbeddingPolicy.VectorEmbeddings = vectorEmbeddings;
             }
 
             return vectorEmbeddingPolicy;

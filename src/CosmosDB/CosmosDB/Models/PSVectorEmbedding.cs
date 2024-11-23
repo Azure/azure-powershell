@@ -33,14 +33,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             }
 
             Path = vectorEmbedding.Path;
-            if (vectorEmbedding.Indexes != null)
-            {
-                Indexes = new List<PSIndexes>();
-                foreach (Indexes indexes in vectorEmbedding.Indexes)
-                {
-                    Indexes.Add(new PSIndexes(indexes));
-                }
-            }
+            DataType = vectorEmbedding.DataType;
+            DistanceFunction = vectorEmbedding.DistanceFunction;
+            DataType = vectorEmbedding.DataType;
         }
         //
         // Summary:

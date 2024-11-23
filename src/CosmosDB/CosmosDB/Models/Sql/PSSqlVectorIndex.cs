@@ -16,7 +16,7 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-    public class PSSqlVectorIndex : PSqlVectorIndex
+    public class PSSqlVectorIndex : PSVectorIndex
     {
         public PSSqlVectorIndex() : base()
         {
