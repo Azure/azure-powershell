@@ -86,6 +86,7 @@ jobs:
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
+      filesChangedOutputPath: $(FilesChangedOutputPath)
       TargetModule: ${{ parameters.TargetModule }}
       ForceRegenerate: ${{ parameters.ForceRegenerate }}
   - task: PowerShell@2
