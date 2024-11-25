@@ -48,6 +48,7 @@ jobs:
   - checkout: self
   - template: util/get-github-pat-steps.yml
   - task: PowerShell@2
+    name: 'Initialize'
     displayName: 'Initialize Build'
     inputs:
       targetType: inline
@@ -67,11 +68,15 @@ jobs:
         $filesChanged = Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
         if (($null -eq $filesChanged) -or (0 -eq $filesChanged.Length)) {
           Write-Warning "no modules found need to be archived"
-          Write-Host "##vso[task.setvariable variable=Terminate]true"
+          Write-Host "##vso[task.setvariable variable=Terminate;isOutput=true]true"
+          Write-Warning 'first'
+          Write-Warning "$(Terminate)"
+          Write-Warning 'second'
+          Write-Warning "${{ variables.Terminate }}"
           exit 0
         }
         $filesChanged | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
-  - ${{ if ne(variables['Terminate'], 'true') }}:
+  - ${{ if ne(variables.Terminate, 'true') }}:
     - task: PowerShell@2
       displayName: 'Create branch for generated assets'
       inputs:
@@ -136,7 +141,7 @@ jobs:
 - job: Analyze
   displayName: Analyze
   dependsOn: Build
-  condition: and(succeeded(), ne(variables.Terminate, true))
+  condition: and(succeeded(), ne(dependencies.Build.outputs['Initialize.Terminate'], 'true'))
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
   pool: pool-windows-2019
 
@@ -150,7 +155,7 @@ jobs:
 - job: Test
   displayName: Test
   dependsOn: Build
-  condition: and(succeeded(), ne(variables.Terminate, true))
+  condition: and(succeeded(), ne(dependencies.Build.outputs['Initialize.Terminate'], 'true'))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   strategy:
     matrix:
