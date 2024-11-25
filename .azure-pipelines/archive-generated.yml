@@ -53,8 +53,6 @@ jobs:
       targetType: inline
       pwsh: true
       script: |
-        $Terminate = 'false'
-
         $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
         Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
         New-Item -Type File -Path $filesChangedOutputPath -Force
@@ -70,11 +68,11 @@ jobs:
         if (($null -eq $filesChanged) -or (0 -eq $filesChanged.Length)) {
           Write-Warning "no modules found need to be archived"
           $Terminate = 'true'
-          Write-Host "##vso[task.setvariable variable=Terminate]$Terminate"
+          Write-Host "##vso[task.setvariable variable=Terminate]true"
           exit 0
         }
         $filesChanged | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
-  - ${{ if ne(variables.Terminate, 'true') }}:
+  - ${{ if ne(variables.Terminate, true) }}:
     - task: PowerShell@2
       displayName: 'Create branch for generated assets'
       inputs:
