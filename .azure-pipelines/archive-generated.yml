@@ -71,7 +71,7 @@ jobs:
           exit 0
         }
         $filesChanged | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
-  - ${{ if ne($(Terminate), 'true') }}:
+  - ${{ if ne(variables['Terminate'], 'true') }}:
     - task: PowerShell@2
       displayName: 'Create branch for generated assets'
       inputs:
