@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         private const string ListParameterSet = "ByList";
         private const string GetByNameParameterSet = "ByName";
+        private const string GetByResourceIdParameterSet = "ByResourceId";
 
         [Alias("ResourceName")]
         [Parameter(
@@ -70,6 +72,15 @@ namespace Microsoft.Azure.Commands.Network
         [SupportsWildcards]
         public virtual string ResourceGroupName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = GetByResourceIdParameterSet,
+            HelpMessage = "The Ipam Pool resource id.",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [Alias("IpamPoolId")]
+        public string ResourceId { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -101,6 +112,25 @@ namespace Microsoft.Azure.Commands.Network
 
                     WriteObject(psIpamPoolList);
                     break;
+
+                case GetByResourceIdParameterSet:
+                    var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+
+                    // Validate the format of the ResourceId
+                    var segments = parsedResourceId.ParentResource.Split('/');
+                    if (segments.Length < 2)
+                    {
+                        throw new PSArgumentException("Invalid ResourceId format. Ensure the ResourceId is in the correct format.");
+                    }
+
+                    this.Name = parsedResourceId.ResourceName;
+                    this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                    this.NetworkManagerName = segments[1];
+
+                    var ipamPoolByResourceId = this.GetIpamPool(this.ResourceGroupName, this.NetworkManagerName, this.Name);
+                    WriteObject(ipamPoolByResourceId);
+                    break;
+
                 default:
                     break;
             }
