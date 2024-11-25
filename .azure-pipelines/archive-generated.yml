@@ -46,7 +46,7 @@ jobs:
 
   steps:
   - checkout: self
-  - template: get-github-pat-steps.yml
+  - template: util/get-github-pat-steps.yml
   - task: PowerShell@2
     displayName: 'Initialize Build'
     inputs:
