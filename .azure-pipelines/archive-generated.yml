@@ -71,9 +71,9 @@ jobs:
           #Write-Host "##vso[task.setvariable variable=Terminate;isOutput=true]true"
           Write-Host "##vso[task.setvariable variable=Terminate]true"
           Write-Warning 'first'
-          Write-Warning "${{ variables.Terminate }}"
+          Write-Warning "${{ variables.FilesChangedOutputPath }}"
           Write-Warning 'second'
-          Write-Warning "$(Terminate)"
+          Write-Warning "$(FilesChangedOutputPath)"
           exit 0
         }
         $filesChanged | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
