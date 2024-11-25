@@ -74,7 +74,7 @@ jobs:
         $baseBranchName = "origin/$(Build.SourceBranchName)"
         $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
         if ("$(Build.reason)" -in @('IndividualCI', 'BatchedCI')) {
-          $tmpBranchName += "/$(Build.reason)"
+          $tmpBranchName += "/$(Build.SourceVersion)"
         }
         Write-Host "##vso[task.setvariable variable=TmpBranchName]$tmpBranchName"
         Write-Host "##vso[task.setvariable variable=BaseBranchName]$baseBranchName"
