@@ -67,12 +67,11 @@ jobs:
         $filesChanged = Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
         if (($null -eq $filesChanged) -or (0 -eq $filesChanged.Length)) {
           Write-Warning "no modules found need to be archived"
-          $Terminate = 'true'
           Write-Host "##vso[task.setvariable variable=Terminate]true"
           exit 0
         }
         $filesChanged | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
-  - ${{ if ne(variables.Terminate, true) }}:
+  - ${{ if ne($(Terminate), 'true') }}:
     - task: PowerShell@2
       displayName: 'Create branch for generated assets'
       inputs:
