@@ -82,15 +82,6 @@ directive:
         "description": "The configuration specifying how to enable HTTPS",
         "$ref": "#/definitions/CustomHttpsConfiguration"
       }
-  - from: swagger-document
-    where: $.definitions.FrontendEndpointProperties.properties.customHttpsConfiguration
-    transform: >- 
-      return {
-        "description": "The configuration specifying how to enable HTTPS",
-        "$ref": "#/definitions/CustomHttpsConfiguration"
-      }
-
- 
 
   # For New object model cmdlet
   - model-cmdlet:
