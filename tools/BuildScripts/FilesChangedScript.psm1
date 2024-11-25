@@ -52,12 +52,12 @@ function Get-OutdatedModuleFromTargetModule {
     $generatedDirectory = Join-Path $RepoRoot 'generated'
 
     if ('all' -eq $TargetModule) {
-        $TargetModule = Get-AllModule -RepoRoot $RepoRoot
+        $result = Get-AllModule -RepoRoot $RepoRoot
     } else {
-        $TargetModule = $TargetModule.Split(',')
+        $result = $TargetModule.Split(',')
     } 
-
-    $TargetModule = $TargetModule | Foreach-Object {
+    
+    $result = $result | Foreach-Object {
         $moduleRootSource = Join-Path $sourceDirectory $_
         $moduleRootGenerated = Join-Path $generatedDirectory $_
         if (Get-OutdatedSubModule -SourceDirectory $moduleRootSource -GeneratedDirectory $moduleRootGenerated -ForceRegenerate:$ForceRegenerate) {
@@ -65,7 +65,7 @@ function Get-OutdatedModuleFromTargetModule {
         }
     }
     
-    return $TargetModule
+    return $result
 }
 
 function Get-FilesChangedFromPR {
