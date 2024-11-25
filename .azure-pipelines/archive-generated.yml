@@ -70,10 +70,6 @@ jobs:
           Write-Warning "no modules found need to be archived"
           #Write-Host "##vso[task.setvariable variable=Terminate;isOutput=true]true"
           Write-Host "##vso[task.setvariable variable=Terminate]true"
-          Write-Warning 'first'
-          Write-Warning "${{ variables.FilesChangedOutputPath }}"
-          Write-Warning 'second'
-          Write-Warning "$(FilesChangedOutputPath)"
           exit 0
         }
         $filesChanged | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
@@ -84,6 +80,11 @@ jobs:
         targetType: inline
         pwsh: true
         script: |
+          Write-Warning 'first'
+          Write-Warning "${{ variables.FilesChangedOutputPath }}"
+          Write-Warning 'second'
+          Write-Warning "${{ variables.Terminate }}"
+
           $baseBranchName = "origin/$(Build.SourceBranchName)"
           $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
           if ("$(Build.reason)" -in @('IndividualCI', 'BatchedCI')) {
