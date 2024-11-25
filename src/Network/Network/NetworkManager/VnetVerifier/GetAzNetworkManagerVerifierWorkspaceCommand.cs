@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
            Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
+           ValueFromPipelineByPropertyName = false,
            HelpMessage = "The resource name.",
            ParameterSetName = GetByNameParameterSet)]
         [ResourceNameCompleter("Microsoft.Network/networkManagers/verifierWorkspaces", "ResourceGroupName", "NetworkManagerName")]

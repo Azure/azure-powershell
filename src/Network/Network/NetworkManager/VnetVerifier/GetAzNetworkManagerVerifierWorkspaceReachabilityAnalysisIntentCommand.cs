@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network
         private const string GetByResourceIdParameterSet = "ByResourceId";
 
         [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
             ParameterSetName = GetByNameParameterSet)]

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Reachability Analysis Run name.",
             ParameterSetName = CreateByNameParameterSet)]

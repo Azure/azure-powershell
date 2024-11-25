@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ResourceName")]
         [Parameter(
-           Mandatory = true,
+           Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.",
            ParameterSetName = GetByNameParameterSet)]
@@ -87,6 +87,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public virtual string VerifierWorkspaceName { get; set; }
+
         [Parameter(
             Mandatory = true,
             ParameterSetName = GetByResourceIdParameterSet,

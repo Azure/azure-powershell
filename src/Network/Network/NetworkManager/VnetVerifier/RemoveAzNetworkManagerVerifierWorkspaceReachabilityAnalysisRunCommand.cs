@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The network manager verifier workspace run resource.",
             ParameterSetName = DeleteByInputObjectParameterSet)]
         [ValidateNotNull]
-        public PSNetworkManagerRoutingRule InputObject { get; set; }
+        public PSReachabilityAnalysisRun InputObject { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -121,6 +121,14 @@ namespace Microsoft.Azure.Commands.Network
             var parsedResourceId = new ResourceIdentifier(id);
             this.ResourceGroupName = parsedResourceId.ResourceGroupName;
             this.Name = parsedResourceId.ResourceName;
+
+            var segments = parsedResourceId.ParentResource.Split('/');
+            if (segments.Length < 4)
+            {
+                throw new PSArgumentException("Invalid format. Ensure the ResourceId or Input Object is in the correct format.");
+            }
+            this.NetworkManagerName = segments[1];
+            this.VerifierWorkspaceName = segments[3];
         }
     }
 }

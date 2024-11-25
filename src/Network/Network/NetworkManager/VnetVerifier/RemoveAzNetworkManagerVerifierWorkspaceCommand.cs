@@ -106,14 +106,21 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         WriteObject(true);
                     }
-                });
+                }
+            );
         }
-
         private void PopulateResourceInfoFromId(string id)
         {
             var parsedResourceId = new ResourceIdentifier(id);
             this.ResourceGroupName = parsedResourceId.ResourceGroupName;
             this.Name = parsedResourceId.ResourceName;
+
+            var segments = parsedResourceId.ParentResource.Split('/');
+            if (segments.Length < 2)
+            {
+                throw new PSArgumentException("Invalid format. Ensure the ResourceId or Input Object is in the correct format.");
+            }
+            this.NetworkManagerName = segments[1];
         }
     }
 }
