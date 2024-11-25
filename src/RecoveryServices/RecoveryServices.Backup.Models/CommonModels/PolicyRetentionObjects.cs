@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             if(BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
             {
                 MinDurationCountInDays = PolicyConstants.AfsDailyRetentionDaysMin;
-                MaxDurationCountInDays = PolicyConstants.AfsDailyRetentionDaysMax;                
+                MaxDurationCountInDays = PolicyConstants.AfsVaultDailyRetentionDaysMax;                
             }
             if (DurationCountInDays < MinDurationCountInDays || DurationCountInDays > MaxDurationCountInDays)
             {
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             if(BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
             {
                 MinDurationCountInWeeks = PolicyConstants.AfsWeeklyRetentionMin;
-                MaxDurationCountInWeeks = PolicyConstants.AfsWeeklyRetentionMax;
+                MaxDurationCountInWeeks = PolicyConstants.AfsVaultWeeklyRetentionMax;
             }
             if (DurationCountInWeeks < MinDurationCountInWeeks || DurationCountInWeeks > MaxDurationCountInWeeks)
             {
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             if (BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
             {
                 MinDurationCountInMonths = PolicyConstants.AfsMonthlyRetentionMin;
-                MaxDurationCountInMonths = PolicyConstants.AfsMonthlyRetentionMax;
+                MaxDurationCountInMonths = PolicyConstants.AfsVaultMonthlyRetentionMax;
             }
 
             if (DurationCountInMonths < MinDurationCountInMonths || DurationCountInMonths > MaxDurationCountInMonths)
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             if (BackupManagementType == Management.RecoveryServices.Backup.Models.BackupManagementType.AzureStorage)
             {
                 MinDurationCountInYears = PolicyConstants.AfsYearlyRetentionMin;
-                MaxDurationCountInYears = PolicyConstants.AfsYearlyRetentionMax;
+                MaxDurationCountInYears = PolicyConstants.AfsVaultYearlyRetentionMax;
             }
             if (DurationCountInYears < MinDurationCountInYears || DurationCountInYears > MaxDurationCountInYears)
             {
