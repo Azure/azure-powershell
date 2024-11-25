@@ -20,7 +20,9 @@
 
 ## Upcoming Release
 * Upgraded Azure.Core to 1.44.1.
-* Introduced support for creating containers with Vector Embedding Policy.
+* Added Vector Indexing properties to Sql container APIs.
+* Per Partition Automatic Failover GA
+* Per Region Per Partition Autoscale GA
 
 ## Version 1.15.0
 * Added new parameter `DisableTtl` to `Restore-AzCosmosDBAccount`.
