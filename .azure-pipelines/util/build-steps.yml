@@ -110,7 +110,7 @@ steps:
       $repoArtifact = Join-Path "$(Build.SourcesDirectory)" 'artifacts'
       $reason = "$(Build.Reason)"
       switch ($reason) {
-        $reason -in @('IndividualCI', 'BatchedCI') {
+        {$reason -in @('IndividualCI', 'BatchedCI')} {
           $trigger = "$(Build.SourceVersion)"
           break
         }
