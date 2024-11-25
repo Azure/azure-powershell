@@ -53,6 +53,8 @@ jobs:
       targetType: inline
       pwsh: true
       script: |
+        $Terminate = 'false'
+
         $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
         Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
         New-Item -Type File -Path $filesChangedOutputPath -Force
@@ -64,8 +66,16 @@ jobs:
 
         $filesChangedScriptPath = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'FilesChangedScript.psm1'
         Import-Module $filesChangedScriptPath
-        Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
+        $filesChanged = Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
+        if (($null -eq $filesChanged) -or (0 -eq $filesChanged.Length)) {
+          Write-Warning "no modules found need to be archived"
+          $Terminate = 'true'
+          Write-Host "##vso[task.setvariable variable=Terminate]$Terminate"
+          exit 1
+        }
+        $filesChanged | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
   - task: PowerShell@2
+    condition: ne(variables.Terminate, true)
     displayName: 'Create branch for generated assets'
     inputs:
       targetType: inline
@@ -82,6 +92,7 @@ jobs:
         git fetch origin $(Build.SourceBranchName)
         git checkout -b $tmpBranchName $baseBranchName
   - template: util/build-steps.yml
+    condition: ne(variables.Terminate, true)
     parameters:
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
@@ -90,8 +101,8 @@ jobs:
       TargetModule: ${{ parameters.TargetModule }}
       ForceRegenerate: ${{ parameters.ForceRegenerate }}
   - task: PowerShell@2
+    condition: ne(variables.Terminate, true)
     displayName: 'push archive branch after build'
-    condition: or(eq(variables.TriggerType, 'Commit'), eq(variables.TriggerType, 'TargetModule'))
     inputs:
       targetType: inline
       pwsh: true
@@ -99,7 +110,7 @@ jobs:
         if ("$(Build.reason)" -in @('IndividualCI', 'BatchedCI')) {
           $prTitle = "[skip ci] Archive $(Build.SourceVersion)"
         } else {
-          #TODO: replace $(Build.reason) with account when manual and dateime when schedule
+          #TODO: replace $(Build.reason) with account when manual and datetime when schedule
           $prTitle = "[skip ci] Archive $(Build.reason)"
         }
         $tmpBranchName = "$(TmpBranchName)"
@@ -130,7 +141,7 @@ jobs:
 - job: Analyze
   displayName: Analyze
   dependsOn: Build
-  condition: succeeded()
+  condition: and(succeeded(), ne(variables.Terminate, true))
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
   pool: pool-windows-2019
 
@@ -144,7 +155,7 @@ jobs:
 - job: Test
   displayName: Test
   dependsOn: Build
-  condition: succeeded()
+  condition: and(succeeded(), ne(variables.Terminate, true))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   strategy:
     matrix:
