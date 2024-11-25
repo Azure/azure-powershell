@@ -72,7 +72,7 @@ function Test-SqlOperationsCmdlets
       $cp1 = New-AzCosmosDBSqlCompositePath -Path "/abc" -Order Ascending
       $cp2 = New-AzCosmosDBSqlCompositePath -Path "/aberc" -Order Descending
       $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
-      #$VectorIndex = New-AzCosmosDBSqlV -Path "/*" -Index $ipath1, $ipath2
+      #$VectorIndex = New-AzCosmosDBSql -Path "/*" -Index $ipath1, $ipath2
 
       $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
 

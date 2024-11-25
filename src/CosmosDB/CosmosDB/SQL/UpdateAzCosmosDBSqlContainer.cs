@@ -227,7 +227,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Id = sqlContainerGetPropertiesResource.Id,
                 IndexingPolicy = sqlContainerGetPropertiesResource.IndexingPolicy,
                 PartitionKey = sqlContainerGetPropertiesResource.PartitionKey,
-                ClientEncryptionPolicy = sqlContainerGetPropertiesResource.ClientEncryptionPolicy
+                ClientEncryptionPolicy = sqlContainerGetPropertiesResource.ClientEncryptionPolicy,
+                VectorEmbeddingPolicy = sqlContainerGetPropertiesResource.VectorEmbeddingPolicy
             };
         }
     }
