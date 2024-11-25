@@ -71,7 +71,7 @@ jobs:
           Write-Warning "no modules found need to be archived"
           $Terminate = 'true'
           Write-Host "##vso[task.setvariable variable=Terminate]$Terminate"
-          exit 1
+          exit 0
         }
         $filesChanged | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
   - ${{ if ne(variables.Terminate, 'true') }}:
