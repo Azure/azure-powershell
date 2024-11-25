@@ -33,7 +33,7 @@ function Get-AllModule {
         [string]$RepoRoot
     )
     $sourceDirectory = Join-Path $RepoRoot 'src'
-    $notModules = @('lib', 'shared')
+    $notModules = @('lib', 'shared', 'helpers')
     $allModule = Get-Childitem -Path $sourceDirectory -Directory | ForEach-Object {
         if ($_.Name -notin $notModules) {
             return $_.Name
