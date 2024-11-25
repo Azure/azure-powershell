@@ -17,33 +17,32 @@ Patches a Container Apps Job using JSON Merge Patch
 Update-AzContainerAppJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ConfigurationRegistry <IRegistryCredentials[]>] [-ConfigurationReplicaRetryLimit <Int32>]
  [-ConfigurationReplicaTimeout <Int32>] [-ConfigurationSecret <ISecret[]>]
- [-ConfigurationTriggerType <String>] [-EnvironmentId <String>] [-EventStreamEndpoint <String>]
- [-EventTriggerConfigParallelism <Int32>] [-EventTriggerConfigReplicaCompletionCount <Int32>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-ManualTriggerConfigParallelism <Int32>] [-ManualTriggerConfigReplicaCompletionCount <Int32>]
- [-OutboundIPAddress <String[]>] [-ScaleMaxExecution <Int32>] [-ScaleMinExecution <Int32>]
- [-ScalePollingInterval <Int32>] [-ScaleRule <IJobScaleRule[]>]
- [-ScheduleTriggerConfigCronExpression <String>] [-ScheduleTriggerConfigParallelism <Int32>]
- [-ScheduleTriggerConfigReplicaCompletionCount <Int32>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
- [-TemplateInitContainer <IInitContainer[]>] [-TemplateVolume <IVolume[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ConfigurationTriggerType <String>] [-EnableSystemAssignedIdentity <Boolean?>] [-EnvironmentId <String>]
+ [-EventStreamEndpoint <String>] [-EventTriggerConfigParallelism <Int32>]
+ [-EventTriggerConfigReplicaCompletionCount <Int32>] [-ManualTriggerConfigParallelism <Int32>]
+ [-ManualTriggerConfigReplicaCompletionCount <Int32>] [-OutboundIPAddress <String[]>]
+ [-ScaleMaxExecution <Int32>] [-ScaleMinExecution <Int32>] [-ScalePollingInterval <Int32>]
+ [-ScaleRule <IJobScaleRule[]>] [-ScheduleTriggerConfigCronExpression <String>]
+ [-ScheduleTriggerConfigParallelism <Int32>] [-ScheduleTriggerConfigReplicaCompletionCount <Int32>]
+ [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>] [-TemplateInitContainer <IInitContainer[]>]
+ [-TemplateVolume <IVolume[]>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzContainerAppJob -InputObject <IAppIdentity> [-ConfigurationRegistry <IRegistryCredentials[]>]
  [-ConfigurationReplicaRetryLimit <Int32>] [-ConfigurationReplicaTimeout <Int32>]
- [-ConfigurationSecret <ISecret[]>] [-ConfigurationTriggerType <String>] [-EnvironmentId <String>]
- [-EventStreamEndpoint <String>] [-EventTriggerConfigParallelism <Int32>]
- [-EventTriggerConfigReplicaCompletionCount <Int32>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-ManualTriggerConfigParallelism <Int32>]
- [-ManualTriggerConfigReplicaCompletionCount <Int32>] [-OutboundIPAddress <String[]>]
- [-ScaleMaxExecution <Int32>] [-ScaleMinExecution <Int32>] [-ScalePollingInterval <Int32>]
- [-ScaleRule <IJobScaleRule[]>] [-ScheduleTriggerConfigCronExpression <String>]
- [-ScheduleTriggerConfigParallelism <Int32>] [-ScheduleTriggerConfigReplicaCompletionCount <Int32>]
- [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>] [-TemplateInitContainer <IInitContainer[]>]
- [-TemplateVolume <IVolume[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ConfigurationSecret <ISecret[]>] [-ConfigurationTriggerType <String>]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-EnvironmentId <String>] [-EventStreamEndpoint <String>]
+ [-EventTriggerConfigParallelism <Int32>] [-EventTriggerConfigReplicaCompletionCount <Int32>]
+ [-ManualTriggerConfigParallelism <Int32>] [-ManualTriggerConfigReplicaCompletionCount <Int32>]
+ [-OutboundIPAddress <String[]>] [-ScaleMaxExecution <Int32>] [-ScaleMinExecution <Int32>]
+ [-ScalePollingInterval <Int32>] [-ScaleRule <IJobScaleRule[]>]
+ [-ScheduleTriggerConfigCronExpression <String>] [-ScheduleTriggerConfigParallelism <Int32>]
+ [-ScheduleTriggerConfigReplicaCompletionCount <Int32>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
+ [-TemplateInitContainer <IInitContainer[]>] [-TemplateVolume <IVolume[]>] [-UserAssignedIdentity <String[]>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
@@ -191,6 +190,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableSystemAssignedIdentity
+Determines whether to enable a system-assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnvironmentId
 Resource ID of environment.
 
@@ -241,38 +255,6 @@ Minimum number of successful replica completions before overall job completion.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -590,6 +572,22 @@ List of volume definitions for the Container App.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[]
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzElasticSan
 
 ## SYNOPSIS
-Create ElasticSan.
+create ElasticSan.
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ New-AzElasticSan -InputObject <IElasticSanIdentity> -BaseSizeTiB <Int64> -Extend
 ```
 
 ## DESCRIPTION
-Create ElasticSan.
+create ElasticSan.
 
 ## EXAMPLES
 

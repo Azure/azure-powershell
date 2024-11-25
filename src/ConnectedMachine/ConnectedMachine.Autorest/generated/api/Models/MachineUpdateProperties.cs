@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgrade AgentUpgrade { get => (this._agentUpgrade = this._agentUpgrade ?? new Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.AgentUpgrade()); set => this._agentUpgrade = value; }
 
-        /// <summary>The correlation ID passed in from RSM per upgrade.</summary>
+        /// <summary>The correlation ID associated with an agent upgrade operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         public string AgentUpgradeCorrelationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).CorrelationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).CorrelationId = value ?? null; }
 
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         public string AgentUpgradeDesiredVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).DesiredVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).DesiredVersion = value ?? null; }
 
-        /// <summary>Specifies if RSM should try to upgrade this machine</summary>
+        /// <summary>Specifies if the machine's agent should be upgraded</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Inlined)]
         public bool? AgentUpgradeEnableAutomaticUpgrade { get => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).EnableAutomaticUpgrade; set => ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgradeInternal)AgentUpgrade).EnableAutomaticUpgrade = value ?? default(bool); }
 
@@ -139,14 +139,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     public partial interface IMachineUpdateProperties :
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IJsonSerializable
     {
-        /// <summary>The correlation ID passed in from RSM per upgrade.</summary>
+        /// <summary>The correlation ID associated with an agent upgrade operation.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"The correlation ID passed in from RSM per upgrade.",
+        Description = @"The correlation ID associated with an agent upgrade operation.",
         SerializedName = @"correlationId",
         PossibleTypes = new [] { typeof(string) })]
         string AgentUpgradeCorrelationId { get; set; }
@@ -161,14 +161,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"desiredVersion",
         PossibleTypes = new [] { typeof(string) })]
         string AgentUpgradeDesiredVersion { get; set; }
-        /// <summary>Specifies if RSM should try to upgrade this machine</summary>
+        /// <summary>Specifies if the machine's agent should be upgraded</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Read = true,
         Create = true,
         Update = true,
-        Description = @"Specifies if RSM should try to upgrade this machine",
+        Description = @"Specifies if the machine's agent should be upgraded",
         SerializedName = @"enableAutomaticUpgrade",
         PossibleTypes = new [] { typeof(bool) })]
         bool? AgentUpgradeEnableAutomaticUpgrade { get; set; }
@@ -315,11 +315,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
     {
         /// <summary>The info of the machine w.r.t Agent Upgrade</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAgentUpgrade AgentUpgrade { get; set; }
-        /// <summary>The correlation ID passed in from RSM per upgrade.</summary>
+        /// <summary>The correlation ID associated with an agent upgrade operation.</summary>
         string AgentUpgradeCorrelationId { get; set; }
         /// <summary>Specifies the version info w.r.t AgentUpgrade for the machine.</summary>
         string AgentUpgradeDesiredVersion { get; set; }
-        /// <summary>Specifies if RSM should try to upgrade this machine</summary>
+        /// <summary>Specifies if the machine's agent should be upgraded</summary>
         bool? AgentUpgradeEnableAutomaticUpgrade { get; set; }
         /// <summary>Specifies the version of the last attempt</summary>
         string AgentUpgradeLastAttemptDesiredVersion { get; set; }

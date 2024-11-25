@@ -32,7 +32,7 @@ New-AzDataCollectionRule -Name <String> -ResourceGroupName <String> [-Subscripti
  [-DestinationStorageBlobsDirect <IStorageBlobDestination[]>]
  [-DestinationStorageTablesDirect <IStorageTableDestination[]>] [-EnableSystemAssignedIdentity]
  [-Kind <String>] [-StreamDeclaration <Hashtable>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath

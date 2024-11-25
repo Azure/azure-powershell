@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDevCenterUserDevBoxCustomizationTaskLog_Get")]
-    [global::System.Management.Automation.OutputType(typeof(bool))]
+    [global::System.Management.Automation.OutputType(typeof(string))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Description(@"Gets the log for a customization task.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.HttpPath(Path = "/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/customizationGroups/{customizationGroupName}/logs/{customizationTaskId}", ApiVersion = "2023-10-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.HttpPath(Path = "/projects/{projectName}/users/{userId}/devboxes/{devBoxName}/customizationGroups/{customizationGroupName}/logs/{customizationTaskId}", ApiVersion = "2024-05-01-preview")]
     public partial class GetAzDevCenterUserDevBoxCustomizationTaskLog_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener
     {
@@ -132,19 +132,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
-        /// <summary>Path to write output file to.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Path to write output file to")]
-        [global::System.Management.Automation.ValidateNotNull]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Body)]
-        public global::System.String OutFile { get; set; }
-
-        /// <summary>
-        /// When specified, forces the cmdlet return a 'bool' given that there isn't a return type by default.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Returns true when the command succeeds")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.ParameterCategory.Runtime)]
-        public global::System.Management.Automation.SwitchParameter PassThru { get; set; }
-
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
@@ -184,13 +171,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         private string _userId;
 
         /// <summary>
-        /// The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+        /// The AAD object id of the user. If value is 'me', the identity is taken from the
+        /// authentication context.
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.")]
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = " The AAD object id of the user. If value is 'me', the identity is taken from the \n authentication context.")]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.",
+        Description = @" The AAD object id of the user. If value is 'me', the identity is taken from the
+         authentication context.",
         SerializedName = @"userId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.DefaultInfo(
@@ -205,22 +194,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="global::System.IO.Stream">global::System.IO.Stream</see> from the
-        /// remote call</param>
+        /// <param name="response">the body result as a <see cref="string">string</see> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<global::System.IO.Stream> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<string> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -425,38 +415,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
                 var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnDefault(responseMessage, ref _returnNow);
+                overrideOnDefault(responseMessage, response, ref _returnNow);
                 // if overrideOnDefault has returned true, then return right away.
                 if ((null != _returnNow && await _returnNow))
                 {
                     return ;
                 }
                 // Error Response : default
-                // Unrecognized Response. Create an error record based on what we have.
-                var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.RestException(responseMessage);
-                WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint, ProjectName=ProjectName, UserId=UserId, DevBoxName=DevBoxName, CustomizationGroupName=CustomizationGroupName, CustomizationTaskId=CustomizationTaskId })
+                var code = (await response)?.Code;
+                var message = (await response)?.Message;
+                if ((null == code || null == message))
                 {
-                  ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
-                });
+                    // Unrecognized Response. Create an error record based on what we have.
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20240501Preview.IAzureCoreFoundationsErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint, ProjectName=ProjectName, UserId=UserId, DevBoxName=DevBoxName, CustomizationGroupName=CustomizationGroupName, CustomizationTaskId=CustomizationTaskId })
+                    {
+                      ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
+                    });
+                }
+                else
+                {
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Endpoint=Endpoint, ProjectName=ProjectName, UserId=UserId, DevBoxName=DevBoxName, CustomizationGroupName=CustomizationGroupName, CustomizationTaskId=CustomizationTaskId })
+                    {
+                      ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
+                    });
+                }
             }
         }
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="global::System.IO.Stream">global::System.IO.Stream</see> from the
-        /// remote call</param>
+        /// <param name="response">the body result as a <see cref="string">string</see> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<global::System.IO.Stream> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<string> response)
         {
             using( NoSynchronizationContext )
             {
@@ -467,28 +470,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Cmdlets
                 {
                     return ;
                 }
-                // onOk - response for 200 / text/plain
-                // (await response) // should be global::System.IO.Stream
-                var paths = this.SessionState.Path.GetResolvedProviderPathFromPSPath(OutFile, out var provider);
-                if (provider.Name != "FileSystem" || paths.Count == 0)
-                {
-                    ThrowTerminatingError( new System.Management.Automation.ErrorRecord(new global::System.Exception("Invalid output path."),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, OutFile) );
-                }
-                if (paths.Count > 1)
-                {
-                    ThrowTerminatingError( new System.Management.Automation.ErrorRecord(new global::System.Exception("Multiple output paths not allowed."),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, OutFile) );
-                }
-                using( var stream = await response )
-                {
-                    using( var fileStream = global::System.IO.File.OpenWrite(paths[0]) )
-                    {
-                        await stream.CopyToAsync(fileStream);
-                    }
-                }
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
-                {
-                    WriteObject(true);
-                }
+                // onOk - response for 200 / application/json
+                // (await response) // should be string
+                WriteObject((await response));
             }
         }
     }

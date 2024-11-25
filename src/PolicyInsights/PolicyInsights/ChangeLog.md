@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Removed "Microsoft.Azure.Management.PolicyInsights" Version "1.0.0" PackageReference
+* Upgraded Azure.Core to 1.44.1.
 
 ## Version 1.6.5
 * Upgraded Azure.Core to 1.37.0.

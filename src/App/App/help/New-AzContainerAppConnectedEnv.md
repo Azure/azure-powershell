@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzContainerAppConnectedEnv
 
 ## SYNOPSIS
-Create an connectedEnvironment.
+create an connectedEnvironment.
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ New-AzContainerAppConnectedEnv -InputObject <IAppIdentity> -Location <String>
 ```
 
 ## DESCRIPTION
-Create an connectedEnvironment.
+create an connectedEnvironment.
 
 ## EXAMPLES
 

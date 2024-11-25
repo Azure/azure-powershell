@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create ElasticSan.</summary>
+    /// <summary>create ElasticSan.</summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzElasticSan_CreateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"Create ElasticSan.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Description(@"create ElasticSan.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}", ApiVersion = "2024-05-01")]
     public partial class NewAzElasticSan_CreateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,

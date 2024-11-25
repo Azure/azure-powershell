@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded Azure.Core to 1.44.1.
+
+## Version 6.3.0
+* Added Secret URI Parameter to Key Vault Secret Cmdlets [#23053]
 
 ## Version 6.2.0
 * Fixed a parameter validation issue in Set-AzureKeyVaultCertificatePolicy. [#25649]
