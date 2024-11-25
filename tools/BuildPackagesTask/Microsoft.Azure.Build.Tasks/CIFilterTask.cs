@@ -441,7 +441,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 }
                 catch (Exception e)
                 {
-                    throw new ArgumentException("Invalid files changed path: " + FilesChangedPath);
+                    throw new ArgumentException(e.Message);
                 }
             }
 
