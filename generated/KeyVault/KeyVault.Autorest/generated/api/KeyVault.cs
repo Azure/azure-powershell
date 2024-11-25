@@ -427,7 +427,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to create or update the managed HSM Pool</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to create or update the managed HSM Pool</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -764,6 +764,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -776,7 +777,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -917,6 +921,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -929,7 +934,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -1184,6 +1192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -1196,7 +1205,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3074,6 +3086,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3086,7 +3099,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3204,7 +3220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -3254,7 +3270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to patch the managed HSM Pool</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3313,7 +3329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to patch the managed HSM Pool</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3370,7 +3386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -3419,7 +3435,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -3466,7 +3482,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -3539,6 +3555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3551,7 +3568,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -3692,6 +3712,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -3704,7 +3725,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4071,6 +4095,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4083,7 +4108,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -4233,6 +4261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -4245,7 +4274,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -5062,7 +5094,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Put the specified private endpoint connection associated with the managed hsm pool.
+        /// put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -5117,7 +5149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Put the specified private endpoint connection associated with the managed hsm pool.
+        /// put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The intended state of private endpoint connection.</param>
@@ -5181,7 +5213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Put the specified private endpoint connection associated with the managed hsm pool.
+        /// put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The intended state of private endpoint connection.</param>
@@ -5243,7 +5275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Put the specified private endpoint connection associated with the managed hsm pool.
+        /// put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -5297,7 +5329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Put the specified private endpoint connection associated with the managed hsm pool.
+        /// put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -5349,7 +5381,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Put the specified private endpoint connection associated with the managed hsm pool.
+        /// put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -6446,6 +6478,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -6458,7 +6491,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -6606,6 +6642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -6618,7 +6655,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -7443,7 +7483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
+        /// <summary>put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the key vault.</param>
@@ -7496,7 +7536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
+        /// <summary>put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The intended state of private endpoint connection.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7558,7 +7598,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
+        /// <summary>put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The intended state of private endpoint connection.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7618,7 +7658,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
+        /// <summary>put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the key vault.</param>
@@ -7670,7 +7710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
+        /// <summary>put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the key vault.</param>
@@ -7720,7 +7760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
+        /// <summary>put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the key vault.</param>
@@ -8653,7 +8693,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -8703,7 +8743,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to create or update the vault</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8762,7 +8802,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to create or update the vault</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8819,7 +8859,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -8868,7 +8908,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -8915,7 +8955,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -8988,6 +9028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9000,7 +9041,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -9141,6 +9185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                     // declared final-state-via: default
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -9153,7 +9198,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -11521,6 +11569,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                     var _finalUri = _response.GetFirstHeader(@"Location");
                     var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
                     var location = _response.GetFirstHeader(@"Location");
+                    var operationLocation = _response.GetFirstHeader(@"Operation-Location");
                     while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
                     {
                         // delay before making the next polling request
@@ -11533,7 +11582,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
                         if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
                             location = _response.GetFirstHeader(@"Location");
                         }
-                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Operation-Location"))) {
+                            operationLocation = _response.GetFirstHeader(@"Operation-Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? global::System.String.IsNullOrEmpty(operationLocation) ? _originalUri : operationLocation : location : asyncOperation;
                         request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.Method.Get);
 
                         // and let's look at the current response body and see if we have some information we can give back to the listener
@@ -11657,7 +11709,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -11708,7 +11760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update access policies in a key vault in the specified subscription.</summary>
+        /// <summary>update access policies in a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the vault belongs.</param>
@@ -11762,7 +11814,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update access policies in a key vault in the specified subscription.</summary>
+        /// <summary>update access policies in a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Access policy to merge into the vault</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -11825,7 +11877,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update access policies in a key vault in the specified subscription.</summary>
+        /// <summary>update access policies in a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Access policy to merge into the vault</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11885,7 +11937,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update access policies in a key vault in the specified subscription.</summary>
+        /// <summary>update access policies in a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the vault belongs.</param>
@@ -11938,7 +11990,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update access policies in a key vault in the specified subscription.</summary>
+        /// <summary>update access policies in a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the vault belongs.</param>
@@ -11988,7 +12040,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update access policies in a key vault in the specified subscription.</summary>
+        /// <summary>update access policies in a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the vault belongs.</param>
@@ -12190,7 +12242,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to patch the vault</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -12250,7 +12302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to patch the vault</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12307,7 +12359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -12357,7 +12409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -12404,7 +12456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Update a key vault in the specified subscription.</summary>
+        /// <summary>update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>

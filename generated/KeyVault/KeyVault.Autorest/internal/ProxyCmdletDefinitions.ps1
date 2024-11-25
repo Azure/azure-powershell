@@ -305,9 +305,9 @@ end {
 
 <#
 .Synopsis
-Update a managed HSM Pool in the specified subscription.
+update a managed HSM Pool in the specified subscription.
 .Description
-Update a managed HSM Pool in the specified subscription.
+update a managed HSM Pool in the specified subscription.
 .Example
 {{ Add code here }}
 .Example

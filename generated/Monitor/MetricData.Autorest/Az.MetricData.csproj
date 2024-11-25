@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <PsModuleName>Metricdata</PsModuleName>
+    <PsModuleName>MetricData</PsModuleName>
     <PsRootModuleName>Monitor</PsRootModuleName>
     <PsModuleFolder>MetricData.Autorest</PsModuleFolder>
   </PropertyGroup>
