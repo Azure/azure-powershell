@@ -1,6 +1,6 @@
 {
   "resourceType": "deidServices",
-  "apiVersion": "2024-02-28-preview",
+  "apiVersion": "2024-09-20",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.healthdataaiservices"
   },
