@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed 'Object reference not set to an instance of an object' error when setting null values inside job `CommonEnvironmentSettings` property. 
 
 ## Version 3.6.4
 * Migrate Batch SDK to generated SDK
