@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Description(@"Delete a DeidService")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}", ApiVersion = "2024-02-28-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthDataAIServices/deidServices/{deidServiceName}", ApiVersion = "2024-09-20")]
     public partial class RemoveAzDeidService_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.HealthDataAIServices.Runtime.IContext
