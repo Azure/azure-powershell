@@ -62,6 +62,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateSet("Daily", "Hourly", "Weekly")]
         public ScheduleRunType ScheduleRunFrequency = ScheduleRunType.Daily;
 
+        /// <summary>
+        /// Options to select the Backup Tier type 
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 3,
+            HelpMessage = ParamHelpMsgs.Common.BackupTierType)]
+        [ValidateSet("Snapshot", "VaultStandard")]
+        public BackupTierType BackupTier = BackupTierType.Snapshot;
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -70,6 +78,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
                 providerParameters.Add(PolicyParams.ScheduleRunFrequency, ScheduleRunFrequency);
+                providerParameters.Add(PolicyParams.BackupTier, BackupTier);
 
                 if (ScheduleRunFrequency != ScheduleRunType.Daily && WorkloadType != WorkloadType.AzureVM && WorkloadType != WorkloadType.AzureFiles)
                 {
