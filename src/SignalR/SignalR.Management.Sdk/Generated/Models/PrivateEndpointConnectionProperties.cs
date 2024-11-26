@@ -8,34 +8,21 @@ namespace Microsoft.Azure.Management.SignalR.Models
     using System.Linq;
 
     /// <summary>
-    /// A private endpoint connection to an azure resource
+    /// Private endpoint connection properties
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateEndpointConnection : ProxyResource
+    public partial class PrivateEndpointConnectionProperties
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpointConnection class.
+        /// Initializes a new instance of the PrivateEndpointConnectionProperties class.
         /// </summary>
-        public PrivateEndpointConnection()
+        public PrivateEndpointConnectionProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateEndpointConnection class.
+        /// Initializes a new instance of the PrivateEndpointConnectionProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource Id for the resource.
-        /// </param>
-
-        /// <param name="name">The name of the resource.
-        /// </param>
-
-        /// <param name="type">The type of the resource - e.g. &#34;Microsoft.SignalRService/SignalR&#34;
-        /// </param>
-
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
-        /// </param>
 
         /// <param name="provisioningState">Provisioning state of the private endpoint connection
         /// Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;,
@@ -46,11 +33,9 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
         /// <param name="privateLinkServiceConnectionState">Connection state
         /// </param>
-        public PrivateEndpointConnection(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
+        public PrivateEndpointConnectionProperties(string provisioningState = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
 
-        : base(id, name, type)
         {
-            this.SystemData = systemData;
             this.ProvisioningState = provisioningState;
             this.PrivateEndpoint = privateEndpoint;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
@@ -64,28 +49,22 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets metadata pertaining to creation and last modification of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
         /// Gets provisioning state of the private endpoint connection Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
 
         /// <summary>
         /// Gets or sets private endpoint associated with the private endpoint
         /// connection
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateEndpoint")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateEndpoint")]
         public PrivateEndpoint PrivateEndpoint {get; set; }
 
         /// <summary>
         /// Gets or sets connection state
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateLinkServiceConnectionState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkServiceConnectionState")]
         public PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState {get; set; }
     }
 }

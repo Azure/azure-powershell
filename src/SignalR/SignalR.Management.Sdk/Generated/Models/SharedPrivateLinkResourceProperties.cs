@@ -8,38 +8,21 @@ namespace Microsoft.Azure.Management.SignalR.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes a Shared Private Link Resource
+    /// Describes the properties of an existing Shared Private Link Resource
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SharedPrivateLinkResource : ProxyResource
+    public partial class SharedPrivateLinkResourceProperties
     {
         /// <summary>
-        /// Initializes a new instance of the SharedPrivateLinkResource class.
+        /// Initializes a new instance of the SharedPrivateLinkResourceProperties class.
         /// </summary>
-        public SharedPrivateLinkResource()
+        public SharedPrivateLinkResourceProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SharedPrivateLinkResource class.
+        /// Initializes a new instance of the SharedPrivateLinkResourceProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource Id for the resource.
-        /// </param>
-
-        /// <param name="name">The name of the resource.
-        /// </param>
-
-        /// <param name="type">The type of the resource - e.g. &#34;Microsoft.SignalRService/SignalR&#34;
-        /// </param>
-
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
-        /// </param>
-
-        /// <param name="provisioningState">Provisioning state of the shared private link resource
-        /// Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;,
-        /// &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;</param>
 
         /// <param name="groupId">The group id from the provider of resource the shared private link resource
         /// is for
@@ -48,6 +31,10 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// <param name="privateLinkResourceId">The resource id of the resource the shared private link resource is for
         /// </param>
 
+        /// <param name="provisioningState">Provisioning state of the shared private link resource
+        /// Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;,
+        /// &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;</param>
+
         /// <param name="requestMessage">The request message for requesting approval of the shared private link
         /// resource
         /// </param>
@@ -55,14 +42,12 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// <param name="status">Status of the shared private link resource
         /// Possible values include: &#39;Pending&#39;, &#39;Approved&#39;, &#39;Rejected&#39;, &#39;Disconnected&#39;,
         /// &#39;Timeout&#39;</param>
-        public SharedPrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string groupId = default(string), string privateLinkResourceId = default(string), string requestMessage = default(string), string status = default(string))
+        public SharedPrivateLinkResourceProperties(string groupId, string privateLinkResourceId, string provisioningState = default(string), string requestMessage = default(string), string status = default(string))
 
-        : base(id, name, type)
         {
-            this.SystemData = systemData;
-            this.ProvisioningState = provisioningState;
             this.GroupId = groupId;
             this.PrivateLinkResourceId = privateLinkResourceId;
+            this.ProvisioningState = provisioningState;
             this.RequestMessage = requestMessage;
             this.Status = status;
             CustomInit();
@@ -75,42 +60,58 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets metadata pertaining to creation and last modification of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
-        /// Gets provisioning state of the shared private link resource Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState {get; private set; }
-
-        /// <summary>
         /// Gets or sets the group id from the provider of resource the shared private
         /// link resource is for
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.groupId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "groupId")]
         public string GroupId {get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of the resource the shared private link
         /// resource is for
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateLinkResourceId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateLinkResourceId")]
         public string PrivateLinkResourceId {get; set; }
+
+        /// <summary>
+        /// Gets provisioning state of the shared private link resource Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
+        public string ProvisioningState {get; private set; }
 
         /// <summary>
         /// Gets or sets the request message for requesting approval of the shared
         /// private link resource
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requestMessage")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requestMessage")]
         public string RequestMessage {get; set; }
 
         /// <summary>
         /// Gets status of the shared private link resource Possible values include: &#39;Pending&#39;, &#39;Approved&#39;, &#39;Rejected&#39;, &#39;Disconnected&#39;, &#39;Timeout&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.status")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public string Status {get; private set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.GroupId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "GroupId");
+            }
+            if (this.PrivateLinkResourceId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "PrivateLinkResourceId");
+            }
+
+
+
+
+
+        }
     }
 }

@@ -8,31 +8,21 @@ namespace Microsoft.Azure.Management.SignalR.Models
     using System.Linq;
 
     /// <summary>
-    /// Private link resource
+    /// Private link resource properties
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class PrivateLinkResource : ProxyResource
+    public partial class PrivateLinkResourceProperties
     {
         /// <summary>
-        /// Initializes a new instance of the PrivateLinkResource class.
+        /// Initializes a new instance of the PrivateLinkResourceProperties class.
         /// </summary>
-        public PrivateLinkResource()
+        public PrivateLinkResourceProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the PrivateLinkResource class.
+        /// Initializes a new instance of the PrivateLinkResourceProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource Id for the resource.
-        /// </param>
-
-        /// <param name="name">The name of the resource.
-        /// </param>
-
-        /// <param name="type">The type of the resource - e.g. &#34;Microsoft.SignalRService/SignalR&#34;
-        /// </param>
 
         /// <param name="groupId">Group Id of the private link resource
         /// </param>
@@ -45,9 +35,8 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
         /// <param name="shareablePrivateLinkResourceTypes">The list of resources that are onboarded to private link service
         /// </param>
-        public PrivateLinkResource(string id = default(string), string name = default(string), string type = default(string), string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ShareablePrivateLinkResourceType> shareablePrivateLinkResourceTypes = default(System.Collections.Generic.IList<ShareablePrivateLinkResourceType>))
+        public PrivateLinkResourceProperties(string groupId = default(string), System.Collections.Generic.IList<string> requiredMembers = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> requiredZoneNames = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<ShareablePrivateLinkResourceType> shareablePrivateLinkResourceTypes = default(System.Collections.Generic.IList<ShareablePrivateLinkResourceType>))
 
-        : base(id, name, type)
         {
             this.GroupId = groupId;
             this.RequiredMembers = requiredMembers;
@@ -65,26 +54,26 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// <summary>
         /// Gets or sets group Id of the private link resource
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.groupId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "groupId")]
         public string GroupId {get; set; }
 
         /// <summary>
         /// Gets or sets required members of the private link resource
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requiredMembers")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requiredMembers")]
         public System.Collections.Generic.IList<string> RequiredMembers {get; set; }
 
         /// <summary>
         /// Gets or sets required private DNS zone names
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.requiredZoneNames")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "requiredZoneNames")]
         public System.Collections.Generic.IList<string> RequiredZoneNames {get; set; }
 
         /// <summary>
         /// Gets or sets the list of resources that are onboarded to private link
         /// service
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.shareablePrivateLinkResourceTypes")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "shareablePrivateLinkResourceTypes")]
         public System.Collections.Generic.IList<ShareablePrivateLinkResourceType> ShareablePrivateLinkResourceTypes {get; set; }
     }
 }

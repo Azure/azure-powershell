@@ -8,52 +8,21 @@ namespace Microsoft.Azure.Management.SignalR.Models
     using System.Linq;
 
     /// <summary>
-    /// A class represent a resource.
+    /// A class that describes the properties of the resource
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class SignalRResource : TrackedResource
+    public partial class SignalRProperties
     {
         /// <summary>
-        /// Initializes a new instance of the SignalRResource class.
+        /// Initializes a new instance of the SignalRProperties class.
         /// </summary>
-        public SignalRResource()
+        public SignalRProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SignalRResource class.
+        /// Initializes a new instance of the SignalRProperties class.
         /// </summary>
-
-        /// <param name="id">Fully qualified resource Id for the resource.
-        /// </param>
-
-        /// <param name="name">The name of the resource.
-        /// </param>
-
-        /// <param name="type">The type of the resource - e.g. &#34;Microsoft.SignalRService/SignalR&#34;
-        /// </param>
-
-        /// <param name="location">The GEO location of the resource. e.g. West US | East US | North Central US
-        /// | South Central US.
-        /// </param>
-
-        /// <param name="tags">Tags of the service which is a list of key value pairs that describe the
-        /// resource.
-        /// </param>
-
-        /// <param name="sku">The billing information of the resource.(e.g. Free, Standard)
-        /// </param>
-
-        /// <param name="kind">The kind of the service - e.g. &#34;SignalR&#34; for
-        /// &#34;Microsoft.SignalRService/SignalR&#34;
-        /// Possible values include: &#39;SignalR&#39;, &#39;RawWebSockets&#39;</param>
-
-        /// <param name="identity">The managed identity response
-        /// </param>
-
-        /// <param name="systemData">Metadata pertaining to creation and last modification of the resource.
-        /// </param>
 
         /// <param name="provisioningState">Provisioning state of the resource.
         /// Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;,
@@ -104,14 +73,9 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
         /// <param name="networkAcLs">Network ACLs
         /// </param>
-        public SignalRResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ResourceSku sku = default(ResourceSku), string kind = default(string), ManagedIdentity identity = default(ManagedIdentity), SystemData systemData = default(SystemData), string provisioningState = default(string), string externalIP = default(string), string hostName = default(string), int? publicPort = default(int?), int? serverPort = default(int?), string version = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), System.Collections.Generic.IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(System.Collections.Generic.IList<SharedPrivateLinkResource>), SignalRTlsSettings tls = default(SignalRTlsSettings), System.Collections.Generic.IList<SignalRFeature> features = default(System.Collections.Generic.IList<SignalRFeature>), SignalRCorsSettings cors = default(SignalRCorsSettings), ServerlessUpstreamSettings upstream = default(ServerlessUpstreamSettings), SignalRNetworkACLs networkAcLs = default(SignalRNetworkACLs))
+        public SignalRProperties(string provisioningState = default(string), string externalIP = default(string), string hostName = default(string), int? publicPort = default(int?), int? serverPort = default(int?), string version = default(string), System.Collections.Generic.IList<PrivateEndpointConnection> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnection>), System.Collections.Generic.IList<SharedPrivateLinkResource> sharedPrivateLinkResources = default(System.Collections.Generic.IList<SharedPrivateLinkResource>), SignalRTlsSettings tls = default(SignalRTlsSettings), System.Collections.Generic.IList<SignalRFeature> features = default(System.Collections.Generic.IList<SignalRFeature>), SignalRCorsSettings cors = default(SignalRCorsSettings), ServerlessUpstreamSettings upstream = default(ServerlessUpstreamSettings), SignalRNetworkACLs networkAcLs = default(SignalRNetworkACLs))
 
-        : base(id, name, type, location, tags)
         {
-            this.Sku = sku;
-            this.Kind = kind;
-            this.Identity = identity;
-            this.SystemData = systemData;
             this.ProvisioningState = provisioningState;
             this.ExternalIP = externalIP;
             this.HostName = hostName;
@@ -135,85 +99,60 @@ namespace Microsoft.Azure.Management.SignalR.Models
 
 
         /// <summary>
-        /// Gets or sets the billing information of the resource.(e.g. Free, Standard)
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
-        public ResourceSku Sku {get; set; }
-
-        /// <summary>
-        /// Gets or sets the kind of the service - e.g. &#34;SignalR&#34; for
-        /// &#34;Microsoft.SignalRService/SignalR&#34; Possible values include: &#39;SignalR&#39;, &#39;RawWebSockets&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "kind")]
-        public string Kind {get; set; }
-
-        /// <summary>
-        /// Gets or sets the managed identity response
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
-        public ManagedIdentity Identity {get; set; }
-
-        /// <summary>
-        /// Gets metadata pertaining to creation and last modification of the resource.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "systemData")]
-        public SystemData SystemData {get; private set; }
-
-        /// <summary>
         /// Gets provisioning state of the resource. Possible values include: &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;, &#39;Running&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Moving&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState {get; private set; }
 
         /// <summary>
         /// Gets the publicly accessible IP of the resource.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.externalIP")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "externalIP")]
         public string ExternalIP {get; private set; }
 
         /// <summary>
         /// Gets fQDN of the service instance.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hostName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "hostName")]
         public string HostName {get; private set; }
 
         /// <summary>
         /// Gets the publicly accessible port of the resource which is designed for
         /// browser/client side usage.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.publicPort")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "publicPort")]
         public int? PublicPort {get; private set; }
 
         /// <summary>
         /// Gets the publicly accessible port of the resource which is designed for
         /// customer server side usage.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.serverPort")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "serverPort")]
         public int? ServerPort {get; private set; }
 
         /// <summary>
         /// Gets version of the resource. Probably you need the same or higher version
         /// of client SDKs.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.version")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "version")]
         public string Version {get; private set; }
 
         /// <summary>
         /// Gets private endpoint connections to the resource.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.privateEndpointConnections")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "privateEndpointConnections")]
         public System.Collections.Generic.IList<PrivateEndpointConnection> PrivateEndpointConnections {get; private set; }
 
         /// <summary>
         /// Gets the list of shared private link resources.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.sharedPrivateLinkResources")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "sharedPrivateLinkResources")]
         public System.Collections.Generic.IList<SharedPrivateLinkResource> SharedPrivateLinkResources {get; private set; }
 
         /// <summary>
         /// Gets or sets tLS settings.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.tls")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "tls")]
         public SignalRTlsSettings Tls {get; set; }
 
         /// <summary>
@@ -226,61 +165,25 @@ namespace Microsoft.Azure.Management.SignalR.Models
         /// But keep in mind, the default value doesn&#39;t mean &#34;false&#34;. It varies in
         /// terms of different FeatureFlags.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.features")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "features")]
         public System.Collections.Generic.IList<SignalRFeature> Features {get; set; }
 
         /// <summary>
         /// Gets or sets cross-Origin Resource Sharing (CORS) settings.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.cors")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "cors")]
         public SignalRCorsSettings Cors {get; set; }
 
         /// <summary>
         /// Gets or sets upstream settings when the service is in server-less mode.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.upstream")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "upstream")]
         public ServerlessUpstreamSettings Upstream {get; set; }
 
         /// <summary>
         /// Gets or sets network ACLs
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.networkACLs")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "networkACLs")]
         public SignalRNetworkACLs NetworkAcLs {get; set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (this.Sku != null)
-            {
-                this.Sku.Validate();
-            }
-
-
-
-
-
-
-
-
-
-
-            if (this.Features != null)
-            {
-                foreach (var element in this.Features)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
-
-
-
-        }
     }
 }
