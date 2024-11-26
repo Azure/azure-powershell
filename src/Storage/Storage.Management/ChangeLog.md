@@ -23,6 +23,8 @@
 * Upgraded Azure.Storage.Files.Shares to 12.21.0
 * Upgraded Azure.Storage.Files.DataLake to 12.21.0
 * Upgraded Azure.Storage.Queues to 12.21.0
+* Supported ClientName property when listing file handles 
+    - `Get-AzStorageFileHandle`
 
 ## Version 8.0.0
 * When downloading blob with parameter AbsoluteUri (alias Uri, BlobUri), not allow input parameter Context together.
