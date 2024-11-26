@@ -1470,7 +1470,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"Sanitized\",\r\n  \"secondaryKey\": \"Sanitized\",\r\n  \"primaryConnectionString\": \"Sanitized\",\r\n  \"secondaryConnectionString\": \"Sanitized\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"jhLrw/SUAMLBJqgh8QLWeHNeWSIilR69HZ3ylzSa5/c=\",\r\n  \"secondaryKey\": \"kgoTd1H5FTCkmoE5QrwR/flPz2tyvZhf1oF2g0Jdaz8=\",\r\n  \"primaryConnectionString\": \"Endpoint=https://signalrps-test-ps1701.service.signalr.net;AccessKey=jhLrw/SUAMLBJqgh8QLWeHNeWSIilR69HZ3ylzSa5/c=;Version=1.0;\",\r\n  \"secondaryConnectionString\": \"Endpoint=https://signalrps-test-ps1701.service.signalr.net;AccessKey=kgoTd1H5FTCkmoE5QrwR/flPz2tyvZhf1oF2g0Jdaz8=;Version=1.0;\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1545,7 +1545,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"Sanitized\",\r\n  \"secondaryKey\": \"Sanitized\",\r\n  \"primaryConnectionString\": \"Sanitized\",\r\n  \"secondaryConnectionString\": \"Sanitized\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"einZfWTn14FOu1opDIWSI6j1l+Gn/FjJIjME+TInTeA=\",\r\n  \"secondaryKey\": \"kgoTd1H5FTCkmoE5QrwR/flPz2tyvZhf1oF2g0Jdaz8=\",\r\n  \"primaryConnectionString\": \"Endpoint=https://signalrps-test-ps1701.service.signalr.net;AccessKey=einZfWTn14FOu1opDIWSI6j1l+Gn/FjJIjME+TInTeA=;Version=1.0;\",\r\n  \"secondaryConnectionString\": \"Endpoint=https://signalrps-test-ps1701.service.signalr.net;AccessKey=kgoTd1H5FTCkmoE5QrwR/flPz2tyvZhf1oF2g0Jdaz8=;Version=1.0;\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -1632,7 +1632,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryKey\": \"Sanitized\",\r\n  \"secondaryKey\": \"Sanitized\",\r\n  \"primaryConnectionString\": \"Sanitized\",\r\n  \"secondaryConnectionString\": \"Sanitized\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryKey\": \"einZfWTn14FOu1opDIWSI6j1l+Gn/FjJIjME+TInTeA=\",\r\n  \"secondaryKey\": \"kgoTd1H5FTCkmoE5QrwR/flPz2tyvZhf1oF2g0Jdaz8=\",\r\n  \"primaryConnectionString\": \"Endpoint=https://signalrps-test-ps1701.service.signalr.net;AccessKey=einZfWTn14FOu1opDIWSI6j1l+Gn/FjJIjME+TInTeA=;Version=1.0;\",\r\n  \"secondaryConnectionString\": \"Endpoint=https://signalrps-test-ps1701.service.signalr.net;AccessKey=kgoTd1H5FTCkmoE5QrwR/flPz2tyvZhf1oF2g0Jdaz8=;Version=1.0;\"\r\n}",
       "StatusCode": 202
     },
     {
