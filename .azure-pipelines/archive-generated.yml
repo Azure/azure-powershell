@@ -69,7 +69,7 @@ jobs:
         $filesChanged = Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
         if (($null -eq $filesChanged) -or (0 -eq $filesChanged.Length)) {
           Write-Warning "no modules found need to be archived"
-          ${{ variables.Terminate }} = 'true'
+          Write-Host "##vso[task.setvariable variable=Terminate]true"
           exit 0
         }
         $filesChanged | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
