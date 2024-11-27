@@ -27,9 +27,8 @@ Describe 'New-AzKustoScript' {
 
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location
 
-        $Script = New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent
-
-        Validate_Inline_Script $Script "tag1" $continueOnErrors $clusterName $databaseName "testScript"
+        $Script = New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent  -PrincipalPermissionsAction "RemovePermissionOnScriptCompletion" -ScriptLevel "Database"
+        Validate_Inline_Script $Script "tag1" $continueOnErrors $clusterName $databaseName "testScript" -PrincipalPermissionsAction "RemovePermissionOnScriptCompletion" -ScriptLevel "Database"
 
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
@@ -43,9 +42,9 @@ Describe 'New-AzKustoScript' {
 
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location
 
-        $Script = New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent
+        $Script = New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent -PrincipalPermissionsAction "RemovePermissionOnScriptCompletion" -ScriptLevel "Database" 
 
-        Validate_Script $Script "tag1" $continueOnErrors $clusterName $databaseName "testScript"
+        Validate_Script $Script "tag1" $continueOnErrors $clusterName $databaseName "testScript" -principalPermissionsAction "RemovePermissionOnScriptCompletion" -scriptLevel "Database"
 
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
@@ -59,11 +58,11 @@ Describe 'New-AzKustoScript' {
 
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location
 
-        $Parameter = (@{ ForceUpdateTag = "tag1"; Content = $scriptContent })
+        $Parameter = (@{ ForceUpdateTag = "tag1"; Content = $scriptContent; PrincipalPermissionsAction = "RemovePermissionOnScriptCompletion"; ScriptLevel = "Database" })
 
         $Script = New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -Parameter $Parameter
 
-        Validate_Script $Script "tag1" $continueOnErrors $clusterName $databaseName "testScript"
+        Validate_Script $Script "tag1" $continueOnErrors $clusterName $databaseName "testScript" -principalPermissionsAction "RemovePermissionOnScriptCompletion" -ScriptLevel "Database"
 
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }

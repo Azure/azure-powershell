@@ -24,10 +24,10 @@ Describe 'Get-AzKustoScript' {
         
         New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SubscriptionId $env.SubscriptionId
 
-        New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent
+        New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent -PrincipalPermissionsAction "RemovePermissionOnScriptCompletion" -ScriptLevel "Database"
         $ScriptList = Get-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId
 
-        Validate_Script $ScriptList "tag1" $continueOnErrors $clusterName $databaseName "testScript"
+        Validate_Script $ScriptList "tag1" $continueOnErrors $clusterName $databaseName "testScript" -principalPermissionsAction "RemovePermissionOnScriptCompletion" -scriptLevel "Database"
 
         Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name
     }
@@ -38,10 +38,10 @@ Describe 'Get-AzKustoScript' {
         $databaseName = $env.kustoDatabaseName
         $scriptContent = ".create table table3 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)"
         
-        New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent
+        New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent -PrincipalPermissionsAction "RemovePermissionOnScriptCompletion" -ScriptLevel "Database"
         $script = Get-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId
                
-        Validate_Script $script "tag1" $continueOnErrors $clusterName $databaseName "testScript"
+        Validate_Script $script "tag1" $continueOnErrors $clusterName $databaseName "testScript" -principalPermissionsAction "RemovePermissionOnScriptCompletion" -scriptLevel "Database"
 
         Remove-AzKustoScript -InputObject $script
     }
@@ -52,12 +52,12 @@ Describe 'Get-AzKustoScript' {
         $databaseName = $env.kustoDatabaseName
         $scriptContent = ".create table table3 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)"
 
-        New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent
+        New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent -PrincipalPermissionsAction "RemovePermissionOnScriptCompletion" -ScriptLevel "Database"
         $script = Get-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId
         
         $script = Get-AzKustoScript -InputObject $script
 
-        Validate_Script $script "tag1" $continueOnErrors $clusterName $databaseName "testScript"
+        Validate_Script $script "tag1" $continueOnErrors $clusterName $databaseName "testScript" -principalPermissionsAction "RemovePermissionOnScriptCompletion" -scriptLevel "Database"
 
         Remove-AzKustoScript -InputObject $script
     }
