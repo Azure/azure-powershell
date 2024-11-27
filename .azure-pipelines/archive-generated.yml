@@ -81,9 +81,6 @@ jobs:
       targetType: inline
       pwsh: true
       script: |
-        Write-Warning 'second'
-        Write-Warning ${{ variables.Terminate }}
-
         $baseBranchName = "origin/$(Build.SourceBranchName)"
         $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
         if ("$(Build.reason)" -in @('IndividualCI', 'BatchedCI')) {
