@@ -34,6 +34,7 @@ $env = @{}
 function setupEnv() {
     # If you want to record a single test do the following for exmple pwsh test-module.ps1 --Record --TestName Update-AzKustoDataConnection
     # 1. comment cleanupEnv- you don't want clean up of the resource group
+    # 2. run Record and create the resources
     # 3. comment all content of setupEnv, you want to reuse the resources from previous session instead of creating again
     # 4. add the following line $env = Get-Content .\test\env.json | ConvertFrom-Json, to load the $env
     # 5. Run the recording of a specific test for exmple pwsh test-module.ps1 --Record --TestName Update-AzKustoDataConnection
