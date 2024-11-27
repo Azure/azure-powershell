@@ -81,9 +81,9 @@ jobs:
         pwsh: true
         script: |
           Write-Warning 'first'
-          Write-Warning "${{ variables.FilesChangedOutputPath }}"
+          Write-Warning "$(FilesChangedOutputPath)"
           Write-Warning 'second'
-          Write-Warning "${{ variables.Terminate }}"
+          Write-Warning "$(Terminate)"
 
           $baseBranchName = "origin/$(Build.SourceBranchName)"
           $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
