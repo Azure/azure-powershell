@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure.Core to 1.44.1 and Azure.Identity to 1.13.0
 
 ## Version 4.0.0
 * [Breaking Change] Removed alias `Resolve-Error` for the cmdlet `Resolve-AzError`.

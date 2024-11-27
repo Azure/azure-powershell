@@ -1,4 +1,4 @@
-# Migration Guide for Az 13.0.0.0
+# Migration Guide for Az 13.0.0
 
 ## Az.Accounts
 
@@ -155,7 +155,7 @@ Default value of `-PublicIpSku` will be Standard if it is not specified
 
 #### Before
 
-- Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
+- Detail is type CloudErrorBody. CloudErrorBody uses a `List<ICloudErrorBody>` for the Detail property.
 
 - Example output for Details:
 ```powershell
@@ -193,7 +193,7 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 
 #### Before
-- Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
+- Detail is type CloudErrorBody. CloudErrorBody uses a `List<ICloudErrorBody>` for the Detail property.
 
 - Example output for Details:
 ```powershell
@@ -230,7 +230,7 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
 
 
 #### Before
-- Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
+- Detail is type CloudErrorBody. CloudErrorBody uses a `List<ICloudErrorBody>` for the Detail property.
 
 - Example output for Details:
 ```powershell
@@ -317,7 +317,7 @@ Passthru parameter is removed
 
 
 #### Before
-- Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
+- Detail is type CloudErrorBody. CloudErrorBody uses a `List<ICloudErrorBody>` for the Detail property.
 
 - Example output for Details:
 ```powershell
@@ -378,7 +378,7 @@ HardwareProfileSKuName is type SkuName. Possible values will be general_a_16c64g
 
 
 #### Before
-- Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
+- Detail is type CloudErrorBody. CloudErrorBody uses a `List<ICloudErrorBody>` for the Detail property.
 
 - Example output for Details:
 ```powershell
@@ -433,7 +433,7 @@ NextScheduledTime is type nullable System.DateTime
 
 #### Before
 
-- Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
+- Detail is type CloudErrorBody. CloudErrorBody uses a `List<ICloudErrorBody>` for the Detail property.
 
 - Example output for Details:
 ```powershell
@@ -470,7 +470,7 @@ Innererror : @{Code=InnerErrorCode; Message=More specific information about the 
   - The change is expected to take effect from version : '2.0.0'
 
 #### Before
-- Detail is type CloudErrorBody. CloudErrorBody uses a List<ICloudErrorBody> for the Detail property.
+- Detail is type CloudErrorBody. CloudErrorBody uses a `List<ICloudErrorBody>` for the Detail property.
 
 - Example output for Details:
 ```powershell
