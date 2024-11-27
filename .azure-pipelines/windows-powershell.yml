@@ -19,9 +19,7 @@ trigger: none
 pr:
   branches:
     include:
-      - '*'
-    exclude:
-      - Azs-tzl
+      - future
 
 jobs:
 - job: Build
@@ -34,7 +32,7 @@ jobs:
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
     continueOnError: true
-    - checkout: self
+  - checkout: self
   - task: PowerShell@2
     displayName: 'Initialize Build'
     inputs:
