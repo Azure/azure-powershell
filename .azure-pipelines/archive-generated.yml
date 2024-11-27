@@ -73,7 +73,7 @@ jobs:
           exit 0
         }
         $filesChanged | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
-  - ${{ if ne(variables.Terminate, 'true') }}:
+  - ${{ if ne(variables['Terminate'], 'true') }}:
     - task: PowerShell@2
       displayName: 'Create branch for generated assets'
       inputs:
@@ -81,9 +81,9 @@ jobs:
         pwsh: true
         script: |
           Write-Warning 'first'
-          Write-Warning "${{ FilesChangedOutputPath }}"
+          Write-Warning "${{ variables['FilesChangedOutputPath'] }}"
           Write-Warning 'second'
-          Write-Warning "${{ Terminate }}"
+          Write-Warning "${{ variables['Terminate'] }}"
 
           $baseBranchName = "origin/$(Build.SourceBranchName)"
           $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
