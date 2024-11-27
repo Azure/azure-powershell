@@ -30,6 +30,7 @@ variables:
   TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
   PowerShellPlatform: PowerShell Core
   AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
+  Terminate: false
 
 
 trigger:
@@ -68,8 +69,7 @@ jobs:
         $filesChanged = Get-OutdatedModuleFromTargetModule -RepoRoot "$(Build.SourcesDirectory)" -TargetModule "${{ parameters.TargetModule }}" -ForceRegenerate $forceRegenerate
         if (($null -eq $filesChanged) -or (0 -eq $filesChanged.Length)) {
           Write-Warning "no modules found need to be archived"
-          #Write-Host "##vso[task.setvariable variable=Terminate;isOutput=true]true"
-          Write-Host "##vso[task.setvariable variable=Terminate]true"
+          ${{ variables.Terminate }} = 'true'
           exit 0
         }
         $filesChanged | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
@@ -80,10 +80,8 @@ jobs:
         targetType: inline
         pwsh: true
         script: |
-          Write-Warning 'first'
-          Write-Warning $[ variables.FilesChangedOutputPath ]
           Write-Warning 'second'
-          Write-Warning $[ variables.Terminate ]
+          Write-Warning ${{ variables.Terminate }}
 
           $baseBranchName = "origin/$(Build.SourceBranchName)"
           $tmpBranchName = "archive/$(Build.SourceBranchName)/$(Build.Reason)"
@@ -143,7 +141,7 @@ jobs:
 - job: Analyze
   displayName: Analyze
   dependsOn: Build
-  condition: and(succeeded(), ne(dependencies.Build.outputs['Initialize.Terminate'], 'true'))
+  condition: and(succeeded(), ne(variables.Terminate, 'true'))
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
   pool: pool-windows-2019
 
@@ -157,7 +155,7 @@ jobs:
 - job: Test
   displayName: Test
   dependsOn: Build
-  condition: and(succeeded(), ne(dependencies.Build.outputs['Initialize.Terminate'], 'true'))
+  condition: and(succeeded(), ne(variables.Terminate, 'true'))
   timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   strategy:
     matrix:
