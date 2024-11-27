@@ -75,7 +75,7 @@ jobs:
           Write-Host "##vso[task.logissue type=warning]no modules found need to be archived, terminate current run."
           exit 1
         }
-        $filesChanged | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
+        $filesChanged | ForEach-Object { 'src/' + $_ } | Out-File $filesChangedOutputPath
   - task: PowerShell@2
     displayName: 'Create branch for generated assets'
     inputs:
