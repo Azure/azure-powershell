@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                         return new TemplateValidationInfo(deploymentExtended.Properties?.Providers?.ToList() ?? new List<Provider>(), new List<ErrorDetail>(), deploymentExtended.Properties?.Diagnostics?.ToList() ?? new List<DeploymentDiagnosticsDefinition>());
                     case DeploymentValidationError deploymentValidationError:
                         return new TemplateValidationInfo(new List<Provider>(), new List<ErrorDetail>(deploymentValidationError.Error.AsArray()), new List<DeploymentDiagnosticsDefinition>());
-                    case object obj:
+                    case JObject obj:
                         // 202 Response is not deserialized in DeploymentsOperations so we should attempt to deserialize the object here before failing
                         // Should attempt to deserialize for success(DeploymentExtended, validation error(DeploymentValidationError), and cloud error 
                         var settings = new JsonSerializerSettings
