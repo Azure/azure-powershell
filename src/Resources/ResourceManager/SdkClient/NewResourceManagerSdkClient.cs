@@ -497,37 +497,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                         return new TemplateValidationInfo(new List<Provider>(), new List<ErrorDetail>(deploymentValidationError.Error.AsArray()), new List<DeploymentDiagnosticsDefinition>());
                     case JObject obj:
                         // 202 Response is not deserialized in DeploymentsOperations so we should attempt to deserialize the object here before failing
-                        // Should attempt to deserialize for success(DeploymentExtended, validation error(DeploymentValidationError), and cloud error 
-                        var settings = new JsonSerializerSettings
-                        {
-                            MissingMemberHandling = MissingMemberHandling.Error
-                        };
-
+                        // Should attempt to deserialize for success(DeploymentExtended)
                         try
                         {
-                            var deploymentDeserialized = SafeJsonConvert.DeserializeObject<DeploymentExtended>(validationResult.ToString(), settings);
-                            return new TemplateValidationInfo(deploymentDeserialized?.Properties?.Providers?.ToList() ?? new List<Provider>(), new List<ErrorDetail>(), deploymentDeserialized.Properties?.Diagnostics?.ToList() ?? new List<DeploymentDiagnosticsDefinition>());
+                            var deploymentDeserialized = SafeJsonConvert.DeserializeObject<DeploymentExtended>(validationResult.ToString(), ResourceManagementClient.DeserializationSettings);
+                            return new TemplateValidationInfo(deploymentDeserialized?.Properties?.Providers?.ToList() ?? new List<Provider>(), new List<ErrorDetail>(), deploymentDeserialized?.Properties?.Diagnostics?.ToList() ?? new List<DeploymentDiagnosticsDefinition>());
                         }
                         catch (Newtonsoft.Json.JsonException)
                         { 
-                            try
-                            {
-                                var deploymentDeserialized = SafeJsonConvert.DeserializeObject<DeploymentValidationError>(validationResult.ToString(), settings);
-                                return new TemplateValidationInfo(new List<Provider>(), new List<ErrorDetail>(deploymentDeserialized?.Error.AsArray()), new List<DeploymentDiagnosticsDefinition>());
-                            }
-                            catch (Newtonsoft.Json.JsonException)
-                            {
-                                try
-                                {
-                                    var deploymentDeserialized = SafeJsonConvert.DeserializeObject<CloudError>(validationResult.ToString(), settings);
-                                    string errorMessage = BuildCloudErrorMessage(deploymentDeserialized);
-                                    return new TemplateValidationInfo(new List<Provider>(), new ErrorDetail(message: errorMessage).AsArray().ToList(), new List<DeploymentDiagnosticsDefinition>());
-                                }
-                                catch (Newtonsoft.Json.JsonException)
-                                {
-                                    throw new InvalidOperationException($"Received unexpected type {validationResult.GetType()}");
-                                }
-                            }
+                            throw new InvalidOperationException($"Received unexpected type {validationResult.GetType()}");
                         }
                     default:
                         throw new InvalidOperationException($"Received unexpected type {validationResult.GetType()}");
