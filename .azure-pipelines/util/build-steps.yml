@@ -7,6 +7,11 @@ parameters:
   subTasksFilePath: ''
 
 steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk 6.0.x'
+  inputs:
+    packageType: sdk
+    version: 6.0.x
 - task: DotNetCoreCLI@2
   displayName: Filter changed files
   inputs:
@@ -83,11 +88,6 @@ steps:
   displayName: 'Check Ignored File'
   inputs:
     filePath: tools/CheckIgnoredFile.ps1
-- task: UseDotNet@2
-  displayName: 'Use .NET Core sdk 6.0.x'
-  inputs:
-    packageType: sdk
-    version: 6.0.x
 - task: PowerShell@2
   displayName: 'Build'
   inputs:

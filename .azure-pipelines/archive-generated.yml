@@ -75,6 +75,7 @@ jobs:
           Write-Host "##vso[task.logissue type=warning]no modules found need to be archived, terminate current run."
           exit 1
         }
+        #Yabo: cannot use join-path because in ci-config we use slash, backslash cannot match
         $filesChanged | ForEach-Object { 'src/' + $_ } | Out-File $filesChangedOutputPath
   - task: PowerShell@2
     displayName: 'Create branch for generated assets'
