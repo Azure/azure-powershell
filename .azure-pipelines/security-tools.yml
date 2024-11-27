@@ -31,13 +31,18 @@ jobs:
     condition: eq(variables.IsGenerateBased, true)
     inputs:
       versionSpec: 14.17.1
-
+  
   - task: PowerShell@2
     displayName: Install autorest
     condition: eq(variables.IsGenerateBased, true)
     inputs:
       targetType: inline
       script: npm install autorest@latest;$env:NODE_OPTIONS="--max-old-space-size=65536"
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core sdk 6.0.x'
+    inputs:
+      packageType: sdk
+      version: 6.0.x
   - task: PowerShell@2
     displayName: Build
     inputs:
