@@ -71,10 +71,12 @@ jobs:
               1. this job have build template involved and template does not accept condition
               2. the $  {{ if() }} conditional evaluation is a template expression syntax which was evaluated when compile this YAML, which means cannot use runtime variables in this condition
           #>
+          Write-Warning "no modules found need to be archived, terminate current run."
           Write-Host "##vso[task.logissue type=warning]no modules found need to be archived, terminate current run."
           exit 1
         }
-        $filesChanged | ForEach-Object { Join-Path 'src' $_ } | Out-File $filesChangedOutputPath
+        #Yabo: cannot use join-path because in ci-config we use slash, backslash cannot match
+        $filesChanged | ForEach-Object { 'src/' + $_ } | Out-File $filesChangedOutputPath
   - task: PowerShell@2
     displayName: 'Create branch for generated assets'
     inputs:
