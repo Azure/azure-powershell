@@ -43,7 +43,7 @@ Removes callout policy for engine services.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:
 ```powershell
 Remove-AzKustoClusterCalloutPolicy -ResourceGroupName rg1 -ClusterName cluster1 -SubscriptionId sub -CalloutPolicy @{CalloutId = "*_cosmosdb"}
 ```
