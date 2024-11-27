@@ -69,7 +69,7 @@ jobs:
           <# 
             Yabo: have to fail build job to terminate this run because: 
               1. this job have build template involved and template does not accept condition
-              2. the ${{ }} conditional evaluation is a template expression syntax which was evaluated when compile this YAML, which means cannot use runtime variables in this condition
+              2. the $  {{ if() }} conditional evaluation is a template expression syntax which was evaluated when compile this YAML, which means cannot use runtime variables in this condition
           #>
           Write-Warning "no modules found need to be archived, terminate current run."
           Write-Host "##vso[task.logissue type=warning]no modules found need to be archived, terminate current run."
