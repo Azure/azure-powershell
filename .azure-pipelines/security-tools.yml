@@ -39,7 +39,7 @@ jobs:
       targetType: inline
       script: npm install autorest@latest;$env:NODE_OPTIONS="--max-old-space-size=65536"
   - task: UseDotNet@2
-    displayName: 'Use .NET Core sdk 6.0.x'
+    displayName: 'Use .NET Core sdk 6.0.x for build'
     inputs:
       packageType: sdk
       version: 6.0.x
@@ -48,6 +48,11 @@ jobs:
     inputs:
       targetType: inline
       script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
+  - task: UseDotNet@2
+    displayName: 'Use .NET Core sdk 8.x for CredScan tools'
+    inputs:
+      packageType: sdk
+      version: 8.x
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
     displayName: Run CredScan
     inputs:
