@@ -8,31 +8,21 @@ namespace Microsoft.Azure.Management.IotCentral.Models
     using System.Linq;
 
     /// <summary>
-    /// The description of the IoT Central application.
+    /// The properties of an IoT Central application.
     /// </summary>
-    [Microsoft.Rest.Serialization.JsonTransformation]
-    public partial class AppPatch
+    public partial class AppProperties
     {
         /// <summary>
-        /// Initializes a new instance of the AppPatch class.
+        /// Initializes a new instance of the AppProperties class.
         /// </summary>
-        public AppPatch()
+        public AppProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AppPatch class.
+        /// Initializes a new instance of the AppProperties class.
         /// </summary>
-
-        /// <param name="tags">Instance tags
-        /// </param>
-
-        /// <param name="sku">A valid instance SKU.
-        /// </param>
-
-        /// <param name="identity">The managed identities for the IoT Central application.
-        /// </param>
 
         /// <param name="applicationId">The ID of the application.
         /// </param>
@@ -51,12 +41,9 @@ namespace Microsoft.Azure.Management.IotCentral.Models
 
         /// <param name="state">The current state of the application.
         /// Possible values include: &#39;created&#39;, &#39;suspended&#39;</param>
-        public AppPatch(System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), AppSkuInfo sku = default(AppSkuInfo), SystemAssignedServiceIdentity identity = default(SystemAssignedServiceIdentity), string applicationId = default(string), string displayName = default(string), string subdomain = default(string), string template = default(string), string state = default(string))
+        public AppProperties(string applicationId = default(string), string displayName = default(string), string subdomain = default(string), string template = default(string), string state = default(string))
 
         {
-            this.Tags = tags;
-            this.Sku = sku;
-            this.Identity = identity;
             this.ApplicationId = applicationId;
             this.DisplayName = displayName;
             this.Subdomain = subdomain;
@@ -72,39 +59,21 @@ namespace Microsoft.Azure.Management.IotCentral.Models
 
 
         /// <summary>
-        /// Gets or sets instance tags
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "tags")]
-        public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
-
-        /// <summary>
-        /// Gets or sets a valid instance SKU.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "sku")]
-        public AppSkuInfo Sku {get; set; }
-
-        /// <summary>
-        /// Gets or sets the managed identities for the IoT Central application.
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
-        public SystemAssignedServiceIdentity Identity {get; set; }
-
-        /// <summary>
         /// Gets the ID of the application.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.applicationId")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "applicationId")]
         public string ApplicationId {get; private set; }
 
         /// <summary>
         /// Gets or sets the display name of the application.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.displayName")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "displayName")]
         public string DisplayName {get; set; }
 
         /// <summary>
         /// Gets or sets the subdomain of the application.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.subdomain")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "subdomain")]
         public string Subdomain {get; set; }
 
         /// <summary>
@@ -113,36 +82,13 @@ namespace Microsoft.Azure.Management.IotCentral.Models
         /// not specified, defaults to a blank blueprint and allows the application to
         /// be defined from scratch.
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.template")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "template")]
         public string Template {get; set; }
 
         /// <summary>
         /// Gets the current state of the application. Possible values include: &#39;created&#39;, &#39;suspended&#39;
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.state")]
+        [Newtonsoft.Json.JsonProperty(PropertyName = "state")]
         public string State {get; private set; }
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Microsoft.Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-
-            if (this.Sku != null)
-            {
-                this.Sku.Validate();
-            }
-            if (this.Identity != null)
-            {
-                this.Identity.Validate();
-            }
-
-
-
-
-
-        }
     }
 }
