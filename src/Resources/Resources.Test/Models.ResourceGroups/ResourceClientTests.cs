@@ -330,39 +330,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             progressLoggerMock.Verify(f => f("Template is valid."), Times.Once());
         }
 
-        private PSDeploymentCmdletParameters SetupMocksAndGetParameters(object body)
-        {
-            Uri templateUri = new Uri("http://templateuri.microsoft.com");
-            Deployment deploymentFromValidate = new Deployment();
-            PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
-            {
-                ScopeType = DeploymentScopeType.ResourceGroup,
-                ResourceGroupName = resourceGroupName,
-                DeploymentMode = DeploymentMode.Incremental,
-                TemplateFile = templateFile,
-            };
-            resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(true)));
-
-            deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() =>
-                {
-
-                    var result = new AzureOperationResponse<object>()
-                    {
-                        Body = body
-                    };
-
-                    result.Response = new System.Net.Http.HttpResponseMessage();
-                    result.Response.StatusCode = HttpStatusCode.Accepted;
-
-                    return result;
-                }))
-                .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
-
-            return parameters;
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTemplateShowsSuccessMessageWithObjectAsResponse()
