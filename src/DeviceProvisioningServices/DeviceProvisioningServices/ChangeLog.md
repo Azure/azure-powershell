@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Code generated tool updated from autorest.csharp to autorest.powershell
 
 ## Version 0.10.3
 * Removed Microsoft.Azure.Management.DeviceProvisioningServices 0.10.0-preview dependencies
