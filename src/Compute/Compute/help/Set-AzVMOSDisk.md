@@ -197,10 +197,10 @@ $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $nicId;
 # Set VM SecurityType and connect to DES
 $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $secureEncryptGuestState -SecureVMDiskEncryptionSet $diskencset.Id;
 $VirtualMachine = Set-AzVMSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType;
-$VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
+$VirtualMachine = Set-AzVMUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
 
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -Vm $VirtualMachine;
-$vm = Get-AzVm -ResourceGroupName $ResourceGroupName -Name $vmname;
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $vmname;
 
 # Verify the SecurityEncryptionType value on the disk.
 # $vm.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType == 'DiskWithVMGuestState';
