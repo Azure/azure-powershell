@@ -814,6 +814,10 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>Metrics.Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Rules</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -843,6 +847,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>DestinationAccount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Metrics.Enabled</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
