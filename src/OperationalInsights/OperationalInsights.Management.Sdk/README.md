@@ -5,14 +5,14 @@ This directory contains management plane service clients of Az.OperationalInsigh
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90
-autorest.cmd README.md --version=v2
+autorest --use:@autorest/powershell@4.x
 ```
 
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
@@ -54,9 +54,17 @@ output-folder: Generated
 namespace: Microsoft.Azure.Management.OperationalInsights
 
 directive:
+  # README suppress
   - from: OperationalInsights.json
     suppress: R3006  # BodyTopLevelProperties/R3006/RPCViolation
     reason: properties etag defined as eTag in model
+  # Model property rename
+  - where: 
+        model-name: DataExport
+        property-name: PropertiesDestinationType
+    set:
+        property-name: DataExportType
+  # XML format error fix
   - from: Tables.json
     where: $.definitions.Column.properties.dataTypeHint
     transform: >-
