@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             if (!string.IsNullOrWhiteSpace(documentationUri))
             {
                 CheckMinimalVersionRequirement(MinimalVersionRequirementForBicepPublishWithOptionalDocumentationUriParameter);
-                bicepPublishCommand += $" --documentationUri {GetQuotedFilePath(documentationUri)}";
+                bicepPublishCommand += $" --documentation-uri {GetQuotedFilePath(documentationUri)}";
             }
 
             if (withSource)
