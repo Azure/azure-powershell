@@ -28,10 +28,10 @@ New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-Subscript
  [-PublicSubnetName <String>] [-RequireInfrastructureEncryption] [-RequiredNsgRule <RequiredNsgRules>]
  [-Sku <String>] [-SkuTier <String>] [-StorageAccountName <String>] [-StorageAccountSku <String>]
  [-Tag <Hashtable>] [-UiDefinitionUri <String>] [-VirtualNetworkId <String>] [-VnetAddressPrefix <String>]
- [-EnhancedSecurityMonitoringValue <EnhancedSecurityMonitoringValue>]
- [-AutomaticClusterUpdateValue <AutomaticClusterUpdateValue>]
- [-ComplianceSecurityProfileComplianceStandard <ComplianceStandard[]>]
- [-ComplianceSecurityProfileValue <ComplianceSecurityProfileValue>] [-AccessConnectorId <String>]
+ [-EnhancedSecurityMonitoring <EnhancedSecurityMonitoringValue>]
+ [-AutomaticClusterUpdate <AutomaticClusterUpdateValue>]
+ [-ComplianceStandard <ComplianceStandard[]>]
+ [-EnhancedSecurityCompliance <ComplianceSecurityProfileValue>] [-AccessConnectorId <String>]
  [-AccessConnectorIdentityType <IdentityType>] [-AccessConnectorUserAssignedIdentityId <String>]
  [-DefaultStorageFirewall <DefaultStorageFirewall>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -186,7 +186,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutomaticClusterUpdateValue
+### -AutomaticClusterUpdate
 Status of automated cluster updates feature.
 
 ```yaml
@@ -201,7 +201,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ComplianceSecurityProfileComplianceStandard
+### -ComplianceStandard
 Compliance standards associated with the workspace.
 
 ```yaml
@@ -216,7 +216,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ComplianceSecurityProfileValue
+### -EnhancedSecurityCompliance
 Status of Compliance Security Profile feature.
 
 ```yaml
@@ -354,7 +354,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnhancedSecurityMonitoringValue
+### -EnhancedSecurityMonitoring
 Status of Enhanced Security Monitoring feature.
 
 ```yaml

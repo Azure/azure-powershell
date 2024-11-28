@@ -17,12 +17,12 @@ New-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> -Location <
  [-SubscriptionId <String>] [-AccessConnectorId <String>] [-AccessConnectorIdentityType <IdentityType>]
  [-AccessConnectorUserAssignedIdentityId <String>] [-AmlWorkspaceId <String>]
  [-Authorization <IWorkspaceProviderAuthorization[]>]
- [-AutomaticClusterUpdateValue <AutomaticClusterUpdateValue>]
- [-ComplianceSecurityProfileComplianceStandard <ComplianceStandard[]>]
- [-ComplianceSecurityProfileValue <ComplianceSecurityProfileValue>] [-DefaultCatalogInitialType <InitialType>]
+ [-AutomaticClusterUpdate <AutomaticClusterUpdateValue>]
+ [-ComplianceStandard <ComplianceStandard[]>]
+ [-EnhancedSecurityCompliance <ComplianceSecurityProfileValue>] [-DefaultCatalogInitialType <InitialType>]
  [-DefaultStorageFirewall <DefaultStorageFirewall>] [-EnableNoPublicIP] [-EncryptionKeyName <String>]
  [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
- [-EnhancedSecurityMonitoringValue <EnhancedSecurityMonitoringValue>] [-LoadBalancerBackendPoolName <String>]
+ [-EnhancedSecurityMonitoring <EnhancedSecurityMonitoringValue>] [-LoadBalancerBackendPoolName <String>]
  [-LoadBalancerId <String>] [-ManagedDiskKeySource <EncryptionKeySource>]
  [-ManagedDiskKeyVaultPropertiesKeyName <String>] [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]
  [-ManagedDiskKeyVaultPropertiesKeyVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
@@ -185,7 +185,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutomaticClusterUpdateValue
+### -AutomaticClusterUpdate
 Status of automated cluster updates feature.
 
 ```yaml
@@ -200,7 +200,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ComplianceSecurityProfileComplianceStandard
+### -ComplianceStandard
 Compliance standards associated with the workspace.
 
 ```yaml
@@ -215,7 +215,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ComplianceSecurityProfileValue
+### -EnhancedSecurityCompliance
 Status of Compliance Security Profile feature.
 
 ```yaml
@@ -353,7 +353,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnhancedSecurityMonitoringValue
+### -EnhancedSecurityMonitoring
 Status of Enhanced Security Monitoring feature.
 
 ```yaml
