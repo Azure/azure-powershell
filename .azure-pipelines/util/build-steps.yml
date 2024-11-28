@@ -5,6 +5,7 @@ parameters:
   ForceRegenerate: false
   filesChangedOutputPath: ''
   subTasksFilePath: ''
+  isSecurityCheck: false
 
 steps:
 - task: UseDotNet@2
@@ -17,7 +18,7 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'build.proj /t:FilterBuild /p:FilesChangedOutputPath="${{ parameters.filesChangedOutputPath }}";SubTasksFilePath="${{ parameters.subTasksFilePath }}"'
+    arguments: 'build.proj /t:FilterBuild /p:FilesChangedOutputPath="${{ parameters.filesChangedOutputPath }}";SubTasksFilePath="${{ parameters.subTasksFilePath }}";IsSecurityCheck=${{ parameters.IsSecurityCheck }}'
   env:
       PowerShellPlatform: ${{ parameters.PowerShellPlatform }}
 - task: PowerShell@2

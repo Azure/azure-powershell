@@ -40,6 +40,7 @@ jobs:
     parameters:
       configuration: Debug
       filesChangedOutputPath: $(FilesChangedOutputPath)
+      isSecurityCheck: true
   - task: PowerShell@2
     displayName: Install platyPS
     inputs:
