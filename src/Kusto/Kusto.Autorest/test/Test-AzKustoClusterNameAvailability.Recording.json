@@ -3,7 +3,7 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2024-04-13",
-      "Content": "{\r\n  \"name\": \"pssdkxnefmp\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
+      "Content": "{\r\n  \"name\": \"pssdk2ekhd9\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,23 +17,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a0da81ce-3029-46ae-b6df-b3bfe35c8100" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
-        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "c53ad0e6-6fe3-4edb-af97-858efc13863c" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20241121T131650Z:c53ad0e6-6fe3-4edb-af97-858efc13863c" ],
+        "x-ms-request-id": [ "9970d3c5-4246-4011-95a3-cd9c98cc0e49" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "798" ],
+        "x-ms-ratelimit-remaining-subscription-global-writes": [ "11998" ],
+        "x-ms-correlation-request-id": [ "e97ad43e-3e73-42bc-82cd-17319b6759fb" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20241201T031032Z:e97ad43e-3e73-42bc-82cd-17319b6759fb" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: A4C353309E904ABEB6C764CB7166A619 Ref B: MRS211050313037 Ref C: 2024-11-21T13:16:49Z" ],
-        "Date": [ "Thu, 21 Nov 2024 13:16:50 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 931EB90DC35F4F21ACE17D975A322432 Ref B: MRS211050315025 Ref C: 2024-12-01T03:10:31Z" ],
+        "Date": [ "Sun, 01 Dec 2024 03:10:31 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "142" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"pssdkxnefmp\",\"nameAvailable\":false,\"message\":\"Name \u0027pssdkxnefmp\u0027 with type Engine is already taken. Please specify a different name\"}",
+      "Content": "{\"name\":\"pssdk2ekhd9\",\"nameAvailable\":false,\"message\":\"Name \u0027pssdk2ekhd9\u0027 with type Engine is already taken. Please specify a different name\"}",
       "isContentBase64": false
     }
   }

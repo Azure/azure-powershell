@@ -1,13 +1,13 @@
 {
-  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-arue1m/providers/Microsoft.Kusto/Clusters/pssdkarue1m/Databases/TestDb/listPrincipals?api-version=2024-04-13+1": {
+  "[NoDescription]+[NoContext]+List+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-2ekhd9/providers/Microsoft.Kusto/Clusters/pssdk2ekhd9/Databases/TestDb/listPrincipals?api-version=2024-04-13+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-arue1m/providers/Microsoft.Kusto/Clusters/pssdkarue1m/Databases/TestDb/listPrincipals?api-version=2024-04-13",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PWSH-SDK-2ekhd9/providers/Microsoft.Kusto/Clusters/pssdk2ekhd9/Databases/TestDb/listPrincipals?api-version=2024-04-13",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "142" ],
-        "x-ms-client-request-id": [ "4561fc4e-4ac9-4e9a-83fe-a3c907070dfb" ],
+        "x-ms-unique-id": [ "139" ],
+        "x-ms-client-request-id": [ "9a36744a-b9d6-4bba-88e6-2b67613f85c0" ],
         "CommandName": [ "Get-AzKustoDatabasePrincipal" ],
         "FullCommandName": [ "Get-AzKustoDatabasePrincipal_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,16 +22,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "e4978a64-d236-437d-8c22-138d33bfafed" ],
+        "x-ms-request-id": [ "e99d297a-037d-4f76-9d51-1202bc645725" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "799" ],
         "x-ms-ratelimit-remaining-subscription-global-writes": [ "11999" ],
-        "x-ms-correlation-request-id": [ "7977bd84-51e3-407b-8e71-a8ed77af22a4" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20241127T110642Z:7977bd84-51e3-407b-8e71-a8ed77af22a4" ],
+        "x-ms-correlation-request-id": [ "b1aeeef7-f27e-4d3c-98bc-dbc7aa128ae6" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20241201T001630Z:b1aeeef7-f27e-4d3c-98bc-dbc7aa128ae6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 53F95EC1137D4966A666A4DCD19DDD5D Ref B: MRS211050315025 Ref C: 2024-11-27T11:06:40Z" ],
-        "Date": [ "Wed, 27 Nov 2024 11:06:41 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: A68624374C594CC6820F443DE4405D15 Ref B: MRS211050315025 Ref C: 2024-12-01T00:16:28Z" ],
+        "Date": [ "Sun, 01 Dec 2024 00:16:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "472" ],

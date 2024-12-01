@@ -17,7 +17,7 @@ Describe 'Update-AzKustoScript' {
         }
         . ($mockingPath | Select-Object -First 1).FullName
     }
-    It 'UpdateExpanded' {
+    It 'Update' {
         $continueOnErrors = $false
         $clusterName = $env.kustoClusterName
         $databaseName = "testdatabase" + $env.rstr4
@@ -26,22 +26,10 @@ Describe 'Update-AzKustoScript' {
         New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location
         New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent -PrincipalPermissionsAction "RemovePermissionOnScriptCompletion" -ScriptLevel "Database"
 
-        $Script = Update-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag2" -ScriptContent $scriptContent -ScriptContent $scriptContent -PrincipalPermissionsAction "RemovePermissionOnScriptCompletion" -ScriptLevel "Database"
+        $Script = Update-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag2" -ScriptContent $scriptContent -PrincipalPermissionsAction "RemovePermissionOnScriptCompletion" -ScriptLevel "Database"
 
         Validate_Inline_Script $Script "tag2" $continueOnErrors $clusterName $databaseName "testScript"
 
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $databaseName } | Should -Not -Throw
-    }
-
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -39,7 +39,7 @@ function setupEnv() {
     # 4. add the following line $env = Get-Content .\test\env.json | ConvertFrom-Json, to load the $env
     # 5. Run the recording of a specific test for exmple pwsh test-module.ps1 --Record --TestName Update-AzKustoDataConnection
 
-    # $env = Get-Content .\test\env.json | ConvertFrom-Json
+#     $env = Get-Content .\test\env.json | ConvertFrom-Json
 
     $env.subscriptionId = "e8257c73-24c5-4791-94dc-8b7901c90dbf" # Kusto_Dev_Kusto_Ilay_04_Test
     $env.location = 'East US'

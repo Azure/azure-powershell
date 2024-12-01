@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "241" ],
-        "x-ms-client-request-id": [ "0589ccaa-058c-4fad-9ed5-831a0f4eef63" ],
+        "x-ms-unique-id": [ "237" ],
+        "x-ms-client-request-id": [ "aa73e121-974c-4472-aead-140674e63462" ],
         "CommandName": [ "Get-AzKustoSku" ],
         "FullCommandName": [ "Get-AzKustoSku_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,15 +22,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "1593ab43-9a43-4593-9716-3998a6b0578a" ],
+        "x-ms-request-id": [ "9290460e-6874-4beb-b80f-882a1e233c3e" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-correlation-request-id": [ "13692a89-3e43-411b-a9ce-e49f8f49e21f" ],
-        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20241127T113322Z:13692a89-3e43-411b-a9ce-e49f8f49e21f" ],
+        "x-ms-correlation-request-id": [ "bc83811f-f423-4532-8a28-0b7f4f9905a6" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20241201T004243Z:bc83811f-f423-4532-8a28-0b7f4f9905a6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 214D3EA76FCA44A68B35EA7577914A10 Ref B: MRS211050315025 Ref C: 2024-11-27T11:33:22Z" ],
-        "Date": [ "Wed, 27 Nov 2024 11:33:22 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 97132CD7C8264ADB8200CC59E1B1C36F Ref B: MRS211050315025 Ref C: 2024-12-01T00:42:42Z" ],
+        "Date": [ "Sun, 01 Dec 2024 00:42:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "7600" ],
