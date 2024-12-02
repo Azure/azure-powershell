@@ -163,5 +163,15 @@ namespace StorageSyncTests
         {
             TestRunner.RunTestScript("Test-RemoveRegisteredServerInputObject");
         }
+
+        /// <summary>
+        /// Defines the test method TestRemoveRegisteredServer.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPatchRegisteredServer()
+        {
+            TestRunner.RunTestScript("Test-PatchRegisteredServer");
+        }
     }
 }

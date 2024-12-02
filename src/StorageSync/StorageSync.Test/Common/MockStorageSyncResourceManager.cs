@@ -18,6 +18,7 @@ using Commands.StorageSync.Interop.Interfaces;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.StorageSync.Common;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Interop.Enums;
 using Microsoft.Azure.Commands.StorageSync.Interop.ManagedIdentity;
 using Microsoft.Azure.Commands.StorageSync.Test.Common;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -172,5 +173,10 @@ namespace StorageSync.Test.Common
         /// </summary>
         /// <returns>MicrosoftGraphServicePrincipal</returns>
         public MicrosoftGraphServicePrincipal GetServicePrincipalOrNull() => new() { Id = "384dab06-7a70-4ecf-a04e-284602199124" }; // Change Object ID if we are using some other tenant
+
+        LocalServerType IStorageSyncResourceManager.GetServerTypeFromRegistry()
+        {
+            return LocalServerType.HybridServer;
+        }
     }
 }
