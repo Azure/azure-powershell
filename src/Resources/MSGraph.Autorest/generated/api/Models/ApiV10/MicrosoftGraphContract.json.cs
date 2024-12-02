@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphContract FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphContract(json, new global::System.Collections.Generic.HashSet<string>(){ @"id",@"deletedDateTime",@"displayName",@"@odata.type",@"@odata.id",@"contractType",@"customerId",@"defaultDomainName" }) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphContract(json, new global::System.Collections.Generic.HashSet<string>(){ @"ResourceGroupName",@"deletedDateTime",@"displayName",@"@odata.type",@"@odata.id",@"contractType",@"customerId",@"defaultDomainName" }) : null;
         }
 
         /// <summary>
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             }
             Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>)this).AdditionalProperties, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.JsonSerializable.DeserializeDictionary(()=>new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>()),exclusions );
             __microsoftGraphDirectoryObject = new Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphDirectoryObject(json);
-            {_contractType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("contractType"), out var __jsonContractType) ? (string)__jsonContractType : (string)ContractType;}
-            {_customerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("customerId"), out var __jsonCustomerId) ? (string)__jsonCustomerId : (string)CustomerId;}
-            {_defaultDomainName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("defaultDomainName"), out var __jsonDefaultDomainName) ? (string)__jsonDefaultDomainName : (string)DefaultDomainName;}
+            {_contractType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("contractType"), out var __jsonContractType) ? (string)__jsonContractType : (string)_contractType;}
+            {_customerId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("customerId"), out var __jsonCustomerId) ? (string)__jsonCustomerId : (string)_customerId;}
+            {_defaultDomainName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonString>("defaultDomainName"), out var __jsonDefaultDomainName) ? (string)__jsonDefaultDomainName : (string)_defaultDomainName;}
             AfterFromJson(json);
         }
 

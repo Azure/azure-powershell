@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPartnerNamespace
 
 ## SYNOPSIS
-Asynchronously creates a new partner namespace with the specified parameters.
+Asynchronously create a new partner namespace with the specified parameters.
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ New-AzEventGridPartnerNamespace -InputObject <IEventGridIdentity> -Location <Str
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new partner namespace with the specified parameters.
+Asynchronously create a new partner namespace with the specified parameters.
 
 ## EXAMPLES
 

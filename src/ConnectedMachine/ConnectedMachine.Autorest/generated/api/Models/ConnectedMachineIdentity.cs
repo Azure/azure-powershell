@@ -154,15 +154,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>Backing field for <see cref="ResourceUri" /> property.</summary>
-        private string _resourceUri;
-
-        /// <summary>
-        /// The fully qualified Azure Resource manager identifier of the resource to be connected.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Origin(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PropertyOrigin.Owned)]
-        public string ResourceUri { get => this._resourceUri; set => this._resourceUri = value; }
-
         /// <summary>Backing field for <see cref="RunCommandName" /> property.</summary>
         private string _runCommandName;
 
@@ -430,19 +421,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
-        /// <summary>
-        /// The fully qualified Azure Resource manager identifier of the resource to be connected.
-        /// </summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Read = true,
-        Create = true,
-        Update = true,
-        Description = @"The fully qualified Azure Resource manager identifier of the resource to be connected.",
-        SerializedName = @"resourceUri",
-        PossibleTypes = new [] { typeof(string) })]
-        string ResourceUri { get; set; }
         /// <summary>The name of the run command.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(
         Required = false,
@@ -546,10 +524,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models
         string Publisher { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
-        /// <summary>
-        /// The fully qualified Azure Resource manager identifier of the resource to be connected.
-        /// </summary>
-        string ResourceUri { get; set; }
         /// <summary>The name of the run command.</summary>
         string RunCommandName { get; set; }
         /// <summary>The name of the Azure Arc PrivateLinkScope resource.</summary>

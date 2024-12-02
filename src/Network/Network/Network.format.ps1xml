@@ -152,6 +152,10 @@
                 <Label>ExtendedLocation</Label>
                 <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>PrivateEndpointVNetPolicies</Label>
+                <PropertyName>PrivateEndpointVNetPolicies</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1008,6 +1012,10 @@
                 <Label>AdminState</Label>
                 <PropertyName>AdminState</PropertyName>
               </ListItem>
+			  <ListItem>
+                <Label>ResiliencyModel</Label>
+                <PropertyName>ResiliencyModel</PropertyName>
+              </ListItem>		 
               <ListItem>
                 <Label>AllowRemoteVnetTraffic</Label>
                 <PropertyName>AllowRemoteVnetTraffic</PropertyName>

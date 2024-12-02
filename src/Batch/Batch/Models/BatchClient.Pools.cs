@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 pool.Metadata = new List<MetadataItem>();
                 foreach (DictionaryEntry m in parameters.Metadata)
                 {
-                    pool.Metadata.Add(new MetadataItem(m.Key.ToString(), m.Value.ToString()));
+                    pool.Metadata.Add(new MetadataItem(m.Key.ToString(), m.Value?.ToString()));
                 }
             }
 
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
                 foreach (DictionaryEntry m in parameters.ResourceTags)
                 {
-                    pool.ResourceTags.Add(m.Key.ToString(), m.Value.ToString());
+                    pool.ResourceTags.Add(m.Key.ToString(), m.Value?.ToString());
                 }
             }
 

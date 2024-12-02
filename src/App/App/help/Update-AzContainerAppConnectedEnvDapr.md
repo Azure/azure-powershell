@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzContainerAppConnectedEnvDapr
 
 ## SYNOPSIS
-Update a Dapr Component in a connected environment.
+update a Dapr Component in a connected environment.
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Update-AzContainerAppConnectedEnvDapr -InputObject <IAppIdentity> [-ComponentTyp
 ```
 
 ## DESCRIPTION
-Update a Dapr Component in a connected environment.
+update a Dapr Component in a connected environment.
 
 ## EXAMPLES
 

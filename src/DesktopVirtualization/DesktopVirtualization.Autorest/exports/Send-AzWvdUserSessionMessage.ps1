@@ -29,6 +29,8 @@ Send-AzWvdUserSessionMessage -ResourceGroupName ResourceGroupName `
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISendMessage
 .Outputs
 System.Boolean
 .Notes
@@ -36,19 +38,58 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+HOSTPOOLINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
   [ApplicationGroupName <String>]: The name of the application group
   [ApplicationName <String>]: The name of the application within the specified application group
   [DesktopName <String>]: The name of the desktop within the specified desktop group
   [HostPoolName <String>]: The name of the host pool within the specified resource group
   [Id <String>]: Resource identity path
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
-  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
   [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
-  [SubscriptionId <String>]: The ID of the target subscription.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
+  [UserSessionId <String>]: The name of the user session within the specified session host
+  [WorkspaceName <String>]: The name of the workspace
+
+SENDMESSAGE <ISendMessage>: Represents message sent to a UserSession.
+  [MessageBody <String>]: Body of message.
+  [MessageTitle <String>]: Title of message.
+
+SESSIONHOSTINPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+  [AppAttachPackageName <String>]: The name of the App Attach package
+  [ApplicationGroupName <String>]: The name of the application group
+  [ApplicationName <String>]: The name of the application within the specified application group
+  [DesktopName <String>]: The name of the desktop within the specified desktop group
+  [HostPoolName <String>]: The name of the host pool within the specified resource group
+  [Id <String>]: Resource identity path
+  [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
+  [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection associated with the Azure resource.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
+  [SessionHostName <String>]: The name of the session host within the specified host pool
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [UserSessionId <String>]: The name of the user session within the specified session host
   [WorkspaceName <String>]: The name of the workspace
 .Link
@@ -59,12 +100,16 @@ function Send-AzWvdUserSessionMessage {
 [CmdletBinding(DefaultParameterSetName='SendExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SendExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the host pool within the specified resource group
     ${HostPoolName},
 
     [Parameter(ParameterSetName='SendExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -72,19 +117,32 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='SendExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaIdentityHostPool', Mandatory)]
+    [Parameter(ParameterSetName='SendViaIdentityHostPoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the session host within the specified host pool
     ${SessionHostName},
 
     [Parameter(ParameterSetName='SendExpanded')]
+    [Parameter(ParameterSetName='SendViaJsonFilePath')]
+    [Parameter(ParameterSetName='SendViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
+    # The value must be an UUID.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='SendExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaIdentityHostPool', Mandatory)]
+    [Parameter(ParameterSetName='SendViaIdentityHostPoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaIdentitySessionHost', Mandatory)]
+    [Parameter(ParameterSetName='SendViaIdentitySessionHostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='SendViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [System.String]
     # The name of the user session within the specified session host
@@ -94,20 +152,58 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SendViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='SendViaIdentityHostPoolExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${HostPoolInputObject},
+
+    [Parameter(ParameterSetName='SendViaIdentitySessionHost', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='SendViaIdentitySessionHostExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity]
+    # Identity Parameter
+    ${SessionHostInputObject},
+
+    [Parameter(ParameterSetName='SendExpanded')]
+    [Parameter(ParameterSetName='SendViaIdentityExpanded')]
+    [Parameter(ParameterSetName='SendViaIdentityHostPoolExpanded')]
+    [Parameter(ParameterSetName='SendViaIdentitySessionHostExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Body of message.
     ${MessageBody},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='SendExpanded')]
+    [Parameter(ParameterSetName='SendViaIdentityExpanded')]
+    [Parameter(ParameterSetName='SendViaIdentityHostPoolExpanded')]
+    [Parameter(ParameterSetName='SendViaIdentitySessionHostExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
     [System.String]
     # Title of message.
     ${MessageTitle},
+
+    [Parameter(ParameterSetName='SendViaIdentityHostPool', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='SendViaIdentitySessionHost', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.ISendMessage]
+    # Represents message sent to a UserSession.
+    ${SendMessage},
+
+    [Parameter(ParameterSetName='SendViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Send operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='SendViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
+    [System.String]
+    # Json string supplied to the Send operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -192,8 +288,14 @@ begin {
         $mapping = @{
             SendExpanded = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendExpanded';
             SendViaIdentityExpanded = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaIdentityExpanded';
+            SendViaIdentityHostPool = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaIdentityHostPool';
+            SendViaIdentityHostPoolExpanded = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaIdentityHostPoolExpanded';
+            SendViaIdentitySessionHost = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaIdentitySessionHost';
+            SendViaIdentitySessionHostExpanded = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaIdentitySessionHostExpanded';
+            SendViaJsonFilePath = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaJsonFilePath';
+            SendViaJsonString = 'Az.DesktopVirtualization.private\Send-AzWvdUserSessionMessage_SendViaJsonString';
         }
-        if (('SendExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('SendExpanded', 'SendViaJsonFilePath', 'SendViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

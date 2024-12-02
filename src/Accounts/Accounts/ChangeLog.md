@@ -19,6 +19,17 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure.Core to 1.44.1 and Azure.Identity to 1.13.0
+
+## Version 4.0.0
+* [Breaking Change] Removed alias `Resolve-Error` for the cmdlet `Resolve-AzError`.
+* Updated the `Get-AzAccessToken` breaking change warning message.
+* Added Long Running Operation Support for Invoke-AzRest command.
+
+## Version 3.0.5
+* Fixed the issue that `Export-AzSshConfig` and `Enter-AzVM` from Az.Ssh are not able to use when WAM is enabled.
+* Added breaking change preannouncement for the removal of alias `Resolve-Error`. #26189
+* Integrated new detection library to expand the scope of secrets.
 
 ## Version 3.0.4
 * Added customized UserAgent for ARM telemetry.
@@ -26,7 +37,6 @@
 * Updated `Connect-AzAccount` to fix a display issue in PowerShell ISE [#24556].
 * Updated the reference of Azure PowerShell Common to 1.3.100-preview.
 * Used Azure.Identity and Azure.Core directly for client assertion [#22628].
-* Integrated new detection library to expand the scope of secrets.
 
 ## Version 3.0.3
 * Reduced the frequency of displaying sign-in announcement messages.

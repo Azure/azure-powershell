@@ -1,5 +1,5 @@
 @{
-  GUID = '35a9c347-856c-41c9-9843-5dbaed8e4ef4'
+  GUID = '7501974d-011d-40c9-8f5c-8aca539e2c8b'
   RootModule = './Az.Authorization.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

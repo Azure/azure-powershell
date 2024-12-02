@@ -22,7 +22,15 @@ function Invoke-ConfigDPHealthCheck {
     }
 
     # Sending request with retries
-    Invoke-RestMethodWithUriParameters -Method 'post' -Uri $chartLocationUrl -Headers $headers -UriParameters $uriParameters -MaximumRetryCount 5 -RetryIntervalSec 3 -StatusCodeVariable statusCode
+    Invoke-RestMethodWithUriParameters `
+        -Method 'post' `
+        -Uri $chartLocationUrl `
+        -Headers $headers `
+        -UriParameters $uriParameters `
+        -StatusCodeVariable statusCode `
+        -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+        -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+
     if ($statusCode -ne 200) {
         throw "Error while performing DP health check, StatusCode: ${statusCode}"
     }
@@ -30,7 +38,7 @@ function Invoke-ConfigDPHealthCheck {
 
 
 function Get-ConfigDPEndpoint {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory = $true)]
         [string]$Location,
@@ -41,13 +49,16 @@ function Get-ConfigDPEndpoint {
 
     $ReleaseTrain = $null
     # Get the default config dataplane endpoint.  Note that there may be code
-    $ConfigDpEndpoint = Get-ConfigDpDefaultEndpoint -Location $Location -CloudMetadata $cloudMetadata
-    
+    $ConfigDpEndpoint = Get-ConfigDpDefaultEndpoint `
+        -Location $Location `
+        -CloudMetadata $cloudMetadata `
+        -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+        -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
     return @{ ConfigDpEndpoint = $ConfigDpEndpoint; ReleaseTrain = $ReleaseTrain }
 }
 
 function Get-ConfigDpDefaultEndpoint {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory = $true)]
         [string]$location,
@@ -73,8 +84,6 @@ function Invoke-RestMethodWithUriParameters {
         [Hashtable]$headers,
         [System.Collections.Specialized.OrderedDictionary]$uriParameters,
         [String]$requestBody,
-        [Int]$maximumRetryCount,
-        [Int]$retryIntervalSec,
         [String]$statusCodeVariable
     )
 
@@ -93,26 +102,34 @@ function Invoke-RestMethodWithUriParameters {
     #     $uriParametersArray = $uriParameters.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" } | ForEach-Object { $_ -join '=' } | ForEach-Object { $_ -join '&' }
     # }
     Write-Debug "Issue REST request to ${uri} with method ${method} and headers ${headers} and body ${requestBody}"
-    $rsp = Invoke-RestMethod `
-        -Method $method `
-        -Uri $uri `
-        -Headers $headers `
-        -Body $requestBody `
-        -ContentType "application/json" `
-        -MaximumRetryCount $maximumRetryCount `
-        -RetryIntervalSec $retryintervalSec `
-        -StatusCodeVariable statusCode `
-        -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
-        -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+    try {
+        $rsp = Invoke-RestMethod `
+            -Method $method `
+            -Uri $uri `
+            -Headers $headers `
+            -Body $requestBody `
+            -ContentType "application/json" `
+            -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
+            -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)
+        $statusCode = 200;
+    }
+    catch {
+        # We do not know what went wrong, but something did!
+        $statusCode = 400
+        Write-Error "Error while issuing REST request: $_"
+    } 
+    finally {
+        # Note need to explcitly clear WhatIf for this method otherwise the value is
+        # not passed back during What-If testing.
+        Set-Variable -Name "${statusCodeVariable}" -Value $statusCode -Scope Script -WhatIf:$false
+    }
 
     Write-Debug "Response: $($rsp | ConvertTo-Json -Depth 10)"
-    # Note need to explcitly clear WhatIf for this method otherwise the value is
-    # not passed back during What-If testing.
-    Set-Variable -Name "${statusCodeVariable}" -Value $statusCode -Scope Script -WhatIf:$false
     return $rsp
 }
+
 function Get-HelmValuesFromConfigDP {
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExport()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.DoNotExportAttribute()]
     param (
         [Parameter(Mandatory = $true)]
         $ConfigDpEndpoint,
@@ -151,8 +168,6 @@ function Get-HelmValuesFromConfigDP {
             -Headers $headers `
             -UriParameters $uriParameters `
             -RequestBody $RequestBody `
-            -MaximumRetryCount 5 `
-            -RetryIntervalSec 3 `
             -StatusCodeVariable StatusCode `
             -Verbose:($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent -eq $true) `
             -Debug:($PSCmdlet.MyInvocation.BoundParameters["Debug"].IsPresent -eq $true)

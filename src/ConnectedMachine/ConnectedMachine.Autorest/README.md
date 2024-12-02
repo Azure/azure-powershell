@@ -38,12 +38,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
  
 ``` yaml
-commit: 2e5be0e72597c6fc8d438f20e38087d900c16427
+commit: a9980ec5181a161dd26c5277f7651722b60503ea
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-05-20-preview/HybridCompute.json
-  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-05-20-preview/privateLinkScopes.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-07-31-preview/HybridCompute.json
+  - $(repo)/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-07-31-preview/privateLinkScopes.json
  
 module-version: 0.1.0
 title: ConnectedMachine
@@ -175,7 +175,7 @@ directive:
         }
       }
 
-  # add 200 response to run-command delete 
+  # add 200 response to run-command delete - comment out for stable release
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}"].delete.responses
     transform: >-
@@ -259,6 +259,11 @@ directive:
       parameter-name: AgentUpgradeEnableAutomaticUpgrade
     set:
       parameter-name: AgentUpgradeEnableAutomatic
+  - where:
+      subject: MachineRunCommand
+      parameter-name: SubscriptionId
+    set:
+      alias: Subscription
     
   # Rename Tag to Tags
   - where:
@@ -324,10 +329,6 @@ directive:
       subject: MachineRunCommand
       verb: Set
     remove: true
-  # internal API
-  - where:
-      subject: LicenseProfile
-    remove: true
   - where:
       subject: Extension
       variant: Upgrade
@@ -337,7 +338,6 @@ directive:
   - where:
       subject: Gateway
     remove: true
-  # Remove when this API version is added
   - where:
       subject: Setting
     remove: true
@@ -356,15 +356,15 @@ directive:
       verb: Test
     remove: true
 
+  # hide Set-AzConnectedLicenseProfile (PUT) from user and keep Update-AzConnectedLicenseProfile (PATCH)
+  - where:
+      subject: LicenseProfile
+      verb: Set
+    remove: true
+
   # We don't want user to talk directly to the network configuration API
   - where:
       subject: NetworkConfiguration
-    remove: true
-
-  # Remove when this API is fixed
-  - where:
-      subject: ReconcileNetworkSecurityPerimeterConfiguration$
-      verb: Invoke
     remove: true
 
   # becasue autorest.powershell is unable to transform IdentityType as the best practice design if it uses managed identity
@@ -398,5 +398,14 @@ directive:
   - model-cmdlet:
     - model-name: LicenseDetails
       cmdlet-name: New-AzConnectedLicenseDetail
+  
+  # Generate complex object for Update-AzConnectedLicenseProfile
+  - model-cmdlet:
+    - model-name: ProductFeatureUpdate
+      cmdlet-name: Update-AzConnectedLicenseProfileFeature
+  # Generate complex object for New-AzConnectedLicenseProfile, change prefix to New- will cause CI styling issue
+  - model-cmdlet:
+    - model-name: ProductFeature
+      cmdlet-name: New-AzConnectedLicenseProfileFeature
 
 ```

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update a Dapr Component in a connected environment.
+update a Dapr Component in a connected environment.
 .Description
-Update a Dapr Component in a connected environment.
+update a Dapr Component in a connected environment.
 .Example
 $secretObject = New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
 $daprMetaData = New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"

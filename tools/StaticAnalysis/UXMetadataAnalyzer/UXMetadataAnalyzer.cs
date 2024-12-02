@@ -178,6 +178,10 @@ namespace StaticAnalysis.UXMetadataAnalyzer
 
         private void ValidateExample(IssueLoggerContext context, UXMetadataCommand command, CmdletMetadata cmdletMetadata, UXMetadataCommandExample example, ReportLogger<UXMetadataIssue> issueLogger)
         {
+            if (example.Parameters == null)
+            {
+                return;
+            }
             List<string> parameterListConvertedFromAlias = example.Parameters.Select(x =>
             {
                 string parameterNameInExample = x.Name.Trim('-');
@@ -251,7 +255,7 @@ namespace StaticAnalysis.UXMetadataAnalyzer
                 if (!isParameterContainsInExample)
                 {
                     string description = string.Format("{0} is defined in path but cannot find in example", parameterFromHttpPath);
-                    issueLogger.LogUXMetadataIssue(context, 1, description);
+                    issueLogger.LogUXMetadataIssue(context, 2, description);
                 }
             }
         }

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously updates a partner namespace with the specified parameters.
+Asynchronously update a partner namespace with the specified parameters.
 .Description
-Asynchronously updates a partner namespace with the specified parameters.
+Asynchronously update a partner namespace with the specified parameters.
 .Example
 Update-AzEventGridPartnerNamespace -Name azps-partnernamespace -ResourceGroupName azps_test_group_eventgrid -Tag @{"abc"="123"} -PassThru
 .Example

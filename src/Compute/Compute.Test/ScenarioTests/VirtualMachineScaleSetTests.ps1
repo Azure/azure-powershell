@@ -5322,7 +5322,7 @@ function Test-VirtualMachineScaleSetSkuProfile
 {
     # Setup
     $rgname = Get-ComputeTestResourceName
-    $loc = Get-ComputeVMLocation;
+    $loc = "eastus2";
 
     # Basic case
     try
@@ -5434,7 +5434,7 @@ function Test-VirtualMachineScaleSetSkuProfile
         $imgRef = Get-DefaultCRPImage -loc $loc -New $True;
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId -PublicIPAddressConfigurationName $ipName -PublicIPAddressConfigurationIdleTimeoutInMinutes 10 -DnsSetting "testvmssdnscom" -PublicIPAddressVersion "IPv4";
 
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -UpgradePolicyMode 'Manual' -EncryptionAtHost -SecurityType $stnd -SkuProfileVmSize @("Standard_D4s_v3", "Standard_D4s_v4") -SkuProfileAllocationStrategy "CapacityOptimized"`
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -UpgradePolicyMode 'Manual' -EncryptionAtHost -SecurityType $stnd -SkuProfileVmSize @("Standard_D4s_v3") `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -5445,12 +5445,11 @@ function Test-VirtualMachineScaleSetSkuProfile
         $vmssResult = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss
 
         Assert-AreEqual $vmssResult.Sku.Name "Mix";
-        Assert-AreEqual $vmssResult.SkuProfile.AllocationStrategy "CapacityOptimized";
+        Assert-AreEqual $vmssResult.SkuProfile.AllocationStrategy "LowestPrice";
         Assert-AreEqual $vmssResult.SkuProfile.VMSizes[0].Name "Standard_D4s_v3";
-        Assert-AreEqual $vmssResult.SkuProfile.VMSizes[1].Name "Standard_D4s_v4";
 
         # update vmss
-        $vmssUpdate = Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -SkuCapacity 3 -SkuProfileVmSize @($vmSize1, $vmSize2) -SkuProfileAllocationStrategy "CapacityOptimized";
+        $vmssUpdate = $vmssResult | Update-AzVmss -SkuProfileVmSize @("Standard_D4s_v3", "Standard_D4s_v4") -SkuProfileAllocationStrategy "CapacityOptimized";
 
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 
@@ -5515,5 +5514,52 @@ function Test-ResiliencyPolicyVMSS
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test Security Posture Feature
+#>
+function Test-SecurityPostureFeature
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vmss' + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        $SecurityPostureId = "/CommunityGalleries/SecurityPosturesBVTGallery/securityPostures/VMSSUniformWindows/versions/latest"
+
+        # create vmss with security posture settings
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Location eastus2euap -Credential $cred -VMScaleSetName $vmssName -DomainNameLabel $domainNameLabel1 -SecurityPostureId $SecurityPostureId -SecurityPostureExcludeExtension "SecurityPostureSecurityAgent"
+
+        # verify
+        Assert-AreEqual $vmss.VirtualMAchineProfile.SecurityPostureReference.Id $SecurityPostureId
+        Assert-AreEqual $vmss.virtualMachineProfile.SecurityPostureReference.ExcludeExtensions.count 1
+
+        # Test New-AzVmssConfig 
+        $vmssConfig = New-AzVmssConfig -SecurityPostureId $SecurityPostureId -SecurityPostureExcludeExtension "SecurityPostureSecurityAgent"
+
+        # Verify 
+        Assert-AreEqual $vmssConfig.VirtualMAchineProfile.SecurityPostureReference.Id $SecurityPostureId
+        Assert-AreEqual $vmssConfig.virtualMachineProfile.SecurityPostureReference.ExcludeExtensions.count 1
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
     }
 }

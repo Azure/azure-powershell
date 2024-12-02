@@ -35,7 +35,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-ADDIN <IMicrosoftGraphAddIn[]>: Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Microsoft 365 call the application in the context of a document the user is working on.
+ADDIN <IMicrosoftGraphAddIn[]>: Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Microsoft 365 call the application in the context of a document the user is working on. To construct, see NOTES section for ADDIN properties and create a hash table.
   [Id <String>]: 
   [Property <IMicrosoftGraphKeyValue[]>]: 
     [Key <String>]: Key.
@@ -140,7 +140,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
       [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
         [Id <String>]: The unique idenfier for an entity. Read-only.
       [MarketingNotificationEmail <String[]>]: Not nullable.
-      [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+      [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
       [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
       [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
       [PostalCode <String>]: Postal code of the address for the organization.
@@ -288,7 +288,7 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
   [TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]: The tokenLifetimePolicies assigned to this application. Supports $expand.
   [Web <IMicrosoftGraphWebApplication>]: webApplication
 
-APPROLE <IMicrosoftGraphAppRole[]>: The roles exposed by the application which this service principal represents. For more information see the appRoles property definition on the application entity. Not nullable.
+APPROLE <IMicrosoftGraphAppRole[]>: The roles exposed by the application which this service principal represents. For more information see the appRoles property definition on the application entity. Not nullable. To construct, see NOTES section for APPROLE properties and create a hash table.
   [AllowedMemberType <String[]>]: Specifies whether this app role can be assigned to users and groups (by setting to ['User']), to other application's (by setting to ['Application'], or both (by setting to ['User', 'Application']). App roles supporting assignment to other applications' service principals are also known as application permissions. The 'Application' value is only supported for app roles defined on application entities.
   [Description <String>]: The description for the app role. This is displayed when the app role is being assigned and, if the app role functions as an application permission, during  consent experiences.
   [DisplayName <String>]: Display name for the permission that appears in the app role assignment and consent experiences.
@@ -296,7 +296,7 @@ APPROLE <IMicrosoftGraphAppRole[]>: The roles exposed by the application which t
   [IsEnabled <Boolean?>]: When creating or updating an app role, this must be set to true (which is the default). To delete a role, this must first be set to false.  At that point, in a subsequent call, this role may be removed.
   [Value <String>]: Specifies the value to include in the roles claim in ID tokens and access tokens authenticating an assigned user or service principal. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
 
-APPROLEASSIGNEDTO <IMicrosoftGraphAppRoleAssignment[]>: App role assignments for this app or service, granted to users, groups, and other service principals.Supports $expand.
+APPROLEASSIGNEDTO <IMicrosoftGraphAppRoleAssignment[]>: App role assignments for this app or service, granted to users, groups, and other service principals.Supports $expand. To construct, see NOTES section for APPROLEASSIGNEDTO properties and create a hash table.
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
   [AppRoleId <String>]: The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
@@ -304,7 +304,7 @@ APPROLEASSIGNEDTO <IMicrosoftGraphAppRoleAssignment[]>: App role assignments for
   [ResourceDisplayName <String>]: The display name of the resource app's service principal to which the assignment is made.
   [ResourceId <String>]: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
 
-APPROLEASSIGNMENT <IMicrosoftGraphAppRoleAssignment[]>: App role assignment for another app or service, granted to this service principal. Supports $expand.
+APPROLEASSIGNMENT <IMicrosoftGraphAppRoleAssignment[]>: App role assignment for another app or service, granted to this service principal. Supports $expand. To construct, see NOTES section for APPROLEASSIGNMENT properties and create a hash table.
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
   [AppRoleId <String>]: The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
@@ -312,7 +312,7 @@ APPROLEASSIGNMENT <IMicrosoftGraphAppRoleAssignment[]>: App role assignment for 
   [ResourceDisplayName <String>]: The display name of the resource app's service principal to which the assignment is made.
   [ResourceId <String>]: The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
 
-CLAIMSMAPPINGPOLICY <IMicrosoftGraphClaimsMappingPolicy[]>: The claimsMappingPolicies assigned to this service principal. Supports $expand.
+CLAIMSMAPPINGPOLICY <IMicrosoftGraphClaimsMappingPolicy[]>: The claimsMappingPolicies assigned to this service principal. Supports $expand. To construct, see NOTES section for CLAIMSMAPPINGPOLICY properties and create a hash table.
   [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
     [DeletedDateTime <DateTime?>]: 
     [DisplayName <String>]: The name displayed in directory
@@ -363,7 +363,7 @@ CLAIMSMAPPINGPOLICY <IMicrosoftGraphClaimsMappingPolicy[]>: The claimsMappingPol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -529,16 +529,16 @@ CLAIMSMAPPINGPOLICY <IMicrosoftGraphClaimsMappingPolicy[]>: The claimsMappingPol
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 
-DELEGATEDPERMISSIONCLASSIFICATION <IMicrosoftGraphDelegatedPermissionClassification[]>: The permission classifications for delegated permissions exposed by the app that this service principal represents. Supports $expand.
+DELEGATEDPERMISSIONCLASSIFICATION <IMicrosoftGraphDelegatedPermissionClassification[]>: The permission classifications for delegated permissions exposed by the app that this service principal represents. Supports $expand. To construct, see NOTES section for DELEGATEDPERMISSIONCLASSIFICATION properties and create a hash table.
   [Classification <String>]: permissionClassificationType
   [PermissionId <String>]: The unique identifier (id) for the delegated permission listed in the publishedPermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
   [PermissionName <String>]: The claim value (value) for the delegated permission listed in the publishedPermissionScopes collection of the servicePrincipal. Does not support $filter.
 
-ENDPOINT <IMicrosoftGraphEndpoint[]>: Endpoints available for discovery. Services like Sharepoint populate this property with a tenant specific SharePoint endpoints that other applications can discover and use in their experiences.
+ENDPOINT <IMicrosoftGraphEndpoint[]>: Endpoints available for discovery. Services like Sharepoint populate this property with a tenant specific SharePoint endpoints that other applications can discover and use in their experiences. To construct, see NOTES section for ENDPOINT properties and create a hash table.
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 
-HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
+HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand. To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
   [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
     [DeletedDateTime <DateTime?>]: 
     [DisplayName <String>]: The name displayed in directory
@@ -589,7 +589,7 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRe
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -749,7 +749,7 @@ HOMEREALMDISCOVERYPOLICY <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>: The homeRe
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 
-INFO <IMicrosoftGraphInformationalUrl>: informationalUrl
+INFO <IMicrosoftGraphInformationalUrl>: informationalUrl To construct, see NOTES section for INFO properties and create a hash table.
   [(Any) <Object>]: This indicates any property can be added to this object.
   [MarketingUrl <String>]: Link to the application's marketing page. For example, https://www.contoso.com/app/marketing
   [PrivacyStatementUrl <String>]: Link to the application's privacy statement. For example, https://www.contoso.com/app/privacy
@@ -766,7 +766,7 @@ KEYCREDENTIAL <IMicrosoftGraphKeyCredential[]>: key credentials associated with 
   [Type <String>]: The type of key credential; for example, 'Symmetric'.
   [Usage <String>]: A string that describes the purpose for which the key can be used; for example, 'Verify'.
 
-OAUTH2PERMISSIONSCOPE <IMicrosoftGraphPermissionScope[]>: The delegated permissions exposed by the application. For more information see the oauth2PermissionScopes property on the application entity's api property. Not nullable.
+OAUTH2PERMISSIONSCOPE <IMicrosoftGraphPermissionScope[]>: The delegated permissions exposed by the application. For more information see the oauth2PermissionScopes property on the application entity's api property. Not nullable. To construct, see NOTES section for OAUTH2PERMISSIONSCOPE properties and create a hash table.
   [AdminConsentDescription <String>]: A description of the delegated permissions, intended to be read by an administrator granting the permission on behalf of all users. This text appears in tenant-wide admin consent experiences.
   [AdminConsentDisplayName <String>]: The permission's title, intended to be read by an administrator granting the permission on behalf of all users.
   [Id <String>]: Unique delegated permission identifier inside the collection of delegated permissions defined for a resource application.
@@ -784,11 +784,11 @@ PASSWORDCREDENTIAL <IMicrosoftGraphPasswordCredential[]>: Password credentials a
   [KeyId <String>]: The unique identifier for the password.
   [StartDateTime <DateTime?>]: The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
 
-SAMLSINGLESIGNONSETTING <IMicrosoftGraphSamlSingleSignOnSettings>: samlSingleSignOnSettings
+SAMLSINGLESIGNONSETTING <IMicrosoftGraphSamlSingleSignOnSettings>: samlSingleSignOnSettings To construct, see NOTES section for SAMLSINGLESIGNONSETTING properties and create a hash table.
   [(Any) <Object>]: This indicates any property can be added to this object.
   [RelayState <String>]: The relative URI the service provider would redirect to after completion of the single sign-on flow.
 
-TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: The tokenIssuancePolicies assigned to this service principal. Supports $expand.
+TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: The tokenIssuancePolicies assigned to this service principal. Supports $expand. To construct, see NOTES section for TOKENISSUANCEPOLICY properties and create a hash table.
   [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
     [DeletedDateTime <DateTime?>]: 
     [DisplayName <String>]: The name displayed in directory
@@ -839,7 +839,7 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: The tokenIssuancePol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -999,7 +999,7 @@ TOKENISSUANCEPOLICY <IMicrosoftGraphTokenIssuancePolicy[]>: The tokenIssuancePol
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 
-TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePolicies assigned to this service principal. Supports $expand.
+TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePolicies assigned to this service principal. Supports $expand. To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
   [AppliesTo <IMicrosoftGraphDirectoryObject[]>]: 
     [DeletedDateTime <DateTime?>]: 
     [DisplayName <String>]: The name displayed in directory
@@ -1050,7 +1050,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
     [Extension <IMicrosoftGraphExtension[]>]: The collection of open extensions defined for the organization. Read-only. Nullable.
       [Id <String>]: The unique idenfier for an entity. Read-only.
     [MarketingNotificationEmail <String[]>]: Not nullable.
-    [MobileDeviceManagementAuthority <MdmAuthority?>]: Mobile device management authority.
+    [MobileDeviceManagementAuthority <String>]: Mobile device management authority.
     [OnPremisesLastSyncDateTime <DateTime?>]: The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
     [OnPremisesSyncEnabled <Boolean?>]: true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
     [PostalCode <String>]: Postal code of the address for the organization.
@@ -1210,7 +1210,7 @@ TOKENLIFETIMEPOLICY <IMicrosoftGraphTokenLifetimePolicy[]>: The tokenLifetimePol
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 
-TRANSITIVEMEMBEROF <IMicrosoftGraphDirectoryObject[]>: .
+TRANSITIVEMEMBEROF <IMicrosoftGraphDirectoryObject[]>: . To construct, see NOTES section for TRANSITIVEMEMBEROF properties and create a hash table.
   [DeletedDateTime <DateTime?>]: 
   [DisplayName <String>]: The name displayed in directory
 .Link
@@ -1554,7 +1554,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
     # key credentials associated with the service principal.
-    # To construct, see NOTES section for KEYCREDENTIAL properties and create a hash table.
     ${KeyCredential},
 
     [Parameter(ParameterSetName='DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
@@ -1563,14 +1562,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
     # Password credentials associated with the service principal.
-    # To construct, see NOTES section for PASSWORDCREDENTIAL properties and create a hash table.
     ${PasswordCredential},
 
     [Parameter(ParameterSetName='ApplicationObjectParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
     # The application object, could be used as pipeline input.
-    # To construct, see NOTES section for APPLICATIONOBJECT properties and create a hash table.
     ${ApplicationObject},
 
     [Parameter(ParameterSetName='ApplicationIdParameterSet')]
@@ -1637,7 +1634,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1663,6 +1660,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

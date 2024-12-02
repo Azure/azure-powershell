@@ -75,6 +75,8 @@ if(-not $NotIsolated -and -not $Debugger) {
 $binFolder = Join-Path $PSScriptRoot 'bin'
 $objFolder = Join-Path $PSScriptRoot 'obj'
 
+$isAzure = [System.Convert]::ToBoolean('true')
+
 if(-not $Debugger) {
   Write-Host -ForegroundColor Green 'Cleaning build folders...'
   $null = Remove-Item -Recurse -ErrorAction SilentlyContinue -Path $binFolder, $objFolder
@@ -151,7 +153,7 @@ if($NoDocs) {
     $null = Get-ChildItem -Path $docsFolder -Recurse -Exclude 'README.md' | Remove-Item -Recurse -ErrorAction SilentlyContinue
   }
   $null = New-Item -ItemType Directory -Force -Path $docsFolder
-  $addComplexInterfaceInfo = ![System.Convert]::ToBoolean('true')
+  $addComplexInterfaceInfo = !$isAzure
   Export-ProxyCmdlet -ModuleName $moduleName -ModulePath $modulePaths -ExportsFolder $exportsFolder -InternalFolder $internalFolder -ModuleDescription $moduleDescription -DocsFolder $docsFolder -ExamplesFolder $examplesFolder -ModuleGuid $guid -AddComplexInterfaceInfo:$addComplexInterfaceInfo
 }
 
@@ -177,20 +179,13 @@ if (Test-Path (Join-Path $PSScriptRoot 'generate-portal-ux.ps1'))
   . (Join-Path $PSScriptRoot 'generate-portal-ux.ps1')
 }
 
-$assemblyInfoPath = Join-Path $PSScriptRoot 'Properties' 'AssemblyInfo.cs'
-if (-not (Test-Path $assemblyInfoPath) -And [System.Convert]::ToBoolean('true')) {
-  Write-Host -ForegroundColor Green 'Creating assembly info...'
-  New-AssemblyInfo
-}
-
 if (-not $DisableAfterBuildTasks){
   $afterBuildTasksPath = Join-Path $PSScriptRoot ''
   $afterBuildTasksArgs = ConvertFrom-Json 'true' -AsHashtable
   if(Test-Path -Path $afterBuildTasksPath -PathType leaf){
-    Write-Host -ForegroundColor Green 'Executing after build tasks...'
+    Write-Host -ForegroundColor Green 'Running after build tasks...'
     . $afterBuildTasksPath @afterBuildTasksArgs
   }
 }
-
 
 Write-Host -ForegroundColor Green '-------------Done-------------'

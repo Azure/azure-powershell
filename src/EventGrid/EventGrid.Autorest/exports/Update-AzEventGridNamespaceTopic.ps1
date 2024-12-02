@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Asynchronously updates a namespace topic with the specified parameters.
+Asynchronously update a namespace topic with the specified parameters.
 .Description
-Asynchronously updates a namespace topic with the specified parameters.
+Asynchronously update a namespace topic with the specified parameters.
 .Example
 Update-AzEventGridNamespaceTopic -NamespaceName azps-eventgridnamespace -ResourceGroupName azps_test_group_eventgrid -TopicName azps-topic -EventRetentionInDay 1
 .Example

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create the agent pool in the provisioned cluster
+create the agent pool in the provisioned cluster
 .Description
-Create the agent pool in the provisioned cluster
+create the agent pool in the provisioned cluster
 .Example
 New-AzAksArcNodepool -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Name azps_test_nodepool_example
 .Example

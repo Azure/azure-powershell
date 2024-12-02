@@ -26,23 +26,24 @@ namespace Microsoft.Azure.Management.Network.Models
         /// Initializes a new instance of the DefaultAdminRule class.
         /// </summary>
 
-        /// <param name="id">Resource ID.
+        /// <param name="id">Fully qualified resource ID for the resource. E.g.
+        /// &#34;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}&#34;
         /// </param>
 
-        /// <param name="name">Resource name.
+        /// <param name="name">The name of the resource
         /// </param>
 
-        /// <param name="type">Resource type.
+        /// <param name="type">The type of the resource. E.g. &#34;Microsoft.Compute/virtualMachines&#34; or
+        /// &#34;Microsoft.Storage/storageAccounts&#34;
         /// </param>
 
-        /// <param name="etag">A unique read-only string that changes whenever the resource is updated.
-        /// </param>
-
-        /// <param name="systemData">The system metadata related to this resource.
+        /// <param name="systemData">Azure Resource Manager metadata containing createdBy and modifiedBy
+        /// information.
         /// </param>
 
         /// <param name="provisioningState">The provisioning state of the resource.
-        /// Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;</param>
+        /// Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;,
+        /// &#39;Updating&#39;, &#39;Deleting&#39;</param>
 
         /// <param name="description">A description for this rule. Restricted to 140 chars.
         /// </param>
@@ -78,9 +79,9 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="resourceGuid">Unique identifier for this resource.
         /// </param>
-        public DefaultAdminRule(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string description = default(string), string flag = default(string), string protocol = default(string), System.Collections.Generic.IList<AddressPrefixItem> sources = default(System.Collections.Generic.IList<AddressPrefixItem>), System.Collections.Generic.IList<AddressPrefixItem> destinations = default(System.Collections.Generic.IList<AddressPrefixItem>), System.Collections.Generic.IList<string> sourcePortRanges = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationPortRanges = default(System.Collections.Generic.IList<string>), string access = default(string), int? priority = default(int?), string direction = default(string), string resourceGuid = default(string))
+        public DefaultAdminRule(string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), string provisioningState = default(string), string description = default(string), string flag = default(string), string protocol = default(string), System.Collections.Generic.IList<AddressPrefixItem> sources = default(System.Collections.Generic.IList<AddressPrefixItem>), System.Collections.Generic.IList<AddressPrefixItem> destinations = default(System.Collections.Generic.IList<AddressPrefixItem>), System.Collections.Generic.IList<string> sourcePortRanges = default(System.Collections.Generic.IList<string>), System.Collections.Generic.IList<string> destinationPortRanges = default(System.Collections.Generic.IList<string>), string access = default(string), int? priority = default(int?), string direction = default(string), string resourceGuid = default(string))
 
-        : base(id, name, type, etag, systemData)
+        : base(id, name, type, systemData)
         {
             this.ProvisioningState = provisioningState;
             this.Description = description;
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
 
         /// <summary>
-        /// Gets the provisioning state of the resource. Possible values include: &#39;Succeeded&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Failed&#39;
+        /// Gets the provisioning state of the resource. Possible values include: &#39;Failed&#39;, &#39;Succeeded&#39;, &#39;Canceled&#39;, &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState {get; private set; }
