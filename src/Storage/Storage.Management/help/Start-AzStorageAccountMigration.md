@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Account Migration request can be triggered for a storage account to change its redundancy level.
-The migration updates the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
+The migration customer the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
 Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
 
 ## SYNTAX
@@ -18,33 +18,33 @@ Zone-redundant storage (ZRS) replicates your storage account synchronously acros
 ```
 Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -TargetSku <String> [-Name <String>] [-Type <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CustomerViaJsonString
-```
-Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomerViaJsonFilePath
 ```
 Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CustomerViaJsonString
+```
+Start-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomerViaIdentityExpanded
 ```
 Start-AzStorageAccountMigration -InputObject <IStorageIdentity> -TargetSku <String> [-Name <String>]
  [-Type <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Account Migration request can be triggered for a storage account to change its redundancy level.
-The migration updates the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
+The migration customer the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
 Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
 
 ## EXAMPLES
@@ -91,7 +91,7 @@ Storage account names must be between 3 and 24 characters in length and use numb
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomerExpanded, CustomerViaJsonString, CustomerViaJsonFilePath
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: True
@@ -134,7 +134,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity
@@ -223,13 +222,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group within the user's subscription.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomerExpanded, CustomerViaJsonString, CustomerViaJsonFilePath
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: True
@@ -244,7 +258,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CustomerExpanded, CustomerViaJsonString, CustomerViaJsonFilePath
+Parameter Sets: CustomerExpanded, CustomerViaJsonFilePath, CustomerViaJsonString
 Aliases:
 
 Required: False
